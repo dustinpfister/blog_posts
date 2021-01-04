@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 13:43:20
-version: 1.6
+updated: 2021-01-04 14:23:25
+version: 1.7
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -75,7 +75,28 @@ f            float                  float
 d            double                 float
 ```
 
-## Conclusion
+## 2 - Some of the basic functions of arrays
+
+### 2.1 - The append method
+
+Just like lists in python by itself these arrays are dense, not sparse. So I can not just set any index value I want to an array, I must stay within the range of the array. There are ways of incressing the range of the array though in place without creating a new array. Just like with lists there is also an append method, this will append a new element to the end of the array, incressing the range of the array in the process of doing so.
+
+```python
+import array as arr
+ 
+a = arr.array('i', [1,2])
+ 
+# len can be used to get the length
+print(len(a)) # 2
+ 
+# append can be used to append a new element to the end
+a.append(3)
+ 
+print(a[2]) # 3
+print(len(a)) # 3
+```
+
+## 3 - Conclusion
 
 I am not going to say that arrays should always be used over lists, or anything to that effect. There is no golden hammer when it comes to these types of things. In fact most of the time I am sure that I would prefer to use lists, it is just that in some situtsions I should probibnly use these arrays in place of lists. 
 
