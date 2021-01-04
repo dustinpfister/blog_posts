@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 14:35:22
-version: 1.11
+updated: 2021-01-04 14:42:32
+version: 1.12
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these wheh it comes to being aware at least of an alterative to lists, and the other sequence types that are built into python itself.
@@ -126,6 +126,19 @@ a = arr.array('i', [1,0,0,1,1,1,0,1,1,1])
 print(a.count(0)) # 3
 print(a.count(1)) # 7
 print(a.count(2)) # 0
+```
+
+### 2.4 - The to list method
+
+There should be a way to create a list from an array.
+
+```python
+import array as arr
+ 
+a = arr.array('i', [255])
+b = a.tolist()
+ 
+print(type(a), type(b)) # <class 'array.array'> <class 'list'>
 ```
 
 ## 3 - Conclusion
