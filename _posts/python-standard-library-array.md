@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 17:38:42
-version: 1.15
+updated: 2021-01-04 17:56:11
+version: 1.16
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these when it comes to being aware at least of an alternative to lists, and the other sequence types that are built into python itself.
@@ -160,7 +160,30 @@ for x in a:
 # 1-2; 2-4; 3-8; 4-16;
 ```
 
-## 4 - Conclusion
+## 4 - Multidimensional arrays
+
+It would seem that these kinds of arrays can not be arrays of arrays. However I often make all of my arrays lienear anyway even arrays that I want to make multidimensional.
+
+```python
+import array
+ 
+def createMulti(w=3, h=3):
+    a = array.array('i')
+    i=0
+    while(i < w * h):
+        a.append(i)
+        i = i + 1
+    return {'a': a, 'w': w, 'h': h}
+ 
+def getMultiPos(m, x=0, y=0):
+    a=m['a']
+    return a[int(y * m['w'] + x)];
+ 
+m=createMulti(5, 5)
+print(getMultiPos(m, 2, 1)) # 7
+```
+
+## 5 - Conclusion
 
 I am not going to say that arrays should always be used over lists, or anything to that effect. There is no golden hammer when it comes to these types of things. In fact most of the time I am sure that I would prefer to use lists, it is just that in some situations I should probably use these arrays in place of lists. 
 
