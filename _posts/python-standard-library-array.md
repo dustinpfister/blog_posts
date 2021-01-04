@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 13:23:16
-version: 1.3
+updated: 2021-01-04 13:33:54
+version: 1.4
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -19,7 +19,9 @@ The main difernce between arrays and lists would seem to be the data types of th
 
 In this section I will be going over just a few quick, simple, getting started examples of arrays with the array standard library. That is just creating a single array of a single type, and just a few other basic examples that have to do with getting the current type of the array if it is not know to begin with.
 
-### 1.1 - A imple integer example of an array
+### 1.1 - A simple integer example of an array
+
+For a basic getting started example of arrays in python, here is a basic example of a simple integer array.
 
 ```python
 import array as arr
@@ -28,6 +30,8 @@ print(a[0], type(a)) # 1 <class 'array.array'>
 ```
 
 ### 1.2 - Find the typecode of an array
+
+What if I am in a situstion in which I need to know what the data type of the array that was created before hand. For this there is the type code of the array.
 
 ```python
 import array as arr
@@ -41,9 +45,30 @@ print(b.typecode) # I
 
 ### 1.3 - Show all the type codes for arrays
 
+So it is imporatnt to know what the type codes are for arrays. With that said there is the type codes property of the array module. However this will just give a string of all the type codes, it will not explain what each of them are.
+
 ```python
 import array as arr
 print(arr.typecodes) # bBuhHiIlLqQfd
+```
+
+To really know which one is which a table is needed.
+
+```
+Type code
+b            signed char            int 
+B            unsigned char          int
+u            wchar_t                Unicode character
+h            signed short           int
+H            unsigned short         int
+i            signed int             int
+I            unsigned int           int
+l            signed long            int
+L            unsigned long          int
+q            signed long long       int
+Q            unsigned long long     int
+f            float                  float
+d            double                 float
 ```
 
 ## Conclusion
