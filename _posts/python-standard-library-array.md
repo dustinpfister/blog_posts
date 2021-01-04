@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 13:33:54
-version: 1.4
+updated: 2021-01-04 13:39:13
+version: 1.5
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the array standard library.
@@ -26,8 +26,12 @@ For a basic getting started example of arrays in python, here is a basic example
 ```python
 import array as arr
 a=arr.array('i', [1,2,3,4])
-print(a[0], type(a)) # 1 <class 'array.array'>
+ 
+print( a[1] ) # 2
+print(type(a).__name__, type(a[0]).__name__) # array int
 ```
+
+By using the type built in function and the name propery I can confirm the type of the array itself, and the data type of the elements. Becuase this is an integer array I can only add integer values to it.
 
 ### 1.2 - Find the typecode of an array
 
