@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 14:32:09
-version: 1.10
+updated: 2021-01-04 14:35:22
+version: 1.11
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these wheh it comes to being aware at least of an alterative to lists, and the other sequence types that are built into python itself.
@@ -98,7 +98,23 @@ print(a[2]) # 3
 print(len(a)) # 3
 ```
 
-### 2.2 - The count method
+### 2.2 - The pop method
+
+The append method is one way to go about adding additional elememnts to an array, but then there is the pop method which is the first methohd that comes to mind when it comes to removing elements from an array. By default it will remove the last element from an array, but an index value can be given as the first an only argument. So the pop method can eb used to remove any element from an array, assuming that you know the index value to begin with.
+
+```python
+import array as arr
+ 
+a = arr.array('i', [1,2,3])
+ 
+print( a.pop(0) ) # 1
+print( a.pop() )  # 3
+ 
+print( a[0] )     # 2
+print( len(a) )   # 1
+```
+
+### 2.3 - The count method
 
 The count method of an array instnace os one way to get a count of a number of elements in an array that are of a given value.
 
