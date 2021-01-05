@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 13:07:43
-version: 1.13
+updated: 2021-01-05 13:11:04
+version: 1.14
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
@@ -121,3 +121,6 @@ print(a) # [[1, 2, 3], [4, 5, 6]]
 ## 4 - Conclusion
 
 So that is it for now when it comes to copying objects in python, I just wanted to take a look at this one and work out a few examples. Although the simple methods in the copy library will work fine in many situations, in other situstions I might need to work out my own code for copying an object. Say I have an object in which there are some properties in which I want to have deep cloned, and others that need to be referenced. In such a situation I might need to work out my own copy method for that kind of object that will copy the object the way that I want it to be copied.
+
+There are many things to keep in mind when making copies of objects, and it pays to be aware of them, this is very true then I am working out my own methods to copy and object. For example some objects might have recursive refernces, the copy library helps address this, but if I am not carfule when makign my own solution I could end up getting stuck in an endless loop if I do not check for that.
+
