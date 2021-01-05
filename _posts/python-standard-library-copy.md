@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 13:11:04
-version: 1.14
+updated: 2021-01-05 13:13:03
+version: 1.15
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
@@ -41,7 +41,7 @@ There are other ways to create a shallow copy of a simple object such as this li
 
 ## 2 - Deep copy example
 
-In situations is which I have nested objects, and I want the nested objects to be copied and not just the base object, then I will want a deep clone of the object.
+In situations is which I have nested objects, and I want the nested objects to be copied and not just the base object, then I will want a deep clone of the object. One way to go about creating such a copy of an object would be to just use the deep clone method of the copy librray and be done with it.
 
 ```python
 import copy
