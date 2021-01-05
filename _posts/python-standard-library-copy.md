@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 12:21:07
-version: 1.6
+updated: 2021-01-05 12:44:43
+version: 1.7
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
@@ -57,6 +57,8 @@ b[1][1]='two'
 print(a) # [[0, 1, 2], [2, 4, 5], [6, 7, 8]]
 print(b) # [[0, 1, 2], [2, 'two', 5], [6, 7, 8]]
 ```
+
+One draw back of the deep copy method is that there does not appear to be an argument to set the level at which the deep cloning is to be prefromed. However I can not say that this will present a problem when it comes to most typical use cases, when I want to copy and object I often want to copy all levels, or just the first one.
 
 ## 3 - Conclusion
 
