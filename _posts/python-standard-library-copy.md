@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 12:00:05
-version: 1.4
+updated: 2021-01-05 12:01:26
+version: 1.5
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, so I should have one way or another to copy objects in python. Copying an object is not always so quick and simple, there is copying just the primative values of an object which will result in a so called shallow copy of an object, and then there is also copying any additional nested objects which would result in a deep clone.
@@ -56,3 +56,4 @@ print(b) # [[0, 1, 2], [2, 'two', 5], [6, 7, 8]]
 
 ## 3 - Conclusion
 
+So that is it for now when it comes to copying objects in python, I just wanted to take a look at this one and work out a few examples.
