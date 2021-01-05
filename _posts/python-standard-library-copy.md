@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 13:04:43
-version: 1.12
+updated: 2021-01-05 13:07:43
+version: 1.13
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
@@ -93,7 +93,7 @@ So then when it comes to lists at least this is just as good as using the shallo
 
 ### 3.2 - Useing the map and list built in functions to deep copy nested lists one additional level
 
-The map built in function is another useful built in function to be aware of if not all ready. With this map function I can make a deep clone of nested lists pretty easily, as long as it is just one additional level at least.
+The map built in function is another useful built in function to be aware of if not all ready. With this map function I can make a deep clone of nested lists pretty easily, as long as it is just one additional level at least. It will return a map object, but this map object can then also be passed to the list built in function to create a list from the map object. The result is a deep clone of the list of lists, I can not mutate any element and property of them assumething that things do not go and even deeper level.
 
 ```python
 # a source object (a) with nested objects
