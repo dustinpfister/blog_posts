@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 12:47:43
-version: 1.8
+updated: 2021-01-05 12:50:29
+version: 1.9
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
@@ -19,7 +19,7 @@ Copying an object is not always so quick and simple, there is copying just the p
 
 ## 1 - Shallow copy example
 
-A shallow copy of an object will result in a copy of an object, but only with the top level properties of that object. If there are any additional objects as properties of the objet that is being cloned they will still be refernces to the same object.
+A shallow copy of an object will result in a copy of an object, but only with the top level properties of that object. If there are any additional objects as properties of the objet that is being cloned they will still be refernces to the same object. Still this kind of copy will work fine in most situations.
 
 ```python
 import copy
@@ -36,6 +36,8 @@ b[1]='two'
 print(a) # [1, 2, 3, 4]
 print(b) # [1, 'two', 3, 4]
 ```
+
+There are other ways to create a shallow copy of a simple object such as this list though, for example I can just pass the list as an argument to the built in list function to create a new list with the same values. For the most part I really need a function to help with deep cloning of objects.
 
 ## 2 - Deep copy example
 
