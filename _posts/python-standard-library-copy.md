@@ -5,11 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 12:01:26
-version: 1.5
+updated: 2021-01-05 12:21:07
+version: 1.6
 ---
 
-The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, so I should have one way or another to copy objects in python. Copying an object is not always so quick and simple, there is copying just the primative values of an object which will result in a so called shallow copy of an object, and then there is also copying any additional nested objects which would result in a deep clone.
+The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
+
+When it comes to making a copy of a string or number value there is no big fuess when it comes to copying thiose kinds of values. An indepedant value can be created with just and assignment operator, as such some might exspect that the same can be done with objects. However in python, and many otherlnagaues such as javaScript for that matter, this is not the case. The assignment operator will just create another reference or binding if you prefer to the same object in memory. To make a true copy of an object there is a need for spechial functions that will create and return a true indepedant copy of an object then.
+
+Copying an object is not always so quick and simple, there is copying just the primative values of an object which will result in a so called shallow copy of an object, and then there is also copying any additional nested objects which would result in a deep clone.
 
 <!-- more -->
 
