@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 775
-updated: 2021-01-05 12:50:29
-version: 1.9
+updated: 2021-01-05 12:58:26
+version: 1.10
 ---
 
 The [copy standard library](https://docs.python.org/3/library/copy.html) in python is yet another standard library in python that might prove to be imporant for most typical projects. I say that speaking from experence in other languages at least, often I am in a situation in which I want to have an indepedant copy of an object. That is having a complate copy s source object that I can then mutate, without effecting the source object. So I should have one way or another to copy objects in python, and one good option seems to be the copy built in standard library. 
@@ -62,6 +62,56 @@ print(b) # [[0, 1, 2], [2, 'two', 5], [6, 7, 8]]
 
 One draw back of the deep copy method is that there does not appear to be an argument to set the level at which the deep cloning is to be prefromed. However I can not say that this will present a problem when it comes to most typical use cases, when I want to copy and object I often want to copy all levels, or just the first one.
 
-## 3 - Conclusion
+## 3 - Alteratives to the copy lib
+
+The copy library gives just two functions that seem to work okay for what they are worth. However for the most part I might not always need to even bother with the copy library really. There are many other ways to do about creating copies of object with python itself. Also in some situstions I might need to work out my own solutions for copying an object becuase things can get a little complcated with them sometimes. So in this section I will be going over a few quick examples of python code that serve as alteratives to using the copy library.
+
+### 3.1 - Just using the list built in function to create a shallow copy of a list
+
+```python
+# A source object (a)
+a = [1,2,3,4,5]
+ 
+# using the list built in function to create a shallow clone (b)
+b = list(a);
+ 
+# Mutating (b)
+i=0
+while i < len(b):
+    n = b[i]
+    b[i] = pow(2, n)
+    i = i + 1
+ 
+# mutation of shallow copy (b) did not effect its source object (a)
+print(b) # [2, 4, 8, 16, 32]
+print(a) # [1, 2, 3, 4, 5]
+```
+
+### 3.2 - Useing the map and list built in functions to deep copy nested lists one additional level
+
+```python
+# a source object (a) with nested objects
+a = [[1,2,3],[4,5,6]]
+ 
+# using list and map to create a deep clone (b),
+# at one level of source object (a)
+def func(el):
+    return list(el)
+b = list(map(func, a))
+ 
+# mutating (b) bolth at the top level
+# and one additional level
+b.append([7,8,9])
+b[1][0] = 0
+b[1][1] = 0
+b[1][2] = 0
+ 
+# mutation of (b) did not effect source object (a)
+print(b) # [[1, 2, 3], [0, 0, 0], [7, 8, 9]]
+print(a) # [[1, 2, 3], [4, 5, 6]]
+```
+
+
+## 4 - Conclusion
 
 So that is it for now when it comes to copying objects in python, I just wanted to take a look at this one and work out a few examples. Although the simple methods in the copy library will work fine in many situations, in other situstions I might need to work out my own code for copying an object. Say I have an object in which there are some properties in which I want to have deep cloned, and others that need to be referenced. In such a situation I might need to work out my own copy method for that kind of object that will copy the object the way that I want it to be copied.
