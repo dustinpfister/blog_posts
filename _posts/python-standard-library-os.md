@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:43:08
-version: 1.14
+updated: 2021-01-06 15:52:04
+version: 1.15
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -53,6 +53,19 @@ l=list(uname)
 print( l[0] ) # Linux
 print( l[2] ) # 5.4.79-v7+
 print( l[4] ) # armv7l
+```
+
+### 1.3 - Get env
+
+Another thing about an operating system environement that comes to mind is being able to get at any enviorment varaibles that there might be to work with. WHen deploying an appalction for example a password to a database might only be accessabule by way of an enviorment variable when running a script. So there should be a way in a programing enviprment to get such a varaibel, so in the os librray here there is the get env method that can be used to get the status of such varaibles.
+
+```python
+import os
+ 
+print(os.getenv("SHELL")) # '/bin/bash' (or whatever shell might be used)
+ 
+# will return None of the env is not there
+print(os.getenv("NOT_HERE"))  # None
 ```
 
 ## 2 The open built in function, os.open, and os.fdopen
