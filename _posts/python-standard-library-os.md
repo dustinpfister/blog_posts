@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:19:33
-version: 1.8
+updated: 2021-01-06 15:24:01
+version: 1.9
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -42,7 +42,15 @@ import os
  
 print(os.name) # posix, nt, or java
  
-print( list(os.uname())[0] ) # Linux
+# the uname method can be used to get a
+# better idea of the kind of system that is being used
+# with things like kernal name, kernal version, and
+# system arch.
+uname=os.uname()
+l=list(uname)
+print( l[0] ) # Linux
+print( l[2] ) # 5.4.79-v7+
+print( l[4] ) # armv7l
 ```
 
 ## 2 The open built in function, os.open, and os.fdopen
