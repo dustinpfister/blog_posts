@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 16:02:20
-version: 1.17
+updated: 2021-01-06 16:13:56
+version: 1.18
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -118,7 +118,19 @@ print(f) # the file object
 f.close()
 ```
 
-## 3 - Get path of current script example
+## 3 - Replacing the current process with a new program
+
+There are also a number of functions in the os library that can be used to start a new programe, and replace the current process id with that program.
+
+```python
+import os
+os.chdir('/home/pi')
+os.execlp('ls', '*')
+```
+
+The os library is not the begging and end of this sort of thing with python though. When it comes to running other scripts and commands from a python script there is also the subprocess module.
+
+## 4 - Get path of current script example
 
 One use case example that I have found thus far where I need to use the os library is to get the path of a current script. The splution that I have found that works best thus far seems to be one that involves using the os library in addition to the sys and inspect librarys to do so.
 
@@ -140,6 +152,6 @@ When I start working on some real python projects it would seem that this is som
 
 In nodejs there is the \_\_dirname variable that I can use to quickly get the path of the current file, thus far it would seem there there is no special varaible in python, at least there is no such variable thatI know off. In the event that I find such a varaible hopefully I will remember to edit this post. For now it would seem that this is what I need to do in order to get the all the ushual directorys that I need to know when working on a real project of some kind.
 
-## 4 - conclusion
+## 5 - conclusion
 
 That is it for now when it comes to the os library in python. As of this writing I am still fairly new to python so I will need to work out at least a few real examples when it comes to python to really get an idea of what is imporatnt when it comes to using the os librray to get something done. So far there seems to be mainly the functons that are used to get and set the current working directoty, as well as to work with paths. 
