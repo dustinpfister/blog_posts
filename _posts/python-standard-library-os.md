@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:39:21
-version: 1.13
+updated: 2021-01-06 15:43:08
+version: 1.14
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -95,7 +95,7 @@ f.close()
 
 ## 3 - Get path of current script example
 
-One use case example that I have found thus far where I need to use the os module is to get the path of a current script.
+One use case example that I have found thus far where I need to use the os library is to get the path of a current script. The splution that I have found that works best thus far seems to be one that involves using the os library in addition to the sys and inspect librarys to do so.
 
 ```python
 import os,sys,inspect
@@ -110,6 +110,8 @@ print(dir_current)
 print(dir_script)
 print(dir_parent)
 ```
+
+When I start working on some real python projects it would seem that this is some code that I will have to have at the top of each of my files in order to get all the dirs that I typically want.
 
 In nodejs there is the \_\_dirname variable that I can use to quickly get the path of the current file, thus far it would seem there there is no special varaible in python, at least there is no such variable thatI know off. In the event that I find such a varaible hopefully I will remember to edit this post. For now it would seem that this is what I need to do in order to get the all the ushual directorys that I need to know when working on a real project of some kind.
 
