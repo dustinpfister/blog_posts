@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:58:07
-version: 1.16
+updated: 2021-01-06 16:02:20
+version: 1.17
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -77,6 +77,8 @@ import os
  
 print(os.getpid()) # 7659
 ```
+
+There are a number of other functions in the os librray that have to do with getting information about the current running process, and also how to go abotu stoping the current process. However the os library might not always be the best option for killing the current process. There is also the sys library that should also be check out when it comes to killing the current process.
 
 ## 2 The open built in function, os.open, and os.fdopen
 
