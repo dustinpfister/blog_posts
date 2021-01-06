@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:24:01
-version: 1.9
+updated: 2021-01-06 15:27:28
+version: 1.10
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -91,3 +91,22 @@ print(f) # the file object
 f.close()
 ```
 
+## 3 - Get path of current script example
+
+One use case example that I have found thus far where I need to use the os module is to get the path of a current script.
+
+```python
+import os,sys,inspect
+dir_current = os.getcwd()
+dir_script = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+dir_parent = os.path.dirname(dir_script)
+ 
+# insert dir_parent
+sys.path.insert(0, dir_parent)
+ 
+print(dir_current)
+print(dir_script)
+print(dir_parent)
+```
+
+## 4 - conclusion
