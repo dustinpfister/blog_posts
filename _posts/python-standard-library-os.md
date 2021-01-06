@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:12:32
-version: 1.7
+updated: 2021-01-06 15:19:33
+version: 1.8
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -29,6 +29,20 @@ print(os.getcwd()) # '/home'
  
 os.chdir('..')
 print(os.getcwd()) # '/'
+```
+
+### 1.2 - The name property and uname function
+
+One basic feature of the os library should of course be a features to help get an idea of what operating system I might be dealing with. For this there is the name property, this might not be the best way to go about getting a detailed idea of what kind of system there is to work with, but it sure is a good starting point at least. There are only three possible values for the name propery which are posix, nt, and java. This might not give all the information that one might need, but generaly there are only two kinds of systems that people use. A late version of windows (nt), or a posix based system of some kind typically MacOS, or Linux (posix).
+
+If more detailed information is needed such as the version of the system there is also the os.uname method.
+
+```python
+import os
+ 
+print(os.name) # posix, nt, or java
+ 
+print( list(os.uname())[0] ) # Linux
 ```
 
 ## 2 The open built in function, os.open, and os.fdopen
