@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 15:28:24
-version: 1.11
+updated: 2021-01-06 15:34:06
+version: 1.12
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -109,6 +109,8 @@ print(dir_script)
 print(dir_parent)
 ```
 
+In nodejs there is the \_\_dirname variable that I can use to quickly get the path of the current file, thus far it would seem there there is no special varaible in python, at least there is no such variable thatI know off. In the event that I find such a varaible hopefully I will remember to edit this post. For now it would seem that this is what I need to do in order to get the all the ushual directorys that I need to know when working on a real project of some kind.
+
 ## 4 - conclusion
 
-That is it for now when it comes to the os library in python.
+That is it for now when it comes to the os library in python. As of this writing I am still fairly new to python so I will need to work out at least a few real examples when it comes to python to really get an idea of what is imporatnt when it comes to using the os librray to get something done. So far there seems to be mainly the functons that are used to get and set the current working directoty, as well as to work with paths. 
