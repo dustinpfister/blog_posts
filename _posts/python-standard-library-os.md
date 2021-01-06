@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 14:53:21
-version: 1.3
+updated: 2021-01-06 14:58:32
+version: 1.4
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -20,6 +20,10 @@ There are a great number of functions in the os library, but there are only real
 ### 1.1 -
 
 ## 2 The open built in function, os.open, and os.fdopen
+
+When it comes to opening a file and reading and writing the contents it might be best to just use the open built in function. This functin makes opening, reading, writing, and creating files easy. The open built in function will wrap a file diesciptor, and it will aslo dirrectly return a file object that can be used to quckly and easily read and edit a file.
+
+However in some cases I might need to do something involving opening just a file descriptor first, and then passing that file descriptor to another function that will return a file object. In any case in this section I will be quickly going over the open built in function, as well as some of the other functions in the os librray that have to do with opening a file.
 
 ### 2.1 -
 
