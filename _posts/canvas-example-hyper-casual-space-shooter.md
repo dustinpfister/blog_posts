@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:42:33
-version: 1.20
+updated: 2021-01-07 16:45:50
+version: 1.21
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -68,14 +68,14 @@ I have made another canvas example a while back in which I made a module that is
 ```js
 ```
 
-<!-- EDIT 0.25.0 Bookmark -->
-
 ## 3 - The main game.js module
 
-I then have a main game module that will be used to create, and update the main game state object for the canvas example. This module then contains a large list of constants for certain rules when it comes to the mechanics of the game, as well as a wide range of helper methods used to create objects pools for blocks and shots.
+I then have a main game module that will be used to create, and update the main game state object for the canvas example. This module then contains a large list of constants for certain rules when it comes to the mechanics of the game, as well as a wide range of helper methods used to create objects pools for blocks and shots. There are then also a number of public methods that I will be using in my main.js file to create and update the main game object.
 
 ```js
 ```
+
+<!-- EDIT 0.25.0 Bookmark -->
 
 ## 4 - The draw.js module as this is a canvas example
 
