@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:40:00
-version: 1.19
+updated: 2021-01-07 16:42:33
+version: 1.20
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -61,14 +61,14 @@ I keep making a new utils.js file for each canvas example, the reason why is bec
 ```js
 ```
 
-<!-- EDIT 0.25.0 Bookmark -->
-
 ## 2 - The Pool.js module for creating and updating Object pools
 
-I have made another canvas example a while back in which I made a module that is an object pool type project. After many years of experience writing javaScript code for various projects such as this I have come to find that I like to have fixed object pools to work with when it comes to display objects, rather than to have a system in which these kinds of objects a created and purged as needed. This object pool module is only slightly modified from what I was working with in the object pool canvas example. I of course made some revisions to the source code to make it more appropriate for this specific project.
+I have made another canvas example a while back in which I made a module that is an object pool type project. After many years of experience writing javaScript code for various projects such as this I have come to find that I like to have fixed object pools to work with when it comes to display objects. I just like this kind of approach compared to the alternative system in which these kinds of objects are created and purged as needed. This object pool module is modified from what I was working with in the object pool canvas example. I of course made some revisions to the source code to make it more custom cut for this specific project.
 
 ```js
 ```
+
+<!-- EDIT 0.25.0 Bookmark -->
 
 ## 3 - The main game.js module
 
