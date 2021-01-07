@@ -5,17 +5,17 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-01-07 17:23:41
-version: 1.74
+updated: 2021-01-07 17:27:06
+version: 1.75
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
 
 So then it seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects. That is a special post in which I briefly write about each of them, and of course like to the post where I should have the canvas example embedded and go over the source code of the example detail. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
 
-The canvas examples I have made range form simple animations, to more complex game and simulation prototypes in various stages of completion. Many of them are prototypes for games that I have not continued developing into a finished product. However I have gotten into the habit of making sure that there are embedded packages for each canvas example in the post where I write about it that might help to sever as a way to get me to put a little more time and effort into the examples that may need more work.
+The canvas examples I have made range form simple animations, to more complex game and simulation prototypes in various stages of completion. Many of them are prototypes for games that I have not continued developing into a finished product. Other examples are starting to feel like a done deal, but might still need a little more work in terms of features, code readability, and so forth. So I have gotten into the habit of making sure that there are embedded packages for each canvas example in the post where I write about it that might help to sever as a way to get me to put a little more time and effort into the examples that may need more work.
 
-I am going all over the board when it comes to playing around with canvas elements naturally because lets face it canvas is a great example of fun and exciting javaScript rather than boring yet practical javaScript. So of course I have to make a lot of them, and maybe if I get to it pour a little more time and effort into some of them. So lets get to the list of canvas examples here then as they currently stand.
+I am going all over the board when it comes to playing around with canvas elements naturally because canvas is a great example of fun and exciting javaScript rather than boring yet practical javaScript, or at least that has been my experience with it thus far. So of course I have to make a lot of them, and maybe if I get to it pour a little more time and effort into some of them. So lets get to the list of canvas examples here then as they currently stand.
 
 <!-- more -->
 
