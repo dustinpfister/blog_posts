@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-01-07 17:27:06
-version: 1.75
+updated: 2021-01-07 17:30:17
+version: 1.76
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -27,7 +27,9 @@ Above is v0.21.0 of cross hairs one of many other works in process when it comes
 
 ## 1 - The github repo
 
-I have set up a [git repository at my git-hub account for these canvas examples](https://github.com/dustinpfister/canvas-examples) where all of the examples can be cloned down from if you want to quickly clone down the source cone of them to play around with and use locally. Most if not all of them should work okay by just opening up the index.html file of an example via the file:\/\/ protocol when it comes to just using them that way. If you actually want to help improve the source code of some of them I might be will to except helpful changes that improve quality. However this is mostly still my project, and I assume that may of you might wish to spend time working on your own set of canvas examples that might progress into actually games, animations and utility projects.
+I have set up a [git repository at my git-hub account for these canvas examples](https://github.com/dustinpfister/canvas-examples) where all of the examples can be cloned down from if you want to quickly clone down the source cone of them to play around with and use locally. Most if not all of them should work okay by just opening up the index.html file of an example via the file:\/\/ protocol when it comes to just using them that way. 
+
+If you actually want to help improve the source code of some of them then that repo would of course be where it is that you would want to make the pull request. However this is mostly still my project, and I assume that many of you might wish to spend time working on your own set of canvas examples that might progress into actually games, animations and utility projects. It is just night to find people that have a collection like this on there website as a way to learn more about canvas, and the various ways to go about making them.
 
 ## 2 - My top picks thus far
 
