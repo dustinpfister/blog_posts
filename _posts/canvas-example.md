@@ -5,13 +5,13 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2020-12-13 15:08:06
-version: 1.73
+updated: 2021-01-07 17:23:41
+version: 1.74
 ---
 
-I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them in detail.
+I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
 
-So then it seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects, and link back to this index post in each canvas example post. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
+So then it seems like a good idea to have a post that will serve as a main index post of sorts for all of these canvas projects. That is a special post in which I briefly write about each of them, and of course like to the post where I should have the canvas example embedded and go over the source code of the example detail. So then this post will serve as that sort of central index post on all of my canvas examples that I have made thus far.
 
 The canvas examples I have made range form simple animations, to more complex game and simulation prototypes in various stages of completion. Many of them are prototypes for games that I have not continued developing into a finished product. However I have gotten into the habit of making sure that there are embedded packages for each canvas example in the post where I write about it that might help to sever as a way to get me to put a little more time and effort into the examples that may need more work.
 
