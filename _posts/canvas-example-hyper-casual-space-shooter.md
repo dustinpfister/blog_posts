@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:34:56
-version: 1.18
+updated: 2021-01-07 16:40:00
+version: 1.19
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -45,8 +45,6 @@ If you are on a desktop client the keyboard can be used to preform a number of a
 
 The mouse can also be used to click buttons when at base mouse, and it can also be used to move the ship and control speed. To control the speed of the ship click the speed bar on the left of the canvas, to change heading click in the circle in the lower right. This is also the way that one would have to do everything on a mobile device that does not have a keyboard.
 
-<!-- EDIT 0.25.0 Bookmark -->
-
 ## This example and many others are in my canvas-example github repo
 
 The version number in the [github repo](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-hyper-casual-space-shooter) might be higher than what I have deployed here. I will get around to editing this post now and then, and when I do so I will update the content of the post, but to reflect the state of the source code at the version that I have published here. For the latest on what is going on with this canvas example, and all the other canvas examples that I have made thus far, it would be best to check out the github repository.
@@ -56,10 +54,14 @@ When it comes to going over the source code below I do not care to get into much
 
 ## 1 - The utility library
 
-First off as with any of my other canvas example I start off with a main.js file and a utility library. This utility library is packed with methods that are often reused across other canvas examples. However I always make a new utility library for each example. The reason why is because I do not want to have this part of the canvas example packed with code that I am not actually going to use in the project. In addition although many of these might be usual suspects such as a distance formula, some of theme might be closely related to the nature of the example.
+First off as with any of my other canvas examples I start off with a main.js file and often a utility library that contains a bunch of methods that I know I am going to want. This utility library is packed with methods that are often reused across other canvas examples, so many of the functions might just be copied and pasted in from other utility libraries. 
+
+I keep making a new utils.js file for each canvas example, the reason why is because I do not want to have this part of the canvas example packed with code that I am not actually going to use in the project. In addition although many of these might be usual suspects such as a distance formula, some of theme might be closely related to the nature of the example. If often add in at least a few new ones when I start to create new features that I have never added to a project before.
 
 ```js
 ```
+
+<!-- EDIT 0.25.0 Bookmark -->
 
 ## 2 - The Pool.js module for creating and updating Object pools
 
