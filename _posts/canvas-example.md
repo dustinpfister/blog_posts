@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-01-07 18:27:30
-version: 1.78
+updated: 2021-01-07 18:28:16
+version: 1.79
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -228,7 +228,7 @@ A Canvas Example of a space shooter type game.
 
 ### 3.43 - [Stars](/2020/02/12/canvas-example-star/)
 
-I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that.
+I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that. I keeping come back to this one each time I want to, well, draw stars in a project.
 
 ### 3.44 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
