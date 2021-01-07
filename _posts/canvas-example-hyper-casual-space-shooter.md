@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:16:46
-version: 1.15
+updated: 2021-01-07 16:28:18
+version: 1.16
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -20,13 +20,30 @@ So then for this next hyper casual canvas example I had an idea to just make a s
 <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
 <script src="/js/canvas-examples/hyper-casual-space-shooter/0.25.0/pkg.js"></script>
 
-<!-- EDIT 0.25.0 Bookmark -->
-
 ## If you just want to play the game
 
-If you just want to play the game itself then so far the controls can involve just clicking and dragging the mouse around the canvas. For now I have an auto fire option just set to true, so it is basically just chaining the heading and speed of the ship to move around. There are a number of keyboard events also w, and s keys can be used to change the speed of the ship and the a and d keys can be used to change heading.
+### How to play
 
-As of 0.11.0 there is not much to talk about when it comes to game play beyond just moving around and shooting blocks. I aim to make this game at least a little more interesting though as I do aim to continue working on this one.
+When it comes to just playing the game the general idea is to move out from the main base area and just go out and blast blocks with the current ship weapon. When doing so money is made each time a block is destroyed, the money can then be used to upgrade the ship back at the base area. As you move farther from the base area block values will go up, this includes values like money, but also values like armor.
+
+### Controls
+
+If you are on a desktop client the keyboard can be used to preform a number of actions.
+
+* w - speed up
+* s - slow down
+* a - change heading
+* d - change heading
+
+* v - debug display on/off
+* b - auto fire on/off
+* l - fire
+
+* 1,2,3 - change weapon (when at base)
+
+The mouse can also be used to click buttons when at base mouse, and it can also be used to move the ship and control speed. To control the speed of the ship click the speed bar on the left of the canvas, to change heading click in the circle in the lower right. This is also the way that one would have to do everything on a mobile device that does not have a keyboard.
+
+<!-- EDIT 0.25.0 Bookmark -->
 
 ## This example and many others are in my canvas-example github repo
 
