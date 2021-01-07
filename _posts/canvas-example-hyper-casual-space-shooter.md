@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:50:56
-version: 1.23
+updated: 2021-01-07 17:01:20
+version: 1.24
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -91,14 +91,10 @@ So for this canvas example in the main.js file I just create the canvas element,
 ```js
 ```
 
-<!-- EDIT 0.25.0 Bookmark -->
-
 ## 6 - Conclusion
 
-I was able to get the basic idea of what I wanted together with this fairly quickly. However now the question is how much more do I need to add to this in order to make a project that people are actually going to want to play? I have a lot of this drafted out in my todo list for this one as of this writing, and I think at least some of it might prove to be interesting.
+I was able to get the basic idea of what I wanted together with this fairly quickly. However now the question is how much more do I need to add to this in order to make a project that people are actually going to want to play? The game started out with just shooting shot objects at block objects, and that was just it. When I take a moment to play the game for a while, just doing that alone is a little satisfying, but in order to have a real game of course I am going to need more than just that. So I started adding features that have to do with weapons, upgrades, block positioning, block properties, and effects on blocks. It is starting to feel like a bit og a game, but I am not sure if I can truly say that this one is a done deal just yet.
 
-I think that maybe an important part of the process is to not just think of a canvas example as just another project that I need to get over with so I can move on to the next thing. I am guilty of this kind of problem with many of my examples thus far, I work on something until I get the basic idea up and running, and then I stop working on it so I can move on to something else.
+I think that maybe an important part of the process is to not just think of a canvas example as just another project that I need to get over with so I can move on to the next thing. I am guilty of this kind of problem with many of my examples thus far, I work on something until I get the basic idea up and running, and then I stop working on it so I can move on to something else. This is a bad habit that has something to do with entering a kind of developer mindset, but loosing sight of a gamer mindset. So I have made an effort to break that cycle by trying to get into playing my own game, this game, to experience what it is like to actually play it. So far I would say that it is fun for a little while, but I still quickly loose interest after a little while, so maybe I still have some work to do with this one.
 
-I have a few canvas examples where I have tried to put more time and effort into the example in an effort to break a cycle of sorts, but no matter how much time I put into an example I still always feel as though that example is lacking something. 
-
-This is why I have started this hyper casual series of canvas examples. I have some other examples where I have broke the cycle of not going beyond the basic core idea, only to end up stopping eventually anyway. Ending with a project that is just starting to feel like a game, but not just there yet. So maybe if I start with a very basic idea for a game, try to limit the number of features, and focus on what really truly matters, I can break this cycle once and for all.
+I have some other examples where I have broke the cycle of not going beyond the basic core idea, only to end up stopping eventually anyway. The result then is ending up with a project that is just starting to feel like a game, but not just there yet. So maybe if I start with a very basic idea for a game, try to limit the number of features, and focus on what really truly matters, I can break this cycle once and for all. I should keep working on this game, but I should not just more forward with any little idea that comes to mind.
