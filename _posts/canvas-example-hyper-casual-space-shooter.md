@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 17:17:05
-version: 1.29
+updated: 2021-01-07 17:18:46
+version: 1.30
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -66,6 +66,308 @@ I keep making a new utils.js file for each canvas example, the reason why is bec
 I have made another canvas example a while back in which I made a module that is an object pool type project. After many years of experience writing javaScript code for various projects such as this I have come to find that I like to have fixed object pools to work with when it comes to display objects. I just like this kind of approach compared to the alternative system in which these kinds of objects are created and purged as needed. This object pool module is modified from what I was working with in the object pool canvas example. I of course made some revisions to the source code to make it more custom cut for this specific project.
 
 ```js
+// Object Pool Module for canvas-example-hyper-casual-space-shooter
+ 
+var poolMod = (function () {
+ 
+    // Public API
+    var api = {};
+ 
+    // OBJECT TYPES
+    var OBJECT_TYPES = {
+        block: { 
+            spawn: function(block, pool, state, opt){
+                // blocks have an effects array
+                block.effects = [];
+                block.effectStats = {};
+                block.awardBlockMoney = false; // if true award money on effect death
+                block.armor = {
+                   minDam: 0
+                };
+            },
+            update: function (obj, pool, state, secs) {
+                if(obj.effects.length > 0){
+                    Effects.update(obj, pool, state, secs);
+                }
+            }
+        }
+    };
+ 
+    // EFFECTS
+    var EFFECTS_MAX = 10; // max number of effects per object
+    var EFFECT_TYPES = api.EFFECT_TYPES = {
+        burn : {
+            effectType: 'burn',
+            chance: 0.1,
+            maxStack: 3,
+            damagePer: 0.01,
+            every: 1,
+            count: 5,
+            upStat: {
+                maxStack: {
+                    min: 1,
+                    max: 10,
+                    round: 'floor'
+                },
+                chance: {
+                    min: 0.10,
+                    max: 0.75
+                },
+                damagePer: {
+                    min: 0.01,
+                    max: 0.1
+                }
+            }
+        },
+        acid : {
+            effectType: 'acid',
+            chance: 0.1,
+            maxStack: 3,
+            damageMulti: 1,   // number of times extra damage is applyed
+            upStat: {
+                maxStack: {
+                    min: 1,
+                    max: 5,
+                    round: 'floor'
+                },
+                chance: {
+                    min: 0.10,
+                    max: 0.75
+                },
+                damageMulti: {
+                    min: 1.5,
+                    max: 4
+                }
+            }
+        }
+    };
+ 
+    // helper for an over time effect such as 'burn'
+    var overTimeEffect = function(i, effect, obj, secs){
+        effect.secs += secs;
+        if(effect.secs >= effect.every){
+            effect.secs = utils.mod(effect.secs, effect.every);
+            // if damagePer apply that
+            if(effect.damagePer){
+                var damage = obj.hp.max * effect.damagePer;
+                obj.hp.current -= damage; //effect.damage;
+            }
+            effect.count -= 1;
+            // effect ends when count === 0
+            if(effect.count <= 0 ){
+                obj.effects.splice(i, 1);
+            }
+        }
+    };
+ 
+    // Effects create an update methods
+    var Effects = {
+        // create a new effect object for an effects array
+        create: function(obj, effectObj){
+            effectObj = effectObj || {};
+            if(obj.effects.length < EFFECTS_MAX){
+                obj.awardBlockMoney = true; // just set this true here for now as there is just one effect
+                effectObj = utils.deepClone(effectObj);
+                effectObj.secs = 0;
+                obj.effects.push(effectObj);
+            }
+        },
+        // for effects that are updated over time
+        update: function(obj, pool, state, secs){
+            // update effects
+            var i = obj.effects.length, effect;
+            // awardBlockMoney should be false if there are not effects at all in place
+            if(obj.effects.length === 0){
+                obj.awardBlockMoney = false;
+            }
+            while(i--){
+                effect = obj.effects[i];
+ 
+                if(effect.effectType === 'burn'){
+                    overTimeEffect(i, effect, obj, secs);
+                }
+                // clamp hit points
+                obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                obj.hp.per = obj.hp.current / obj.hp.max;
+            }
+        },
+        // for effects that are updated per attack
+        onAttack: function(obj, damage){
+            var i = obj.effects.length, effect;
+            while(i--){
+                effect = obj.effects[i];
+                
+                if(effect.effectType === 'acid'){
+                    //console.log('acid: ',  damage, effect.damageMulti, damage * effect.damageMulti);
+                    var extraDamage = effect.damageMulti * damage;
+                    obj.hp.current -= extraDamage;
+                }
+ 
+                // clamp hit points
+                obj.hp.current = obj.hp.current > obj.hp.max ? obj.hp.max : obj.hp.current;
+                obj.hp.current = obj.hp.current < 0 ? 0 : obj.hp.current;
+                obj.hp.per = obj.hp.current / obj.hp.max;
+            }
+        }
+    };
+ 
+    // get next inactive object in the given pool
+    var getInactive = function (pool) {
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            if (!obj.active) {
+                return obj;
+            }
+        }
+        return false;
+    };
+    api.applyOnAttackEffects = function(obj, damage){
+        Effects.onAttack(obj, damage);
+    };
+    // create and return a single display object
+    api.createDisplayObject = function(opt){
+        var obj = {
+            type: opt.type || '',
+            active: false,
+            i: opt.i === undefined ? null : opt.i,
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            r: opt.r === undefined ? 16 : opt.r,
+            radian: opt.radian === undefined ? 0 : opt.radian,
+            pps: opt.pps === undefined ? 32 : opt.pps,
+            lifespan: opt.lifespan || 3,
+            // basic style
+            fillStyle: opt.fillStyle || 'red',
+            data: {}
+        };
+        return obj;
+    };
+    // return a vaild effect object from a given string of an effect type, or incompleate object
+    api.parseEffectObject = function(effectSource){
+        var effect;
+        if(typeof effectSource === 'string'){
+            effect = {
+                effectType : effectSource
+            };
+        }else{
+            effect = utils.deepClone(effectSource);
+            effect.effectType = effect.effectType || 'burn';
+        }
+        // get a ref tp the object for the effect type in EFFECT_TYPES
+        var effectData = EFFECT_TYPES[effect.effectType];
+        Object.keys(effectData).forEach(function(key){
+             effect[key] = effect[key] === undefined ? effectData[key] : effect[key];
+        });
+ 
+        effect.secs = 0;
+        return effect;
+    };
+    // start an effect for the given display object
+    api.createEffect = function(obj, opt){
+        var stackCount = obj.effectStats[opt.effectType] || 0;
+        if( stackCount < opt.maxStack){
+            Effects.create(obj, opt);
+        }
+    };
+    // get an object of effect types and count from the given object
+    api.getEffectStats = function(obj){
+        var stats = {};
+        obj.effects.forEach(function(effect){
+            stats[effect.effectType] = stats[effect.effectType] === undefined ? 1 : stats[effect.effectType] += 1;
+        });
+        return stats;
+    };
+ 
+    // create a new pool
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.count = opt.count || 10;
+        opt.type = opt.type || '';
+        var i = 0,
+        spawn = opt.spawn || function (obj, pool, state, opt) {},
+        update = opt.update || function (obj, pool, state, secs) {},
+        pool = {
+            type: opt.type,
+            objects: [],
+            data: opt.data || {},
+            spawn: function(obj, pool, state, opt){
+                // call any built in spawn method for the type first
+                if(pool.type in OBJECT_TYPES){
+                    OBJECT_TYPES[pool.type].spawn(obj, pool, state, opt);
+                }
+                // call custom spawn
+                spawn(obj, pool, state, opt);
+            },
+            purge: opt.purge || function (obj, pool, state) {},
+            update: function(obj, pool, state, opt){
+                if(pool.type in OBJECT_TYPES){
+                    OBJECT_TYPES[obj.type].update(obj, pool, state, opt);
+                }
+                update(obj, pool, state, opt);
+            }
+        };
+        while (i < opt.count) {
+            pool.objects.push(api.createDisplayObject(opt));
+            i += 1;
+        }
+        return pool;
+    };
+    // spawn the next inactive object in the given pool
+    api.spawn = function (pool, state, opt) {
+        var obj = getInactive(pool);
+        state = state || {};
+        opt = opt || {};
+        if (obj) {
+            if (!obj.active) {
+                obj.active = true;
+                pool.spawn.call(pool, obj, pool, state, opt);
+                return obj;
+            }
+        }
+        return false;
+    };
+    // update a pool object by a secs value
+    api.update = function (pool, secs, state) {
+        var i = pool.objects.length,
+        obj;
+        state = state || {}; // your projects state object
+        while (i--) {
+            obj = pool.objects[i];
+            if (obj.active) {
+                pool.update.call(pool, obj, pool, state, secs);
+                obj.lifespan -= secs;
+                obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
+                if (obj.lifespan === 0) {
+                    obj.active = false;
+                    pool.purge.call(pool, obj, pool, state);
+                }
+            }
+        }
+    };
+    // get all objects with the gieven activeState
+    api.getAllActive = function(pool, activeState){
+        activeState = activeState === undefined ? true : activeState;
+        return pool.objects.filter(function(object){
+            return object.active === activeState;
+        });
+    };
+    // set all to inActive or active state
+    api.setActiveStateForAll = function (pool, bool) {
+        bool = bool === undefined ? false : bool;
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            obj.active = bool;
+        }
+    };
+    // return the public API
+    return api;
+}
+    ());
 ```
 
 ## 3 - The main game.js module
