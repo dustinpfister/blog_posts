@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:32:01
-version: 1.17
+updated: 2021-01-07 16:34:56
+version: 1.18
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -49,7 +49,7 @@ The mouse can also be used to click buttons when at base mouse, and it can also 
 
 ## This example and many others are in my canvas-example github repo
 
-The version number in the [github repo](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-hyper-casual-space-shooter) might be higher than what I have deployed here. I will get around to editing this posy now and then, but for the latest on what is going on with this, and all the other canvas examples that will be the latest that is going on with this.
+The version number in the [github repo](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-hyper-casual-space-shooter) might be higher than what I have deployed here. I will get around to editing this post now and then, and when I do so I will update the content of the post, but to reflect the state of the source code at the version that I have published here. For the latest on what is going on with this canvas example, and all the other canvas examples that I have made thus far, it would be best to check out the github repository.
 
 When it comes to going over the source code below I do not care to get into much detail just yet. Because I aim to keep working on this at least a little while longer so I do not want to have to wring about everything all over again when I come around to edit this post later. So for now I am going to keep things very general when it comes to writing about the code.
 
