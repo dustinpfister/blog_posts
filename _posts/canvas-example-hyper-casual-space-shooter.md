@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 17:02:31
-version: 1.25
+updated: 2021-01-07 17:09:24
+version: 1.26
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -89,6 +89,301 @@ For this canvas example I have a utility module, an Object pool module, a game m
 So for this canvas example in the main.js file I just create the canvas element, and the main state object that also included the main game object. Beyond that I just have a simple app loop, and attach some event handlers for keyboard and pointer support. That is it, I wanted to focus on the logic of the game itself, however in future releases I might add a state machine, if I do in fact keep adding features, menus, and so forth, sooner or later I do need to just break things down more.
 
 ```js
+// CANVAS
+var createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    opt.container.appendChild(opt.canvas);
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    opt.ctx.translate(0.5, 0.5);
+    return opt;
+};
+var canvasObj = createCanvas(),
+canvas = canvasObj.canvas;
+// STATE
+var state = {
+    ver: '0.26.0',
+    canvas : canvas,
+    ctx: canvasObj.ctx,
+    game: gameMod.create({money: 100}),
+    debug: false, // debug mode on or off
+    input: {
+        pointer: {
+            down: false,
+            pos: {x:0,y:0},
+            dir: 0,
+            headCir: { // the heading circle use to set a target heading for the ship
+                x: 320 - 30,
+                y: 240 - 30,
+                r: 24,
+                dist: 0,
+                a: 0,
+                d: 0,
+                dir: 0
+            },
+            ppsBar: {
+                x: 5,
+                y: 50,
+                w: 16,
+                h: 150,
+                targetY: 200, // the target Y value for the speed to get to
+                actualY: 50 + 75  // the actual Y value for the current speed
+            },
+            dist: 0 // dist from 160, 120 ( or 0,0 when it comes to game state)
+        },
+        //degree: 0,
+        //degreesPerSecond: 90,
+        //pps: 0,
+        //ppsDelta: 1,
+        fire: false,
+        keys: {}
+    },
+    lt : new Date(),
+    FPS_target : 20,
+    FPS: 0
+};
+// update pointer object helper
+var updatePointer = function(game, pos){
+    var map = game.map,
+    input = state.input,
+    pointer = input.pointer,
+    headCir = pointer.headCir,
+    ppsBar = pointer.ppsBar;
+    // update dir so that we know the shortest direction to go
+    var d = Math.floor(utils.angleTo(pos.x, pos.y, 160, 120) / ( Math.PI * 2 ) * 360);
+    pointer.dir = utils.shortestDirection(d, Math.floor(map.degree), 360);
+    // update main dist
+    pointer.dist = utils.distance(pos.x, pos.y, 160, 120);
+    // update headCir
+    if(pointer.down){
+        headCir.dist = utils.distance(pos.x, pos.y, headCir.x, headCir.y);
+        headCir.dist = headCir.dist > headCir.r ? headCir.r: headCir.dist;
+        if(headCir.dist < headCir.r){
+            headCir.a = utils.angleTo(pos.x, pos.y, headCir.x, headCir.y);
+            headCir.d = Math.floor(headCir.a / ( Math.PI * 2 ) * 360);
+            headCir.dir = utils.shortestDirection(headCir.d, Math.floor(map.degree), 360);
+        }
+        if(utils.boundingBox(pos.x, pos.y, 1, 1, ppsBar.x, ppsBar.y, ppsBar.w, ppsBar.h)){
+            ppsBar.targetY = pos.y;
+        }
+    }
+};
+ 
+var numberButtonCheck = function(game, input){
+    if(game.mode === 'base'){
+        [1,2,3].forEach(function(n){
+            if(input.keys[n]){
+                game.ship.weaponIndex = n - 1;
+                game.ship.weapon = game.weapons[n - 1];
+                game.buttons.currentPage = 'weapons';
+                gameMod.updateButtons(game);
+            }
+        });
+    }
+};
+ 
+// SAVE STATE CHECK and LOOP START
+ 
+var save = {
+   appName: 'hyper-casual-space-shooter-save',
+   gameSaves:[],
+   slotIndex: 0,
+   // update the current slotIndex with the given game object
+   updateSlot: function(game){
+       var createOptions = save.gameSaves[save.slotIndex];
+       // save money to create options
+       createOptions.money = game.money;
+       // save upgrades
+       createOptions.upgradeIndices = {};
+       game.upgrades.forEach(function(upgrade){
+           createOptions.upgradeIndices[upgrade.id] = upgrade.levelIndex;
+       });
+       // save map pos
+       createOptions.mapX = game.map.x;
+       createOptions.mapY = game.map.y;
+       // update jason
+       localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
+   }
+};
+ 
+//localStorage.removeItem(save.appName);
+ 
+save.gameSaves = localStorage.getItem(save.appName);
+if(save.gameSaves){
+   console.log('save found, parsing');
+   save.gameSaves = JSON.parse(save.gameSaves);
+}else{
+   console.log('no save found, creating new one');
+   save.gameSaves=[{money:10000, upgradeIndices:{}, mapX:0, mapY:0}];
+   //localStorage.setItem(save.appName, JSON.stringify(save.gameSaves));
+}
+ 
+var createOptions = save.gameSaves[save.slotIndex];
+ 
+console.log(save.gameSaves);
+console.log(createOptions);
+ 
+state.game = gameMod.create(createOptions);
+ 
+// LOOP
+//var lt = new Date(),
+//FPS_target = 1000 / 30;
+var loop = function () {
+ 
+    var now = new Date(),
+    t = now - state.lt,
+    game = state.game,
+    map = game.map,
+    input = state.input,
+    speedPer = map.pps / map.maxPPS,
+    ppsBar = input.pointer.ppsBar,
+    secs = t / 1000;
+ 
+    requestAnimationFrame(loop);
+ 
+    if (t >= 1000 / state.FPS_target) {
+ 
+        state.FPS = 1 / secs;
+ 
+        // if new ship
+        if(game.ship.newShip){
+            ppsBar.targetY = 200;
+            game.ship.newShip = false;
+        }
+ 
+        // update input.pointer
+        updatePointer(game, input.pointer.pos);
+        // keyboard or pointer update map radian
+ 
+        // keyboard update map pps
+        if(input.keys.w){
+            //map.pps += map.ppsDelta * secs;
+            //map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+            ppsBar.targetY -= 100 * secs;
+        }
+        if(input.keys.s){
+            //map.pps -= map.ppsDelta * secs;
+            //map.pps = map.pps < 0 ? 0 : map.pps;
+            ppsBar.targetY += 100 * secs;
+        }
+        if(input.keys.a){
+            map.degree += map.degreesPerSecond * secs;
+        }
+        if(input.keys.d){
+            map.degree -= map.degreesPerSecond * secs;
+        }
+ 
+        // clamp targetY
+        ppsBar.targetY = ppsBar.targetY < ppsBar.y ? ppsBar.y: ppsBar.targetY;
+        ppsBar.targetY = ppsBar.targetY > ppsBar.y + ppsBar.h ? ppsBar.y + ppsBar.h: ppsBar.targetY;
+ 
+        // update map pps based on targetY and actualY of the ppsBar
+ 
+        if(ppsBar.targetY != ppsBar.actualY){
+ 
+            if(ppsBar.actualY > ppsBar.targetY){
+                map.pps += map.ppsDelta * secs;
+                map.pps = map.pps > map.maxPPS ? map.maxPPS : map.pps;
+                // update ppsBar.actualY based on map.pps over map.maxPPS
+                ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
+                if(ppsBar.actualY < ppsBar.targetY){
+                    ppsBar.actualY = ppsBar.targetY;
+                }
+            }
+ 
+            if(ppsBar.actualY < ppsBar.targetY){
+                map.pps -= map.ppsDelta * secs;
+                map.pps = map.pps < 0 ? 0 : map.pps;
+                // update ppsBar.actualY based on map.pps over map.maxPPS
+                ppsBar.actualY = ppsBar.y + ppsBar.h - ppsBar.h * speedPer;
+                if(ppsBar.actualY > ppsBar.targetY){
+                    ppsBar.actualY = ppsBar.targetY;
+                }
+            }
+        }
+ 
+        // pointer update map radian
+        var headCir = input.pointer.headCir;
+        //if(input.pointer.down && input.pointer.dist <= 32){
+        if(input.pointer.down && headCir.dist < headCir.r){
+            //if(input.pointer.dir === 1){
+            if(headCir.dir === 1){
+                map.degree += map.degreesPerSecond * secs;
+            }
+            //if(input.pointer.dir === -1){
+            if(headCir.dir === -1){
+                map.degree -= map.degreesPerSecond * secs;
+            }
+        }
+        // pointer update map pps
+        if(input.pointer.down && input.pointer.dist < 32){
+            var per = input.pointer.dist / 32;
+            map.pps.pps = map.maxPPS * per;
+        }
+        // keyboard update fire
+        input.fire = false;
+        if(input.keys.l){
+            input.fire = true;
+        }
+        // number button check
+        numberButtonCheck(game, input);
+        // wrap degree
+        map.degree = utils.mod(map.degree, 360);
+        // update game
+        //gameMod.setMapMovement(game, input.degree, input.pps);
+        map.radian = utils.wrapRadian(Math.PI / 180 * map.degree);
+        gameMod.update(game, secs, state);
+ 
+        // draw
+        draw.currentMode(state.ctx, state);
+        draw.pointerUI(state.ctx, state);
+ 
+        // update slot
+        save.updateSlot(game);
+ 
+        state.lt = now;
+    }
+};
+ 
+loop();
+ 
+// KEYBOARD EVENTS
+window.addEventListener('keydown', function(e){
+    //e.preventDefault();
+    var key = e.key.toLowerCase();
+    state.input.keys[key] = true;
+});
+window.addEventListener('keyup', function(e){
+    //e.preventDefault();
+    var key = e.key.toLowerCase();
+    // toggle debug mode
+    if(key === 'v'){
+       state.debug = !state.debug;
+    }
+    if(key === 'b'){
+       state.game.autoFire = !state.game.autoFire;
+    }
+    state.input.keys[key] = false;
+});
+// MOUSE AND TOUCH
+var pointerEvent = function(e){
+   var pos = state.input.pointer.pos = utils.getCanvasRelative(e);
+   if(e.type === 'mousedown' || e.type === 'touchstart'){
+       state.input.pointer.down = true;
+   }
+   //if((e.type === 'mousemove' || e.type === 'touchmove') && state.input.pointer.down){
+   //}
+   if(e.type === 'mouseup' || e.type === 'touchend'){
+       state.input.pointer.down = false;
+       gameMod.checkButtons(state.game, pos, e);
+   }
+};
+canvas.addEventListener('mousedown', pointerEvent);
+canvas.addEventListener('mousemove', pointerEvent);
+canvas.addEventListener('mouseup', pointerEvent);
 ```
 
 ## 6 - Conclusion
@@ -98,3 +393,5 @@ I was able to get the basic idea of what I wanted together with this fairly quic
 I think that maybe an important part of the process is to not just think of a canvas example as just another project that I need to get over with so I can move on to the next thing. I am guilty of this kind of problem with many of my examples thus far, I work on something until I get the basic idea up and running, and then I stop working on it so I can move on to something else. This is a bad habit that has something to do with entering a kind of developer mindset, but loosing sight of a gamer mindset. So I have made an effort to break that cycle by trying to get into playing my own game, this game, to experience what it is like to actually play it. So far I would say that it is fun for a little while, but I still quickly loose interest after a little while, so maybe I still have some work to do with this one.
 
 I have some other examples where I have broke the cycle of not going beyond the basic core idea, only to end up stopping eventually anyway. The result then is ending up with a project that is just starting to feel like a game, but not just there yet. So maybe if I start with a very basic idea for a game, try to limit the number of features, and focus on what really truly matters, I can break this cycle once and for all. I should keep working on this game, but I should not just more forward with any little idea that comes to mind. The focus should be on what truly matters with this, what will truly make this game into a real game for once.
+
+I have some additional work drafted out for additional features, but at this point I think that there is only so much more to add. Once I have all the features that I want from there I think I might just want to make some code readability improvements. I have a lot of ideas that might help to make this game a lot more fun, but maybe some of those ideas should be pursued in a fork of this source code actually. I think that in the ling term I would like to keep this example simple, in terms of the game play at least. Sore I have added a fair number of features all ready, but the basic idea is to just fly around, and blast some blocks all to hell. A basic as it might be, it seems to work okay as a kind of escape. Not just when working on it, but paying it also.
