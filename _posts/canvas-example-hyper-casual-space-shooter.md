@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:45:50
-version: 1.21
+updated: 2021-01-07 16:47:59
+version: 1.22
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -75,14 +75,14 @@ I then have a main game module that will be used to create, and update the main 
 ```js
 ```
 
-<!-- EDIT 0.25.0 Bookmark -->
-
 ## 4 - The draw.js module as this is a canvas example
 
-So this is a canvas example after all, and just like every other canvas example I often end up with a draw module. This us where I park all my methods and code that has to do with drawing a view for a game state object to a canvas element.
+So this is a canvas example after all, and just like every other canvas example I often end up with a draw module. This us where I park all my methods and code that has to do with drawing a view for a game state object to a canvas element. It is generally a good idea to pull this code away from other files that have to do with the main app loop, the game object, and general reusable utility functions.
 
 ```js
 ```
+
+<!-- EDIT 0.25.0 Bookmark -->
 
 ## 5 - The main.js file
 
