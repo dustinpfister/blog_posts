@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 760
-updated: 2021-01-07 16:28:18
-version: 1.16
+updated: 2021-01-07 16:32:01
+version: 1.17
 ---
 
 I have made a few [canvas examples](/2020/03/23/canvas-example/) so far, but I think it is time to try something new. I started one other canvas example thus far that I have called a kind of [hyper casual](https://en.wikipedia.org/wiki/Hyper-casual_game) type game called [to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/). The idea that I had in mind for that example was very basic, I just wanted a ship that goes forward threw space at a given rate, and I have an estimate as to how long it would take for the ship to reach Max Safe integer. It was a fun, simple little project that I was able to put together in a sort time frame.
@@ -21,6 +21,8 @@ So then for this next hyper casual canvas example I had an idea to just make a s
 <script src="/js/canvas-examples/hyper-casual-space-shooter/0.25.0/pkg.js"></script>
 
 ## If you just want to play the game
+
+If you just want to play the game it might still not be such a good idea to spend a great deal of time playing this. I might still continue working on it, and at this time I might end up adding game state breaking changes. For the most part this should not be a problem, because the game can be finished fairly quickly anyway. Just keep in might that if you do play the game, do not get to attached to your save state at this time.
 
 ### How to play
 
