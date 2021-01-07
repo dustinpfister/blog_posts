@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-01-07 18:26:07
-version: 1.77
+updated: 2021-01-07 18:27:30
+version: 1.78
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -232,7 +232,7 @@ I use to have a thing about drawing stars in all kinds of different ways so of c
 
 ### 3.44 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
-State machines are an important component for many javaScript projects so of course I have a Canvas Example on state machine in general.
+State machines are an important component for many javaScript projects so of course I have a Canvas Example on state machine in general. This is one attempt of coming up with some kind of standard for this sort of thing, but I often still kind myself making this kind of thing all over again each time.
 
 ### 3.45 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
 
