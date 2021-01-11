@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-11 15:53:21
-version: 1.6
+updated: 2021-01-11 16:31:26
+version: 1.7
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect objects. So the library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with.
@@ -92,3 +92,16 @@ print(inspect.isfunction(a.get_n)) # false
 print(inspect.ismethod(a.get_n))   # True
 ```
 
+## 2 - get the memebers of an object
+
+## 3 - Get current frame
+
+One thing I might need to do now and then in python is to get the current call stack frame. So far it seems like this is something that I need to do in order to get a path to the current script that is being called.
+
+### 3.1 - Basic get current frame example
+
+```python
+import inspect
+f=inspect.currentframe()
+print(inspect.isframe(f)) # True
+```
