@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-11 15:43:38
-version: 1.3
+updated: 2021-01-11 15:45:36
+version: 1.4
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect objects. So the library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with.
@@ -27,6 +27,8 @@ print(inspect.ismodule(inspect)); # True
 ```
 
 ### 1.1 - Is function
+
+The inspect modules also have a method that I can use to find out if I am dealing with a function or not. There is a deference between a function and a method, so when it comes to working with a class the is function method will return false for functions that are methods of a class.
 
 ```python
 import inspect
