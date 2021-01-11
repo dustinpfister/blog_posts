@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-11 15:42:07
-version: 1.2
+updated: 2021-01-11 15:43:38
+version: 1.3
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect objects. So the library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with.
@@ -18,6 +18,8 @@ Todays post will be on the [inspect library](https://docs.python.org/3/library/i
 I have wrote a post on built in functions a little while back, and one helpful built in function is the type function. This is a good starting point when it comes to having a tool to know what a given value is.
 
 ### 1.1 - Is module
+
+When it comes to using the inspect module to start inspecting the contents of a module, it is great to have a way to first find out if I am even dealing with a module to begin with.
 
 ```python
 import inspect
