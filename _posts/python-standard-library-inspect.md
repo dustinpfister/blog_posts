@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-11 15:47:11
-version: 1.5
+updated: 2021-01-11 15:53:21
+version: 1.6
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect objects. So the library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with.
@@ -15,15 +15,21 @@ Todays post will be on the [inspect library](https://docs.python.org/3/library/i
 
 ## 1 - Use inspect to find out what I am dealing with when it comes to inspecting something
 
-I have wrote a post on built in functions a little while back, and one helpful built in function is the type function. This is a good starting point when it comes to having a tool to know what a given value is.
+I have wrote a post on built in functions a little while back, and one helpful built in function is the type function. This is a good starting point when it comes to having a tool to know what a given value is. However in order to use it to test if something is a module for example I have to not just use the type function by itself, but rather use the name property in an expression in which I am comparing the name property to the string module. So if I want to know if something is a module or not, I can do an expression with the type function, or I can use an inspect function such as the is module function.
+
+So this section Will be a quick overview of some of these methods of the inspect library, and I guess I can also take a moment to touch base on the type built in function while I am at it.
 
 ### 1.1 - Is module
 
-When it comes to using the inspect module to start inspecting the contents of a module, it is great to have a way to first find out if I am even dealing with a module to begin with.
+When it comes to using the inspect module to start inspecting the contents of a module, it is great to have a way to first find out if I am even dealing with a module to begin with. For such a task I can use the is module function of the inspect library to so so. An alterative with python by itself would have to involve the use of the type built in function in a simple expression.
 
 ```python
 import inspect
 print(inspect.ismodule(inspect)); # True
+ 
+# this can slo be done with the type built in
+# function with an expression like this:
+print( type(inspect).__name__ == 'module' ) # True
 ```
 
 ### 1.1 - Is function
