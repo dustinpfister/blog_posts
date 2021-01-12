@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-12 16:43:44
-version: 1.3
+updated: 2021-01-12 16:46:02
+version: 1.4
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write on post on this library. One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
@@ -31,3 +31,7 @@ Then I can give it an argument when calling it like this:
 $ python3 argv.py "Hello World"
 HELLO WORLD
 ```
+
+## 2 - Conclusion
+
+The main feature for me so far with the sys library is to have a way to get to arguments that might have been given. This is an impoarnt step in being ablle to start to make real projects with python as it is something that I make use of in other languages such as javaScript and bash.
