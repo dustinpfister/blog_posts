@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 15:08:19
-version: 1.5
+updated: 2021-01-12 15:18:58
+version: 1.6
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -27,7 +27,7 @@ print(t[2:4]) # (3,4)
 
 Both lists and tuples are sequence types, and for the most part it would seem that the only real diference is that a tuple can not be changed once it is created. So when it comes to working with data from a tuple there is creating new tuples from a source tuple, and then there is converting a tuple to a list, which is another kind of sequence type where the values can be changed.
 
-## 2.1 - Use the list built in function to convert to list
+### 2.1 - Use the list built in function to convert to list
 
 Tubles can not be mutated, however a list can, so often I might want to convert a tuple to a list so I can then mutate values.
 
@@ -39,7 +39,7 @@ print( type(l).__name__ ) # list
 print( l ) # [3, 4]
 ```
 
-## 2.2 - Chainging a value in a list created from a tuple should not effect the source
+### 2.2 - Chainging a value in a list created from a tuple should not effect the source
 
 ```python
 t=(1,2,3,4,5)
@@ -52,4 +52,19 @@ while i < len(l):
  
 print(l) # [7, 14, 21, 28, 35]
 print(t) # (1, 2, 3, 4, 5)
+```
+
+### 2.3 - nested lists in tuples can cause a problem
+
+It is possible to have lists as values for a tuple, when doing so it is possibule to change a value in one of the nested lists. In some cases this might not present a problem if this just happens to be what I want to happen. However in some cases I might want a tuple to serve as a default set of values that can then be mutated.
+
+```python
+t=([1,2,3],[4,5,6])
+l=list(t)
+ 
+# mutating a value in this list can effect the source
+l[0][0]= 40
+print( type(l).__name__ ) # list
+print( l ) # [[40, 2, 3], [4, 5, 6]]
+print( t ) # ([40, 2, 3], [4, 5, 6])
 ```
