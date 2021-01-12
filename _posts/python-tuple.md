@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 15:18:58
-version: 1.6
+updated: 2021-01-12 15:55:09
+version: 1.7
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -40,6 +40,8 @@ print( l ) # [3, 4]
 ```
 
 ### 2.2 - Chainging a value in a list created from a tuple should not effect the source
+
+
 
 ```python
 t=(1,2,3,4,5)
