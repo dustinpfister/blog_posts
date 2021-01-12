@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 16:26:54
-version: 1.14
+updated: 2021-01-12 16:29:23
+version: 1.15
 ---
 
 There are a few built in data types in python, and one such type is a [tuple](https://www.tutorialspoint.com/python/python_tuples.htm) which is yet another option when it comes to data structure in python. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate the tuple is to create a new tuple. However when it comes to nested values in atuple they can still be mutated assuming that it is a type that allows for that such as a list. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -100,4 +100,4 @@ print( t ) # ((1, 2, 3), (4, 5, 6))
 
 ## 3 - Conclusion
 
-
+That is it for now ehn it comes to tuples in python. They are a decent data type when it comes to writing anything that is a kind of fixed record of data that should not be mutated. There are some things to look out for when it coems to nested values, but there is just having nested tuples if the desired effect is for all values to remaine constant.
