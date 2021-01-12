@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 15:55:09
-version: 1.7
+updated: 2021-01-12 16:03:14
+version: 1.8
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -41,7 +41,9 @@ print( l ) # [3, 4]
 
 ### 2.2 - Chainging a value in a list created from a tuple should not effect the source
 
+The main thing about creating a list from a tuple is that generaly any change to a resulting list created from a tuple should not effect the source value in the tuple. This should go without saying becuase a tuple can not be mutated, but this is true only with the tuple itself, and not any nested values that it might have. More on that later in this section, but first maybe I should start with just a basic example of what I mean by this.
 
+If I have just a simple tuple of numbers, I can then just create a new list from that tuple of numbers by using the list built in function. Once I have this new list of numbers from the tuple any change that I make to the values of the list will not effect the source tuple from which the list was created.
 
 ```python
 t=(1,2,3,4,5)
@@ -55,6 +57,8 @@ while i < len(l):
 print(l) # [7, 14, 21, 28, 35]
 print(t) # (1, 2, 3, 4, 5)
 ```
+
+So for so good, but do not exspect for this to always be the case, as there are actully some exceptions to this kind of behaviour when it comes to nested values in tuples. Maybe tuples themselfs can not be mutated, but a nested value in a tuple can be of it is a value of another sequence type that can be mutated such as a list.
 
 ### 2.3 - nested lists in tuples can cause a problem
 
