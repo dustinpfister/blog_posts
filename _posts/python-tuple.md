@@ -5,11 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 16:25:29
-version: 1.13
+updated: 2021-01-12 16:26:54
+version: 1.14
 ---
 
-There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate the tuple is to create a new tuple. However when it comes to nested values in atuple they can still be mutated assuming that it is a type that allows for that such as a list. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
+There are a few built in data types in python, and one such type is a [tuple](https://www.tutorialspoint.com/python/python_tuples.htm) which is yet another option when it comes to data structure in python. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate the tuple is to create a new tuple. However when it comes to nested values in atuple they can still be mutated assuming that it is a type that allows for that such as a list. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
 
 In javaScript I often have a collection of hard coded data in a module, and often I want to create a copy of that collection of that data that is complatly sepearte from it. So when I make a change to the copy of the hard coded data, such a change effects the copy and not the hard coded source. So then I often have a way to go about creating what is called a deep copy of that hard coded data. In python I can use tuples as a way to go about creating that kind of fixed hard coded data. I can have just a single tuple, and nested tuples. Then I just need to have a way to go about creating a nested lists form of that hard coded data in tuple form.
 
