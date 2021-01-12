@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 16:15:57
-version: 1.11
+updated: 2021-01-12 16:19:25
+version: 1.12
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -79,7 +79,9 @@ print( t ) # ([40, 2, 3], [4, 5, 6])
 
 If I do not want the source tuple of lists to mutate then I would need to not just simply pass the tuple of lists to the list built in function. The list function will not just create a deep clone for the nested values. So I will need to deep copy the lists somehow, and also to help make sure that the values will not ever be mutated I might want to have nested tuples rather than a tuple of lists.
 
-### 2.4 - 
+### 2.4 - Nested tuples in a tuple
+
+In some projects maybe it is a good thing to be able to have lists as element values in a tuple, so then I can not change that an elemenst of a tuple is anything but a list, but I can still chnage the list itself. Still in some situations I might want to have nested values that can not be mutated. In such a situation it might be best to have nested tuples, rather than a tuple of lists.
 
 ```python
 t=((1,2,3),(4,5,6))
