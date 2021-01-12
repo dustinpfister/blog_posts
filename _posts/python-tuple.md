@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 16:12:32
-version: 1.10
+updated: 2021-01-12 16:15:57
+version: 1.11
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -60,9 +60,11 @@ print(t) # (1, 2, 3, 4, 5)
 
 So for so good, but do not exspect for this to always be the case, as there are actully some exceptions to this kind of behaviour when it comes to nested values in tuples. Maybe tuples themselfs can not be mutated, but a nested value in a tuple can be of it is a value of another sequence type that can be mutated such as a list.
 
-### 2.3 - nested lists in tuples can cause a problem
+### 2.3 - Nested lists in tuples can cause a problem (or not)
 
-It is possible to have lists as values for a tuple, when doing so it is possibule to change a value in one of the nested lists. In some cases this might not present a problem if this just happens to be what I want to happen. However in some cases I might want a tuple to serve as a default set of values that can then be mutated later by creating a list from the tuple. So if I do just pass the tupe to list, and then mutate a value in one of the nested lists, such a change will effect the source list in the tuple.
+It is possible to have lists as values for a tuple, when doing so it is possibule to change a value in one of the nested lists. In some cases this might not present a problem if this just happens to be what I want to happen. Maybe I am working on a project where I want a set of lists to be a fixed thing, but the values in the list can change. If that is the case then maybe there is not a problem when it comes to having lists as values in a tuple.
+
+However in some cases I might want a tuple to serve as a default set of values that can then be mutated later by creating a list from the tuple that is seveing as something that I exspect to be a find of fixed source. So if I do just pass the tupe to list, and then mutate a value in one of the nested lists, such a change will effect the source list in the tuple.
 
 ```python
 t=([1,2,3],[4,5,6])
@@ -78,6 +80,19 @@ print( t ) # ([40, 2, 3], [4, 5, 6])
 If I do not want the source tuple of lists to mutate then I would need to not just simply pass the tuple of lists to the list built in function. The list function will not just create a deep clone for the nested values. So I will need to deep copy the lists somehow, and also to help make sure that the values will not ever be mutated I might want to have nested tuples rather than a tuple of lists.
 
 ### 2.4 - 
+
+```python
+t=((1,2,3),(4,5,6))
+l=list(t)
+l[0] = list(t[0])
+l[1] = list(t[1])
+
+# mutating a value in this list will not effect source
+l[0][0]= 40
+print( type(l).__name__ ) # list
+print( l ) # [[40, 2, 3], [4, 5, 6]]
+print( t ) # ((1, 2, 3), (4, 5, 6))
+```
 
 ## 3 - Conclusion
 
