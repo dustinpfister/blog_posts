@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 16:03:14
-version: 1.8
+updated: 2021-01-12 16:04:22
+version: 1.9
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -29,7 +29,7 @@ Both lists and tuples are sequence types, and for the most part it would seem th
 
 ### 2.1 - Use the list built in function to convert to list
 
-Tubles can not be mutated, however a list can, so often I might want to convert a tuple to a list so I can then mutate values.
+Tubles can not be mutated, however a list can, so often I might want to convert a tuple to a list so I can then mutate values. one way to do so would be to just pass the tuple to the list built in function.
 
 ```python
 t=(1,2,3,4,5)
