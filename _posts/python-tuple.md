@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 779
-updated: 2021-01-12 16:04:22
-version: 1.9
+updated: 2021-01-12 16:12:32
+version: 1.10
 ---
 
 There are a few built in data types in python, and one such type is a tuple. Like lists a tuple is a kind of sequence type, however one major diference is that a tuple is not mutabule. So once a tuple is created, the only way to mutate values is to create a new tuple. So then a tuple might be a good choice for some kind of data that I want to remain fixed, and then I can create additional tubles, and other sequence types from these tuples.
@@ -62,7 +62,7 @@ So for so good, but do not exspect for this to always be the case, as there are 
 
 ### 2.3 - nested lists in tuples can cause a problem
 
-It is possible to have lists as values for a tuple, when doing so it is possibule to change a value in one of the nested lists. In some cases this might not present a problem if this just happens to be what I want to happen. However in some cases I might want a tuple to serve as a default set of values that can then be mutated.
+It is possible to have lists as values for a tuple, when doing so it is possibule to change a value in one of the nested lists. In some cases this might not present a problem if this just happens to be what I want to happen. However in some cases I might want a tuple to serve as a default set of values that can then be mutated later by creating a list from the tuple. So if I do just pass the tupe to list, and then mutate a value in one of the nested lists, such a change will effect the source list in the tuple.
 
 ```python
 t=([1,2,3],[4,5,6])
@@ -74,3 +74,11 @@ print( type(l).__name__ ) # list
 print( l ) # [[40, 2, 3], [4, 5, 6]]
 print( t ) # ([40, 2, 3], [4, 5, 6])
 ```
+
+If I do not want the source tuple of lists to mutate then I would need to not just simply pass the tuple of lists to the list built in function. The list function will not just create a deep clone for the nested values. So I will need to deep copy the lists somehow, and also to help make sure that the values will not ever be mutated I might want to have nested tuples rather than a tuple of lists.
+
+### 2.4 - 
+
+## 3 - Conclusion
+
+
