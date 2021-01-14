@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 780
-updated: 2021-01-14 12:06:55
-version: 1.1
+updated: 2021-01-14 12:14:54
+version: 1.2
 ---
 
 When learning a new programing enviorment one thing that I like to learn how to do is how to go about launching another script, or command complatly in the operating system if I can do so. In nodejs there is the child process module for example that provides methods that can be used to run a command, so there should be such a module in python also then. It would seem that the best option for doing so might be the [subprocess librray](https://docs.python.org/3.7/library/subprocess.html) that contains such methods. There are some other options when it comes to running external commands, butthe other built in options are older solutions that are still there mainly so older code does not break.
@@ -14,3 +14,28 @@ When learning a new programing enviorment one thing that I like to learn how to 
 For this post then I will be going over some basic examples of the subprocess module then.
 
 <!-- more -->
+
+## 1 - The run method
+
+The run method of the subprocess library should be the first go to option for most situstions in which I want to run an external command. It will not work great for all use case examples though, for that there is the Popen method that I will be getting to in a later section.
+
+For any external command that should not take long the run method should work okay, however one thing that I have noticed is that the use of this command will pause exacutition of additional python code once I call the run method. So if I need to do seomthing that might take a real long time, and I want the rest of the script to continue, then I might want to use pOpen in place of run. However the run command is still a good starting point, and it should generally be used first before moving on to Popen when needed.
+
+There are a few argumnets that I should get to when it comes to using run, so I will want to get to at least a few examples here, so lets get to it.
+
+### 1.1 - Simple no capture example
+
+```python
+import subprocess
+# to just run a command, but not capture output
+subprocess.run(['ls', '-l'])
+```
+
+### 1.2 - capture example 
+
+```python
+import subprocess
+# set capture_output to True to capture output
+r=subprocess.run(['ls', '-l'], capture_output=True)
+print(r.stdout)
+```
