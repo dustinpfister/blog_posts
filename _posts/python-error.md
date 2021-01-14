@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-14 14:23:40
-version: 1.3
+updated: 2021-01-14 14:26:36
+version: 1.4
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to handle Errors. The process of doing so is a little differeent from what I am used to in a javaScript enviorment. However it would seem that it is only so different, just like with javaScript there is a kind of try catch statement. There are also ways of throwing a user defines exception of course, so everything that I am used to doing with errors in javaScript can more or less be done in python also.
@@ -16,7 +16,9 @@ So in this post I will be going over the very basics of errors inclduing ways to
 <!-- more -->
 
 
-## 1 - Basic try example
+## 1 - Basic Error handing example with try
+
+To handel erros in python I just need to use the try keyword.
 
 ```python
 try:
@@ -30,6 +32,8 @@ except TypeError:
 ```
 
 ## 2 - div by zero example
+
+So how about a basic division by zero example.
 
 ```python
 def div(n=1, d=1):
