@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 780
-updated: 2021-01-14 12:37:41
-version: 1.6
+updated: 2021-01-14 13:26:41
+version: 1.7
 ---
 
 When learning a new programing enviorment one thing that I like to learn how to do is how to go about launching another script, or command complatly in the operating system if I can do so. In nodejs there is the child process module for example that provides methods that can be used to run a command, so there should be such a module in python also then. It would seem that the best option for doing so might be the [subprocess librray](https://docs.python.org/3.7/library/subprocess.html) that contains such methods. There are some other options when it comes to running external commands, butthe other built in options are older solutions that are still there mainly so older code does not break.
@@ -49,6 +49,7 @@ print(r.stdout)
 
 ## 2 - Async running of code, run, and a basic Popen example
 
+The other main method of the subprocess librray is the Popen method. This is the method that I will want to use when the run method falls short for one reason or another. So far it would seem that that main reason why I would want to use Popen is to make sure that some lengthly process that I want to run will not end up stalling the rest of my python code. So in this section I will be going over a run example, and then a Popen example that does more or less the same thing.
 
 ### 2.1 - A run example
 
