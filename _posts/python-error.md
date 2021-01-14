@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-14 14:26:36
-version: 1.4
+updated: 2021-01-14 14:33:16
+version: 1.5
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to handle Errors. The process of doing so is a little differeent from what I am used to in a javaScript enviorment. However it would seem that it is only so different, just like with javaScript there is a kind of try catch statement. There are also ways of throwing a user defines exception of course, so everything that I am used to doing with errors in javaScript can more or less be done in python also.
@@ -77,3 +77,7 @@ print( jsAdd(1, 2) )      # 3
 print( jsAdd(5, 7) )      # 12
 print( jsAdd('foo', 800) )  # 'foo800'
 ```
+
+## 4 - Conclusion
+
+This is an imporant step when it comes to learning all the basics of a lanague that I intend to use to start creating and using some real projects with. There are all kinds of things that can go wrong when it comes to using an applaction and being able to work out additional code to help handle those kinds of situations is helpful for making a robust project.
