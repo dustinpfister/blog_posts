@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 780
-updated: 2021-01-14 12:25:19
-version: 1.4
+updated: 2021-01-14 12:28:03
+version: 1.5
 ---
 
 When learning a new programing enviorment one thing that I like to learn how to do is how to go about launching another script, or command complatly in the operating system if I can do so. In nodejs there is the child process module for example that provides methods that can be used to run a command, so there should be such a module in python also then. It would seem that the best option for doing so might be the [subprocess librray](https://docs.python.org/3.7/library/subprocess.html) that contains such methods. There are some other options when it comes to running external commands, butthe other built in options are older solutions that are still there mainly so older code does not break.
@@ -46,3 +46,7 @@ import subprocess
 r=subprocess.run(['ls', '-l'], capture_output=True)
 print(r.stdout)
 ```
+
+## 2 - Conclusion
+
+The subprocess librrays is then one of the first go to librrays when it comes to running an external command in a python enviorment. There are some other options, but I am not sure if I should even mention them here. From what I have gathered this is the library that should be used first and formost.
