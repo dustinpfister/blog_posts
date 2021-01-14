@@ -5,11 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-14 14:11:30
-version: 1.2
+updated: 2021-01-14 14:23:40
+version: 1.3
 ---
 
-One of the basic things that I still need to read up on a bit more with python is how to handle Errors. The process of doing so is a little differeent from what I am used to in a javaScript enviorment. However it would seem that it is only so different, just like with javaScript there is a kind of try catch statement.
+One of the basic things that I still need to read up on a bit more with python is how to handle Errors. The process of doing so is a little differeent from what I am used to in a javaScript enviorment. However it would seem that it is only so different, just like with javaScript there is a kind of try catch statement. There are also ways of throwing a user defines exception of course, so everything that I am used to doing with errors in javaScript can more or less be done in python also.
+
+So in this post I will be going over the very basics of errors inclduing ways to go about causing them, how to handle them, and how to throw, or raise them if you prefer. After the basics I think it might be a good idea to work out a few quikc use case examples as to how Error handing is useful when making certian kinds of functions, and projects. This is an imporant part of knowing how to programe with python, and any lanague for that matter actually so lets take a quick look at some examples of Errors in python.
 
 <!-- more -->
 
