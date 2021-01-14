@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 780
-updated: 2021-01-14 13:26:41
-version: 1.7
+updated: 2021-01-14 13:33:59
+version: 1.8
 ---
 
 When learning a new programing enviorment one thing that I like to learn how to do is how to go about launching another script, or command complatly in the operating system if I can do so. In nodejs there is the child process module for example that provides methods that can be used to run a command, so there should be such a module in python also then. It would seem that the best option for doing so might be the [subprocess librray](https://docs.python.org/3.7/library/subprocess.html) that contains such methods. There are some other options when it comes to running external commands, butthe other built in options are older solutions that are still there mainly so older code does not break.
@@ -52,6 +52,8 @@ print(r.stdout)
 The other main method of the subprocess librray is the Popen method. This is the method that I will want to use when the run method falls short for one reason or another. So far it would seem that that main reason why I would want to use Popen is to make sure that some lengthly process that I want to run will not end up stalling the rest of my python code. So in this section I will be going over a run example, and then a Popen example that does more or less the same thing.
 
 ### 2.1 - A run example
+
+First off another example of the run method. With this one I am using the linux lind command to find all javaScript files from the root namespace forward. This is a task that can end up taking some time, so often it will end up taking a few seconds. To make matters worse it would seem that any python code that I have after I call the run method will not run until the subprocess started with run compleates. In some cases this might be what I want to happen actually, if additioinal code depends on the outcome of the process. However if that is not the case, or I want something to continue after starting the process this will present a problem then.
 
 ```python
 import subprocess
