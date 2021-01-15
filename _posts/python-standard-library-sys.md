@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-15 15:01:31
-version: 1.9
+updated: 2021-01-15 15:05:58
+version: 1.10
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write on post on this library. One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
@@ -44,6 +44,8 @@ It I just want to take a look at the state of the list I can just print it out a
 import sys
 print(sys.path)
 ```
+
+The state of this path can be impacked by a number of factors. First off if there is a PYTHONPATH enviorment variable the list of paths can end up being created from that value. On top of that there should be a hard coded value that pythion will fall back to if there is no PYTHONPATH variable, and the value can varry a little from one interprater to another. Then there is the fact that the list value is not read only, additional paths can be added to it in a script.
 
 ### 2.2 - can append a relative or absolute path to the sys.path list
 
