@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 782
-updated: 2021-01-15 16:11:46
-version: 1.3
+updated: 2021-01-15 16:13:55
+version: 1.4
 ---
 
 In python there is the [tkinter standard library](https://docs.python.org/3.7/library/tkinter.html) that is an official interface for the [TK GUI tool kit](https://en.wikipedia.org/wiki/Tk_%28software%29). This library can then be used as a way to create graphical front ends for python projects. The library works by providing a number of widgets that can be used to create various components in a window such as buttons, menus, a canvas, and text. With these widgets it is possible to make a basic yet functional graphical user interface for a python project.
@@ -15,7 +15,9 @@ At the time of this writing I do not yet have much experence working with tkinte
 
 <!-- more -->
 
-## 1 
+## 1 - Some very basic tkinter getting started examples
+
+So I need to start somewhere when it comes to using tkinter and python, so In thism section I will be going over just a few very basic getting started types examples of tkinter.
 
 ### 1.1 - Basic Hello world example
 
