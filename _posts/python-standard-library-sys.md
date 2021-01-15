@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-15 14:55:29
-version: 1.8
+updated: 2021-01-15 15:01:31
+version: 1.9
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write on post on this library. One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
@@ -47,6 +47,8 @@ print(sys.path)
 
 ### 2.2 - can append a relative or absolute path to the sys.path list
 
+A relative, or better yet absoulte path, can be appended to the sys.path list. The effect is as i would exspect when I load any additional scripts with import they will load if they are in the folder that I append to the list.
+
 ```python
 def foo():
     return 'bar'
@@ -61,6 +63,8 @@ import bar
 print(bar.foo()) # 'bar'
 print(bar.bar()) # 'foo'
 ```
+
+Although a path can be relative, I have found that it is generraly a good idea to try to stick to absolute paths when and where possible. When adding a path like in this example if the current working path is changed then the code will break, making sure that an absolute path is what is used will help keep that from happedning. However doing so will first require getting the current path of the script that is begin called.
 
 ## 3 - Conclusion
 
