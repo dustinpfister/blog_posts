@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-15 16:44:13
-version: 1.8
+updated: 2021-01-15 16:52:07
+version: 1.9
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. The library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with, along with many more additional such methods. This is a library that seems to show up in a lot of basic python examples for various things, so it makes sense to take a momnet to take a deeper look into the module as a whole.
@@ -92,7 +92,25 @@ print(inspect.isfunction(a.get_n)) # false
 print(inspect.ismethod(a.get_n))   # True
 ```
 
-## 2 - get the memebers of an object
+## 2 - The get members method
+
+The get members method of the inspect module can be used as a way to get all the members of an object, sorted by the name of each. In addition is is possible to pass a predicate function as a second argument that can be used as a way to filter memebers of the object. So when it comes to learning about a module I can use this method as a way to get all the classes of a module to know what I am dealing with when it comes to the classes that are in a module. So in this section I will be going over the get members method of inspect, and how it can be used as a way to filter over librarys.
+
+### 2.2 - Get all members of the sys module
+
+```python
+import inspect
+import sys as mod
+ 
+m=inspect.getmembers(mod);
+for i in m:
+    if i[0].startswith('__') == False:
+        # prop name
+        print(i[0], ':')
+        # prop type
+        print(type(i[1]).__name__)
+        print('')
+```
 
 ## 3 - Get current frame
 
