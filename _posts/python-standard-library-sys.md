@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-15 14:15:50
-version: 1.5
+updated: 2021-01-15 14:20:03
+version: 1.6
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write on post on this library. One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
@@ -33,6 +33,8 @@ HELLO WORLD
 ```
 
 ## 2 - The path property
+
+Another major point of interest in the sys library might be the sys.path property of the library. This property is a list of strings where each string is a path to serach for modules. In some situations it might be nessecery to push some additional path strings into this list if I run into problems loading libraries in a script.
 
 ### 2.1 - basic example
 
