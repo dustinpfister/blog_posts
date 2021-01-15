@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 782
-updated: 2021-01-15 16:17:46
-version: 1.5
+updated: 2021-01-15 16:19:05
+version: 1.6
 ---
 
 In python there is the [tkinter standard library](https://docs.python.org/3.7/library/tkinter.html) that is an official interface for the [TK GUI tool kit](https://en.wikipedia.org/wiki/Tk_%28software%29). This library can then be used as a way to create graphical front ends for python projects. The library works by providing a number of widgets that can be used to create various components in a window such as buttons, menus, a canvas, and text. With these widgets it is possible to make a basic yet functional graphical user interface for a python project.
@@ -33,6 +33,8 @@ root.mainloop()
 ```
 
 ### 1.2 - A basic count example
+
+Another idea of a basic example would be to create an example where I have a button, and each time I click the button a value goes up by one.
 
 ```python
 import tkinter as tk
