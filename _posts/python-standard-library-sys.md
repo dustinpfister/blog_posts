@@ -5,15 +5,19 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-15 15:05:58
-version: 1.10
+updated: 2021-01-17 11:35:30
+version: 1.11
 ---
 
-The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write on post on this library. One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
+The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. 
+
+One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. This is one of the first things I like to learn how to do when it comes to learning a new programing lanague, at least when it comes to a lanague and enviorment that can eb used to create scripts that can be called in a command line interface.
+
+However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
 
 <!-- more -->
 
-## 1 - Using the argv
+## 1 - Using the argv property
 
 The major feature that I think I should get to right away with the sys library is that this library is how I go about getting positional arguments in python. For a very basic example of this say I have a python script called argv.py and at the very top O have the python shebang which is a feature that I often add to any script that I aim to make exacutabule in a posix system. After that I just import the sys librray and then the argv prop of the sys module is where I can get to any positional argumnets that might have been given. The first index of this argv sequence is the name of the binray used, but index value 1 forward are the positional argumnets.
 
@@ -70,4 +74,4 @@ Although a path can be relative, I have found that it is generraly a good idea t
 
 ## 3 - Conclusion
 
-The main feature for me so far with the sys library is to have a way to get to arguments that might have been given. This is an impoarnt step in being ablle to start to make real projects with python as it is something that I make use of in other languages such as javaScript and bash.
+The main feature for me so far with the sys library is to have a way to get to arguments that might have been given. This is an important step in being ablle to start to make real projects with python as it is something that I make use of in other languages such as javaScript and bash.
