@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-17 11:47:45
-version: 1.13
+updated: 2021-01-17 11:56:14
+version: 1.14
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. This librray has a lot of operating system level features to work with, but it is not really a replacement for the os library that also comes up a lot in examples.
@@ -74,7 +74,7 @@ Although a path can be relative, I have found that it is generraly a good idea t
 
 ## 3 - Exit a script with sys.exit
 
-When working on python scripts, or any kind of script for that matter, I might run into situtsions in which I will need to exit the script. When doing so it is a good idea to set an exit code status. There are a number of ways to do this I have foudnthus far, however I think that maybe just using the sys exit method might work okay in most typically situstions.
+When working on python scripts, or any kind of script for that matter, I might run into situtsions in which I will need to exit the script. When doing so it is a good idea to set an exit code status. There are a number of ways to do this I have foud thus far, however I think that maybe just using the sys exit method might work okay in most typically situstions. When I call the method I can pass an integer as the first argument, a value of zero means that the script exited without any problems, any other value means some kind of error happend.
 
 ```python
 import sys
