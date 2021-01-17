@@ -5,15 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-17 11:35:30
-version: 1.11
+updated: 2021-01-17 11:41:28
+version: 1.12
 ---
 
-The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. 
+The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. This librray has a lot of operating system level features to work with, but it is not really a replacement for the os library that also comes up a lot in examples.
 
-One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called. This is one of the first things I like to learn how to do when it comes to learning a new programing lanague, at least when it comes to a lanague and enviorment that can eb used to create scripts that can be called in a command line interface.
+One major feature is that this library can be used as a way to get any positional argumnets that might have been passed to the script when it was called in the form of a list. This is one of the first things I like to learn how to do when it comes to learning a new programing lanague, at least when it comes to a lanague and enviorment that can be used to create scripts that can be called in a command line interface. Wehn making such scripts there should be a way to access and positional arguments that may have been passed when the script was called. In nodejs there is the process.argv array, in bash scripts there are special parameters than can be used, and in python the way to do so is with, you guessed in the sys standard librarys argv list.
 
-However there are a number of other features in the librray that are also worth looking into with a few quick code examples.
+However there are a number of other features in the sys librray that are also worth looking into with a few quick code examples. I will not be going over every little detail here, however I will of course be covering the most striking features that are worth writing about in detail of course, so lets go over them.
 
 <!-- more -->
 
