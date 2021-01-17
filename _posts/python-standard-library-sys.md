@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-17 11:41:28
-version: 1.12
+updated: 2021-01-17 11:47:45
+version: 1.13
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. This librray has a lot of operating system level features to work with, but it is not really a replacement for the os library that also comes up a lot in examples.
@@ -51,7 +51,7 @@ print(sys.path)
 
 The state of this path can be impacked by a number of factors. First off if there is a PYTHONPATH enviorment variable the list of paths can end up being created from that value. On top of that there should be a hard coded value that pythion will fall back to if there is no PYTHONPATH variable, and the value can varry a little from one interprater to another. Then there is the fact that the list value is not read only, additional paths can be added to it in a script.
 
-### 2.2 - can append a relative or absolute path to the sys.path list
+### 2.2 - I can append a relative or absolute path to the sys.path list
 
 A relative, or better yet absoulte path, can be appended to the sys.path list. The effect is as i would exspect when I load any additional scripts with import they will load if they are in the folder that I append to the list.
 
@@ -72,6 +72,19 @@ print(bar.bar()) # 'foo'
 
 Although a path can be relative, I have found that it is generraly a good idea to try to stick to absolute paths when and where possible. When adding a path like in this example if the current working path is changed then the code will break, making sure that an absolute path is what is used will help keep that from happedning. However doing so will first require getting the current path of the script that is begin called.
 
-## 3 - Conclusion
+## 3 - Exit a script with sys.exit
+
+When working on python scripts, or any kind of script for that matter, I might run into situtsions in which I will need to exit the script. When doing so it is a good idea to set an exit code status. There are a number of ways to do this I have foudnthus far, however I think that maybe just using the sys exit method might work okay in most typically situstions.
+
+```python
+import sys
+print('one')
+sys.exit()
+print('two')
+ 
+# one
+```
+
+## 4 - Conclusion
 
 The main feature for me so far with the sys library is to have a way to get to arguments that might have been given. This is an important step in being ablle to start to make real projects with python as it is something that I make use of in other languages such as javaScript and bash.
