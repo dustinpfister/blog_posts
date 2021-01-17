@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-17 11:56:14
-version: 1.14
+updated: 2021-01-17 12:05:33
+version: 1.15
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. This librray has a lot of operating system level features to work with, but it is not really a replacement for the os library that also comes up a lot in examples.
@@ -35,6 +35,9 @@ Then I can give it an argument when calling it like this:
 $ python3 argv.py "Hello World"
 HELLO WORLD
 ```
+
+This is just how to go about getting any and all raw positional argumnets, so the sys.argv list is not the end of the road when it comes to arguments. It is a good start, but the next step might be to look into what the options are for option parsers. There is another built in standard librray called [optparse](https://docs.python.org/3.7/library/optparse.html) that seems to be an official option parser
+
 
 ## 2 - The path property
 
