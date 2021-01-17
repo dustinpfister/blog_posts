@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-17 12:05:33
-version: 1.15
+updated: 2021-01-17 12:10:36
+version: 1.16
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. This librray has a lot of operating system level features to work with, but it is not really a replacement for the os library that also comes up a lot in examples.
@@ -90,4 +90,6 @@ print('two')
 
 ## 4 - Conclusion
 
-The main feature for me so far with the sys library is to have a way to get to arguments that might have been given. This is an important step in being ablle to start to make real projects with python as it is something that I make use of in other languages such as javaScript and bash.
+The main feature for me so far with the sys library is to have a way to get to get arguments that might have been given when a script is called. This is an important step in being ablle to start to make real projects with python as it is something that I make use of in other languages such as javaScript and bash that are of actual value for me at least. However even for this task it might still be better to go with an option parser, it is just that if I want to make my own standard for parsing options I would want to start here with the sys library.
+
+There are of course a number of other features that are of great imporatnace such as the paths list that I can use to set locations to sreach for python modules. I have also not got around to covering every other little feature, but I am sure I will come back to edit this post when I come around to actually using those features in an actual useful script of some kind.
