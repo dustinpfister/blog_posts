@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 16:22:13
-version: 1.14
+updated: 2021-01-18 16:28:11
+version: 1.15
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -101,7 +101,19 @@ for c in str:
 
 Just like with strings in javaScript, and a number of other langues I am sure, there are are number of built in methods that can be called off of an instance of a string. Many of the ushual suspects are there such as a split method that can be used to create a list of strings from a string. So then in this section I will be going over a few key methods such as split, fine, count, lower, and so forth.
 
-### 2.1 - The count method
+### 2.1 - The split method
+
+The split string method can be used to create a list iof strings from a string with a seperator. There is however one major drawback with this method though which is that I can not give an empty string as a seperator.
+
+```python
+str = '0,1,2,3,4,5'
+l = str.split(',')
+ 
+print(type(l).__name__) # list
+print(l[3]) # 3
+```
+
+### 2.2 - The count method
 
 There is a count method that will return the number of times that a sub string happens in the given string that the method is called off of.
 
