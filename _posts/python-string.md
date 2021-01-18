@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 15:09:00
-version: 1.7
+updated: 2021-01-18 15:13:02
+version: 1.8
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -29,11 +29,14 @@ print( str )                 # 'hello world'
 
 ### 1.2 - A string can be the result of an expression
 
-On top of just being a simple string literal, a string can also be the result of an expression.
+On top of just being a simple string literal, a string can also be the result of an expression. When doing so it is called for to make sure that any value that is not a string is converted to a string. If I add a value that is a string, to a value that is not a string, I can end up with a type error.
 
 ```python
-str = 'I need about $' + str(3.5)
-print(str) # I need about $3.5
+def iNeedAbout(amount=3.5):
+    return 'I need about $' + str(amount)
+ 
+print(iNeedAbout())     # I need about $3.5
+print(iNeedAbout(6.66)) # I need about $6.66
 ```
 
 ### 1.3 - Converting a string to an integer value
