@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 16:28:11
-version: 1.15
+updated: 2021-01-18 16:38:34
+version: 1.16
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -103,12 +103,27 @@ Just like with strings in javaScript, and a number of other langues I am sure, t
 
 ### 2.1 - The split method
 
-The split string method can be used to create a list iof strings from a string with a seperator. There is however one major drawback with this method though which is that I can not give an empty string as a seperator.
+The split string method can be used to create a list iof strings from a string with a seperator. There is however one major drawback with this method though which is that I can not give an empty string as a seperator. So then the split method will fall short if I want to split a sing into a list of chars. However one work around would be to pass the string value to the list built in function.
 
 ```python
 str = '0,1,2,3,4,5'
 l = str.split(',')
  
+print(type(l).__name__) # list
+print(l[3]) # 3
+ 
+str = '012345'
+# I can not give and empty string as a sep
+# doing so will result in an error
+try:
+    l = str.split('')
+except ValueError:
+    print('ValueError')
+ 
+# however there are a number of other ways to
+# get that kind of list such as passing the string value
+# to the list built in function
+l = list(str);
 print(type(l).__name__) # list
 print(l[3]) # 3
 ```
