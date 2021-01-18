@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 15:16:32
-version: 1.9
+updated: 2021-01-18 15:20:38
+version: 1.10
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -84,5 +84,8 @@ print(c)
 ```
 
 ## 2 - Conclusion
+
+
+So far I have to say that learning python has been going pretty fast for me at least. However that might largly be becuase I have many years of experence working with javaScript, so much of this is just a quistion of how do I do x in python rather than javaScript. I am glad that I took the time to start learbning another language, doing so has resulted in me having more appreasheation for things that are more or less the same accross lanagues. There are some differences between python and javaScript when it comes to strings, but there is only so much, so this was a bit of a brease.
 
 Well that is it for now when it comes to strings in python. I am still fairly new with python myself as of this wrting so at some point in the future I will have to come back and edit this post as I start to pick pick up more when it comes to strings and python in general actually.
