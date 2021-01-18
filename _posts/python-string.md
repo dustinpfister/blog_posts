@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 15:13:02
-version: 1.8
+updated: 2021-01-18 15:16:32
+version: 1.9
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -56,6 +56,32 @@ print( n )                  # 42
 ```
 
 There are other built in functions such as the float function, but the basic idea is more or less the same. In any case to convert a string value to another value it will just require passing the string value to the approprate built in function, or whatever method or function there is to prefrom the type conversion.
+
+### 1.4 - Concat strings
+
+Concating strings can work more or less the same way as I am used to coming from a javaScript background. However I will want to make sure that all the values are converted to strings when just adding them togetaher first. Python will not do type conversion for me like in javaScript, not a big deal I just need to always use the str built in function for any and all values that might not be a string in most cases thus far.
+
+```python
+# if two strings I can just add
+a = 'hello'
+b = 'world'
+c = a + ' ' + b
+print(c) # hello world
+ 
+# if one value is not a string
+# it must be turned into a string first
+a = 42
+b = 'foo'
+try:
+    c = a + ' ' + b
+except TypeError:
+    print('TypeError')
+# TypeError
+ 
+c = str(a) + ' ' + b
+print(c)
+# 42 foo
+```
 
 ## 2 - Conclusion
 
