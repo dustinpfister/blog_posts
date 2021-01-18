@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 16:08:50
-version: 1.12
+updated: 2021-01-18 16:20:06
+version: 1.13
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -97,7 +97,19 @@ for c in str:
 
 ```
 
-## 2 - Conclusion
+## 2 - String Methods
+
+Just like with strings in javaScript, and a number of other langues I am sure, there are are number of built in methods that can be called off of an instance of a string. Many of the ushual suspects are there such as a split method that can be used to create a list of strings from a string. So then in this section I will be going over a few key methods such as split, fine, count, lower, and so forth.
+
+### 2.1 - The count method
+
+```python
+str='This is a sample text that contains text and also is text'
+ 
+print(str.count('text')) # 3
+```
+
+## 3 - Conclusion
 
 
 So far I have to say that learning python has been going pretty fast for me at least. However that might largly be becuase I have many years of experence working with javaScript, so much of this is just a quistion of how do I do x in python rather than javaScript. I am glad that I took the time to start learbning another language, doing so has resulted in me having more appreasheation for things that are more or less the same accross lanagues. There are some differences between python and javaScript when it comes to strings, but there is only so much, so this was a bit of a brease.
