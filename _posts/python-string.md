@@ -5,11 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 15:26:49
-version: 1.11
+updated: 2021-01-18 16:08:50
+version: 1.12
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
+
+On top of the very basics of strings, there are also a number of [string methods with the data type](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str). So it would be a good idea to go over some of these methods that there are to work with when it comes to strings, such as uppercase, cont, find and so forth.
 
 <!-- more -->
 
