@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 14:54:52
-version: 1.4
+updated: 2021-01-18 14:57:12
+version: 1.5
 ---
 
 One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -26,3 +26,7 @@ str='hello world'
 print( type(str).__name__ ); # 'str'
 print( str )                 # 'hello world'
 ```
+
+## 2 - Conclusion
+
+Well that is it for now when it comes to strings in python. I am still fairly new with python myself as of this wrting so at some point in the future I will have to come back and edit this post as I start to pick pick up more when it comes to strings and python in general actually.
