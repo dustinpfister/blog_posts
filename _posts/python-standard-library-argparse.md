@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 13:29:44
-version: 1.4
+updated: 2021-01-19 15:08:40
+version: 1.5
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -47,6 +47,8 @@ else:
 The add argument method of a parser instance is a key part of the process of defineing what the named argumnets for a script should be. At a bare minamume I should at least set a name for an argumnet. However there are a number of other paramaterts for this method that are worth getting into detail with. So in this section I will be quikcly going over some of the parameters of the method that I should be awaer of when using it to define the name options for a script.
 
 ### 2.1 - The name argumnet
+
+The first argument that is given when calling the add argument method of a parser instance will be that is used in the command line to set the argument. The value will also be used for a default value for a destanation of the argument object if another value is not given with the dest property. More than one positional argument can be given when setting a name for the argument.
 
 ```python
 import argparse
