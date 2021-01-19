@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 13:18:27
-version: 1.1
+updated: 2021-01-19 13:22:37
+version: 1.2
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -15,7 +15,7 @@ WHen it comes to option parsers in some programing lanagues I have to look for a
 
 <!-- more -->
 
-## Basic getting started example of argparse
+## 1 - Basic getting started example of argparse
 
 The basic flow of argparse is to like always import the librray first. The next step is to create a new instance of the parser by calling the Argument Parser method of the argparse library. Once I have an instance of a parser I can then start adding some argumnets for the parser by calling the add argument method of a parser insatnce. When doing so there are a number of parameterts for the add argumnet method that I will be getting into greater detail later in this post. Once I have one or more arguments for the parser instance I can the call the parse args method of the parser instance, and the returned value of that will be an argumnets object that I can then use in the reast of the code of my script.
 
@@ -41,3 +41,12 @@ if(args.mode):
 else:
     print('bar mode')
 ```
+
+## 2 - 
+
+## 3 -
+
+## 4 - Conclusion
+
+This standard librray is a great part of the collection of built in python librrays. In many othre lanagues I have to waste time hunting down a decent option parser, or waste a great deal of time comming up with my own solution for doing so. However with python therer is a great solution for this built into python itself, along with a whole bunch of other fery usfule built in librraies. So far I have not found much or a reason to even start looking into user space packages actually becuase there is just so much to work with when it comes to built in libraries.
+
