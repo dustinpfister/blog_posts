@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-19 11:14:13
-version: 1.10
+updated: 2021-01-19 11:20:22
+version: 1.11
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little differeent from what I am used to in a javaScript enviornment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I canaccess an error object that will contained detailed information about the error that happended.
@@ -47,6 +47,20 @@ try:
     a = d['bar']
 except KeyError:
     print('KeyError')
+```
+
+### 2.2 - AttributeError
+
+When working with a dictioney value for the first time things might not work they way one might exspect coming from other programing lanagues. When setting key values for a dictionary these key values are not to be confusted with attrabutes. If I set a key value and attempt to get at it by way of an attrabute rather than key value then I will end up with an attribute error.
+
+```python
+d = {'foo': 42}
+try:
+    a = d.bar
+except AttributeError:
+    print('AttributeError')
+# output:
+# AttributeError
 ```
 
 ## 3 - div by zero example
