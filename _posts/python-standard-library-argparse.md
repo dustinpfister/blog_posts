@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 15:08:40
-version: 1.5
+updated: 2021-01-19 15:15:37
+version: 1.6
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -63,7 +63,11 @@ args = parser.parse_args()
 print(args.foo);
 ```
 
-### 2.2 - 
+### 2.2 - The action parameter
+
+There are a number of additional parameters for the add argument method that are worth mentioning beyond just setting the name of the option. The action parameter is one such parameter that is worth mentioning, this is what can be used to define several types of actions when it comes to how options should be treated. What I mean by that is that there are options where it just sets a boolen value from false to true, or the other way around, and then there are options that can be used to set some kind of value. The action parameter is how to go about setting what kind of option it is when it comes to these things.
+
+The default action is store, so there is not much need to bother setting that kind iof action, unless for some reason I want to make sure that it is clear that is the kind of action it should be. This kind of action will just store any given value after the option is used as a value for the property in the args object.
 
 ```python
 import argparse
@@ -87,6 +91,8 @@ args = parser.parse_args()
 print(args.foo);
 print(args.bar);
 ```
+
+There are a number of other actions other that the default sore action, I will be getting to those later in this post.
 
 ## 3 - Actions in detail
 
