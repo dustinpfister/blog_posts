@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 15:19:52
-version: 1.7
+updated: 2021-01-19 15:22:28
+version: 1.8
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -98,7 +98,9 @@ There are a number of other actions other that the default sore action, I will b
 
 Now that I have a basic example out of the way, and I went over the various parameters for the add argumnet method, I think I should take a moment to get into actions a little deeper. In many of the examples thus far I have just been using the default action which is a store action. However there are a number of other options when it comes to actions. There are two boolean actions, one for setting up an argumnet that will be set to true when used, and the other as you might have goesed is to set something false. There are afew other options that might be a good choice over the default store action in some cases, so lets take a look at the options are when it comes to actions.
 
-### 3.2 - Store Ture and False actions for simple boolean options
+### 3.2 - Store Ture and False values for simple boolean options with store_true, and store_false actions
+
+The kind of option that is just a flag that sets a boolean value to true is pretty typically when working out a script for something. Setting the action to store\_true will set up and option that will be true when the flag is given in the command line.
 
 ```python
 import argparse
