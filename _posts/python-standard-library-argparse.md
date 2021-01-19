@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 15:22:28
-version: 1.8
+updated: 2021-01-19 15:26:31
+version: 1.9
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -127,6 +127,8 @@ else:
 ```
 
 ### 3.3 - Store const
+
+So what if I want an option that is like a boolean option, but in place of a true or flase value there is a number value, or some other constant value that will be used with some code. In other words say I want a value that is a scale value that can be set to 360 with a degree flag, or left to a default value that is 6.28. For these kinds of options there is the store\_const action that can be used to set a const value when the flag is set. The default parameter can be used to set a default value for this in the event that the flag is not given.
 
 ```python
 import argparse
