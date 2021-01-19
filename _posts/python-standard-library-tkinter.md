@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 782
-updated: 2021-01-15 16:39:58
-version: 1.11
+updated: 2021-01-19 16:14:09
+version: 1.12
 ---
 
 In python there is the [tkinter standard library](https://docs.python.org/3.7/library/tkinter.html) that is an official interface for the [TK GUI tool kit](https://en.wikipedia.org/wiki/Tk_%28software%29). This library can then be used as a way to create graphical front ends for python projects. The library works by providing a number of widgets that can be used to create various components in a window such as buttons, menus, a canvas, and text. With these widgets it is possible to make a basic yet functional graphical user interface for a python project.
@@ -76,6 +76,27 @@ can.pack()
 root.mainloop() 
 ```
 
-## 3 - Conclusion
+## 3 - The text widget
+
+One idea that I have in mind for a real python project is to make a half way decent text editor. That is the strange thing about text editors, I can never seem to find one that has all the features that I want. If I do take the time to make my own text editor, and do so with python, that I will want to use the text widget of this library for the text area. Making a real text editor wil take some time, but a basic example of the text widgen should not eat up to much time.
+
+```python
+import tkinter as tk
+root = tk.Tk()
+root.minsize(640, 480)
+ 
+# create a text widget
+text = tk.Text(root, width=60, height=25)
+ 
+# insert some start text
+text.insert(2.0, 'hello world\n')
+text.insert(1.0, '1234\n')
+text.insert(2.6, 'cruel ')
+ 
+text.pack() 
+root.mainloop() 
+```
+
+## 4 - Conclusion
 
 This is if for now when it comes to tkinter, I will need to get some more time to work on a project or two with python where I will want a GUI for the project. When doing so this is the librray that I am going to want to use for sure.
