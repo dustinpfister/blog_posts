@@ -5,12 +5,39 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 13:12:53
-version: 1.0
+updated: 2021-01-19 13:18:27
+version: 1.1
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
 
-WHen it comes to option parsers in some programing lanagues I have to look for a user space option, or even go so far as to create and maintain my own options parser. This is, or at least as of this writing was the case when it comes to nodejs, as such I would go with a user space npm package for option parsing such as commander, or yargs. However one nice thing about writing scripts with python is that there is a great built in option parser called argparse.
+WHen it comes to option parsers in some programing lanagues I have to look for a user space option, or even go so far as to create and maintain my own options parser. This is, or at least as of this writing was the case when it comes to nodejs, as such I would go with a user space npm package for option parsing such as commander, or yargs. However one nice thing about writing scripts with python is that there is a great built in option parser called [argparse](https://docs.python.org/3.7/library/argparse.html#argparse.ArgumentParser.add_argument).
 
 <!-- more -->
+
+## Basic getting started example of argparse
+
+The basic flow of argparse is to like always import the librray first. The next step is to create a new instance of the parser by calling the Argument Parser method of the argparse library. Once I have an instance of a parser I can then start adding some argumnets for the parser by calling the add argument method of a parser insatnce. When doing so there are a number of parameterts for the add argumnet method that I will be getting into greater detail later in this post. Once I have one or more arguments for the parser instance I can the call the parse args method of the parser instance, and the returned value of that will be an argumnets object that I can then use in the reast of the code of my script.
+
+```python
+import argparse
+ 
+# create a parser
+parser = argparse.ArgumentParser(description='Basic argparse example.')
+ 
+# have at least one argument
+parser.add_argument('--foo',
+                    dest='mode',
+                    action='store_true',
+                    default=False,
+                    help='set foo mode true (default: False)')
+
+# parse the arguments
+args = parser.parse_args()
+ 
+# use the arguments
+if(args.mode):
+    print('FOO MODE!')
+else:
+    print('bar mode')
+```
