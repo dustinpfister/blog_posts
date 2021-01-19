@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-19 09:45:45
-version: 1.8
+updated: 2021-01-19 11:11:47
+version: 1.9
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little differeent from what I am used to in a javaScript enviornment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I canaccess an error object that will contained detailed information about the error that happended.
@@ -33,7 +33,21 @@ except TypeError:
 # That is a type Error
 ```
 
-## 2 - div by zero example
+## 2 - Types of exceptions
+
+There are a great number of built in types of exceptions, for a full list it might be best to check out the [official python doc on built in exceptions](https://docs.python.org/3.7/library/exceptions.html#Exception). However that doc might not do the best job when it comes to showing a few examples of the various types of exceptions. In this section I will be going over a few examples of some of the types of exceptions that I have run into so far when it comes to working out simple python code examples.
+
+### 2.1 - KeyError
+
+```python
+d = {'foo': 42}
+try:
+    a = d['bar']
+except KeyError:
+    print('KeyError')
+```
+
+## 3 - div by zero example
 
 So how about a basic division by zero example, say I have a function that takes to arguments and uses those values in a division operation. When doing so it is possible to pass a value of zero for the denomanator which will result in a zero division error. When some functions it will be nessecry to define a custom value that will be returned when this kind of error happens.
 
@@ -51,7 +65,7 @@ print( div(5, 0) )         # 0.0
 print( div('foo', None) )  # 0.0
 ```
 
-## 3 - javaScript style adding example
+## 4 - javaScript style adding example
 
 In python if I just add a string of a number to a number value such as an int, then such an action will return in a TypeError. I come from a javaScript background, and in that lanagaue such expressions work without such an error. I can not say that I miss that when it comes to working out exporessions in python. Also come to think of it often I do make sure that I am doing type conversion in javaScript and not depeding on javaScript to always do that for me.
 
@@ -80,6 +94,6 @@ print( jsAdd(5, 7) )      # 12
 print( jsAdd('foo', 800) )  # 'foo800'
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 This is an imporant step when it comes to learning all the basics of a lanague that I intend to use to start creating and using some real projects with. There are all kinds of things that can go wrong when it comes to using an applaction and being able to work out additional code to help handle those kinds of situations is helpful for making a robust project.
