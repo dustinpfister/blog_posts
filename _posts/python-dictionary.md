@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 772
-updated: 2020-12-31 15:45:13
-version: 1.21
+updated: 2021-01-19 16:45:30
+version: 1.22
 ---
 
 In an effort to continue learning the basic of python it was only a matter of time until I got around to writing a post on [dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict) as a data type option to work with. In python a dictionary is one of several built in data types on top of other options like integers, strings and lists, so they are there to work with right away with the python language itself. 
@@ -246,4 +246,4 @@ print(d.get(1)) # one
 
 ## 5 - Conclusion
 
-That is it for now when it comes to dictionary values in python. I would write more about them, but I am still fairly new to python myself, so maybe I should log some more hours coding examples before getting into expanding this post. Still I think that I have made a good start with the dictionary values in python, there might be a bot more to work out, but for now I think I should move on to other topics, and sooner or later start a realject of some kind with python.
+That is it for now when it comes to dictionary values in python. I would write more about them, but I am still fairly new to python myself, so maybe I should log some more hours coding examples before getting into expanding this post. Still I think that I have made a good start with the dictionary values in python, there might be a bot more to work out, but for now I think I should move on to other topics, and sooner or later start a real project of some kind with python.
