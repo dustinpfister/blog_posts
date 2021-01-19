@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 780
-updated: 2021-01-19 15:52:32
-version: 1.12
+updated: 2021-01-19 15:59:24
+version: 1.13
 ---
 
 When learning a new programing enviorment one thing that I like to learn how to do is how to go about launching another script, or command complatly in the operating system if I can do so. In just about any lanague where I am wrtiting a script, or source code that will be compiled into a binary that will be called in the command line, there should be a way to call any and all other commands.
@@ -110,3 +110,7 @@ else:
 ## 3 - Conclusion
 
 The subprocess librrays is then one of the first go to librrays when it comes to running an external command in a python enviorment. There are some other options, but I am not sure if I should even mention them here. From what I have gathered this is the library that should be used first and formost.
+
+It should go without saying that I should always take into account the types of operating systems that I will want my python code to run on. I often use a Linux system of one kind or another, and with that kind of os there are a number of commands that are likley always going to be there accross diferent distros. However there are other linux commands that I can not exespect to be there to work with, and also when it comes to running python code on macOS and of course windows there might be compleatly different commands to work with.
+
+If I get some more time I would like to expand this post with additional code examples, but as of this wrtiting I am still somewhat new to programing with python. At some point I hope to start a few real examples, and then I am sure I will have some more to write about when it comes to using the subprocess standard librray.
