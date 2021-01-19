@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 15:26:31
-version: 1.9
+updated: 2021-01-19 15:38:17
+version: 1.10
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -93,6 +93,22 @@ print(args.bar);
 ```
 
 There are a number of other actions other that the default sore action, I will be getting to those later in this post.
+
+### 2.3 - Have two or more arguments for an option
+
+The nargs parameter of add argumnets is what I will want to use if for example I want to set two or more values for an option. What I mean by this is that when using an option there is often an option that does not take any values, it just sets a boolean true or false, there is also the kind of option that takes just one value, but the nargs parameter can be used to set a number of arguments for an option.
+
+For example say I want to have an add option that will take two number values after the option.
+
+```python
+import argparse
+parser = argparse.ArgumentParser()
+ 
+parser.add_argument('--add', nargs=2)
+ 
+args = parser.parse_args()
+print(args.add);
+```
 
 ## 3 - Actions in detail
 
