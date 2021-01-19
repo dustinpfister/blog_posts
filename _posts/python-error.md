@@ -5,13 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-14 14:37:13
-version: 1.6
+updated: 2021-01-19 09:41:36
+version: 1.7
 ---
 
-One of the basic things that I still need to read up on a bit more with python is how to handle Errors. The process of doing so is a little differeent from what I am used to in a javaScript enviorment. However it would seem that it is only so different, just like with javaScript there is a kind of try catch statement. There are also ways of throwing a user defines exception of course, so everything that I am used to doing with errors in javaScript can more or less be done in python also.
+One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little differeent from what I am used to in a javaScript enviornment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I canaccess an error object that will contained detailed information about the error that happended.
 
-So in this post I will be going over the very basics of errors inclduing ways to go about causing them, how to handle them, and how to throw, or raise them if you prefer. After the basics I think it might be a good idea to work out a few quikc use case examples as to how Error handing is useful when making certian kinds of functions, and projects. This is an imporant part of knowing how to programe with python, and any lanague for that matter actually so lets take a quick look at some examples of Errors in python.
+Just like with javaScript there is a kind of try catch statement in python, however it might be better to call it a try except statement. The try except statement is a little diferent, but it is more or less the same thing. I can place some code in the ty block, and of something goes wrong code in the except block will fire.
+
+There is maybe a bot more to error handing then just understanding some basic examples of a try block, so in this post I will be going over everything that has come up so far when it comes to errors in python. This will include ways to go about causing them, how to handle them, and how to throw user defined errors, any any other little related things that might pop up in the process. After the basics I think it might be a good idea to work out a few quick use case examples that make use of Error handing when making certian kinds of functions, and basic projects. This is an imporant part of knowing how to programe with python, and any lanague for that matter actually so lets take a quick look at some examples of Errors in python.
 
 <!-- more -->
 
