@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-19 11:11:47
-version: 1.9
+updated: 2021-01-19 11:14:13
+version: 1.10
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little differeent from what I am used to in a javaScript enviornment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I canaccess an error object that will contained detailed information about the error that happended.
@@ -38,6 +38,8 @@ except TypeError:
 There are a great number of built in types of exceptions, for a full list it might be best to check out the [official python doc on built in exceptions](https://docs.python.org/3.7/library/exceptions.html#Exception). However that doc might not do the best job when it comes to showing a few examples of the various types of exceptions. In this section I will be going over a few examples of some of the types of exceptions that I have run into so far when it comes to working out simple python code examples.
 
 ### 2.1 - KeyError
+
+When it comes to working with dictionary values it is possible to end up with a Key Error when trying to get a key that is not in the dictionary value. When working with a dictionaty value in python a key value should not be confused with an attrabute, those are two differnt things when it comes to this kind of data structore value.
 
 ```python
 d = {'foo': 42}
