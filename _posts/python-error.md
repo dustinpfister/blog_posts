@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-19 09:41:36
-version: 1.7
+updated: 2021-01-19 09:45:45
+version: 1.8
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little differeent from what I am used to in a javaScript enviornment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I canaccess an error object that will contained detailed information about the error that happended.
@@ -35,7 +35,7 @@ except TypeError:
 
 ## 2 - div by zero example
 
-So how about a basic division by zero example.
+So how about a basic division by zero example, say I have a function that takes to arguments and uses those values in a division operation. When doing so it is possible to pass a value of zero for the denomanator which will result in a zero division error. When some functions it will be nessecry to define a custom value that will be returned when this kind of error happens.
 
 ```python
 def div(n=1, d=1):
