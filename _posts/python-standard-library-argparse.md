@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-19 13:26:51
-version: 1.3
+updated: 2021-01-19 13:29:44
+version: 1.4
 ---
 
 When learning a new langauge that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional argumnets that might have been given when the script was called. If I do just want to check positional argumnets then there is just using the sys librarys argv property to do so. However therer should be a way to parse named argumnets with a built in libraray or therer should at least be a decent user space options when it comes to parsing named options.
@@ -61,7 +61,84 @@ args = parser.parse_args()
 print(args.foo);
 ```
 
-## 3 -
+### 2.2 - 
+
+```python
+import argparse
+ 
+parser = argparse.ArgumentParser()
+ 
+# default action is 'store' whioch will just store any given value for
+# the argument. If no default is set then the default value for the
+# argument will be None. The default dist for the argument will be the name
+# of the argument
+ 
+parser.add_argument('--foo')
+ 
+# here is anoher argument, with values set to what the defaults are
+parser.add_argument('--bar',
+                    action='store',
+                    default=None,
+                    dest='bar')
+ 
+args = parser.parse_args()
+print(args.foo);
+print(args.bar);
+```
+
+## 3 - Actions in detail
+
+### 3.2 - Store Ture and False actions for simple boolean options
+
+```python
+import argparse
+ 
+# create a parser
+parser = argparse.ArgumentParser(description='Basic argparse boolean example.')
+ 
+# a bool argument can be created by using the 'store_true', or 'store_false' value for
+# the action argument of the add_argument method. If for example the 'store_true' action
+# is used, then it would make sense to set the default argument to False
+parser.add_argument('--foo',
+                    dest='foomode',
+                    action='store_true',
+                    default=False,
+                    help='set foomode true (default: False)')
+ 
+# parse the arguments
+args = parser.parse_args()
+# use the arguments
+if(args.foomode):
+    print('FOO MODE!')
+else:
+    print('bar mode')
+```
+
+### 3.3 - Store const
+
+```python
+import argparse
+ 
+parser = argparse.ArgumentParser(description='Basic argparse boolean example.')
+ 
+# sore_const action
+parser.add_argument('--degree', '-d',
+                    action='store_const',
+                    dest='scale',
+                    const=360.00,
+                    default=6.28,
+                    help='set scale to 360')
+ 
+parser.add_argument('--angle', '-a',
+                    dest='angle',
+                    action='store',
+                    default=0,
+                    help='an angle value')
+ 
+args = parser.parse_args()
+per = float(args.angle) / args.scale;
+print('per=' + str(per), 'scale=' + str(args.scale), 'angle=' + str(args.angle))
+```
 
 ## 4 - Conclusion
 
