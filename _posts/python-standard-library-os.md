@@ -5,13 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-06 16:17:29
-version: 1.19
+updated: 2021-01-20 14:04:21
+version: 1.20
 ---
 
-The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are afew other librarys that come to mind that can also be used as a way to make use of opearting system depedant features. For example the subprocess librray can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
+The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are a few other libraries that come to mind that can also be used as a way to make use of operating system dependent features. For example the subprocess library can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
 
-On top of basic functions and properties to find out what kind of opearting system python is running on there are also a number of functions and methods that have to do with paths, and basic file io. The file io features are not a replacement for the open built in function which is what I would be more interested in using for most basic examples and projects anway. If for some reason I want or need to do file io by way of getting a file descriptor first, and then passing that file descriptor to a function to open a file object, and more with file io in a more profesional way, then the file io methods in the os librray can be used to do that kind of file io.
+On top of basic functions and properties to find out what kind of operating system python is running on there are also a number of functions and methods that have to do with paths, and basic file io. The file io features are not a replacement for the open built in function which is what I would be more interested in using for most basic examples and projects anyway. If for some reason I want or need to do file io by way of getting a file descriptor first, and then passing that file descriptor to a function to open a file object, and more with file io in a more professional way, then the file io methods in the os library can be used to do that kind of file io.
 
 <!-- more -->
 
