@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 761
-updated: 2020-12-21 16:07:27
-version: 1.24
+updated: 2021-01-20 13:51:59
+version: 1.25
 ---
 
 I like javaScript a lot, but I think that I am long overdue for learning at least one or two additional languages beyond just that of javaScript. I have started a collection of posts on bash scripts which I think can be thought of as another kind of language, although bash is only good for a very specific style of programing that has to do with automating work in a POSIX system such as Linux. Speaking of Linux I also wrote a post on gcc, and in that post I put together a few simple C language examples as I think that doing so is called for if I am going to write a post on gcc.
@@ -146,9 +146,9 @@ In javaScript there is just one data type for numbers, however in python there i
 
 ### 2.3 - Global variables
 
-While I am writing about variables I think I should take a moment to work out the basic when it comes to working with global variables in python. I know that functional programing is all the rage, and I do tend to underestand and like the key reasons why that is. However I am sure that there might be a moment now and then where I will want to work with a variable that might be outside the scope of a function.
+While I am writing about variables I think I should take a moment to work out the basic when it comes to working with global variables in python. I know that functional programing is all the rage, and I do tend to understand and like the key reasons why that is. However I am sure that there might be a moment now and then where I will want to work with a variable that might be outside the scope of a function.
 
-If I want to just get the value of a global varible then I can just do that without any problem. That is assuming that there is not a local variable in the function with the same name anyway, in that case I would end up getting the value of the local variable.
+If I want to just get the value of a global variable then I can just do that without any problem. That is assuming that there is not a local variable in the function with the same name anyway, in that case I would end up getting the value of the local variable.
 
 ```python
 x = 40
@@ -168,7 +168,7 @@ def func():
 func() # 42
 ```
 
-Looks like I have covered the basics of gloabl variables in python, and also managed to provide a basic function example while I am at it, more on functions later in this post.
+Looks like I have covered the basics of global variables in python, and also managed to provide a basic function example while I am at it, more on functions later in this post.
 
 
 ### 2.4 - Like javaScript it would seem that Python is a typeless language
@@ -209,11 +209,11 @@ work like a multi-line comment
 
 ## 4 - Functions
 
-If I find myself repating the same block of code over and over again, I might want to take that block of code and pull it into a function, then each time I need to repeat the block of code I can just call the function each time. In this section I will be going over a few quick examples of fucntions in python without getting to deep into evey little detail about them, this is a getting started post on python anyway.
+If I find myself repeating the same block of code over and over again, I might want to take that block of code and pull it into a function, then each time I need to repeat the block of code I can just call the function each time. In this section I will be going over a few quick examples of functions in python without getting to deep into every little detail about them, this is a getting started post on python anyway.
 
 ### 4.1 - Basic function example
 
-So lets start out with a very basic example of a function in python. To create a function I first start out with the def keyworld followed by a name for the function. I then need an opening and closing set of parenteseses, and then I just need to end the line with a colon. After that line I just need to indent for each line aftyer that to define what the block of code for the function is.
+So lets start out with a very basic example of a function in python. To create a function I first start out with the def keyword followed by a name for the function. I then need an opening and closing set of parentheses, and then I just need to end the line with a colon. After that line I just need to indent for each line after that to define what the block of code for the function is.
 
 ```python
 def foo():
@@ -226,7 +226,7 @@ In this example I am also using the retrun keyword to define a retur value for t
 
 ### 4.2 - Parameters for functions
 
-It is possible to define a number of parameters for a function to do so I just need to place each name of a parameter in the set of paremnetetes for the function. I can then use those local parameterst in the logic of the function.
+It is possible to define a number of parameters for a function to do so I just need to place each name of a parameter in the set of parameters for the function. I can then use those local parameters in the logic of the function.
 
 ```python
 def add(a, b):
@@ -235,9 +235,9 @@ def add(a, b):
 print( add(1,1) ) # 2
 ```
 
-### 4.3 - Default Argumnets for function parameters
+### 4.3 - Default Arguments for function parameters
 
-One great thing about functions in python is that it is real easy to set some default argumnets for parameters. Just use the equal sign to assign default values for each parameter in the set of pareneteses.
+One great thing about functions in python is that it is real easy to set some default arguments for parameters. Just use the equal sign to assign default values for each parameter in the set of parentheses.
 
 ```python
 def per(a=90, scale=360):
@@ -250,15 +250,15 @@ print( per(1.57, 6.28) ) # 0.25
 
 ## 5 - Built in functions that are there without a module
 
-So I can write my own functions from scratch, and also it is possible to load in additional functions when it comes to startiong to look into the wide range of librarys there are to work with when it comes to python. However before I get into modules maybe I should mention that in python there are a number of built in functions. These are functions that are built into python itself and they can be used to prefrom a wide range of typical common programing tasks. In this section I will be quickly going over some of the most important ones that I think one should know about right away.
+So I can write my own functions from scratch, and also it is possible to load in additional functions when it comes to starting to look into the wide range of libraries there are to work with when it comes to python. However before I get into modules maybe I should mention that in python there are a number of built in functions. These are functions that are built into python itself and they can be used to preform a wide range of typical common programing tasks. In this section I will be quickly going over some of the most important ones that I think one should know about right away.
 
 ### 5.1 - The print built in function
 
-I have covered the print built in function right at the begining of this post. It is ture after all that I need to at least make use of this built in function in order to write a python hello world programe. Howveer in this section I think I should take a moment to write about all of the features of the print built in function.
+I have covered the print built in function right at the beginning of this post. It is true after all that I need to at least make use of this built in function in order to write a python hello world program. However in this section I think I should take a moment to write about all of the features of the print built in function.
 
-When the print function is called the first argument that I given it is the value that I want to print to the standard output iof the console. I can als however give additional values to print in a single call of the function by just sepearting the values of a comma. However I can also set a sepeater value that is a string value to place between each value that I give when calling print.
+When the print function is called the first argument that I given it is the value that I want to print to the standard output of the console. I can also however give additional values to print in a single call of the function by just separating the values of a comma. However I can also set a separator value that is a string value to place between each value that I give when calling print.
 
-Also by default the print funciton will appedn a line feed char to the output each time I call it. If for some reason I do not want the print functon do do that I can set a value for end that is the string value that I want the print to end with. I can set it to somethiong other than a line feed, or an empty string if I want it to append nothing.
+Also by default the print function will append a line feed char to the output each time I call it. If for some reason I do not want the print function do do that I can set a value for end that is the string value that I want the print to end with. I can set it to something other than a line feed, or an empty string if I want it to append nothing.
 
 ```python
 print('hello world') # 'hello world'
@@ -270,7 +270,7 @@ for i in nums:
 
 ### 5.2 - The type built in function
 
-One thing that I think is imporant right away when it comes to learning a lanaguye is to know what the deal is when it comes to data types. In python there are a number of data types in the core of python itself, and on top of that many more can be added by way of modules. So it is imporatmt to have a way to find one what kind of data type a certian value is. For this there is the type built in function, and the \_\_name\_\_ property iof a type object.
+One thing that I think is important right away when it comes to learning a language is to know what the deal is when it comes to data types. In python there are a number of data types in the core of python itself, and on top of that many more can be added by way of modules. So it is important to have a way to find one what kind of data type a certain value is. For this there is the type built in function, and the \_\_name\_\_ property of a type object.
 
 ```python
 a = 5
@@ -284,13 +284,13 @@ print( type(c).__name__ ) #list
 
 ## 6 - Control flow
 
-Of course I have to have a section on control flow, how can I have a getting started post on a lanague without control flow? What I mean by control flow is things like if statements, while loops, and for loops. Some might say that functions are also a kind of control flow, but in any case I am not going to go over them again here.
+Of course I have to have a section on control flow, how can I have a getting started post on a language without control flow? What I mean by control flow is things like if statements, while loops, and for loops. Some might say that functions are also a kind of control flow, but in any case I am not going to go over them again here.
 
-The subject of control flow can branch off into all kinds of other topics. For example in order to make use of control flow statements I need to know at least a little about expressions. Luckly many of the basic exmpressions in python are not so hard to udnerstand. So lets quickly look at a few control flow examples in python here in this section.
+The subject of control flow can branch off into all kinds of other topics. For example in order to make use of control flow statements I need to know at least a little about expressions. Luckily many of the basic expressions in python are not so hard to understand. So lets quickly look at a few control flow examples in python here in this section.
 
 ### 6.1 - if statements
 
-An if statement is a way to run a block of code only if a certian expression is true. For example say I have two variables and I want to have some code run only if they equal each other, such a task can be accomplised with an if statement.
+An if statement is a way to run a block of code only if a certain expression is true. For example say I have two variables and I want to have some code run only if they equal each other, such a task can be accomplished with an if statement.
 
 ```python
 x=1
@@ -301,7 +301,7 @@ if x == y:
 
 ### 6.2 - while loops
 
-A while loop is like an if statement, only it will keep runing the block of code over and over again until an expression is not true anu more.
+A while loop is like an if statement, only it will keep running the block of code over and over again until an expression is not true.
 
 ```python
 nums = [1,2,3,4,5]
@@ -315,7 +315,7 @@ while i < len(nums):
 
 ### 6.3 - for loops
 
-A for loop is another kind of loop to work with in pythion that might prove to be a better chocie when looping over the contents of a list.
+A for loop is another kind of loop to work with in python that might prove to be a better choice when looping over the contents of a list.
 
 ```python
 nums = [1,2,3,4,5]
