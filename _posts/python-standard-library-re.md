@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 16:29:44
-version: 1.8
+updated: 2021-01-20 16:34:36
+version: 1.9
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -112,9 +112,23 @@ However this is just a simple example of a pattern, and I am just using the sera
 
 ## 2 - The regular expression library methods
 
+So now that I have the basics of pattern matching out of the way, now it is time to start getting into some not so basic pattern matching with the regular expression library. In this section I will be going over some of the methods to choose from starting with the bext option so far as I see it. I will not be getting into how to go about writing patterns in detail just yet, but I will be using a pattern that will match any sequence of numbers rather than just a fixed substring value like in the basic section.
+
 ### 2.1 - The finditer method to get at everything
 
 So there are a number of methods to choose from, but I think that I will start with the best one first. The re.finditer method is the method in the regular expression standard librray that I would want to use to get all the instances of a match in a string.
+
+```python
+import re
+a = 'I would say that 654 is also like 123 in some ways'
+m = re.finditer('\d+', a);
+for i in m:
+    print(i.group(0), end=',')
+    print(i.start(0), end=',')
+    print(i.end(0))
+# 654,17,20
+# 123,34,37
+```
 
 
 ## 3 - Conclusion
