@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 16:27:06
-version: 1.7
+updated: 2021-01-20 16:29:44
+version: 1.8
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -110,6 +110,13 @@ print(m)
 
 However this is just a simple example of a pattern, and I am just using the serach method. There are many other methiods to work with, including one that will create an object that I can use with a loop, to loop over all instances of a substring, getting the starting and ending index values for each match just like with my function example. On top of that I can use all kinds of pattrens, inclduing ondex that will not just match a single fixed sttatic pattern. So lets take a deeper look at theis regular expression librray to see what can be done with regular expressions in python.
 
-## 2 - Conclusion
+## 2 - The regular expression library methods
+
+### 2.1 - The finditer method to get at everything
+
+So there are a number of methods to choose from, but I think that I will start with the best one first. The re.finditer method is the method in the regular expression standard librray that I would want to use to get all the instances of a match in a string.
+
+
+## 3 - Conclusion
 
 So regular expressions can be used to get at all the index and text values in a string that follow a kind of pattern. There is a whole range of use case examples that come to mind where I would want to use regular edpressions such as creating some kind of script that will act as a parser of some kind of lanague, such as a mark down parser for example.
