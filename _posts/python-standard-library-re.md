@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 16:34:36
-version: 1.9
+updated: 2021-01-20 16:37:29
+version: 1.10
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -116,7 +116,7 @@ So now that I have the basics of pattern matching out of the way, now it is time
 
 ### 2.1 - The finditer method to get at everything
 
-So there are a number of methods to choose from, but I think that I will start with the best one first. The re.finditer method is the method in the regular expression standard librray that I would want to use to get all the instances of a match in a string.
+So there are a number of methods to choose from, but I think that I will start with the best one first. The re.finditer method is the method in the regular expression standard librray that I would want to use to get all the instances of a match in a string. This method will return an iterator object to which I can then use in a for loop. Inside the body of the for loop I can then get ann the starting and ending index values along with the value of each match in the string that fits the pattern.
 
 ```python
 import re
