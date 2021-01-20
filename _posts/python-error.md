@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-19 16:45:30
-version: 1.15
+updated: 2021-01-20 11:45:42
+version: 1.16
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little different from what I am used to in a javaScript environment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I can access an error object that will contained detailed information about the error that happened.
@@ -20,7 +20,7 @@ There is maybe a bot more to error handing then just understanding some basic ex
 
 ## 1 - Basic Error handing example with the try statement
 
-To handle errors in python I just need to use the try statement. This works more or less the same way as what I am used to with the try ctach statement in javaScript, just with a slighlty different syntax as one should exspect of course. Just start off with try, and then in the following block do whatever the code might be that can potentialy cause an error. After they try block I can then have one or more except blocks that I can use to define additional code to run in the event that an error happend
+To handle errors in python I just need to use the try statement. This works more or less the same way as what I am used to with the try catch statement in javaScript, just with a slightly different syntax as one should expect of course. Just start off with try, and then in the following block do whatever the code might be that can potentially cause an error. After they try block I can then have one or more except blocks that I can use to define additional code to run in the event that an error happed.
 
 ```python
 try:
@@ -39,7 +39,7 @@ There are a great number of built in types of exceptions, for a full list it mig
 
 ### 2.1 - KeyError
 
-When it comes to working with dictionary values it is possible to end up with a Key Error when trying to get a key that is not in the dictionary value. When working with a dictionaty value in python a key value should not be confused with an attrabute, those are two differnt things when it comes to this kind of data structore value.
+When it comes to working with dictionary values it is possible to end up with a Key Error when trying to get a key that is not in the dictionary value. When working with a dictionary value in python a key value should not be confused with an attribute, those are two different things when it comes to this kind of data structure value.
 
 ```python
 d = {'foo': 42}
@@ -51,7 +51,7 @@ except KeyError:
 
 ### 2.2 - AttributeError
 
-When working with a dictioney value for the first time things might not work they way one might exspect coming from other programing lanagues. When setting key values for a dictionary these key values are not to be confusted with attrabutes. If I set a key value and attempt to get at it by way of an attrabute rather than key value then I will end up with an attribute error.
+When working with a dictionary value for the first time things might not work they way one might expect coming from other programing languages. When setting key values for a dictionary these key values are not to be confused with attributes which are a little different from keys actually. If I set a key value and attempt to get at it by way of an attribute rather than key value then I will end up with an attribute error.
 
 ```python
 # a key is not the same thing as an attribute
@@ -88,7 +88,7 @@ print( d.get('bar', 0) )
 
 ### 2.3 - Name Error
 
-A Name Error is when I attept to get a global, or local variable that is not there.
+A Name Error is when I attempt to get a global, or local variable that is not there.
 
 ```python
 try:
