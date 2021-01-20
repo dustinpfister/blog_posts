@@ -5,11 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-18 16:38:34
-version: 1.16
+updated: 2021-01-20 14:17:47
+version: 1.17
 ---
 
-One of the many basic data types of a programing lanague is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
+One of the many basic data types of a programing language is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
 
 On top of the very basics of strings, there are also a number of [string methods with the data type](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str). So it would be a good idea to go over some of these methods that there are to work with when it comes to strings, such as uppercase, cont, find and so forth.
 
@@ -17,11 +17,11 @@ On top of the very basics of strings, there are also a number of [string methods
 
 ## 1 - basics of strings in python
 
-Well I ahve to start somewhere when it comes to learning a thing or two about strings in python. In this section I will just be going over a few quick basic examples of strings. There is just creating a string literal value for starters, but then there are other basic things that I should have solid when it comes to learning about strings in a new lanague such as pythion. One thing that comes to mind with this is concatanation of strings, there is also the qusition of how to go about convertuing a string of a number to an actual number data type, and much more just when it comes to the basics. So lets get this part out of the way so i can move on to the good stuff.
+Well I have to start somewhere when it comes to learning a thing or two about strings in python. In this section I will just be going over a few quick basic examples of strings. There is just creating a string literal value for starters, but then there are other basic things that I should have solid when it comes to learning about strings in a new language such as python. One thing that comes to mind with this is concatenation of strings, there is also the question of how to go about converting a string of a number to an actual number data type, and much more just when it comes to the basics. So lets get this part out of the way so i can move on to the good stuff.
 
 ### 1.1 - Basic string literal example
 
-So mayeb one of the first things I should learn when it comes to how to work with strings in a new programing enviorment is to learn how to create just a simple string literal value.
+So maybe one of the first things I should learn when it comes to how to work with strings in a new programing environment is to learn how to create just a simple string literal value.
 
 ```python
 str='hello world'
