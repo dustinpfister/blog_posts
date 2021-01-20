@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 783
-updated: 2021-01-20 14:17:47
-version: 1.17
+updated: 2021-01-20 14:20:59
+version: 1.18
 ---
 
 One of the many basic data types of a programing language is the [string data type](https://en.wikipedia.org/wiki/String_%28computer_science%29), this post will be just a quick overview of [strings in python](https://docs.python.org/3.7/library/string.html). A string can often be considered a sequence of characters, so they are often used as a way to store text values, however they can also often be used to store an array of values like that of a list.
@@ -43,7 +43,7 @@ print(iNeedAbout(6.66)) # I need about $6.66
 
 ### 1.3 - Converting a string to an integer value
 
-In javaScript when I add a string of a number such as 5 to a number such as 7 then the result is the string 57 rather than the number 12. If I want the number 12 rather than the string 57 then I will need to prefrom type conversion. In python if I attempt to just add a string and a number value togeather the result will be a type error. So when working out an expression where I might need to convert a string value of a number to an actual number data type then I have to always do type conversion.
+In javaScript when I add a string of a number such as 5 to a number such as 7 then the result is the string 57 rather than the number 12. If I want the number 12 rather than the string 57 then I will need to preform type conversion. In python if I attempt to just add a string and a number value together the result will be a type error. So when working out an expression where I might need to convert a string value of a number to an actual number data type then I have to always do type conversion.
 
 One way to do type conversion of a string of a number to an actual number data type would be to use the int built in function.
 
@@ -57,11 +57,11 @@ print( type(n).__name__ )   # int
 print( n )                  # 42
 ```
 
-There are other built in functions such as the float function, but the basic idea is more or less the same. In any case to convert a string value to another value it will just require passing the string value to the approprate built in function, or whatever method or function there is to prefrom the type conversion.
+There are other built in functions such as the float function, but the basic idea is more or less the same. In any case to convert a string value to another value it will just require passing the string value to the appropriate built in function, or whatever method or function there is to preform the type conversion.
 
-### 1.4 - Concat strings
+### 1.4 - Concatenate strings
 
-Concating strings can work more or less the same way as I am used to coming from a javaScript background. However I will want to make sure that all the values are converted to strings when just adding them togetaher first. Python will not do type conversion for me like in javaScript, not a big deal I just need to always use the str built in function for any and all values that might not be a string in most cases thus far.
+Concatenating strings can work more or less the same way as I am used to coming from a javaScript background. However I will want to make sure that all the values are converted to strings when just adding them together first. Python will not do type conversion for me like in javaScript, not a big deal I just need to always use the str built in function for any and all values that might not be a string in most cases thus far.
 
 ```python
 # if two strings I can just add
@@ -99,11 +99,11 @@ for c in str:
 
 ## 2 - String Methods
 
-Just like with strings in javaScript, and a number of other langues I am sure, there are are number of built in methods that can be called off of an instance of a string. Many of the ushual suspects are there such as a split method that can be used to create a list of strings from a string. So then in this section I will be going over a few key methods such as split, fine, count, lower, and so forth.
+Just like with strings in javaScript, and a number of other languages I am sure, there are are number of built in methods that can be called off of an instance of a string. Many of the usual suspects are there such as a split method that can be used to create a list of strings from a string. So then in this section I will be going over a few key methods such as split, fine, count, lower, and so forth.
 
 ### 2.1 - The split method
 
-The split string method can be used to create a list iof strings from a string with a seperator. There is however one major drawback with this method though which is that I can not give an empty string as a seperator. So then the split method will fall short if I want to split a sing into a list of chars. However one work around would be to pass the string value to the list built in function.
+The split string method can be used to create a list iof strings from a string with a separator. There is however one major drawback with this method though which is that I can not give an empty string as a separator. So then the split method will fall short if I want to split a sing into a list of chars. However one work around would be to pass the string value to the list built in function.
 
 ```python
 str = '0,1,2,3,4,5'
@@ -141,6 +141,6 @@ print(str.count('text')) # 3
 ## 3 - Conclusion
 
 
-So far I have to say that learning python has been going pretty fast for me at least. However that might largly be becuase I have many years of experence working with javaScript, so much of this is just a quistion of how do I do x in python rather than javaScript. I am glad that I took the time to start learbning another language, doing so has resulted in me having more appreasheation for things that are more or less the same accross lanagues. There are some differences between python and javaScript when it comes to strings, but there is only so much, so this was a bit of a brease.
+So far I have to say that learning python has been going pretty fast for me at least. However that might largely be because I have many years of experience working with javaScript, so much of this is just a question of how do I do x in python rather than javaScript. I am glad that I took the time to start learning another language, doing so has resulted in me having more appreciation for things that are more or less the same across languages. There are some differences between python and javaScript when it comes to strings, but there is only so much, so this was a pretty quick and painless process for me.
 
-Well that is it for now when it comes to strings in python. I am still fairly new with python myself as of this wrting so at some point in the future I will have to come back and edit this post as I start to pick pick up more when it comes to strings and python in general actually.
+Well that is it for now when it comes to strings in python. I am still fairly new with python myself as of this writing so at some point in the future I will have to come back and edit this post as I start to pick pick up more when it comes to strings and python in general actually.
