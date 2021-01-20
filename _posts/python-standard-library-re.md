@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 16:10:25
-version: 1.3
+updated: 2021-01-20 16:13:51
+version: 1.4
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -34,6 +34,8 @@ print( 'abc' in b ) # False
 ```
 
 ### 1.2 - The string index method
+
+There are a number of methods that I can call off of a string instance, one of which is the index method. WHen calling this index method of a string I can pass a substring to look for, and if it is found then the starting index of the substring will be returned. However there seems to be a majot draw back when the substring is not found which is that it will result in a value error.
 
 ```python
 a='so abc is easy as abc'
