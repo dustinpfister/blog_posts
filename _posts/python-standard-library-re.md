@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 16:13:51
-version: 1.4
+updated: 2021-01-20 16:19:21
+version: 1.5
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -53,6 +53,8 @@ except ValueError:
 
 ### 1.3 - A while loop and a function
 
+Yet another options might be to just start working something out in the body of a function and using a while loop to look for a substring. This allows for the potential to not just find out of there is a match or not, but also that start and ending index values.
+
 ```python
 a='so abc is easy as abc'
 b='things are not always so easy'
@@ -79,6 +81,8 @@ print( find_string(a, 'abc') )
 print( find_string(b, 'abc') )
 # []
 ```
+
+I could of course add all kinds of other features in order to make a solution that will work just the way that I want to when it comes to just getting into the thick of this sort of thing. However doing so might be overkill actually, and I might just be wasting time making something that has all ready been worked out before. Why make my own solution for fidning a substring when there is the regular expression librray that will work not just with substrings, but also all kinds of pattrens that will match patterns where there is a degree of variartion. With that said lets look at just one more example of fidning a substring in a string using a regular expression.
 
 ### 1.4 - Use a regular expression with the re standard library
 
