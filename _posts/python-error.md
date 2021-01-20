@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 781
-updated: 2021-01-20 11:45:42
-version: 1.16
+updated: 2021-01-20 13:43:21
+version: 1.17
 ---
 
 One of the basic things that I still need to read up on a bit more with python is how to [handle Errors](https://docs.python.org/3.7/tutorial/errors.html). The process of doing so is a little different from what I am used to in a javaScript environment, but not by much at least when it comes to the try catch statement. With the try catch statement there I can place some code that might cause an error into the body of a try block, and then if something goes wrong, code in an attached catch block will fire. In this catch block I can access an error object that will contained detailed information about the error that happened.
@@ -101,7 +101,7 @@ except NameError:
 
 ### 2.4 - Syntax Error
 
-Another typical error that I run into now and then is when I mess up with some of the actually syntax of python itself. This kind of exception can not be catched with a try except block unless the python code is evalutaed with a call to the eval built in function, or some other such option.
+Another typical error that I run into now and then is when I mess up with some of the actually syntax of python itself. This kind of exception can not be cached with a try except block unless the python code is evaluated with a call to the eval built in function, or some other such option.
 
 ```python
 try:
@@ -114,7 +114,7 @@ except SyntaxError:
 
 ## 3 - div by zero example
 
-So how about a basic division by zero example, say I have a function that takes to arguments and uses those values in a division operation. When doing so it is possible to pass a value of zero for the denomanator which will result in a zero division error. When some functions it will be nessecry to define a custom value that will be returned when this kind of error happens.
+So how about a basic division by zero example, say I have a function that takes to arguments and uses those values in a division operation. When doing so it is possible to pass a value of zero for the denominator which will result in a zero division error. When some functions it will be necessary to define a custom value that will be returned when this kind of error happens.
 
 ```python
 def div(n=1, d=1):
@@ -132,9 +132,9 @@ print( div('foo', None) )  # 0.0
 
 ## 4 - javaScript style adding example
 
-In python if I just add a string of a number to a number value such as an int, then such an action will return in a TypeError. I come from a javaScript background, and in that lanagaue such expressions work without such an error. I can not say that I miss that when it comes to working out exporessions in python. Also come to think of it often I do make sure that I am doing type conversion in javaScript and not depeding on javaScript to always do that for me.
+In python if I just add a string of a number to a number value such as an int, then such an action will return in a TypeError. I come from a javaScript background, and in that language such expressions work without such an error. I can not say that I miss that when it comes to working out expressions in python. Also come to think of it often I do make sure that I am doing type conversion in javaScript and not depending on javaScript to always do that for me.
 
-Still when it comes to working out some quick Error handling examples I think one of many good examples might be to quickly come up with a javaScript style add function. I can bass thr function to values, if both values are numbers then no problem the returned result is just the sum of the two values. However if there is a type error, then I try converting any string values to numbers, if there is then a value error when doing that, then I convert bolth values to strings and return the concatanated string value of the two values.
+Still when it comes to working out some quick Error handling examples I think one of many good examples might be to quickly come up with a javaScript style add function. I can then pass the function to values, if both values are numbers then no problem, the returned result is just the sum of the two values. However if there is a type error, then I try converting any string values to numbers, if there is then a value error when doing that, then I convert both values to strings and return the concatenated string value of the two values.
 
 ```python
 def jsAdd(a=0, b=0):
@@ -161,4 +161,4 @@ print( jsAdd('foo', 800) )  # 'foo800'
 
 ## 5 - Conclusion
 
-This is an imporant step when it comes to learning all the basics of a lanague that I intend to use to start creating and using some real projects with. There are all kinds of things that can go wrong when it comes to using an applaction and being able to work out additional code to help handle those kinds of situations is helpful for making a robust project.
+This is an important step when it comes to learning all the basics of a language that I intend to use to start creating and using some real projects with. There are all kinds of things that can go wrong when it comes to using an application and being able to work out additional code to help handle those kinds of situations is helpful for making a robust project.
