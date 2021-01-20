@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 774
-updated: 2021-01-04 17:56:11
-version: 1.16
+updated: 2021-01-20 14:00:35
+version: 1.17
 ---
 
 Built into python itself is the list data type, and for most situations this seems to work well as an array in python. However it is not like lists are the only option when it comes to arrays, or sequence types in python, another built in feature is arrays. Arrays might not be there to begin with, but they can quickly be added by way of the [array standard library](https://docs.python.org/3/library/array.html). Lists might still work just fine in most situations, however I think I should take a moment to at least touch base on these when it comes to being aware at least of an alternative to lists, and the other sequence types that are built into python itself.
@@ -162,7 +162,7 @@ for x in a:
 
 ## 4 - Multidimensional arrays
 
-It would seem that these kinds of arrays can not be arrays of arrays. However I often make all of my arrays lienear anyway even arrays that I want to make multidimensional.
+It would seem that these kinds of arrays can not be arrays of arrays. However I often make all of my arrays linear anyway even arrays that I want to make multidimensional.
 
 ```python
 import array
