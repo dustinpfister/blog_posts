@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-20 13:54:27
-version: 1.11
+updated: 2021-01-20 13:59:01
+version: 1.12
 ---
 
 When learning a new language that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional arguments that might have been given when the script was called. If I do just want to check positional arguments then there is just using the sys libraries argv property to do so. However there should be a way to parse named arguments with a built in library or there should at least be a decent user space options when it comes to parsing named options.
@@ -17,7 +17,7 @@ WHen it comes to option parsers in some programing languages I have to look for 
 
 ## 1 - Basic getting started example of argparse
 
-The basic flow of argparse is to like always import the librray first. The next step is to create a new instance of the parser by calling the Argument Parser method of the argparse library. Once I have an instance of a parser I can then start adding some argumnets for the parser by calling the add argument method of a parser insatnce. When doing so there are a number of parameterts for the add argumnet method that I will be getting into greater detail later in this post. Once I have one or more arguments for the parser instance I can the call the parse args method of the parser instance, and the returned value of that will be an argumnets object that I can then use in the reast of the code of my script.
+The basic flow of argparse is to like always import the library first. The next step is to create a new instance of the parser by calling the Argument Parser method of the argparse library. Once I have an instance of a parser I can then start adding some arguments for the parser by calling the add argument method of a parser instance. When doing so there are a number of parameters for the add argument method that I will be getting into greater detail later in this post. Once I have one or more arguments for the parser instance I can the call the parse args method of the parser instance, and the returned value of that will be an arguments object that I can then use in the rest of the code of my script.
 
 ```python
 import argparse
@@ -44,11 +44,11 @@ else:
 
 ## 2 - The add argument method in detail
 
-The add argument method of a parser instance is a key part of the process of defineing what the named argumnets for a script should be. At a bare minamume I should at least set a name for an argumnet. However there are a number of other paramaterts for this method that are worth getting into detail with. So in this section I will be quikcly going over some of the parameters of the method that I should be awaer of when using it to define the name options for a script.
+The add argument method of a parser instance is a key part of the process of defining what the named arguments for a script should be. At a bare minimum I should at least set a name for an argument. However there are a number of other parameters for this method that are worth getting into detail with. So in this section I will be quickly going over some of the parameters of the method that I should be aware of when using it to define the name options for a script.
 
 ### 2.1 - The name argumnet
 
-The first argument that is given when calling the add argument method of a parser instance will be that is used in the command line to set the argument. The value will also be used for a default value for a destanation of the argument object if another value is not given with the dest property. More than one positional argument can be given when setting a name for the argument.
+The first argument that is given when calling the add argument method of a parser instance will be that is used in the command line to set the argument. The value will also be used for a default value for a destination of the argument object if another value is not given with the dest property. More than one positional argument can be given when setting a name for the argument.
 
 ```python
 import argparse
@@ -74,14 +74,14 @@ import argparse
  
 parser = argparse.ArgumentParser()
  
-# default action is 'store' whioch will just store any given value for
+# default action is 'store' which will just store any given value for
 # the argument. If no default is set then the default value for the
 # argument will be None. The default dist for the argument will be the name
 # of the argument
  
 parser.add_argument('--foo')
  
-# here is anoher argument, with values set to what the defaults are
+# here is another argument, with values set to what the defaults are
 parser.add_argument('--bar',
                     action='store',
                     default=None,
@@ -96,7 +96,7 @@ There are a number of other actions other that the default sore action, I will b
 
 ### 2.3 - Have two or more arguments for an option
 
-The nargs parameter of add argumnets is what I will want to use if for example I want to set two or more values for an option. What I mean by this is that when using an option there is often an option that does not take any values, it just sets a boolean true or false, there is also the kind of option that takes just one value, but the nargs parameter can be used to set a number of arguments for an option.
+The nargs parameter of add arguments is what I will want to use if for example I want to set two or more values for an option. What I mean by this is that when using an option there is often an option that does not take any values, it just sets a boolean true or false, there is also the kind of option that takes just one value, but the nargs parameter can be used to set a number of arguments for an option.
 
 For example say I want to have an add option that will take two number values after the option.
 
@@ -112,7 +112,7 @@ print(args.add);
 
 ## 3 - Actions in detail
 
-Now that I have a basic example out of the way, and I went over the various parameters for the add argumnet method, I think I should take a moment to get into actions a little deeper. In many of the examples thus far I have just been using the default action which is a store action. However there are a number of other options when it comes to actions. There are two boolean actions, one for setting up an argumnet that will be set to true when used, and the other as you might have goesed is to set something false. There are afew other options that might be a good choice over the default store action in some cases, so lets take a look at the options are when it comes to actions.
+Now that I have a basic example out of the way, and I went over the various parameters for the add argument method, I think I should take a moment to get into actions a little deeper. In many of the examples thus far I have just been using the default action which is a store action. However there are a number of other options when it comes to actions. There are two boolean actions, one for setting up an argument that will be set to true when used, and the other as you might have guessed is to set something false. There are a few other options that might be a good choice over the default store action in some cases, so lets take a look at the options are when it comes to actions.
 
 ### 3.2 - Store Ture and False values for simple boolean options with store_true, and store_false actions
 
@@ -144,7 +144,7 @@ else:
 
 ### 3.3 - Store const
 
-So what if I want an option that is like a boolean option, but in place of a true or flase value there is a number value, or some other constant value that will be used with some code. In other words say I want a value that is a scale value that can be set to 360 with a degree flag, or left to a default value that is 6.28. For these kinds of options there is the store\_const action that can be used to set a const value when the flag is set. The default parameter can be used to set a default value for this in the event that the flag is not given.
+So what if I want an option that is like a boolean option, but in place of a true or false value there is a number value, or some other constant value that will be used with some code. In other words say I want a value that is a scale value that can be set to 360 with a degree flag, or left to a default value that is 6.28. For these kinds of options there is the store\_const action that can be used to set a const value when the flag is set. The default parameter can be used to set a default value for this in the event that the flag is not given.
 
 ```python
 import argparse
@@ -172,5 +172,5 @@ print('per=' + str(per), 'scale=' + str(args.scale), 'angle=' + str(args.angle))
 
 ## 4 - Conclusion
 
-This standard librray is a great part of the collection of built in python librrays. In many othre lanagues I have to waste time hunting down a decent option parser, or waste a great deal of time comming up with my own solution for doing so. However with python therer is a great solution for this built into python itself, along with a whole bunch of other fery usfule built in librraies. So far I have not found much or a reason to even start looking into user space packages actually becuase there is just so much to work with when it comes to built in libraries.
+This standard library is a great part of the collection of built in python libraries. In many other languages I have to waste time hunting down a decent option parser, or waste a great deal of time coming up with my own solution for doing so. However with python there is a great solution for this built into python itself, along with a whole bunch of other pretty useful built in libraries. So far I have not found much or a reason to even start looking into user space packages actually because there is just so much to work with when it comes to built in libraries.
 
