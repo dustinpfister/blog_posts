@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 15:21:00
-version: 1.2
+updated: 2021-01-20 16:10:25
+version: 1.3
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -22,6 +22,8 @@ To start off with maybe I should go over some simple options for basic pattern m
 So in this section I will be getting to a basic example of the regular expression library, but first lets take a look at some simple examples first.
 
 ### 1.1 - The in operator
+
+First off there is the in operator that is a quick and easy way to just find out of a substring is in a string. I just start off an expression with the substring to look for, then the in operator, and then the string that I want to look in. If the substring is in the string that I am looking into then the expression will evaluate to true, if not then false.
 
 ```python
 a='so abc is easy as abc'
