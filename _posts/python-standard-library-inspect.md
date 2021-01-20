@@ -5,11 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-15 16:52:07
-version: 1.9
+updated: 2021-01-20 14:02:55
+version: 1.10
 ---
 
-Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. The library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with, along with many more additional such methods. This is a library that seems to show up in a lot of basic python examples for various things, so it makes sense to take a momnet to take a deeper look into the module as a whole.
+Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. The library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with, along with many more additional such methods. This is a library that seems to show up in a lot of basic python examples for various things, so it makes sense to take a moment to take a deeper look into the module as a whole.
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ So this section Will be a quick overview of some of these methods of the inspect
 
 ### 1.1 - Is module
 
-When it comes to using the inspect module to start inspecting the contents of a module, it is great to have a way to first find out if I am even dealing with a module to begin with. For such a task I can use the is module function of the inspect library to so so. An alterative with python by itself would have to involve the use of the type built in function in a simple expression.
+When it comes to using the inspect module to start inspecting the contents of a module, it is great to have a way to first find out if I am even dealing with a module to begin with. For such a task I can use the is module function of the inspect library to so so. An alternative with python by itself would have to involve the use of the type built in function in a simple expression.
 
 ```python
 import inspect
@@ -94,7 +94,7 @@ print(inspect.ismethod(a.get_n))   # True
 
 ## 2 - The get members method
 
-The get members method of the inspect module can be used as a way to get all the members of an object, sorted by the name of each. In addition is is possible to pass a predicate function as a second argument that can be used as a way to filter memebers of the object. So when it comes to learning about a module I can use this method as a way to get all the classes of a module to know what I am dealing with when it comes to the classes that are in a module. So in this section I will be going over the get members method of inspect, and how it can be used as a way to filter over librarys.
+The get members method of the inspect module can be used as a way to get all the members of an object, sorted by the name of each. In addition is is possible to pass a predicate function as a second argument that can be used as a way to filter members of the object. So when it comes to learning about a module I can use this method as a way to get all the classes of a module to know what I am dealing with when it comes to the classes that are in a module. So in this section I will be going over the get members method of inspect, and how it can be used as a way to filter over libraries.
 
 ### 2.2 - Get all members of the sys module
 
