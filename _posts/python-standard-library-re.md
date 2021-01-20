@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 785
-updated: 2021-01-20 16:19:21
-version: 1.5
+updated: 2021-01-20 16:24:35
+version: 1.6
 ---
 
 When working with source code and text in general there are times where i will want to know if a substring is in a string or not. Other times I will want to know a bit more then just if there is a substring, but one or more substrings. Also I might want to know even more about the state of a substring such as the starting and ending index values for each match. Also there might be times now and then where I am not looking for a fixed, static substring, but a pattern that might have some degree of variation, but follows a kind of reason.
@@ -86,6 +86,8 @@ I could of course add all kinds of other features in order to make a solution th
 
 ### 1.4 - Use a regular expression with the re standard library
 
+The serach method of the regular expression library will also give me the start and end index values of the first match.
+
 ```python
 import re
  
@@ -105,3 +107,5 @@ m = re.search('abc', b)
 print(m)
 # None
 ```
+
+However this is just a simple example of a pattern, and I am just using the serach method. There are many other methiods to work with, including one that will create an object that I can use with a loop, to loop over all instances of a substring, getting the starting and ending index values for each match just like with my function example. On top of that I can use all kinds of pattrens, inclduing ondex that will not just match a single fixed sttatic pattern. So lets take a deeper look at theis regular expression librray to see what can be done with regular expressions in python.
