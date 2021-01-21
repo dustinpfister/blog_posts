@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 10:49:43
-version: 1.19
+updated: 2021-01-21 10:53:09
+version: 1.20
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -100,7 +100,7 @@ print(inspect.ismethod(a.get_n))   # True
 
 The get members method of the inspect module can be used as a way to get all the members of an object, sorted by the name of each. In addition is is possible to pass a predicate function as a second argument that can be used as a way to filter members of the object. So when it comes to learning about a module I can use this method as a way to get all the classes of a module to know what I am dealing with when it comes to the classes that are in a module. So in this section I will be going over the get members method of inspect, and how it can be used as a way to filter over libraries.
 
-### 2.2 - Get all members of the sys module
+### 2.1 - Get all members of the sys module
 
 Lets start off with a simple example of the inspect.getmembers method where I am taking a look at everything there is to work with in the sys module.
 
@@ -118,7 +118,7 @@ for i in m:
         print('')
 ```
 
-### 2.3 - Get just the functions in the copy module
+### 2.2 - Get just the functions in the copy module
 
 When using the get members method of the inspect module I can pass one of the type checking methods of the inspect module as a section argument. The result will be a collection of memebers that are of the type that matches the given type checking method. For example say that I just want the functions in the copy module to which there apear to be only two copy and deep copy. I can pass the copy module as the first argument, and then the inspect.isfunction method as the second argument.
 
@@ -132,6 +132,22 @@ for n in m:
         print(n[0])
 # copy
 # deepcopy
+```
+
+### 2.3 - get all classes in the array library
+
+Once again I can filter the colection of members by some kind of type by passing one of the type checking methods as a second argument, such as the inspect.isclass method.
+
+```python
+import inspect
+import array as mod
+ 
+m=inspect.getmembers(mod, inspect.isclass);
+for i in m:
+    print(i[0])
+# ArrayType
+# __loader__
+# array
 ```
 
 ## 3 - Get The current frame object
