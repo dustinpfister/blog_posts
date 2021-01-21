@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 10:37:11
-version: 1.18
+updated: 2021-01-21 10:49:43
+version: 1.19
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -116,6 +116,22 @@ for i in m:
         # prop type
         print(type(i[1]).__name__)
         print('')
+```
+
+### 2.3 - Get just the functions in the copy module
+
+When using the get members method of the inspect module I can pass one of the type checking methods of the inspect module as a section argument. The result will be a collection of memebers that are of the type that matches the given type checking method. For example say that I just want the functions in the copy module to which there apear to be only two copy and deep copy. I can pass the copy module as the first argument, and then the inspect.isfunction method as the second argument.
+
+```python
+import inspect
+import copy as mod
+ 
+m=inspect.getmembers(mod, inspect.isfunction);
+for n in m:
+    if bool(n[0][0] != '_'):
+        print(n[0])
+# copy
+# deepcopy
 ```
 
 ## 3 - Get The current frame object
