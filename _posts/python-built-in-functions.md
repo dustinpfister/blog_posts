@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2021-01-21 11:31:10
-version: 1.29
+updated: 2021-01-21 12:39:54
+version: 1.30
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -159,7 +159,7 @@ while i > 0:
   print(i, l[i])
 ```
 
-## 8 - The map function
+## 8 - map - The map function
 
 The map function will return a new iterator that is the action of applying a function to each element in an iteratable. In other words I can pass a function for the first parameter of map, and something like a list as the section argument. The function that I pass to map will be called for each element in the list, and the return value iof the function passed will be the new value for an element.
 
@@ -171,11 +171,24 @@ b = list( map(pow2, a) )
 print(b) # [1, 2, 4, 8, 16]
 ```
 
-## 9 - print - Printing something out to the standard output
+## 9 - open - Read, write, and create files.
+
+The open function can be used as a quick and simple way to read, write to and create files. There are other options for this that might be e better choice when it comes to doing something a little advanced. But generaly I think it is a good idea to start with the most basic solution first, and only make things more complacted if doing so is truly called for. With that said the open built in function seems to work find with most typucal file io related tasks.
+
+### 9.1 - read a file
+
+```python
+f=open('./hello.txt', 'r')
+s=f.read()
+print(s) # 'Hello World'
+print(type(s).__name__) # 'str'
+```
+
+## 10 - print - Printing something out to the standard output
 
 When it comes to starting even the most basic of python examples, often it is needed to have a way to print something out to the standard output. One way to go about doing so is with the print built in function, which would be the python equivalent to something like console.log in javaScript.
 
-### 9.1 - Basic print example
+### 10.1 - Basic print example
 
 A basic example of the print built in function would be to just call it and pass it a value that you would like to print out to the standard output.
 
@@ -188,7 +201,7 @@ print('Hello World') # 'Hello World'
 print( 5 ) # 5
 ```
 
-### 9.2 - Change what the end of line is
+### 10.2 - Change what the end of line is
 
 By default the print built in method will add an end of line after each call of the print method in the form of a single line feed character. In some projects I might want to change what this is, such as a more windows friendly end of line string, or even nothing actually. To change what each line ends with I just need to use the end parameter when calling the print function. When doing so I can make what the end of line string is to anything that I want including an empty string.
 
@@ -218,11 +231,11 @@ print('')
 #
 ```
 
-## 10 - range
+## 11 - range
 
 The range method is a way to quickly create a range of numbers. This function is then very useful for quickly creating say a simple list of numbers in order. A range is lot a list mind you, but it can be easily turned into a list, and more often then not it can be used in place of a list.
 
-### 10.1 - Basic range example
+### 11.1 - Basic range example
 
 For a basic example of the range function there is just calling the function and passing a starting value as the first argument, followed by another value that will be the end value.
 
@@ -231,7 +244,7 @@ r = range(0,10)
 print( type (r) ) # <class 'range'>
 ```
 
-### 10.2 - To list example
+### 11.2 - To list example
 
 One great thing about a range is that I can quickly turn it into a list by just passing the range to the list function. Also on top of setting a starting and ending value I can also give a step rate as a third argument to the range function.
 
@@ -241,7 +254,7 @@ l = list((r))
 print( l ) # [5, 10, 15, 20]
 ```
 
-### 10.3 - for loop range example
+### 11.3 - for loop range example
 
 A range can often prove to be useful when it comes to working out something with a for loop. The range function can be used to quickly create a range of numbers to which I can then run over with a for loop and use with some additional logic to create a desired list of values.
 
@@ -255,7 +268,7 @@ print(nums)
 # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 ```
 
-## 11 - super - call a method of a parent class
+## 12 - super - call a method of a parent class
 
 The super built in function can be used to call a method of a parent class of the same name. For example say I want to call the init method of a parent class rather than of the current class, they way to do so would be to use the supper function.
 
@@ -281,7 +294,7 @@ print(s.__dict__)
 # {'x': 0, 'y': 0, 'w': 32, 'h': 32, 'heading': 180}
 ```
 
-## 12 - type - To check out what the current data type of a value is
+## 13 - type - To check out what the current data type of a value is
 
 The python language has a few data types built into python itself. There is not just one but several data types for numbers, and then a whole bunch of different object types, and some additional other data types like strings and booleans. On top of that yet even more data types can be added into the mix when it comes to libraries, so then there should be a way to always know what kind of type one is dealing with when it comes to working with all the different kinds of primitives and objects in python itself as well as all the various additional libraries. So then there is then the type function that is often useful to get the type of a value so that I know what I am dealing with.
 
@@ -292,6 +305,6 @@ print( type([1,2,3]) )   # <class 'list'>
 print( type({1,2,3}) )   # <class 'set'>
 ```
 
-## 13 - Conclusion
+## 14 - Conclusion
 
 That is all for built in functions for now, if I get around to editing this post I will see about expanding some of these sections with even more examples of built in python functions. As of this writing I am still fairly new to using python, so I will want to gain some more experience working out some real python examples in order to gain a better sense of what built in functions are used the most often. Once I have a better sense of what I am using the most I can then add more examples of the built in functions that are the most important.
