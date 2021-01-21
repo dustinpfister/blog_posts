@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2021-01-21 12:39:54
-version: 1.30
+updated: 2021-01-21 12:42:29
+version: 1.31
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -177,11 +177,25 @@ The open function can be used as a quick and simple way to read, write to and cr
 
 ### 9.1 - read a file
 
+If I just want to read a file, then I will just want to pass apath to a file as first argument, and then pass 'r' as the second argument.
+
 ```python
 f=open('./hello.txt', 'r')
 s=f.read()
 print(s) # 'Hello World'
 print(type(s).__name__) # 'str'
+```
+
+### 9.2 - write to a file
+
+```python
+f=open('./foo.txt', 'w+')
+f.write('hello world\n')
+f.close()
+ 
+f=open('./foo.txt', 'r')
+print(f.read())
+f.close()
 ```
 
 ## 10 - print - Printing something out to the standard output
