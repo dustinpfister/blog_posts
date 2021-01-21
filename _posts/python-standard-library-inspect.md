@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 09:15:21
-version: 1.12
+updated: 2021-01-21 09:22:25
+version: 1.13
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -164,3 +164,11 @@ print(path_script)
 print(dir_script)
 print(dir_parent)
 ```
+
+## 5 - Conclusion
+
+The inspect module strikes me as one of several modules that I am going to want to use when it comes to starting a real python project of some kind. The main reason why is becuase of the feature of getting and using frame objects, at least more son than the type checking features anyway. 
+
+One other core library that I think is important so far is the sys library which contains the path list that I am going to want to work with a little now and then. The sys library can also be used to access positional argumnets that might have been given at the command line when the script was called, however there is another library called argparse that is also part of a core stack of sorts when it comes to parsing command line options.
+
+In one of the examples in this post I also made use of the os library that also contains a buch of helpful methods that have to do with working with paths.
