@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 10:26:27
-version: 1.15
+updated: 2021-01-21 10:32:10
+version: 1.16
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -38,7 +38,7 @@ print( type(inspect).__name__ == 'module' ) # True
 
 ### 1.1 - The inspect.isfunction method
 
-The inspect modules also have a method that I can use to find out if I am dealing with a function or not. There is a deference between a function and a method, so when it comes to working with a class the is function method will return false for functions that are methods of a class.
+The inspect modules also has a method that I can use to find out if I am dealing with a function or not. There is a deference between a function and a method when it co,es to a function that is part of a class. Simply put if a function is a part of a class insatnce then it is a method, otherwise it is a stand alone function. So when it comes to working with a class the inspect.isfunction method will return false for functions that are methods of a class, and true if the function is just a function by itself.
 
 ```python
 import inspect
@@ -55,7 +55,7 @@ print( inspect.isfunction([]) ) # False
 
 ### 1.1 - The inspect.isClass method
 
-There is then a method that I can use to find out if a value is a class or not.
+There is then a method that I can use to find out if a value is a class or not. I will not be getting into a class in detail here, as doing so might be a bit off topic. However a class is a way to go about creating not just an object, but a kind of class of an object. The class itself can be used to create an object that is an instance of that class, and this instance often has a few methods that are functions tht can be called off of a class instance. However as far as i am concern for this section at least the inspect.isclass method is used to just find out if something is a class or not.
 
 ```python
 import inspect
