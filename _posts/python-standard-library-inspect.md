@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 10:32:10
-version: 1.16
+updated: 2021-01-21 10:35:52
+version: 1.17
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -78,7 +78,7 @@ print(inspect.isclass(a)) # False
 
 ### 1.2 - The inspect.ismethod method
 
-There is also a function that can eb used to find out if something is a method of a class rather than just a stand alone function.
+There is also a function that can be used to find out if something is a method of a class rather than just a stand alone function. As i have mentioned in the section on the inspect.isclass method there are functions that can be called off of an instance of a class that are called methods. The inspect.ismethod method can be used to find out if a function is a method of a class, while the inspect.isfunction method is there to find out if I am dealing with a stand alone function or not.
 
 ```python
 import inspect
