@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 08:58:53
-version: 1.11
+updated: 2021-01-21 09:15:21
+version: 1.12
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -126,4 +126,41 @@ One thing I might need to do now and then in python is to get the current call s
 import inspect
 f=inspect.currentframe()
 print(inspect.isframe(f)) # True
+```
+
+## 4 - Get dir of current script example using import, os, and sys
+
+So far the main reason why I might use the inspect library is to help me with getting absolute paths that I might want to insert into the paths list of the sys library. In real examples the inspect library is often not used alone of course, the library goes hand in hand with many other built in librarays such as the os library, and the sys library just to name a rew.
+
+```python
+import os,sys,inspect
+ 
+# CURRENT WORKING DIR
+# can be obtained with os.getcwd()
+dir_current = os.getcwd()
+ 
+# DIR OF THIS SCRIPT
+# get current frame object with inspect.current frame,
+# the frame object can then be passed to inspect.getFile
+# that path can then be passed to os.path.abspath, and os.path.dirname
+frame_obj = inspect.currentframe()
+path_script = inspect.getfile(frame_obj)
+dir_script = os.path.dirname(os.path.abspath(path_script))
+ 
+# DIR OF PARENT FOLDER OF THIS SCRIPT
+# once I have the dir to the script I can just pass that to os.path.dirname
+# to go down one level
+dir_parent = os.path.dirname(dir_script)
+ 
+# INSERT
+# the sys.path list is a list of dirs where python
+# will look for modules. I can then insert the parent folder
+# to make python look there for any additional modules
+# I might like to import
+sys.path.insert(0, dir_parent)
+ 
+print(dir_current)
+print(path_script)
+print(dir_script)
+print(dir_parent)
 ```
