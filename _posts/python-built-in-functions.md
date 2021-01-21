@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 762
-updated: 2020-12-19 14:56:04
-version: 1.28
+updated: 2021-01-21 11:31:10
+version: 1.29
 ---
 
 I have [started to learn python](https://docs.python.org/3/tutorial/), and one of the first things that I have become aware of when doing so is like many other programing environments there are a number of [built in functions](https://docs.python.org/3.7/library/functions.html). It is always a good idea to take a moment to look over what there is to work with when it comes to built in functions before getting into user space modules, and python is no exception to this. If I need a function that does something the first collection of functions that I should look at are these built in functions, then what there is to work with when it comes to standard libraries, then user space libraries, and then if all else fails look into what I need to do in order to come up with my own solution.
@@ -255,7 +255,33 @@ print(nums)
 # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 ```
 
-## 11 - type - To check out what the current data type of a value is
+## 11 - super - call a method of a parent class
+
+The super built in function can be used to call a method of a parent class of the same name. For example say I want to call the init method of a parent class rather than of the current class, they way to do so would be to use the supper function.
+
+```python
+class Box():
+    def __init__(self, x=0, y=0, w=32, h=32):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+    def area(self):
+        return self.w * self.h
+    
+class Ship(Box):
+    def __init__(self, heading=90, x=0, y=0, w=32, h=32):
+        super().__init__(x, y, w, h)
+        self.heading = heading
+    
+s=Ship(180);
+print(s.area()) # 1024
+ 
+print(s.__dict__)
+# {'x': 0, 'y': 0, 'w': 32, 'h': 32, 'heading': 180}
+```
+
+## 12 - type - To check out what the current data type of a value is
 
 The python language has a few data types built into python itself. There is not just one but several data types for numbers, and then a whole bunch of different object types, and some additional other data types like strings and booleans. On top of that yet even more data types can be added into the mix when it comes to libraries, so then there should be a way to always know what kind of type one is dealing with when it comes to working with all the different kinds of primitives and objects in python itself as well as all the various additional libraries. So then there is then the type function that is often useful to get the type of a value so that I know what I am dealing with.
 
@@ -266,6 +292,6 @@ print( type([1,2,3]) )   # <class 'list'>
 print( type({1,2,3}) )   # <class 'set'>
 ```
 
-## 12 - Conclusion
+## 13 - Conclusion
 
 That is all for built in functions for now, if I get around to editing this post I will see about expanding some of these sections with even more examples of built in python functions. As of this writing I am still fairly new to using python, so I will want to gain some more experience working out some real python examples in order to gain a better sense of what built in functions are used the most often. Once I have a better sense of what I am using the most I can then add more examples of the built in functions that are the most important.
