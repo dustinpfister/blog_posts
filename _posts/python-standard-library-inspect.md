@@ -5,11 +5,15 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-20 14:02:55
-version: 1.10
+updated: 2021-01-21 08:58:53
+version: 1.11
 ---
 
-Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. The library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with, along with many more additional such methods. This is a library that seems to show up in a lot of basic python examples for various things, so it makes sense to take a moment to take a deeper look into the module as a whole.
+Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
+
+The inspect library is packed with helpful methods for getting the members of a module, and also to find out if something is even a module to begin with. In addition there are many more additional such methods that have to do with extracting source code, and checking the state of frame objects. 
+
+This is a library that seems to show up in a lot of basic python examples for various things, so it makes sense to take a moment to take a deeper look into the module as a whole.
 
 <!-- more -->
 
