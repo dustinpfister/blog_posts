@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 782
-updated: 2021-01-21 13:21:38
-version: 1.14
+updated: 2021-01-21 13:25:06
+version: 1.15
 ---
 
 In python there is the [tkinter standard library](https://docs.python.org/3.7/library/tkinter.html) that is an official interface for the [TK GUI tool kit](https://en.wikipedia.org/wiki/Tk_%28software%29). This library can then be used as a way to create graphical front ends for python projects. The library works by providing a number of widgets that can be used to create various components in a window such as buttons, menus, a canvas, and text. With these widgets it is possible to make a basic yet functional graphical user interface for a python project.
@@ -63,6 +63,8 @@ The process of inspecting a module can involve the use of the inspect library to
 
 ### 2.1 - inspect all the memebers of the tkinter module
 
+A good starting point might be to take a look at everything first.
+
 ```python
 import tkinter as tk
 import inspect
@@ -77,6 +79,8 @@ for m in members:
 ```
 
 ### 2.2 - inspect just the tkinter.Tk class
+
+A major part of tkinter seems to be the main Tk Class, so It might be a good idea to take a closes look at that one. In addition to passing and instance of the class as something to get all members of I can also used the inspect.members method as a second argument for the inspect.getmembers methods to just get the methods of a Tk Class instance.
 
 ```python
 import tkinter as tk
