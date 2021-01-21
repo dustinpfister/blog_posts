@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 10:24:26
-version: 1.14
+updated: 2021-01-21 10:26:27
+version: 1.15
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -116,11 +116,13 @@ for i in m:
         print('')
 ```
 
-## 3 - Get current frame
+## 3 - Get The current frame object
 
-One thing I might need to do now and then in python is to get the current call stack frame. So far it seems like this is something that I need to do in order to get a path to the current script that is being called.
+One thing I might need to do now and then in python is to get the current call stack frame. So far it seems like this is something that I need to do in order to get a path to the current script that is being called, however I am sure that there are many other examples where I might need to work with frame objects.
 
 ### 3.1 - Basic get current frame example
+
+The inspect.currentframe method is one way to go about getting a frame object.
 
 ```python
 import inspect
