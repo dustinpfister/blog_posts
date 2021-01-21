@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 10:35:52
-version: 1.17
+updated: 2021-01-21 10:37:11
+version: 1.18
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -101,6 +101,8 @@ print(inspect.ismethod(a.get_n))   # True
 The get members method of the inspect module can be used as a way to get all the members of an object, sorted by the name of each. In addition is is possible to pass a predicate function as a second argument that can be used as a way to filter members of the object. So when it comes to learning about a module I can use this method as a way to get all the classes of a module to know what I am dealing with when it comes to the classes that are in a module. So in this section I will be going over the get members method of inspect, and how it can be used as a way to filter over libraries.
 
 ### 2.2 - Get all members of the sys module
+
+Lets start off with a simple example of the inspect.getmembers method where I am taking a look at everything there is to work with in the sys module.
 
 ```python
 import inspect
