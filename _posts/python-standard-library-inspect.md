@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 778
-updated: 2021-01-21 09:22:25
-version: 1.13
+updated: 2021-01-21 10:24:26
+version: 1.14
 ---
 
 Todays post will be on the [inspect library](https://docs.python.org/3/library/inspect.html) in python that can be used as a way to inspect live objects. Some examples of live objects are modules, classes, methods of classes, stand alone functions. There are also tracebacks, and frame objects that can eb used as a way to examining the state of the python interpreter.
@@ -17,13 +17,13 @@ This is a library that seems to show up in a lot of basic python examples for va
 
 <!-- more -->
 
-## 1 - Use inspect to find out what I am dealing with when it comes to inspecting something
+## 1 - Type checking with the inspect library, to find out what I am dealing with when it comes to inspecting things
 
 I have wrote a post on built in functions a little while back, and one helpful built in function is the type function. This is a good starting point when it comes to having a tool to know what a given value is. However in order to use it to test if something is a module for example I have to not just use the type function by itself, but rather use the name property in an expression in which I am comparing the name property to the string module. So if I want to know if something is a module or not, I can do an expression with the type function, or I can use an inspect function such as the is module function.
 
 So this section Will be a quick overview of some of these methods of the inspect library, and I guess I can also take a moment to touch base on the type built in function while I am at it.
 
-### 1.1 - Is module
+### 1.1 - The inspect.ismodule method
 
 When it comes to using the inspect module to start inspecting the contents of a module, it is great to have a way to first find out if I am even dealing with a module to begin with. For such a task I can use the is module function of the inspect library to so so. An alternative with python by itself would have to involve the use of the type built in function in a simple expression.
 
@@ -36,7 +36,7 @@ print(inspect.ismodule(inspect)); # True
 print( type(inspect).__name__ == 'module' ) # True
 ```
 
-### 1.1 - Is function
+### 1.1 - The inspect.isfunction method
 
 The inspect modules also have a method that I can use to find out if I am dealing with a function or not. There is a deference between a function and a method, so when it comes to working with a class the is function method will return false for functions that are methods of a class.
 
@@ -53,9 +53,9 @@ print( inspect.isfunction(42) ) # False
 print( inspect.isfunction([]) ) # False
 ```
 
-### 1.1 - Is Class
+### 1.1 - The inspect.isClass method
 
-There is then a method that I can use to find out if a value is a class.
+There is then a method that I can use to find out if a value is a class or not.
 
 ```python
 import inspect
@@ -76,9 +76,9 @@ print(inspect.isclass(P)) # True
 print(inspect.isclass(a)) # False
 ```
 
-### 1.2 - Is method
+### 1.2 - The inspect.ismethod method
 
-There is also a function that can eb used to find out if something is a method of a class rather than a stand alone function.
+There is also a function that can eb used to find out if something is a method of a class rather than just a stand alone function.
 
 ```python
 import inspect
