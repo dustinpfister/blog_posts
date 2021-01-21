@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-21 15:06:52
-version: 1.2
+updated: 2021-01-21 15:13:28
+version: 1.3
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date).
@@ -34,6 +34,8 @@ print(d.day)   # 21
 ```
 
 ### 1.2 - The date class
+
+The now method will just return an instnace of datetime for the current time, to get a date object of a point in the past I will want to use the main date class to create such a date object.
 
 ```python
 import datetime as date
