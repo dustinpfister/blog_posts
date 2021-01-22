@@ -13,16 +13,12 @@ opt_defaults = {
 };
 
 let klawPosts = (opt) => {
-
     opt = Object.assign({}, opt_defaults, opt || {});
-
     klaw(opt.dir_posts)
-
     // when done
     .on('end', function () {
         opt.onDone();
     })
-
     // if item is a file and is markdown
     .pipe(through2.obj(function (item, enc, next) {
             if (item.stats.isFile() && path.extname(item.path).toLowerCase() === '.md') {
@@ -30,24 +26,16 @@ let klawPosts = (opt) => {
             }
             next();
         }))
-
     .pipe(through2.obj(function (item, enc, next) {
-
             opt.forPost(item, next)
-
         }));
-
 };
 
 // if called from CLI
 if (require.main === module) {
-
     // call klaw files
     klawPosts();
-
 } else {
-
     // else export
     exports.klawPosts = klawPosts;
-
 }
