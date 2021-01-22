@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-22 09:57:11
-version: 1.7
+updated: 2021-01-22 10:00:44
+version: 1.8
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date).
@@ -109,4 +109,6 @@ for p in t:
 # 2020.4.6.0.0.0.0.97.-1.
 ```
 
+## 3 - Conclusion
 
+The datetime class is then the first go to library when it comes to doing things that have to do with time in a python project. However it might not be the end of such tasks also. There are a few other standard libraries that seem to have to do with time, and I have not yet looked into what there might be to work with when it comes to user space projects. However thinging from my experence with javaScript thos far this datetime library all ready seems more than enough to help me with at least most basic tasks that come to mind that have to do with time.
