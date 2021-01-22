@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-21 15:31:19
-version: 1.5
+updated: 2021-01-22 09:37:40
+version: 1.6
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date).
@@ -17,7 +17,7 @@ In javaScript there is a built in Date class, so I would think that there should
 
 To start off with I think I should go over just a few very basic getting started examples of the datetime library. There are a number of ways to create an instnace of the main date class in this library so maybe it is a good idea to start there.
 
-### 1.1 - The datetime.now prop
+### 1.1 - The datetime.now prop and the datetime class
 
 The now method of the datetime class is one way to go about geting an instnace of the datetime class of the current date, and time. The datetime class is one of actually several classes rather than just one that I am used to when it comes to working with the native Date class in javaScript.
 
@@ -35,7 +35,19 @@ print(d)                 # 2021-01-21 15:27:49.097128
 
 The datetime might be the best class to go with in most cases. Or at least I am saying that becuase I am so accustomed to working with just one class that can be used for date and time rather than having more than one class to work with. However there are a few other classes, methods of those classes, as well as static methods of such classes that I think I should at least touch base on when it comes to a basic example section.
 
-### 1.2 - The date class
+### 1.2 - uisng the datetime class dirrectly
+
+The now method of the datetime property of the datetime libraray will return an instance of the datetime class. However it will always return such a class instance for the current time. What if I want another such class instance that is at a point that in time that is before or after the current time? To create such a class instance I am going to want to use the datetime class dirrectly.
+
+```python
+import datetime as date
+ 
+d = date.datetime(2020, 4, 6, 10, 5, 0, 123456)
+ 
+print(d) # 2020-04-06 10:05:00.123456
+```
+
+### 1.3 - The date class
 
 The now method will just return an instnace of datetime for the current time, to get a date object of a point in the past I will want to use the main date class to create such a date object.
 
