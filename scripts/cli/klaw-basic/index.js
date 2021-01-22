@@ -32,14 +32,13 @@ let klawPosts = (opt) => {
 
 // if called from CLI
 if (require.main === module) {
-
-    var useScript = typeof process.argv[2],
+    var useScript = process.argv[2],
     opt = {};
-
     if(useScript){
         try{
             opt = require( path.resolve(useScript) );
         }catch(e){
+            console.log(e)
             opt = {};
         }
     }
