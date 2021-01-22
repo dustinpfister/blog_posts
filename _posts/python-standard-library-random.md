@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 15:43:02
-version: 1.3
+updated: 2021-01-22 15:57:36
+version: 1.4
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -15,15 +15,48 @@ In this post I will be going over a few quick examples of the basic methods to g
 
 <!-- more -->
 
-## 1 - Basic random example
+## 1 - Some Basic random library examples
 
-So lets start out with a very simple example of the random built in library. If I import random I can then use a bunch of methods off of the random module such as the random method. This random methods is about the same as the Math.random methods that I am used to in javaScript. I just call the method, and the result is a random number between 0 and 1.
+In this section I will be going over just a few very basic examples of the random library that will make use of just one function in the library which is the random method. This random method is about the same as the Math.random method that I am used to in javaScript. I just call the method, and the result is a random number between 0 and 1. It is then just a question of what I do with that number when it comes to using it as part of an expression, and using it to create random values to plug into a function.
+
+### 1.1 - The random method
+
+So lets start out with a very simple example of the random built in library. If I import random I can then use a bunch of methods off of the random module such as the random method. 
+
+### 1.2 - Using the value in an expression
 
 ```python
 import random
  
 r=random.random()
 print(r)
+```
+
+```python
+import random
+ 
+x_min = 50
+x_max = 100
+y_min = 225
+y_max = 250
+ 
+x = x_min + ( x_max - x_min ) * random.random()
+y = y_min + ( y_max - y_min ) * random.random()
+ 
+print(x, y)
+```
+
+### 1.2 - using the value as an argument to a function
+
+```python
+import random
+ 
+def getValue(minval=0, maxval=10, per=0):
+    return minval + ( maxval - minval ) * per
+ 
+print( getValue(0, 359, 0) )
+print( getValue(0, 359, 1) )
+print( getValue(0, 359, random.random()) )
 ```
 
 ## 2 - Getting a random range
