@@ -32,8 +32,20 @@ let klawPosts = (opt) => {
 
 // if called from CLI
 if (require.main === module) {
-    // call klaw files
-    klawPosts();
+
+    var useScript = typeof process.argv[2],
+    opt = {};
+
+    if(useScript){
+        try{
+            opt = require( path.resolve(useScript) );
+        }catch(e){
+            opt = {};
+        }
+    }
+
+    // call klaw posts
+    klawPosts(opt);
 } else {
     // else export
     exports.klawPosts = klawPosts;
