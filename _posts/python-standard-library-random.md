@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 16:08:08
-version: 1.7
+updated: 2021-01-22 16:11:01
+version: 1.8
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -69,7 +69,11 @@ print( getValue(0, 359, random.random()) )
 
 ## 2 - Getting a random range
 
+There are a number of functions for getting a range between a min and max value.
+
 ### 2.1 - random int range
+
+The randint method will give be a random integer value between and including a given min and max value. So for example say I want ramdom integer values that are consistant with the values of a dice, I can pass 1 for the min value, and 6 for the max value.
 
 ```python
 import random
