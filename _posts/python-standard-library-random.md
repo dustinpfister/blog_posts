@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 16:11:01
-version: 1.8
+updated: 2021-01-22 16:13:09
+version: 1.9
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -84,10 +84,12 @@ print(r)
 
 ### 2.2 - random float range
 
+The uniform method is what I can use to get a random number between a min and max value that is a float rather than int value.
+
 ```python
 import random
  
-r=random.randint(1, 6)
+r=random.uniform(0, 6.28)
 print(r)
 ```
 
