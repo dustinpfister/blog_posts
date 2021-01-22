@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 15:57:36
-version: 1.4
+updated: 2021-01-22 16:00:33
+version: 1.5
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -21,9 +21,7 @@ In this section I will be going over just a few very basic examples of the rando
 
 ### 1.1 - The random method
 
-So lets start out with a very simple example of the random built in library. If I import random I can then use a bunch of methods off of the random module such as the random method. 
-
-### 1.2 - Using the value in an expression
+So lets start out with a very simple example of the random built in library. If I import random I can then use a bunch of methods off of the random module such as the random method.
 
 ```python
 import random
@@ -31,6 +29,10 @@ import random
 r=random.random()
 print(r)
 ```
+
+### 1.2 - Using the value in an expression
+
+So now that I have the very basic general idea out of the way when it comes to the random methods lets move on to some more examples in which I am doing something with that value. A majoy part of programing is working out expressions that will create values. These expressions can be composed of a few varaibles and some times it might be nice to pass in a random number as part of the expression.
 
 ```python
 import random
