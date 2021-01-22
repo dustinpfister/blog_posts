@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-22 09:37:40
-version: 1.6
+updated: 2021-01-22 09:57:11
+version: 1.7
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date).
@@ -47,7 +47,23 @@ d = date.datetime(2020, 4, 6, 10, 5, 0, 123456)
 print(d) # 2020-04-06 10:05:00.123456
 ```
 
-### 1.3 - The date class
+### 1.3 - Subtracting two datetime instances and the timedelta class
+
+Just like in javaScript I can subtract two datetime instances to get a time difference, but that difference is not a number index value like with the javaScript Date Class. The result of such an operation in python with datetime instances at least is an instance of a timedelta class.
+
+```python
+import datetime as date
+ 
+d1 = date.datetime(1983, 4, 6, 10, 5, 0, 0)
+d2 = date.datetime(2010, 8, 22, 10, 5, 0, 0)
+ 
+td = d2 - d1
+ 
+print( type(td).__name__)  # timedelta
+print( td.days )           # 10000
+```
+
+### 1.4 - The date class
 
 The now method will just return an instnace of datetime for the current time, to get a date object of a point in the past I will want to use the main date class to create such a date object.
 
