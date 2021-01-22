@@ -2,10 +2,12 @@
 
 Just a basic, clean, walk of all blog posts
 
-## walk all posts
+## walk all posts from command line
+
+To just walk all files from the command line this will work
 
 ```js
-$ node klaw-basic
+$ npm run klaw-basic
 ```
 
 ## Using as Module

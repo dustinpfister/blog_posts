@@ -4,7 +4,8 @@
   "description": "Blog posts for my site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "klaw-basic": "node ./scripts/cli/klaw-basic/index.js"
   },
   "author": "Dustin Pfister",
   "license": "GPL-3.0",
