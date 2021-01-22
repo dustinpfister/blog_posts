@@ -8,8 +8,16 @@ let createDirObject = (dirname) => {
 
     dirname = dirname === undefined ? __dirname : dirname
 
+    var blog_root = path.join(__dirname, '../../..');
+
     return {
-        this_script: __dirname
+        cwd: process.cwd(),
+        blog_root: blog_root,
+        this_script: dirname,
+        script_folder: path.join(blog_root, 'scripts'),
+        app_folder: path.join(blog_root, 'scripts/apps'),
+        cli_folder: path.join(blog_root, 'scripts/cli'),
+        posts: path.join(blog_root, '_posts')
     };
 
 };
