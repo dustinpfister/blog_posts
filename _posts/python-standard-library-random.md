@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 16:13:09
-version: 1.9
+updated: 2021-01-22 16:32:58
+version: 1.10
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -93,3 +93,31 @@ r=random.uniform(0, 6.28)
 print(r)
 ```
 
+## 3 - Using the math library with the random library
+
+### 3.1 - Having some fun with cos and sin
+
+```python
+import random
+import math
+ 
+def echo(n):
+    return n
+ 
+def getPointFromCenter(cx=0, cy=0, degree=0, dist=0, roundFunc=echo):
+    radian = math.pi / 180 * degree
+    return {
+        'x': roundFunc( cx + math.cos(radian) * dist ),
+        'y': roundFunc( cy + math.sin(radian) * dist )
+    }
+ 
+# get random points that are on a ray
+def getRandomPointAlongRay(cx=50, cy=50, degree=90, dist_min=25, dist_max=50, roundFunc=echo):
+    return getPointFromCenter(cx, cy, degree, random.uniform(dist_min, dist_max), roundFunc)
+ 
+print( getRandomPointAlongRay(100, 250, 180, 25, 100, round) )
+```
+
+## 4 - Conclusion
+
+The random library is then the standard go to librray to do anything that I want to do with random numbers.
