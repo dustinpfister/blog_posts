@@ -5,12 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 15:37:03
-version: 1.1
+updated: 2021-01-22 15:40:40
+version: 1.2
 ---
 
-There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html).
+There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
 
+In this post I will be going over a few quick examples of the basic methods to get up and running quickly with random numbers in python. There will be just a few quick basic examples of the random method that will return a value between 0 and 1, and a few other range methods that help save me a little time when making my own solutions.
 
 <!-- more -->
 
