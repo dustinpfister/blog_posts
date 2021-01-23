@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 782
-updated: 2021-01-23 08:49:17
-version: 1.16
+updated: 2021-01-23 09:11:39
+version: 1.17
 ---
 
 In python there is the [tkinter standard library](https://docs.python.org/3.7/library/tkinter.html) that is an official interface for the [TK GUI tool kit](https://en.wikipedia.org/wiki/Tk_%28software%29). This library can then be used as a way to create graphical front ends for python projects. The library works by providing a number of widgets that can be used to create various components in a window such as buttons, menus, a canvas, and text. With these widgets it is possible to make a basic yet functional graphical user interface for a python project.
@@ -108,7 +108,7 @@ When it comes to javaScript I love canvas elements, they can be used to create a
 
 ### 3.1 - A basic Arc example
 
-For starters how about just doing an arc in a canvas widget.
+For starters how about just doing an arc in a canvas widget, to do so there is a create\_arc method that can be used off of an instance of the main tk.Canvas class. So the basic process is to just create a canvas widget first, when doing so I can set things like the background color, and the size of the canvas. Once I have a canvas widget I can then draw to it with one of many draw methods such as create\_arc.
 
 ```python
 import tkinter as tk
