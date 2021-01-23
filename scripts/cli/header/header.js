@@ -11,12 +11,6 @@ exports.get = function (text) {
     try {
         return yaml.safeLoad(head[0].replace(/---/g, ''));
     } catch (e) {
-
-        console.log('ERROR loading yaml:');
-        console.log(e.message);
-        console.log('**********');
-        console.log();
-        console.log('**********');
         return {};
     }
 };
