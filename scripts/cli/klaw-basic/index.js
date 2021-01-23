@@ -1,9 +1,11 @@
 let klaw = require('klaw'),
 through2 = require('through2'),
-path = require('path'),
+path = require('path');
 
-opt_defaults = {
-    dir_posts: path.join(__dirname, '../../../_posts'),
+let dirs = require( path.join(__dirname, '../paths/index.js') ).createDirObject(__dirname);
+
+let opt_defaults = {
+    dir_posts: dirs.posts, //path.join(__dirname, '../../../_posts'),
     forPost: function (item, next) {
         console.log(item.path);
         next();
