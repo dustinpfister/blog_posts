@@ -8,7 +8,8 @@ let header = require( path.join(dirs.this_script), 'header.js' );
 
 
 let fs = require('fs'),
-fileName = 'canvas-example-animation-basics.md';
+postName = process.argv[2] || 'canvas-example-animation-basics',
+fileName = postName + '.md';
 
 let uri_post = path.join(dirs.posts, fileName);
 fs.readFile(uri_post, 'utf8', (e, data) => {
