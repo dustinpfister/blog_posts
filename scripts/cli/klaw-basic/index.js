@@ -4,11 +4,29 @@ path = require('path');
 
 let dirs = require( path.join(__dirname, '../paths/index.js') ).createDirObject(__dirname);
 
+
+let header = require( path.join(dirs.cli_folder, 'header/header.js') ),
+fs = require('fs');
+
+console.log(dirs.cli)
+
 let opt_defaults = {
-    dir_posts: dirs.posts, //path.join(__dirname, '../../../_posts'),
+    dir_posts: dirs.posts,
     forPost: function (item, next) {
-        console.log(item.path);
-        next();
+        //console.log(item);
+        //next();
+
+        fs.readFile(item.path, 'utf8', (e, text) => {
+             if(e){
+                 next();
+             }else{
+                 item.text = text;
+                 item.header = header.get(text);
+                 console.log(item)
+                 next();
+             }
+        });
+
     },
     onDone: function () {}
 };
