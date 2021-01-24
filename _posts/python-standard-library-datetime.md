@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-24 10:06:03
-version: 1.10
+updated: 2021-01-24 13:02:27
+version: 1.11
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date). This library is a little different from the built in Date class that I am used to with javaScript, for one thing there is not just one class, but a few classes actually. There is a datetime class that seems to be similar the the Date class, but there is also a date class, and a timedelta class also.
@@ -76,11 +76,15 @@ print( type(d).__name__ ) # date
 print(d)                  # 2020-01-01
 ```
 
-## 2 - A closer look at the date class
+## 2 - The time delta class
+
+So as I have covered breefly in the first section there is a timedelta class that is a special class that repersents a time difference between two dates rather than a specific point in time.
+
+## 3 - A closer look at the date class
 
 Now that I have some basic examples out of the way there is taking a closer look at the date class. Like many other classes there are many useful methods that can be called off of an instance of a date object.
 
-### 2.1 - year, month, and day props
+### 3.1 - year, month, and day props
 
 There are properties for the year, month, and day of a date object.
 
@@ -94,7 +98,7 @@ print(d.day)   # 6
 print(d)       # 2020-04-06
 ```
 
-### 2.2 - to a tuple
+### 3.2 - to a tuple
 
 The timetuple method of a date class instance can return a tuple of the properties of a date object. The tuple then can be looped over in a for loop.
 
@@ -109,6 +113,6 @@ for p in t:
 # 2020.4.6.0.0.0.0.97.-1.
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 The datetime class is then the first go to library when it comes to doing things that have to do with time in a python project. However it might not be the end of such tasks also. There are a few other standard libraries that seem to have to do with time, and I have not yet looked into what there might be to work with when it comes to user space projects. However thinking from my experience with javaScript those far this datetime library all ready seems more than enough to help me with at least most basic tasks that come to mind that have to do with time.
