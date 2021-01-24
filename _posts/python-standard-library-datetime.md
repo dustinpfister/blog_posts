@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-24 14:06:21
-version: 1.16
+updated: 2021-01-24 15:08:54
+version: 1.17
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date). This library is a little different from the built in Date class that I am used to with javaScript, for one thing there is not just one class, but a few classes actually. There is a datetime class that seems to be similar the the Date class, but there is also a date class, and a timedelta class also.
@@ -78,11 +78,11 @@ print(d)                  # 2020-01-01
 
 ## 2 - The time delta class
 
-So as I have covered breefly in the first section there is a timedelta class that is a special class that repersents a time difference between two dates rather than a specific point in time. This timedelta class can be created by subtractive two date or datetime instances, it can also be used to create a new instance of these classed by adding the delta to one of them as a starting point. So in this section I am going to go over some simple quick examples of these datetime class instances.
+So as I have covered briefly in the first section there is a timedelta class that is a special class that represents a time difference between two dates rather than a specific point in time. This timedelta class can be created by subtractive two date or datetime instances, it can also be used to create a new instance of these classed by adding the delta to one of them as a starting point. So in this section I am going to go over some simple quick examples of these datetime class instances.
 
 ### 2.1 - create a timedelta with subtraction of dates, and use it to get a new date
 
-In the basic section where I covered the time delta breefly one way to create an instance of a time delta is by subtractive two instances of a date. However I did not cover how to go about using an instnace of this time delta class, so with that said one way to use a time delta is to just add or subtract a time delta to another distance of a date, or date time to get a new point in time in the form of a date or datetime class instance.
+In the basic section where I covered the time delta briefly one way to create an instance of a time delta is by subtractive two instances of a date. However I did not cover how to go about using an instance of this time delta class, so with that said one way to use a time delta is to just add or subtract a time delta to another distance of a date, or date time to get a new point in time in the form of a date or datetime class instance.
 
 ```python
 import datetime as date
@@ -100,7 +100,7 @@ print( d3 ) # 2021-04-06
 
 ### 2.2 - Create a timedelta will the class dirrectly
 
-Although it is great that I can create timedelta instances by getting the difference between two dates, it would be nice to also be able to just create them dirrectly. For this there is the timedelta class of the datetime module where I can just call the main constructor function and pass some arguments for days, or seconds. For example I can create a time delta class instance that is one billion seconds, and then I can add that difference to the date that i was born to get the date and time at which I turned on billion seconds old.
+Although it is great that I can create timedelta instances by getting the difference between two dates, it would be nice to also be able to just create them directly. For this there is the timedelta class of the datetime module where I can just call the main constructor function and pass some arguments for days, or seconds. For example I can create a time delta class instance that is one billion seconds, and then I can add that difference to the date that i was born to get the date and time at which I turned on billion seconds old.
 
 ```python
 import datetime as date
@@ -151,6 +151,6 @@ for p in t:
 
 ## 4 - Conclusion
 
-The datetime library is then the first go to library when it comes to doing things that have to do with time in a python project, however it might not be the end of such tasks also. There are a few other standard libraries that seem to have to do with time, and I have not yet looked into what there might be to work with when it comes to user space projects. However thinking from my experience with javaScript those far this datetime library all ready seems more than enough to help me with at least most basic tasks that come to mind that have to do with time. In fact it goes beyond the Date class that I am used to so I find it more than addaqutie actually.
+The datetime library is then the first go to library when it comes to doing things that have to do with time in a python project, however it might not be the end of such tasks also. There are a few other standard libraries that seem to have to do with time, and I have not yet looked into what there might be to work with when it comes to user space projects. However thinking from my experience with javaScript those far this datetime library all ready seems more than enough to help me with at least most basic tasks that come to mind that have to do with time. In fact it goes beyond the Date class that I am used to so I find it more than enough actually.
 
-I did not get around to writing about every little feature when it comes to the additional classes in the library that have to do with time zones, and the time of date alone. When I get around tio editing this post at some point in the futire there is of course expanding on thoses, but I think I would also like to create at least a few actually simple project examples also, and that might be a better move. When it comes to covering every little detail of where there is in termns of classes and functions there is always the offical python docs after all.
+I did not get around to writing about every little feature when it comes to the additional classes in the library that have to do with time zones, and the time of date alone. When I get around to editing this post at some point in the future there is of course expanding on thoses, but I think I would also like to create at least a few actually simple project examples also, and that might be a better move. When it comes to covering every little detail of where there is in terms of classes and functions there is always the official python docs after all.
