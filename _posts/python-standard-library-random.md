@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-24 14:24:42
-version: 1.14
+updated: 2021-01-24 14:58:36
+version: 1.15
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -122,6 +122,43 @@ def getRandomPointAlongRay(cx=50, cy=50, degree=90, dist_min=25, dist_max=50, ro
     return getPointFromCenter(cx, cy, degree, random.uniform(dist_min, dist_max), roundFunc)
  
 print( getRandomPointAlongRay(100, 250, 180, 25, 100, round) )
+```
+
+### 3.2 - Random numbers and atan2
+
+There are many must know methods in the math library when it comes to having fun with random numbers and actaully using those random numbers to position things. The math.cos and math.sin methods are great for positioning an object in a random location relative to a center point, but what about getting an angle from a point to another point, and also the other way around. Another must know math method I think is the atan2 method which is relavent to this kind of task.
+
+```python
+import random
+import math
+ 
+def echo(n):
+    return n
+ 
+def angleToFrom(toX, toY, fromX, fromY, invert=False, degrees=True):
+    angle = math.atan2(toY - fromY, toX - fromX)
+    if(invert):
+        angle += math.pi
+    if(degrees):
+        return math.degrees(angle) % 360
+    return angle % (math.tau)
+ 
+# seems to work
+print( angleToFrom(0, 0, 100, 0) )   # 180.0
+print( angleToFrom(0, 0, -100, 0) )  # 0.0
+print( angleToFrom(0, 0,  0, 100) )  # 270.0
+print( angleToFrom(0, 0,  0, -100) ) # 90.0
+print( angleToFrom(0, 0,  -100, 0, degrees=False, invert=True) ) # 3.141592653589793
+ 
+def createBlock():
+    x = -100 + random.random() * 200;
+    y = -100 + random.random() * 200;
+    a = angleToFrom(0, 0, x, y)
+    return {'x': x, 'y': y, 'a': a}
+ 
+block = createBlock()
+ 
+print(block)
 ```
 
 ## 4 - Conclusion
