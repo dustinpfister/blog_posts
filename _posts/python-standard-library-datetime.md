@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-24 13:33:13
-version: 1.12
+updated: 2021-01-24 13:44:42
+version: 1.13
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date). This library is a little different from the built in Date class that I am used to with javaScript, for one thing there is not just one class, but a few classes actually. There is a datetime class that seems to be similar the the Date class, but there is also a date class, and a timedelta class also.
@@ -78,7 +78,7 @@ print(d)                  # 2020-01-01
 
 ## 2 - The time delta class
 
-So as I have covered breefly in the first section there is a timedelta class that is a special class that repersents a time difference between two dates rather than a specific point in time.
+So as I have covered breefly in the first section there is a timedelta class that is a special class that repersents a time difference between two dates rather than a specific point in time. This timedelta class can be created by subtractive two date or datetime instances, it can also be used to create a new instance of these classed by adding the delta to one of them as a starting point. So in this section I am going to go over some simple quick examples of these datetime class instances.
 
 ### 2.1 - create a timedelta with subtraction of dates, and use it to get a new date
 
