@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-24 14:58:36
-version: 1.15
+updated: 2021-01-24 15:07:07
+version: 1.16
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -95,13 +95,13 @@ print(r)
 
 ## 3 - Using the math library with the random library
 
-The random library might rarly be used on its own, there are coming up with some basic examples of what can be done with random numbers, but in order to do anything that is truly interetsing I am going to want to make use of some additional libraries, or write a whole lot of my own code.
+The random library might rarly be used on its own, there are coming up with some basic examples of what can be done with random numbers, but in order to do anything that is truly interesting I am going to want to make use of some additional libraries, or write a whole lot of my own code.
 
-When it comes to other librrays that come to mind to use with the random librray one that comes to mind is the math librray. There are a few built in functions for doing some basic math operations such as the pow built in function, but in order to do anything really cool I am going to want at least a few basic math functions to work with. So in this section I will be going over some simple examples that make use of random numbers, and the math library.
+When it comes to other libraries that come to mind to use with the random library one that comes to mind is the math library. There are a few built in functions for doing some basic math operations such as the pow built in function, but in order to do anything really cool I am going to want at least a few basic math functions to work with. So in this section I will be going over some simple examples that make use of random numbers, and the math library.
 
 ### 3.1 - Having some fun with cos and sin
 
-The Math.cos, and Math.sin functions of the math library are two math functions that I find mysefl playing around with a lot. these methods are great for getting a point along the circumfrence of a circle when I know a center point, distance from that center point, and an angle. With that set of known values I can create a function where I pass those values to get a point that lays on a circle. It is not so hard to create such a function, and once I have that function to work with I can have fun using the randomn library to get random points that lay around the circumfrence of a circle, or any place relative to a given circle.
+The Math.cos, and Math.sin functions of the math library are two math functions that I find myself playing around with a lot. these methods are great for getting a point along the circumference of a circle when I know a center point, distance from that center point, and an angle. With that set of known values I can create a function where I pass those values to get a point that lays on a circle. It is not so hard to create such a function, and once I have that function to work with I can have fun using the random library to get random points that lay around the circumference of a circle, or any place relative to a given circle.
 
 ```python
 import random
@@ -126,7 +126,7 @@ print( getRandomPointAlongRay(100, 250, 180, 25, 100, round) )
 
 ### 3.2 - Random numbers and atan2
 
-There are many must know methods in the math library when it comes to having fun with random numbers and actaully using those random numbers to position things. The math.cos and math.sin methods are great for positioning an object in a random location relative to a center point, but what about getting an angle from a point to another point, and also the other way around. Another must know math method I think is the atan2 method which is relavent to this kind of task.
+There are many must know methods in the math library when it comes to having fun with random numbers and actually using those random numbers to position things. The math.cos and math.sin methods are great for positioning an object in a random location relative to a center point, but what about getting an angle from a point to another point, and also the other way around. Another must know math method I think is the atan2 method which is relevant to this kind of task.
 
 ```python
 import random
@@ -163,4 +163,4 @@ print(block)
 
 ## 4 - Conclusion
 
-The random library is then the standard go to library to do anything that I want to do with random numbers. For the most part I often use random numbers when it comes to creating various kinds of game projects, and when making games I prefer to do so in a javaScript enviorment. Still it is nice to learn how to do all the various things that I like to do in javaScript with python, and knaowing how to come up with random numbers sur is one such thing that comes to mind with that.
+The random library is then the standard go to library to do anything that I want to do with random numbers. For the most part I often use random numbers when it comes to creating various kinds of game projects, and when making games I prefer to do so in a javaScript environment. Still it is nice to learn how to do all the various things that I like to do in javaScript with python, and knowing how to come up with random numbers sur is one such thing that comes to mind with that.
