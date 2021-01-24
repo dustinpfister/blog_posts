@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-22 16:32:58
-version: 1.10
+updated: 2021-01-24 10:07:43
+version: 1.11
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -32,7 +32,7 @@ print(r)
 
 ### 1.2 - Using the value in an expression
 
-So now that I have the very basic general idea out of the way when it comes to the random methods lets move on to some more examples in which I am doing something with that value. A majoy part of programing is working out expressions that will create values. These expressions can be composed of a few varaibles and some times it might be nice to pass in a random number as part of the expression.
+So now that I have the very basic general idea out of the way when it comes to the random methods lets move on to some more examples in which I am doing something with that value. A major part of programing is working out expressions that will create values. These expressions can be composed of a few variables and some times it might be nice to pass in a random number as part of the expression.
 
 Say for example that I want to get a random position between between max values for x and y. One way is to woek out just some simple expressions to do so where there will be a value between 0 and 1 that can be thought of as a percent value of sorts. In the event that this percent value is zero then the result will be the min value that I want, if it is one then the result will be the max value. In such a case I can plug in a random number for this percent value to get a random point between these min and max values.
 
@@ -54,7 +54,7 @@ This example is actually a little over kill as there are range method in the ran
 
 ### 1.2 - using the value as an argument to a function
 
-Maybe it is not always such a good idea to just go ahead an place random values into an expression. Generaly I like to make expressions as a return value for function. I can then plug in static values for the function, or I can plug in a random number.
+Maybe it is not always such a good idea to just go ahead an place random values into an expression. Generally I like to make expressions as a return value for function. I can then plug in static values for the function, or I can plug in a random number.
 
 ```python
 import random
@@ -73,7 +73,7 @@ There are a number of functions for getting a range between a min and max value.
 
 ### 2.1 - random int range
 
-The randint method will give be a random integer value between and including a given min and max value. So for example say I want ramdom integer values that are consistant with the values of a dice, I can pass 1 for the min value, and 6 for the max value.
+The randint method will give be a random integer value between and including a given min and max value. So for example say I want ramdom integer values that are consistent with the values of a dice, I can pass 1 for the min value, and 6 for the max value.
 
 ```python
 import random
@@ -120,4 +120,4 @@ print( getRandomPointAlongRay(100, 250, 180, 25, 100, round) )
 
 ## 4 - Conclusion
 
-The random library is then the standard go to librray to do anything that I want to do with random numbers.
+The random library is then the standard go to library to do anything that I want to do with random numbers.
