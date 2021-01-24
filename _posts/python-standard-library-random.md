@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-24 10:07:43
-version: 1.11
+updated: 2021-01-24 14:11:41
+version: 1.12
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -94,6 +94,10 @@ print(r)
 ```
 
 ## 3 - Using the math library with the random library
+
+The random library might rarly be used on its own, there are coming up with some basic examples of what can be done with random numbers, but in order to do anything that is truly interetsing I am going to want to make use of some additional libraries, or write a whole lot of my own code.
+
+When it comes to other librrays that come to mind to use with the random librray one that comes to mind is the math librray. There are a few built in functions for doing some basic math operations such as the pow built in function, but in order to do anything really cool I am going to want at least a few basic math functions to work with. So in this section I will be going over some simple examples that make use of random numbers, and the math library.
 
 ### 3.1 - Having some fun with cos and sin
 
