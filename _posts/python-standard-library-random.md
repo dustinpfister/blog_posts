@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 787
-updated: 2021-01-24 14:17:49
-version: 1.13
+updated: 2021-01-24 14:24:42
+version: 1.14
 ---
 
 There should be a built in way to create random numbers in python, and there is at least one way by making use of the [random standard library](https://docs.python.org/3.7/library/random.html). There are some projects where I might want to plug in a random number for an expression, or as an argument to a function. The random standard library has not just one, but a few methods to help make quick work with most typical use case examples for random numbers.
@@ -126,4 +126,4 @@ print( getRandomPointAlongRay(100, 250, 180, 25, 100, round) )
 
 ## 4 - Conclusion
 
-The random library is then the standard go to library to do anything that I want to do with random numbers.
+The random library is then the standard go to library to do anything that I want to do with random numbers. For the most part I often use random numbers when it comes to creating various kinds of game projects, and when making games I prefer to do so in a javaScript enviorment. Still it is nice to learn how to do all the various things that I like to do in javaScript with python, and knaowing how to come up with random numbers sur is one such thing that comes to mind with that.
