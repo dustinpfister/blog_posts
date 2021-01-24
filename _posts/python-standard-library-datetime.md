@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-24 13:58:24
-version: 1.14
+updated: 2021-01-24 14:00:46
+version: 1.15
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date). This library is a little different from the built in Date class that I am used to with javaScript, for one thing there is not just one class, but a few classes actually. There is a datetime class that seems to be similar the the Date class, but there is also a date class, and a timedelta class also.
@@ -15,7 +15,7 @@ In javaScript there is a built in Date class, so I would think that there should
 
 ## 1 - Basics of the datetime library
 
-To start off with I think I should go over just a few very basic getting started examples of the datetime library. There are a number of ways to create an instance of the main date class in this library so maybe it is a good idea to start there.
+To start off with I think I should go over just a few very basic getting started examples of the datetime library. There are a number of ways to create an instance of the main datetime class in this library so maybe it is a good idea to start there. It might be called for to go over just a few simple basic examples of the other classes that there are to work with in the library, mainly the date, and timedelta classes.
 
 ### 1.1 - The datetime.now prop and the datetime class
 
