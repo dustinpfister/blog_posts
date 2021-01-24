@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-24 13:44:42
-version: 1.13
+updated: 2021-01-24 13:58:24
+version: 1.14
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date). This library is a little different from the built in Date class that I am used to with javaScript, for one thing there is not just one class, but a few classes actually. There is a datetime class that seems to be similar the the Date class, but there is also a date class, and a timedelta class also.
@@ -83,6 +83,24 @@ So as I have covered breefly in the first section there is a timedelta class tha
 ### 2.1 - create a timedelta with subtraction of dates, and use it to get a new date
 
 In the basic section where I covered the time delta breefly one way to create an instance of a time delta is by subtractive two instances of a date. However I did not cover how to go about using an instnace of this time delta class, so with that said one way to use a time delta is to just add or subtract a time delta to another distance of a date, or date time to get a new point in time in the form of a date or datetime class instance.
+
+```python
+import datetime as date
+ 
+d1 = date.date(1999, 1, 20)
+d2 = date.date(1999, 1, 21)
+ 
+td = d2 - d1
+print(type(td).__name__)
+ 
+d3 = date.date(2021, 4, 5) + td
+print(type(d3).__name__)    # date
+print( d3 ) # 2021-04-06
+```
+
+### 2.2 - Create a timedelta will the class dirrectly
+
+Although it is great that I can create timedelta instances by getting the difference between two dates, it would be nice to also be able to just create them dirrectly. For this there is the timedelta class of the datetime module where I can just call the main constructor function and pass some arguments for days, or seconds. For example I can create a time delta class instance that is one billion seconds, and then I can add that difference to the date that i was born to get the date and time at which I turned on billion seconds old.
 
 ```python
 import datetime as date
