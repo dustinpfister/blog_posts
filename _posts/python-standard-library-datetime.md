@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 786
-updated: 2021-01-24 14:00:46
-version: 1.15
+updated: 2021-01-24 14:06:21
+version: 1.16
 ---
 
 In javaScript there is a built in Date class, so I would think that there should be something to that effect in python also. Well there is a few built in standard libraries actually it would seem and one such library is the [datetime library](https://docs.python.org/3/library/datetime.html#datetime.date). This library is a little different from the built in Date class that I am used to with javaScript, for one thing there is not just one class, but a few classes actually. There is a datetime class that seems to be similar the the Date class, but there is also a date class, and a timedelta class also.
@@ -151,4 +151,6 @@ for p in t:
 
 ## 4 - Conclusion
 
-The datetime class is then the first go to library when it comes to doing things that have to do with time in a python project. However it might not be the end of such tasks also. There are a few other standard libraries that seem to have to do with time, and I have not yet looked into what there might be to work with when it comes to user space projects. However thinking from my experience with javaScript those far this datetime library all ready seems more than enough to help me with at least most basic tasks that come to mind that have to do with time.
+The datetime library is then the first go to library when it comes to doing things that have to do with time in a python project, however it might not be the end of such tasks also. There are a few other standard libraries that seem to have to do with time, and I have not yet looked into what there might be to work with when it comes to user space projects. However thinking from my experience with javaScript those far this datetime library all ready seems more than enough to help me with at least most basic tasks that come to mind that have to do with time. In fact it goes beyond the Date class that I am used to so I find it more than addaqutie actually.
+
+I did not get around to writing about every little feature when it comes to the additional classes in the library that have to do with time zones, and the time of date alone. When I get around tio editing this post at some point in the futire there is of course expanding on thoses, but I think I would also like to create at least a few actually simple project examples also, and that might be a better move. When it comes to covering every little detail of where there is in termns of classes and functions there is always the offical python docs after all.
