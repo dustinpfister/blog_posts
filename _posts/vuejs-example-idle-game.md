@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 788
-updated: 2021-01-25 12:45:05
-version: 1.4
+updated: 2021-01-25 12:49:27
+version: 1.5
 ---
 
 This week I think I would like to take a break from python to get back into writing a few new posts on vuejs. I have all ready wrote a number of posts on the basics of vuejs a while back, so now i think I should focus more on creating some actual simple projects with the framework. With that said I think it might be a good idea to make a few simple idle games with the framework, it just seems like something that might prove to be fun, and in the process I can also apply what I know so far when it comes to using vuejs as a client side framework.
@@ -167,3 +167,4 @@ I am now just going to want to have a little html and css in order to tie everyt
 
 ## 4 - Conclusion
 
+That is it for now when it comes to this vuejs example of a basic idle game, this week I think I will be working on a few more examples and maybe nay of them should be additional examples like this. There is way more that can be added on top of this example just when it comes to a basic set of features for an idle game, and maybe I will but a little more time into this example, and this post as well. However I would like to have at least a few vue examples of idle games that are just very basic, clean, staring points actually. So if I am going to add more to this example I still think I will only want to add so much more, I have a bad habot of going overboard with fetures sometimes.
