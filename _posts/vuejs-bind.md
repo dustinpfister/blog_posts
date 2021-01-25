@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 468
-updated: 2021-01-25 12:58:56
-version: 1.7
+updated: 2021-01-25 13:04:45
+version: 1.8
 ---
 
-As yes [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. There are text nodes, there are attribute names and values for elements, and then there is raw html as well. There are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, so lets take a look at some vue bind examples today.
+The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. There are text nodes, there are attribute names and values for elements, and then there is raw html as well. There are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, so it is a good idea to get these things worked out when it comes to working on a vuejs project.
+
+There are ways to binding some kind of value to the text node of an element, for that there is the mustache syntax, and also the text dirrective. However what if i want to use some text not as a text node, but as a value for anattribute of an element in avuejs template? For these kinds of tasks there is the [vue bind dirrective](https://vuejs.org/v2/guide/syntax.html#v-bind-Shorthand). So lets take a look at a few simple examples of binidng text to elements in a vuejs template, using various ways inclduing the text, and bind dirrectives.
 
 <!-- more -->
 
