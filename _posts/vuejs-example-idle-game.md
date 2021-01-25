@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 788
-updated: 2021-01-25 12:35:34
-version: 1.1
+updated: 2021-01-25 12:40:19
+version: 1.2
 ---
 
 This week I think I would like to take a break from python to get back into writing a few new posts on vuejs. I have all ready wrote a number of posts on the basics of vuejs a while back, so now i think I should focus more on creating some actual simple projects with the framework. With that said I think it might be a good idea to make a few simple idle games with the framework, it just seems like something that might prove to be fun, and in the process I can also apply what I know so far when it comes to using vuejs as a client side framework.
@@ -17,6 +17,7 @@ Idel games seem to have a pretty addictive nature to them when they are well don
 
 ## 1 - The main game module thus far
 
+For this vue example I am goinf to want to have just a single vue instance, but I think I will also want to pull a lot of the logic into at least one other seperate object all togeather that will serve as a main game state object module of sorts. So then this game module will have to have at least one public method that wil create and return a new game state object. In addition to the main create method of the game module I am also goinf to want to have a few additional public methods that have to do with the mutation of that main state object. For now maybe just a public method that will prefrom a single mine event for the game state, and then another method that will be used to sell an amount of a mined resource.
 
 ```js
 var gameMod = (function(){;
