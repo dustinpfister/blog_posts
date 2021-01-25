@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 468
-updated: 2021-01-25 14:23:15
-version: 1.10
+updated: 2021-01-25 14:26:32
+version: 1.11
 ---
 
 The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. There are text nodes, there are attribute names and values for elements, and then there is raw html as well. There are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, so it is a good idea to get these things worked out when it comes to working on a vuejs project.
@@ -110,3 +110,7 @@ new Vue({
     }
 });
 ```
+
+## 4 - Conclusion
+
+So the v-bind dirrective is generally what I will want to use wwhen it comes to binding a value to an element attribute in a template rather than a text node. When it comes to text nodes offten I can just use the mustache syntax, or the v-text dirrective. It also pays to be aware of all the other little built in dirrectives that come into play then working out a vuejs powered project such as the v-for dirrective.
