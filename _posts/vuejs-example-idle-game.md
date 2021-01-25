@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 788
-updated: 2021-01-25 12:52:29
-version: 1.6
+updated: 2021-01-25 12:55:34
+version: 1.7
 ---
 
-This week I think I would like to take a break from python to get back into writing a few new posts on vuejs. I have all ready wrote a number of posts on the basics of vuejs a while back, so now i think I should focus more on creating some actual simple projects with the framework. With that said I think it might be a good idea to make a few simple idle games with the framework, it just seems like something that might prove to be fun, and in the process I can also apply what I know so far when it comes to using vuejs as a client side framework.
+This week I think I would like to take a break from python to get back into writing a few new posts on vuejs. I have all ready wrote a number of posts on the basics of vuejs a while back, so now i think I should focus more on creating some actual simple [vue examples](https://vuejs.org/v2/guide/) with the [vue framework](https://vuejs.org/) and native javaScript. With that said I think it might be a good idea to make a few simple idle games with the framework, it just seems like something that might prove to be fun, and in the process I can also apply what I know so far when it comes to using vuejs as a client side framework.
 
 Idel games seem to have a pretty addictive nature to them when they are well done, also making a basic one for starters is not so hard. There are many features that come to mind that I think just about any idle game should have, but for this one I am going to keep things very basic. In idle games there is often a way to get a kind of resource by way of a manual action such as clicking a button of some kind. There are also a wide range of other features that I think any idle game should have includinig resource gains over time, resource gains gained over time while away, upgrades, and so forth. However for now maybe I should focus on just what the core of the game is for starters.
 
