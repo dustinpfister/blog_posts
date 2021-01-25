@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 468
-updated: 2021-01-25 13:04:45
-version: 1.8
+updated: 2021-01-25 14:20:42
+version: 1.9
 ---
 
 The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. There are text nodes, there are attribute names and values for elements, and then there is raw html as well. There are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, so it is a good idea to get these things worked out when it comes to working on a vuejs project.
@@ -37,7 +37,9 @@ Binding text is one thing but what about attributes ans raw html, well lets take
 
 ## 2 - Attribute vue bind directive for element attributes
 
-When it comes to binding a value in the vue data object to a text node that can be done with the mustache syntax just fine, bit it will not aways work out so great when attempting to bind a value to an html element attribute value in a template. If you are running into trouble when that one you will want to check out the v-bind directive.
+When it comes to binding a value in the vue data object to a text node that can be done with the mustache syntax just fine, but it will not aways work out so great when attempting to bind a value to an html element attribute value in a template. If you are running into trouble with that one you will want to check out the v-bind directive. So lets look at a few examples of this dirrective wyhen it comes to working with element attribute values in a template, rater than text nodes.
+
+### 2.1 - Basic v-bind example
 
 ```js
 new Vue({
@@ -47,6 +49,50 @@ new Vue({
         red: 'color:red;'
     }
 });
+```
+
+### 2.2 - Using v-bind, an v-for to set id element attributes with a collection of objects in the data object
+
+A static value in the data object can be use for the value of an attribute and doing so is faurly simple. However what if I have an array of objects in the data object, and I want to use a property of these objects in the array as a value for an id attribute for a collection of elements in the template for each object in the array? This is of course a little more involved, and also it will take a bit more than just the vue bind dirrective.
+
+```html
+<html>
+  <head>
+    <title>vue bind example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-bind"></div>
+  <script>
+new Vue({
+    el: '#demo-bind',
+    template: '<div>'+
+        '<div v-bind:style="item.locked?\'display:none;\':\'display:block\'" v-for="item in items">'+
+            '<input v-bind:value="item.id" v-bind:id="\'item_\'+item.id" type="button"  v-on:click="click">'+
+            '<span> {{ item.count }} </span>'+
+        '</div>'+
+    '</div>',
+    data: {
+        items: [{ id: 'one', count:0 },{ id: 'two', count: 0, locked: true },{ id: 'three', count: 0 }]
+    },
+    methods: {
+        click : function(e){
+            var itemArr = e.target.id.split('_')
+            var dat = this.$data;
+            var i = dat.items.length, item;
+            while(i--){
+                item = dat.items[i];
+                if(item.id === itemArr[1]){
+                    item.count += 1;
+                    break;
+                }
+            }
+        }
+    }
+});
+  </script>
+  </body>
+</html>
 ```
 
 ## 3 - Binding raw html
