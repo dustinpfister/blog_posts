@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 788
-updated: 2021-01-25 12:44:01
-version: 1.3
+updated: 2021-01-25 12:45:05
+version: 1.4
 ---
 
 This week I think I would like to take a break from python to get back into writing a few new posts on vuejs. I have all ready wrote a number of posts on the basics of vuejs a while back, so now i think I should focus more on creating some actual simple projects with the framework. With that said I think it might be a good idea to make a few simple idle games with the framework, it just seems like something that might prove to be fun, and in the process I can also apply what I know so far when it comes to using vuejs as a client side framework.
@@ -140,6 +140,8 @@ new Vue({
 ```
 
 ## 3 - The html and css
+
+I am now just going to want to have a little html and css in order to tie everything togetaher.
 
 ```html
 <html>
