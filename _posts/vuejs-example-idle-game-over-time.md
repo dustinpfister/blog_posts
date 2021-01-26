@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 15:31:52
-version: 1.3
+updated: 2021-01-26 15:40:29
+version: 1.4
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
@@ -17,7 +17,11 @@ I might get back to imporveing that post, and the coresponding code, but I think
 
 ## 1 - The game module
 
-There are just two files for this vuejs example thus far, the javaScript file that is the vuejs instance, and the vanilla javaScript game module where I will be placing the bulk of the game logic for this idle game.
+There are just two files for this vuejs example thus far, the javaScript file that is the vuejs instance, and the vanilla javaScript game module where I will be placing the bulk of the game logic for this idle game. I started out my copying over the source code from the first post where I aimed to just work out the very core basics of this game when it comes to manual production of resources and selling those resources. From that point I added a whole bunch of methods, but also made some minor changes to exsiting features that I might include in the source code of the getting statred post I did yesterady when it comes to editing.
+
+Major introductions at this point include an update method that will update the game object by a given seconds. This method is intended to be used in a main update loop of one kind or another and is needed for the over time production features that I will be adding.
+
+Additional majot additions have to do with a few new helper methods that have to do with the action of mining. There is a mine helper method that is intended to be called just once that makes use of the Math.random method, another mine helper that called the one that uses Math.random a few times, and then another mine method that is intedned to be used when dealing with a high count of mine actions.
 
 ```js
 var gameMod = (function(){;
