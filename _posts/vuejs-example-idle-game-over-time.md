@@ -1,12 +1,12 @@
 ---
-title: Basic idle game example using Vue.js with over time feature
+title: Adding over time and away production to a vuejs idle game example
 date: 2021-01-26 11:03:00
 tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 15:28:34
-version: 1.2
+updated: 2021-01-26 15:31:52
+version: 1.3
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
@@ -16,6 +16,8 @@ I might get back to imporveing that post, and the coresponding code, but I think
 <!-- more -->
 
 ## 1 - The game module
+
+There are just two files for this vuejs example thus far, the javaScript file that is the vuejs instance, and the vanilla javaScript game module where I will be placing the bulk of the game logic for this idle game.
 
 ```js
 var gameMod = (function(){;
