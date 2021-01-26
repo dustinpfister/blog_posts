@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 15:40:29
-version: 1.4
+updated: 2021-01-26 15:43:00
+version: 1.5
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
@@ -189,6 +189,7 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
+Now for the vue instance for this idle game example, here I have an updated template that will display a progress bar that is the amount of time until the next mine count to be prefromed.
 
 ```js
 var vm = new Vue({
@@ -303,6 +304,8 @@ var vm = new Vue({
 ```
 
 ## 3 - The html file
+
+When it comes to the hard coded html all I really did is add a little hard coded css. The root element that I mount to still has no additional hard coded html in it.
 
 ```html
 <html>
