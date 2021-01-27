@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 790
-updated: 2021-01-27 15:56:04
-version: 1.8
+updated: 2021-01-27 15:57:49
+version: 1.9
 ---
 
 Today I am continuing with making a basic idle game using vuejs as a framework. In the last two posts on this subject I started out with a very basic example that I just manual production or resources, and selling those resources for money. In [yesterdays post](/2021/01/26/vuejs-example-idle-game-over-time/) I work out the very basics of over time production or resources, and at this post I also have a single save state working. There is just one more very basic feature that an idle game should have before moving on to more advanced topics that might help to turn this into something interesting, and that is having some kind of system for upgrades.
@@ -19,9 +19,9 @@ There is a lot more to an upgrade system if I go wild with ideas when it comes t
 
 ## 1 - The game module now
 
-The main game module now has a few more helper methods that have to do with creating an updateing an object of upgrade objects of the main game state object. 
+The main game module now has a few more helper methods that have to do with creating an updating an object of upgrade objects of the main game state object. 
 
-I now have a create upgrades helper along with the main publci create state public method. This is the helper that is used to create the object of upgrade objects for a game state object. Just like the create minerals helper it can take an array of option objects that can be used to set the level for each upgrade. This array of upgrade options will be created each time the save method of the vue instance is called that is used to save the game state.
+I now have a create upgrades helper along with the main public create state public method. This is the helper that is used to create the object of upgrade objects for a game state object. Just like the create minerals helper it can take an array of option objects that can be used to set the level for each upgrade. This array of upgrade options will be created each time the save method of the vue instance is called that is used to save the game state.
 
 I also have a check upgrade public method that is the public method that will be called in the click method of the vue instance each time an upgrade button is clicked.
 
@@ -246,9 +246,9 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
-The vuejs instance has just a few additions made to the template to create a new upgrades dic that will act as a menu for all upgrades. Beyond that I just made a few changes to the click method so that it will call the new game module public method that will upgrade a given upgrade when clicked. 
+The vuejs instance has just a few additions made to the template to create a new upgrades div that will act as a menu for all upgrades. Beyond that I just made a few changes to the click method so that it will call the new game module public method that will upgrade a given upgrade when clicked. 
 
-I also made a change in the save method of the vue instance when it comes to the save state json. I am going to want to have something for upgrades in the save state object, but all that really needs to be stored is an array of objects for the ubject key, and the current level of the upgrade.
+I also made a change in the save method of the vue instance when it comes to the save state json. I am going to want to have something for upgrades in the save state object, but all that really needs to be stored is an array of objects for the upgrade key, and the current level of the upgrade.
 
 ```js
 var vm = new Vue({
@@ -434,4 +434,4 @@ There is then the html of that I have for this example. I still just have a sing
 
 ## 4 - Conclusion
 
-So far this idle game is starting to come togetaher, but I think I am going to want to write at least one or two more posts on this subject before moving on to something else. I might come back to editing this post, and the underlaying source code at some point in the future. There are at least a few more attitions I would like to make when it comes ti just the current set of features, but fopr the sake of this post I will not be adding any more features to this example, for this post at least. There is the question of what is next in additional posts when it comes to additionakl features that I might want to add to a game such as this, however that is a matter for another post.
+So far this idle game is starting to come together, but I think I am going to want to write at least one or two more posts on this subject before moving on to something else. I might come back to editing this post, and the underlaying source code at some point in the future. There are at least a few more additions I would like to make when it comes ti just the current set of features, but for the sake of this post I will not be adding any more features to this example, for this post at least. There is the question of what is next in additional posts when it comes to additional features that I might want to add to a game such as this, however that is a matter for another post.
