@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 468
-updated: 2021-01-27 11:34:32
-version: 1.14
+updated: 2021-01-27 11:37:55
+version: 1.15
 ---
 
 The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. However when it comes to the idea of binind text to an element in a vue template there is more than one thing that comes to mind about that. For example there are text nodes of elements, there are attribute names and values for elements, and then there is raw html itself all of which can be thought of as a kind of text. So then there are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, and where, so it is a good idea to get these things worked out when it comes to working with text and templates in a vuejs project.
@@ -53,6 +53,8 @@ new Vue({
 Binding text is one thing but what about attributes ans raw html, well lets take at some more examples that involve binding in vuejs.
 
 ### 1.1 - The html directive and binding a data object value as html rather than a text node
+
+So the mustache syntax is just for creating, or repplacing text nodes of elements that are in place all ready in the template. However what if I want to add some html to a replate that is created by way of an html string? In vanilla javaScript there is the innerHTML propery of element refernec objects that can be used as a way to create html from an html string. In vuejs there is the html directive that can be used to the same effect.
 
 ```html
 <html>
