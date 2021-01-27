@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 790
-updated: 2021-01-27 15:21:21
-version: 1.5
+updated: 2021-01-27 15:24:37
+version: 1.6
 ---
 
 Today I am continuing with making a basic idle game useing vuejs as a framework. In the last two posts on this subject I started out with a very basic example that I just manual production or resources, and selling those reasources for money. In yesterdays post I work out the very basics of over time production or resources, and at this post I also have a single save state working. There is just one more very basic feature that an idle game should have before moving on to more advanced topics that might help to turn this into soemthing interesting, and that is having some kind of system for upgrades.
@@ -246,7 +246,9 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
-The vuejs instance has just a few additions made to the template to create a new upgrades dic that will act as a menu for all upgrades. Beyond that I just made a few changes to the click method so that it will call the new game module public method that will upgrade a given upgrade when clicked.
+The vuejs instance has just a few additions made to the template to create a new upgrades dic that will act as a menu for all upgrades. Beyond that I just made a few changes to the click method so that it will call the new game module public method that will upgrade a given upgrade when clicked. 
+
+I also made a change in the save method of the vue instance when it comes to the save state json. I am going to want to have something for upgrades in the save state object, but all that really needs to be stored is an array of objects for the ubject key, and the current level of the upgrade.
 
 ```js
 var vm = new Vue({
