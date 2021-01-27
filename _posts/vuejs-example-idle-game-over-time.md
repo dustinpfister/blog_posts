@@ -5,21 +5,21 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 19:26:45
-version: 1.9
+updated: 2021-01-27 15:54:29
+version: 1.10
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
 
-I might get back to imporveing that post, and the coresponding code, but I think that maybe that specific example should say pretty basic with just that first step being the focal point. The next step forward could be a great number of things, but one feature that is needed is havine over time production of a resource rather than just clicking. There is not just having production over time, but also away production, which is also a feature that I would like to at least start in this vue example. There are so many other little things that I would like to add even when it comes to just the very basics, but for now one more thing I would like to start at this point is save states.
+I might get back to improving that post, and the corresponding code, but I think that maybe that specific example should say pretty basic with just that first step being the focal point. The next step forward could be a great number of things, but one feature that is needed is having over time production of a resource rather than just clicking manually. There is not just having production over time, but also away production, which is also a feature that I would like to at least start in this vue example. There are so many other little things that I would like to add even when it comes to just the very basics, but for now one more thing I would like to start at this point is save states.
 
-Over time production is just one of many must have features for an idle game, in fact the first idle game example is not really an idle game becuase of the absense of over time production, so lets get this one out of the way and move on the next steps.
+Over time production is just one of many must have features for an idle game, in fact the first idle game example is not really an idle game because of the absence of over time production, so lets get this one out of the way and move on the next steps.
 
 <!-- more -->
 
 ## Pull the source for this and all my other vuejs exmaples at my github
 
-The best way to run this example locally might be to clone down the source and run it locally. The [source for this vuejs idle game can be found at my vuejs test repo](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-example-idle-game-over-time) at my github, along with all my other vuejs examples. When pulling it down npm can be used to install depedances for the repo and then the list script can be used to run a list for all the examples, inclduing this one.
+The best way to run this example locally might be to clone down the source and run it locally. The [source for this vuejs idle game can be found at my vuejs test repo](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-example-idle-game-over-time) at my github, along with all my other vuejs examples. When pulling it down npm can be used to install dependences for the repo and then the list script can be used to run a list for all the examples, including this one.
 
 ```
 $ git clone --depth 1 https://github.com/dustinpfister/test_vuejs
@@ -37,11 +37,11 @@ At which point you can then view the list in a web browser at localhost:3000.
 
 ## 1 - The game module
 
-There are just two files for this vuejs example thus far, the javaScript file that is the vuejs instance, and the vanilla javaScript game module where I will be placing the bulk of the game logic for this idle game. I started out my copying over the source code from the first post where I aimed to just work out the very core basics of this game when it comes to manual production of resources and selling those resources. From that point I added a whole bunch of methods, but also made some minor changes to exsiting features that I might include in the source code of the getting statred post I did yesterady when it comes to editing.
+There are just two files for this vuejs example thus far, the javaScript file that is the vuejs instance, and the vanilla javaScript game module where I will be placing the bulk of the game logic for this idle game. I started out my copying over the source code from the first post where I aimed to just work out the very core basics of this game when it comes to manual production of resources and selling those resources. From that point I added a whole bunch of methods, but also made some minor changes to existing features that I might include in the source code of the getting started post I did yesterday when it comes to editing.
 
 Major introductions at this point include an update method that will update the game object by a given seconds. This method is intended to be used in a main update loop of one kind or another and is needed for the over time production features that I will be adding.
 
-Additional majot additions have to do with a few new helper methods that have to do with the action of mining. There is a mine helper method that is intended to be called just once that makes use of the Math.random method, another mine helper that called the one that uses Math.random a few times, and then another mine method that is intedned to be used when dealing with a high count of mine actions.
+Additional major additions have to do with a few new helper methods that have to do with the action of mining. There is a mine helper method that is intended to be called just once that makes use of the Math.random method, another mine helper that called the one that uses Math.random a few times, and then another mine method that is intended to be used when dealing with a high count of mine actions.
 
 ```js
 var gameMod = (function(){;
@@ -158,7 +158,7 @@ var gameMod = (function(){;
       });
   };
  
-  // prefrom a mine action
+  // preform a mine action
   api.mine = function(game, count){
       if(count === 1){
           mineSingle(game);
@@ -209,7 +209,7 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
-Now for the vue instance for this idle game example, here I have an updated template that will display a progress bar that is the amount of time until the next mine count to be prefromed. I also added a number of methods for loading, saving and reseting a save state which is another basic feature that I added at this point thus far. Yet another chnage that was made was the introduction of a basic app loop in the mounted lifecycle hook, I am not sure if this is the ideal way to go about having a main app loop for a project such as this but I will be needing something to that effect for the resource gain over time features.
+Now for the vue instance for this idle game example, here I have an updated template that will display a progress bar that is the amount of time until the next mine count to be preformed. I also added a number of methods for loading, saving and reseting a save state which is another basic feature that I added at this point thus far. Yet another change that was made was the introduction of a basic app loop in the mounted lifecycle hook, I am not sure if this is the ideal way to go about having a main app loop for a project such as this but I will be needing something to that effect for the resource gain over time features.
 
 ```js
 var vm = new Vue({
@@ -325,7 +325,7 @@ var vm = new Vue({
 
 ## 3 - The html file
 
-When it comes to the hard coded html all I really did is add a little hard coded css for the new template. The root element that I mount to still has no additional hard coded html in it, and I might keep that the case moving forward. In additional examples based of of this I migth eventualy have some more javaScript files, but for now it is still just the game module, and the script for the vuejs instance. I am also of course linking to vuejs itself, the path to the script for that might have to be ajutsed depding on how you might ho about hosting the files.
+When it comes to the hard coded html all I really did is add a little hard coded css for the new template. The root element that I mount to still has no additional hard coded html in it, and I might keep that the case moving forward. In additional examples based of of this I might eventually have some more javaScript files, but for now it is still just the game module, and the script for the vuejs instance. I am also of course linking to vuejs itself, the path to the script for that might have to be adjusted depending on how you might ho about hosting the files.
 
 ```html
 <html>
@@ -364,6 +364,6 @@ When it comes to the hard coded html all I really did is add a little hard coded
 
 ## 4 - Conclusion
 
-This basic idle game using vuejs as a client side framework is coming togetaher okay, but there is still a great deal missing even when it comes to just the basic set of features that just about any idle game should have. In additional posts on this subject i think the next step should be having a way to do something with the money that is begin made in the game, in other words upgrades.
+This basic idle game using vuejs as a client side framework is coming together okay, but there is still a great deal missing even when it comes to just the basic set of features that just about any idle game should have. In additional posts on this subject i think the next step should be having a way to do something with the money that is begin made in the game, in other words upgrades.
 
-When it comes ot the state at which the game is at thus far in relation to the topic of this post, there might still be some additional rome for improvement such as having a welcome back message rather than just having the amount of resources given. So I might want to come back, and edit this post, and refine the code a little at some point, but the basic idea that I had in minde for this post today is more or less done.
+When it comes ot the state at which the game is at thus far in relation to the topic of this post, there might still be some additional room for improvement such as having a welcome back message rather than just having the amount of resources given. So I might want to come back, and edit this post, and refine the code a little at some point, but the basic idea that I had in mind for this post today is more or less done.
