@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 459
-updated: 2021-01-27 12:23:06
-version: 1.9
+updated: 2021-01-27 12:24:46
+version: 1.10
 ---
 
 The [vue mounted lifecycle hook](https://v3.vuejs.org/api/options-lifecycle-hooks.html#mounted) is a way to define some logic that will run when a vue instance is mounted to a mount point in html with the vue el option or the $mount method. The vue mounted hook is one of several such hooks when working with vue class instances. This is then a hook that is fired after the create hook, and before additional hooks that will fire at end of life states for the vue instance. So then the mount hook strikes me as a decent hook to place code that I want to fire once, and at a state when both the data object, and the template are there to work with.
@@ -89,7 +89,17 @@ In this basic example I am just calling the method right away, so it will not ma
 
 ### 2.2 - Delay and call later with something like setTimeout
 
-```js
+One thing that I can do is just delay the mount process by calling the mount method in the body of a function that I pass to soemthing like the setTimeout method.
+
+```html
+<html>
+  <head>
+    <title>vue mounted lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-lifecycle-mounted"></div>
+  <script>
 var vm = new Vue({
         template: '<p>n: {{ n }}</p>',
         data: {
@@ -100,9 +110,13 @@ var vm = new Vue({
             console.log(this.$el.textContent); // n: 4
         }
     });
+// calling mount after a delay
 setTimeout(function () {
     vm.$mount('#demo-lifecycle-mounted');
-}, 3000);
+}, 10 * 1000);
+  </script>
+  </body>
+</html>
 ```
 
 ## 3 - Conclusion
