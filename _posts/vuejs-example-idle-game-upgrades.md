@@ -5,13 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 790
-updated: 2021-01-27 15:04:38
-version: 1.2
+updated: 2021-01-27 15:11:33
+version: 1.3
 ---
 
 Today I am continuing with making a basic idle game useing vuejs as a framework. In the last two posts on this subject I started out with a very basic example that I just manual production or resources, and selling those reasources for money. In yesterdays post I work out the very basics of over time production or resources, and at this post I also have a single save state working. There is just one more very basic feature that an idle game should have before moving on to more advanced topics that might help to turn this into soemthing interesting, and that is having some kind of system for upgrades.
 
-The topic of upgrades alone can quickly turn into a major habit hole if I let it do so, but for this example I just want to work out a simple system and move on.
+The topic of upgrades alone can quickly turn into a major rabbit hole if I let it do so, but for this example I just want to work out a simple system and move on, at least for now anyway. I have made a a few other games over the years that include an upgrade system, and this is something that I never get worked out just the way that I want it. There are a lot of things that come to mind when it comes to things like the expressions used to figure upgrade cost, as well as expressions that update the game object properties that are effected up the upgrade and so forth. However generaly I think that an upgrade system should be an array of objects, and each object should have a method that is called that will be used to apply the upgrade to the main game state object.
+
+There is a lot more to an upgarde system if I go wild with ideas when it comes to all the various ways that I can go about designing such a system. However for this vuejs example of a basic idle game I think I am going to want to keep things fairly basic.
 
 <!-- more -->
 
