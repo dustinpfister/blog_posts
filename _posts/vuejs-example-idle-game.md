@@ -5,19 +5,19 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 788
-updated: 2021-01-25 12:55:34
-version: 1.7
+updated: 2021-01-27 15:51:18
+version: 1.8
 ---
 
 This week I think I would like to take a break from python to get back into writing a few new posts on vuejs. I have all ready wrote a number of posts on the basics of vuejs a while back, so now i think I should focus more on creating some actual simple [vue examples](https://vuejs.org/v2/guide/) with the [vue framework](https://vuejs.org/) and native javaScript. With that said I think it might be a good idea to make a few simple idle games with the framework, it just seems like something that might prove to be fun, and in the process I can also apply what I know so far when it comes to using vuejs as a client side framework.
 
-Idel games seem to have a pretty addictive nature to them when they are well done, also making a basic one for starters is not so hard. There are many features that come to mind that I think just about any idle game should have, but for this one I am going to keep things very basic. In idle games there is often a way to get a kind of resource by way of a manual action such as clicking a button of some kind. There are also a wide range of other features that I think any idle game should have includinig resource gains over time, resource gains gained over time while away, upgrades, and so forth. However for now maybe I should focus on just what the core of the game is for starters.
+Idle games seem to have a pretty addictive nature to them when they are well done, also making a basic one for starters is not so hard. There are many features that come to mind that I think just about any idle game should have, but for this one I am going to keep things very basic. In idle games there is often a way to get a kind of resource by way of a manual action such as clicking a button of some kind. There are also a wide range of other features that I think any idle game should have including resource gains over time, resource gains gained over time while away, upgrades, and so forth. However for now maybe I should focus on just what the core of the game is for starters.
 
 <!-- more -->
 
 ## 1 - The main game module thus far
 
-For this vue example I am goinf to want to have just a single vue instance, but I think I will also want to pull a lot of the logic into at least one other seperate object all togeather that will serve as a main game state object module of sorts. So then this game module will have to have at least one public method that wil create and return a new game state object. In addition to the main create method of the game module I am also goinf to want to have a few additional public methods that have to do with the mutation of that main state object. For now maybe just a public method that will prefrom a single mine event for the game state, and then another method that will be used to sell an amount of a mined resource.
+For this vue example I am going to want to have just a single vue instance, but I think I will also want to pull a lot of the logic into at least one other separate object all together that will serve as a main game state object module of sorts. So then this game module will have to have at least one public method that will create and return a new game state object. In addition to the main create method of the game module I am also going to want to have a few additional public methods that have to do with the mutation of that main state object. For now maybe just a public method that will preform a single mine event for the game state, and then another method that will be used to sell an amount of a mined resource.
 
 ```js
 var gameMod = (function(){;
@@ -102,7 +102,7 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
-Now that I have a main game module I will now want to use that module with a vue instance. The main create state method of the game module is what I will be using to create a new vue data object for the vue instance. I will then want to have buttons in the template for this vue example, and for now there are just two kinds of buttons on that will prefrom a mine event for the game state, and others for each mineral that will be used to sell all of the mineral for money.
+Now that I have a main game module I will now want to use that module with a vue instance. The main create state method of the game module is what I will be using to create a new vue data object for the vue instance. I will then want to have buttons in the template for this vue example, and for now there are just two kinds of buttons on that will preform a mine event for the game state, and others for each mineral that will be used to sell all of the mineral for money.
 
 ```js
 new Vue({
@@ -141,7 +141,7 @@ new Vue({
 
 ## 3 - The html and css
 
-I am now just going to want to have a little html and css in order to tie everything togetaher.
+I am now just going to want to have a little html and css in order to tie everything together. For most vuejs example I often just have a single element that will serve as a mount point, and this example is no exception. There is just a single div element with an id that I use with the vue el option in the vue instance as a way of mounting the vue instance to this html. On top of that I am just lining to a copy of vuejs of course, and the additional files that I covered in this example.
 
 ```html
 <html>
@@ -167,4 +167,4 @@ I am now just going to want to have a little html and css in order to tie everyt
 
 ## 4 - Conclusion
 
-That is it for now when it comes to this vuejs example of a basic idle game, this week I think I will be working on a few more examples and maybe nay of them should be additional examples like this. There is way more that can be added on top of this example just when it comes to a basic set of features for an idle game, and maybe I will but a little more time into this example, and this post as well. However I would like to have at least a few vue examples of idle games that are just very basic, clean, staring points actually. So if I am going to add more to this example I still think I will only want to add so much more, I have a bad habot of going overboard with fetures sometimes.
+That is it for now when it comes to this vuejs example of a basic idle game, this week I think I will be working on a few more examples and maybe nay of them should be additional examples like this. There is way more that can be added on top of this example just when it comes to a basic set of features for an idle game, and maybe I will but a little more time into this example, and this post as well. However I would like to have at least a few vue examples of idle games that are just very basic, clean, staring points actually. So if I am going to add more to this example I still think I will only want to add so much more, I have a bad habit of going overboard with features sometimes.
