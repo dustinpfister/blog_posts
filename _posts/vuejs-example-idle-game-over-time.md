@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 19:16:27
-version: 1.7
+updated: 2021-01-26 19:19:35
+version: 1.8
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
@@ -307,7 +307,7 @@ var vm = new Vue({
 
 ## 3 - The html file
 
-When it comes to the hard coded html all I really did is add a little hard coded css. The root element that I mount to still has no additional hard coded html in it.
+When it comes to the hard coded html all I really did is add a little hard coded css for the new template. The root element that I mount to still has no additional hard coded html in it, and I might keep that the case moving forward. In additional examples based of of this I migth eventualy have some more javaScript files, but for now it is still just the game module, and the script for the vuejs instance. I am also of course linking to vuejs itself, the path to the script for that might have to be ajutsed depding on how you might ho about hosting the files.
 
 ```html
 <html>
