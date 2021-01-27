@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 790
-updated: 2021-01-27 15:11:33
-version: 1.3
+updated: 2021-01-27 15:15:22
+version: 1.4
 ---
 
 Today I am continuing with making a basic idle game useing vuejs as a framework. In the last two posts on this subject I started out with a very basic example that I just manual production or resources, and selling those reasources for money. In yesterdays post I work out the very basics of over time production or resources, and at this post I also have a single save state working. There is just one more very basic feature that an idle game should have before moving on to more advanced topics that might help to turn this into soemthing interesting, and that is having some kind of system for upgrades.
@@ -426,3 +426,4 @@ var vm = new Vue({
 
 ## 4 - Conclusion
 
+So far this idle game is starting to come togetaher, but I think I am going to want to write at least one or two more posts on this subject before moving on to something else. I might come back to editing this post, and the underlaying source code at some point in the future. There are at least a few more attitions I would like to make when it comes ti just the current set of features, but fopr the sake of this post I will not be adding any more features to this example, for this post at least. There is the question of what is next in additional posts when it comes to additionakl features that I might want to add to a game such as this, however that is a matter for another post.
