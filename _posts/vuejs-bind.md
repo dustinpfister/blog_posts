@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 468
-updated: 2021-01-27 10:45:05
-version: 1.12
+updated: 2021-01-27 11:06:23
+version: 1.13
 ---
 
 The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. However when it comes to the idea of binind text to an element in a vue template there is more than one thing that comes to mind about that. For example there are text nodes of elements, there are attribute names and values for elements, and then there is raw html itself all of which can be thought of as a kind of text. So then there are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, and where, so it is a good idea to get these things worked out when it comes to working with text and templates in a vuejs project.
@@ -17,11 +17,19 @@ This might all be a little complated, but just a few quick examples are enough t
 
 <!-- more -->
 
-## 1 - Vue bind text
+## 1 - Bind text as a text node for an element, or bind as HTML
 
 So when it comes to binding text to an element in a template there is the mustache syntax that can be used of course, however there is also the v-text built in directive as well that can be used as a way to bind text from a property in the vue data object to a text node in a template.
 
-```js
+```html
+<html>
+  <head>
+    <title>vue bind example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-bind"></div>
+  <script>
 new Vue({
     el: '#demo-bind',
     template: '<div>' +
@@ -33,9 +41,45 @@ new Vue({
         mess2: 'bind text directive'
     }
 });
+  </script>
+  </body>
+</html>
 ```
 
 Binding text is one thing but what about attributes ans raw html, well lets take at some more examples that involve binding in vuejs.
+
+### 1.1 - The html directive
+
+```html
+<html>
+  <head>
+    <title>vue html example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-bind"></div>
+  <script>
+new Vue({
+    el: '#demo-bind',
+    template: '<div>' +
+ 
+    // will result in a text node "{ html1 }"
+    '<div>{ html1 }</div>' +
+ 
+    // will result in a text node "<p style="background:red;">mustache syntax</p>"
+    '<div>{{ html1 }}</div>' +
+ 
+    // the use of the html directive is what is needed to inject as html
+    '<div v-html=\"html1\"></div>' +
+    '</div>',
+    data: {
+        html1: '<p style="background:red;">mustache syntax</p>'
+    }
+});
+  </script>
+  </body>
+</html>
+```
 
 ## 2 - Vue bind directive for element attributes
 
