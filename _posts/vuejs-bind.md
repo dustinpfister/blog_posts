@@ -1,17 +1,19 @@
 ---
-title: vue bind
+title: Vue bind directive
 date: 2019-05-31 21:00:00
 tags: [vuejs]
 layout: post
 categories: vuejs
 id: 468
-updated: 2021-01-25 14:26:32
-version: 1.11
+updated: 2021-01-27 10:45:05
+version: 1.12
 ---
 
-The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. There are text nodes, there are attribute names and values for elements, and then there is raw html as well. There are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, so it is a good idea to get these things worked out when it comes to working on a vuejs project.
+The term [vue bind](https://vuejs.org/v2/guide/syntax.html) may refer to one of the many ways to bind some text to an element in a vue js template. However when it comes to the idea of binind text to an element in a vue template there is more than one thing that comes to mind about that. For example there are text nodes of elements, there are attribute names and values for elements, and then there is raw html itself all of which can be thought of as a kind of text. So then there are a few ways to go about binding something to a template in vue js depending on what it is that needs to be bound to a template, and where, so it is a good idea to get these things worked out when it comes to working with text and templates in a vuejs project.
 
-There are ways to binding some kind of value to the text node of an element, for that there is the mustache syntax, and also the text dirrective. However what if i want to use some text not as a text node, but as a value for anattribute of an element in avuejs template? For these kinds of tasks there is the [vue bind dirrective](https://vuejs.org/v2/guide/syntax.html#v-bind-Shorthand). So lets take a look at a few simple examples of binidng text to elements in a vuejs template, using various ways inclduing the text, and bind dirrectives.
+There are ways to go about binding some kind of value to the text node of an element, for that there is the mustache syntax, and also the text dirrective. There is also not just text nodes, but also parsing an html string into actually html and appending that to a template, which can also be done with the mustache syntax. However on top of all of that, what if I want to use some text not as the value of a text node, but as a value for an anattribute of an element in a vuejs template? For these kinds of tasks there is the [vue bind dirrective](https://vuejs.org/v2/guide/syntax.html#v-bind-Shorthand) that can be used in a number of ways to bind some text in a vue data object, or as the result of a simple javaScript expression, as the value for one or more elements in a vue teample. 
+
+This might all be a little complated, but just a few quick examples are enough to iron things out with this. So lets take a look at a few simple examples of binidng text to elements, using various ways of doing so inclduing the text, and bind dirrectives.
 
 <!-- more -->
 
@@ -35,7 +37,7 @@ new Vue({
 
 Binding text is one thing but what about attributes ans raw html, well lets take at some more examples that involve binding in vuejs.
 
-## 2 - Attribute vue bind directive for element attributes
+## 2 - Vue bind directive for element attributes
 
 When it comes to binding a value in the vue data object to a text node that can be done with the mustache syntax just fine, but it will not aways work out so great when attempting to bind a value to an html element attribute value in a template. If you are running into trouble with that one you will want to check out the v-bind directive. So lets look at a few examples of this dirrective wyhen it comes to working with element attribute values in a template, rater than text nodes.
 
