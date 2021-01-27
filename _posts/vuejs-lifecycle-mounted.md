@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 459
-updated: 2021-01-27 12:24:46
-version: 1.10
+updated: 2021-01-27 12:36:07
+version: 1.11
 ---
 
 The [vue mounted lifecycle hook](https://v3.vuejs.org/api/options-lifecycle-hooks.html#mounted) is a way to define some logic that will run when a vue instance is mounted to a mount point in html with the vue el option or the $mount method. The vue mounted hook is one of several such hooks when working with vue class instances. This is then a hook that is fired after the create hook, and before additional hooks that will fire at end of life states for the vue instance. So then the mount hook strikes me as a decent hook to place code that I want to fire once, and at a state when both the data object, and the template are there to work with.
@@ -118,6 +118,41 @@ setTimeout(function () {
   </body>
 </html>
 ```
+
+### 2.3 - The created hook
+
+Again if the vue el option is not given, then the mount method must be called one way or another as the alterative way to mount the vue instance, and thus start the mounted life cycle hook. If the mount method is not called one way or another outside of the vue instance then only life cycle hooks up to the created hook will fire. With that said the created hook is then once place to which I could call the mount method, or start some kind of thread that will keep testing for a condition that is to be made before the vue will mount.
+
+```html
+<html>
+  <head>
+    <title>vue mounted lifecycle example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-lifecycle-mounted"></div>
+  <script>
+new Vue({
+    template: '<p>mess: {{ mess }}</p>',
+    data: {
+        mess: 'Hello'
+    },
+    created: function(){
+        // calling mount in the create hook
+        this.$mount('#demo-lifecycle-mounted');
+    },
+    // mounted lifecycle hook
+    mounted: function () {
+        this.$el.textContent += ' World.';
+    }
+});
+  </script>
+  </body>
+</html>
+```
+
+There are a number of othjer hooks, but for the most part thus far I find myself just using created, and mounted hooks.
+
 
 ## 3 - Conclusion
 
