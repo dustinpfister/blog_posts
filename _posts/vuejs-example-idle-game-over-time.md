@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 19:19:35
-version: 1.8
+updated: 2021-01-26 19:26:45
+version: 1.9
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
@@ -16,6 +16,24 @@ I might get back to imporveing that post, and the coresponding code, but I think
 Over time production is just one of many must have features for an idle game, in fact the first idle game example is not really an idle game becuase of the absense of over time production, so lets get this one out of the way and move on the next steps.
 
 <!-- more -->
+
+## Pull the source for this and all my other vuejs exmaples at my github
+
+The best way to run this example locally might be to clone down the source and run it locally. The [source for this vuejs idle game can be found at my vuejs test repo](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-example-idle-game-over-time) at my github, along with all my other vuejs examples. When pulling it down npm can be used to install depedances for the repo and then the list script can be used to run a list for all the examples, inclduing this one.
+
+```
+$ git clone --depth 1 https://github.com/dustinpfister/test_vuejs
+$ cd text_vuejs
+$ npm install
+```
+
+The list script can be used to serve a list for all examples.
+
+```
+$ npm run list 3000
+```
+
+At which point you can then view the list in a web browser at localhost:3000.
 
 ## 1 - The game module
 
