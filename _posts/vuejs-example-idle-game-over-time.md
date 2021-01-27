@@ -5,13 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-26 19:10:56
-version: 1.6
+updated: 2021-01-26 19:16:27
+version: 1.7
 ---
 
 In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
 
-I might get back to imporveing that post, and the coresponding code, but I think that maybe that specific example should say pretty basic with just that first step being the focal point. The next step forward could be a great number of things, but one feature that is needed is havine over time production of a resource rather than just clicking. This is a must have of course, in fact the first idle game example is not really an idle game becuase of the absense of this must have feature, so lets get this one out of the way.
+I might get back to imporveing that post, and the coresponding code, but I think that maybe that specific example should say pretty basic with just that first step being the focal point. The next step forward could be a great number of things, but one feature that is needed is havine over time production of a resource rather than just clicking. There is not just having production over time, but also away production, which is also a feature that I would like to at least start in this vue example. There are so many other little things that I would like to add even when it comes to just the very basics, but for now one more thing I would like to start at this point is save states.
+
+Over time production is just one of many must have features for an idle game, in fact the first idle game example is not really an idle game becuase of the absense of over time production, so lets get this one out of the way and move on the next steps.
 
 <!-- more -->
 
