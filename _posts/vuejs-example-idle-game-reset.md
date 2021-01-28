@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-01-28 17:12:57
-version: 1.7
+updated: 2021-01-28 17:16:40
+version: 1.8
 ---
 
 This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of examples on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics whenit comes to manual production or resources. I then moved on to additional topics that include production over time, and starting an upgrade system. There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
@@ -17,6 +17,8 @@ A reset point system is where the play will start playing the game all over agai
 
 
 ## 1 - The game module
+
+First off I should cover the current state of the game module at the time of this writitng. From the last post on adding an upgrade system the major change is the intoduction of a reset points property for the main game state object. In addition to that there is also some additional properteis that have to do with storing the current delta value for reset points, and also how reset points should be applyed to values in the game state object.
 
 I added a few additional helpers to the game module that will help with creating and updating values that have to do with reset points. These are all at the bottom of the game module and have to do with figureing out what the current delta value is for reset points, and also how reset points should be applyed to the game state object.
 
