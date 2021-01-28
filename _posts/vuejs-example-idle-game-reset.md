@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-01-28 17:03:28
-version: 1.4
+updated: 2021-01-28 17:07:04
+version: 1.5
 ---
 
 This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of examples on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics whenit comes to manual production or resources. I then moved on to additional topics that include production over time, and starting an upgrade system. There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
@@ -448,7 +448,7 @@ var vm = new Vue({
 });
 ```
 
-### 3 - The html
+## 3 - The html
 
 When it comes to the html there are no changes, but I made a few changes when it comes to the CSS.
 
@@ -502,3 +502,7 @@ When it comes to the html there are no changes, but I made a few changes when it
   </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+I might continue working on this vuejs example just becuase I all ready put so much time into it this week. However at this point I think that the goal is to just improve the features that are all ready in place rather than adding features. The idea I had in mine here is to just make an idle game that has the basic features that such a game should have, however that is it. I do not want this vuejs example to steal to much time from my other projects, inclduing my canvas examples collection that I think needs a lot more work too.
