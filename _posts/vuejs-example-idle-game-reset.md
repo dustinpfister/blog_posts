@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-01-28 17:20:27
-version: 1.9
+updated: 2021-01-28 17:34:41
+version: 1.10
 ---
 
 This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of examples on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics whenit comes to manual production or resources. I then moved on to additional topics that include production over time, and starting an upgrade system. There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
@@ -454,7 +454,7 @@ var vm = new Vue({
 
 ## 3 - The html
 
-When it comes to the html there are no changes, but I made a few changes when it comes to the CSS.
+When it comes to the html there are no changes, but I made a few changes when it comes to the CSS. When it comes to the new menus I now have a main wrap menu class that I use for all div elements in the template that are a kind of menu that the play can change from one menu to another in the new menu bar that I added at this point.
 
 ```html
 <html>
