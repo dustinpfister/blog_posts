@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-01-28 17:16:40
-version: 1.8
+updated: 2021-01-28 17:20:27
+version: 1.9
 ---
 
 This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of examples on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics whenit comes to manual production or resources. I then moved on to additional topics that include production over time, and starting an upgrade system. There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
@@ -285,7 +285,7 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
-I made a few additions to the template in the vuejs instance.
+I made a few additions to the template in the vuejs instance this time, and as such it is starting to get a little involved, but I am still not having to hard of a time making sense of it. In this vue teample I am not making use of a number of built in vue durectives including v-bind, v-on, and v-for as I have in the last posts on these idle game examples. However now I am also using the v-if directive to make a better system when it comes to menus.
 
 ```js
 var vm = new Vue({
