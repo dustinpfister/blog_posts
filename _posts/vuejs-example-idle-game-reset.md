@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-01-28 17:01:59
-version: 1.3
+updated: 2021-01-28 17:03:28
+version: 1.4
 ---
 
 This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of examples on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics whenit comes to manual production or resources. I then moved on to additional topics that include production over time, and starting an upgrade system. There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
@@ -450,5 +450,55 @@ var vm = new Vue({
 
 ### 3 - The html
 
+When it comes to the html there are no changes, but I made a few changes when it comes to the CSS.
+
 ```html
+<html>
+  <head>
+    <title>vue example of an idle game</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+    <style>
+.wrap_main{
+  padding:10px;
+  background: #0f0f0f;
+}
+/* DISPLAY*/
+.disp{
+  padding:10px;
+  margin-top:10px;
+  color: white;
+  background:gray;
+}
+.probar{
+  margin-top:10px;
+  height:10px;
+  background:white;
+}
+.navbar{
+  margin-top:10px;
+  margin-bottom:10px;
+  height:10px;
+  text-align:center;
+}
+/* MENUS */
+.wrap_menu{
+  padding: 5px;
+  margin-top:10px;
+  background: green;
+}
+.manual{}
+.upgrades{}
+.minerals{}
+.minbox{
+  position: relative;
+  background: gray;
+}
+    </style>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script src="game.js"></script>
+  <script src="vue.js"></script>
+  </body>
+</html>
 ```
