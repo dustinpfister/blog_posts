@@ -5,11 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-29 16:37:27
-version: 1.2
+updated: 2021-01-29 16:44:04
+version: 1.3
 ---
 
-For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call for frame by making a solution that I can use to make sprite sheets with a little javaScript code.
+For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
+
+The goal here is to at least start working on something that will serve as a way to include basic pixel art graphics without having to hassle with external images. The image assets can just be part of the source code build. So I will just ned to work out some simple system where I have an array of pixel data for each frame, along with some additional values like a color pallette and so forth. I am thinking that it would also be nice to have some kind of plugin format where all of this data is pulled into external files, and also that each file can have more than one animation, each with a different set of frames, and they can also share color pallettes.
+
+So this kind of project might prove to be a little involved, but becuase I am working on top of something that I have made before hand, and also becuase I have a fair amount of experence I was able to get the basic idea of what I wanted up and running within just a single day.
 
 <!-- more -->
 
