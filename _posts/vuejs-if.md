@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2021-01-28 19:11:40
-version: 1.11
+updated: 2021-01-28 19:15:07
+version: 1.12
 ---
 
 The [vue if](https://vuejs.org/v2/guide/conditional.html) directive in vuejs can be used when making templates to make an element display or not based on a given condition. It can come in handy when working out a template, but there are other options as well when it comes to built in directives. Also when it comes to using render methods an actual javaScript if statement can be used as a way to define a condition to display and element or not. Never the less this will be a quick post on the vue if directive, and some alternative options as well in vuejs.
@@ -66,4 +66,9 @@ new Vue({
 });
 ```
 
-Directives like vue if can still be used in render methods as well, but why bother when you can just do anything that works with jvaScript when dealing with a render method.
+Directives like vue if can still be used in render methods as well, but why bother when you can just do anything that works with javaScript when dealing with a render method.
+
+## 3 - Conclusion
+
+The v-if dirrective is then a good way to go about quickly flaging an element as being currently visisble or not. So far I often use it when making a teample where there might be a number of divisions that act as part of an interface, but I only need to have one part of that interface visisble at a time.
+
