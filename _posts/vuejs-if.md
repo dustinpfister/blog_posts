@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2019-05-23 21:02:40
-version: 1.10
+updated: 2021-01-28 19:11:40
+version: 1.11
 ---
 
-The [vue if](https://vuejs.org/v2/guide/conditional.html) directive in vuejs can be used when making templates to create an element or not based on a condition.It can come in handy when working out a template, but there are other options as well when it comes to using render methods for example an actual javaScript if statement can be used. Never the less this will be q quick post on the vue if directive, and some alternative options as well in vuejs.
+The [vue if](https://vuejs.org/v2/guide/conditional.html) directive in vuejs can be used when making templates to make an element display or not based on a given condition. It can come in handy when working out a template, but there are other options as well when it comes to built in directives. Also when it comes to using render methods an actual javaScript if statement can be used as a way to define a condition to display and element or not. Never the less this will be a quick post on the vue if directive, and some alternative options as well in vuejs.
 
 <!-- more -->
 
@@ -50,7 +50,7 @@ And html that makes use of it that looks like this.
 
 So then because the type of the data.n property is a number, the value of PI is fixed to two decimal points. A silly example but you get the idea, this directive can be used to set some conditions for the tendering of elements, and any children within them.
 
-## 2 -Render methods as a vue if alternative
+## 2 - Render methods as a vue if alternative
 
 One alternative to the vue if directive is to get into using [render methods](/2019/05/12/vuejs-render/) in place of static templates. Within the body of a render method the full power of javaScript can be used including if statements and ternary operators.
 
