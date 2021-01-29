@@ -5,14 +5,15 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-29 16:33:19
-version: 1.1
+updated: 2021-01-29 16:37:27
+version: 1.2
 ---
 
-For a new canvas example I think I would like to start another example expanding on what I started with my other canvas example on animation basics. This time I would like to build on top of this basic library that helps with animations that I just call for frame by making a solution that I can use to make sprite sheets with a little javaScript code.
+For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call for frame by making a solution that I can use to make sprite sheets with a little javaScript code.
 
 <!-- more -->
 
+For the [full source code is at my canvas examples reposatory](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-animation-pixmaps) on github. The source of the full example is there, along with all my other canvas examples thus far.
 
 ## 1 - The format for a pixmap.js plugin
 
