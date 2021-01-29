@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-29 16:51:57
-version: 1.4
+updated: 2021-01-29 16:54:35
+version: 1.5
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -173,3 +173,4 @@ var pixmapMod = (function(){
 
 ## 3 - Conclusion
 
+So then this pixmap library that works on top of my _forframe_ library seems to work well thus far as a way to create pixel graphics for another canvas example. I think I might use this in one or two other canvas exmaples as a way to create some animations that are things other than simple shapes.
