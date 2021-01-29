@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-29 16:44:04
-version: 1.3
+updated: 2021-01-29 16:51:57
+version: 1.4
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -103,7 +103,9 @@ pixmapMod.load({
 
 ## 2 - The pixmap library
 
-Now for the source code of the pixmap module.
+Now for the source code of the pixmap module which works on top of my _forFrame_ animation library that I worked out in a previous canvas example. Here in the pixmap module I just want to have two public methods, one to load sets of animtions, and the other to create and return an array of for frame canvas objects using my _forframe_ library.
+
+The forFrame.createCanvas method of my forframe library takes an for frame object that I create with the forFrame.create method as the first argument. This is an object that is just used to create a model for each frame up to a set number of frames. The other argument that I need to pass to my create forFrame.createCanvas method is a function that will be used to dray the module for each frame. In this pixmap module I have methods for bolth of these that I can then use for these arguments that will work for the specifc way that I want to use forFrame to create assets that I can then use to skin display objects.
 
 ```js
 var pixmapMod = (function(){
