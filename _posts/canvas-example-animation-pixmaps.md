@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-31 18:14:21
-version: 1.6
+updated: 2021-01-31 18:25:42
+version: 1.7
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -366,6 +366,218 @@ utils.log1 = function (n, d, base) {
 };
 ```
 
-## 5 - Conclusion
+## 5 - the object pool lib
+
+```js
+var poolMod = (function () {
+    // Public API
+    var api = {};
+    // get next inactive object in the given pool
+    var getInactive = function (pool) {
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            if (!obj.active) {
+                return obj;
+            }
+        }
+        return false;
+    };
+    // create a new pool
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.count = opt.count || 10;
+        var i = 0,
+        pool = {
+            objects: [],
+            data: opt.data || {},
+            spawn: opt.spawn || function (obj, pool, state, opt) {},
+            purge: opt.purge || function (obj, pool, state) {},
+            update: opt.update || function (obj, pool, state, secs) {}
+        };
+        while (i < opt.count) {
+            pool.objects.push({
+                active: false,
+                i: i,
+                x: opt.x === undefined ? 0 : opt.x,
+                y: opt.y === undefined ? 0 : opt.y,
+                w: opt.w === undefined ? 32 : opt.w,
+                h: opt.h === undefined ? 32 : opt.h,
+                heading: opt.heading === undefined ? 0 : opt.heading,
+                pps: opt.pps === undefined ? 32 : opt.pps,
+                lifespan: opt.lifespan || 3,
+                data: {}
+            });
+            i += 1;
+        }
+        return pool;
+    };
+    // spawn the next inactive object in the given pool
+    api.spawn = function (pool, state, opt) {
+        var obj = getInactive(pool);
+        state = state || {};
+        opt = opt || {};
+        if (obj) {
+            if (!obj.active) {
+                obj.active = true;
+                pool.spawn.call(pool, obj, pool, state, opt);
+                return obj;
+            }
+        }
+        return false;
+    };
+    // update a pool object by a secs value
+    api.update = function (pool, secs, state) {
+        var i = pool.objects.length,
+        obj;
+        state = state || {}; // your projects state object
+        while (i--) {
+            obj = pool.objects[i];
+            if (obj.active) {
+                pool.update.call(pool, obj, pool, state, secs);
+ 
+                // always update lifespan
+                obj.lifespan -= secs;
+                obj.lifespan = obj.lifespan < 0 ? 0 : obj.lifespan;
+ 
+                // always update position based on current obj.pps
+                obj.x += Math.cos(obj.heading) * obj.pps * secs;
+                obj.y += Math.sin(obj.heading) * obj.pps * secs;
+ 
+                if (obj.lifespan === 0) {
+                    obj.active = false;
+                    pool.purge.call(pool, obj, pool, state);
+                }
+            }
+        }
+    };
+    // set all to inActive or active state
+    api.setActiveStateForAll = function (pool, bool) {
+        bool = bool === undefined ? false : bool;
+        var i = pool.objects.length,
+        obj;
+        while (i--) {
+            obj = pool.objects[i];
+            obj.active = bool;
+        }
+    };
+    // get all objects with the gieven activeState
+    api.getAllActive = function(pool, activeState){
+        activeState = activeState === undefined ? true : activeState;
+        return pool.objects.filter(function(object){
+            return object.active === activeState;
+        });
+    };
+    // move the given object by its current heading and pps
+    api.moveByPPS = function (obj, secs) {
+        obj.x += Math.cos(obj.heading) * obj.pps * secs;
+        obj.y += Math.sin(obj.heading) * obj.pps * secs;
+    };
+    // check bounds for the given display object and canvas and return true if the object
+    // is out of bounds and false if it is not.
+    api.checkBounds = function (obj, canvas) {
+        if (obj.x >= canvas.width || obj.x < obj.w * -1 || obj.y > canvas.height || obj.y < obj.h * -1) {
+            return false;
+        }
+        return true;
+    };
+    // bounding box
+    api.boundingBox = function (a, b) {
+        return utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h);
+    };
+    // return public method
+    return api;
+}
+    ());
+```
+
+## 6 - main.js
+
+```js
+var LIFESPAN = 7;
+ 
+// state object
+var canvasObj = utils.createCanvas({
+    width: 320,
+    height: 240
+});
+var state = {
+    ver: '0.4.0',
+    pixmaps: pixmapMod.create(),
+    canvas: canvasObj.canvas,
+    ctx: canvasObj.ctx,
+    lt: new Date(),
+    framesPerSec: 20,
+    secs: 1
+};
+ 
+state.maxDist = state.canvas.width * 0.75;
+ 
+state.boxes = poolMod.create({
+    count: 30,
+    w: 64,
+    h: 64,
+    spawn: function(obj, pool, state, opt){
+        var radian = utils.pi2 * Math.random();
+        obj.x = state.canvas.width / 2 + Math.cos(radian) * state.maxDist - obj.w / 2;
+        obj.y = state.canvas.height / 2 + Math.sin(radian) * state.maxDist - obj.h / 2;
+        obj.heading = radian + Math.PI;
+        obj.pps = 64;
+        obj.pixmapKey = 'mr_sun';
+        obj.aniKey = ['sun_happy', 'sun_mad'][Math.floor(Math.random() * 2)];
+        obj.frameIndex = 0;
+        obj.ani = state.pixmaps[obj.pixmapKey][obj.aniKey];
+        obj.secs = 0;
+        obj.lifespan = 1;
+        obj.alpha = 1;
+    },
+    update: function(obj, pool, state, secs){
+        obj.secs += secs;
+        obj.lifespan = 1;
+        if(obj.secs >= 0.25){
+            obj.frameIndex += 1;
+            obj.frameIndex %= obj.ani.maxFrame;
+            obj.secs %= 0.25
+        }
+        var dist = utils.distance(obj.x + obj.w / 2, obj.y + obj.h / 2, state.canvas.width / 2, state.canvas.height / 2);
+        obj.alpha = (1 - dist / state.maxDist).toFixed(2);
+        if(dist >= state.maxDist){
+           obj.lifespan = 0;
+        }
+    }
+});
+ 
+// basic app loop
+var loop = function(){
+    var now = new Date(),
+    secs = (now - state.lt) / 1000;
+    requestAnimationFrame(loop);
+    state.secs += secs;
+    state.secs = state.secs > 0.5 ? 0.5 : state.secs;
+    if(state.secs >= 1 / state.framesPerSec){
+        // draw
+        draw.background(state.ctx, state.canvas);
+        state.boxes.objects.forEach(function(box){
+            if(box.active){
+                box.ani.set(box.frameIndex);
+                state.ctx.globalAlpha = box.alpha;
+                box.ani.draw(state.ctx, box.x, box.y, box.w, box.h);
+            }
+        });
+        state.ctx.globalAlpha = 1;
+        draw.ver(state.ctx, state.canvas, state);
+        // update
+        poolMod.spawn(state.boxes, state, {});
+        poolMod.update(state.boxes, state.secs, state);
+        state.secs = 0;
+    }
+    state.lt = now;
+};
+ 
+loop();
+```
+
+## 7 - Conclusion
 
 So then this pixmap library that works on top of my _forframe_ library seems to work well thus far as a way to create pixel graphics for another canvas example. I think I might use this in one or two other canvas exmaples as a way to create some animations that are things other than simple shapes.
