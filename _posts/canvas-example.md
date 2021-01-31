@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-01-31 18:18:53
-version: 1.80
+updated: 2021-01-31 18:22:56
+version: 1.81
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -71,6 +71,8 @@ In my animations basics canvas example I touched base on the basics of animation
 I have some interest in fractals, and thus far I have this one post that I have worked out where I am making a basic fractal and displaying a fractal like animation with canvas elements.
 
 ### 3.4 - [Animation and pixmaps](/2021/01/29/canvas-example-animation-pixmaps/)
+
+I would like to work out a simple, crude, yet effeective way to go about creating sprite sheet assets with a little javaScript code rather than using extreal images. This way I can continute creating builds where the whole example can be just one single javaScript file rather than making the situstion more complext by making it so exteranl images must be loaded first. This canvas example is the current state of working out such a standard.
 
 ### 3.5 - [A simple ball bounce canvas example](/2020/01/14/canvas-example-ball-bounce/)
 
