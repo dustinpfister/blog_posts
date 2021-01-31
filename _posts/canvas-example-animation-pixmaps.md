@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-29 16:54:35
-version: 1.5
+updated: 2021-01-31 18:14:21
+version: 1.6
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -25,76 +25,89 @@ The first thing that comes to mind with this is that I want to work out a format
 
 ```js
 pixmapMod.load({
-    name: 'box_basics',  // animation set name
+    name: 'mr_sun',
     palettes: [
-        [false, 'black', 'lime', 'green'],
-        ['lime', 'black', 'white', 'gray']
+        [false, 'black', 'white', 'orange', 'yellow', 'red']
     ],
-    ani:{ // the collection of animations
-        box1: {  // the first animation called 'box1'
+    ani:{
+        sun_happy: {
             paletteIndex: 0,
-            w: 8,
-            h: 8,
+            w: 16,
+            h: 16,
             data: [
-                1,1,1,1,1,1,1,1, // frame 0
-                1,2,2,2,2,2,2,1,
-                1,2,3,3,3,3,3,1,
-                1,2,3,3,3,3,3,1,
-                1,2,3,3,3,3,3,1,
-                1,2,3,3,3,3,3,1,
-                1,2,3,3,3,3,3,1,
-                1,1,1,1,1,1,1,1,
-
-                0,0,0,0,0,0,0,0, // frame 1
-                0,1,1,1,1,1,1,0,
-                0,1,2,2,2,2,1,0,
-                0,1,2,3,3,3,1,0,
-                0,1,2,3,3,3,1,0,
-                0,1,2,3,3,3,1,0,
-                0,1,1,1,1,1,1,0,
-                0,0,0,0,0,0,0,0,
-
-                0,0,0,0,0,0,0,0, // frame 2
-                0,0,0,0,0,0,0,0,
-                0,0,1,1,1,1,0,0,
-                0,0,1,2,2,1,0,0,
-                0,0,1,2,3,1,0,0,
-                0,0,1,1,1,1,0,0,
-                0,0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0, // frame 0
+                0,0,0,0,0,3,3,4,4,3,3,0,0,0,0,0,
+                0,0,0,3,3,4,4,4,4,4,4,3,3,0,0,0,
+                0,0,3,4,4,4,4,4,4,4,4,4,4,3,0,0,
+                0,0,3,4,4,4,4,4,4,4,4,4,4,3,0,0,
+                0,3,4,4,4,4,4,4,4,4,4,4,4,4,3,0,
+                0,3,4,4,1,1,1,4,4,1,1,1,4,4,3,0,
+                3,4,4,4,2,5,2,4,4,2,5,2,4,4,4,3,
+                3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,
+                0,3,4,4,4,4,4,1,1,4,4,4,4,4,3,0,
+                0,3,4,4,4,4,4,4,4,4,4,4,4,4,3,0,
+                0,0,3,4,4,1,4,4,4,4,1,4,4,3,0,0,
+                0,0,3,4,4,4,1,1,1,1,4,4,4,3,0,0,
+                0,0,0,3,3,4,4,4,4,4,4,3,3,0,0,0,
+                0,0,0,0,0,3,3,4,4,3,3,0,0,0,0,0,
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,
+ 
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0, // frame 1
+                0,0,0,0,0,3,3,4,4,3,3,0,0,0,0,0,
+                0,0,0,3,3,4,4,4,4,4,4,3,3,0,0,0,
+                0,0,3,4,4,4,4,4,4,4,4,4,4,3,0,0,
+                0,0,3,4,4,4,4,4,4,4,4,4,4,3,0,0,
+                0,3,4,4,4,4,4,4,4,4,4,4,4,4,3,0,
+                0,3,4,4,1,1,1,4,4,1,1,1,4,4,3,0,
+                3,4,4,4,2,2,5,4,4,2,2,5,4,4,4,3,
+                3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,
+                0,3,4,4,4,4,4,1,1,4,4,4,4,4,3,0,
+                0,3,4,4,4,4,4,4,4,4,4,4,4,4,3,0,
+                0,0,3,4,4,4,4,1,1,4,4,4,4,3,0,0,
+                0,0,3,4,4,4,4,1,1,4,4,4,4,3,0,0,
+                0,0,0,3,3,4,4,4,4,4,4,3,3,0,0,0,
+                0,0,0,0,0,3,3,4,4,3,3,0,0,0,0,0,
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
             ]
         },
-        box2: {  // the first animation called 'box1'
-            paletteIndex: 1,
-            w: 8,
-            h: 8,
+        sun_mad: {
+            paletteIndex: 0,
+            w: 16,
+            h: 16,
             data: [
-                3,0,0,0,0,0,0,3, // frame 0
-                0,0,0,0,0,0,0,0,
-                0,0,2,0,0,0,0,0,
-                0,0,0,1,1,0,0,0,
-                0,0,0,1,1,0,0,0,
-                0,0,0,0,2,0,0,0,
-                0,0,0,0,0,0,0,0,
-                3,0,0,0,0,0,0,3,
-
-                3,0,0,0,0,0,0,3, // frame 1
-                0,0,0,0,0,0,0,0,
-                0,0,1,1,0,0,0,0,
-                0,0,1,1,2,0,0,0,
-                0,0,0,2,1,1,0,0,
-                0,0,0,0,1,1,0,0,
-                0,0,0,0,0,0,0,0,
-                3,0,0,0,0,0,0,3,
-
-                0,0,0,0,0,0,0,0, // frame 2
-                0,0,0,0,0,0,0,0,
-                1,1,1,0,0,0,0,0,
-                1,1,1,0,0,0,2,0,
-                2,0,0,0,0,0,0,0,
-                0,0,2,0,0,0,1,1,
-                0,0,0,0,0,0,1,1,
-                0,0,0,0,0,0,0,0
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0, // frame 0
+                0,0,0,0,0,3,3,5,5,3,3,0,0,0,0,0,
+                0,0,0,3,3,5,5,5,5,5,5,3,3,0,0,0,
+                0,0,3,5,5,5,5,5,5,5,5,5,5,3,0,0,
+                0,0,3,5,5,5,5,5,5,5,5,5,5,3,0,0,
+                0,3,5,5,5,5,5,5,5,5,5,5,5,5,3,0,
+                0,3,5,5,1,1,1,5,5,1,1,1,5,5,3,0,
+                3,5,5,5,2,5,2,5,5,2,5,2,5,5,5,3,
+                3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,
+                0,3,5,5,5,5,5,1,1,5,5,5,5,5,3,0,
+                0,3,5,5,5,5,5,5,5,5,5,5,5,5,3,0,
+                0,0,3,5,5,5,5,5,5,5,5,5,5,3,0,0,
+                0,0,3,5,5,5,1,1,1,1,5,5,5,3,0,0,
+                0,0,0,3,3,5,5,5,5,5,5,3,3,0,0,0,
+                0,0,0,0,0,3,3,5,5,3,3,0,0,0,0,0,
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0,
+ 
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0, // frame 0
+                0,0,0,0,0,3,3,5,5,3,3,0,0,0,0,0,
+                0,0,0,3,3,5,5,5,5,5,5,3,3,0,0,0,
+                0,0,3,5,5,5,5,5,5,5,5,5,5,3,0,0,
+                0,0,3,5,5,5,5,5,5,5,5,5,5,3,0,0,
+                0,3,5,5,1,5,5,5,5,5,5,1,5,5,3,0,
+                0,3,5,5,5,1,1,5,5,1,1,5,5,5,3,0,
+                3,5,5,5,2,5,2,1,1,2,5,2,5,5,5,3,
+                3,5,5,5,5,5,5,5,5,5,5,5,5,5,5,3,
+                0,3,5,5,5,5,5,1,1,5,5,5,5,5,3,0,
+                0,3,5,5,5,5,5,5,5,5,5,5,5,5,3,0,
+                0,0,3,5,5,5,1,1,1,1,5,5,5,3,0,0,
+                0,0,3,5,5,5,5,1,1,5,5,5,5,3,0,0,
+                0,0,0,3,3,5,5,5,5,5,5,3,3,0,0,0,
+                0,0,0,0,0,3,3,5,5,3,3,0,0,0,0,0,
+                0,0,0,0,0,0,0,3,3,0,0,0,0,0,0,0
             ]
         }
     }
@@ -167,10 +180,192 @@ var pixmapMod = (function(){
     };
     // return the public api;
     return api;
+ 
+}());
+```
+
+## 3 - The forFrame lib
+
+```js
+var forFrame = (function(){
+ 
+    /********** **********
+        CONSTANTS 
+    *********************/
+ 
+    var DEFAULT_MAX_FRAME = 50,
+    DEFAULT_FRAME = 0,
+    DEFAULT_WIDTH = 320,
+    DEFAULT_HEIGHT = 240,
+    FORFRAME_BUILT_IN = function(){},
+    FFDRAW_BUILT_IN = function(){};
+ 
+    /********** **********
+        HELPERS
+    *********************/
+ 
+    // set frame helper
+    var setFrame = function(ff, frame){
+        ff.frame = frame;
+        ff.frame = utils.mod(ff.frame, ff.maxFrame);
+        ff.per = ff.frame / ff.maxFrame;
+        ff.bias = 1 - Math.abs(0.5 - ff.per) / 0.5;
+        // call beforeCall for the current type
+        ff.model = {}; //FF_TYPES[ff.type].beforeCall(ff);
+        var argu = [ff.model, ff.model.points, ff.per];  //FF_TYPES[ff.type].forframe_arguments(ff);
+        ff.model = ff.forFrame.apply(ff, [ff].concat(argu));
+        //ff.model = ff.forFrame(ff);
+        return ff;
+    };
+ 
+    /********** **********
+        FF object 
+    *********************/
+ 
+    // Public API
+    var api = {};
+    // create a plain ff object
+    api.create = function(opt){
+        opt = opt || {};
+        var ff = {
+            type: opt.type || 'plain',
+            frame: opt.frame || DEFAULT_FRAME,
+            width: opt.width || DEFAULT_WIDTH,
+            height: opt.height || DEFAULT_HEIGHT,
+            maxFrame: opt.maxFrame || DEFAULT_MAX_FRAME,
+            model: {},
+            per: 0,
+            secs: 0
+        };
+        ff.forFrame = opt.forFrame || FORFRAME_BUILT_IN; 
+        ff = setFrame(ff, ff.frame);
+        return ff;
+    };
+    // STEP an ff object with a given amount of frames
+    // as such STEPFRAMES needs to be a whole number
+    api.step = function(ff, stepFrames){
+        stepFrames = stepFrames === undefined ? 1 : stepFrames;
+        stepFrames = Math.round(stepFrames);
+        return setFrame(ff, ff.frame + stepFrames);
+    };
+   // UPDATE an ff Object
+    api.update = function(ff, secs, fps){
+        var frames;
+        secs = secs === undefined ? 0: secs;
+        fps = fps === undefined ? 30: fps;
+        ff.secs += secs;
+        if(ff.secs >= 1 / fps){
+            frames = Math.floor(ff.secs / (1 / fps));
+            api.step(ff, frames);
+            ff.secs = utils.mod(ff.secs, 1 / fps);
+        }
+        return ff;
+    };
+ 
+    /********** **********
+        CANVAS OBJECTS
+    *********************/
+ 
+    // create and return a canvas based object on the given ff
+    api.createCanvas = function(ff, ffDraw, backFill, stroke, fill){
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = ff.width * ff.maxFrame;
+        canvas.height = ff.height;
+        ffDraw = ffDraw || FFDRAW_BUILT_IN;
+        if(backFill){
+            ctx.fillStyle=backFill;
+            ctx.fillRect(0,0,canvas.width, canvas.height);
+        }
+        ff.frame = 0;
+        while(ff.frame < ff.maxFrame){
+            setFrame(ff, ff.frame);
+            ffDraw.apply(ff, [ff, ctx, canvas, stroke, fill]);
+            ctx.translate(ff.width, 0);
+            ff.frame += 1;
+        }
+        return {
+            canvas: canvas,
+            ctx: ctx,
+            frame: 0,
+            maxFrame: ff.maxFrame,
+            cellWidth: ff.width,
+            cellHeight: ff.height,
+            step: function(delta){
+                delta = delta === undefined ? 1 : delta;
+                this.frame += delta;
+                this.frame = utils.mod(this.frame, this.maxFrame);
+            },
+            set: function(frame){
+                frame = frame === undefined ? 0 : frame;
+                this.frame = frame;
+                this.frame = utils.mod(this.frame, this.maxFrame);
+            },
+            // draw the current state of this canvas object
+            // to the given canvas, with the given values for position and size
+            draw: function(ctx, x, y, w, h){
+                ctx.drawImage(this.canvas, this.cellWidth * this.frame, 0, this.cellWidth, this.cellHeight, x, y, w, h);
+            }
+        };
+    };
+ 
+    // return the public api;
+    return api;
 
 }());
 ```
 
-## 3 - Conclusion
+## 4 - The utility lib
+
+```js
+var utils = {};
+ 
+utils.pi2 = Math.PI * 2;
+ 
+// get a distance between two points
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+ 
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+// mathematical modulo
+utils.mod = function(x, m) {
+    return (x % m + m) % m;
+};
+ 
+utils.bias = function(n, d){
+    var per = n / d;
+    return 1 - Math.abs(0.5 - per) / 0.5;
+};
+ 
+utils.log1 = function (n, d, base) {
+    base = base === undefined ? 2 : base;
+    var per = n / d;
+    return Math.log( 1 + (per * (base - 1))) / Math.log(base);
+};
+```
+
+## 5 - Conclusion
 
 So then this pixmap library that works on top of my _forframe_ library seems to work well thus far as a way to create pixel graphics for another canvas example. I think I might use this in one or two other canvas exmaples as a way to create some animations that are things other than simple shapes.
