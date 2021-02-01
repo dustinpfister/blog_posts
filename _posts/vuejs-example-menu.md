@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-01 17:17:00
-version: 1.3
+updated: 2021-02-01 17:25:06
+version: 1.4
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real projects with vuejs. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -81,6 +81,12 @@ var vm = new Vue({
 ```
 
 ## 2 - The menu_home, and menu_manual.js componenets
+
+Now that I have my main vue instance worked out it is now just a question of starting to make all the compoents that I want for this simple menu system. For this example I am just making a few menus for now that will just help with extercising the basics of this kind of situation in which I have a main parrent vue instance, and two or more child compoents off from this main instance. 
+
+When doing this sort of thing the project might start to get a little involve when it comes to the main data object of the example, and how to share that data with child componets. So far it would seem that using paramares of componets is how I would want to go about seadning a parrent level value to a child. However when it comes to mutating values in a child component it is not such a good idea to mutate these paramer values, in fact doing so will result in an error. Instead it is a good idea to have my own indepedand data values to work with in a component, and also to depend more so on events as a way to send values back to the parrent main vue instance.
+
+So then in this section I will be going over just a few simple menu componets that I have work out to start off with when it comes to this.
 
 ### 2.1 - A basic home.js with just a static template
 
