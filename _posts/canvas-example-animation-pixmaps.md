@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-02-01 07:37:27
-version: 1.10
+updated: 2021-02-01 07:59:52
+version: 1.11
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -186,7 +186,7 @@ var pixmapMod = (function(){
 
 ## 3 - The forFrame lib
 
-The for frame library is an example of a library that I find myself making over and over again. Each time I do is I keep thinking about what I can add to it, or do differently.
+The for frame library is an example of a library that I find myself making over and over again. Each time I do is I keep thinking about what I can add to it, or do differently. The general idea is to have a function that will create and return a modle that is the state of something relative to a current frame index value, over a total number of frames. So the whole idea of this for frame library is to create something like the Array.forFrame method only more in tune with making an animation wherer the logic in the function is for a given frame index value.
 
 ```js
 var forFrame = (function(){
@@ -319,7 +319,9 @@ var forFrame = (function(){
 
 ## 4 - The utility lib
 
-Like just about all of my other canvas examples I have a general utilty libraray. This is a collection of functions and properties, that I find myself using over and over again across canvas examples. However I add and take away things for each canvas example depeding on what I need.
+Like just about all of my other canvas examples I have a general utilty libraray. This is a collection of functions and properties, that I find myself using over and over again across canvas examples. However I add and take away things for each canvas example depeding on what I need. 
+
+Here I have my ushual create canvas method that helps me to create a cnvas element that is setup with all the basic little additions that I like to have, and it is a method that I keep refining a little now and then and take with me to other examples. There are a number of other methods in this copy of the utils lib, but O sometimes add things that are specfiic to a given example. Basily if I have a function that I am going to use accross more than one module, or think that I will be doin that, or thing that I might do that I park it here.
 
 ```js
 var utils = {};
@@ -372,7 +374,9 @@ utils.log1 = function (n, d, base) {
 
 ## 5 - the object pool lib
 
-This is another library that I started working out for my canvas example on object pools.
+This is another library that I started working out for my canvas example on object pools. This is just yet another library that I find myself making over again and never seem to get just right. That is why I started the canvas example on this type of libray, and I keep coming back to it now and then. 
+
+There are two general ideas when it comes to having a collection of display objects, one is to create and purge them out as needed, the other is to have a fixed stack, or pool of objects that are used over and over again. This object pool is the later rather than the former.
 
 ```js
 var poolMod = (function () {
@@ -500,7 +504,7 @@ var poolMod = (function () {
 
 ## 6 - The main.js file
 
-Now to just make use off all of this in a simple little demo project with a single main.js file.
+Now to just make use off all of this in a simple little demo project with a single main.js file. I just use the create canvas method of my utils library to create a single canvas element for this example. I then create a crude yet effective main state object in which I am createing an instance of my pixmaps object. I am then also creating an object pool to whch I am going to skin the objects with using my new pixmaps library.
 
 ```js
 var LIFESPAN = 7;
