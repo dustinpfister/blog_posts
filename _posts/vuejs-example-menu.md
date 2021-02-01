@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-01 17:25:06
-version: 1.4
+updated: 2021-02-01 17:28:45
+version: 1.5
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real projects with vuejs. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -90,6 +90,8 @@ So then in this section I will be going over just a few simple menu componets th
 
 ### 2.1 - A basic home.js with just a static template
 
+Here I have just a basic home page menu componenet that makes use of a simple static template as a way to redner the menu.
+
 ```js
 Vue.component('menu-home', {
   props: ['money', 'currentMenu'],
@@ -102,6 +104,8 @@ Vue.component('menu-home', {
 ```
 
 ### 2.2 - A manual.js componenet that uses a render function
+
+Here I have a componenent that make use of a render function just like with the main vue.js instance. On top of the parameters like the other menus, I am also making use of a custom delta-money event as a way to send an amount of money that is made on each click of the manual button.
 
 ```js
 Vue.component('menu-manual', {
