@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-02-01 07:32:16
-version: 1.8
+updated: 2021-02-01 07:35:12
+version: 1.9
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -318,6 +318,8 @@ var forFrame = (function(){
 ```
 
 ## 4 - The utility lib
+
+Like just about all of my other canvas examples I have a general utilty libraray. This is a collection of functions and properties, that I find myself using over and over again across canvas examples. However I add and take away things for each canvas example depeding on what I need.
 
 ```js
 var utils = {};
