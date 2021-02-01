@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-01 17:40:49
-version: 1.8
+updated: 2021-02-01 17:42:38
+version: 1.9
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real projects with vuejs. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -140,7 +140,7 @@ Vue.component('menu-manual', {
 
 ## 3 - The html and css files
 
-Now for just a little html, and css to wrap this all up togeather.
+Now for just a little html, and css to wrap this all up togeather. I have an exteral css file for all the styles that I will be using for this menu system of sorts that I link to in the html, and also just a single hard coded div element that I am uing for a mount point in the main vuejs instance.
 
 ```css
 .wrap_main{
