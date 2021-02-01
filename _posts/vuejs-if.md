@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2021-02-01 10:57:53
-version: 1.15
+updated: 2021-02-01 11:19:49
+version: 1.16
 ---
 
 The [vue if](https://vuejs.org/v2/guide/conditional.html) or v-if directive in vuejs can be used when making templates to make an element display or not based on a given condition. It can come in handy when working out a template that contains elements that do not need to be displayed all the time, or only under certain conditions such as a menu system of some kind. However there are other options as well when it comes to built in directives that provide this kind of function such as v-show directive, and there are other realted directives to v-if such as v-else, and v-else-if. 
@@ -21,26 +21,9 @@ So when working out a [template](/2019/05/07/vuejs-template/) the vue if directi
 
 ### 1.1 - A Basic example of v-if.
 
-In this quick example if the type of a data object property is a number it will be fixed to two decimal points, else if it is a string then the full value of the number will be displayed. One element or another will be rendered, but not both depending on the type of the property.
-
-So for this example I have a basic.js file that looks like this.
+For a first basic example as to how the v-if directive can be useful say I have an array of values and I only want to render a some html for each element that fits a given condition. This array contains numbers and other values that by themselfs may not evaluate to a true boolean value. I can use the v-for durrective as a way to redner html for each element in the array, and I can use the v-if dirrective to actaully redner some html if it meets a condition. When using the v-if dirrective I can use the value itself as a way to redner something or not, and I can also use expressions that will evalue to a true or false value as a way to find out if I want to render for the given element.
 
 ```js
-new Vue({
-    el: '#demo-if',
-    template: '<div>' +
-    '<p v-if=" typeof n === \'number\'" >{{ n.toFixed(2) }}</p>' +
-    '<p v-if=" typeof n === \'string\'" >{{ n }}</p>' +
-    '</div>',
-    data: {
-        n: Math.PI
-    }
-});
-```
-
-And html that makes use of it that looks like this.
-
-```html
 <html>
   <head>
     <title>vue if example</title>
@@ -48,12 +31,27 @@ And html that makes use of it that looks like this.
   </head>
   <body>
   <div id="demo-if"></div>
-  <script src="basic.js"></script>
+  <script>
+new Vue({
+    el: '#demo-if',
+    template: '<div>' +
+        '<div v-for="a in arr" style="margin-bottom:20px;">' +
+            // it can just be the value itself that will convert to a true or false value
+            '<div v-if="a"> value is true: {{ a }}  <br></div>' +
+            // it can be an expression that will evaluate to true or value
+            '<div v-if=" typeof a === \'number\' ">is a number: {{ a.toFixed(2) }}<br></div>' +
+        '</div>' +
+    '</div>',
+    data: {
+        arr: [false, 2, 3, null, 6.5, 8, 'foo']
+    }
+});
+  </script>
   </body>
 </html>
 ```
 
-So then because the type of the data.n property is a number, the value of PI is fixed to two decimal points. A silly example but you get the idea, this directive can be used to set some conditions for the tendering of elements, and any children within them.
+This might not be the best example when it comes to real life use case examples, but basic examples are often like that. In any case the basic idea is there. I have a value in the data object that will convert to a true or false value, or can be used in a simple expression that will evalute to a treu or false boolean value. If the value is false then the html element, and any chindren it it, should not redner. If the resuting boolean value is true then the html for that value will render, and that is about it. However baybe it is called for to look at least a few more examples of the v-if direcrtive, and other dirrectives to get a better feel for how to go about unsing this in a real project of some kind.
 
 ### 1.2 - v-if and v-else
 
