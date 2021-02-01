@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-01-31 18:25:42
-version: 1.7
+updated: 2021-02-01 07:32:16
+version: 1.8
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -185,6 +185,8 @@ var pixmapMod = (function(){
 ```
 
 ## 3 - The forFrame lib
+
+The for frame library is an example of a library that I find myself making over and over again. Each time I do is I keep thinking about what I can add to it, or do differently.
 
 ```js
 var forFrame = (function(){
