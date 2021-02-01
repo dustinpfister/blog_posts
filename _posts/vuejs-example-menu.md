@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-01 15:35:04
-version: 1.0
+updated: 2021-02-01 17:04:51
+version: 1.1
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real projects with vuejs. That is, or at least should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -15,3 +15,149 @@ Anyway for todays vuejs example I think it is a good idea to work out a simple, 
 
 <!-- more -->
 
+## 1 - The main menu.js vue instance
+
+```js
+var vm = new Vue({
+    el: '#app',
+    render: function(createElement){
+        var vm = this;
+        var children = [];
+        // create menu buttons
+        var menuButtons = [];
+        vm.$data.menus.forEach(function(menuName){
+            menuButtons.push(createElement('input', {
+                attrs:{
+                    id:'button_changemenu_' + menuName,
+                    type:'button',
+                    value: menuName
+                },
+                on: {
+                    'click': vm.click
+                }
+            }));
+        });
+        children.push(createElement('div', {class:'navbar'}, menuButtons));
+        // create menus
+        var menus = [];
+        vm.$data.menus.forEach(function(menuName){
+            menus.push(createElement('menu-' + menuName, {
+                props:{
+                   money: vm.$data.money,
+                   currentMenu: vm.$data.currentMenu
+                },
+                on: {
+                    'delta-money': vm.deltaMoney
+                }
+            }));
+        });
+        children.push(createElement('div', {class:'wrap_menu'}, menus));
+        return createElement('div', {class:'wrap_main'}, children);
+    },
+    data: {
+        menus: ['home', 'manual'],
+        currentMenu: 'home',
+        money: 0
+    },
+    methods: {
+        // a button was clicked
+        click: function (e) {
+            var button_el = e.target,
+            dat = this.$data,
+            idArr = button_el.id.split('_');
+            console.log(idArr);
+            if(idArr[1] === 'changemenu'){
+                dat.currentMenu = idArr[2];
+            }
+        },
+        deltaMoney: function(a){
+            console.log('delta money event', a);
+            this.$data.money += a;
+        }
+    }
+});
+```
+
+## 2 - The menu_home, and menu_manual.js componenets
+
+### 2.1 - A basic home.js with just a static template
+
+```js
+Vue.component('menu-home', {
+  props: ['money', 'currentMenu'],
+  data: function () {
+    return {
+    };
+  },
+  template: '<div v-if="currentMenu === \'home\'"><p>This is home current number of clicks: {{ money }}</p></div>'
+});
+```
+
+### 2.2 - A manual.js componenet that uses a render function
+
+```js
+Vue.component('menu-manual', {
+  props: ['money', 'currentMenu'],
+  data: function () {
+    return {
+    };
+  },
+  render: function(createElement){
+      var children = [];
+      var vm = this;
+      if(this.$props.currentMenu === 'manual'){
+          children.push(createElement('input', {
+              attrs: {
+                 type: 'button',
+                 value: 'click ('+ vm.$props.money + ')'
+              },
+              on: {
+                  click: this.click
+              }
+          }));
+      }
+      return createElement('div', children);
+  },
+  methods: {
+    click: function(e){
+        this.$emit('delta-money', 1);
+    }
+  }
+});
+```
+
+## 3 - The html and css files
+
+```css
+.wrap_main{
+}
+.wrap_menu{
+  padding:10px;
+  background:#afafaf;
+}
+.navbar{
+  padding:5px;
+  text-align:center;
+  background:gray;
+}
+```
+
+```html
+<html>
+  <head>
+    <title>vue example of an idle game</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./menu_home.js"></script>
+    <script src="./menu_manual.js"></script>
+    <script src="./menu.js"></script>
+  </body>
+</html>
+```
+
+## 4 - Conclusion
+
+This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into compoenets. Although I do like to create templates, I think that more often then not render functions are just the way to go also along with compoenets. There are many isshues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to useing render functions.
