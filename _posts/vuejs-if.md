@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2021-02-01 11:19:49
-version: 1.16
+updated: 2021-02-01 11:22:41
+version: 1.17
 ---
 
 The [vue if](https://vuejs.org/v2/guide/conditional.html) or v-if directive in vuejs can be used when making templates to make an element display or not based on a given condition. It can come in handy when working out a template that contains elements that do not need to be displayed all the time, or only under certain conditions such as a menu system of some kind. However there are other options as well when it comes to built in directives that provide this kind of function such as v-show directive, and there are other realted directives to v-if such as v-else, and v-else-if. 
@@ -55,6 +55,7 @@ This might not be the best example when it comes to real life use case examples,
 
 ### 1.2 - v-if and v-else
 
+When using an if statement in javaScript, or any lanague for that matter there is often an else statement that can be used with an if statement. That is there is a way to define some code that will fire when a condition evalues to false, and only false. So it stands to reason that there should be a kind of v-else directive on top of the v-if directive, and there is.
 
 ```html
 <html>
