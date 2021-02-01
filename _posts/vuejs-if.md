@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 456
-updated: 2021-02-01 10:06:27
-version: 1.14
+updated: 2021-02-01 10:57:53
+version: 1.15
 ---
 
 The [vue if](https://vuejs.org/v2/guide/conditional.html) or v-if directive in vuejs can be used when making templates to make an element display or not based on a given condition. It can come in handy when working out a template that contains elements that do not need to be displayed all the time, or only under certain conditions such as a menu system of some kind. However there are other options as well when it comes to built in directives that provide this kind of function such as v-show directive, and there are other realted directives to v-if such as v-else, and v-else-if. 
@@ -17,9 +17,9 @@ Also There is yet another option to considerd when starting to use lots of direc
 
 ## 1 - Some Vue v-if basic examples
 
-So when working out a [template](/2019/05/07/vuejs-template/) the vue if directive can be used to define a condition that if true will result in the rendering of the element that it is used with, otherwise of false it will not render. the value that is used with the directive can be an expression or a data object property.
+So when working out a [template](/2019/05/07/vuejs-template/) the vue if directive can be used to define a condition that if true will result in the rendering of the element that it is used with, otherwise of false it will not render. The value that is used with the directive can be an expression, a data object property, or some kind of combination of the two. In this section I will just be going over a few quick basic examples of this v-if dirrective as well as a few closlely realated directeives such as the v-else dirrective.
 
-### 1.1 - 
+### 1.1 - A Basic example of v-if.
 
 In this quick example if the type of a data object property is a number it will be fixed to two decimal points, else if it is a string then the full value of the number will be displayed. One element or another will be rendered, but not both depending on the type of the property.
 
