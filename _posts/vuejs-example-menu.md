@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-01 17:29:38
-version: 1.6
+updated: 2021-02-01 17:38:59
+version: 1.7
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real projects with vuejs. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -17,7 +17,7 @@ Anyway for todays vuejs example I think it is a good idea to work out a simple, 
 
 ## 1 - The main menu.js vue instance
 
-First off I am going to want to have a main vue instance of this menu system of sorts. This will constatude a redner function that will redner a main top navagation bar of buttons. Each button on the navagation bar will switch chnage a current menu value in the data object of this main parent vue instance.
+First off I am going to want to have a main vue instance of this menu system of sorts. This will constatude a redner function that will redner a main top navagation bar of buttons. Each button on the navagation bar will switch chnage a current menu value in the data object of this main parent vue instance. When the current menu value of the main data object of the vue instance chnages so will the current menu item that is rendered below this navagation bar.
 
 ```js
 var vm = new Vue({
