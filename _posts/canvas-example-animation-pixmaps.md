@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-02-01 07:35:12
-version: 1.9
+updated: 2021-02-01 07:37:27
+version: 1.10
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
@@ -372,6 +372,8 @@ utils.log1 = function (n, d, base) {
 
 ## 5 - the object pool lib
 
+This is another library that I started working out for my canvas example on object pools.
+
 ```js
 var poolMod = (function () {
     // Public API
@@ -496,7 +498,9 @@ var poolMod = (function () {
     ());
 ```
 
-## 6 - main.js
+## 6 - The main.js file
+
+Now to just make use off all of this in a simple little demo project with a single main.js file.
 
 ```js
 var LIFESPAN = 7;
