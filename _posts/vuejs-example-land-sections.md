@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-02 14:23:24
-version: 1.6
+updated: 2021-02-02 14:25:10
+version: 1.7
 ---
 
 One of my many canavs examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not togeather. So I thought I would make a simple vuejs example of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything togeather.
@@ -269,5 +269,43 @@ I then have an additional sections menu where I can view infor about each sectio
 ```
 
 ## 3 - The html
+
+I then just need a little html and css to pull this all togeather.
+
+
+The html:
+```html
+<html>
+  <head>
+    <title>vue example of an idle game</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./lib/utils.js"></script>
+    <script src="./menus/home.js"></script>
+    <script src="./menus/sun.js"></script>
+    <script src="./menus/sections.js"></script>
+    <script src="./menu.js"></script>
+  </body>
+</html>
+```
+
+The css file:
+
+```css
+.wrap_main{
+}
+.wrap_menu{
+  padding:10px;
+  background:#afafaf;
+}
+.navbar{
+  padding:5px;
+  text-align:center;
+  background:gray;
+}
+```
 
 ## 4 - Conclusion
