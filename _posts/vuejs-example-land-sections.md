@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-02 13:44:53
-version: 1.5
+updated: 2021-02-02 14:23:24
+version: 1.6
 ---
 
 One of my many canavs examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not togeather. So I thought I would make a simple vuejs example of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything togeather.
@@ -155,17 +155,117 @@ So then the main vuejs instance will render a navagation bar, and whatever the c
 
 ### 2.1 - simple home menu
 
+I have a simple home section that I might do away with in future edits of this vuejs example if I do not find something more usfuls to do with it. For now I am just using it as a place to redner basic information about the state of the game.
+
 ```js
+Vue.component('menu-home', {
+  props: ['currentMenu', 'sun'],
+  data: function () {
+    return {
+    };
+  },
+  template: '<div v-if="currentMenu === \'home\'">'+
+      '<h1>Mr Sun Land Sections: </h1>'+
+      '<p>Sun Position: {{ sun.x }}, {{ sun.y }}</p>'+
+      '<p>Sun Distance from center: {{ sun.dist }} </p>'+
+      '<p>Sun Angle from center: {{ (sun.a / (Math.PI * 2) * 360).toFixed(2) }} (degrees). </p>'+
+  '</div>'
+});
 ```
 
 ### 2.2 - The sun menu
 
+I have a main sun menu where I am just providing an interface to change the position of the sun object relative to the other world sections.
+
 ```js
+
+(function(){
+ 
+    // common set of methods
+    var methods = {
+        setA: function(e){
+             this.setPos(Math.PI / 180 * e.target.value, this.$props.sun.dist);
+        },
+        setD: function(e){
+             this.setPos(this.$props.sun.a, e.target.value);
+        },
+        center: function(e){
+            this.$emit('set-sunpos-ad', 0, 0);
+        },
+        setPos: function(a, d){
+            this.$emit('set-sunpos-ad', Number(a), Number(d));
+        }
+    };
+ 
+    // sun-info component
+    Vue.component('sun-info',{
+        props: ['sun'],
+        template: '<div> position: {{ sun.x }}, {{ sun.y}} </div>'
+    });
+ 
+    // text input ui
+    Vue.component('sun-ui-pos',{
+        props: ['sun'],
+        template: '<div>'+
+            '<p>Angle: <input type="text" v-bind:value="sun.a / (Math.PI * 2) * 360" v-on:keyup="setA"></p>'+
+            '<p>Distance: <input type="text" v-bind:value="sun.dist" v-on:keyup="setD"></p>'+
+            '<p><input type="button" value="center" v-on:click="center"></p>'+
+        '</div>',
+        methods: methods
+    });
+ 
+    // main menu-sun component
+    Vue.component('menu-sun', {
+        props: ['currentMenu', 'sun'],
+        data: function () {
+            return {};
+        },
+        render: function(createElement){
+            var children = [];
+            var vm = this;
+            if(this.$props.currentMenu === 'sun'){
+                // push sun info
+                children.push( createElement('sun-info', {props: this.$props}) );
+                // push sun-ui-pos
+                children.push( createElement('sun-ui-pos', {
+                    props: this.$props, 
+                    on: {
+                        'set-sunpos-ad': function(a, b){
+                            vm.setPos(a, b);
+                        }
+                    }
+                 }));
+            }
+            return createElement('div', children);
+        },
+        methods: methods
+    });
+}());
 ```
 
 ### 2.3 - The sections menu
 
+I then have an additional sections menu where I can view infor about each section.
+
 ```js
+(function(){
+ 
+    Vue.component('sections-info', {
+        props: ['sections'],
+        template: '<div>'+
+            '<ul>' +
+               '<li v-for="sec, i in sections" >section: {{i}}, dist: {{ sec.distance.toFixed(2) }}, per: {{ sec.per.toFixed(2) }}</li>'+
+            '</ul>'+
+        '</div>'
+    });
+
+    Vue.component('menu-sections', {
+        props: ['currentMenu', 'sun', 'sections'],
+        template: '<div v-if="currentMenu === \'sections\'">'+
+            '<sections-info v-bind:sections="sections"></sections-info>'+
+        '</div>'
+    });
+}());
 ```
 
 ## 3 - The html
