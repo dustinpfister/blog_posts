@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-02 13:41:14
-version: 1.4
+updated: 2021-02-02 13:44:53
+version: 1.5
 ---
 
 One of my many canavs examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not togeather. So I thought I would make a simple vuejs example of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything togeather.
@@ -148,3 +148,26 @@ I then have a main vuejs instance as i do with all of my vuejs examples thus far
  
 }());
 ```
+
+## 2 - The menus thus far
+
+So then the main vuejs instance will render a navagation bar, and whatever the current menu is. So then I should take a moment to go over these menus as they currently stand.
+
+### 2.1 - simple home menu
+
+```js
+```
+
+### 2.2 - The sun menu
+
+```js
+```
+
+### 2.3 - The sections menu
+
+```js
+```
+
+## 3 - The html
+
+## 4 - Conclusion
