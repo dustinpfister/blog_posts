@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-02 14:25:10
-version: 1.7
+updated: 2021-02-02 14:29:15
+version: 1.8
 ---
 
 One of my many canavs examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not togeather. So I thought I would make a simple vuejs example of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything togeather.
@@ -309,3 +309,7 @@ The css file:
 ```
 
 ## 4 - Conclusion
+
+The basic idea that I had in mind for this vuejs example is up and running all ready, but there is much more work to do in order to get this working the way that I really had in mind. I would like to start adding a lot of features that will help me to get the core logic of the game, and all the features that I want working. This might prove to be a good move for this idea that I had in mind for a game in the sense that I am putting aside everything that has to do with graphics for the most part and am focusing more so on just working out the rules and machanics of the game.
+
+If all goes well a simple largly text only, or with just simple canvas graphics only type of game should still be fun if I do this right. Then it is just a matter of using what I worked out here in an actualy full canvas game.
