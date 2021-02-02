@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 450
-updated: 2021-02-02 15:22:37
-version: 1.9
+updated: 2021-02-02 15:28:24
+version: 1.10
 ---
 
 A [vue component](https://vuejs.org/v2/guide/components.html) is a way to create an asset of sorts for a vuejs instance. It is similar to but also very different from [vue extend](/2019/05/09/vuejs-extend/) that can be used to create custom vuejs constructors.
@@ -19,9 +19,7 @@ A component has a name assigned to it, and can be used as a way to make custom e
 
 ## 1.1 - vue component basic example
 
-Here is a simple counter example of a vue component, it makes use of template, data, and method options. Many of the options that are used when making a plain old Vue instance can also be used with components as well, with some exceptions such as vue el.
-
-In the html here I have some custom step elements the actual html and functionality will be defined in the step component that is defined in the basic.js file that I am also linking to.
+Here is a simple counter example of a vue component, it makes use of template, data, and method options. Many of the options that are used when making a plain old Vue instance can also be used with components as well, with some exceptions such as vue el. To create a component I call the vue component method, followed by the name I want to set for the component, then an object. In this object I can used most of the options that I would also use for a regular plain old Vue Instance including templates, render methods, data and more. Once I have my component I can then use the component in a template of a vuejs instance.
 
 ```html
 <html>
@@ -34,14 +32,7 @@ In the html here I have some custom step elements the actual html and functional
     <step></step>
     <step></step>
   </div>
-  <script src="./basic.js"></script>
-  </body>
-</html>
-```
-
-Here in the basic.js file I call the vue component method, followed by the name I want to set for the component, then an object. In this object I can used most of the options that I would also use for a regular plain old Vue Instance including templates, render methods, data and more.
-
-```js
+  <script>
 // A Basic step Component
 Vue.component('step', {
     template: '<div><button v-on:click="step">step</button> i: {{ i }} </div>',
@@ -56,12 +47,16 @@ Vue.component('step', {
         }
     }
 });
-
+ 
 new Vue({
     el: '#step-demo'
 })
-
+</script>
+  </body>
+</html>
 ```
+
+S0 then a component is a good way of going about breaking what would otherwsie be a more complex vuejs project into smaller parts. These parts can be used just once, or a whole bunch of times. So in some cases starting to make components is just what needs to happen when I start to work on real vuejs projects.
 
 ## 1.2 - Adding properties to a custom vue component tag
 
