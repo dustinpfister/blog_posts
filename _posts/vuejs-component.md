@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 450
-updated: 2021-02-02 15:28:24
-version: 1.10
+updated: 2021-02-02 15:31:53
+version: 1.11
 ---
 
 A [vue component](https://vuejs.org/v2/guide/components.html) is a way to create an asset of sorts for a vuejs instance. It is similar to but also very different from [vue extend](/2019/05/09/vuejs-extend/) that can be used to create custom vuejs constructors.
@@ -16,6 +16,8 @@ A component has a name assigned to it, and can be used as a way to make custom e
 <!-- more -->
 
 ## Some basic examples of 
+
+In this section I will be going over just a few quick basic examples of vue compoenets. There is just making a simple hello world style componenet that is a good start, but then there are two general ideas that one should get solid with componetes wich are properties and evenets. Propertues are for passing values from a parent vue instance, to a componenet while events are for passing things back to a parent. So lets get some of these basic examples out of the way so we can more on to some real examples that might prove to be a little fun.
 
 ## 1.1 - vue component basic example
 
