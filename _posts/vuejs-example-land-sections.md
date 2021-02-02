@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-02 13:36:25
-version: 1.2
+updated: 2021-02-02 13:38:36
+version: 1.3
 ---
 
 One of my many canavs examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not togeather. So I thought I would make a simple vuejs example of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything togeather.
@@ -14,6 +14,8 @@ One of my many canavs examples in the works is a game prototype that I am callin
 <!-- more -->
 
 ## 1 - A utils lib
+
+For this vuejs example I have a main vuejs library that contains a few methods that I might be useing accross vue components and other javaScript files. As of this writing I just have a distance formula that I am using to find the distance between the sun, and a given land section.
 
 ```js
 var utils = {};
