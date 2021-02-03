@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 15:47:25
-version: 1.3
+updated: 2021-02-03 15:48:37
+version: 1.4
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
@@ -134,6 +134,8 @@ I wanted to start a simple compoents that can be used to create a new website as
 ```
 
 ### 2.3 - webasset-ui-buy
+
+The player can create new websites, but it would also be nice to have a feature where there are a number of websites that the player can buy.
 
 ```js
 ```
