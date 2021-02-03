@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 17:01:42
-version: 1.7
+updated: 2021-02-03 17:04:55
+version: 1.8
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
@@ -114,6 +114,8 @@ var WebAsset = (function(){
  
 }());
 ```
+
+This is a module that I will be exapanding on when it comes to certain parts of the game logic, haveing at least one or two files like this helps to make my vue compontens less complex by pulling it out of componetns and into a janila javaScript files such as this. Aslo I think that it is a good idea to make much of the game logic in a vanilla javaScript form such as this so it is easier for me to take this code to another project in which I might not use vuejs.
 
 ## 2 - The compoenets folder
 
