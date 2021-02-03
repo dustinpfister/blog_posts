@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 15:58:32
-version: 1.6
+updated: 2021-02-03 17:01:42
+version: 1.7
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
@@ -47,7 +47,7 @@ utils.mod = function(x, m) {
 
 ### 1.2 - Web Assets library
 
-I then Also have my main web assets library that I will be using to create web asset objects that will be used in the main vue data object of the main vuejs instance that I will be getting to later in this post.
+I then also have my main web assets library that I will be using to create web asset objects that will be used in the main vue data object of the main vuejs instance that I will be getting to later in this post. This module will return a main function that I can use to create a web asset object when it comes to the working out the main vue instance where I wil be creating such objects. In addition I have worked out a number of additional public methods for updating a web asset file in a loop, and also what to do when a write event happens.
 
 ```js
 var WebAsset = (function(){
