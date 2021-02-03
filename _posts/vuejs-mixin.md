@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2021-02-03 16:28:08
-version: 1.11
+updated: 2021-02-03 16:42:59
+version: 1.12
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving making a complex vuejs project.
@@ -21,7 +21,7 @@ So a vue mixin is a way to go about defining custom Vue constructor options that
 
 ## 1.1 - Vue mixin option for adding custom options just for a single Vue constructor instance
 
-To add a mixin to a single vue constructor the vue mixin option should be used. When doing so the options that the mixin add will of course only work for that vue instance. In this basic vue mixin example I just have two span elements in an html document that will both display a mess data object property when a vue instance is set up for it.
+To add a mixin to a single vue constructor the vue mixin option should be used. When doing so the options that the mixin add will of course only work for that vue instance to which it is given. Say I have a object with a create hook method that will set the value for a mess property of a data object, and that is it. So yes just an object, with a single create hook method. Then say I have a number of vuejs instances, I can then pass this object with the create hook to two, but not all, or the vue insatnces. When doing so the create hook will fire for the vue instances that have the mixin object with the create hook, but it will not fire for the ones that I do not give it to.
 
 ```html
 <html>
@@ -33,47 +33,49 @@ To add a mixin to a single vue constructor the vue mixin option should be used. 
   <div>
     <span id="one">{{ mess }}</span><br>
     <span id="two">{{ mess }}</span><br>
+    <span id="three">{{ mess }}</span><br>
   </div>
   <script>
-// Vue Instance with a Mixin that
-// gives vue an custom option
+var myMix ={
+    created: function () {
+       this.$data.mess = 'this has a mixin';
+    },
+    template: '<div style="background:green;padding:10px;">{{ mess }}</div>'
+};
+ 
+// useing myMix
 new Vue({
     el: '#one',
-    mixins: [
-        // a mixin for just this view
-        {
-            created: function () {
-                var startMess = this.$options.startMess;
-                console.log(this.$data.mess);
-                if (startMess) {
-                    this.$data.mess = startMess;
-                } else {
-                    this.$data.mess = 'no start mess option given.';
-                }
-            }
-        }
-    ],
+    mixins: [myMix],
     data: {
-        mess: '' // 'hello'
-    },
-    startMess: 'hello'
+        mess: ''
+    }
 });
  
-// Another Vue instance that does not have the mixin, so the
-// option does not do anything.
+// not using a mixin
 new Vue({
     el: '#two',
     data: {
-        mess: 'foo' // 'foo'
-    },
-    startMess: 'nope this no work, not a global mixin'
+        mess: 'foo'
+    }
+});
+ 
+// another using myMix
+new Vue({
+    el: '#three',
+    mixins: [myMix],
+    data: {
+        mess: ''
+    }
 });
   </script>
   </body>
 </html>
 ```
 
-In this example as expected the Vue instance that has the mixin that defines the logic for the startMess option works, and displays the startMess option value as the value of the mess data object property. However this might not be the best example of a mxin becuase I am just adding the mxin object to a single vuejs instance. What I could do is assign the object that contains the create method to a varaible, and then pass that variable to any mixin arrays that I want to add the create method to.
+So then the vue instnaces to which I give the mixin object to will have the message set to what I have set in the create hook of the mixin. They will also use the template that I put in the hook also to style the message a little different. The vue instance that does not get this hook will just work with what is going on in the vue instance only.
+
+This might just be a simple sillu little example, but the basic idea is there. I can have some vue options in an object, and then I can pass the object to one or more vuejs insatnces, or compoents, and then what I define in the object will be used for all the vue insatnces that I give it to. However if I want to define some options for everything that I will want to make use of the global Mixin method.
 
 ## 1.2 - Adding a global Vue mixin for all Vue constructor instances.
 
