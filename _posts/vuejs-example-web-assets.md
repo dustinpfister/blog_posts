@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 15:52:51
-version: 1.5
+updated: 2021-02-03 15:58:32
+version: 1.6
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
@@ -124,6 +124,14 @@ I then have a components folder with a few vue compoents for various features of
 I have a simple display compoents that is used to just display how much money the player has.
 
 ```js
+// just display some basic info
+Vue.component('disp', {
+    props: ['state'],
+    template: '<div class="ui">' +
+        '<h3>Web Assets Game: </h3>' +
+        '<p>Money: {{ format_money(state.money) }}</p>'+
+    '</div>'
+});
 ```
 
 ### 2.2 - webasset-ui-create
@@ -131,6 +139,50 @@ I have a simple display compoents that is used to just display how much money th
 I wanted to start a simple compoents that can be used to create a new website asset for free in the event that the player has no money to buy one with.
 
 ```js
+// Create a WebAsset
+Vue.component('webassets-ui-create', {
+    props: ['state'],
+    data: function(){
+        return {
+            startPosts: 10,
+            wordsPerPost: 100,
+            wordsPerClick: 100,
+            progress: {
+                words: 0,
+                wordsNeeded: 0,
+                per: 0
+            }
+        }
+    },
+    mounted: function(){
+        this.updateProgress();
+    },
+    template: '<div class="ui">'+
+        '<h3>Create a Website for Free: </h3>' +
+        '<div>Progress: {{ progress.words }} / {{ progress.wordsNeeded }} {{ progress.per }}</div>'+
+        '<button v-on:click="write()">Write</button>'+
+    '</div>',
+    methods: {
+        updateProgress: function(){
+            var dat = this.$data,
+            progress = dat.progress;
+            progress.wordsNeeded = dat.startPosts * dat.wordsPerPost;
+            progress.words = progress.words > progress.wordsNeeded ? progress.wordsNeeded: progress.words;
+            progress.per = progress.words / progress.wordsNeeded;
+        },
+        write: function (webAssetIndex) {
+            var dat = this.$data,
+            progress = dat.progress;
+            progress.words += dat.wordsPerClick;
+            this.updateProgress();
+            if(progress.per === 1){
+                this.$emit('create-event', dat.startPosts, progress.wordsNeeded);
+                progress.words = 0;
+                this.updateProgress();
+            }
+        }
+    }
+});
 ```
 
 ### 2.3 - webasset-ui-buy
@@ -138,6 +190,33 @@ I wanted to start a simple compoents that can be used to create a new website as
 The player can create new websites, but it would also be nice to have a feature where there are a number of websites that the player can buy.
 
 ```js
+// Buy a WebAsset object with money
+Vue.component('webassets-ui-buy', {
+    props: ['state'],
+    data: function(){
+        return {
+            forSale: [WebAsset({words: 10000}), WebAsset({words: 30000})]
+        }
+    },
+    template: '<div class="ui">'+
+        '<h3>Buy Website: </h3>'+
+        '<div v-for="asset, index in forSale" class="forsale">'+
+            '<p>For Sale: </p>'+
+            '<p>{{ format_money(asset.worth) }}</p>'+
+            '<button v-on:click="buy(index)">Buy</button>'+
+        '</div>'+
+    '</div>',
+    methods: {
+        buy: function (assetIndex) {
+            var money = this.$props.state.money,
+            asset = this.$data.forSale[assetIndex];
+            if(money >= asset.worth){
+                this.$data.forSale.splice(assetIndex, 1);
+                this.$emit('buy-event', asset);
+            }
+        }
+    }
+});
 ```
 
 ### 2.4 - webasset-ui.current
@@ -145,19 +224,154 @@ The player can create new websites, but it would also be nice to have a feature 
 There will then need to be a component to work with the curent collection of websites.
 
 ```js
+// prefrom actions with current websites
+Vue.component('webassets-ui-current', {
+    props: ['state'],
+    template: '<div class="ui">'+
+        '<h3>Current Websites: </h3>'+
+        '<div v-for="asset, index in state.webAssets" class="currentsite">'+
+            '<p>Site: </p>'+
+            '<p>Worth: {{ format_money(asset.worth) }}, Money Per Tick: {{ format_money(asset.moneyPerTick) }}</p>'+
+            '<p>Site has {{ asset.words }} total words accross '+
+                '{{ asset.postCount }} blog posts which is an average of '+
+                '{{ Math.floor(asset.avgWordsPerPost) }} words per post</p>'+
+            '<p>Write new post: {{ asset.write.words }}/{{ asset.write.target }} words done on new post</p>'+
+            '<p><button v-on:click="write(index)">Write</button> | <button v-on:click="sell(index)">Sell</button></p>'+
+            '<div v-bind:style="\'width:\'+Math.round(asset.secs / asset.secsPerTick * 100)+\'%;height:10px;background:lime;\'"></div>'+
+        '</div>'+
+    '</div>',
+    methods: {
+        // sell a webAsset
+        sell: function (index) {
+            this.$emit('sell-event', index);
+        },
+        write: function (index) {
+            this.$emit('write-event', index);
+        }
+    }
+});
 ```
 
 ## 3 - The main vuejs instance
 
+I have the libraries that I want to use, and I have a number of compoents, now I just need a main vue instance. In the main.js file I have just a single vue mixin that is just a reference to my utils format money method. I did this just so I can use the format money method in the templates.
+
 ```js
+// global method(s)
+Vue.mixin({
+  methods: {
+    format_money: utils.format_money
+  }
+});
+
+// main vue
+var main = new Vue({
+    el: '#app',
+    data: function(){
+        return {
+            money: 0,
+            lastUpdate: new Date(),
+            webAssets: [WebAsset({words: 10000, target: 1800})]
+        };
+    },
+    template: '<div class="wrap_main">'+
+        '<disp v-bind:state="$data"></disp>'+
+        '<webassets-ui-create v-bind:state="$data" v-on:create-event="create"></webassets-ui-create>'+
+        '<webassets-ui-buy v-bind:state="$data" v-on:buy-event="buy" ></webassets-ui-buy>'+
+        '<webassets-ui-current v-bind:state="$data" v-on:sell-event="sell" v-on:write-event="write"></webassets-ui-current>'+
+    '</div>',
+    mounted: function(){
+        var dat = this.$data;
+        var loop = function(){
+            var now = new Date(),
+            secs = (now - dat.lastUpdate) / 1000;
+            setTimeout(loop, 100);
+            dat.webAssets.forEach(function(asset){
+                 var deltaMoney = WebAsset.update(asset, secs);
+                 dat.money += deltaMoney;
+            });
+            dat.lastUpdate = now;
+        };
+        loop();
+    },
+    methods: {
+        create: function(posts, words){
+            console.log(posts, words);
+            this.$data.webAssets.push(WebAsset({
+                posts: posts,
+                words: words
+            }));
+        },
+        buy: function(asset){
+           this.$data.money -= asset.worth;
+           this.$data.webAssets.push(asset);
+        },
+        sell: function(index){
+           var asset = this.$data.webAssets[index];
+           this.$data.money += asset.worth;
+           this.$data.webAssets.splice(index, 1);
+        },
+        write: function(index){
+            var asset = this.$data.webAssets[index];
+            console.log(asset);
+            WebAsset.write(asset, {wordsPerWrite: 100}, 1);
+        }
+    }
+});
 ```
 
 ## 4 - The html and css files
 
+There is just now a little html and css to wrap this all up togeather.
+
 ```html
+<html>
+  <head>
+    <title>vue example web assets game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- vuejs-->
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <!-- libs-->
+  <script src="./lib/utils.js"></script>
+  <script src="./lib/webasset.js"></script>
+  <!-- components-->
+  <script src="./comp/disp.js"></script>
+  <script src="./comp/webasset-ui-create.js"></script>
+  <script src="./comp/webasset-ui-buy.js"></script>
+  <script src="./comp/webasset-ui-current.js"></script>
+  <!-- main vue instance-->
+  <script src="./main.js"></script>
+  </body>
+</html>
 ```
 
 ```css
+body{
+  padding:0px;
+  margin:0px;
+}
+.wrap_main{
+  background:blue;
+  padding:10px;
+  margin:0px;
+}
+.ui{
+  background:gray;
+  padding:10px;
+  margin:10px;
+}
+.forsale{
+  display:inline-block;margin:10px;background:green;height:100px;width:100px;
+  padding:10px;text-align:center;
+}
+.currentsite{
+   margin:10px;
+   padding:10px;
+   background:green;
+}
 ```
 
 ## 5 - Conclusion
