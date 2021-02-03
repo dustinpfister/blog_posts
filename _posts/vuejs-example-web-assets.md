@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 15:40:45
-version: 1.2
+updated: 2021-02-03 15:47:25
+version: 1.3
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
@@ -20,6 +20,8 @@ The general idea is to create a game where the object is to start making website
 First off I have a library folder for this vuejs example Where I have parked a few vanilla javaScript modules that I will be using in my components, and the main vue instance. I often start a major project with a general utility library that might end up containgign methdos that I will use in other vanilla javaScript librarys. In additon I have a web asset library that I am using as a seperate file for createing and updating a web asset object for the game.
 
 ### 1.1 - A utils library for the vue example
+
+Here I have my general utility libray, so far for this vue example at least I just have a format money helper and a mathmatical modulo helper. If I do keep working on this vue example I am sure this library will grow but for now that is all there is to cover with this one.
 
 ```js
 var utils = {};
@@ -44,6 +46,8 @@ utils.mod = function(x, m) {
 ```
 
 ### 1.2 - Web Assets library
+
+I then Also have my main web assets library that I will be using to create web asset objects that will be used in the main vue data object of the main vuejs instance that I will be getting to later in this post.
 
 ```js
 var WebAsset = (function(){
@@ -113,12 +117,18 @@ var WebAsset = (function(){
 
 ## 2 - The compoenets folder
 
+I then have a components folder with a few vue compoents for various features of the user interface of the game. Some of these just display info about the main game state objet. Others can be used as a way to create new sites, buy sites, and sell as a well as imporve sotes that the player own all ready.
+
 ### 2.1 - disp
+
+I have a simple display compoents that is used to just display how much money the player has.
 
 ```js
 ```
 
 ### 2.2 - webasset-ui-create
+
+I wanted to start a simple compoents that can be used to create a new website asset for free in the event that the player has no money to buy one with.
 
 ```js
 ```
