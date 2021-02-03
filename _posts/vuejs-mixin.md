@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2019-05-15 14:02:13
-version: 1.8
+updated: 2021-02-03 16:11:29
+version: 1.9
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
@@ -128,3 +128,8 @@ new Vue({
     }
 });
 ```
+
+## 2 - Conclusion
+
+There are a few vuejs examples that I have made so far, and I do find myself using mixis once in a while. So far I find myself creating global mixins for certain methods that I want to be able to use accross all compoents that I am suing in a project. For example say I have this methods that will take a number as an argumnets and return a string that is formated in a way that is better for presenting the value in a view. Say that I want to use this methods in my templates, all of them not just the main vue instance. One way to go about having a global format money method would be to create global mixin with such a method in the vue methods object.
+
