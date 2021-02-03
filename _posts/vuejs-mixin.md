@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2021-02-03 16:11:29
-version: 1.9
+updated: 2021-02-03 16:16:02
+version: 1.10
 ---
 
-There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving into making or using vuejs plug-ins and client systems with vuejs as the front end framework of choice.
+There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving making a complex vuejs project.
+
+A mixin is a way to create functionality that can be used accross two or more compoents. If you do not have at least some background on vuejs compoents it might be a good idea to read up more on them to while you are at it. Anyway a mixin object can be passed to a mixins options when createing a component, or it can also be made global for all compoents and vuejs instances in general by using the Vue.mixin static method.
 
 <!-- more -->
 
