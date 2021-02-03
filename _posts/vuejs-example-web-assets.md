@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 15:36:46
-version: 1.1
+updated: 2021-02-03 15:40:45
+version: 1.2
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
+
+The general idea is to create a game where the object is to start making websites, and then the websites generate money over time. So just another kind of idle game as it where which seems to be a kind of game that I like to make, but have never really ran with just yet. In any case this example has proved to be another good exercise of using vue components as a way to keep things modular.
 
 <!-- more -->
 
