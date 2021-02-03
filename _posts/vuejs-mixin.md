@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2021-02-03 16:42:59
-version: 1.12
+updated: 2021-02-03 16:58:15
+version: 1.13
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving making a complex vuejs project.
@@ -125,7 +125,59 @@ new Vue({
 </html>
 ```
 
-## 2 - Conclusion
+## 2 - Format money mixin example
+
+One thing that I find myself doing so far with mixins is creating a set of methods that I am going to want to use in templates. I can make such methods part of the methods object of a vue instance, bit as a project grows I end up with a lot of componets, so I do not want to copy and past the same code over and over again for each component. I could refernce a main methods object for each insatnce that I make global, but the best way i think is to use a mixin, that is after all what it is there for.
+
+```html
+<html>
+  <head>
+    <title>vue mixin example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div>
+    <span id="one"></span><br>
+    <span id="two"></span><br>
+  </div>
+  <script>
+Vue.mixin({
+    methods: {
+        format_money: function(money, curr){
+            var formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: curr || 'USD',
+                minimumFractionDigits: 2, 
+                maximumFractionDigits: 2
+            });
+            return formatter.format(money);
+        }
+    },
+    template: '<div>{{ format_money(money, currency) }}</div>'
+});
+ 
+new Vue({
+    el: '#one',
+    data: {
+        money: 100,
+        currency: 'EUR'
+    }
+});
+ 
+new Vue({
+    el: '#two',
+    data: {
+        money: 3.50,
+        currency: 'USD'
+    }
+});
+ 
+  </script>
+  </body>
+</html>
+```
+
+## 3 - Conclusion
 
 There are a few vuejs examples that I have made so far, and I do find myself using mixis once in a while. So far I find myself creating global mixins for certain methods that I want to be able to use accross all compoents that I am suing in a project. For example say I have this methods that will take a number as an argumnets and return a string that is formated in a way that is better for presenting the value in a view. Say that I want to use this methods in my templates, all of them not just the main vue instance. One way to go about having a global format money method would be to create global mixin with such a method in the vue methods object.
 
