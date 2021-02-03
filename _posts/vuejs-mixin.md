@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 447
-updated: 2021-02-03 16:16:02
-version: 1.10
+updated: 2021-02-03 16:28:08
+version: 1.11
 ---
 
 There sure is a lot to cover to get up and running with vuejs to get into a space where a developer can start making some interesting and useful projects. In this post I will be writing about what a [vue mixin](https://vuejs.org/v2/guide/mixins.html) is, which is one of many little things that one should have a solid grasp on before diving making a complex vuejs project.
@@ -17,13 +17,11 @@ A mixin is a way to create functionality that can be used accross two or more co
 
 ## 1 - Vue mixin basics
 
-So a vue mixin is a way to go about defining custom Vue constructor options like that of the vue data, and [vue el](/2019/05/06/vuejs-el/) options. It is possible to define one or more mixins for a single Vue constructor instance via the [mixins option](https://vuejs.org/v2/api/#mixins), and the same can be done globally as well via the [Vue mixin global method](https://vuejs.org/v2/api/#Vue-mixin) also.
+So a vue mixin is a way to go about defining custom Vue constructor options that will be used for two or more vuejs instances or compoents. Say that you want to have a create method that will fire for all componets, or a set of methods that yuo want to have for a number of compoents, or even all of them, for these kinds of sitautions it would be a good idea to try making such things a mixin. It is possible to define one or more mixins for a single Vue constructor instance via the [mixins option](https://vuejs.org/v2/api/#mixins), and the same can be done globally as well via the [Vue mixin global method](https://vuejs.org/v2/api/#Vue-mixin) also. So in this section I will be going over a few quick examples of the two general ways to add mixins.
 
 ## 1.1 - Vue mixin option for adding custom options just for a single Vue constructor instance
 
-To add a mixin to a single vue constructor the vue mixin option should be used. When doing so the options that the mixin add will of course only work for that vue instance.
-
-In this basic vue mixin example I just have two span elements in an html document that will both display a mess data object property when a vue instance is set up for it.
+To add a mixin to a single vue constructor the vue mixin option should be used. When doing so the options that the mixin add will of course only work for that vue instance. In this basic vue mixin example I just have two span elements in an html document that will both display a mess data object property when a vue instance is set up for it.
 
 ```html
 <html>
@@ -36,14 +34,7 @@ In this basic vue mixin example I just have two span elements in an html documen
     <span id="one">{{ mess }}</span><br>
     <span id="two">{{ mess }}</span><br>
   </div>
-  <script src="./basic_mixin_option.js"></script>
-  </body>
-</html>
-```
-
-In the external basic_mixin_option.js file I have two Vue constructor instances. One has a mixin that allows for a startMess option to be defined for the instance, and the other does not event though they both have a startMess option.
-
-```js
+  <script>
 // Vue Instance with a Mixin that
 // gives vue an custom option
 new Vue({
@@ -77,9 +68,12 @@ new Vue({
     },
     startMess: 'nope this no work, not a global mixin'
 });
+  </script>
+  </body>
+</html>
 ```
 
-In this example as expected the Vue instance that has the mixin that defines the logic for the startMess option works, and displays the startMess option value as the value of the mess data object property.
+In this example as expected the Vue instance that has the mixin that defines the logic for the startMess option works, and displays the startMess option value as the value of the mess data object property. However this might not be the best example of a mxin becuase I am just adding the mxin object to a single vuejs instance. What I could do is assign the object that contains the create method to a varaible, and then pass that variable to any mixin arrays that I want to add the create method to.
 
 ## 1.2 - Adding a global Vue mixin for all Vue constructor instances.
 
@@ -96,12 +90,7 @@ Here I have an example that does more or less the same thing as the first basic 
     <span id="one">{{ mess }}</span><br>
     <span id="two">{{ mess }}</span><br>
   </div>
-  <script src="./basic_global.js"></script>
-  </body>
-</html>
-```
-
-```js
+  <script>
 Vue.mixin({
     created: function () {
         var startMess = this.$options.startMess;
@@ -129,6 +118,9 @@ new Vue({
         mess: '' // 'no start mess option given'
     }
 });
+  </script>
+  </body>
+</html>
 ```
 
 ## 2 - Conclusion
