@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-04 13:31:17
-version: 1.10
+updated: 2021-02-04 13:34:49
+version: 1.11
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the framework itself that are all ready well documenetd in the official vuejs documentation. Write such posts are not awalys such a wast of time mind you offten the offical documention might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or lanague the only thing to do from that point forward is to start to work on some actual projects, rather than fidding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on vuejs examples that are full working projects, or at least aim to be anyway.
@@ -72,8 +72,11 @@ I have all ready made many forks of this kind of game when it comes to the canva
 
 Just a basic list example.
 
-### 2.9 - Vuejs Menu Example
-### 2.10 - Web Assets Game
+### 2.9 - [Vuejs Menu Example](/2021/02/01/vuejs-example-menu/)
+
+For this example I wanted to work something out that is just a basic menu, or navagation system. That is that I have a whole bunch of components where each one renders a menu that has a buch of ui features and other display compoents for a certain aspect of an over all applaction.
+
+### 2.10 - [Web Assets Game](/2021/02/03/vuejs-example-web-assets/)
 
 ## 3 - Conclusion
 
