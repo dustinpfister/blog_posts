@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-04 13:36:28
-version: 1.12
+updated: 2021-02-04 13:40:02
+version: 1.13
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the framework itself that are all ready well documenetd in the official vuejs documentation. Write such posts are not awalys such a wast of time mind you offten the offical documention might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or lanague the only thing to do from that point forward is to start to work on some actual projects, rather than fidding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on vuejs examples that are full working projects, or at least aim to be anyway.
@@ -82,3 +82,4 @@ This is yet another game that is another kind of idle game where the player crea
 
 ## 3 - Conclusion
 
+This is it for now when it comes to my vuejs examples that I have worked out thus far. In the future I Will be getting around to editing my vuejs content again and often when I do so I also write a few new posts on the subject. However I also have so many other collections of content that also need some attention that are compeating for my attention when it comes to improving quality and expanding on the topic. Still when it comes to sinking more time and effort into my vuejs examples the focus should be more on improving what I have woked out all ready rather than continuing to create yet even more examples.
