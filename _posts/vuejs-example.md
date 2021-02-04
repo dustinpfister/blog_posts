@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-04 13:20:44
-version: 1.7
+updated: 2021-02-04 13:22:56
+version: 1.8
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the framework itself that are all ready well documenetd in the official vuejs documentation. Write such posts are not awalys such a wast of time mind you offten the offical documention might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or lanague the only thing to do from that point forward is to start to work on some actual projects, rather than fidding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on vuejs examples that are full working projects, or at least aim to be anyway.
@@ -58,7 +58,10 @@ Yet another basic feature of an idle game is to introduce a feature that provide
 
 Yet another basic feature that an idle game should have is a means to spend currency that is gained for items that help to make even more of the currency. In this vuejs example I am yet again continuing with the devlopment of a basic idle game by intoudcing upgrades.
 
-### 2.6 - Image Editor
+### 2.6 - [Image Editor](/2020/07/27/vuejs-example-image-edit)
+
+This vuejs example is just a very basic image editor program.
+
 ### 2.7 - Land Sections Game
 ### 2.8 - Vuejs List Example
 ### 2.9 - Vuejs Menu Example
