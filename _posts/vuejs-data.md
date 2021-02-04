@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2021-02-04 09:37:45
-version: 1.11
+updated: 2021-02-04 09:44:22
+version: 1.12
 ---
 
 When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances that will compose such a project. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function that will return an object. 
@@ -50,9 +50,13 @@ new Vue({
 
 When this example is up and working the string bar is the inner text of the paragraph element in the template, and that is then used as the content for the mount point in the html which is of course that single div element with the id demo-data. In this basic example a value in the data object is being used to define the inner text of a paragraph element, but it can also be used to define attribute values as well with the right directive.
 
-## 2 -Accessing vue data with $data
+## 2 - Accessing vue data with $data
 
-The $data property of a Vue instance can be used as a way to gain access to the data object from within methods. If the value of the this keyword is the instance of the Vue class that can be used as a way gain access to vie data properties. Otherwise a variable can be used to store the Vue class instance, and then that can be used as a way to change data values from outside of the instance.
+The $data property of a Vue instance can be used as a way to gain access to the data object from within vue option functions, methods, and so forth. If the value of the this keyword is the instance of the Vue class that can be used as a way gain access to vue data properties when working or a hook, or a method for the instance. Otherwise a variable can be used to store the Vue class instance, and then that can be used as a way to change data values from outside of the instance. In this section I will be going over a few examples of this in order to help gain a more solid understanding of how to work with a data object in the various vue options.
+
+### 2.1 - Uisng the data object in a vue method
+
+The vue methods option is how to go about creating a number of methods to use with a vue instance. These methods can be used as event handers when using the v-on directive for example. However they can also be used anyware in the template where doing so can be done, as well as within other methods and most lifecycle hooks.
 
 ```js
 new Vue({
