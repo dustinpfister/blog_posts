@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2021-02-04 14:12:18
-version: 1.10
+updated: 2021-02-04 14:15:24
+version: 1.11
 ---
 
 When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or reder function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
@@ -83,4 +83,6 @@ new Vue({
 ```
 
 ## 2 - Conclusion
+
+That is it for now when it comes to the props option of a vuejs instance. The next step migth be to look into more of the vaious options of a vue instance when it comes to learning the basics of vuejs. However at one point or another it would be a good idea to start to work on at least a few simple full examples of vuejs. Maybe working out just a few simple hello world style examples is just want needs to happen when starting from zero experence, but the best way to learn might be to just start making an idea for a project and learn as you go.
 
