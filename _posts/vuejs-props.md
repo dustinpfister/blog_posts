@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2021-02-04 14:09:18
-version: 1.9
+updated: 2021-02-04 14:12:18
+version: 1.10
 ---
 
 When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or reder function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
@@ -50,14 +50,21 @@ So that is just a simple hello world style example of a prop option, but you get
 
 ### 1.2 - Setting defaults for a vue prop
 
-To set default values for a property one way is to use the object syntax rather than an array of strings. In place of just a string of the type expected for the property it can be an object with a default property the value of which will be the default value for the property.
+To set default values for a property one way is to use the object syntax rather than an array of strings for each prop that I want for a component. In place of just a string of the type expected for the property it can be an object with a default property. The default property is then where I can set the value that will be the default value for the prop of the component.
 
-```js
+```html
+<html>
+  <head>
+    <title>vue props example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-props"></div>
+  <script>
 Vue.component('custom', {
     props: {
         foo: {
-        default:
-            'foobar'
+            default:'foobar'
         }
     },
     template: '<div>{{ foo }}</div>'
@@ -70,4 +77,10 @@ new Vue({
     '<custom></custom>' + // 'foobar'
     '</div>'
 });
+  </script>
+  </body>
+</html>
 ```
+
+## 2 - Conclusion
+
