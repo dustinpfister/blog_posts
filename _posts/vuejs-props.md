@@ -5,11 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2019-05-20 15:57:43
-version: 1.7
+updated: 2021-02-04 13:59:12
+version: 1.8
 ---
 
-When making a vue component there is sometimes a need to have properties for the custom element that is made when developing a component. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. There is a little bit to cover when it comes to vue props such as how to set default values for them an so fort so lets take a look at some examples.
+When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or reder function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
+
+There is a fare amount of things to cover when it comes to vue props such as how to set default values for them, how to go about using these prop values. However I think I should also at least mention what not to do with prop values also such as mutation of prop values. The props option is not a replacment for the vue data object of a component, that is used in conjuntion with props as a way to store values that are local to the component. When it comes to mutating prop values that should not, and actaully can not be done, however events are how one would go about sending a mutated values back to a parent vue instance.
+
+So lets get to some examples of props in vuejs.
 
 <!-- more -->
 
