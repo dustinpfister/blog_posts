@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-04 13:03:20
-version: 1.3
+updated: 2021-02-04 13:08:00
+version: 1.4
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the framework itself that are all ready well documenetd in the official vuejs documentation. Write such posts are not awalys such a wast of time mind you offten the offical documention might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or lanague the only thing to do from that point forward is to start to work on some actual projects, rather than fidding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on vuejs examples that are full working projects, or at least aim to be anyway.
@@ -39,7 +39,12 @@ Now for this list of examples, for each example here I will be linking to a post
 
 Seems like a good idea for a hello world type vuejs example to make a little calculaor app. There is getting creative with such projects though where it does not always have to be a simple calculator, or a sientific one. There is making a calcular that helps with something that is tied closer to a specific kinf of job that has to do with accounting, sales, or estamating how much money a blogger will make if they can get a certin volume of traffic. However you have to start somewhere, and just a basic run of the mill calculaor is a good staring point just for the sake of exercise.
 
-### 2.2 - Very Basic Idle Game starting point
+### 2.2 - [Very Basic Idle Game starting point](/2021/01/25/vuejs-example-idle-game)
+
+I seem to like playing idle games, or at least I find myself getting addicted to playing them. What really seems to be interesting is that offten these kinds of games can still be addicitve even when there is very little going on with graphics. I fact my favorite idle game swarmsim is just text only.
+
+There are many core features that I think an idle game should have, but you have to start somewhere. This vuejs example is a very basic starting point for such a game.
+
 ### 2.3 - Very Basic Idle Game with over time feature
 ### 2.4 - Very Basic Idle Game with reset point feature
 ### 2.5 - Very basic Idle Game with upgrades
