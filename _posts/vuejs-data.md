@@ -5,11 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2019-05-18 19:17:00
-version: 1.10
+updated: 2021-02-04 09:37:45
+version: 1.11
 ---
 
-When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function. Vue data objects are what is used as the model of a vue instance, they are just plain old objects, but when something is changed the [vue updates](https://vuejs.org/v2/guide/reactivity.html). This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well.
+When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances that will compose such a project. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function that will return an object. 
+
+Vue data objects are what is used as the model part of a vue instance, they are just plain old objects, but when something is changed the [vue updates](https://vuejs.org/v2/guide/reactivity.html), or at least in most cases it should. The data object is then a live object, or as some might call it a reactive object, in any case state and view are bound togetaher and any change to the state will update the view in turn if all goes well as it should. In some cases a change to a nested value in a data object might not automaticly update the view which means that an update must be forced, or the nested values need to also be made observabule, live, or reactive if you prefer.  There is getting into details about how this works when it comes to native javaScript which would involve working out some examples with getters and setters.
+
+This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well as needed when it comes to covering some basic and maybe not so basic things about state and vuejs.
 
 <!-- more -->
 
