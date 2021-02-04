@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2020-10-23 12:54:18
-version: 1.26
+updated: 2021-02-04 12:23:09
+version: 1.27
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when working in a javaScript programming environment. A [string](https://en.wikipedia.org/wiki/String_%28computer_science%29) is a collection of characters that compose text, and as such can serve a number of purposes beyond just simply displaying human readable text.
@@ -39,7 +39,7 @@ This can be thought of as a string literal when the value of the string exists i
 
 ### 1.2 - Making a javaScript string with backticks
 
-There are also backticks that can be used as well. These can be used in the same way as quotes, but also allow for things like function calls.
+There are also backticks that can be used as well as another form of string literal that allows for embedded jvaScript. These can be used in the same way as quotes, but expressions, values, and function calls the return a value and be embedded into the string literal. When it comes to regular string literals doing the same would involve more than one string literal with addition operators to concatanate a string value togeather.
 
 ```js
 let getN = () => {
@@ -49,6 +49,8 @@ let str = `n=${getN()}`;
  
 console.log(str); // 'n=17'
 ```
+
+This is a newer feature in javaScript, but still goes back a few years all ready so it should be safe to use.
 
 ### 1.3 - The result of an expression
 
