@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2021-02-04 14:43:54
-version: 1.12
+updated: 2021-02-04 14:46:32
+version: 1.13
 ---
 
 When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or reder function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
@@ -16,6 +16,10 @@ There is a fare amount of things to cover when it comes to vue props such as how
 So lets get to some examples of props in vuejs.
 
 <!-- more -->
+
+## 1 - basic vue props examples
+
+There is a great deal to cover not so much with props themselfs, but with a whole bunch of other little topics that branch off from props when it comes to compoents. Still one has to start somwhere, so in this section I will be going over just a few quick simple basic examples of the vue props option when it comes to basic component design.
 
 ## 1.1 - vue props basics
 
