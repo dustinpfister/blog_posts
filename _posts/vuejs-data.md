@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2021-02-04 09:56:48
-version: 1.13
+updated: 2021-02-04 10:10:52
+version: 1.14
 ---
 
 When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances that will compose such a project. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function that will return an object. 
@@ -67,7 +67,25 @@ new Vue({
         }
     }
 });
+```
 
+### 2.2 - Life cycle hooks example of data access
+
+When it comes to accessing the state of the data object it will be there for the created hook forward, but not durring the before create hook.
+
+```js
+new Vue({
+    el: '#demo-data',
+    data: {
+        i: 42
+    },
+    beforeCreate: function(){
+        console.log(this.$data); // undefined
+    },
+    created: function(){
+        console.log(this.$data.i); // 42
+    }
+});
 ```
 
 ## 3 - vue data and components
