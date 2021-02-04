@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2021-02-04 13:59:12
-version: 1.8
+updated: 2021-02-04 14:09:18
+version: 1.9
 ---
 
 When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or reder function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
@@ -17,9 +17,11 @@ So lets get to some examples of props in vuejs.
 
 <!-- more -->
 
-## 1 - vue props basics
+## 1.1 - vue props basics
 
-Here I have a basic example of vue props in action. In my html I am just linking to vuejs, and another external javaScript file where I will be placing my original code. I also have a single div element that will serve as a mount point for the example, additional html will be rendered with vuejs via a template.
+Here I have a basic example of a vue props option just to get started with. I have a single div element that will serve as a mount point for the example, additional html will be rendered with vuejs via a template.
+
+I just use the vue props option to define a single property for my custom component in the example. The vue props option can also be define with an object notation that might be a better play when it comes to making a more serious vue component, but for a simple example such as this just an array of string names for the properties should work just fine. Once I have the property for my component define I can the use it in other templates that use the custom component in a template.
 
 ```html
 <html>
@@ -29,14 +31,7 @@ Here I have a basic example of vue props in action. In my html I am just linking
   </head>
   <body>
   <div id="demo-props"></div>
-  <script src="./basic.js"></script>
-  </body>
-</html>
-```
-
-Here I have the javaScript that is in the basic.js file that I am linking ot in my html. I just use the vue props option to define a single property for my custom component. The vue props option can also be define with an object notation that might be a better play when it comes to making a more serious vue component, but for a simple example such as this just an array of string names for the properties should work just fine.
-
-```js
+  <script>
 Vue.component('custom', {
     props: ['foo'],
     template: '<div>{{ foo }}</div>'
@@ -46,11 +41,14 @@ new Vue({
     el: '#demo-props',
     template: '<div><custom foo="baz"></custom><custom></custom></div>'
 });
+  </script>
+  </body>
+</html>
 ```
 
-Once I have the property for my component define I can the use it in other templates that use the custom element in a template.
+So that is just a simple hello world style example of a prop option, but you get the basic idea. I can create compoents that can be used in templates, or render functions. When doing so there should be a way to define some properties like that of html element attributes, and the way to do so is with a props option for the component.
 
-## 2 - Setting defaults for a vue prop
+### 1.2 - Setting defaults for a vue prop
 
 To set default values for a property one way is to use the object syntax rather than an array of strings. In place of just a string of the type expected for the property it can be an object with a default property the value of which will be the default value for the property.
 
