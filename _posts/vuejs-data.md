@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2021-02-04 09:44:22
-version: 1.12
+updated: 2021-02-04 09:56:48
+version: 1.13
 ---
 
 When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances that will compose such a project. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function that will return an object. 
@@ -19,7 +19,7 @@ This post will center around the vue data option in vuejs, but it will also bran
 
 ## 1 - vue data basic example
 
-So then here is a basic example of the vue data option in action. In the hard coded html I am just linking to vuejs and an external javascript file that will contain the JavaScript code of this basic vue data example. I only have one div element in the body of the html file that will serve as a mount point for this example.
+Lets start out with a very basic example of a vuejs data object. I only have one div element in the body of the html file that will serve as a mount point for this example using the vue el option rather than mounting manualy. I will not be getting in to that in detail here as that is off topic, but if you are still very new to vuejs you might want to read up on the options whenit comes to mounting to hard coded html with [vue el and then mount method](/2019/05/06/vuejs-el/).
 
 ```html
 <html>
@@ -29,16 +29,7 @@ So then here is a basic example of the vue data option in action. In the hard co
   </head>
   <body>
   <div id="demo-data"></div>
-  <script src="./basic.js"></script>
-  </body>
-</html>
-```
-
-All other examples in this post use variations of this html where all I am changing is the filename. The focus here will be on javaScript code and not html.
-
-The basic.js file looks like this. I am just creating a new instance of the Vue class constructor and using the data option to define some data that will be used in a template.
-
-```js
+  <script>
 new Vue({
     el: '#demo-data',
     template: '<p>{{foo}}</p>',
@@ -46,6 +37,9 @@ new Vue({
         foo: 'bar'
     }
 });
+  </script>
+  </body>
+</html>
 ```
 
 When this example is up and working the string bar is the inner text of the paragraph element in the template, and that is then used as the content for the mount point in the html which is of course that single div element with the id demo-data. In this basic example a value in the data object is being used to define the inner text of a paragraph element, but it can also be used to define attribute values as well with the right directive.
@@ -137,3 +131,8 @@ new Vue({
     '</div>'
 });
 ```
+
+## 5 - Conclusion
+
+This was just a few quick simple examples of the vue data object, but it order to really get a sense as to what the vue data object is for it might be best to just start createing some actual simple projects with vuejs as the client side framework. The vue data object is not the end all be all vue property when it comes to working with state though mind you. This is something that I have come to find when it comes to really starting to get into createing vue compoents where I need to juggle with data objects, prop objects, events, and setting up watchers for values in the props object. That all might sound like a mouth full, but again by just starting to work on some real projects I managed to learn as I go with this.
+
