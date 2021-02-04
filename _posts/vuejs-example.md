@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-04 13:16:21
-version: 1.6
+updated: 2021-02-04 13:20:44
+version: 1.7
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the framework itself that are all ready well documenetd in the official vuejs documentation. Write such posts are not awalys such a wast of time mind you offten the offical documention might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or lanague the only thing to do from that point forward is to start to work on some actual projects, rather than fidding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on vuejs examples that are full working projects, or at least aim to be anyway.
@@ -54,7 +54,10 @@ Continuing with the idea of a very basic starting point for a vuejs example of a
 
 Yet another basic feature of an idle game is to introduce a feature that provides a kind of reset point. In many games the term used will change but the concept is more or less the same, you start over from the begining, but this time with a intional amount, or yet even more of a kind of currency that can only be optained by starting over. This reset point currecy then makes the process of getting back to where you in the game happen a little faster.
 
-### 2.5 - Very basic Idle Game with upgrades
+### 2.5 - [Very basic Idle Game with upgrades](/2021/01/27/vuejs-example-idle-game-upgrades/)
+
+Yet another basic feature that an idle game should have is a means to spend currency that is gained for items that help to make even more of the currency. In this vuejs example I am yet again continuing with the devlopment of a basic idle game by intoudcing upgrades.
+
 ### 2.6 - Image Editor
 ### 2.7 - Land Sections Game
 ### 2.8 - Vuejs List Example
