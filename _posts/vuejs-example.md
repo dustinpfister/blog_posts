@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-04 13:22:56
-version: 1.8
+updated: 2021-02-04 13:29:35
+version: 1.9
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the framework itself that are all ready well documenetd in the official vuejs documentation. Write such posts are not awalys such a wast of time mind you offten the offical documention might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or lanague the only thing to do from that point forward is to start to work on some actual projects, rather than fidding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on vuejs examples that are full working projects, or at least aim to be anyway.
@@ -62,7 +62,12 @@ Yet another basic feature that an idle game should have is a means to spend curr
 
 This vuejs example is just a very basic image editor program.
 
-### 2.7 - Land Sections Game
+### 2.7 - [Land Sections Game](/2021/02/02/vuejs-example-land-sections/)
+
+This is a game where I am working out the core logic for another game that I have been making over and over again when it comes to my collection of canvas examples called Mr Sun. The basic idea of the game is that I have a display object that repersents a sun that is surrounded with other display objects that are land section objects. The sun can then be moved around and doing so will of course effect the state of each land section when it comes to things such as tempature.
+
+I have all ready made many forks of this kind of game when it comes to the canvas example, but with vuejs I think I will like to keep it just with this one alone. The focus here should be on the core rules and logic of the game, and not any additional flash, and graphics which often gets in the way of getting logic solid.
+
 ### 2.8 - Vuejs List Example
 ### 2.9 - Vuejs Menu Example
 ### 2.10 - Web Assets Game
