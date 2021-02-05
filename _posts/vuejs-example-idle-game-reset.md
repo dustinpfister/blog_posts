@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-01-28 19:08:42
-version: 1.11
+updated: 2021-02-05 15:41:19
+version: 1.12
 ---
 
-This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of examples on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics when it comes to [manual production or resources](/2021/01/25/vuejs-example-idle-game/). I then moved on to additional topics that include [production over time](/2021/01/26/vuejs-example-idle-game-over-time/), and starting an [upgrade system](/2021/01/27/vuejs-example-idle-game-upgrades/). There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
+This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of [vuejs examples](/2021/02/04/vuejs-example/) on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics when it comes to [manual production or resources](/2021/01/25/vuejs-example-idle-game/). I then moved on to additional topics that include [production over time](/2021/01/26/vuejs-example-idle-game-over-time/), and starting an [upgrade system](/2021/01/27/vuejs-example-idle-game-upgrades/). There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
 
 A reset point system is where the play will start playing the game all over again from the begining, but will start off with an amount of another kind of resource that is a kind of resource point. These resource points will effect the base values of various attrabutes in the game so that although the player is starting over, they will progress much faster now. The procress of reseting can then be called over and over again, each time building up additional reset points.
 
