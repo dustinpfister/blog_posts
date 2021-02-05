@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 12:33:30
-version: 1.15
+updated: 2021-02-05 12:40:45
+version: 1.16
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for dirrective.
@@ -44,7 +44,7 @@ new Vue({
 </html>
 ```
 
-## 2 - Vue for and the second argument
+### 1.2 - Getting the index value 
 
 It is possible for there to be a second argument to work with aside from the alias of the current array element. This second argument is the current array element index value. As you might expect the index values are zero relative just like that of certain array prototype methods like forEach.
 
@@ -58,7 +58,25 @@ new Vue({
 });
 ```
 
-## 3 - Nested use of the vue for directive
+### 1.3 - Named keys example ( plain object rather than array )
+
+The v-for directive will work okay not just with arrays, but collections in general. In order words the value that I am using the v-for directive with in the data object does not have to be an array.
+
+```js
+new Vue({
+    el: '#list',
+    template: '<ul><li v-for="kw, subject in keywords" >{{ subject }} : {{ kw }}</li></ul>',
+    data: {
+        keywords: {
+            lodash: 'lodash find', 
+            canvas: 'canvas arc', 
+            vuejs: 'vue for'
+        }
+    }
+});
+```
+
+## 2 - Nested use of the vue for directive
 
 If I have an array for each object in an array it is possible to nest the use of of the vue for directive.
 
@@ -86,7 +104,7 @@ new Vue({
 });
 ```
 
-## 4 - Uisng a render function in place of v-for
+## 3 - Uisng a render function in place of v-for
 
 The v-for directive is really only needed for static templates, if I am using a render function then I can just dirrectly work with the data object and call createElement for each item in a collection. When doing so if the collection object I want to loop over is an array I can use something like Array.forEach as a way to loop over all the items. In addition I can also use other array prototype methods like filter, and map to run the collection over some kind of process first. So render functions themsevles can prove to be a replacment for the v-for directive, and in many respects they prove themselfs to be far more flexabule compared to simple static templates.
 
@@ -94,7 +112,7 @@ However I might not sugest that it is a good idea to just start using render fun
 
 In this section I will be going over some examples of using render functions as a replacement for the v-for directive, as well as a tool to help with situations in which something needs to happen before using v-for in another component.
 
-### 4.1 - Basic render function example
+### 3.1 - Basic render function example
 
 First off there is starting with just a basic example of a render function that will create an element for each item in a simple collection.
 
@@ -115,7 +133,7 @@ new Vue({
 });
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 The v-for directive is one of many built in vuejs directives that I find myself using often when making a template. If I find myself in a situation in which I need to have some html for a collection of items the v-for directive is the first and formost aspect of the vuejs framework that comes to mind, at least when it comes to simple static templates.
 
