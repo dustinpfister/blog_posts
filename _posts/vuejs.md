@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 13:42:10
-version: 1.0
+updated: 2021-02-05 13:50:34
+version: 1.1
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -16,3 +16,10 @@ Whenever I have an extensive collection of content on a subject I often write at
 So it would make sense to have a lengthly main post on vuejs in which I just breefly touch base on all of these little topics, and then link to posts in which I get into that topic in greater detail.
 
 <!-- more -->
+
+
+## 1 - Getting strated with vuejs
+
+It would make sense to start off a post such as this with the ushual getting started with vuejs type stuff, as well as what to know before hand before getting started with vuejs. It should go without saything that it is required that a solid understanding of html, css, and javaScript should be obtained before hand before getting into using vuejs, or any javaScript framework for that matter. However once that is out of the way then it is just a question of knowing how to set up a project folder, making a late version of vuejs part of the client side stack, and then just working out a few simple hello world type examples just for the sake of getting started.
+
+
