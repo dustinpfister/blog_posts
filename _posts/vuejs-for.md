@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 12:59:08
-version: 1.17
+updated: 2021-02-05 13:24:20
+version: 1.18
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for dirrective.
@@ -78,7 +78,7 @@ new Vue({
 
 ## 2 - Nested use of the vue for directive
 
-If I have an array for each object in an array it is possible to nest the use of of the vue for directive.
+If I have an array for each object in an array, it is possible to nest the use of of the vue for directive in a template. So just like nested loops it is also possible to have a nested use of the v-for directive in a static template.
 
 ```js
 new Vue({
