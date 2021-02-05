@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:14:43
-version: 1.5
+updated: 2021-02-05 14:23:14
+version: 1.6
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -44,4 +44,7 @@ Another major part of the vuejs framework is making use of something called a di
 
 ## 4 - Conclusion
 
-I get around to editing my content on vuejs every once in a while.
+In this post I am focusiong on just going over the vuejs framework by itself, but just working out simple little hello world type examples for each little feature of the framework. There is a whole lot to do when it just comes to learning the basics of the framwork that are required in order to move on to making some real projects with vuejs. However once one gets the hang of the basic of vuejs the only thing left to do at that point is to move on to working on some actual real [vuejs examples](/2021/02/04/vuejs-example/) that are games, apps, and features that can be used in such things.
+
+I get around to editing my content on vuejs every once in a while, and when I do so I should also get around to editing and expansing this post when doing so. I did not get to every little detail that should be covered in a post such as this, but much of my content on vuejs needs to be updated and expanded, and I have a lot of other content that needs attention also.
+
