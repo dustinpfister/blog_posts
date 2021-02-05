@@ -5,14 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-02 14:35:44
-version: 1.10
+updated: 2021-02-05 15:41:21
+version: 1.11
 ---
 
-One of my many canavs examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not togeather. The general idea at least is that there is a sun object that is surroudned by world section objects, and the player can move the sun object around inside of this sircle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a diferent way.
+One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
 
-
-So I thought I would make a simple vuejs example of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything togeather.
+So I thought I would make a simple [vuejs examples](/2021/02/04/vuejs-example/) of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything together.
 
 <!-- more -->
 
