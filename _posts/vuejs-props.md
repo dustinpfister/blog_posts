@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 453
-updated: 2021-02-04 14:46:32
-version: 1.13
+updated: 2021-02-05 15:12:43
+version: 1.14
 ---
 
-When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or reder function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
+When making a [vue component](/2019/05/16/vuejs-component/) there is sometimes a need to have properties for the component that serve as a way to pass some values to it when using the component in a template or render function. This is where the [vue props](https://vuejs.org/v2/guide/components-props.html) option comes into play, it can be used as a way to set some properties for a component just like attributes when it comes to actual html elements. 
 
-There is a fare amount of things to cover when it comes to vue props such as how to set default values for them, how to go about using these prop values. However I think I should also at least mention what not to do with prop values also such as mutation of prop values. The props option is not a replacment for the vue data object of a component, that is used in conjuntion with props as a way to store values that are local to the component. When it comes to mutating prop values that should not, and actaully can not be done, however events are how one would go about sending a mutated values back to a parent vue instance.
+There is a fare amount of things to cover when it comes to vue props such as how to set default values for them, how to go about using these prop values. However I think I should also at least mention what not to do with prop values also such as mutation of prop values. The props option is not a replacement for the vue data object of a component, that is used in conjunction with props as a way to store values that are local to the component. When it comes to mutating prop values that should not, and actually can not be done, however events are how one would go about sending a mutated values back to a parent vue instance.
 
 So lets get to some examples of props in vuejs.
 
@@ -19,7 +19,7 @@ So lets get to some examples of props in vuejs.
 
 ## 1 - basic vue props examples
 
-There is a great deal to cover not so much with props themselfs, but with a whole bunch of other little topics that branch off from props when it comes to compoents. Still one has to start somwhere, so in this section I will be going over just a few quick simple basic examples of the vue props option when it comes to basic component design.
+There is a great deal to cover not so much with props themselves, but with a whole bunch of other little topics that branch off from props when it comes to components. Still one has to start somewhere, so in this section I will be going over just a few quick simple basic examples of the vue props option when it comes to basic component design.
 
 ## 1.1 - vue props basics
 
@@ -50,7 +50,7 @@ new Vue({
 </html>
 ```
 
-So that is just a simple hello world style example of a prop option, but you get the basic idea. I can create compoents that can be used in templates, or render functions. When doing so there should be a way to define some properties like that of html element attributes, and the way to do so is with a props option for the component.
+So that is just a simple hello world style example of a prop option, but you get the basic idea. I can create components that can be used in templates, or render functions. When doing so there should be a way to define some properties like that of html element attributes, and the way to do so is with a props option for the component.
 
 ### 1.2 - Setting defaults for a vue prop
 
@@ -142,5 +142,5 @@ new Vue({
 
 ## 3 - Conclusion
 
-That is it for now when it comes to the props option of a vuejs instance. The next step migth be to look into more of the vaious options of a vue instance when it comes to learning the basics of vuejs. However at one point or another it would be a good idea to start to work on at least a few simple full examples of vuejs. Maybe working out just a few simple hello world style examples is just want needs to happen when starting from zero experence, but the best way to learn might be to just start making an idea for a project and learn as you go.
+That is it for now when it comes to the props option of a vuejs instance. The next step might be to look into more of the various options of a vue instance when it comes to learning the basics of vuejs. However at one point or another it would be a good idea to start to work on at least a few simple full examples of vuejs. Maybe working out just a few simple hello world style examples is just want needs to happen when starting from zero experience, but the best way to learn might be to just start making an idea for a project and learn as you go.
 
