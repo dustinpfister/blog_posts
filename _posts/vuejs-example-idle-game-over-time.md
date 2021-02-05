@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 789
-updated: 2021-01-27 15:54:29
-version: 1.10
+updated: 2021-02-05 15:41:18
+version: 1.11
 ---
 
-In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
+In [yesterdays post on a basic vuejs powered idle game](/2021/01/25/vuejs-example-idle-game/) I started a very basic idle game with the [vuejs framework](https://vuejs.org/), and just a little vanilla javaScript to expand a collection of [vuejs examples](/2021/02/04/vuejs-example/) to help serve as starting points for projects using the framework. The example at the state it was in at that point lacks many of the core features that I think just about any idle game should have. The basic example was just manual production of a resource, and selling that resource for money, and that is it. 
 
 I might get back to improving that post, and the corresponding code, but I think that maybe that specific example should say pretty basic with just that first step being the focal point. The next step forward could be a great number of things, but one feature that is needed is having over time production of a resource rather than just clicking manually. There is not just having production over time, but also away production, which is also a feature that I would like to at least start in this vue example. There are so many other little things that I would like to add even when it comes to just the very basics, but for now one more thing I would like to start at this point is save states.
 
