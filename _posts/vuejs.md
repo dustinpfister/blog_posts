@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:30:47
-version: 1.8
+updated: 2021-02-05 14:41:35
+version: 1.9
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -37,6 +37,17 @@ The vue data option is how to go about createing a state object for a single vue
 
 The vue data option is not to be confused with the props option which is a way to pass read one values from one vue instance to another, and then events can be used to pass a mutated value back to the parent instance. That however might be a more complex topic though when it comes to getting into compoents, but there is starting out by focusing on just the data object alone.
 
+### 2.2 - [The el option](/2019/05/06/vuejs-el/)
+
+### 2.2 - [method](/2019/05/20/vuejs-method/)
+
+### 2.2 - [props](/2019/05/19/vuejs-props/)
+
+### 2.2 - [render](/2019/05/12/vuejs-render/)
+
+The render option is a more advanced replacement for a simple static template that can be made with the template option. In most cases it would be best to stick with simple static templates when working out a vue instance, or component, however in some cases a render function must be used. The function that is set to the value of the render option os passed a creat element function as an argument to the render function, and this create element function is then how to go about cretaing elements, and componets that are to be rendered for the vue instance. When doing so the full power of javaScript can be used to do whatever it is that I need to do, but the process often ends up being far more complacted compared to a nice simple static template, but that of course is the trade off.
+
+### 2.3 - [The vue template option](/2019/05/07)
 
 ## 3 - Vuejs Dirrectives
 
