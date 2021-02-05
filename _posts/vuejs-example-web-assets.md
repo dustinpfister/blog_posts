@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-03 17:04:55
-version: 1.8
+updated: 2021-02-05 15:28:07
+version: 1.9
 ---
 
-I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actaul full vuejs examples as that just seems like the net step when it comes to learning a langauge, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
+I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actual full [vuejs examples](/2021/02/04/vuejs-example/) as that just seems like the net step when it comes to learning a language, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
 
 The general idea is to create a game where the object is to start making websites, and then the websites generate money over time. So just another kind of idle game as it where which seems to be a kind of game that I like to make, but have never really ran with just yet. In any case this example has proved to be another good exercise of using vue components as a way to keep things modular.
 
@@ -17,11 +17,11 @@ The general idea is to create a game where the object is to start making website
 
 ## 1 - Libraries for the Web Asset vuejs example
 
-First off I have a library folder for this vuejs example Where I have parked a few vanilla javaScript modules that I will be using in my components, and the main vue instance. I often start a major project with a general utility library that might end up containgign methdos that I will use in other vanilla javaScript librarys. In additon I have a web asset library that I am using as a seperate file for createing and updating a web asset object for the game.
+First off I have a library folder for this vuejs example Where I have parked a few vanilla javaScript modules that I will be using in my components, and the main vue instance. I often start a major project with a general utility library that might end up containing methods that I will use in other vanilla javaScript libraries. In addition I have a web asset library that I am using as a separate file for creating and updating a web asset object for the game.
 
 ### 1.1 - A utils library for the vue example
 
-Here I have my general utility libray, so far for this vue example at least I just have a format money helper and a mathmatical modulo helper. If I do keep working on this vue example I am sure this library will grow but for now that is all there is to cover with this one.
+Here I have my general utility library, so far for this vue example at least I just have a format money helper and a mathematical modulo helper. If I do keep working on this vue example I am sure this library will grow but for now that is all there is to cover with this one.
 
 ```js
 var utils = {};
@@ -47,7 +47,7 @@ utils.mod = function(x, m) {
 
 ### 1.2 - Web Assets library
 
-I then also have my main web assets library that I will be using to create web asset objects that will be used in the main vue data object of the main vuejs instance that I will be getting to later in this post. This module will return a main function that I can use to create a web asset object when it comes to the working out the main vue instance where I wil be creating such objects. In addition I have worked out a number of additional public methods for updating a web asset file in a loop, and also what to do when a write event happens.
+I then also have my main web assets library that I will be using to create web asset objects that will be used in the main vue data object of the main vuejs instance that I will be getting to later in this post. This module will return a main function that I can use to create a web asset object when it comes to the working out the main vue instance where I will be creating such objects. In addition I have worked out a number of additional public methods for updating a web asset file in a loop, and also what to do when a write event happens.
 
 ```js
 var WebAsset = (function(){
@@ -115,15 +115,15 @@ var WebAsset = (function(){
 }());
 ```
 
-This is a module that I will be exapanding on when it comes to certain parts of the game logic, haveing at least one or two files like this helps to make my vue compontens less complex by pulling it out of componetns and into a janila javaScript files such as this. Aslo I think that it is a good idea to make much of the game logic in a vanilla javaScript form such as this so it is easier for me to take this code to another project in which I might not use vuejs.
+This is a module that I will be expanding on when it comes to certain parts of the game logic, having at least one or two files like this helps to make my vue components less complex by pulling it out of components and into a vanilla javaScript files such as this. Aslo I think that it is a good idea to make much of the game logic in a vanilla javaScript form such as this so it is easier for me to take this code to another project in which I might not use vuejs.
 
-## 2 - The compoenets folder
+## 2 - The components folder
 
-I then have a components folder with a few vue compoents for various features of the user interface of the game. Some of these just display info about the main game state objet. Others can be used as a way to create new sites, buy sites, and sell as a well as imporve sotes that the player own all ready.
+I then have a components folder with a few vue components for various features of the user interface of the game. Some of these just display info about the main game state objet. Others can be used as a way to create new sites, buy sites, and sell as a well as improve sites that the player own all ready.
 
 ### 2.1 - disp
 
-I have a simple display compoents that is used to just display how much money the player has.
+I have a simple display components that is used to just display how much money the player has.
 
 ```js
 // just display some basic info
@@ -138,7 +138,7 @@ Vue.component('disp', {
 
 ### 2.2 - webasset-ui-create
 
-I wanted to start a simple compoents that can be used to create a new website asset for free in the event that the player has no money to buy one with.
+I wanted to start a simple components that can be used to create a new website asset for free in the event that the player has no money to buy one with.
 
 ```js
 // Create a WebAsset
@@ -256,7 +256,7 @@ Vue.component('webassets-ui-current', {
 
 ## 3 - The main vuejs instance
 
-I have the libraries that I want to use, and I have a number of compoents, now I just need a main vue instance. In the main.js file I have just a single vue mixin that is just a reference to my utils format money method. I did this just so I can use the format money method in the templates.
+I have the libraries that I want to use, and I have a number of components, now I just need a main vue instance. In the main.js file I have just a single vue mixin that is just a reference to my utils format money method. I did this just so I can use the format money method in the templates.
 
 ```js
 // global method(s)
@@ -324,7 +324,7 @@ var main = new Vue({
 
 ## 4 - The html and css files
 
-There is just now a little html and css to wrap this all up togeather.
+There is just now a little html and css to wrap this all up together.
 
 ```html
 <html>
@@ -378,4 +378,4 @@ body{
 
 ## 5 - Conclusion
 
-This game is starting to come togeather all ready, but I am not sure if I will keep working on it or not. There are so many other vuejs examples, and additional projects outside of vuejs all togeather that I also want to put more time into. In any case this vuejs example was fun for a little while, and working on it helped me to get a better idea of how to break a project down into many little parts by making use of vue components.
+This game is starting to come together all ready, but I am not sure if I will keep working on it or not. There are so many other vuejs examples, and additional projects outside of vuejs all together that I also want to put more time into. In any case this vuejs example was fun for a little while, and working on it helped me to get a better idea of how to break a project down into many little parts by making use of vue components.
