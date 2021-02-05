@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:46:37
-version: 1.10
+updated: 2021-02-05 14:49:59
+version: 1.11
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -42,6 +42,8 @@ The vue data option is not to be confused with the props option which is a way t
 The vue el option is how to go about setting a mount point for a vue instance. In oter words it is the hard coded element in the html that will be the location as to where the vuejs instnace is to redner the html of the vue istance via a template or render function. This is the option that I find myself using the most when it comes to this task, but it is also worth mentioning that the mount instance method if a vue instance is how to go about mounting a vue insatnce to html manually.
 
 ### 2.2 - [method](/2019/05/20/vuejs-method/)
+
+The method option is how I go about adding methods for a vuejs instance, these methods can eb used as event handlers, or helpers that can be called from other methods, life cycle hooks, render fucntions, and so forth. A collection of methods can be made global for all vuejs instances by using passing an object of such methods to the Vue.mixin static method.
 
 ### 2.2 - [props](/2019/05/19/vuejs-props/)
 
