@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:23:14
-version: 1.6
+updated: 2021-02-05 14:27:11
+version: 1.7
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -41,6 +41,10 @@ The vue data option is not to be confused with the props option which is a way t
 ## 3 - Vuejs Dirrectives
 
 Another major part of the vuejs framework is making use of something called a directive. Simply put a directive is a way to tell vuejs to prefrom a certain kind of action with a given element. There a whole bunch of built in directives such as the bind directive that can be used to bind a value in the vue data object as the value for an element attribute. There are then a wide range of other directives for prefroming all kinds of other actions an elements, so in this section I will be breefly mentioning each directive that I have wrote a post on thus far, and link to that post in the header of course. 
+
+### 3.1 - [The v-bind directive](/2019/05/31/vuejs-bind)
+
+The v-bind directive is what I would use if I want to bind the value of a property in the vue data object as a value for an attabute of an element or component in a template.
 
 ## 4 - Conclusion
 
