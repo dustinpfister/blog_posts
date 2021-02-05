@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 12:22:53
-version: 1.13
+updated: 2021-02-05 12:31:21
+version: 1.14
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for dirrective.
@@ -15,23 +15,12 @@ In this post I will be looking at some examples that I put together when it come
 
 <!-- more -->
 
-## 1 - Vue for basic example
+## 1 - Some Vuejs v-for directive basic examples
 
-To use the vue for directive I just need to use the v-for directive inside a child element of a template followed by an item in array syntax where the item is a name that will be used to refer to the current item in the array in the template, and the array is the name of the array in the data object.
 
-If you are still a little confused maybe it would be best to just look at a code example.
+### 1.1 - Basic v-for example of creating a unordered list from an array of strings
 
-```js
-new Vue({
-    el: '#list',
-    template: '<ul><li v-for="kw in keywords" >{{ kw }}</li></ul>',
-    data: {
-        keywords: ['lodash find', 'canvas arc', 'vue for']
-    }
-});
-```
-
-In the example above it is just an array of strings, but they can also of course be objects, it is also possible to do nesting as well. In the html of this example I just have a div element with an id of list that I am using as the mount point and I am linking to this javaScript example with a script tag.
+One good starting point with the v-for directive might be to just create a simple unordered list element where each neasted list item element contains a text node that is a value from a corespodning string in an array contained in the data object. For this example I am just using a ul element as the root element in the template then I just have a single li element nested in the root ul element. In this single li element I then use the v-for directive, for the value of the directive I will want to have a varaible name for the value of a current element in the array of strings, followed by the name of the collection in the data object. I can then use the variable name in the nested content of the list item to define what to do for each string in the array of strings.
 
 ```html
 <html>
@@ -41,12 +30,18 @@ In the example above it is just an array of strings, but they can also of course
   </head>
   <body>
   <div id="list"></div>
-  <script src="basic.js"></script>
+  <script>
+new Vue({
+    el: '#list',
+    template: '<ul><li v-for="kw in keywords" >{{ kw }}</li></ul>',
+    data: {
+        keywords: ['lodash find', 'canvas arc', 'vue for']
+    }
+});
+  </script>
   </body>
 </html>
 ```
-
-All additional examples in this post use html that is the same as this the only difference is the filename.
 
 ## 2 - Vue for and the second argument
 
