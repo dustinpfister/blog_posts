@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:49:59
-version: 1.11
+updated: 2021-02-05 14:53:51
+version: 1.12
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -47,11 +47,15 @@ The method option is how I go about adding methods for a vuejs instance, these m
 
 ### 2.2 - [props](/2019/05/19/vuejs-props/)
 
+The props option is how I can go about defining some attributes for a custom component.
+
 ### 2.2 - [render](/2019/05/12/vuejs-render/)
 
 The render option is a more advanced replacement for a simple static template that can be made with the template option. In most cases it would be best to stick with simple static templates when working out a vue instance, or component, however in some cases a render function must be used. The function that is set to the value of the render option os passed a creat element function as an argument to the render function, and this create element function is then how to go about cretaing elements, and componets that are to be rendered for the vue instance. When doing so the full power of javaScript can be used to do whatever it is that I need to do, but the process often ends up being far more complacted compared to a nice simple static template, but that of course is the trade off.
 
 ### 2.3 - [The vue template option](/2019/05/07)
+
+The template option is the simple yet offten effective alterative to the more powerful render option. Templates can just be a string value, and a wide range of directives can be used in the template to prefrom all kinds of actions on elements, and compontens that may be used in the template. A template does have its draw backs now and then, which is why I sometimes fidn myself using render functions in place of one, but I generally start with a template when working out a component, or main parent vue instance.
 
 ## 3 - Vuejs Dirrectives
 
