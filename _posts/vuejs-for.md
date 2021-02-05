@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 12:40:45
-version: 1.16
+updated: 2021-02-05 12:59:08
+version: 1.17
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for dirrective.
@@ -129,6 +129,44 @@ new Vue({
     },
     data: {
         arr: ['foo', 'man', 'chew']
+    }
+});
+```
+
+### 3.2 - Using an render function and v-for in a component
+
+Render functions are a must in some situations, but I would not say that redner functions are a full drop in replacement for simple static templates.
+
+```js
+Vue.component('keywords',{
+    props: ['index', 'item'],
+    template: '<div style="background:gray;margin:10px;padding:10px;">'+
+        '<h3> {{ item.subject }} Keywords </h3>' +
+        '<p v-for="word in item.words" >{{ word }}</p>'+
+    '</div>'
+});
+ 
+new Vue({
+    el: '#list',
+    render: function(createElement){
+        var children = [];
+        this.$data.keywords.forEach(function(item, index){
+            var child = createElement('keywords', {
+                props: {
+                   index: index,
+                   item: item
+                }
+            });
+            children.push(child);
+        });
+        return createElement('div', children);
+    },
+    data: {
+        keywords: [
+            {subject: 'lodash', words: ['lodash find']}, 
+            {subject: 'Canvas', words: ['canvas arc', 'canvas position']}, 
+            {subject: 'Vuejs', words: ['vue for', 'vue directive', 'vue component', 'vue render function']}
+        ]
     }
 });
 ```
