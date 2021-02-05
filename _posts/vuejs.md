@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:41:35
-version: 1.9
+updated: 2021-02-05 14:46:37
+version: 1.10
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -38,6 +38,8 @@ The vue data option is how to go about createing a state object for a single vue
 The vue data option is not to be confused with the props option which is a way to pass read one values from one vue instance to another, and then events can be used to pass a mutated value back to the parent instance. That however might be a more complex topic though when it comes to getting into compoents, but there is starting out by focusing on just the data object alone.
 
 ### 2.2 - [The el option](/2019/05/06/vuejs-el/)
+
+The vue el option is how to go about setting a mount point for a vue instance. In oter words it is the hard coded element in the html that will be the location as to where the vuejs instnace is to redner the html of the vue istance via a template or render function. This is the option that I find myself using the most when it comes to this task, but it is also worth mentioning that the mount instance method if a vue instance is how to go about mounting a vue insatnce to html manually.
 
 ### 2.2 - [method](/2019/05/20/vuejs-method/)
 
