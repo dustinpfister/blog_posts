@@ -5,23 +5,23 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 13:24:20
-version: 1.18
+updated: 2021-02-05 15:20:06
+version: 1.19
 ---
 
-The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for dirrective.
+The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for directive.
 
-In this post I will be looking at some examples that I put together when it comes to using the v-for directive as a way to generate a list. In addition I will be getting to a whole bunch of other little isshues that come up that might be related to this kind of task in the process of doing so.
+In this post I will be looking at some examples that I put together when it comes to using the v-for directive as a way to generate a list. In addition I will be getting to a whole bunch of other little issues that come up that might be related to this kind of task in the process of doing so.
 
 <!-- more -->
 
 ## 1 - Some Vuejs v-for directive basic examples
 
-In this section I will be starting out with just some very basic examples of the v-for dirrective. There is just using the diretcive with a simple array, or object of public key value pairs. There is then a few other things that come to mind that maybe should be part of a basic getting started type section such as this.
+In this section I will be starting out with just some very basic examples of the v-for directive. There is just using the directive with a simple array, or object of public key value pairs. There is then a few other things that come to mind that maybe should be part of a basic getting started type section such as this.
 
 ### 1.1 - Basic v-for example of creating a unordered list from an array of strings
 
-One good starting point with the v-for directive might be to just create a simple unordered list element where each neasted list item element contains a text node that is a value from a corespodning string in an array contained in the data object. For this example I am just using a ul element as the root element in the template then I just have a single li element nested in the root ul element. In this single li element I then use the v-for directive, for the value of the directive I will want to have a varaible name for the value of a current element in the array of strings, followed by the name of the collection in the data object. I can then use the variable name in the nested content of the list item to define what to do for each string in the array of strings.
+One good starting point with the v-for directive might be to just create a simple unordered list element where each nested list item element contains a text node that is a value from a corresponding string in an array contained in the data object. For this example I am just using a ul element as the root element in the template then I just have a single li element nested in the root ul element. In this single li element I then use the v-for directive, for the value of the directive I will want to have a variable name for the value of a current element in the array of strings, followed by the name of the collection in the data object. I can then use the variable name in the nested content of the list item to define what to do for each string in the array of strings.
 
 ```html
 <html>
@@ -104,11 +104,11 @@ new Vue({
 });
 ```
 
-## 3 - Uisng a render function in place of v-for
+## 3 - Using a render function in place of v-for
 
-The v-for directive is really only needed for static templates, if I am using a render function then I can just dirrectly work with the data object and call createElement for each item in a collection. When doing so if the collection object I want to loop over is an array I can use something like Array.forEach as a way to loop over all the items. In addition I can also use other array prototype methods like filter, and map to run the collection over some kind of process first. So render functions themsevles can prove to be a replacment for the v-for directive, and in many respects they prove themselfs to be far more flexabule compared to simple static templates.
+The v-for directive is really only needed for static templates, if I am using a render function then I can just directly work with the data object and call createElement for each item in a collection. When doing so if the collection object I want to loop over is an array I can use something like Array.forEach as a way to loop over all the items. In addition I can also use other array prototype methods like filter, and map to run the collection over some kind of process first. So render functions themselves can prove to be a replacement for the v-for directive, and in many respects they prove themselves to be far more flexible compared to simple static templates.
 
-However I might not sugest that it is a good idea to just start using render functions as a full replacement for templates actually. Working with redner functions unlocks the full flexability of javaScript, but they are also a little more intense to work with, so genearlly they should only be used if I find myself in a situtsion where it seems like I have to. In addition when it comes to starting to make components I can use bolth render functions and static templates.
+However I might not suggest that it is a good idea to just start using render functions as a full replacement for templates actually. Working with render functions unlocks the full flexibility of javaScript, but they are also a little more intense to work with, so generally they should only be used if I find myself in a situation where it seems like I have to. In addition when it comes to starting to make components I can use both render functions and static templates.
 
 In this section I will be going over some examples of using render functions as a replacement for the v-for directive, as well as a tool to help with situations in which something needs to happen before using v-for in another component.
 
@@ -135,7 +135,7 @@ new Vue({
 
 ### 3.2 - Using an render function and v-for in a component
 
-Render functions are a must in some situations, but I would not say that redner functions are a full drop in replacement for simple static templates.
+Render functions are a must in some situations, but I would not say that render functions are a full drop in replacement for simple static templates.
 
 ```js
 Vue.component('keywords',{
@@ -173,5 +173,5 @@ new Vue({
 
 ## 4 - Conclusion
 
-The v-for directive is one of many built in vuejs directives that I find myself using often when making a template. If I find myself in a situation in which I need to have some html for a collection of items the v-for directive is the first and formost aspect of the vuejs framework that comes to mind, at least when it comes to simple static templates.
+The v-for directive is one of many built in vuejs directives that I find myself using often when making a template. If I find myself in a situation in which I need to have some html for a collection of items the v-for directive is the first and foremost aspect of the vuejs framework that comes to mind, at least when it comes to simple static templates.
 
