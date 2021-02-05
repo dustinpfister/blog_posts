@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:27:11
-version: 1.7
+updated: 2021-02-05 14:30:47
+version: 1.8
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -45,6 +45,11 @@ Another major part of the vuejs framework is making use of something called a di
 ### 3.1 - [The v-bind directive](/2019/05/31/vuejs-bind)
 
 The v-bind directive is what I would use if I want to bind the value of a property in the vue data object as a value for an attabute of an element or component in a template.
+
+### 3.2 - [The v-for directive](2019/05/21/vuejs-for/)
+
+Often I might be in a situation in which I have an array or named collection of values, and I want to create a template of html for each item in that collection. The v-for directive is the way that I would go about doing just that when working out a simple static template.
+
 
 ## 4 - Conclusion
 
