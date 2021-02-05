@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 14:07:54
-version: 1.4
+updated: 2021-02-05 14:14:43
+version: 1.5
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applactions, and reusable compartmentized compoents for such applactions. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -31,8 +31,17 @@ In my first post on getting started with vuejs I outline how to go about staring
 
 When making a vuejs instance, component, or mixin there are a number of options that can be used when creating such things. There are options like the methods option that can be used to define a collection of methods that can eb used in a single instance, a collection of instances, or made into a global set of methods depeding on how the method option is used. So it is a good idea to go about getting a solid understanding of each of these options, and also how and where to use such options when it coems to starting to work on a real project of some kind.
 
+### 2.1 - [The vue data option](/2019/05/18/vuejs-data/)
+
+The vue data option is how to go about createing a state object for a single vuejs instance. This data object contains values that are to be used with just a sline instance to which the data object belongs. 
+
+The vue data option is not to be confused with the props option which is a way to pass read one values from one vue instance to another, and then events can be used to pass a mutated value back to the parent instance. That however might be a more complex topic though when it comes to getting into compoents, but there is starting out by focusing on just the data object alone.
+
 
 ## 3 - Vuejs Dirrectives
 
 Another major part of the vuejs framework is making use of something called a directive. Simply put a directive is a way to tell vuejs to prefrom a certain kind of action with a given element. There a whole bunch of built in directives such as the bind directive that can be used to bind a value in the vue data object as the value for an element attribute. There are then a wide range of other directives for prefroming all kinds of other actions an elements, so in this section I will be breefly mentioning each directive that I have wrote a post on thus far, and link to that post in the header of course. 
 
+## 4 - Conclusion
+
+I get around to editing my content on vuejs every once in a while.
