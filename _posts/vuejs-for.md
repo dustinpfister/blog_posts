@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 12:18:08
-version: 1.12
+updated: 2021-02-05 12:22:53
+version: 1.13
 ---
 
-The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an array of items in the data object in vuejs. In this post I will be looking at some examples that I put together when it comes to using this directive as a way to generate a list.
+The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an collection of items in the data object in vuejs in the form of an array or plain object in the form of named key value pairs. The directive is often used when I have to do something for each item in a collection in a static template. However there is also using render functions in some cases in place of a template and when doing so there is no need to bother with the v-for dirrective.
+
+In this post I will be looking at some examples that I put together when it comes to using the v-for directive as a way to generate a list. In addition I will be getting to a whole bunch of other little isshues that come up that might be related to this kind of task in the process of doing so.
 
 <!-- more -->
 
