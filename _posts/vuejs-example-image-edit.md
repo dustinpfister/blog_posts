@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2020-07-29 18:09:22
-version: 1.2
+updated: 2021-02-05 15:41:20
+version: 1.3
 ---
 
-It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this vuejs example the idea of a simple image editor application that will create a json version of the image that I draw with it came to mind. So maybe something like that is in order when it comes to expanding on what can be done with vuejs.
+It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this [vuejs examples](/2021/02/04/vuejs-example/) the idea of a simple image editor application that will create a json version of the image that I draw with it came to mind. So maybe something like that is in order when it comes to expanding on what can be done with vuejs.
 
 <!-- more -->
 
