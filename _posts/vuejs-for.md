@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 455
-updated: 2021-02-05 11:50:43
-version: 1.10
+updated: 2021-02-05 12:15:48
+version: 1.11
 ---
 
 The [vue for](https://vuejs.org/v2/guide/list.html) built in directive can be used to generate a collection of elements from an array of items in the data object in vuejs. In this post I will be looking at some examples that I put together when it comes to using this directive as a way to generate a list.
@@ -88,7 +88,34 @@ new Vue({
 });
 ```
 
-## 4 - Conclusion
+## 4 - Uisng a render function in place of v-for
+
+The v-for directive is really only needed for static templates, if I am using a render function then I can just dirrectly work with the data object and call createElement for each item in a collection. When doing so if the collection object I want to loop over is an array I can use something like Array.forEach as a way to loop over all the items. In addition I can also use other array prototype methods like filter, and map to run the collection over some kind of process first. So render functions themsevles can prove to be a replacment for the v-for directive, and in many respects they prove themselfs to be far more flexabule compared to simple static templates.
+
+However I might not sugest that it is a good idea to just start using render functions as a full replacement for templates actually. Working with redner functions unlocks the full flexability of javaScript, but they are also a little more intense to work with, so genearlly they should only be used if I find myself in a situtsion where it seems like I have to. In addition when it comes to starting to make components I can use bolth render functions and static templates.
+
+In this section I will be going over some examples of using render functions as a replacement for the v-for directive, as well as a tool to help with situations in which something needs to happen before using v-for in another component.
+
+### 4.1 - Basic render function example
+
+```js
+new Vue({
+    el: '#list',
+    render: function(createElement){
+        var children = [];
+        this.$data.arr.forEach(function(item, index){
+            var child = createElement('p', index + ') ' + item);
+            children.push(child);
+        });
+        return createElement('div', children);
+    },
+    data: {
+        arr: ['foo', 'man', 'chew']
+    }
+});
+```
+
+## 5 - Conclusion
 
 The v-for directive is one of many built in vuejs directives that I find myself using often when making a template. If I find myself in a situation in which I need to have some html for a collection of items the v-for directive is the first and formost aspect of the vuejs framework that comes to mind, at least when it comes to simple static templates.
 
