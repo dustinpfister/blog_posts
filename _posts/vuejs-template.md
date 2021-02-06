@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2021-02-06 08:35:46
-version: 1.10
+updated: 2021-02-06 08:49:13
+version: 1.11
 ---
 
 In [vuejs](https://vuejs.org/) the [vue template option](https://vuejs.org/v2/api/#template) is one of the options for creating HTML that will be used for a vue instance, the other option being a [render function](/2019/05/12/vuejs-render/). Templates are easy to make, at least compared to render functions at least, and I also find them easier to read and maintain when compared to render functions. However the one draw back from render functions is that they are less powerful when it comes to making full use of javaScript. Still the general rule that I am following is to start out with a template for a vue instance or component, and only switch to using a render function if I am in a situstion in which it apears that I have to.
@@ -19,9 +19,11 @@ There are a few options when it comes to defining a template, but in this post I
 
 ## 1 - vue template basics
 
-This is a post on the vuejs template DOM option in vuejs. I assume that you have at least some background with javaScript, html and so forth. This is not a getting started post on vuejs, so I will not be bothering with the very basics of vuejs here. To write a vuejs template the [mustache syntax](https://vuejs.org/v2/guide/syntax.html#Text) can be used to inject text, but for attributes the [v-bind directive](https://vuejs.org/v2/guide/syntax.html#Attributes) must be used.
+This is a post on the vuejs template option in vuejs, and as such I assume that you have at least some background with javaScript, html and so forth. This is not a getting started post on vuejs, so I will not be bothering with the very basics of vuejs here. However in this section I will be going over some very basic examples of templates that are not the far beyond the first steps of getting started with vuejs. 
 
-## 2 - vue templates in string form
+There are a few things to cover even when it comes to just starting out with just a very simple hello world style example of a vue temaplte. For example when it comes to injecting text nodes there is using the [mustache syntax](https://vuejs.org/v2/guide/syntax.html#Text), but then there is also using the v-text directive to do the same thing. There are a wide range of directves to work with when working out a template, but in this basic section I will just be touching base on a few of them.
+
+### 1.2 - vue templates in string form
 
 Using a string template just simply involves setting a string form of the template to the template DOM option property. This string from template will then be used to compile the contents that will be used in the mount point set with the vue el DOM option.
 
@@ -47,7 +49,7 @@ Using a string template just simply involves setting a string form of the templa
 </html>
 ```
 
-## 3 - vue templates on x-template form
+### 1.3 - vue templates on x-template form
 
 Another option is to use an x-template this will require a script tag, but with the type attribute of the script tag set to 'text/x-template'. This is a nice option because it allows for me to define the html of the template in just pure raw html form.
 
@@ -76,6 +78,8 @@ Another option is to use an x-template this will require a script tag, but with 
 </html>
 ```
 
-## 4 - Conclusion
+## 2 - Conclusion
+
+To write a vuejs template the  can be used to inject text, but for attribute values the [v-bind directive](https://vuejs.org/v2/guide/syntax.html#Attributes) must be used.
 
 Hope this post helps with the basics of templates in vuejs. As of this writing I am still fairly new with vuejs, so I will likely update this post at some point as my content on vuejs grows.
