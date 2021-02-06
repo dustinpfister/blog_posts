@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2021-02-06 08:49:13
-version: 1.11
+updated: 2021-02-06 09:01:27
+version: 1.12
 ---
 
 In [vuejs](https://vuejs.org/) the [vue template option](https://vuejs.org/v2/api/#template) is one of the options for creating HTML that will be used for a vue instance, the other option being a [render function](/2019/05/12/vuejs-render/). Templates are easy to make, at least compared to render functions at least, and I also find them easier to read and maintain when compared to render functions. However the one draw back from render functions is that they are less powerful when it comes to making full use of javaScript. Still the general rule that I am following is to start out with a template for a vue instance or component, and only switch to using a render function if I am in a situstion in which it apears that I have to.
@@ -25,7 +25,7 @@ There are a few things to cover even when it comes to just starting out with jus
 
 ### 1.2 - vue templates in string form
 
-Using a string template just simply involves setting a string form of the template to the template DOM option property. This string from template will then be used to compile the contents that will be used in the mount point set with the vue el DOM option.
+Using a string template just simply involves setting a string form of the template to the template option when creating a new vue instnace. This string form template will then be used to compile the contents that will be used in the mount point set with the vue el DOM option, or compose the html of a component that will be used in such a main vue instance. A very basic hello word example of a vue template might involve the use of the mustache syntax to display a string value in a vue data object as a text node for an element in the template.
 
 ```html
 <html>
@@ -34,13 +34,38 @@ Using a string template just simply involves setting a string form of the templa
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <div id="foo"></div>
+  <div id="demo"></div>
   <script>
   new Vue({
-    el:'#foo',
-    template: '<p v-bind:style="redness">{{mess}}<\/p>',
+    el:'#demo',
+    template: '<p>{{mess}}<\/p>',
     data: {
-      mess: 'bar',
+      mess: 'Hello World'
+    }
+  });
+  </script>
+  </body>
+</html>
+```
+
+The mustache syntax is just used for creating text nodes when working out a template, and even then it can be replaced with the v-text directive. When it comes to doing anything with attributes of elements directives must be used, and in some cases templates must be droped all togetaher in favor of render functions. However for now in this basic section lets just look at a few more baasic examples of templates when it comes to directives, and other options that can be used for templates beyond just a simple string format coverd in this basic hello world example.
+
+### 1.2 - Directives in templates
+
+```html
+<html>
+  <head>
+    <title>vue template example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<p v-bind:style="redness" v-text="mess"><\/p>',
+    data: {
+      mess: 'Hello World!',
       redness: 'color:red;'
     }
   });
