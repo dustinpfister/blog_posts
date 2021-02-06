@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2021-02-06 09:33:12
-version: 1.15
+updated: 2021-02-06 09:39:55
+version: 1.16
 ---
 
 In [vuejs](https://vuejs.org/) the [vue template option](https://vuejs.org/v2/api/#template) is one of the options for creating HTML that will be used for a vue instance, the other option being a [render function](/2019/05/12/vuejs-render/). Templates are easy to make, at least compared to render functions at least, and I also find them easier to read and maintain when compared to render functions. However the one draw back from render functions is that they are less powerful when it comes to making full use of javaScript. Still the general rule that I am following is to start out with a template for a vue instance or component, and only switch to using a render function if I am in a situstion in which it apears that I have to.
@@ -109,6 +109,9 @@ Another option is to use an x-template this will require a script tag, but with 
 
 ## 2 - Templates and render functions
 
+Templates are great, I find them ver easy to use, read, and maintain compared to render functions. However there are some situations in which I just need to use a render function becuase there does not seem to be any built in directive to do what I want to do with one or more nodes. Render functions are far more powerful, they allow me to work with the full unchained power of vuejs as well as native javaScript outside of the framework for that matter. Still I thing that they are something that I should only use when and where doing so is called for. 
+
+The draw back of render functions is that allthough they are more powerful, that in turn is also the reason why I want to avoidn them, it makes working on a vue project far more time consuming, and hard to read if I just go all out with them over templates. So I think the best course of action here is to use render functions to help with some of these situstions in which they just simply need to be used, while still using basic simple templates for simple tasks where they continue to work just fine.
 
 ### 2.1 - generating a node name with javaScript using a render function
 
