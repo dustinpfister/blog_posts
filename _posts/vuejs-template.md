@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2021-02-06 09:10:36
-version: 1.13
+updated: 2021-02-06 09:14:00
+version: 1.14
 ---
 
 In [vuejs](https://vuejs.org/) the [vue template option](https://vuejs.org/v2/api/#template) is one of the options for creating HTML that will be used for a vue instance, the other option being a [render function](/2019/05/12/vuejs-render/). Templates are easy to make, at least compared to render functions at least, and I also find them easier to read and maintain when compared to render functions. However the one draw back from render functions is that they are less powerful when it comes to making full use of javaScript. Still the general rule that I am following is to start out with a template for a vue instance or component, and only switch to using a render function if I am in a situstion in which it apears that I have to.
@@ -109,6 +109,4 @@ Another option is to use an x-template this will require a script tag, but with 
 
 ## 2 - Conclusion
 
-To write a vuejs template the  can be used to inject text, but for attribute values the [v-bind directive](https://vuejs.org/v2/guide/syntax.html#Attributes) must be used.
-
-Hope this post helps with the basics of templates in vuejs. As of this writing I am still fairly new with vuejs, so I will likely update this post at some point as my content on vuejs grows.
+Hope this post helps with the basics of templates in vuejs which is a great starting point for working out what the html should be fpr a vue instance. Also more often then not it is not always nesecry to switch to using a render function, there are a few situstions in which doing so is called for, but render functions make a vue project harder to read, and maintain. Even when I do use a render function I try to comparmentise what I am doing with a render function into a component and continue using templates as the default.
