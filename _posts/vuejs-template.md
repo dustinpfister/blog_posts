@@ -5,11 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2019-05-21 14:17:43
-version: 1.9
+updated: 2021-02-06 08:35:46
+version: 1.10
 ---
 
-The [vue template option](https://vuejs.org/v2/api/#template) is one of the DOM options when making an instance of Vue in [vuejs](https://vuejs.org/). It is a way of defining a template that will be used in place of any content that might be in the mount point set with the [vue el](/2019/05/06/vuejs-el/) option. There are a few options when it comes to defining a template, but in this post I will just be writing about the string and X-Template options for templates in vuejs.
+In [vuejs](https://vuejs.org/) the [vue template option](https://vuejs.org/v2/api/#template) is one of the options for creating HTML that will be used for a vue instance, the other option being a [render function](/2019/05/12/vuejs-render/). Templates are easy to make, at least compared to render functions at least, and I also find them easier to read and maintain when compared to render functions. However the one draw back from render functions is that they are less powerful when it comes to making full use of javaScript. Still the general rule that I am following is to start out with a template for a vue instance or component, and only switch to using a render function if I am in a situstion in which it apears that I have to.
+
+The html that will be generated with a template can end up beining injected into a mount point in the hard coded html of a web page by using the [vue el](/2019/05/06/vuejs-el/) option, or the mount vue instance method. When it comes to component design a template will end up being the html that composes an instance of the use of that component.
+
+There are a few options when it comes to defining a template, but in this post I will just be writing about the string and X-Template options for templates in vuejs.
 
 <!-- more -->
 
