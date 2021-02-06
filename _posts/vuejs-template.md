@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 437
-updated: 2021-02-06 09:14:00
-version: 1.14
+updated: 2021-02-06 09:33:12
+version: 1.15
 ---
 
 In [vuejs](https://vuejs.org/) the [vue template option](https://vuejs.org/v2/api/#template) is one of the options for creating HTML that will be used for a vue instance, the other option being a [render function](/2019/05/12/vuejs-render/). Templates are easy to make, at least compared to render functions at least, and I also find them easier to read and maintain when compared to render functions. However the one draw back from render functions is that they are less powerful when it comes to making full use of javaScript. Still the general rule that I am following is to start out with a template for a vue instance or component, and only switch to using a render function if I am in a situstion in which it apears that I have to.
@@ -107,6 +107,55 @@ Another option is to use an x-template this will require a script tag, but with 
 </html>
 ```
 
-## 2 - Conclusion
+## 2 - Templates and render functions
+
+
+### 2.1 - generating a node name with javaScript using a render function
+
+So far I am not aware of any way to generate a node name for an element or component in a template using just directives. This is then one reason why I sometimes find myself using a render function over that of a simple template. 
+
+So far this is something that happens when I start creating my own componets as a way to start to break down what would otherwise be a very complex single vue instance that is hard ro read and debug. I then end up with a buch of compoents where the node names follows a certin pattern like text-red, text-green, and so forth. I then often might want to have a way to generate the proper component name using a javaScript expression. When it comes to templates there is the v-text directive to create a text node value for a node, then there is the v-bind directive for creating a node attribute value with javaScript. However what about attribute names nodes, and the names of nodes themselfs? Well when it comes to this degree of control it would seem that this is one reason why I would just need to use a render function over a template.
+
+```html
+<html>
+  <head>
+    <title>vue template example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+ 
+Vue.component('text-red',{
+   template: '<p style="color:red;"><slot></slot></p>'
+});
+Vue.component('text-green',{
+   template: '<p style="color:green;"><slot></slot></p>'
+});
+ 
+  new Vue({
+    el:'#demo',
+    render: function(createElement){
+       var children = [];
+       this.$data.arr.forEach(function(obj){
+           // generating the node name with a javaScript expression
+           var nodeName = 'text-' + obj.color;
+           children.push(createElement(nodeName, { props: props}, obj.mess));
+       });
+       return createElement('div', children);
+    },
+    data: {
+        arr: [
+            {mess: 'Hello', color: 'red'}, 
+            {mess: 'World', color: 'green'}
+        ]
+    }
+  });
+  </script>
+  </body>
+</html>
+```
+
+## 3 - Conclusion
 
 Hope this post helps with the basics of templates in vuejs which is a great starting point for working out what the html should be fpr a vue instance. Also more often then not it is not always nesecry to switch to using a render function, there are a few situstions in which doing so is called for, but render functions make a vue project harder to read, and maintain. Even when I do use a render function I try to comparmentise what I am doing with a render function into a component and continue using templates as the default.
