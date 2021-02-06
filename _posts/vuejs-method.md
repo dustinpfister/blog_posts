@@ -5,11 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2019-05-21 14:38:14
-version: 1.8
+updated: 2021-02-06 18:36:13
+version: 1.9
 ---
 
-In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project. In native client side javaScript events can be attached to dome elements with [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), or some similar method, as a way to define what needs to happen when a user clicks on something with a mouse, or preform one of many other such actions. In vuejs the methods option is one of many options that can be used to define what a Vue call instance of constructor is, keeping everything neat, tidy, and well structured. So in this post I will be going over some quick examples of using the vue methods option.
+In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
+
+In native client side javaScript events can be attached to DOM elements with [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), or some similar method. These event handlers are a way to define what needs to happen when a user clicks on something with a mouse, or preforms one of many other such actions. There are also a number of events that have to do with something that is not a user action such as the on load event. When it comes to working out a vuejs project though I end up having a lot of these kinds of methods as part of the methods object of a main vue instance, or a component.
+
+However the methods in the methods option do not have to just be event handlers, the methods can be used in other methods, as well as in other functions such as life cycle hooks. In vuejs the methods option is one of many options that can be used to define what a Vue call instance of constructor is, keeping everything neat, tidy, and well structured. So in this post I will be going over some quick examples of using the vue methods option.
 
 <!-- more -->
 
