@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 457
-updated: 2019-05-23 19:21:37
-version: 1.5
+updated: 2021-02-07 16:37:39
+version: 1.6
 ---
 
-In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. Vue updates the DOM in a [very async kind of way](https://vuejs.org/v2/guide/reactivity.html#Async-Update-Queue), and there might come a time now and then that something might need to happen with the post updated DOM state of the view. For this there is the vue next tick global api method as well as the $nextTick instance methods. these methods can be used to set a callback that will fire when a view has finished updating.
+In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. So far I can not say that this is a method that I find myself uisng that often, but it is still something that I should be aware of when it comes to creating a project with vuejs as a client side framework.
+
+Vue updates the DOM in a [very async kind of way](https://vuejs.org/v2/guide/reactivity.html#Async-Update-Queue), and there might come a time now and then that something might need to happen with the post updated DOM state of the view. For this there is the vue next tick global api method as well as the $nextTick instance methods. these methods can be used to set a callback that will fire when a view has finished updating.
 
 <!-- more -->
 
