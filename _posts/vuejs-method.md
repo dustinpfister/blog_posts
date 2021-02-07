@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 15:41:33
-version: 1.17
+updated: 2021-02-07 15:44:48
+version: 1.18
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -131,6 +131,8 @@ new Vue({
 ```
 
 ### 2.2 - Left and right mouse buttons
+
+When using the click event with the v-on directive I can use the left and right modifers to use differnt methods for the right and let button or call the same method in diferent ways. When using a right click on a web page there is often a default menu that will pop up on desktops, so I can also use the prevent modifer as a way to prevent this kind of browser default action.
 
 ```js
 // Using Pointer Object utils as a mixin
