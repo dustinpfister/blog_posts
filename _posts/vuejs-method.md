@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 12:17:11
-version: 1.13
+updated: 2021-02-07 12:40:17
+version: 1.14
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -53,7 +53,7 @@ new Vue({
 
 ### 1.2 - Using methods as helpers for other methods.
 
-Another use case example of the methods option is to take something that I might be doing that is a little involved and start breaking it now into smaller find grain helper functions.
+Another use case example of the methods option is to take something that I might be doing that is a little involved and start breaking it now into smaller find grain helper functions. These helper functions can then be called within other methods, or in many of the other functions for the various options for a vuejs instance.
 
 ```html
 <html>
