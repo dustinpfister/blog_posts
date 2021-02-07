@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-06 18:36:13
-version: 1.9
+updated: 2021-02-07 11:46:55
+version: 1.10
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -54,7 +54,7 @@ In the html of this example I am just using a single div as a mount point, and l
 
 ## 2 - vue method key mods
 
-When using the v-on:event directive there is an additional modifier that can be used to set th key code that the event will fore for when using keyboard events.
+When using the v-on:event directive there is an additional modifier that can be used to set the key code that the event will fire for when using keyboard events. For example say that I want to call a submit method when a keup event fires for a text input method, but only for the enter key wich has a keycode of 13. There are a number of ways to go about doing this, but one way would be to use a key modifier when using the v-on directive.
 
 ```js
 new Vue({
