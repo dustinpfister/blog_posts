@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 15:44:48
-version: 1.18
+updated: 2021-02-07 16:04:29
+version: 1.19
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -97,6 +97,35 @@ new Vue({
   </script>
   </body>
 </html>
+```
+
+### 1.3 - Methods and render functions
+
+If I want to use a method with a render function rather than the ushual static template, then there is the on property of the options object that I can use with the create element method. Helper methods can also be called in the body of the render function also to help break down the process of createing a view with this kind of method.
+
+```js
+new Vue({
+    el: '#demo-methods',
+    render: function(createElement){
+        return createElement('input', {
+             attrs:{
+                 type: 'button',
+                 value: 'click ('+ this.$data.i +')'
+             },
+             on: {
+                 click: this.clicker
+             }
+        });
+    },
+    data: {
+        i: 0
+    },
+    methods: {
+        clicker: function () {
+            this.i += 1;
+        }
+    }
+});
 ```
 
 ## 2 - vue method key mods
