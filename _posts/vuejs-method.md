@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 15:05:35
-version: 1.16
+updated: 2021-02-07 15:41:33
+version: 1.17
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -101,7 +101,11 @@ new Vue({
 
 ## 2 - vue method key mods
 
-When using the v-on:event directive there is an additional modifier that can be used to set the key code that the event will fire for when using keyboard events. For example say that I want to call a submit method when a keup event fires for a text input method, but only for the enter key wich has a keycode of 13. There are a number of ways to go about doing this, but one way would be to use a key modifier when using the v-on directive.
+When it comes to using a method in a template there are a number of modifers for the v-on directive that is often what is used to call a method in a template. For example when I want to have an on click event work for just the right mouse button rather than then left I could do is when working out the logic of the event handler, or I could use the right modifer with the click event when using v-on. In this section I will be going over a few quick examples of these modifiers.
+
+### 2.1 - keycode v-on modifier
+
+When using the v-on:event directive there is an additional modifier that can be used to set the key code that the event will fire for when using keyboard events. For example say that I want to call a submit method when a keyup event fires for a text input method, but only for the enter key wich has a keycode of 13. There are a number of ways to go about doing this, but one way would be to use a key modifier when using the v-on directive.
 
 ```js
 new Vue({
@@ -121,6 +125,82 @@ new Vue({
         },
         submit: function (e) {
             this.$data.mess = 'Hello ' + this.$data.name;
+        }
+    }
+});
+```
+
+### 2.2 - Left and right mouse buttons
+
+```js
+// Using Pointer Object utils as a mixin
+new Vue({
+    el: '#demo-methods',
+    template: '<div>' +
+        '<canvas class="myCanvas" '+
+            'v-on:click.right.prevent="clickRight" '+
+            'v-on:click.left.prevent="clickLeft" '+
+            'width="320" height="240"></canvas>' +
+    '</div>',
+    data: function(){
+       return {
+           x: 0,
+           y: 0,
+           menu: 'none'
+       };
+    },
+    mounted: function(){
+        this.draw();
+    },
+    methods: {
+        draw: function(){
+            var canvas = this.$el.querySelector('.myCanvas'),
+            ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.fillText(this.$data.x + ', ' + this.$data.y, 10, 20);
+            ctx.fillText(this.$data.menu, 10, 40);
+        },
+        click: function(e){
+            var pos = this.getELPos(e),
+            dat = this.$data;
+            dat.x = pos.x;
+            dat.y = pos.y;
+        },
+        clickLeft: function(e){
+            this.click(e);
+            this.menu = 'left';
+            this.draw();
+        },
+        clickRight: function(e){
+            this.click(e);
+            this.menu = 'right';
+            this.draw();
+        },
+        getWindowPos: function(evnt){
+            if(evnt.changedTouches){
+                var touch = evnt.changedTouches[0];
+                return {
+                    x: touch.clientX,
+                    y: touch.clientY
+                };
+            }
+            return {
+                x: evnt.clientX,
+                y: evnt.clientY
+            };
+        },
+        getElementRelative: function(el, pos){
+            var bx = el.getBoundingClientRect();
+            return {
+                x: pos.x - bx.left,
+                y: pos.y - bx.top
+            };
+        },
+        getELPos: function(evnt){
+            var pos = this.getWindowPos(evnt);
+            return this.getElementRelative(evnt.target, pos);
         }
     }
 });
