@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 12:40:17
-version: 1.14
+updated: 2021-02-07 13:07:13
+version: 1.15
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -124,4 +124,92 @@ new Vue({
         }
     }
 });
+```
+
+## 3 - Mixins and methods
+
+I can go to town adding all kinds of methods to the method option of a single instance, but when it comes to working on a real project there is going to be a need to have a way to pull some methods out of the methods option of a single instance and share those methods accross many instances of a Vue class. To do this I will want to make use of the mixin option of the vuejs constructor, or make methods global for everything in the page by passing a collection of methods to the Vue.mixin static method.
+
+```html
+<html>
+  <head>
+    <title>vue methods example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-methods"></div>
+  <script>
+ 
+// Pointer Object utils
+var utils_pointer_pos = {
+    methods: {
+        // get a window relative position object
+        // from the given touch or mouse event
+        getWindowPos: function(evnt){
+            if(evnt.changedTouches){
+                var touch = evnt.changedTouches[0];
+                return {
+                    x: touch.clientX,
+                    y: touch.clientY
+                };
+            }
+            return {
+                x: evnt.clientX,
+                y: evnt.clientY
+            };
+        },
+        // get an element relative position for the given
+        // element, and window relative position object
+        getElementRelative: function(el, pos){
+            var bx = el.getBoundingClientRect();
+            return {
+                x: pos.x - bx.left,
+                y: pos.y - bx.top
+            };
+        },
+        // get an element relative pos
+        getELPos: function(evnt){
+            var pos = this.getWindowPos(evnt);
+            return this.getElementRelative(evnt.target, pos);
+        }
+    }
+};
+ 
+// Using Pointer Object utils as a mixin
+new Vue({
+    el: '#demo-methods',
+    mixins: [utils_pointer_pos],
+    template: '<div>' +
+        '<canvas class="myCanvas" v-on:mouseup="canvasClick" width="320" height="240"></canvas>' +
+    '</div>',
+    data: function(){
+       return {
+           x: 0,
+           y: 0
+       };
+    },
+    mounted: function(){
+        this.draw();
+    },
+    methods: {
+        draw: function(){
+            var canvas = this.$el.querySelector('.myCanvas'),
+            ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.fillText(this.$data.x + ', ' + this.$data.y, 10, 20);
+        },
+        canvasClick: function(e){
+            var pos = this.getELPos(e),
+            dat = this.$data;
+            dat.x = pos.x;
+            dat.y = pos.y;
+            this.draw();
+        }
+    }
+});
+  </script>
+  </body>
+</html>
 ```
