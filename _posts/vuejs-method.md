@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 13:07:13
-version: 1.15
+updated: 2021-02-07 15:05:35
+version: 1.16
 ---
 
 In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
@@ -213,3 +213,8 @@ new Vue({
   </body>
 </html>
 ```
+
+## 4 - Conclusion
+
+The method option of a vue instance is how I can go about adding event handlers, and helper methods to a vue instance. I can also use the mixin option or the Vue.mixin static method as a way to have sets of methods that I can use accross more than one or even all vue insatnces in a single pager app that I am making with vuejs.
+
