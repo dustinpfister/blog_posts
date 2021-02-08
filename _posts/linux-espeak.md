@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:27:02
-version: 1.8
+updated: 2021-02-08 17:30:08
+version: 1.9
 ---
 
 The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
@@ -51,13 +51,15 @@ $ cat README.md | espeak -s 90 -p 80
 
 ## 3.2 - Fun with date and bash parameter expansion
 
+The date command can be used with bash parameter expansion to get the text of the current day of the week and make it part of a string value that can then be used with a command like echo. The result of that can then also be piped to espeak.
+
 ```
 $ echo "today is $(date +%A)" | espeak
 ```
 
 ## 4 - Bash script example
 
-Like any other command in linux espeak can be used in bash scripts.
+Like any other command in linux espeak can be used in bash scripts. So then espeak along with a little bash can be used to create some fun scripts just for the sake of messing around.
 
 ```
 #!/bin/bash
@@ -83,3 +85,4 @@ $ ./today.sh
 
 ## 5 - Conclusion
 
+The espeak command can eb fun to just play around with.
