@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 457
-updated: 2021-02-08 12:35:08
-version: 1.8
+updated: 2021-02-08 12:42:31
+version: 1.9
 ---
 
 In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. So far I can not say that this is a method that I find myself uisng that often, but it is still something that I should be aware of when it comes to creating a project with vuejs as a client side framework.
@@ -54,7 +54,9 @@ Vue.nextTick(function () {
 
 ## 2 - Updated and mounted lifecycle hooks
 
-In many cases I will not need to bother with the next tick method. In fact if I am using it I often think that is a sign that I am doing something wrong. There are the life cycle hooks that I always use before bothering with something such as the next tick method. The mounted hook will fire once when the data object, and the html dom are ready to work with. The update hook will fire each time that the data object is updated.
+In many cases I will not need to bother with the next tick method. In fact if I am using it I often think that is a sign that I am doing something wrong. There are the life cycle hooks that I always use before bothering with something such as the next tick method. life cycle hooks are a way to define some javaScript code that I want to run at certain points in the life cycle of a vue instance such as when the data object is there but the dom of the instance is not yet mounted, and also each time that the data object is updated.
+
+The mounted hook will fire once when the data object, and the html dom are ready to work with. The update hook will fire each time that the data object is updated, and the corespodning dom is up to date with that value as well. If for some reason I need to do soemthing with an up to date data object value, but before the dom is updated, then there is the before update hook. So most of the time I can do everything that I want to do with data object values and the dom with just hooks, and there is almost never a need to delay something until the next update tick.
 
 ```html
 <html>
@@ -73,9 +75,15 @@ var vm = new Vue({
         },
         mounted: function(){
             console.log(this.degree); // 45
+            console.log(this.$el.textContent); // 45
+        },
+        beforeUpdate: function(){
+            console.log(this.degree); // 0
+            console.log(this.$el.textContent); // 45
         },
         updated: function(){
             console.log(this.degree); // 0
+            console.log(this.$el.textContent); // 0
         }
     });
 vm.degree = 0;
