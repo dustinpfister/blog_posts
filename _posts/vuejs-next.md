@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 457
-updated: 2021-02-08 12:42:31
-version: 1.9
+updated: 2021-02-08 12:45:46
+version: 1.10
 ---
 
 In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. So far I can not say that this is a method that I find myself uisng that often, but it is still something that I should be aware of when it comes to creating a project with vuejs as a client side framework.
@@ -163,4 +163,4 @@ vm.setMess('foo');
 
 ## 5 - Conclusion
 
-Use of the vue next tick method in actual projects will most likely be rare, but never the less this is just one of many things to be aware of when working with vuejs.
+Use of the vue next tick method in actual projects will most likely be rare, but never the less this is just one of many things to be aware of when working with vuejs. I pretty much never use the next tick method, and if I do I ofetn stop to think about what I am doing and how I can go about doing what I want to do without using next tick. The method is not a replacement for hooks, and it also does not strike me as a way to go about creating an app loop for vuejs project. So this method is a bit of an odd addition to the framework, but maybe it does still have a place for some rare use case examples. So far I can not think of much though.
