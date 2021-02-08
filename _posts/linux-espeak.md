@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:41:21
-version: 1.13
+updated: 2021-02-08 17:46:28
+version: 1.14
 ---
 
 The [Linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a Linux system. Text content can be given to it as an option, read from a file, or piped in from the standard input and piping using any Linux command such as cat or echo just to name a few. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controlling the pitch and speed of the voice. 
@@ -89,4 +89,6 @@ This might not be the most practical example of bash scripts, but you get the id
 
 ## 5 - Conclusion
 
-The espeak command can be fun to just play around with, however of course if goes without saying that it can serve some practical use cases as well. Espeak can be used as a way to read a lengthly text to me so that I do not have to take time time to read it for example.
+The espeak command can be fun to just play around with, however of course if goes without saying that it can serve some practical use cases as well. Espeak can be used as a way to read a lengthly text to me so that I do not have to take time time to read it for example. Another thing that comes to mind is using espeak to create a voice over for a video, something that I might do if I get into doing such things because I do not like the sound of my voice.
+
+I will be writing new content on Linux, and see about editing some of my older content on Linux in the process of doing so this week. I think that I need to find ways to go about doing things that are a little fun now and then with Linux and bash as a way to keep myself engaged with it. With that begin said playing around with espeak can be fun for a short while.
