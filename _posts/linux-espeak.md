@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:34:46
-version: 1.11
+updated: 2021-02-08 17:39:21
+version: 1.12
 ---
 
 The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. Text content can be given to it as an option, read from a file, or piped in from the standard input and piping using any linuk command such as cat or echo just to name a few. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
@@ -59,7 +59,7 @@ $ echo "today is $(date +%A)" | espeak
 
 ## 4 - Bash script example
 
-Like any other command in linux espeak can be used in bash scripts. So then espeak along with a little bash can be used to create some fun scripts just for the sake of messing around.
+Like any other command in linux espeak can be used in bash scripts. So then espeak along with a little bash can be used to create some fun scripts just for the sake of messing around. For example I can create a bash script that will make use of a case statement as a way to say different things depeding on the day of the week.
 
 ```
 #!/bin/bash
@@ -78,10 +78,14 @@ case $today in
 esac
 ```
 
+I just save the above script as something like today.sh, and then I just need to make it exacutabule with chmod.
+
 ```
 $ chmod 755 today.sh
 $ ./today.sh
 ```
+
+This might not be the most practical example of bash scripts, but you get the idea. Also I just make an effort to write at least one bash script example for a lot of my posts on linux just for the sake of exercising bash, and this kind of script can be a little fun.
 
 ## 5 - Conclusion
 
