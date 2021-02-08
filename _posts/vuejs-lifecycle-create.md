@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 458
-updated: 2021-02-08 13:06:26
-version: 1.9
+updated: 2021-02-08 13:11:30
+version: 1.10
 ---
 
 In vuejs there is the [vue created](https://vuejs.org/v2/api/#created) lifecycle hook method that can be used to define some logic that should run after the vue instance is created, but before the vue is mounted to a mount point in html via the vue el option or the mount instance method. 
@@ -55,7 +55,7 @@ new Vue({
 
 ## 2 - Vue created is called synchronously
 
-The vue created hook is called synchronously so anything that might envolve heavy listing that is not delayed some how will delay the lifecycle from preceding to the mount hook.
+The vue created hook is called synchronously so anything that might envolve heavy lifting that is not delayed some how will delay the lifecycle from preceding to the mount hook.
 
 ```js
 new Vue({
@@ -78,6 +78,8 @@ new Vue({
     }
 });
 ```
+
+Getting into how to address these kinds of problems might be a little off topic, but the basic thing here is to just be aware of how much overhead something might take up. There is breaking things down and only updating a few things each tick, or pushing work off into a webworker which is what should happen in situations in which there is to much going on in a life cycle hook.
 
 ## 3 -Vue el, vue $mount, and the vue create hook
 
