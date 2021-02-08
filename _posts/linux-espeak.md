@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:06:41
-version: 1.2
+updated: 2021-02-08 17:09:31
+version: 1.3
 ---
 
 The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
@@ -27,4 +27,12 @@ If all goes well fine, otherwise it would have to be installed first.
 
 ```
 $ sudo apt-get install espeak
+```
+
+## 2 - Pitch and speed options
+
+The default speed is 160 in words per second, that might prove to be a bit to fast for some people so the -s option can be used as a way to slow that down a little to something like 90 maybe. There is also the -p option that can be used to adjust the pitch of the voice on a 0 to 99 scale.
+
+```
+$ espeak -s 90 -p 80 "this is just a test of the espeak"
 ```
