@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:32:30
-version: 1.10
+updated: 2021-02-08 17:34:46
+version: 1.11
 ---
 
-The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
+The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. Text content can be given to it as an option, read from a file, or piped in from the standard input and piping using any linuk command such as cat or echo just to name a few. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
 
-Content can be piped into it from the standard inputm, so it can be used as an endpoint for a chain of commands to have the output spoken rather than spit out to the console. There is also a file option for the command, but as with any other linux command another command can be used to read a file and then pipe the text to espeak.
+Content can be piped into it from the standard input, so it can be used as an endpoint for a chain of commands to have the output spoken rather than spit out to the console. There is also a file option for the command, but as with any other linux command another command can be used to read a file and then pipe the text to espeak.
 
 <!-- more -->
 
