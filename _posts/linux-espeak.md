@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:09:31
-version: 1.3
+updated: 2021-02-08 17:13:06
+version: 1.4
 ---
 
 The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
@@ -35,4 +35,14 @@ The default speed is 160 in words per second, that might prove to be a bit to fa
 
 ```
 $ espeak -s 90 -p 80 "this is just a test of the espeak"
+```
+
+## 3 - Reading a file and piping to the standard input of espeak
+
+If you are not up to speed with piping then now might be a good time to learn a thing or two about it now. In this section I will be going over a few examples of using piping as a way to pipe the output of commands as the input for espeak.
+
+## 3.1 - reading a file by piping it in with cat
+
+```
+$ cat README.md | espeak -s 90 -p 80
 ```
