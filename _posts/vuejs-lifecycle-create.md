@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 458
-updated: 2021-02-08 13:03:15
-version: 1.8
+updated: 2021-02-08 13:06:26
+version: 1.9
 ---
 
 In vuejs there is the [vue created](https://vuejs.org/v2/api/#created) lifecycle hook method that can be used to define some logic that should run after the vue instance is created, but before the vue is mounted to a mount point in html via the vue el option or the mount instance method. 
 
-This created option of life cycle hook if you prefer is one of many hook methods that can be used when creating a vue instance to define some logic that will happen at the various statges of the [vue instance lifecycle](https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks). There is another hook that can be used to do something before even the data object is there to work with, and there is also a mounted hook that can be used to define something to do once that data object is there to work with, and the the vue instance is mounted to the hard coded html. 
+This created option of life cycle hook if you prefer is one of many hook methods that can be used when creating a vue instance to define some logic that will happen at the various statges of the [vue instance lifecycle](https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks). There is another hook that can be used to do something before even the data object is there to work with, and there is also a mounted hook that can be used to define something to do once that data object is there to work with, and the the vue instance is mounted to the hard coded html. There is also an before updated, and updated hooks that wil fire each time a change is made to an observabule property of the data object.
 
 In this post I will be focusing mostly on just the created hook, but I will also be touching base on life cycle hooks in general actually.
 
@@ -81,7 +81,7 @@ new Vue({
 
 ## 3 -Vue el, vue $mount, and the vue create hook
 
-If the vue el option is not used when creating the vue instance then the lifecyle process will come to a halt after the created hook until the $mount method is used to mount the instance to a mount point in the html document.
+If the vue el option is not used when creating the vue instance then the lifecyle process will come to a halt after the created hook until the $mount method is used to mount the instance to a mount point in the html document. So then the created hook is the last hook that will fire until the mounted method is used, at which point the life cycle of the instance will progress the the mounted hook.
 
 ```js
 var vm = new Vue({
