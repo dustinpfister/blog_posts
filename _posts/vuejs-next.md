@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 457
-updated: 2021-02-08 12:20:32
-version: 1.7
+updated: 2021-02-08 12:35:08
+version: 1.8
 ---
 
 In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. So far I can not say that this is a method that I find myself uisng that often, but it is still something that I should be aware of when it comes to creating a project with vuejs as a client side framework.
@@ -52,7 +52,39 @@ Vue.nextTick(function () {
 </html>
 ```
 
-## 1 - Vue next tick example using the global API method
+## 2 - Updated and mounted lifecycle hooks
+
+In many cases I will not need to bother with the next tick method. In fact if I am using it I often think that is a sign that I am doing something wrong. There are the life cycle hooks that I always use before bothering with something such as the next tick method. The mounted hook will fire once when the data object, and the html dom are ready to work with. The update hook will fire each time that the data object is updated.
+
+```html
+<html>
+  <head>
+    <title>vue next tick example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+var vm = new Vue({
+        el: '#demo',
+        template: '<p>{{ degree }}</p>',
+        data: {
+            degree: 45
+        },
+        mounted: function(){
+            console.log(this.degree); // 45
+        },
+        updated: function(){
+            console.log(this.degree); // 0
+        }
+    });
+vm.degree = 0;
+  </script>
+  </body>
+</html>
+```
+
+## 3 - Vue next tick example using the global API method
 
 So for my first example of the vue next tick global method I wanted to do something a little more advanced then the very simple examples that I often make for these posts. In any example about vue next tick I will at least want a data object, and some kind of template or hard coded html. However in this example I am also using a method defined in the vue methods option as well.
 
@@ -95,7 +127,7 @@ Vue.nextTick(function () {
 </html>
 ```
 
-## 2 - vue next tick example using the instance method version
+## 4 - vue next tick example using the instance method version
 
 It is also possible to use a instance method example of the next tick method. This is more or less the same thing as the global static method, but will only fire for updates to a single vue class instance that it is used for.
 
@@ -121,6 +153,6 @@ var vm = new Vue({
 vm.setMess('foo');
 ```
 
-## 3 - Conclusion
+## 5 - Conclusion
 
 Use of the vue next tick method in actual projects will most likely be rare, but never the less this is just one of many things to be aware of when working with vuejs.
