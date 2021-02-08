@@ -1,17 +1,17 @@
 ---
-title: Linux espeak command for creating a voice
+title: Linux espeak command for creating a voice with text
 date: 2021-02-08 16:57:00
 tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:39:21
-version: 1.12
+updated: 2021-02-08 17:41:21
+version: 1.13
 ---
 
-The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. Text content can be given to it as an option, read from a file, or piped in from the standard input and piping using any linuk command such as cat or echo just to name a few. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
+The [Linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a Linux system. Text content can be given to it as an option, read from a file, or piped in from the standard input and piping using any Linux command such as cat or echo just to name a few. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controlling the pitch and speed of the voice. 
 
-Content can be piped into it from the standard input, so it can be used as an endpoint for a chain of commands to have the output spoken rather than spit out to the console. There is also a file option for the command, but as with any other linux command another command can be used to read a file and then pipe the text to espeak.
+Content can be piped into it from the standard input, so it can be used as an endpoint for a chain of commands to have the output spoken rather than spit out to the console. There is also a file option for the command, but as with any other Linux command another command can be used to read a file and then pipe the text to espeak.
 
 <!-- more -->
 
@@ -43,7 +43,7 @@ If you are not up to speed with piping then now might be a good time to learn a 
 
 ## 3.1 - reading a file by piping it in with cat
 
-The linix cat command is one way to go about reading the contents of a file and then spiting the contents out to the standard output. However with piping it is possible to pipe the out put of the file from the console to espeak. The result then is that espeak will speak the contents of the file.
+The Linux cat command is one way to go about reading the contents of a file and then spiting the contents out to the standard output. However with piping it is possible to pipe the out put of the file from the console to espeak. The result then is that espeak will speak the contents of the file.
 
 ```
 $ cat README.md | espeak -s 90 -p 80
@@ -59,7 +59,7 @@ $ echo "today is $(date +%A)" | espeak
 
 ## 4 - Bash script example
 
-Like any other command in linux espeak can be used in bash scripts. So then espeak along with a little bash can be used to create some fun scripts just for the sake of messing around. For example I can create a bash script that will make use of a case statement as a way to say different things depeding on the day of the week.
+Like any other command in Linux espeak can be used in bash scripts. So then espeak along with a little bash can be used to create some fun scripts just for the sake of messing around. For example I can create a bash script that will make use of a case statement as a way to say different things depending on the day of the week.
 
 ```
 #!/bin/bash
@@ -78,15 +78,15 @@ case $today in
 esac
 ```
 
-I just save the above script as something like today.sh, and then I just need to make it exacutabule with chmod.
+I just save the above script as something like today.sh, and then I just need to make it executable with chmod.
 
 ```
 $ chmod 755 today.sh
 $ ./today.sh
 ```
 
-This might not be the most practical example of bash scripts, but you get the idea. Also I just make an effort to write at least one bash script example for a lot of my posts on linux just for the sake of exercising bash, and this kind of script can be a little fun.
+This might not be the most practical example of bash scripts, but you get the idea. Also I just make an effort to write at least one bash script example for a lot of my posts on Linux just for the sake of exercising bash, and this kind of script can be a little fun.
 
 ## 5 - Conclusion
 
-The espeak command can eb fun to just play around with, however of course if goes without saying that it can serve some practical use cases as well. Espeak can be used as a way to read a lengthly text to me so that I do not have to take time time to read it for example.
+The espeak command can be fun to just play around with, however of course if goes without saying that it can serve some practical use cases as well. Espeak can be used as a way to read a lengthly text to me so that I do not have to take time time to read it for example.
