@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 451
-updated: 2021-02-06 09:52:58
-version: 1.13
+updated: 2021-02-08 18:13:55
+version: 1.14
 ---
 
-When making vue components there might be a time now and then to use a [vue slot](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots) when working out a template, or render method for a component. A vue slot is what can be used to define in the template, where anything that is passed inside the custom element of the component should go. That is that the compoent is like that of an html element where there is an opening and closing tag for the element, and with such elements there is the question of what should go between them. With a paragraph element it is a text node, with a div element it is additional html. With vuejs compoents slots are how to go about declaring where this content should go in the template of a compoent.
+When making vue components there might be a time now and then to use a [vue slot](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots) when working out a template, or render method for a component. A vue slot is what can be used to define in the template, where anything that is passed inside the custom element of the component should go. That is that the component is like that of an html element where there is an opening and closing tag for the element, and with such elements there is the question of what should go between them. With a paragraph element it is a text node, with a div element it is additional html. With vuejs components slots are how to go about declaring where this content should go in the template of a component.
 
 If you still are a little confused, maybe it would be a good idea to look at a few simple code examples of vue slots. I have found that learning by doing is just the best way to go about getting a solid grasp on something. So lets take a look at one or two examples of vue slots when it comes to vue component design.
 
@@ -91,5 +91,5 @@ new Vue({
 
 ## 3 - Conclusion
 
-Vue slots are one of many little things to be aware of when it comes to starting to really get into vuejs as a way to go about cerating a client side system of one kind or another. I like to break things down into compoents in order to make things more modular and thus resuabule, and when doing so slots are how I can take advantage of the space between the component tags when using these compoents.
+Vue slots are one of many little things to be aware of when it comes to starting to really get into vuejs as a way to go about creating a client side system of one kind or another. I like to break things down into components in order to make things more modular and thus reusable, and when doing so slots are how I can take advantage of the space between the component tags when using these components.
 
