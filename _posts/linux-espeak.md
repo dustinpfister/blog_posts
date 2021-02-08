@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 798
-updated: 2021-02-08 17:13:06
-version: 1.4
+updated: 2021-02-08 17:17:37
+version: 1.5
 ---
 
 The [linux espeak](https://linux.die.net/man/1/espeak) command is how one can go about synthesizing speech in a linux system. The command might come out of the box with most systems, however with some it might need to be installed first, but often shows up in most package managers when that is the case. There are a few options when it comes to controling the pitch and speed of the voice. 
@@ -46,3 +46,10 @@ If you are not up to speed with piping then now might be a good time to learn a 
 ```
 $ cat README.md | espeak -s 90 -p 80
 ```
+
+## 3.2 - Fun with date and bash parameter expansion
+
+```
+$ echo "today is $(date +%A)" | espeak
+```
+
