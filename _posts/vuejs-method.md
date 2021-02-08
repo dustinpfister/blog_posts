@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 454
-updated: 2021-02-07 16:04:29
-version: 1.19
+updated: 2021-02-08 18:18:24
+version: 1.20
 ---
 
-In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be generak methods that can be used within the vue instance. It is aslo possible to share a set of methods accrosss more than one vue instance by way of the mixin option of vue instances. In additin it is also possible to make a set of methods global by making use of the Vue.mixin static method.
+In vuejs there is the [vue methods](https://v1.vuejs.org/guide/events.html) option of a vue class constructor that can be used to define event handers for a vuejs project, but they can also be general methods that can be used within the vue instance. It is also possible to share a set of methods across more than one vue instance by way of the mixin option of vue instances. In addition it is also possible to make a set of methods global by making use of the Vue.mixin static method.
 
 In native client side javaScript events can be attached to DOM elements with [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener), or some similar method. These event handlers are a way to define what needs to happen when a user clicks on something with a mouse, or preforms one of many other such actions. There are also a number of events that have to do with something that is not a user action such as the on load event. When it comes to working out a vuejs project though I end up having a lot of these kinds of methods as part of the methods object of a main vue instance, or a component.
 
@@ -101,7 +101,7 @@ new Vue({
 
 ### 1.3 - Methods and render functions
 
-If I want to use a method with a render function rather than the ushual static template, then there is the on property of the options object that I can use with the create element method. Helper methods can also be called in the body of the render function also to help break down the process of createing a view with this kind of method.
+If I want to use a method with a render function rather than the usual static template, then there is the on property of the options object that I can use with the create element method. Helper methods can also be called in the body of the render function also to help break down the process of creating a view with this kind of method.
 
 ```js
 new Vue({
@@ -130,7 +130,7 @@ new Vue({
 
 ## 2 - vue method key mods
 
-When it comes to using a method in a template there are a number of modifers for the v-on directive that is often what is used to call a method in a template. For example when I want to have an on click event work for just the right mouse button rather than then left I could do is when working out the logic of the event handler, or I could use the right modifer with the click event when using v-on. In this section I will be going over a few quick examples of these modifiers.
+When it comes to using a method in a template there are a number of modifiers for the v-on directive that is often what is used to call a method in a template. For example when I want to have an on click event work for just the right mouse button rather than then left I could do is when working out the logic of the event handler, or I could use the right modifier with the click event when using v-on. In this section I will be going over a few quick examples of these modifiers.
 
 ### 2.1 - keycode v-on modifier
 
@@ -161,7 +161,7 @@ new Vue({
 
 ### 2.2 - Left and right mouse buttons
 
-When using the click event with the v-on directive I can use the left and right modifers to use differnt methods for the right and let button or call the same method in diferent ways. When using a right click on a web page there is often a default menu that will pop up on desktops, so I can also use the prevent modifer as a way to prevent this kind of browser default action.
+When using the click event with the v-on directive I can use the left and right modifiers to use different methods for the right and let button or call the same method in different ways. When using a right click on a web page there is often a default menu that will pop up on desktops, so I can also use the prevent modifier as a way to prevent this kind of browser default action.
 
 ```js
 // Using Pointer Object utils as a mixin
@@ -239,7 +239,7 @@ new Vue({
 
 ## 3 - Mixins and methods
 
-I can go to town adding all kinds of methods to the method option of a single instance, but when it comes to working on a real project there is going to be a need to have a way to pull some methods out of the methods option of a single instance and share those methods accross many instances of a Vue class. To do this I will want to make use of the mixin option of the vuejs constructor, or make methods global for everything in the page by passing a collection of methods to the Vue.mixin static method.
+I can go to town adding all kinds of methods to the method option of a single instance, but when it comes to working on a real project there is going to be a need to have a way to pull some methods out of the methods option of a single instance and share those methods across many instances of a Vue class. To do this I will want to make use of the mixin option of the vuejs constructor, or make methods global for everything in the page by passing a collection of methods to the Vue.mixin static method.
 
 ```html
 <html>
@@ -327,5 +327,5 @@ new Vue({
 
 ## 4 - Conclusion
 
-The method option of a vue instance is how I can go about adding event handlers, and helper methods to a vue instance. I can also use the mixin option or the Vue.mixin static method as a way to have sets of methods that I can use accross more than one or even all vue insatnces in a single pager app that I am making with vuejs.
+The method option of a vue instance is how I can go about adding event handlers, and helper methods to a vue instance. I can also use the mixin option or the Vue.mixin static method as a way to have sets of methods that I can use across more than one or even all vue instances in a single pager app that I am making with vuejs.
 
