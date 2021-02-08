@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 457
-updated: 2021-02-07 16:37:39
-version: 1.6
+updated: 2021-02-08 12:20:32
+version: 1.7
 ---
 
 In vuejs there is the [vue next](https://vuejsdevelopers.com/2019/01/22/vue-what-is-next-tick/) global api method that can come into play now and then when something needs to be done after a view is updated because of a change to the model. So far I can not say that this is a method that I find myself uisng that often, but it is still something that I should be aware of when it comes to creating a project with vuejs as a client side framework.
@@ -15,7 +15,44 @@ Vue updates the DOM in a [very async kind of way](https://vuejs.org/v2/guide/rea
 
 <!-- more -->
 
-## 1 - vue next tick example using the global api
+## 1 - Basic example of the Vue.nextTick global method
+
+So for now how about a simple example of the Vue.nextTick global api method as a way to just know what the next tick method is all about. When I change a value in the data object the coresponding value in the dom will not update just there and then. It will be updated on the next update tick. If for some reason I need to get at the value in dom right away that will result in a problem beucase at that very moment it will still be the old value. 
+
+Now maybe the best thing to do is to not be in this situstion to begin with, becuase any value in the dom should just be a display value that might not always be up to date to the very moment. However if I do need to get at that updated value in the dom, then I will want to do so at a later point when it is up to date, and one way to do so would be to use the Vue.nextTick method.
+
+```html
+<html>
+  <head>
+    <title>vue next tick example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-nexttick"></div>
+  <script>
+var vm = new Vue({
+        el: '#demo-nexttick',
+        template: '<p>{{ radian }}</p>',
+        data: {
+            radian: Math.PI / 180 * 45
+        }
+    });
+// the value of the textContent will still be the old
+// value when I set radian to 0
+vm.radian = 0;
+console.log(Number(vm.$el.textContent).toFixed(2)); // 0.79
+// I can however use Vue.nextTick as a way to take a look
+// after the next text is done, at which point the textContent
+// is now the new value
+Vue.nextTick(function () {
+    console.log(Number(vm.$el.textContent).toFixed(2)); // 0.00
+});
+  </script>
+  </body>
+</html>
+```
+
+## 1 - Vue next tick example using the global API method
 
 So for my first example of the vue next tick global method I wanted to do something a little more advanced then the very simple examples that I often make for these posts. In any example about vue next tick I will at least want a data object, and some kind of template or hard coded html. However in this example I am also using a method defined in the vue methods option as well.
 
