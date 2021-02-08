@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 442
-updated: 2021-02-08 18:01:12
-version: 1.15
+updated: 2021-02-08 18:05:54
+version: 1.16
 ---
 
 So for the most part vue templates work find for most projects, but it is not always the best solution when it comes to taking full advantage of javaScript to render DOM elements. If a template will not cut it than an alternative would be a [vue render](https://vuejs.org/v2/api/#render) method. 
@@ -137,3 +137,8 @@ new Vue({
     }
 });
 ```
+
+## 5 - Conclusion
+
+As of this writing I think that a good approche with render functions is to keep things fine grain by breaking down what would otherwise be a complex project into compoents. Then Only use render functions in compoents where doing so is truly called for, so I can still keep things easy to read and maintain with static templates elsewhere.
+
