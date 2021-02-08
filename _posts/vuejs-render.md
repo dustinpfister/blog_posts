@@ -5,15 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 442
-updated: 2021-02-08 18:05:54
-version: 1.16
+updated: 2021-02-08 18:10:30
+version: 1.17
 ---
 
 So for the most part vue templates work find for most projects, but it is not always the best solution when it comes to taking full advantage of javaScript to render DOM elements. If a template will not cut it than an alternative would be a [vue render](https://vuejs.org/v2/api/#render) method. 
 
-When working out a render method a createElement method can be used to create virtual dom elements that can then be used to render a view rather that of a static template. This method is a little clunky to work with compared to static templates, but it will work a whole world better then static templates when it comes to doing something a little advanced like generating node names for components. There is a bit to get solid when it comes to the options of these methods, but once all that is understood they work great for those situstions in which a render function is just the only way to get the job done.
+When working out a render method a createElement method can be used to create virtual dom elements that can then be used to render a view rather that of a static template. This method is a little clunky to work with compared to static templates, but it will work a whole world better then static templates when it comes to doing something a little advanced like generating node names for components. There is a bit to get solid when it comes to the options of these methods, but once all that is understood they work great for those situations in which a render function is just the only way to get the job done.
 
-Render functions should not be used as a drop in replacement for templates at every twitch and turn, at least I have found that is not a good idea. The draw back with render functions as that they are a little more intense to work with then static templates when it comes to readabilty of code. So if I am making a simple compoents that just displayes some data that is given to it by way of a props option then chances are I will stick with just a plain template still.
+Render functions should not be used as a drop in replacement for templates at every twitch and turn, at least I have found that is not a good idea. The draw back with render functions as that they are a little more intense to work with then static templates when it comes to readability of code. So if I am making a simple components that just displays some data that is given to it by way of a props option then chances are I will stick with just a plain template still.
 
 <!-- more -->
 
@@ -140,5 +140,5 @@ new Vue({
 
 ## 5 - Conclusion
 
-As of this writing I think that a good approche with render functions is to keep things fine grain by breaking down what would otherwise be a complex project into compoents. Then Only use render functions in compoents where doing so is truly called for, so I can still keep things easy to read and maintain with static templates elsewhere.
+As of this writing I think that a good approach with render functions is to keep things fine grain by breaking down what would otherwise be a complex project into components. Then Only use render functions in components where doing so is truly called for, so I can still keep things easy to read and maintain with static templates elsewhere.
 
