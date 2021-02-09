@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2021-02-09 16:50:44
-version: 1.5
+updated: 2021-02-09 16:53:16
+version: 1.6
 ---
 
 It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this [vuejs example](/2021/02/04/vuejs-example/) the idea of a simple image editor application came to mind as just one of many ideas that might prove to be fun. So maybe something like that is in order when it comes to expanding on what can be done with vuejs. After all once I cover all the basics the only thing to do from that point forward is to start to create some actual projects one one type or another.
@@ -67,6 +67,8 @@ new Vue({
 ```
 
 ## 2 - The grid div component
+
+I wanted to break this project down into a few compoents as a way to make things a little more fine grain. If I keep working on this I will most likly end up with a lot of compoents actually, but one that I am really going to want for this image editor is a compoents that will draw the current state of the current image.
 
 ```js
 Vue.component('image-div-grid', {
