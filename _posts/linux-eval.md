@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 799
-updated: 2021-02-09 18:13:36
-version: 1.5
+updated: 2021-02-09 18:29:19
+version: 1.6
 ---
 
 The [linux eval](https://www.computerhope.com/unix/bash/eval.htm) command is a bash built in command that will take a string as an argument and evaluate that string as if it was entered into the command line. This is a built in command that I find myself using once in a while when working out a bash script there I need to create a string and then run that string value.
@@ -27,6 +27,29 @@ Another way to do the same thing would be to call bash with the -c option.
 
 ```
 $ bash -c "ls *.txt"
+```
+
+## 2 - Bash script examples
+
+### 2.1 - Some examples in a bash script
+
+```
+#!/bin/bash
+ 
+com='ls'
+ 
+# this will cause an error
+"${com} *.sh"
+ 
+# this will work
+eval "${com} *.sh"
+ 
+# so will this
+comStr="${com} *.sh"
+$comStr
+ 
+# and bash -c
+bash -c "${com} *.sh"
 ```
 
 ## 2 - Conclusion
