@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2021-02-09 16:53:16
-version: 1.6
+updated: 2021-02-09 16:55:37
+version: 1.7
 ---
 
 It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this [vuejs example](/2021/02/04/vuejs-example/) the idea of a simple image editor application came to mind as just one of many ideas that might prove to be fun. So maybe something like that is in order when it comes to expanding on what can be done with vuejs. After all once I cover all the basics the only thing to do from that point forward is to start to create some actual projects one one type or another.
@@ -115,6 +115,8 @@ Vue.component('image-div-grid', {
 
 ## 3 - The Color picker component
 
+I will want to have another component that will be used to set the current color to draw with when I click a div element in the image div grid component.
+
 ```js
 Vue.component('image-color-pick', {
     props: ['img'],
@@ -164,6 +166,8 @@ Vue.component('image-color-pick', {
 ```
 
 ## 3 - The html and css files
+
+I am then just going to want a little css and html for this and then all should be well.
 
 ```css
 .wrap_main{
