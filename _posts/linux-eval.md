@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 799
-updated: 2021-02-09 18:06:54
-version: 1.4
+updated: 2021-02-09 18:13:36
+version: 1.5
 ---
 
 The [linux eval](https://www.computerhope.com/unix/bash/eval.htm) command is a bash built in command that will take a string as an argument and evaluate that string as if it was entered into the command line. This is a built in command that I find myself using once in a while when working out a bash script there I need to create a string and then run that string value.
+
+The eval command can be given just one string as an argument or more than one string. In the event that more than one string is given then thouse strings are concatanted togeather and that final string is what is run as a command.
 
 <!-- more -->
 
