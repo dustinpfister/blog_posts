@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 799
-updated: 2021-02-09 17:59:18
-version: 1.2
+updated: 2021-02-09 18:03:35
+version: 1.3
 ---
 
 The linux eval command is a bash built in command that will take a string as an argument and evaluate that string as if it was entered into the command line. This is a built in command that I find myself using once in a while when working out a bash script there I need to create a string and then run that string value.
@@ -26,3 +26,7 @@ Another way to do the same thing would be to call bash with the -c option.
 ```
 $ bash -c "ls *.txt"
 ```
+
+## 2 - Conclusion
+
+Any command in string form can be called with eval.
