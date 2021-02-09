@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 464
-updated: 2019-05-29 09:18:54
-version: 1.6
+updated: 2021-02-09 11:39:49
+version: 1.7
 ---
 
 In vuejs there are times when I am going to need some kind of parent child relationship with two or more vue instances, one option for this is the [vue parent](https://vuejs.org/v2/api/#parent) option. This option will result in a reference to a parent vue instance within the child vue instance in which the vue parent option is used, and will also result in the child vue instance being added to the children property of the parent vue instance.
+
+Another way to go about breaking things down would be to go about getting into making components, however going that way with things can get a little involved when it comes to mutating data. When I make componets I have to pass data to it with the props option, and then make use of events as a way to pass mutated data back to the parent vue instance that makes use of the component. So maybe the use of the parent option is a better coice in some cases, depeding on what i want to do.
 
 <!-- more -->
 
