@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 799
-updated: 2021-02-09 18:29:19
-version: 1.6
+updated: 2021-02-09 18:40:01
+version: 1.7
 ---
 
 The [linux eval](https://www.computerhope.com/unix/bash/eval.htm) command is a bash built in command that will take a string as an argument and evaluate that string as if it was entered into the command line. This is a built in command that I find myself using once in a while when working out a bash script there I need to create a string and then run that string value.
@@ -31,7 +31,24 @@ $ bash -c "ls *.txt"
 
 ## 2 - Bash script examples
 
-### 2.1 - Some examples in a bash script
+I often find msyelf using eval when working out bash scripts.
+
+### 2.1 - Command substatution and eval
+
+```
+#!/bin/bash
+ 
+$(echo 'foo=foobar')
+echo $foo
+# ./sub.sh: line 3: foo=foobar: command not found
+#
+ 
+eval $(echo 'foo=foobar')
+echo $foo
+# foobar
+```
+
+### 2.2 - Some examples in a bash script
 
 ```
 #!/bin/bash
