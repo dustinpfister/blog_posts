@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2021-02-09 16:55:37
-version: 1.7
+updated: 2021-02-09 19:49:24
+version: 1.8
 ---
 
 It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this [vuejs example](/2021/02/04/vuejs-example/) the idea of a simple image editor application came to mind as just one of many ideas that might prove to be fun. So maybe something like that is in order when it comes to expanding on what can be done with vuejs. After all once I cover all the basics the only thing to do from that point forward is to start to create some actual projects one one type or another.
+
+The general idea I have for this image editor applaction is to not make any kind of major project out of it that will be a full blown image manipluation programe. All I want to do is just have a way to make my own image asset standard, and have a simple little tool that can be used to create and edit such a standard.
 
 <!-- more -->
 
