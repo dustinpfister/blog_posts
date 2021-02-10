@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2021-02-09 19:49:24
-version: 1.8
+updated: 2021-02-10 13:31:25
+version: 1.9
 ---
 
 It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this [vuejs example](/2021/02/04/vuejs-example/) the idea of a simple image editor application came to mind as just one of many ideas that might prove to be fun. So maybe something like that is in order when it comes to expanding on what can be done with vuejs. After all once I cover all the basics the only thing to do from that point forward is to start to create some actual projects one one type or another.
@@ -20,33 +20,23 @@ The general idea I have for this image editor applaction is to not make any kind
 First off here is the main vuejs instance that will make use of some compoents that I worked out for this example. For the main vue instance I went with a simple static template rather than a render function. However in the template I am using some components that are making use of render functions when it comes to drawing the current state of the image grid.
 
 ```js
-new Vue({
+var vm = new Vue({
     el: '#app',
     template: '<div class="wrap_main">'+
-        '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
-        '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
+        '<div style="text-align:center;">'+
+            '<image-color-pick v-bind:img="imgs[currentImage]" v-on:color-click="colorClickHandler"></image-color-pick>'+
+            '<image-div-grid v-bind:img="imgs[currentImage]" v-on:px-click="pxClickHandler"></image-div-grid>'+
+        '</div>' +
+        '<div style="text-align:center;">'+
+        '<image-text-pixmap v-bind:imgs="imgs" v-on:load-json="load"></image-text-pixmap>'+
+        '</div>' +
     '</div>',
     data: function(){
-        return {
+        var data = {
            currentImage: 0,
-           imgs : [{
-               width: 8,
-               height: 8,
-               pxSize: 32,
-               palette: [false, 'white', 'black', 'red', 'lime', 'blue'],
-               colorIndex: 0,
-               data: [
-                   5,0,0,0,0,0,0,5,
-                   0,0,0,0,0,0,0,0,
-                   0,0,2,0,0,2,0,0,
-                   0,0,2,0,0,2,0,0,
-                   0,0,0,0,0,0,0,0,
-                   0,0,2,0,0,2,0,0,
-                   0,0,0,2,2,0,0,0,
-                   5,0,0,0,0,0,0,5
-               ]
-           }]
-        }
+           imgs : [IMG()]
+        };
+        return data;
     },
     methods: {
         // set the current image pix pos to the current image color index
@@ -54,7 +44,13 @@ new Vue({
             var dat = this.$data;
             var img = dat.imgs[dat.currentImage];
             var pxIndex = y * img.width + Number(x);
-            img.data[pxIndex] = img.colorIndex;
+            img.data[pxIndex] = Number(img.colorIndex);
+            // force update all children
+            this.$children.forEach(function(child){
+                if(child.updateText){
+                    child.updateText();
+                }
+            });
         },
         pxClickHandler: function(x, y){
             this.pSet(x, y);
@@ -63,6 +59,13 @@ new Vue({
             var dat = this.$data;
             var img = dat.imgs[dat.currentImage];
             img.colorIndex = index;
+        },
+        load: function(json){
+            var pixmapObj = JSON.parse(json);
+            var imgs = IMG.createIMGSFromPixmap(pixmapObj);
+            //console.log(imgs);
+            this.$data.imgs = Vue.observable(imgs);
+//this.$data.imgs = imgs;
         }
     }
 });
@@ -79,7 +82,6 @@ Vue.component('image-div-grid', {
         var img = this.$props.img,
         vm = this,
         divs = [];
-        console.log('render');
         img.data.forEach(function(px, i){
             var x = i % img.width,
             y = Math.floor(i / img.width),
@@ -106,8 +108,7 @@ Vue.component('image-div-grid', {
     methods: {
         pxClick: function(e){
             var div = e.target,
-            idArr = div.id.split('_')
-            console.log(idArr);
+            idArr = div.id.split('_');
             this.$emit('px-click', idArr[1], idArr[2]);
             this.$forceUpdate();
         }
@@ -167,18 +168,109 @@ Vue.component('image-color-pick', {
 });
 ```
 
-## 3 - The html and css files
+## 3 - The json component
+
+I will then want an additional compoent that I can use to save and load the state of an animation. There are a number of things that I can do when it comes to this, but for now I just want a text area element that I can use to copy and paste the JSON to and from.
+
+```js
+Vue.component('image-text-pixmap', {
+    props: ['imgs'],
+    data: function(){
+        return {
+            json: '',
+            vaild: false,
+            mess: ''
+        };
+    },
+    template: '<div class="ui-div">'+
+        '<h3>Pixmap JSON</h3>'+
+        '<p v-bind:style="messStyle()">vaild: {{ vaild }}, mess: {{ mess }}</p>' +
+        '<button v-on:click="load">load</button><br>'+
+        '<textarea cols="70" rows="15" v-text="json" v-on:keyup="keyup"></textarea>'+
+    '</div>',
+    mounted: function(){
+        this.updateText();
+    },
+    methods: {
+        messStyle: function(){
+            if(this.$data.valid){
+                return 'color:lime;'
+            }
+            return 'color:red;'
+        },
+        // vaidate the JSON
+        validate: function(){
+            var dat = this.$data;
+            dat.valid = false;
+            try{
+                // the json should parse okay
+                var obj = JSON.parse(this.$data.json);
+                dat.valid = true;
+                dat.mess = 'JSON looks good';
+                // look for fractions of a frame
+                var i = 0,
+                aniKeys = Object.keys(obj.ani),
+                len = aniKeys.length;
+                while(i < len){
+                    var key = aniKeys[i];
+                    var ani = obj.ani[key]
+                    var size = ani.w * ani.h;
+                    var frames = ani.data.length / size
+                    if(frames % 1 != 0){
+                        dat.valid = false;
+                        dat.mess = 'Fraction of a frame frameCount=' + frames;
+                        break;
+                    }
+                    i += 1;
+                }
+            }catch(e){
+                dat.mess = 'Error parsing JSON';
+            }
+        },
+        // what to do on a keyup event
+        keyup: function(e){
+            this.$data.json = e.target.value;
+            this.validate();
+        },
+        // emit a 'load-json' event
+        load: function(){
+            var dat = this.$data;
+            this.validate();
+            if(dat.valid){
+                this.$emit('load-json', dat.json);
+            }
+        },
+        // update textarea
+        updateText : function(){
+            var pixmap = IMG.createPixmap({
+                w: 8,
+                h: 8,
+                palette: this.$props.imgs[0].palette,
+                imgs: this.$props.imgs
+            });
+            this.$data.json = JSON.stringify(pixmap);
+            //!!! I should not have to do this, but it seems like I have to
+            this.$el.querySelectorAll('textarea')[0].value = this.$data.json;
+            this.validate();
+        }
+    }
+});
+```
+
+## 4 - The html and css files
 
 I am then just going to want a little css and html for this and then all should be well.
 
 ```css
 .wrap_main{
-  background:gray;
+  background:#2f2f2f;
 }
 .ui-div{
   position:relative;
   display:inline-block;
+  background:#8f8f8f;
   margin:20px;
+  outline:2px solid white;
 }
 .image-div-grid{
     background-image:
@@ -213,14 +305,16 @@ I am then just going to want a little css and html for this and then all should 
   </head>
   <body>
     <div id="app"></div>
+    <script src="lib/img.js"></script>
     <script src="comp/image-div-grid.js"></script>
     <script src="comp/image-color-pick.js"></script>
+    <script src="comp/image-text-pixmap.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
 ```
 
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 I did not get around to finishing everything that i wanted to do with this vuejs example as of this writing. I am not happy with the way things pan out, and will get around to writing the example over again at some point when I get more time to work on this one. I have been getting around to editing some of this vuejs content of mine, and if I keep up with it I should come back to this one again at some point in the future.
