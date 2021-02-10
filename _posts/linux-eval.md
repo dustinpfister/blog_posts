@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 799
-updated: 2021-02-09 19:45:18
-version: 1.13
+updated: 2021-02-09 19:46:46
+version: 1.14
 ---
 
 The [linux eval](https://www.computerhope.com/unix/bash/eval.htm) command is a bash built in command that will take a string as an argument and evaluate that string as if it was entered into the command line. This is a built in command that I find myself using once in a while when working out a bash script there I need to create a string and then run that string value.
@@ -17,7 +17,7 @@ The eval command can be given just one string as an argument or more than one st
 
 ## 1 - Basic linux eval example
 
-For a basic example of the eval built in just call the eval command, and then pass it a string that contains a command.
+For a basic example of the eval built in just call the eval command, and then pass it a string that contains a command. For example I xcan give it a string of the ls command followed by a glob pattren for something such as selecting just text files..
 
 ```
 $ eval "ls *.txt"
