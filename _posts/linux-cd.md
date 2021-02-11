@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 800
-updated: 2021-02-11 11:50:54
-version: 1.12
+updated: 2021-02-11 12:00:10
+version: 1.13
 ---
 
 The [linux cd](https://www.tecmint.com/cd-command-in-linux/) command is what is used to change the current working directory when working in a terminal. The cd command is one of several bash built in commands that are actauly part of bash itself, and becuase bash is a major part of just about every linux os, as well as posix system in general, it is one of many commands that should be presant on just about any posix or unix like system that uses bash as the default shell.
@@ -92,6 +92,15 @@ $ cd ..
 $ cd pi
 ```
 
-## 3 - Conclusion
+## 3 - The Linux cd command is a bash built in
+
+As I have mentioned the cd command is a bash built in command. This can be confrimed with another usleful built in command called type.
+
+```
+$ type cd
+cd is a shell builtin
+```
+
+## 4 - Conclusion
 
 The linux cd command is one of many commands that are [built into the bash command](http://manpages.ubuntu.com/manpages/bionic/man7/bash-builtins.7.html). There are many other basic built in commands that a new linux user should be aware of, in this post I also covered the pwd command which is yet another bash built in command. Other bash built in commands that will come up often are echo, and test just to name a few. Many of these built in commands are also basic tools that are used to create bash scripts.
