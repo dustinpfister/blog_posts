@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 800
-updated: 2021-02-11 11:14:53
-version: 1.11
+updated: 2021-02-11 11:50:54
+version: 1.12
 ---
 
 The [linux cd](https://www.tecmint.com/cd-command-in-linux/) command is what is used to change the current working directory when working in a terminal. The cd command is one of several bash built in commands that are actauly part of bash itself, and becuase bash is a major part of just about every linux os, as well as posix system in general, it is one of many commands that should be presant on just about any posix or unix like system that uses bash as the default shell.
@@ -17,7 +17,11 @@ The cd command is one of the first commands to become aware of when learning bas
 
 <!-- more -->
 
-## 1 - Basic linux cd and pwd command example
+## 1 - Basic linux cd, and other basic command example
+
+The cd command is a fairly simple command to learn how to use just type the command, and then an absolute or relative path to change the current working directory to. However there are al east a few other commands that I should at least cover to a certian degree in a basic getting started type section. For example there is also the pwd command that will show what the current working directory is, and the ls command that will list the contents of the current working folder. So in this section I wuill be going over some simple getting started examples of the cd command, but also some other closly related commands in the process of doing so.
+
+### 1.1 - The cd and pwd commands
 
 The linux cd command works by just typeing cd follwed by a path that I want to chnage two. There is giving and asbolute path by starting with a forward slash or using a relative path. More opn relative and absolute paths later, but for now there is just doing something like going to the etc folder, and knowing that the current working folder is the etc folder by typing pwd.
 
@@ -28,6 +32,31 @@ $ pwd
 ```
 
 So there is the cd command for chanding to a folder, and there is the pwd command for knwoing what the current folder is.
+
+### 1.2 - The cd and ls commands
+
+So there is knowing how to change the current working directory, and then there is knowing how to find out what the current working directory is. I will not be getting into detail with every little detail with every little bash built in command, as well as the typical set of other commands in most posix systems such as Linux and Apple Darwin. However I think I should at least cover one simple little example of the ls command.
+
+For example say I change the current working folder to the bin folder off of the root namespace.
+
+```
+$ cd /bin
+$ ls -l b*
+ -rwxr-xr-x 1 root root 925124 Apr 18  2019 bash
+ -rwxr-xr-x 3 root root  26100 Jul 10  2019 bunzip2
+ -rwxr-xr-x 1 root root 743212 Apr  1  2019 busybox
+ -rwxr-xr-x 3 root root  26100 Jul 10  2019 bzcat
+ lrwxrwxrwx 1 root root      6 Jul 10  2019 bzcmp -> bzdiff
+ -rwxr-xr-x 1 root root   2227 Jul 10  2019 bzdiff
+ lrwxrwxrwx 1 root root      6 Jul 10  2019 bzegrep -> bzgrep
+ -rwxr-xr-x 1 root root   4877 Jun 24  2019 bzexe
+ lrwxrwxrwx 1 root root      6 Jul 10  2019 bzfgrep -> bzgrep
+ -rwxr-xr-x 1 root root   3641 Jul 10  2019 bzgrep
+ -rwxr-xr-x 3 root root  26100 Jul 10  2019 bzip2
+ -rwxr-xr-x 1 root root   9632 Jul 10  2019 bzip2recover
+ lrwxrwxrwx 1 root root      6 Jul 10  2019 bzless -> bzmore
+ -rwxr-xr-x 1 root root   1297 Jul 10  2019 bzmore
+```
 
 ## 2 - Some additional examples
 
