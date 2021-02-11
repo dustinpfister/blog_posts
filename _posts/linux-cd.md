@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 800
-updated: 2021-02-10 21:04:54
-version: 1.3
+updated: 2021-02-10 21:07:16
+version: 1.4
 ---
 
 The linux cd command is what is used to change the current working directory when working in a terminal. To know the current working directory there is also the pwd command. This is one of the first commands to become aware of when laerning bash for the first time, however there are still a few things to cover when it comes to using it. For example there is how to go about changing to a folder that has spaces in the name, and also how to quikly jump the the home folder of the current user. Still this should prove to be a fairly quick basic post though.
@@ -26,6 +26,8 @@ $ pwd
 So there is the cd command for chanding to a folder, and there is the pwd command for knwoing what the current folder is.
 
 ## 2 - Some additional examples
+
+One might think that there is not much to write about when it comes to the cd command. For the most part that is true, just type the command and pass a single argument that is the folder that you want to change to. How much more can there be to it then that? Well there are a few little things here and there actually, so lets get to them.
 
 ### 2.1 - Folders with spaces in the name
 
