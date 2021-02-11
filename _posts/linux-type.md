@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 801
-updated: 2021-02-11 15:24:17
-version: 1.10
+updated: 2021-02-11 15:28:21
+version: 1.11
 ---
 
 The [linux type](https://linuxize.com/post/linux-type-command/) command is one of many commands that are built into bash itself, this built in command can be used to find the type of a given command name. When working in the command line interface of a terminal there are a number of differet types of commands. Some commands are actaul files in the form of binaries, or scripts that can be run with another command declared with a shebang. Other commands are not files but functions declared in the body of a bash script. There are a number of commands built into bash itself, inclduing as I have mentioned the type command itself. In bash there are also a number of keywords that are reserved. Also there might be a number of commands that are not even any of these, but an aliaes for a command that may have been set in a bashrc file.
@@ -118,4 +118,6 @@ So something like this can be used as a way to test if a command is on the syste
 
 ## 3 - Conclusion
 
-The type built in command is usfule for fidning out if a command name is being used on the system or not. It is also a good way to fine out if a given command name is indeed an actual command as a file in one of the os folders like the bin folder, or something else.
+The type built in command is usful for finding out if a command name is being used on the system or not. It is also a good way to fine out if a given command name is indeed an actual command as a file in one of the os folders like the bin folder, or something else. There are many other bash built in commands such as cd, pwd, and many others that new Linux users should be aware of. 
+
+Learning the bash command in detail is a good starting point for getting a sold grasp on how to work with a linux system. There is not just all the usful built in commands, there is also all the options, keywords, forms of paramter expansaion, special variables, and so forth that can be used to create bash scripts.
