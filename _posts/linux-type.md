@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 801
-updated: 2021-02-11 15:05:27
-version: 1.6
+updated: 2021-02-11 15:11:24
+version: 1.7
 ---
 
 The [linux type](https://linuxize.com/post/linux-type-command/) command is one of many commands that are built into bash itself, this built in command can be used to find the type of a given command name. When working in the command line interface of a terminal there are a number of differet types of commands. Some commands are actaul files in the form of binaries, or scripts that can be run with another command declared with a shebang. Other commands are not files but functions declared in the body of a bash script. There are a number of commands built into bash itself, inclduing as I have mentioned the type command itself. In bash there are also a number of keywords that are reserved. Also there might be a number of commands that are not even any of these, but an aliaes for a command that may have been set in a bashrc file.
@@ -30,11 +30,15 @@ bash: type: foo: not found
 
 ## 2 - The t option
 
-The t option of the type command will return a string value of the type of the command or nothing in the event that the command is not found.
+The t option of the type command will return a string value of the type of the command or nothing in the event that the command is not found. The possible values for a command type are function, keyword, builtin, file, and alias. In this section I will be going over some examples of the -t option of the type built in that will be bash script examples.
+
+If you have no experence on writing bash scripts then general process is to just have commands in a file and then call that fine with bash, or make the file exacutabule with the chmod command. I will not be getting into bash scripts in detail here, but the first example should still be simple enough to get started with.
 
 ### 2.1 - Basic t option example
 
-First off just a basic example of the t option where I am giving a command name I know is not there, and another that is a basic command that is a another bash built in.
+First off just a basic example of the t option where I am giving a command name I know is not there, and another that is a basic command that is a another bash built in. So I made a bash script file with a text editor and called it basic.sh. In this basic.sh file I start off with the bash shebang as I would for any script that I want to make exacutabule.
+
+I then just call the type command with the t option and then the name of a command, but I do so in string form, and then pass that string as an argument tio the bash command with the -c and -i bash command options.
 
 ```
 #!/bin/bash
