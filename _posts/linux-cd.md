@@ -5,11 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 800
-updated: 2021-02-10 21:23:02
-version: 1.9
+updated: 2021-02-11 11:11:35
+version: 1.10
 ---
 
-The [linux cd](https://www.tecmint.com/cd-command-in-linux/) command is what is used to change the current working directory when working in a terminal. To know the current working directory there is also the pwd command. This is one of the first commands to become aware of when laerning bash for the first time, however there are still a few things to cover when it comes to using it. For example there is how to go about changing to a folder that has spaces in the name, and also how to quikly jump the the home folder of the current user. Still this should prove to be a fairly quick basic post though.
+The [linux cd](https://www.tecmint.com/cd-command-in-linux/) command is what is used to change the current working directory when working in a terminal. The cd command is one of several bash built in commands that are actauly part of bash itself, and becuase bash is a major part of just about every linux os, as well as posix system in general, it is one of many commands that should be presant on just about any posix or unix like system that uses bash as the default shell.
+
+To know the current working directory there is also the pwd command. 
+
+The cd command is one of the first commands to become aware of when learning bash for the first time, and it is pretty easy to use, however there are still a few things to cover when it comes to using it. For example there is how to go about changing to a folder that has spaces in the name, and also how to quikly jump the the home folder of the current user. Still this should prove to be a fairly quick basic post though.
 
 <!-- more -->
 
