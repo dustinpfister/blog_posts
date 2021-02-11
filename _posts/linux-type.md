@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 801
-updated: 2021-02-11 14:45:40
-version: 1.4
+updated: 2021-02-11 14:47:54
+version: 1.5
 ---
 
 The [linux type](https://linuxize.com/post/linux-type-command/) command is one of many commands that are built into bash itself, this built in command can be used to find the type of a given command name. When working in the command line interface of a terminal there are a number of differet types of commands. Some commands are actaul files in the form of binaries, or scripts that can be run with another command declared with a shebang. Other commands are not files but functions declared in the body of a bash script. There are a number of commands built into bash itself, inclduing as I have mentioned the type command itself. In bash there are also a number of keywords that are reserved. Also there might be a number of commands that are not even any of these, but an aliaes for a command that may have been set in a bashrc file.
@@ -41,3 +41,7 @@ $ type -t foo
 $ type -t cd
 builtin
 ```
+
+## 3 - Conclusion
+
+The type built in command is usfule for fidning out if a command name is being used on the system or not. It is also a good way to fine out if a given command name is indeed an actual command as a file in one of the os folders like the bin folder, or something else.
