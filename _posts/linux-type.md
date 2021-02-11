@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 801
-updated: 2021-02-11 15:15:05
-version: 1.8
+updated: 2021-02-11 15:18:17
+version: 1.9
 ---
 
 The [linux type](https://linuxize.com/post/linux-type-command/) command is one of many commands that are built into bash itself, this built in command can be used to find the type of a given command name. When working in the command line interface of a terminal there are a number of differet types of commands. Some commands are actaul files in the form of binaries, or scripts that can be run with another command declared with a shebang. Other commands are not files but functions declared in the body of a bash script. There are a number of commands built into bash itself, inclduing as I have mentioned the type command itself. In bash there are also a number of keywords that are reserved. Also there might be a number of commands that are not even any of these, but an aliaes for a command that may have been set in a bashrc file.
@@ -91,7 +91,7 @@ bash -ci "type -t ll"
 
 ### 2.3 - Using redirection and echo to get a 0 or 1 value if a command is there or not
 
-It is possible to use redirection to redirect the output of a command for bolth the standard output and standard error to dev null. This is basicly just a fancy way to throw away any output from the result of a command such as the type command where I am testing if a command is there or not.
+It is possible to use redirection to redirect the output of a command for bolth the standard output and standard error to dev null. This is basicly just a fancy way to throw away any output from the result of a command such as the type command where I am testing if a command is there or not. I can then just echo the result of the special bash variable $? that will store the exit code of the last command. In the event that the command is there that will result in an exit code of 0, otherwise the exit code will be 1.
 
 ```
 #!/bin/bash
@@ -108,6 +108,8 @@ bash -ci "type -t foo" &> /dev/null; echo $?
 bash -ci "type -t nope" &> /dev/null; echo $?
 # 1
 ```
+
+So something like this can be used as a way to test if a command is on the system or not.
 
 ## 3 - Conclusion
 
