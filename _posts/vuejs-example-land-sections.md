@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-05 15:41:21
-version: 1.11
+updated: 2021-02-12 11:59:11
+version: 1.12
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -17,7 +17,7 @@ So I thought I would make a simple [vuejs examples](/2021/02/04/vuejs-example/) 
 
 ## 1 - A utils lib
 
-For this vuejs example I have a main vuejs library that contains a few methods that I might be useing accross vue components and other javaScript files. As of this writing I just have a distance formula that I am using to find the distance between the sun, and a given land section.
+For this vuejs example I have a main vuejs library that contains a few methods that I might be using across vue components and other javaScript files. As of this writing I just have a distance formula that I am using to find the distance between the sun, and a given land section.
 
 ```js
 var utils = {};
@@ -32,7 +32,7 @@ utils.distance = function (x1, y1, x2, y2) {
 
 ## 1 - The main menu.js file and vue instance
 
-I then have a main vuejs instance as I do with all of my vuejs examples thus far as ushual. That is that this is the main vuejs instance that I will be attaching to the hard coded html with using the vue el option. This is based off of what I worked out with my other vuejs example where I worked out a basic menu system. So the basic idea of this is that I have this main vue.js instance that renders a navagation bar that can be used to chnage what the current menu is. Then a component added in one of the many addituiona files that add menus is used to redner the rest of the view. This allows me to create a collection of menus each of which provide a user interface to work with an aspect of the game state.
+I then have a main vuejs instance as I do with all of my vuejs examples thus far as usual. That is that this is the main vuejs instance that I will be attaching to the hard coded html with using the vue el option. This is based off of what I worked out with my other vuejs example where I worked out a basic menu system. So the basic idea of this is that I have this main vue.js instance that renders a navigation bar that can be used to change what the current menu is. Then a component added in one of the many additional files that add menus is used to render the rest of the view. This allows me to create a collection of menus each of which provide a user interface to work with an aspect of the game state.
 
 ```js
 (function(){
@@ -153,11 +153,11 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
 
 ## 2 - The menus thus far
 
-So then the main vuejs instance will render a navagation bar, and whatever the current menu is. So then I should take a moment to go over these menus as they currently stand.
+So then the main vuejs instance will render a navigation bar, and whatever the current menu is. So then I should take a moment to go over these menus as they currently stand.
 
 ### 2.1 - simple home menu
 
-I have a simple home section that I might do away with in future edits of this vuejs example if I do not find something more usfuls to do with it. For now I am just using it as a place to redner basic information about the state of the game.
+I have a simple home section that I might do away with in future edits of this vuejs example if I do not find something more useful to do with it. For now I am just using it as a place to render basic information about the state of the game.
 
 ```js
 Vue.component('menu-home', {
@@ -247,7 +247,7 @@ I have a main sun menu where I am just providing an interface to change the posi
 
 ### 2.3 - The sections menu
 
-I then have an additional sections menu where I can view infor about each section.
+I then have an additional sections menu where I can view info about each section.
 
 ```js
 (function(){
@@ -312,6 +312,6 @@ The css file:
 
 ## 4 - Conclusion
 
-The basic idea that I had in mind for this vuejs example is up and running all ready, but there is much more work to do in order to get this working the way that I really had in mind. I would like to start adding a lot of features that will help me to get the core logic of the game, and all the features that I want working. This might prove to be a good move for this idea that I had in mind for a game in the sense that I am putting aside everything that has to do with graphics for the most part and am focusing more so on just working out the rules and machanics of the game.
+The basic idea that I had in mind for this vuejs example is up and running all ready, but there is much more work to do in order to get this working the way that I really had in mind. I would like to start adding a lot of features that will help me to get the core logic of the game, and all the features that I want working. This might prove to be a good move for this idea that I had in mind for a game in the sense that I am putting aside everything that has to do with graphics for the most part and am focusing more so on just working out the rules and mechanics of the game.
 
-If all goes well a simple largly text only, or with just simple canvas graphics only type of game should still be fun if I do this right. Then it is just a matter of using what I worked out here in an actualy full canvas game.
+If all goes well a simple largely text only, or with just simple canvas graphics only type of game should still be fun if I do this right. Then it is just a matter of using what I worked out here in an actually full canvas game.
