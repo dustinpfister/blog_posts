@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 469
-updated: 2021-02-12 11:41:50
-version: 1.7
+updated: 2021-02-12 11:44:15
+version: 1.8
 ---
 
 The [vue destroy](https://vuejs.org/v2/api/#vm-destroy) instance method can be used to destroy a vue class instance in vuejs. This might not always work out as expected when you think of what might happen when calling a method called destroy, but it will to some extent do just that as the name would sugest.
@@ -20,7 +20,7 @@ This vue instance method will trigger the before destroy and destroyed lifecycle
 
 ## 1 - vue destroy method basic example
 
-Here I have a basic example of the vue destroy method in action. When this example is up and running a step button can be clicked until the callback delayed by setTimeout files and calls the vue destroy method. Once this happens as expected the click method will no longer work. However the button itself as well as the current count before it is destroyed will remain.
+Here I have a basic example of the vue destroy method in action. When this example is up and running a step button can be clicked until the kill button is clicked and calls the vue destroy method. Once this happens as expected the click method will no longer work, however the button itself as well as the current count before it is destroyed will remain.
 
 ```html
 <html>
@@ -55,6 +55,8 @@ var vm = new Vue({
   </body>
 </html>
 ```
+
+So the destroy method will do several things that can be thought of as destroying a vuejs instance, but the use of it alone will not do everything that you might exspect.
 
 ## 2 - The before destroy and destroyed Hooks
 
