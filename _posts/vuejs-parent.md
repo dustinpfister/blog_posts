@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 464
-updated: 2021-02-09 12:01:16
-version: 1.8
+updated: 2021-02-12 12:12:11
+version: 1.9
 ---
 
 In vuejs there are times when I am going to need some kind of parent child relationship with two or more vue instances, one option for this is the [vue parent](https://vuejs.org/v2/api/#parent) option. This option will result in a reference to a parent vue instance within the child vue instance in which the vue parent option is used, and will also result in the child vue instance being added to the children property of the parent vue instance.
 
-Another way to go about breaking things down would be to go about getting into making components, however going that way with things can get a little involved when it comes to mutating data. When I make componets I have to pass data to it with the props option, and then make use of events as a way to pass mutated data back to the parent vue instance that makes use of the component. So maybe the use of the parent option is a better coice in some cases, depeding on what I want to do.
+Another way to go about breaking things down would be to go about getting into making components, however going that way with things can get a little involved when it comes to mutating data. When I make components I have to pass data to it with the props option, and then make use of events as a way to pass mutated data back to the parent vue instance that makes use of the component. So maybe the use of the parent option is a better choice in some cases, depending on what I want to do.
 
 <!-- more -->
 
@@ -98,4 +98,4 @@ So Something like this can be used as a way to make a whole bunch of children fo
 
 ## 3 - Conclusion
 
-So the parent option is yet another option that I should keep in mind whenI start to work on projects that involve breakthing things down into more than one vue instance. There are a number of ways of doing so beyond just the of the Vue.compoent methods that I find myself using first and formost when it comes to making things a little more fine grain. Another option beyond the parent option would be the  Vue extend global method that I should also maybe use for certian projects.
+So the parent option is yet another option that I should keep in mind whenI start to work on projects that involve breaking things things down into more than one vue instance. There are a number of ways of doing so beyond just the of the Vue.component methods that I find myself using first and foremost when it comes to making things a little more fine grain. Another option beyond the parent option would be the  Vue extend global method that I should also maybe use for certain projects.
