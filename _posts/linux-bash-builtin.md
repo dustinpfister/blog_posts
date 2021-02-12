@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 15:05:09
-version: 1.11
+updated: 2021-02-12 15:06:20
+version: 1.12
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is useful for creating functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -75,7 +75,7 @@ The echo command is a way to go about echoing some text that is given as an argu
 
 ### [2.3 - The eval command](/2021/02/09/linux-eval/)
 
-Eval is a way to evaluate a string value as a bash command.
+Eval is a way to evaluate a string value as a bash command. There are some other ways to go about dong the same thing though such as calling the bash command itself and using the -c option with bash as a way to run a string that is a bash command.
 
 ### [2.4 - type command](/2021/02/11/linux-type/)
 
