@@ -5,19 +5,19 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 687
-updated: 2021-02-10 13:31:25
-version: 1.9
+updated: 2021-02-12 11:56:29
+version: 1.10
 ---
 
 It has been a long time sense I wrote a post on [vuejs](https://vuejs.org/v2/guide/), so I thought I would make a vuejs example post to help expand that collection. For this [vuejs example](/2021/02/04/vuejs-example/) the idea of a simple image editor application came to mind as just one of many ideas that might prove to be fun. So maybe something like that is in order when it comes to expanding on what can be done with vuejs. After all once I cover all the basics the only thing to do from that point forward is to start to create some actual projects one one type or another.
 
-The general idea I have for this image editor applaction is to not make any kind of major project out of it that will be a full blown image manipluation programe. All I want to do is just have a way to make my own image asset standard, and have a simple little tool that can be used to create and edit such a standard.
+The general idea I have for this image editor application is to not make any kind of major project out of it that will be a full blown image manipulation program. All I want to do is just have a way to make my own image asset standard, and have a simple little tool that can be used to create and edit such a standard.
 
 <!-- more -->
 
 ## 1 - The main.js file for this Vuejs powered image editor
 
-First off here is the main vuejs instance that will make use of some compoents that I worked out for this example. For the main vue instance I went with a simple static template rather than a render function. However in the template I am using some components that are making use of render functions when it comes to drawing the current state of the image grid.
+First off here is the main vuejs instance that will make use of some components that I worked out for this example. For the main vue instance I went with a simple static template rather than a render function. However in the template I am using some components that are making use of render functions when it comes to drawing the current state of the image grid.
 
 ```js
 var vm = new Vue({
@@ -73,7 +73,7 @@ var vm = new Vue({
 
 ## 2 - The grid div component
 
-I wanted to break this project down into a few compoents as a way to make things a little more fine grain. If I keep working on this I will most likly end up with a lot of compoents actually, but one that I am really going to want for this image editor is a compoents that will draw the current state of the current image.
+I wanted to break this project down into a few components as a way to make things a little more fine grain. If I keep working on this I will most likely end up with a lot of components actually, but one that I am really going to want for this image editor is a components that will draw the current state of the current image.
 
 ```js
 Vue.component('image-div-grid', {
@@ -170,7 +170,7 @@ Vue.component('image-color-pick', {
 
 ## 3 - The json component
 
-I will then want an additional compoent that I can use to save and load the state of an animation. There are a number of things that I can do when it comes to this, but for now I just want a text area element that I can use to copy and paste the JSON to and from.
+I will then want an additional component that I can use to save and load the state of an animation. There are a number of things that I can do when it comes to this, but for now I just want a text area element that I can use to copy and paste the JSON to and from.
 
 ```js
 Vue.component('image-text-pixmap', {
