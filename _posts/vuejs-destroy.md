@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 469
-updated: 2021-02-12 11:44:15
-version: 1.8
+updated: 2021-02-12 11:46:38
+version: 1.9
 ---
 
 The [vue destroy](https://vuejs.org/v2/api/#vm-destroy) instance method can be used to destroy a vue class instance in vuejs. This might not always work out as expected when you think of what might happen when calling a method called destroy, but it will to some extent do just that as the name would sugest.
@@ -105,4 +105,4 @@ var vm = new Vue({
 
 ## 3 - Conclusion
 
-So far I can not say that I use the destroy method in projects as I often just reuse the same stack of resources over and over again rather than creating and destroying as needed.
+So far I can not say that I use the destroy method in projects as I often just reuse the same stack of resources over and over again rather than creating and destroying as needed. There is looking into how to mop up everything that might happen when killing a vue instnace, but there is also not killing anything to begin with. With any project there is a kind of max number of something that I keep in mind with things inclduing a max number of vue instances for something. So there is just creating that number of instances and just making them actaive or inactive as needed.
