@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 469
-updated: 2021-02-12 11:37:26
-version: 1.6
+updated: 2021-02-12 11:41:50
+version: 1.7
 ---
 
 The [vue destroy](https://vuejs.org/v2/api/#vm-destroy) instance method can be used to destroy a vue class instance in vuejs. This might not always work out as expected when you think of what might happen when calling a method called destroy, but it will to some extent do just that as the name would sugest.
@@ -56,7 +56,9 @@ var vm = new Vue({
 </html>
 ```
 
-## 2 - Hooks
+## 2 - The before destroy and destroyed Hooks
+
+When a vue instance is destroyed the html for that vue instance will still be there. So there should be at least one additional step to be made when destroying a vue instnace and that is changing or removing any html for the instnace. One place to do this, and any additional things that should be done would be in the before destroy and destroyed life cycle hooks.
 
 ```html
 <html>
