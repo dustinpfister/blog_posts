@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 14:38:55
-version: 1.4
+updated: 2021-02-12 14:42:29
+version: 1.5
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is usful for createing functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -40,6 +40,8 @@ There is a lot more to say about the type command, but I will not be getting int
 
 ### 1.2 - basic builtin command example
 
+So one of the main use case examples of the builtin command is to use it to call a builtin command inside the body of a function that has the same name as the built in command. For example I can have an exit function that calls the exit built in command in the body of the exit function. When I go to call the exit function I am calling the function and not the command, but I can still use the actual command in the body of the function by using the builtin command.
+
 ```
 #!/bin/bash
 # exit function that calls exit builtin
@@ -56,6 +58,8 @@ $ chmod 755 exitfunc.sh
 $ ./exitfunc.sh
 exiting with code 1
 ```
+
+Although I can do this with the built in command I think I would still prefer to call my functions something that does not get me into this situation to begine with when writing bash scripts.
 
 ## 2 - Conclusion
 
