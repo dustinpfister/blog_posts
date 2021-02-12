@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 14:36:13
-version: 1.3
+updated: 2021-02-12 14:38:55
+version: 1.4
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is usful for createing functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -56,3 +56,7 @@ $ chmod 755 exitfunc.sh
 $ ./exitfunc.sh
 exiting with code 1
 ```
+
+## 2 - Conclusion
+
+So there is a buch of commands that are built into bash itself, and then there is also a builtin command that is itself a built in command of bash. The type command which is also a bash built in command can be used as a way to find out if any given command is a built in command or not.
