@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 450
-updated: 2021-02-02 15:31:53
-version: 1.11
+updated: 2021-02-12 12:05:28
+version: 1.12
 ---
 
 A [vue component](https://vuejs.org/v2/guide/components.html) is a way to create an asset of sorts for a vuejs instance. It is similar to but also very different from [vue extend](/2019/05/09/vuejs-extend/) that can be used to create custom vuejs constructors.
@@ -15,9 +15,11 @@ A component has a name assigned to it, and can be used as a way to make custom e
 
 <!-- more -->
 
-## Some basic examples of 
+## 1 - Some basic examples of 
 
-In this section I will be going over just a few quick basic examples of vue compoenets. There is just making a simple hello world style componenet that is a good start, but then there are two general ideas that one should get solid with componetes wich are properties and evenets. Propertues are for passing values from a parent vue instance, to a componenet while events are for passing things back to a parent. So lets get some of these basic examples out of the way so we can more on to some real examples that might prove to be a little fun.
+In this section I will be going over just a few quick basic examples of vue components. There is just making a simple hello world style component that is a good start, but then there are two general ideas that I think I should get solid thus far with components which are properties and events. 
+
+Properties are for passing values from a parent vue instance, to a component while events are for passing things back to a parent. So lets get some of these basic examples out of the way so we can more on to some real examples that might prove to be a little fun.
 
 ## 1.1 - vue component basic example
 
@@ -58,7 +60,7 @@ new Vue({
 </html>
 ```
 
-S0 then a component is a good way of going about breaking what would otherwsie be a more complex vuejs project into smaller parts. These parts can be used just once, or a whole bunch of times. So in some cases starting to make components is just what needs to happen when I start to work on real vuejs projects.
+S0 then a component is a good way of going about breaking what would otherwise be a more complex vuejs project into smaller parts. These parts can be used just once, or a whole bunch of times. So in some cases starting to make components is just what needs to happen when I start to work on real vuejs projects.
 
 ## 1.2 - Adding properties to a custom vue component tag
 
@@ -106,9 +108,9 @@ new Vue({
 
 ## 1.3 - Now for some events
 
-The props of a component are for sending state data to a componenent, but the prop values should be treated as read only. When it comes to creating a component that is just going to redner some data in a main parent data object this is not a problem. However what if I do want to mutate a prop value? Well it is not a good idea to just mutate the prop in the componenent directly, however it is a good idea to set up some emit some events in the component.
+The props of a component are for sending state data to a component, but the prop values should be treated as read only. When it comes to creating a component that is just going to render some data in a main parent data object this is not a problem. However what if I do want to mutate a prop value? Well it is not a good idea to just mutate the prop in the component directly, however it is a good idea to set up some emit some events in the component.
 
-In this example I am making use of props as a way to send main state data to a componeent, but then I am also using events as a way to triger the mutattion of main state data.
+In this example I am making use of props as a way to send main state data to a component, but then I am also using events as a way to trigger the mutation of main state data.
 
 ```html
 <html>
