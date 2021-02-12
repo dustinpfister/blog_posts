@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-05 15:23:25
-version: 1.15
+updated: 2021-02-12 11:54:59
+version: 1.16
 ---
 
-I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the [vuejs framework itself](/2021/02/05/vuejs/) that are all ready well documented in the official vuejs documentation. Writing such posts are not awalys such a wast of time mind you often the official documentation might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or language the only thing to do from that point forward is to start to work on some actual projects, rather than finding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on [vuejs examples](https://vuejsexamples.com/) that are full working projects, or at least aim to be anyway.
+I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the [vuejs framework itself](/2021/02/05/vuejs/) that are all ready well documented in the official vuejs documentation. Writing such posts are not always such a wast of time mind you often the official documentation might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or language the only thing to do from that point forward is to start to work on some actual projects, rather than finding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on [vuejs examples](https://vuejsexamples.com/) that are full working projects, or at least aim to be anyway.
 
 I have done the same with my collection of posts on the canvas element, but this time around I think I would like to focus more so on quality rather that quality. For now I have 10 posts on vuejs examples, and as of this writing I think that I might want to keep it at that, or if I am going to expand the collection not go that must farther then that for now. I would like to edit the older posts, and improve the underlaying code of the examples on top of that, before continuing forward in an effort to not repeat what I have done for my collection of canvas examples.
 
@@ -33,11 +33,11 @@ $ npm run list 3000
 
 ## 2 - The List of vuejs examples
 
-Now for this list of examples, for each example here I will be linking to a post in which I write about the example in detail.
+Now for this list of examples, for each example here I will be linking to a post in which I write about the example in detail, source code examples should be there also. Many of these examples are still works in progress, but I am going to try to keep this list short and keep coming back to each example rather than continuing to expand with more examples.
 
 ### 2.1 - [A Basic vuejs calculator example](/2020/02/14/vuejs-example-calculator)
 
-Seems like a good idea for a hello world type vuejs example to make a little calculator app. There is getting creative with such projects though where it does not always have to be a simple calculator, or a scientific one. There is making a calculator that helps with something that is tied closer to a specific kinf of job that has to do with accounting, sales, or estimating how much money a blogger will make if they can get a certain volume of traffic. However you have to start somewhere, and just a basic run of the mill calculator is a good staring point just for the sake of exercise.
+Seems like a good idea for a hello world type vuejs example to make a little calculator app. There is getting creative with such projects though where it does not always have to be a simple calculator, or a scientific one. There is making a calculator that helps with something that is tied closer to a specific kind of job that has to do with accounting, sales, or estimating how much money a blogger will make if they can get a certain volume of traffic. However you have to start somewhere, and just a basic run of the mill calculator is a good staring point just for the sake of exercise.
 
 ### 2.2 - [Very Basic Idle Game starting point](/2021/01/25/vuejs-example-idle-game)
 
