@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 469
-updated: 2021-02-12 11:24:41
-version: 1.5
+updated: 2021-02-12 11:37:26
+version: 1.6
 ---
 
 The [vue destroy](https://vuejs.org/v2/api/#vm-destroy) instance method can be used to destroy a vue class instance in vuejs. This might not always work out as expected when you think of what might happen when calling a method called destroy, but it will to some extent do just that as the name would sugest.
@@ -22,11 +22,20 @@ This vue instance method will trigger the before destroy and destroyed lifecycle
 
 Here I have a basic example of the vue destroy method in action. When this example is up and running a step button can be clicked until the callback delayed by setTimeout files and calls the vue destroy method. Once this happens as expected the click method will no longer work. However the button itself as well as the current count before it is destroyed will remain.
 
-```js
+```html
+<html>
+  <head>
+    <title>vue destroy example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-destroy"></div>
+  <script>
 var vm = new Vue({
         el: '#demo-destroy',
         template: '<div>' +
-        '<input type="button" v-on:click="step" value="step">' +
+        '<input type="button" v-on:click="step" value="step"> | ' +
+        '<input type="button" v-on:click="kill" value="kill">' +
         '<p>i:{{i}}</p>' +
         '</div>',
         data: {
@@ -35,15 +44,61 @@ var vm = new Vue({
         methods: {
             step: function () {
                 this.$data.i += 1;
+            },
+            // kill this instance
+            kill: function(){
+                this.$destroy();
             }
         }
     });
- 
-setTimeout(function () {
-    vm.$destroy();
-}, 5000);
+  </script>
+  </body>
+</html>
 ```
 
-## 2 - Conclusion
+## 2 - Hooks
+
+```html
+<html>
+  <head>
+    <title>vue destroy example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo-destroy"></div>
+  <script>
+var vm = new Vue({
+        el: '#demo-destroy',
+        template: '<div>' +
+            '<input type="button" v-on:click="step" value="step"> | ' +
+            '<input type="button" v-on:click="kill" value="kill">' +
+        '<p>i:{{i}}</p>' +
+        '</div>',
+        data: {
+            i: 0
+        },
+        beforeDestroy: function(){
+            console.log('almost done');
+        },
+        destroyed: function(){
+            console.log('done');
+            this.$el.innerHTML = '<p>done</p>';
+        },
+        methods: {
+            step: function () {
+                this.$data.i += 1;
+            },
+            // kill this instance
+            kill: function(){
+                this.$destroy();
+            }
+        }
+    });
+  </script>
+  </body>
+</html>
+```
+
+## 3 - Conclusion
 
 So far I can not say that I use the destroy method in projects as I often just reuse the same stack of resources over and over again rather than creating and destroying as needed.
