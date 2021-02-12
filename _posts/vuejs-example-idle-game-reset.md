@@ -5,22 +5,22 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 791
-updated: 2021-02-05 15:41:19
-version: 1.12
+updated: 2021-02-12 12:01:11
+version: 1.13
 ---
 
 This week I am taking another look at my viewjs content and starting to edit and expand this week starting with a bunch of [vuejs examples](/2021/02/04/vuejs-example/) on making an idle game with just vuejs, and vanilla javaScript. I have made a few other posts on this topic starting with just working out the very basics when it comes to [manual production or resources](/2021/01/25/vuejs-example-idle-game/). I then moved on to additional topics that include [production over time](/2021/01/26/vuejs-example-idle-game-over-time/), and starting an [upgrade system](/2021/01/27/vuejs-example-idle-game-upgrades/). There is just one more basic feature that I think all idle games should have and that is having some kind of reset point system.
 
-A reset point system is where the play will start playing the game all over again from the begining, but will start off with an amount of another kind of resource that is a kind of resource point. These resource points will effect the base values of various attrabutes in the game so that although the player is starting over, they will progress much faster now. The procress of reseting can then be called over and over again, each time building up additional reset points.
+A reset point system is where the play will start playing the game all over again from the beginning, but will start off with an amount of another kind of resource that is a kind of resource point. These resource points will effect the base values of various attributes in the game so that although the player is starting over, they will progress much faster now. The process of reseting can then be called over and over again, each time building up additional reset points.
 
 <!-- more -->
 
 
 ## 1 - The game module
 
-First off I should cover the current state of the game module at the time of this writitng. From the last post on adding an upgrade system the major change is the intoduction of a reset points property for the main game state object. In addition to that there is also some additional properteis that have to do with storing the current delta value for reset points, and also how reset points should be applyed to values in the game state object.
+First off I should cover the current state of the game module at the time of this writing. From the last post on adding an upgrade system the major change is the introduction of a reset points property for the main game state object. In addition to that there is also some additional properties that have to do with storing the current delta value for reset points, and also how reset points should be applied to values in the game state object.
 
-I added a few additional helpers to the game module that will help with creating and updating values that have to do with reset points. These are all at the bottom of the game module and have to do with figureing out what the current delta value is for reset points, and also how reset points should be applyed to the game state object.
+I added a few additional helpers to the game module that will help with creating and updating values that have to do with reset points. These are all at the bottom of the game module and have to do with figuring out what the current delta value is for reset points, and also how reset points should be applied to the game state object.
 
 ```js
 var gameMod = (function(){;
@@ -285,7 +285,7 @@ var gameMod = (function(){;
 
 ## 2 - The vuejs instance
 
-I made a few additions to the template in the vuejs instance this time, and as such it is starting to get a little involved, but I am still not having to hard of a time making sense of it. In this vue teample I am not making use of a number of built in vue durectives including v-bind, v-on, and v-for as I have in the last posts on these idle game examples. However now I am also using the v-if directive to make a better system when it comes to menus.
+I made a few additions to the template in the vuejs instance this time, and as such it is starting to get a little involved, but I am still not having to hard of a time making sense of it. In this vue example I am not making use of a number of built in vue directives including v-bind, v-on, and v-for as I have in the last posts on these idle game examples. However now I am also using the v-if directive to make a better system when it comes to menus.
 
 ```js
 var vm = new Vue({
@@ -509,4 +509,4 @@ When it comes to the html there are no changes, but I made a few changes when it
 
 ## 4 - Conclusion
 
-I might continue working on this vuejs example just becuase I all ready put so much time into it this week. However at this point I think that the goal is to just improve the features that are all ready in place rather than adding features. The idea I had in mine here is to just make an idle game that has the basic features that such a game should have, however that is it. I do not want this vuejs example to steal to much time from my other projects, inclduing my canvas examples collection that I think needs a lot more work too.
+I might continue working on this vuejs example just because I all ready put so much time into it this week. However at this point I think that the goal is to just improve the features that are all ready in place rather than adding features. The idea I had in mine here is to just make an idle game that has the basic features that such a game should have, however that is it. I do not want this vuejs example to steal to much time from my other projects, including my canvas examples collection that I think needs a lot more work too.
