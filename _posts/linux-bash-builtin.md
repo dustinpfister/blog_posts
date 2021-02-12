@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 14:48:05
-version: 1.6
+updated: 2021-02-12 14:53:00
+version: 1.7
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is usful for createing functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -68,6 +68,12 @@ So now that I have the basics of bash built in commands covered, and also a basi
 ### [2.1 - The cd built in command](/2021/02/10/linux-cd)
 
 ### [2.2 - The echo command](/2019/08/05/linux-echo/)
+
+### [2.3 - The eval command](/2021/02/09/linux-eval/)
+
+### [2.4 - type command](/2021/02/11/linux-type/)
+
+The type command as i have coverd abouve is how to find out if a command is a built in command or not. However it does also have additional uses. In the event that is is a file command it can be used to find out the location of that file command. In addition there are a number of other types such as function, and keyword.
 
 ## 3 - Conclusion
 
