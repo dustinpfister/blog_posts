@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 14:53:00
-version: 1.7
+updated: 2021-02-12 14:55:43
+version: 1.8
 ---
 
-In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is usful for createing functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
+In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is useful for creating functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ In this section I will be going over a simple example of the builtin bash built 
 
 To know if a given command is a built in command or not it might be best to look over the bash man page of the version of bash that is being used. However in any case there should be a way to confirm first hand if a command name is a bash built in, or a command that is an actual file in one of the folders where commands are such as the bin folder. For this there is another bash built in called type that will tell be if a command is a built in command, or a file command.
 
-So if I use the type command and pass the -t option for it that will cause the type command to give me a string value that is the type of the given command name. An example of a bash built in command is the cd or change directoy command, so if I give this to type I get the exspected result which is builtin.
+So if I use the type command and pass the -t option for it that will cause the type command to give me a string value that is the type of the given command name. An example of a bash built in command is the cd or change directory command, so if I give this to type I get the exspected result which is builtin.
 
 ```
 $ type -t cd
@@ -59,7 +59,7 @@ $ ./exitfunc.sh
 exiting with code 1
 ```
 
-Although I can do this with the built in command I think I would still prefer to call my functions something that does not get me into this situation to begine with when writing bash scripts.
+Although I can do this with the built in command I think I would still prefer to call my functions something that does not get me into this situation to begin with when writing bash scripts.
 
 ## 2 - Some bash built in commands
 
@@ -73,8 +73,8 @@ So now that I have the basics of bash built in commands covered, and also a basi
 
 ### [2.4 - type command](/2021/02/11/linux-type/)
 
-The type command as i have coverd abouve is how to find out if a command is a built in command or not. However it does also have additional uses. In the event that is is a file command it can be used to find out the location of that file command. In addition there are a number of other types such as function, and keyword.
+The type command as i have covered above is how to find out if a command is a built in command or not. However it does also have additional uses. In the event that is is a file command it can be used to find out the location of that file command. In addition there are a number of other types such as function, and keyword.
 
 ## 3 - Conclusion
 
-So there is a buch of commands that are built into bash itself, and then there is also a builtin command that is itself a built in command of bash. The type command which is also a bash built in command can be used as a way to find out if any given command is a built in command or not.
+So there is a bunch of commands that are built into bash itself, and then there is also a builtin command that is itself a built in command of bash. The type command which is also a bash built in command can be used as a way to find out if any given command is a built in command or not. There are also a number of other commands that are in fact built into bash itself such as cd, exit, and eval just to name a few.
