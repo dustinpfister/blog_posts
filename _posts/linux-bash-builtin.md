@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 15:02:26
-version: 1.10
+updated: 2021-02-12 15:05:09
+version: 1.11
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is useful for creating functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -71,11 +71,11 @@ The cd command is used to change the current working directory. It is one of the
 
 ### [2.2 - The echo command](/2019/08/05/linux-echo/)
 
-The echo command is a way to go about echoing some text that is given as an argument to the standard output.
+The echo command is a way to go about echoing some text that is given as an argument to the standard output. This is another basic command that will pop up a lot in bash examples. If I just want to echo a value to the standard output this is the command to use, but there are a few other little things about it. For example there is the escape option and also a way to make it so it will one append a line breal at the end.
 
 ### [2.3 - The eval command](/2021/02/09/linux-eval/)
 
-Eval is a way to evaluate a stirng value as a bash command.
+Eval is a way to evaluate a string value as a bash command.
 
 ### [2.4 - type command](/2021/02/11/linux-type/)
 
