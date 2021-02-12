@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 14:31:45
-version: 1.2
+updated: 2021-02-12 14:36:13
+version: 1.3
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is usful for createing functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -26,10 +26,16 @@ So if I use the type command and pass the -t option for it that will cause the t
 ```
 $ type -t cd
 builtin
-$ type -t wc
+```
+
+If I give a command that is not a bash built in command such as the mkdir command that is a file command that is in the bin folder then I get the string value file.
+
+```
+$ type -t mkdir
 file
 ```
 
+There is a lot more to say about the type command, but I will not be getting into detail about it here as I have [wrote a post on type](/2021/02/11/linux-type/) all ready. However I just wanted to cover the basic idea of what a built in command is, and how to find out if a given command is indeed a built in command or not.
 
 
 ### 1.2 - basic builtin command example
