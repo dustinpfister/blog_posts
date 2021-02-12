@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 14:58:05
-version: 1.9
+updated: 2021-02-12 15:02:26
+version: 1.10
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is useful for creating functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -67,7 +67,7 @@ So now that I have the basics of bash built in commands covered, and also a basi
 
 ### [2.1 - The cd built in command](/2021/02/10/linux-cd)
 
-The cd command is used to change the current working directory.
+The cd command is used to change the current working directory. It is one of the first basic commands that I learned how to use way back when I was starting to teach myself how to work with a bash command prompt. There is knowing the current folder, and then there is changing the current folder, and when it comes to changing the current folder that is where cd comes into play. In my post on the cd command I get into a bunch of little ins and outs that a new Linux user should be aware of when starting to learn this basic set of commands.
 
 ### [2.2 - The echo command](/2019/08/05/linux-echo/)
 
