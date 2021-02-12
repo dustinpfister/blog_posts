@@ -5,11 +5,16 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 469
-updated: 2021-02-12 10:43:34
-version: 1.4
+updated: 2021-02-12 11:24:41
+version: 1.5
 ---
 
 The [vue destroy](https://vuejs.org/v2/api/#vm-destroy) instance method can be used to destroy a vue class instance in vuejs. This might not always work out as expected when you think of what might happen when calling a method called destroy, but it will to some extent do just that as the name would sugest.
+
+I think that the vue destroy method should generaly not be used, unless I am in a situation in which it would seem that I have to use it which might come up now and then in future projects. I often like to create client systems with a fixed set of resources and then just result thouse resources over and over again. For example there is having an array and then pushing objects into that array, and purging them out as needed. However I prefer to have a set array of objects, and then have an active property for each object. With that said often I think that I should try using directives like v-if, and f-for before looking into using the vue destroy method.
+
+This vue instance method will trigger the before destroy and destroyed lifecycle hooks when called bring about the end of a vue instance lifecycle.
+
 
 <!-- more -->
 
