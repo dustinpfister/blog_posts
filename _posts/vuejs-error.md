@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 461
-updated: 2021-02-13 11:41:44
-version: 1.9
+updated: 2021-02-13 11:55:07
+version: 1.10
 ---
 
 In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global, however these kinds of errors can only catch rendering errors, so there is a need to also use plain old native javaScript as a way to catch errors in general also. So this post will be on handling Errors in vuejs, but I think I should also touch base on the subject in general with native javaScript also while I am at it.
@@ -78,3 +78,32 @@ window.onerror = vmError.onError;
 // trowning an error
 throw new Error('My error');
 ```
+
+## 3 - Setting a Vanilla JavaScript Global Error Handler
+
+There is working with the config object in vuejs as a way to set up some error handlers. However doing so might still not be a replacement for everything that can go wrong on the front end. So not just with vuejs, but with javaScript in general it might be a good idea to get into the habbit of having a global error handler in just plain old vanilla javaScript itself.
+
+```html
+<html>
+  <head>
+    <title>vue error example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo-error"></div>
+    <script>
+window.addEventListener('error', function (e) {
+    var err = this.error;
+    var out = document.getElementById('demo-error');
+    out.innerText = e.message;
+});
+// trowning an error
+throw new Error('My error');
+// Uncaught Error: My error
+    </script>
+  </body>
+</html>
+```
+
+## 4 - Conclusion
+
