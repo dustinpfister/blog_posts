@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 461
-updated: 2021-02-13 12:01:59
-version: 1.12
+updated: 2021-02-13 16:02:22
+version: 1.13
 ---
 
 In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global, however these kinds of errors can only catch rendering errors, so there is a need to also use plain old native javaScript as a way to catch errors in general also. So this post will be on handling Errors in vuejs, but I think I should also touch base on the subject in general with native javaScript also while I am at it.
@@ -15,7 +15,7 @@ In todays post I will be writing about some quick examples that have to do with 
 
 ## 1 - vue error handler at global config
 
-A global error handler can be set up in the config object of the main Vue global. These kinds of error handlers will fore for some errors that happen in rendering and in watchers.
+A global error handler can be set up in the config object of the main Vue global. These kinds of error handlers will work for some errors that happen in rendering and in watchers. However they might fall sort when it comes to other kinds of errors that might happen so it may not be a replacement for having a main error handler for the page as a whole when it comes to vanilla javaScript.
 
 So a global error handler can be set up for vuejs like so.
 
