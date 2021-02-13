@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2021-02-13 10:29:37
-version: 1.11
+updated: 2021-02-13 10:50:40
+version: 1.12
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including [Arrays](/2018/12/10/js-array/). In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values. Simply put the Array.concat method is one way to go about adding two or more arrays together into a single array. 
@@ -135,6 +135,27 @@ c[0].y=99;
 console.log(a[0], c[0]);
 // { x: 99, y: 99 } { x: 99, y: 99 }
 ```
+
+In many cases this might be what I want to happen actualy, but in other cases I might want new objects in the resuting array. One way to do so would be to map over the array, and create a new object for each.
+
+```js
+var a = [{x:0, y: 42},{x:50, y: 30},{x:75, y: 7}];
+var b = [{x:20, y: 40},{x:8, y: 89},{x:63, y: 4}];
+ 
+c = a.concat(b).map(function(obj){
+    return {
+        x: obj.x,
+        y: obj.y
+    };
+});
+ 
+c[0].x=99;
+c[0].y=99;
+console.log(a[0], c[0]);
+// { x: 0, y: 42 } { x: 99, y: 99 }
+```
+
+For more on this topic you might want to check out my post in which I get into the process of [copying arrays](/2020/09/03/js-array-copy/) in detail.
 
 ## 7 - Conclusion
 
