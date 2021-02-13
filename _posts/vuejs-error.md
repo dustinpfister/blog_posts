@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 461
-updated: 2019-06-03 22:13:51
-version: 1.8
+updated: 2021-02-13 11:41:44
+version: 1.9
 ---
 
-In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global. However these kinds of errors can only catch rendering errors, so there is a need to also use plain old native javaScript as a way to catch errors in general.
+In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global, however these kinds of errors can only catch rendering errors, so there is a need to also use plain old native javaScript as a way to catch errors in general also. So this post will be on handling Errors in vuejs, but I think I should also touch base on the subject in general with native javaScript also while I am at it.
 
 <!-- more -->
 
@@ -21,12 +21,10 @@ So a global error handler can be set up for vuejs like so.
 
 ```js
 Vue.config.errorHandler = function (err, vm, info) {
- 
     console.log('');
     console.log('ERROR:');
     console.log(err.message);
     console.log('');
-
 };
  
 Vue.component('point', {
