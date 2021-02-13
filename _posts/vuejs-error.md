@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 461
-updated: 2021-02-13 11:59:23
-version: 1.11
+updated: 2021-02-13 12:01:59
+version: 1.12
 ---
 
 In todays post I will be writing about some quick examples that have to do with [vue error](https://vuejs.org/v2/api/#errorHandler) handers. A main global error handler can be set at the global config object of the Vue global, however these kinds of errors can only catch rendering errors, so there is a need to also use plain old native javaScript as a way to catch errors in general also. So this post will be on handling Errors in vuejs, but I think I should also touch base on the subject in general with native javaScript also while I am at it.
@@ -109,3 +109,4 @@ There is using the throw statement as a way to simulate an Error when doing so i
 
 ## 4 - Conclusion
 
+When I start to work on a real vuejs example there are going to be times where I am going to want to work out some kind of error handling system. Things do not always work they way that they should, also often things do work they way that they should but a user may not know how to use what I have made. In any case there should be some kind of system in place to let a user know what went wrong if something did in fact go wrong.
