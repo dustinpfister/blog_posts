@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 466
-updated: 2021-02-14 10:22:02
-version: 1.7
+updated: 2021-02-14 11:34:48
+version: 1.8
 ---
 
 The [vue name](https://vuejs.org/v2/api/#name) option is something that comes into play when getting into vue component design. Depending on how I go about adding a component into vuejs the vue name might not need to be specified in the object that defines the nature of the component, at least that is the case with global componnents added by way of the Vue.component method. However when  making local components it might be a good idea to set the name in the object, doing so is still optional, but I might run into some problems when neglecting adding it to an object. 
@@ -75,7 +75,7 @@ Simply put vue will not create a default name for a component that is added into
 
 ## 3 - name and the componentTag property
 
-The name of a compoent would seem to be indepedant from the name of the component tag. Depeding on how I add compoents to a vue instance the name property will ofetn end up being undefined. However there is always a property in the options object of an instance of a compoent called componentTag.
+The name of a compoent would seem to be indepedant from the name of the component tag. Depeding on how I add compoents to a vue instance the name property will ofetn end up being undefined. However there is always a property in the options object of an instance of a compoent called componentTag. This property will always contain the tag name for the compoent, and is then a more realiabule way of aquiring the name when doing so is needed for some reason.
 
 ```html
 <html>
