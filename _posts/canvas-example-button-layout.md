@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2021-02-14 17:45:54
-version: 1.24
+updated: 2021-02-14 18:06:32
+version: 1.25
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that consists of just a bunch of buttons. These buttons can end up preforming all kinds of actions when clicked, and it sometimes might be nessecry to create a fairly complex module for them. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
@@ -18,7 +18,7 @@ This button layout will working okay when it comes to certain projects, however 
 <!-- more -->
 
 <div id="canvas-app"></div>
-<script src="/js/canvas-examples/basic-idle-game/0.1.0/pkg.js"></script>
+<script src="/js/canvas-examples/button-layout/0.1.0/pkg.js"></script>
 
 ## 1 - The utils lib of this canvas buttons layout example
 
