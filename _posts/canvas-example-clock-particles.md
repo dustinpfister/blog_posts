@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2020-11-29 15:26:03
-version: 1.26
+updated: 2021-02-14 12:18:42
+version: 1.27
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -17,7 +17,7 @@ This is just one silly little idea that came to mind when it comes to be thing a
 
 <!-- more -->
 
-<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
 <script src="/js/canvas-examples/clock-particles/0.0.0/pkg.js"></script>
 
 ## 1 - The Utils.js for this particles clock example
@@ -28,15 +28,35 @@ For this canvas example I just have a distance method, and a method that helps m
 
 ```js
 // UTILS
-var u = {};
+var utils = {};
  
-u.distance = function (x1, y1, x2, y2) {
+utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
  
 // pad a value
-u.pad = function (a) {
+utils.pad = function (a) {
     return String('00' + a).slice(-2);
+};
+ 
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
 };
 ```
 
@@ -162,13 +182,14 @@ Set the day percent value and sec percent value of the clock object to there cur
 
 ### 2.7 - The public API
 
-The public API of the clock module consists of just two methods, one to create a clock object and the other to update one.
+The public API of the clock module consists of just two methods, one to create a clock object and the other to update one. So then in the main javaScriopt file of this canvas example I just need to call the create method, and then inside the body of an update loop call the update method passing a date object for the current time.
 
 ```js
     // return a public method that creates a clock object
     return {
         create: function (now) {
             var clock = {};
+            clock.ver = '0.1.0';
             clock.now = now || new Date(0);
             setClockPropsToNow(clock);
             clock.pool = createPool(clock, 240);
@@ -180,7 +201,7 @@ The public API of the clock module consists of just two methods, one to create a
  
         update: function (clock, now) {
             //clock.now = new Date(2020, 4, 9, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
-            clock.now =now || new Date(0);
+            clock.now = now || new Date(0);
             setClockPropsToNow(clock);
             var t = clock.now - clock.poolLastTick,
             secs = t / 1000;
@@ -190,7 +211,7 @@ The public API of the clock module consists of just two methods, one to create a
             return clock;
         }
     }
-
+ 
 }
     ());
 
@@ -266,6 +287,15 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
     ctx.arc(canvas.width / 2, canvas.height / 2, clock.faceRadius, 0, r);
     ctx.stroke();
 };
+ 
+draw.ver = function (canvas, ctx, clock) {
+    ctx.fillStyle = 'black';
+    ctx.font = '10px arial';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + clock.ver, 10, 10);
+
+};
 ```
 
 ## 4 - Main.js and index.html
@@ -273,16 +303,10 @@ draw.clockDayCircle = function (canvas, ctx, clock) {
 So ow that I have a utility library as well as my clock and draw files I can now use all of this in a main.js file and get everything working with just a little html. In the main.js file I create and inject a canvas element, and get a reference to the drawing context of the canvas element, as well as set some values for it. I use the create method of the clock modules to create a new clock object, and use the update method of the clock module in the body of an update loop. In the update loop I use my draw module to draw the various parts of the clock face with the current state of the clock object created and updated with the clock module.
 
 ```js
-// create and append canvas element, and get 2d context
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-// set width and height
-canvas.width = 320;
-canvas.height = 240;
-canvas.style.width = '100%';
-canvas.style.height = '100%';
+var canvasObj = utils.createCanvas();
+ 
+var canvas = canvasObj.canvas;
+var ctx = canvasObj.ctx;
  
 // loop
 var clock = clockMod.create(new Date());
@@ -294,6 +318,7 @@ var loop = function () {
     draw.pool(canvas, ctx, clock);
     draw.clockDayCircle(canvas, ctx, clock);
     draw.clockText(canvas, ctx, clock);
+    draw.ver(canvas, ctx, clock);
 };
 // start loop
 loop();
@@ -307,7 +332,7 @@ Now that I have my main.js file it is time to use that along with all my other j
         <title>canvas example clock particles</title>
     </head>
     <body>
-        <div id="gamearea"></div>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
         <script src="./lib/utils.js"></script>
         <script src="./lib/clock.js"></script>
         <script src="./lib/draw.js"></script>
