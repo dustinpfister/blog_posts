@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 604
-updated: 2020-08-23 10:28:17
-version: 1.23
+updated: 2021-02-14 17:45:54
+version: 1.24
 ---
 
 When I am starting out with a canvas project there is often a need to have some kind of system in place for creating a simple user interface [html canvas buttons](https://stackoverflow.com/questions/24384368/simple-button-in-html5-canvas/24384882) that consists of just a bunch of buttons. These buttons can end up preforming all kinds of actions when clicked, and it sometimes might be nessecry to create a fairly complex module for them. You would think that this would be a simple task when it comes to canvas, but things in canvas are not like things are with html outside of the canvas element where one can just add an input element.
@@ -17,8 +17,8 @@ This button layout will working okay when it comes to certain projects, however 
 
 <!-- more -->
 
-<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script>var u={};u.mod=function(x,m){return(x%m+m)%m;};u.getCanvasRelative=function(e){var canvas=e.target,bx=canvas.getBoundingClientRect();var x=(e.changedTouches?e.changedTouches[0].clientX:e.clientX)-bx.left,y=(e.changedTouches?e.changedTouches[0].clientY:e.clientY)-bx.top;return{x:x,y:y,bx:bx};};u.boundingBox=function(x1,y1,w1,h1,x2,y2,w2,h2){return!((y1+h1)<(y2)||y1>(y2+h2)||(x1+w1)<x2||x1>(x2+w2));};u.mkButtonLayout=function(opt){var blObj={};opt=opt||{};blObj.buttons=opt.buttons||[];blObj.attachTo=opt.attachTo||window;blObj.handler=function(e){var pos=u.getCanvasRelative(e),i=opt.buttons.length,b;e.preventDefault();while(i--){b=opt.buttons[i];if(u.boundingBox(pos.x,pos.y,1,1,b.x,b.y,b.w,b.h)){if(b.onAction){b.onAction.call({opt:opt,pos:pos,button:b,e:e},pos,opt,b,e);}break;}}};blObj.attachTo.addEventListener('click',blObj.handler);return blObj;};var draw={};draw.background=function(ctx,canvas){ctx.fillStyle='black';ctx.fillRect(0,0,canvas.width,canvas.height);};draw.buttonLayout=function(ctx,blObj){var i=blObj.buttons.length,b;while(i--){b=blObj.buttons[i];ctx.fillStyle='red';ctx.fillRect(b.x,b.y,b.w,b.h);ctx.fillStyle='white';ctx.textBaseline='middle';ctx.textAlign='center';ctx.fillText(b.label||'',b.x+b.w/2,b.y+b.h/2);}};draw.circle=function(ctx,canvas,state){var r=state.i/state.iMax*(Math.PI*2);ctx.fillStyle='green';ctx.beginPath();ctx.arc(state.cx,state.cy,state.radius,r-1.57,r+1.57);ctx.fill();ctx.stroke();};draw.info=function(ctx,canvas,state){ctx.fillStyle='white';ctx.textBaseline='top';ctx.textAlign='left';ctx.font='10px arial';ctx.fillText('i= '+state.i+'/'+state.iMax,10,10);};draw.ver=function(ctx,canvas,state){ctx.fillStyle='white';ctx.textBaseline='top';ctx.textAlign='left';ctx.font='10px arial';ctx.fillText('v'+state.ver,5,canvas.height-15);};var canvas=document.createElement('canvas'),ctx=canvas.getContext('2d'),container=document.getElementById('canvas-app')||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;var state={ver:'0.0.0',i:0,iMax:16,cx:canvas.width/2,cy:canvas.height/2,radius:32};var wrapIndex=function(state){state.i=u.mod(state.i,state.iMax);};var blObj=u.mkButtonLayout({attachTo:canvas,buttons:[{x:canvas.width/2-48,y:180,w:32,h:32,label:'i+',onAction:function(pos,opt,button,e){state.i+=1;wrapIndex(state);}},{x:canvas.height/2+48,y:180,w:32,h:32,label:'i-',onAction:function(pos,opt,button,e){state.i-=1;wrapIndex(state);}}]});var loop=function(){requestAnimationFrame(loop);draw.background(ctx,canvas);draw.buttonLayout(ctx,blObj);draw.circle(ctx,canvas,state);draw.info(ctx,canvas,state);draw.ver(ctx,canvas,state);};loop();</script>
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/basic-idle-game/0.1.0/pkg.js"></script>
 
 ## 1 - The utils lib of this canvas buttons layout example
 
