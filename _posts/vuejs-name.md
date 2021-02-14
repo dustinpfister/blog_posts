@@ -5,17 +5,17 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 466
-updated: 2021-02-14 11:34:48
-version: 1.8
+updated: 2021-02-14 11:44:02
+version: 1.9
 ---
 
-The [vue name](https://vuejs.org/v2/api/#name) option is something that comes into play when getting into vue component design. Depending on how I go about adding a component into vuejs the vue name might not need to be specified in the object that defines the nature of the component, at least that is the case with global componnents added by way of the Vue.component method. However when  making local components it might be a good idea to set the name in the object, doing so is still optional, but I might run into some problems when neglecting adding it to an object. 
+The [vue name](https://vuejs.org/v2/api/#name) option is something that comes into play when getting into vue component design. Depending on how I go about adding a component into vuejs the vue name might not need to be specified in the object that defines the nature of the component, at least that is the case with global components added by way of the Vue.component method. However when  making local components it might be a good idea to set the name in the object, doing so is still optional, but I might run into some problems when neglecting adding it to an object. 
 
 <!-- more -->
 
 ## 1 - vue name and global components
 
-When making a vue component with the Vue.component global API method the first argument I give is the name of the component. So there is not a need for a name property of the object that I then give to the Vue.component method as a second argument. When I add compoents to vue this way I am making them global, and the string value that will be the name of the compoent is required when doing so.
+When making a vue component with the Vue.component global API method the first argument I give is the name of the component. So there is not a need for a name property of the object that I then give to the Vue.component method as a second argument. When I add components to vue this way I am making them global, and the string value that will be the name of the component is required when doing so.
 
 ```js
 var comp = {
@@ -37,7 +37,7 @@ new Vue({
 });
 ```
 
-However what if I take the object literal that I give to Vue.compoent and instead make it an element of an array that I then use as a value for the compoents option of a vue instance? When doing this I am making a local component of a vue instance, or another component, and it is in these situstions where I might want to add a name option to an object literal used to define the values of a vue instance.
+However what if I take the object literal that I give to Vue.component and instead make it an element of an array that I then use as a value for the components option of a vue instance? When doing this I am making a local component of a vue instance, or another component, and it is in these situations where I might want to add a name option to an object literal used to define the values of a vue instance.
 
 ## 2 - vue name and local components
 
@@ -71,11 +71,11 @@ new Vue({
 });
 ```
 
-Simply put vue will not create a default name for a component that is added into a vue instance this way. The key value in the compoents object will still work when it comes to using it in a template, but it is still generaly a good idea to add the name option to an object literal anyway.
+Simply put vue will not create a default name for a component that is added into a vue instance this way. The key value in the components object will still work when it comes to using it in a template, but it is still generally a good idea to add the name option to an object literal anyway.
 
 ## 3 - name and the componentTag property
 
-The name of a compoent would seem to be indepedant from the name of the component tag. Depeding on how I add compoents to a vue instance the name property will ofetn end up being undefined. However there is always a property in the options object of an instance of a compoent called componentTag. This property will always contain the tag name for the compoent, and is then a more realiabule way of aquiring the name when doing so is needed for some reason.
+The name of a component would seem to be independent from the name of the component tag. Depending on how I add components to a vue instance the name property will often end up being undefined. However there is always a property in the options object of an instance of a component called componentTag. This property will always contain the tag name for the component, and is then a more realizable way of acquiring the name when doing so is needed for some reason.
 
 ```html
 <html>
@@ -113,4 +113,4 @@ new Vue({
 
 ## 4 - Conclusion
 
-The name property of a compoent is something that I generaly only need to bother with when it comes to local compoents. When I create a global component with the Vue.component method I must give a name as a string for the first argument that name is then what I will be using in temapltes, but there will also be a name value in the compoent object. However I can also make just plaibn old javaScript objects that contain vue options, and when doing that it might be a good idea to set a name property for those kinds of objects.
+The name property of a component is something that I generally only need to bother with when it comes to local components. When I create a global component with the Vue.component method I must give a name as a string for the first argument that name is then what I will be using in templates, but there will also be a name value in the component object. However I can also make just plain old javaScript objects that contain vue options, and when doing that it might be a good idea to set a name property for those kinds of objects.
