@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 544
 categories: canvas
-updated: 2021-02-14 12:18:41
-version: 1.32
+updated: 2021-02-14 13:56:52
+version: 1.33
 ---
 
 So this is another post on [canvas examples](/2020/03/23/canvas-example/) using just canvas elements and vanilla javaScript by itself. For this canvas example post I will be writing about a basic example of [canvas animation](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_animations) as I often end up doing so. There ar many ways of how to go about making animations, but I tend to like making them a certain way that involves the use of methods that are often very pure function like. What I mean by that is making a method where I pass a frame index value, and a total number of frames, and for every set of arguments I always be the same state to which I then render using the 2d canvas drawing context.
@@ -15,7 +15,7 @@ Making animations with canvas can be a fun, and rewarding experience and is defi
 
 <!-- more -->
 
-<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<div id="canvas-app"></div>
 <script src="/js/canvas-examples/animation-basics/0.7.0/pkg.js"></script>
 
 ## 1 - A basic Canvas example of animation
