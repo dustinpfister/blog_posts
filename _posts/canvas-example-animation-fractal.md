@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 616
 categories: canvas
-updated: 2020-08-03 16:55:00
-version: 1.23
+updated: 2021-02-14 12:22:47
+version: 1.24
 ---
 
 I would say that [Fractals](https://en.wikipedia.org/wiki/Fractal) are fun, the math can get a little challenging too so it is also an example of the kind of thing to get into these days when it comes to me trying to find novel and inserting things to do with javaScript. I am always looking for more things to get into with javaScript purely for the sake of continuing to sharpen my skills, and just make more [canvas examples](/2020/03/23/canvas-example/) to play around with. However fractals are also just simply a fun and interesting way to apply what I all ready know with javaScript in an artful way for what that is worth to me.
@@ -16,7 +16,7 @@ The basic idea of a fractal as I see it is that I am dealing with some kind of i
 <!-- more -->
 
 <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script>var FF=function(opt){var api={};opt=opt||{};api.ani={ver:opt.ver||'0.0.a'};api.forFrame=opt.forFrame||function(){};var setMainPerAndBias=function(api){api.per=api.frameIndex/api.maxFrame;api.bias=1-Math.abs(0.5-api.per)/0.5;};var forFrame=function(frameIndex,maxFrame){api.frameIndex=frameIndex;api.maxFrame=maxFrame;setMainPerAndBias(api);api.forFrame.call(api,api,frameIndex,maxFrame);return api.ani;};return function(frame,maxFrame){frame=frame===undefined?0:frame;maxFrame=maxFrame===undefined?50:maxFrame;frame=frame>maxFrame?frame%maxFrame:frame;frame=frame<0?maxFrame-Math.abs(frame)%maxFrame:frame;forFrame(frame,maxFrame);return api.ani;};};var draw={};draw.bx=function(ctx,bx){ctx.strokeStyle='white';ctx.globalAlpha=0.05+bx.per*0.95;ctx.lineWidth=6;ctx.beginPath();ctx.rect(bx.x,bx.y,bx.w,bx.h);ctx.stroke();};draw.bxArr=function(ctx,ani){var i=0,len=ani.bxArr.length;ctx.save();while(i<len){draw.bx(ctx,ani.bxArr[i]);i+=1;}ctx.restore();};draw.back=function(ctx,canvas){ctx.fillStyle='black';ctx.fillRect(0,0,canvas.width,canvas.height);};draw.ver=function(ctx,canvas,ani){ctx.fillStyle='white';ctx.textBaseline='top';ctx.font='10px courier';ctx.fillText('v'+ani.ver,10,canvas.height-15);};var container=document.getElementById('canvas-app'),canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');canvas.width=320;canvas.height=240;ctx.translate(0.5,0.5);container.appendChild(canvas);var opt={ver:'0.0.0',forFrame:function(api,f,mf){var bxArr=api.ani.bxArr=[];var i=0,per,bxCount=10,maxSize=canvas.width;while(i<bxCount){per=api.per+1/bxCount*i;per%=1;bx={};bx.w=maxSize*per;bx.h=maxSize*per;bx.x=canvas.width/2-(bx.w/2);bx.y=canvas.height/2-(bx.h/2);bx.per=bx.w/maxSize;bxArr.push(bx);i+=1;}bxArr.sort(function(a,b){if(a.per>b.per){return 1;}return-1;});}};var ani=FF(opt);var frame=0;var loop=function(){requestAnimationFrame(loop);var state=ani(frame,200);draw.back(ctx,canvas);draw.bxArr(ctx,state);draw.ver(ctx,canvas,state);frame+=1;frame%=200;};loop();</script>
+<script src="/js/canvas-examples/animation-fractal/0.1.0/pkg.js"></script>
 
 ## 1 - A Basic looping square array fractal canvas animation example
 
