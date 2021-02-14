@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 655
-updated: 2021-02-14 12:18:42
-version: 1.27
+updated: 2021-02-14 17:51:25
+version: 1.28
 ---
 
 I have made a [basic clock canvas example before](/2019/12/13/canvas-example-clock-basic/) however maybe now it is time for another [canvas example](/2020/03/23/canvas-example/) of a clock this time maybe I can make it into something a little more interesting. There are many things that come to mind when it comes to ideas for canvas clock projects, but for now I think that it might be best to start out with something only slightly more advanced from my basic canvas clock example.
@@ -17,8 +17,8 @@ This is just one silly little idea that came to mind when it comes to be thing a
 
 <!-- more -->
 
-<div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script src="/js/canvas-examples/clock-particles/0.0.0/pkg.js"></script>
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/clock-particles/0.1.0/pkg.js"></script>
 
 ## 1 - The Utils.js for this particles clock example
 
