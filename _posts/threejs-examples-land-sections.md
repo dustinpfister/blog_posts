@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-15 14:47:44
-version: 1.1
+updated: 2021-02-15 14:58:25
+version: 1.2
 ---
 
 I have been neglecting my content on threejs, so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some actaul examples using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my Mr Sun game that I have been working on and off for a while.
@@ -14,3 +14,158 @@ I have been neglecting my content on threejs, so I thought it would be a good id
 The basic idea of my Mr Sun game is to have a display object that repersents a sun, and then a bunch of land sections surrounding the sun. It is then possible to move the sun object around and by doing so that effects the surrounding land section objects. There is then all kinds of other ideas that branch off from there and I have many projects that are just that. Still the basic idea is simple enough and I think it would not be so hard to make a basic threejs example that is another way to go about creating that basic idea at least.
 
 <!-- more -->
+
+## 1 - The game object
+
+```js
+var game = (function () {
+ 
+    // game state object for now
+    var game = {
+        sun: {
+            x: -25,
+            y: -25,
+            r: 64
+        },
+        sectionDist: 75,
+        sections: []
+    };
+    var i = 0,
+    section,
+    radian,
+    sectionCount = 12;
+    while(i < sectionCount){
+         radian = Math.PI * 2 / sectionCount * i;
+         section = {
+             x: Math.cos(radian) * game.sectionDist,
+             y: Math.sin(radian) * game.sectionDist,
+             r: 48
+         };
+         game.sections.push(section);
+         i += 1;
+    }
+ 
+    return game;
+ 
+}
+    ());
+```
+
+## 2 - The sections.js file
+
+```js
+var Sections = (function () {
+ 
+    var THREEJS_MAX_RADIUS = 4;
+ 
+    // create land sections objects
+    var createLandSections = function(game){
+        var sections = new THREE.Group();
+        var sectionCount = game.sections.length,
+        sectionIndex = 0,
+        section;
+        while(sectionIndex < sectionCount){
+            section = game.sections[sectionIndex];
+            var mesh = new THREE.Mesh(
+                new THREE.SphereGeometry(section.r / game.sectionDist, 20),
+                new THREE.MeshBasicMaterial({
+                    color: 0x00ff00,
+                    wireframe: true
+                }));
+            mesh.userData.type = 'section';
+            mesh.position.x = (section.x / game.sectionDist) * THREEJS_MAX_RADIUS;
+            mesh.position.y = (section.y / game.sectionDist) * THREEJS_MAX_RADIUS;
+            mesh.position.z = 0;
+            mesh.lookAt(0,0,0);
+            sections.add(mesh);
+            sectionIndex += 1;
+        }
+        sections.userData.type = 'sectionGroup';
+        return sections;
+    };
+ 
+    // create land sections objects
+    var createSun = function(game){
+        var mesh = new THREE.Mesh(
+            new THREE.SphereGeometry(game.sun.r / game.sectionDist, 20),
+            new THREE.MeshBasicMaterial({
+                color: 0xffff00,
+                wireframe: true
+            }));
+        mesh.userData.type = 'sun';
+        mesh.position.x = 0
+        mesh.position.y = 0
+        mesh.position.z = 0;
+        return mesh;
+    };
+ 
+    // PUBLIC API
+    var api = {};
+ 
+    api.create = function(game){
+        var mainGroup = new THREE.Group();
+        // add land sections
+        mainGroup.add(createLandSections(game));
+        // add sun
+        mainGroup.add(createSun(game));
+        return mainGroup;
+    };
+ 
+    api.update = function(game, mainGroup){
+        mainGroup.children.forEach(function(child){
+             if(child.userData.type === 'sun'){
+                 console.log('sun');
+                 child.position.x = game.sun.x / game.sectionDist * THREEJS_MAX_RADIUS;
+                 child.position.y = game.sun.y / game.sectionDist * THREEJS_MAX_RADIUS;
+             }
+        });
+    };
+ 
+    return api;
+ 
+}
+    ());
+```
+
+## 3 - main.js
+
+```js
+(function () {
+ 
+    // Scene
+    var scene = new THREE.Scene();
+ 
+    // Camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+ 
+    var mainGroup = Sections.create(game);
+    scene.add(mainGroup);
+ 
+    Sections.update(game, mainGroup);
+ 
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // Orbit Controls The DOM element must now be given as a second argument
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
+    // loop
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+ 
+    animate();
+ 
+}
+    ());
+```
+
+## 4 - Conclusion
+
+I might get around to working on this example a little more at some point, but yet agian I might not ever go much beyond what I have togetaher here. I am trying to work out the core logic of what the game should be that is indepedand of having a 2d or 3d view of the game. When it comes to that I have a vuejs example actually where I am trying to focus on working out what might be fun when it comes to the basic logic of the game. If I get somewhere with that I might get around to working out some kind of 3d view of the game with this example. However it might be best to stick to a more simple 2d view when it comes to my basic 2d canvas examples.
