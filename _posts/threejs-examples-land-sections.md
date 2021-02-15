@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-15 14:58:25
-version: 1.2
+updated: 2021-02-15 15:16:50
+version: 1.3
 ---
 
 I have been neglecting my content on threejs, so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some actaul examples using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my Mr Sun game that I have been working on and off for a while.
@@ -20,11 +20,15 @@ The basic idea of my Mr Sun game is to have a display object that repersents a s
 ```js
 var game = (function () {
  
+    var distance = function(game, section){
+        return Math.sqrt( Math.pow(game.sun.x - section.x, 2) + Math.pow(game.sun.y - section.y, 2) );
+    };
+ 
     // game state object for now
     var game = {
         sun: {
-            x: -25,
-            y: -25,
+            x: 40,
+            y: 0,
             r: 64
         },
         sectionDist: 75,
@@ -39,8 +43,12 @@ var game = (function () {
          section = {
              x: Math.cos(radian) * game.sectionDist,
              y: Math.sin(radian) * game.sectionDist,
-             r: 48
+             r: 48,
+             per: 0
          };
+         section.per = distance(game, section) / (game.sectionDist * 2);
+         section.per = section.per > 1 ? 1 : section.per;
+         section.per = section.per < 0 ? 0 : section.per;
          game.sections.push(section);
          i += 1;
     }
@@ -69,7 +77,7 @@ var Sections = (function () {
             var mesh = new THREE.Mesh(
                 new THREE.SphereGeometry(section.r / game.sectionDist, 20),
                 new THREE.MeshBasicMaterial({
-                    color: 0x00ff00,
+                    color: 'rgba(0,' + Math.round(255 * section.per) + ',0,1)',
                     wireframe: true
                 }));
             mesh.userData.type = 'section';
@@ -114,7 +122,6 @@ var Sections = (function () {
     api.update = function(game, mainGroup){
         mainGroup.children.forEach(function(child){
              if(child.userData.type === 'sun'){
-                 console.log('sun');
                  child.position.x = game.sun.x / game.sectionDist * THREEJS_MAX_RADIUS;
                  child.position.y = game.sun.y / game.sectionDist * THREEJS_MAX_RADIUS;
              }
@@ -122,7 +129,6 @@ var Sections = (function () {
     };
  
     return api;
- 
 }
     ());
 ```
