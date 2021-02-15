@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-15 15:54:38
-version: 1.5
+updated: 2021-02-15 16:01:29
+version: 1.6
 ---
 
 I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some actaul examples using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my Mr Sun game that I have been working on and off for a while.
@@ -65,7 +65,7 @@ var game = (function () {
 
 ## 2 - The sections.js file
 
-I made a sections.js file that will create an return a threejs group object based off of a game object that I pass to a create method.
+I made a sections.js file that will create and return a [threejs group](/2018/05/16/threejs-grouping-mesh-objects/) object based off of a game object that I pass to a create method. The idea here is to make a standard game object that I can use in a plain 2d view of the game, but I can also use the same game object to create a basic 3d view of the game with threejs. So I just need a module that will create a bunch of groups of mesh objects to which I can then add to a scene in the main.js file. I am pretty sure I am going to go with a plain 2d view, but it would be nice to play around with a 3d option also, and maybe even some kind of project that is a hybrid of sorts actaully.
 
 ```js
 var Sections = (function () {
