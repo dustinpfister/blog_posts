@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 09:35:26
-version: 1.15
+updated: 2021-02-15 09:38:41
+version: 1.16
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -434,6 +434,8 @@ Vue.mixin({methods : {
 ```
 
 ## 4 - The components
+
+For this vuejs example I have made a number of components that I have pulled into there own files in a comp folder in the root of the example folder. These are a whole buch of compoents that are used in each of the menus for various things like moving the position of the sun object with a canvas element, but then there are others that do the same thing only with dirrect text input of an angle and distance from a center point.
 
 ### 4.1 - sections-ui-grid
 
