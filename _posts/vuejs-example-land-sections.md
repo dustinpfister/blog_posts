@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 09:25:27
-version: 1.13
+updated: 2021-02-15 09:31:59
+version: 1.14
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -17,7 +17,11 @@ So I thought I would make a simple [vuejs examples](/2021/02/04/vuejs-example/) 
 
 ## 1 - A utils lib
 
-For this vuejs example I have a main vuejs library that contains a few methods that I might be using across vue components and other javaScript files. As of this writing I just have a distance formula that I am using to find the distance between the sun, and a given land section.
+For this vuejs example I have a main vuejs library that contains a few methods that I might be using across vue components and other javaScript files. This is a kind of file that I find myself making for many of my examples and not just with vuejs. Each time I work on an actual project of one kind or another there ways seems to be a need for some kind of general utility library like lodash. However I often prefer to make a custom cut form of such a library where I just have methods that I am actaully going to use in the project. So this utils.js file is then just such a library.
+
+As of this writing in this file I have a distance formula that I am using to find the distance between the sun, and a given land section, however it is also a function that I might use all over the place if this project does continue to grow.
+
+I also have some typical methods that I often use in many of my [canvas examples](/2020/03/23/canvas-example/) such as this create canvas and get canvas relative methods that I use to just create a canvas method and also to help get a canvas rather than window relative pointer object position.
 
 ```js
 var utils = {};
