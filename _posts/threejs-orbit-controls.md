@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2021-02-15 16:40:39
-version: 1.11
+updated: 2021-02-15 16:48:46
+version: 1.12
 ---
 
 It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch. It would involve some event handlers, and the use of a few [Object3D](https://threejs.org/docs/#api/core/Object3D) methods like lookAt, and position.set. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
@@ -21,19 +21,19 @@ This is an advanced post on one of the many useful time saving features fount in
 
 ### 1.1 - Version Numbers Matter, and code breaking changes
 
-Yes version numbers matter when working with three.js. When I first wrote this post I was working with r91, and as of this writing when I took a moment to edit this post I was using r125. Sense then some code breaking changes have happended so be aware of what version of threejs you are using. The main change that I have noticed sense r91 is that it is now required to give a dom element reference as the second argument when calling the main orbit controls constructor function. I will still keep the old r91 examples in this post just for the hell of it as many of the features still seem to work more or less the same way when the few required changes are made.
+Yes version numbers matter when working with three.js. When I first wrote this post I was working with r91, and as of this writing when I took a moment to edit this post I was using r125. Sense then some code breaking changes have happened so be aware of what version of threejs you are using. The main change that I have noticed sense r91 is that it is now required to give a dom element reference as the second argument when calling the main orbit controls constructor function. I will still keep the old r91 examples in this post just for the hell of it as many of the features still seem to work more or less the same way when the few required changes are made.
 
 ## 2 - Where to get the file for orbit controls
 
 In order to quickly add Orbit controls you need to add a \*.js file that is in the three.js repository that can be found [here](https://github.com/mrdoob/three.js/blob/r125/examples/js/controls/OrbitControls.js). You will want to add this file to your project in a way so that it will append three.js, and add a constructor called [THREE.OrbitControls](https://threejs.org/docs/#examples/controls/OrbitControls).
 
-## 3 - Uisng the OrbitControls constructor
+## 3 - Using the OrbitControls constructor
 
-If you all ready know how to create a basic scene in threejs, and you have a proper copy of the orbit controls added to the page along with the coresponding version of threejs, then adding orbit controls is not all that hard. The THREE.OrbitControls constructor just needs to be called passing a camera that the orbit controls will be controling as the first argument. On top of the camera a dom element refernce might also have to be added if you are using a later version of three.js \( at least r125 forward as of this writing \)
+If you all ready know how to create a basic scene in threejs, and you have a proper copy of the orbit controls added to the page along with the corresponding version of threejs, then adding orbit controls is not all that hard. The THREE.OrbitControls constructor just needs to be called passing a camera that the orbit controls will be controlling as the first argument. On top of the camera a dom element reference might also have to be added if you are using a later version of three.js \( at least r125 forward as of this writing \)
 
 ### 3.1 - Example of the OrbitControls constructor (r125)
 
-When using the orbit controls constructor in r125 I now need to pass a camera as the first arguemnt like before, but now I also need to pass a dom element reference as the second argument.
+When using the orbit controls constructor in r125 I now need to pass a camera as the first argument like before, but now I also need to pass a dom element reference as the second argument.
 
 ```js
     // Camera
@@ -77,7 +77,7 @@ var controls = new THREE.OrbitControls(camera);
 
 ## 4 - Basic example of Orbit controls (r125)
 
-I just need to call the THREE.OrbitControls constructor and pass a camera as the first arguemnt, and then a dom element as the second argument. The dom element can be the dome element that is used in a renderer such as the built in web gl renderer.
+I just need to call the THREE.OrbitControls constructor and pass a camera as the first argument, and then a dom element as the second argument. The dom element can be the dome element that is used in a renderer such as the built in web gl renderer.
 
 ```js
 (function () {
@@ -119,11 +119,15 @@ I just need to call the THREE.OrbitControls constructor and pass a camera as the
     ());
 ```
 
+So this new example is more or less the same as the old r91 example. It would seem that the only change is that I now have to give that dome element reference.
+
 ## 5 - Full working Example of three.js Orbit Controls (r91)
 
 For a full working example of this I will of course want something to look at such as a cube, and of course I will want the usual scene, camera, and renderer. In my html not only will I want to load three.js like normal, I will want to see to it that the Orbit controls are added to three.js, as or r91 they are not part of three.js itself, so it must be added by some means.
 
-### 5.1 - html (r91)
+### 5.1 - The html (r91)
+
+I just need to like to threejs, the orbit controls, and then the main.js file that contains the rest of the javaScript code. I also have a single div element that will serve as a mount point for this.
 
 ```html
 <html>
@@ -147,6 +151,8 @@ For a full working example of this I will of course want something to look at su
 If all goes well I should now be able to use the OrbitControls constructor just like any other constructor in three.js.
 
 ### 5.2 - js (r91)
+
+Now for the javaScript for this basic orbit controls example.
 
 ```js
 (function () {
