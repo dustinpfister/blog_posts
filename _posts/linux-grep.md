@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2020-10-02 15:08:32
-version: 1.11
+updated: 2021-02-15 09:13:45
+version: 1.12
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory. I have been starting to write a few posts on various commands that often are part of Linux, or can be easily added to Linux, and grep is certainly one such command that I should write a quick post on because I am sure it will come in handy now and then with what I often work on when it comes to lengthly collections of text files.
@@ -69,7 +69,7 @@ $ grep "id:" ./_posts/linux-*
 
 ### 2.1 - recustive flag
 
-Another options for looking at more than one file is to use the recursive flag.
+Another options for looking at more than one file is to use the recursive flag. This is what I will want to use when I want to look for a text pattern that might be in any file in a bunch of nested folders from a given root folder. For example say I want to look for a variable name that might show up in a bunch of source code files in a projects with lots of modules that all make use of something that is this variable name or property name. I can use grep with the recursive option to find all instances of that variable name. This is then one of the major reasons why grep is so usful when it comes to working on a programing project.
 
 ```
 $ grep -r "var" ./
