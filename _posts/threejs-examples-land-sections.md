@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-15 16:01:29
-version: 1.6
+updated: 2021-02-15 16:08:43
+version: 1.7
 ---
 
 I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some actaul examples using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my Mr Sun game that I have been working on and off for a while.
@@ -141,7 +141,9 @@ var Sections = (function () {
 
 ## 3 - main.js
 
-I then just have a main.js file that makes use of the game module and sections modules to create this basic three.js example.
+I then just have a main.js file that makes use of the game module and sections modules to create this basic three.js example of my Mr sun game idea. In this file I create the main scene, and add a camera to use of the scene. I create a main group object with the sections module and pass the game object to it. For now I just update the state of the main group once also, and set up a renderer for the example.
+
+I am making use of the orbit controls provided in the three.js repo. I will not be getting into this feature in depth here as I have wrote a post on the [threejs orbit controls](/2018/04/13/threejs-orbit-controls/) before hand. I then also have a main app loop and for now the only reason why is becuase of the orbit controls until I add a way to change the sun position.
 
 ```js
 (function () {
