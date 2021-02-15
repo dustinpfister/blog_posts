@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 462
-updated: 2021-02-15 09:07:01
-version: 1.9
+updated: 2021-02-15 09:08:51
+version: 1.10
 ---
 
 Today I started playing around with the [vue watch](https://vuejs.org/v2/guide/computed.html) option that can be used to define some callbacks that fire when a property in the vue data object changes. Watchers can be defined in a number of ways in vuejs, they can just be function expressions, strings that refer to methods in the vue method option, or objects that can have a number of options along with a handler. 
@@ -152,4 +152,4 @@ new Vue({
 
 So the vue watch option is a way to set up one or more functions that will fire when the vie data state of an vue js instance changes. This is just one of many little features in vuejs that are important for the sake of getting into vue component design.
 
-Sense I started this post I now have a few posts on [vuejs examples](/2021/02/04/vuejs-example) including one that is a kind of [game that involves land sections](/2021/02/02/vuejs-example-land-sections/) where I am using the watch option with one of my components. The component has a canvas element that I am adding into the component by way of a life cycle hook rather than having it in the component itself. So I have set up a watcher to draw the canvas each time the value of a property for the component changes. The example might be worth checkout out when it comes to seeing some kind of real project example that makes use of the watch option.
+Sense I started this post I now have a few posts on [vuejs examples](/2021/02/04/vuejs-example) including one that is a kind of [game that involves land sections](/2021/02/02/vuejs-example-land-sections/) where I am using the watch option with one of my components. The component has a canvas element that I am adding into the component by way of a life cycle hook rather than having it in the component itself. So I have set up a watcher to draw the canvas each time the value of a property for the component changes. There may be other ways of going about setting up the component so I do not have to use a watcher, but that is how I was able to get things working the way that I wanted it to. The example might be worth checkout out when it comes to seeing some kind of real project example that makes use of the watch option.
