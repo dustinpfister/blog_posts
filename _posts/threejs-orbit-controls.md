@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2021-02-15 16:33:17
-version: 1.10
+updated: 2021-02-15 16:40:39
+version: 1.11
 ---
 
 It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch. It would involve some event handlers, and the use of a few [Object3D](https://threejs.org/docs/#api/core/Object3D) methods like lookAt, and position.set. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
@@ -29,6 +29,8 @@ In order to quickly add Orbit controls you need to add a \*.js file that is in t
 
 ## 3 - Uisng the OrbitControls constructor
 
+If you all ready know how to create a basic scene in threejs, and you have a proper copy of the orbit controls added to the page along with the coresponding version of threejs, then adding orbit controls is not all that hard. The THREE.OrbitControls constructor just needs to be called passing a camera that the orbit controls will be controling as the first argument. On top of the camera a dom element refernce might also have to be added if you are using a later version of three.js \( at least r125 forward as of this writing \)
+
 ### 3.1 - Example of the OrbitControls constructor (r125)
 
 When using the orbit controls constructor in r125 I now need to pass a camera as the first arguemnt like before, but now I also need to pass a dom element reference as the second argument.
@@ -48,20 +50,6 @@ When using the orbit controls constructor in r125 I now need to pass a camera as
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
 ```
 
-### 3.2 - Old example of the OrbitControls constructor (r91)
-
-Once you have the constructor you just need to call the constructor passing the instance of the camera you want to to control which will give you an instance of THREE.OrbitControls.
-
-```js
-// CAMERA
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-camera.position.set(250, 200, 250);
-camera.lookAt(0, 0, 0);
- 
-// add controls for the camera
-var controls = new THREE.OrbitControls(camera);
-```
-
 Once you have an instance of the controls you just need to call the update method of the controls in a render or update loop.
 
 ```js
@@ -71,6 +59,20 @@ function animate() {
     renderer.render(scene, camera);
 };
 animate();
+```
+
+### 3.2 - Old example of the OrbitControls constructor (r91)
+
+When I first wrote this post I was using r91. With that version of threejs I just need to call the constructor passing the instance of the camera I want to to control which will give me an instance of THREE.OrbitControls. However in late versions of threejs this might cause an error.
+
+```js
+// CAMERA
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(250, 200, 250);
+camera.lookAt(0, 0, 0);
+ 
+// add controls for the camera
+var controls = new THREE.OrbitControls(camera);
 ```
 
 ## 4 - Basic example of Orbit controls (r125)
