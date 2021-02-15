@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-15 15:16:50
-version: 1.3
+updated: 2021-02-15 15:39:30
+version: 1.4
 ---
 
 I have been neglecting my content on threejs, so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some actaul examples using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my Mr Sun game that I have been working on and off for a while.
@@ -16,6 +16,8 @@ The basic idea of my Mr Sun game is to have a display object that repersents a s
 <!-- more -->
 
 ## 1 - The game object
+
+First off I just worked out a simple game object module that creates a game object that os formated like many of the modules that I have created for this game thus far.
 
 ```js
 var game = (function () {
@@ -60,6 +62,8 @@ var game = (function () {
 ```
 
 ## 2 - The sections.js file
+
+I made a sections.js file that will create an return a threejs group object based off of a game object that I pass to a create method.
 
 ```js
 var Sections = (function () {
@@ -134,6 +138,8 @@ var Sections = (function () {
 ```
 
 ## 3 - main.js
+
+I then just have a main.js file that makes use of the game module and sections modules to create this basic three.js example.
 
 ```js
 (function () {
