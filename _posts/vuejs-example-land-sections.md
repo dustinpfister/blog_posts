@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 09:31:59
-version: 1.14
+updated: 2021-02-15 09:35:26
+version: 1.15
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -384,6 +384,8 @@ Vue.component('menu-sections', {
 ```
 
 ### 2.4 - The sections table menu
+
+The whole point of this example is to work out a simple form of a game that I would like to actaully be a major canvas game with greate graphics and so forth. In this form of the game the focus is not the final product but a side project where I am working out the core logic of what the game should be. So I would like to have a menu that will display the current state of all of the land sections as a way to vue what is going on with various properties of these land section objects.
 
 ```js
 (function(){
