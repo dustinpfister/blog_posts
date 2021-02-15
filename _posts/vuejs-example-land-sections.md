@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 09:38:41
-version: 1.16
+updated: 2021-02-15 09:43:36
+version: 1.17
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -415,6 +415,10 @@ The whole point of this example is to work out a simple form of a game that I wo
 ```
 
 ## 3 - The mixin folder
+
+I have a mixin folder where I have objects that contain vuejs features that I would like to have accross all vuejs instances. For now this is just a set of methods that have to do with setting the position of the sun object but if I continue working on this project it is possible that this folder might grow with additional global mixins that I will want for this example.
+
+It is also possible that some of the methods here might be added to the utils library, a whole new vanilla javaScript library, or just removed compleatly if I find that the method is not needed. However it would seem that I might want to have a place to park methods that I want to have to use accross all compoents and as such this is the dumping ground for them.
 
 ```js
 Vue.mixin({methods : {
