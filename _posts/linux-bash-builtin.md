@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 802
-updated: 2021-02-12 15:07:14
-version: 1.13
+updated: 2021-02-15 17:13:41
+version: 1.14
 ---
 
 In Linux bash defines a number of built in commands, there is also the [builtin command](https://www.geeksforgeeks.org/builtin-command-in-linux-with-examples/) itself which is also a built in command of bash. This builtin command is useful for creating functions in bash scripts that have the same name as a built in command. However there is also the question of what the built in commands are and how to go about confirming if a command is built in or not. So in this post I will be going over some basic examples of the builtin command, but I will also be doing a general overview of all the built in commands in bash.
@@ -69,7 +69,7 @@ So now that I have the basics of bash built in commands covered, and also a basi
 
 The cd command is used to change the current working directory. It is one of the first basic commands that I learned how to use way back when I was starting to teach myself how to work with a bash command prompt. There is knowing the current folder, and then there is changing the current folder, and when it comes to changing the current folder that is where cd comes into play. In my post on the cd command I get into a bunch of little ins and outs that a new Linux user should be aware of when starting to learn this basic set of commands.
 
-### [2.2 - The echo command](/2019/08/05/linux-echo/)
+### [2.2 - The echo command](/2019/08/15/linux-echo/)
 
 The echo command is a way to go about echoing some text that is given as an argument to the standard output. This is another basic command that will pop up a lot in bash examples. If I just want to echo a value to the standard output this is the command to use, but there are a few other little things about it. For example there is the escape option and also a way to make it so it will one append a line breal at the end.
 
