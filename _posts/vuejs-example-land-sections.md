@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 09:48:50
-version: 1.18
+updated: 2021-02-15 16:52:00
+version: 1.19
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -17,7 +17,7 @@ So I thought I would make a simple [vuejs examples](/2021/02/04/vuejs-example/) 
 
 ## 1 - A utils lib
 
-For this vuejs example I have a main vuejs library that contains a few methods that I might be using across vue components and other javaScript files. This is a kind of file that I find myself making for many of my examples and not just with vuejs. Each time I work on an actual project of one kind or another there ways seems to be a need for some kind of general utility library like lodash. However I often prefer to make a custom cut form of such a library where I just have methods that I am actaully going to use in the project. So this utils.js file is then just such a library.
+For this vuejs example I have a main vuejs library that contains a few methods that I might be using across vue components and other javaScript files. This is a kind of file that I find myself making for many of my examples and not just with vuejs. Each time I work on an actual project of one kind or another there ways seems to be a need for some kind of general utility library like lodash. However I often prefer to make a custom cut form of such a library where I just have methods that I am actually going to use in the project. So this utils.js file is then just such a library.
 
 As of this writing in this file I have a distance formula that I am using to find the distance between the sun, and a given land section, however it is also a function that I might use all over the place if this project does continue to grow.
 
@@ -385,7 +385,7 @@ Vue.component('menu-sections', {
 
 ### 2.4 - The sections table menu
 
-The whole point of this example is to work out a simple form of a game that I would like to actaully be a major canvas game with greate graphics and so forth. In this form of the game the focus is not the final product but a side project where I am working out the core logic of what the game should be. So I would like to have a menu that will display the current state of all of the land sections as a way to vue what is going on with various properties of these land section objects.
+The whole point of this example is to work out a simple form of a game that I would like to actually be a major canvas game with great graphics and so forth. In this form of the game the focus is not the final product but a side project where I am working out the core logic of what the game should be. So I would like to have a menu that will display the current state of all of the land sections as a way to vue what is going on with various properties of these land section objects.
 
 ```js
 (function(){
@@ -416,9 +416,9 @@ The whole point of this example is to work out a simple form of a game that I wo
 
 ## 3 - The mixin folder
 
-I have a mixin folder where I have objects that contain vuejs features that I would like to have accross all vuejs instances. For now this is just a set of methods that have to do with setting the position of the sun object but if I continue working on this project it is possible that this folder might grow with additional global mixins that I will want for this example.
+I have a mixin folder where I have objects that contain vuejs features that I would like to have across all vuejs instances. For now this is just a set of methods that have to do with setting the position of the sun object but if I continue working on this project it is possible that this folder might grow with additional global mixins that I will want for this example.
 
-It is also possible that some of the methods here might be added to the utils library, a whole new vanilla javaScript library, or just removed compleatly if I find that the method is not needed. However it would seem that I might want to have a place to park methods that I want to have to use accross all compoents and as such this is the dumping ground for them.
+It is also possible that some of the methods here might be added to the utils library, a whole new vanilla javaScript library, or just removed completely if I find that the method is not needed. However it would seem that I might want to have a place to park methods that I want to have to use across all components and as such this is the dumping ground for them.
 
 ```js
 Vue.mixin({methods : {
@@ -439,7 +439,7 @@ Vue.mixin({methods : {
 
 ## 4 - The components
 
-For this vuejs example I have made a number of components that I have pulled into there own files in a comp folder in the root of the example folder. These are a whole buch of compoents that are used in each of the menus for various things like moving the position of the sun object with a canvas element, but then there are others that do the same thing only with dirrect text input of an angle and distance from a center point.
+For this vuejs example I have made a number of components that I have pulled into there own files in a comp folder in the root of the example folder. These are a whole bunch of components that are used in each of the menus for various things like moving the position of the sun object with a canvas element, but then there are others that do the same thing only with direct text input of an angle and distance from a center point.
 
 ### 4.1 - sections-ui-grid
 
@@ -480,7 +480,7 @@ Vue.component('sections-ui-grid', {
 
 ### 4.2 - sections-ui-select
 
-In the sections menu I am going to want to have a way to select a current land section object. This current land section object can then be worked with using other compoents in the sections menu.
+In the sections menu I am going to want to have a way to select a current land section object. This current land section object can then be worked with using other components in the sections menu.
 
 ```js
 // ui for selecting the current section index to work on
@@ -505,7 +505,7 @@ Vue.component('sections-ui-select', {
 
 ### 4.3 - sun-base
 
-Here I have a file with some base components for the sun menu. I have one that is used to just display basic info about the sun object, and another than can be used to set the position of the sun with dirrect text input.
+Here I have a file with some base components for the sun menu. I have one that is used to just display basic info about the sun object, and another than can be used to set the position of the sun with direct text input.
 
 ```js
 // sun-info component
@@ -528,7 +528,7 @@ Vue.component('sun-ui-pos',{
 
 ### 4.4 - sun-ui-canvas
 
-The is a component that I am using in the sun menu that is used to display the current position of the sun realtive to the land section objects using a canvas element. The component can also be used as a way to set the position of the sun by clicking and draging the sun object around in the canvas element.
+The is a component that I am using in the sun menu that is used to display the current position of the sun relative to the land section objects using a canvas element. The component can also be used as a way to set the position of the sun by clicking and dragging the sun object around in the canvas element.
 
 ```js
 Vue.component('sun-ui-canvas',{
@@ -622,7 +622,7 @@ Vue.component('sun-ui-canvas',{
 
 ## 5 - The html
 
-I then just need a little html and css to pull this all togeather.
+I then just need a little html and css to pull this all together.
 
 
 The html:
