@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 462
-updated: 2019-06-17 09:43:56
-version: 1.6
+updated: 2021-02-15 08:48:43
+version: 1.7
 ---
 
-Today I started playing around with the [vue watch](https://vuejs.org/v2/guide/computed.html) option that can be used to define some callbacks that fire when a property in the vue data object changes. Watchers can be defined in a number of ways in vuejs, they can just be function expressions, strings that refer to methods in the vue method option, or objects that can have a number of options along with a handler. So lets take a look at some vue watch option examples.
+Today I started playing around with the [vue watch](https://vuejs.org/v2/guide/computed.html) option that can be used to define some callbacks that fire when a property in the vue data object changes. Watchers can be defined in a number of ways in vuejs, they can just be function expressions, strings that refer to methods in the vue method option, or objects that can have a number of options along with a handler. 
+
+There are some situations now and then where I need to set up a watcher, so it would seem like a good idea to write a post in which I cover at least some of the basics when it comes to the watch option in vuejs.
 
 <!-- more -->
 
