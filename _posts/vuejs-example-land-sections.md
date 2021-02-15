@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 09:43:36
-version: 1.17
+updated: 2021-02-15 09:48:50
+version: 1.18
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -443,6 +443,8 @@ For this vuejs example I have made a number of components that I have pulled int
 
 ### 4.1 - sections-ui-grid
 
+In the sections menu I have a sections grid component that displays the current state of a land section object.
+
 ```js
 Vue.component('sections-ui-grid', {
     props: ['section'],
@@ -478,6 +480,8 @@ Vue.component('sections-ui-grid', {
 
 ### 4.2 - sections-ui-select
 
+In the sections menu I am going to want to have a way to select a current land section object. This current land section object can then be worked with using other compoents in the sections menu.
+
 ```js
 // ui for selecting the current section index to work on
 Vue.component('sections-ui-select', {
@@ -501,6 +505,8 @@ Vue.component('sections-ui-select', {
 
 ### 4.3 - sun-base
 
+Here I have a file with some base components for the sun menu. I have one that is used to just display basic info about the sun object, and another than can be used to set the position of the sun with dirrect text input.
+
 ```js
 // sun-info component
 Vue.component('sun-info',{
@@ -521,6 +527,8 @@ Vue.component('sun-ui-pos',{
 ```
 
 ### 4.4 - sun-ui-canvas
+
+The is a component that I am using in the sun menu that is used to display the current position of the sun realtive to the land section objects using a canvas element. The component can also be used as a way to set the position of the sun by clicking and draging the sun object around in the canvas element.
 
 ```js
 Vue.component('sun-ui-canvas',{
