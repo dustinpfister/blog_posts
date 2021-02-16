@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-16 14:23:39
-version: 1.12
+updated: 2021-02-16 14:26:36
+version: 1.13
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -81,6 +81,8 @@ Vue.mixin({
 Here I have a compoent that is used to render a single list item in the current array of list items in the data object of the main vue instance. Here I am making use of the Vue.component method to make this list-item compoent a global component.
 
 In the static template of this component I am using the v-if directive as a way to render a text input element in the event that an item is not done. This way the text of the item can still be updated by making use of this text input element. If the event that the item is done, then just a span element will be rendered to display the message text, and a donetext class will be used with the element that will contain approperate style for a done element such as line through style text.
+
+In this component I am then emiting events that will then be used as a way to update data in the main vuejs instance. I have to do things this way becuase I can not mutate the props of the compoent, so events are the way to indirectly mutate data that is back in the parent vue instance that I will be getting to next.
 
 ```js
 Vue.component('list-item', {
