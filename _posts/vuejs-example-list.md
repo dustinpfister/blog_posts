@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-16 13:03:26
-version: 1.7
+updated: 2021-02-16 13:08:36
+version: 1.8
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -15,6 +15,225 @@ However there is just having a basic list example, and then there is staring to 
 
 <!-- more -->
 
+## 2 - The todo list vuejs example
+
+In this section I will be going over the source code of my basic todo app vuejs example.
+
+### 2.1 - A global set of mixin methods
+
+```js
+Vue.mixin({
+    methods: {
+        // get an id array from and event object
+        get_id_array: function(evnt){
+            return evnt.target.id.split('-');
+        },
+        // get an item id from an event object
+        get_item_id: function(evnt){
+            var idArray = this.get_id_array(evnt);
+            return idArray.slice(0, 3).join('-');
+        },
+        createItem: function(opt){
+            opt = opt || {};
+            return {
+                id: opt.id || 'list-item-' + this.$data.count,
+                mess: opt.mess || this.$data.textInput,
+                done: opt.done || false
+            };
+        },
+        // save a list to localStorage
+        save: function(data){
+            // first load
+            var lists = this.load();
+            if(lists){
+                lists[0] = data;
+            }else{
+                // no lists! create a new object and save the current list
+                console.log('no lists!');
+                lists = [];
+                lists.push(data);
+            }
+            var json = JSON.stringify(lists);
+            localStorage.setItem('vuejs-list', json);
+        },
+        // load lists from local storage
+        load: function(){
+            var json = localStorage.getItem('vuejs-list');
+            if(json){
+                return JSON.parse(json);
+            }
+            return false;
+        }
+    }
+});
+```
+
+### 2.2 - A list item component
+
+```js
+Vue.component('list-item', {
+    props: ['item'],
+    template: '<div class="wrap_item">'+
+        '<input '+
+            'v-if="!$props.item.done" ' +
+            'v-bind:id=\"$props.item.id+\'-mess\'\" ' +
+            'v-bind:value=\"$props.item.mess\" ' +
+            'type=\"text\" ' + 
+            'v-on:keyup="updateItem"> ' +
+        '<span class="donetext" v-else >{{ $props.item.mess }}</span> ' +
+        '<input ' + 
+            'v-bind:id=\"$props.item.id+\'-del\'\" ' + 
+            'type=\"button\" ' +
+            'v-on:click=\"delItem\" ' +
+            'value=\"Delete\"></li> ' +
+        '<input ' + 
+            'v-bind:id=\"$props.item.id+\'-done\'\" ' + 
+            'type=\"button\" ' +
+            'v-on:click=\"doneItem\" ' +
+            'value=\"Done\"></li> ' +
+    '</div>',
+    methods: {
+        delItem: function(e){
+            var id = this.get_item_id(e);
+            this.$emit('delitem', id);
+        },
+        doneItem: function(e){
+            var id = this.get_item_id(e);
+            this.$emit('doneitem', id);
+        },
+        updateItem: function(e){
+            var id = this.get_item_id(e);
+            this.$emit('updateitem', id, 'mess', e.target.value);
+        }
+    }
+});
+```
+
+### 2.3 - Main.js
+
+```js
+new Vue({
+    el: '#app',
+    template: '<div class="wrap_main">' +
+    '<div class="wrap_create">' +
+        '<input type=\"text\" v-model=\"textInput\"> '+
+        '<input type=\"Button\" value=\"Push\" v-on:click=\"pushNew\"></br>' +
+    '</div>'+
+    '<div>' +
+        '<list-item ' +
+            'v-for="item in items" ' +
+            'v-bind:key="item.id" ' +
+            'v-bind:item="item" ' + 
+            'v-on:delitem="delItemById" ' +
+            'v-on:doneitem="doneItemById" ' +
+            'v-on:updateitem="updateItemById" ></list-item>'+
+    '</div>' +
+    //'<div>{{ items }}</div>'+
+    '</div>',
+    data: {
+        listName: 'demo', // list name used for save states
+        textInput: 'Enter new item text',
+        count: 0, // count used to make sure I do not have duplicate item ids
+        items: []
+    },
+    mounted: function(){
+        // load and saved list
+        var vm = this,
+        lists = vm.load(),
+        savedList = lists[0],
+        dat = vm.$data;
+        dat.count = savedList.count;
+        savedList.items.forEach(function(savedItem){
+            dat.items.push(vm.createItem(savedItem));
+        });
+    },
+    methods: {
+        // get item (or item index) by id
+        getItemById: function(id, returnIndex){
+            returnIndex = returnIndex === undefined ? false: returnIndex;
+            var i = this.$data.items.length,
+            item;
+            while(i--){
+                item = this.$data.items[i];
+                if(item.id === id){
+                    if(returnIndex){
+                        return i;
+                    }
+                    return item;
+                }
+            }
+            return false;
+        },
+        // delete an item by id
+        delItemById: function(id){
+            var i = this.getItemById(id, true);
+            if(typeof i === 'number'){
+                this.$data.items.splice(i, 1);
+            }
+            this.save(this.$data);
+        },
+        // flag and item as done
+        doneItemById: function(id){
+            var item = this.getItemById(id, false);
+            if(item){
+                item.done = !item.done;
+            }
+            this.save(this.$data);
+        },
+        // update an item by id
+        updateItemById: function(id, prop, value){
+            var item = this.getItemById(id, false);
+            item[prop] = value;
+            this.save(this.$data);
+        },
+        // push a new item
+        pushNew: function () {
+            this.$data.items.push(this.createItem());
+            this.$data.count += 1;
+            this.save(this.$data);
+        }
+    }
+});
+```
+
+### 2.4 - HTML
+
+```html
+<html>
+  <head>
+    <title>vue example list</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+    <style>
+.wrap_main{
+  background:black;
+  padding:10px;
+  color:white;
+}
+.wrap_create{
+  padding:40px;
+  margin:10px;
+  background:#4a4a4a;
+  text-align:center;
+}
+.wrap_item{
+  padding:10px;
+  margin:10px;
+  background:#cacaca;
+  color:black;
+}
+.donetext{
+  text-decoration-line: line-through;
+}
+    </style>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script src="./mixins.js"></script>
+  <script src="./comp/list-item.js"></script>
+  <script src="./main.js"></script>
+  </body>
+</html>
+```
 
 ## 1 - A very Basic vue todo list example
 
