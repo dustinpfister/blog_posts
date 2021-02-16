@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-16 13:15:09
-version: 1.9
+updated: 2021-02-16 14:14:51
+version: 1.10
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -22,6 +22,8 @@ In this section I will be going over the source code of my basic todo app vuejs 
 ### 2.1 - A global set of mixin methods
 
 For this example I have a single mixins file where I am adding in a bunch of methods that I may use accross more than one vuejs instance. So var I just have a main vuejs instance and a single component, but if i do continue working on this example a little now and then I will want to have some global methods.
+
+I have methods that I am all ready using in one component that have to do with creating an array of values from an id attribute of an element in a template. You see I ofetn find myself encoding info into an id of an element, rather than making use of the data attribute of an html element. So I have some methods that I can use to quickly get at things that might be encoded into an id of a target element in an event object. More on this later when I get into componets with this example.
 
 ```js
 Vue.mixin({
