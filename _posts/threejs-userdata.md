@@ -5,19 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-02-16 16:31:04
-version: 1.1
+updated: 2021-02-16 16:36:16
+version: 1.2
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object32 class](/2018/04/23/threejs-object32/) which is a class to which a mesh, and many other objects in three.js inherit from.
 
 It is a good idea to place any data that has to do with the applaction in this user data object as that will help to make sure that I do so in a safe way. Many frameworks have some kind of data object that is part of an instnace of some kind of class as a way to park data that I want to have assigned to a given object like a display object, sprite, or in threejs a mesh.
 
-So in the post I will be going over a simple examppe of the user data property of the object3d class.
+So in this post I will be going over a simple example of the user data property of the object3d class. 
 
 <!-- more -->
 
 ## 1 - The javaScript file
+
+This example will not be anything to involved so it will be just a single file that contains all the threejs code as well as my own user data code. 
+
+I have helpers here that are used to create and update a group of mesh objects. If you are still fairly new to three.js a group is a good way to go about having a collection of mesh objects. The group object itself is also a kind of object in threejs that inherits from object3d, so it to actually has a user data object also.
 
 ```js
 
