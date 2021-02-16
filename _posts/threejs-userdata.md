@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-02-16 16:36:16
-version: 1.2
+updated: 2021-02-16 16:42:07
+version: 1.3
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object32 class](/2018/04/23/threejs-object32/) which is a class to which a mesh, and many other objects in three.js inherit from.
@@ -22,6 +22,8 @@ So in this post I will be going over a simple example of the user data property 
 This example will not be anything to involved so it will be just a single file that contains all the threejs code as well as my own user data code. 
 
 I have helpers here that are used to create and update a group of mesh objects. If you are still fairly new to three.js a group is a good way to go about having a collection of mesh objects. The group object itself is also a kind of object in threejs that inherits from object3d, so it to actually has a user data object also.
+
+In the create sphere group helper I am just appending some values to each mesh object as i created them and add them to a group that the helper will return. I set a property for user data that will be used to set or update the material in the array of materials, and then a buch of values that have to do with direction and speed.
 
 ```js
 
@@ -124,6 +126,8 @@ I have helpers here that are used to create and update a group of mesh objects. 
 }
     ());
 ```
+
+So once I have my helpers that create and return a group of mesh objects I just need to call that and then add the group that it returns to a scene. I then just need to set up a camera, renderer, and update loop just like any other threejs example I would make.
 
 ## 2 - Conclusion
 
