@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-16 13:08:36
-version: 1.8
+updated: 2021-02-16 13:15:09
+version: 1.9
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -17,9 +17,11 @@ However there is just having a basic list example, and then there is staring to 
 
 ## 2 - The todo list vuejs example
 
-In this section I will be going over the source code of my basic todo app vuejs example.
+In this section I will be going over the source code of my basic todo app vuejs example. The sore code for this example as well as all of my other vuejs examples can be found at by [test vuejs reposatory](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-example-list) at github.
 
 ### 2.1 - A global set of mixin methods
+
+For this example I have a single mixins file where I am adding in a bunch of methods that I may use accross more than one vuejs instance. So var I just have a main vuejs instance and a single component, but if i do continue working on this example a little now and then I will want to have some global methods.
 
 ```js
 Vue.mixin({
@@ -70,6 +72,8 @@ Vue.mixin({
 
 ### 2.2 - A list item component
 
+Here I have a compoent that is used to render a single list item.
+
 ```js
 Vue.component('list-item', {
     props: ['item'],
@@ -109,7 +113,9 @@ Vue.component('list-item', {
 });
 ```
 
-### 2.3 - Main.js
+### 2.3 - The main vue instance in main.js
+
+I then have a main.js file that contains the main vuejs instance that will be rendering to the hard coded html file.
 
 ```js
 new Vue({
@@ -197,6 +203,8 @@ new Vue({
 ```
 
 ### 2.4 - HTML
+
+Here I have the hard coded html file with some inline css.
 
 ```html
 <html>
