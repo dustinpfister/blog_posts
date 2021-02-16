@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-16 14:38:38
-version: 1.14
+updated: 2021-02-16 15:12:59
+version: 1.15
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -214,7 +214,7 @@ new Vue({
 
 ### 2.4 - HTML
 
-Here I have the hard coded html file with some inline css.
+Here I have the hard coded html file with some inline css. I have just a single div element that serves as a mount point for the main vuejs instance, and I link to all of the javaScript files that I am using including vuejs.
 
 ```html
 <html>
@@ -315,4 +315,6 @@ There is then the methods object where I have a push new method that is called b
 
 ## 2 - Conclusion
 
-So the todo list app is just a basic idea for an applaction that is often what is used as a way to test out a framework.
+So the todo list app is just a basic idea for an applaction that is often what is used as a way to test out a framework. 
+
+There is noting ground breaking that I wanted to do with this vuejs example, but that is often the aim of such a project anyway. However if I do put more time into this I guess there are at least a few things that come to midn when it comes to adding features. It would be nice to save and load lists as plain text files on a local file system rather than just depeding on the local storage api. However there is only so much more that I would want to add when it comes to an applaction such as this.
