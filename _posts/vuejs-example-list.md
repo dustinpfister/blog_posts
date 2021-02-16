@@ -1,12 +1,12 @@
 ---
-title: basic vue list example
+title: A basic vue todo list app example
 date: 2020-02-18 17:26:00
 tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-16 14:26:36
-version: 1.13
+updated: 2021-02-16 14:38:38
+version: 1.14
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -125,7 +125,7 @@ Vue.component('list-item', {
 
 ### 2.3 - The main vue instance in main.js
 
-I then have a main.js file that contains the main vuejs instance that will be rendering to the hard coded html file.
+I then have a main.js file that contains the main vuejs instance that will be rendering to the hard coded html file. In the static template I am using the list-item compoent with the v-for direactive as a way to create an instance for the component for each item in the items array of the data object for this main, or parent vue instance.
 
 ```js
 new Vue({
