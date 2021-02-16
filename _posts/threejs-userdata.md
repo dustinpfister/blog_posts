@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-02-16 16:42:07
-version: 1.3
+updated: 2021-02-16 16:45:23
+version: 1.4
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object32 class](/2018/04/23/threejs-object32/) which is a class to which a mesh, and many other objects in three.js inherit from.
@@ -128,6 +128,8 @@ In the create sphere group helper I am just appending some values to each mesh o
 ```
 
 So once I have my helpers that create and return a group of mesh objects I just need to call that and then add the group that it returns to a scene. I then just need to set up a camera, renderer, and update loop just like any other threejs example I would make.
+
+The result of this then is a bunch of spheres start out positioned at the center origin point and then move out from there in random directions and speeds. When the distance of a mesh goes out of the rang that I set with the MAX DIST value then the user data values get set to new values, and the position of the mesh goes back to the origin.
 
 ## 2 - Conclusion
 
