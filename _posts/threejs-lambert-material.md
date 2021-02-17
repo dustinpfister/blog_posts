@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2021-02-17 16:08:28
-version: 1.7
+updated: 2021-02-17 16:11:19
+version: 1.8
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. You can count on at least a few posts on Materials which I have been working with today. The [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial) is one of many options for skinning a mesh with a texture, and in this post I will be getting into this one a little to get a better sense of what it is all about.
@@ -137,3 +137,5 @@ This will make all the area of the plane that is not effected by the spot light 
 ## 4 - Conclusion
 
 The Lambert Material is a good first choice for having a material that responds to light, but depending on the project it might not be the best. The good point of it is speed, but not so much accuracy, even the [Standard material](https://threejs.org/docs/index.html#api/materials/MeshStandardMaterial) seems to do a better job in that regard.
+
+I would not sink to much time into getting into the details about each material though. In the long run what I really want to do is figure out what i really want to do with threejs when it comes to making actual projects. As long as I do a decent job of keeping my code easy to read it should not be to hard to switch from Lambert to standard materials and back again.
