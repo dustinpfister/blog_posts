@@ -5,17 +5,20 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2020-04-19 08:01:47
-version: 1.20
+updated: 2021-02-17 11:35:12
+version: 1.21
 ---
 
-I like the die hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
+I like the Die Hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
 
-So the binary liquid bomb thing in die hard inspired me to make a [canvas example](/2020/03/23/canvas-example/) that consists a bunch of particles moving around the canvas. Each particle is of one type or another, they can overlap if they are the same type, but if two of two different types combine they will result in another particle type that will result in an explosion.
+So the binary liquid bomb thing in Die Hard inspired me to make a [canvas example](/2020/03/23/canvas-example/) that consists of a bunch of particles moving around the canvas. Each particle is of one type or another, they can overlap if they are the same type, but if two of two different types combine they will result in another particle type that will result in an explosion.
 
-This canvas example will then be several canvas examples that have to do with what is often called a particle. The term particle seems to be a generic term for a single display object of a collection of such display objects that move around the canvas.
+This canvas example will then be yet another example of several canvas examples now that have to do with what is often called a particle. The term particle seems to be a generic term for a single display object of a collection of such display objects that move around the canvas. There are many other terms that might come up for this kind of object though such a sprite, or display object.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/particles-binary/0.1.0/pkg.js"></script>
 
 ## 1 - The utils module
 
@@ -345,4 +348,4 @@ loop();
 
 ## 5 - Conclusion
 
-This canvas example when up and running results in a bunch of particles moving around all over the canvas, when one hits another of a different type it explodes. I have to admint that looking at it is very satisfying.
+This canvas example when up and running results in a bunch of particles moving around all over the canvas, when one hits another of a different type it explodes. I have to admit that looking at it is very satisfying.
