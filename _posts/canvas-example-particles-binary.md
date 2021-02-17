@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2021-02-17 12:00:05
-version: 1.24
+updated: 2021-02-17 12:04:19
+version: 1.25
 ---
 
 I like the Die Hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -217,7 +217,7 @@ Spawn an inactive particle into an active state.
 
 ### 1.6 - Update the pool
 
-Update the pool of particles.
+I will want a method that will update the pool of particles that will be called in the main public update method of this module. In here I just loop over all of the instances of the Particle class and check the bits string of the instance. There is then just two general things to do depending on the value of the bits string, one is to call an particle update method and move the particle of it is a red or blue type particle. The other thing to do is expand the radius and reduce the lifespan of the particle if it is an explode type.
 
 ```js
     // update a particle pool
