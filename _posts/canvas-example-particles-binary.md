@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2021-02-17 11:39:34
-version: 1.22
+updated: 2021-02-17 11:52:26
+version: 1.23
 ---
 
 I like the Die Hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -69,10 +69,28 @@ At the top of the module I start off with the beginnings of an IIFE that will re
 ```js
 var paricles = (function () {
  
-    var DEFAULT_POOL_SIZE = 160,
-    PARTICLE_MIN_RADIUS = 8,
+    var DEFAULT_POOL_SIZE = 100,
+    PARTICLE_MIN_RADIUS = 6,
     PARTICLE_MAX_RADIUS = 64,
-    PARTICLE_MAX_LIFE = 3000;
+    PARTICLE_MAX_LIFE = 3000,
+ 
+    PARTICLE_UPDATE_METHODS = {
+        // no nothing (go by initial values only for heading, and pps)
+        noop: function(part, pool, secs){
+        },
+        // use whatever the part.degreesPerSecond value is to change heading
+        fixed_heading_change: function(part, state, secs){
+            part.degreesPerSecond = u.mod(part.degreesPerSecond + 90, 180) - 90;
+            part.heading += Math.PI / 180 * part.degreesPerSecond * secs;
+        },
+        // 
+        DPS_change: function(part, state, secs){
+            var roll = Math.random();
+            var dir = roll < 0.5 ? -1 : 1;
+            part.degreesPerSecond += 360 * secs * dir;
+            this.fixed_heading_change(part, state, secs)
+        }
+    };
  
     // random reading
     var randomHeading = function (min, max) {
@@ -96,6 +114,8 @@ The life, radius, and per values are used for when a particle enters a state in 
     var Particle = function () {
         this.x = -1;
         this.y = -1;
+        this.degreesPerSecond = -90 + 180 * Math.random();
+        this.updateKey = 'DPS_change'; // the method to use in PARTICLE_UPDATE_METHODS
         this.heading = 0;
         this.bits = '00'; // [0,0] inactive, [1,0] // blue, [0,1] red, [1,1] // explode
         this.pps = 32; // pixels per second
@@ -199,7 +219,7 @@ Spawn an inactive particle into an active state.
 
 Update the pool of particles.
 
-```
+```js
     // update a particle pool
     var updatePool = function (state, t) {
         var secs = t / 1000,
@@ -208,10 +228,16 @@ Update the pool of particles.
         while (i--) {
             part = state.pool[i];
             if (part.bits === '10' || part.bits === '01') {
+                if(PARTICLE_UPDATE_METHODS[part.updateKey]){
+                    PARTICLE_UPDATE_METHODS[part.updateKey].call(PARTICLE_UPDATE_METHODS, part, state, secs);
+                }
+                // move by current heading, pps
                 part.x += Math.cos(part.heading) * part.pps * secs;
                 part.y += Math.sin(part.heading) * part.pps * secs;
+                // apply bounds
                 part.x = u.mod(part.x, state.canvas.width);
                 part.y = u.mod(part.y, state.canvas.height);
+                // check if the part hit a type it combines with
                 partHitCheck(state, part);
             }
             if (part.bits === '11') {
@@ -238,6 +264,7 @@ Here now is the pubic API that consists of my create, and update methods.
         create: function (opt) {
             opt = opt || {};
             state = {
+                ver: opt.ver || '',
                 canvas: opt.canvas || null,
                 ctx: opt.ctx || null,
                 pool: createPool(),
@@ -271,14 +298,18 @@ I will want a draw module that I can use in a main javaScript file to draw the c
 
 ```js
 var draw = (function () {
+ 
     var gradient;
+ 
     return {
+ 
         setGradient: function (state) {
             var canvas = state.canvas;
             gradient = state.ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             gradient.addColorStop(0, '#9f0000');
             gradient.addColorStop(1, '#00009f');
         },
+ 
         // draw background
         background: function (state) {
             var ctx = state.ctx,
@@ -286,7 +317,9 @@ var draw = (function () {
             ctx.fillStyle = gradient || 'black';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         },
+ 
         pool: function (state) {
+ 
             var i = state.pool.length;
             ctx.strokeStyle = 'white';
             while (i--) {
@@ -306,10 +339,23 @@ var draw = (function () {
                 }
             }
             ctx.globalAlpha = 1;
+ 
         },
+ 
         // draw debug info
-        debug: function (state) {}
+        debug: function (state) {},
+ 
+        ver: function(state){
+            var ctx = state.ctx;
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            ctx.font = '8px arial';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + state.ver, 3, state.canvas.height - 13);
+        }
+ 
     }
+ 
 }
     ());
 ```
@@ -322,17 +368,11 @@ So now I have a utility module, a particles module that I can use to create and 
 
 ```js
 // MAIN
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-canvas.style.width = '100%';
-canvas.style.height = '100%';
-ctx.translate(0.5, 0.5);
- 
+var canvasObj = u.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
 var state = paricles.create({
+        ver: '0.1.0',
         canvas: canvas,
         ctx: ctx
     });
@@ -341,10 +381,9 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.background(state);
     draw.pool(state);
+    draw.ver(state);
     paricles.update(state);
- 
 };
- 
 loop();
 ```
 
@@ -354,10 +393,10 @@ loop();
         <title>canvas example particles</title>
     </head>
     <body style="margin:0px;">
-        <div id="gamearea"></div>
-        <script src="utils.js"></script>
-        <script src="particles.js"></script>
-        <script src="draw.js"></script>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/particles.js"></script>
+        <script src="./lib/draw.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
@@ -365,4 +404,6 @@ loop();
 
 ## 5 - Conclusion
 
-This canvas example when up and running results in a bunch of particles moving around all over the canvas, when one hits another of a different type it explodes. I have to admit that looking at it is very satisfying.
+This canvas example when up and running results in a bunch of particles moving around all over the canvas, when one hits another of a different type it explodes. I have to admit that looking at it is very satisfying, but there is so much more that I could add when it comes to moving forward from here. I do come around and put a little more time into an example now and then when I get to it, and there is maybe more that I could do when it comes to the movement of the particles.
+
+This canvas example might not be the best example of an object pool though, I now have [another example where I made an attempt at a standard object pool library](/2020/07/20/canvas-example-object-pool/) of sorts that I now copy and past over to new examples now and then. Where it comes to making or using a canvas library an object pool, particles class, or something to that effect should be a standard feature of such a framework. However when it comes to doing everything from the ground up I am free to design such things anyway I like, which can be nice in some ways, but also proves to be time consuming.
