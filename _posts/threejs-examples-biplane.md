@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-02-17 15:39:55
-version: 1.5
+updated: 2021-02-17 15:42:26
+version: 1.6
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself. However for now I would like to make at least a few examples of what can be done with three.js when it comes to making some kind of actual project.
@@ -130,7 +130,7 @@ var Biplane = (function () {
 
 ## 2 - Very basic example making use of the biplane model so far
 
-So then now it is just a question of having a very simple main javaScript file where I am making use of this model.
+So then now it is just a question of having a very simple main javaScript file where I am making use of this model. In this file I will be doing all the usual when it comes to making a threejs project such as creating a scene, camera, and renderer. However when it comes to having a mesh I am going to be using this biplane module to create groups of mesh objects.
 
 I can change the propRPS value of one of these biplane models userData objects to change the rate at which the prop rotates. Just about any additional properties that I might add if I do continue working on this can be changed that way.
 
