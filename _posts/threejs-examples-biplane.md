@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-02-17 15:34:04
-version: 1.4
+updated: 2021-02-17 15:39:55
+version: 1.5
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself. However for now I would like to make at least a few examples of what can be done with three.js when it comes to making some kind of actual project.
@@ -132,7 +132,7 @@ var Biplane = (function () {
 
 So then now it is just a question of having a very simple main javaScript file where I am making use of this model.
 
- I can change the propRPS value of one of these to change the rate at which the prop rotates.
+I can change the propRPS value of one of these biplane models userData objects to change the rate at which the prop rotates. Just about any additional properties that I might add if I do continue working on this can be changed that way.
 
 ```js
 (function () {
@@ -198,3 +198,5 @@ The result of all of this then is having two biplane models one is the default l
 ## 3 - Conclusion
 
 I like to make models this way, I can just slap something together and it just works. I am sure that in a real project I might run into problems sooner or later. However yet again maybe not if the final project is some kind of video rather than a game. What really matters is how things look, and this kind of very low poly look is kind of nice I think.
+
+There are many additional little details that I might want to add at some point if I do get around to putting more time into this. I could maybe add some ways to move the guys head in the plane, and also skin the mesh with a face of some kind also while I am at it. There is also maybe adding some additional code that has to do with moving the mesh objects within the group. For example if I use this in a project where the plane can end up being destroyed I can have some kind of effect where the parts fly all over the place. However maybe getting into all of that would be a matter for another post.
