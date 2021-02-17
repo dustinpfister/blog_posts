@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2021-02-17 11:35:12
-version: 1.21
+updated: 2021-02-17 11:39:34
+version: 1.22
 ---
 
 I like the Die Hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -20,22 +20,39 @@ This canvas example will then be yet another example of several canvas examples 
 <div id="canvas-app"></div>
 <script src="/js/canvas-examples/particles-binary/0.1.0/pkg.js"></script>
 
-## 1 - The utils module
+## 1 - The utils module for this binary particles canvas example
 
-So to start off I will want a utility library for this canvas example. For this example I will just want a distance formula, and a modulo function.
+So to start off I will want a utility library for this canvas example. For this example I will just want a distance formula, and a mathematical modulo function. As of version 0.1.0 of this example I now also added my standard create canvas method that I am starting to use in all of my canvas examples as usual. The idea here is that this library is a custom cut utility library for this example alone, there might be some functions that I use across all examples, but even then I might make some example specific changes to the function.
 
 ```js
 // UTILS
 var u = {};
- 
 u.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
- 
 // Math mod and angle methods from
 // https://github.com/infusion/Angles.js/blob/master/angles.js
 u.mod = function mod(x, m) {
     return (x % m + m) % m;
+};
+// create a canvas element
+u.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
 };
 ```
 
