@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-02-17 15:28:53
-version: 1.3
+updated: 2021-02-17 15:34:04
+version: 1.4
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself. However for now I would like to make at least a few examples of what can be done with three.js when it comes to making some kind of actual project.
@@ -130,6 +130,10 @@ var Biplane = (function () {
 
 ## 2 - Very basic example making use of the biplane model so far
 
+So then now it is just a question of having a very simple main javaScript file where I am making use of this model.
+
+ I can change the propRPS value of one of these to change the rate at which the prop rotates.
+
 ```js
 (function () {
  
@@ -189,6 +193,8 @@ var Biplane = (function () {
     ());
 ```
 
+The result of all of this then is having two biplane models one is the default lime color, and the other I made red. The props spin at two different speeds, and that is just about it for now. the next step would be to create another project where I am making use of this model, and maybe a few more just like it to create some kind of scene.
+
 ## 3 - Conclusion
 
-I like to make modles this way, I can just slap something togeather and it just works. I am sure that in a real project I might run into problems sooner or later. However yet angin maybe not if the final project is some kind of video rather than a game. What really matters is how things look, and this kind of very low poly look is kind of nice I think.
+I like to make models this way, I can just slap something together and it just works. I am sure that in a real project I might run into problems sooner or later. However yet again maybe not if the final project is some kind of video rather than a game. What really matters is how things look, and this kind of very low poly look is kind of nice I think.
