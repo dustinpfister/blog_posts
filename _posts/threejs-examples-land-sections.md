@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-15 16:44:58
-version: 1.9
+updated: 2021-02-17 15:57:23
+version: 1.10
 ---
 
 I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some actual examples using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my [Mr Sun game](/2020/11/03/canvas-example-game-mr-sun/) that I have been working on and off for a while.
@@ -17,7 +17,7 @@ The basic idea of my Mr Sun game is to have a display object that represents a s
 
 ## 1 - The game object
 
-First off I just worked out a simple game object module that creates a game object that os formated like many of the modules that I have created for this game thus far. If often end up with a main game state object where I have a sun object that contains the current position of the sun, and an array of section objects that share a common set of values for position and radius.
+First off I just worked out a simple game object module that creates a game object that is formated like many of the modules that I have created for this game thus far. If often end up with a main game state object where I have a sun object that contains the current position of the sun, and an array of section objects that share a common set of values for position and radius.
 
 This game module is then not intended to be a replacement for a game module that has all the features of the game. I just want the basic set of values for the objects that have to do with the position of them relative to a center point or origin.
 
