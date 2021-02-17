@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-02-17 15:42:26
-version: 1.6
+updated: 2021-02-17 15:54:37
+version: 1.7
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself. However for now I would like to make at least a few examples of what can be done with three.js when it comes to making some kind of actual project.
@@ -21,6 +21,8 @@ There is the prim and proper way of going about creating a 3d model of something
 The idea here is to create a javaScript module that will create and return an instance of a [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) which is just a way to pack a whole bunch of Mesh objects into a single group.
 
 So then in this module I just have a bunch of helper methods that create and return mesh objects that are positioned and sized in a way in which when grouped together ends up looking like a biplane. It might be crude, but if I am okay with this kind of look and feel it will get the job done.
+
+An instance of THREE.Group like a Mesh object also inherits from the [Object3d class](/2018/04/23/threejs-object3d/), and as such also has a userData object which is the standard object that is to be used to place app specific data. Such as the current radian value for a prop on a biplane.
 
 ```js
 var Biplane = (function () {
