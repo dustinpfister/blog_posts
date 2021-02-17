@@ -5,20 +5,22 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-02-17 15:24:49
-version: 1.2
+updated: 2021-02-17 15:28:53
+version: 1.3
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself. However for now I would like to make at least a few examples of what can be done with three.js when it comes to making some kind of actual project.
 
-There is the prim and proper way of going about creating a 3d model of something, and that is all fine and good. However it also strikes me as something that would end up eading up a lot of time. So there is also the not so prim and proper way to go about creating a 3d modle of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a Biplane.
+There is the prim and proper way of going about creating a 3d model of something, and that is all fine and good. However it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a Biplane.
 
 <!-- more -->
 
 
 ## 1 - The biplane module
 
-The idea here is to create a javaScript module that will create and return an instance of a THREE.Group which is just a way to pack a whole bunch of Mesh objects into a single group.
+The idea here is to create a javaScript module that will create and return an instance of a [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) which is just a way to pack a whole bunch of Mesh objects into a single group.
+
+So then in this module I just have a bunch of helper methods that create and return mesh objects that are positioned and sized in a way in which when grouped together ends up looking like a biplane. It might be crude, but if I am okay with this kind of look and feel it will get the job done.
 
 ```js
 var Biplane = (function () {
