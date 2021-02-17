@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2021-02-17 12:04:19
-version: 1.25
+updated: 2021-02-17 12:05:58
+version: 1.26
 ---
 
 I like the Die Hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -194,7 +194,7 @@ This method is used to loop over all particles in the particle pool to see if a 
 
 ### 1.5 - A spawn method to activate particles in the pool
 
-Spawn an inactive particle into an active state.
+A particle has actually four kinds of states thus far, one is an inactive state so I will want a spawn method that will set an inactive particle into an active state.
 
 ```js
     // spawn or activate particles
