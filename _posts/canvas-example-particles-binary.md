@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 630
-updated: 2021-02-17 11:52:26
-version: 1.23
+updated: 2021-02-17 12:00:05
+version: 1.24
 ---
 
 I like the Die Hard move franchise, and in the third movie there are several scenes that involve the use of a bomb that is composed of a [binary liquid](https://en.wikipedia.org/wiki/Binary_liquid). One chemical component by itself is not dangerous at all, however if mixed with another, it becomes unstable and can very easily explode.
@@ -255,7 +255,7 @@ Update the pool of particles.
 
 ### 1.7 - The Public API
 
-Here now is the pubic API that consists of my create, and update methods.
+Here now is the pubic API that consists of my create, and update methods that I will be using outside of the module in the main.js file. The create method will not just create an instance of the Particle class, but will create a state object that contains many useful properties including but not limited to a pool of particle class instances.
 
 ```js
     // public API
