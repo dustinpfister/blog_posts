@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:29:48
-version: 1.10
+updated: 2021-02-18 17:35:46
+version: 1.11
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to continuing to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
@@ -16,7 +16,7 @@ Today I think I will continue with my biplane model in [threejs](https://threejs
 
 ## 1 - Biplane Group model
 
-First off is the biplane group that wil create a group of groups where each nested group is an instance of my biplane model. I wrote a post on that yesterday, but I will be getting to the copy of the model in the next section. So then in this section I will then be covering this new model that is actually just a collection of models where each model is one of my little biplane models.
+First off is the biplane group that will create a group of groups where each nested group is an instance of my biplane model. I wrote a post on that yesterday, but I will be getting to the copy of the model in the next section. So then in this section I will then be covering this new model that is actually just a collection of models where each model is one of my little biplane models.
 
 I thought that maybe it would be a good idea to have a set number of biplanes for each biplane group for now when it comes to making something like this. So for now it is just a group of three biplane models each positioned in a circle around the origin point of the group.
 
@@ -86,7 +86,7 @@ var BiplaneGroup = (function () {
 
 ## 2 - Biplane model
 
-Here is the source code of the biplane modle that I am using in the biplane group modle. The source code for this is not all that differnt from what I worked out in yesterdays post. It is just a way of creating a threejs group that is a collection of mesh objects each using the box geomerty constructor to just slap something togeather that looks like a little bi plane.
+Here is the source code of the biplane model that I am using in the biplane group model. The source code for this is not all that different from what I worked out in yesterdays post. It is just a way of creating a threejs group that is a collection of mesh objects each using the box geometry constructor to just slap something together that looks like a little bi plane.
 
 ```js
 var Biplane = (function () {
