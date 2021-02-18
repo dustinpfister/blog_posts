@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 16:51:55
-version: 1.1
+updated: 2021-02-18 16:55:27
+version: 1.2
 ---
 
 Today I think I will continue with my biplane modle in [threejs](https://threejs.org/) by making a model of models. That is to take the biplane module and make another modle that is just a group of these biplane modles. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project.
@@ -15,6 +15,8 @@ Today I think I will continue with my biplane modle in [threejs](https://threejs
 <!-- more -->
 
 ## 1 - Biplane Group model
+
+First off is the biplane group that wil create a group of groups where each nested group is an instance of my bilane modle. I wrote a post on that yesterday, but I will be getting to the copy of the modle in the next section.
 
 ```js
 var BiplaneGroup = (function () {
