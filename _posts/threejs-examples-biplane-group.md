@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:05:36
-version: 1.5
+updated: 2021-02-18 17:06:36
+version: 1.6
 ---
 
 Today I think I will continue with my biplane modle in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane modle that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another modle that is just a group of these biplane modles. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to contining to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
@@ -191,6 +191,8 @@ var Biplane = (function () {
 ```
 
 ## 3 - The main javaScript file
+
+Now for some additional javaScript to make use of this new biplane group modle.
 
 ```js
 (function () {
