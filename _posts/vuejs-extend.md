@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2021-02-18 12:29:46
-version: 1.22
+updated: 2021-02-18 13:23:24
+version: 1.23
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -24,6 +24,8 @@ Whe using vuejs there is the Main Vue constructor that is what I often use to cr
 ### 1.1 - A Basic Example of Vue.extend
 
 First off how about a very basic example of the Vue.extend method, that is just a hello world example. For something like that I would make something that just includes a simple [static template](/2019/05/07/vuejs-template/) and a [data object](/2019/05/18/vuejs-data/) that contains the text value of hello world. So just using the data and template options for starters in a new object, but instead of passing that object to the Vue constructor, I pass it as an argument to the Vue.extend method, and then returned result of this method is a new subclass of the Vue constructor that will contain these options.
+
+I can then use the resulting subclass just like that of the main Vue constructor. I can call it with the new keyword, and then use the vue el option or the mount method as a way to to add a mount point in the hard coded html.
 
 ```html
 <html>
@@ -49,12 +51,15 @@ var Basic = Vue.extend({
         }
     });
 // create an instance of 'Basic' and mount it
-var vm = new Basic();
-vm.$mount('#app');
+var vm = new Basic({
+  el: '#app'
+});
   </script>
   </body>
 </html>
 ```
+
+So then that is the basic idea of the Vue.extend method, it is to make a custom alterative of the main Vue constructor with a bunch of starting options for things like a template.
 
 ## 2 - Vue extend blog post Example
 
