@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2019-11-11 12:16:22
-version: 1.18
+updated: 2021-02-18 12:15:44
+version: 1.19
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -18,6 +18,41 @@ So then the Vue extend method can be used to make custom constructors of Vue tha
 ## 1 - Vue extend and what to know before hand
 
 This is a post on the vuejs global api method vue extend, it is not a getting started post on vuejs, html, or javaScript. I assume that you have at least some experience when it comes to making web applications with javaScript, and are just in the process of getting up to speed with using vuejs as a way to do so when it comes to the use of front end frameworks rather than just vanilla javaScript.
+
+### 1.1 - A Basic Example of Vue.extend
+
+First off how about a very basic example of the Vue.extend method, that is just a hello world example.
+
+```html
+<html>
+  <head>
+    <title>Vue extend example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+// a 'Basic' subclass of Vue created with Vue.extend
+var Basic = Vue.extend({
+        // template for an asset
+        template: '<div>' +
+            '<h1>Basic Subclass Example</h1>' +
+            '<p>{{ mess }}</p>'+
+        '</div>',
+        // data
+        data: function () {
+            return {
+                mess: 'Hello World'
+            }
+        }
+    });
+// create an instance of 'Basic' and mount it
+var vm = new Basic();
+vm.$mount('#app');
+  </script>
+  </body>
+</html>
+```
 
 ## 2 - Vue extend blog post Example
 
