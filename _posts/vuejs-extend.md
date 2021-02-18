@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2021-02-18 12:27:08
-version: 1.21
+updated: 2021-02-18 12:29:46
+version: 1.22
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -23,7 +23,7 @@ Whe using vuejs there is the Main Vue constructor that is what I often use to cr
 
 ### 1.1 - A Basic Example of Vue.extend
 
-First off how about a very basic example of the Vue.extend method, that is just a hello world example. For something like that I would make something that just includes a simple [static template](/2019/05/07/vuejs-template/) and a [data object](/2019/05/18/vuejs-data/) that contains the text value of hello world.
+First off how about a very basic example of the Vue.extend method, that is just a hello world example. For something like that I would make something that just includes a simple [static template](/2019/05/07/vuejs-template/) and a [data object](/2019/05/18/vuejs-data/) that contains the text value of hello world. So just using the data and template options for starters in a new object, but instead of passing that object to the Vue constructor, I pass it as an argument to the Vue.extend method, and then returned result of this method is a new subclass of the Vue constructor that will contain these options.
 
 ```html
 <html>
