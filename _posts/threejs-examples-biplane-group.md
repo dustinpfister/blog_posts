@@ -5,20 +5,20 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:23:45
-version: 1.8
+updated: 2021-02-18 17:26:12
+version: 1.9
 ---
 
-Today I think I will continue with my biplane modle in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane modle that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another modle that is just a group of these biplane modles. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to contining to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
+Today I think I will continue with my biplane model in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to continuing to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
 
 
 <!-- more -->
 
 ## 1 - Biplane Group model
 
-First off is the biplane group that wil create a group of groups where each nested group is an instance of my bilane modle. I wrote a post on that yesterday, but I will be getting to the copy of the modle in the next section. So then in this section I will then be covering this new modle that is actually just a collection of modles where each modle is one of my little biplane modles.
+First off is the biplane group that wil create a group of groups where each nested group is an instance of my biplane model. I wrote a post on that yesterday, but I will be getting to the copy of the model in the next section. So then in this section I will then be covering this new model that is actually just a collection of models where each model is one of my little biplane models.
 
-I thought that maybe it would be a good idea to have a set number of biplanes for each biplane group for now when it comes to making something lke this. So for now it is just a group of three biplane modles each positioned in a circle around the origin point of the group.
+I thought that maybe it would be a good idea to have a set number of biplanes for each biplane group for now when it comes to making something like this. So for now it is just a group of three biplane models each positioned in a circle around the origin point of the group.
 
 
 ```js
@@ -195,9 +195,9 @@ var Biplane = (function () {
 
 ## 3 - The main javaScript file
 
-Now for some additional javaScript to make use of this new biplane group modle. I start off with a scene and a camera like always when many of these examples. When it comes to adding a light source I went with a point light and I also wanted to add at least a little ambient light that works well with the lambert material that I am using with the biplanes.
+Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always when many of these examples. When it comes to adding a light source I went with a point light and I also wanted to add at least a little ambient light that works well with the Lambert material that I am using with the biplanes.
 
-I then went ahead and made three groups of these biplane group modles to which each has three biplanes. In addition each biplane is a group of mesh objects. I have to say that that THREE.group constructor is great for keeping things comparementized for when working out things like this.
+I then went ahead and made three groups of these biplane group models to which each has three biplanes. In addition each biplane is a group of mesh objects. I have to say that that THREE.group constructor is great for keeping things compartmentalized for when working out things like this.
 
 ```js
 (function () {
