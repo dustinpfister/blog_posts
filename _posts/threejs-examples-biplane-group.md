@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:26:12
-version: 1.9
+updated: 2021-02-18 17:29:48
+version: 1.10
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to continuing to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
@@ -195,9 +195,9 @@ var Biplane = (function () {
 
 ## 3 - The main javaScript file
 
-Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always when many of these examples. When it comes to adding a light source I went with a point light and I also wanted to add at least a little ambient light that works well with the Lambert material that I am using with the biplanes.
+Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always when many of these examples. When it comes to adding a light source I went with a [point light](/2019/06/02/threejs-point-light) and I also wanted to add at least a little [ambient light](/2018/11/02/threejs-ambientlight/) that works well with the Lambert material that I am using with the biplanes.
 
-I then went ahead and made three groups of these biplane group models to which each has three biplanes. In addition each biplane is a group of mesh objects. I have to say that that THREE.group constructor is great for keeping things compartmentalized for when working out things like this.
+I then went ahead and made three groups of these biplane group models to which each has three biplanes. In addition each biplane is a group of mesh objects. I have to say that that [THREE.group](/2018/05/16/threejs-grouping-mesh-objects/) constructor is great for keeping things compartmentalized for when working out things like this.
 
 ```js
 (function () {
@@ -272,9 +272,9 @@ I then went ahead and made three groups of these biplane group models to which e
 
 ## 4 - Conclusion
 
-This was a fun quick little side projet where I continued with anothert quick simple side project with the biplane model. Still if I can not think of some kind of long term project with this, or something like this I do not think I will be putting to much time into something like this. I have a whole lot of other little side projects like this and some of them should get more attention. 
+This was a fun quick little side project where I continued with another quick simple side project with the biplane model. Still if I can not think of some kind of long term project with this, or something like this I do not think I will be putting to much time into something like this. I have a whole lot of other little side projects like this and some of them should get more attention. 
 
-Maybe if I can think of some cool video type project to create with threejs that will help me get on track with continuing with this sort of thing. That is to make a whole bunch of other simple modles like this some of which are just modles of modles like in this post, and create a sece that I can export as a video file.
+Maybe if I can think of some cool video type project to create with threejs that will help me get on track with continuing with this sort of thing. That is to make a whole bunch of other simple models like this some of which are just models of models like in this post, and create a scene that I can export as a video file.
 
-Another idea is to start to create some very basic, yet maybe fun game out of modles like this. That sort of thing might prove to be very time consuming though, and I all ready have a lot of canvas projects that are proving to be that kind of project all ready. So I would like to do soemthign new with threejs maybe if I am going to put more time into this.
+Another idea is to start to create some very basic, yet maybe fun game out of models like this. That sort of thing might prove to be very time consuming though, and I all ready have a lot of canvas projects that are proving to be that kind of project all ready. So I would like to do something new with threejs maybe if I am going to put more time into this.
 
