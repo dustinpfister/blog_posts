@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 438
-updated: 2021-02-16 17:23:34
-version: 1.10
+updated: 2021-02-18 12:34:33
+version: 1.11
 ---
 
 The [vue set](https://vuejs.org/v2/api/#Vue-set) global api method in vuejs can be used to set a property of a reactive object. In other words it is a way to add a property to an object in the data of a Vue constructor instance, and have the view update when a change happens to that property. Many times this should happen automatically, but in some cases it might not when it comes to nested objects.
@@ -69,7 +69,7 @@ In any case those are the two options make the property reactive if it is not to
 
 ## 2 - A word on setters
 
-The vue set method works by making use of a native javaScript feature known as a setter. There is also another native feature in javaScript called a getter also. If you are not familor with getters and setters in native javaScript it might be a good idea to play around with a few simple examples of these native javaScript features in order to get a better idea of how live objects work in vuejs.
+The vue set method works by making use of a native javaScript feature known as a setter. There is also another native feature in javaScript called a getter also. If you are not familiar with getters and setters in native javaScript it might be a good idea to play around with a few simple examples of these native javaScript features in order to get a better idea of how live objects work in vuejs.
 
 ```js
 
@@ -87,4 +87,4 @@ setInterval(function(){
 
 ## 3 - Conclusion
 
-So that is it for now when it omes to the vue set method.
+So that is it for now when it comes to the vue set method, there is only so much to write about it for now at least anyway. When I get around to running into problems where I need to use the vue set method I am sure I will get around to expanding this post more with additional examples.
