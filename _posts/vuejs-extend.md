@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 439
-updated: 2021-02-18 13:23:24
-version: 1.23
+updated: 2021-02-18 13:35:15
+version: 1.24
 ---
 
 The [vue extend](https://vuejs.org/v2/api/#Vue-extend) method can be used to extend the base Vue class constructor function and return a custom constructor of vuejs that is a sub class of Vue. It is similar to but still very much different from the [vue component](/2019/05/16/vuejs-component/) method that is more of an asset management method rather than a method that will create a custom vuejs constructor all together.
@@ -60,6 +60,50 @@ var vm = new Basic({
 ```
 
 So then that is the basic idea of the Vue.extend method, it is to make a custom alterative of the main Vue constructor with a bunch of starting options for things like a template.
+
+### 1.2 - A bit more on the data option
+
+What is great about this is that I can create a kind of defalt data object, and then add to it, or change things with an instance of the subclass. Say I use Vue.extend to create a subclass that has a starting data object with an array of items, and another property of the data object that is a current index for an item in that array of items. When I then go to create an instance of this subclass I can then use the data option to set a diferent starting index value. In addition I can use lifecycle hooks like the created hook as a way to add additional items.
+
+```html
+<html>
+  <head>
+    <title>Vue extend example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+// a 'Basic' subclass of Vue created with Vue.extend
+var Basic = Vue.extend({
+        // template for an asset
+        template: '<div>' +
+            '<h1>Items Example</h1>' +
+            '<p>Item Index: {{ currentIndex }}, value:  {{ items[currentIndex] }}</p>'+
+        '</div>',
+        // data
+        data: function (a) {
+            return {
+                currentIndex: 0,  // a default index
+                items: ['one', 'two', 'three'] // a default set of items
+            }
+        }
+    });
+// create an instance of 'Basic' and mount it
+var vm = new Basic({
+  el: '#app',
+  data: {
+    currentIndex: 3 // set a starting index other than 0
+  },
+  created: function(){
+      // add an additional Item
+      this.$data.items.push('four');
+  }
+});
+  </script>
+  </body>
+</html>
+```
 
 ## 2 - Vue extend blog post Example
 
