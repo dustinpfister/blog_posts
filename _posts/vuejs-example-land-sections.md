@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-15 16:52:00
-version: 1.19
+updated: 2021-02-18 13:14:05
+version: 1.20
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -622,7 +622,7 @@ Vue.component('sun-ui-canvas',{
 
 ## 5 - The html
 
-I then just need a little html and css to pull this all together.
+I then just need a little html and css to pull this all together. In the html file I of course need to have a script tag that links to vuejs, however I also need script tags for my utils lib, the mixins, and all the additional components that I will be using. In addition I am also using a link element to link to an extremal css file where I have all my css classes that I will be using for the various templates.
 
 
 The html:
