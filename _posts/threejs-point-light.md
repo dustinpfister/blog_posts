@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2019-06-03 12:08:31
-version: 1.9
+updated: 2021-02-18 17:13:26
+version: 1.10
 ---
 
 In three js there is a number of options with it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
@@ -116,3 +116,7 @@ loop = function () {
 };
 loop();
 ```
+
+## 3 - Conclusion
+
+The point like is one of the typical light sources that I like to go with. Of often do like to add an additional mesh to the light so that I know where the light source is while I am at it. The other typical light source that I like to use is the ambient light, which is a way to just have a base amount of light for all the mesh objects in the scene.
