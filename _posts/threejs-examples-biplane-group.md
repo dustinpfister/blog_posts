@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:01:55
-version: 1.4
+updated: 2021-02-18 17:05:36
+version: 1.5
 ---
 
 Today I think I will continue with my biplane modle in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane modle that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another modle that is just a group of these biplane modles. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to contining to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
@@ -260,5 +260,9 @@ var Biplane = (function () {
 
 ## 4 - Conclusion
 
-This was a fun quick little side projet where I continued with anothert quick simple side project with the biplane model. Still if I can not think of some kind of long term project with this, or something like this I do not think I will be putting to much time into something like this. I have a whole lot of other little side projects like this and some of them should get more attention. Maybe if I can think of some cool video type project to create with threejs that will help me get on track with continuing with this sort of thing.
+This was a fun quick little side projet where I continued with anothert quick simple side project with the biplane model. Still if I can not think of some kind of long term project with this, or something like this I do not think I will be putting to much time into something like this. I have a whole lot of other little side projects like this and some of them should get more attention. 
+
+Maybe if I can think of some cool video type project to create with threejs that will help me get on track with continuing with this sort of thing. That is to make a whole bunch of other simple modles like this some of which are just modles of modles like in this post, and create a sece that I can export as a video file.
+
+Another idea is to start to create some very basic, yet maybe fun game out of modles like this. That sort of thing might prove to be very time consuming though, and I all ready have a lot of canvas projects that are proving to be that kind of project all ready. So I would like to do soemthign new with threejs maybe if I am going to put more time into this.
 
