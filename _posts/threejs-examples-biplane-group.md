@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:09:32
-version: 1.7
+updated: 2021-02-18 17:23:45
+version: 1.8
 ---
 
 Today I think I will continue with my biplane modle in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane modle that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another modle that is just a group of these biplane modles. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to contining to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
@@ -195,7 +195,9 @@ var Biplane = (function () {
 
 ## 3 - The main javaScript file
 
-Now for some additional javaScript to make use of this new biplane group modle.
+Now for some additional javaScript to make use of this new biplane group modle. I start off with a scene and a camera like always when many of these examples. When it comes to adding a light source I went with a point light and I also wanted to add at least a little ambient light that works well with the lambert material that I am using with the biplanes.
+
+I then went ahead and made three groups of these biplane group modles to which each has three biplanes. In addition each biplane is a group of mesh objects. I have to say that that THREE.group constructor is great for keeping things comparementized for when working out things like this.
 
 ```js
 (function () {
@@ -217,6 +219,11 @@ Now for some additional javaScript to make use of this new biplane group modle.
                 color: 'white'
             })));
     scene.add(pointLight);
+ 
+    // add AmbientLight
+    var light = new THREE.AmbientLight(0xffffff);
+    light.intensity = 0.1;
+    scene.add(light);
  
     var biGroups = [];
  
