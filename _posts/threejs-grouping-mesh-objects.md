@@ -5,25 +5,25 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2018-05-16 21:59:48
-version: 1.7
+updated: 2021-02-18 17:35:46
+version: 1.8
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or more on to something new. I do not care to move on away from three.js, this project is worth a serious investment of time to get solid with for sure. So with that said, it might be time for me to get into animation with three.js. One way is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other, and have the whole group move as well. Or for whatever the reason it might be a good idea to group two or more objects together, so this post today will be about the three.js [Group](https://threejs.org/docs/index.html#api/objects/Group) constructor.
 
 <!-- more -->
 
-## What to know
+## 1 - What to know
 
 This is not a post on three.js for beginners, I have a post for that, and if you are new you might want to [start there](/2018/04/04/threejs-getting-started/). This is an advanced post on three.js that has to do with grouping two or more [Mesh Object](/2018/05/04/threejs-mesh/) instances into a single Group that can then be worked with by itself in a scene. I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general. 
 
 I also often try to mention that three.js is a project where the version number matters a great deal, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
 
-## THREE.Object3D vs THREE.Group
+## 2 - THREE.Object3D vs THREE.Group
 
 When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. As far as I can tell there is not much of any difference other than it makes the readability of your code more clear.
 
-## Basic Mesh Group example in three.js
+## 3 - Basic Mesh Group example in three.js
 
 For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and groups them all together using THREE.Group. I just used the simple plain old Box Geometry constructor for the geometry, and positioned them all around the origin, and have them all face the origin as well.
 
@@ -108,7 +108,7 @@ Each time I make a new Mesh I just add it to the instance of group rather than S
     ());
 ```
 
-## Example of grouping with a camera
+## 4 - Example of grouping with a camera
 
 Grouping is basically whenever you use the add property of anything that inherits from the Object3D class. This includes things like cameras, as such I can use the add method to add things like lights, and a Mesh, and position them relative to the camera. Say for example I want to have a point light on top of camera, and a Mesh that is always in front of the camera as it moves around in a scene, no problem.
 
@@ -141,7 +141,7 @@ camera.add(withCamera);
 scene.add(camera);
 ```
 
-## Using Grouping when making a Model
+## 5 - Using Grouping when making a Model
 
 Grouping comes in handy when I want to make a Constructor function that will include a group of Mesh Object instances that can be added to a Scene that will constitute some kind of model. The group will typically be one of many properties of the constructor, and will also contain methods that I can use on that group.
 
@@ -342,6 +342,8 @@ So I would use it in a main.js file to make something like this:
 
 This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the [Object3D](/2018/04/23/threejs-object3d/) methods to play with that will effect the group as a whole when used.
 
-## Conclusion
+## 6 - Conclusion
 
-Grouping is a useful in three.js projects, don't forget that it is also something that you can do with anything in three.js that inherits from the Object3D class. So not only can you use grouping with Mesh Object instances, it can also be done with things like lights, and cameras.
+Grouping is a useful in three.js projects, don't forget that it is also something that you can do with anything in three.js that inherits from the Object3D class. So not only can you use grouping with Mesh Object instances, it can also be done with things like lights, and cameras, and also even additional groups.
+
+One thing that might be work checking out next is one of my threejs example posts, [including one where I have made a crude model of sorts that is a group of groups where each nested group is a bunch of mesh objects that from a biplane](/2021/02/18/threejs-examples-biplane-group/) of sorts. There are all kinds of things that can be done with threejs groups that are pretty fun, and so far I have only scratched the surface of what can be done.
