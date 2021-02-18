@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 688
-updated: 2021-02-17 12:26:29
-version: 1.8
+updated: 2021-02-18 12:31:14
+version: 1.9
 ---
 
 This will be a quick post on the [vuejs model](https://vuejs.org/v2/api/#v-model) directive that might need to be used now and then when doing something with input elements in a template. The model directive may not need to always be used when working out an interface in a template but I have found that I need to use it with input, select, and text area tags. The vue model directive will make it so that you have [two way bindings](https://vuejs.org/v2/guide/forms.html) between input tags, and a value in the data object of a vue instance. So that when something changes in the data object, that change will effect the value of an input tag, and that if the user changes the value in the input tag that will change the value in the data object.
@@ -63,7 +63,7 @@ new Vue({
 </html>
 ```
 
-So when this example is up and running when I make to a change to any of the values in the input tags that in turn will update the data object value for the value that the input tag is bound to. This will result in an update hook being fired, which in turn will call the add method, which will update the value of the c data object property. So the basic idea is there the value of a text input element is bound to the value of a data object propery any change to the input tag value will effect the value in the data object.
+So when this example is up and running when I make to a change to any of the values in the input tags that in turn will update the data object value for the value that the input tag is bound to. This will result in an update hook being fired, which in turn will call the add method, which will update the value of the c data object property. So the basic idea is there the value of a text input element is bound to the value of a data object property any change to the input tag value will effect the value in the data object.
 
 ## 2 - Conclusion
 
