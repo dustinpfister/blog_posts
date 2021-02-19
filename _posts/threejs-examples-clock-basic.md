@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2019-12-16 18:19:56
-version: 1.12
+updated: 2021-02-19 15:01:13
+version: 1.13
 ---
 
-I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a [threejs example](https://threejs.org/examples/) that is a javaScript powered basic clock.
+I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said threejs is certainly a fun frameworks, and also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) that is a javaScript powered basic clock.
 
 <!-- more -->
 
