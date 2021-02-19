@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-02-19 15:28:57
-version: 1.7
+updated: 2021-02-19 15:29:34
+version: 1.8
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modleing in a client side javaScript enviorment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -40,6 +40,8 @@ If I get a solid idea for the core of what the game should be I might like to ex
 This is a typical example when it comes to starting to get a list like this togeather. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originalit actually whne it comes to making some kind of interesting animation with a basic tree model actually.
 
 ## [ 6 - Waves](/2018/11/14/threejs-examples-waves/) 
+
+The is a basic example of some waves.
 
 ## 7 - Conclusion
 
