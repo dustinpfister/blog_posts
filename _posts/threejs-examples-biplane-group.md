@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-18 17:35:46
-version: 1.11
+updated: 2021-02-19 15:01:12
+version: 1.12
 ---
 
-Today I think I will continue with my biplane model in [threejs](https://threejs.org/) by making a model of models. That is to take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to continuing to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
+Today I think I will continue with my biplane model in [threejs](https://threejs.org/) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/). That is to take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to continuing to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
 
 
 <!-- more -->
