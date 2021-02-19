@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2020-05-25 15:57:42
-version: 1.24
+updated: 2021-02-19 12:44:57
+version: 1.25
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. In goes without saying that canvas can be used in the creation and maintenance of more practical projects, but that is not what this example will be for sure. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
@@ -220,9 +220,62 @@ draw.disp = function (state, ctx) {
     ctx.font = '10px arial';
     ctx.fillText('hits: ' + grid.hits + '; kills: ' + grid.kills, 10, 10);
 };
+// draw version number
+draw.ver = function (state, ctx) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + state.ver, 5, state.canvas.height - 15);
+};
 ```
 
-## 4 - Main
+## 6 - The utils lib
+
+Like many of my other canvas examples I add a general utility library. This is a custom set of functions for each canvas example that will change a little from one example to another. However often there is a few functions that will show up accross just about all canvas examples also.
+
+```js
+var utils = {};
+ 
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+```
+
+## 5 - Main
 
 Now that I have my grid class, and drawing methods together I can now tie everything together with a main app loop, and other code that sets things up for the first time. For now I do not have a main game state module for this example, in time if I put some more time into this project that might change at some point in the future. So in the main.js file here I just have an object literal that is functioning as the start of a game state object of sorts.
 
@@ -231,7 +284,13 @@ Here in the main.js file I create a canvas element with the create element metho
 ```js
 // SETUP CANVAS
 (function () {
+    var canvasObj = utils.createCanvas();
+    var canvas = canvasObj.canvas;
+    var ctx = canvasObj.ctx;
     var state = {
+        ver: '0.0.0',
+        canvas: canvas,
+        ctx: ctx,
         grid: new UnitGrid({
             xOffset: 15,
             yOffset: 25,
@@ -239,20 +298,10 @@ Here in the main.js file I create a canvas element with the create element metho
             cellWidth: 9
         })
     };
-    // create and append canvas element, and get 2d context
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d'),
-    container = document.getElementById('gamearea') || document.body;
-    container.appendChild(canvas);
-    // set width and height
-    canvas.width = 320;
-    canvas.height = 240;
     // single event handler
     canvas.addEventListener('click', function (e) {
-        var bx = e.target.getBoundingClientRect(),
-        x = e.clientX - bx.left,
-        y = e.clientY - bx.top;
-        var cell = state.grid.getCellFromPoint(x, y);
+        var pos = utils.getCanvasRelative(e);
+        var cell = state.grid.getCellFromPoint(pos.x, pos.y);
         if (cell.enemy) {
             state.grid.kills += 1;
             cell.enemy = false;
@@ -267,6 +316,7 @@ Here in the main.js file I create a canvas element with the create element metho
         draw.cls(ctx, canvas);
         draw.gridCellLines(state.grid, ctx);
         draw.disp(state, ctx);
+        draw.ver(state, ctx);
     };
     loop();
 }
@@ -281,17 +331,18 @@ Now to tie everything that I wend over with just a little html.
         <title>canvas example grid defense</title>
     </head>
     <body>
-        <div id="gamearea"></div>
-        <script src="grid.js"></script>
-        <script src="grid_unit.js"></script>
-        <script src="draw.js"></script>
-        <script src="main.js"></script>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/grid.js"></script>
+        <script src="./lib/grid_unit.js"></script>
+        <script src="./lib/draw.js"></script>
+        <script src="./main.js"></script>
     </body>
 </html>
 ```
 
 When this canvas example is up, running and working as expected the result is a very basic defense game of sorts. Display objects move from one side of the canvas to the other, and when I click on one it gets destroyed. So far it is not all that much fun or interesting, but oddly enough there are many such games like this that are fun and interesting that just have a little more going on then just this.
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So for now this canvas example of a basic defense game works okay, but there is much more to be done before this really starts to feel like a game. For example I would want to have it so the player can build some defense structures rather than just having it so the player clicks on the incoming enemy objects. I would also want to add some kind of in game money system for this also. Then of course there is a whole lot more work to do when it comes to skinning the display objects and so forth. Still for one of my canvas example posts I do aim to keep things simple, and the basic idea that I had in mind is there.
