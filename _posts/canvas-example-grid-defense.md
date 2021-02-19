@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2021-02-19 12:44:57
-version: 1.25
+updated: 2021-02-19 12:49:25
+version: 1.26
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. In goes without saying that canvas can be used in the creation and maintenance of more practical projects, but that is not what this example will be for sure. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
@@ -17,6 +17,8 @@ There is of course diving into the more complex ideas that I have for canvas exa
 
 <!-- more -->
 
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/grid-defense/0.0.0/pkg.js"></script>
 
 ## 1 - A grid.js module to use with the grid defense canvas example
 
