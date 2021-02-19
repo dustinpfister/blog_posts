@@ -5,15 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-02-19 15:01:13
-version: 1.10
+updated: 2021-02-19 15:44:53
+version: 1.11
 ---
 
 So this is another [three js example](/2021/02/19/threejs-examples/) post this time I made a quick model of a tree. This model makes use of the three js built in cone geometry constructor, and groups to make collections of cones sized and positioned in such a way that they look like evergreen trees.
 
+This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger sense that contains trees, and also other things going on in the sense in addition to just this.
+
 <!-- more -->
 
-## 1 - Before continuting with this three js example post
+## 1 - Before continuing with this three js example post
 
 This is a post on using the javaScript library three js that can be used to work with 3d objects. This is not a getting started post on three js as well as the many constructors and so forth in the library. It is assumed that you have at least some background with the basics when it comes to suing three js as well as javaScript programing in general. If not you might have a hard time following the content of this post.
 
