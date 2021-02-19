@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-02-19 15:01:14
-version: 1.1
+updated: 2021-02-19 15:07:38
+version: 1.2
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modleing in a client side javaScript enviorment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -16,6 +16,8 @@ I have wrote a few posts on some things that are a set of current standing three
 <!-- more -->
 
 ## [ 1 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
+
+The first example on this list is an example where I am making a simple biplane model to play around with. I am not taking the time to work out a serious modle rather, but just slaping a bunch of box geometeries togeather into an instance of THREE.Group. I am then using the Object3d.userData object to append some properties to an instance of one of these biplane modles. The module that is used to create one of these is also the module that I use to update one of theme also.
 
 ## [ 2 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/) 
 
