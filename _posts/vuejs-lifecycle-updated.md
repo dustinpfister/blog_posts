@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2021-02-19 11:13:59
-version: 1.16
+updated: 2021-02-19 11:17:42
+version: 1.17
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -125,26 +125,9 @@ Getting back to the main event of this post with the updated hook, it should go 
 
 ## 3 - vue updated array example and force update
 
-In this section I will be going over an example that is again the beginnings of a simple idle game. this will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually. However it will not happen right away only after each time the data object is updated will a log array of objects be tabulated and added to main money property of the data object.
+In this section I will be going over an example that is again the beginnings of a simple idle game example. Something that I seem to keep trying to get on tract with but never get togetaher in a new and interesting way. Anyway this example will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually. However it will not happen right away only after each time the data object is updated will a log array of objects be tabulated and added to main money property of the data object.
 
 This example involves the use of an array as a data object property. The tricky thing about arrays as data properties is that adding and removing elements will not trigger an update of the vue, so a force update is needed.
-
-So lets start off with the html.
-
-```html
-<html>
-  <head>
-    <title>vue updated lifecycle example</title>
-    <script src="/js/vuejs/2.6.10/vue.js"></script>
-  </head>
-  <body>
-  <div id="demo"></div>
-  <script src="array.js"></script>
-  </body>
-</html>
-```
-
-Here is the javaScript of the example
 
 ```js
 var app = new Vue({
@@ -155,30 +138,15 @@ var app = new Vue({
         '<input type="button" value="work" v-on:click="work" >' +
         '</div>',
         data: {
-            money: 0,
-            ticks: 0,
-            works: 0,
-            log: []
+            money: 0, // game money
+            ticks: 0, // update tick count
+            works: 0, // a count of works
+            log: []   // a log of work objects
         },
         // what to do on an update
         updated: function () {
             var data = this.$data;
-            if (data.log.length === 1) {
-                data.money += data.log[0].money;
-                data[data.log[0].type] += 1;
-            }
-            if (data.log.length > 1) {
-                data.money += data.log.reduce(function (acc, obj) {
-                    acc = typeof acc === 'object' ? Number(acc.money) : acc;
-                    return acc + Number(obj.money);
-                });
-                data.log.forEach(function (obj) {
-                    data[obj.type] += 1;
-                });
-            }
-            if (data.log.length >= 1) {
-                data.log = [];
-            }
+            this.processWorkLog();
         },
         methods: {
             tick: function () {
@@ -195,6 +163,27 @@ var app = new Vue({
                     money: 25
                 };
                 this.$data.log.push(obj);
+            },
+            processWorkLog: function(){
+                var data = this.$data;
+                // if there are one or more objects in log
+                if (data.log.length === 1) {
+                    data.money += data.log[0].money;
+                    data[data.log[0].type] += 1;
+                }
+                if (data.log.length > 1) {
+                    data.money += data.log.reduce(function (acc, obj) {
+                        acc = typeof acc === 'object' ? Number(acc.money) : acc;
+                        return acc + Number(obj.money);
+                    });
+                    data.log.forEach(function (obj) {
+                        data[obj.type] += 1;
+                    });
+                }
+                // clear out the log
+                if (data.log.length >= 1) {
+                    data.log = [];
+                }
             }
         }
     });
