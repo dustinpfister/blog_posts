@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2019-11-11 17:20:38
-version: 1.10
+updated: 2021-02-19 10:10:30
+version: 1.11
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -64,7 +64,62 @@ new Vue({
 </html>
 ```
 
-## 2 - vue updated array example and force update
+## 2 - Basic Array example
+
+Now for a basic example of the updated hook that makes use of an array in the data object.
+
+```js
+new Vue({
+    el: '#demo',
+    template: '<div style="background:gray;padding:10px;">' +
+        '<h3>Money: {{ money }}</h3>'+
+        '<h3> works:</h3>' +
+        '<button v-on:click="startAWork">Start a Work</button> ' +
+        '<button v-on:click="processWorks">Process Works</button>' +
+        '<div style="background:#afafaf;padding:10px;margin:10px;">' +
+            '<div v-for="w in works" >id: {{w.id}}, worth: {{ w.worth }}</div>' +
+        '</div>' +
+    '</div>',
+    data: {
+        money: 0,
+        count: 0,
+        maxWorks: 10,
+        works: []   // a log of work objects
+    },
+    // THE UPDATED HOOK
+    updated: function () {
+        var dat = this.$data;
+        // process the works if we hit the max
+        if(dat.works.length == dat.maxWorks){
+            this.processWorks();
+        }
+    },
+    methods: {
+        // process the array of work objects
+        processWorks: function(){
+            var dat = this.$data;
+            dat.works.forEach(function(w){
+                dat.money += w.worth;
+            });
+            dat.works = [];
+        },
+        // start a work object
+        startAWork: function () {
+            var dat = this.$data;
+            if(dat.works.length < dat.maxWorks){
+                var w = {
+                    id: dat.count,
+                    worth: 1
+                };
+                dat.count += 1;
+                dat.works.push(w);
+            }
+        }
+    }
+});
+```
+
+## 3 - vue updated array example and force update
 
 In this section I will be going over an example that is again the beginnings of a simple idle game. this will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually. However it will not happen right away only after each time the data object is updated will a log array of objects be tabulated and added to main money property of the data object.
 
@@ -145,6 +200,6 @@ setInterval(function () {
 }, 1000);
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 The the vue update hook can be useful for defining some logic that will fire each time a reactive data object updates, or in the event that something is not reactive when the force update method is called. There are many other hooks that fire over the course of a vue instances life span such as the created hook that will fire once the vue instance is created buy not mounted to html, and then there is of course a hook for that also. Hooks come in handy when working out a custom vue constructor of component, I use them all the time where and when needed.
