@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-02-19 15:22:39
-version: 1.5
+updated: 2021-02-19 15:27:00
+version: 1.6
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modleing in a client side javaScript enviorment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -30,6 +30,10 @@ This is another exmaple of a modle but this time around I experamented with crea
 This is just a Basic clock example which is another kind of example that I like to make when working with a new framework like threejs or any kind of canvas framework. Clocks are nice becuase they are ganeraly easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting direction with it.
 
 ## [ 4 - Land Sections](/2021/02/15/threejs-examples-land-sections/) 
+
+This is an example that I worked out that is an attempt at a 3d view for my Mr Sun game idea to which I have many prototypes for. There is also a vuejs example that I have started where I am focusing more so on what the core of the game logic should be while not putting to much into graphics. I also have a few canvas examples on Mr Sun where I ahve started simple 2d views for the game, and have all ready staretd many forks off of the general idea of the game.
+
+If I get a solid idea for the core of what the game should be I might like to experament with a 3d view for the game, so this example is just that.
 
 ## [ 5 - Tree](/2019/07/30/threejs-examples-tree/) 
 
