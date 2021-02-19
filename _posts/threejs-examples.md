@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-02-19 15:20:00
-version: 1.4
+updated: 2021-02-19 15:22:39
+version: 1.5
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modleing in a client side javaScript enviorment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -26,6 +26,8 @@ The first example on this list is an example where I am making a simple biplane 
 This is another exmaple of a modle but this time around I experamented with creating a modle that is a modle of modles. This is taking the biplane modle that I made and create a new modle that is just working with a collection of these biplane modles.
 
 ## [ 3 - A Basic Clock Example](/2019/12/16/threejs-examples-clock-basic/)
+
+This is just a Basic clock example which is another kind of example that I like to make when working with a new framework like threejs or any kind of canvas framework. Clocks are nice becuase they are ganeraly easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting direction with it.
 
 ## [ 4 - Land Sections](/2021/02/15/threejs-examples-land-sections/) 
 
