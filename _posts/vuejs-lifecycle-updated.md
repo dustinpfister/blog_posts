@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2021-02-19 11:08:31
-version: 1.15
+updated: 2021-02-19 11:13:59
+version: 1.16
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -119,9 +119,9 @@ new Vue({
 });
 ```
 
-The use of an array in a data object goes hand in hand with the v-for directive when working out a simple static temaple for an example such as this.
+The use of an array in a data object goes hand in hand with the v-for directive when working out a simple static temaple for an example such as this. I am also starting to break things down into many fine grain methods that I can make use of in the methods object. I could go on in detail about these options two when making a vue instance but that would be off topic, I have wrote posts on the [v-for directive](/2019/05/21/buejs-for/), and the [methods option](/2019/05/20/vuejs-method/) anyway so no need to get to far off topic here.
 
-However the main event here is the updated hook, it is a good place to check something each time the data object updates. However some times a chnage to the data object will not trigger an updated hook. The main reason why that might be is becuase a nested value in the data object is not reactive. So maybe we should take a moment to look at a few more examples that make use of the updated hook to get a better sense of how to address isshues where the updated hook is not working as exspected.
+Getting back to the main event of this post with the updated hook, it should go without saying that the updated hook is a good place to check something each time the data object updates. However some times a chnage to the data object will not trigger an updated hook. The main reason why that might be is becuase a nested value in the data object is not reactive. So maybe we should take a moment to look at a few more examples that make use of the updated hook to get a better sense of how to address isshues where the updated hook is not working as exspected.
 
 ## 3 - vue updated array example and force update
 
