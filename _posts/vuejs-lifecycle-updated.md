@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2021-02-19 10:10:30
-version: 1.11
+updated: 2021-02-19 10:19:08
+version: 1.12
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -66,7 +66,9 @@ new Vue({
 
 ## 2 - Basic Array example
 
-Now for a basic example of the updated hook that makes use of an array in the data object.
+Now for a basic example of the updated hook that makes use of an array in the data object. In the array I have a bunch of work objects where each object repersents some kind of work that was prefromed that is worth a certin about of money. Clicking a start a work button will create a new work object for the array, but this will only continue until a max work value is reached. There is then a process works button that will process the array of work objects selling each for an amount of money to which each object is worth. However I am also using the updated hook as a way to check the array of work objects to see if the max has been reached at which point that will also result in the process works method being called.
+
+
 
 ```js
 new Vue({
