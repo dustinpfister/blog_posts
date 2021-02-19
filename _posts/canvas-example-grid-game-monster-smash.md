@@ -5,11 +5,13 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 695
-updated: 2020-08-30 08:23:22
-version: 1.9
+updated: 2021-02-19 11:49:43
+version: 1.10
 ---
 
-I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on a project that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts. I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
+I will be making at least a few more [canvas examples](/2020/03/23/canvas-example/) this summer, some of which I might continue developing if some people show interest in them. Last week I started working on one of many game prototype ideas that I am currently just calling Monster Smash. The general idea is not clear, aside from just some very vague concepts that have to do with just moving a player object inside a grid, and have enemies come to the location. I am thinking somewhat in terms of a kind or RPG style game like Dragon warier, or the early pokemon games, but I am not so sure yet. That is okay though I can ways fork off of what I work out here as long as I get the very basic idea of what I want working.
+
+I would like to have at least one canvas example that is just a nice little RPG style game where you move a player object around and battle enemies and level up. Nothing to ground breaking or exciting, just a nice little RPG like that of dragon warrior maybe.
 
 <!-- more -->
 
