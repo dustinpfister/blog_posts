@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2021-02-19 10:19:08
-version: 1.12
+updated: 2021-02-19 10:59:52
+version: 1.13
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
@@ -68,8 +68,6 @@ new Vue({
 
 Now for a basic example of the updated hook that makes use of an array in the data object. In the array I have a bunch of work objects where each object repersents some kind of work that was prefromed that is worth a certin about of money. Clicking a start a work button will create a new work object for the array, but this will only continue until a max work value is reached. There is then a process works button that will process the array of work objects selling each for an amount of money to which each object is worth. However I am also using the updated hook as a way to check the array of work objects to see if the max has been reached at which point that will also result in the process works method being called.
 
-
-
 ```js
 new Vue({
     el: '#demo',
@@ -120,6 +118,10 @@ new Vue({
     }
 });
 ```
+
+The use of an array in a data object goes hand in hand with the v-for directive when working out a simple static temaple for an example such as this.
+
+However the main event here is the updated hook, it is a good place to check something each time the data object updates. However some times a chnage to the data object will not trigger an updated hook. The main reason why that might be is becuase a nested value in the data object is not reactive. So maybe we should take a moment to look at a few more examples that make use of the updated hook to get a better sense of how to address isshues where the updated hook is not working as exspected.
 
 ## 3 - vue updated array example and force update
 
