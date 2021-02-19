@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-02-18 17:51:41
-version: 1.12
+updated: 2021-02-19 16:07:36
+version: 1.13
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. 
@@ -23,7 +23,7 @@ This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#A
 
 ## 2 - Basic example of ambient light
 
-Setting up some ambient light for a project is not to hard at all. I just need to call the THREE.AmbientLight constructor, and pass it a color value that will be used for the color of the AmbientLight.
+Setting up some ambient light for a project is not to hard at all. I just need to call the THREE.AmbientLight constructor, and pass it a color value that will be used for the color of the AmbientLight. I will then want some kind of mesh to look at that makes use of a material that will respond to light. One example of this kind of material would be the standard material, but there are additional alternatives such as the Lambert material. In any case for this example at least I just went with a simple cube geometry and the standard material as a way to skin it.
 
 ```js
 // SCENE
