@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-02-19 15:01:13
-version: 1.14
+updated: 2021-02-19 15:56:50
+version: 1.15
 ---
 
-So I wanted to start making some posts on [three.js](/2021/02/19/threejs-examples/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about  helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
+So I wanted to start making some posts on [three.js](/2021/02/19/threejs-examples/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
+
+So this threejs example might be a good starting point when it comes to figuring out how to go about creating a custom geometry with a little javaScript code.
 
 <!-- more -->
 
@@ -19,7 +21,7 @@ This is a post on a three.js example where I made some waves. In this example I 
 
 ### 1.1 - version numbers matter
 
-When working out this example I was using revision 98 of three.js
+When working out this example for the first time I was using revision 98 of three.js. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
 
 ## 2 - The wave Example
 
