@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-02-19 16:12:57
-version: 1.14
+updated: 2021-02-19 16:29:17
+version: 1.15
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. 
@@ -67,9 +67,55 @@ There is often at least one additional little thing that I like to do when addin
 var light = new THREE.AmbientLight(0xffffff);
 light.intensity = 0.1;
 scene.add(light);
- 
 ```
 
-## 4 - Conclusion
+## 4 - Add a point light, with ambient light that has reduced intensity
+
+So adding an ambiebnt light is just a way to set a kind of even baseline amount of light. Doing so if often a good idea becuase if there is no light at all then materials that respond to light but do not have any kind of emmessive map will not show up at all. However an ambient light is not a replacement for directional light, I often do add al least one direction light source to a scene such as a point light.
+
+```js
+// SCENE
+var scene = new THREE.Scene();
+ 
+// CAMERA
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(25, 25, 25);
+camera.lookAt(0, 0, 0);
+ 
+// MESH
+var mesh = new THREE.Mesh(
+        new THREE.BoxGeometry(20, 20, 20),
+        new THREE.MeshStandardMaterial({
+            color: 0xff0000
+        }));
+scene.add(mesh);
+ 
+// ADD AmbientLight, and reduce the intensity
+var light = new THREE.AmbientLight(0xffffff);
+light.intensity = 0.1;
+scene.add(light);
+ 
+// ADD a Point Light and position the light away from the camera
+var pointLight = new THREE.PointLight('white');
+pointLight.position.set(20, 30, 40);
+pointLight.add(new THREE.Mesh(
+        new THREE.SphereGeometry(1, 10, 10),
+        new THREE.MeshBasicMaterial({
+            color: 'white'
+        })));
+scene.add(pointLight);
+ 
+// RENDERER
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(320, 240);
+ 
+//renderer.physicallyCorrectLights = true;
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+So this might prove to be a better situstion when it comes to adding a basic lighting setup for a threejs example. However there is maybe even A bit more to cover whe it comes to ambient light. Also it should go without saying that there is a great deal to cover when it comes to additional light sources as well as materials that respond to light. There is also the emmesive maps of amterails also, that is making a mesh that will have its own light as it where.
+
+## 5 - Conclusion
 
 Ambient light is just on way of adding some light to a scene in general. It will result in light evenly hitting all surfaces of all objects in the scene, this differs from other options when it comes to lighting in three.js such as [spotlights](/2018/04/11/threejs-spotlights/) which is a kind of directional light. I do jot often use spotlights though, the light directional light source that I often go with is a [point light](/2019/06/02/threejs-point-light/) that will throw light in all directions from the position at which the point light is placed.
