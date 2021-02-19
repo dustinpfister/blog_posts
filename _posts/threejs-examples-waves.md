@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-02-19 15:56:50
-version: 1.15
+updated: 2021-02-19 16:03:55
+version: 1.16
 ---
 
 So I wanted to start making some posts on [three.js](/2021/02/19/threejs-examples/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -188,3 +188,9 @@ So now it is time to get this all working with the usual scene, camera, and rend
  
     loop();
 ```
+
+## 3 - Conclusion
+
+This example proved to be a nice little example on something that was kind of fun to work out. It has been done before many times, but when it comes to making some kind of real project that is some kind of animation doing something to this effect might prove to be part of the process.
+
+So far all of my real examples are often just making crude yet effective low poly models consisting of just grouping together a bunch of box geometries in mesh objects together. So it is nice to work out something where I am coming up with my own custom little thing with geometry and then using that.
