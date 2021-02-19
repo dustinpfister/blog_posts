@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-02-19 15:07:38
-version: 1.2
+updated: 2021-02-19 15:15:00
+version: 1.3
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modleing in a client side javaScript enviorment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
 
 I have wrote a few posts on some things that are a set of current standing threejs examples though, and as such I think I should have a single post in which I cover each of them a little and of course link to each post whwre I get into the example in greater detail. I seem to do this sort of thing with just about every collection of content that I write for a given framework such as vuejs, or a feature of client side javaScript and HTML 5 such as the canvas element. So of course it would make sense to do the same for threejs also.
+
+There is the official set of [threejs examples](https://threejs.org/examples/) that I think people should check out first and formost before looking at other peoples examples on random blogs such as this one. However there is always looking into yet even more examples of what can be done with threejs and as far as my site is concerned this is the current standing set of examples that I have togeather thus far.
 
 <!-- more -->
 
