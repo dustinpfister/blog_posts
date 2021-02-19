@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-02-19 16:07:36
-version: 1.13
+updated: 2021-02-19 16:12:57
+version: 1.14
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. 
@@ -53,6 +53,10 @@ renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+So the result of this is that I have a red cube in front of me in the canvas element. If I did not have any light at all I would not be able to see the cube. When it comes to materials like the basic material for example that is a material that does not work with light at all. So when using the basic material I can just see whatever the color of a cube is without having to bother with light.
+
+Ambient light is not and end all solution for light though, I often do add at least one additional direction light source such as a point light and position that light in such a way as to be able to see some kind of depth with the cube.
 
 ## 3 - Adjust the intensity
 
