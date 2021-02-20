@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2021-02-20 09:49:14
-version: 1.9
+updated: 2021-02-20 09:59:17
+version: 1.10
 ---
 
 Most of the time when a value in the [data object](/2019/05/18/vuejs-data/) of a Vue Class instance changes, the view will render again automatically, but in some cases it will not. For this reason or any other extending circumstance I might want to force Vue to render the vue again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that. 
@@ -133,9 +133,9 @@ I am still tabulating the total of the data object in the updated lifecycle hook
 
 ### 1.2 - Do away with the updated hook completely
 
-I cant help but thing that the vue force update method is a duck tape solution for something that should not be happening in the first place. I am not sure if changing the state of the vue data object in the updated life cycle hook is a bad practice or not. In any case I think I should be able to if I want to, it is just that seems to be the source of the problem here.
+I cant help but think that the vue force update method is a duck tape solution for something that should not be happening in the first place. I am not sure if changing the state of the vue data object in the updated life cycle hook is a bad practice or not. In any case I think I should be able to if I want to, it is just that does seems to be the source of the problem here.
 
-For this example at least it would say that I do not have to tabulate the number values in the array in the updated hook, and only in the updated hook. I can just pull that logic into the tick method, or a new method of its own.
+For this example at least it would say that I do not have to tabulate the number values in the array in the updated hook, and only in the updated hook. I can just pull that logic into the tick method, or a new method of its own in an effor to keep things more fine grain.
 
 ```js
 var app = new Vue({
@@ -183,9 +183,9 @@ setInterval(function () {
 
 In this revision you will notice that I went back to the template that I was using in the first example in which I needed the force update method to get it to work. However now this too seems to work just fine without any problems and allows for me to avoid having to use the vue force update method. 
 
-The use of the force update method seems to center around the use of nested objects in the vue data object. When I add, remove, or change the state of a nested object it does not always trip and update.
+The use of the force update method seems to center around the use of nested objects in the vue data object. When I add, remove, or change the state of a nested object it does not always trip and update. However often there may be a solution to the problem that will not require the use of the fource update method, and more often than not I think that is the direction that I should go in.
 
 ## 2 - Conclusion
 
-The fource update method will often work okay in most situstions where my vue is not updating when a value in the data object is not changing. However even if it works the use of it still strikes me as a duck tape solution, and I should take a deeper look at what it is that I am doing and why it is that I have to resort to using the fource updated method to begin with.
+The fource update method will often work okay in most situstions where my vue is not updating when a value in the data object is not changing. However even if it works the use of it still strikes me as a quick tempory solution to a propbelm that should really be addressed with some major refactoring of code. So then when I do fine myself using the fource update method I should take a deeper look at what it is that I am doing and why it is that I have to resort to using the fource updated method to begin with.
 
