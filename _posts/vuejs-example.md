@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-12 11:54:59
-version: 1.16
+updated: 2021-02-20 16:24:05
+version: 1.17
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the [vuejs framework itself](/2021/02/05/vuejs/) that are all ready well documented in the official vuejs documentation. Writing such posts are not always such a wast of time mind you often the official documentation might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or language the only thing to do from that point forward is to start to work on some actual projects, rather than finding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on [vuejs examples](https://vuejsexamples.com/) that are full working projects, or at least aim to be anyway.
@@ -70,7 +70,7 @@ I have all ready made many forks of this kind of game when it comes to the canva
 
 ### 2.8 - [Vuejs List Example](/2020/02/18/vuejs-example-list/)
 
-Just a basic list example.
+Just a basic to list app example, nothing to interesting really just wanted to get this one out of the way.
 
 ### 2.9 - [Vuejs Menu Example](/2021/02/01/vuejs-example-menu/)
 
