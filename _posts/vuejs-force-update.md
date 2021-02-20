@@ -1,17 +1,19 @@
 ---
-title: vue force update method to make the view render when it will not
+title: Vue force update method to make the view render when it will not
 date: 2019-11-12 09:52:00
 tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2019-11-12 12:05:55
-version: 1.6
+updated: 2021-02-20 09:14:52
+version: 1.7
 ---
 
-Most of the time when a value in the data object of a Vue Class instance changes the view with render again automatically, but it some cases it will not. For this reason or any other extending circumstance I might want to force Vue to render the vue again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that. 
+Most of the time when a value in the [data object](/2019/05/18/vuejs-data/) of a Vue Class instance changes, the view will render again automatically, but in some cases it will not. For this reason or any other extending circumstance I might want to force Vue to render the vue again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that. 
 
-If I do find myself using it though I cant help but think that I should not be using it, most of the time the reason why a vue is not updating is because an object added to the vue is not reactive, so maybe a better solution would be to make it reactive. So lets look at some examples that make use of the force update method, and some others that do the same thing without the use of the method.
+If I do find myself using it though I cant help but think that I should not be using it, most of the time the reason why a vue is not updating is because an object added to the vue is not reactive, so maybe a better solution would be to make it reactive in that case. So the fource update method should not be a replacement for the [Vue.Observable](/2020/10/05/vuejs-observable/) and [Vue.set](/2019/05/08/vuejs-set/) methods. Simply put there is making sure that all nested objects in the data object that should be reactive are in fact reactive first and formost.
+
+Still there might be some situstions now and then where I will just have to use the fource update method. So lets look at some examples that make use of the force update method, and some others that do the same thing without the use of the method.
 
 <!-- more -->
 
