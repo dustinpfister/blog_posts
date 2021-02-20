@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2019-11-16 11:32:21
-version: 1.12
+updated: 2021-02-20 17:01:41
+version: 1.13
 ---
 
-I would like to expand and update my collection of posts on canvas here, but maybe I should also do the same for my vuejs content also. So for today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock i have not flipped over just yet. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
+For today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock I have not flipped over just yet as I continue to play around with vuejs as a way to go about making a client side javaScript project. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
 
 <!-- more -->
 
@@ -172,3 +172,8 @@ new Vue({
     }
 });
 ```
+
+## 4 - Conclusion
+
+I would like to expand and update my collection of posts on canvas, but maybe I should also do the same for my vuejs content also. I am not really all that fond of doing everything from the ground up each time I start a new project, so it would be nice to make use of some kind of framework when it comes to starting a project. Vuejs is a nice framework, it is not backed with all kinds of features that I am not going to use, and adding features that I want is not so hard.
+ 
