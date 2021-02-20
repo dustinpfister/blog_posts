@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-20 16:24:05
-version: 1.17
+updated: 2021-02-20 16:26:42
+version: 1.18
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the [vuejs framework itself](/2021/02/05/vuejs/) that are all ready well documented in the official vuejs documentation. Writing such posts are not always such a wast of time mind you often the official documentation might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or language the only thing to do from that point forward is to start to work on some actual projects, rather than finding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on [vuejs examples](https://vuejsexamples.com/) that are full working projects, or at least aim to be anyway.
@@ -66,7 +66,7 @@ This vuejs example is just a very basic image editor program.
 
 This is a game where I am working out the core logic for another game that I have been making over and over again when it comes to my collection of canvas examples called Mr Sun. The basic idea of the game is that I have a display object that represents a sun that is surrounded with other display objects that are land section objects. The sun can then be moved around and doing so will of course effect the state of each land section when it comes to things such as temperature.
 
-I have all ready made many forks of this kind of game when it comes to the canvas example, but with vuejs I think I will like to keep it just with this one alone. The focus here should be on the core rules and logic of the game, and not any additional flash, and graphics which often gets in the way of getting logic solid.
+I have all ready made many forks of this kind of game when it comes to the canvas example, but with vuejs I think I will like to keep it just with this one example alone and not go nuts with forks just yet. The focus here should be on the core rules and logic of the game, and not any additional flash, and graphics which often gets in the way of getting logic solid. Simply put I want to just keep working on this one vuejs example until I get a nice simple little fork of the game worked out that I can then cary over with me to my canvas examples when it comes to continuing to work on them.
 
 ### 2.8 - [Vuejs List Example](/2020/02/18/vuejs-example-list/)
 
