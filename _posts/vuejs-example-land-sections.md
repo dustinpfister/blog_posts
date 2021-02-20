@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-20 16:14:11
-version: 1.21
+updated: 2021-02-20 16:18:32
+version: 1.22
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -453,6 +453,8 @@ It is also possible that some of the methods here might be added to the utils li
 
 ### 3.1 - Sun methods
 
+For now I just have some methods that have to do with setting the position of the sun object.
+
 ```js
 Vue.mixin({methods : {
     setA: function(e){
@@ -759,4 +761,4 @@ td{
 
 The basic idea that I had in mind for this vuejs example is up and running all ready, but there is much more work to do in order to get this working the way that I really had in mind. I would like to start adding a lot of features that will help me to get the core logic of the game, and all the features that I want working. This might prove to be a good move for this idea that I had in mind for a game in the sense that I am putting aside everything that has to do with graphics for the most part and am focusing more so on just working out the rules and mechanics of the game.
 
-If all goes well a simple largely text only, or with just simple canvas graphics only type of game should still be fun if I do this right. Then it is just a matter of using what I worked out here in an actually full canvas game.
+If all goes well a simple largely text only, or with just simple canvas graphics only type of game should still be fun if I do this right. Then it is just a matter of using what I worked out here in an actual full canvas game with a 2d view with lots of half way decent art, and animations.
