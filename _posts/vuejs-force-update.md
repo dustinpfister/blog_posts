@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2021-02-20 09:18:17
-version: 1.8
+updated: 2021-02-20 09:49:14
+version: 1.9
 ---
 
 Most of the time when a value in the [data object](/2019/05/18/vuejs-data/) of a Vue Class instance changes, the view will render again automatically, but in some cases it will not. For this reason or any other extending circumstance I might want to force Vue to render the vue again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that. 
@@ -20,7 +20,7 @@ Still there might be some situstions now and then where I will just have to use 
 
 ## 1 - vue force update basic example
 
-One situation in which I have found that I need to use the vue force update method is when I have an array of objects that I am not directly rendering in the template, but is used to update a data object in the updated life cycle hook. Maybe I should not be updating the data object in the life cycle hook, but any any case there are some situations in which I may need to use the force update method and this is one example that comes to mind.
+One situation in which I have found that I need to use the vue force update method is when I have an array of objects that I am not directly rendering in the template, but is used to update a data object value that is used in the template in an updated hook. In such a situation a change or addition to the array will not cause the vue to render agian, unless I call fource update.
 
 ```js
 <html>
@@ -77,6 +77,8 @@ setInterval(function () {
 </html>
 ```
 
+Now maybe I should complatly change the whole way that I am going about doing this. For one thing maube I should update the total value in the tick method rather than in the updated hook. However this is a post on the fource update method so I do have to just come up with a weird situstion in which it might need to be used. Still yes using the fource update method is often an indaction that there is something that I am doing that can and maybe should be done differently. So lets look at some additional examples of this sort of thing that might help avoid using the fource update method.
+
 ### 1.1 - Using the array in the template
 
 If I take the same example, and just use the nums array in the template then the vue force update method is not needed.
@@ -84,9 +86,9 @@ If I take the same example, and just use the nums array in the template then the
 ```js
 var app = new Vue({
         el: '#container',
-        template: '<div>'+
-            '<p>total: {{ total }}</p>'+
-            '<ul><li v-for="obj in nums">{{ obj.n }}</li></ul>'+
+        template: '<div>' +
+            '<h3>total: {{ total }} </h3>' +
+            '<p v-for="obj in nums"> n: {{obj.n}} </p>' + 
         '</div>',
         data: {
             total: 0,
@@ -117,8 +119,7 @@ var app = new Vue({
                         n: 10 + Math.floor(Math.random() * 10)
                     });
                 }
-                // force update is not needed because nums array
-                // is being used in the template
+                // no need to fource update
             }
         }
     });
