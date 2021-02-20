@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2021-02-20 17:01:41
-version: 1.13
+updated: 2021-02-20 17:06:52
+version: 1.14
 ---
 
 For today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock I have not flipped over just yet as I continue to play around with vuejs as a way to go about making a client side javaScript project. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
@@ -172,6 +172,8 @@ new Vue({
     }
 });
 ```
+
+When it comes to vanilla javaScript canvas projects I have a post where I touch base on the [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) in detail. This is a subject that I find that I have to revisit now and then as things can often get messed up when fixing things that have to do with scalling and positioning of a canvas element.
 
 ## 4 - Conclusion
 
