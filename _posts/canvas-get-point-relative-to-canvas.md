@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2020-12-10 11:36:21
-version: 1.15
+updated: 2021-02-20 17:14:57
+version: 1.16
 ---
 
 When starting any kind of canvas project that will involve a user interface I often want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse or touch event to the canvas element to get the position of a pointer event relative to the window for startes. Then I can also use the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method in the body of the event hander off a refernce to the canvas element to get a set of values that include the offset values from the upper left corner to the browser window. Once I do that I can use the object returned by the get bounding client rect method to adjust the client x and y values of the event object in the mouse or touch event handler to get the desired canvas element relative position.
@@ -101,7 +101,55 @@ canvas.addEventListener('touchmove', pointerHandler);
 
 I do not work on many projects that make use of multi touch, the reason why is because javaScript projects are typically going to be in a web based environment, so I need to thin in terms of traditional desktop system support. If I do want multi touch then it might be best to have two or more methods maybe that are part of my user interface logic. However I never get around to adding those kinds of features to projects, and also there is not much incetaive for me to spend time on it.
 
-## 3 - Conclusion
+## 3 - The create canvas, and get canvas relative methods of my canvas examples
+
+It might be best to go with some kind of canvas framework becuase doing so will save a whole lot of time. However even then I still run into all kinds of little problems anyway, so maybe just doing everything from the ground up is just the best way to know how to go about addressing all these little fine details that will come up.
+
+When it comes to my collection of canvas examples I am just going with native javaScript alone for each example. However I do find myself copying and pasing these two methods accross each canvas example as of this writing at least. One method I use to create a single canvas element that has a bunch of things set up just the way I like it. The other method is my current standing get canvas relative method that I am using in each canvas example where I want to work with user input by way of touch and mouse events.
+
+```
+var utils = {};
+ 
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+```
+
+## 4 - Conclusion
 
 So the process of getting a canvas relative position with a pointer event is a little complicated, but that is the way it should be after all. When it comes to front end javaScript we are not always dealing with canvas elements, the default value should therefore be window relative.
 
