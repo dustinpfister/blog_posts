@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-20 16:18:32
-version: 1.22
+updated: 2021-02-20 16:22:47
+version: 1.23
 ---
 
-One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
+One of my many [canvas examples](/2020/03/23/canvas-example/) in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
+
+Tyhe basic idea then is simple enough, but what has proved to not be so simple is what to do when it comes to building on top of that simple general idea. There is a lot that comes to mind when it comes to adding features that will result in an interesting game that people might want to play. There are in fact maybe a few to many ideas actaully, but I am thinking it might be fun to take it in some kind of snadbox or god game type direction maybe.
 
 So I thought I would make a simple [vuejs examples](/2021/02/04/vuejs-example/) of the basic idea of the game, and have a few menus to switch between. The focus of this vuejs example will be to not make the game a canvas project, but more of a front end project in general where I am using vuejs as a framework to pull everything together.
 
