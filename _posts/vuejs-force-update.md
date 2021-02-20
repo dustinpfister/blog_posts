@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 561
-updated: 2021-02-20 09:14:52
-version: 1.7
+updated: 2021-02-20 09:18:17
+version: 1.8
 ---
 
 Most of the time when a value in the [data object](/2019/05/18/vuejs-data/) of a Vue Class instance changes, the view will render again automatically, but in some cases it will not. For this reason or any other extending circumstance I might want to force Vue to render the vue again. This is where the [force update](https://vuejs.org/v2/api/#vm-forceUpdate) method will come into play as a way to do just that. 
@@ -183,3 +183,8 @@ setInterval(function () {
 In this revision you will notice that I went back to the template that I was using in the first example in which I needed the force update method to get it to work. However now this too seems to work just fine without any problems and allows for me to avoid having to use the vue force update method. 
 
 The use of the force update method seems to center around the use of nested objects in the vue data object. When I add, remove, or change the state of a nested object it does not always trip and update.
+
+## 2 - Conclusion
+
+The fource update method will often work okay in most situstions where my vue is not updating when a value in the data object is not changing. However even if it works the use of it still strikes me as a duck tape solution, and I should take a deeper look at what it is that I am doing and why it is that I have to resort to using the fource updated method to begin with.
+
