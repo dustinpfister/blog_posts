@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2021-02-20 17:42:43
-version: 1.11
+updated: 2021-02-20 18:42:00
+version: 1.12
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in vue templates to preform [event attachment](https://vuejs.org/v2/guide/events.html). In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. There are a number of event and key modifiers that can be used to help make it so the methods that I write are more about the actual logic of what the method does rather than having additional code that helps with DOM element related quirks. So lets take a look at a few quick examples of the vue on directive in action.
@@ -92,7 +92,49 @@ new Vue({
 });
 ```
 
-## 3 - Conclusion
+## 3 - Prevent default mod and right click
+
+There are a number of modifiers when using the v-on directive such as the prevent modifier that is a short hand for using e.PreventDefault in the body of an event handler.
+
+```js
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+        '<canvas v-on:click.right.prevent="rightDown" v-on:mouseup.prevent="up" width="320" height="240"></canvas>' +
+    '</div>',
+    data: {
+        canvas: null,
+        ctx:null,
+        down: false
+    },
+    mounted: function(){
+        this.$data.canvas = this.$el.querySelectorAll('canvas')[0];
+        this.$data.ctx = this.$data.canvas.getContext('2d');
+        this.draw();
+    },
+    methods: {
+        draw: function(){
+            var dat = this.$data,
+            ctx = dat.ctx,
+            canvas = dat.canvas;
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0,0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.fillText(dat.down, 20, 20);
+        },
+        up: function(){
+            this.$data.down = false;
+            this.draw();
+        },
+        rightDown: function () {
+            this.$data.down = true;
+            this.draw();
+        }
+    }
+});
+```
+
+## 4 - Conclusion
 
 The v-on directive is one of the first directives that oen should know about when starting to learn vuejs for the first time. When working out a static template there is often going to be a need to attach some events for certian elements in such a template, and the v-on directive is how to go about doing so with static templates.
 
