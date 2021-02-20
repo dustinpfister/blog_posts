@@ -5,11 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2021-02-20 17:06:52
-version: 1.14
+updated: 2021-02-20 17:23:18
+version: 1.15
 ---
 
-For today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock I have not flipped over just yet as I continue to play around with vuejs as a way to go about making a client side javaScript project. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things lime peanut butter and chocolate.
+For today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/). Oddly enough that is a rock I have not flipped over just yet as I continue to play around with vuejs as a way to go about making a client side javaScript project. 
+
+When it comes to the canvas element alone I have made a collection of [canvas examples](/2020/03/23/canvas-example/) that I work on a little more now and then, and also expand with new examples on occasion. Canvas elements are great, they really are a part of fun and intertsing javaScript and they can be used to do just about everything when it comes to web based games, and animation like projects. With my canvas examples though I am not using any kind of framework each time I create a new example. So it is a nice break from doing everything from the ground up by making a few examples where I am using vuejs at least as a way to help keep things a little more structured.
+
+In this post I will be starting out with just some very basic examples of vuejs, and using one or more canvas elements in the template. There are things like scaling, and getting the position of a mouse click that I think I should also cover while I am at it. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things like peanut butter and chocolate.
 
 <!-- more -->
 
@@ -173,7 +177,7 @@ new Vue({
 });
 ```
 
-When it comes to vanilla javaScript canvas projects I have a post where I touch base on the [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) in detail. This is a subject that I find that I have to revisit now and then as things can often get messed up when fixing things that have to do with scalling and positioning of a canvas element.
+When it comes to my vanilla javaScript canvas examples I have a post where I touch base on the [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) in detail. This is a subject that I find that I have to revisit now and then as things can often get messed up when fixing things that have to do with scalling and positioning of a canvas element.
 
 ## 4 - Conclusion
 
