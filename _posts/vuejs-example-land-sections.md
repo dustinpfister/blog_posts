@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-18 13:14:05
-version: 1.20
+updated: 2021-02-20 16:14:11
+version: 1.21
 ---
 
 One of my many canvas examples in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -88,6 +88,8 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
     CENTERY = 120,
     SECTION_DIST = 100,
     SECTION_RADIUS = 16,
+    SECTION_TEMP_KELVIN_MIN = 0,    // Think in kelvin when it comes to a standard unit for temp
+    SECTION_TEMP_KELVIN_MAX = 5778,
     SUN_RADIUS = 16,
     SUN_MAXDIST = SECTION_DIST - SUN_RADIUS - SECTION_RADIUS;
  
@@ -99,7 +101,6 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
         '0,0,0,0,0,0,0,0,0,2,' +
         '0,0,0,0,0,0,0,0,2,2,' +
         '0,0,0,0,0,0,0,2,2,3',
- 
         '0,0,2,0,0,0,0,2,2,2,' +
         '0,2,3,2,0,0,0,2,2,2,' +
         '0,0,3,0,0,0,2,2,2,2,' +
@@ -107,7 +108,6 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
         '2,0,0,0,0,0,2,2,2,2,' +
         '2,2,0,0,0,0,2,2,2,2,' +
         '3,2,2,0,0,0,0,2,2,2',
- 
         '2,2,2,2,2,2,2,2,2,2,' +
         '2,2,2,2,2,2,2,2,2,2,' +
         '2,2,2,2,2,2,2,2,2,2,' +
@@ -115,7 +115,6 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
         '2,2,2,2,2,2,2,2,2,2,' +
         '2,2,2,2,2,2,2,2,2,2,' +
         '2,2,2,2,2,2,2,2,2,2',
- 
         '2,0,0,0,0,0,0,0,0,0,' +
         '2,0,0,0,0,0,0,0,0,0,' +
         '2,0,0,0,0,0,0,0,0,0,' +
@@ -141,7 +140,7 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
                i: i,
                x: i % grid.w,
                y: Math.floor(i / grid.w),
-               itemIndex: indexArr[i] || 0
+               tileIndex: indexArr[i] || 0
             });
             i += 1;
         }
@@ -162,11 +161,59 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
                 r: SECTION_RADIUS,
                 distance: 0,
                 per: 0,
+                sheetIndex: 0,
+                temp: {
+                    per: 0,
+                    kelvin: 0,
+                    displayUnit: 'fahrenheit',
+                    displayTemp: 0
+                },
                 grid: createGrid(maps[i])
             });
             i += 1;
         }
         return sections;
+    };
+ 
+    var updateSections = function(data){
+        var sun = data.sun;
+        data.sections = data.sections.map(function(section){
+            // set section percent based on distance to sun
+            setSectionPer(section, sun);
+            // set section temp
+            setSectionTemp(section);
+            // set sheet index based on section temp
+            section.sheetIndex = 0;
+            if(section.temp.kelvin >= 274){
+                section.sheetIndex = 1;
+            }
+            if(section.temp.kelvin >= 327){
+                section.sheetIndex = 2;
+            }
+            return section;
+        });
+    };
+ 
+    // set Section Temp helper
+    var setSectionTemp = function(section){
+        var temp = section.temp,
+        per = Math.log( 1 + section.per) / Math.log( 2 + 36000 * (1 - section.per));
+        temp.kelvin = SECTION_TEMP_KELVIN_MIN + per * SECTION_TEMP_KELVIN_MAX;
+        temp.per = temp.kelvin / SECTION_TEMP_KELVIN_MAX;
+        // display unit defaults to kelvin
+        temp.displayTemp = temp.kelvin
+        if(temp.displayUnit = 'fahrenheit'){
+            temp.displayTemp = (temp.kelvin - 273.15) * 9 / 5 + 32;
+        }
+    };
+ 
+    // set Section Per helper
+    var setSectionPer = function(section, sun){
+        section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
+        var maxDist = section.distance - section.r - sun.r;
+        section.distance = section.distance > maxDist ? maxDist : section.distance;
+        section.per = 1 - section.distance / (SECTION_DIST * 2);
+        section.per = section.per > 1 ? 1 : section.per;
     };
  
     var vm = new Vue({
@@ -222,8 +269,10 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
             }
         },
         mounted: function(){
-            this.setSunPosAD(Math.PI / 180 * 20, 50);
-            this.updateSections();
+            //this.setSunPosAD(Math.PI / 180 * 0, 70);
+            //this.updateSections();
+ 
+            updateSections(this.$data);
         },
         methods: {
             // a button was clicked
@@ -245,23 +294,13 @@ I then have a main vuejs instance as I do with all of my vuejs examples thus far
                 sun.a = a;
                 sun.x = Math.round(CENTERX + Math.cos(sun.a) * sun.dist);
                 sun.y = Math.round(CENTERY + Math.sin(sun.a) * sun.dist);
-                this.updateSections();
-            },
-            // update sections based on current sun position
-            updateSections: function(){
-                var dat = this.$data,
-                sun = dat.sun;
-                dat.sections = dat.sections.map(function(section){
-                    section.distance = utils.distance(section.x, section.y, sun.x, sun.y);
-                    section.per = section.distance / (SECTION_DIST * 2);
-                    return section;
-                });
+                //this.updateSections();
+                updateSections(this.$data);
             }
         }
     });
  
 }());
-
 ```
 
 ## 2 - The menus thus far
@@ -372,7 +411,7 @@ Vue.component('menu-sections', {
         clickCell: function(cell){
             var dat = this.$data;
             if(dat.cellAction >= 0){
-                cell.itemIndex = dat.cellAction;
+                cell.tileIndex = dat.cellAction;
             }
         },
         setCellAction: function(actionIndex){
@@ -388,30 +427,22 @@ Vue.component('menu-sections', {
 The whole point of this example is to work out a simple form of a game that I would like to actually be a major canvas game with great graphics and so forth. In this form of the game the focus is not the final product but a side project where I am working out the core logic of what the game should be. So I would like to have a menu that will display the current state of all of the land sections as a way to vue what is going on with various properties of these land section objects.
 
 ```js
-(function(){
- 
-    Vue.component('sections-info', {
-        props: ['sections'],
-        template: '<div class="menu_item">'+
-            '<table>' +
-               '<tr> <th>index</th> <th>distance</th> <th>per</th> <th>pos</th> </tr>'+
-               '<tr v-for="sec, i in sections" >'+
-                  '<td>{{i}}</td>'+
-                  '<td>{{ sec.distance.toFixed(2) }}</td>'+
-                  '<td>{{ sec.per.toFixed(2) }}</td>' +
-                  '<td>{{ Math.round(sec.x) + \', \' + Math.round(sec.y) }}</td>' +
-               '</tr>'+
-            '</table>'+
-        '</div>'
-    });
- 
-    Vue.component('menu-sections-table', {
-        props: ['currentMenu', 'sun', 'sections'],
-        template: '<div v-if="currentMenu === \'sections-table\'">'+
-            '<sections-info v-bind:sections="sections"></sections-info>'+
-        '</div>'
-    });
-}());
+Vue.component('menu-sections-table', {
+    props: ['currentMenu', 'sun', 'sections'],
+    template: '<div v-if="currentMenu === \'sections-table\'">'+
+        '<sun-ui-pos ' +
+            'v-bind:currentMenu="$props.currentMenu" ' + 
+            'v-bind:sun="$props.sun" ' +
+            'v-bind:sections="$props.sections" ' +
+            'v-on:set-sunpos-ad="sunpos"></sun-ui-pos>'+
+        '<sections-info-table v-bind:sections="sections"></sections-info-table>'+
+    '</div>',
+    methods:{
+        sunpos: function(a, b){
+            this.setPos(a, b)
+        }
+    }
+});
 ```
 
 ## 3 - The mixin folder
@@ -419,6 +450,8 @@ The whole point of this example is to work out a simple form of a game that I wo
 I have a mixin folder where I have objects that contain vuejs features that I would like to have across all vuejs instances. For now this is just a set of methods that have to do with setting the position of the sun object but if I continue working on this project it is possible that this folder might grow with additional global mixins that I will want for this example.
 
 It is also possible that some of the methods here might be added to the utils library, a whole new vanilla javaScript library, or just removed completely if I find that the method is not needed. However it would seem that I might want to have a place to park methods that I want to have to use across all components and as such this is the dumping ground for them.
+
+### 3.1 - Sun methods
 
 ```js
 Vue.mixin({methods : {
@@ -441,7 +474,29 @@ Vue.mixin({methods : {
 
 For this vuejs example I have made a number of components that I have pulled into there own files in a comp folder in the root of the example folder. These are a whole bunch of components that are used in each of the menus for various things like moving the position of the sun object with a canvas element, but then there are others that do the same thing only with direct text input of an angle and distance from a center point.
 
-### 4.1 - sections-ui-grid
+### 4.1 - sections-info-table
+
+In the sections menu I have a sections grid component that displays the current state of a land section object.
+
+```js
+Vue.component('sections-info-table', {
+    props: ['sections'],
+    template: '<div class="menu_item">'+
+        '<table>' +
+           '<tr> <th>index</th> <th>distance</th> <th>per</th> <th>pos</th> <th>temp</th> </tr>'+
+           '<tr v-for="sec, i in sections" >'+
+              '<td>{{i}}</td>'+
+              '<td>{{ sec.distance.toFixed(2) }}</td>'+
+              '<td>{{ sec.per.toFixed(2) }}</td>' +
+              '<td>{{ Math.round(sec.x) + \', \' + Math.round(sec.y) }}</td>' +
+              '<td>{{ Math.round(sec.temp.displayTemp)  }} {{ sec.temp.displayUnit }} ( {{ sec.temp.kelvin.toFixed(2) }} kelvin) {{ Math.round(sec.temp.per * 100) }}%</td>' +
+           '</tr>'+
+        '</table>'+
+    '</div>'
+});
+```
+
+### 4.2 - sections-ui-grid
 
 In the sections menu I have a sections grid component that displays the current state of a land section object.
 
@@ -463,11 +518,16 @@ Vue.component('sections-ui-grid', {
     methods: {
         // set a style for a cell
         setStyle: function(cell){
-            var color = ['blue', 'red', 'yellow', 'green'];
+            var sheets = [
+                ['cyan', 'blue', '#0000ff', '#008f8f'],
+                ['blue', 'red', 'yellow', 'green'],
+                ['red', 'red', 'brown', 'black']
+            ];
+            var color = sheets[this.$props.section.sheetIndex];
             return 'position:absolute;'+
                 'left:'+Math.floor(32 * cell.x)+'px;'+
                 'top:'+Math.floor(32 * cell.y)+'px;'+
-                'background:'+color[cell.itemIndex]+';'+
+                'background:'+color[cell.tileIndex]+';'+
                 'width:32px;height:32px;';
         },
         // what to do if a cell is clicked
@@ -478,7 +538,7 @@ Vue.component('sections-ui-grid', {
 });
 ```
 
-### 4.2 - sections-ui-select
+### 4.3 - sections-ui-select
 
 In the sections menu I am going to want to have a way to select a current land section object. This current land section object can then be worked with using other components in the sections menu.
 
@@ -503,7 +563,7 @@ Vue.component('sections-ui-select', {
 });
 ```
 
-### 4.3 - sun-base
+### 4.4 - sun-base
 
 Here I have a file with some base components for the sun menu. I have one that is used to just display basic info about the sun object, and another than can be used to set the position of the sun with direct text input.
 
@@ -526,7 +586,7 @@ Vue.component('sun-ui-pos',{
 });
 ```
 
-### 4.4 - sun-ui-canvas
+### 4.5 - sun-ui-canvas
 
 The is a component that I am using in the sun menu that is used to display the current position of the sun relative to the land section objects using a canvas element. The component can also be used as a way to set the position of the sun by clicking and dragging the sun object around in the canvas element.
 
@@ -609,10 +669,16 @@ Vue.component('sun-ui-canvas',{
             ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
             ctx.fill();
             // draw sections
-            this.$props.sections.forEach(function(sun){
-                ctx.fillStyle = 'blue';
+            this.$props.sections.forEach(function(section){
+                ctx.fillStyle = 'cyan';
+                if(section.sheetIndex === 1){
+                    ctx.fillStyle = 'blue';
+                }
+                if(section.sheetIndex === 2){
+                    ctx.fillStyle = 'red';
+                }
                 ctx.beginPath();
-                ctx.arc(sun.x, sun.y, sun.r, 0, Math.PI * 2);
+                ctx.arc(section.x, section.y, section.r, 0, Math.PI * 2);
                 ctx.fill();
             });
         }
@@ -626,6 +692,7 @@ I then just need a little html and css to pull this all together. In the html fi
 
 
 The html:
+
 ```html
 <html>
   <head>
@@ -644,6 +711,7 @@ The html:
     <script src="./comp/sun-ui-canvas.js"></script>
     <script src="./comp/sections-ui-select.js"></script>
     <script src="./comp/sections-ui-grid.js"></script>
+    <script src="./comp/sections-info-table.js"></script>
     <!-- menus -->
     <script src="./menus/home.js"></script>
     <script src="./menus/sun.js"></script>
