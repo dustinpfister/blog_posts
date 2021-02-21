@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-21 11:56:41
-version: 1.16
+updated: 2021-02-21 12:13:11
+version: 1.17
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experence with something, but often I do come back and edit older content inclusing this post as I get more experence. 
@@ -78,6 +78,32 @@ app.listen(PORT, function () {
     console.log('serving PUBLIC HTML folder at: ' + PUBLIC_HTML);
     console.log('on port: ' + PORT);
 });
+```
+
+### 1.4 - An index.html file that will also serve as a hello world example
+
+So I have put togetaher a simple index.html file for the public folder that will also serve as a hello world example.
+
+```html
+<html>
+  <head>
+    <title>test_vjs static server index</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <h1>test_vjs static server index</h1>
+    <div id="mess"></div>
+    <script>
+new Vue({
+    el:'#mess',
+    template: '<div style="background:gray;padding:10px;"><p>{{message}}</p></div>',
+    data: {
+        message:'hello world'
+    }
+});
+    </script>
+  </body>
+</html>
 ```
 
 ## 2 - vuejs Hello world
