@@ -5,11 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2021-02-20 18:42:00
-version: 1.12
+updated: 2021-02-21 09:06:30
+version: 1.13
 ---
 
-The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in vue templates to preform [event attachment](https://vuejs.org/v2/guide/events.html). In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. There are a number of event and key modifiers that can be used to help make it so the methods that I write are more about the actual logic of what the method does rather than having additional code that helps with DOM element related quirks. So lets take a look at a few quick examples of the vue on directive in action.
+The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in [vue templates](/2019/05/07/vuejs-template/) to preform [event attachment](https://vuejs.org/v2/guide/events.html) for elements in the template. In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. 
+
+There are a number of event and key modifiers that can be used to help make it so the methods that I write are more about the actual logic of what the method does rather than having additional code that helps with DOM element related quirks. For example I can use a prevent event modifier so that I do not have to call the e.preventDefault method in the body of the event handler that I am calling. 
+
+There are a few things to cover when it comes to just using the v-on directive, so I thought I would take a deepe look at a few quick examples of v-on directive in action. In the process of doing so I might also touch base on a whole bunch of other vuejs features in the process of doing so while I am at it.
 
 <!-- more -->
 
