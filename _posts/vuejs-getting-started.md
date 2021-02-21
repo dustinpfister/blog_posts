@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-21 11:38:40
-version: 1.14
+updated: 2021-02-21 11:41:47
+version: 1.15
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experence with something, but often I do come back and edit older content inclusing this post as I get more experence. 
@@ -23,7 +23,9 @@ However in this section I will be going over a very basic static server script f
 
 ### 1.1 - vuejs test folder setup
 
-So I started out by making a new folder called test_vuejs and made it the current working directory. I then did the usual npm init for any project folder that is going to contain at least some node.js code. In then installed express and added it to my package.json folder. I then also added a public folder that will contain vuejs and all other front end assets that will be hosted by express.static. I also made a middleware folder that will contain express middleware that will work with vue.js examples, as well as help with the automation of the creating of an index.
+So I started out by making a new folder called test\_vuejs and made it the current working directory. I then did the usual npm init for any project folder that is going to contain at least npm packages such as express. I then installed express and added it to my package.json folder as a depednacy by using the save option. I then also added a public folder that will contain vuejs and all other front end assets that will be hosted by express.static when it comes to working out back end scripts. 
+
+I also made a middleware folder that will contain express middleware that will work with vue.js examples, as well as help with the automation of the creating of an index. However I will not be getting into that in detail here as my simple static server script will just be a single javaScript file in the root name space.
 
 ```
 $ mkdir test_vuejs
@@ -31,6 +33,7 @@ $ cd test_vuejs
 $ npm init
 $ npm install express --save
 $ mkdir public
+$ mkdir middleware
 ```
 
 In the public folder I also made an forpost folder that will contain folders for each post I write for vue.js including this one, as well as the js folder as well to hold vue.js and any other front end javaScript that I might use across examples.
