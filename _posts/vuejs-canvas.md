@@ -5,15 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 564
-updated: 2021-02-20 17:32:17
-version: 1.16
+updated: 2021-02-21 09:49:51
+version: 1.17
 ---
 
 For today maybe it would be a smart move to write a post on using [vuejs, and canvas elements](https://alligator.io/vuejs/vue-html5-canvas/) in the template of vuejs instances. Oddly enough that is a rock I have not flipped over just yet as I continue to play around with vuejs as a way to go about making a client side javaScript project. 
 
-When it comes to the canvas element alone I have made a collection of [canvas examples](/2020/03/23/canvas-example/) that I work on a little more now and then, and also expand with new examples on occasion. Canvas elements are great, they really are a part of fun and intertsing javaScript and they can be used to do just about everything when it comes to web based games, and animation like projects. With my canvas examples though I am not using any kind of framework each time I create a new example. A lot of people seem to think that kind of approce is how to really go about learning how to use something. Maybe there is a degree of truth to that, but a prive is payed for sure, projects will take a lot longer. So it is a nice break from doing everything from the ground up by making a few examples where I am using vuejs at least as a way to help keep things a little more structured, and save a bit of time maybe.
+When it comes to the canvas element alone I have made a collection of [canvas examples](/2020/03/23/canvas-example/) that I work on a little more now and then, and also expand with new examples on occasion. Canvas elements are great, they really are a part of fun and interesting javaScript and they can be used to do just about everything when it comes to web based games, and animation like projects. With my canvas examples though I am not using any kind of framework each time I create a new example. A lot of people seem to think that kind of approach is how to really go about learning how to use something. Maybe there is a degree of truth to that, but a price is payed for sure, projects will take a lot longer. So it is a nice break from doing everything from the ground up by making a few examples where I am using vuejs at least as a way to help keep things a little more structured, and save a bit of time maybe.
 
-Vuejs is just a general front end framework, and the use of vuejs by itself might not be the best choice when it comes to getting up and running with canvas right away. However there are a number of ways of adding canvas support, or using a canvas library of one kind or another with vuejs. However in this post I will just be using vuejs alone, and starting to just play around with some canvas elements in the temaple.
+Vuejs is just a general front end framework, and the use of vuejs by itself might not be the best choice when it comes to getting up and running with canvas right away. However there are a number of ways of adding canvas support, or using a canvas library of one kind or another with vuejs. However in this post I will just be using vuejs alone, and starting to just play around with some canvas elements in the template.
 
 In this post I will be starting out with just some very basic examples of vuejs, and using one or more canvas elements in the template. There are things like scaling, and getting the position of a mouse click that I think I should also cover while I am at it. I really like vuejs a lot compared to other modern front end frameworks, and I sure like canvas a whole lot to, so lets get to some examples where we are combining two totally awesome things like peanut butter and chocolate.
 
@@ -179,7 +179,7 @@ new Vue({
 });
 ```
 
-When it comes to my vanilla javaScript canvas examples I have a post where I touch base on the [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) in detail. This is a subject that I find that I have to revisit now and then as things can often get messed up when fixing things that have to do with scalling and positioning of a canvas element.
+When it comes to my vanilla javaScript canvas examples I have a post where I touch base on the [get canvas relative method](/2020/03/04/canvas-get-point-relative-to-canvas/) in detail. This is a subject that I find that I have to revisit now and then as things can often get messed up when fixing things that have to do with scaling and positioning of a canvas element.
 
 ## 4 - Conclusion
 
