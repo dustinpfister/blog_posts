@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2021-02-21 09:30:35
-version: 1.15
+updated: 2021-02-21 09:36:48
+version: 1.16
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in [vue templates](/2019/05/07/vuejs-template/) to preform [event attachment](https://vuejs.org/v2/guide/events.html) for elements in the template. In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. 
@@ -98,9 +98,9 @@ new Vue({
 });
 ```
 
-## 3 - Prevent default mod and right click
+## 3 - Prevent default, and right click event modifiers
 
-There are a number of modifiers when using the v-on directive such as the prevent modifier that is a short hand for using e.PreventDefault in the body of an event handler.
+There are a number of modifiers when using the v-on directive such as the prevent modifier that is a short hand for using [e.PreventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) in the body of an event handler. This prevent default method is a way to chance any default behavior of an event that mightn have to do with a browser. For example when right clicking a canvas element without prevent default called will result in a context menu showing up. Say I want for that menu to now show up when a right click is preformed, doing so can be accomplished with event modifiers.
 
 ```js
 new Vue({
@@ -139,6 +139,8 @@ new Vue({
     }
 });
 ```
+
+Calling provent default and also checking of the right mouse button was clicked can be prefromed in the body of an event hander by just calling e.preventDefault and looking at certian properties of the event object. However the use of these modufiers helps to reduce that kind of code in the handler, and allows be to focus more on what really matters in the body of that handler.
 
 ## 4 - Conclusion
 
