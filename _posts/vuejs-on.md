@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2021-02-21 09:06:30
-version: 1.13
+updated: 2021-02-21 09:18:10
+version: 1.14
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in [vue templates](/2019/05/07/vuejs-template/) to preform [event attachment](https://vuejs.org/v2/guide/events.html) for elements in the template. In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. 
@@ -19,9 +19,9 @@ There are a few things to cover when it comes to just using the v-on directive, 
 
 ## 1 - vue on basic on click example
 
-So then I have an example of the vue on directive here where I am just using the vue el option to mount to a single div element in the hard coded html. I then worked out a simple template with just a single input element that I made as a button type. This button element then uses the vue on directive to make it so that when the button is clicked a step method is called that steps a variable in the vue data object.
+So then I have an example of the vue on directive here where I am just using the [vue el](/2019/05/06/vuejs-el/) option to mount to a single div element in the hard coded html of the example. I then worked out a simple template with just a single input element that I made as a button type. This button element then uses the v-on directive to make it so that when the button is clicked a step method is called that steps a variable in the [vue data](/2019/05/18/vuejs-data/) object.
 
-I am also using the vue bind directive to bind a message variable in the data object for the value attribute of the input element. This is so that each time the button is clicked the current value of the variables that is stepped is displayed as part of the buttons value.
+I am also using the [v-bind](/2019/05/31/vuejs-bind/) directive to bind a message variable in the data object for the value attribute of the input element. This is so that each time the button is clicked the current value of the data object property that is stepped is displayed as part of the buttons value. The v-bind is yet another example of a vuejs directive that also prefroms a kind of action on an element just the the v-on directive but the purpose is to bind a value as a value of an element or component attribute rather than prefrom event attachment.
 
 ```html
 <html>
@@ -53,7 +53,9 @@ new Vue({
 </html>
 ```
 
-This is a simple example of just making a basic example where I am just stepping a variable in the data object, a real example depends on what I want to accomplish. Sometimes that can be done with a single event and handler, other times I need a few events and also use additional directives on top of the vue on directive. SO with that being said lets look at some more examples of the vue on directive in action.
+This is a simple example of just making something where I am just stepping a variable in the data object, and each time I do so the current value of that number is displayed as part of the display value of the button. A real example depends on what I want to accomplish when it comes to event attachment, but never the less the general basic idea is there. 
+
+Sometimes what I want to do can be done with a single event and handler, other times I need a few events and also then use additional directives on top of the vue on directive. For example I might need to set a data object boolen value to true when a canvas element is clicked with a mouse, or touched on a device that has a touch screen, and then set it back to false when a mouse button or finger is released. So with that being said lets look at some more examples of the vue on directive in action to help cover many of these little details when working with the v-on directive.
 
 ## 2 - A vue on key up, and on change example
 
