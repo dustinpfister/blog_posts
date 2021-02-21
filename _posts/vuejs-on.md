@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2021-02-21 09:18:10
-version: 1.14
+updated: 2021-02-21 09:30:35
+version: 1.15
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in [vue templates](/2019/05/07/vuejs-template/) to preform [event attachment](https://vuejs.org/v2/guide/events.html) for elements in the template. In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. 
@@ -59,13 +59,13 @@ Sometimes what I want to do can be done with a single event and handler, other t
 
 ## 2 - A vue on key up, and on change example
 
-Now for a vue on directive example that uses the on key up, and the on change events, along with the [vue model directive](https://vuejs.org/v2/guide/forms.html). 
+Now for a vue on directive example that uses the on key up, and the [on change](/2019/01/04/js-onchange/) events, along with the [vue model directive](https://vuejs.org/v2/guide/forms.html). The onchange event is fired for a text input element when the text value of the element actually changes. However there is also the key up event that will fire each time a key is released so that is the event that one would want to use to do something when a text value of an element is in the process of being changed.
 
-The on key up event will fire when a keyboard key returns from the down position to the up position. SO this is the event that I would want to use when it comes to preforming some kind of action that should happen each time a key is presses, such as checking the character length, and updating a message as it goes up or down. A common task when working out a form.
+So then becuase the on key up event will fire when a keyboard key returns from the down position to the up position, this is the event that I would want to use when it comes to preforming some kind of action that should happen each time a key is pressed and released. There are a number of things that come to mind when it comes to using this kind of event in a projet such as checking the character length of the text input element, and updating a message as it goes up or down. A common task when working out a form that has to do with setting a username where there is a charicter limit, or a min amount of chars when it comes to password strength for another example.
 
-The on change event will only fire once the value of a text element changes, but not while the value is being edited. So it is useful for doing something that will happen when the inputted value is really changed rather than being edited.
+The on change event will only fire once the value of a text element changes, that is when the return key is pressed, or tab is pressed, or for one reason or another the user moves on to something else after changing any value in the text input element. However it will not fire while the value is in the process of being edited. So it is useful for doing something that will happen when the inputted value is really changed rather than being edited.
 
-The model directive is a way to go about creating a two way data binding between the value of the text input element, and the value in the data object. This makes it so any value that is set with javaScript will show up in the text input element, and any change to the text input element value will update the binded value in the data object.
+The model directive is a way to go about creating a two way data binding between the value of the text input element, and the value in the data object. This makes it so any value that is set with javaScript will show up in the text input element, and any change to the text input element value will update the binded value in the data object. In many cases I might want to do this with a text input element, in other situstions maybe not, however in this section this will be an example that makes use of the v-model directive along with the v-on directive for the keyup and change events.
 
 ```js
 new Vue({
