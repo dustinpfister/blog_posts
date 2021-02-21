@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-21 11:41:47
-version: 1.15
+updated: 2021-02-21 11:56:41
+version: 1.16
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experence with something, but often I do come back and edit older content inclusing this post as I get more experence. 
@@ -36,7 +36,9 @@ $ mkdir public
 $ mkdir middleware
 ```
 
-In the public folder I also made an forpost folder that will contain folders for each post I write for vue.js including this one, as well as the js folder as well to hold vue.js and any other front end javaScript that I might use across examples.
+### 1.2 - Addiitonal folders in the for post folder
+
+In the public folder I also made a for post folder that will contain folders for each post I write for vue.js including this one, as well as the js folder as well to hold vue.js and any other front end javaScript that I might use across examples.
 
 ```
 $ cd public
@@ -44,7 +46,7 @@ $ mkdir forpost
 $ mkdir js
 ```
 
-For starters I have downloaded vue 2.6.10 from the [installation](https://vuejs.org/v2/guide/installation.html) page at the vue.js website and placed it in a vuejs\/2.6.10 path in the js folder of my public folder. This way as my collection of examples grow I can potentially place other versions in the vuejs folder, and also have both development and production files for each version as well.
+For starters I have downloaded vue 2.6.10 from the [installation](https://vuejs.org/v2/guide/installation.html) page at the vue.js website and placed it in a vuejs\/2.6.10 path in the js folder of my public folder. This way as my collection of examples grow I can potentially place other versions in the vuejs folder, and also have both development and production files for each version as well. This is also a pattern that I like to follow with any other additional frameworks that I might add into the mix at a later point.
 
 ```
 $ cd js
@@ -53,19 +55,28 @@ $ cd vuejs
 $ mkdir 2.6.10
 ```
 
-### 1.1 - A very basic example of an express.js powered static server
+### 1.3 - A very basic example of an express.js powered static server
+
+So now that I have the very basics worked out when it comes to setting up a new nodejs project it is now time to just work out a very quick simple static server using express. I do so my requiring in express, and then create a new instance of an express app my calling the main expression function that is exported by express.
+
+In this simple server I am also using the nodejs the path.resolve method in the nodejs built in path module with the \_\_dirname variable that should be the dir where this static.js file is located. If I have this static.js file located at the root level of the project folder then I just need to resolve a new absolute path with the path value in the \_\_dirname variable with the public folder name to get the absolute path that I will want to use with express.static.
 
 ```js
 // just a way to serve the html folder
 let express = require('express'),
 path = require('path'),
 app = express(),
-port = process.env.PORT || process.argv[2] || 8080;
+PORT = process.env.PORT || process.argv[2] || 8080,
+PUBLIC_HTML = path.resolve(__dirname, 'public');
  
-app.use('/', express.static('public'));
+// use express static to serve the public folder
+app.use('/', express.static(PUBLIC_HTML));
  
-app.listen(port, function () {
-    console.log('static server up on port: ' + port);
+// listen on PORT
+app.listen(PORT, function () {
+    console.log('static server up');
+    console.log('serving PUBLIC HTML folder at: ' + PUBLIC_HTML);
+    console.log('on port: ' + PORT);
 });
 ```
 
