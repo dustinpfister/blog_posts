@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 794
-updated: 2021-02-21 10:00:29
-version: 1.24
+updated: 2021-02-21 10:03:23
+version: 1.25
 ---
 
 One of my many [canvas examples](/2020/03/23/canvas-example/) in the works is a game prototype that I am calling just simply Mr Sun. So far I just have a general idea of the kind of game that I would like to make, but many of the core logic features are still not together. The general idea at least is that there is a sun object that is surrounded by world section objects, and the player can move the sun object around inside of this circle of world objects. When moving the sun that changes the distance between the sun and any given world section and that in turn can effect each world land section object in a different way.
@@ -502,7 +502,9 @@ Vue.component('sections-info-table', {
 
 ### 4.2 - sections-ui-grid
 
-In the sections menu I have a sections grid component that displays the current state of a land section object s gird. For this component I went with a collection of div elements for starters, but at some point in the future I might switch to using a canvas element if I keep putting more time into this.
+In the sections menu I have a sections UI grid component that displays the current state of a land section object s gird. For this component I went with a collection of div elements for starters, but at some point in the future I might switch to using a canvas element if I keep putting more time into this.
+
+The general idea here is to have a component that will be used to interact with, or at least display the current status of a grid for a currently selected land section object.
 
 ```js
 Vue.component('sections-ui-grid', {
