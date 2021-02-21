@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-21 12:13:11
-version: 1.17
+updated: 2021-02-21 14:30:13
+version: 1.18
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experence with something, but often I do come back and edit older content inclusing this post as I get more experence. 
@@ -32,6 +32,7 @@ $ mkdir test_vuejs
 $ cd test_vuejs
 $ npm init
 $ npm install express --save
+$ npm install serve-index --save
 $ mkdir public
 $ mkdir middleware
 ```
@@ -57,20 +58,23 @@ $ mkdir 2.6.10
 
 ### 1.3 - A very basic example of an express.js powered static server
 
-So now that I have the very basics worked out when it comes to setting up a new nodejs project it is now time to just work out a very quick simple static server using express. I do so my requiring in express, and then create a new instance of an express app my calling the main expression function that is exported by express.
+So now that I have the very basics worked out when it comes to setting up a new nodejs project it is now time to just work out a very quick simple static server using express. I do so by requiring in express, and then create a new instance of an express app my calling the main expression function that is exported by express.
 
 In this simple server I am also using the nodejs the path.resolve method in the nodejs built in path module with the \_\_dirname variable that should be the dir where this static.js file is located. If I have this static.js file located at the root level of the project folder then I just need to resolve a new absolute path with the path value in the \_\_dirname variable with the public folder name to get the absolute path that I will want to use with express.static.
 
 ```js
 // just a way to serve the html folder
 let express = require('express'),
+serveIndex = require('serve-index'),
 path = require('path'),
 app = express(),
 PORT = process.env.PORT || process.argv[2] || 8080,
 PUBLIC_HTML = path.resolve(__dirname, 'public');
  
-// use express static to serve the public folder
-app.use('/', express.static(PUBLIC_HTML));
+// use serve index to nav public folder
+app.use('/', serveIndex( path.resolve(PUBLIC_HTML) ))
+// use express static to serve public folder assets
+app.use('/', express.static( path.join(PUBLIC_HTML) ));
  
 // listen on PORT
 app.listen(PORT, function () {
@@ -78,32 +82,6 @@ app.listen(PORT, function () {
     console.log('serving PUBLIC HTML folder at: ' + PUBLIC_HTML);
     console.log('on port: ' + PORT);
 });
-```
-
-### 1.4 - An index.html file that will also serve as a hello world example
-
-So I have put togetaher a simple index.html file for the public folder that will also serve as a hello world example.
-
-```html
-<html>
-  <head>
-    <title>test_vjs static server index</title>
-    <script src="/js/vuejs/2.6.10/vue.js"></script>
-  </head>
-  <body>
-    <h1>test_vjs static server index</h1>
-    <div id="mess"></div>
-    <script>
-new Vue({
-    el:'#mess',
-    template: '<div style="background:gray;padding:10px;"><p>{{message}}</p></div>',
-    data: {
-        message:'hello world'
-    }
-});
-    </script>
-  </body>
-</html>
 ```
 
 ## 2 - vuejs Hello world
