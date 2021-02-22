@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 11:48:27
-version: 1.33
+updated: 2021-02-22 11:53:56
+version: 1.34
 ---
 
-So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
+So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addition to front end experience it is also a good idea to gain at least a little experience working with back end systems also when it comes to using nodejs, and express.js for example.
 
 So this will be a post on [getting started with vuejs](https://vuejs.org/v2/guide/), and just a few basic hello world type examples of things. However I will also in this post be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs. This might not always be necessary, but one way or another what you are working on should be served up via the http protocol rather than that of the file protocol, in some examples you will run into errors that can happen relating to that. You do not have to do this the way that I am doing it here, but it is still a good idea to learn how to lost something you are working on locally anyway.
 
@@ -19,13 +19,13 @@ So this will be a post on [getting started with vuejs](https://vuejs.org/v2/guid
 
 There is more than one way to get started with vue.js, some ways might be easier, others maybe not so easy. When I started experimenting with vue.js I started something that is a bit of a project by itself, involving some back end code with express. After all what is a front end javaScript framework without at least some back end code as well? 
 
-Anyway the project is my test vuejs project which is just a massive collection of vuejs examples. I have the source code for this up on my github account, and maybe the best way to reproduce what I am writitng about here would be to clone that down, do an npm install in the prject folder and then run the main static script. You can then browse and hack over the examples in this post as well as all my other posts on vuejs.
+Anyway the project is my test vuejs project which is just a massive collection of vuejs examples. I have the source code for this up on my github account, and maybe the best way to reproduce what I am writing about here would be to clone that down, do an npm install in the project folder and then run the main static script. You can then browse and hack over the examples in this post as well as all my other posts on vuejs.
 
 However I think I should still cover how to get started from the ground up also, so in this section I will be going over how I set up my test vuejs project folder. In addition I will also cover a very basic static server script for the sake of quickly browsing each example that I come up with. In order to really get into this sort of thing you will want to learn more about getting started with nodejs, and express.js, that is if you want to go with those options when it comes to a back end system.
 
 ### 1.1 - Just clone down the repo, do an npm install, and run the static sever
 
-The fastest way to go about reproducing what I have worked out for this getting started with vuejs post is to just [clone down the reposatory on my github](https://github.com/dustinpfister/test_vuejs) account. Then cd into the root folder of the clone of the repo, no an npm install to install the depedancyes. Once that is all done you can just run the static server script passing a port number as the first and only argument.
+The fastest way to go about reproducing what I have worked out for this getting started with vuejs post is to just [clone down the repository on my github](https://github.com/dustinpfister/test_vuejs) account. Then cd into the root folder of the clone of the repo, no an npm install to install the dependences. Once that is all done you can just run the static server script passing a port number as the first and only argument.
 
 ```
 $ git clone --depth 1 https://github.com/dustinpfister/test_vuejs
@@ -34,7 +34,7 @@ $ npm install
 $ num run static 3000
 ```
 
-Once the server is up and running you can then navagate to the list of all the vuejs examples by going to localhost:3000 in the address bar of a web browser. If all goes well you should see a list of the root name space of the repo folder to wich you can then navagate to the forpost folder and then the folder for this post which should be vuejs-getting-started. There should then be links to each of the examples here.
+Once the server is up and running you can then navigate to the list of all the vuejs examples by going to localhost:3000 in the address bar of a web browser. If all goes well you should see a list of the root name space of the repo folder to which you can then navigate to the forpost folder and then the folder for this post which should be vuejs-getting-started. There should then be links to each of the examples here.
 
 ### 1.2 - vuejs test folder setup
 
@@ -146,11 +146,11 @@ In addition to the script tag that links to vuejs I also have a script tag with 
 
 So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the vue el option to set the mount point of the example to a paragraph element with an id of mess. There is also the mount instance method that can be used as a way to mount a vuejs instance to html manually. 
 
-I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element in my hard coded html. However this is just one wy to go about doing a vuejs hello world example, there is also getting into using static templates, render functions, directives, and compoents. I will not be getting into these things in detail here as this is a geting started post after all, but I think I should at least touch base on these to say the least.
+I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element in my hard coded html. However this is just one wy to go about doing a vuejs hello world example, there is also getting into using static templates, render functions, directives, and components. I will not be getting into these things in detail here as this is a getting started post after all, but I think I should at least touch base on these to say the least.
 
 ### 2.2 - A Template example
 
-I can have harde coded html and use vuejs features in that hard coded html, however I often prefer to keep everything like that inside a static [vue template](/2019/05/07/vuejs-template/). This way I can make the vuejs instance not just consist of a data object, and data management related features, but also function as the view for that data in addition to this. I also just like to pull any and add vuejs specific html markup out of the actual hard coded html and into vuejs instance templates and render functions.
+I can have hard coded html and use vuejs features in that hard coded html, however I often prefer to keep everything like that inside a static [vue template](/2019/05/07/vuejs-template/). This way I can make the vuejs instance not just consist of a data object, and data management related features, but also function as the view for that data in addition to this. I also just like to pull any and add vuejs specific html markup out of the actual hard coded html and into vuejs instance templates and render functions.
 
 ```html
 <html>
@@ -177,7 +177,7 @@ I can have harde coded html and use vuejs features in that hard coded html, howe
 
 ### 2.3 - Hello World render function style
 
-In some situstions it would seem like I have to use a [render function](/2019/05/12/vuejs-render/) rather than a static template. What is great about render functions is that I can go ahead and use the full power of javaScript to do whatever I need to do for a vue instance of component. However the strength of using render functions is also the draw back of suing them it would seem. I have to admint that they are a little harder to work with, read, and debug when I tend to go overboard with the use of render functions. So I still like to go with temaples first and formost, break things down into compoents, and only use render functions in compoents where it would seem that I have to becuase there is just no way to get what i want to work with a simple static template.
+In some situations it would seem like I have to use a [render function](/2019/05/12/vuejs-render/) rather than a static template. What is great about render functions is that I can go ahead and use the full power of javaScript to do whatever I need to do for a vue instance of component. However the strength of using render functions is also the draw back of suing them it would seem. I have to admit that they are a little harder to work with, read, and debug when I tend to go overboard with the use of render functions. So I still like to go with templates first and foremost, break things down into components, and only use render functions in components where it would seem that I have to because there is just no way to get what i want to work with a simple static template.
 
 ```html
 <html>
@@ -204,7 +204,7 @@ In some situstions it would seem like I have to use a [render function](/2019/05
 
 ### 2.4 - Directives
 
-When it comes to progressing beyond hello world sooner or later you are just going to need to start to become familiur with directives. In vuejs a directive is just a way to prefrom some kind of action on an element in a template. Some examples would be the v-text directive which is just another way of setting the value of a text node of an element, the v-on directive which is what is used for event attachment, and the v-bind directive which is what is used to set the value of an attribute.
+When it comes to progressing beyond hello world sooner or later you are just going to need to start to become familiar with directives. In vuejs a directive is just a way to preform some kind of action on an element in a template. Some examples would be the v-text directive which is just another way of setting the value of a text node of an element, the v-on directive which is what is used for event attachment, and the v-bind directive which is what is used to set the value of an attribute.
 
 ```html
 <html>
@@ -259,4 +259,4 @@ new Vue({
 
 ## 3 - Conclusion
 
-That is it for getting started with vuejs, for now there is checking out the [main post on vuejs](/2021/02/05/vuejs/) that I aim to turn into a centeral post on the subject of vuejs. However I think the best way to learn vuejs, or just about anything really, is to just jump into creating some actual porject of one kind or another and learn as you go. Maybe a good getting started point for some actual projects is one of the many [vuejs examples](/2021/02/04/vuejs-example/) that I have made thus far. These examples range from the typical todo list app, to idle games, and image editing programes.
+That is it for getting started with vuejs, for now there is checking out the [main post on vuejs](/2021/02/05/vuejs/) that I aim to turn into a central post on the subject of vuejs. However I think the best way to learn vuejs, or just about anything really, is to just jump into creating some actual project of one kind or another and learn as you go. Maybe a good getting started point for some actual projects is one of the many [vuejs examples](/2021/02/04/vuejs-example/) that I have made thus far. These examples range from the typical todo list app, to idle games, and image editing programs.
