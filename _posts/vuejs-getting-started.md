@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 05:54:22
-version: 1.20
+updated: 2021-02-22 05:57:29
+version: 1.21
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
@@ -23,13 +23,11 @@ So in this section I will be going over how I set up my test vuejs project folde
 
 ### 1.1 - vuejs test folder setup
 
-So I started out by making a new folder called test\_vuejs and made it the current working directory. 
+So I started out by making a new folder called test\_vuejs and made it the current working directory. Once the folder is the current working directory I did a git init to make it a git folder, and I also did the usual npm init for any project folder that is going to contain a few least npm packages such as express. Doing this will generate a package.json file for the project folder.
 
-I also did the usual npm init for any project folder that is going to contain a few least npm packages such as express. Doing this will generate a package.json file for the project folder.
+I then installed express and added it to my package.json folder as a dependency by using the save option. I am also using serve-index as a way to create an index for all the examples that I will have in a public folder for each post.
 
-I then installed express and added it to my package.json folder as a dependency by using the save option. I am also using serve-index as a way to create an index for all the examples that I will have in a local folder for each post.
-
-I then also added a public folder that will contain vuejs and all other front end assets that will be hosted by express.static when it comes to working out back end scripts. 
+There is then using the mkdir command to create the public folder that will contain vuejs and all other front end assets that will be hosted by express.static when it comes to working out back end scripts. 
 
 
 ```
