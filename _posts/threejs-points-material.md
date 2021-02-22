@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-02-16 20:05:05
-version: 1.4
+updated: 2021-02-22 13:58:18
+version: 1.5
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. Everything that will be placed in a [Scene](/2018/05/03/threejs-scene/) will contain at least a few points in space made with Vector3, typically combined with a collection of [Face3](/2018/05/11/threejs-face3/) instances to help compose a [geometry](/2018/04/14/threejs-geometry/) representing some kind of solid geometric object. However what if you just want to work with a collection of vectors, and have some kind of way of just displaying some points in space? For this there is the Points constructor that can be used with the Special Points Material that is put in place just for this purpose.
@@ -67,4 +67,4 @@ scene.add(
 
 ## 3 - Conclusion
 
-So the points material is an interesting alterative to the typical basic or standard material. There should be at least one such option when it comes to just having a way to see the location of ponints in a geomerty, and the points material seems to work fine when it comes to this.
+So the points material is an interesting alternative to the typical basic or standard material. There should be at least one such option when it comes to just having a way to see the location of points in a geometry, and the points material seems to work fine when it comes to this.
