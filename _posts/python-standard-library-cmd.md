@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 15:08:47
-version: 1.9
+updated: 2021-02-22 15:14:08
+version: 1.10
 ---
 
 This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the [cmd standard library](https://docs.python.org/3.7/library/cmd.html) that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
@@ -55,6 +55,8 @@ Not much to write about with this one buit that is often what the deal is whn it
 
 Say that I want to call one or two commands in a command, or before starting the main cmd loop. The way to do about doing this would be to just call the onecmd method of the Cmd Class. Just call the method and pass a string the string value will be treated as if it was entered into the command prompt.
 
+So say I have a very basic example where once again I just have this single number property of the app class and now I have two methods one that is used to step the number and another that is used to set the number to a given amount. In the script I want to use the set command that I set up and set the starting value to soemthing before starting the main loop. The onecomd method can be used to do that by creating the Basic app class instance, then call the onecmd method and pass it a string of the command that I want to call, then start the cmd loop like ushual.
+
 ```python
 import cmd
  
@@ -73,9 +75,11 @@ class BasicApp(cmd.Cmd):
 if __name__ == '__main__':
     app=BasicApp()
     app.onecmd('set 9')
-    #app.onecmd('step')
+    app.onecmd('step')
     app.cmdloop()
 ```
+
+The onecmd method comes in handy for doing things like calling the help command when the user gives an unkown command, or an empty line command. Speaking of that lets look at some more basic examples when it comes to doing those sorts of things.
 
 ### 1.3 - The emptyline method
 
