@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 797
-updated: 2021-02-05 15:10:10
-version: 1.14
+updated: 2021-02-22 06:03:39
+version: 1.15
 ---
 
 The [vuejs framework](https://en.wikipedia.org/wiki/Vue.js) is a great framework for creating simple single page applications, and reusable compartmentalized components for such applications. I started writing a collection of content on this framework a few years ago now, but I have now come around to editing some of that content and expanding with some new posts on the subject in the process.
@@ -56,7 +56,7 @@ The render option is a more advanced replacement for a simple static template th
 
 The template option is the simple yet often effective alternative to the more powerful render option. Templates can just be a string value, and a wide range of directives can be used in the template to preform all kinds of actions on elements, and components that may be used in the template. A template does have its draw backs now and then, which is why I sometimes find myself using render functions in place of one, but I generally start with a template when working out a component, or main parent vue instance.
 
-## 3 - Vuejs Dirrectives
+## 3 - Vuejs Directives
 
 Another major part of the vuejs framework is making use of something called a directive. Simply put a directive is a way to tell vuejs to preform a certain kind of action with a given element. There a whole bunch of built in directives such as the bind directive that can be used to bind a value in the vue data object as the value for an element attribute. There are then a wide range of other directives for preforming all kinds of other actions an elements, so in this section I will be briefly mentioning each directive that I have wrote a post on thus far, and link to that post in the header of course. 
 
@@ -74,4 +74,3 @@ Often I might be in a situation in which I have an array or named collection of 
 In this post I am focusing on just going over the vuejs framework by itself, but just working out simple little hello world type examples for each little feature of the framework. There is a whole lot to do when it just comes to learning the basics of the framework that are required in order to move on to making some real projects with vuejs. However once one gets the hang of the basic of vuejs the only thing left to do at that point is to move on to working on some actual real [vuejs examples](/2021/02/04/vuejs-example/) that are games, apps, and features that can be used in such things.
 
 I get around to editing my content on vuejs every once in a while, and when I do so I should also get around to editing and expansing this post when doing so. I did not get to every little detail that should be covered in a post such as this, but much of my content on vuejs needs to be updated and expanded, and I have a lot of other content that needs attention also.
-
