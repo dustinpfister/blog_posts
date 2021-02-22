@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 15:01:58
-version: 1.6
+updated: 2021-02-22 15:03:51
+version: 1.7
 ---
 
 This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the [cmd standard library](https://docs.python.org/3.7/library/cmd.html) that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
@@ -77,7 +77,9 @@ if __name__ == '__main__':
     app.cmdloop()
 ```
 
-### 1.3 - emptyline
+### 1.3 - The emptyline method
+
+I thing that when using this I am often going to want to define what happens when an empty line command is given. That is when the user is in the command prompt I will want to define what happens when the user just hits enter and thus gives an empty line command.
 
 ```python
 import cmd
