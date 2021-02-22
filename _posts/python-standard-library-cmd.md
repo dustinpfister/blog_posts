@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 14:56:41
-version: 1.5
+updated: 2021-02-22 15:01:58
+version: 1.6
 ---
 
 This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the [cmd standard library](https://docs.python.org/3.7/library/cmd.html) that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
@@ -51,7 +51,9 @@ i = 1
 
 Not much to write about with this one buit that is often what the deal is whn it comes to basic examples. Right off the bat you should get the basic idea though. However there is a great deal more to cover when it comes to using this library such as defining what to do when an empty line command is given, how to define some kind of default action when an uknown command is given and so forth. So with that said we should take a moment to work out at least a few more basic examples before starting to work on something real.
 
-### 1.2 - onecmd
+### 1.2 - The onecmd method
+
+Say that I want to call one or two commands in a command, or before starting the main cmd loop. The way to do about doing this would be to just call the onecmd method of the Cmd Class. Just call the method and pass a string the string value will be treated as if it was entered into the command prompt.
 
 ```python
 import cmd
