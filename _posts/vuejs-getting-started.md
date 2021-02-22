@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 05:57:29
-version: 1.21
+updated: 2021-02-22 06:01:24
+version: 1.22
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
@@ -40,7 +40,7 @@ $ npm install serve-index --save
 $ mkdir public
 ```
 
-### 1.2 - Addiitonal folders in the for post folder
+### 1.2 - Additional folders in the for post folder
 
 In the public folder I also made a for post folder that will contain folders for each post I write for vue.js including this one, as well as the js folder as well to hold vue.js and any other front end javaScript that I might use across examples.
 
@@ -123,3 +123,7 @@ So here I have a single html file that contains both the html code as well as a 
 ```
 
 So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the [vue el](/2019/05/06/vuejs-el/) option to set the mount point of the example to a paragraph element with an id of mess. I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element 
+
+## 3 - Conclusion
+
+That is it for getting started with vuejs, for now there is checking out the [main post on vuejs](/2021/02/05/vuejs/), or jump into getting started with some actual projects of some kind for that I have a post on some [vuejs examples](/2021/02/04/vuejs-example/ that might be a good place to get started.
