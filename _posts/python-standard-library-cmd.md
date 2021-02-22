@@ -5,10 +5,12 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 12:58:34
-version: 1.0
+updated: 2021-02-22 14:33:40
+version: 1.1
 ---
 
-This week I think I will get back into making some simple python examples.
+This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the cmd standard library that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
+
+The basic use case of the cmd library seems to be to create a class that builds on top of the Cmd class that is given by the library. There are a number of methods in this class that can be over writen, or left to there default behaviour.
 
 <!-- more -->
