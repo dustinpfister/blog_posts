@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 10:09:51
-version: 1.26
+updated: 2021-02-22 10:40:43
+version: 1.27
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -23,7 +23,20 @@ Anyway the project is my test vuejs project which is just a massive collection o
 
 However I think I should still cover how to get started from the ground up also, so in this section I will be going over how I set up my test vuejs project folder. In addition I will also cover a very basic static server script for the sake of quickly browsing each example that I come up with. In order to really get into this sort of thing you will want to learn more about getting started with nodejs, and express.js, that is if you want to go with those options when it comes to a back end system.
 
-### 1.1 - vuejs test folder setup
+### 1.1 - Just clone down the repo, do an npm install, and run the static sever
+
+The fastest way to go about reproducing what I have worked out for this getting started with vuejs post is to just clone down the reposatory on my github account. Then cd into the root folder of the clone of the repo, no an npm install to install the depedancyes. Once that is all done you can just run the static server script passing a port number as the first and only argument.
+
+```
+$ git clone --depth 1 https://github.com/dustinpfister/test_vuejs
+$ cd test_vuejs
+$ npm install
+$ num run static 3000
+```
+
+Once the server is up and running you can then navagate to the list of all the vuejs examples by going to localhost:3000 in the address bar of a web browser. If all goes well you should see a list of the root name space of the repo folder to wich you can then navagate to the forpost folder and then the folder for this post which should be vuejs-getting-started. There should then be links to each of the examples here.
+
+### 1.2 - vuejs test folder setup
 
 So I started out by making a new folder called test\_vuejs and made it the current working directory. Once the folder is the current working directory I did a git init to make it a git folder, and I also did the usual npm init for any project folder that is going to contain a few least npm packages such as express. Doing this will generate a package.json file for the project folder.
 
@@ -42,7 +55,7 @@ $ npm install serve-index --save
 $ mkdir public
 ```
 
-### 1.2 - Additional folders in the for post folder
+### 1.3 - Additional folders in the for post folder
 
 In the public folder I also made a for post folder that will contain folders for each post I write for vue.js including this one, as well as the js folder as well to hold vue.js and any other front end javaScript that I might use across examples.
 
@@ -61,7 +74,7 @@ $ cd vuejs
 $ mkdir 2.6.10
 ```
 
-### 1.3 - A very basic example of an express.js powered static server
+### 1.4 - A very basic example of an express.js powered static server
 
 So now that I have the very basics worked out when it comes to setting up a new nodejs project it is now time to just work out a very quick simple static server using express. I do so by requiring in express, and then create a new instance of an express app my calling the main expression function that is exported by express.
 
