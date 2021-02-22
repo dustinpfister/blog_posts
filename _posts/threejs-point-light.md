@@ -5,11 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-02-18 17:13:26
-version: 1.10
+updated: 2021-02-22 13:56:52
+version: 1.11
 ---
 
-In three js there is a number of options with it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
+In three js there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. 
+
+I often like to combine a point light with [ambient light](/2018/11/02/threejs-ambientlight/) as a way to have a base line amount of light for all materials, while still having a sense of depth that can be obtained by still having some kind of directional light source.
+
+In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
 
 <!-- more -->
 
@@ -23,7 +27,7 @@ This example I put together makes use of a few point lights that shine light in 
 
 ### 2.1 - The add point light method
 
-Here I have a method that I used in this example to create a point light, add it to a given secen, and return a reference to that point light as well. A point light by itself will not display anything in the scene just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example.
+Here I have a method that I used in this example to create a point light, add it to a given scene, and return a reference to that point light as well. A point light by itself will not display anything in the scene just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example.
 
 ```js
 var addPointLight = function (scene, color, x, y, z) {
