@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-02-19 16:29:17
-version: 1.15
+updated: 2021-02-22 13:48:52
+version: 1.16
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. 
@@ -71,7 +71,7 @@ scene.add(light);
 
 ## 4 - Add a point light, with ambient light that has reduced intensity
 
-So adding an ambiebnt light is just a way to set a kind of even baseline amount of light. Doing so if often a good idea becuase if there is no light at all then materials that respond to light but do not have any kind of emmessive map will not show up at all. However an ambient light is not a replacement for directional light, I often do add al least one direction light source to a scene such as a point light.
+So adding an ambient light is just a way to set a kind of even baseline amount of light. Doing so if often a good idea because if there is no light at all then materials that respond to light but do not have any kind of emissive map will not show up at all. However an ambient light is not a replacement for directional light, I often do add al least one direction light source to a scene such as a point light.
 
 ```js
 // SCENE
@@ -114,7 +114,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-So this might prove to be a better situstion when it comes to adding a basic lighting setup for a threejs example. However there is maybe even A bit more to cover whe it comes to ambient light. Also it should go without saying that there is a great deal to cover when it comes to additional light sources as well as materials that respond to light. There is also the emmesive maps of amterails also, that is making a mesh that will have its own light as it where.
+So this might prove to be a better situation when it comes to adding a basic lighting setup for a threejs example. However there is maybe even A bit more to cover whe it comes to ambient light. Also it should go without saying that there is a great deal to cover when it comes to additional light sources as well as materials that respond to light. There is also the emissive maps of materials also, that is making a mesh that will have its own light as it where.
 
 ## 5 - Conclusion
 
