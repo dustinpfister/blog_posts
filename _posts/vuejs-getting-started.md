@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 10:40:43
-version: 1.27
+updated: 2021-02-22 10:50:10
+version: 1.28
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -25,7 +25,7 @@ However I think I should still cover how to get started from the ground up also,
 
 ### 1.1 - Just clone down the repo, do an npm install, and run the static sever
 
-The fastest way to go about reproducing what I have worked out for this getting started with vuejs post is to just clone down the reposatory on my github account. Then cd into the root folder of the clone of the repo, no an npm install to install the depedancyes. Once that is all done you can just run the static server script passing a port number as the first and only argument.
+The fastest way to go about reproducing what I have worked out for this getting started with vuejs post is to just [clone down the reposatory on my github](https://github.com/dustinpfister/test_vuejs) account. Then cd into the root folder of the clone of the repo, no an npm install to install the depedancyes. Once that is all done you can just run the static server script passing a port number as the first and only argument.
 
 ```
 $ git clone --depth 1 https://github.com/dustinpfister/test_vuejs
@@ -104,12 +104,16 @@ app.listen(PORT, function () {
 
 ## 2 - vuejs Hello world
 
-So for my first vuejs example folder in my forpost folder is the same as the file name as this post [vuejs-getting-started](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-getting-started). I have got into the habit of making the example folder names consistent with the name of the post in which I am writing about it when it comes to these kinds of projects.
+So for my first vuejs example folder in my for post folder in test\_vuejs, the name of the example folder is the same as the file name for this post which is [vuejs-getting-started](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-getting-started). I have got into the habit of making the example folder names consistent with the name of the post in which I am writing about it when it comes to these kinds of projects.
+
+Form the main root folder of the repo cd to forpost, and then vuejs-getting-started.
 
 ```
 $ cd forpost
 $ mkdir vuejs-getting-started
 ```
+
+In this section I will be going over the examples in that folder. In all of my other vuejs posts there should be examples in the corespoding folders just like with this post.
 
 ### 2.1 - The vuejs hello-world example
 
@@ -170,4 +174,4 @@ I can have harde coded html and use vuejs features in that hard coded html, howe
 
 ## 3 - Conclusion
 
-That is it for getting started with vuejs, for now there is checking out the [main post on vuejs](/2021/02/05/vuejs/), or jump into getting started with some actual projects of some kind for that I have a post on some [vuejs examples](/2021/02/04/vuejs-example/ that might be a good place to get started.
+That is it for getting started with vuejs, for now there is checking out the [main post on vuejs](/2021/02/05/vuejs/) that I aim to turn into a centeral post on the subject of vuejs. However I think the best way to learn vuejs, or just about anything really, is to just jump into creating some actual porject of one kind or another and learn as you go. Maybe a good getting started point for some actual projects is one of the many [vuejs examples](/2021/02/04/vuejs-example/) that I have made thus far. These examples range from the typical todo list app, to idle games, and image editing programes.
