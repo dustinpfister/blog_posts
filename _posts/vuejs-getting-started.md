@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 10:50:10
-version: 1.28
+updated: 2021-02-22 11:00:46
+version: 1.29
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -167,6 +167,33 @@ I can have harde coded html and use vuejs features in that hard coded html, howe
     }
   })
   
+  </script>
+  </body>
+</html>
+```
+
+### 2.3 - Hello World render function style
+
+In some situstions it would seem like I have to use a [render function](/2019/05/12/vuejs-render/) rather than a static template. What is great about render functions is that I can go ahead and use the full power of javaScript to do whatever I need to do for a vue instance of component. However the strength of using render functions is also the draw back of suing them it would seem. I have to admint that they are a little harder to work with, read, and debug when I tend to go overboard with the use of render functions. So I still like to go with temaples first and formost, break things down into compoents, and only use render functions in compoents where it would seem that I have to becuase there is just no way to get what i want to work with a simple static template.
+
+```html
+<html>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    render: function(createElement){
+        return createElement('div', this.$data.message);
+    },
+    data: {
+      message:'hello world'
+    }
+  })
   </script>
   </body>
 </html>
