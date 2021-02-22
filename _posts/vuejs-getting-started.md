@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 06:09:19
-version: 1.23
+updated: 2021-02-22 06:30:17
+version: 1.24
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
@@ -98,7 +98,9 @@ $ mkdir vuejs-getting-started
 
 ### 2.2 - The vuejs hello-world example
 
-So here I have a single html file that contains both the html code as well as a script tag that links to the development version of vuejs that I am using so far. In addition I also have a script tag with some javaScript that constitutes the hello world example.
+So here I have a single html file that contains both the html code as well as a script tag that links to the development version of vuejs that I am using so far. The link to vuejs is an absolute path to the js folder in the public folder of my test vuejs root folder. In other words this will work when the static.js script is up and running, but this example will not work if you just open it up in a web browser. 
+
+In addition to the script tag that links to vuejs I also have a script tag with some javaScript that constitutes the hello world example. In this vuejs hello world example I have a single Vue instance that I am creating by calling the main Vue constructor.
 
 ```html
 <html>
