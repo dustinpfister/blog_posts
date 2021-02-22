@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 11:53:56
-version: 1.34
+updated: 2021-02-22 11:56:42
+version: 1.35
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addition to front end experience it is also a good idea to gain at least a little experience working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -204,7 +204,7 @@ In some situations it would seem like I have to use a [render function](/2019/05
 
 ### 2.4 - Directives
 
-When it comes to progressing beyond hello world sooner or later you are just going to need to start to become familiar with directives. In vuejs a directive is just a way to preform some kind of action on an element in a template. Some examples would be the v-text directive which is just another way of setting the value of a text node of an element, the v-on directive which is what is used for event attachment, and the v-bind directive which is what is used to set the value of an attribute.
+When it comes to progressing beyond hello world sooner or later you are just going to need to start to become familiar with directives. In vuejs a directive is just a way to preform some kind of action on an element in a template. Some examples would be the [v-text](/2020/10/30/vuejs-text/) directive which is just another way of setting the value of a text node of an element, the [v-on](/2019/11/14/vuejs-on/) directive which is what is used for event attachment, and the [v-bind](/2019/05/31/vuejs-bind/) directive which is what is used to set the value of an attribute.
 
 ```html
 <html>
