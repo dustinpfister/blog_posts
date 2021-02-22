@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 05:50:45
-version: 1.19
+updated: 2021-02-22 05:54:22
+version: 1.20
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
@@ -19,13 +19,13 @@ So this will be a quick post on [getting started with vuejs](https://vuejs.org/v
 
 There is more than one way to get started with vue.js, some ways might be easier, others maybe not so easy. When I started experimenting with vue.js I made it into a bit of a project involving some back end code with express. After all what is a front end javaScript framework without at least some back end code as well? 
 
-However in this section I will be going over a very basic static server script for the sake of quikly getting up and running. In order to really get into this sort of thing you will want to learn more anout getting started with nodejs, and express.js, that is if you want to go with those options when it comes to a back end system.
+So in this section I will be going over how I set up my test vuejs project folder, and also a very basic static server script for the sake of quickly browsering each example that I come up with. In order to really get into this sort of thing you will want to learn more about getting started with nodejs, and express.js, that is if you want to go with those options when it comes to a back end system.
 
 ### 1.1 - vuejs test folder setup
 
 So I started out by making a new folder called test\_vuejs and made it the current working directory. 
 
-I then did the usual npm init for any project folder that is going to contain at least npm packages such as express. 
+I also did the usual npm init for any project folder that is going to contain a few least npm packages such as express. Doing this will generate a package.json file for the project folder.
 
 I then installed express and added it to my package.json folder as a dependency by using the save option. I am also using serve-index as a way to create an index for all the examples that I will have in a local folder for each post.
 
