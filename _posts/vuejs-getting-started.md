@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 11:56:42
-version: 1.35
+updated: 2021-02-22 12:02:33
+version: 1.36
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addition to front end experience it is also a good idea to gain at least a little experience working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -202,9 +202,11 @@ In some situations it would seem like I have to use a [render function](/2019/05
 </html>
 ```
 
-### 2.4 - Directives
+### 2.4 - Directives, Methods, and Hooks
 
 When it comes to progressing beyond hello world sooner or later you are just going to need to start to become familiar with directives. In vuejs a directive is just a way to preform some kind of action on an element in a template. Some examples would be the [v-text](/2020/10/30/vuejs-text/) directive which is just another way of setting the value of a text node of an element, the [v-on](/2019/11/14/vuejs-on/) directive which is what is used for event attachment, and the [v-bind](/2019/05/31/vuejs-bind/) directive which is what is used to set the value of an attribute.
+
+When it comes to using the v-on directive I will often want to call a method, and when it comes to vuejs instances the [methods option](/2019/05/20/vuejs-method/) of a vuejs instance is the standard place where I will want to park these methods. Often I might want to call a method once when the data object is created, or when the vue instance is mounted to the hard coded html of a page. For these sort of things there are life cycle hooks such as the [created life cycle hook](/2019/05/24/vuejs-lifecycle-created/) that will be called after the instance is created, but before it is mounted to the page.
 
 ```html
 <html>
