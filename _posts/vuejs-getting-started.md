@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 06:30:17
-version: 1.24
+updated: 2021-02-22 06:39:17
+version: 1.25
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
@@ -96,7 +96,7 @@ $ cd forpost
 $ mkdir vuejs-getting-started
 ```
 
-### 2.2 - The vuejs hello-world example
+### 2.1 - The vuejs hello-world example
 
 So here I have a single html file that contains both the html code as well as a script tag that links to the development version of vuejs that I am using so far. The link to vuejs is an absolute path to the js folder in the public folder of my test vuejs root folder. In other words this will work when the static.js script is up and running, but this example will not work if you just open it up in a web browser. 
 
@@ -125,6 +125,33 @@ In addition to the script tag that links to vuejs I also have a script tag with 
 ```
 
 So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the [vue el](/2019/05/06/vuejs-el/) option to set the mount point of the example to a paragraph element with an id of mess. I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element 
+
+### 2.2 - A Template example
+
+I can have harde coded html and use vuejs features in that hard coded html, however I often prefer to keep everything like that inside a static template. This way I can make what the vuejs instance is not just consist of a data object, and data management related features, but also function as the view for that data.
+
+```html
+<html>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  
+  new Vue({
+    el:'#demo',
+    template: '<div>{{ message }}</div>',
+    data: {
+      message:'hello world'
+    }
+  })
+  
+  </script>
+  </body>
+</html>
+```
 
 ## 3 - Conclusion
 
