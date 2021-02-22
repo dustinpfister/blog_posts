@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 06:01:24
-version: 1.22
+updated: 2021-02-22 06:09:19
+version: 1.23
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
@@ -19,7 +19,7 @@ So this will be a quick post on [getting started with vuejs](https://vuejs.org/v
 
 There is more than one way to get started with vue.js, some ways might be easier, others maybe not so easy. When I started experimenting with vue.js I made it into a bit of a project involving some back end code with express. After all what is a front end javaScript framework without at least some back end code as well? 
 
-So in this section I will be going over how I set up my test vuejs project folder, and also a very basic static server script for the sake of quickly browsering each example that I come up with. In order to really get into this sort of thing you will want to learn more about getting started with nodejs, and express.js, that is if you want to go with those options when it comes to a back end system.
+So in this section I will be going over how I set up my test vuejs project folder, and also a very basic static server script for the sake of quickly browsing each example that I come up with. In order to really get into this sort of thing you will want to learn more about getting started with nodejs, and express.js, that is if you want to go with those options when it comes to a back end system.
 
 ### 1.1 - vuejs test folder setup
 
@@ -89,7 +89,7 @@ app.listen(PORT, function () {
 
 ## 2 - vuejs Hello world
 
-So for my first vuejs example folder is the same as the file name as this post vuejs-getting-started. I have got into the habit of started to do that when it comes to these kinds of projects.
+So for my first vuejs example folder in my forpost folder is the same as the file name as this post [vuejs-getting-started](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-getting-started). I have got into the habit of making the example folder names consistent with the name of the post in which I am writing about it when it comes to these kinds of projects.
 
 ```
 $ cd forpost
