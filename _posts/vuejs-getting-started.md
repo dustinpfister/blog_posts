@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 11:00:46
-version: 1.29
+updated: 2021-02-22 11:04:06
+version: 1.30
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -147,7 +147,7 @@ So vuejs involves the use of a Vue constructor that is called with the new keywo
 
 ### 2.2 - A Template example
 
-I can have harde coded html and use vuejs features in that hard coded html, however I often prefer to keep everything like that inside a static template. This way I can make what the vuejs instance is not just consist of a data object, and data management related features, but also function as the view for that data.
+I can have harde coded html and use vuejs features in that hard coded html, however I often prefer to keep everything like that inside a static [vue template](/2019/05/07/vuejs-template/). This way I can make the vuejs instance not just consist of a data object, and data management related features, but also function as the view for that data in addition to this. I also just like to pull any and add vuejs specific html markup out of the actual hard coded html and into vuejs instance templates and render functions.
 
 ```html
 <html>
