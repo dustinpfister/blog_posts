@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 11:12:01
-version: 1.32
+updated: 2021-02-22 11:48:27
+version: 1.33
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -197,6 +197,61 @@ In some situstions it would seem like I have to use a [render function](/2019/05
       message:'hello world'
     }
   })
+  </script>
+  </body>
+</html>
+```
+
+### 2.4 - Directives
+
+When it comes to progressing beyond hello world sooner or later you are just going to need to start to become familiur with directives. In vuejs a directive is just a way to prefrom some kind of action on an element in a template. Some examples would be the v-text directive which is just another way of setting the value of a text node of an element, the v-on directive which is what is used for event attachment, and the v-bind directive which is what is used to set the value of an attribute.
+
+```html
+<html>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el:'#demo',
+    template: '<div>'+
+        '<input '+
+            'type="button" ' + 
+            'v-on:click="step" ' +
+            'v-bind:value="\'Step Mess Index ( \' + index + \'\/\' + strArray.length + \' )\'"> ' +
+        '<p v-text="mess"></p>' +
+    '</div>',
+    data: function(){
+        var dat = {
+            index: 0,
+            strArray: ['hello world', 'foo', 'bar'],
+            mess: ''
+        };
+        return dat;
+    },
+    // a created life cycle hook
+    created: function(){
+        this.set(0);
+    },
+    methods: {
+        // set a mesage index
+        set: function(index){
+            var dat = this.$data;
+            dat.index = index === undefined ? dat.index : index;
+            dat.mess = dat.strArray[dat.index];
+        },
+        // step the mesage index
+        step: function(){
+            var dat = this.$data;
+            dat.index += 1;
+            dat.index %= dat.strArray.length;
+            this.set(dat.index);
+        }
+    }
+});
   </script>
   </body>
 </html>
