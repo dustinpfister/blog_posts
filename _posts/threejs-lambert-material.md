@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2021-02-17 16:11:19
-version: 1.8
+updated: 2021-02-22 13:53:19
+version: 1.9
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. You can count on at least a few posts on Materials which I have been working with today. The [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial) is one of many options for skinning a mesh with a texture, and in this post I will be getting into this one a little to get a better sense of what it is all about.
@@ -132,7 +132,7 @@ var plane = new THREE.Mesh(
 }));
 ```
 
-This will make all the area of the plane that is not effected by the spot light a shade of gray, rather than the default which is black. In addition to being able to set the emissive color, the intensity can also be set from a 0 to one value, it is also possible to define a texture that will modulate with the emmsive color using the emmsiveMap property. To set a texture that will function as the regular color map, you will want to use the plain old map property.
+This will make all the area of the plane that is not effected by the spot light a shade of gray, rather than the default which is black. In addition to being able to set the emissive color, the intensity can also be set from a 0 to one value, it is also possible to define a texture that will modulate with the emissive color using the emmsiveMap property. To set a texture that will function as the regular color map, you will want to use the plain old map property.
 
 ## 4 - Conclusion
 
