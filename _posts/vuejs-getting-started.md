@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 12:02:33
-version: 1.36
+updated: 2021-02-22 16:13:22
+version: 1.37
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addition to front end experience it is also a good idea to gain at least a little experience working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -252,6 +252,53 @@ new Vue({
             dat.index %= dat.strArray.length;
             this.set(dat.index);
         }
+    }
+});
+  </script>
+  </body>
+</html>
+```
+
+### 2.5 - Components
+
+One thing that I wish I got started with right away with when starting out with vuejs is compoents design. As a projet grows sooner or later breaking things down into smaller pieces is just what needs to happen. In vuejs there are a few ways to go about helping to break things down such as with mixins, and the Vue.extend method that can be used to create custom cut main vuejs instances. However the centeral way to go about breking a vuejs project down would be to start creating a [component or two](/2019/05/16/vuejs-component/).
+
+```html
+<html>
+  <head>
+    <title>First vue.js example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+ 
+Vue.component('hello', {
+    props: ['color'],
+    template: '<div><span v-bind:style="setStyle()"><slot></slot></span><br></div>',
+    methods: {
+        setStyle: function(){
+            var color = this.$props.color;
+            if(color){
+                return 'color:' + color + ';';
+            }
+            return 'color:cyan;'
+        }
+    }
+});
+ 
+new Vue({
+    el:'#demo',
+    template: '<div>'+
+        '<hello color="red">{{ mess }}</hello>' +
+        '<hello color="green">{{ mess }}</hello>' +
+        '<hello color="blue">{{ mess }}</hello>' +
+    '</div>',
+    data: function(){
+        var dat = {
+            mess: 'Hello World'
+        };
+        return dat;
     }
 });
   </script>
