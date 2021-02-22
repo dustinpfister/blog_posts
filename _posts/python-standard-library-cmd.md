@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 15:03:51
-version: 1.7
+updated: 2021-02-22 15:06:20
+version: 1.8
 ---
 
 This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the [cmd standard library](https://docs.python.org/3.7/library/cmd.html) that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
@@ -99,7 +99,9 @@ if __name__ == '__main__':
     BasicApp().cmdloop()
 ```
 
-### 1.4 - default
+### 1.4 - create a default command
+
+Another thing that I am going to want to do is create a default command. A default command differs a little from an empty line command where the default command is what will happen when a command is given, but no command was defined for the command that was given. In this example I created a default command that will just tell the user that the command that was given is not known, and then call the help command for the user.
 
 ```python
 import cmd
