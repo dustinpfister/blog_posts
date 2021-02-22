@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 15:06:20
-version: 1.8
+updated: 2021-02-22 15:08:47
+version: 1.9
 ---
 
 This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the [cmd standard library](https://docs.python.org/3.7/library/cmd.html) that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
@@ -17,7 +17,7 @@ The basic use case of the cmd library seems to be to create a class that builds 
 
 ## 1 - The cmd librray basics
 
-In this section I will be starting out with just some very simple copy and past one file examples of the cmd library that will help to show the basics of how to go about using this cmd library to create an interactive command line interface for a python script.
+In this section I will be starting out with just some very simple copy and past one file examples of the cmd library that will help to show the basics of how to go about using this cmd library to create an interactive command line interface for a python script with the cmd library. This will start out with just a very basic example that just has one command, and then progress into some additional examples that have to do with things like creating a custom command for when an empty line command is given.
 
 ### 1.1 - Basic cmd getting started example
 
