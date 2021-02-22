@@ -5,13 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 808
-updated: 2021-02-22 15:14:08
-version: 1.10
+updated: 2021-02-22 15:16:00
+version: 1.11
 ---
 
 This week I think I will get back into making some simple python examples, and I think many of them should be basic simple command line tools and games. So in order to make such examples I think I should start with at least a few basic examples of the [cmd standard library](https://docs.python.org/3.7/library/cmd.html) that is built into python. This library can be used to create a simple command line prompt that will allow for me to interact with a python script from the command line.
 
-The basic use case of the cmd library seems to be to create a class that builds on top of the Cmd class that is given by the library. There are a number of methods in this class that can be over writen, or left to there default behaviour. For example there is the empty line method of the cmd class that by default will call the last command called when an empty line command is called. This might be okay in some situations but I like to make it so that the help menu will print when an empty line command is given.
+The basic use case of the cmd library seems to be to create a class that builds on top of the Cmd class that is given by the library. There are a number of methods in this class that can be over written, or left to there default behavior. For example there is the empty line method of the cmd class that by default will call the last command called when an empty line command is called. This might be okay in some situations but I like to make it so that the help menu will print when an empty line command is given.
 
 <!-- more -->
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
 To add a command for the Basic App class I just need to define a method that starts with do, then an underscore, and then the name of the command to enter when in the command prompt. I then just need to create an instance of the class that I create on top of the Cmd class and call the cmdloop method of the class.
 
-If I save the amove python example as something like basic.py, then I can call the script from the command line with python. When I do so I will drop into a command prompt and I can then use the command that I have define to prefrom an action.
+If I save the above python example as something like basic.py, then I can call the script from the command line with python. When I do so I will drop into a command prompt and I can then use the command that I have define to preform an action.
 
 ```
 $ python3 basic.py
@@ -49,13 +49,13 @@ i = 1
 (Cmd) 
 ```
 
-Not much to write about with this one buit that is often what the deal is whn it comes to basic examples. Right off the bat you should get the basic idea though. However there is a great deal more to cover when it comes to using this library such as defining what to do when an empty line command is given, how to define some kind of default action when an uknown command is given and so forth. So with that said we should take a moment to work out at least a few more basic examples before starting to work on something real.
+Not much to write about with this one but that is often what the deal is whn it comes to basic examples. Right off the bat you should get the basic idea though. However there is a great deal more to cover when it comes to using this library such as defining what to do when an empty line command is given, how to define some kind of default action when an unknown command is given and so forth. So with that said we should take a moment to work out at least a few more basic examples before starting to work on something real.
 
 ### 1.2 - The onecmd method
 
 Say that I want to call one or two commands in a command, or before starting the main cmd loop. The way to do about doing this would be to just call the onecmd method of the Cmd Class. Just call the method and pass a string the string value will be treated as if it was entered into the command prompt.
 
-So say I have a very basic example where once again I just have this single number property of the app class and now I have two methods one that is used to step the number and another that is used to set the number to a given amount. In the script I want to use the set command that I set up and set the starting value to soemthing before starting the main loop. The onecomd method can be used to do that by creating the Basic app class instance, then call the onecmd method and pass it a string of the command that I want to call, then start the cmd loop like ushual.
+So say I have a very basic example where once again I just have this single number property of the app class and now I have two methods one that is used to step the number and another that is used to set the number to a given amount. In the script I want to use the set command that I set up and set the starting value to something before starting the main loop. The onecomd method can be used to do that by creating the Basic app class instance, then call the onecmd method and pass it a string of the command that I want to call, then start the cmd loop like ushual.
 
 ```python
 import cmd
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     app.cmdloop()
 ```
 
-The onecmd method comes in handy for doing things like calling the help command when the user gives an unkown command, or an empty line command. Speaking of that lets look at some more basic examples when it comes to doing those sorts of things.
+The onecmd method comes in handy for doing things like calling the help command when the user gives an unknown command, or an empty line command. Speaking of that lets look at some more basic examples when it comes to doing those sorts of things.
 
 ### 1.3 - The emptyline method
 
@@ -136,4 +136,4 @@ if __name__ == '__main__':
 
 ## 2 - Conclusion
 
-So the cmd library is great for just quikly setting up a basic command line interface for a project that will allow for me to interact with a script from the command line. However this is just one option when it comes to working out things that have to do with using a script from the command line. There is also having a way to parse options when a script is called for the first time with the python binary, and there is also how to work with the standard input when it comes to things like pipping. However many command line tools have a way to drop into some kind of interactive shell from the comamnd line, and when it comes to doing that at least the cmd librray works great to do just that.
+So the cmd library is great for just quickly setting up a basic command line interface for a project that will allow for me to interact with a script from the command line. However this is just one option when it comes to working out things that have to do with using a script from the command line. There is also having a way to parse options when a script is called for the first time with the python binary, and there is also how to work with the standard input when it comes to things like pipping. However many command line tools have a way to drop into some kind of interactive shell from the command line, and when it comes to doing that at least the cmd library works great to do just that.
