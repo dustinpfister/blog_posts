@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-21 14:30:13
-version: 1.18
+updated: 2021-02-22 05:50:45
+version: 1.19
 ---
 
-So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experence with something, but often I do come back and edit older content inclusing this post as I get more experence. 
+So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Doing so might not always be the best idea when one has next to no experience with something, but often I do come back and edit older content including this post as I get more experience. 
 
 So this will be a quick post on [getting started with vuejs](https://vuejs.org/v2/guide/), and just a few basic hello world type examples of things. However I will also in this post be outlining how to set up a quick project that involves using node.js and express to serve up the first of what should be at least a few examples on vuejs. This might not always be necessary, but one way or another what you are working on should be served up via the http protocol rather than that of the file protocol, in some examples you will run into errors that can happen relating to that. You do not have to do this the way that I am doing it here, but it is still a good idea to learn how to lost something you are working on locally anyway.
 
@@ -23,18 +23,23 @@ However in this section I will be going over a very basic static server script f
 
 ### 1.1 - vuejs test folder setup
 
-So I started out by making a new folder called test\_vuejs and made it the current working directory. I then did the usual npm init for any project folder that is going to contain at least npm packages such as express. I then installed express and added it to my package.json folder as a depednacy by using the save option. I then also added a public folder that will contain vuejs and all other front end assets that will be hosted by express.static when it comes to working out back end scripts. 
+So I started out by making a new folder called test\_vuejs and made it the current working directory. 
 
-I also made a middleware folder that will contain express middleware that will work with vue.js examples, as well as help with the automation of the creating of an index. However I will not be getting into that in detail here as my simple static server script will just be a single javaScript file in the root name space.
+I then did the usual npm init for any project folder that is going to contain at least npm packages such as express. 
+
+I then installed express and added it to my package.json folder as a dependency by using the save option. I am also using serve-index as a way to create an index for all the examples that I will have in a local folder for each post.
+
+I then also added a public folder that will contain vuejs and all other front end assets that will be hosted by express.static when it comes to working out back end scripts. 
+
 
 ```
 $ mkdir test_vuejs
 $ cd test_vuejs
+$ git init
 $ npm init
 $ npm install express --save
 $ npm install serve-index --save
 $ mkdir public
-$ mkdir middleware
 ```
 
 ### 1.2 - Addiitonal folders in the for post folder
