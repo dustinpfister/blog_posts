@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 11:08:12
-version: 1.31
+updated: 2021-02-22 11:12:01
+version: 1.32
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addiiton to front end experence it is also a good idea to gain at least a little experence working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -144,7 +144,9 @@ In addition to the script tag that links to vuejs I also have a script tag with 
 </html>
 ```
 
-So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the [vue el](/2019/05/06/vuejs-el/) option to set the mount point of the example to a paragraph element with an id of mess. I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element 
+So vuejs involves the use of a Vue constructor that is called with the new keyword just like any other constructor function in javaScript. I then use the vue el option to set the mount point of the example to a paragraph element with an id of mess. There is also the mount instance method that can be used as a way to mount a vuejs instance to html manually. 
+
+I then used the interpolation or mustache syntax to place the message in the data object into the paragraph element in my hard coded html. However this is just one wy to go about doing a vuejs hello world example, there is also getting into using static templates, render functions, directives, and compoents. I will not be getting into these things in detail here as this is a geting started post after all, but I think I should at least touch base on these to say the least.
 
 ### 2.2 - A Template example
 
