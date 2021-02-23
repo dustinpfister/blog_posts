@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 12:21:03
-version: 1.31
+updated: 2021-02-23 12:24:39
+version: 1.32
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -298,7 +298,7 @@ When it comes to making this kind of feature I could work out my own solution, b
 
 ## 4 - Kelvin temp to display unit example
 
-Maybe one real example would be to have a filter that will take a kelvin temperature unit and convert it to one of several options when it comes to a display unit.
+Maybe one real example would be to have a filter that will take a kelvin temperature unit and convert it to one of several options when it comes to a display unit. When it comes to temperatures the kelvin scale is a good scale to stick to when it comes to preforming logic that has to do with temperature values as it is a scale where a kelvin value of zero is considered absolute zero when it comes to the subject of temperature. So it makes sense to stick to that scale when it comes to business logic, but then convert to one of several options when it comes to a system that most people understand such as Celsius or Fahrenheit.
 
 ```js
     // kelvin to display unit filter
