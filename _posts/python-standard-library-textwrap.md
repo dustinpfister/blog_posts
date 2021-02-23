@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 809
-updated: 2021-02-23 13:58:12
-version: 1.6
+updated: 2021-02-23 14:02:13
+version: 1.7
 ---
 
 I think that I am going to want to write at least a few more posts on the collection of standard librires that are built into python itself so I do not waste time working out my own solutions for things that can be set and done in a flash with some feature that is built into python itself. One thing that I need to do now and then is break a string into a collection of lists where each element in the list is a substring of the original source text that is no more than a certian set charicter length long. In other words I often need a way to wrap text which is a common feature in most text editors, or any project that might involve a fair amount of text that needs to be displayed. I often work out my own quick solutions for this, but there is a built in [librray called textwrap](https://docs.python.org/3.7/library/textwrap.html) for this one that helps to make get this part of programing out of the way yet even fatser.
@@ -48,6 +48,8 @@ So then becuase the returned result is a list I can then use any list method tha
 ### 1.2 - The fill method
 
 The fill method will take a source string and a width argument just like the waro method. However the main difference with this metyod is that the returned result is another string rather than a list of lines where a line break is placed at each point in the returned string where a line would end.
+
+This method might prove to be helpful in situations in which I might need to use it, however even then I might not. using the wrap method along with some string methods like the join method gives be a greater deal of flexability when it comes to setting what the line break chariter is. With the fill method a Linux friendly line feed pattren is used, but by using wrap with the string join method I can use the windows friendly chariage retrun line feed pattern.
 
 ```python
 import textwrap
