@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 809
-updated: 2021-02-23 13:44:03
-version: 1.3
+updated: 2021-02-23 13:48:35
+version: 1.4
 ---
 
 I think that I am going to want to write at least a few more posts on the collection of standard librires that are built into python itself so I do not waste time working out my own solutions for things that can be set and done in a flash with some feature that is built into python itself. One thing that I need to do now and then is break a string into a collection of lists where each element in the list is a substring of the original source text that is no more than a certian set charicter length long. In other words I often need a way to wrap text which is a common feature in most text editors, or any project that might involve a fair amount of text that needs to be displayed. I often work out my own quick solutions for this, but there is a built in [librray called textwrap](https://docs.python.org/3.7/library/textwrap.html) for this one that helps to make get this part of programing out of the way yet even fatser.
@@ -23,6 +23,8 @@ In this section I will just be quickly going over some very basic examples of so
 
 First and formost I think that I should start with the wrap method as this is the one that I would likly use the most often in actual projects. This methods will take a source string of lengthly text as the first argument, and then I can set a max charicter width as a keyed argument. The returned result is a list of strings where each string in the list is from the given source string and is no longer than the set width that I have given.
 
+Once I have the return list I can then do whatever it is that I want or need to do with the list of strings inclduing using it in a for loop to go over each line for example.
+
 ```python
 import textwrap
  
@@ -38,6 +40,8 @@ for item in lines:
 # 'that I want to wrap'
 # 'to a list of lines'
 ```
+
+So then becuase the returned result is a list I can then use any list method that I want with it also. So then by making use of this wrap method along with all the methods that come with the built in list and string data types I can prefrom just about everything that I want to do when it comes to wrapping text. Still there are some additional methods in the library that also will prefrom those simple tasks so i should quikcly go over some additional examples of those methods while I am at it.
 
 ### 1.2 - The fill method
 
