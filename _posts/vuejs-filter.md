@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 05:12:38
-version: 1.19
+updated: 2021-02-23 09:07:30
+version: 1.20
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. Filters differ from methods in that they can only be used in  mustache interpolations and when using the v-bind directive. 
@@ -107,7 +107,10 @@ new Vue({
 
 ## 3 - Global Filters
 
-So there is making filters that are for just a single instance of view, but what of you are doing something that involves more than one instance of vuejs in a page? With that said it is also possible to define filters at a global level as well by using the Vue.filter global api method rather than the filters Vue Constructor option. This will result in a filter that can be used across multipliable instances of Vue in a page or project as a whole.
+So there is making filters that are for just a single instance of the Vue constructor, but what of you are doing something that involves more than one instance of vuejs in a page? For example say that I want a format money filter but I want to use it in more than one component or plain Vuejs instance. I could place the method into an object and then just refernce that method in the filters option of any vuejs instance, but there is also a way to go about making a filter global so it will be there for any Vuejs instance.
+
+So in this section I will be going over some examples that involve defining filters at a global level. This involves the use of the Vue.filter global api method rather than the filters Vue Constructor option. The result is then a filter that can be used across multipliable instances of Vue in a page.
+
 
 ```html
 <html>
