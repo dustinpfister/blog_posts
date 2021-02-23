@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 09:07:30
-version: 1.20
+updated: 2021-02-23 09:38:38
+version: 1.21
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. Filters differ from methods in that they can only be used in  mustache interpolations and when using the v-bind directive. 
@@ -147,6 +147,67 @@ So in this section I will be going over some examples that involve defining filt
 </html>
 ```
 
-## 5 - Conclusion
+### 3.2 - Global Money filter
+
+One kind of filter that I would often want to have in a project is a filter that will take a number, or string of a number, and spit out a string that is formatted in a way that makes sense when it comes to money. That is have the number set to a fixed number of decimal places for cents, with commas for every three decimnal places with the dolar amount, and of course the dollar sign added to the string.
+
+When it comes to making this kind of feature I could work out my own solution, but this does strike me as a very common problem so there should be a quick copy and pase solution for this. I would think that there should also be some kind of standard, web browser built in solutuon for this sort of thing even. Well it turns out that there is and it is called the [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) object that has decent browser support by todays standards at least.
+
+```html
+<html>
+  <head>
+    <title>vue filter global example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+    </div>
+  <script>
+  
+    // global money filter
+    Vue.filter('money', function(val){
+        var formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2 
+        });
+        var number = Number(val);
+        if(String(number) === 'NaN'){
+            number = 0;
+        }
+        return formatter.format(number); 
+    });
+  
+    // using the global money filter in a component
+    Vue.component('moneydivs', {
+        props: ['amounts'],
+        template: '<div>' +
+            '<div v-for="m in $props.amounts">{{ m | money }}</div>' +
+        '</div>'
+    });
+ 
+    // using the money filter in a main Vuejs instance
+    new Vue({
+        el: '#demo',
+        template: '<div>' +
+            '<h3>Amounts: </h3>' +
+            '<moneydivs v-bind:amounts="amounts" ></moneydivs>' +
+            '<h3>Other Amount: {{other | money}}</h3>' +
+        '</div>',
+        data: function(){
+            return {
+                other: 1357.68,
+                amounts: [9.99, 3.25, 1.75]
+            };
+        }
+    });
+  </script>
+  </body>
+</html>
+```
+
+
+## 4 - Conclusion
 
 So this this post I just wanted to work out a few quick examples of filters when using vuejs as part of a client side javaScript project. The filters in vuejs are not to be confused with other methods in other frameworks such as [lodash filter](/2018/05/18/lodash_filter/), and native prototype methods like Array.filter. Those methods have to do with filtering out elements from collections rather that text formatting. When it comes to text formatting it does not always have to be done this way of course, but it seems like it might be the best choice if I am using vuejs as part of the stack compared to any other way to go about doing so.
