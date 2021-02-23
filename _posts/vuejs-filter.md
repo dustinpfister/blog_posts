@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 11:43:53
-version: 1.29
+updated: 2021-02-23 11:58:40
+version: 1.30
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -151,6 +151,40 @@ new Vue({
             .reduce(function (acc, item) {
                 return acc + item;
             });
+        }
+    }
+});
+```
+
+### 2.4 - Using Array.filter in a vue filter
+
+If I am creating a Vue instance that has an Array as a data object value, or a prop value in a component I can maybe make some filters that will work with an array value. For example say that I have an array of objects and each object has an active property that means that it is an object in a stack of objects that is currently being used. This is something that I ften do when it comes to creating an object pool for a project. Anyway I can use the Array.filter method in a vuejs filter as a way to create a new array that is then a collection of objects that just have an active prop set to true. I can then feed this array to yet another filter that will create a final text version of the array for an element.
+
+```js
+
+new Vue({
+    el:'#demo',
+    template: '<p>{{ arr | get_active | to_text }}</p>',
+    data: {
+        arr: [
+            {active:false, mess: 'foo'},
+            {active:true, mess: 'man'},
+            {active:false, mess: 'chew'},
+            {active:true, mess: 42}
+        ] 
+    },
+    filters: {
+        get_active : function(arr){
+            return arr.filter(function(obj){
+                return obj.active;
+            })
+        },
+        to_text : function(arr){
+            var text = '';
+            arr.forEach(function(obj){
+                text += obj.mess + ' ';
+            });
+            return text;
         }
     }
 });
