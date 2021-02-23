@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 11:31:25
-version: 1.28
+updated: 2021-02-23 11:43:53
+version: 1.29
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -14,7 +14,6 @@ In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.htm
 A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. So in other words like many other features in vuejs like methods, and components there can be both global and local sets of these filters. 
 
 In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript. 
-
 <!-- more -->
 
 ## 1 - Vue filter basics
@@ -73,7 +72,9 @@ The result of this example then is just having the string 'foo' appended to the 
 
 ### 2.2 - Filters can be used with the v-bind directive
 
-Typically filters are used when doing mustache interpolation in a static template. However in a static template that can also be used when creating a value for an attribute with the v-bind directive.
+Typically filters are used when doing mustache interpolation in a static template. However in a static template they can also be used when creating a value for an attribute with the v-bind directive. If you are not familiar with the v-bind directive it might be a good idea to check out my post on the topic for more examples on v-bind. However the basic idea is to just a data object property or some javaScript to create a value for an attribute value.
+
+In this example I am using the v-bind directive and a filter to create a text value for the value attribute of a button type input element.
 
 ```html
 <html>
