@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 809
-updated: 2021-02-23 13:39:00
-version: 1.2
+updated: 2021-02-23 13:44:03
+version: 1.3
 ---
 
 I think that I am going to want to write at least a few more posts on the collection of standard librires that are built into python itself so I do not waste time working out my own solutions for things that can be set and done in a flash with some feature that is built into python itself. One thing that I need to do now and then is break a string into a collection of lists where each element in the list is a substring of the original source text that is no more than a certian set charicter length long. In other words I often need a way to wrap text which is a common feature in most text editors, or any project that might involve a fair amount of text that needs to be displayed. I often work out my own quick solutions for this, but there is a built in [librray called textwrap](https://docs.python.org/3.7/library/textwrap.html) for this one that helps to make get this part of programing out of the way yet even fatser.
@@ -20,6 +20,8 @@ So in this post I will be going over a few quick examples of the textwrap standa
 In this section I will just be quickly going over some very basic examples of some of the functions that are given in the textwrap library. There are a few methods to choose from, but the main function of interest here is the wrap method.
 
 ### 1.1 - The wrap method
+
+First and formost I think that I should start with the wrap method as this is the one that I would likly use the most often in actual projects. This methods will take a source string of lengthly text as the first argument, and then I can set a max charicter width as a keyed argument. The returned result is a list of strings where each string in the list is from the given source string and is no longer than the set width that I have given.
 
 ```python
 import textwrap
@@ -35,4 +37,50 @@ for item in lines:
 # 'this is some text'
 # 'that I want to wrap'
 # 'to a list of lines'
+```
+
+### 1.2 - The fill method
+
+```python
+import textwrap
+ 
+str = 'So say I have a string like this the contains some text about something.'
+ 
+filled = textwrap.fill(str, width=20)
+ 
+print(type(filled).__name__) # 'str'
+print(filled)
+# So say I have a
+# string like this the
+# contains some text
+# about something.
+ 
+# ANother way to do this would be something liek this
+filled = "\n".join( textwrap.wrap(str, width=20) )
+print(filled)
+# So say I have a
+# string like this the
+# contains some text
+# about something.
+ 
+## which allows for me to change what the break string is
+filled = ";\r\n".join( textwrap.wrap(str, width=20) )
+print(filled)
+# So say I have a;
+# string like this the;
+# contains some text;
+# about something
+```
+
+### 1.3 - The shorten method
+
+```python
+import textwrap
+ 
+str = 'use shorten to make some text fit a set width'
+ 
+short = textwrap.shorten(str, width=20, placeholder='...')
+ 
+print(type(short).__name__) # 'str'
+print(short) # use shorten to...
 ```
