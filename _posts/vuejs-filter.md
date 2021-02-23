@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 10:07:58
-version: 1.25
+updated: 2021-02-23 10:09:52
+version: 1.26
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remian in the methods option.
@@ -25,7 +25,7 @@ Filters in vuejs might differ slightly from what you might be familial with when
 
 ### 1.1 - Get the examples here and for all other vuejs examples at my guthub repo
 
-All the examples here as well as for all my other vuejs examples that i write about here can be [found at my test\_vuejs github repo](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-filter).
+All the examples here as well as for all my other vuejs examples that i write about here can be [found at my test\_vuejs github repo](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-filter). I will not be getting into detail about how to clone down and set up the repo here as I have outlined that in detail in my [getting started post on vuejs](/2019/05/05/vuejs-getting-started/).
 
 ## 2 - Vue filter as an Vue Instance Option
 
