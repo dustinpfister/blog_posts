@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 11:23:20
-version: 1.27
+updated: 2021-02-23 11:31:25
+version: 1.28
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -35,7 +35,9 @@ So when using vuejs by calling the main constructor that is of course one way to
 
 ### 2.1 - vue filter option basic example
 
-For a basic example of a vue filter option here I have just a filter that appends the string 'foo' to the beginning of anything that it is used with via the pipe symbol when using the mustache interpolation syntax. I just add the method that I want to the filters object, this method will have one argument that is the value that will be piped into it when it is used in a template. Inside the body of the method I do whatever it is that I want to do with the value that is passed and return the result.
+For a basic example of a vue filter option here I have just a filter that appends the string 'foo' to the beginning of anything that it is used with via the pipe symbol when using the mustache interpolation syntax for the text node of an element in a template. 
+
+I just add the method that I want to the filters object that will be the value for the filters option for a Vue instance. This method that will be a filter will have one argument that is the value that will be piped into it when it is used in a template. Inside the body of the method I do whatever it is that I want to do with the value that is passed and return as the result of the filter. For this example I just append the string foo to whatever the value is and return the resulting string.
 
 I can then use my foo filter in a template whenever I use the mustache syntax of the v-bind directive. When it comes to using the filter I start out with the value I want to filter and then use the \| symbol after the value followed by the name of the filter that I want to use. 
 
@@ -46,7 +48,7 @@ I can then use my foo filter in a template whenever I use the mustache syntax of
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-    <div id="demo">{{ mess | foo }}</div>
+    <div id="demo"></div>
   <script>
   
   new Vue({
@@ -66,6 +68,8 @@ I can then use my foo filter in a template whenever I use the mustache syntax of
   </body>
 </html>
 ```
+
+The result of this example then is just having the string 'foo' appended to the value of the mess data prop value that is 'bar' resulting in the string 'foobar' being the value of the text node of the paragraph in the template. This might not be the most compelling examples, but never the less you should get the basic idea. Real examples of filters might format a number value to a string version of that number that is more expressive than just simple a number, such as placing a dollar sign in front of a number if the number is an amount of money.
 
 ### 2.2 - Filters can be used with the v-bind directive
 
