@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 809
-updated: 2021-02-23 13:48:35
-version: 1.4
+updated: 2021-02-23 13:52:14
+version: 1.5
 ---
 
 I think that I am going to want to write at least a few more posts on the collection of standard librires that are built into python itself so I do not waste time working out my own solutions for things that can be set and done in a flash with some feature that is built into python itself. One thing that I need to do now and then is break a string into a collection of lists where each element in the list is a substring of the original source text that is no more than a certian set charicter length long. In other words I often need a way to wrap text which is a common feature in most text editors, or any project that might involve a fair amount of text that needs to be displayed. I often work out my own quick solutions for this, but there is a built in [librray called textwrap](https://docs.python.org/3.7/library/textwrap.html) for this one that helps to make get this part of programing out of the way yet even fatser.
@@ -18,6 +18,8 @@ So in this post I will be going over a few quick examples of the textwrap standa
 ## 1 - Some basic textwrap examples
 
 In this section I will just be quickly going over some very basic examples of some of the functions that are given in the textwrap library. There are a few methods to choose from, but the main function of interest here is the wrap method.
+
+At this time I think I should also point out that the examples here as well as all of the python source code examples of my posts here can be found at my [examples-python github](https://github.com/dustinpfister/examples-python/tree/master/for-post/python-standard-library-textwrap/s1-basic) reposatiry. I think I should also make it clear that this is not a getting started post on python and I assume that you have at least some basic working knowage of how to create, save, and run simple python source code examples.
 
 ### 1.1 - The wrap method
 
