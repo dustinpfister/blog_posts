@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2020-07-27 12:02:54
-version: 1.15
+updated: 2021-02-23 04:47:58
+version: 1.16
 ---
 
-A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be a filter in vuejs that is registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. [Filters](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and anything else that might require the use of them. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript.
+In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript. A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be a filter in vuejs that is registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. 
 
 <!-- more -->
 
