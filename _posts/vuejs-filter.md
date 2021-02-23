@@ -5,17 +5,23 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 04:47:58
-version: 1.16
+updated: 2021-02-23 04:56:20
+version: 1.17
 ---
 
-In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript. A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be a filter in vuejs that is registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. 
+In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. Filters differ from methods in that they can only be used in  mustache interpolations and when using the v-bind directive. 
+
+A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. So in other words like many other features in vuejs like methods, and components there can be both global and local sets of these filters. 
+
+In this post I will be going over some use case examples of filters in vuejs, and also about filtering in general in javaScript. 
 
 <!-- more -->
 
 ## 1 - Vue filter basics
 
-This is a post on filters in vuejs, the popular front end javaScript framework. In vuejs filters are methods that are often used for text formating, but they can also be used to preform a wide range of things when are where needed. Filters in vuejs might differ slightly from what you might be familial with when it comes to methods like the [lodash \_.filter collection method](/2018/05/18/lodash_filter/) or the [filter array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) in native javaScript.
+This is a post on filters in vuejs, the popular front end javaScript framework. In vuejs filters are methods that are often used for text formating. So they are like methods, but they are not as flexabule as they can only be used for formatting with a few features when working out a sttaic template. 
+
+Filters in vuejs might differ slightly from what you might be familial with when it comes to methods like the [lodash \_.filter collection method](/2018/05/18/lodash_filter/) or the [filter array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) in native javaScript. When it comes to vuejs a filter has to do more with filtering some text into a method that will do something to that text such as making all the letters uppercase.
 
 ## 2 - Vue filter as an Vue Constructor Option
 
