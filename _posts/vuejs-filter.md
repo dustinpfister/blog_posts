@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 09:38:38
-version: 1.21
+updated: 2021-02-23 09:41:19
+version: 1.22
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. Filters differ from methods in that they can only be used in  mustache interpolations and when using the v-bind directive. 
@@ -111,6 +111,10 @@ So there is making filters that are for just a single instance of the Vue constr
 
 So in this section I will be going over some examples that involve defining filters at a global level. This involves the use of the Vue.filter global api method rather than the filters Vue Constructor option. The result is then a filter that can be used across multipliable instances of Vue in a page.
 
+
+### 3.1 - A Basic Global filter example
+
+For just a quick example of this how about a simple anwser check filter that will just check if a value that is passed to it will equal a desired value just for the sake of getting the basic idea here.
 
 ```html
 <html>
