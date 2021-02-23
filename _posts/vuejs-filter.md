@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 10:09:52
-version: 1.26
+updated: 2021-02-23 11:23:20
+version: 1.27
 ---
 
-In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remian in the methods option.
+In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
 
 A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. So in other words like many other features in vuejs like methods, and components there can be both global and local sets of these filters. 
 
@@ -19,7 +19,7 @@ In this post I will be going over some use case examples of filters in vuejs, an
 
 ## 1 - Vue filter basics
 
-This is a post on filters in vuejs, the popular front end javaScript framework. In vuejs filters are methods that are often used for text formating. So they are like methods, but they are not as flexabule as they can only be used for formatting with a few features when working out a sttaic template. 
+This is a post on filters in vuejs, the popular front end javaScript framework. In vuejs filters are methods that are often used for text formating. So they are like methods, but they are not as flexible as they can only be used for formatting with a few features when working out a static template. 
 
 Filters in vuejs might differ slightly from what you might be familial with when it comes to methods like the [lodash \_.filter collection method](/2018/05/18/lodash_filter/) or the [filter array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) in native javaScript. When it comes to vuejs a filter has to do more with filtering some text into a method that will do something to that text such as making all the letters uppercase.
 
@@ -37,7 +37,7 @@ So when using vuejs by calling the main constructor that is of course one way to
 
 For a basic example of a vue filter option here I have just a filter that appends the string 'foo' to the beginning of anything that it is used with via the pipe symbol when using the mustache interpolation syntax. I just add the method that I want to the filters object, this method will have one argument that is the value that will be piped into it when it is used in a template. Inside the body of the method I do whatever it is that I want to do with the value that is passed and return the result.
 
-I can then use my fooanate filter in a template whenever I use the mustache syntax of the v-bind directive. When it comes to using the filter I start out with the value I want to filter and then use the \| symbol after the value followed by the name of the filter that I want to use. 
+I can then use my foo filter in a template whenever I use the mustache syntax of the v-bind directive. When it comes to using the filter I start out with the value I want to filter and then use the \| symbol after the value followed by the name of the filter that I want to use. 
 
 ```js
 <html>
@@ -46,16 +46,17 @@ I can then use my fooanate filter in a template whenever I use the mustache synt
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-    <p id="bar">{{ mess | fooanate }}</p>
+    <div id="demo">{{ mess | foo }}</div>
   <script>
   
   new Vue({
-    el:'#bar',
+    el:'#demo',
+    template: '<p>{{ mess | foo }}</p>',
     data: {
       mess: 'bar'
     },
     filters: {
-      fooanate : function(val){
+      foo : function(val){
         return 'foo' + val;
       }
     }
