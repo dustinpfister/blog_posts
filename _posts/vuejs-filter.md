@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 09:41:19
-version: 1.22
+updated: 2021-02-23 09:55:23
+version: 1.23
 ---
 
-In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. Filters differ from methods in that they can only be used in  mustache interpolations and when using the v-bind directive. 
+In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. 
 
 A [vue filter](https://vuejs.org/v2/api/#Vue-filter) can be registered at the global level, or it can be an [asset of a single Vue constructor](https://vuejs.org/v2/api/#filters) instance. So in other words like many other features in vuejs like methods, and components there can be both global and local sets of these filters. 
 
@@ -62,7 +62,48 @@ I can then use my fooanate filter in a template whenever I use the mustache synt
 </html>
 ```
 
-### 2.2 - vue filter option to text example
+### 2.2 - Filters can be used with the v-bind directive
+
+Typically filters are used when doing mustache interpolation in a static template. However in a static template that can also be used when creating a value for an attribute with the v-bind directive.
+
+```html
+<html>
+  <head>
+    <title>vue filter example list</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+new Vue({
+    el: '#demo',
+    template:'<input ' + 
+        'v-bind:value="state | buttonText" ' +
+        'v-on:click="click(state)" ' +
+        'type="button" >',
+    data: {
+        state: {
+            amount: 40,
+            delta: 5
+        }
+    },
+    filters: {
+        buttonText: function (state) {
+            return 'step by ' + state.delta + ' ( ' + state.amount + ' ) ';
+        }
+    },
+    methods : {
+        click: function(state){
+            state.amount += state.delta;
+        }
+    }
+});
+    </script>
+  </body>
+</html>
+```
+
+### 2.3 - vue filter option array to text example
 
 What about if I am in a situation in which I have an array of items and I want a custom way to go about converting that array of items to a string form. Doing so often requires a little custom logic because I might want some values in that string but not others. So for a more advanced example of a vue filter that is used via the filters Vue constructor option, here is an example that creates a plain text presentation of data from an array of objects. 
 
