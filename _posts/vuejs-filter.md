@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 11:58:40
-version: 1.30
+updated: 2021-02-23 12:21:03
+version: 1.31
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -296,7 +296,40 @@ When it comes to making this kind of feature I could work out my own solution, b
 </html>
 ```
 
+## 4 - Kelvin temp to display unit example
 
-## 4 - Conclusion
+Maybe one real example would be to have a filter that will take a kelvin temperature unit and convert it to one of several options when it comes to a display unit.
+
+```js
+    // kelvin to display unit filter
+    Vue.filter('kelvinToUnit', function(kelvin, unit){
+        unit = unit === undefined ? 'k' : unit;
+        if(unit.toLowerCase() === 'c'){
+            return String( Number(kelvin) - 273.15) + 'c';
+        }
+        if(unit.toLowerCase() === 'f'){
+            return String( ( Number(kelvin) - 273.15) * 9 / 5 + 32 ) + 'f';
+        }
+        return kelvin + 'k';
+    });
+
+   // use case example
+    new Vue({
+        el: '#demo',
+        template: '<div>' +
+            '<h3>{{ kelvin | kelvinToUnit(displayUnit) }}</h3>' +
+            '<h3>{{ kelvin | kelvinToUnit("f") }}</h3>' +
+            '<h3>{{ kelvin | kelvinToUnit }}</h3>' +
+        '</div>',
+        data: function(){
+            return {
+                kelvin: 303.15,
+                displayUnit: 'c'
+            };
+        }
+    });
+```
+
+## 5 - Conclusion
 
 So this this post I just wanted to work out a few quick examples of filters when using vuejs as part of a client side javaScript project. The filters in vuejs are not to be confused with other methods in other frameworks such as [lodash filter](/2018/05/18/lodash_filter/), and native prototype methods like Array.filter. Those methods have to do with filtering out elements from collections rather that text formatting. When it comes to text formatting it does not always have to be done this way of course, but it seems like it might be the best choice if I am using vuejs as part of the stack compared to any other way to go about doing so.
