@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-24 09:03:34
-version: 1.35
+updated: 2021-02-24 09:10:05
+version: 1.36
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -278,11 +278,11 @@ For just a quick example of a global filter how about a simple answer check filt
 </html>
 ```
 
-### 3.2 - Global Money filter
+### 3.2 - Global Money filter example
 
 One kind of filter that I would often want to have in a project is a filter that will take a number, or string of a number, and spit out a string that is formatted in a way that makes sense when it comes to money. That is have the number set to a fixed number of decimal places for cents, with commas for every three decimal places with the dollar amount, and of course the dollar sign added to the string.
 
-When it comes to making this kind of feature I could work out my own solution, but this does strike me as a very common problem so there should be a quick copy and pase solution for this. I would think that there should also be some kind of standard, web browser built in solution for this sort of thing even. Well it turns out that there is and it is called the [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) object that has decent browser support by todays standards at least.
+When it comes to making this kind of feature I could work out my own solution, but this does strike me as a very common problem so there should be a quick copy and paste solution for this. I would think that there should also be some kind of standard, web browser built in solution for this sort of thing even. Well it turns out that there is and it is called the [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) object that has decent browser support by todays standards at least.
 
 ```html
 <html>
@@ -337,6 +337,10 @@ When it comes to making this kind of feature I could work out my own solution, b
   </body>
 </html>
 ```
+
+So then in this example I am not just using the money filter in the main vuejs instance, I am also using the filter in a component. So then there you have the basic idea of a global filter in action, I can use my filter in my main vuejs instance, but I can also now use it in all of my components, extensions, ans so forth.
+
+I will not be getting into component design in detail here, but you should [read up more on component design](/2019/05/16/vuejs-component/) if you have not done so at this point. Components are a great way to break down what would otherwise be a very complex vuejs instance into smaller more manageable parts that can then be used in a main vuejs template or render function.
 
 ## 4 - Kelvin temp to display unit example
 
