@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-01-20 14:07:57
-version: 1.21
+updated: 2021-02-24 13:44:13
+version: 1.22
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are a few other libraries that come to mind that can also be used as a way to make use of operating system dependent features. For example the subprocess library can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -82,7 +82,7 @@ There are a number of other functions in the os library that have to do with get
 
 However if I really want to kill the current process with the os library alone it might be best to use the os.kill function and in order to use that I need a process id to give it first. So then this function can be used to give me the process id to give the such a function.
 
-## 2 The open built in function, os.open, and os.fdopen
+## 2 - The open built in function, os.open, and os.fdopen
 
 When it comes to opening a file and reading and writing the contents it might be best to just use the open built in function. This function makes opening, reading, writing, and creating files easy. The open built in function will wrap a file descriptor, and it will also directly return a file object that can be used to quickly and easily read and edit a file.
 
