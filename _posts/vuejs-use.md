@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2021-02-24 12:27:27
-version: 1.16
+updated: 2021-02-24 12:29:43
+version: 1.17
 ---
 
 So the [vue use](https://vuejs.org/v2/api/#Vue-use) global API method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. However maybe that is not such a bad thing, with some projects that come to mind I might not need an http client in the framework and as such that would result in unnecessary bloat in the framework. Also when it comes to adding an http client I can choose what I want to add, or make my own http client for the project.
@@ -167,4 +167,4 @@ In some projects a simple client like this that just makes get requests might wo
 
 ## 3 - Conclusion
 
-So then the Vue use method is how to go about createing a Vuejs plugin for all of vuejs itself. There are a few things that come to mind where I might want to have something be part of vuejs itself. However even then I do not always have to, or should. There are other options such as making what I want to use just part of its own seperate thing and just use it in the varous life cycle hooks and methods of my vue compoents.
+So then the Vue use method is how to go about createing a Vuejs plugin for all of vuejs itself. There are a few things that come to mind where I might want to have something be part of vuejs itself. However even then I do not always have to, or should. There are other options such as making what I want to use just part of its own seperate thing and just use it in the varous life cycle hooks and methods of my vue compoents. So maybe a plugin is not always the best option, or at least I can not say that I am bothering with them that much thus far at least. Still I might make use of this feature now and then if I think that doing so might just be the best course of action with something.
