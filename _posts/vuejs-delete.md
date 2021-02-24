@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2021-02-24 09:39:53
-version: 1.13
+updated: 2021-02-24 09:44:33
+version: 1.14
 ---
 
 If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary that migt help in these kinds of situations. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. 
@@ -123,3 +123,5 @@ vm.names.sort();
 ## 4 - Conclusion
 
 So there are a number of options when it comes to deleting an object from the data object of a vue instance. However it might be a good idea to stop and think if I really need to delete something from the data object to begin with. So far when it comes to working on actual projects with vuejs I am not deleting things often. Often I prefer to create a fixed stack of objects for something right away, and then just use various vuejs and native javaScript features to reuse that same fixed stack of objects over and over again.
+
+When it comes to my collection of canvas examples I have one [canvas example centered around the idea of an object pool](/2020/07/20/canvas-example-object-pool/). This is a fixed set of objects that have display object like properties such as x, y, width, and height for example. In my object pool example I do not create and delete display objects, rather i create a fixed number of objects for a pool, and then just mutate the properties of those objects as needed.
