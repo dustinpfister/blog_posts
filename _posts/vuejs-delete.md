@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2021-02-24 11:39:22
-version: 1.18
+updated: 2021-02-24 12:37:49
+version: 1.19
 ---
 
 If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary that migt help in these kinds of situations. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. 
@@ -122,9 +122,9 @@ vm.names.sort();
 
 ## 4 - Do you really even need to delete to begin with? Check out Object pools.
 
-One thing to keep in mind when making a project that involves deleteing an objet is to stop and ask yourself if you really even need to delete an object to begin with. In some situstions maybe you just do and as such there needs to be a process to delete an object in a way that will work without problems. However there is the idea of just flaging an object as not being currently active, and then ise that flag as a way to not redner anything for the object, or use that object to update something.
+One thing to keep in mind when making a project that involves deleting an object is to stop and ask yourself if you really even need to delete an object to begin with. In some situations maybe you just do and as such there needs to be a process to delete an object in a way that will work without problems. However there is the idea of just flagging an object as not being currently active, and then use that flag as a way to not render anything for the object, or use that object to update something.
 
-Think about how a file system works on a hard drive for a moment, when you go do delete a file does the data dissapear? Nope the area on the hard drive where the data for that file is just ends up being flag as empty space. As such when it comes to writing new data to the file system that are of the disk can now be used for something else. So it is possible to create vuejs projects that follow a simular kind of dynamic where I create a set number of objects, and have an active flag for each object that serves as a way to know if the object is being used or not.
+Think about how a file system works on a hard drive for a moment, when you go do delete a file does the data disappear? Nope the area on the hard drive where the data for that file is just ends up being flag as empty space. As such when it comes to writing new data to the file system that are of the disk can now be used for something else. So it is possible to create vuejs projects that follow a similar kind of dynamic where I create a set number of objects, and have an active flag for each object that serves as a way to know if the object is being used or not.
 
 ```html
 <html>
