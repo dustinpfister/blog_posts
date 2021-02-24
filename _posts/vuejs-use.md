@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2021-02-24 12:15:54
-version: 1.14
+updated: 2021-02-24 12:23:30
+version: 1.15
 ---
 
 So the [vue use](https://vuejs.org/v2/api/#Vue-use) global API method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. However maybe that is not such a bad thing, with some projects that come to mind I might not need an http client in the framework and as such that would result in unnecessary bloat in the framework. Also when it comes to adding an http client I can choose what I want to add, or make my own http client for the project.
@@ -162,3 +162,7 @@ So then I can use it to add a method to Vue that can be used to make simple get 
 Of course when it comes to writing this kind of module there are all kinds of things that can be added to it, such as adding support for more than just get requests, making use of promises rather than callbacks and so forth. It might make better sense to just use an http client that is all ready written, rather than making your own. However the idea here is that an http client is something that should maybe not be baled into a font end framework. 
 
 In some projects a simple client like this that just makes get requests might work okay, in other projects maybe not, in any case it is up to you how to go about adding this functionality to a project that involves the use of vuejs in the client system of the project.
+
+## 3 - Conclusion
+
+So then the Vue use method is how to go about createing a Vuejs plugin for all of vuejs itself. There are a few things that come to mind where I might want to have something be part of vuejs itself. However even then I do not always have to, or should. There are other options such as making what I want to use just part of its own seperate thing and just use it in the varous life cycle hooks and methods of my vue compoents.
