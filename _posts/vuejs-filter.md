@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-23 12:24:39
-version: 1.32
+updated: 2021-02-24 07:32:03
+version: 1.33
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -69,6 +69,44 @@ I can then use my foo filter in a template whenever I use the mustache syntax of
 ```
 
 The result of this example then is just having the string 'foo' appended to the value of the mess data prop value that is 'bar' resulting in the string 'foobar' being the value of the text node of the paragraph in the template. This might not be the most compelling examples, but never the less you should get the basic idea. Real examples of filters might format a number value to a string version of that number that is more expressive than just simple a number, such as placing a dollar sign in front of a number if the number is an amount of money.
+
+### 2.2 - Filters can be chained
+
+Filters can be chained into a line of two or more filters. This way to result of one filter can end up being the value used for the next filter and so forth.
+
+```html
+<html>
+  <head>
+    <title>vue filter example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo"></div>
+  <script>
+  
+  new Vue({
+    el:'#demo',
+    template: '<p>{{ mess | foo | bar | upper }}</p>',
+    data: {
+      mess: 'what is '
+    },
+    filters: {
+      foo : function(val){
+        return val + ' foo';
+      },
+      bar : function(val){
+           return val + 'bar?';
+      },
+      upper : function(val){
+          return val.toUpperCase();
+      }
+    }
+  });
+  
+  </script>
+  </body>
+</html>
+```
 
 ### 2.2 - Filters can be used with the v-bind directive
 
