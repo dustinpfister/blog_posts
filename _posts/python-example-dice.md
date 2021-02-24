@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 810
-updated: 2021-02-24 13:44:12
-version: 1.3
+updated: 2021-02-24 17:14:34
+version: 1.4
 ---
 
 I would like to start off a few posts on some basic, and maybe a few not so basic python applaction examples. Just for the sake of learning how to progress beyond just picking up the basics when it comes to the langue itself, and the standard libries. After all the long term plan of picking up a langue should be to create some actual projects of one kind or another.
@@ -17,21 +17,32 @@ So to start off this collection of python example posts I think I will start off
 
 <!-- more -->
 
-
 ## 1 - The /lib/dice.py module
+
+First off is the dice module that I worked out that will be used in my main index file that will be called from the command line. The dice librray will make use of the random standard library that helps to make quick work of a librray like this. The method that I wil be using is the rand int method that will do rounding for me, I just need to give a low and high number. For my main roll die function the low number will always be 1, and the high number will be a sides argument that will default to the ushual 6.
 
 ```python
 import random;
  
-def roll_die():
-    return random.randint(1, 6)
+# safe list get method
+def safe_list_get (l, idx, default):
+    try:
+        return l[idx]
+    except IndexError:
+        return default
  
-def roll_set(count=2):
+# roll a single die of given sides
+def roll_die(sides=6):
+    return random.randint(1, sides)
+ 
+# roll a set of dice
+def roll_set(count=2, sides=['6', '6'], default_sides=6):
     set=[]
     i=0
     while i < count:
-        set.append(roll_die())
-        i = i + 1;
+        s = int(safe_list_get(sides, i, default_sides))
+        set.append(roll_die(s))
+        i = i + 1
     return set
 ```
 
@@ -40,13 +51,39 @@ def roll_set(count=2):
 I make this example two files, and I could have made those two files in the same folder. However I am thinking ahead and it is possible that I might want to add additional files. So I would like to keep things in folders as a way to keep things a little neat. So I have mu dice.py module in a lib folder, however that makes things a little complacted when it comes to importing the module.
 
 ```python
-import os,sys,inspect
+import argparse, os,sys,inspect
+# insert lib folder
 dir_current = os.getcwd()
 dir_script = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-# insert lib folder
 sys.path.insert(0, dir_script + '/lib')
+# import dice from lib folder
 import dice
+ 
+# create a argument parser
+parser = argparse.ArgumentParser(description='Basic argparse example.')
+ 
+# arguments
+parser.add_argument('--count',
+                    dest='count',
+                    action='store',
+                    default=1,
+                    help='Set the count of dice (default: 1)')
+parser.add_argument('--sides',
+                    dest='sides',
+                    action='store',
+                    default='6',
+                    help='sides list (default: [6])')
+parser.add_argument('--default_sides',
+                    dest='default_sides',
+                    action='store',
+                    default=6,
+                    help='default side count (default: 6)')
+# parse the arguments
+args = parser.parse_args()
+ 
+sides = args.sides.split(',');
+ 
 # using dice lib
-set=dice.roll_set(count=4)
+set=dice.roll_set( count = int(args.count),  sides = sides, default_sides = args.default_sides )
 print(set)
 ```
