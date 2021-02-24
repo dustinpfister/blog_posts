@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 810
-updated: 2021-02-24 17:27:33
-version: 1.6
+updated: 2021-02-24 17:29:44
+version: 1.7
 ---
 
 I would like to start off a few posts on some basic, and maybe a few not so basic python applaction examples. Just for the sake of learning how to progress beyond just picking up the basics when it comes to the langue itself, and the standard libries. After all the long term plan of picking up a langue should be to create some actual projects of one kind or another.
@@ -96,3 +96,4 @@ Once I have my options parsed I can then use them for arguments when calling my 
 
 This example came togeather fairly quickly but I did spend a fair amount of time working out some basic examples before hand when writing examples for other posts. In my post on the os module that is where I found a decent example of using the os module to find the absolute path to a current python script that is running that can then be used to add the lib folder to the paths list. That in itself is one major setback for me when it comes to working out a basic python example that I got around before hand. I also wrote a post on the argparse librray and know that it is a decent option parser so I was able to get the part of the example out of the way very fast also. It takes time to study all these little libraries and what they are usfule for, but now that I have a sold grasp on them I can quickly put togeather an example like this.
 
+I have some plans all ready drafted out for additional features and improvements for this python example, but I still think there is opnly so much more to add, and most of it is just for the sake of getting a better feel for how to go about making an actual project ofsome kind with python.
