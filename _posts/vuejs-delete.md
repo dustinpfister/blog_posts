@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2021-02-24 11:37:30
-version: 1.17
+updated: 2021-02-24 11:39:22
+version: 1.18
 ---
 
 If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary that migt help in these kinds of situations. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. 
@@ -209,6 +209,8 @@ new Vue({
 ```
 
 So then in this example each time I click the add button I then get an object with an active flag set to false, and set the mess prop of that object to what I have in the text input element and set the active flag of the object to true. In the template I am then using the [v-for directive](/2019/05/21/vuejs-for/) to create a div for each object in the pool, but the object only has its mess property displayed if the active flag in true thanks to the [v-if directive](/2019/05/22/vuejs-if/).
+
+The delete method of the vue instance does not actually delete an object it just sets the active flag back to false. At which point the object can in turn be used for something new.
 
 ## 5 - Conclusion
 
