@@ -5,13 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 443
-updated: 2020-07-29 11:35:20
-version: 1.12
+updated: 2021-02-24 12:13:32
+version: 1.13
 ---
 
-So the [vue use](https://vuejs.org/v2/api/#Vue-use) global api method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. However maybe that is not such a bad thing, with some projects that come to mind I might not need an http client in the framework and as such that would result in unnecessary bloat. Also when it comes to adding an http client I can choose what I want to add, or make my own http client for the project.
+So the [vue use](https://vuejs.org/v2/api/#Vue-use) global API method in vue.js is there to use plugins designed for vue.js. Vue.js can do a lot by itself, but chances are you are going to want to use at at least a few plugins as late versions of the framework even miss things like an http client. However maybe that is not such a bad thing, with some projects that come to mind I might not need an http client in the framework and as such that would result in unnecessary bloat in the framework. Also when it comes to adding an http client I can choose what I want to add, or make my own http client for the project.
 
 With that said it would seem that vue.js is following a more minimal approach with its design, pulling many features out of the framework itself, and leaving it up to the developer how to go about adding that feature if and when it is needed. This allows for greater flexibility when it comes to choosing what to add, if it is even deeded, rather than just having everything packed together right away regardless if you are even using it or not.
+
+I might not always need to add something as a plug in to vuejs itself too though. The vue use global method is not a replacement for other methods such as vue extend that can be used to create a custom Main Vue constructor. I can also just add additional javaScript assets as part of a stack and as lond as those other resources are loaded when my vue instances start I can just use those other javaScript assets in the various hooks, methods, and filters of by Vue instances and compoents.
 
 So in this post I will be going over a few simple examples of the vue use global API method, and some basic example of vuejs plug in design.
 
