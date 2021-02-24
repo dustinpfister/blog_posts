@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-24 07:32:03
-version: 1.33
+updated: 2021-02-24 07:38:57
+version: 1.34
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -72,7 +72,7 @@ The result of this example then is just having the string 'foo' appended to the 
 
 ### 2.2 - Filters can be chained
 
-Filters can be chained into a line of two or more filters. This way to result of one filter can end up being the value used for the next filter and so forth.
+Filters can be chained into a line of two or more filters. This way to result of one filter can end up being the value used for the next filter and so forth. So as with the basic example where I just appended the string 'foo', I can have another filter that will append the string 'bar', and yet another that will turn the whole result to uppercase letters. A data value can be piped into the bar function, then the result of that can be piped into the bar function, and then piped into an uppercase function.
 
 ```html
 <html>
@@ -108,7 +108,9 @@ Filters can be chained into a line of two or more filters. This way to result of
 </html>
 ```
 
-### 2.2 - Filters can be used with the v-bind directive
+So all kinds of filters can be made to break a complex task into a bunch of smallwer steps. There are many other use cases that come to mind with this that I will be getting to in additional examples here. Such as taking a value that is an array and filtering it down into a smaller array, and then piping the result of that to yet another filter that will create a text form of the array values.
+
+### 2.3 - Filters can be used with the v-bind directive
 
 Typically filters are used when doing mustache interpolation in a static template. However in a static template they can also be used when creating a value for an attribute with the v-bind directive. If you are not familiar with the v-bind directive it might be a good idea to check out my post on the topic for more examples on v-bind. However the basic idea is to just a data object property or some javaScript to create a value for an attribute value.
 
@@ -151,7 +153,7 @@ new Vue({
 </html>
 ```
 
-### 2.3 - vue filter option array to text example
+### 2.4 - vue filter option array to text example
 
 What about if I am in a situation in which I have an array of items and I want a custom way to go about converting that array of items to a string form. Doing so often requires a little custom logic because I might want some values in that string but not others. So for a more advanced example of a vue filter that is used via the filters Vue constructor option, here is an example that creates a plain text presentation of data from an array of objects. 
 
@@ -194,7 +196,7 @@ new Vue({
 });
 ```
 
-### 2.4 - Using Array.filter in a vue filter
+### 2.5 - Using Array.filter in a vue filter
 
 If I am creating a Vue instance that has an Array as a data object value, or a prop value in a component I can maybe make some filters that will work with an array value. For example say that I have an array of objects and each object has an active property that means that it is an object in a stack of objects that is currently being used. This is something that I ften do when it comes to creating an object pool for a project. Anyway I can use the Array.filter method in a vuejs filter as a way to create a new array that is then a collection of objects that just have an active prop set to true. I can then feed this array to yet another filter that will create a final text version of the array for an element.
 
