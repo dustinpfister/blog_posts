@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 810
-updated: 2021-02-24 17:20:18
-version: 1.5
+updated: 2021-02-24 17:27:33
+version: 1.6
 ---
 
 I would like to start off a few posts on some basic, and maybe a few not so basic python applaction examples. Just for the sake of learning how to progress beyond just picking up the basics when it comes to the langue itself, and the standard libries. After all the long term plan of picking up a langue should be to create some actual projects of one kind or another.
@@ -48,7 +48,9 @@ def roll_set(count=2, sides=['6', '6'], default_sides=6):
 
 ## 2 - The main index.py file
 
-I make this example two files, and I could have made those two files in the same folder. However I am thinking ahead and it is possible that I might want to add additional files. So I would like to keep things in folders as a way to keep things a little neat. So I have mu dice.py module in a lib folder, however that makes things a little complacted when it comes to importing the module.
+I made this example two files, and I could have made those two files in the same folder. However I am thinking ahead and it is possible that I might want to add additional files. So I would like to keep things in folders as a way to keep things a little neat. So I have mu dice.py module in a lib folder, however that makes things a little complacted when it comes to importing the module. In my post on the os module though I worked out a way to go about getting an absolute path to the current script that is running, and using that I can then just concatanate a sytring for the lib folder to that path, and then add that paths to the sys.path list. By doing so python will now look there too when importing modules inclduing my dice module.
+
+in my main index python script I am also using the argparse librray to parse any and all options given from the command line. I want to set up some options for the count of dice, as well as options for setting the number of sides for dice, and have a default sides option also.
 
 ```python
 import argparse, os,sys,inspect
@@ -87,6 +89,8 @@ sides = args.sides.split(',');
 set=dice.roll_set( count = int(args.count),  sides = sides, default_sides = args.default_sides )
 print(set)
 ```
+
+Once I have my options parsed I can then use them for arguments when calling my roll set method in the dice module, I can then print the results of that to the standard output by calling the print built in function.
 
 ## 3 - Conclusion
 
