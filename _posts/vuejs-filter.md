@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 440
-updated: 2021-02-24 07:38:57
-version: 1.34
+updated: 2021-02-24 09:03:34
+version: 1.35
 ---
 
 In [Vuejs](/2021/02/05/vuejs/) a [Filter](https://vuejs.org/v2/guide/filters.html) can be used to help with formating tasks, and can be used when working out a simple static template. Filters differ from methods in that they can only be used in mustache interpolations and when using the v-bind directive. However using the filters option of a vue instance, and setting up global filters is a great way to go about pulling alway this kind of method from other methods that have to do with handing events, or mutating the data object that can remain in the methods option.
@@ -108,7 +108,7 @@ Filters can be chained into a line of two or more filters. This way to result of
 </html>
 ```
 
-So all kinds of filters can be made to break a complex task into a bunch of smallwer steps. There are many other use cases that come to mind with this that I will be getting to in additional examples here. Such as taking a value that is an array and filtering it down into a smaller array, and then piping the result of that to yet another filter that will create a text form of the array values.
+So all kinds of filters can be made to break a complex task into a bunch of smaller steps. There are many other use cases that come to mind with this that I will be getting to in additional examples here. Such as taking a value that is an array and filtering it down into a smaller array, and then piping the result of that to yet another filter that will create a text form of the array values.
 
 ### 2.3 - Filters can be used with the v-bind directive
 
@@ -198,7 +198,7 @@ new Vue({
 
 ### 2.5 - Using Array.filter in a vue filter
 
-If I am creating a Vue instance that has an Array as a data object value, or a prop value in a component I can maybe make some filters that will work with an array value. For example say that I have an array of objects and each object has an active property that means that it is an object in a stack of objects that is currently being used. This is something that I ften do when it comes to creating an object pool for a project. Anyway I can use the Array.filter method in a vuejs filter as a way to create a new array that is then a collection of objects that just have an active prop set to true. I can then feed this array to yet another filter that will create a final text version of the array for an element.
+If I am creating a Vue instance that has an Array as a data object value, or a prop value in a component I can maybe make some filters that will work with an array value. For example say that I have an array of objects and each object has an active property that means that it is an object in a stack of objects that is currently being used. This is something that I often do when it comes to creating an object pool for a project. Anyway I can use the Array.filter method in a vuejs filter as a way to create a new array that is then a collection of objects that just have an active prop set to true. I can then feed this array to yet another filter that will create a final text version of the array for an element.
 
 ```js
 
@@ -232,14 +232,16 @@ new Vue({
 
 ## 3 - Global Filters
 
-So there is making filters that are for just a single instance of the Vue constructor, but what of you are doing something that involves more than one instance of vuejs in a page? For example say that I want a format money filter but I want to use it in more than one component or plain Vuejs instance. I could place the method into an object and then just refernce that method in the filters option of any vuejs instance, but there is also a way to go about making a filter global so it will be there for any Vuejs instance.
+So there is making filters that are for just a single instance of the Vue constructor, but what of you are doing something that involves more than one instance of vuejs in a page? For example say that I want a format money filter but I want to use it in more than one component or plain Vuejs instance. I could place the method into an object and then just reference that method in the filters option of any vuejs instance, but there is also a way to go about making a filter global so it will be there for any Vuejs instance.
 
 So in this section I will be going over some examples that involve defining filters at a global level. This involves the use of the Vue.filter global api method rather than the filters Vue Constructor option. The result is then a filter that can be used across multipliable instances of Vue in a page.
 
 
 ### 3.1 - A Basic Global filter example
 
-For just a quick example of this how about a simple anwser check filter that will just check if a value that is passed to it will equal a desired value just for the sake of getting the basic idea here.
+The process of making a global filter is not all that much more complected then making a local filter. The main difference is that I am just calling the Vue.filter global API function and then passing the name of the filter as the first argument. This name is a string value that would be the key value of the filter in the object that is used in the filters option when it comes to local filters. The next argument is then the function that will be used for the filter and from there everything is the same as with local filters when it comes to arguments and the return value.
+
+For just a quick example of a global filter how about a simple answer check filter that will just check if a value that is passed to it will equal a desired value just for the sake of getting the basic idea here.
 
 ```html
 <html>
@@ -278,9 +280,9 @@ For just a quick example of this how about a simple anwser check filter that wil
 
 ### 3.2 - Global Money filter
 
-One kind of filter that I would often want to have in a project is a filter that will take a number, or string of a number, and spit out a string that is formatted in a way that makes sense when it comes to money. That is have the number set to a fixed number of decimal places for cents, with commas for every three decimnal places with the dolar amount, and of course the dollar sign added to the string.
+One kind of filter that I would often want to have in a project is a filter that will take a number, or string of a number, and spit out a string that is formatted in a way that makes sense when it comes to money. That is have the number set to a fixed number of decimal places for cents, with commas for every three decimal places with the dollar amount, and of course the dollar sign added to the string.
 
-When it comes to making this kind of feature I could work out my own solution, but this does strike me as a very common problem so there should be a quick copy and pase solution for this. I would think that there should also be some kind of standard, web browser built in solutuon for this sort of thing even. Well it turns out that there is and it is called the [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) object that has decent browser support by todays standards at least.
+When it comes to making this kind of feature I could work out my own solution, but this does strike me as a very common problem so there should be a quick copy and pase solution for this. I would think that there should also be some kind of standard, web browser built in solution for this sort of thing even. Well it turns out that there is and it is called the [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) object that has decent browser support by todays standards at least.
 
 ```html
 <html>
