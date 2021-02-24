@@ -5,11 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 810
-updated: 2021-02-24 17:29:44
-version: 1.7
+updated: 2021-02-24 17:36:25
+version: 1.8
 ---
 
-I would like to start off a few posts on some basic, and maybe a few not so basic python applaction examples. Just for the sake of learning how to progress beyond just picking up the basics when it comes to the langue itself, and the standard libries. After all the long term plan of picking up a langue should be to create some actual projects of one kind or another.
+I would like to start off a few posts on some basic, and maybe a few not so basic [python applaction examples](https://www.programiz.com/python-programming/examples). Just for the sake of learning how to progress beyond just picking up the basics when it comes to the langue itself, and the standard libries. After all the long term plan of picking up a langue should be to create some actual projects of one kind or another.
 
 I think at least a few posts should be on very basic single file programes that just do one little thing. This is becuase I would like to have a few very simple getting started type posts where the goal is to make something that is a finished product rather than just soemthing that helps with one little problem. However I also think that often that should be the goal anyway when it comes to making a python applaction. Often I might think of an applaction as just one product, but often one product can be just a whole bunch of products that work togetaher.
 
@@ -19,7 +19,9 @@ So to start off this collection of python example posts I think I will start off
 
 ## 1 - The /lib/dice.py module
 
-First off is the dice module that I worked out that will be used in my main index file that will be called from the command line. The dice librray will make use of the random standard library that helps to make quick work of a librray like this. The method that I wil be using is the rand int method that will do rounding for me, I just need to give a low and high number. For my main roll die function the low number will always be 1, and the high number will be a sides argument that will default to the ushual 6.
+First off is the dice module that I worked out that will be used in my main index file that will be called from the command line. The dice librray will make use of the [random standard library](/2021/01/22/python-standard-library-random/) that helps to make quick work of a librray like this. The method that I wil be using is the rand int method that will do rounding for me, I just need to give a low and high number. 
+
+For my main roll die function the low number that I will be using with the random int method will always be 1, and the high number will be a sides argument that will default to the ushual 6. Each time I call the roll die function I will then get a random number between 1 and 6 by default, but I can change the number of sides to something like 20 for other projects in which I might use something like this.
 
 ```python
 import random;
@@ -48,9 +50,9 @@ def roll_set(count=2, sides=['6', '6'], default_sides=6):
 
 ## 2 - The main index.py file
 
-I made this example two files, and I could have made those two files in the same folder. However I am thinking ahead and it is possible that I might want to add additional files. So I would like to keep things in folders as a way to keep things a little neat. So I have mu dice.py module in a lib folder, however that makes things a little complacted when it comes to importing the module. In my post on the os module though I worked out a way to go about getting an absolute path to the current script that is running, and using that I can then just concatanate a sytring for the lib folder to that path, and then add that paths to the sys.path list. By doing so python will now look there too when importing modules inclduing my dice module.
+I made this example two files, and I could have made those two files in the same folder. However I am thinking ahead and it is possible that I might want to add additional files. So I would like to keep things in folders as a way to keep things a little neat. So I have mu dice.py module in a lib folder, however that makes things a little complacted when it comes to importing the module. In my [post on the os module](/2021/01/06/python-standard-library-os/) though I worked out a way to go about getting an absolute path to the current script that is running, and using that I can then just concatanate a sytring for the lib folder to that path, and then add that paths to the sys.path list. By doing so python will now look there too when importing modules inclduing my dice module.
 
-in my main index python script I am also using the argparse librray to parse any and all options given from the command line. I want to set up some options for the count of dice, as well as options for setting the number of sides for dice, and have a default sides option also.
+in my main index python script I am also using the [argparse librray](/2021/01/19/python-standard-library-argparse/) to parse any and all options given from the command line. I want to set up some options for the count of dice, as well as options for setting the number of sides for dice, and have a default sides option also.
 
 ```python
 import argparse, os,sys,inspect
