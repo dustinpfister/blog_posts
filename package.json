@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "klaw-basic": "node ./scripts/cli/klaw-basic/index.js"
+    "klaw-basic": "node ./scripts/cli/klaw-basic/index.js",
+    "fbc": "node ./scripts/apps/fresh-by-cat/app.js",
+    "wc": "node ./scripts/apps/list-wc/app.js"
   },
   "author": "Dustin Pfister",
   "license": "GPL-3.0",

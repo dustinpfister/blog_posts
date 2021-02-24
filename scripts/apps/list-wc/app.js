@@ -6,8 +6,8 @@ app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || process.argv[2] || 8080);
 app.set('days_back', 365 * 2);
 
-let dir_cli = path.resolve('../../cli'),
-dir_posts = path.resolve('../../../_posts'),
+let dir_cli = path.resolve(__dirname, '../../cli'),
+dir_posts = path.resolve(__dirname, '../../../_posts'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
 // total days sense first post
