@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2021-02-24 09:47:56
-version: 1.15
+updated: 2021-02-24 11:31:46
+version: 1.16
 ---
 
 If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary that migt help in these kinds of situations. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. 
@@ -120,7 +120,95 @@ vm.names.sort();
 </html>
 ```
 
-## 4 - Conclusion
+## 4 - Do you really even need to delete to begin with? Check out Object pools.
+
+One thing to keep in mind when making a project that involves deleteing an objet is to stop and ask yourself if you really even need to delete an object to begin with. In some situstions maybe you just do and as such there needs to be a process to delete an object in a way that will work without problems. However there is the idea of just flaging an object as not being currently active, and then ise that flag as a way to not redner anything for the object, or use that object to update something.
+
+Think about how a file system works on a hard drive for a moment, when you go do delete a file does the data dissapear? Nope the area on the hard drive where the data for that file is just ends up being flag as empty space. As such when it comes to writing new data to the file system that are of the disk can now be used for something else. So it is possible to create vuejs projects that follow a simular kind of dynamic where I create a set number of objects, and have an active flag for each object that serves as a way to know if the object is being used or not.
+
+```html
+<html>
+  <head>
+    <title>vue el example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="app"></div>
+  <script>
+new Vue({
+    el: '#app',
+    template: '<div>'+
+        '<input type="text" v-model="messText" v-on:keyup.enter="useNext"> ' +
+        '<button v-on:click="useNext">Add</button> ' +
+        '<button v-on:click="del">Delete</button> ' +
+        '<div v-for="obj in pool">' +
+            '<p v-if="obj.active">{{obj.mess}}</p>' +
+        '</div>' +
+    '</div>',
+    data: {
+        messText: 'Hello World',
+        pool: []
+    },
+    created: function(){
+        this.$data.pool = this.createPool(5);
+        this.useNext('Hello World');
+        this.useNext('This is an object pool');
+    },
+    methods: {
+        // the 'delete' method just sets an active flag to false
+        // the object is still there it can just be used for something
+        // else now
+        del: function(){
+            var obj = this.getNextActiveState(true);
+            if(obj){
+                obj.active = false;
+            }
+        },
+        useNext: function(mess){
+            var obj = this.getNextActiveState(false);
+            if(obj){
+                obj.active = true;
+                if(typeof mess === 'string'){
+                   obj.mess = mess || this.$data.messText;
+                }else{
+                    obj.mess = this.$data.messText;
+                }
+            }
+        },
+        getNextActiveState: function(state){
+            state = state === undefined ? false: state;
+            var i = 0,
+            obj,
+            len = this.$data.pool.length;
+            while(i < len){
+                obj = this.$data.pool[i];
+                if(obj.active === state){
+                    return obj;
+                }
+                i += 1;
+            }
+            return false;
+        },
+        createPool: function(size){
+            var i = 0,
+            pool = [];
+            while(i < size){
+                pool.push({
+                    active: false,
+                    mess: 'none'
+                });
+                i += 1;
+            }
+            return pool;
+        }
+    }
+});
+  </script>
+  </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So there are a number of options when it comes to deleting an object from the data object of a vue instance. However it might be a good idea to stop and think if I really need to delete something from the data object to begin with. So far when it comes to working on actual projects with vuejs I am not deleting things often. Often I prefer to create a fixed stack of objects for something right away, and then just use various vuejs and native javaScript features to reuse that same fixed stack of objects over and over again.
 
