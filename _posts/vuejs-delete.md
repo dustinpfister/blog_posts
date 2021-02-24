@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 441
-updated: 2020-07-28 16:51:32
-version: 1.11
+updated: 2021-02-24 09:33:33
+version: 1.12
 ---
 
-If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. So then with that said this will be a quick post on the use of vuejs delete in a client side javaScript environment using vue.js as a framework.
+If for some reason I want to delete an object property in a vuejs data object, the view might not update when doing so. There is the force update method that can be used to update a view if necessary that migt help in these kinds of situations. However there is the built in [Vue delete](https://vuejs.org/v2/api/#Vue-delete) method as well that can also be used to delete an object property and update the view in one shot. 
+
+There might be a bunch of other things to bring up when it comes to deleting something in a vuejs instance. Come to think of it I often think that it might be a good idea to not delete anything to begin with, and as an alternative use the same resources over and over again. So then with that said this will be a quick post on the use of vuejs delete in a client side javaScript environment using vue.js as a framework, and write about some other related topics in the process of doing so.
 
 <!-- more -->
 
