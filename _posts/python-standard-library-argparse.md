@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 784
-updated: 2021-01-20 13:59:01
-version: 1.12
+updated: 2021-02-24 16:24:58
+version: 1.13
 ---
 
 When learning a new language that can be used to create scripts that can be called from the command line one of the first things that I like to learn is how to access any positional arguments that might have been given when the script was called. If I do just want to check positional arguments then there is just using the sys libraries argv property to do so. However there should be a way to parse named arguments with a built in library or there should at least be a decent user space options when it comes to parsing named options.
@@ -17,7 +17,7 @@ WHen it comes to option parsers in some programing languages I have to look for 
 
 ## 1 - Basic getting started example of argparse
 
-The basic flow of argparse is to like always import the library first. The next step is to create a new instance of the parser by calling the Argument Parser method of the argparse library. Once I have an instance of a parser I can then start adding some arguments for the parser by calling the add argument method of a parser instance. When doing so there are a number of parameters for the add argument method that I will be getting into greater detail later in this post. Once I have one or more arguments for the parser instance I can the call the parse args method of the parser instance, and the returned value of that will be an arguments object that I can then use in the rest of the code of my script.
+The basic flow of argparse is to start out by always importing the library first just like any other python lybrary. The next step is to create a new instance of the parser by calling the Argument Parser method of the argparse library. Once I have an instance of a parser I can then start adding some arguments for the parser by calling the add argument method of a parser instance. When doing so there are a number of parameters for the add argument method that I will be getting into greater detail later in this post. Once I have one or more arguments for the parser instance I can the call the parse args method of the parser instance, and the returned value of that will be an arguments object that I can then use in the rest of the code of my script.
 
 ```python
 import argparse
