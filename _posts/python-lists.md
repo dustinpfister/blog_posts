@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 768
-updated: 2020-12-28 14:20:39
-version: 1.24
+updated: 2021-02-24 17:44:33
+version: 1.25
 ---
 
 In [python Lists](https://docs.python.org/3.7/library/stdtypes.html#lists) are a mutable kind of sequence data type. These lists might be somewhat similar to Arrays in javaScript, but with at least a few note worthy differences such as being a dense rather than sparse kind of array. Lists are not the only option when it comes to arrays in python there is a standard library called array that might prove to be a better option in some cases. However the thing about lists is that it is a type that is built into python itself, and it is just one kind of sever other kinds of sequence types to work with.
@@ -259,6 +259,22 @@ print(type(b).__name__) # list
 print(b) # [0, 1, 'two', 3, 4, 5, 6, 7, 8, 9]
 ```
 
-## 9 - conclusion
+## 9 - Safe get index method
+
+So it would be nice if List had a [safe list get method](https://stackoverflow.com/questions/5125619/why-doesnt-list-have-safe-get-method-like-dictionary) But it would seem there is is not one. However it is not so hard to make one by just making use of a try statement in the body of a function with just a few arguments.
+
+```python
+def safe_list_get (l, idx, default):
+    try:
+        return l[idx]
+    except IndexError:
+        return default
+ 
+l=[1,2,3]
+print( safe_list_get(l, 0, 42) ) # 1
+print( safe_list_get(l, 7, 42) ) # 42
+```
+
+## 10 - conclusion
 
 So that is it for now when it comes to lists in python. I think that I have touched base on many of the basics at least when it comes to lists, but I am sure there is a great deal more to write about that I have not got to just yet. As of this writing I am still fairly new to python myself, so at some point in the future I am going to want to edit this post. Hopefully by then I will have some more interesting examples worked out to expand this post more, and also cover some additional topics that are important to be aware of when it comes to getting started with lists in python.
