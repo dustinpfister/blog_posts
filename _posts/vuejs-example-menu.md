@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 14:06:05
-version: 1.13
+updated: 2021-02-25 14:13:09
+version: 1.14
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -129,6 +129,10 @@ Vue.component('menu-manual', {
 ```
 
 ## 3 - The main.js file that is an Instance of Menu rather than Vue
+
+Now that I have my Menu class and some menu compoents I am now going to want to create a main vuejs instance as with just about every other vue example. This time though it is going to be an instance of Menu rather than the plain old Vue Class by itself.
+
+Just like any other main vue instance I am going to want to have a point point, so I use the vue el option as aways here with the main Menu instance. When it comes to the data object though I just need to add the properties that I want to add depeding on how I go about using this menu system. For just a kind of demo example I am going to want to add a money property to my own state object becuase that is being used in my manual menu menu. I am also going to want to add my own menus array that will be used over the menus array in the Menu class. However I do not have to add everything, like the current menu prop that will default to home. If I have a home menu in my project then I can just leave that as the default.
 
 ```js
 var vm = new Menu({
