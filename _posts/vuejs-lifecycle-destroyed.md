@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 691
-updated: 2021-02-25 09:37:08
-version: 1.9
+updated: 2021-02-25 09:42:47
+version: 1.10
 ---
 
 The [vue destroyed](https://vuejs.org/v2/api/#destroyed) life cycle hook will fired when a vue instance is destroyed. Such an event can happen by calling the destroy instance method of a vuejs instance. So far I can not say that this is something that I do in actual projects but I am sure that if I make enough vuejs examples I might end up in a situation in which I might have to do this with vue instances.
@@ -66,7 +66,7 @@ However a real example might not be that much more advanced then this. Say I hav
 
 So that is it for not on the vuejs destroyed life cycle hook. I am trying to gear myself into spending a little more time on expanding my content on vuejs, as well as updating, editing, and expand my content on vuejs including this post also. With that said it is only a matter of time until I get around to this post, so hopefully I will expand this more then with a few additional examples of the destroyed life cycle hook as well as link to some additional posts on full examples that make use of this hook.
 
-I have been neglecting my content on vuejs, so to help get me in gear for changing that I thought I would write this quick post on the destroyed life cycle hook as a way to continue expanding on vuejs. 
+I have been neglecting my content on vuejs, so to help get me in gear for changing that I thought I would write this quick post on the destroyed life cycle hook as a way to continue expanding on vuejs. I have wrote a post on [vue delete](/2019/05/11/vuejs-delete/) method also that has to do with deleting object properties rather than a whole vue instance on its own. Most of my time is going into editing my collection of [vuejs examples](/2021/02/04/vuejs-example/) though, and so far in most of those examples I am reusing objects and vue instances rather than deleting them.
 
 So far I can not say I actually use the destroy method and the hooks that will fire when an instance in examples thus far. One reason why that might be is that I often create projects where I just simple reuse a fixed set objects over and over again rather than creating and destroying objects as needed. This is not just something that I do with vuejs instances, and objects in the data object of vue instances, but with javaScript projects in general actually. When it comes to my canvas examples I have an [canvas example on a basic object pool](/2020/07/20/canvas-example-object-pool/) module that I worked out where I am just working with a fixed set of objects. Each object has an active flag that I use to find out if something should be rendered for the object or not, of if the object should be used when it comes to updating something.
 
