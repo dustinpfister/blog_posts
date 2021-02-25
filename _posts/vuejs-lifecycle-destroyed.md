@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 691
-updated: 2021-02-25 09:34:55
-version: 1.8
+updated: 2021-02-25 09:37:08
+version: 1.9
 ---
 
 The [vue destroyed](https://vuejs.org/v2/api/#destroyed) life cycle hook will fired when a vue instance is destroyed. Such an event can happen by calling the destroy instance method of a vuejs instance. So far I can not say that this is something that I do in actual projects but I am sure that if I make enough vuejs examples I might end up in a situation in which I might have to do this with vue instances.
@@ -68,4 +68,5 @@ So that is it for not on the vuejs destroyed life cycle hook. I am trying to gea
 
 I have been neglecting my content on vuejs, so to help get me in gear for changing that I thought I would write this quick post on the destroyed life cycle hook as a way to continue expanding on vuejs. 
 
-So far I can not say I actually use the destroy method and the hooks that will fire when an instance in examples thus far. One reason why that might be is that I often create projects where I just simple reuse a fixed set objects over and over again rather than creating and destroying objects as needed. This is not just something that I do with vuejs instances, and objects in the data object of vue instances, but with javaScript projects in general actually. When it comes to my canvas examples I have an [canvas example on a basic object pool](/2020/07/20/canvas-example-object-pool/) module that I worked out where I am just working with a fixed set of objects.
+So far I can not say I actually use the destroy method and the hooks that will fire when an instance in examples thus far. One reason why that might be is that I often create projects where I just simple reuse a fixed set objects over and over again rather than creating and destroying objects as needed. This is not just something that I do with vuejs instances, and objects in the data object of vue instances, but with javaScript projects in general actually. When it comes to my canvas examples I have an [canvas example on a basic object pool](/2020/07/20/canvas-example-object-pool/) module that I worked out where I am just working with a fixed set of objects. Each object has an active flag that I use to find out if something should be rendered for the object or not, of if the object should be used when it comes to updating something.
+
