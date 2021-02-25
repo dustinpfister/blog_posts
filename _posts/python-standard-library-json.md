@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 17:12:00
-version: 1.5
+updated: 2021-02-25 17:16:19
+version: 1.6
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library.
@@ -42,3 +42,7 @@ s="[\"foo\", {\"bar\": 42}]"
 t=json.loads(s)
 print(t)
 ```
+
+## 2 - Conclusion
+
+The JSON format is a standard format for data seraliztion that is used in web development. I also often find myself using it as a way to store data also, but there are many other formats that might be a better option when it comes to some kinds of applactions. One drawback about JSON is that it does not support comments, so it is not the best option when it comes to a config file format.
