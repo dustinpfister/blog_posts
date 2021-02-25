@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 17:21:59
-version: 1.8
+updated: 2021-02-25 17:23:18
+version: 1.9
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library. The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
@@ -32,7 +32,7 @@ print(t)
 
 ### 1.2 - The loads method
 
-When it comes to parsing or loading a JSON string into an object there is the loads method.
+When it comes to parsing or loading a JSON string into an object there is the loads method. All I have to do is just pass the json string to the loads method as the first argument and the method will return an object that I can then use with some python code.
 
 ```python
 import json
