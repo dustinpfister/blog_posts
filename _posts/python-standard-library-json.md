@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 17:19:04
-version: 1.7
+updated: 2021-02-25 17:21:59
+version: 1.8
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library. The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
@@ -17,11 +17,11 @@ If you have some experence with javaScript there is the JSON.parse, and JSON.str
 
 ## 1 - Some basic examples of the json library
 
-There are two main methods of interest when it comes to using the json librray which are the dumps method that can be used to convert an object to a JSON string and the loads method that can convert such a string back into an object that can then be used with some code.
+There are two main methods of interest when it comes to using the json librray which are the dumps method that can be used to convert an object to a JSON string and the loads method that can convert such a string back into an object that can then be used with some code. In this section I will then just be going over a few basic examples of these two kinds of methods just for the sake of getting a feel for how to go about using them in a very hello world kind of way.
 
 ### 1.1 - The json dump method
 
-The dumps method on the json librray would seem to be the python equavalent of the JSON.stringify method.
+The dumps method on the json librray would seem to be the python equavalent of the JSON.stringify method. If I give the method a python object such as a list of a dictionary it will convert that to a JSON form. As I would exspect lists are treated as javaScript arrays, and dictionaries are treated as plain javaScript Objects.
 
 ```python
 import json
