@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 17:10:08
-version: 1.4
+updated: 2021-02-25 17:12:00
+version: 1.5
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library.
@@ -30,4 +30,15 @@ import json
 t=json.dumps(['foo', {'bar': 42}])
 print(t)
 # ["foo", {"bar": 42}]
+```
+
+### 1.2 - The loads method
+
+When it comes to parsing or loading a JSON string into an object there is the loads method.
+
+```python
+import json
+s="[\"foo\", {\"bar\": 42}]"
+t=json.loads(s)
+print(t)
 ```
