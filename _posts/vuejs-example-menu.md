@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 14:15:50
-version: 1.15
+updated: 2021-02-25 17:39:24
+version: 1.16
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -204,4 +204,7 @@ Now for just a little html, and css to wrap this all up together. I have an exte
 
 ## 5 - Conclusion
 
-This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into components. Although I do like to create templates, I think that more often then not render functions are just the way to go also along with components. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions.
+This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into components, and I think doing something like this often proves to be nessecry just for the sake of keeping things neet. 
+
+Although I do like to create templates, I think that more often then not render functions are just called for in many situstions, also some times it would seem like they are the only way to go about doing something actually. In the menu.js file where I define my Menu constructor I do not think that theye is a way to generate component names with javaScript code in static templates. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions. Still templates are easier to read and debug, so I still like to start out with them, and if they work find for a compoent I will not bother with a render function.
+
