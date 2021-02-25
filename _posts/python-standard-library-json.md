@@ -5,13 +5,11 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 17:16:19
-version: 1.6
+updated: 2021-02-25 17:19:04
+version: 1.7
 ---
 
-I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library.
-
-The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. 
+I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library. The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
 
 If you have some experence with javaScript there is the JSON.parse, and JSON.strigify methods that can be used to do the same in a javaScript enviroment. I wrote a [post centered on the javaScript Json parse method](/2020/02/28/js-json-parse/) before hand, and it is a javaScript rather than python related topic so I will not be getting into detail with that here.
 
