@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 14:13:09
-version: 1.14
+updated: 2021-02-25 14:15:50
+version: 1.15
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -164,6 +164,8 @@ var vm = new Menu({
     }
 })
 ```
+
+So the idea that I had in mind seems to work the way that I wanted to. I pull the main redner function, and certin methods into a spescial Menu class created with Vue.extend. When I then use the Menu class I just nee to add what I want to add that I will be using in the menus that I add that are the way that I go about extending creating a project.
 
 ## 4 - The html and css files
 
