@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 17:23:18
-version: 1.9
+updated: 2021-02-25 17:34:08
+version: 1.10
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the JSON standard library. The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
@@ -41,6 +41,19 @@ t=json.loads(s)
 print(t)
 ```
 
-## 2 - Conclusion
+## 2 - A request example of JSON
+
+The thing about json is that it is sort of like the HTML of data, there are many microserveses and so forth that make use of JSON as a way to recive and send data. For this section though I will just be going over a very simple example that makes use of the requests library as a way to get some json at a [free public source](https://jsonplaceholder.typicode.com).
+
+```python
+import json
+import requests
+response = requests.get("https://jsonplaceholder.typicode.com/todos")
+todos = json.loads(response.text)
+ 
+print(todos[0])
+```
+
+## 3 - Conclusion
 
 The JSON format is a standard format for data seraliztion that is used in web development. I also often find myself using it as a way to store data also, but there are many other formats that might be a better option when it comes to some kinds of applactions. One drawback about JSON is that it does not support comments, so it is not the best option when it comes to a config file format.
