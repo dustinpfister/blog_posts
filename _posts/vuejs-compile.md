@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 717
-updated: 2021-02-25 09:54:03
-version: 1.10
+updated: 2021-02-25 09:56:33
+version: 1.11
 ---
 
 In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue compile method can then be used as the render option of a vuejs instance.
@@ -106,4 +106,4 @@ So this might be yet another basic example of what compile can be used for but I
 
 ## 3 - Conclusion
 
-Once a developer has a good grasp of render functions, templates and the compile global method they then have a good grasp on how to go about creating a view to be used with a vuejs project.
+Once a developer has a good grasp of render functions, templates and the compile global method they then have a good grasp on how to go about creating a view to be used with a vuejs project. I do not always go with render functions thus far, but when I do it is often because I am in a situation in which I have to. Static templates do have there limitations and render functions are there to help address those limitations.
