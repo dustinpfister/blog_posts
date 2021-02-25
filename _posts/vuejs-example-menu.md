@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-05 15:36:50
-version: 1.12
+updated: 2021-02-25 14:06:05
+version: 1.13
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -15,13 +15,12 @@ Anyway for todays vuejs example I think it is a good idea to work out a simple, 
 
 <!-- more -->
 
-## 1 - The main menu.js vue instance
+## 1 - The Menu Class created with Vue.extend
 
-First off I am going to want to have a main vue instance of this menu system of sorts. This will constitute a render function that will render a main top navigation bar of buttons. Each button on the navigation bar will switch change a current menu value in the data object of this main parent vue instance. When the current menu value of the main data object of the vue instance changes so will the current menu item that is rendered below this navigation bar.
+First off I am going to want to have a special vue instance constructor of this menu system of sorts created with Vue.extend. This will constitute a render function that will render a main top navigation bar of buttons. Each button on the navigation bar will switch change a current menu value in the data object of this main parent vue instance. When the current menu value of the main data object of the vue instance changes so will the current menu item that is rendered below this navigation bar.
 
 ```js
-var vm = new Vue({
-    el: '#app',
+var Menu = Vue.extend({
     render: function(createElement){
         var vm = this;
         var children = [];
@@ -45,21 +44,23 @@ var vm = new Vue({
         vm.$data.menus.forEach(function(menuName){
             menus.push(createElement('menu-' + menuName, {
                 props:{
-                   money: vm.$data.money,
+                   state: vm.$data.state,
                    currentMenu: vm.$data.currentMenu
                 },
                 on: {
-                    'delta-money': vm.deltaMoney
+                    'state-change': vm.stateChange
                 }
             }));
         });
         children.push(createElement('div', {class:'wrap_menu'}, menus));
         return createElement('div', {class:'wrap_main'}, children);
     },
-    data: {
-        menus: ['home', 'manual'],
-        currentMenu: 'home',
-        money: 0
+    data: function(){
+        return {
+            menus: ['home'],
+            currentMenu: 'home',
+            state: {} // state defaults to an empty object
+        };
     },
     methods: {
         // a button was clicked
@@ -72,9 +73,8 @@ var vm = new Vue({
                 dat.currentMenu = idArr[2];
             }
         },
-        deltaMoney: function(a){
-            console.log('delta money event', a);
-            this.$data.money += a;
+        stateChange: function(key, value){
+            console.log('must add your own method for state change events',key, value);
         }
     }
 });
@@ -93,12 +93,10 @@ Here I have just a basic home page menu component that makes use of a simple sta
 
 ```js
 Vue.component('menu-home', {
-  props: ['money', 'currentMenu'],
-  data: function () {
-    return {
-    };
-  },
-  template: '<div v-if="currentMenu === \'home\'"><p>This is home current number of clicks: {{ money }}</p></div>'
+    props: ['state', 'currentMenu'],
+    template: '<div v-if="currentMenu === \'home\'">'+
+      '<p>This is home current number of clicks: {{ state.money }}</p>' +
+    '</div>'
 });
 ```
 
@@ -108,11 +106,7 @@ Here I have a component that make use of a render function just like with the ma
 
 ```js
 Vue.component('menu-manual', {
-  props: ['money', 'currentMenu'],
-  data: function () {
-    return {
-    };
-  },
+  props: ['state', 'currentMenu'],
   render: function(createElement){
       var children = [];
       var vm = this;
@@ -120,24 +114,54 @@ Vue.component('menu-manual', {
           children.push(createElement('input', {
               attrs: {
                  type: 'button',
-                 value: 'click ('+ vm.$props.money + ')'
+                 value: 'click ('+ vm.$props.state.money + ')'
               },
               on: {
-                  click: this.click
+                  click: function(e){
+                      vm.$emit('state-change', 'delta-money', 1);
+                  }
               }
           }));
       }
       return createElement('div', children);
-  },
-  methods: {
-    click: function(e){
-        this.$emit('delta-money', 1);
-    }
   }
 });
 ```
 
-## 3 - The html and css files
+## 3 - The main.js file that is an Instance of Menu rather than Vue
+
+```js
+var vm = new Menu({
+    el: '#app',
+    data: {
+        menus: ['home', 'manual'],
+        state: {
+            money: 50
+        }
+    },
+    created: function(){
+        //var dat = this.$data;
+        //dat.menus.push('manual');
+    },
+    methods:{
+        // I can place methods that have to do with
+        // how I am using the 'Menu' Class here
+        deltaMoney: function(a){
+            console.log('delta money event', a);
+            this.$data.money += a;
+        },
+        // custom state change method that will be called over Menu stateChange
+        stateChange: function(key, value){
+            console.log(key, value);
+            if(key === 'delta-money'){
+                this.$data.state.money += value;
+            }
+        }
+    }
+})
+```
+
+## 4 - The html and css files
 
 Now for just a little html, and css to wrap this all up together. I have an external css file for all the styles that I will be using for this menu system of sorts that I link to in the html, and also just a single hard coded div element that I am using for a mount point in the main vuejs instance.
 
@@ -164,13 +188,14 @@ Now for just a little html, and css to wrap this all up together. I have an exte
   </head>
   <body>
     <div id="app"></div>
-    <script src="./menu_home.js"></script>
-    <script src="./menu_manual.js"></script>
-    <script src="./menu.js"></script>
+    <script src="./extend/menu.js"></script>
+    <script src="./menus/home.js"></script>
+    <script src="./menus/manual.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into components. Although I do like to create templates, I think that more often then not render functions are just the way to go also along with components. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions.
