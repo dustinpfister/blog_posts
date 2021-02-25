@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 717
-updated: 2021-02-25 09:48:44
-version: 1.9
+updated: 2021-02-25 09:54:03
+version: 1.10
 ---
 
 In vuejs there is the [vue compile](https://vuejs.org/v2/api/#Vue-compile) global api method that can be used to compile a template string into an object that will contain a render function of that template in string form. The render function of the object that is returned by the Vue compile method can then be used as the render option of a vuejs instance.
@@ -74,7 +74,7 @@ var Mod = (function () {
 
 ### 2.2 - Now to make use of it thanks to vue compile
 
-So then my external javaScript module could be used with vuejs like this.
+So then my external javaScript module could be used with a main vuejs instance of a project. When doing so I could just reference the template string in the module, however another option would be to use the Vue.compile method and create a render function.
 
 ```html
 <html>
