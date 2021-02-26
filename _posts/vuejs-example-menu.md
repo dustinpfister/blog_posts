@@ -5,13 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 20:00:15
-version: 1.17
+updated: 2021-02-25 20:05:55
+version: 1.18
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
 
 Anyway for todays vuejs example I think it is a good idea to work out a simple, solid solution for making a kind of menu for a major application using vuejs. This menu will contain a main vuejs instance, but also a number of other vuejs components each of which is a menu item for an over all application. So each external component will be a child off from the main vuejs instance, as such this example will be an exercise in many aspects of vuejs, including components, directives, events, and render functions.
+
+In addition I think I should also make a spechal custom Class based off of Vue by using the Vue.extend method. This way I can pull a lot of options and features into this speshal class and then just use the main Vue instance that is created from it to add the few options that will change from project to project. I would like to make something that can be reused over and over again from one example to the next so it seems like a good move.
 
 <!-- more -->
 
