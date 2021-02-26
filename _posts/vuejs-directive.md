@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 11:39:09
-version: 1.19
+updated: 2021-02-26 11:40:12
+version: 1.20
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of suming things up is that they are just a way to go about prefroming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assiging a value for a style attribute of an element, or attaching an event handler for a button element.
@@ -99,48 +99,7 @@ new Vue({
 </html>
 ```
 
-## 3 - vue directive template example
-
-Directives can be used in conjunction with templates as a way to pull html away from the hard coded html file and into an instance of Vue. This helps to make it so the html, data, and methods are all wrapped up in a single nice neat little package.
-
-```html
-<html>
-  <head>
-    <title>vue directive example</title>
-    <script src="/js/vuejs/2.6.10/vue.js"></script>
-  </head>
-  <body>
-  <div id="interface"></div>
-  <script src="./template.js"></script>
-  </body>
-</html>
-```
-
-```js
-var vm = new Vue({
-    el: '#interface',
-    template: '<div>' +
-    '<input v-on:click="step" type="button" value="step">' +
-    '<input v-on:click="reset" type="button" value="reset">' +
-    '<p>frame: {{ frame }} / {{ maxFrame }}</p>' +
-    '</div>',
-    data: {
-        frame: 0,
-        maxFrame: 10
-    },
-    methods: {
-        step: function (e) {
-            this.frame += 1;
-            this.frame %= this.maxFrame;
-        },
-        reset: function () {
-            this.frame = 0;
-        }
-    }
-});
-```
-
-## 4 - A Custom vue directive to binary example
+## 3 - A Custom vue directive to binary example
 
 So now that we have a good grasp on how to go about using directives there is the question of making them. T do So I just need to call the Vue directive global api method and pass the name I want for the directive as the first argument followed by and object that will contain the logic of the directive.
 
@@ -176,6 +135,6 @@ var vm = new Vue({
     });
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 In vuejs directives are a helpful tool for making use of built in logic, as well as defining my own logic when it comes to prefroming actions on html elements and vuejs components.
