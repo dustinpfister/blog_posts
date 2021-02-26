@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 08:39:55
-version: 1.13
+updated: 2021-02-26 11:03:12
+version: 1.14
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There are many built in directives and an important part of vuejs development involves knowing how to use them. In addition it also goes without saying that it is a good idea to also know how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html) as a way to add features that are needed for a project, but are not built into vuejs itself. 
@@ -17,13 +17,11 @@ If you have some background with angular chances are you will be able to get up 
 
 ## 1 - Vue directive basic v-text, and v-bind example
 
-For a basic example of a vue directive I made this quick example that makes use of some built in directives in vuejs. There are a few of these, but for starters this example makes use of the v-text, and v-bind vuejs directives. 
+For a basic example of a vue directive I made this quick example that makes use of some built in directives in vuejs. There are a few of these, but for starters this example makes use of the v-text, and v-bind vuejs directives. The v-text directive can be used as an alternative to the mustache syntax when it comes to setting the value of a text node of an element. It is a fairly simple directive that just sets the text value of a property of the data object, and or a little javaScript, of a vue instance to the inner text node. So then the v-text directive it is a good one to start playing with if you are new to vuejs directives. 
 
-The v-text directive can be used as an alternative to the mustache syntax when it comes to setting the value of a text node of an element. It is a fairly simple directive that just sets the text value of a property of the data object of a view to the inner text node, so it is a good one to start playing with if you are new to vuejs directives. 
+The v-bind argument is another directive that comes with vuejs that comes in handy often. This one can be used to set the value of html attributes with values in the data object of a vue, or angain a little javaScript. It takes one argument that is the name of the attribute to set, and then the value of the attribute is set to what is given via data object property that is assigned to it.
 
-The v-bind argument is another directive that comes with vuejs that comes in handy often. This one can be used to set the value of html attributes with values in the data object of a vue. It takes one argument that is the name of the attribute to set, and then the value of the attribute is set to what is given via data object property that is assigned to it.
-
-If you find what I wrote a little confusing maybe it would be best to look at some code examples. Here I have an html file in which I am linking to vuejs, and an external javaScript file that has a Vue class instance.
+If you find what I wrote a little confusing maybe it would be best to look at some code examples. Here I have an html file in which I am linking to vuejs, and then using just a single vue instance in a script tag that makes use of these v-text, and v-bind directives.
 
 ```html
 <html>
@@ -32,11 +30,21 @@ If you find what I wrote a little confusing maybe it would be best to look at so
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <div id="header">
-    <h1 v-text="mess_h1" >Something went wrong.</h1>
-    <p v-text="mess_p" v-bind:style="style_red"></p>
-  </div>
-  <script src="./text.js"></script>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+        '<p>{{ mess }}</p>' +
+        '<p v-text="mess" >Something went wrong.</p>' +
+        '<p v-text="mess" v-bind:style="style_red"></p>' +
+    '</div>',
+    data: {
+        mess: 'Directives are great',
+        style_red: 'color:red;'
+    }
+});
+  </script>
   </body>
 </html>
 ```
@@ -44,17 +52,6 @@ If you find what I wrote a little confusing maybe it would be best to look at so
 In the html here you will notice the v-text directive this just sets the innerText of the h1 element to the mess_h1 property of the data object in my Vue instance in the text.js file. I am also using the v-bind directive to set the value of the p elements style attribute to what is in the red property of the data object as well.
 
 Here is the text.js file in which I am mounting the div with an id of header thanks to the el option.
-
-```js
-var vm = new Vue({
-    el: '#header',
-    data: {
-        mess_h1: 'This is a v-text directive example',
-        mess_p: 'Uisng the v-text and v-bind:style directives here',
-        style_red: 'color:red;'
-    }
-});
-```
 
 When this example is up and running it results in the messages and style set in the data object of the vue being used in the text nodes and style attributes of the elements in which the v-text, and v-bind directives are being used. As such this should help to give you at least a basic idea of that a directive is in vuejs, it is a way to set the attributes and values of dome elements.
 
