@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2020-10-30 13:10:06
-version: 1.12
+updated: 2021-02-26 08:39:55
+version: 1.13
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There are many built in directives and an important part of vuejs development involves knowing how to use them. In addition it also goes without saying that it is a good idea to also know how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html) as a way to add features that are needed for a project, but are not built into vuejs itself. 
@@ -173,3 +173,7 @@ var vm = new Vue({
         el: '#content'
     });
 ```
+
+## 5 - Conclusion
+
+In vuejs directives are a helpful tool for making use of built in logic, as well as defining my own logic when it comes to prefroming actions on html elements and vuejs components.
