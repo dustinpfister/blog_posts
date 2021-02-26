@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 19:35:59
-version: 1.13
+updated: 2021-02-25 19:51:06
+version: 1.14
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the [JSON standard library](https://docs.python.org/3/library/json.html). The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
@@ -58,14 +58,21 @@ print(todos[0])
 
 ## 3 - open and save a JSON file example
 
-I often might use json as a way to store some data locally also, so it would make sence to have at least some kind of basic example of saving and lodaing json on a local file system. The open built in function might be the quick and simple way to go about creating something to that effect.
+I often might use json as a way to store some data locally also, so it would make sence to have at least some kind of basic example of saving and lodaing json on a local file system. The open built in function might be the quick and simple way to go about creating something to that effect. 
+
+I would need a function that I use to get an object from a json file, or create a new object. Then I will also want a function that is used to write an object to a file. Using the option method in the r mode can be used to read a json file, but it will throw an error if the file is not there, so it should be used in a try statement. The w+ mode of the open function is then what I can use to write json to a file. When using these methods I should make an effort to make sure that I am always using an absolute path. The os library is where I can get useful methods for things like getting the current working path, and resolveing to an absolute path.
 
 ```python
-import json
+import json, os
  
+# resolve an absolute file path for the file
+file_name = 'state.json'
+file_path = os.path.abspath( os.path.join( os.getcwd(), file_name) )
+ 
+# get a state object from json, or create a new one
 def get_state():
     try:
-        f = open('./state.json', 'r')
+        f = open(file_path, 'r')
         j = json.loads(f.read())
         f.close()
         print('json load good');
@@ -74,18 +81,18 @@ def get_state():
         print('json load fail, started new state');
         return {"c": 0}
  
+# write and object to a file
 def put_state(obj):
-    f = open('./state.json', 'w+')
+    f = open(file_path, 'w+')
     j = json.dumps(obj)
     f.write( j )
     f.close()
     return j
-
+ 
 state = get_state()
 c = state['c']
 state['c'] = int(c) + 1
 put_state(state)
-print(  )
 print(state)
 ```
 
