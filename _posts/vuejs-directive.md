@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 11:52:02
-version: 1.21
+updated: 2021-02-26 11:57:33
+version: 1.22
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of suming things up is that they are just a way to go about prefroming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assiging a value for a style attribute of an element, or attaching an event handler for a button element.
@@ -138,4 +138,4 @@ new Vue({
 
 ## 4 - Conclusion
 
-In vuejs directives are a helpful tool for making use of built in logic, as well as defining my own logic when it comes to prefroming actions on html elements and vuejs components.
+In vuejs directives are a helpful tool for making use of built in logic, as well as defining my own logic when it comes to prefroming actions on html elements and vuejs components. They are not a replacement for comppoents though, in fact that is the first and for most way of going about breaking down code into smaller more resuabule pieces. However there are many siatuations in which it might be called for to create one or two custom directives.
