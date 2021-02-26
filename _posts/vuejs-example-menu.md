@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 20:10:30
-version: 1.19
+updated: 2021-02-25 20:13:27
+version: 1.20
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -104,7 +104,7 @@ Vue.component('menu-home', {
 
 ### 2.2 - A manual.js component that uses a render function
 
-Here I have a component that make use of a render function just like with the main vue.js instance. On top of the parameters like the other menus, I am also making use of a custom delta-money event as a way to send an amount of money that is made on each click of the manual button.
+Here I have a component that make use of a render function just like with the Menu class. On top of the parameters like the home menu, I am also making use of the state-change event as a way to send an amount of money that is made on each click of the manual button. This is just to test out the way that I intend to create menus that will work with a state object that I create when working out the main menu instance for a project.
 
 ```js
 Vue.component('menu-manual', {
@@ -214,5 +214,5 @@ When this is up and running the basic idea that I had in mind for this seems to 
 
 This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into components, and I think doing something like this often proves to be necessary just for the sake of keeping things neat. 
 
-Although I do like to create templates, I think that more often then not render functions are just called for in many situations, also some times it would seem like they are the only way to go about doing something actually. In the menu.js file where I define my Menu constructor I do not think that theye is a way to generate component names with javaScript code in static templates. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions. Still templates are easier to read and debug, so I still like to start out with them, and if they work find for a component I will not bother with a render function.
+Although I do like to create templates, I think that more often then not render functions are just called for in many situations, also some times it would seem like they are the only way to go about doing something actually. In the menu.js file where I define my Menu constructor I do not think that there is a way to generate component names with javaScript code in static templates. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions. Still templates are easier to read and debug, so I still like to start out with them, and if they work find for a component I will not bother with a render function.
 
