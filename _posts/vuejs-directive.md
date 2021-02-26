@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 11:40:12
-version: 1.20
+updated: 2021-02-26 11:52:02
+version: 1.21
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of suming things up is that they are just a way to go about prefroming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assiging a value for a style attribute of an element, or attaching an event handler for a button element.
@@ -101,7 +101,11 @@ new Vue({
 
 ## 3 - A Custom vue directive to binary example
 
-So now that we have a good grasp on how to go about using directives there is the question of making them. T do So I just need to call the Vue directive global api method and pass the name I want for the directive as the first argument followed by and object that will contain the logic of the directive.
+So now that we have a good grasp on how to go about using directives there is the question of making them. To do so I just need to call the Vue directive global api method and pass the name I want for the directive as the first argument followed by an object that will contain the logic of the directive. When doing so there are a number of hook functions that can be defined for a directive which include hook, inserted, update, componentUpdated, and unbind.
+
+### 3.1 - Basic v-tobin example that makes use of the bind directive hook.
+
+Here I have a simple directive that will take the inner text of an element and turn it into a binary string. The example makes used of the bind hook which will only fire once and is called when the diretcive is first bound to an element.
 
 ```html
 <html>
@@ -110,15 +114,8 @@ So now that we have a good grasp on how to go about using directives there is th
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
-  <div id="content">
-     <h1>There is a=a and then there is a=<span v-tobin >a</span></h1>
-  </div>
-  <script src="./custom_tobin.js"></script>
-  </body>
-</html>
-```
-
-```js
+  <div id="demo"></div>
+  <script>
 Vue.directive('tobin', {
     bind: function (el, binding, vnode) {
         if (!el.dataset.text) {
@@ -130,9 +127,13 @@ Vue.directive('tobin', {
     }
 });
  
-var vm = new Vue({
-        el: '#content'
-    });
+new Vue({
+    template: '<h1>There is a=a and then there is a=<span v-tobin >a</span></h1>',
+    el: '#demo'
+});
+  </script>
+  </body>
+</html>
 ```
 
 ## 4 - Conclusion
