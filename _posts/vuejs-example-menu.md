@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 17:39:24
-version: 1.16
+updated: 2021-02-25 20:00:15
+version: 1.17
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -169,7 +169,9 @@ So the idea that I had in mind seems to work the way that I wanted to. I pull th
 
 ## 4 - The html and css files
 
-Now for just a little html, and css to wrap this all up together. I have an external css file for all the styles that I will be using for this menu system of sorts that I link to in the html, and also just a single hard coded div element that I am using for a mount point in the main vuejs instance.
+Now for just a little html, and css to wrap this all up together into something that might prove to be a little useful as an applaction starting point. I have an external css file for all the styles that I will be using for this menu system of sorts that I link to in the html, and also just a single hard coded div element that I am using for a mount point in the main vuejs instance. I plane to work on this a great deal more as I think I am going to be creating more applactions based off of this so I want to place my styles in an external css file right away as a way rather than dumping it togethaer with the html.
+
+I am going to want some base classes for the main warp div, and menu divs along with the navbar at least. As I work on this example more I am sure the list of classes will grow but for now it is fairly simple.
 
 ```css
 .wrap_main{
@@ -184,6 +186,8 @@ Now for just a little html, and css to wrap this all up together. I have an exte
   background:gray;
 }
 ```
+
+In the html I just need to link to vuejs, my css file, menu.js that has my special Menu class based off of vuejs, the menus, and the main.js file.
 
 ```html
 <html>
@@ -201,6 +205,8 @@ Now for just a little html, and css to wrap this all up together. I have an exte
   </body>
 </html>
 ```
+
+When this is up and running the basic idea that I had in mind for this seems to work just fine. However I am going to need to create a few more projects based off of this to learn more about what should be added.
 
 ## 5 - Conclusion
 
