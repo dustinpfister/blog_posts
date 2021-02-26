@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 435
-updated: 2021-02-22 16:13:22
-version: 1.37
+updated: 2021-02-25 20:20:49
+version: 1.38
 ---
 
 So this week I think I will be starting a new collection of posts on [vuejs](https://vuejs.org/) and as such when I learn something new I like to start writing some posts on the topic while I am at it. As such whenever I start a new collection of content I often start out with a getting started post on that collection because that is just what needs to happen first naturally. Getting started with vuejs requires al least some background with javaScript, html, and css. In addition to front end experience it is also a good idea to gain at least a little experience working with back end systems also when it comes to using nodejs, and express.js for example.
@@ -113,7 +113,7 @@ $ cd forpost
 $ mkdir vuejs-getting-started
 ```
 
-In this section I will be going over the examples in that folder. In all of my other vuejs posts there should be examples in the corespoding folders just like with this post.
+In this section I will be going over the examples in that folder. In all of my other vuejs posts there should be examples in the corresponding folders just like with this post.
 
 ### 2.1 - The vuejs hello-world example
 
@@ -261,7 +261,7 @@ new Vue({
 
 ### 2.5 - Components
 
-One thing that I wish I got started with right away with when starting out with vuejs is compoents design. As a projet grows sooner or later breaking things down into smaller pieces is just what needs to happen. In vuejs there are a few ways to go about helping to break things down such as with mixins, and the Vue.extend method that can be used to create custom cut main vuejs instances. However the centeral way to go about breking a vuejs project down would be to start creating a [component or two](/2019/05/16/vuejs-component/).
+One thing that I wish I got started with right away with when starting out with vuejs is components design. As a project grows sooner or later breaking things down into smaller pieces is just what needs to happen. In vuejs there are a few ways to go about helping to break things down such as with mixins, and the Vue.extend method that can be used to create custom cut main vuejs instances. However the central way to go about breaking a vuejs project down would be to start creating a [component or two](/2019/05/16/vuejs-component/).
 
 ```html
 <html>
