@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 20:13:27
-version: 1.20
+updated: 2021-02-25 20:15:08
+version: 1.21
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
@@ -91,7 +91,7 @@ So then in this section I will be going over just a few simple menu components t
 
 ### 2.1 - A basic home.js with just a static template
 
-Here I have just a basic home page menu component that makes use of a simple static template as a way to render the menu. I am not doing much of anything with this component aside from just displaying the current value of a money value that is passed to if via the money property when this menu is used in the main vue instance.
+Here I have just a basic home page menu component that makes use of a simple static template as a way to render the menu. I am not doing much of anything with this component aside from just displaying the current value of a money value that is passed to if via the state property when this menu is used in the main vue instance that I will be getting to later.
 
 ```js
 Vue.component('menu-home', {
