@@ -5,13 +5,13 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 155
-updated: 2021-02-26 14:39:15
-version: 1.2
+updated: 2021-02-26 15:45:46
+version: 1.3
 ---
 
 In [Statistics](https://en.wikipedia.org/wiki/Statistics) it seems like [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is something that comes up often. So why not just go ahead and cover this one when it comes to launching my new series of posts on working with statistics in javaScript.
 
-JavaScript might not be the ideal lanague for this sort of thing compared to some other programing lanagues, for example in python there is a built in standard library that contains a [statistics library with several standard deviation](/2021/02/26/python-standard-library-statistics/) methods. However if I just research what the propper expressions are, it is not too time consuming to come up with my own simple copy and paste methods for many statistcs related tasks in a javaScript enviorment.
+JavaScript might not be the ideal language for this sort of thing compared to some other programing languages, for example in python there is a built in standard library that contains a [statistics library with several standard deviation](/2021/02/26/python-standard-library-statistics/) methods. However if I just research what the proper expressions are, it is not too time consuming to come up with my own simple copy and paste methods for many statistics related tasks in a javaScript environment.
 
 <!-- more -->
 
@@ -46,4 +46,8 @@ let getSD = function (data) {
 };
 ```
 
-This is just one of several kinds of standard deviation though, in the python statistics stndard library this seems to be refered to as the [sample standard deviation](https://docs.python.org/3.7/library/statistics.html#statistics.stdev) which is just the square root of the sample variance.
+This is just one of several kinds of standard deviation though, in the python statistics standard library this seems to be referred to as the [sample standard deviation](https://docs.python.org/3.7/library/statistics.html#statistics.stdev) which is just the square root of the sample variance.
+
+## 3 - Conclusion
+
+That is it for now when it comes to standard deviation in a javaScript environment, in time I might get around to editing this post to expand it with additional methods for getting standard deviation and variance. However what I think I need to do first and formost is start working on one or two projects where I am actually using these methods in the project.
