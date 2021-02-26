@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 18:22:41
-version: 1.12
+updated: 2021-02-25 19:35:59
+version: 1.13
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the [JSON standard library](https://docs.python.org/3/library/json.html). The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
@@ -57,6 +57,8 @@ print(todos[0])
 ```
 
 ## 3 - open and save a JSON file example
+
+I often might use json as a way to store some data locally also, so it would make sence to have at least some kind of basic example of saving and lodaing json on a local file system. The open built in function might be the quick and simple way to go about creating something to that effect.
 
 ```python
 import json
