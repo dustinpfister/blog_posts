@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 19:51:06
-version: 1.14
+updated: 2021-02-25 19:53:52
+version: 1.15
 ---
 
 I have wrote a few posts on standard libries in python thus far, I do not think I will write posts on all of them, however I still tink I should write a post for each of them that I might actually use in projects. One such librray might very well be the [JSON standard library](https://docs.python.org/3/library/json.html). The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data seralizion langaue, that is taking an object and turning it into a string format that can be stored in a file, or trasmitted over and http request to or from a client system.
@@ -45,7 +45,7 @@ print(t)
 
 ## 2 - A request example of JSON
 
-The thing about json is that it is sort of like the HTML of data, there are many microserveses and so forth that make use of JSON as a way to recive and send data. For this section though I will just be going over a very simple example that makes use of the requests library as a way to get some json at a [free public source](https://jsonplaceholder.typicode.com).
+The thing about json is that it is sort of like the HTML of data, there are many microserveses and so forth that make use of JSON as a way to recive and send data. For this section though I will just be going over a very simple example that makes use of the requests library as a way to get some json at a [free public source](https://jsonplaceholder.typicode.com). Once the response is loaded I can then just pass the response text to the loads method and then get a workabule object.
 
 ```python
 import json
