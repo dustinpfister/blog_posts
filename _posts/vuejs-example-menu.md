@@ -5,15 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 793
-updated: 2021-02-25 20:05:55
-version: 1.18
+updated: 2021-02-25 20:10:30
+version: 1.19
 ---
 
 There is starting out with just some very basic examples of vuejs, but sooner or later there is taking the time to start to get into making some real [vuejs examples](/2021/02/04/vuejs-example/) with vuejs as a front end framework. At least making a real example or project should be the long term goal when it comes to learning vuejs, or any framework for that matter after all. Unless your aim is to just make blog posts on simple vuejs examples in which case I stand corrected.
 
 Anyway for todays vuejs example I think it is a good idea to work out a simple, solid solution for making a kind of menu for a major application using vuejs. This menu will contain a main vuejs instance, but also a number of other vuejs components each of which is a menu item for an over all application. So each external component will be a child off from the main vuejs instance, as such this example will be an exercise in many aspects of vuejs, including components, directives, events, and render functions.
 
-In addition I think I should also make a spechal custom Class based off of Vue by using the Vue.extend method. This way I can pull a lot of options and features into this speshal class and then just use the main Vue instance that is created from it to add the few options that will change from project to project. I would like to make something that can be reused over and over again from one example to the next so it seems like a good move.
+In addition I think I should also make a special custom Class based off of Vue by using the Vue.extend method. This way I can pull a lot of options and features into this special class and then just use the main Vue instance that is created from it to add the few options that will change from project to project. I would like to make something that can be reused over and over again from one example to the next so it seems like a good move.
 
 <!-- more -->
 
@@ -132,9 +132,9 @@ Vue.component('menu-manual', {
 
 ## 3 - The main.js file that is an Instance of Menu rather than Vue
 
-Now that I have my Menu class and some menu compoents I am now going to want to create a main vuejs instance as with just about every other vue example. This time though it is going to be an instance of Menu rather than the plain old Vue Class by itself.
+Now that I have my Menu class and some menu components I am now going to want to create a main vuejs instance as with just about every other vue example. This time though it is going to be an instance of Menu rather than the plain old Vue Class by itself.
 
-Just like any other main vue instance I am going to want to have a point point, so I use the vue el option as aways here with the main Menu instance. When it comes to the data object though I just need to add the properties that I want to add depeding on how I go about using this menu system. For just a kind of demo example I am going to want to add a money property to my own state object becuase that is being used in my manual menu menu. I am also going to want to add my own menus array that will be used over the menus array in the Menu class. However I do not have to add everything, like the current menu prop that will default to home. If I have a home menu in my project then I can just leave that as the default.
+Just like any other main vue instance I am going to want to have a point point, so I use the vue el option as aways here with the main Menu instance. When it comes to the data object though I just need to add the properties that I want to add depending on how I go about using this menu system. For just a kind of demo example I am going to want to add a money property to my own state object because that is being used in my manual menu menu. I am also going to want to add my own menus array that will be used over the menus array in the Menu class. However I do not have to add everything, like the current menu prop that will default to home. If I have a home menu in my project then I can just leave that as the default.
 
 ```js
 var vm = new Menu({
@@ -167,11 +167,11 @@ var vm = new Menu({
 })
 ```
 
-So the idea that I had in mind seems to work the way that I wanted to. I pull the main redner function, and certin methods into a spescial Menu class created with Vue.extend. When I then use the Menu class I just nee to add what I want to add that I will be using in the menus that I add that are the way that I go about extending creating a project.
+So the idea that I had in mind seems to work the way that I wanted to. I pull the main render function, and certain methods into a special Menu class created with Vue.extend. When I then use the Menu class I just need to add what I want to add that I will be using in the menus that I add that are the way that I go about extending creating a project.
 
 ## 4 - The html and css files
 
-Now for just a little html, and css to wrap this all up together into something that might prove to be a little useful as an applaction starting point. I have an external css file for all the styles that I will be using for this menu system of sorts that I link to in the html, and also just a single hard coded div element that I am using for a mount point in the main vuejs instance. I plane to work on this a great deal more as I think I am going to be creating more applactions based off of this so I want to place my styles in an external css file right away as a way rather than dumping it togethaer with the html.
+Now for just a little html, and css to wrap this all up together into something that might prove to be a little useful as an application starting point. I have an external css file for all the styles that I will be using for this menu system of sorts that I link to in the html, and also just a single hard coded div element that I am using for a mount point in the main vuejs instance. I plane to work on this a great deal more as I think I am going to be creating more applications based off of this so I want to place my styles in an external css file right away as a way rather than dumping it together with the html.
 
 I am going to want some base classes for the main warp div, and menu divs along with the navbar at least. As I work on this example more I am sure the list of classes will grow but for now it is fairly simple.
 
@@ -212,7 +212,7 @@ When this is up and running the basic idea that I had in mind for this seems to 
 
 ## 5 - Conclusion
 
-This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into components, and I think doing something like this often proves to be nessecry just for the sake of keeping things neet. 
+This way of creating menus with vuejs is proving to be a decent way to go about doing so. When it comes to making something major with vuejs it would seem that it is generally best to start to break things down into components, and I think doing something like this often proves to be necessary just for the sake of keeping things neat. 
 
-Although I do like to create templates, I think that more often then not render functions are just called for in many situstions, also some times it would seem like they are the only way to go about doing something actually. In the menu.js file where I define my Menu constructor I do not think that theye is a way to generate component names with javaScript code in static templates. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions. Still templates are easier to read and debug, so I still like to start out with them, and if they work find for a compoent I will not bother with a render function.
+Although I do like to create templates, I think that more often then not render functions are just called for in many situations, also some times it would seem like they are the only way to go about doing something actually. In the menu.js file where I define my Menu constructor I do not think that theye is a way to generate component names with javaScript code in static templates. There are many issues that I seem to run into now and then with simple static templates that can be resolved and then some by just switching over to using render functions. Still templates are easier to read and debug, so I still like to start out with them, and if they work find for a component I will not bother with a render function.
 
