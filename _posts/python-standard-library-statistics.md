@@ -5,15 +5,19 @@ tags: [python]
 categories: python
 layout: post
 id: 812
-updated: 2021-02-26 14:53:18
-version: 1.9
+updated: 2021-02-26 15:21:52
+version: 1.10
 ---
 
 A major part of python programing has to do with statistics, or at least it would seem that is the area of python where the lanague is used the most. So of course there is a [built in library that has to do with statistics](https://docs.python.org/3.7/library/statistics.html) that has all the ushual methods that I would exspect in such a librray that have to do with the basic stuff at least when it comes to an arithmetic average, median, and mode of a set of numbers. I use the term atithmetic avrage to refer to what many may regard as the normal avrage where the sum of numbers is divided over the number of numbers becuase there is more than one avdrage method in this library.
 
 <!-- more -->
 
-## 1 - Mean or atithmetic avrage
+## 1 - Mean
+
+In the statisics library there is not one but several functions for getting a mean or average as it is often called. The mean method will give what is called an arithmetic mean, but there is also a harmonic mean in addition to this. When it comes to the three Pythagorean means there is also a geometric mean, in this post I was using python 3.7 and in that version of python there is no geometric mean so I had to come up with one. In late versions of the python the statistice library does also have this type of mean also.
+
+### 1.1 - Mean or atithmetic average
 
 A basic [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean), or average if you prefer is what many of us become aware of in school, and it is also the typical average that I often use in various projects. Just add up all the numbers in a collection of numbers into a sum, and divide that sum over the number of numbers. In the python staticts library the mean method is this kind of avrage.
 
@@ -24,9 +28,9 @@ print( int( (100 + 50) / 2 ) ) # 75
 print( stat.mean([100, 50]) )  # 75
 ```
 
-## 2 - harmonic mean
+### 1.2 - harmonic mean
 
-A [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean) differs a little from an arithmetic mean. Which is one of the three Pythagorean means along with arithmetic mean, and geometric mean.
+A [harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean) differs a little from an arithmetic mean. 
 
 ```python
 import statistics as stat
@@ -39,6 +43,28 @@ print( 2 / ( 1/a + 1/b ) ) # 66.66666666666667
  
 print( stat.mean([a, b]) )  # 75
 print( stat.harmonic_mean([a, b]) )  # 66.66666666666667
+```
+
+### 1.3 - Geometric mean
+
+```python
+# nth root
+def nroot(num, degree=2):
+    return pow(num, 1 / degree)
+# product
+def prod(data):
+    pro=data[0]
+    i=1
+    while i < len(data):
+        pro = pro * data[i]
+        i = i + 1
+    return pro
+# geometric mean
+def geometric_mean(data):
+    return nroot(prod(data), len(data))
+ 
+print( geometric_mean([4, 9]) )  # 6.0
+print( geometric_mean([14, 32]) )  # 21.166010488516726
 ```
 
 ## 3 - median
