@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 11:03:12
-version: 1.14
+updated: 2021-02-26 11:12:15
+version: 1.15
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There are many built in directives and an important part of vuejs development involves knowing how to use them. In addition it also goes without saying that it is a good idea to also know how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html) as a way to add features that are needed for a project, but are not built into vuejs itself. 
@@ -49,13 +49,11 @@ new Vue({
 </html>
 ```
 
-In the html here you will notice the v-text directive this just sets the innerText of the h1 element to the mess_h1 property of the data object in my Vue instance in the text.js file. I am also using the v-bind directive to set the value of the p elements style attribute to what is in the red property of the data object as well.
+In the html here you will notice the v-text directive just sets the innerText of the p elements to the mess property of the data object in my Vue instance in the script tag. I am also using the v-bind directive to set the value of a p elements style attribute to what is in the red property of the data object as well.
 
-Here is the text.js file in which I am mounting the div with an id of header thanks to the el option.
+When this example is up and running it results in the messages and style set in the data object of the vue being used in the text nodes and style attributes of the elements in which the v-text, and v-bind directives are being used. As such this should help to give you at least a basic idea of that a directive is in vuejs, it is a way to set the attributes and values of DOM elements.
 
-When this example is up and running it results in the messages and style set in the data object of the vue being used in the text nodes and style attributes of the elements in which the v-text, and v-bind directives are being used. As such this should help to give you at least a basic idea of that a directive is in vuejs, it is a way to set the attributes and values of dome elements.
-
-Understanding directives along with templates, render functions, and the Vue use method can lead to an understanding of how to go about making vuejs plug ins.
+Understanding directives along with templates, the data object, and other vuejs instance options is a major part of vuejs devlopment. However the built in set of directives has its limatations, so there are ways of creating my own custom directives. In addiiton there is also how to go about ditching satic temaples all togetaher in favor of render functions. However both of those options give a fair amount of control allowing me to do just about anythong that comes to mind when it comes to DOM manipulation.
 
 ## 2 - Vue directive on:click event example
 
