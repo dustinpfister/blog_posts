@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 812
-updated: 2021-02-26 13:06:56
-version: 1.5
+updated: 2021-02-26 14:25:01
+version: 1.6
 ---
 
 A major part of python programing has to do with statistics, or at least it would seem that is the area of python where the lanague is used the most. So of course there is a [built in library that has to do with statistics](https://docs.python.org/3.7/library/statistics.html) that has all the ushual methods that I would exspect in such a librray that have to do with the basic stuff at least when it comes to an arithmetic advrage, median, and mode of a set of numbers. I use the term atithmetic avrage to refer to what many may regard as the normal avrage where the sum of numbers is divided over the number of numbers becuase there is more than one avdrage method in this library.
@@ -57,8 +57,9 @@ print( stat.median(data) ) # 62.5
 print( stat.mean(data) )   # 62.5
 ```
 
-## 4 - 
+## 4 - Standard deviation and variance
 
+The subject of [standard deviation](/2018/02/20/statistics-standard-deviation/) will come up now and then when dealing with a set of numbers which is a way of going about measure the variance between a set of numbers.
 
 ### 4.1 - pvariance
 
