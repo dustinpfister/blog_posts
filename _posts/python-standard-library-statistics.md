@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 812
-updated: 2021-02-26 12:49:48
-version: 1.1
+updated: 2021-02-26 12:55:47
+version: 1.2
 ---
 
 A major part of python programing has to do with statistics, or at least it would seem that is the area of python where the lanague is used the most. So of course there is a [built in library that has to do with statistics](https://docs.python.org/3.7/library/statistics.html) that has all the ushual methods that I would exspect in such a librray that have to do with the basic stuff at least when it comes to an arithmetic advrage, median, and mode of a set of numbers. I use the term atithmetic avrage to refer to what many may regard as the normal avrage where the sum of numbers is divided over the number of numbers becuase there is more than one avdrage method in this library.
@@ -23,3 +23,36 @@ import statistics as stat
 print( int( (100 + 50) / 2 ) ) # 75
 print( stat.mean([100, 50]) )  # 75
 ```
+
+## 2 - harmonic mean
+
+```python
+import statistics as stat
+ 
+a = 100
+b = 50
+ 
+print( (a + b) / 2  ) # 75.0
+print( 2 / ( 1/a + 1/b ) ) # 66.66666666666667
+ 
+print( stat.mean([a, b]) )  # 75
+print( stat.harmonic_mean([a, b]) )  # 66.66666666666667
+```
+
+## 3 - median
+
+```python
+import statistics as stat
+ 
+data = [100, 50, 75, 25, 12.5]
+print( stat.median(data) ) # 50
+print( stat.mean(data) )   # 52.5
+ 
+data = [100, 50, 75, 25]
+print( stat.median(data) ) # 62.5
+print( stat.mean(data) )   # 62.5
+```
+
+## 4 - Conclusion
+
+So the statistcs library in python is a great starting point when it comes to getting into statistics, but it is by no means everythiong that I might want to work with when it comes to getting into work with statisitcs. I am a very visual person actually, and I also like javaScript and canvas as a way to go about vishulaizing data. In python there is the [tkinter librray](/2021/01/15/python-standard-library-tkinter/) that I have been meaning to sink some more time into when it comes to working out a way to display things in a vishual way in a python enviorment.
