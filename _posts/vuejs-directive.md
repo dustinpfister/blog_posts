@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 11:12:15
-version: 1.15
+updated: 2021-02-26 11:17:59
+version: 1.16
 ---
 
-If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There are many built in directives and an important part of vuejs development involves knowing how to use them. In addition it also goes without saying that it is a good idea to also know how to [make them as well](https://vuejs.org/v2/guide/custom-directive.html) as a way to add features that are needed for a project, but are not built into vuejs itself. 
+If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of suming things up is that they are just a way to go about prefroming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assiging a value for a style attribute of an element, or attaching an event handler for a button element.
+
+There are many built in directives and an important part of vuejs development involves knowing how to use them first and formost before looking into taking the time to make a custom directive. However speaking of custom  directives, yes in addition to knowing about the built in ones it also goes without saying that it is a good idea to also know how to [make them also](https://vuejs.org/v2/guide/custom-directive.html). Directives are a great way to add features that act on elements that are needed for a project, but are not built into vuejs itself. 
 
 If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be showing off some simple, and maybe not so simple vue directive examples.
 
