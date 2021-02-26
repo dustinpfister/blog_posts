@@ -5,11 +5,11 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 11:57:33
-version: 1.22
+updated: 2021-02-26 12:03:58
+version: 1.23
 ---
 
-If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of suming things up is that they are just a way to go about prefroming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assiging a value for a style attribute of an element, or attaching an event handler for a button element.
+If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of summing things up is that they are just a way to go about preforming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assigning a value for a style attribute of an element, or attaching an event handler for a button element.
 
 There are many built in directives and an important part of vuejs development involves knowing how to use them first and formost before looking into taking the time to make a custom directive. However speaking of custom  directives, yes in addition to knowing about the built in ones it also goes without saying that it is a good idea to also know how to [make them also](https://vuejs.org/v2/guide/custom-directive.html). Directives are a great way to add features that act on elements that are needed for a project, but are not built into vuejs itself. 
 
@@ -21,7 +21,7 @@ If you have some background with angular chances are you will be able to get up 
 
 For a basic example of a vue directive I made this quick example that makes use of some built in directives in vuejs. There are a few of these, but for starters this example makes use of the v-text, and v-bind vuejs directives. The v-text directive can be used as an alternative to the mustache syntax when it comes to setting the value of a text node of an element. It is a fairly simple directive that just sets the text value of a property of the data object, and or a little javaScript, of a vue instance to the inner text node. So then the v-text directive it is a good one to start playing with if you are new to vuejs directives. 
 
-The v-bind argument is another directive that comes with vuejs that comes in handy often. This one can be used to set the value of html attributes with values in the data object of a vue, or angain a little javaScript. It takes one argument that is the name of the attribute to set, and then the value of the attribute is set to what is given via data object property that is assigned to it.
+The v-bind argument is another directive that comes with vuejs that comes in handy often. This one can be used to set the value of html attributes with values in the data object of a vue, or again a little javaScript. It takes one argument that is the name of the attribute to set, and then the value of the attribute is set to what is given via data object property that is assigned to it.
 
 If you find what I wrote a little confusing maybe it would be best to look at some code examples. Here I have an html file in which I am linking to vuejs, and then using just a single vue instance in a script tag that makes use of these v-text, and v-bind directives.
 
@@ -55,7 +55,7 @@ In the html here you will notice the v-text directive just sets the innerText of
 
 When this example is up and running it results in the messages and style set in the data object of the vue being used in the text nodes and style attributes of the elements in which the v-text, and v-bind directives are being used. As such this should help to give you at least a basic idea of that a directive is in vuejs, it is a way to set the attributes and values of DOM elements.
 
-Understanding directives along with templates, the data object, and other vuejs instance options is a major part of vuejs devlopment. However the built in set of directives has its limatations, so there are ways of creating my own custom directives. In addiiton there is also how to go about ditching satic temaples all togetaher in favor of render functions. However both of those options give a fair amount of control allowing me to do just about anythong that comes to mind when it comes to DOM manipulation.
+Understanding directives along with templates, the data object, and other vuejs instance options is a major part of vuejs development. However the built in set of directives has its limitations, so there are ways of creating my own custom directives. In addition there is also how to go about ditching static templates all together in favor of render functions. However both of those options give a fair amount of control allowing me to do just about anything that comes to mind when it comes to DOM manipulation.
 
 ## 2 - Vue directive v-on directive
 
@@ -65,7 +65,7 @@ So then this is a directive that should have at least a few examples here as thi
 
 ### 2.1 - A Basic vue v-on:click directive example
 
-The v-on directive can be used to call a method in the methods object. When doing so just the name of the method can be given, when the method is called this way the method will be used like an event handler. If you are not familoe with how to go about working with event handlers in native javaScript it might be a good idea to play around with a few simple examples of the addEventListener element method when it comes to hvaing some knowage of how this is done in plain vanilla javaScript. When createing a callback function for addEventListener this first element in the callback function will be an event object. When callign a method by just passing the name of the method for the value of v-on:click the method will be used in the same way in that the first argument of the method will be an event object. However the value of the this keyword will refer to the vue instance, which can prove to be helpful.
+The v-on directive can be used to call a method in the methods object. When doing so just the name of the method can be given, when the method is called this way the method will be used like an event handler. If you are not familiar with how to go about working with event handlers in native javaScript it might be a good idea to play around with a few simple examples of the addEventListener element method when it comes to having some knowledge of how this is done in plain vanilla javaScript. When creating a callback function for addEventListener this first element in the callback function will be an event object. When calling a method by just passing the name of the method for the value of v-on:click the method will be used in the same way in that the first argument of the method will be an event object. However the value of the this keyword will refer to the vue instance, which can prove to be helpful.
 
 ```html
 <html>
@@ -105,7 +105,7 @@ So now that we have a good grasp on how to go about using directives there is th
 
 ### 3.1 - Basic v-tobin example that makes use of the bind directive hook.
 
-Here I have a simple directive that will take the inner text of an element and turn it into a binary string. The example makes used of the bind hook which will only fire once and is called when the diretcive is first bound to an element.
+Here I have a simple directive that will take the inner text of an element and turn it into a binary string. The example makes used of the bind hook which will only fire once and is called when the directive is first bound to an element.
 
 ```html
 <html>
@@ -138,4 +138,4 @@ new Vue({
 
 ## 4 - Conclusion
 
-In vuejs directives are a helpful tool for making use of built in logic, as well as defining my own logic when it comes to prefroming actions on html elements and vuejs components. They are not a replacement for comppoents though, in fact that is the first and for most way of going about breaking down code into smaller more resuabule pieces. However there are many siatuations in which it might be called for to create one or two custom directives.
+In vuejs directives are a helpful tool for making use of built in logic, as well as defining my own logic when it comes to preforming actions on html elements and vuejs components. They are not a replacement for components though, in fact that is the first and for most way of going about breaking down code into smaller more reusable pieces. However there are many situations in which it might be called for to create one or two custom directives.
