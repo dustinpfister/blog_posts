@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-26 12:03:58
-version: 1.23
+updated: 2021-02-27 14:39:12
+version: 1.24
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of summing things up is that they are just a way to go about preforming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assigning a value for a style attribute of an element, or attaching an event handler for a button element.
@@ -59,7 +59,7 @@ Understanding directives along with templates, the data object, and other vuejs 
 
 ## 2 - Vue directive v-on directive
 
-In this section I will be showing some examples of a built in vue directive that can be used for event attachment called v-on. Understanding event attachment is an important part of designing user interfaces with vuejs, and javaScript in general actually for that matter. The v-on directive can be used to do just this, for example the v-on method can be used to set a method defined in the methods object of a vue to fire when an element is clicked. When doing so just the name can be given for the value of the directive, and when doing so the method will be treated as an event handler where the event object will be given as the first argument, however the value of the this keyword will refer to the vue instance.
+In this section I will be showing some examples of a built in [vue directive that can be used for event attachment called v-on](/2019/11/14/vuejs-on/). Understanding event attachment is an important part of designing user interfaces with vuejs, and javaScript in general actually for that matter. The v-on directive can be used to do just this, for example the v-on method can be used to set a method defined in the methods object of a vue to fire when an element is clicked. When doing so just the name can be given for the value of the directive, and when doing so the method will be treated as an event handler where the event object will be given as the first argument, however the value of the this keyword will refer to the vue instance.
 
 So then this is a directive that should have at least a few examples here as this is one that I find myself using all the time.
 
@@ -90,6 +90,44 @@ new Vue({
         step: function (e) {
             var dat = this.$data
             dat.frame += 1;
+            dat.frame %= dat.maxFrame;
+        }
+    }
+});
+  </script>
+  </body>
+</html>
+```
+
+### 2.2 - Call Click method example
+
+I can call the method that I want to fire when binding the durective in the template. This way I can design my methods in a way in which they work as functions that take arguments other than an event object. For example I can use my step method in a way in which I can give a rate as the first argument, and I can have few buttons that will step at differnt rates.
+
+```html
+<html>
+  <head>
+    <title>vue directive example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+new Vue({
+    el: '#demo',
+    template: '<div>' +
+        '<input v-on:click="step(1)" type="button" value="step 1">' +
+        '<input v-on:click="step(10)" type="button" value="step 10">' +
+        '<input v-on:click="step(100)" type="button" value="step 100">' +
+        '<p>{{ frame }} / {{ maxFrame }} </p>' +
+    '</div>',
+    data: {
+        frame: 0,
+        maxFrame: 1000
+    },
+    methods: {
+        step: function (rate) {
+            var dat = this.$data
+            dat.frame += (rate === undefined ? 1 : rate);
             dat.frame %= dat.maxFrame;
         }
     }
