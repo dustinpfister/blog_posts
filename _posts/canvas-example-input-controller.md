@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 11:24:29
-version: 1.32
+updated: 2021-02-27 11:28:00
+version: 1.33
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -213,7 +213,7 @@ Here are the methods that actually attach the handers to the dom elements they a
 
 Now for the public API that consists of a single function with one static method attached. 
 
-The main function is used to create an input state object. When called the input object is created with the private create input state method that I went over earlier, and as such the given canvas and window object are pases to that method here. The input state object that is created is then what is returned, but not before handers are attached to it. I do so by calling the other private methods that I went over for each event that I want handers attached for, in this module I want mouse, touch, and keyboard support.
+The main function is used to create an input state object. When called the input object is created with the private create input state method that I went over earlier, and as such the given canvas and window object are pases to that method here. The input state object that is created is then what is returned, but not before handlers are attached to it. I do so by calling the other private methods that I went over for each event that I want handers attached for, in this module I want mouse, touch, and keyboard support.
 
 ```js
     var api = function (canvas, win) {
@@ -346,8 +346,7 @@ When this module is up and running so far things seem to work as i would expect.
 
 ## 3 - Conclusion
 
-Depending on the nature of the project I would want to hack over this a little, add things to it, or remove code or change code that will not be used Depending on the nature of the project.
+Depending on the nature of the project I would want to hack over this a little, add things to it, or remove code or change code that will not be used depending on the nature of the project. In time I might have this as part of some kind of canvas framework, or custom game framework actually. I think I might like to make some kind of hyper casual game framework and make a few games on top of that framework, but that is just an idea at this time that I may or may not get to. These days I world like to spend more time making actual games and less time making things like this.
 
 Working out these things takes time and doing so often leads to me spending more time making things like this rather than making an actual project. However the whole point of doing something like this is to have something that is custom cut to the project, if I want to save time maybe it would be best to not bother with something like this at all and just use a framework.
-
 If I get to it I might expand this post with some simple games examples to further test out if this control module works okay or not. For now I am still torn between just using a framework like phaser, and doing this kind of thing. I like the idea of writing everything from the ground up, but this is time consuming.
