@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 11:22:43
-version: 1.31
+updated: 2021-02-27 11:24:29
+version: 1.32
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -187,7 +187,7 @@ I have a helper that is used to call all user defined event handlers in the inpu
 
 ### 1.4 - Set handers
 
-Here are the methods that actually attach the handers to the dom elements they are used in the public api method.
+Here are the methods that actually attach the handers to the dom elements they are used in the public api method. I have one for pointer events and another for keyboard events.
 
 ```js
     // set an event handler for the given input state, DOMType, and type in handlers
