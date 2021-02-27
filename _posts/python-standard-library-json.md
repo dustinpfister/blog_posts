@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-25 20:25:33
-version: 1.16
+updated: 2021-02-27 11:32:55
+version: 1.17
 ---
 
 I have wrote a few posts on standard libraries in python thus far, I do not think I will write posts on all of them, however I still think I should write a post for each of them that I might actually use in projects. One such library might very well be the [JSON standard library](https://docs.python.org/3/library/json.html). The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data serialization language, that is taking an object and turning it into a string format that can be stored in a file, or transmitted over and http request to or from a client system.
@@ -55,6 +55,8 @@ todos = json.loads(response.text)
  
 print(todos[0])
 ```
+
+This is just a simple example of what JSON is typically used for, a real project will include of a client side system and a back end that listens for post requests. At this time I do not have much experience doing these sorts of things in a python environment, when it comes to nodejs though I like to use express as a way to get up and running quickly with full stack development.
 
 ## 3 - open and save a JSON file example
 
