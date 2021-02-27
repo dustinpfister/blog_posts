@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 id: 708
 categories: canvas
-updated: 2020-10-01 05:52:26
-version: 1.9
+updated: 2021-02-27 16:33:18
+version: 1.10
 ---
 
 Time to take a new project with my [canvas examples](/2020/03/23/canvas-example/) series of posts and focus on making quick hyper casual style games. So this post will be on an simple idea for a project that I am just going to call _into the black_. The basic idea is to just have a display object that is moving threw space and the game is just about seeing how far one can get until they get board and move on to something else.
@@ -20,7 +20,7 @@ It seems like it is a good idea to do something to find out how long it will tak
 
 ## 1 - The utils module for to the black
 
-For the utils module in this canvas example I have a [mathematical modulo method](/2017/09/02/js-whats-wrong-with-modulo/), and a bounding box method.
+For the utils module in this canvas example I have a [mathematical modulo method](/2017/09/02/js-whats-wrong-with-modulo/), and a bounding box method for collesion detection. This is also a module where I will park any and all methods that I might use in more than one module, or that I might copy over to another canvas example.
 
 ```js
 var utils = {};
