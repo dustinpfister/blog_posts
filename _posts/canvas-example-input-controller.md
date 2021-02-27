@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 10:06:35
-version: 1.26
+updated: 2021-02-27 10:08:45
+version: 1.27
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -21,6 +21,8 @@ Most [frameworks such as phaser will have an input controller](https://phaser.io
 <script src="/js/canvas-examples/input-controller/0.0.0/pkg.js"></script>
 
 ### 1 - The utility lib
+
+Here I have the utils library for this canvas example of an input controller. This library often contains methods that I might use across many canvas examples, but might also change from one canvas example to the next.
 
 In this utils.js file for this canvas example I have a isMouse method that will just return true if the given event object is a mouse event, after that there is a more complex method that will return an array of point objects from an event object where each object contains canvas relative rather than window relative x and y values.
 
