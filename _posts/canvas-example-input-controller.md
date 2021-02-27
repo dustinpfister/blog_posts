@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 09:55:01
-version: 1.24
+updated: 2021-02-27 10:03:37
+version: 1.25
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -20,69 +20,99 @@ Most [frameworks such as phaser will have an input controller](https://phaser.io
 <div id="canvas-app"></div>
 <script src="/js/canvas-examples/input-controller/0.0.0/pkg.js"></script>
 
+### 1 - The utility lib
+
+At the top of the expression I have my isMouse helper method that will just return true if the given event object is a mouse event, after that there is a more complex method that will return an array of point objects from an event object where each object contains canvas relative rather than window relative x and y values.
+
+I went with using the [targetTouches](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/targetTouches) [touch list](https://developer.mozilla.org/en-US/docs/Web/API/TouchList) property of the [touch event object](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent) rather than the other options. The reason why is because I have found that the targetTouches touch list array contains the touch objects that I want for making this abstraction. In other examples I might want to use changedTouches or the touches properties in place of this, but not here.
+
+```js
+var utils = {};
+ 
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+utils.isMouse = function (e) {;
+    return e.type.substr(0,5) === 'mouse';
+};
+ 
+utils.getCanvasRelativeArray = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos,
+    arr = [];
+    // mouse event
+    if (utils.isMouse(e)) {
+        pos = {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top,
+            bx: bx,
+            e: e,
+            touch: {}
+        };
+        // ajust for native canvas matrix size
+        pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+        pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+        return [
+            pos
+        ];
+    }
+    // touch
+    var i = 0,
+    touch;
+    while (i < e.targetTouches.length) {
+        touch = e.targetTouches[i];
+        pos = {
+            x: touch.clientX - bx.left,
+            y: touch.clientY - bx.top,
+            touch: touch,
+            e: e,
+            bx: bx
+        };
+        // ajust for native canvas matrix size
+        pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+        pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+        arr.push(pos);
+        i += 1;
+    }
+    return arr;
+};
+```
+
 ## 1 - The controller module With mouse, touch, and keyboard support
 
 So first off lets go over the control.js module that I worked out for this. The control.js module will create just one global variable that contains two public methods, one for creating an input object, and then another that is just a convenience methods for attaching events.
 
 
-### 1.1 - The start of the module, isMouse, and getCanvasRelativeArray
+### 1.1 - The start of the module
 
 In the module everything is wrapped up into an [IIFE or Immediately Invoked Function Expression](/2020/02/04/js-iife/) where the public API is what will be returned by the function expression and thus be the value of the global variable.
-
-At the top of the expression I have my isMouse helper method that will just return true if the given event object is a mouse event, after that there is a more complex method that will return an array of point objects from an event object where each object contains canvas relative rather than window relative x and y values.
-
-```js
-var controlMod = (function () {
- 
-    // is mouse helper
-    var isMouse = function (e) {
-        return (e.type === 'mousedown' || e.type === 'mouseup' || e.type == 'mousemove');
-    }
- 
-    // get am array of point objects relative to the canvas
-    // rather than the window object
-    var getCanvasRelativeArray = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect(),
-        arr = [];
-        // mouse event
-        if (isMouse(e)) {
-            return [{
-                    x: e.clientX - bx.left,
-                    y: e.clientY - bx.top,
-                    bx: bx,
-                    e: e,
-                    touch: {}
-                }
-            ];
-        }
-        // touch
-        var i = 0,
-        touch;
-        while (i < e.targetTouches.length) {
-            touch = e.targetTouches[i];
-            arr.push({
-                x: touch.clientX - bx.left,
-                y: touch.clientY - bx.top,
-                touch: touch,
-                e: e,
-                bx: bx
-            });
-            i += 1;
-        }
-        return arr;
-    };
-```
-
-I went with using the [targetTouches](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/targetTouches) [touch list](https://developer.mozilla.org/en-US/docs/Web/API/TouchList) property of the [touch event object](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent) rather than the other options. The reason why is because I have found that the targetTouches touch list array contains the touch objects that I want for making this abstraction. In other examples I might want to use changedTouches or the touches properties in place of this, but not here.
-
-### 1.2 - Fill helper and create input state object
 
 I then have a fill array helper, and a helper that will be used to create the input object that the main public method will return.
 
 The fill method is just a pony fill for Array.fill, the only reason why it is here is because i would like to push IE support as far back as IE9 although I have not tested this to work on that.
 
 ```js
+var controlMod = (function () {
+ 
     // fill an array
     var fill = function (count, val) {
         return Array.apply(0, {
@@ -94,6 +124,7 @@ The fill method is just a pony fill for Array.fill, the only reason why it is he
  
     var createInputState = function (canvas, win) {
         var input = {
+            ver: '0.0.0',
             canvas: canvas,
             win: win,
             pointerDown: false,
@@ -114,7 +145,7 @@ The fill method is just a pony fill for Array.fill, the only reason why it is he
 
 The input state object contains references to the canvas, and the window object that was given when it is called. This method is not called directly, but inside the body of the public API method that is returned later on in this module.
 
-### 1.3 - call user handlers helper, and the handlers object
+### 1.2 - call user handlers helper, and the handlers object
 
 I have a helper that is used to call all user defined event handers in the input object that is used in all the private handers that are attached to dome events such as the canvas and window object.
 
@@ -140,7 +171,7 @@ I have a helper that is used to call all user defined event handers in the input
             callUserHanders(input, 'pointerMove', pos, e);
         },
         pointerEnd: function (pos, input, e) {
-            if (isMouse(e)) {
+            if (utils.isMouse(e)) {
                 input.pointerDown = false;
                 input.pos = [];
             } else {
@@ -165,7 +196,7 @@ Here are the methods that actually attach the handers to the dom elements they a
     var setPointerHandler = function (input, DOMType, type) {
         console.log(input.canvas);
         input.canvas.addEventListener(DOMType, function (e) {
-            var pos = getCanvasRelativeArray(e);
+            var pos = utils.getCanvasRelativeArray(e);
             e.preventDefault();
             handlers[type](pos, input, e);
         });
@@ -193,10 +224,12 @@ The main function is used to create an input state object. When called the input
         setPointerHandler(input, 'mousedown', 'pointerStart');
         setPointerHandler(input, 'mousemove', 'pointerMove');
         setPointerHandler(input, 'mouseup', 'pointerEnd');
+        setPointerHandler(input, 'mouseout', 'pointerEnd');
         // touch
         setPointerHandler(input, 'touchstart', 'pointerStart');
         setPointerHandler(input, 'touchmove', 'pointerMove');
         setPointerHandler(input, 'touchend', 'pointerEnd');
+        setPointerHandler(input, 'touchcancel', 'pointerEnd');
         // keyboard
         setKeyHandler(input, 'keydown');
         setKeyHandler(input, 'keyup');
@@ -228,7 +261,8 @@ In th html file of the demo I link to the control.js file of course, and then a 
         <title>canvas keyboard</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
         <script src="./lib/control.js"></script>
         <script src="./lib/draw.js"></script>
         <script src="./main.js"></script>
@@ -250,20 +284,28 @@ draw.back = function (ctx, canvas) {
 draw.debugInput = function (ctx, input) {
     ctx.fillStyle = 'white';
     ctx.textBaseline = 'top';
-    ctx.font = '10px arial';
-    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 10);
- 
+    ctx.font = '20px arial';
+    ctx.fillText('input.pointerDown: ' + input.pointerDown, 10, 20);
+
     // draw pos points
     var posPoints = input.pos.map(function (pos) {
             return pos.x + ',' + pos.y;
         }).join(' | ');
-    ctx.fillText('input.pos: ' + posPoints, 10, 20);
- 
-    ctx.fillText('input.keys[87] (w): ' + input.keys[87], 10, 40);
-    ctx.fillText('input.keys[65] (a): ' + input.keys[65], 10, 50);
-    ctx.fillText('input.keys[83] (s): ' + input.keys[83], 10, 60);
-    ctx.fillText('input.keys[68] (d): ' + input.keys[68], 10, 70);
+    ctx.fillText('input.pos: ' + posPoints, 10, 40);
+
+    ctx.fillText('input.keys[87] (w): ' + input.keys[87], 10, 60);
+    ctx.fillText('input.keys[65] (a): ' + input.keys[65], 10, 80);
+    ctx.fillText('input.keys[83] (s): ' + input.keys[83], 10, 100);
+    ctx.fillText('input.keys[68] (d): ' + input.keys[68], 10, 120);
 };
+draw.ver = function(ctx, input){
+    var canvas = input.canvas;
+    // draw ver
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + input.ver, 5, canvas.height - 15);
+}
 ```
 
 ### 2.3 - The main.js file
@@ -271,8 +313,12 @@ draw.debugInput = function (ctx, input) {
 Now for the main.js file where I get references to the canvas element that I have in the html, create an input state for that canvas, attach some events, and draw the status in a loop.
 
 ```js
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
+var canvasObj = utils.createCanvas({
+   width: 640,
+   height: 480
+}),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
  
 var input = controlMod(canvas);
  
@@ -292,6 +338,7 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.back(ctx, canvas);
     draw.debugInput(ctx, input);
+    draw.ver(ctx, input);
 };
  
 loop();
