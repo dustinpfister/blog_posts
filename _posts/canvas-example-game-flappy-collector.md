@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2020-05-09 09:33:13
-version: 1.30
+updated: 2021-02-27 16:59:09
+version: 1.31
 ---
 
 I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. When cloning something it is important to make at least some kind of effort to make it distinct after all. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so great with names.
@@ -16,6 +16,9 @@ The same basic idea is there though when it comes to having a display object at 
 The nice thing about these kinds of projects is that it is very easy to get to that point where I have a clone of the general idea at least. However there is then the hard part of course and I would say that is where I go from there with it to make it more original so it is  not just a cheep rip off. So with that said this post will be on my current standing flappy bird clone that is part of my canvas example collection.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/game-flappy-collector/0.0.1/pkg.js"></script>
 
 ## 1 - This is a canvas example post that is a game like flappy bird and what to know before hand
 
