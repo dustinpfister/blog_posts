@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 10:03:37
-version: 1.25
+updated: 2021-02-27 10:06:35
+version: 1.26
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -22,9 +22,9 @@ Most [frameworks such as phaser will have an input controller](https://phaser.io
 
 ### 1 - The utility lib
 
-At the top of the expression I have my isMouse helper method that will just return true if the given event object is a mouse event, after that there is a more complex method that will return an array of point objects from an event object where each object contains canvas relative rather than window relative x and y values.
+In this utils.js file for this canvas example I have a isMouse method that will just return true if the given event object is a mouse event, after that there is a more complex method that will return an array of point objects from an event object where each object contains canvas relative rather than window relative x and y values.
 
-I went with using the [targetTouches](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/targetTouches) [touch list](https://developer.mozilla.org/en-US/docs/Web/API/TouchList) property of the [touch event object](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent) rather than the other options. The reason why is because I have found that the targetTouches touch list array contains the touch objects that I want for making this abstraction. In other examples I might want to use changedTouches or the touches properties in place of this, but not here.
+For this canvas example I did not go with my usual get canvas relative method, but worked out a get canvas relative array method that will allow for me to do things with multi touch. When it comes to touch events I went with using the [targetTouches](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/targetTouches) [touch list](https://developer.mozilla.org/en-US/docs/Web/API/TouchList) property of the [touch event object](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent) rather than the other options. The reason why is because I have found that the targetTouches touch list array contains the touch objects that I want for making this abstraction. In other examples I might want to use changedTouches or the touches properties in place of this, but not here.
 
 ```js
 var utils = {};
