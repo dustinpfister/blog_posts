@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 812
-updated: 2021-02-26 15:49:29
-version: 1.16
+updated: 2021-02-27 11:40:33
+version: 1.17
 ---
 
 A major part of python programing has to do with statistics, or at least it would seem that is the area of python where the language is used the most. So of course there is a [built in library that has to do with statistics](https://docs.python.org/3.7/library/statistics.html) that has all the usual methods that I would expect in such a library that have to do with the basic stuff at least when it comes to an arithmetic average, median, and mode of a set of numbers. I use the term arithmetic average to refer to what many may regard as the normal average where the sum of numbers is divided over the number of numbers because there is more than one average method in this library.
@@ -108,7 +108,7 @@ print( stat.variance(data2) ) # 1055
 
 ### 3.2 - Sample and population Standard deviation
 
-There are two forms of Standard deviation which include population and sample forms.
+There are two forms of Standard deviation which include population and sample forms. The sample standard deviation is just the square root of the sample variance.
 
 ```python
 import statistics as stat
