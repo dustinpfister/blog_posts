@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-27 11:35:41
-version: 1.18
+updated: 2021-02-27 11:37:51
+version: 1.19
 ---
 
 I have wrote a few posts on standard libraries in python thus far, I do not think I will write posts on all of them, however I still think I should write a post for each of them that I might actually use in projects. One such library might very well be the [JSON standard library](https://docs.python.org/3/library/json.html). The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data serialization language, that is taking an object and turning it into a string format that can be stored in a file, or transmitted over and http request to or from a client system.
@@ -98,7 +98,7 @@ put_state(state)
 print(state)
 ```
 
-This is just a basic silly little thing, but I would not have to put much more time into something such as this to have a very basic little command line based game of some kind.
+This is just a basic silly little thing, but I would not have to put much more time into something such as this to have a very basic little command line based game of some kind. I often find myself starting those kinds of projects now and then as they stroke me as a good way to focus on what the actual logic of a game is rather than getting lost in flashy eye candy related features.
 
 ## 4 - Conclusion
 
