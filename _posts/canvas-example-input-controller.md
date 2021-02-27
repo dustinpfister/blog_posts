@@ -5,17 +5,20 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2020-04-23 12:04:12
-version: 1.23
+updated: 2021-02-27 09:55:01
+version: 1.24
 ---
 
-Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device). This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
+Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
 
 The motivation for this is that when making a canvas project I want to make use of input from an array of sources, and a quick and simple process for this would be nice as I find myself wasting time writing the same code over and over again for this part of the process of making a project. 
 
-Most [frameworks such as phaser will have an input controller](https://phaser.io/docs/2.6.2/Phaser.Input.html), or input hander of sorts that can be used to quickly get up and running with user input. However when it comes to making a canvas project from the ground up I will need to make my own solution for this sort of thing, along with my own state machine, and so forth. So this post will be on my input controller canvas example that makes use of mouse, touch, and keyboard input and will be my own vanilla javaScript solution for this kind of thing.
+Most [frameworks such as phaser will have an input controller](https://phaser.io/docs/2.6.2/Phaser.Input.html), or input hander of sorts that can be used to quickly get up and running with user input. However when it comes to making a canvas project from the ground up I will need to make my own solution for this sort of thing, along with my own state machine, and so forth when it comes to making my own framework. So this post will be on my input controller canvas example that makes use of mouse, touch, and keyboard input and will be my own vanilla javaScript solution for this kind of thing. In the process of doing so I might also manage to make various utility methods that help with the process of creating a more comprehensive way to dealing with input.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/input-controller/0.0.0/pkg.js"></script>
 
 ## 1 - The controller module With mouse, touch, and keyboard support
 
