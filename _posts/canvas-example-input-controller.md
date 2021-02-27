@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 10:17:33
-version: 1.29
+updated: 2021-02-27 10:21:31
+version: 1.30
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -127,7 +127,6 @@ var controlMod = (function () {
             canvas: canvas,
             win: win,
             pointerDown: false,
-            keys: {},
             pos: [],
             keys: fill(255, false),
             userHanders: {
@@ -142,7 +141,7 @@ var controlMod = (function () {
     };
 ```
 
-I then have a create input state object helper that will be used to create and return a main input state object for this module. The input state object contains references to the canvas, and the window object that was given when it is called. This method is not called directly, but inside the body of the public API method that is returned later on in this module.
+I then have a create input state object helper that will be used to create and return a main input state object for this module. The input state object contains references to the canvas, and the window object that was given when it is called. This method is not called directly, but inside the body of the public API method that is returned later on in this module. The pointer down property will be set to true when a mouse button is down, or when a touch surface is being pressed. The keys array will contain boolean values for each key code from 0 to 255. I also then have a user handlers prop that can be used to set handlers for for each built in pointer event.
 
 ### 1.2 - call user handlers helper, and the handlers object
 
