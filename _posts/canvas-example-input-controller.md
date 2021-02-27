@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 10:21:31
-version: 1.30
+updated: 2021-02-27 11:22:43
+version: 1.31
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -145,7 +145,7 @@ I then have a create input state object helper that will be used to create and r
 
 ### 1.2 - call user handlers helper, and the handlers object
 
-I have a helper that is used to call all user defined event handers in the input object that is used in all the private handers that are attached to dome events such as the canvas and window object.
+I have a helper that is used to call all user defined event handlers in the input object that is used in all the private handers that are attached to dom events such as the canvas and window object. I then also have a handlers object that contains functions that are called for mouse or touch events. The idea here is to create a single pointer event that can be the result of mouse, touch, or some other action that has to do with automation or using the keyboard to emulate pointer movement.
 
 ```
     var callUserHanders = function (input, type, a, e) {
