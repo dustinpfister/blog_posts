@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 680
-updated: 2021-02-27 16:44:13
-version: 1.15
+updated: 2021-02-27 16:50:02
+version: 1.16
 ---
 
 This post will be on a fixed shooter hybrid [canvas example](/2020/03/23/canvas-example/) game, like that of [centipede](https://en.wikipedia.org/wiki/Centipede_%28video_game%29). The game is like a fixed shooter type game like that of space invaders or kaboom, however the player is able to move by two axis of movement rather than just one.Still the player can not just move anywhere the play display object must stay in an area at the bottom of the screen. So then the player is not truly fixed to one axis, but is fixed to an area. I do not aim to make a true clone of centipede, but I would like to just make a clean canvas example of something that is similar to that classic game.
@@ -42,19 +42,41 @@ utils.clamp = function (obj, box) {
     obj.x = obj.x < box.x ? box.x : obj.x;
     obj.y = obj.y < box.y ? box.y : obj.y;
 };
-// get canvas rel
+// create a canvas element
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+// get a point relative to the canvas rather than window, 
+// and scale the point to fit the current scaled size of the canvas
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
-    bx = canvas.getBoundingClientRect();
-    var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-    y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-    return {
-        x: x,
-        y: y,
-        w: 1,
-        h: 1,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
 };
 ```
 
@@ -204,7 +226,7 @@ var game = (function () {
         var state = {
             canvas: opt.canvas,
             ctx: opt.canvas.getContext('2d'),
-            ver: '0.1.0', // !!! update this to reflect todo list in repo
+            ver: '0.1.1',
             board: {
                 x: 16,
                 y: 16,
@@ -374,11 +396,9 @@ var draw = (function () {
 Now for the current state of the main.js file for this canvas example. Here I am creating and injecting the canvas element as well as the state object created with he create method of the game module.
 
 ```js
-var container = document.getElementById('canvas-app'),
-canvas = document.createElement('canvas');
-canvas.width = 320;
-canvas.height = 240;
-container.appendChild(canvas);
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
  
 // CREATE STATE
 var state = game.create({
@@ -433,6 +453,7 @@ var keyUpdate = function () {
     //if (keys.k) {
     //    game.playerFire(state);
     //}
+ 
 };
  
 window.addEventListener('keydown', function (e) {
@@ -510,9 +531,9 @@ So now I have just a little html that will make use of all of these modules and 
 </html>
 ```
 
-So when this canvas example is up and running I have the basic idea of the shooter type games like I wanted. I can more the player object around and shot objects move from the player object up to the top of the board. When a shot hits an enemy object it is killed, and I have a kiil count that show how many enemy objects I killed so far.
+So when this canvas example is up and running I have the basic idea of the shooter type games like I wanted. I can more the player object around and shot objects move from the player object up to the top of the board. When a shot hits an enemy object it is killed, and I have a kill count that show how many enemy objects I killed so far.
 
-So it is not much of anything to exciting from an end users perspective, but I just wanted the basic idea of the game working so far, and that is what this is. The question now is what more to I add from here when it comes to making the game a little more fun, and unique. There is a lot that comes to mind with this, and at some point in the future maybe I will get around to expaning this more.
+So it is not much of anything to exciting from an end users perspective, but I just wanted the basic idea of the game working so far, and that is what this is. The question now is what more to I add from here when it comes to making the game a little more fun, and unique. There is a lot that comes to mind with this, and at some point in the future maybe I will get around to expanding this more.
 
 ## 5 - Conclusion
 
