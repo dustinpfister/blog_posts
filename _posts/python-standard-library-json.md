@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 811
-updated: 2021-02-27 11:32:55
-version: 1.17
+updated: 2021-02-27 11:35:41
+version: 1.18
 ---
 
 I have wrote a few posts on standard libraries in python thus far, I do not think I will write posts on all of them, however I still think I should write a post for each of them that I might actually use in projects. One such library might very well be the [JSON standard library](https://docs.python.org/3/library/json.html). The JSON standard library is the standard library to use when it comes to creating a JSON string from a source object, and to parse a JSON string into workable objects. The JSON format is an example of a data serialization language, that is taking an object and turning it into a string format that can be stored in a file, or transmitted over and http request to or from a client system.
@@ -98,6 +98,8 @@ put_state(state)
 print(state)
 ```
 
+This is just a basic silly little thing, but I would not have to put much more time into something such as this to have a very basic little command line based game of some kind.
+
 ## 4 - Conclusion
 
-The JSON format is a standard format for data serialization that is used in web development. I also often find myself using it as a way to store data also, but there are many other formats that might be a better option when it comes to some kinds of applications. One drawback about JSON is that it does not support comments, so it is not the best option when it comes to a config file format.
+The JSON format is a standard format for data serialization that is used in web development. I also often find myself using it as a way to store data also, but there are many other formats that might be a better option when it comes to some kinds of applications. One drawback about JSON is that it does not support comments, so it is not the best option when it comes to a config file format. Other standards for data serialization such as yaml do support comments so there are other options that are better suited for certain other tasks.
