@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 647
-updated: 2021-02-27 10:08:45
-version: 1.27
+updated: 2021-02-27 10:14:30
+version: 1.28
 ---
 
 Todays [canvas example](/2020/03/23/canvas-example/) post is on something that I started working on that can be though of as an input controller for various [input devices](https://en.wikipedia.org/wiki/Input_device) that might be on a range of client systems. This input controller would help with abstracting mouse, touch, and keyboard events into a single input state object that I can pull values from within a loop, or attach events to. At times it seems that doing something like this is necessary because of all kinds of problems that come up with trying to get control of something to work nice with a range of options for doing so.
@@ -101,8 +101,7 @@ utils.getCanvasRelativeArray = function (e) {
 
 ## 1 - The controller module With mouse, touch, and keyboard support
 
-So first off lets go over the control.js module that I worked out for this. The control.js module will create just one global variable that contains two public methods, one for creating an input object, and then another that is just a convenience methods for attaching events.
-
+So first off lets go over the control.js module that I worked out for this. The control.js module will create just one global variable that contains and object with two public methods, one for creating an input object, and then another that is just a convenience methods for attaching events. I might get around to expanding this example more when and if I get additional time as I am sure many features are still missing. I have come to fine that what I really truly need to add to something like this will pop up as I start to use it with some projects.
 
 ### 1.1 - The start of the module
 
