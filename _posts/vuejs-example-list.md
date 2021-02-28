@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 615
-updated: 2021-02-25 20:23:03
-version: 1.17
+updated: 2021-02-28 12:59:38
+version: 1.18
 ---
 
 This will be a quick post on a basic [vue list](https://vuejs.org/v2/guide/list.html) example. When working with unordered or ordered list elements in a template, typically I will end up using the [vue for](/2019/05/21/vuejs-for/) directive to bind to an array in the [vue data](/2019/05/18/vuejs-data/) object. 
@@ -17,7 +17,7 @@ However there is just having a basic list example, and then there is staring to 
 
 ## 2 - The todo list vuejs example
 
-In this section I will be going over the source code of my basic todo app vuejs example. The sore code for this example as well as all of my other vuejs examples can be found at by [test vuejs reposatory](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-example-list) at github.
+In this section I will be going over the source code of my basic todo app vuejs example. The sore code for this example as well as all of my other vuejs examples can be found at by [test vuejs repository](https://github.com/dustinpfister/test_vuejs/tree/master/public/forpost/vuejs-example-list) at github.
 
 ### 2.1 - A global set of mixin methods
 
@@ -214,7 +214,7 @@ new Vue({
 
 ### 2.4 - HTML
 
-Here I have the hard coded html file with some inline css. I have just a single div element that serves as a mount point for the main vuejs instance, and I link to all of the javaScript files that I am using including vuejs.
+Here I have the hard coded html file with some in-line css. I have just a single div element that serves as a mount point for the main vuejs instance, and I link to all of the javaScript files that I am using including vuejs.
 
 ```html
 <html>
