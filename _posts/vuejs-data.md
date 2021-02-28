@@ -5,15 +5,15 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 452
-updated: 2021-02-28 07:59:36
-version: 1.16
+updated: 2021-02-28 13:08:26
+version: 1.17
 ---
 
 When working out a project with vuejs there will be heavy use of the [vue data](https://vuejs.org/v2/api/#data) option when making the vue components and plan old vue instances that will compose such a project. When it comes to regular vue class instances the value of a vue data option can be just a plan old object, but in other situations involving components for example it will have to be a function that will return an object. 
 
-Vue data objects are what is used as the model part of a vue instance, they are just plain old objects, but when something is changed the [vue updates](https://vuejs.org/v2/guide/reactivity.html), or at least in most cases it should. The data object is then a live object, or as some might call it a reactive object, in any case state and view are bound togetaher and any change to the state will update the view in turn if all goes well as it should. 
+Vue data objects are what is used as the model part of a vue instance, they are just plain old objects, but when something is changed the [vue updates](https://vuejs.org/v2/guide/reactivity.html), or at least in most cases it should. The data object is then a live object, or as some might call it a reactive object, in any case state and view are bound together and any change to the state will update the view in turn if all goes well as it should. 
 
-In some cases a change to a nested value in a data object might not automaticly update the view which means that an update must be forced, or the nested values need to also be made observable, live, or reactive if you prefer. With that in might it might be a good idea to look into the [vue observable](/2020/10/05/vuejs-observable/), [vue set](/2019/05/08/vuejs-set/), and the [fource update](/2019/11/12/vuejs-force-update/) methods. There is getting into details about how this works when it comes to native javaScript which would involve working out some examples with [getters and setters](/2020/10/07/js-javascript-getter/) which is also something that should be looked into in order to gain a better sense as to how these live objects work.
+In some cases a change to a nested value in a data object might not automatically update the view which means that an update must be forced, or the nested values need to also be made observable, live, or reactive if you prefer. With that in might it might be a good idea to look into the [vue observable](/2020/10/05/vuejs-observable/), [vue set](/2019/05/08/vuejs-set/), and the [force update](/2019/11/12/vuejs-force-update/) methods. There is getting into details about how this works when it comes to native javaScript which would involve working out some examples with [getters and setters](/2020/10/07/js-javascript-getter/) which is also something that should be looked into in order to gain a better sense as to how these live objects work.
 
 This post will center around the vue data option in vuejs, but it will also branch off into some other topics as well as needed when it comes to covering some basic and maybe not so basic things about state and vuejs.
 
@@ -21,7 +21,7 @@ This post will center around the vue data option in vuejs, but it will also bran
 
 ## 1 - vue data basic example
 
-Lets start out with a very basic example of a vuejs data object. I only have one div element in the body of the html file that will serve as a mount point for this example using the vue el option rather than mounting manualy. I will not be getting in to that in detail here as that is off topic, but if you are still very new to vuejs you might want to read up on the options whenit comes to mounting to hard coded html with [vue el and then mount method](/2019/05/06/vuejs-el/).
+Lets start out with a very basic example of a vuejs data object. I only have one div element in the body of the html file that will serve as a mount point for this example using the vue el option rather than mounting manually. I will not be getting in to that in detail here as that is off topic, but if you are still very new to vuejs you might want to read up on the options when it comes to mounting to hard coded html with [vue el and then mount method](/2019/05/06/vuejs-el/).
 
 ```html
 <html>
@@ -50,9 +50,9 @@ When this example is up and working the string bar is the inner text of the para
 
 The $data property of a Vue instance can be used as a way to gain access to the data object from within vue option functions, methods, and so forth. If the value of the this keyword is the instance of the Vue class that can be used as a way gain access to vue data properties when working or a hook, or a method for the instance. Otherwise a variable can be used to store the Vue class instance, and then that can be used as a way to change data values from outside of the instance. In this section I will be going over a few examples of this in order to help gain a more solid understanding of how to work with a data object in the various vue options.
 
-### 2.1 - Uisng the data object in a vue method
+### 2.1 - Using the data object in a vue method
 
-The vue methods option is how to go about creating a number of methods to use with a vue instance. These methods can be used as event handers when using the v-on directive for example. However they can also be used anyware in the template where doing so can be done, as well as within other methods and most lifecycle hooks.
+The vue methods option is how to go about creating a number of methods to use with a vue instance. These methods can be used as event handers when using the v-on directive for example. However they can also be used anywhere in the template where doing so can be done, as well as within other methods and most lifecycle hooks.
 
 ```js
 new Vue({
@@ -73,7 +73,7 @@ new Vue({
 
 ### 2.2 - Life cycle hooks example of data access
 
-When it comes to accessing the state of the data object it will be there for the created hook forward, but not durring the before create hook.
+When it comes to accessing the state of the data object it will be there for the created hook forward, but not during the before create hook.
 
 ```js
 new Vue({
@@ -154,5 +154,5 @@ new Vue({
 
 ## 5 - Conclusion
 
-This was just a few quick simple examples of the vue data object, but it order to really get a sense as to what the vue data object is for it might be best to just start createing some actual simple projects with vuejs as the client side framework. The vue data object is not the end all be all vue property when it comes to working with state though mind you. This is something that I have come to find when it comes to really starting to get into createing vue compoents where I need to juggle with data objects, prop objects, events, and setting up watchers for values in the props object. That all might sound like a mouth full, but again by just starting to work on some real projects I managed to learn as I go with this.
+This was just a few quick simple examples of the vue data object, but it order to really get a sense as to what the vue data object is for it might be best to just start creating some actual simple projects with vuejs as the client side framework. The vue data object is not the end all be all vue property when it comes to working with state though mind you. This is something that I have come to find when it comes to really starting to get into creating vue components where I need to juggle with data objects, prop objects, events, and setting up watchers for values in the props object. That all might sound like a mouth full, but again by just starting to work on some real projects I managed to learn as I go with this.
 
