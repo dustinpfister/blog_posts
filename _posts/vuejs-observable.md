@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 716
-updated: 2021-02-28 10:02:19
-version: 1.19
+updated: 2021-02-28 12:36:14
+version: 1.20
 ---
 
 When making a vuejs project there might end up being situations in which I might want to make an object observable, or reactive. When it comes to making a [vue data object](/2019/05/18/vuejs-data/) such an object is observable to begin with at least when it comes to the top level of the object. However this might not always end up being the case when it comes to nested objects in the data object, and it is also not the case when it comes to an object that is outside of a vuejs instance compleatly.
@@ -59,11 +59,11 @@ new Vue({
 </html>
 ```
 
-So then that is the basic idea of the Vue.observable method, it is just a way to go about making any javaScript object observabule. When such a task is done changes to that object will update the view in which the object is used. However this might not always be the best way to go about doing things as it strikes me as a kind of temperaty duct tape like solution. When it comes to creating a project with vuejs I might have some kind of vanilla javaScript module that will create and update a state object, but often such a module will have a main create method that I can call in a function that I use with the vue data option.
+So then that is the basic idea of the Vue.observable method, it is just a way to go about making any javaScript object observable. When such a task is done changes to that object will update the view in which the object is used. However this might not always be the best way to go about doing things as it strikes me as a kind of temporary duct tape like solution. When it comes to creating a project with vuejs I might have some kind of vanilla javaScript module that will create and update a state object, but often such a module will have a main create method that I can call in a function that I use with the vue data option.
 
 ## 2 - Avoding the use of Vue.observable
 
-I try to do my best to avoid using methods like Vue.observable actaully, becuase it seems like if I code things a certian way it is not needed. If I have an exteral state object as a single stand alone object, and I do not want to make that object part of a vue instance and keep it in its own seperate place then maybe that is how I have to go about doing it. Still I think that an extreal state object should not just be a single state alone object but the result of the calling of a constructor function, or some kind of main create method in a module. This way I can call such a create method inside the body of a function that I use with the data option of the main vue constructor, this seems to work well for me.
+I try to do my best to avoid using methods like Vue.observable actually, because it seems like if I code things a certain way it is not needed. If I have an external state object as a single stand alone object, and I do not want to make that object part of a vue instance and keep it in its own separate place then maybe that is how I have to go about doing it. Still I think that an extremal state object should not just be a single state alone object but the result of the calling of a constructor function, or some kind of main create method in a module. This way I can call such a create method inside the body of a function that I use with the data option of the main vue constructor, this seems to work well for me.
 
 ```html
 <html>
@@ -119,9 +119,9 @@ new Vue({
 
 ## 3 - Getters and setters under the hood.
 
-The trick about reactive objects in vuejs is that [javaScript getters and setters](/2020/10/07/js-javascript-getter/) are used in order to make objects observable. It might be a good idea to take a moment to play around with them a little on thire own to get a better sense of how they work.
+The trick about reactive objects in vuejs is that [javaScript getters and setters](/2020/10/07/js-javascript-getter/) are used in order to make objects observable. It might be a good idea to take a moment to play around with them a little on their own to get a better sense of how they work.
 
-The Object.definePropery method can be used as a way to create getters and setters for an object property. This native javaScript method is worth looking into if you have not done so all ready becuase it is not just used to create getters and setters for an object, it can also be used to set objects as enumerable or not for example. In the body of a setter it is possible to not just set what the value of the property should be with some javaScript code, it is also possible to fire some additional methods that should fire each time the object property is set. One of these additional methods can be something that updates a vue for the object for example which is more or less what is going on inside vuejs.
+The Object.definePropery method can be used as a way to create getters and setters for an object property. This native javaScript method is worth looking into if you have not done so all ready because it is not just used to create getters and setters for an object, it can also be used to set objects as enumerable or not for example. In the body of a setter it is possible to not just set what the value of the property should be with some javaScript code, it is also possible to fire some additional methods that should fire each time the object property is set. One of these additional methods can be something that updates a vue for the object for example which is more or less what is going on inside vuejs.
 
 ```html
 <html>
@@ -170,7 +170,7 @@ a.n = 15;
 </html>
 ```
 
-What is nice about using something like vuejs is that I can hind all of this kind of stuff away into an external file resource, and I can just focus more on what really matters in a project. I do like to create projects from the ground up with just native javaScript by itself, however doing so is time consuming, and it does not allways result in a better final product anyway.
+What is nice about using something like vuejs is that I can hind all of this kind of stuff away into an external file resource, and I can just focus more on what really matters in a project. I do like to create projects from the ground up with just native javaScript by itself, however doing so is time consuming, and it does not always result in a better final product anyway.
 
 ## 4 - conclusion
 
