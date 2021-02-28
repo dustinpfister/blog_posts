@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 795
-updated: 2021-02-05 15:28:07
-version: 1.9
+updated: 2021-02-28 12:58:15
+version: 1.10
 ---
 
 I have wrote a few posts on all of the basics when it comes to vuejs, so now I find myself starting to make some actual full [vuejs examples](/2021/02/04/vuejs-example/) as that just seems like the net step when it comes to learning a language, or in this case a framework. Today I thought I would start another vuejs example that is a basic simple little game of sorts that has to do with creating web assets.
@@ -115,15 +115,15 @@ var WebAsset = (function(){
 }());
 ```
 
-This is a module that I will be expanding on when it comes to certain parts of the game logic, having at least one or two files like this helps to make my vue components less complex by pulling it out of components and into a vanilla javaScript files such as this. Aslo I think that it is a good idea to make much of the game logic in a vanilla javaScript form such as this so it is easier for me to take this code to another project in which I might not use vuejs.
+This is a module that I will be expanding on when it comes to certain parts of the game logic, having at least one or two files like this helps to make my vue components less complex by pulling it out of components and into a vanilla javaScript files such as this. Also I think that it is a good idea to make much of the game logic in a vanilla javaScript form such as this so it is easier for me to take this code to another project in which I might not use vuejs.
 
 ## 2 - The components folder
 
-I then have a components folder with a few vue components for various features of the user interface of the game. Some of these just display info about the main game state objet. Others can be used as a way to create new sites, buy sites, and sell as a well as improve sites that the player own all ready.
+I then have a components folder with a few vue components for various features of the user interface of the game. Some of these just display info about the main game state object. Others can be used as a way to create new sites, buy sites, and sell as a well as improve sites that the player own all ready.
 
-### 2.1 - disp
+### 2.1 - The display component
 
-I have a simple display components that is used to just display how much money the player has.
+I have a simple display component that is used to just display how much money the player has. In time I am sure that I will expand this component to display much more about the state of the game as a general info display type thing.
 
 ```js
 // just display some basic info
