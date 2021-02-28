@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 563
-updated: 2021-02-21 09:42:46
-version: 1.17
+updated: 2021-02-28 12:36:15
+version: 1.18
 ---
 
 The [vue on](https://vuejs.org/v2/api/#v-on) directive is what can be used in [vue templates](/2019/05/07/vuejs-template/) to preform [event attachment](https://vuejs.org/v2/guide/events.html) for elements in the template. In line JavaScript can be given, however the typical use of the vue on directive is to call a method in the methods object. 
@@ -144,6 +144,6 @@ Calling prevent default and also checking of the right mouse button was clicked 
 
 ## 4 - Conclusion
 
-The v-on directive is one of the first directives that oen should know about when starting to learn vuejs for the first time. When working out a static template there is often going to be a need to attach some events for certain elements in such a template, and the v-on directive is how to go about doing so with static templates.
+The v-on directive is one of the first directives that one should know about when starting to learn vuejs for the first time. When working out a static template there is often going to be a need to attach some events for certain elements in such a template, and the v-on directive is how to go about doing so with static templates.
 
 It might be a good idea to [brush up on event attachment in general](/2019/01/16/js-event-listeners/) when it comes to native javaScript also though. There are a wide range of events for all kinds of things that can happen on a page, and to and element.
