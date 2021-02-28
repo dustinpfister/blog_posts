@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 560
-updated: 2021-02-19 11:17:42
-version: 1.17
+updated: 2021-02-28 12:42:36
+version: 1.18
 ---
 
 The [vue update](https://vuejs.org/v2/api/#updated) life cycle hook is one of several hooks that can be used to define logic that is to be executed at various stages of the vue instance life cycle. The vue update hook will fire after the before update hook when a reactive property data state of the vue instance has changed, or the force update method is called.
 
-So the vue updated hook can be useful for firing some methods or doing anything that needs to be done when a reactive data property changes. In addition there are many other hooks beyond the updated and before update hooks such as the [created](/2019/05/24/vuejs-lifecycle-create/), and [mounted](/2019/05/25/vuejs-lifecycle-mounted/) hooks which are the other typical hooks that I find myself using the most often. So lets look at some examples of these kinds of hooks and why they might come in handy when working out a javaScript project with vuejs as a fron end framework.
+So the vue updated hook can be useful for firing some methods or doing anything that needs to be done when a reactive data property changes. In addition there are many other hooks beyond the updated and before update hooks such as the [created](/2019/05/24/vuejs-lifecycle-create/), and [mounted](/2019/05/25/vuejs-lifecycle-mounted/) hooks which are the other typical hooks that I find myself using the most often. So lets look at some examples of these kinds of hooks and why they might come in handy when working out a javaScript project with vuejs as a front end framework.
 
 <!-- more -->
 
@@ -66,7 +66,7 @@ new Vue({
 
 ## 2 - Basic Array example
 
-Now for a basic example of the updated hook that makes use of an array in the data object. In the array I have a bunch of work objects where each object repersents some kind of work that was prefromed that is worth a certin about of money. Clicking a start a work button will create a new work object for the array, but this will only continue until a max work value is reached. There is then a process works button that will process the array of work objects selling each for an amount of money to which each object is worth. However I am also using the updated hook as a way to check the array of work objects to see if the max has been reached at which point that will also result in the process works method being called.
+Now for a basic example of the updated hook that makes use of an array in the data object. In the array I have a bunch of work objects where each object represents some kind of work that was preformed that is worth a certain about of money. Clicking a start a work button will create a new work object for the array, but this will only continue until a max work value is reached. There is then a process works button that will process the array of work objects selling each for an amount of money to which each object is worth. However I am also using the updated hook as a way to check the array of work objects to see if the max has been reached at which point that will also result in the process works method being called.
 
 ```js
 new Vue({
@@ -119,13 +119,13 @@ new Vue({
 });
 ```
 
-The use of an array in a data object goes hand in hand with the v-for directive when working out a simple static temaple for an example such as this. I am also starting to break things down into many fine grain methods that I can make use of in the methods object. I could go on in detail about these options two when making a vue instance but that would be off topic, I have wrote posts on the [v-for directive](/2019/05/21/buejs-for/), and the [methods option](/2019/05/20/vuejs-method/) anyway so no need to get to far off topic here.
+The use of an array in a data object goes hand in hand with the v-for directive when working out a simple static template for an example such as this. I am also starting to break things down into many fine grain methods that I can make use of in the methods object. I could go on in detail about these options two when making a vue instance but that would be off topic, I have wrote posts on the [v-for directive](/2019/05/21/buejs-for/), and the [methods option](/2019/05/20/vuejs-method/) anyway so no need to get to far off topic here.
 
-Getting back to the main event of this post with the updated hook, it should go without saying that the updated hook is a good place to check something each time the data object updates. However some times a chnage to the data object will not trigger an updated hook. The main reason why that might be is becuase a nested value in the data object is not reactive. So maybe we should take a moment to look at a few more examples that make use of the updated hook to get a better sense of how to address isshues where the updated hook is not working as exspected.
+Getting back to the main event of this post with the updated hook, it should go without saying that the updated hook is a good place to check something each time the data object updates. However some times a change to the data object will not trigger an updated hook. The main reason why that might be is because a nested value in the data object is not reactive. So maybe we should take a moment to look at a few more examples that make use of the updated hook to get a better sense of how to address issues where the updated hook is not working as expected.
 
 ## 3 - vue updated array example and force update
 
-In this section I will be going over an example that is again the beginnings of a simple idle game example. Something that I seem to keep trying to get on tract with but never get togetaher in a new and interesting way. Anyway this example will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually. However it will not happen right away only after each time the data object is updated will a log array of objects be tabulated and added to main money property of the data object.
+In this section I will be going over an example that is again the beginnings of a simple idle game example. Something that I seem to keep trying to get on tract with but never get together in a new and interesting way. Anyway this example will just start adding money to a variable each time a tick method is called outside the vue instance with setInterval. In addition there is also a work button that will add more money and a higher rate, but will do so manually. However it will not happen right away only after each time the data object is updated will a log array of objects be tabulated and added to main money property of the data object.
 
 This example involves the use of an array as a data object property. The tricky thing about arrays as data properties is that adding and removing elements will not trigger an update of the vue, so a force update is needed.
 
@@ -197,5 +197,5 @@ setInterval(function () {
 
 The the vue update hook can be useful for defining some logic that will fire each time a reactive data object updates, or in the event that something is not reactive when the force update method is called. There are many other hooks that fire over the course of a vue instances life span such as the created hook that will fire once the vue instance is created buy not mounted to html, and then there is of course a hook for that also. Hooks come in handy when working out a custom vue constructor or component, I use them all the time where and when needed.
 
-Maybe the best way to learn mopre about hooks and when and where to use them, as well as how to address problems when they come up is to just start working on some examples that are your own projects. As such you might want to check out my [post on my current collection of vuejs example projects](/2021/02/04/vuejs-example/) that I have made thus far when it comes to getting some ideas for real projects using vuejs.
+Maybe the best way to learn more about hooks and when and where to use them, as well as how to address problems when they come up is to just start working on some examples that are your own projects. As such you might want to check out my [post on my current collection of vuejs example projects](/2021/02/04/vuejs-example/) that I have made thus far when it comes to getting some ideas for real projects using vuejs.
 
