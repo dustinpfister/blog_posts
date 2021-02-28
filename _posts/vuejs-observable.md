@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 716
-updated: 2021-02-28 09:41:08
-version: 1.16
+updated: 2021-02-28 09:49:55
+version: 1.17
 ---
 
 When making a vuejs project there might end up being situations in which I might want to make an object observable, or reactive. When it comes to making a [vue data object](/2019/05/18/vuejs-data/) such an object is observable to begin with at least when it comes to the top level of the object. However this might not always end up being the case when it comes to nested objects in the data object, and it is also not the case when it comes to an object that is outside of a vuejs instance compleatly.
@@ -69,8 +69,15 @@ The trick about reactive objects in vuejs is that [javaScript getters and setter
 
 The Object.definePropery method can be used as a way to create getters and setters for an object property. This native javaScript method is worth looking into if you have not done so all ready becuase it is not just used to create getters and setters for an object, it can also be used to set objects as enumerable or not for example. In the body of a setter it is possible to not just set what the value of the property should be with some javaScript code, it is also possible to fire some additional methods that should fire each time the object property is set. One of these additional methods can be something that updates a vue for the object for example which is more or less what is going on inside vuejs.
 
-```js
-
+```html
+<html>
+  <head>
+    <title>getter example</title>
+  </head>
+  <body>
+    <div id="demo"></div>
+    <script>
+// a create reactive helper that will use getters and setters
 var createReactive = function (obj, onSet) {
     obj = obj || {};
     onSet = onSet || function () {};
@@ -94,16 +101,22 @@ var createReactive = function (obj, onSet) {
     });
     return newObj;
 };
+// a render function
 var render = function (obj) {
-    console.log(obj);
+    var el = document.getElementById('demo');
+    el.innerText = obj.n;
 };
 var a = createReactive({
         n: 42
     }, render);
-console.log(a.n);
+// a chnage to a.n will call the render function
+a.n = 15;
+    </script>
+  </body>
+</html>
 ```
 
-What is nice about using something like vuejs is that I can hind all of this kind of stuff away into an external file resource, and I can just focus more on what really matters in a project. I do like to create projects from the ground up with just native javaScript by itself, however doing so is time consuming, and it does not allways result in a better final product anway.
+What is nice about using something like vuejs is that I can hind all of this kind of stuff away into an external file resource, and I can just focus more on what really matters in a project. I do like to create projects from the ground up with just native javaScript by itself, however doing so is time consuming, and it does not allways result in a better final product anyway.
 
 ## 3 - conclusion
 
