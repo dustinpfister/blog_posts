@@ -5,24 +5,24 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 792
-updated: 2021-02-14 14:10:28
-version: 1.12
+updated: 2021-02-27 20:10:27
+version: 1.13
 ---
 
 For a new [canvas examples](/2020/03/23/canvas-example/) I think I would like to start another example expanding on what I started with my other [canvas example on animation basics](/2019/10/10/canvas-example-animation-basics/). This time I would like to build on top of this basic library that helps with animations that I just call _forFrame_ by making a solution that I can use to make sprite sheets with a little javaScript code.
 
-The goal here is to at least start working on something that will serve as a way to include basic pixel art graphics without having to hassle with external images. The image assets can just be part of the source code build. So I will just ned to work out some simple system where I have an array of pixel data for each frame, along with some additional values like a color pallette and so forth. I am thinking that it would also be nice to have some kind of plugin format where all of this data is pulled into external files, and also that each file can have more than one animation, each with a different set of frames, and they can also share color pallettes.
+The goal here is to at least start working on something that will serve as a way to include basic pixel art graphics without having to hassle with external images. The image assets can just be part of the source code build. So I will just need to work out some simple system where I have an array of pixel data for each frame, along with some additional values like a color palette and so forth. I am thinking that it would also be nice to have some kind of plug in format where all of this data is pulled into external files, and also that each file can have more than one animation, each with a different set of frames, and they can also share color palettes.
 
-So this kind of project might prove to be a little involved, but becuase I am working on top of something that I have made before hand, and also becuase I have a fair amount of experence I was able to get the basic idea of what I wanted up and running within just a single day.
+So this kind of project might prove to be a little involved, but because I am working on top of something that I have made before hand, and also because I have a fair amount of experience I was able to get the basic idea of what I wanted up and running within just a single day.
 
 <!-- more -->
 
 <div id="canvas-app"></div>
 <script src="/js/canvas-examples/animation-pixmaps/0.3.0/pkg.js"></script>
 
-For the [full source code is at my canvas examples reposatory](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-animation-pixmaps) on github. The source of the full example is there, along with all my other canvas examples thus far.
+For the [full source code is at my canvas examples repository](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-animation-pixmaps) on github. The source of the full example is there, along with all my other canvas examples thus far.
 
-## 1 - The format for a pixmap.js plugin
+## 1 - The format for a pixmap.js plug in
 
 The first thing that comes to mind with this is that I want to work out a format for a file where I am calling a public method of this pixmap library and passing in an object that contains all the data for a set of animations.
 
@@ -189,7 +189,7 @@ var pixmapMod = (function(){
 
 ## 3 - The forFrame lib
 
-The for frame library is an example of a library that I find myself making over and over again. Each time I do is I keep thinking about what I can add to it, or do differently. The general idea is to have a function that will create and return a modle that is the state of something relative to a current frame index value, over a total number of frames. So the whole idea of this for frame library is to create something like the Array.forFrame method only more in tune with making an animation wherer the logic in the function is for a given frame index value.
+The for frame library is an example of a library that I find myself making over and over again. Each time I do is I keep thinking about what I can add to it, or do differently. The general idea is to have a function that will create and return a model that is the state of something relative to a current frame index value, over a total number of frames. So the whole idea of this for frame library is to create something like the Array.forFrame method only more in tune with making an animation where the logic in the function is for a given frame index value.
 
 ```js
 var forFrame = (function(){
@@ -322,9 +322,9 @@ var forFrame = (function(){
 
 ## 4 - The utility lib
 
-Like just about all of my other canvas examples I have a general utilty libraray. This is a collection of functions and properties, that I find myself using over and over again across canvas examples. However I add and take away things for each canvas example depeding on what I need. 
+Like just about all of my other canvas examples I have a general utility library. This is a collection of functions and properties, that I find myself using over and over again across canvas examples. However I add and take away things for each canvas example depending on what I need. 
 
-Here I have my ushual create canvas method that helps me to create a cnvas element that is setup with all the basic little additions that I like to have, and it is a method that I keep refining a little now and then and take with me to other examples. There are a number of other methods in this copy of the utils lib, but O sometimes add things that are specfiic to a given example. Basily if I have a function that I am going to use accross more than one module, or think that I will be doin that, or thing that I might do that I park it here.
+Here I have my usual create canvas method that helps me to create a canvas element that is setup with all the basic little additions that I like to have, and it is a method that I keep refining a little now and then and take with me to other examples. There are a number of other methods in this copy of the utils lib, but O sometimes add things that are specific to a given example. Basically if I have a function that I am going to use across more than one module, or think that I will be doing that, or thing that I might do that I park it here.
 
 ```js
 var utils = {};
@@ -377,7 +377,7 @@ utils.log1 = function (n, d, base) {
 
 ## 5 - the object pool lib
 
-This is another library that I started working out for my canvas example on object pools. This is just yet another library that I find myself making over again and never seem to get just right. That is why I started the canvas example on this type of libray, and I keep coming back to it now and then. 
+This is another library that I started working out for my canvas example on object pools. This is just yet another library that I find myself making over again and never seem to get just right. That is why I started the canvas example on this type of library, and I keep coming back to it now and then. 
 
 There are two general ideas when it comes to having a collection of display objects, one is to create and purge them out as needed, the other is to have a fixed stack, or pool of objects that are used over and over again. This object pool is the later rather than the former.
 
@@ -507,7 +507,7 @@ var poolMod = (function () {
 
 ## 6 - The main.js file
 
-Now to just make use off all of this in a simple little demo project with a single main.js file. I just use the create canvas method of my utils library to create a single canvas element for this example. I then create a crude yet effective main state object in which I am createing an instance of my pixmaps object. I am then also creating an object pool to whch I am going to skin the objects with using my new pixmaps library.
+Now to just make use off all of this in a simple little demo project with a single main.js file. I just use the create canvas method of my utils library to create a single canvas element for this example. I then create a crude yet effective main state object in which I am creating an instance of my pixmaps object. I am then also creating an object pool to which I am going to skin the objects with using my new pixmaps library.
 
 ```js
 var LIFESPAN = 7;
@@ -595,4 +595,4 @@ loop();
 
 ## 7 - Conclusion
 
-So then this pixmap library that works on top of my _forframe_ library seems to work well thus far as a way to create pixel graphics for another canvas example. I think I might use this in one or two other canvas exmaples as a way to create some animations that are things other than simple shapes.
+So then this pixmap library that works on top of my _forframe_ library seems to work well thus far as a way to create pixel graphics for another canvas example. I think I might use this in one or two other canvas examples as a way to create some animations that are things other than simple shapes.
