@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 716
-updated: 2021-02-28 09:30:34
-version: 1.14
+updated: 2021-02-28 09:36:00
+version: 1.15
 ---
 
 When making a vuejs project there might end up being situations in which I might want to make an object observable, or reactive. When it comes to making a [vue data object](/2019/05/18/vuejs-data/) such an object is observable to begin with at least when it comes to the top level of the object. However this might not always end up being the case when it comes to nested objects in the data object, and it is also not the case when it comes to an object that is outside of a vuejs instance compleatly.
@@ -60,6 +60,8 @@ var vm = new Vue({
   </body>
 </html>
 ```
+
+So then that is the basic idea of the Vue.observable method, it is just a way to go about making any javaScript object observabule. When such a task is done changes to that object will update the view in which the object is used. However this might not always be the best way to go about doing things as it strikes me as a kind of temperaty duct tape like solution. When it comes to creating a project with vuejs I might have some kind of vanilla javaScript module that will create and update a state object, but often such a module will have a main create method that I can call in a function that I use with the vue data option.
 
 ## 2 - Getters and setters under the hood.
 
