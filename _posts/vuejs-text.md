@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2021-02-28 11:19:35
-version: 1.11
+updated: 2021-02-28 11:26:28
+version: 1.12
 ---
 
 The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. This is an alternative to using the mustache syntax that often pops up in mnay basic examples, simply put the v-text directive is just a directive way of doing the same thing actually. However there is also the native javaScript way of setting the text node of an element also, and there is also setting the inner html of an element as well.
@@ -96,7 +96,7 @@ So then the ref attribute and $refs instance property is a great way to go about
 
 ## 4 - HTML rather than plain text
 
-The v-text directive works well when it comes to setting the value of a text node. However what if the text that I have is some html code and I want that html code to be part of the template? For these kinds of tasks there is the v-html directive that should work okay in most situations.
+The v-text directive works well when it comes to setting the value of a text node. However what if the text that I have is some html code and I want that html code to be part of the template? For these kinds of tasks there is the v-html directive that should work okay in most situations. Just like with the innerText property there is also the native javaScript innerHTML property also that is another way to go about doing this sort of thing. There is then the other native ways to go about creating html for a vue template.
 
 ### 4.1 - The html directive
 
