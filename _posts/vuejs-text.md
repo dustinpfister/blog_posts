@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2021-02-28 11:47:17
-version: 1.13
+updated: 2021-02-28 11:53:47
+version: 1.14
 ---
 
 The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. This is an alternative to using the mustache syntax that often pops up in mnay basic examples, simply put the v-text directive is just a directive way of doing the same thing actually. However there is also the native javaScript way of setting the text node of an element also, and there is also setting the inner html of an element as well.
@@ -42,7 +42,7 @@ The basic idea of the vue text directive is that I just type v-text=\"mess\" in 
 
 That is about it when it comes to the very basics, but there is more than one way to go about doing this, and not just with vuejs. Also the v-text directive is just for text nodes, it can not be used to set the text of element attributes for that another directive is needed such as the v-bind directive. However when it comes to this post at least I am mainly just going to be going over some other examples of updating text nodes, and maybe other things that might be touch of as such at least.
 
-## 2 - Mustash syntax and expressions in templates
+## 2 - Mustache syntax and expressions in templates
 
 On top of the v-text directive there is also the mustache syntax in vuejs, this is also a way to go about setting the value for text content in an element of a template. When it comes to this mustache syntax A nested set of curly brackets is placed between the opening and closing tag of the element where I want text content to be. I can then pass a property name of the data object, or work out an expression consisting of strings, numbers, and methods that will then evaluate to the text content that I want.
 
@@ -71,7 +71,7 @@ On top of the v-text directive there is also the mustache syntax in vuejs, this 
 
 Yet another way to update the text content of an element, would be to use the native client side javaScript innerText property of an element object reference. There is just one problem, how does one get a reference to an element in a template in vuejs? Well there are several ways to go about doing so, one would be the $ref property, and another would be the $el property. In this section I will be going over some examples of how to go about getting a reference to an element in a template to change the text node value.
  
-### 3.1 - Uisng the $ref prop of a vue instance
+### 3.1 - Using the $ref prop of a vue instance
 
 One way  to get a reference to a template element would be to use the [ref attribute](https://vuejs.org/v2/api/#ref) to tag an element in the template. Once that is one then a reference to the element can be obtained by the [$refs instance property](https://vuejs.org/v2/api/#vm-refs) of a vue instance inside the body of a mounted life cycle hook for example.
 
@@ -100,6 +100,8 @@ One way  to get a reference to a template element would be to use the [ref attri
 So then the ref attribute and $refs instance property is a great way to go about doing whatever I want or need to do with an element with plain old javaScript features. There is not just the innerText property of an element object reference after all when it comes to that. Still I think that something like this should only happed when I need to, and even then I must ask myself what it is that I am doing wrong actually. When it comes to just setting the text of an element in vuejs there is the v-text directive, and the mustache syntax that should be used. If I keep using native things then eventual i gets to the point where it kind of defeats the purpose of using vuejs.
 
 ### 3.2 - The $el prop of a vue instance
+
+Another option would be to use the vue el property of a vue instance. This is a reference to the root element of the template of the vue instance. Off of this reference any native client side javaScript element can be used to get a reference to any element in the template by way of using something like query selector all.
 
 ```html
 <html>
