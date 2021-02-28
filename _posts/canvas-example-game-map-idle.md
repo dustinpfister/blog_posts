@@ -5,15 +5,18 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 591
-updated: 2020-07-18 19:16:23
-version: 1.32
+updated: 2021-02-28 14:54:32
+version: 1.33
 ---
 
-Today I will be writing about yet another [canvas example](/2020/03/23/canvas-example/), this one will be an [idle game](https://en.wikipedia.org/wiki/Incremental_game) that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other canavs example posts. It makes use of a [state machine](/2020/01/28/canvas-example-state-machine/) in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tied to working with canvas.
+Today I will be writing about yet another [canvas example](/2020/03/23/canvas-example/), this one will be an [idle game](https://en.wikipedia.org/wiki/Incremental_game) that makes use of a map or gird module. On top of the use of a grid module it will also make used of other modules, methods, and concepts that I have covered in other canvas example posts. It makes use of a [state machine](/2020/01/28/canvas-example-state-machine/) in the main app loop, and also a pointer movement module that I have worked out as yet another javaScript example that is closely tied to working with canvas.
 
 In any case this canvas example will be a little involved, but I will have the whole state of the source code here as it was at the time of this writing. I might work on it more, or use it as a starting point for another project if I feel that this will be a good project that is worth more time. So for now lets take a look at what we have when it comes to this ma idle type canvas game example.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/game-map-idle/0.0.0/pkg.js"></script>
 
 ## 1 - The html file of this canvas example and overview of what is to come
 
