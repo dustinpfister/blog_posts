@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2021-02-27 19:45:00
-version: 1.27
+updated: 2021-02-27 19:50:12
+version: 1.28
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic idea of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird) of course, but the basic idea is there and that is all I wanted as a starting point at least.
@@ -374,7 +374,10 @@ var loop = function () {
 loop();
 ```
 
+The result when this is up and running is what I would expect a box moves up to the top of the canvas when it click or touch the canvas, and falls back down when I leave it alone. If I get the player controlled box to overlap with one of the other boxes I get a point. I am not sure what more I should add to this when it comes to moving forward, but this is all I had in mind for this example at least.
+
 ## 5 - Conclusion
 
-I am generally happy with how this project has come together thus far, and I have to say that this project is one of several canvas examples that I might put more time into. With that said of course there is much more that needs to happen when it comes to making this into an actual project rather that just a simple canvas example for the sake of this post. 
+I am generally happy with how this project has come together thus far, and I have to say that this project is one of several canvas examples that I might put more time into. With that said of course there is much more that needs to happen when it comes to making this into an actual project rather that just a simple canvas example for the sake of this post.
+
 Still the general idea that I had is up and working I just need to get around to adding some more features, skin it, and see about promoting it some how. I do think that if I am going to have some kind of game project on each page of my website which is something I am thing of doing it should be some kind of project like this. That is you can play manually if you want to, but you can also just let the computer play for you actually. I have come to find that those kinds of games are the kinds of games I still like paying because I can let the computer play for me and then I can focus on something else, such as making such a game.
