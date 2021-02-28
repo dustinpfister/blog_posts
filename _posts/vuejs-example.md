@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 796
-updated: 2021-02-21 09:52:16
-version: 1.20
+updated: 2021-02-28 13:02:45
+version: 1.21
 ---
 
 I have wrote over 40 posts on vuejs thus far, and many of those posts are just on various aspects of the [vuejs framework itself](/2021/02/05/vuejs/) that are all ready well documented in the official vuejs documentation. Writing such posts are not always such a wast of time mind you often the official documentation might fail to mention something, not frame things the right way, and more examples can never hurt. Still once I gain a sold hold on the basics of a framework or language the only thing to do from that point forward is to start to work on some actual projects, rather than finding about with basic, copy and paste, cook book style code examples. So I have started writing a collection of posts on [vuejs examples](https://vuejsexamples.com/) that are full working projects, or at least aim to be anyway.
@@ -17,7 +17,7 @@ I have done the same with my collection of posts on the canvas element, but this
 
 ## 1 - Get the full source code of all of my vuejs examples at my github
 
-The full source code for all of these vuejs examples can be found at my [test\_vuejs repository](https://github.com/dustinpfister/test_vuejs) here at guthub. If you have both git and nodejs installed then the repo can be cloned down, then npm can be used to install packages for a simple server for the examples. doing something to that effect is best when it comes to working out something with vuejs, and javaScript in general compared to viewing things with the file protocol.
+The full source code for all of these vuejs examples can be found at my [test\_vuejs repository](https://github.com/dustinpfister/test_vuejs) here at github. If you have both git and nodejs installed then the repo can be cloned down, then npm can be used to install packages for a simple server for the examples. doing something to that effect is best when it comes to working out something with vuejs, and javaScript in general compared to viewing things with the file protocol.
 
 ```
 $ git clone --depth 1 https://github.com/dustinpfister/test_vuejs
