@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-01-31 18:22:56
-version: 1.81
+updated: 2021-02-27 20:05:48
+version: 1.82
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -72,7 +72,7 @@ I have some interest in fractals, and thus far I have this one post that I have 
 
 ### 3.4 - [Animation and pixmaps](/2021/01/29/canvas-example-animation-pixmaps/)
 
-I would like to work out a simple, crude, yet effeective way to go about creating sprite sheet assets with a little javaScript code rather than using extreal images. This way I can continute creating builds where the whole example can be just one single javaScript file rather than making the situstion more complext by making it so exteranl images must be loaded first. This canvas example is the current state of working out such a standard.
+I would like to work out a simple, crude, yet effective way to go about creating sprite sheet assets with a little javaScript code rather than using extremal images. This way I can continue creating builds where the whole example can be just one single javaScript file rather than making the situation more complex by making it so external images must be loaded first. This canvas example is the current state of working out such a standard.
 
 ### 3.5 - [A simple ball bounce canvas example](/2020/01/14/canvas-example-ball-bounce/)
 
@@ -88,7 +88,7 @@ One thing that comes up often with canvas projects is how to go about adding but
 
 ### 3.8 - [A basic clock canvas example](/2019/12/13/canvas-example-clock-basic/)
 
-Making a clock with canvas can be fun, and I also find making them easy and therapeutic actually. There is of cousre going in all kinds of novel and interesting directions with clocks, but there is also just starting out with the basics. So with this canvas example I worked out just a basic form of how to go about making a simple clock object model, and draw module for just a simple digital and analog combination clock.
+Making a clock with canvas can be fun, and I also find making them easy and therapeutic actually. There is of course going in all kinds of novel and interesting directions with clocks, but there is also just starting out with the basics. So with this canvas example I worked out just a basic form of how to go about making a simple clock object model, and draw module for just a simple digital and analog combination clock.
 
 ### 3.9 - [Clock and particles](/2020/05/06/canvas-example-clock-particles/)
 
