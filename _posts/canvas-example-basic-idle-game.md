@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 602
-updated: 2021-02-14 17:45:53
-version: 1.31
+updated: 2021-02-27 20:13:23
+version: 1.32
 ---
 
 There is a lot that I like about [idle or incremental games](https://en.wikipedia.org/wiki/Incremental_game) as there is the artistic side of game development, and then there is the business side of things. When it comes to the artistic side maybe game development is about some kind of expression, making some kind of statement, or just simply having fun. However with the artistic side of game development aside there is also the business side of the endeavor, and when it comes to the business side all that really matters is if a game can make you money or not. Sp then when it comes to the business side of game development a game does not have to be some kind of ground breaking statement, emotional expression, or anything profound, it just needs to make money.
@@ -125,7 +125,7 @@ var game = (function () {
 
 ### 2.2 - A Make upgrade state object
 
-So the upgrade data array is an array of hard coded values for each upgrate, but it is not a current state object of sorts. I am going to need another object that is the current state of an upgrade, such as the current level, and values that have to do with the current cost of the next upgrade.
+So the upgrade data array is an array of hard coded values for each upgrade, but it is not a current state object of sorts. I am going to need another object that is the current state of an upgrade, such as the current level, and values that have to do with the current cost of the next upgrade.
 
 ```js
     // make a new upgradeState object from an upgradeData object
@@ -402,4 +402,4 @@ loop();
 
 ## 5 - Conclusion
 
-Well I set out to make a basic Idle game and this is more or less what it is. The only question  now is where to go from here when it comes to making this a more interesting project even if it is left very basic and unbranded.
+Well I set out to make a basic Idle game and this is more or less what it is. The only question  now is where to go from here when it comes to making this a more interesting project even if it is to remain very basic and unbranded. There is adding a reset feature which is one major part of an idle game that I think the game should have. Also there is still adding very basic features such as just a save state system. Still when it comes to making a fork of this I will want to come up with at least some kind of theme also.
