@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 445
-updated: 2021-02-27 14:39:12
-version: 1.24
+updated: 2021-02-28 13:08:27
+version: 1.25
 ---
 
 If you start getting into vuejs the concept of a [vue directive](https://012.vuejs.org/guide/directives.html) is something that will come up, and it is important to understand what they are. There might be a range of ways of defining what a directive is, but maybe a good way of summing things up is that they are just a way to go about preforming some kind of an action on an html element in a static vue template. Actions such as changing what the text node is for a paragraph element, assigning a value for a style attribute of an element, or attaching an event handler for a button element.
 
-There are many built in directives and an important part of vuejs development involves knowing how to use them first and formost before looking into taking the time to make a custom directive. However speaking of custom  directives, yes in addition to knowing about the built in ones it also goes without saying that it is a good idea to also know how to [make them also](https://vuejs.org/v2/guide/custom-directive.html). Directives are a great way to add features that act on elements that are needed for a project, but are not built into vuejs itself. 
+There are many built in directives and an important part of vuejs development involves knowing how to use them first and foremost before looking into taking the time to make a custom directive. However speaking of custom  directives, yes in addition to knowing about the built in ones it also goes without saying that it is a good idea to also know how to [make them also](https://vuejs.org/v2/guide/custom-directive.html). Directives are a great way to add features that act on elements that are needed for a project, but are not built into vuejs itself. 
 
 If you have some background with angular chances are you will be able to get up and running with vue directives fairly fast. However in any case in this post I will be getting into some simple, and maybe not so simple vue directive examples. Starting out with some very basic hello world type examples, and then getting into some additional ones that are custom made.
 
@@ -101,7 +101,7 @@ new Vue({
 
 ### 2.2 - Call Click method example
 
-I can call the method that I want to fire when binding the durective in the template. This way I can design my methods in a way in which they work as functions that take arguments other than an event object. For example I can use my step method in a way in which I can give a rate as the first argument, and I can have few buttons that will step at differnt rates.
+I can call the method that I want to fire when binding the directive in the template. This way I can design my methods in a way in which they work as functions that take arguments other than an event object. For example I can use my step method in a way in which I can give a rate as the first argument, and I can have few buttons that will step at different rates.
 
 ```html
 <html>
