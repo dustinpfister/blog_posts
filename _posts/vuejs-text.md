@@ -5,13 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2021-02-28 11:11:49
-version: 1.10
+updated: 2021-02-28 11:19:35
+version: 1.11
 ---
 
-The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. This is an alterative to using the mustash syntax that often pops up in mnay basic examples, simpley put the v-text directive is just a directive way of doing the same thing actually. However there is also the native javaScript way of setting the text node of an element also, and there is also setting the inner html of an element as well.
+The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. This is an alternative to using the mustache syntax that often pops up in mnay basic examples, simply put the v-text directive is just a directive way of doing the same thing actually. However there is also the native javaScript way of setting the text node of an element also, and there is also setting the inner html of an element as well.
 
-There are other ways of updating the text content of an element in vuejs, as well as native javaScript, and there are also some related topics to this such as the vue html directive that might also need to be covered here while I am at it. So this post will be just a few quick examples on the vue text directive in vuejs, but I also will be touching base on Mustache syntax, native javaScript methods for editing a text node, and other vuiejs directives and features that might come up when it comes to text and vuejs.
+There are other ways of updating the text content of an element in vuejs, as well as native javaScript, and there are also some related topics to this such as the vue html directive that might also need to be covered here while I am at it. So this post will be just a few quick examples on the vue text directive in vuejs, but I also will be touching base on Mustache syntax, native javaScript methods for editing a text node, and other vuejs directives and features that might come up when it comes to text and vuejs.
 
 <!-- more -->
 
@@ -96,7 +96,7 @@ So then the ref attribute and $refs instance property is a great way to go about
 
 ## 4 - HTML rather than plain text
 
-The v-text directive works well when it comes to setting the value of a text node. However what if the text that I have is some html code and I want that html code to be part of the template? For these kinds of tasks there is the v-html diretive that should work okay in most situations.
+The v-text directive works well when it comes to setting the value of a text node. However what if the text that I have is some html code and I want that html code to be part of the template? For these kinds of tasks there is the v-html directive that should work okay in most situations.
 
 ### 4.1 - The html directive
 
