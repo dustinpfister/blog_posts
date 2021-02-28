@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 733
-updated: 2021-02-28 11:26:28
-version: 1.12
+updated: 2021-02-28 11:47:17
+version: 1.13
 ---
 
 The [vue text](https://vuejs.org/v2/api/#v-text) directive is one of the first directives that one might start to use when getting [started with vue directives](/2019/05/14/vuejs-directive/). The vue text directive just updates the text content of an element to the value that is given when using it in a vue template. This is an alternative to using the mustache syntax that often pops up in mnay basic examples, simply put the v-text directive is just a directive way of doing the same thing actually. However there is also the native javaScript way of setting the text node of an element also, and there is also setting the inner html of an element as well.
@@ -69,7 +69,12 @@ On top of the v-text directive there is also the mustache syntax in vuejs, this 
 
 ## 3 - Native javaScript innerText, $ref, and the mounted life cycle hook
 
-Yet another way to update the text content of an element, would be to use the native client side javaScript innerText property of an element object reference. There is just one problem, how does one get a reference to an element in a template in vuejs? Well one way would be to use the [ref attribute](https://vuejs.org/v2/api/#ref) to tag an element in the template. Once that is one then a reference to the element can be obtained by the [$refs instance property](https://vuejs.org/v2/api/#vm-refs) of a vue instance inside the body of a mounted life cycle hook for example.
+Yet another way to update the text content of an element, would be to use the native client side javaScript innerText property of an element object reference. There is just one problem, how does one get a reference to an element in a template in vuejs? Well there are several ways to go about doing so, one would be the $ref property, and another would be the $el property. In this section I will be going over some examples of how to go about getting a reference to an element in a template to change the text node value.
+ 
+### 3.1 - Uisng the $ref prop of a vue instance
+
+One way  to get a reference to a template element would be to use the [ref attribute](https://vuejs.org/v2/api/#ref) to tag an element in the template. Once that is one then a reference to the element can be obtained by the [$refs instance property](https://vuejs.org/v2/api/#vm-refs) of a vue instance inside the body of a mounted life cycle hook for example.
+
 
 ```html
 <html>
@@ -93,6 +98,29 @@ Yet another way to update the text content of an element, would be to use the na
 ```
 
 So then the ref attribute and $refs instance property is a great way to go about doing whatever I want or need to do with an element with plain old javaScript features. There is not just the innerText property of an element object reference after all when it comes to that. Still I think that something like this should only happed when I need to, and even then I must ask myself what it is that I am doing wrong actually. When it comes to just setting the text of an element in vuejs there is the v-text directive, and the mustache syntax that should be used. If I keep using native things then eventual i gets to the point where it kind of defeats the purpose of using vuejs.
+
+### 3.2 - The $el prop of a vue instance
+
+```html
+<html>
+  <head>
+    <title>vue html example</title>
+    <script src="/js/vuejs/2.6.10/vue.js"></script>
+  </head>
+  <body>
+  <div id="demo"></div>
+  <script>
+  new Vue({
+    el:'#demo',
+    template: '<div><p></p></div>',
+    mounted: function(){
+        this.$el.querySelectorAll('p')[0].innerText = 'foo';
+    }
+  });
+  </script>
+  </body>
+</html>
+```
 
 ## 4 - HTML rather than plain text
 
