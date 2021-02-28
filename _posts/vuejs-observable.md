@@ -5,8 +5,8 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 716
-updated: 2021-02-28 10:00:43
-version: 1.18
+updated: 2021-02-28 10:02:19
+version: 1.19
 ---
 
 When making a vuejs project there might end up being situations in which I might want to make an object observable, or reactive. When it comes to making a [vue data object](/2019/05/18/vuejs-data/) such an object is observable to begin with at least when it comes to the top level of the object. However this might not always end up being the case when it comes to nested objects in the data object, and it is also not the case when it comes to an object that is outside of a vuejs instance compleatly.
@@ -26,7 +26,7 @@ So say I have a state object that is just a plain old object outside of a vuejs 
 ```html
 <html>
   <head>
-    <title>vue on example</title>
+    <title>vue observable example</title>
     <script src="/js/vuejs/2.6.10/vue.js"></script>
   </head>
   <body>
@@ -35,8 +35,7 @@ So say I have a state object that is just a plain old object outside of a vuejs 
 var state = Vue.observable({
     count: 0
 });
- 
-var vm = new Vue({
+new Vue({
     el:'#demo',
     render : function(createElement){
        return createElement('input', {
@@ -55,7 +54,6 @@ var vm = new Vue({
        }
     }
 });
- 
     </script>
   </body>
 </html>
