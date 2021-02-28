@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 593
-updated: 2021-02-27 16:59:09
-version: 1.31
+updated: 2021-02-27 19:55:56
+version: 1.32
 ---
 
 I want to make more [canvas examples](/2020/03/23/canvas-example/), some of which might turn into interesting game prototype projects maybe. Today I though I would make something like [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird), only maybe not a total clone that has nothing going on that sets it apart from that. When cloning something it is important to make at least some kind of effort to make it distinct after all. I shall call it flappy collector, until I come up with some better working title for such a canvas example as I am not so great with names.
@@ -264,3 +264,5 @@ loop();
 ## 5 - conclusion
 
 So this canvas example when up and running is just a green box that will fall to the bottom of the canvas and then just stay there at the bottom. That is unless if a player clicks or touches the canvas and as such causes the green box to flap upwards sort of speak. As crude and silly as the canvas example may be, it is all ready starting to feel like a bit of a game, but more is clearly needed in oder to make this something that most people would actually want to play.
+
+As of this writing I have made [one additional example based off of this source code](/2020/01/21/canvas-example-game-flappy-collector-idle/) where I am automating the process of playing. This is not the kind of game that I would care to play manually, but it might be cool to have a game like this the sort of plays itself, but at any time I can just come in and play in manually for a moment.
