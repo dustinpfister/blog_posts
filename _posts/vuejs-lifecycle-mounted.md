@@ -5,11 +5,13 @@ tags: [vuejs]
 layout: post
 categories: vuejs
 id: 459
-updated: 2021-01-27 15:46:28
-version: 1.12
+updated: 2021-02-28 12:06:11
+version: 1.13
 ---
 
-The [vue mounted lifecycle hook](https://v3.vuejs.org/api/options-lifecycle-hooks.html#mounted) is a way to define some logic that will run when a vue instance is mounted to a mount point in html with the vue el option or the $mount method. The vue mounted hook is one of several such hooks when working with vue class instances. This is then a hook that is fired after the create hook, and before additional hooks that will fire at end of life states for the vue instance. So then the mount hook strikes me as a decent hook to place code that I want to fire once, and at a state when both the data object, and the template are there to work with.
+The [vue mounted lifecycle hook](https://v3.vuejs.org/api/options-lifecycle-hooks.html#mounted) is a way to define some logic that will run when a vue instance is mounted to a mount point in html with the vue el option or the $mount method. At this time the template or render function of the vue instance has been rendered at least once and the html that is the result of the vue instance can not be accessed by way of vuejs features such as the $el vue instance property.
+
+The vue mounted hook is one of several such hooks when working with vue class instances. This is then a hook that is fired after the create hook, and before additional hooks that will fire at end of life states for the vue instance. So then the mount hook strikes me as a decent hook to place code that I want to fire once, and at a state when both the data object, and the template are there to work with.
 
 <!-- more -->
 
