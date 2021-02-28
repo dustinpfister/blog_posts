@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 621
-updated: 2021-02-27 20:00:41
-version: 1.17
+updated: 2021-02-27 20:04:13
+version: 1.18
 ---
 
 When starting any kind of canvas project that will involve a user interface I often want to get a [canvas point](https://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/) that is relative to the canvas element rather than the window object. To do this I just need to attach a touch or mouse or touch event to the canvas element to get the position of a pointer event relative to the window for startes. Then I can also use the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) method in the body of the event hander off a reference to the canvas element to get a set of values that include the offset values from the upper left corner to the browser window. Once I do that I can use the object returned by the get bounding client rect method to adjust the client x and y values of the event object in the mouse or touch event handler to get the desired canvas element relative position.
@@ -149,7 +149,55 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
-## 4 - Conclusion
+## 4 - In my input controller canvas example
+
+In my input controller canvas example I came up with a get canvas relative array method. It works more or less the same way as the get canvas relative method but will create an array of point objects rather than just one for touch events. So I will need to use something like this when it comes to doing something with multi touch.
+
+```js
+utils.getCanvasRelativeArray = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos,
+    arr = [];
+    // mouse event
+    if (utils.isMouse(e)) {
+        pos = {
+            x: e.clientX - bx.left,
+            y: e.clientY - bx.top,
+            bx: bx,
+            e: e,
+            touch: {}
+        };
+        // ajust for native canvas matrix size
+        pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+        pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+        return [
+            pos
+        ];
+    }
+    // touch
+    var i = 0,
+    touch;
+    while (i < e.targetTouches.length) {
+        touch = e.targetTouches[i];
+        pos = {
+            x: touch.clientX - bx.left,
+            y: touch.clientY - bx.top,
+            touch: touch,
+            e: e,
+            bx: bx
+        };
+        // ajust for native canvas matrix size
+        pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+        pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+        arr.push(pos);
+        i += 1;
+    }
+    return arr;
+};
+```
+
+## 5 - Conclusion
 
 So the process of getting a canvas relative position with a pointer event is a little complicated, but that is the way it should be after all. When it comes to front end javaScript we are not always dealing with canvas elements, the default value should therefore be window relative.
 
