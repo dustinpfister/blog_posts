@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 594
-updated: 2021-02-27 16:59:09
-version: 1.26
+updated: 2021-02-27 19:45:00
+version: 1.27
 ---
 
 This [canvas example](/2020/03/23/canvas-example/) will be a more advanced version of the [canvas example that I worked out that is a kind of flappy bird clone of sorts](/2020/01/16/canvas-example-game-flappy-collector/). In that post I made a canvas game example that is the basic idea of flappy bird where I just want to have a display object constantly drop down that is countered by the action of a player clicking or tapping the canvas. The canvas example is not a true clone of [flappy bird](https://en.wikipedia.org/wiki/Flappy_Bird) of course, but the basic idea is there and that is all I wanted as a starting point at least.
@@ -324,7 +324,7 @@ draw.autoTimeProgressBar = function (bird, ctx, canvas) {
 
 ## 4 - The html and main.js file
 
-Now to tie everything together with html and a main.js file.
+Now to tie everything together with html and a main.js file. In the html I just have a single container div, and link to the game.js file, draw.js file, and main.js files.
 
 ```html
 <html>
@@ -339,6 +339,8 @@ Now to tie everything together with html and a main.js file.
     </body>
 </html>
 ```
+
+In the main.js file I create the canvas element, and create an instance of the game module. For this kind of game I just need to attach a single event handler to the canvas that will call the flap method of the game instance. In the main.js file I also have the main app loop of the program.
 
 ```js
 // create a canvas
