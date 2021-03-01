@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 17:58:28
-version: 1.28
+updated: 2021-03-01 18:03:19
+version: 1.29
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -119,7 +119,9 @@ var Machine = (function () {
 
 ### 2.2 - The public function that creates a state machine object
 
-So now it is time for the public function that is used to create the state machine instance when making a project with this state machine module.
+So now it is time for the public function that is used to create the state machine instance when making a project with this state machine module. In the body of the main function I am using the utils create canvas method to create a canvas object to which I am then using to set main state machine properties for canvas and context. In the state machine object I have values for the current state that is running that will serve as a way to call the current state.
+
+The state machine object also provides a load function that is how I will go about adding state objects to the state machine object.
 
 ```js
     // create a new state machine
@@ -178,6 +180,8 @@ So now it is time for the public function that is used to create the state machi
 }
     ());
 ```
+
+In the body of the main pubic method I also have the main app loop, however I am not sure if this is something that I will keep here or not.
 
 ## 3 - Simple use case example
 
