@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 17:56:25
-version: 1.27
+updated: 2021-03-01 17:58:28
+version: 1.28
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -15,13 +15,13 @@ Say you want to make a project that is fairly complex and there are many states 
 
 In addition even when a game is up and running there are many menus that the user can navigate between before starting a main game state. Once a game is over there are often two kind of outcomes to the end of the game, and how they should be treated when updating a game save. So in that kind of situation some way to compartmentalize all these different states of sorts needs to be implemented and such a thing if often referred to as a state machine.
 
-Many frameworks such as phaser will have a state machine as part of the functionality of the framework, but when it comes to starting a vanila javaScript project this aspect of the game would need to be created from the ground up. When it comes to making a canvas framework I often think that a state machine should be a part of such a framework, but I guess it does not have to be when it comes to making such a project. In any case this post will be on just one way to go about making a state machine by itself without much more beyond that.
+Many frameworks such as phaser will have a state machine as part of the functionality of the framework, but when it comes to starting a vanilla javaScript project this aspect of the game would need to be created from the ground up. When it comes to making a canvas framework I often think that a state machine should be a part of such a framework, but I guess it does not have to be when it comes to making such a project. In any case this post will be on just one way to go about making a state machine by itself without much more beyond that.
 
 <!-- more -->
 
 ## 1 - The utils module
 
-First off just like any other canvas example of mine I want to start out with a genearic utility library. This utility librray contains methods that I might use accross diferent modules, and also methods that I might share accross other canvas examples. So they are all a bunch of stand alone methods that do soemthing specfic, and are often pure function like. For this utility library I am just using my ushual create canvas method, and another typical methods that I use to get a canvas relative pointer position.
+First off just like any other canvas example of mine I want to start out with a generic utility library. This utility library contains methods that I might use across different modules, and also methods that I might share across other canvas examples. So they are all a bunch of stand alone methods that do something specific, and are often pure function like. For this utility library I am just using my usual create canvas method, and another typical methods that I use to get a canvas relative pointer position.
 
 ```js
 var utils = {};
