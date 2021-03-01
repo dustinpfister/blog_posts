@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 18:03:19
-version: 1.29
+updated: 2021-03-01 18:04:37
+version: 1.30
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -245,7 +245,7 @@ sm.load({
 sm.start();
 ```
 
-So when it comes to this there is not much to write about just yet, but I have the basic idea of what I wanted up and running at least.
+So when it comes to this there is not much to write about just yet, but I have the basic idea of what I wanted up and running at least. If I get around to it I might start to create some kind of actual game example on top of this, but there are so many other canvas examples that I also want to work on.
 
 ## 4 - Conclusion
 
