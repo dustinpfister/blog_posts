@@ -1,12 +1,12 @@
 ---
-title: experimental design in statistics 
+title: Experimental design in statistics 
 date: 2021-03-01 12:29:00
 tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 16:02:24
-version: 1.13
+updated: 2021-03-01 16:24:53
+version: 1.14
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -19,13 +19,21 @@ However what if I want to come up with some kind of _hypothesis_ \( or maybe I s
 
 <!-- more -->
 
-## 1 - Some basic tools
+## 1 - Mu first attempt as Experimental design in Statistics
 
-So first off I am going to want to come up with some basic tools that will help me to just come up with a Clicks Per Thousand Words Per Day \(CPTWPD\) value. I can then use these basic tools to create an array of objects for each category that I am writing about where each object will contain a CPTWPD value.
+So then this will be my first attempt at Experimental design in statstics where I would like to work out some kind of experament that might help me make better choices when it comes to what I choose to write about with this website. My time is valubule to me and I want to write about things that are worth an inverment of my time. There is just wriring about things purly for the intresnuc value of doing so, and with many catagories on this site that is more or less the only thing that continues to drive me forward. However for the sake of the subject matter of this post I should make this about just simply getting more traffic, so it would be a good idea to have some way to go about indexing posts, and whole cataories of content by some kind of metric that will show me what is working well, and what is not working so well when it comes to writijng for the sake of gaining orgainic traffic.
+
+### 1.1 - Must come up with a research question
+
+### 1.2 - I am going to want to have soemthing to function as a control
+
+### 1.3 - Some basic tools
+
+So I am going to want to come up with some basic tools that will help me to just come up with a Clicks Per Thousand Words Per Day \(CPTWPD\) value. I can then use these basic tools to create an array of objects for each category that I am writing about where each object will contain a CPTWPD value.
 
 I might end up with a few methods if I put enough time into this, but there are just two simple pure functions that come to mind thus far. I will want one function where I plug in word count, traffic, and a count of days that will return a CPTWPD value. I will then want another pure function that will take this CPTWPD value, and if also given the same values for word count and days should return the same value for traffic.
 
-### 1.1 - Pure function to get "Clicks Per Thousand Words Per Day"
+### 1.4 - Pure function to get "Clicks Per Thousand Words Per Day"
 
 So then this is what I worked out for my function that will return the CPTWPD value that I want. The function is an example of a pure function where the same set of arguments will always return the same result. The arguments that I pass for word count, traffic, and days are examples of indepedant varabules, and the returned product can be considered a depedant variable that is the CPTWPD value that I want for a given set of arguments.
 
@@ -53,7 +61,7 @@ Testing out the function with a few quick example gives me exspected values. If 
 
 So now it is just a question of how I go about using a function like this when it comes to giving it arguments. I can just give some some test values, but I can also plug in some real data that I have as arguments.
 
-### 1.2 - Pure function to get Traffic with CPTWPD
+### 1.5 - Pure function to get Traffic with CPTWPD
 
 I then have my pure function that will return a Traffic value when given a CPTWPD value along with word count and days as arguments. So then this function allows for me to get a trafic value that will be the result of a given CPTWPD value along with word count and days. Just like the get CPTWPD function I could plug in some real data, or I could plug in some kind of theroretical data, or even random data.
 
@@ -76,7 +84,7 @@ console.log( getPostTraffic(300, 120, 31) ); // 1116
 
 The function works as an inversion of my get CPTWPD function where I get a traffic value back from a given CPTWPD if the word count and days are the same.
 
-### 1.3 - Playing around with some REAL data
+### 1.6 - Playing around with some REAL data
 
 So I strated pluging in some real data from serach console, and my scripts that tabulate word count, and recived some interesting values. However I do not just have to plug in real data, I can also plug in some theoretical data also to get an idea of what kinds of values I need to see for the site wide total in order to reach certin traffic goals.
 
