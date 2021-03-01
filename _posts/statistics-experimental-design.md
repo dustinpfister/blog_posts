@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 16:24:53
-version: 1.14
+updated: 2021-03-01 16:36:57
+version: 1.15
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -23,7 +23,23 @@ However what if I want to come up with some kind of _hypothesis_ \( or maybe I s
 
 So then this will be my first attempt at Experimental design in statstics where I would like to work out some kind of experament that might help me make better choices when it comes to what I choose to write about with this website. My time is valubule to me and I want to write about things that are worth an inverment of my time. There is just wriring about things purly for the intresnuc value of doing so, and with many catagories on this site that is more or less the only thing that continues to drive me forward. However for the sake of the subject matter of this post I should make this about just simply getting more traffic, so it would be a good idea to have some way to go about indexing posts, and whole cataories of content by some kind of metric that will show me what is working well, and what is not working so well when it comes to writijng for the sake of gaining orgainic traffic.
 
-### 1.1 - Must come up with a research question
+### 1.1 - Must come up with a research question, and variables
+
+One of the first things that I should try to figure out is what a research question should be. This question should be focused on a single isshue or problem. It should also be somthing that can be tested somehow. When it comes to the subject that I have in mind the question might be something like
+
+```
+Will higher mean blog post word count result in more orgainic web traffic?
+```
+
+I am going to want to have some varaibles for this then that might help me gain some insight on this. I am going to need some indpendent varaibles that I plug into a pure function that will then return a depedant variable. The Inpepednant variables in this case would be things like word count, and an amount of time in days that when passed to a function will return a Clicks Per Thousand Words Per Day value that will be my Dependent variable.
+
+```
+Independent variables          Dependent variable
+
+Word Count                     Clicks Per Thousand Words Per Day ( CPTWPD )
+Days
+```
+
 
 ### 1.2 - I am going to want to have soemthing to function as a control
 
