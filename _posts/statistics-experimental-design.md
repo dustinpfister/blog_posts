@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 15:43:32
-version: 1.11
+updated: 2021-03-01 15:57:52
+version: 1.12
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -78,10 +78,12 @@ The function works as an inversion of my get CPTWPD function where I get a traff
 
 ### 1.3 - Playing around with some REAL data
 
-So I strated pluging in some real data from serach console, and my scripts that tabulate word count, and recived some interesting values.
+So I strated pluging in some real data from serach console, and my scripts that tabulate word count, and recived some interesting values. However I do not just have to plug in real data, I can also plug in some theoretical data also to get an idea of what kinds of values I need to see for the site wide total in order to reach certin traffic goals.
 
 ```js
-// PLUG IN SOME REAL DATA FROM SEARCH CONSOLE
+/********** ********** **********
+ PLUG IN SOME REAL DATA FROM SEARCH CONSOLE
+*********** ********** *********/
  
 // lodash includes is my best post as of this writing
 console.log('best post: ', getCPTWPD(875, 582, 28) );
@@ -102,7 +104,17 @@ console.log('js-javascript-foreach: ', getCPTWPD(3805, 29, 28) ); // 0.272198235
 console.log('lodash_includes : ', getCPTWPD(875, 582, 28) ); // 23.755102040816325
 console.log('lodash_groupby : ', getCPTWPD(856, 549, 28) ); // 22.905540720961284
 console.log('lodash_sum : ', getCPTWPD(800, 502, 28) ); // 22.410714285714285
+ 
+/********** ********** **********
+ PLUG IN SOME THEORETICAL DATA
+*********** ********** *********/
+ 
+console.log(  getCPTWPD(siteWideTotalWC, 100000, 28) ); // 5.085100168337156
+console.log(  getCPTWPD(siteWideTotalWC, 250000, 28) ); // 12.712750420842893
+console.log(  getCPTWPD(siteWideTotalWC, 500000, 28) ); // 25.425500841685786
 ```
+
+So then by looking at what the values are that I need to see for certian long term traffic goals that I get by plugin in theroretcial data for traffic I can then see what kinds of targets I need to get with this CPTWPD value in order to reach those goals. Many people that are involved in SEO often say that higher word count values will result in better prefromance, however there are plently of posts that show that is not always the case.
 
 ## 2 - Categories
 
