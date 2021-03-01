@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 17:44:40
-version: 1.24
+updated: 2021-03-01 17:47:55
+version: 1.25
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -20,6 +20,8 @@ Many frameworks such as phaser will have a state machine as part of the function
 <!-- more -->
 
 ## 1 - The utils module
+
+First off just like any other canvas example of mine I want to start out with a genearic utility library. This utility librray contains methods that I might use accross diferent modules, and also methods that I might share accross other canvas examples. So they are all a bunch of stand alone methods that do soemthing specfic, and are often pure function like.
 
 ```js
 var utils = {};
