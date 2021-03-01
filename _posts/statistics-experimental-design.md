@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 16:36:57
-version: 1.15
+updated: 2021-03-01 16:40:11
+version: 1.16
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -40,8 +40,9 @@ Word Count                     Clicks Per Thousand Words Per Day ( CPTWPD )
 Days
 ```
 
-
 ### 1.2 - I am going to want to have soemthing to function as a control
+
+To know if soemthing that I am doing is working or not I am going to want to have soemthing that will function as a control. I am not compleatly sure what might work well for a control with what I have in mind here, but for now I think that I can compare how a catagory that I am working hard on is doing compared to a catagory that I am putting much time and effort into at all. Another thought is that I can just compare a catagory that I am exparamenting with to just some kind of site wide mean.
 
 ### 1.3 - Some basic tools
 
