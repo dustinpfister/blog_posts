@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 13:55:46
-version: 1.9
+updated: 2021-03-01 15:40:01
+version: 1.10
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -27,7 +27,7 @@ I might end up with a few methods if I put enough time into this, but there are 
 
 ### 1.1 - Pure function to get "Clicks Per Thousand Words Per Day"
 
-So then this is what I worked out for my function that will return the CPTWPD value.
+So then this is what I worked out for my function that will return the CPTWPD value that I want. The function is an example of a pure function where the same set of arguments will always return the same result. The arguments that I pass for word count, traffic, and days are examples of indepedant varabules, and the returned product can be considered a depedant variable that is the CPTWPD value that I want for a given set of arguments.
 
 ```js
 // WC   => Word Count
@@ -40,18 +40,18 @@ let getCPTWPD = (WC, traffic, days) => {
     days = days === undefined ? 1 : days;
     return traffic / days / WC * 1000;
 };
+ 
+// a post that is 1,000 words that gets 7 clicks in one week
+// has a CPTWPD of 1
 console.log( getCPTWPD(1000, 7, 7) );     // 1
+// a post that is only 300 words that gets 1,116 clicks in a 31 day span
+// has a CPTWPD of 120
 console.log( getCPTWPD(300, 1116, 31) );  // 120
- 
-// lodash includes
-console.log('best post: ', getCPTWPD(875, 582, 28) );
-// 23.755102040816325
- 
-let siteWideTotalWC = 702332;
-let siteWide = getCPTWPD(siteWideTotalWC, 18000, 28);
-console.log('site wide: ', siteWide);
-// 0.9153180303006881
 ```
+
+Testing out the function with a few quick example gives me exspected values. If I have a post that is one thousand words, and it gets seven clicks over the span of a week, then that is of course a CPTWPD of 1. Any other combination of values gives the same exspected result that I want. 
+
+So now it is just a question of how I go about using a function like this when it comes to giving it arguments. I can just give some some test values, but I can also plug in some real data that I have as arguments.
 
 ### 1.2 - Pure function to get Traffic with CPTWPD
 
