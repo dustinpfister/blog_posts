@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 13:15:53
-version: 1.6
+updated: 2021-03-01 13:23:19
+version: 1.7
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistcis when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, orgainic traffic clicks per word, and so forth. However of course there are all kinds of other applactions when it comes to statistcis, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -159,4 +159,10 @@ console.log( 'js: ', tools.getCPTWPD({ WC: 153472, traffic: 714 }) );
 So then I can use these basic tools to get the CPTWPD value for the whole website, as well as certain collections of content that are on various topics such as lodash, canvas, and yes this very topic of statistics. 
 
 I am not compleatly sure what I could use for a control at this point, but for now it would seem that will just have to use the site wide value until I have something else that might work better, such as maybe a catagore that I am not doing anything out of the ushual maybe.
+
+## 3 - Conclusion
+
+I am beging to see the value of gaining a better knowalge of how to work with statstics. I all ready have a few basic tools togertaher, and I am making use of tools that are all ready there to work with. However I can help but think that there is a lot more for me to learn about when it comes to using statstics to help me make better descesions.
+
+Even before I wrote this post I knew that my canvas and javaScript catagories where not doing so well. However I made the descesion to sink a fare amount of time into them in an effort to see if that would help. Thus far it would seem that doing so has resulted in a small improvement, but there is still a lot of room for additonal improvemet with those catagoreis. I made the desesion to sink more time into them even though they are not doing well, to some extent it makes sense to fix that which is broken after all. However when it comes to making descesions based purly off of the projections that I make when playing around with these basic tools it world make sense to put more time into improveing the quality of my lodash content, as well as this very subject of statstics.
 
