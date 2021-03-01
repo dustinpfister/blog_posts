@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 16:40:11
-version: 1.16
+updated: 2021-03-01 16:44:19
+version: 1.17
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -19,7 +19,7 @@ However what if I want to come up with some kind of _hypothesis_ \( or maybe I s
 
 <!-- more -->
 
-## 1 - Mu first attempt as Experimental design in Statistics
+## 1 - My first attempt as Experimental design in Statistics
 
 So then this will be my first attempt at Experimental design in statstics where I would like to work out some kind of experament that might help me make better choices when it comes to what I choose to write about with this website. My time is valubule to me and I want to write about things that are worth an inverment of my time. There is just wriring about things purly for the intresnuc value of doing so, and with many catagories on this site that is more or less the only thing that continues to drive me forward. However for the sake of the subject matter of this post I should make this about just simply getting more traffic, so it would be a good idea to have some way to go about indexing posts, and whole cataories of content by some kind of metric that will show me what is working well, and what is not working so well when it comes to writijng for the sake of gaining orgainic traffic.
 
@@ -194,9 +194,9 @@ console.log( 'js: ', tools.getCPTWPD({ WC: 153472, traffic: 714 }) );
 // 0.16615408673894913
 ```
 
-So then I can use these basic tools to get the CPTWPD value for the whole website, as well as certain collections of content that are on various topics such as lodash, canvas, and yes this very topic of statistics. 
+So then I can use these basic tools to get the CPTWPD value for the whole website, as well as certain collections of content that are on various topics such as lodash, canvas, and yes this very topic of statistics. Right off the bat I am all ready getting some usfule values that would leed me to making certain descesions. I should expand, and improve my content on lodash, and statistics, and give up on my canvas and javaScript catagories.
 
-I am not completely sure what I could use for a control at this point, but for now it would seem that will just have to use the site wide value until I have something else that might work better, such as maybe a category that I am not doing anything out of the ushual maybe.
+However there is not just going by the current figures, my research question is still more along the lines of can these figures change, rather than just going with the current figures.
 
 ## 3 - Conclusion
 
