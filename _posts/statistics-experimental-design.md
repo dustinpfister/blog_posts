@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 13:29:47
-version: 1.8
+updated: 2021-03-01 13:55:46
+version: 1.9
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -101,6 +101,34 @@ console.log('site wide: ', siteWide.traffic);
 // be ranking in around 22 per 28 day span
 console.log(siteWide.traffic / 813);
 // 22.14022140221402
+```
+
+### 1.3 - Playing around with some REAL data
+
+So I strated pluging in some real data from serach console, and my scripts that tabulate word count, and recived some interesting values.
+
+```js
+// PLUG IN SOME REAL DATA FROM SEARCH CONSOLE
+ 
+// lodash includes is my best post as of this writing
+console.log('best post: ', getCPTWPD(875, 582, 28) );
+// 23.755102040816325
+ 
+// I can also plug in a site wide total for word count along with
+// traffic for a 28 day span to get this CPTWPD value for thw whole site
+let siteWideTotalWC = 702332;
+let siteWide = getCPTWPD(siteWideTotalWC, 18000, 28);
+console.log('site wide: ', siteWide);
+// 0.9153180303006881
+ 
+// some posts that are 1,800+ words
+console.log('js-array-length: ', getCPTWPD(2777, 160, 28) );      // 2.057719018468028
+console.log('js-javascript-foreach: ', getCPTWPD(3805, 29, 28) ); // 0.27219823540454297
+ 
+// some posts that are < 1000 words
+console.log('lodash_includes : ', getCPTWPD(875, 582, 28) ); // 23.755102040816325
+console.log('lodash_groupby : ', getCPTWPD(856, 549, 28) ); // 22.905540720961284
+console.log('lodash_sum : ', getCPTWPD(800, 502, 28) ); // 22.410714285714285
 ```
 
 ## 2 - Categories
