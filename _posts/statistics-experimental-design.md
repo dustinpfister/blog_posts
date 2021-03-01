@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 13:13:27
-version: 1.5
+updated: 2021-03-01 13:15:53
+version: 1.6
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistcis when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, orgainic traffic clicks per word, and so forth. However of course there are all kinds of other applactions when it comes to statistcis, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -26,6 +26,8 @@ So first off I am going to want to come up with some basic tools that will help 
 I might end up with a few methods if I put enough time into this, but there are just two simple pure functions that come to mind thus far. I will want one function where I plug in word count, traffic, and a count of days that will return a CPTWPD value. I will then want another pure funcion that will take this CPTWPD value, and if also given the same values for word count and days should return the same value for traffic.
 
 ### 1.1 - Pure function to get "Clicks Per Thousand Words Per Day"
+
+So then this is what I worked out for my function that will return the CPTWPD value.
 
 ```js
 // WC   => Word Count
@@ -53,6 +55,7 @@ console.log('site wide: ', siteWide);
 
 ### 1.2 - Pure function to get Traffic with CPTWPD
 
+I then have my pure function that will return a Traffic value when given a CPTWPD value along with word count and days.
 
 ```js
 // WC   => Word Count
