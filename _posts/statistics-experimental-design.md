@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 15:40:01
-version: 1.10
+updated: 2021-03-01 15:43:32
+version: 1.11
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -55,7 +55,7 @@ So now it is just a question of how I go about using a function like this when i
 
 ### 1.2 - Pure function to get Traffic with CPTWPD
 
-I then have my pure function that will return a Traffic value when given a CPTWPD value along with word count and days.
+I then have my pure function that will return a Traffic value when given a CPTWPD value along with word count and days as arguments. So then this function allows for me to get a trafic value that will be the result of a given CPTWPD value along with word count and days. Just like the get CPTWPD function I could plug in some real data, or I could plug in some kind of theroretical data, or even random data.
 
 ```js
 // WC   => Word Count
@@ -72,36 +72,9 @@ let getPostTraffic = (WC, CPTWPD, days) => {
  
 console.log( getPostTraffic(1000, 1, 7) );   // 7
 console.log( getPostTraffic(300, 120, 31) ); // 1116
- 
-// BEST POST => lodash includes is my best post as of this writing
-let bestPost = {
-  wc: 875,
-  CPTWPD: 23.755102040816325,
-  days: 28,
-  traffic: 0
-};
-bestPost.traffic = getPostTraffic(bestPost.wc, bestPost.CPTWPD, bestPost.days);
-console.log( 'best post: ', bestPost.traffic );
-// best post: 582
- 
-// SITE WIDE => site wide I have a grand total of 702,332 words over 813 posts
-// with a CPTWPD of only 0.9153180303006881
-let siteWide = {
-  wc: 702332,
-  CPTWPD: 0.9153180303006881,
-  days: 28,
-  traffic: 0
-};
-siteWide.traffic = getPostTraffic(siteWide.wc, siteWide.CPTWPD, siteWide.days);
-console.log('site wide: ', siteWide.traffic);
-// site wide: 18000
- 
-// My best preforming post is pulling in 582 clicks per 28 day span
-// which is way better than what is going on site wide which seems to
-// be ranking in around 22 per 28 day span
-console.log(siteWide.traffic / 813);
-// 22.14022140221402
 ```
+
+The function works as an inversion of my get CPTWPD function where I get a traffic value back from a given CPTWPD if the word count and days are the same.
 
 ### 1.3 - Playing around with some REAL data
 
