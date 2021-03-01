@@ -5,13 +5,15 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 154
-updated: 2021-03-01 18:11:43
-version: 1.5
+updated: 2021-03-01 18:19:01
+version: 1.6
 ---
 
 I am always looking for new things to learn, and write about, in the process of doing so I have decided to write a few posts on statistics. From what I have gathered data science is getting pretty hot these days, and companies can not seem to find enough people, so I started looking into what I need to know to start going in that direction. Turns out there is a lot to know in order to hack it as a data scientist, a whole lot of heavy math is involved, but I am down for giving it a try at least.
 
-This is what has lead me to reading a whole bunch of wikipedia articles the relate to the subject of statistics, one of which is the article on what a [mean](https://en.wikipedia.org/wiki/Mean) is as even when it comes to that it turns out that there is more than one.
+This is what has lead me to reading a whole bunch of Wikipedia articles the relate to the subject of statistics, one of which is the article on what a [mean](https://en.wikipedia.org/wiki/Mean). A mean is more or less another word for an average and for most of us we know that an average is just the sum of a set of numbers divided by the number of numbers. So one would think that this topic id fairly simple, and as such I can just get back up to something that I learned in grade school and move on. However it turns out that doing so is not that simple, the kind of average that I described just now is called an Arithmetic mean, and there are at least two other kinds of means that I am aware of these far.  So even when it comes to a mean it turns out that there is more than one, and as such this subject can get a little involved.
+
+So in this post I will just be outlining the various kinds of means that I will end up running into if I start teaching myself more about statistics.
 
 <!-- more -->
 
