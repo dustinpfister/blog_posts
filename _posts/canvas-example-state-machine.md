@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 17:50:17
-version: 1.26
+updated: 2021-03-01 17:56:25
+version: 1.27
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -181,7 +181,7 @@ So now it is time for the public function that is used to create the state machi
 
 ## 3 - Simple use case example
 
-So here is a simple use case example of the state machine module in action. This results in a very basic clicker type game example where some resources are given when the canvas is clicked, as well as just over time.
+So here is a simple use case example of the state machine module in action. This results in a very basic clicker type demo of what it is that I have worked out thus far. I am just creating a single state object for now that will also be the boot state called game. In the init method I set up some starting values for a main game object, and in the tick method I mutate that game object. For now I am also drawing to the canvas in the tick methods, also but in any future versions that I might make for this that will of course change. I am also able to define what will happen for pointer events.
 
 ```js
 var sm = Machine('canvas-app');
@@ -240,6 +240,8 @@ sm.load({
  
 sm.start();
 ```
+
+So when it comes to this there is not much to write about just yet, but I have the basic idea of what I wanted up and running at least.
 
 ## 4 - Conclusion
 
