@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2020-05-14 15:28:00
-version: 1.22
+updated: 2021-03-01 17:40:56
+version: 1.23
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -17,88 +17,66 @@ Many frameworks such as phaser will have a state machine as part of the function
 
 <!-- more -->
 
-## 1 - The State Machine module for canvas examples
+## 1 - The utils module
+
+```js
+var utils = {};
+ 
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+```
+
+## 2 - The State Machine module for canvas examples
 
 In this section I will be going over the source code of the state machine module that I worked out for this post, and might use in future canvas examples and projects as is, or in a custom mutated form. The module makes use of the IFFE pattern and returns a public API as a single function that creates a state machine object. Once I have a state machine object I can then call the load method as a way to start defining state objects.
 
-
-### 1.1 - The start of the module, and a parse container argument helper
-
-So I start out the module with the begging part of an [IIFE](/2020/02/04/js-iife/) that will close at the end of the module. At the very top of the IIFE I have a parse container helper method. When the main public function is called I can pass a container argument as the first argument. The argument can be an object which is assumed to be a container element, it can also be a string that is assumed to be an id to an element to use. All other possible values including undefined will result in the body element being used as the container element to attach to.
-
-```js
-var Machine = (function () {
- 
-    // PARSE arguments
- 
-    // Parse a container argument
-    var parseContainer = function (container) {
-        // if object assume element that is to be used as the container
-        if (typeof container === 'object' && container != null) {
-            return container;
-        }
-        // if string assume id
-        if (typeof container === 'string') {
-            return document.getElementById(container);
-        }
-        // if we get this far return document.body
-        return document.body;
-    };
-```
-
-### 1.2 - Create canvas helper
-
-Here I have a helper that is used to create and append the canvas element to the given state object. This method assumes that a container element is attached to the state machine instance so that value should be parsed before this method is called.
-
-```js
-    // CANVAS
- 
-    // create a canvas for the given state machine
-    var createCanvas = function (sm, w, h) {
-        sm.canvas = document.createElement('canvas');
-        sm.ctx = sm.canvas.getContext('2d');
-        sm.container.appendChild(sm.canvas);
-        sm.canvas.width = w || 320;
-        sm.canvas.height = h || 240;
-        // fill black for starters
-        sm.ctx.fillStyle = 'black';
-        sm.ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-    };
-```
-
-For starters it draws a plain black background to the canvas, and the width and height can also be set via the arguments that are passed along from the arguments of the main public function that I will be getting to later.
-
-### 1.3 - Get canvas relative position
-
-This helper method just returns a canvas relative position from an event object that was gained from within an event hander. Without this I would end up with a window relative position which is the default for event handlers that have to do with mouse and touch events.
-
-```js
-    var getCanvasRelative = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect();
-        var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-        return {
-            x: x,
-            y: y,
-            bx: bx
-        };
-    };
-```
-
-I made it so that it should give a desired result regardless if it is a mouse or touch event. The method seems to work okay as far as I have tested it.
-
-### 1.4 - Attach event handers to a canvas element
+### 2.1 - Attach event handers to a canvas element
 
 This is the method that I worked out for attaching events to the canvas for event types like mouse down. The state manager instance should be passed as the first argument, and the canvas element should be created and append before this method is used.
 
 In the body of the hander that is attached for this given DOM event type the get canvas relative position helper that I wrote about earlier in this section is used to get a canvas relative position for the event. This position will be passed to the actual hander defined in the state object as the first argument for that kind of hander, along with the state machine instance and the original event object.
 
 ```js
+var Machine = (function () {
+
     // attach a canvas event
     var attachCanvasEvent = function (sm, DOMType, smType) {
         sm.canvas.addEventListener(DOMType, function (e) {
-            var pos = getCanvasRelative(e),
+            var pos = utils.getCanvasRelative(e),
             stateObj = sm.states[sm.currentState],
             handler,
             mode;
@@ -135,24 +113,25 @@ In the body of the hander that is attached for this given DOM event type the get
     };
 ```
 
-### 1.5 - The public function that creates a state machine object
+### 2.2 - The public function that creates a state machine object
 
 So now it is time for the public function that is used to create the state machine instance when making a project with this state machine module.
 
 ```js
     // create a new state machine
-    return function (container, w , h) {
- 
+    return function (container, w, h) {
+        var canvasObj = utils.createCanvas();
         // state machine Object
         var sm = {
+            ver: '0.0.0',
             currentState: null,
             currentMode: null,
             game: {},
             draw: {},
             states: {},
-            canvas: null,
-            container: parseContainer(container),
-            ctx: null,
+            canvas: canvasObj.canvas,
+            container: canvasObj.container,  //parseContainer(container),
+            ctx: canvasObj.ctx,
             load: function (stateObj) {
                 // just reference the object for now as long as
                 // that works okay
@@ -170,21 +149,17 @@ So now it is time for the public function that is used to create the state machi
                 loop();
             }
         };
- 
         // create canvas and attach event handlers
-        createCanvas(sm, w, h);
+        //createCanvas(sm, w, h);
         attachAllCanvasEvents(sm);
- 
         // main loop
         var loop = function () {
             requestAnimationFrame(loop);
             var stateObj = sm.states[sm.currentState] || {};
- 
             // call top level tick
             if (stateObj.tick) {
                 stateObj.tick(sm);
             }
- 
             // call mode tick
             if (stateObj.modes && sm.currentMode) {
                 var mode = stateObj.modes[sm.currentMode];
@@ -192,23 +167,20 @@ So now it is time for the public function that is used to create the state machi
                     mode.tick(sm);
                 };
             }
- 
         };
- 
         return sm;
- 
     };
  
 }
     ());
 ```
 
-## 2 - Simple use case example
+## 3 - Simple use case example
 
 So here is a simple use case example of the state machine module in action. This results in a very basic clicker type game example where some resources are given when the canvas is clicked, as well as just over time.
 
 ```js
-var sm = Machine('gamearea');
+var sm = Machine('canvas-app');
  
 sm.load({
     name: 'game',
@@ -221,6 +193,7 @@ sm.load({
         g.auto = 0;
         g.autoTickRate = 3000;
         g.perAutoTick = 1;
+        g.pos = {x:0,y:0};
         g.lt = new Date();
  
     },
@@ -238,104 +211,26 @@ sm.load({
         }
  
         ctx.fillStyle = 'black';
+        ctx.textBaseline = 'top';
         ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
  
         ctx.fillStyle = 'white';
         ctx.fillText('manual: ' + g.manual.toFixed(2), 10, 20);
         ctx.fillText('auto: ' + g.auto.toFixed(2), 10, 30);
+        ctx.fillText('pos: ' + g.pos.x.toFixed(2) + ', ' + g.pos.y.toFixed(2), 10, 40);
+ 
+        // ver
+        ctx.font = '10px arial';
+        ctx.fillText('v' + sm.ver, 5, sm.canvas.height - 15 );
  
     },
     userPointer: {
         start: function (pt, sm, e) {
-            console.log(e.type, pt.x, pt.y);
-            sm.game.manual += sm.game.perManual;
+            var g = sm.game;
+            g.manual += sm.game.perManual;
+            g.pos.x = pt.x;
+            g.pos.y = pt.y;
         }
-    }
-});
- 
-sm.start();
-```
-
-## 3 - Modes use case example
-
-I wanted to make another example that makes use of my modes feature that I put together. This is a way to have a state within a state sort of speak. When a mode is active additional logic that is to happen when the mode is active will happen on top of the logic that will always run for the state.
-
-```js
-var sm = Machine('gamearea', 640, 480);
- 
-sm.load({
-    name: 'game',
-    bootState: true,
-    init: function (sm) {
-        var g = sm.game;
-        g.ship = {
-            x: sm.canvas.width / 2,
-            y: sm.canvas.height / 2,
-            heading: 0
-        };
-        g.userDown = false;
-    },
-    tick: function (sm) {
- 
-        var g = sm.game,
-        ctx = sm.ctx;
- 
-        // set mode to nav conditions
-        sm.currentMode = null;
-        if (g.userDown) {
-            if (new Date() - g.userDownST >= 1000) {
-                sm.currentMode = 'nav';
-            }
-        }
- 
-        // draw
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, sm.canvas.width, sm.canvas.height);
-        ctx.fillStyle = 'white';
-        ctx.fillText(g.userDown, 10, 20);
-        ctx.strokeStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(g.ship.x, g.ship.y, 5, 0, Math.PI * 2);
-        ctx.stroke();
- 
-    },
-    // global user pointer
-    userPointer: {
-        start: function (pt, sm, e) {
-            sm.game.userDown = true;
-            sm.game.userDownST = new Date();
-        },
-        end: function (pt, sm, e) {
-            sm.game.userDown = false;
-        }
-    },
-    // modes for this state
-    modes: {
-        nav: {
-            // what to do for each tick, when nav mode is active
-            tick: function (sm) {
-                var g = sm.game,
-                ship = g.ship;
-                // move ship based on current heading
-                ship.x += Math.cos(ship.heading) * 2;
-                ship.y += Math.sin(ship.heading) * 2;
-                // boundaries
-                ship.x = ship.x < 0 ? sm.canvas.width : ship.x;
-                ship.y = ship.y < 0 ? sm.canvas.height : ship.y;
-                ship.x = ship.x > sm.canvas.width ? 0 : ship.x;
-                ship.y = ship.y > sm.canvas.height ? 0 : ship.y;
-            },
-            // user pointer just for nav
-            userPointer: {
-                // mouse move event can change heading now
-                move: function (pt, sm, e) {
-                    var g = sm.game,
-                    ship = g.ship;
-                    ship.heading = Math.atan2(pt.y - ship.y, pt.x - ship.x);
-                }
-            }
-        }
- 
     }
 });
  
