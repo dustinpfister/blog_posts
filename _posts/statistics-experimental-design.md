@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 813
-updated: 2021-03-01 15:57:52
-version: 1.12
+updated: 2021-03-01 16:02:24
+version: 1.13
 ---
 
 This week I think I will be getting back into [Statistics](https://en.wikipedia.org/wiki/Statistics) for a while. I am not sure if I truly want to get into this subject, but it would seem that I have at least some interest in it when it comes to playing around with various statistics when it comes to this website. Mainly when it comes to things like traffic, mean word count per post, organic traffic clicks per word, and so forth. However of course there are all kinds of other applications when it comes to statistics, so now and then I do a little more reading on the topic, and work out some code examples when it comes to a few things here and there.
@@ -118,7 +118,7 @@ So then by looking at what the values are that I need to see for certian long te
 
 ## 2 - Categories
 
-Now that I have some basic tools worked out I can now use them with some data from search console, as well as my own scripts to get values for this Clicks Per Thousand Words Per Day value that I am interested in.
+Now that I have some basic tools worked out I can now use them with some data from search console, as well as my own scripts to get values for this Clicks Per Thousand Words Per Day value that I am interested in. The basic tools should then be used to start to create some kind of module that I can use to process some data.
 
 ```js
 let tools = (function(){
@@ -178,4 +178,3 @@ I am not completely sure what I could use for a control at this point, but for n
 I am beginning to see the value of gaining a better knowledge of how to work with statistics. I all ready have a few basic tools together, and I am making use of tools that are all ready there to work with. However I can help but think that there is a lot more for me to learn about when it comes to using statistics to help me make better decisions.
 
 Even before I wrote this post I knew that my canvas and javaScript categories where not doing so well. However I made the decision to sink a fare amount of time into them in an effort to see if that would help. Thus far it would seem that doing so has resulted in a small improvement, but there is still a lot of room for additional improvement with those categorizes. I made the decision to sink more time into them even though they are not doing well, to some extent it makes sense to fix that which is broken after all. However when it comes to making decisions based purely off of the projections that I make when playing around with these basic tools it world make sense to put more time into improving the quality of my lodash content, as well as this very subject of statistics.
-
