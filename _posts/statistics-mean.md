@@ -5,8 +5,8 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 154
-updated: 2021-03-01 18:19:01
-version: 1.6
+updated: 2021-03-01 18:24:28
+version: 1.7
 ---
 
 I am always looking for new things to learn, and write about, in the process of doing so I have decided to write a few posts on statistics. From what I have gathered data science is getting pretty hot these days, and companies can not seem to find enough people, so I started looking into what I need to know to start going in that direction. Turns out there is a lot to know in order to hack it as a data scientist, a whole lot of heavy math is involved, but I am down for giving it a try at least.
@@ -54,3 +54,5 @@ console.log(mean); // 2.21336
 ## Conclusion
 
 There is also [Harmonic mean](https://en.wikipedia.org/wiki/Harmonic_mean), but I have not looked into that one just yet. It would also be nice to create at least a few examples that make use of the various kinds of means in order to gain a better understanding of what situations call for what kinds of means.
+
+As much as I love javaScript when it really comes to getting into statistics and data science python is the language that is typically used, more so than R at least these days. When it comes to using python as a way to start to learn about statistics there is a built in [standard library in python that has to do with statistics that includes methods for the various types of means](/2021/02/26/python-standard-library-statistics/).
