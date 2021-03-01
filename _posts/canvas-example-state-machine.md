@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 18:04:37
-version: 1.30
+updated: 2021-03-01 18:07:57
+version: 1.31
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -16,6 +16,8 @@ Say you want to make a project that is fairly complex and there are many states 
 In addition even when a game is up and running there are many menus that the user can navigate between before starting a main game state. Once a game is over there are often two kind of outcomes to the end of the game, and how they should be treated when updating a game save. So in that kind of situation some way to compartmentalize all these different states of sorts needs to be implemented and such a thing if often referred to as a state machine.
 
 Many frameworks such as phaser will have a state machine as part of the functionality of the framework, but when it comes to starting a vanilla javaScript project this aspect of the game would need to be created from the ground up. When it comes to making a canvas framework I often think that a state machine should be a part of such a framework, but I guess it does not have to be when it comes to making such a project. In any case this post will be on just one way to go about making a state machine by itself without much more beyond that.
+
+So in this post I will be going over the current state of a state machine example for a canvas project. As of this writing the state of the code of this state machine is in an Alpha state for sure. When it comes to my collection of canvas examples I generally like to start each canvas example from the ground up. However this example represents the current state of a step in a new direction in which I am starting to put something together that is my own framework of sorts.
 
 <!-- more -->
 
