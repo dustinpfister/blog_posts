@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-02 16:59:48
-version: 1.34
+updated: 2021-03-02 17:06:38
+version: 1.35
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a star is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
@@ -232,6 +232,8 @@ var pool = (function(){
 }());
 
 ```
+
+In this module I also have a number of helper methods that have to do with things like what to do when a display object moves out of bounds, and how should a color property be set for a display object.
 
 ## 4 - The draw module
 
