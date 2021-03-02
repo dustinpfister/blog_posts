@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-02 16:29:01
-version: 1.30
+updated: 2021-03-02 16:35:38
+version: 1.31
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a start is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
@@ -128,7 +128,9 @@ utils.createCanvas = function(opt){
 
 ## 3 - The pool module
 
-Here I have an object pool module which is just a fixed collection of objects that I use over an over again. I made another module in my canvas example on object pools where I get into this topic a little deeper, but for this canvas example I made my own custom cut solution for this very example, rather than something that might be a little more reusable that I worked out in that post.
+Here I have an object pool module which is just a fixed collection of objects that I use over an over again. I made another module in my [canvas example on object pools](/2020/07/20/canvas-example-object-pool/) where I get into this topic a little deeper, but for this canvas example I made my own custom cut solution for this very example, rather than something that might be a little more reusable that I worked out in that post.
+
+This module has two main public functions one to create a pool state object, and the other to update such an object by a given number of seconds.
 
 ```js
 var pool = (function(){
