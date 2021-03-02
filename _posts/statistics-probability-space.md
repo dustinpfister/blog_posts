@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 814
-updated: 2021-03-02 15:54:19
-version: 1.2
+updated: 2021-03-02 16:01:40
+version: 1.3
 ---
 
 I have been trying my luck with [Statistics](https://en.wikipedia.org/wiki/Statistics) as a way to go about expanding into something new that I have a tenative interest in. As such I will likly be writing at least a few posts on probabity, and with that said I have come accross something called [Probibility Space](https://en.wikipedia.org/wiki/Probability_space).
@@ -14,6 +14,10 @@ I have been trying my luck with [Statistics](https://en.wikipedia.org/wiki/Stati
 <!-- more -->
 
 ## 1 - Some simple examples about getting dubble sixes
+
+To start off with how would I go about testing the claim that the probablity of roling dubble sixes with a set of dice is about 2.8 percent? I guess I could just assume that they person who is saying that is just telling me the truth, and move on. However what if I did want to go about testing that to find out of it is true?
+
+Well I guess I could just thrash togetaher a little javaScript to get an idea if that is a fare statement or not. However there are two general ways of going about doing so. One would involve using the Math.random function, and then the other would be a pure function that involves a simple expression. So with that said in this section I will be going over these examples that come to mind.
 
 ### 1.2 - An example using Math.random
 
@@ -54,4 +58,4 @@ console.log( test() );
 
 I still do not think I have the idea of what probabilitty space is down to a solid scienece just yet, however I think part of the reason why that is might very well be on account of the fact that I have not yet foubnd a decent resoutce on statstics. When I search for posts on probability space I end up getting a lot of formal content that assumes that I understand a lot of tectnical terms before hand. So that prompled me to start writing this post and many others like it as a way to write and update my own notes on this specfic topic.
 
-Some things about probability space are simple enough to understand though, when it comes to the sample space at least that is just a collection of all possible outcomes of something. If we are talking about a single die roll then that is just the numbers 1 to 6. The event space then is more or less the same as the sample space as I have come to understand it thus far, but it is a little diferent in that it can contain all possible events when it comes to rolling a die. An event can be something like rolling 6, but it can also be rolling an even number which would also include 6 along with 2, and 4 of course. Then there is the question of the propabiluty function part.
+Some things about probability space are simple enough to understand though, when it comes to the sample space at least that is just a collection of all possible outcomes of something. If we are talking about a single die roll then that is just the numbers 1 to 6. The event space then is more or less the same as the sample space as I have come to understand it thus far, but it is a little diferent in that it can contain all possible events when it comes to rolling a die. An event can be something like rolling 6, but it can also be rolling an even number which would also include 6 along with 2, and 4 of course. Then there is the question of the probability function that is used to set number between 0 and 1 for all events.
