@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 814
-updated: 2021-03-02 16:01:40
-version: 1.3
+updated: 2021-03-02 16:09:01
+version: 1.4
 ---
 
 I have been trying my luck with [Statistics](https://en.wikipedia.org/wiki/Statistics) as a way to go about expanding into something new that I have a tenative interest in. As such I will likly be writing at least a few posts on probabity, and with that said I have come accross something called [Probibility Space](https://en.wikipedia.org/wiki/Probability_space).
@@ -20,6 +20,8 @@ To start off with how would I go about testing the claim that the probablity of 
 Well I guess I could just thrash togetaher a little javaScript to get an idea if that is a fare statement or not. However there are two general ways of going about doing so. One would involve using the Math.random function, and then the other would be a pure function that involves a simple expression. So with that said in this section I will be going over these examples that come to mind.
 
 ### 1.2 - An example using Math.random
+
+One way to go about finding out if the probaiblity of rolling double sixes is around 2.8 percent is to have a simple little die function that when called will return a number between and inclduing 1 and 6 that uses the Math.random method in javaScript. I can then have another test function that will call this die function two times for a certain fixed number of rolls, and then step a variable each time the result is two sixes. I can then divide this step variable over the fixed number of times a roll has happend to get a percentage.
 
 ```js
 var die = function(){
@@ -42,8 +44,10 @@ var test = function(){
     return dubSix / len;
 };
  
-console.log( test() );
+console.log( test() * 100 );
 ```
+
+When I run this script I do get values around 2.8 percent actually. Sure it is always a little lower or higher, but more or less that is more or less true. However maybe then there is a simper way of getting a probability of this then, something that jjst involves the use of a pure function that will always return the same value for the same arguments.
 
 ### 1.2 - A pure function
 
