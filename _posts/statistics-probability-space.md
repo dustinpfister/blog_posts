@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 814
-updated: 2021-03-02 16:09:01
-version: 1.4
+updated: 2021-03-02 16:18:34
+version: 1.5
 ---
 
 I have been trying my luck with [Statistics](https://en.wikipedia.org/wiki/Statistics) as a way to go about expanding into something new that I have a tenative interest in. As such I will likly be writing at least a few posts on probabity, and with that said I have come accross something called [Probibility Space](https://en.wikipedia.org/wiki/Probability_space).
@@ -41,22 +41,26 @@ var test = function(){
         }
         i += 1;
     }
-    return dubSix / len;
+    return dubSix / len * 100;
 };
  
-console.log( test() * 100 );
+console.log( test() );
 ```
 
 When I run this script I do get values around 2.8 percent actually. Sure it is always a little lower or higher, but more or less that is more or less true. However maybe then there is a simper way of getting a probability of this then, something that jjst involves the use of a pure function that will always return the same value for the same arguments.
 
 ### 1.2 - A pure function
 
+So then the other idea that comes to mind is using a pure function where I just give the number of dice and the returned result is the probability of a single outcome for that set of dice. It could be a very simple expression that just divides 1 over the power of six to the number of dice multiplied by 100 to get a percent value.
+
 ```js
-var test = function(){
-    return 1 / (6 * 6)
+var test = function(dieCount){
+    return 1 / Math.pow(6, dieCount) * 100;
 };
-console.log( test() );
+console.log( test(2).toFixed(1)); // 2.8
 ```
+
+Sure it will always give the same result for the same number of dice, but by testing the other way that involves just calling Math.random a whole bunch of times it is a result that is not that far off base actaully.
 
 ## 2 - Conclusion
 
