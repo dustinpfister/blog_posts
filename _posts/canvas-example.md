@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-02-27 20:05:48
-version: 1.82
+updated: 2021-03-02 17:04:39
+version: 1.83
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -232,7 +232,11 @@ A Canvas Example of a space shooter type game.
 
 ### 3.44 - [Stars](/2020/02/12/canvas-example-star/)
 
-I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that. I keeping come back to this one each time I want to, well, draw stars in a project.
+I use to have a thing about drawing stars in all kinds of different ways so of course I have a Canvas Example on that. I keeping come back to this one each time I want to just draw stars and go from there when it comes to just being creative and having a little fun with canvas and javaScript for once.
+
+The example makes use of a module that pulls the data state of what a star is away from how to go about drawing one. So this is not an example where I have a draw star method that will just draw to the context with some arguments, but rather it is a module that will create a star as an array of points. The array of points is then pass to a simple draw points method.
+
+I am also playing around with all kinds of other features and topics that have to do with canvas projects here, such as object pools, moving an object by way of system time, alpha transparency, and more.
 
 ### 3.45 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
