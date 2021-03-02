@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-02 13:12:26
-version: 1.23
+updated: 2021-03-02 13:16:12
+version: 1.24
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a start is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
@@ -86,6 +86,8 @@ var starMod = (function () {
 ```
 
 ## 2 - The utils module
+
+As with many other canvas examples I have a general utility module, this is where I park methods that I will likely be using across two or more modules, or might use in other canvas examples. I do not just use a single utils.js module for all canvas examples that is something that will change a little from one example to another depending on what I will be doing in the example.
 
 ```js
 var utils = {};
