@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 815
-updated: 2021-03-03 16:43:11
-version: 1.10
+updated: 2021-03-03 17:47:44
+version: 1.11
 ---
 
 I would like to write at least a few posts on examples of a [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) when it comes to [statistics](https://en.wikipedia.org/wiki/Statistics). When it comes to any collection of content on something there is always a kind of getting started type post when it comes to just working out the very basics of something. So a [Bernoulli Stochastic process](https://en.wikipedia.org/wiki/Bernoulli_process) would be a good starting point when it comes to this kind of process because such a process is just simply a coin toss, or in order words a random process where there are only two possible outcomes.
@@ -86,6 +86,8 @@ console.log( coin(3) ); // 1
 ```
 
 ### 3.2 - Testing it
+
+There is then doing the same test again, but this time making use of this other coin function.
 
 ```js
 
