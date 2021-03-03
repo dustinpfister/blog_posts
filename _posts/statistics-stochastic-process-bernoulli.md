@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 815
-updated: 2021-03-03 16:36:03
-version: 1.7
+updated: 2021-03-03 16:39:36
+version: 1.8
 ---
 
 I would like to write at least a few posts on examples of a [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) when it comes to [statistics](https://en.wikipedia.org/wiki/Statistics). When it comes to any collection of content on something there is always a kind of getting started type post when it comes to just working out the very basics of something. So a [Bernoulli Stochastic process](https://en.wikipedia.org/wiki/Bernoulli_process) would be a good starting point when it comes to this kind of process because such a process is just simply a coin toss, or in order words a random process where there are only two possible outcomes.
@@ -33,6 +33,8 @@ console.log( coin() );
 SO then that is it, simple enough. However maybe there is still a little more to write about when it comes to this actually, and it can be stuff that also applies to far more complex Stochastic or random rather than deterministic systems. For example I would expect that if I call this coin function enough times the probability of a 1 or 0 should be about 50, 50 right? I could just assume that is the case or I could test it by writing at least a little more code.
 
 ### 1.2 - Testing the coin function
+
+So how would I go about testing if this kind of coin function is a fair coin kind of a function? Well the general idea that comes to mind is to have a whole bunch of trials, log the results, and then find out if the results is more or less about 50,50.
 
 ```js
 
@@ -61,6 +63,8 @@ var getPers = function(result){
  
 console.log( getPers( trial(10000) ) );
 ```
+
+Each time I call this the results ends up close to 50, 50 but rarely if ever exactly that. If I do play around with the number of trials that does seems to have some kind of an effect, but it is never really a true fair coin.
 
 ## 3 - Pure function alternative to the coint function
 
