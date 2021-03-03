@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2021-03-03 12:42:36
-version: 1.37
+updated: 2021-03-03 12:44:28
+version: 1.38
 ---
 
 So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
@@ -29,7 +29,7 @@ This project is an example of the canvas element in action as well as many other
 
 The first javaScript file disp.js is a file that I worked out for display objects that will be used in this canvas example. A display object is often a sprite or graphic in the canvas that represents some kind of object that is used in the game such as a ship, enemy, power up, or anything to that effect. 
 
-Sense the time that I first started this example and wrote this post, I have made a number of other canvas examples that also include some kind of system like this. I found myself making this kind of system over and over again, and got sick of doing so. So now I have a canvas example where the focus is just on this very part of the development of a canvas game which is a canvas example on the subject of an [object pool](/2020/07/20/canvas-example-object-pool/).
+Sense the time that I first started this example and wrote this post, I have made a number of other canvas examples that also include some kind of system like this. I found myself making this kind of system over and over again, and got sick of doing so. So now I have a canvas example where the focus is just on this very part of the development of a canvas game which is a canvas example on the subject of an [object pool](/2020/07/20/canvas-example-object-pool/). I now think that the best root to take is to just use some kind of framework, or at least start to create ones own framework where things like this are worked out to a science to which it can then be set and done so that one can move on to things that truly matter in a project.
 
 So then in this canvas example display objects are things like this player ship, enemy ships, and shots that are being fired from the player or enemy ships. So these objects have values like x and y that represent the current location of the object in the canvas matrix, but also values like the current heading.
 
