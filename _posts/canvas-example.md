@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 20:15:59
-version: 1.86
+updated: 2021-03-02 20:19:57
+version: 1.87
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -108,7 +108,9 @@ There are many games that have came and went ever the years that can be describe
 
 ### 3.13 - [cross hairs!](/2020/07/29/canvas-example-game-crosshairs/)
 
-A game about a cross hairs object that you can move around and do damage to things.
+A game about a cross hairs object that you can move around and do damage to grid cells. I put a fair amount of time into this one actually, but I did not get the very core of what they game should be just right. I just wanted to have this game where I move around on a map and just blow stuff up, with that said I guess that I did just that, but I cant help but feel that there is still a lot missing.
+
+This is one of several canvas examples that is on my radar for additional work when it comes to making the example more fun.
 
 ### 3.14 - [Fixed shooter hybrid](/2020/07/10/canvas-example-game-fixed-shooter-hybrid/)
 
