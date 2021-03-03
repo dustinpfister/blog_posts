@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2021-03-03 12:57:30
-version: 1.41
+updated: 2021-03-03 13:01:36
+version: 1.42
 ---
 
 So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
@@ -24,6 +24,10 @@ Still I had some fun with this one, and I might get around to putting more time 
 This canvas example consists of several javaScript files and a single html file. The project seems to work just fine via the file protocol if you do want to get it up and running that way. I also made it so the canvas example does not depend on any external assets in terms of images, or scene data which seems to be the way that I make most of my canvas projects anyway. 
 
 This project is an example of the canvas element in action as well as many other subjects that come up when developing a canvas game with client side javaScript. Many such projects involve the use of a framework such as phaser ce to help save time, but in this post I ma doing everything with native javaScript by itself.
+
+### 1.1 - The source code for this space shooter as well as all my other canvas examples is up on my github
+
+the source code for this can be found on my [canvas examples repository](https://github.com/dustinpfister/canvas-examples/tree/master/forpost/canvas-example-space-shooter) on my github account. I will not be getting into details as to how to go about cloning down the repo and running the server that will host this example and all the others locally, the main README file there outlines that.
 
 ## 2 - The Display Object Classes
 
@@ -558,3 +562,4 @@ This canvas example is still pretty basic, If I get around to it I might put a l
 A better user interface would be nice, and some animations, transitions and sound would be a nice touch. Still this was a good exercise for me, when it comes to working out how to structure a canvas example that is something not so basic. I think I will like to make a few more posts like this one, and put a great deal more effort into canvas examples that are worth more time and energy.
 
 This canvas example is not really my best example of this kind of game thus far, another space shooter type game that I put a little more time and effort into would be my [hyper casual space shooter game](/2020/12/11/canvas-example-hyper-casual-space-shooter/) that just involves flying around and blowing up blocks. That example has things like upgrades, better controls, and menus, but is also in a state where I cant help but think that there is something more missing.
+
