@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 20:27:15
-version: 1.89
+updated: 2021-03-02 20:29:09
+version: 1.90
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -158,7 +158,7 @@ This canvas example is of a starting point for a grid module that is an importan
 
 ### 3.25 - [grid defense](/2019/11/27/canvas-example-grid-defense/)
 
-A grid defense style game prototype. 
+A grid defense style game prototype that involves units that come from one side of the canvas and they must be destroyed before they reach the other side. Yet another typical core game mechanic for a whole lot of on lines games, some of which where fun.
 
 ### 3.26 - [Monster Smash](/2020/08/17/canvas-example-grid-game-monster-smash/)
 
