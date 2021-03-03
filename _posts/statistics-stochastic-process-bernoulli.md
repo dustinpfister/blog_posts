@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 815
-updated: 2021-03-03 16:39:36
-version: 1.8
+updated: 2021-03-03 16:41:29
+version: 1.9
 ---
 
 I would like to write at least a few posts on examples of a [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) when it comes to [statistics](https://en.wikipedia.org/wiki/Statistics). When it comes to any collection of content on something there is always a kind of getting started type post when it comes to just working out the very basics of something. So a [Bernoulli Stochastic process](https://en.wikipedia.org/wiki/Bernoulli_process) would be a good starting point when it comes to this kind of process because such a process is just simply a coin toss, or in order words a random process where there are only two possible outcomes.
@@ -66,7 +66,9 @@ console.log( getPers( trial(10000) ) );
 
 Each time I call this the results ends up close to 50, 50 but rarely if ever exactly that. If I do play around with the number of trials that does seems to have some kind of an effect, but it is never really a true fair coin.
 
-## 3 - Pure function alternative to the coint function
+## 3 - Pure function alternative to the coin function
+
+To get a better understanding of a random process it is a good idea to have something to compare to that is a kind of deterministic system. In other words a system that makes use of a pure function rather than that of of a random function.
 
 ### 3.1 - The coin function in a pure function style
 
