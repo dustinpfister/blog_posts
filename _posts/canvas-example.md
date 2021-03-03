@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 17:04:39
-version: 1.83
+updated: 2021-03-02 20:10:37
+version: 1.84
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -244,7 +244,7 @@ State machines are an important component for many javaScript projects so of cou
 
 ### 3.46 - [Turret defense](/2020/01/10/canvas-example-turret-defense)
 
-Turret defense games are sometimes nice so I have a Canvas Example on that in general. I did not put much time into this one thus far though.
+Turret defense games are sometimes nice so I have a Canvas Example on that in general. I did not put much time into this one thus far though. The basic general idea is there though for what that is worth, I just did not get around to building much on top of that.
 
 ## 4 - Conclusion
 
