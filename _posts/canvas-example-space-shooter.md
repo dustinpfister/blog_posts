@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2021-03-03 12:44:28
-version: 1.38
+updated: 2021-03-03 12:48:44
+version: 1.39
 ---
 
 So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
@@ -31,7 +31,7 @@ The first javaScript file disp.js is a file that I worked out for display object
 
 Sense the time that I first started this example and wrote this post, I have made a number of other canvas examples that also include some kind of system like this. I found myself making this kind of system over and over again, and got sick of doing so. So now I have a canvas example where the focus is just on this very part of the development of a canvas game which is a canvas example on the subject of an [object pool](/2020/07/20/canvas-example-object-pool/). I now think that the best root to take is to just use some kind of framework, or at least start to create ones own framework where things like this are worked out to a science to which it can then be set and done so that one can move on to things that truly matter in a project.
 
-So then in this canvas example display objects are things like this player ship, enemy ships, and shots that are being fired from the player or enemy ships. So these objects have values like x and y that represent the current location of the object in the canvas matrix, but also values like the current heading.
+However for this example I made my own independent system for display objects, and collections of such objects. So then in this canvas example display objects are things like this player ship, enemy ships, and shots that are being fired from the player or enemy ships. So these objects have values like x and y that represent the current location of the object in the canvas matrix, but also values like the current heading.
 
 This file is also an example of prototype based inheritance in javaScript, as there is a base class and then additional class that inherit from that base class but have additional properties and methods. So then there is a Base Display object class that creates objects that contains properties and methods that are common for all display objects for starters. Then in addition there are other classes that extend that base class for Ships and Shots to be used in this canvas game example.
 
@@ -236,6 +236,8 @@ Ship.prototype.draw = function (ctx, shipStyle, shotStyle) {
 For now I am using this class as a way to also deal with a collection of shots. I am doing this as a way to help keep things simpler, but if I where to continue working on this example I might want to have a shot collection class, as well as a similar class for collections of ships. However for this example at least I decided to have an updateShots method in the Ship class, and for the Ship class to also work as a shot collection class by storing an array of Shot Class instances.
 
 The update method of the ship class supersedes the Disp class update method so it is called first,  but within the body of that update method I am still calling the main Disp class update method. The reason why is I still want the same rules to apply for all display objects when it comes to movement. Alter that I call the update shots method.
+
+At the time of this writing I did not go beyond adding anything more than just a base display class, and then classes for ships and shots. I am still not to interesting in putting to much more time into this one for now as i have many other examples now some of which I thing are better candidates for improvement.
 
 ## 3 - The State Machine
 
