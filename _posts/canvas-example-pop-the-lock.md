@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2020-05-26 13:53:49
-version: 1.22
+updated: 2021-03-03 14:45:09
+version: 1.23
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US). It was a very simple game that just involved a circle moving along the path of another circle and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. 
@@ -16,6 +16,9 @@ I find myself making clones of this game now and then, in part because it is so 
 So todays [canvas example](/2020/03/23/canvas-example/) will be a game that is a clone of this pop the lock game to some extent, but a little different. I want to play around with the various values that come to mind when making a game like this, and maybe make it work a little differently altogether so it is not just a full rip off of the original.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/pop-the-lock/0.0.0/pkg.js"></script>
 
 ## 1 - The state and methods of the pop the lock canvas example
 
@@ -28,6 +31,7 @@ The methods I worked out have to do with wrapping a section value, figuring out 
 ```js
 // STATE
 var ptl = {
+    ver: '0.0.0',
     sec_current: 0,
     sec_target: 4,
     sec_total: 100,
@@ -132,6 +136,12 @@ var drawPTL = function (ptl, ctx, canvas) {
     ctx.font = '10px arial';
     ctx.fillText('sec_current ' + ptl.sec_current.toFixed(2), 10, 10);
     ctx.fillText('inrange ' + ptl.inRange, 10, 20);
+ 
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.font='10px arial';
+    ctx.textAlign = 'left';
+    ctx.fillText('v' + ptl.ver, 5, canvas.height - 15);
 };
 ```
 
@@ -139,7 +149,7 @@ If I put more time into this project this will end up getting broken down into m
 
 ## 3 - The canvas, main app loop, and the html
 
-So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a gamearea div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random section, and define and start the main game loop.
+So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a canvas app div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random section, and define and start the main game loop.
 
 In the main app loop I am canning the tick method of my pop the lock state object, and I am also using the draw method I have worked out to draw the current state of the state object in the canvas element. I am also of course using request animation frame as always to create the app loop for the canvas example as with just about any other.
 
@@ -147,25 +157,20 @@ In the main app loop I am canning the tick method of my pop the lock state objec
 // SETUP CANVAS
 (function () {
     // create and append canvas element, and get 2d context
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d'),
-    container = document.getElementById('gamearea') || document.body;
-    container.appendChild(canvas);
-    // set width and height
-    canvas.width = 320;
-    canvas.height = 240;
- 
+    var canvasObj = utils.createCanvas({
+        width: 320,
+        height: 240
+    });
+    var canvas = canvasObj.canvas;
+    var ctx = canvasObj.ctx;
     canvas.addEventListener('click', ptl.click);
- 
     ptl.randomTarget();
- 
     var loop = function () {
         requestAnimationFrame(loop);
         ptl.tick();
         drawPTL(ptl, ctx, canvas);
     };
     loop();
- 
 }
     ());
 ```
@@ -178,7 +183,8 @@ Now that I have covered everything that composes the main.js file I just need a 
         <title>canvas example pop the lock</title>
     </head>
     <body>
-        <div id="gamearea"></div>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
