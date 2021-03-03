@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 20:19:57
-version: 1.87
+updated: 2021-03-02 20:24:31
+version: 1.88
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -126,7 +126,7 @@ This is just a flappy bid clone of sorts, I just wanted to take a moment to make
 
 ### 3.17 - [A kaboom clone](/2020/04/10/canvas-example-game-kaboom-clone/)
 
-I have found myself making clones of certain classics from the Atari 2600, this is one such canvas example that is a clone of the game kaboom.
+I have found myself making clones of certain classics from the Atari 2600, this is one such canvas example that is a clone of the game [kaboom](https://en.wikipedia.org/wiki/Kaboom!_%28video_game%29). There where a lot of other games that came out where the core logic of the game was more or less the same such as [avalanche](https://www.wikiwand.com/en/Avalanche_%28video_game%29).
 
 ### 3.18 - [Map idle game prototype example](/2020/01/13/canvas-example-game-map-idle/)
 
