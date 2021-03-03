@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2021-03-03 12:48:44
-version: 1.39
+updated: 2021-03-03 12:51:15
+version: 1.40
 ---
 
 So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
@@ -246,6 +246,126 @@ A state machine is a way to break an application such as this space shooter game
 In this canvas example there is a main game state, as well as an initialization state, and a game over state. I did not put an awful lot of time into this canvas example, but if I where to continue working on this there would be a title state, as well as several other states that have to do with various menus to say the least.
 
 ```js
+var States = (function () {
+ 
+    var lt = new Date(),
+    canvasObj = utils.createCanvas({
+        width: 320,
+        height: 240
+    }),
+    canvas = canvasObj.canvas,
+    ctx = canvasObj.ctx;
+ 
+    // HELPERS
+    // make enemies
+    var makeEnemies = function (level, canvas) {
+        var e,
+        enemies = [];
+        // cap things past level 30
+        var cap = level / 30;
+        cap = cap > 1 ? 1 : cap;
+        var count = level;
+        while (count--) {
+            e = new Ship({
+                    canvas: canvas,
+                    x: Math.floor(canvas.width * Math.random()),
+                    y: Math.floor(canvas.height * Math.random()),
+                    pps: 16 + Math.floor(64 * cap),
+                    shotPPS: 64 + Math.floor(128 * cap),
+                    shotLife: 5000,
+                    heading: Math.PI * 2 * Math.random(),
+                    shotDelay: 3000 - Math.floor(2500 * cap),
+                    maxHP: 1 + Math.floor(15 * cap)
+                });
+            enemies.push(e);
+        };
+        return enemies;
+    };
+    // purge
+    var purgeEnemies = function (enemies) {
+        var i = enemies.length;
+        while (i--) {
+            var enemy = enemies[i];
+            if (enemy.HP === 0) {
+                enemies.splice(i, 1);
+            }
+        }
+    };
+    // setup a level
+    var setupLevel = function (api) {
+        //api.eCount = api.level;
+        api.disp.enemies = makeEnemies(api.level, api.canvas);
+        var ship = api.disp.ship;
+        ship.x = canvas.width / 2;
+        ship.y = canvas.width / 2;
+        api.win = false;
+        api.reset = false;
+    };
+    // PUBLIC API
+    return {
+        ver: '0.0.0',
+        canvas: canvas,
+        ctx: ctx,
+        win: false,
+        reset: false,
+        //eCount: 1,
+        level: 1,
+        disp: {}, // display Objects to be used with the renderer
+        current: 'init', // current state
+        // Initialize the Game State
+        init: function () {
+            // player ship
+            this.disp.ship = new Ship({
+                    canvas: canvas,
+                    x: 0,
+                    y: 0,
+                    pps: 32,
+                    heading: Math.PI / 180 * 0
+                });
+            //this.eCount = 1;
+            this.level = 1;
+            setupLevel(this);
+            this.current = 'game';
+        },
+        // Main Game State
+        game: function () {
+            var now = new Date(),
+            t = now - lt,
+            ship = this.disp.ship,
+            enemies = this.disp.enemies;
+            ship.update(t, enemies);
+            enemies.forEach(function (enemy) {
+                enemy.update(t, [ship]);
+            });
+            purgeEnemies(enemies);
+            if (enemies.length === 0) {
+                this.win = true;
+                this.current = 'gameOver';
+            }
+            if (ship.HP === 0) {
+                this.current = 'gameOver';
+            }
+            lt = now;
+        },
+        // game over state
+        gameOver: function () {
+            if (this.reset) {
+                if (this.win) {
+                    this.level += 1;
+                    setupLevel(this);
+                    this.current = 'game';
+                } else {
+                    this.current = 'init';
+                }
+            }
+        },
+        // tick method to be called in the main app loop
+        tick: function () {
+            this[this.current]();
+        }
+    };
+}
+    ());
 ```
 
 In here I also parked some logic that has to do with what might eventually be a Ship Collection class. I needed at least some logic for that, and it had to be parked somewhere.
@@ -253,7 +373,32 @@ In here I also parked some logic that has to do with what might eventually be a 
 ## 4 - Events
 
 In the events.js file I worked out a few event handlers for moving the player ship and continuing when the game is over. Nothing major for this canvas example just a crude yet functional solution for accepting user input and using it to move the player ship.
+
 ```js
+// EVENTS
+(function () {
+    var canvas = States.canvas;
+    // move ship handler that will work with mouse
+    // and touch events
+    var moveShip = function (e) {
+        var cx = canvas.width / 2,
+        cy = canvas.height / 2,
+        pos = utils.getCanvasRelative(e);
+        States.disp.ship.heading = Math.PI + Math.atan2(cy - pos.y, cx - pos.x);
+    };
+    // start game check
+    var startGame = function () {
+        if (States.current === 'gameOver') {
+            States.reset = true;
+        }
+    };
+    // Attach events
+    canvas.addEventListener('mousemove', moveShip);
+    canvas.addEventListener('touchmove', moveShip);
+    canvas.addEventListener('mousedown', startGame);
+    canvas.addEventListener('touchstart', startGame);
+}
+    ());
 ```
 
 ## 5 - Renderer
@@ -263,6 +408,52 @@ So then there is also the renderer.js file. Here I have the code that will draw 
 It also have one helper draw method of sorts that is called just once in the main draw method, but methods like that could be used in many such draw method. So for now it is just an example of keeping this a little more fine grain by pulling it into a stand alone method.
 
 ```js
+// RENDER
+var draw = (function () {
+    var canvas = States.canvas,
+    ctx = States.ctx;
+    // clear screen
+    var cls = function () {
+        ctx.fillStyle = 'black';
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 3;
+        // clear
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
+    var ver = function () {
+        ctx.fillStyle = 'white';
+        ctx.textBaseline = 'top';
+        ctx.font='10px arial';
+        ctx.textAlign = 'left';
+        ctx.fillText('v' + States.ver, 5, canvas.height - 15);
+    };
+    var states = {
+        none: function () {},
+        game: function () {
+            // draw player
+            States.disp.ship.draw(ctx, 'blue', 'blue');
+            // draw enemies
+            States.disp.enemies.forEach(function (enemy) {
+                enemy.draw(ctx, 'red', 'red');
+            });
+        },
+        gameOver: function () {
+            ctx.fillStyle = 'white';
+            if (States.win) {
+                ctx.fillText('Victory', 10, 10);
+            } else {
+                ctx.fillText('Game Over', 10, 10);
+            }
+        }
+    };
+    return function () {
+        cls();
+        var drawState = states[States.current] || states['none'];
+        drawState();
+        ver()
+    };
+}
+    ());
 ```
 
 There is more that comes to mind, such as pulling the draw methods that I have in the classes out of the classes and place it here. Making the method at least a little more functional by making it so that the state object is passed as an argument to the factory function and make it so the factory function needs to be called in the state machine. However when it comes to making a first alpha state of a project those kinds of things take a back seat. The real concern here is if i am starting to make something that people will actually want to play or not.
@@ -273,6 +464,13 @@ Then there is the main app of the canvas game example. Here I am using requestAn
 
 
 ```js
+// Main APP loop
+var loop = function () {
+    requestAnimationFrame(loop);
+    States.tick();
+    draw();
+};
+loop();
 ```
 
 It goes without saying that I made this very basic, and it seems to work okay this way. The reason why is that I am figuring how much time has went by in the state machine, and then passing that value to the update methods that I am using for the display objects.
@@ -335,6 +533,20 @@ utils.getCanvasRelative = function (e) {
 Now for the html file that I have for the canvas example where I am linking everything together. For this one I am using a hard coded canvas element rather than creating and injecting a canvas element with javaScript. I am also linking to all the extremal javaScript files that I have worked out when it comes to handling display objects, a state machine, events, rendering and a main app loop.
 
 ```html
+<html>
+    <head>
+        <title>canvas example space shooter</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/disp.js"></script>
+        <script src="./lib/states.js"></script>
+        <script src="./lib/events.js"></script>
+        <script src="./lib/render.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
 
 If I start to put together a project that is even just a little involved I often like to break things down a lot to keep everything better organized. So now that just the plain old boring HTML is out of the way lets get to the actual fun and interesting javaScript stuff.
