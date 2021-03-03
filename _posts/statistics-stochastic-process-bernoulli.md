@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 815
-updated: 2021-03-03 16:31:54
-version: 1.6
+updated: 2021-03-03 16:36:03
+version: 1.7
 ---
 
 I would like to write at least a few posts on examples of a [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) when it comes to [statistics](https://en.wikipedia.org/wiki/Statistics). When it comes to any collection of content on something there is always a kind of getting started type post when it comes to just working out the very basics of something. So a [Bernoulli Stochastic process](https://en.wikipedia.org/wiki/Bernoulli_process) would be a good starting point when it comes to this kind of process because such a process is just simply a coin toss, or in order words a random process where there are only two possible outcomes.
@@ -16,7 +16,7 @@ I would like to write at least a few posts on examples of a [Stochastic process]
 
 ## 1 - A Basic Bernoulli process example
 
-This should be pretty easy as all that needs to happen here is to have a function that will return a random number that is just a 1 or 0. However there is maybe a bit more to it when it comes to figuring out if a random function will give what might often be called a fair toss.
+This should be pretty easy as all that needs to happen here is to have a function that will return a random number that is just a 1 or 0. However there is maybe a bit more to it when it comes to figuring out if a random function will give what might often be called a fair toss, or a [fair coin](https://en.wikipedia.org/wiki/Fair_coin).
 
 ### 1.2 - A basic coin function
 
