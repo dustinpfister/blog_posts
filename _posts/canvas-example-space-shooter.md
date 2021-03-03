@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2021-03-03 12:17:22
-version: 1.34
+updated: 2021-03-03 12:27:16
+version: 1.35
 ---
 
 So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
@@ -24,28 +24,6 @@ Still I had some fun with this one, and I might get around to putting more time 
 This canvas example consists of several javaScript files and a single html file. The project seems to work just fine via the file protocol if you do want to get it up and running that way. I also made it so the canvas example does not depend on any external assets in terms of images, or scene data which seems to be the way that I make most of my canvas projects anyway. 
 
 This project is an example of the canvas element in action as well as many other subjects that come up when developing a canvas game with client side javaScript. Many such projects involve the use of a framework such as phaser ce to help save time, but in this post I ma doing everything with native javaScript by itself.
-
-## 2 - The html file
-
-To start off with here is the html file that I have for the canvas example. For this one I am using a hard coded canvas element rather than creating and injecting a canvas element with javaScript. I am also linking to all the extremal javaScript files that I have worked out when it comes to handling display objects, a state machine, events, rendering and a main app loop.
-
-```html
-<html>
-    <head>
-        <title>canvas example space shooter</title>
-    </head>
-    <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
-        <script src="disp.js"></script>
-        <script src="states.js"></script>
-        <script src="events.js"></script>
-        <script src="render.js"></script>
-        <script src="main.js"></script>
-    </body>
-</html>
-```
-
-If I start to put together a project that is even just a little involved I often like to break things down a lot to keep everything better organized. So now that just the plain old boring HTML is out of the way lets get to the actual fun and interesting javaScript stuff.
 
 ## 2 - The Display Object Classes
 
@@ -470,6 +448,7 @@ var draw = (function () {
 ```
 
 There is more that comes to mind, such as pulling the draw methods that I have in the classes out of the classes and place it here. Making the method at least a little more functional by making it so that the state object is passed as an argument to the factory function and make it so the factory function needs to be called in the state machine. However when it comes to making a first alpha state of a project those kinds of things take a back seat. The real concern here is if i am starting to make something that people will actually want to play or not.
+
 ## 6 - Main app loop
 
 Then there is the main app of the canvas game example. Here I am using requestAnimatuonFrame to create the loop, and call the States tick method and the draw method for each frame over and over again.
@@ -491,7 +470,29 @@ I would design this kind of loop all kinds of different ways. Ways where I would
 
 Other games could be event driven and when it comes to that kind of game I might not need a main app loop at all, however that f course is not the case here, so no matter what i am always going to need something like this, at least for the game state anyway.
 
-## 7 - Conclusion
+## 7 - The html file
+
+Now for the html file that I have for the canvas example where I am linking everything together. For this one I am using a hard coded canvas element rather than creating and injecting a canvas element with javaScript. I am also linking to all the extremal javaScript files that I have worked out when it comes to handling display objects, a state machine, events, rendering and a main app loop.
+
+```html
+<html>
+    <head>
+        <title>canvas example space shooter</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="disp.js"></script>
+        <script src="states.js"></script>
+        <script src="events.js"></script>
+        <script src="render.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+If I start to put together a project that is even just a little involved I often like to break things down a lot to keep everything better organized. So now that just the plain old boring HTML is out of the way lets get to the actual fun and interesting javaScript stuff.
+
+## 8 - Conclusion
 
 This canvas example is still pretty basic, If I get around to it I might put a little more time and effort into it. I often create projects like this where I get to the point where it is just starting to feel like a finished product, but stop and move on to the next thing. I would like to break that cycle some time, but only with something that is worth the investment.
 
