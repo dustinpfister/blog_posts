@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 815
-updated: 2021-03-03 16:09:26
-version: 1.3
+updated: 2021-03-03 16:22:21
+version: 1.4
 ---
 
 I would like to write at least a few posts on examples of a Stochastic process when it comes to statostics. When it comes to any collection of content on something there is always a kind of getting started type post when it comes to just working out the very basics of something. So a [Bernoulli Stochastic process](https://en.wikipedia.org/wiki/Bernoulli_process) would be a good starting point when it comes to this kind of process becuase such a process is just simply a coin toss, or in order words a random process where there are only two possible outcomes.
@@ -58,7 +58,55 @@ var getPers = function(result){
 console.log( getPers( trial(10000) ) );
 ```
 
-## 3 - Conclusion
+## 3 - Pure function alterative to the coint function
+
+### 3.1 - The coin function in a pure function style
+
+```js
+var coin = function(index){
+    return (index || 0) % 2;
+};
+ 
+console.log( coin(0) ); // 0
+console.log( coin(1) ); // 1
+console.log( coin(2) ); // 0
+console.log( coin(3) ); // 1
+```
+
+### 3.2 - Testing it
+
+```js
+
+var coin = function(index){
+    return (index || 0) % 2;
+};
+ 
+var trial = function(count){
+    var i = 0,
+    result = [0, 0],
+    len = count || 1;
+    while(i < len){
+        var sideIndex = coin(i);
+        result[sideIndex] += 1;
+        i += 1;
+    }
+    return result;
+};
+ 
+var getPers = function(result){
+    var count = result[0] + result[1];
+    return result.map(function(n){
+        return n / count * 100;
+    });
+};
+ 
+console.log( getPers( trial(1) ) ); // [ 100, 0 ]
+console.log( getPers( trial(2) ) ); // [ 50, 50 ]
+console.log( getPers( trial(3) ) ); // [ 66.66666666666666, 33.33333333333333 ]
+console.log( getPers( trial(4) ) ); // [ 50, 50 ]
+```
+
+## 4 - Conclusion
 
 This could then prove to be an interesting collection of posts when I get around to wrirint more. I have been creating all kinds of simple little projects over the years that can be thought of as examples of a Stochastic process, and I have also have wrote a pure function or two in my time also when it comes to the polar oposite of such a system or function. However now that I am starting to study statstics I find mysel;f gaining a more solid understanind and appreasheation for these two ver general kinds of systems, and that there is often overlap betweeen the two also.
 
