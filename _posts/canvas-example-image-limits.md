@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2020-05-10 17:48:05
-version: 1.26
+updated: 2021-03-03 18:50:46
+version: 1.27
 ---
 
 So now for yet another [canvas example](/2020/03/23/canvas-example/), this one is going to be pretty cool, or at least I think so. It has to do with the [limits of 2d images](https://medium.com/@adrian_cooney/generating-every-image-possible-21beed4789fe) when it comes to a set resolution and color depth. Or in other words every image that is possible when given a finite width, height and color depth.
@@ -17,6 +17,8 @@ So with that said this is one of several ideas that keep coming back to be, and 
 
 <!-- more -->
 
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/image-limits/0.0.0/pkg.js"></script>
 
 ## 1 - The image lib of the canvas example
 
