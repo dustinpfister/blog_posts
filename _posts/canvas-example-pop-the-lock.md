@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-03 14:47:13
-version: 1.24
+updated: 2021-03-03 14:52:29
+version: 1.25
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -145,9 +145,39 @@ var drawPTL = function (ptl, ctx, canvas) {
 };
 ```
 
-If I put more time into this project this will end up getting broken down into many methods and will be pulled into a fle of its one which is often the case with many of these canvas examples.
+If I put more time into this project this will end up getting broken down into many methods and will be pulled into a file of its one which is often the case with many of these canvas examples.
 
-## 3 - The canvas, main app loop, and the html
+## 3 - The utils lib
+
+Like all my other canvas examples these days I have a utils library where I park functions that I will likely use in more than one file in a project, and also might copy and paste over to other utils libraries in other canvas examples. For pop the lock thus far as of version 0.0.0 I am just using my create canvas method that is more or less standard for canvas examples now.
+
+```js
+var utils = {};
+ 
+// create a canvas
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+```
+
+## 4 - The canvas, main app loop, and the html
 
 So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a canvas app div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random section, and define and start the main game loop.
 
