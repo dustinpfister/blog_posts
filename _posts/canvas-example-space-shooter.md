@@ -5,15 +5,19 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2020-07-23 14:26:52
-version: 1.33
+updated: 2021-03-03 12:17:22
+version: 1.34
 ---
 
-So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. That is just a simple little game that involves a player ship that moves around and shoots at other player ships. Nothing to interesting maybe, but hey you have to start somewhere.
+So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
+So then this is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. I did not get around to polishing every little thing about it, but if this post gets enough traction maybe aI will get around to working on this one a little more. There is much more work to do when it comes to getting this to even start to look like some kind of finished product when it comes to things like at least having a basic menu system, and displaying all player stats of interest. However the initial goal was not to really make a finished product, I just want to get to a very simple starting point.
 
-So then this is a project that I threw together in just a few hours, so it is not really a complete game at the time of this writing at least. I did not get around to polishing every little thing about it, but if this post gets enough traction maybe aI will get around to working on this one a little more. Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
+Still I had some fun with this one, and I might get around to putting more time into the project at some point in the future if this new collection of posts gets some traction.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/space-shooter/0.0.0/pkg.js"></script>
 
 ## 1 - The Space Shooter Canvas Example
 
