@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 20:11:54
-version: 1.85
+updated: 2021-03-02 20:15:59
+version: 1.86
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -224,7 +224,7 @@ Here is a Canvas Example that is a User interface design for moving a map, or an
 
 ### 3.42 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
 
-A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example.
+A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example. It just involves a circle that moves along the circumference of another circle and the player needs to click or tap the screen when the moving circled gets in a certain range or else they loose. Very simple, yet very addictive.
 
 ### 3.43 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
 
