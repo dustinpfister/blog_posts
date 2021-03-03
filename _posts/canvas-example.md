@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-03 15:00:11
-version: 1.92
+updated: 2021-03-03 18:00:06
+version: 1.93
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -61,7 +61,6 @@ As of this writing I am working on making embedded version of each of the canvas
 
 I made a clone of the game called a planet of mine, or I have started one at least. This canvas example is of a game where I have a world object, and then worker objects that can be set to land tiles in the world object. I enjoyed playing the game that it is based off of and want to at least start a clone of it that I can start to play around with a little.
 
-
 ### 3.2 - [Animation basics canvas example](/2019/10/10/canvas-example-animation-basics/)
 
 In my animations basics canvas example I touched base on the basics of animation and canvas elements as I currently have come to understand it. Animation can be a powerful tool, as it is not always about making things that are artful, but practical as well. For example if you are trying to wok out some kind of problem it some times make sense to visualize that problem.
@@ -114,7 +113,7 @@ This is one of several canvas examples that is on my radar for additional work w
 
 ### 3.14 - [Fixed shooter hybrid](/2020/07/10/canvas-example-game-fixed-shooter-hybrid/)
 
-This is like a fixed axis shooter game only the player is fixed to an area rather than a single axis. One such game that might be similar to this is the classic game centipede.
+This is like a fixed axis shooter game only the player is fixed to an area rather than a single axis. One such game that might be similar to this is the classic game centipede. This is another one of my examples where I just wanted to get the basic idea of the game up and running, but I did not get far beyond that just yet.
 
 ### 3.15 - [Flappy collector idle](/2020/01/21/canvas-example-game-flappy-collector-idle/)
 
