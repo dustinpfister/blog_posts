@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 20:24:31
-version: 1.88
+updated: 2021-03-02 20:27:15
+version: 1.89
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -130,7 +130,7 @@ I have found myself making clones of certain classics from the Atari 2600, this 
 
 ### 3.18 - [Map idle game prototype example](/2020/01/13/canvas-example-game-map-idle/)
 
-There is yet another example of an idle type game that involves a grid that has assets at each location that generate money.
+There is yet another example of an idle type game that involves a grid that has assets at each location that generate money. Not much more beyond that I just wanted to make that kind of game, and like many of these examples I got the basic idea working and then moved on to the next thing. However this is one example that I do think I will be getting back to at some point. I do like playing and making these kinds of games actually.
 
 ### 3.19 - [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/)
 
