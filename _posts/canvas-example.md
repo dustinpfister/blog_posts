@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-02 20:29:09
-version: 1.90
+updated: 2021-03-03 14:57:19
+version: 1.91
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -230,7 +230,7 @@ A Canvas Example that is a pop the lock game clone, the game is very easy to clo
 
 ### 3.43 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
 
-A Canvas Example of a space shooter type game where there is a ship that moves around on the canvas and shots at other ships. This is just another general basic idea that is in a kind of alpha state as of this writing.
+A Canvas Example of a space shooter type game where there is a ship that moves around on the canvas that shoots at other ships. This is just another general basic idea that is in a kind of alpha state as of this writing. It is also the very first canvas example that I started with, so the source code is in a state that I would not write at this time. If I do get around to putting some more time into this game, it might be to just add some menus and improve the controls a little, I can not see this ever being anything to ground breaking really. I just wanted to get a basic idea together with something that that was more or less it.
 
 ### 3.44 - [Stars](/2020/02/12/canvas-example-star/)
 
