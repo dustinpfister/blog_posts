@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 527
-updated: 2021-03-03 12:51:15
-version: 1.40
+updated: 2021-03-03 12:57:30
+version: 1.41
 ---
 
 So this post might be the first of several [canvas examples](/2020/03/23/canvas-example/), this one will be on a [basic space shooter](https://medium.com/jared-mills/creating-a-simple-space-shooter-game-for-the-browser-401f8adde1ad) game for starters. So this example is just a simple little game that involves a player ship that moves around and shoots at other player ships and that is it. Nothing to interesting maybe, but hey you have to start somewhere when it comes to these.
@@ -556,3 +556,5 @@ If I start to put together a project that is even just a little involved I often
 This canvas example is still pretty basic, If I get around to it I might put a little more time and effort into it. I often create projects like this where I get to the point where it is just starting to feel like a finished product, but stop and move on to the next thing. I would like to break that cycle some time, but only with something that is worth the investment.
 
 A better user interface would be nice, and some animations, transitions and sound would be a nice touch. Still this was a good exercise for me, when it comes to working out how to structure a canvas example that is something not so basic. I think I will like to make a few more posts like this one, and put a great deal more effort into canvas examples that are worth more time and energy.
+
+This canvas example is not really my best example of this kind of game thus far, another space shooter type game that I put a little more time and effort into would be my [hyper casual space shooter game](/2020/12/11/canvas-example-hyper-casual-space-shooter/) that just involves flying around and blowing up blocks. That example has things like upgrades, better controls, and menus, but is also in a state where I cant help but think that there is something more missing.
