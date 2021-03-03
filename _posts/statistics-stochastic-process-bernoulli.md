@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 815
-updated: 2021-03-03 17:47:44
-version: 1.11
+updated: 2021-03-03 17:51:01
+version: 1.12
 ---
 
 I would like to write at least a few posts on examples of a [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) when it comes to [statistics](https://en.wikipedia.org/wiki/Statistics). When it comes to any collection of content on something there is always a kind of getting started type post when it comes to just working out the very basics of something. So a [Bernoulli Stochastic process](https://en.wikipedia.org/wiki/Bernoulli_process) would be a good starting point when it comes to this kind of process because such a process is just simply a coin toss, or in order words a random process where there are only two possible outcomes.
@@ -87,7 +87,7 @@ console.log( coin(3) ); // 1
 
 ### 3.2 - Testing it
 
-There is then doing the same test again, but this time making use of this other coin function.
+There is then doing the same test again, but this time making use of this other coin function that is more in line with a system that is NOT stochastic.
 
 ```js
 
@@ -119,6 +119,8 @@ console.log( getPers( trial(2) ) ); // [ 50, 50 ]
 console.log( getPers( trial(3) ) ); // [ 66.66666666666666, 33.33333333333333 ]
 console.log( getPers( trial(4) ) ); // [ 50, 50 ]
 ```
+
+With this like of function of course the results end up being more in line with the idea of a fair coin where for any amount of even tosses of a coin the result will always be 50, 50, and it is only in an odd amount of trials where that will not end up being the case.
 
 ## 4 - Conclusion
 
