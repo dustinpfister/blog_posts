@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 579
-updated: 2021-03-03 18:50:46
-version: 1.27
+updated: 2021-03-03 18:56:18
+version: 1.28
 ---
 
 So now for yet another [canvas example](/2020/03/23/canvas-example/), this one is going to be pretty cool, or at least I think so. It has to do with the [limits of 2d images](https://medium.com/@adrian_cooney/generating-every-image-possible-21beed4789fe) when it comes to a set resolution and color depth. Or in other words every image that is possible when given a finite width, height and color depth.
@@ -124,31 +124,80 @@ IMG.draw = function (canvas, chunk, pal) {
 };
 ```
 
-## 2 - The main.js file and html
+## 2 - The utils lib
+
+For the utility library I just have my create canvas method, and a get canvas relative method. These are to just create and append the canvas element itself, and get a pointer event position that is relative to the canvas rather than the window.
+
+```js
+var utils = {};
+ 
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+```
+
+## 3 - The main.js file and html
 
 Now that I have my image library it is time to use it in a canvas example. Here in my main javaScript file that I will also be linking to in my html, I am grabbing references to a canvas element as well as a text input element. These elements will be used to display the current image, as well as the current index value fo the image. They will also server as a way to change the state of the image.
 
 ```js
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d'),
-inputStr = document.getElementById('img-str');
- 
-canvas.width = 320;
-canvas.height = 320;
- 
+
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
+container = canvasObj.container;
+
+var inputStr = document.createElement('input');
+inputStr.setAttribute('id', 'img-str');
+inputStr.setAttribute('type', 'text');
+canvasObj.container.appendChild(inputStr);
+
 var w = 4, h = 4,
 colorDepth = 2,
 str = IMG.stringFromIndex(38505, colorDepth, w * h),
 matrix = IMG.stringToChunk(str, w);
 inputStr.value = parseInt(str, colorDepth);
 IMG.draw(canvas, matrix);
- 
+
 // update by clicking canvas
 canvas.addEventListener('click', function (e) {
-    var bx = e.target.getBoundingClientRect(),
+    var pos = utils.getCanvasRelative(e),
     size = canvas.width / w,
-    x = Math.floor((e.clientX - bx.left) / size),
-    y = Math.floor((e.clientY - bx.top) / size),
+    x = Math.floor(pos.x / size),
+    y = Math.floor(pos.y / size),
     px = matrix[y][x];
     px += 1;
     if (px >= colorDepth) {
@@ -158,6 +207,11 @@ canvas.addEventListener('click', function (e) {
     str = IMG.chunkToString(matrix, colorDepth);
     inputStr.value = parseInt(str, colorDepth);
     IMG.draw(canvas, matrix);
+    // draw ver
+    ctx.fillStyle = 'lime';
+    ctx.textBaseline = 'top';
+    ctx.font = '10px arial';
+    ctx.fillText('v0.0.0', 5, canvas.height - 15);
 });
 // update from input element
 inputStr.addEventListener('keyup', function (e) {
@@ -193,7 +247,7 @@ Now that I have my image library and my main javaScript file that makes use of t
 </html>
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 When I start up this project in my browser I can see the starting image that I have set. I can then use the mouse to click on the canvas and when doing so I change the indexed color value of the logical pixel of the matrix, in turn this also updates the index value in the text input element. I can also use the text input element to change the image also, and this can then also be used as a way to save the state of the image.
 
