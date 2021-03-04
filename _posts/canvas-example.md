@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:41:03
-version: 1.99
+updated: 2021-03-04 16:44:03
+version: 1.100
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -149,7 +149,7 @@ So I wanted to have at least one canvas example that is a game spinner that is s
 
 ### 3.23 - [Grass blades](/2020/07/02/canvas-example-grass-blades/)
 
-Just some grass blade type things.
+Just some grass blade animation type thing that looks kind of cool. Canvas is not just for making games, it is nice to make things that are just nice to look at for a little while also. This is just yet another thing that came to mind when  it comes to just making some kind of canvas animation type thing just for the sake of doing so. However even when it comes to something like this there is more than one way to get this kind of effect, I might come back to this one now and then to add some more features.
 
 ### 3.24 - [Canvas Grid module](/2019/11/07/canvas-example-grid/)
 
