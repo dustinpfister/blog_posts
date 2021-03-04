@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:57:49
-version: 1.43
+updated: 2021-03-04 16:08:43
+version: 1.44
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -256,6 +256,8 @@ In this module I also have a number of helper methods that have to do with thing
 ## 4 - The draw module
 
 I then have some draw methods that I worked out that I made as part of an additional module following just th simple object literal pattern. For now this module is to just draw a background for the example, and also of course this contains my draw points method that is used to draw an array of points to a canvas such as you guessed it an array of points that draws a star.
+
+In version 0.1.0 of this example I added a draw method that does not draw to the canvas, but it does use the 2d context of a canvas element to create and return a linear gradient. This can the be used as a style such as the style of the background of the canvas. I have [wrote a post on the this 2d context method](/2020/02/05/canvas-gradient/) or course, and I also created another [canvas example that is another kind of gradient](/2020/03/26/canvas-example-grid-gradient/) type project. It is nice to make use of this kind of method to create a background that is at least a little more interesting than just a solid color background.
 
 ```js
 var draw = (function(){
