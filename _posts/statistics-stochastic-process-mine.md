@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 816
-updated: 2021-03-04 09:51:42
-version: 1.3
+updated: 2021-03-04 09:53:07
+version: 1.4
 ---
 
 Today I will be contnuing with looking into the topic of [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) in [statistics](https://en.wikipedia.org/wiki/Statistics) which is more or less a fancy formal way of random rather than deteranistic processes. 
@@ -17,9 +17,11 @@ There is a whole world of examples that come to mind when it comes to this, and 
 
 ## 1 - The source code for a mine function
 
-So the general idea that I have here is to have a mine function that will take some argumnets that have to do with the count of mine events, the method to use to come up for amounts or ores, and a collection of ores. This kind of function by default could be like a pure function if I do design it that way, but in any case it would never be a true pure function becuase I can always give it a mine method that makes used of Math.random. Also this is a post on the topic of the concept of a Stochastic process rather than a determanisct system, so my default it will make use of Math.random.
+So the general idea that I have here is to have a mine function that will take some argumnets that have to do with the count of mine events, the method to use to come up for amounts or ores, and a collection of ores. This kind of function by default could be like a pure function if I do design it that way, but in any case it would never be a true pure function becuase I can always give it a mine method that makes used of Math.random. Also this is a post on the topic of the concept of a Stochastic process rather than a determanisct system, so by default it will make use of Math.random.
 
 ### 1.1 - The mine function
+
+So then here is the source code of the mine function that I have in mind.
 
 ```js
 // The mine function
@@ -64,6 +66,8 @@ var mine = (function(){
 ```
 
 ### 1.2 - Basic example of the mine function
+
+Now to test this out to see if it works okay.
 
 ```js 
 var i = 0,
