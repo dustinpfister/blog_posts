@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:35:57
-version: 1.98
+updated: 2021-03-04 16:41:03
+version: 1.99
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -99,7 +99,7 @@ This is a concept for a game that involves turrets and ships to which the turret
 
 ### 3.11 - [Making a breakout game clone](/2020/02/13/canvas-example-game-breakout/)
 
-I thought it would be a good idea to start yet another breakout clone. This is one of many ideas of a kind of project that has been all ready done to death, but there still may be a great deal of potential for adding a unique spin to it.
+I thought it would be a good idea to start yet another breakout clone. This is one of many ideas of a kind of project that has been all ready done to death, but there still may be a great deal of potential for adding a unique spin to it
 
 ### 3.12 - [A cannon shoot game canvas example](/2020/02/17/canvas-example-game-cannon-shoot/)
 
@@ -145,7 +145,7 @@ This is a fork of the Mr Sun canvas example, it is more or less the same source 
 
 ### 3.22 - [game spinner](/2020/06/07/canvas-example-game-spinner/)
 
-So I wanted to have at least one canvas example that is a game spinner that is similar to that of something that you find with many board games.
+So I wanted to have at least one canvas example that is a game spinner that is similar to that of something that you find with many board games. This is something that I might make use of in other canvas examples in one form or another, but of not it is just yet another kind of exercise when it comes to just learning how to work with canvas and javaScript.
 
 ### 3.23 - [Grass blades](/2020/07/02/canvas-example-grass-blades/)
 
