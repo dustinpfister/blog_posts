@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:51:31
-version: 1.41
+updated: 2021-03-04 15:55:40
+version: 1.42
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -251,7 +251,7 @@ var pool = (function(){
 }());
 ```
 
-In this module I also have a number of helper methods that have to do with things like what to do when a display object moves out of bounds, and how should a color property be set for a display object.
+In this module I also have a number of helper methods that have to do with things like what to do when a display object moves out of bounds, and how should a color property be set for a display object. For example I have a helper method that will use my utils distance method to set the distance between the current position of a start to the center of the canvas. The bounds helper is then called to check to see if the star has reached max distance, if so it will use Math.atan2 to get an angle from the center and use it to set the position of the star to a location at the other side of a circle area that is defined by the max distance state property.
 
 ## 4 - The draw module
 
