@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:30:45
-version: 1.37
+updated: 2021-03-04 15:35:44
+version: 1.38
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -26,7 +26,7 @@ First off there is the module that I worked out that creates arrays of points th
 
 One method that creates an array of points that makes up a star I called just simply create1. This method works by having not one but to radius from a center point. There is one set of points at one radius, and another set of points at another radius, and both sets of points are spaced out between each other half way. When the array of points is drawn the line will be drawn from a point at one radius to the next point at the other radius, thus forming a star like shape that way.
 
-The other method that I worked out is called just create2, this method creates an array of points by way of having a single set of points at a single given radius, the oder in which points are added to the array is just set by a point skip argument that defaults to 2.
+The other method that I worked out is called just create2, this method creates an array of points by way of having a single set of points at a single given radius, the order in which points are added to the array is just set by a point skip argument that defaults to 2. This method does not work so great as of this writing when it comes to stars that have an even number of points, the eventual work around would have to be something that involves create collections of points or some other kind of system to help with this. I will be keeping the current state of both methods in the module as i continue working on this no matter what though.
 
 ```js
 var starMod = (function () {
