@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 16:11:52
-version: 1.45
+updated: 2021-03-04 16:14:52
+version: 1.46
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -363,9 +363,9 @@ Like all of my canvas examples I also like to have a draw version number method 
 
 ## 5 - The Main.js file
 
-Here in the main.js file of my star canvas example I am making use of all of the modules that I have covered to make a finished canvas project of sorts that looks kind of cool.
+Here in the main.js file of my star canvas example I am making use of all of the modules that I have covered to make a finished canvas project of sorts that looks kind of cool. At the top of this fine I have some constants for the various options of the pool state object, these are hard coded settings for the speed and size of stars, in time I am sure that this list of constants will grow. 
 
-At the top of the file I am using the utils create canvas element to create a canvas element with all the various properties of the canvas set up just the way that I like it. When doing so I can also set the actual display width of the canvas, but not the scaled size of the canvas, that I like to do with CSS.
+The utils create canvas element method is then what I want to use to create a canvas element with all the various properties of the canvas set up just the way that I like it. When doing so I can also set the actual display width of the canvas, but not the scaled size of the canvas, that I like to do with CSS.
 
 I then use my pool module to create a new main state object with a few properties that I have set with some hard coded settings, and I pass a reference to the canvas element while I am at it. AFter that I have my main app loop in which I am drawing the current state of the main pool state object, and calling the update method of the pool module to update that state.
 
