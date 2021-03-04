@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:35:44
-version: 1.38
+updated: 2021-03-04 15:41:10
+version: 1.39
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -87,6 +87,8 @@ var starMod = (function () {
 }
     ());
 ```
+
+This is not the end of the line when it comes to using this star module or any other module like this. The idea here is to create a collection of point locations and that is it. When it comes to drawing this to the canvas that will be the responsibility of the draw module for this example. Also when it comes to creating a collection of these points that in turn will also be the responsibility of another module that I will be getting to that has to do with creating and update a pool of display objects.
 
 ## 2 - The utils module
 
