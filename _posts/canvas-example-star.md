@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:41:10
-version: 1.39
+updated: 2021-03-04 15:48:38
+version: 1.40
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -92,11 +92,11 @@ This is not the end of the line when it comes to using this star module or any o
 
 ## 2 - The utils module
 
-As with many other canvas examples I have a general utility module, this is where I park methods that I will likely be using across two or more modules, or might use in other canvas examples. I do not just use a single utils.js module for all canvas examples that is something that will change a little from one example to another depending on what I will be doing in the example.
+As with many other canvas examples I have a general utility module, this is where I park methods that I will likely be using across two or more modules, or might use in other canvas examples. So it is nice to have them in one place, and keep them in a pure function like state if possible where there is just the arguments and the returned result. I do not just use a single utils.js module for all canvas examples, so the state of this kind of module will change a little from one example to another depending on what I will be doing in the example.
 
-In this canvas example of stars I have a distance and mathematical modulo methods that I will be using in my pool library for this example. I could get into detail about these methods here, but simply put the distance formula is just so I can get a distance between two points, and the mathematical modulo is just another way of doing what the built in javaScript modulo operator does.
+In this canvas example of stars I have a distance and mathematical modulo methods that I will be using in my pool library for this example. I could get into detail about these methods here, but simply put the distance formula is just so I can get a distance between two points, and the mathematical modulo is just another way of doing what the built in javaScript modulo operator does only it works better with negative numbers.
 
-Just like all my other canvas examples I also have my usual create canvas method that I am now using in all of them more or less as a way to just keep everything in line with a certain standard. Simply put any basic thing that I want to do to any canvas element I place in this simple copy and paste method that I can take with me to any other canvas example.
+Just like all my other canvas examples I also have my usual create canvas method that I am now using in all of them more or less as a way to just keep everything in line with a certain standard. Simply put any basic thing that I want to do to any canvas element I place in this simple copy and paste method that I can take with me to any other canvas example. However in some cases I might make a few project specific tweaks to the function.
 
 ```js
 var utils = {};
@@ -134,6 +134,8 @@ utils.createCanvas = function(opt){
     return opt;
 };
 ```
+
+As of this writing there is nothing new that I have parked in the utils method. these are all methods that I have in other canvas example modules, it is just that this is the set of methods that I am su far just using with this example only.
 
 ## 3 - The pool module
 
