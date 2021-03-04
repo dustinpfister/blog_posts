@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:44:03
-version: 1.100
+updated: 2021-03-04 16:46:08
+version: 1.101
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -161,7 +161,7 @@ A grid defense style game prototype that involves units that come from one side 
 
 ### 3.26 - [Monster Smash](/2020/08/17/canvas-example-grid-game-monster-smash/)
 
-A monster smash RPG style game idea
+A monster smash RPG style game idea that I gut started, but as of yet have not finished. The general idea that I had in mind was something like dragon warrior for the nes, but I wanted to add a bunch of things to find a new spin on this type of game.
 
 ### 3.27 - [Grid gradient](/2020/03/26/canvas-example-grid-gradient/)
 
