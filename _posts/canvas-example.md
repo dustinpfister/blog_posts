@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:46:08
-version: 1.101
+updated: 2021-03-04 16:49:06
+version: 1.102
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -165,7 +165,7 @@ A monster smash RPG style game idea that I gut started, but as of yet have not f
 
 ### 3.27 - [Grid gradient](/2020/03/26/canvas-example-grid-gradient/)
 
-A canvas example of a grid where each cell changes color depending on the status of an array of objects the properties of which can be changed by way of plug-ins for the main state module that is used.
+A canvas example of a grid where each cell changes color depending on the status of an array of objects the properties of which can be changed by way of plug-ins for the main state module that is used. This is an example that I put a fair amount of time into when it comes to working out a half way decent plug in system, but I did not go to nuts when it comes to adding plug is for it. However it is still something that I look back to now and then when it comes to how to go about creating something where there is a simple core module that can then be extended with additional option code that can be added, and taken away without to much hassle. Which is of course a great way to go about handling things for sure.
 
 ### 3.28 - [Grid world simulator core](/2020/04/15/canvas-example-grid-worldsim-core/)
 
