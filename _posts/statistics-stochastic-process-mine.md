@@ -5,13 +5,13 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 816
-updated: 2021-03-04 11:10:25
-version: 1.6
+updated: 2021-03-04 11:16:27
+version: 1.7
 ---
 
 Today I will be contnuing with looking into the topic of [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) in [statistics](https://en.wikipedia.org/wiki/Statistics) which is more or less a fancy formal way of random rather than deteranistic processes. 
 
-There is a whole world of examples that come to mind when it comes to this, and there are or course many great examples that have all ready been made over the years. However in this post I will be going over a basic example of this kind of system that comes up when it comes to making a basic idle game.
+There is a whole world of examples that come to mind when it comes to this, and there are or course many great examples that have all ready been made over the years. However in this post I will be going over a basic example of this kind of system that comes up when it comes to making a basic idle game. In such games there is often some kind of resource that the player gains over time by clicking something, having a way to automate the process of gaining resources without having to click, and having a way to gain a large sum of resources while away from playing.
 
 <!-- more -->
 
