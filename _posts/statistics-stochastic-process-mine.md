@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 816
-updated: 2021-03-04 11:05:15
-version: 1.5
+updated: 2021-03-04 11:10:25
+version: 1.6
 ---
 
 Today I will be contnuing with looking into the topic of [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) in [statistics](https://en.wikipedia.org/wiki/Statistics) which is more or less a fancy formal way of random rather than deteranistic processes. 
@@ -69,7 +69,7 @@ var mine = (function(){
 
 ### 1.2 - Basic example of the mine function
 
-Now to test this out to see if it works okay.
+Now to test this mine function out to see if it works the way I want it to. There are three general ways I might go about using this mine function one is to make use of it when it comes to a player clicking something that will result in a single mine event each time it is clicked. The other user case is to have a main app loop update method that will call this mine method once every game update tick. Then there is also adding an away production feature, where a large number of ticks will be done in one shot, once, when the app first starts up after that player was not playing for a while and came back to my site.
 
 ```js 
 var i = 0,
