@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 816
-updated: 2021-03-04 09:39:22
-version: 1.1
+updated: 2021-03-04 09:48:42
+version: 1.2
 ---
 
 Today I will be contnuing with looking into the topic of [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) in [statistics](https://en.wikipedia.org/wiki/Statistics) which is more or less a fancy formal way of random rather than deteranistic processes. 
@@ -19,41 +19,53 @@ There is a whole world of examples that come to mind when it comes to this, and 
 
 So the general idea that I have here is to have a mine function that will take some argumnets that have to do with the count of mine events, the method to use to come up for amounts or ores, and a collection of ores.
 
-```js
-var defaultOres = [
-    { type: 'iron', chance: 1 },
-    { type: 'copper', chance: 0.1 },
-    { type: 'gold', chance: 0.01 }
-];
- 
-var mineMethods = {
-    singleRandom: function(ore, count){
-        var roll = Math.random();
-        if(roll <= ore.chance){
-            return count;
-        }
-        return 0;
-    },
-    singlePure: function(ore, count){
-        return Math.round(ore.chance * count);
-    }
-};
- 
-var mine = function(count, mineMethod, ores){
-    ores = ores === undefined ? defaultOres : ores;
-    count = count === undefined ? 1 : count;
-    mineMethod = mineMethod === undefined ? mineMethods.singleRandom : mineMethod;
-    return ores.map(function(oreObj){
-        var amount = mineMethod(oreObj, count);
-        return {
-            type: oreObj.type,
-            amount: amount
-        };
-    });
-};
-```
+### 1.1 - The mine function
 
 ```js
+// The mine function
+var mine = (function(){
+    // built in ores
+    var defaultOres = [
+        { type: 'iron', chance: 1 },
+        { type: 'copper', chance: 0.1 },
+        { type: 'gold', chance: 0.01 }
+    ];
+    // build in mine methods
+    var mineMethods = {
+        singleRandom: function(ore, count){
+            var roll = Math.random();
+            if(roll <= ore.chance){
+                return count;
+            }
+            return 0;
+        },
+        singlePure: function(ore, count){
+            return Math.round(ore.chance * count);
+        }
+    };
+    // Main mine function
+    var api = function(count, mineMethod, ores){
+        ores = ores === undefined ? defaultOres : ores;
+        count = count === undefined ? 1 : count;
+        mineMethod = mineMethod === undefined ? mineMethods.singleRandom : mineMethod;
+        return ores.map(function(oreObj){
+            var amount = mineMethod(oreObj, count);
+            return {
+                type: oreObj.type,
+                amount: amount
+            };
+        });
+    };
+    // make mineMethods public
+    api.mineMethods = mineMethods;
+    // return public API
+    return api;
+}());
+```
+
+### 1.2 - Basic example of the mine function
+
+```js 
 var i = 0,
 mineCount = 1000,
 onHand = {
@@ -63,14 +75,14 @@ onHand = {
 };
  
 while(i < mineCount){
-    var mineResult = mine(1, mineMethods.singleRandom);
+    var mineResult = mine(1, mine.mineMethods.singleRandom);
     mineResult.forEach(function(oreObj){
         onHand[oreObj.type] += oreObj.amount;
     });
     i += 1;
 }
  
-console.log( mine(mineCount, mineMethods.singlePure) );
+console.log( mine(mineCount, mine.mineMethods.singlePure) );
 // [ { type: 'iron', amount: 1000 },
 //   { type: 'copper', amount: 100 },
 //   { type: 'gold', amount: 10 } ]
@@ -79,3 +91,7 @@ console.log( mine(mineCount, mineMethods.singlePure) );
 console.log( onHand );
  
 ```
+
+## 2 - Conclusion
+
+This kind of function is something that I am using, or should be using, at the core of some of my idle games. I often do work on improving the source code and experence of some of these games and many other projects that are like this. So it is highly likeley that I will be coming back to this now and then in the future.
