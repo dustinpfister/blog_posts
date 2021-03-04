@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:48:38
-version: 1.40
+updated: 2021-03-04 15:51:31
+version: 1.41
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -139,7 +139,7 @@ As of this writing there is nothing new that I have parked in the utils method. 
 
 ## 3 - The pool module
 
-Here I have an object pool module which is just a fixed collection of objects that I use over an over again. I made another module in my [canvas example on object pools](/2020/07/20/canvas-example-object-pool/) where I get into this topic a little deeper, but for this canvas example I made my own custom cut solution for this very example, rather than something that might be a little more reusable that I worked out in that post.
+Here I have an object pool module which is just a fixed collection of objects that I use over an over again. I made another module in my [canvas example on object pools](/2020/07/20/canvas-example-object-pool/) where I get into this topic a little deeper, but for this canvas example I made my own custom cut solution for this very example, rather than something that might be a little more reusable that I worked out in that post. Which is something that I often do so when and where needed anyway with these examples as I like to keep each of them there own independent thing.
 
 This module has two main public functions one to create a pool state object, and the other to update such an object by a given number of seconds. It is in the body of update method that I create a pool of points for a display object in the pool, and the create methods is where I create this pool of objects and call the update method for the first time. The update method will then be called outside of this in a main app loop function in the main javaScript file of the example that I will be getting to later.
 
