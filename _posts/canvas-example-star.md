@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 15:55:40
-version: 1.42
+updated: 2021-03-04 15:57:49
+version: 1.43
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -255,7 +255,7 @@ In this module I also have a number of helper methods that have to do with thing
 
 ## 4 - The draw module
 
-I then have some draw methods that I worked out that I made as part of an additional module following just th simple object literal pattern. One is to just draw a plain black background, and another is to draw an array of points.
+I then have some draw methods that I worked out that I made as part of an additional module following just th simple object literal pattern. For now this module is to just draw a background for the example, and also of course this contains my draw points method that is used to draw an array of points to a canvas such as you guessed it an array of points that draws a star.
 
 ```js
 var draw = (function(){
