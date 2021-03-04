@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 16:18:02
-version: 1.47
+updated: 2021-03-04 16:26:39
+version: 1.48
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -367,7 +367,9 @@ Here in the main.js file of my star canvas example I am making use of all of the
 
 The utils create canvas element method is then what I want to use to create a canvas element with all the various properties of the canvas set up just the way that I like it. When doing so I can also set the actual display width of the canvas, but not the scaled size of the canvas, that I like to do with CSS.
 
-I then use my pool module to create a new main state object with a few properties that I have set with some hard coded settings, and I pass a reference to the canvas element while I am at it. AFter that I have my main app loop in which I am drawing the current state of the main pool state object, and calling the update method of the pool module to update that state.
+I then use my pool module to create a new main state object with a few properties that I have set with some hard coded settings, and I pass a reference to the canvas element while I am at it. After that I have my main app loop in which I am drawing the current state of the main pool state object, and calling the update method of the pool module to update that state.
+
+As of 0.1.0 I now have a single event listener attached to the canvas that for now I am using to just toggle a debug mode on and off each time the canvas is clicked. In the debug mode I am not displaying detailed into about each star, in future versions this might change to something else that displayed into about the state of the example over all, but that is something that I will be writing about more when and if i get to it.
 
 ```js
 (function(){
