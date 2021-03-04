@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:20:41
-version: 1.95
+updated: 2021-03-04 16:30:50
+version: 1.96
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -67,7 +67,7 @@ In my animations basics canvas example I touched base on the basics of animation
 
 ### 3.3 - [Animation and fractals](/2020/02/19/canvas-example-animation-fractal/)
 
-I have some interest in fractals, and thus far I have this one post that I have worked out where I am making a basic fractal and displaying a fractal like animation with canvas elements.
+I have some interest in fractals, and thus far I have this one post that I have worked out where I am making a basic fractal and displaying a fractal like animation with canvas elements. It is nothing major just a basic visual effect that has to do with something that keeps scaling up or down forever which seems to be the central things about fractals.
 
 ### 3.4 - [Animation and pixmaps](/2021/01/29/canvas-example-animation-pixmaps/)
 
