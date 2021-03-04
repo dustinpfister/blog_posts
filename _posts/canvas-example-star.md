@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-04 16:14:52
-version: 1.46
+updated: 2021-03-04 16:18:02
+version: 1.47
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
@@ -419,10 +419,12 @@ I then use my pool module to create a new main state object with a few propertie
 }());
 ```
 
-When this is up and running I get a bunch of stars moving around the canvas with all kinds of different properties for the number of points a star has as well as the color, facing direction, heading direction, and so forth. There are all kinds of additional things that come to mind with this so there might be some additional updates comeing at some point in the future with this one.
+When this is up and running I get a bunch of stars moving around the canvas with all kinds of different properties for the number of points a star has as well as the color, facing direction, heading direction, and so forth. There are all kinds of additional things that come to mind with this so there might be some additional updates coming at some point in the future with this one.
 
 ## 6 - Conclusion
 
 So this canvas example of a star module worked out pretty well, it was a nice little exercise at making stars for use in a canvas element. There is more than one method for making them both of which have to do with Math.cos and Math.sin that are used to find out points around a given origin point.
 
-In this post I also touched basic on a number of other topics also, such as separating a module from a view by having the star module septate from the model that is used to draw the array of points to the canvas. With that said I hope that you picked up one or two  ore interesting things when it comes to canvas, and javaScriopt in general that can be applied to your own projects in the future.
+In this post I also touched basic on a number of other topics also, such as separating a module from a view by having the star module septate from the model that is used to draw the array of points to the canvas. With that said I hope that you picked up one or two more interesting things when it comes to canvas, and javaScriopt in general that can be applied to your own projects in the future. 
+
+New versions of this will be coming out sooner or later, there is more work to do on this one for sure as there is code that I am not using when it comes to the create2 method for example, I would like to do more with user input with this one also, I have some things drafted out but it might be a while until I get to it. I do have a lot of other canvas examples that also need a lot more work also after all.
