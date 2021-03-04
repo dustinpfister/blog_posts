@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 816
-updated: 2021-03-04 09:53:07
-version: 1.4
+updated: 2021-03-04 11:05:15
+version: 1.5
 ---
 
 Today I will be contnuing with looking into the topic of [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) in [statistics](https://en.wikipedia.org/wiki/Statistics) which is more or less a fancy formal way of random rather than deteranistic processes. 
@@ -21,7 +21,9 @@ So the general idea that I have here is to have a mine function that will take s
 
 ### 1.1 - The mine function
 
-So then here is the source code of the mine function that I have in mind.
+So then here is the source code of the mine function that I have in mind. I actaully return the function within another function by way of following the IIFE module pattern in javaScript. Inside the body of the IIFE I have some hard coded defaults for ores and mine methods.
+
+When it comes to the mine methods I have a single random method that involves the use of a single call of Math.random, and single pure that involves just a single call of an expresion that does not make use of Math.random, and is more in line with the concept of a pure function. In other words a function that will always return the same result for the same arguments.
 
 ```js
 // The mine function
