@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 816
-updated: 2021-03-04 11:16:27
-version: 1.7
+updated: 2021-03-04 11:32:15
+version: 1.8
 ---
 
 Today I will be contnuing with looking into the topic of [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) in [statistics](https://en.wikipedia.org/wiki/Statistics) which is more or less a fancy formal way of random rather than deteranistic processes. 
@@ -100,4 +100,6 @@ console.log( onHand );
 
 ## 2 - Conclusion
 
-This kind of function is something that I am using, or should be using, at the core of some of my idle games. I often do work on improving the source code and experence of some of these games and many other projects that are like this. So it is highly likeley that I will be coming back to this now and then in the future.
+This kind of function is something that I am using, or should be using, at the core of some of my idle games. In the event that I am not there is still using some kind of system that is not all that far off from what this is. I do not think that an idle game has to be complatly stochastic in nature, many good idle games are not that much. However there is still a degree of randomness when it comes to a player making some kind of action or not.
+
+I often do work on improving the source code and experence of some of these games and many other projects that are like this. So it is highly likeley that I will be coming back to this now and then in the future. 
