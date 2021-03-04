@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:30:50
-version: 1.96
+updated: 2021-03-04 16:34:06
+version: 1.97
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -79,7 +79,7 @@ In this example I have just a simple bounding ball, a typical example that just 
 
 ### 3.6 - [A Basic idle game](/2020/02/01/canvas-example-basic-idle-game/)
 
-In this post I made a very basic idle game prototype. Nothing major with it, just many of the core features of such a game in a very bland unbranded generic form.
+In this post I made a very basic idle game prototype. Nothing major with it, just many of the core features of such a game in a very bland unbranded generic form. There is just starting out with a very basic crude example that is just stepping a money variable when clicking a button, and then having upgrade buttons and over time production. Many simple idle games are not that advanced, but they do still have some kind of theme.
 
 ### 3.7 - [A button layout module](/2020/02/03/canvas-example-button-layout/)
 
