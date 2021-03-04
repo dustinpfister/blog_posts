@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-03 18:02:00
-version: 1.94
+updated: 2021-03-04 16:20:41
+version: 1.95
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -239,7 +239,7 @@ I use to have a thing about drawing stars in all kinds of different ways so of c
 
 The example makes use of a module that pulls the data state of what a star is away from how to go about drawing one. So this is not an example where I have a draw star method that will just draw to the context with some arguments, but rather it is a module that will create a star as an array of points. The array of points is then pass to a simple draw points method.
 
-I am also playing around with all kinds of other features and topics that have to do with canvas projects here, such as object pools, moving an object by way of system time, alpha transparency, and more.
+I am also playing around with all kinds of other features and topics that have to do with canvas projects here, such as object pools, moving an object by way of system time, alpha transparency, and more. This is also an example that I keep coming back to a little ore so than other canvas examples so it is of half way decent quality all ready. Also there is only so much more that comes to mind when it comes to a canvas example that is just about drawing stars to a canvas.
 
 ### 3.45 - [State machines](/2020/01/28/canvas-example-state-machine/)
 
