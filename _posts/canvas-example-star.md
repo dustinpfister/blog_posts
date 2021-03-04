@@ -5,18 +5,20 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-02 19:59:26
-version: 1.36
+updated: 2021-03-04 15:30:45
+version: 1.37
 ---
 
-Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5). There are many ways of doing so with a canvas HTML element, many solutions that I see involve making a draw method that will draw a star directly to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a star is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points.
+Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. 
+
+There are many ways of drawing a star with a canvas element and a little javaScript, many solutions that I see involve making a draw method that will draw a star directly to the canvas. They are like the built in 2d context methods like that of the arc method where one just passes some arguments and a star is drawn to the canvas. Although these kinds of solutions work I think a better way of doing so is to create a method that will create an array of points, and then have a draw method that will just render that array of points to the canvas. That way the process of drawing a star is just a matter of working out logic that will create an array of points that are to be rendered in a connect the dots type fashion. By doing so I am also pulling the state of these points away from logic that is used to render the state of such points to the canvas.
 
 There is also taking a moment to just have a little fun with canvas and stars for once. Canvas elements are a part of front end javaScript that are a great example of fun, and creative rather than dull and boring javaScript. With that said in this example I think I will also be touching base on a wide range of other topics that come up when create a canvas project from the ground up, such as object pools, moving an object by way of system time rather than stepping on each loop, and more. There is a lot that can be done when it comes to getting creative with this kind of thing, so this post should be a little fun for once.
 
 <!-- more -->
 
 <div id="canvas-app"></div>
-<script src="/js/canvas-examples/star/0.0.0/pkg.js"></script>
+<script src="/js/canvas-examples/star/0.1.0/pkg.js"></script>
 
 ## 1 - The star module
 
@@ -28,7 +30,6 @@ The other method that I worked out is called just create2, this method creates a
 
 ```js
 var starMod = (function () {
- 
     // get a point with a given radian, radius, and origin point
     var getPoint = function (radian, radius, ox, oy) {
         return {
@@ -36,7 +37,6 @@ var starMod = (function () {
             y: Math.sin(radian) * radius + oy
         };
     };
- 
     // parse options
     var parseOptions = function (opt) {
         opt = opt || {};
@@ -49,7 +49,6 @@ var starMod = (function () {
         opt.pointSkip = opt.pointSkip || 2;
         return opt;
     };
- 
     // public API
     return {
         // create a star points array by pointCount, and inner and outer radius
@@ -85,7 +84,6 @@ var starMod = (function () {
             return points;
         }
     }
- 
 }
     ());
 ```
@@ -107,6 +105,10 @@ utils.distance = function (x1, y1, x2, y2) {
 // mathematical modulo
 utils.mod = function (x, m) {
     return (x % m + m) % m;
+};
+// radian to degree helper
+utils.radianToDegree = function(radian){
+    return Math.floor(radian / (Math.PI * 2) * 360);
 };
 // create a canvas
 utils.createCanvas = function(opt){
@@ -139,24 +141,32 @@ This module has two main public functions one to create a pool state object, and
 
 ```js
 var pool = (function(){
- 
+    // public API
     var api = {};
- 
+    // set color
     var colors = ['blue', 'red', 'white', 'green', 'lime', 'orange']
     var setColor = function(state, obj){
         obj.color = colors[Math.floor(Math.random() * colors.length)];
     };
- 
+    // set alpha
     var setAlpha = function(state, obj){
         obj.alpha = 1 - obj.d / state.maxDist;
     };
- 
+    // set the distance between a star and the center
     var setDistance = function(state, obj){
         var cx = state.canvas.width / 2,
         cy = state.canvas.height / 2;
         obj.d = utils.distance(obj.x, obj.y, cx, cy);
     };
- 
+    // set the size of a star
+    var setSize = function(state, obj){
+        var per = 1 - obj.d / state.maxDist,
+        maxDelta = state.starSizeMax - state.starSizeMin,
+        delta1 = maxDelta * 0.25 + maxDelta * 0.75 * per,
+        delta2 = maxDelta * 0.25 * per;
+        obj.r1 = state.starSizeMin + delta1 * per;
+        obj.r2 = state.starSizeMin + delta2 * per;
+    };
     // appy bounds
     var bounds = function(state, obj){
         var cx = state.canvas.width / 2,
@@ -165,11 +175,10 @@ var pool = (function(){
             var a = Math.atan(cy - obj.y, cx - obj.x);
             obj.x = cx + Math.cos(a) * ( state.maxDist - 10 );
             obj.y = cy + Math.sin(a) * ( state.maxDist - 10 );
-            //obj.d = utils.distance(obj.x, obj.y, cx, cy);
             setDistance(state, obj);
         }
     };
- 
+    // update a state object
     api.update = function (state, secs) {
         var i = state.pool.length,
         cx = state.canvas.width / 2,
@@ -182,7 +191,8 @@ var pool = (function(){
             obj.y += Math.sin(obj.heading) * obj.pps * secs;
             setDistance(state, obj); // set distance
             bounds(state, obj);      // do a bounds check
-            setAlpha(state, obj);     // set the alpha value
+            setAlpha(state, obj);    // set the alpha value
+            setSize(state, obj);     // set the size
             obj.facing += obj.facingDelta * secs;
             obj.facing = utils.mod(obj.facing, Math.PI * 2);
             obj.points = starMod.create1({
@@ -193,28 +203,34 @@ var pool = (function(){
             });
         }
     };
- 
+    // create a state object
     api.createState = function (opt) {
         opt = opt || {};
         var state = {
-            ver: '0.0.0',
+            ver: '0.1.0',
+            debugMode: false,
+            count: opt.count || 5,
+            starPPSMax: opt.starPPSMax || 64,
+            starPPSMin: opt.starPPSMin || 32,
+            starSizeMax: opt.starSizeMax || 20,
+            starSizeMin: opt.starSizeMin || 10,
             maxDist: opt.maxDist || 50,
             canvas: opt.canvas,
             pool: []
         };
         var i = 0, star,
-        len = opt.count || 10;
+        len = state.count;
         while (i < len) {
             star = {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                pointCount: 5 + Math.round(5 * Math.random()),
-                r1: 30 + Math.round(20 * Math.random()),
-                r2: 10 + Math.round(10 * Math.random()),
+                x: state.canvas.width / 2,
+                y: state.canvas.height / 2,
+                pointCount: 5 + Math.round(15 * Math.random()),
+                r1: state.starSizeMax,
+                r2: state.starSizeMin,
                 heading: Math.PI * 2 * Math.random(),
                 facing: 0,
                 facingDelta: -1 + 2 * Math.random(),
-                pps: 16 + 64 * Math.random(),
+                pps: state.starPPSMin + (state.starPPSMax - state.starPPSMin) * Math.random(),
                 alpha: 1,
                 color: 'blue',
                 points: []
@@ -226,11 +242,9 @@ var pool = (function(){
         }
         return state;
     };
- 
+    // return the public api
     return api;
- 
 }());
-
 ```
 
 In this module I also have a number of helper methods that have to do with things like what to do when a display object moves out of bounds, and how should a color property be set for a display object.
@@ -241,9 +255,6 @@ I then have some draw methods that I worked out that I made as part of an additi
 
 ```js
 var draw = (function(){
-    var radianToDegree = function(radian){
-        return Math.floor(radian / (Math.PI * 2) * 360);
-    };
     // draw direction helper
     var strokeDirHelper = function(ctx, obj, dir, radiusBegin, radiusEnd){
         radiusBegin = radiusBegin === undefined ? obj.r2 : radiusBegin;
@@ -259,26 +270,38 @@ var draw = (function(){
     };
     // draw star info
     var drawStarInfo = function(ctx, obj){
-        ctx.fillStyle = 'rgba(128,128,128,0.2)';
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
         ctx.fillText('pos: ' + Math.floor(obj.x) + ', ' + Math.floor(obj.y), obj.x + 10, obj.y + 10);
         ctx.fillText('pps: ' + Math.floor(obj.pps), obj.x + 10, obj.y + 20);
-        ctx.fillText('heading: ' + radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
-        ctx.fillText('facing: ' + radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
+        ctx.fillText('heading: ' + utils.radianToDegree(obj.heading), obj.x + 10, obj.y + 30);
+        ctx.fillText('facing: ' + utils.radianToDegree(obj.facing), obj.x + 10, obj.y + 40);
     };
     // start public api
     var api = {};
     // draw background
-    api.background = function (ctx, canvas) {
-        ctx.fillStyle = 'black';
+    api.createBackground = function(ctx, canvas){
+        var gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Add color stops
+        gradient.addColorStop(0, 'red');
+        gradient.addColorStop(0.2, 'orange');
+        gradient.addColorStop(0.4, 'yellow');
+        gradient.addColorStop(0.6, 'blue');
+        gradient.addColorStop(0.8, 'cyan');
+        gradient.addColorStop(1, 'lime');
+        return gradient;
+    };
+    // create a background
+    api.background = function (ctx, canvas, style) {
+        ctx.fillStyle = style || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     // draw a star
-    api.star = function(ctx, obj){
+    api.star = function(ctx, obj, state){
         ctx.fillStyle = obj.color || 'green';
-        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = 'black';
         ctx.lineWidth = 6;
         ctx.globalAlpha = obj.alpha;
         ctx.save();
@@ -292,7 +315,9 @@ var draw = (function(){
         strokeDirHelper(ctx, obj, obj.heading, obj.r1 * 0.5, obj.r1);
         strokeDirHelper(ctx, obj, obj.facing, 0, obj.r1 * 0.5);
         ctx.globalAlpha = 1;
-        drawStarInfo(ctx, obj);
+        if(state.debugMode){
+            drawStarInfo(ctx, obj);
+        }
     };
     // draw points
     api.points = function (ctx, points, cx, cy) {
@@ -313,8 +338,9 @@ var draw = (function(){
         ctx.fill();
         ctx.restore();
     };
+    // draw version number
     api.ver = function(ctx, state){
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'black';
         ctx.font = '10px arial';
         ctx.textBaseline = 'top';
         ctx.textAlign = 'left';
@@ -323,7 +349,6 @@ var draw = (function(){
     // return public api
     return api;
 }());
-
 ```
 
 ## 5 - The Main.js file
@@ -335,34 +360,53 @@ At the top of the file I am using the utils create canvas element to create a ca
 I then use my pool module to create a new main state object with a few properties that I have set with some hard coded settings, and I pass a reference to the canvas element while I am at it. AFter that I have my main app loop in which I am drawing the current state of the main pool state object, and calling the update method of the pool module to update that state.
 
 ```js
-var canvasObj = utils.createCanvas({
-    width: 640,
-    height: 480
-}),
-canvas = canvasObj.canvas,
-ctx = canvasObj.ctx;
- 
-var state = pool.createState({
-    count: 15,
-    maxDist: 250,
-    canvas: canvas
-}),
-lt = new Date();
- 
-var loop = function () {
-    var now = new Date(),
-    t = now - lt,
-    secs = t / 1000;
-    requestAnimationFrame(loop);
-    draw.background(ctx, canvas);
-    state.pool.forEach(function(obj){
-        draw.star(ctx, obj);
+(function(){
+    // CONSTANTS
+    var STAR_COUNT = 20,
+    STAR_PPS_MIN = 64,
+    STAR_PPS_MAX = 200,
+    STAR_SIZE_MIN = 37.5,
+    STAR_SIZE_MAX = 150;
+    // create canvas
+    var canvasObj = utils.createCanvas({
+        width: 640,
+        height: 480
+    }),
+    canvas = canvasObj.canvas,
+    ctx = canvasObj.ctx;
+    // main state object
+    var state = pool.createState({
+        count: STAR_COUNT,
+        starSizeMax: STAR_SIZE_MAX,
+        starSizeMin: STAR_SIZE_MIN,
+        starPPSMax: STAR_PPS_MAX,
+        starPPSMin: STAR_PPS_MIN,
+        maxDist: canvas.width / 2,
+        canvas: canvas
+    }),
+    lt = new Date();
+    // background
+    state.background = draw.createBackground(ctx, canvas)
+    // main app loop
+    var loop = function () {
+        var now = new Date(),
+        t = now - lt,
+        secs = t / 1000;
+        requestAnimationFrame(loop);
+        draw.background(ctx, canvas, state.background);
+        state.pool.forEach(function(obj){
+            draw.star(ctx, obj, state);
+        });
+        draw.ver(ctx, state);
+        pool.update(state, secs);
+        lt = now;
+    };
+    loop();
+    // click event
+    state.canvas.addEventListener('click', function(e){
+        state.debugMode = !state.debugMode;
     });
-    draw.ver(ctx, state);
-    pool.update(state, secs);
-    lt = now;
-};
-loop();
+}());
 ```
 
 When this is up and running I get a bunch of stars moving around the canvas with all kinds of different properties for the number of points a star has as well as the color, facing direction, heading direction, and so forth. There are all kinds of additional things that come to mind with this so there might be some additional updates comeing at some point in the future with this one.
