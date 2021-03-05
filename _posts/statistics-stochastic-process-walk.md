@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:40:36
-version: 1.8
+updated: 2021-03-05 13:42:25
+version: 1.9
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -167,7 +167,9 @@ var poolMod = (function(){
 }());
 ```
 
-### 2.4 - Walk
+### 2.4 - The Walk module now
+
+Now to hack over the walk module a little to add some features that I might want with this canvas example.
 
 ```js
 var walk = (function(){
