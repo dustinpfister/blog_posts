@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:42:25
-version: 1.9
+updated: 2021-03-05 13:44:50
+version: 1.10
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -228,7 +228,9 @@ var walk = (function(){
 }());
 ```
 
-### 2.5 - draw
+### 2.5 - The draw module to render to a canvae element
+
+This is a canvas example so I will want a module that will be used to render data in a main state object, to the canvas so I know what is going on. For now I have a draw background method, along with methods to draw the current state of the grid, and the pool of display objects that will be over the grid that are subject to called of the walk method in the min javaScript file of this example.
 
 ```js
 var draw = (function(){
