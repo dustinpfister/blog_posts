@@ -5,13 +5,13 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 155
-updated: 2021-03-05 09:14:18
-version: 1.5
+updated: 2021-03-05 13:52:10
+version: 1.6
 ---
 
-In [Statistics](https://en.wikipedia.org/wiki/Statistics) it seems like [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is something that comes up often. In Statistics standard deviation is a way to go abound mesuring the variation or dispersion of a collection of values when it comes to some data. For example take the set of numbers \[50,51\], and compare them to \[49, 89\]. It would go without saying that the numbers \[50,51\] are closer togeather than \[49, 89\], but how should one go about mesuring that? Standard deviation is one way to go about doing just this, but there are of course many ways of going about doing so, and even when it comes to Standard deviation it would seem that it is not so Standard actually as it would apear that there is more than one standard for Standard deviation actually.
+In [Statistics](https://en.wikipedia.org/wiki/Statistics) it seems like [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is something that comes up often. In Statistics standard deviation is a way to go abound measuring the variation or dispersion of a collection of values when it comes to some data. For example take the set of numbers \[50,51\], and compare them to \[49, 89\]. It would go without saying that the numbers \[50,51\] are closer together than \[49, 89\], but how should one go about measuring that? Standard deviation is one way to go about doing just this, but there are of course many ways of going about doing so, and even when it comes to Standard deviation it would seem that it is not so Standard actually as it would appear that there is more than one standard for Standard deviation actually.
 
-JavaScript might not be the ideal language for this sort of thing compared to some other programing languages, for example in python there is a built in standard library that contains a [statistics library with several standard deviation](/2021/02/26/python-standard-library-statistics/) methods. However if I just research what the proper expressions are, it is not too time consuming to come up with my own simple copy and paste methods for many statistics related tasks in a javaScript environment. While I am at it I might get around to working out some additional related code examples when it comes to just working various things out with a set of numbers. I think in order to really undertsand what is going on with this I should work out some kind of visual thing becuase that just  seems to be the best way that learn about these things speaking from my experence.
+JavaScript might not be the ideal language for this sort of thing compared to some other programing languages, for example in python there is a built in standard library that contains a [statistics library with several standard deviation](/2021/02/26/python-standard-library-statistics/) methods. However if I just research what the proper expressions are, it is not too time consuming to come up with my own simple copy and paste methods for many statistics related tasks in a javaScript environment. While I am at it I might get around to working out some additional related code examples when it comes to just working various things out with a set of numbers. I think in order to really understand what is going on with this I should work out some kind of visual thing because that just  seems to be the best way that learn about these things speaking from my experience.
 
 <!-- more -->
 
@@ -50,4 +50,4 @@ This is just one of several kinds of standard deviation though, in the python st
 
 ## 3 - Conclusion
 
-That is it for now when it comes to standard deviation in a javaScript environment, in time I might get around to editing this post to expand it with additional methods for getting standard deviation and variance. However what I think I need to do first and formost is start working on one or two projects where I am actually using these methods in the project.
+That is it for now when it comes to standard deviation in a javaScript environment, in time I might get around to editing this post to expand it with additional methods for getting standard deviation and variance. However what I think I need to do first and foremost is start working on one or two projects where I am actually using these methods in the project.
