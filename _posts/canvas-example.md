@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-05 14:10:28
-version: 1.105
+updated: 2021-03-05 14:12:43
+version: 1.106
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -169,11 +169,11 @@ A canvas example of a grid where each cell changes color depending on the status
 
 ### 3.28 - [Grid world simulator core](/2020/04/15/canvas-example-grid-worldsim-core/)
 
-A start with what might become a world simulator type canvas example thing like that of Sim Earth. As of this writing thougn I did not get very far wwith this one. If I do get back into this project it might end up being like my Mr Sun project where it is not just one example but a bunch of them. The main thing when it comes to starting something like this I think is to get the plug in system, and main state machine solid before getting to deep into the logic.
+A start with what might become a world simulator type canvas example thing like that of Sim Earth. As of this writing thougn I did not get very far with this one. If I do get back into this project it might end up being like my Mr Sun project where it is not just one example but a bunch of them. The main thing when it comes to starting something like this I think is to get the plug in system, and main state machine solid before getting to deep into the logic.
 
 ### 3.29 - [Hyper casual space Shooter](/2020/12/11/canvas-example-hyper-casual-space-shooter/)
 
-This is another hyper causal game where the player can just fly around and blast blocks.
+This is another hyper causal game where the player can just fly around and blast blocks. This is one of my examples that I put a fair amount of time into actually, but it still does not feel like a finished product just yet. However there are a lot of cool features all ready that I never really got to with other canvas examples, such as the weapon system, and the nature of the game would.
 
 ### 3.30 - [Hyper casual to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/)
 
