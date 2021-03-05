@@ -5,13 +5,13 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 12:40:47
-version: 1.3
+updated: 2021-03-05 13:20:10
+version: 1.4
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
 
-The process of making this kind of random process is simple enough, it will typically include a module what will be used to create a grid, another to create a collection of objects in the grid, and a walk method that will be used to get delta values for an object. However maybe the main method to write about when it comes to this kind of project, and the centeral topic of the post would be the walk method. When it comes to having an object at a given point in a grid there is taking the next step in one of several directions, there is taking a complately random direction, and then there is taking the same diretion over and over again.
+The process of making this kind of random process is simple enough, it will typically include a module what will be used to create a grid, another to create a collection of objects in the grid, and a walk method that will be used to get delta values for an object. However maybe the main method to write about when it comes to this kind of project, and the central topic of the post would be the walk method. When it comes to having an object at a given point in a grid there is taking the next step in one of several directions, there is taking a completely random direction, and then there is taking the same direction over and over again.
 
 <!-- more -->
 
@@ -311,5 +311,5 @@ var draw = (function(){
 
 ## 3 - Conclusion
 
-This was a fun little project, and there is still a lot more that could be done when it comes to making the canvas example that I made a little more involved. However I have so many other projects that are in need of some attention from me, and this is just one of so many others. Still what I worked out here should maybe turn into a canvas example of mine, I have made a few projects that make use of a grid and they have objects in them that move around on top of or as part of that grid. So this sort of thing can cary over into other projects.
+This was a fun little project, and there is still a lot more that could be done when it comes to making the canvas example that I made a little more involved. However I have so many other projects that are in need of some attention from me, and this is just one of so many others. Still what I worked out here should maybe turn into a canvas example of mine, I have made a few projects that make use of a grid and they have objects in them that move around on top of or as part of that grid. So this sort of thing can carry over into other projects.
 
