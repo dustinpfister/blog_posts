@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-05 13:57:07
-version: 1.103
+updated: 2021-03-05 14:00:11
+version: 1.104
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -209,7 +209,7 @@ The idea just came into my head one day to make some kind of fun and interesting
 
 ### 3.38 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
 
-Search and destroy particles.
+Yet another Search particles based project this time taking a kind of search and destroy type direction with it. Many games, as well as random animation or digital art type things will often involve some kind of crude yet effective artificial intelligence. In this example I have a particle that is looking to just search and destroy other particles that are of another type than that of its own.
 
 ### 3.39 - [percent values and Math log](/2020/08/08/canvas-example-percent-math-log/)
 
