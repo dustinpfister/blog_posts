@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2021-03-05 15:36:20
-version: 1.27
+updated: 2021-03-05 15:40:35
+version: 1.28
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. In goes without saying that canvas can be used in the creation and maintenance of more practical projects, but that is not what this example will be for sure. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
@@ -233,7 +233,7 @@ draw.ver = function (state, ctx) {
 
 ## 6 - The utils lib
 
-Like many of my other canvas examples I add a general utility library. This is a custom set of functions for each canvas example that will change a little from one example to another. However often there is a few functions that will show up accross just about all canvas examples also.
+Like many of my other canvas examples I add a general utility library. This is a custom set of functions for each canvas example that will change a little from one example to another. However often there is a few functions that will show up across just about all canvas examples also.
 
 ```js
 var utils = {};
@@ -281,7 +281,7 @@ utils.getCanvasRelative = function (e) {
 
 Now that I have my grid class, and drawing methods together I can now tie everything together with a main app loop, and other code that sets things up for the first time. For now I do not have a main game state module for this example, in time if I put some more time into this project that might change at some point in the future. So in the main.js file here I just have an object literal that is functioning as the start of a game state object of sorts.
 
-Here in the main.js file I create a canvas element with the create element method, and append it to a container element that I have in my html. I also get a reference to the drawing context, and attach events to the canvas element also. In addition to this I also of course have the main app loop method, inside of which I am updating the grid, and rendering the state of that grid to the canvas element with my draw methods.
+Here in the main.js file I create a canvas element with the create canvas utils method, that will create the canvas element and append it to a container element that I have in my html. I also get a reference to the drawing context, and attach and event to the canvas element also that will be used to find out if I clicked an enemy or not. In addition to this I also of course have the main app loop method, inside of which I am updating the grid, and rendering the state of that grid to the canvas element with my draw methods.
 
 ```js
 // SETUP CANVAS
