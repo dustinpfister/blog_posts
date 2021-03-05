@@ -5,11 +5,11 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 155
-updated: 2021-02-26 15:45:46
-version: 1.3
+updated: 2021-03-05 09:01:21
+version: 1.4
 ---
 
-In [Statistics](https://en.wikipedia.org/wiki/Statistics) it seems like [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is something that comes up often. So why not just go ahead and cover this one when it comes to launching my new series of posts on working with statistics in javaScript.
+In [Statistics](https://en.wikipedia.org/wiki/Statistics) it seems like [standard deviation](https://en.wikipedia.org/wiki/Standard_deviation) is something that comes up often. In Statistics standard deviation is a way to go abound mesuring the variation or dispersion of a collection of values when it comes to some data. For example take the set of numbers \[50,51\], and compare them to \[49, 89\]. It would go without saying that the numbers \[50,51\] are closer togeather than \[49, 89\], but how should one go about mesuring that? Standard deviation is one way to go about doing just this, but there are of course many ways of going about doing so, and even when it comes to Standard deviation it would seem that it is not so Standard actually as it would apear that there is more than one standard for Standard deviation actually.
 
 JavaScript might not be the ideal language for this sort of thing compared to some other programing languages, for example in python there is a built in standard library that contains a [statistics library with several standard deviation](/2021/02/26/python-standard-library-statistics/) methods. However if I just research what the proper expressions are, it is not too time consuming to come up with my own simple copy and paste methods for many statistics related tasks in a javaScript environment.
 
