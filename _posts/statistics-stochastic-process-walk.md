@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 10:16:28
-version: 1.2
+updated: 2021-03-05 12:40:47
+version: 1.3
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -62,3 +62,254 @@ console.log(walk());
 // always 4 ( { x: -1, y: 0 } )
 console.log( walk({x:0, y:0, heading:1}, walk.wm.useHeading, [0, 4]) );
 ```
+
+## 2 - A canvas example of this
+
+### 2.1 - Utils
+
+```js
+var utils = {};
+// mathematical modulo
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+// create a canvas
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+```
+
+### 2.2 - Grid
+
+```js
+var grid  = (function(){
+    // create cells helper
+    var createCells = function(grid){
+        var cells = [];
+        var i = 0,
+        obj,
+        len = grid.w * grid.h;
+        while(i < len){
+            obj = {
+                i : i,
+                X : utils.mod(i, grid.w),
+                Y : Math.floor(i / grid.w)
+            };
+            obj.x = grid.xOffset + obj.X * grid.cellSize;
+            obj.y = grid.yOffset + obj.Y * grid.cellSize;
+            cells.push(obj);
+            i += 1;
+        }
+        return cells;
+    };
+    var api = {};
+    api.create = function(opt){
+        opt = opt || {};
+        var grid = {
+            w : opt.w || 5,
+            h : opt.h || 5,
+            xOffset: opt.xOffset || 80,
+            yOffset: opt.yOffset || 80,
+            cellSize: opt.cellSize || 32,
+            cells: []
+        };
+        grid.cells = createCells(grid);
+        return grid;
+    };
+    // return public api
+    return api;
+}());
+```
+
+### 2.3 - pool
+
+```js
+var poolMod = (function(){
+    var api = {};
+    api.create = function(opt){
+        opt = opt || {};
+        var obj = {
+            x: opt.sx || 0,
+            y: opt.sy || 0
+        };
+        var pool = {
+            objects: [obj]
+        };
+        return pool;
+    };
+    // return public api
+    return api;
+}());
+```
+
+### 2.4 - Walk
+
+```js
+var walk = (function(){
+    // default dir movement array
+    // [0,1,2,3,4,5,6,7] => 8 dir movement
+    // [0,2,4,6];        => 4 dir movement
+    // [6];              => always go up
+    var default_dirs = [0,2,4,6];
+    // clamp deltas
+    var clampDelta = function(obj, delta, grid){
+        delta.x = obj.x + delta.x < 0 ? 0: delta.x;
+        delta.x = obj.x + delta.x >= grid.w ? 0: delta.x;
+        delta.y = obj.y + delta.y < 0 ? 0: delta.y;
+        delta.y = obj.y + delta.y >= grid.h ? 0: delta.y;
+        return delta;
+    };
+    // built in walk methods
+    var walkMethods = {
+        // random dir
+        rnd: function(obj, grid, pool, dirs){
+            return dirs[Math.floor(Math.random() * dirs.length)];
+        },
+        // use a heading prop of an object, or default to 0
+        useHeading: function(obj, grid, pool, dirs){
+            return dirs[obj.heading] || 0;
+        }
+    };
+    // Public API
+    var api = function(obj, grid, pool, method, dirs){
+        obj = obj || {x: 0, y: 0};
+        grid = grid || {};
+        pool = pool || {};
+        dirs = dirs === undefined ? default_dirs : dirs;
+        // call step method and get a d num (0-7)
+        var d = method === undefined ? walkMethods.rnd(obj, grid, pool, dirs): method(obj, grid, pool, dirs);
+        // convert to radian
+        var radian = Math.PI * 2 / 8 * d;
+        // use Sin And Cos to return delta values for x and y
+        var delta = {
+            x: Math.round(Math.cos(radian)),
+            y: Math.round(Math.sin(radian))
+        };
+        // clamp deltas that will move an object out of a grid
+        delta = clampDelta(obj, delta, grid);
+        return delta;
+    };
+    // make walk methods public
+    api.wm = walkMethods;
+    // public dirs
+    api.dirs = {
+        four: default_dirs,
+        eight: [0,1,2,3,4,5,6,7]
+    };
+    // return public API
+    return api;
+}());
+```
+
+### 2.5 - draw
+
+```js
+var draw = (function(){
+    var api = {};
+    // draw background
+    api.background = function(ctx, state, style){
+        var canvas = state.canvasObj.canvas;
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0,0, canvas.width, canvas.height);
+    };
+    // draw grid
+    api.grid = function(ctx, state){
+        var grid = state.grid;
+        ctx.strokeStyle = 'white';
+        ctx.fillStyle = 'orange';
+        grid.cells.forEach(function(cell){
+            ctx.beginPath();
+            ctx.rect(cell.x, cell.y, grid.cellSize, grid.cellSize);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+        });
+    };
+    // draw pool
+    api.pool = function(ctx, state){
+        var pool = state.pool,
+        grid = state.grid;
+        ctx.save();
+        ctx.translate(grid.xOffset, grid.yOffset);
+        ctx.strokeStyle = 'black';
+        ctx.fillStyle = 'red';
+        pool.objects.forEach(function(obj){
+            var x = obj.x * grid.cellSize,
+            y = obj.y * grid.cellSize;
+            ctx.beginPath();
+            ctx.rect(x, y, grid.cellSize, grid.cellSize);
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+        });
+        ctx.restore();
+    };
+    // return public api
+    return api;
+}());
+```
+
+### 2.6 - Main.js
+
+```js
+(function(){
+    // main app state
+    var state = {
+        canvasObj : utils.createCanvas({
+            width: 640,
+            height: 480
+        }),
+        grid: grid.create({
+            w: 7,
+            h: 7,
+            xOffset: 320 - 64 * 3.5,
+            yOffset: 240 - 64 * 3.5,
+            cellSize: 64
+        }),
+        pool: poolMod.create({
+            sx: 3,
+            sy: 3
+        })
+    };
+    // app loop
+    var loop = function(){
+        // walk object(s)
+        var obj = state.pool.objects[0];
+        var delta = walk(obj, state.grid, state.pool, walk.wm.rnd, walk.dirs.eight);
+        obj.x += delta.x;
+        obj.y += delta.y;
+        // draw
+        var ctx = state.canvasObj.ctx;
+        draw.background(ctx, state);
+        draw.grid(ctx, state);
+        draw.pool(ctx, state);
+    };
+    loop();
+    // click canvas to call loop
+    state.canvasObj.canvas.addEventListener('click', function(e){
+        loop();
+    });
+}());
+```
+
+## 3 - Conclusion
+
+This was a fun little project, and there is still a lot more that could be done when it comes to making the canvas example that I made a little more involved. However I have so many other projects that are in need of some attention from me, and this is just one of so many others. Still what I worked out here should maybe turn into a canvas example of mine, I have made a few projects that make use of a grid and they have objects in them that move around on top of or as part of that grid. So this sort of thing can cary over into other projects.
+
