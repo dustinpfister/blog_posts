@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-04 16:49:06
-version: 1.102
+updated: 2021-03-05 13:57:07
+version: 1.103
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -213,7 +213,7 @@ Search and destroy particles.
 
 ### 3.39 - [percent values and Math log](/2020/08/08/canvas-example-percent-math-log/)
 
-A simple canvas example that shows graphically what a method I work out does with a percent value.
+A simple canvas example that shows graphically what a method I worked out does with a percent value that makes use of Math.log. There is a whole lot to write about when it comes to suing the Math.log method as well as all the various expression that one can end up creating when using it for various projects. The Math.log method is often used for thins like experience point systems, animations, and anything else to that effect. So I wanted to create a canvas example that helps me to get a visual idea of the effects of the Math.log method compared to other expressions that will not make use of other Math.log.
 
 ### 3.40 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
