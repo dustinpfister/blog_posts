@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-05 15:43:27
-version: 1.108
+updated: 2021-03-05 15:46:45
+version: 1.109
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -177,7 +177,7 @@ This is another hyper causal game where the player can just fly around and blast
 
 ### 3.30 - [Hyper casual to the black](/2020/09/19/canvas-example-hyper-casual-to-the-black/)
 
-My first canvas example of a hyper casual game where a ship just keeps moving out into space.
+My first canvas example of a hyper casual game where a ship just keeps moving out into space. The idea came to me to just have a simple little project where a ship is moving at a given rate, and I just have a simple expression that tells me how long it will take to get to a given point at that given rate.
 
 ### 3.31 - [The limits of 2d images](/2019/12/11/canvas-example-image-limits/)
 
