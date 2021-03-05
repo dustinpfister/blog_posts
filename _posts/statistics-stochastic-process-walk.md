@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:35:47
-version: 1.7
+updated: 2021-03-05 13:40:36
+version: 1.8
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -144,7 +144,9 @@ var grid  = (function(){
 }());
 ```
 
-### 2.3 - pool
+### 2.3 - The pool module
+
+I am going to want to at least start something that will serve as a object pool module for this example. I wrote a post on this topic in general with my [canvas example post on object pools](/2020/07/20/canvas-example-object-pool/) where I got into this topic in detail. The general idea is to create a collection of objects just once, and then just reuse those object over and over again rather than creating and removing objects as needed. For this example I am just going to want at least one, but as many as a few objects for the sake of resting out my walk method.
 
 ```js
 var poolMod = (function(){
