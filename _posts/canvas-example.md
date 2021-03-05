@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-05 14:16:11
-version: 1.107
+updated: 2021-03-05 15:43:27
+version: 1.108
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -197,7 +197,7 @@ This is a canvas exmaple idea that is not done yet, but I started a post on what
 
 ### 3.35 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
 
-In this canvas example I worked out a basic example of getting scrolling working with a large grid.
+In this canvas example I worked out a basic example of getting scrolling working with a large grid in a canvas project. I often like to create games that have just a single small fixed grid which helps to avoid a lot of work when it comes to something that involves a large game map. This is a subject that can end up breaking off into many other little topics when it comes to breaking things down to keep things running smoothly. However for this example at least i am just working out the very basics when it comes to scrolling around a map that is still a little small.
 
 ### 3.36 - [object pool](/2020/07/20/canvas-example-object-pool/)
 
