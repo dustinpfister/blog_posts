@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:47:39
-version: 1.11
+updated: 2021-03-05 13:50:00
+version: 1.12
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -324,6 +324,8 @@ So then I have a utility library, a grid library, an object pool library, the wa
 ```
 
 ## 3 - Conclusion
+
+This turned out to be a nice little example of a random process, and so far I all ready have the basic idea that I wanted working. There are a lot of additional features that I would like to add when it comes to additional walk methods that are also random, and also maybe not so random actually.
 
 This was a fun little project, and there is still a lot more that could be done when it comes to making the canvas example that I made a little more involved. However I have so many other projects that are in need of some attention from me, and this is just one of so many others. Still what I worked out here should maybe turn into a canvas example of mine, I have made a few projects that make use of a grid and they have objects in them that move around on top of or as part of that grid. So this sort of thing can carry over into other projects.
 
