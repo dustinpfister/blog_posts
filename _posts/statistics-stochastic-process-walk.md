@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:44:50
-version: 1.10
+updated: 2021-03-05 13:47:39
+version: 1.11
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -278,7 +278,9 @@ var draw = (function(){
 }());
 ```
 
-### 2.6 - Main.js
+### 2.6 - The Main.js javaScript file
+
+So then I have a utility library, a grid library, an object pool library, the walk method of course,and  a draw module to render things to a canvas. Now I just need a little more javaScript that will make use of all of this to create a main state object, and update that state in a main app loop method that will use the walk method, and draw current status of the pool and grid to the canvas element.
 
 ```js
 (function(){
