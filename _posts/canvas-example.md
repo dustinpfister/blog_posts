@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-05 14:12:43
-version: 1.106
+updated: 2021-03-05 14:16:11
+version: 1.107
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -251,4 +251,4 @@ Turret defense games are sometimes nice so I have a Canvas Example on that in ge
 
 ## 4 - Conclusion
 
-I will of course be updating and expanding this list as I continue to make additional canvas examples, as well as improve the quality of the examples and the content that I have written about them.
+I will of course be updating and expanding this list as I continue to make additional canvas examples, as well as improve the quality of the examples and the content that I have written about them in the process of doing so. Thus far I have been trying to get a build of each example embedded into each post which of course should have been the case from the beginning.
