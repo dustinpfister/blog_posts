@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:33:06
-version: 1.6
+updated: 2021-03-05 13:35:47
+version: 1.7
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -100,7 +100,9 @@ utils.createCanvas = function(opt){
 };
 ```
 
-### 2.2 - Grid
+### 2.2 - A Grid module
+
+In this random process project I will want to have something that holds the state of a grid. This is the kind of module that I keep remaking over and over again, but never seem to get just right. So once Again I made this grid module from the ground up just for this example.
 
 ```js
 var grid  = (function(){
