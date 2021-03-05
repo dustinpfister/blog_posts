@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 572
-updated: 2021-02-19 12:49:25
-version: 1.26
+updated: 2021-03-05 15:36:20
+version: 1.27
 ---
 
 Time for another [canvas example](/2020/03/23/canvas-example/) post to help me keep on track with the reasons why I started getting into javaScript to begin with, which is doing things that are fun, or at least interesting with canvas and javaScript. In goes without saying that canvas can be used in the creation and maintenance of more practical projects, but that is not what this example will be for sure. This canvas example will be of a very simple defense game that involves the use of a grid like the one I worked out in my other [canvas example](/2019/11/07/canvas-example-grid/) post on grids. It will also make used of an additional class that builds on top of a Grid class.
@@ -348,3 +348,5 @@ When this canvas example is up, running and working as expected the result is a 
 ## 6 - Conclusion
 
 So for now this canvas example of a basic defense game works okay, but there is much more to be done before this really starts to feel like a game. For example I would want to have it so the player can build some defense structures rather than just having it so the player clicks on the incoming enemy objects. I would also want to add some kind of in game money system for this also. Then of course there is a whole lot more work to do when it comes to skinning the display objects and so forth. Still for one of my canvas example posts I do aim to keep things simple, and the basic idea that I had in mind is there.
+
+The way that I went about starting this example is not at all how I would go about making a project like this now. These days I seem to be more interesting in avoiding the use of a Class as a way to create a Grid as well as a collection of objects in the grid. If I where to start over I would make an object pool modules that would be used to create a pool of objects for enemies. However if I do continue working on this example I think that I will just do some refactoring with what I have so far rather than start over.
