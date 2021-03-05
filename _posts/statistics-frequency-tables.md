@@ -5,11 +5,11 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 648
-updated: 2020-04-27 21:13:26
-version: 1.3
+updated: 2021-03-05 14:34:31
+version: 1.4
 ---
 
-[Frequency tables](https://en.wikipedia.org/wiki/Frequency_distribution) are a way of groping various outcomes in a sample or population in statistics. That is when running threw a population, or a sample of a population of data there are going to be instances in that sample that meet a cretin criteria, and thus can be grouped in that criteria. Say for example you have a collection of grades for each student in a class, there is groping them by a letter grade, or by a number range. In any case the result is a table where all the students fall into each group, and there is a count for each group, such a table can oftetn be called a frequency table.
+[Frequency tables](https://en.wikipedia.org/wiki/Frequency_distribution) are a way of groping various outcomes in a sample or population in statistics. That is when running threw a population, or a sample of a population of data there are going to be instances in that sample that meet a cretin criteria, and thus can be grouped in that criteria. Say for example you have a collection of grades for each student in a class, there is groping them by a letter grade, or by a number range. In any case the result is a table where all the students fall into each group, and there is a count for each group, such a table can often be called a frequency table.
 
 <!-- more -->
 
@@ -53,3 +53,7 @@ console.log(table);
 ```
 
 The frequency table can the be used to figure all kinds of useful values about the outcome of this hypothetical test. For example I can run over the frequency table and create a new value for each group that is the count over the total number of students to get percentage value for each group.
+
+## 2 - Conclusion
+
+So that is it for now when it comes to frequency tables, I am sure that I will get around to creating additional examples that make use of this, and things like this in the future. tables in general are a great way to go about mapping out data, but often I think that it is best to create graphs, and scatter plots that make use of canvas elements and user interaction as a way to really get a solid idea of what is going on with some data.
