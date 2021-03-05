@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 817
-updated: 2021-03-05 13:25:46
-version: 1.5
+updated: 2021-03-05 13:33:06
+version: 1.6
 ---
 
 This will be yet another [Stochastic process](https://en.wikipedia.org/wiki/Stochastic_process) example when it comes to working out some basic and maybe sometime not so basic examples of such a process in [statistics](https://en.wikipedia.org/wiki/Statistics), this time on a random walk which is an easy typical getting started type example.
@@ -68,6 +68,8 @@ console.log( walk({x:0, y:0, heading:1}, walk.wm.useHeading, [0, 4]) );
 Now that I have a walk method worked out I am going to want to create some additional modules, and scripts around it to ake use of it. I could make some kind of command line example of it using nodejs, but I generally like to make canvas examples first and foremost with this sort of thing.
 
 ### 2.1 - The Utils module for this canvas example
+
+When I make a canvas example, or any kind of major javaScript project really, I like to have a general utility library. This is a place where I will place methods that I might use across more than one module in a project, and also methods that I might result across projects also.
 
 ```js
 var utils = {};
