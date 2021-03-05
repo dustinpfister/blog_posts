@@ -5,15 +5,17 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 158
-updated: 2018-02-26 12:40:04
-version: 1.2
+updated: 2021-03-05 14:23:39
+version: 1.3
 ---
 
 The subject of [Statistics](https://en.wikipedia.org/wiki/Statistics) can become a little complicated, but if you are like me visualizing what is going on can help to make something complicated easier to understand. In this post I will be using [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot) to help gain a better understanding of certain subjects in statistics.
 
+A scatter plot is a good way to go about visualizing data that where each data element in a population or sample has at least two values that can be mapped to the x and y axis. It is a good way to get a visual idea of that is going on with some data that can be graphed this way.
+
 <!-- more -->
 
-## The basic idea of a scatter plot
+## 1 - The basic idea of a scatter plot
 
 A scatter plot is just a collection of points in a plain. It can be just a collection of 2d points, making it a common choice to visualize data that can be expressed with two dimensions. However there can also have a 3d scatter plot, as well as use colors, and shapes to add additional dimensions if needed.
 
@@ -103,6 +105,6 @@ scatter.points.forEach(function(pt) {
 document.body.appendChild(canvas);
 ```
 
-## Conclusion
+## 2 - Conclusion
 
 Sorry for the short post for now. I am postponing development of my posts on statistics for now, but will defiantly get back to this one at some point. Scatter plots strike me as a very nice graphical way of making sense of data, and concepts in statistics such as standard deviation.
