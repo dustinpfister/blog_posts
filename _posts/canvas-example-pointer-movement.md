@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 15:22:33
-version: 1.37
+updated: 2021-03-06 15:25:08
+version: 1.38
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -252,7 +252,7 @@ This draw method helps to give a visual idea of what is going on with the Pointe
 
 ### 2.4 - Draw debug info
 
-Another method that I use to just see the current state of some values of interest as I would on this canvas example.
+Another method that I use to just see the current state of some values of interest as I would on this canvas example is my draw debug into method. For now it is more or less just the map offset position that is the only value of interest outside of the pm object that I would like to keep an eye on. There is also the grid lines that should give some visual clue that my pm object is working the way that I want it to though.
 
 ```js
     api.debugInfo = function (pm, pt, ctx, canvas) {
