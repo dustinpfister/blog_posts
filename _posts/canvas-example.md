@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-06 14:38:30
-version: 1.112
+updated: 2021-03-06 14:40:19
+version: 1.113
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -185,7 +185,7 @@ This is one project example I find myself coming back to now and then. It has to
 
 ### 3.32 - [image loader](/2020/04/30/canvas-example-image-loader/)
 
-Here I have a simple image loader example for a canvas project that I worked out for my own reference for when it comes to getting around to skinning some of these with some external images.
+Here I have a simple image loader example for a canvas project that I worked out for my own reference for when it comes to getting around to skinning some of these with some external images. With all of these canvas examples thus far I try to avoid having to use external images actually. I often prefer to work out some kind of alliterative to having to deal with this sort of thing.
 
 ### 3.33 - [input controller](/2020/04/17/canvas-example-input-controller/)
 
