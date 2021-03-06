@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 15:30:09
-version: 1.41
+updated: 2021-03-06 15:34:18
+version: 1.42
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -407,7 +407,7 @@ canvas.addEventListener('touchend', function (e) {
 
 ### 4.2 - index.html
 
-I then have an html file that pulls all of this together. In the body of the html or wherever I place this I am going to want to have a single dic with an id of canvas app. This is what is used by my create canvas utility method as a mount point for the canvas element that is creates.
+I then have an html file that pulls all of this together. In the body of the html or wherever I place this I am going to want to have a single div with an id of canvas app. This is what is used by my create canvas utility method as a mount point for the canvas element that is creates. I then just need to link to all the javaScript files if I am going to use the project this way. WHen it comes to builds they need to be built in the order in which the script tags are to make sure that I do not run into errors.
 
 ```js
 <html>
