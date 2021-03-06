@@ -5,8 +5,8 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 158
-updated: 2021-03-05 14:27:36
-version: 1.4
+updated: 2021-03-06 14:45:34
+version: 1.5
 ---
 
 The subject of [Statistics](https://en.wikipedia.org/wiki/Statistics) can become a little complicated, but if you are like me visualizing what is going on can help to make something complicated easier to understand. In this post I will be using [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot) to help gain a better understanding of certain subjects in statistics.
@@ -109,4 +109,4 @@ document.body.appendChild(canvas);
 
 Sorry for the short post for now. I am postponing development of my posts on statistics for now, but will defiantly get back to this one at some point. Scatter plots strike me as a very nice graphical way of making sense of data, and concepts in statistics such as standard deviation, and the various types of means in statistics.
 
-The best thing that I could do is get into some kind of project where I have some real data to work with that I then need to create some kind of graphical representation of.
+The best thing that I could do is get into some kind of project where I have some real data to work with that I then need to create some kind of graphical representation of. There is then just getting creative when it comes to all the various was I can then make sense of data with graphs and various ways of making artful things that work with data.
