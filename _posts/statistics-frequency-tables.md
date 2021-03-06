@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 648
-updated: 2021-03-06 15:05:45
-version: 1.5
+updated: 2021-03-06 15:09:23
+version: 1.6
 ---
 
 [Frequency tables](https://en.wikipedia.org/wiki/Frequency_distribution) are a way of groping various outcomes in a sample or population in statistics. That is when running threw a population, or a sample of a population of data there are going to be instances in that sample that meet a cretin criteria, and thus can be grouped in that criteria. Say for example you have a collection of grades for each student in a class, there is groping them by a letter grade, or by a number range. In any case the result is a table where all the students fall into each group, and there is a count for each group, such a table can often be called a frequency table.
@@ -59,3 +59,6 @@ The frequency table can the be used to figure all kinds of useful values about t
 ## 2 - Conclusion
 
 So that is it for now when it comes to frequency tables, I am sure that I will get around to creating additional examples that make use of this, and things like this in the future. tables in general are a great way to go about mapping out data, but often I think that it is best to create graphs, and scatter plots that make use of canvas elements and user interaction as a way to really get a solid idea of what is going on with some data.
+
+When it comes to getting back into this topic of statistics it would seem that for now I am more interested in just creating all kind of examples of stochastic systems. Much of what I am learning with that can be applied to my canvas examples that I like to work on the best. Subject such as frequency tables I am sure are an example of something that will come up now and then, but for now I am most interested in what can be used in the process of creating some kind of actual product.
+
