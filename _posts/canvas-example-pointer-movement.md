@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 13:37:35
-version: 1.34
+updated: 2021-03-06 14:25:58
+version: 1.35
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -20,7 +20,7 @@ I will not be going over how to create a grid or map like state, I have wrote ma
 
 ## 1 - The pointer movement module for the canvas example
 
-In this canvas example I have a point that is treated as a map offset position, and then a state that is used to update that map position point. This state object has properties like angle, and delta that are used to find the direction, and rate of change for each update cycle or frame tick. 
+In this canvas example I have a point that is treated as a map offset position, and then a pointer movement module state object \(pm\) that is used to update that map position point. This pm object has properties like angle, and distance that are used to find the direction, and rate of change for each update cycle or frame tick. This object can then be applied to another object such as a map offset position, or any kind of object that I would want to control with this kind of interface.
 
 In addition to the properties of this Pointer Movement state object there will also be a need to have some methods to work with updating the state of the Pointer Movement object, as well as working with other related tasks. Tasks such as updating a Point with the Pointer Movement state, and working out events. I could make this a Class, but I prefer to not bother writing Classes that much these days. Instead I made this module in a way in which there is a method that is called to return a new Pointer Movement state, and then that state is passed to the other public methods.
 
