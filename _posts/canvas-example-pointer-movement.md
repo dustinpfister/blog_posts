@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 12:55:04
-version: 1.31
+updated: 2021-03-06 12:57:58
+version: 1.32
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -275,6 +275,8 @@ Another method that I use to just see the current state of some values of intere
 ```
 
 ## 3 - The utils library
+
+As I work on my canvas examples I have found that I should have a place to park methods that I will be using in more than one place within a project, and also that I might take with me to other canvas examples. I do not have a standard library for all my canvas examples but what I have been doing is having a utils lib that will change a little from one example to another.
 
 ```js
 var utils = {};
