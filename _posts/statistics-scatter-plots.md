@@ -5,8 +5,8 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 158
-updated: 2021-03-06 14:50:36
-version: 1.6
+updated: 2021-03-06 14:54:08
+version: 1.7
 ---
 
 The subject of [Statistics](https://en.wikipedia.org/wiki/Statistics) can become a little complicated, but if you are like me visualizing what is going on can help to make something complicated easier to understand. In this post I will be using [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot) to help gain a better understanding of certain subjects in statistics.
@@ -20,7 +20,6 @@ I have made lots of projects that involve having a lot of display objects that a
 ## 1 - The basic idea of a scatter plot
 
 A scatter plot is just a collection of points in a plain. It can be just a collection of 2d points, making it a common choice to visualize data that can be expressed with two dimensions. However there can also have a 3d scatter plot, as well as use colors, and shapes to add additional dimensions if needed.
-
 
 To get started playing around with scatter plots in javaScript I will need some kind of module that will store the data that will be graphed, and a way to render it.
 
@@ -106,6 +105,8 @@ scatter.points.forEach(function(pt) {
  
 document.body.appendChild(canvas);
 ```
+
+So now with this example I am just plotting some random points all over the canvas just as a way to test this out. The result is what I would expected, and this is just then yet another way to go about doing what I have all ready done a number of times many different ways.
 
 ## 2 - Conclusion
 
