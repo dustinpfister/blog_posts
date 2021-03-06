@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-06 14:40:19
-version: 1.113
+updated: 2021-03-06 14:41:45
+version: 1.114
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -181,7 +181,7 @@ My first canvas example of a hyper casual game where a ship just keeps moving ou
 
 ### 3.31 - [The limits of 2d images](/2019/12/11/canvas-example-image-limits/)
 
-This is one project example I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth.
+This is one project example I find myself coming back to now and then. It has to do with the limits of 2d images given a a set width, height, and color depth. What is cool about this is that it is a system where each possible image has a number from 0 to the max number of images that are possible with the given resolution and color depth.
 
 ### 3.32 - [image loader](/2020/04/30/canvas-example-image-loader/)
 
@@ -189,7 +189,7 @@ Here I have a simple image loader example for a canvas project that I worked out
 
 ### 3.33 - [input controller](/2020/04/17/canvas-example-input-controller/)
 
-An input controller concept for canvas projects, or at least a start for such a thing. When it comes to using most game frameworks something to this effect would often be built in. However when it comes to making my own frameworks or creating a game from the ground up I of course need to come up with my own system for these kinds of thngs.
+An input controller concept for canvas projects, or at least a start for such a thing. When it comes to using most game frameworks something to this effect would often be built in. However when it comes to making my own frameworks or creating a game from the ground up I of course need to come up with my own system for these kinds of things.
 
 ### 3.34 - [kill box](/2020/09/04/canvas-example-kill-box/)
 
