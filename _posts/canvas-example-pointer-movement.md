@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 13:34:44
-version: 1.33
+updated: 2021-03-06 13:37:35
+version: 1.34
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -279,6 +279,8 @@ Another method that I use to just see the current state of some values of intere
 As I work on my canvas examples I have found that I should have a place to park methods that I will be using in more than one place within a project, and also that I might take with me to other canvas examples. I do not have a standard library for all my canvas examples but what I have been doing is having a utils lib that will change a little from one example to another.
 
 For this example I am using my usual distance  formula in the pm module to get the distance between the start point and the current point in the canvas. I am also using the mathematical modulo method for the angle from the start point to the current point. I then have another function here that helps me with formating a radian to degrees when it comes to drawing info for the pm object.
+
+I also have my create canvas method that I am making a single standard method for all canvas examples, this helps me to create and return a canvas element that has all the standard properties set just the way that I like it. I also have my typical get canvas relative method that helps me to get a point relative to the canvas rather than then window object of a web browser. This get canvas relative method is also fairly standard for all canvas examples that make use of pointer events with a mouse or touch screen.
 
 ```js
 var utils = {};
