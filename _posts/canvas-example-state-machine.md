@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 598
-updated: 2021-03-01 18:07:57
-version: 1.31
+updated: 2021-03-06 15:18:03
+version: 1.32
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) I made a [state machine](https://en.wikipedia.org/wiki/Finite-state_machine) that helps to keep code broken down into many independent state objects. For simple canvas examples and projects a state machine is not needed, but if I am starting to make a serious project the use of a state machine becomes more important as a way to keep things better organized.
@@ -251,4 +251,6 @@ So when it comes to this there is not much to write about just yet, but I have t
 
 ## 4 - Conclusion
 
-So with this canvas example I have together what looks like a somewhat useful state machine module. I have not battle tested this though, so I would not really go about using this just yet aside from a hobby project maybe. If I get around to it I might get to sining some more time into this one though, and also pull this together with a whole bunch of other components that I am working out to make my own canvas framework or sorts that I might use to make a few games with. Do not hold your breath with that one though, I have way to many competing ideas when it comes to what I want to focus on.
+So with this canvas example I have together what looks like a somewhat useful state machine module. I have not battle tested this though, so I would not really go about using this just yet aside from a hobby project maybe. If I get around to it I might get to spending some more time into this one though, and also pull this together with a whole bunch of other components that I am working out to make my own canvas framework or sorts that I might use to make a few games with. 
+
+The core of a game framework should have a way to go about creating a state machine, but then there would also have to be an object pool, input controller, and if not an image loader something to help load some kind of image asset that is stored via some hard coded data like with my pixmaps example that I have started. If I get something like that together it would then make the process of making games a whole world faster, and help keep me from writing the same code over and over again. Do not hold your breath with that one though, I have way to many competing ideas when it comes to what I want to focus on. Also when it comes to using a framework there are many great frameworks out there all ready, I guess I should just be happy with one and use it if I do not want to put the time in to make my own.
