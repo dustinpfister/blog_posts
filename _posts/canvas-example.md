@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-06 08:15:53
-version: 1.110
+updated: 2021-03-06 08:18:11
+version: 1.111
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -193,7 +193,7 @@ An input controller concept for canvas projects.
 
 ### 3.34 - [kill box](/2020/09/04/canvas-example-kill-box/)
 
-This is a canvas exmaple idea that is not done yet, but I started a post on what I have thus far.
+This is a canvas example idea that is not done yet, but I started a post on what I have thus far. It is or will be rather a game where units just keep coming into an area and the object is to destroy them with other units.
 
 ### 3.35 - [Map scrolling](/2020/01/08/canvas-example-map-scrolling/)
 
