@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 14:35:55
-version: 1.36
+updated: 2021-03-06 15:22:33
+version: 1.37
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -198,7 +198,7 @@ I then want a draw method that just draws some grid lines on the canvas. In a re
 
 ### 2.3 - Draw the navigation circle for the Pointer Movement state
 
-This draw method helps to give a visual idea of what is going on with the Pointer Movement state.
+This draw method helps to give a visual idea of what is going on with the Pointer Movement state. The draw nav method itself is fairly small but makes use of a few helper methods for drawing various parts of the interface. I broken things down into the base circle that is drawn, then a line that is drawn as well as another circle that is drawn on the line to show the current setting for speed as well as another helper to draw some basic into for the nav circle.
 
 ```js
     var draw_pm_circle = function(pm, ctx){
