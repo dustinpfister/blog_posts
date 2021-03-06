@@ -5,8 +5,8 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 158
-updated: 2021-03-06 14:54:08
-version: 1.7
+updated: 2021-03-06 14:56:11
+version: 1.8
 ---
 
 The subject of [Statistics](https://en.wikipedia.org/wiki/Statistics) can become a little complicated, but if you are like me visualizing what is going on can help to make something complicated easier to understand. In this post I will be using [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot) to help gain a better understanding of certain subjects in statistics.
@@ -106,7 +106,7 @@ scatter.points.forEach(function(pt) {
 document.body.appendChild(canvas);
 ```
 
-So now with this example I am just plotting some random points all over the canvas just as a way to test this out. The result is what I would expected, and this is just then yet another way to go about doing what I have all ready done a number of times many different ways.
+So now with this example I am just plotting some random points all over the canvas just as a way to test this out. The result is what I would expected, and this is just then yet another way to go about doing what I have all ready done a number of times many different ways. The only thing to do now is work out another example that will make use of some kind of real data when it comes to making a scatter plot.
 
 ## 2 - Conclusion
 
