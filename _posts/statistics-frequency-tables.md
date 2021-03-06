@@ -5,11 +5,13 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 648
-updated: 2021-03-05 14:34:31
-version: 1.4
+updated: 2021-03-06 15:05:45
+version: 1.5
 ---
 
 [Frequency tables](https://en.wikipedia.org/wiki/Frequency_distribution) are a way of groping various outcomes in a sample or population in statistics. That is when running threw a population, or a sample of a population of data there are going to be instances in that sample that meet a cretin criteria, and thus can be grouped in that criteria. Say for example you have a collection of grades for each student in a class, there is groping them by a letter grade, or by a number range. In any case the result is a table where all the students fall into each group, and there is a count for each group, such a table can often be called a frequency table.
+
+There are many other ways of breaking down a large population of data down into smaller groups depending of course on the nature of the data. However a table is often a good way to go about displaying the data in general, in this post I will just be focusing in the concept of a frequency table though when it comes to just having two columns, one for some kind of thing to count, and the other for that count. When it comes to doing so, the data can then be used to find other things of interest such as percentages for each item that is being counted.
 
 <!-- more -->
 
