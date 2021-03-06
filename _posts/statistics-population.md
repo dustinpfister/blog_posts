@@ -5,8 +5,8 @@ tags: [statistics]
 layout: post
 categories: statistics
 id: 643
-updated: 2020-04-08 17:16:14
-version: 1.4
+updated: 2021-03-06 15:00:50
+version: 1.5
 ---
 
 A [Statistical population](https://en.wikipedia.org/wiki/Statistical_population) is not always what the name might suggest. A Statistical population could be census data, however it could also be just about any collection of standard data in general actually. Much of what is done in statistics involves at least some kind of collection of data, in some kind of standard from. Things are then drawn from that population of data than can then be used to make sense of it.
@@ -83,3 +83,7 @@ Example output
 ```
 
 taking a look at a few sub populations of generated populations of random numbers using the javaScript built in Math.random method it looks like my assumption is not so far off. Some times a smaller population of the whole can be used to get a fair idea of that the situation would be with the whole population. However I would not always assume that would be the case of course, in other examples there might be things going on that could be skewing the results when looking at smaller subsets of a population of data.
+
+## 2 - Conclusion
+
+For the most part when it comes to working with some real data, one example of that would be all the content that I have wrote for this website thus far. I have wrote a few posts that add up things like the site wide total word count, when doing something to that effect that would be an example of working with the full population of data. However I also like to have things broken down my category, and when it comes to that word count total, that would be an example of a sample population.
