@@ -5,13 +5,15 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 158
-updated: 2021-03-06 14:45:34
-version: 1.5
+updated: 2021-03-06 14:50:36
+version: 1.6
 ---
 
 The subject of [Statistics](https://en.wikipedia.org/wiki/Statistics) can become a little complicated, but if you are like me visualizing what is going on can help to make something complicated easier to understand. In this post I will be using [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot) to help gain a better understanding of certain subjects in statistics.
 
-A scatter plot is a good way to go about visualizing data that where each data element in a population or sample has at least two values that can be mapped to the x and y axis. It is a good way to get a visual idea of that is going on with some data that can be graphed this way.
+A scatter plot is a good way to go about visualizing data where each data element in a population or sample has at least two values that can be mapped to the x and y axis. It can also be used as a way to make sense of things like the differences between the various means, and all kinds of various values that can come up in such a graph. 
+
+I have made lots of projects that involve having a lot of display objects that are placed in various locations within a canvas matrix. This is a common tasks when it comes to making a wide rang of games after all, so having a scatter plot is not to dissimilar to that of having an object pool. The only difference then is applying some meaning to the position of the objects, rather than having them just randomly move around the canvas like I usually do.
 
 <!-- more -->
 
