@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 15:26:40
-version: 1.39
+updated: 2021-03-06 15:28:06
+version: 1.40
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -275,6 +275,8 @@ Another method that I use to just see the current state of some values of intere
  
 }());
 ```
+
+I also have a simple draw ver method that will just draw the current version number of the pm object. This is something that I like to do with all of my canvas examples now so I know what the deal is when it comes to editing this post and all my other posts on canvas.
 
 At the end of the draw module I then return the public api so the public methods can then be used in the main app loop of the example, or any state machine method that I might use this in when it comes to other canvas examples.
 
