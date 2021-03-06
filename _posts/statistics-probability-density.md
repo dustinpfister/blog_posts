@@ -5,11 +5,11 @@ tags: [js,statistics]
 layout: post
 categories: statistics
 id: 156
-updated: 2021-03-05 14:31:14
-version: 1.2
+updated: 2021-03-06 15:12:18
+version: 1.3
 ---
 
-Today I am continuing to look into statistics to see if this is something that I want to learn more about by writing a post on [Probability density](https://en.wikipedia.org/wiki/Probability_density_function). 
+Today I am continuing to look into statistics to see if this is something that I want to learn more about by writing a post on [Probability density](https://en.wikipedia.org/wiki/Probability_density_function). This seems like a topic that I could stand to to a little more research on, so for now this post is just some brief notes on the topic, and should not be used as any kind of practical guide on the topic.
 
 <!-- more -->
 
