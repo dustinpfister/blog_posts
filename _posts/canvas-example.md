@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-05 15:46:45
-version: 1.109
+updated: 2021-03-06 08:15:53
+version: 1.110
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -221,7 +221,7 @@ I think that it is generally a good idea to make a canvas project to work with p
 
 ### 3.41 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
 
-Here is a Canvas Example that is a User interface design for moving a map, or anything for that matter by way of touch or click events by way of a pointer start point and distance to a current point.
+Here is a Canvas Example that is a User interface design for moving a map, or anything for that matter by way of touch or click events. The interface works by way of a pointer start point on the canvas, and a distance to a current point on the canvas. This distance is then used to set the rate at which the map moves, and the angle from the start point to the current point is used to set direction.
 
 ### 3.42 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
 
