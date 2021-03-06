@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-06 14:25:58
-version: 1.35
+updated: 2021-03-06 14:35:55
+version: 1.36
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -28,7 +28,7 @@ There are also a few helper methods that are used internally in this module, alo
 
 ### 1.1 - The start of the public api, and the create new Pointer Movement state object
 
-Now for the public methods, for this module there is no main function so I just created an object literal for the public API. the first method that I made for this public API for the Pointer Movement module is a method that can be used to create a new Pointer Movement state.
+For this module there is no main function, so I just created an object literal for the public API. The first method that I made for this public API for the Pointer Movement module is a method that can be used to create a new Pointer Movement state object \(pm\). When calling the method I can pass a number of options to set values like this min and max distance, and max pixels per second value to use when updating the position of an object with this.
 
 ```js
 var PM = (function () {
@@ -59,6 +59,8 @@ var PM = (function () {
         };
     };
 ```
+
+So then in a project where I would use this module this is the method I would use to create a pm state object. I can then pass that pm state object as an argument when it comes to using the additional methods in this module.
 
 ### 1.4 - Update a Pointer Movement state
 
