@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-07 12:32:14
-version: 1.47
+updated: 2021-03-07 12:35:49
+version: 1.48
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -90,6 +90,35 @@ So then in a project where I would use this module the create public method is t
 I then need a method that I can used to update a Pointer Movement state that has a mutated current point. This method is used as a way to update the properties of the Pointer Movement state object, but not to mutate an object that the PM state object will be used to mutate, that is the responsibility of another method.
 
 ```js
+    // update the pm based on startPoint, and currentPoint
+    api.update = function (pm, secs) {
+        pm.dist = 0;
+        pm.PPS = 0;
+        pm.angle = 0;
+        pm.mode = pm.modesList[pm.modeIndex];
+        // set pm.dist
+        pm.dist = utils.distance(pm.sp.x, pm.sp.y, pm.cp.x, pm.cp.y);
+        // set pps and angle if dist is greater than min and pointer is down
+        if (pm.down && pm.dist >= pm.distMin) {
+            pm.secs = 0;
+            pm.per = (pm.dist - pm.distMin) / pm.distMax;
+            pm.per = pm.per > 1 ? 1 : pm.per;
+            pm.per = pm.per < 0 ? 0 : pm.per;
+            pm.PPS = pm.per * pm.maxPPS;
+            var radian = utils.mod(Math.atan2(pm.cp.y - pm.sp.y, pm.cp.x - pm.sp.x), utils.TAU);
+            // default to radian for 'fine' mode (or any mode other than dirN)
+            pm.angle = radian;
+            applyMode(pm, radian);
+        }else{
+            pm.secs += secs;
+            pm.secs = pm.secs >= pm.longDownTime ? pm.longDownTime: pm.secs;
+            if(pm.secs == pm.longDownTime){
+                pm.modeIndex += 1;
+                pm.modeIndex = utils.mod(pm.modeIndex, pm.modesList.length);
+                pm.secs = 0;
+            }
+        }
+    };
 ```
 
 ### 1.5 - Step a point by the current state of the Pointer Movement state
@@ -97,6 +126,12 @@ I then need a method that I can used to update a Pointer Movement state that has
 This method is what I can use to update a point with a Pointer Movement State object. I just pass the Point Movement object as the first argument, and then the point I want to mutate with the method. A third argument can then be used to pass an amount of time that has passed in seconds.
 
 ```js
+    // step a point by the current values of the pm
+    api.stepPointByPM = function (pm, pt, secs) {
+        secs = secs === undefined ? 1 : secs;
+        pt.x += Math.cos(pm.angle) * pm.PPS * secs;
+        pt.y += Math.sin(pm.angle) * pm.PPS * secs;
+    };
 ```
 
 ### 1.5 - Event methods, and the end of the module
@@ -104,6 +139,52 @@ This method is what I can use to update a point with a Pointer Movement State ob
 I then worked out some additional methods that can be used when attaching event handers in the main javaScript project that makes used of this module.
 
 ```js
+    // when a pointer action starts
+    api.onPointerStart = function (pm) {
+        return function(e){
+            var pos = utils.getCanvasRelative(e);
+            pm.down = true;
+            pm.secs = 0;
+            pm.sp = {
+                x: pos.x,
+                y: pos.y
+            };
+            pm.cp = {
+                x: pos.x,
+                y: pos.y
+            };
+        };
+    };
+    // when a pointer action moves
+    api.onPointerMove = function (pm) {
+        return function(e){
+            var pos = utils.getCanvasRelative(e);
+            pm.cp = {
+                x: pos.x,
+                y: pos.y
+            };
+        };
+    };
+    // when a pointer actions ends
+    api.onPointerEnd = function (pm) {
+        return function(e){
+            var pos = utils.getCanvasRelative(e);
+            pm.down = false;
+            pm.secs = 0;
+            pm.sp = {
+                x: 0,
+                y: 0
+            };
+            pm.cp = {
+                x: 0,
+                y: 0
+            };
+        };
+    };
+    // return the public API
+    return api;
+}
+    ());
 ```
 
 ## 2 - The draw module
@@ -115,6 +196,14 @@ So now that I have my Pointer Movement module worked out I will want to produce 
 This draw javaScript file is just an object literal with a bunch of draw methods attached that need to have a drawing context passed as the first argument. The first draw method that I worked out is to just draw a plain black background when passed the drawing context and canvas.
 
 ```js
+var draw = (function(){
+    // public api
+    var api = {};
+    // draw background
+    api.background = function (pm, ctx, canvas, style) {
+        ctx.fillStyle = style || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
 ```
 
 ### 2.2 - Just draw some grid lines draw method
@@ -122,6 +211,32 @@ This draw javaScript file is just an object literal with a bunch of draw methods
 I then want a draw method that just draws some grid lines on the canvas. In a real project I would have draw methods that render the current state of a map module. However getting into that would be a whole other post. For now I just need a draw method where I pass a point that is being mutated by my Point Movement state that is used to draw grid lines.
 
 ```js
+    // draw point grid lines
+    api.PTGridlines = function (pt, ctx, canvas, cellSize) {
+        var cellX = -1,
+        cellY = -1,
+        x,
+        y;
+        cellSize = cellSize === undefined ? 256: cellSize;
+        ctx.strokeStyle = '#282828';
+        ctx.lineWidth = 3;
+        while (cellX < Math.ceil(canvas.width / cellSize) + 1 ) {
+            x = cellX * cellSize - pt.x % cellSize;
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+            ctx.stroke();
+            cellX += 1;
+        }
+        while (cellY < Math.ceil(canvas.height / cellSize) + 1 ) {
+            y = cellY * cellSize - pt.y % cellSize;
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
+            cellY += 1;
+        }
+    };
 ```
 
 ### 2.3 - Draw the navigation circle for the Pointer Movement state
@@ -129,6 +244,70 @@ I then want a draw method that just draws some grid lines on the canvas. In a re
 This draw method helps to give a visual idea of what is going on with the Pointer Movement state. The draw nav method itself is fairly small but makes use of a few helper methods for drawing various parts of the interface. I broken things down into the base circle that is drawn, then a line that is drawn as well as another circle that is drawn on the line to show the current setting for speed as well as another helper to draw some basic into for the nav circle.
 
 ```js
+    // draw a main pm circle
+    var draw_pm_circle = function(pm, ctx, per){
+            per = per === undefined ? 1 : per;
+            ctx.beginPath();
+            ctx.arc(pm.sp.x, pm.sp.y, (pm.distMax / 2) * per, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.fill();
+    };
+    // draw pm direction line
+    var draw_pm_dir_line = function(pm, ctx){
+            var x = Math.cos(pm.angle) * pm.distMax + pm.sp.x,
+            y = Math.sin(pm.angle) * pm.distMax + pm.sp.y;
+            ctx.beginPath();
+            ctx.moveTo(pm.sp.x, pm.sp.y);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+    };
+    // draw PPS circle
+    var draw_pm_pps_circle = function(pm, ctx){
+            var per = pm.PPS / pm.maxPPS,
+            x = Math.cos(pm.angle) * pm.distMax * per + pm.sp.x;
+            y = Math.sin(pm.angle) * pm.distMax * per + pm.sp.y;
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.stroke();
+    };
+    // draw pm info
+    var draw_pm_info = function(pm, ctx){
+        var x = pm.sp.x + pm.distMax * 0.6,
+        y = pm.sp.y + 10;
+        ctx.fillStyle = 'lime';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '10px arial';
+        ctx.fillText('mode: ' + pm.mode, x, y);
+        ctx.fillText('PPS: ' + Math.round(pm.PPS) + ' / ' + pm.maxPPS + ' ('+Math.round(pm.per*100)+'%)', x, y + 12);
+        ctx.fillText('A: ' + utils.radianToScale(pm.angle).toFixed(2), x, y + 24);
+    };
+    // draw a navigation circle when moving the map
+    api.navCircle = function (pm, ctx, canvas) {
+        if (pm.down) {
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+            if(pm.PPS > 0){
+                ctx.fillStyle = 'rgba(0,255,0,0.4)';
+                draw_pm_circle(pm, ctx, 1);
+                draw_pm_dir_line(pm, ctx);
+                draw_pm_pps_circle(pm, ctx);
+                draw_pm_info(pm, ctx);
+            }else{
+                // else waiting for the long down
+                var per = pm.secs / pm.longDownTime;
+                ctx.globalAlpha = per;
+                if(per >= 0.25){
+                    ctx.fillStyle = 'rgba(0,255,255,0.1)';
+                    draw_pm_circle(pm, ctx, 1);
+                    ctx.fillStyle = 'rgba(0,255,255,0.4)';
+                    draw_pm_circle(pm, ctx, (per - 0.25) / 0.75);
+                    draw_pm_info(pm, ctx);
+                }
+            }
+            ctx.globalAlpha = 1;
+        }
+    };
 ```
 
 ### 2.4 - Draw debug info
@@ -136,6 +315,25 @@ This draw method helps to give a visual idea of what is going on with the Pointe
 Another method that I use to just see the current state of some values of interest as I would on this canvas example is my draw debug into method. For now it is more or less just the map offset position that is the only value of interest outside of the pm object that I would like to keep an eye on. There is also the grid lines that should give some visual clue that my pm object is working the way that I want it to though.
 
 ```js
+    // draw debug info
+    api.debugInfo = function (pm, pt, ctx, canvas) {
+        ctx.fillStyle = 'lime';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '20px arial';
+        ctx.fillText('pos: ' + Math.floor(pt.x) + ', ' + Math.floor(pt.y), 10, 10);
+    };
+    // draw version number
+    api.ver = function (ctx, pm) {
+        ctx.fillStyle = 'lime';
+        ctx.font = '10px courier';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.fillText('v' + pm.ver, 5, canvas.height - 15);
+    };
+    // retrun the public api
+    return api;
+}());
 ```
 
 I also have a simple draw ver method that will just draw the current version number of the pm object. This is something that I like to do with all of my canvas examples now so I know what the deal is when it comes to editing this post and all my other posts on canvas.
