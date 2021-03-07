@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-07 12:25:03
-version: 1.45
+updated: 2021-03-07 12:27:55
+version: 1.46
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -81,7 +81,7 @@ var PM = (function () {
     };
 ```
 
-So then in a project where I would use this module this is the method I would use to create a pm state object. I can then pass that pm state object as an argument when it comes to using the additional methods in this module.
+So then in a project where I would use this module the create public method is the method I would use to create a pm state object. I can then pass that pm state object as an argument when it comes to using the additional methods in this module. Once such method would be the pm update method that will update the state of this object, which should be called in a main update loop method of the project. So why don't I get to that next.
 
 ### 1.4 - Update a Pointer Movement state
 
