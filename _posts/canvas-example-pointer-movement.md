@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-07 12:43:22
-version: 1.50
+updated: 2021-03-07 12:50:32
+version: 1.51
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -140,7 +140,7 @@ This method is what I can use to update a point with a Pointer Movement State ob
 
 ### 1.5 - Event methods, and the end of the module
 
-I then worked out some additional methods that can be used when attaching event handers in the main javaScript project that makes used of this module.
+I then worked out some additional methods that can be used when attaching event handers in the main javaScript project that makes used of this module. Each of these public methods will return an event handler that can be attached for events like mouse down, and touch start. When doing so I just need to pass the pm object that I want to create an event handler for. The resulting event handler can then be used with the add event listener method to attach events to the canvas element. For an example of this there is the main.js file near then end of this post.
 
 ```js
     // when a pointer action starts
