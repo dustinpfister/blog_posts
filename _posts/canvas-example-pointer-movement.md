@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-07 12:35:49
-version: 1.48
+updated: 2021-03-07 12:39:05
+version: 1.49
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -87,7 +87,9 @@ So then in a project where I would use this module the create public method is t
 
 ### 1.4 - Update a Pointer Movement state
 
-I then need a method that I can used to update a Pointer Movement state that has a mutated current point. This method is used as a way to update the properties of the Pointer Movement state object, but not to mutate an object that the PM state object will be used to mutate, that is the responsibility of another method.
+I then need a method that I can used to update a Pointer Movement state that has a mutated current point. This method is used as a way to update the properties of the Pointer Movement state object, but not to mutate an object that the PM state object will be used to mutate, that is the responsibility of another public method in this module.
+
+The update method should be called in a main app loop of the project that I use this with, when doing so the first argument should be an instance of a pm object created with the create method of this module. The second argument should be a number in seconds that is the amount of time that has passed sense the last call of the main app loop. For an example of this there is the section on the main.js example later in this post.
 
 ```js
     // update the pm based on startPoint, and currentPoint
