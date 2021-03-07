@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-07 12:50:32
-version: 1.51
+updated: 2021-03-07 12:54:46
+version: 1.52
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -193,7 +193,7 @@ I then worked out some additional methods that can be used when attaching event 
 
 ## 2 - The draw module
 
-So now that I have my Pointer Movement module worked out I will want to produce some draw methods that can be used to draw the current state of this Pointer Movement object, as well as other things that have to do with this canvas example.
+So now that I have my Pointer Movement module worked out I will want to produce some draw methods that can be used to draw the current state of this Pointer Movement object, as well as other things that have to do with this canvas example. For the most part there is just drawing the current state of the pm object instance that is most impotent, however in this example I am also going to be packing in just a few more methods that have to do with drawing the state of other elements of this example outside of the pm object. In a real project the Pm object would be just one little thing about the project that has to do with how to go about navigating a game map. However in this example the game map is just a map offset point and that is all. Still I will want o draw some gird lines at least as a way to show that this is in fact working the way I want it to.
 
 ### 2.1 - The start of the module, and a draw background method
 
