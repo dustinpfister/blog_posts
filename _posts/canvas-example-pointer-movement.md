@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 596
-updated: 2021-03-07 12:24:20
-version: 1.44
+updated: 2021-03-07 12:25:03
+version: 1.45
 ---
 
 In this [canvas example](/2020/03/23/canvas-example/) I will be working out some logic that has to do with moving what could be a map by way of a pointer such as a mouse. So this example will not really be a game, animation, or anything to that effect, but it will be just a simple demo that makes use of a single module that can be used as a user interface type thing. Many canvas examples, mainly games will require some way to pan around a game map of sorts, so some kind of logic such as what I am going over here would need to be used to do so.
@@ -28,7 +28,7 @@ There are also a few helper methods that are used internally in this module, alo
 
 ### 1.1 - The start of the module, the public api, and the create new Pointer Movement state object method
 
-The whole of this module is stored in an IIFE, I will not be getting into detail with that here as I have wrote other posts on this, as well as other kinds of basic javaScript module design. AT the top of the body of the IIFE I have a few helper functions that I use in the update method that I will be getting to later in this section. The helper methods have to do with locking the angle to a set number of points along the circumference of a circle.
+The whole of this module is stored in an IIFE, I will not be getting into detail with that here as I have wrote other posts on this, as well as other kinds of basic javaScript module design. AT the top of the body of the IIFE I have a few helper functions that I use in the update method that I will be getting to later in this section. The helper methods lock to dirs, and apply mode have to do with locking the angle to a set number of points along the circumference of a circle.
 
 For this module there is no main function, so I just created an object literal for the public API. The first method that I made for this public API for the Pointer Movement module is a method that can be used to create a new Pointer Movement state object \(pm\). When calling the method I can pass a number of options to set values like this min and max distance, and max pixels per second value to use when updating the position of an object with this.
 
