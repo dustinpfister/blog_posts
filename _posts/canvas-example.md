@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-07 20:03:08
-version: 1.117
+updated: 2021-03-07 20:04:43
+version: 1.118
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -201,7 +201,7 @@ In this canvas example I worked out a basic example of getting scrolling working
 
 ### 3.36 - [object pool](/2020/07/20/canvas-example-object-pool/)
 
-This project is an exercise of having an object pool. That is just simply a set collection of objects that are used over and over again, rather than pushing and splicing out as needed.
+This project is an exercise of having an object pool, that is just simply a set collection of objects that are used over and over again, rather than pushing and splicing out as needed. I have come to find that I like to have this kind of library in many of my canvas projects, as such this is something that I come back to often, and also is part of many other canvas examples in one form or another.
 
 ### 3.37 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
 
