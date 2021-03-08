@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2020-10-15 06:31:14
-version: 1.8
+updated: 2021-03-08 13:40:40
+version: 1.9
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
@@ -90,3 +90,7 @@ ps.stdout.on('end', (data) => {
 ```
 
 Not a practical example at least in its current state, but depending on what it is that I am trying to work out with Shell Scripting something like this could turn into something piratical of course. For example say I want to check if a process is not running first, and if not start it. Also say that I want to count the number of instances of that process that are currently running and if necessary call a kill command. In that case something like this would be a good starting point right?
+
+## 3 - Conclusion
+
+So the Linux ps command is the basic tool to use when it comes to checking out what is going on with processes. There are a number of other options that might be worth checking otu one of which would be the top command. There are also a number of task manager like applications that can be used to have a graphical front end for must desktop environments.
