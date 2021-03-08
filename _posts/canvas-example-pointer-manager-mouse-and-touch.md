@@ -5,11 +5,11 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 09:45:25
-version: 1.21
+updated: 2021-03-08 09:49:21
+version: 1.22
 ---
 
-This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
+This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
 
 Many popular frameworks such as [phaser will come with an input controller](/2017/10/19/phaser-input-pointers/), when it comes to using such a framework it is just a means of becoming familiar with how to go about using that input controller. However in this post I will be writing about a vanilla javaScript solution for this topic when it comes to web development. Still when it comes to working out a real project it might be best to use a well development and supported framework such as what is worked out for [PIXI when it comes to an interaction manager](https://pixijs.download/dev/docs/PIXI.interaction.InteractionManager.html). However if you do what to take the time to make your own abstraction for this, then maybe what is written here will be a helpful starting point for you.
 
