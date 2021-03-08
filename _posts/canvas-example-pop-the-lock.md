@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-07 19:42:08
-version: 1.27
+updated: 2021-03-07 19:47:42
+version: 1.28
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -24,9 +24,7 @@ So todays [canvas example](/2020/03/23/canvas-example/) will be a game that is a
 
 For this canvas example I made a game module that will be used to create and return a game state object, as well as provide methods to update that state object.
 
-The game object contains values such as the current degree of the point in motion, and a value that reflects the total number of degrees in the main circle of the game. In addition there is also a target degree, and margin value that can be used to result in a range in the circle. This range is the area where the payer will score if they make an action when the current degree is in that range. There are also a number of other values that have to do with the rate at which the current degree will move as well as the current direction, and a boolean that indicates that the current degree is in the range.
-
-The methods I worked out have to do with wrapping a degree value, figuring out if the current degree is in range or not, and event handler for use action. I Also have a main tick method that will be called on each loop of a main app loop, and another method that will set the current target degree value.
+The game object contains values such as the current degree of the point in motion, and a value that reflects the total number of degrees in the main circle of the game. In addition there is also a target degree, and margin value that can be used to result in a range area in the circle. This range is the area where the payer will score if they make an action such as clicking or touching the canvas when the current degree is in that range. There are also a number of other values that have to do with the rate at which the current degree will move as well as the current direction, and a boolean that indicates that the current degree is in the range.
 
 ```js
 var gameMod = (function(){
@@ -78,7 +76,9 @@ var gameMod = (function(){
 }());
 ```
 
-I often do start out with this kind of module pattern when it comes to simple canvas example projects.
+In this module I am making use of a utils library that contains many useful methods such as mathematical modulo. I will be getter to that in a later section in this post.
+
+So now that I have a game module worked out I am going to want to have some additional code that is used to draw the state of one of these game state objects to the canvas. In additional I am also going to want to have some javaScript code that will provide a main app loop, and a state machine that will be needed when it comes to continuing to expand this.
 
 ## 2 - The draw method
 
