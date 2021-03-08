@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-07 20:04:43
-version: 1.118
+updated: 2021-03-08 10:14:46
+version: 1.119
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -217,7 +217,7 @@ A simple canvas example that shows graphically what a method I worked out does w
 
 ### 3.40 - [Pointer manager](/2020/01/29/canvas-example-pointer-manager-mouse-and-touch/)
 
-I think that it is generally a good idea to make a canvas project to work with pointers in general rather than making a project to desktop or mobile centric. So I made a quick Canvas Example that is a way to manage pointer input from both mouse and touch events. 
+I think that it is generally a good idea to make a canvas project to work with pointers in general rather than making a project to desktop or mobile centric. So I made a quick Canvas Example that is a way to manage pointer input from both mouse and touch events. This is one of several examples where I am working out something that is a very basic framework of sorts, as there is more to it than just a basic pointer manager. I also have a crude yet functional state machine of sorts that helps to keep things better organized, but still the focus with this example is on pointer events.
 
 ### 3.41 - [Pointer movement](/2020/01/26/canvas-example-pointer-movement/)
 
