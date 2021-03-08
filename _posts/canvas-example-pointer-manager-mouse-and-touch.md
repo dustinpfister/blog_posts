@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 10:02:41
-version: 1.26
+updated: 2021-03-08 10:04:22
+version: 1.27
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -88,7 +88,7 @@ Here I have The attach pointer event helper method that will be called in the ma
 
 ### 1.3 - The public method
 
-Now for the public method, what this is called from outside the module all I have to do is pass my state object, and dom events will be attached to the canvas of the state object.
+Now for the public method, what this is called from outside the module all I have to do is pass my state object, and dom events will be attached to the canvas of the state object. This is then what I will be using in my main.js file to attach event handlers for the state machine. Once I do so it is then how I go about creating and adding states when it comes to adding additional logic as to what to do when it comes to working wih pointer events.
 
 ```js
     // single attachment method for a state manager
