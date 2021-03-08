@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-08 13:57:59
-version: 1.12
+updated: 2021-03-08 13:59:33
+version: 1.13
 ---
 
-So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
+So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. There are many options for the command that can be used to control selection of which process to print to the standard output, and formating of the output when it comes to what I want to know about processes. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs while I am at it.
 
 <!-- more -->
 
