@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-06 14:41:45
-version: 1.114
+updated: 2021-03-07 19:35:15
+version: 1.115
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -23,7 +23,7 @@ I am going all over the board when it comes to playing around with canvas elemen
 <div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
 <script src="/js/canvas-examples/game-crosshairs/0.21.0/pkg.js"></script>
 
-Above is v0.21.0 of cross hairs one of many other works in process when it comes to canvas examples.
+Above is v0.21.0 of cross hairs one of my many works in process when it comes to these canvas examples.
 
 ## 1 - The github repo
 
@@ -227,7 +227,7 @@ Here is a Canvas Example that is a User interface design for moving a map, or an
 
 A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example. It just involves a circle that moves along the circumference of another circle and the player needs to click or tap the screen when the moving circled gets in a certain range or else they loose. So the general idea of the game is very simple, yet very addictive, so of core I made a quick clone for what it is worth.
 
-I made the rules and behavior a little different, but this canvas example is the same very general idea of the pop the lock game. Future ideas for the game if i put more effort into the code would include more than one game mode, and maybe some flashy yest simple animations.
+I made the rules and behavior a little different, but this canvas example is the same very general idea of the pop the lock game. Future ideas for the game if I put more effort into the code would include more than one game mode, and maybe some flashy yest simple animations.
 
 ### 3.43 - [space shooter](/2019/08/21/canvas-example-space-shooter/)
 
