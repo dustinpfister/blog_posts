@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 818
-updated: 2021-03-08 13:29:13
-version: 1.9
+updated: 2021-03-08 13:45:26
+version: 1.10
 ---
 
 The [Linux free](https://linuxize.com/post/free-command-in-linux/) command is how to go about getting an idea as to how much memory is being used by the system at a given moment in the command line and when creating bash scripts. WHen it comes to getting an idea of how much memory is being used there is not just knowing how much there is installed, and how much is being used. There is knowing how much physical memory there is, knowing how much swap space there is on the hard drive in terms of a file or partition. There is then also know what the difference is between free, and available when it comes to using the Linux free command.
@@ -48,6 +48,23 @@ $ ps -e -o pid,command,%mem
 
 When using the -o option with the ps command I am often going to want to use the pid, and command fields along with \%mem that will give me the percentage of memory that a process is using. If I think that I am using to much ram this is what I can use to see what is going on that might be using to much, and then take action by closing down applications I am not using, or see about making some system changes when it comes to services.
 
-## 3 - Conclusion
+## 3 - The Linux df command to find out what is going on with free hard drive space
+
+The [Linux df](/2020/11/23/linux-df) command is the first command that comes to mind when it comes to taking a look at what is going on with free space on my file system rather than RAM. There is also the Linux du command that can be used to find out how much space a file takes up rather than what is going on with a file system as a whole.
+
+```
+$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root       30466332 8008448  21169436  28% /
+devtmpfs          440232       0    440232   0% /dev
+tmpfs             473512   53552    419960  12% /dev/shm
+tmpfs             473512    6432    467080   2% /run
+tmpfs               5120       4      5116   1% /run/lock
+tmpfs             473512       0    473512   0% /sys/fs/cgroup
+/dev/mmcblk0p1    258095   55170    202925  22% /boot
+tmpfs              94700       8     94692   1% /run/user/1000
+```
+
+## 4 - Conclusion
 
 So the Linux free command is used to find out the current state of affairs is when it comes to physical memory and virtual memory, aka swap space. However this command is just one way to go about getting an idea of what is going on, the free command can not help when it comes to taking some kind of action when it comes to process and service management. It is also not the only thing that comes to mind when it comes to just checking the status of something, even when it comes to just memory, there is also the top command that might be a better option for tracking what is going on with ram. The top command will show what is going one with processes and display a percentage when it comes to ram use, it will also kep running rather than just pull a status at the time that it is called.
