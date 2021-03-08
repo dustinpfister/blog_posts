@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 10:10:45
-version: 1.29
+updated: 2021-03-08 10:20:34
+version: 1.30
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -201,6 +201,8 @@ var draw = (function(){
 
 So now for a quick demo to see if this works as it should when given a simple state object that will work with it. This is an example that just results in a circle drawn at the center of the canvas, and both mouse and touch events can be used to move it around. 
 
+### 4.1 - the html file
+
 So lets start out with the html I just have a div element and then script tags linking to my pointer manager first, and then the main.js file that will follow.
 
 ```html
@@ -218,7 +220,9 @@ So lets start out with the html I just have a div element and then script tags l
 </html>
 ```
 
-Here is the main.js file.
+### 4.2 - the main.js file
+
+Here is the main.js file where I am bring all of this together into a single main app loop and state machine object. At the top of the file I am using my create canvas to create a single canvas element just the way that I like it when it comes to making vanilla javaScript canvas projects. I can then use the canvas object that this method returns to have a canvas and 2d context properties in my main state object.
 
 ```js
 var canvasObj = utils.createCanvas(),
