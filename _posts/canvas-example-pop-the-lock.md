@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-07 19:40:26
-version: 1.26
+updated: 2021-03-07 19:42:08
+version: 1.27
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -24,9 +24,9 @@ So todays [canvas example](/2020/03/23/canvas-example/) will be a game that is a
 
 For this canvas example I made a game module that will be used to create and return a game state object, as well as provide methods to update that state object.
 
-The object contains values such as the current section of the point in motion, and a value that reflects the total number of sections in the main circle of the game. In addition there is also a target section, and margin value that can be used to result in a range in the circle. This range is the area where the payer will score if they make an action when the current section is in that range. There are also a number of other values that have to do with the rate at which the current section will move as well as the current direction, and a boolean that indicates that the current section is in the range.
+The game object contains values such as the current degree of the point in motion, and a value that reflects the total number of degrees in the main circle of the game. In addition there is also a target degree, and margin value that can be used to result in a range in the circle. This range is the area where the payer will score if they make an action when the current degree is in that range. There are also a number of other values that have to do with the rate at which the current degree will move as well as the current direction, and a boolean that indicates that the current degree is in the range.
 
-The methods I worked out have to do with wrapping a section value, figuring out if the current section is in range or not, and event handler for use action. I Also have a main tick method that will be called on each loop of a main app loop, and another method that will set the current target section value.
+The methods I worked out have to do with wrapping a degree value, figuring out if the current degree is in range or not, and event handler for use action. I Also have a main tick method that will be called on each loop of a main app loop, and another method that will set the current target degree value.
 
 ```js
 var gameMod = (function(){
@@ -217,7 +217,7 @@ utils.getCanvasRelative = function (e) {
 
 ## 4 - The canvas, main app loop, and the html
 
-So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a canvas app div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random section, and define and start the main game loop.
+So now to make use of everything I work out here. I just create a canvas and get the drawing context to it, and then append to a canvas app div that I have in my html. I set the width and height, and attach a single event that I worked out in my state object. I then set the first random degree, and define and start the main game loop.
 
 In the main app loop I am canning the tick method of my pop the lock state object, and I am also using the draw method I have worked out to draw the current state of the state object in the canvas element. I am also of course using request animation frame as always to create the app loop for the canvas example as with just about any other.
 
