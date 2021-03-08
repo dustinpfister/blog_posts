@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 818
-updated: 2021-03-08 12:53:06
-version: 1.5
+updated: 2021-03-08 12:55:22
+version: 1.6
 ---
 
 The [Linux free](https://linuxize.com/post/free-command-in-linux/) command is how to go about getting an idea as to how much memory is being used by the system at a given moment in the command line and when creating bash scripts. WHen it comes to getting an idea of how much memory is being used there is not just knowing how much there is installed, and how much is being used. There is knowing how much physical memory there is, knowing how much swap space there is on the hard drive in terms of a file or partition. There is then also know what the difference is between free, and available when it comes to using the Linux free command.
@@ -29,7 +29,7 @@ $ free
 #Swap:       1048572       90880      957692
 ```
 
-By default the numbers given are in kibibytes (1024 byte units), which is a good standard to use considering that physical memory is always in base2, rather than base 10 units. However there are a number of formating options for the free command to format the output in other units. One such option is the -h option that will format things automatically in terms of bytes and other base 2 units.
+By default the numbers given are in [kibibytes AKA 1024 byte units](https://www.logicmonitor.com/blog/what-the-hell-is-a-kibibyte), which is a good standard to use considering that physical memory is always in base2, rather than base 10 units. However there are a number of formating options for the free command to format the output in other units. One such option is the -h option that will format things automatically in terms of bytes and other base 2 units.
 
 ``` 
 $ free -h
@@ -37,3 +37,7 @@ $ free -h
 #Mem:          924Mi       377Mi        47Mi        43Mi       499Mi       451Mi
 #Swap:         1.0Gi        90Mi       933Mi
 ```
+
+## 2 - Conclusion
+
+So the Linux free command is used to find out the current state of affairs is when it comes to physical memory and virtual memory, aka swap space.
