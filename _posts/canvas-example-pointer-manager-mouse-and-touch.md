@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 09:53:26
-version: 1.23
+updated: 2021-03-08 09:55:32
+version: 1.24
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -24,7 +24,7 @@ So this will be a post on such a project that does what I just described, if you
 
 ## 1 - The pointer manager module for this canvas example
 
-So lets start out with the module that will create the pointer manager of sorts. This module is a few helper methods and a single public method returned from within an IIFE module pattern. The public function is just called and passes a state machine object that I will be getting to with a demo later in this post.
+So lets start out with the module that will create the pointer manager of sorts. This module is a few helper methods and a single public method returned from within an IIFE module pattern. The public function is just called and when doing so I pass a state machine object that I will be getting to with a demo later in this post. However for now I think that I can just say that the state machine object has a reference to a canvas element in it. It is then this canvas element to which I would like to attach some event handlers.
 
 ### 1.1 - The out of canvas, and the get pointer helpers.
 
