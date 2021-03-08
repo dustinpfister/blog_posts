@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 818
-updated: 2021-03-08 13:19:10
-version: 1.7
+updated: 2021-03-08 13:27:57
+version: 1.8
 ---
 
 The [Linux free](https://linuxize.com/post/free-command-in-linux/) command is how to go about getting an idea as to how much memory is being used by the system at a given moment in the command line and when creating bash scripts. WHen it comes to getting an idea of how much memory is being used there is not just knowing how much there is installed, and how much is being used. There is knowing how much physical memory there is, knowing how much swap space there is on the hard drive in terms of a file or partition. There is then also know what the difference is between free, and available when it comes to using the Linux free command.
@@ -22,7 +22,7 @@ So in this post I will be going over a few quick examples of the Linux Free comm
 
 When it comes to using the free command one way would be to just enter the command free into the bash command prompt. The result of doing so will be a bunch of columns for total memory, used, free, shared, buffers, and available. The free amount of memory might be a bit misleading, it is not really the amount of memory that is free. A better term for it might be unused memory, as long as there is a fair amount of memory in the available column then there is still a fair amount of memory for applications.
 
-```js
+```
 $ free
 #              total        used        free      shared  buff/cache   available
 #Mem:         946392      374608       54864       45020      516920      474404
@@ -38,9 +38,16 @@ $ free -h
 #Swap:         1.0Gi        90Mi       933Mi
 ```
 
-## 2 - Conclusion
+## 2 - The Linux ps command to get %mem for each process
+
+There are a number of other commands that can be used to get a sense of what is going on with ram ueage. The free command is a good start, but it will not give a break down when it comes to processes. The Linux ps command will give this kind of break down though when I make use of the output option of the Linux ps command.
+
+```
+$ ps -e -o pid,command,%mem
+```
+
+When using the -o optiion with the ps command I am often going to want to use the pid, and command feilds along with \%mem that will give me the percetange of memeory that a process is using. If I think that I am using to much ram this is what I can use to see what is goign on that might be using to much, and then take action by closing down appklactions I am not using, or see about making some system changes when it comes to services.
+
+## 3 - Conclusion
 
 So the Linux free command is used to find out the current state of affairs is when it comes to physical memory and virtual memory, aka swap space. However this command is just one way to go about getting an idea of what is going on, the free command can not help when it comes to taking some kind of action when it comes to process and service managment. It is also not the only thing that comes to mind when it comes to just checking the status of something, even when it comes to just memory, there is also the top command that might be a better option for tracking what is going on with ram. The top command will show what is going one with processes and display a percentage when it comes to ram use, it will also kep running rather than just pull a status at the time that it is called.
-
-
-
