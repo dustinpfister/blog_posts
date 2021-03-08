@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 09:55:32
-version: 1.24
+updated: 2021-03-08 09:58:10
+version: 1.25
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -28,7 +28,7 @@ So lets start out with the module that will create the pointer manager of sorts.
 
 ### 1.1 - The out of canvas, and the get pointer helpers.
 
-I then have an out of canvas helper that will return true of the given canvas relative position is out of bounds for the canvas of the state object. I also have a helper that will return a pointer object from the current state of a state machine of it has one or false if it does not.
+At the top of the PMMT module I then have an out of canvas helper that will return true of the given canvas relative position is out of bounds for the canvas of the state object. I also have a helper that will return a pointer object from the current state of a state machine if the current state object has a pointer object else the function will return false if it does not. This will make more sense once I get to the main.js file where I have the current code for the main state machine object.
 
 ```js
 var PMMT = (function () {
