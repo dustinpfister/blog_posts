@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 818
-updated: 2021-03-08 12:39:43
-version: 1.3
+updated: 2021-03-08 12:45:35
+version: 1.4
 ---
 
 The [Linux free](https://linuxize.com/post/free-command-in-linux/) command is how to go about getting an idea as to how much memory is being used by the system at a given moment in the command line and when creating bash scripts. WHen it comes to getting an idea of how much memory is being used there is not just knowing how much there is installed, and how much is being used. There is knowing how much physical memory there is, knowing how much swap space there is on the hard drive in terms of a file or partition. There is then also know what the difference is between free, and available when it comes to using the Linux free command.
@@ -20,13 +20,15 @@ So in this post I will be going over a few quick examples of the Linux Free comm
 
 ## 1 - Basic Linux free examples
 
+When it comes to using the free command one way would be to just enter the command free into the bash command prompt. The result of doing so will be a bunch of columns for total memory, used, free, shared, buffers, and available. The free amount of memory might be a bit misleading, it is not really the amount of memory that is free. A better term for it might be unused memory, as long as there is a fair amount of memory in the available column then there is still a fair amount of memory for applications.
+
 ```js
-free
+$ free
 #              total        used        free      shared  buff/cache   available
 #Mem:         946392      374608       54864       45020      516920      474404
 #Swap:       1048572       90880      957692
  
-free -h
+$ free -h
 #              total        used        free      shared  buff/cache   available
 #Mem:          924Mi       377Mi        47Mi        43Mi       499Mi       451Mi
 #Swap:         1.0Gi        90Mi       933Mi
