@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-07 19:35:15
-version: 1.115
+updated: 2021-03-07 20:01:54
+version: 1.116
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -223,6 +223,8 @@ I think that it is generally a good idea to make a canvas project to work with p
 
 Here is a Canvas Example that is a User interface design for moving a map, or anything for that matter by way of touch or click events. The interface works by way of a pointer start point on the canvas, and a distance to a current point on the canvas. This distance is then used to set the rate at which the map moves, and the angle from the start point to the current point is used to set direction.
 
+There is also a way to do a long press or click that will preform an additional action. I would like to use this as a way to create an additional menu that can be accessed that way. This canvas example is then not really a game, or animation, or anything to that effect, but I am just focusing on making a simple user interface type thing.
+
 ### 3.42 - [pop the lock game clone](/2019/11/26/canvas-example-pop-the-lock/)
 
 A Canvas Example that is a pop the lock game clone, the game is very easy to clone so it is a great getting started example. It just involves a circle that moves along the circumference of another circle and the player needs to click or tap the screen when the moving circled gets in a certain range or else they loose. So the general idea of the game is very simple, yet very addictive, so of core I made a quick clone for what it is worth.
@@ -252,3 +254,4 @@ Turret defense games are sometimes nice so I have a Canvas Example on that in ge
 ## 4 - Conclusion
 
 I will of course be updating and expanding this list as I continue to make additional canvas examples, as well as improve the quality of the examples and the content that I have written about them in the process of doing so. Thus far I have been trying to get a build of each example embedded into each post which of course should have been the case from the beginning.
+
