@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-08 13:40:40
-version: 1.9
+updated: 2021-03-08 13:53:03
+version: 1.10
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
@@ -50,15 +50,23 @@ $ ps -C chromium-browse
 20431 ?        00:00:10 chromium-browse
 ```
 
-### 1.4 - Custom output
+### 1.4 - Basic Custom output with pid, uname, and comm
 
 Whe it comes to controlling what will be displayed for each process that will should up there is the lowercase o option as well as several other options that mean the same thing. To have full control over the output of ps you will want to read up on the STANDARD FORMAT SPECIFIERS of the Linux ps command, and again it would be best to look at the man pages when it comes to this because there are a lot of them.
 
 ```
-ps -U avahi -o "pid uname comm"
+$ ps -U avahi -o "pid uname comm"
   PID USER     COMMAND
   375 avahi    avahi-daemon
   406 avahi    avahi-daemon
+```
+
+### 1.5 - Custom output with memory percentage
+
+Often I might want to know how much memory a process might be easting up, when it comes to knowing what the totals are when it comes to what is going on with ram there is the Linux free command. However that command will just gives totals, it will not should be what is going on at a per process level. However with the ps command I can use the \%mem format specifier to know what is going on. This will give memory usage for each process in a query, but it will do so as percentage values.
+
+```
+$ ps -U pi -o %mem,comm
 ```
 
 ## 2 - Example 1 of Linux ps and making a custom array of command names and process ids with nodejs
