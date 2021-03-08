@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 09:35:14
-version: 1.19
+updated: 2021-03-08 09:41:03
+version: 1.20
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -24,34 +24,12 @@ Anyway say you want to make a canvas project that will work well with both mouse
 
 So lets start out with the module that will create the pointer manager of sorts. This module is a few helper methods and a single public method returned from within an IIFE module pattern. The public function is just called and passes a state machine object that I will be getting to with a demo later in this post.
 
-### 1.1 - The start of the module and the get canvas relative helper.
-
-So at the top of the module I have a get canvas relative helper method. This method will return a canvas relative position from an event object that is passed from within an event hander that receives such an event object from its call back.
-
-```js
-var PMMT = (function () {
- 
-    // get canvas relative point
-    var getCanvasRelative = function (e) {
-        var canvas = e.target,
-        bx = canvas.getBoundingClientRect();
-        var x = (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y = (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top;
-        return {
-            x: x,
-            y: y,
-            bx: bx
-        };
-    };
-```
-
-I have a [post in which I get into the topic of getting a canvas relative point in general](/2020/03/04/canvas-get-point-relative-to-canvas/). For the sake of this project a solution like this works okay because I do not want or need to support multi-touch. If i did want to support multi-touch then I would still use a solution not all that different from this one only it would return an array of pointer objects.
-
-### 1.2 - The out of canvas, and the get pointer helpers.
+### 1.1 - The out of canvas, and the get pointer helpers.
 
 I then have an out of canvas helper that will return true of the given canvas relative position is out of bounds for the canvas of the state object. I also have a helper that will return a pointer object from the current state of a state machine of it has one or false if it does not.
 
 ```js
+var PMMT = (function () {
     // out of canvas
     var outOfCanvas = function (sm, pos) {
         return pos.x < 0 || pos.x >= sm.canvas.width || pos.y < 0 || pos.y >= sm.canvas.height;
@@ -67,7 +45,7 @@ I then have an out of canvas helper that will return true of the given canvas re
     };
 ```
 
-### 1.3 - The attach pointer event helper
+### 1.2 - The attach pointer event helper
 
 Here I have The attach pointer event helper method that will be called in the main public method to attach dome events for handlers that will call the current corresponding state pointer methods if they are there.
 
@@ -77,7 +55,7 @@ Here I have The attach pointer event helper method that will be called in the ma
         // attach a hander of the given domType to the canvas
         sm.canvas.addEventListener(domType, function (e) {
             // get position and state
-            var pos = getCanvasRelative(e),
+            var pos = utils.getCanvasRelative(e),
             pointer = getPointer(sm),
             hander,
             endHander;
@@ -106,7 +84,7 @@ Here I have The attach pointer event helper method that will be called in the ma
     };
 ```
 
-### 1.4 - The public method
+### 1.3 - The public method
 
 Now for the public method, what this is called from outside the module all I have to do is pass my state object, and dom events will be attached to the canvas of the state object.
 
@@ -130,7 +108,88 @@ Now for the public method, what this is called from outside the module all I hav
     ());
 ```
 
-## 2 - Lets see it in action with a demo
+## 2 - The utils library
+
+In this example I am making use of my usual get canvas relative helper method. This method will return a canvas relative position from an event object that is passed from within an event hander that receives such an event object from its call back.
+
+```js
+var utils = {};
+// create a canvas
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+// get canvas relative point
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+```
+
+I have a [post in which I get into the topic of getting a canvas relative point in general](/2020/03/04/canvas-get-point-relative-to-canvas/). For the sake of this project a solution like this works okay because I do not want or need to support multi-touch. If i did want to support multi-touch then I would still use a solution not all that different from this one only it would return an array of pointer objects.
+
+## 3 - The draw module
+
+```js
+var draw = (function(){
+    var api = {};
+    // draw background
+    api.background = function(ctx, canvas, sm){
+        ctx.fillStyle = sm.backgroundStyle || 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        var img = sm.backgroundImage;
+        if(img){
+            ctx.drawImage(sm.backgroundImage, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+        }
+    };
+    // draw a pointer object
+    api.pointerObj = function(ctx, canvas, pt){
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+        ctx.stroke();
+    };
+    // draw version number
+    api.ver = function(ctx, canvas, sm){
+        ctx.fillStyle = '#0a0a0a';
+        ctx.textBaseline = 'top';
+        ctx.textAlign = 'left';
+        ctx.font = '10px arial';
+        ctx.fillText('v' + sm.ver, 5, canvas.height - 15);
+    };
+    // return public api
+    return api;
+}());
+```
+
+## 4 - Lets see it in action with a demo
 
 So now for a quick demo to see if this works as it should when given a simple state object that will work with it. This is an example that just results in a circle drawn at the center of the canvas, and both mouse and touch events can be used to move it around. 
 
@@ -142,8 +201,10 @@ So lets start out with the html I just have a div element and then script tags l
         <title>canvas example pointer manager mouse and pointer</title>
     </head>
     <body>
-        <div id="gamearea"></div>
-        <script src="pointer-manager-mouse-touch.js"></script>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/pointer.js"></script>
+        <script src="./lib/draw.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
@@ -152,21 +213,20 @@ So lets start out with the html I just have a div element and then script tags l
 Here is the main.js file.
 
 ```js
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
- 
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
+// state machine object
 var sm = {
+    ver: '0.0.1',
     currentState: 'init',
     canvas: canvas,
     ctx: ctx,
+    backgroundStyle:'gray',
     model: {
         x: canvas.width / 2,
-        y: canvas.height / 2
+        y: canvas.height / 2,
+        r: 10
     },
     init: {
         tick: function (model, sm) {
@@ -176,12 +236,9 @@ var sm = {
     },
     demo: {
         tick: function (model, sm) {
-            ctx.fillStyle = 'black';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = 'white';
-            ctx.beginPath();
-            ctx.arc(model.x, model.y, 5, 0, Math.PI * 2);
-            ctx.stroke();
+            draw.background(sm.ctx, sm.canvas, sm);
+            draw.pointerObj(sm.ctx, sm.canvas, sm.model);
+            draw.ver(sm.ctx, sm.canvas, sm);
         },
         pointer: {
             start: function (pos, sm, e) {
@@ -203,7 +260,7 @@ var sm = {
         }
     }
 };
- 
+// main app loop
 var loop = function () {
     requestAnimationFrame(loop);
     sm[sm.currentState].tick(sm.model, sm);
@@ -213,6 +270,6 @@ loop();
 
 When this demo is up and running it works as expected. I can use the mouse to click and hold on the canvas and then drag the circle around the canvas, once I release the mouse button the circle returns to the center of the canvas. The same can be done with touch events, and in any case if I leave the canvas it triggers an end event also. This results in a uniform behavior regardless if I am using a mouse, or touch screen as a pointer device.
 
-## 3 - Conclusion
+## 5 - Conclusion
 
 So this is all just part of what might one day become a full canvas framework if I ever get to it. I am not sure if I can recommend taking the time to work out your own canvas framework rather than just using something that is out there. Sure there are advantages for doing so, and that is of course why I am taking the time to work out these examples. However I am paying a price for doing so as i find myself spending ore time making projects like this, and less time making actually games, animations, and productivity applications.
