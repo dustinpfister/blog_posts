@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 10:04:22
-version: 1.27
+updated: 2021-03-08 10:07:18
+version: 1.28
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -112,7 +112,11 @@ Now for the public method, what this is called from outside the module all I hav
 
 ## 2 - The utils library
 
-In this example I am making use of my usual get canvas relative helper method. This method will return a canvas relative position from an event object that is passed from within an event hander that receives such an event object from its call back.
+In this example I am making use of my usual get canvas relative helper method that is a typical additional to a utility library that I often use with my canvas examples. This method will return a canvas relative position from an event object that is passed from within an event hander that receives such an event object from its call back.
+
+I have a [post in which I get into the topic of getting a canvas relative point in general](/2020/03/04/canvas-get-point-relative-to-canvas/). For the sake of this project a solution like this works okay because I do not want or need to support multi-touch. If i did want to support multi-touch then I would still use a solution not all that different from this one only it would return an array of pointer objects.
+
+In this utility library I also have my create canvas method that has become a kind of standard when it comes to all of my canvas examples. However the state of this kind of module will change a little from one example to the next. In this example it might have just two methods, but in other examples I might park a lot of various methods here that I might use in more than one module in an example, or copy and past to other utils library of other examples.
 
 ```js
 var utils = {};
@@ -154,8 +158,6 @@ utils.getCanvasRelative = function (e) {
     return pos;
 };
 ```
-
-I have a [post in which I get into the topic of getting a canvas relative point in general](/2020/03/04/canvas-get-point-relative-to-canvas/). For the sake of this project a solution like this works okay because I do not want or need to support multi-touch. If i did want to support multi-touch then I would still use a solution not all that different from this one only it would return an array of pointer objects.
 
 ## 3 - The draw module
 
