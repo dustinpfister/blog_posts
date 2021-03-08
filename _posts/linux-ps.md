@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-08 13:55:18
-version: 1.11
+updated: 2021-03-08 13:57:59
+version: 1.12
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
@@ -24,6 +24,8 @@ So if I just want a list of all processes running at the present moment I will c
 ```
 $ ps -e
 ```
+
+However there should be ways of selecting by user, or process game, and so forth, and of course there are. The man page might be the best source when it comes to getting to know all the process section options, however I think that I should get to some examples that have to do with selecting by user and command name at least.
 
 ## 1.2 - See just process for a given user
 
