@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-07 20:01:54
-version: 1.116
+updated: 2021-03-07 20:03:08
+version: 1.117
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -205,7 +205,7 @@ This project is an exercise of having an object pool. That is just simply a set 
 
 ### 3.37 - [binary particles](/2020/03/18/canvas-example-particles-binary/)
 
-The idea just came into my head one day to make some kind of fun and interesting canvas example that involves two types of circles. When two of two different types combine into one, then it results in an explosion. The result is a somewhat interesting visual effect.
+The idea just came into my head one day to make some kind of fun and interesting canvas example that involves two types of circles. When two of two different types combine into one, then it results in an explosion. So then the result is a somewhat interesting visual effect, and this is just another kind of animation or digital art type project.
 
 ### 3.38 - [search and destroy particles](/2020/04/13/canvas-example-particles-search-destroy-and-spawn/)
 
