@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-08 13:53:03
-version: 1.10
+updated: 2021-03-08 13:55:18
+version: 1.11
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment. There are many options for the command that can be used to control selection and formating of the output. In this post I will be going over some typical examples of the Linux ps command, and a use case example with nodejs.
@@ -35,7 +35,7 @@ $ ps -U pi
 
 ## 1.3 - Just processes of a given name
 
-Sometimes I will want to select process by a given set command name, for that there is the upper case C option of linux ps.
+Sometimes I will want to select process by a given set command name, for that there is the upper case C option of linux ps. To do so I will need to know the name of the command that I will want to look for to begin with, so I can use some of the other options to get the command name I want first.
 
 ```
 $ ps -C chromium-browse
