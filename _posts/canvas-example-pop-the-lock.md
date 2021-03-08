@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-07 19:47:42
-version: 1.28
+updated: 2021-03-07 19:52:06
+version: 1.29
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -82,7 +82,7 @@ So now that I have a game module worked out I am going to want to have some addi
 
 ## 2 - The draw method
 
-So now that I have the state object worked out it is time to work out a draw method for it. In this example I am not doing anything fancy with layering, sprites, and so forth. Just a single draw method that renders the current state of the game that will be called on each frame tick. For now I went with something that just draws everything in just one method.
+So now that I have the game state object worked out it is time to work out a draw method for it, as well as some additional draw methods for the project as a whole. In this example I am not doing anything fancy with layering, sprites, and so forth. So I just have a collection of draw methods for drawing things like a solid color background, the current version number, and the current state of things when it comes to the game state object of course. I took the time to break things down into a whole bunch of helper methods, and then have just a few public drawing methods that I will be using in my main.js file.
 
 ```js
 var draw = (function(){
