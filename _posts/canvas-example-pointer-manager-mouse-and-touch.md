@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 10:20:34
-version: 1.30
+updated: 2021-03-08 10:24:23
+version: 1.31
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -286,4 +286,4 @@ When this demo is up and running it works as expected. I can use the mouse to cl
 
 So this is all just part of what might one day become a full canvas framework if I ever get to it. I am not sure if I can recommend taking the time to work out your own canvas framework rather than just using something that is out there. Sure there are advantages for doing so, and that is of course why I am taking the time to work out these examples. However I am paying a price for doing so as I find myself spending ore time making projects like this, and less time making actually games, animations, and productivity applications.
 
-Still if I get some more time to come around and work on this example a little more there are maybe a few things that I would do differently, and it would be nice to add at least a few more things here and there to create some kind of simple demo game. With a little more polish, and some additional things stacked up on top of this I might be able to create something that is starting to look like some kind of framework, but maybe all of that is a matter for another post.
+Still if I get some more time to come around and work on this example a little more there are maybe a few things that I would do differently, and it would be nice to add at least a few more things here and there to create some kind of simple demo game. One thing that comes to mind would be a simple object pool library to be used to create some buttons as well as some display objects to interact with for the sake of just better showing that this kind of module does work okay. With a little more polish, and some additional things stacked up on top of this I might be able to create something that is starting to look like some kind of framework, but maybe all of that is a matter for another post.
