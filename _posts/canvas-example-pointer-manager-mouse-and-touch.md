@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 599
-updated: 2021-03-08 10:24:23
-version: 1.31
+updated: 2021-03-08 10:27:19
+version: 1.32
 ---
 
 This is a [canvas example](/2020/03/23/canvas-example/) that makes use of what I am calling a pointer manager. Maybe there are other names for such a thing but until I am aware of a better name that is what I am going to call it. This pointer manager of sorts will be something that is used just for pointer objects in general that is the result of input from a mouse, touchscreen, or any other means that can be used to create such objects. It is not however a comprehensive input controller that takes input from any additional input such as a keyboard, game pad, and so forth.  I have another [canvas example that aims to be everything when it comes to input](/2020/04/17/canvas-example-input-controller/) that I wrote a post on, so that post might be worth checking out also. However what I work out here might be part of what might considered a full comprehensive input controller that would handle all things input related.
@@ -219,6 +219,8 @@ So lets start out with the html I just have a div element and then script tags l
     </body>
 </html>
 ```
+
+When it comes to deploying this there is some additional CCS I would want to use, and I would create a package with the javaScript files, however they should be in the same order. In any case I will still want the div element with the same id, or hack over the code a little to change what the deal is when it comes to having a mount point in the page where i put this.
 
 ### 4.2 - the main.js file
 
