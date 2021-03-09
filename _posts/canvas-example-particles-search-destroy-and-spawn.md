@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:26:43
-version: 1.20
+updated: 2021-03-09 16:30:29
+version: 1.21
 ---
 
-For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from the pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects or in other words a spawn method of sorts.
+For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas, some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type that will attack other display objects. 
 
-So this canvas example will just be an exercise of many aspects of canvas projects that has to do with just spawning, and purging display objects from a pool. This is a task that comes up in one form or another for all kinds of game projects. In addition it is also a basic exercise of creating a primitive AI when it comes to how the hunters, and also how non hunters behave. For now i will be keeping that stupid simple, however that is yet another part of this project that I intend to make a focal point of sorts if I keep working on it.
+So then these Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from the pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects or in other words a spawn method of sorts.
+
+So this canvas example will just be an exercise of many aspects of canvas projects that has to do with just spawning, and purging display objects from a pool. This is a task that comes up in one form or another for all kinds of game projects, as well as simple animation or digital art type projects such as this one. In addition it is also a basic exercise of creating a primitive AI when it comes to how the hunters, and also how non hunters behave. When it comes to AI that is something that I do not have as much experience as I would like, so working out example ssuch as this now and then is just what needs to happen in order to address that. Anyway for now I will be keeping the AI, if I can call it that, stupid simple, however that is yet another part of this project that I intend to make a focal point of sorts if I keep working on it.
 
 <!-- more -->
 
