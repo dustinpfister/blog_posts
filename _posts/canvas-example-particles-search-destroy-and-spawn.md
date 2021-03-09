@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:30:29
-version: 1.21
+updated: 2021-03-09 16:33:43
+version: 1.22
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas, some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type that will attack other display objects. 
@@ -76,7 +76,7 @@ u.createCanvas = function(opt){
 };
 ```
 
-Just about all of my canvas examples have this kind of module that serves as a kind of project centered utility library of sorts.
+Just about all of my canvas examples have this kind of module that serves as a kind of project centered utility library of sorts. The create canvas method is one methods that has become a kind of standard for all of my canvas examples now, I do not use a framework for these examples, and I would like to keep it that way for this collection of posts at least. However for now using the create canvas method is just about the only thing that I kind myself using over and over agian for all canvas examples, even then I might still make slight changes to it.
 
 ## 2 - the particles module
 
