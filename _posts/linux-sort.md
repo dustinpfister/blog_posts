@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 12:36:50
-version: 1.15
+updated: 2021-03-09 12:58:41
+version: 1.16
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -74,6 +74,17 @@ Another thing that might come up now and then is to have a randomized sort. For 
 
 ```
 $echo -e "0 \n1" | sort -R | head -n 1
+```
+
+### 1.5 - General Number sort option
+
+In some cases I might need to use the general Number sort option to sort by a number value. In some cases the sorting of a number value will still make sense, but from an alphabetical way rather than a value way. For these kinds of situstions there is the -g option that will fix these kinds of isshues with sorting.
+
+```
+$ echo -e " 3.1 \n15.2 \n 1.4" | sort -gr
+15.2
+3.1
+1.4
 ```
 
 ## 2 - ps command example
