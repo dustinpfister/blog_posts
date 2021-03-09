@@ -5,13 +5,13 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 11:31:51
-version: 1.2
+updated: 2021-03-09 11:36:28
+version: 1.3
 ---
 
-The Linux sort command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say i am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
+The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
 
-
+So to use the Linux sort command first I need some output that I can pipe into the linux sort command. This output can be from a command like the ps command, ls command, and so forth. In addition it can also be some text in a file that I can open with something like the cat command and pipe to the Linux sort command. In any case the text does need to be in a Linux friendly format where each field is separated by a space, and each line is terminated with a line feed. Most Linux commands do this to begin with, however in some cases the output might have to be formated for sort first.
 
 <!-- more -->
 
