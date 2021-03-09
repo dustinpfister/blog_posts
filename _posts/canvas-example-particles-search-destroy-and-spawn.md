@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:46:16
-version: 1.25
+updated: 2021-03-09 16:49:20
+version: 1.26
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas, some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type that will attack other display objects. 
@@ -347,17 +347,18 @@ var draw = (function () {
 
 ## 4 - Main.js and index.html
 
-Now for a main.js file and some html to pull this all together. In my html file I have a gamearea div, and I link to my utils module, the particles module, the draw module, and some additional javaScript in a main,js file.
+Now for a main.js file and some html to pull this all together. In my html file I have a canvas-app div, and I link to my utils module, the particles module, the draw module, and some additional javaScript in a main.js file that I will be getting to. There is some additional css that I might make use of, but that is just for positioning and scaling the canvas element. When it comes to creating a built I will still want to create the built with the files in the same order as the script tags.
 
 ```html
 <html>
     <head>
-        <title>canvas example percent math log</title>
+        <title>canvas example particles search destroy and spawn</title>
     </head>
-    <body>
-        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-        <script src="utils.js"></script>
-        <script src="draw.js"></script>
+    <body style="margin:0px;">
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/particles.js"></script>
+        <script src="./lib/draw.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
