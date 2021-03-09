@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:44:39
-version: 1.24
+updated: 2021-03-09 16:46:16
+version: 1.25
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas, some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type that will attack other display objects. 
@@ -221,7 +221,7 @@ I will also want methods for purging out dead Particles that have a hit point va
 
 ### 2.5 - The public API
 
-The public API of the Particles module consists of tow methods one to create a state object, and another to update it.
+The public API of the Particles module consists of two methods one to create a state object, and another to update it. These are the only methods that I will be using outside of this module in my main.js file that will make use of this module along with my other modules that I worked out for this example.
 
 ```js
     // public API
