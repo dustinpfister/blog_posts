@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 11:58:23
-version: 1.8
+updated: 2021-03-09 11:59:20
+version: 1.9
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -54,6 +54,8 @@ $ echo -e "0 42 \n1 17 \n2 9 \n3 100" | sort -k 2
 Many Linux commands such as ls and ps will spit out this kind of output, there are often ways of changing the format of the output with these commands to make them spit out a desired value for the first key, but it is nice to have this option never the less.
 
 ## 2 - ps command example
+
+The ps command is a command that I often find myself using to know what is going on with processes running on a Linux system.
 
 ```
 $ ps -e -o pcpu,pid,comm | sort -k 1
