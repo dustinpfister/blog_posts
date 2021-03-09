@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-09 07:45:03
-version: 1.16
+updated: 2021-03-09 07:48:01
+version: 1.17
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
@@ -67,11 +67,13 @@ $ ps -U avahi -o "pid uname comm"
 
 ### 1.5 - Custom output with memory percentage
 
-Often I might want to know how much memory a process might be easting up, when it comes to knowing what the totals are when it comes to what is going on with ram there is the Linux free command. However that command will just gives totals, it will not should be what is going on at a per process level. However with the ps command I can use the \%mem format specifier to know what is going on. This will give memory usage for each process in a query, but it will do so as percentage values.
+Often I might want to know how much memory a process might be easting up, when it comes to knowing what the totals are when it comes to what is going on with ram there is the Linux free command. However that command will just gives totals, it will not should be what is going on at a per process level. However with the ps command I can use the \%mem format specifier to know what is going on. 
 
 ```
 $ ps -U pi -o %mem,comm
 ```
+
+This will give memory usage for each process in a query, but it will do so as percentage values. However the percentage values can be compared to values that are obtained from the Linux fee command to get an idea of how much memory it is in bytes.
 
 ## 2 - Example 1 of Linux ps and making a custom array of command names and process ids with nodejs
 
