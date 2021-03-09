@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 12:27:49
-version: 1.13
+updated: 2021-03-09 12:32:12
+version: 1.14
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -69,6 +69,8 @@ $ echo -e "1 \n2 \n3" | sort -r
 ```
 
 ### 1.4 - Random Sort
+
+Another thing that might come up now and then is to have a randomized sort. For this there is the uppercase -R option that will not reverse the sort, but give a random sort order. For example say I want to have a simple command that will just return a random 0 or 1 in a bash script. One way to do so would be to use echo to create two lines one with the number 0 and another with the number one. That text can then be piped to the Linux sort command with the -R option, and then that output can be piped once again to yet another useful command called the head command that I can then use to just output the first line of the random sort of these two lines.
 
 ```
 $echo -e "0 \n1" | sort -R | head -n 1
