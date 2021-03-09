@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 12:58:41
-version: 1.16
+updated: 2021-03-09 13:09:04
+version: 1.17
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -91,11 +91,13 @@ $ echo -e " 3.1 \n15.2 \n 1.4" | sort -gr
 
 The ps command is a command that I often find myself using to know what is going on with processes running on a Linux system. The command can be used to get just about all basic info that I would want to know about a process such as the process id, the name of the command that is running, but also things like the percentage of memory or cpu usage for each process. 
 
-The -o option of the ps command can be used to set what the output is for the ps command, with this I can the set what the first key is for the output of each line, such as cpu usage. It is then just a matter of piping that output to sort and then setting any additional options I might want to set for the sort command.
+The -o option of the ps command can be used to set what the output is for the ps command, with this I can the set what the first key is for the output of each line, such as cpu usage. It is then just a matter of piping that output to sort and then setting any additional options I might want to set for the sort command. If the cpu percetange that I want to sort by is in the second key I can use the key option to set that key as what to sort by, I can also reverse the order and use the gerenal number sort. I can then pipe the output to the head command to get a top ten of processes that are eating up cpu run time.
 
 ```
-$ ps -e -o pcpu,pid,comm | sort -k 1
+ps -e -o pid,%cpu,comm | sort -k 2 -rg | head -n 10
 ```
+
+With the ps command the cpu field is the percetange of cpu useage sense the process first started runing, so if you get confused as to why the percetnages are not jumping up and down with each call of somethind liek this that is why.
 
 ## 3 - Die bash script example
 
