@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-09 07:53:53
-version: 1.18
+updated: 2021-03-09 07:56:14
+version: 1.19
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
@@ -21,13 +21,13 @@ In this section I will be going over some typical use case examples of the Linux
 
 ## 1.1 - See all process ruining on the system
 
-So if I just want a list of all processes running at the present moment I will call the ps command with the -e option. If I just give the -e option and nothing else then all processes will be selected and the default formating will be used.
+So if I just want a list of all processes running at the present moment I will call the ps command with the -e option. If I just give the -e option and nothing else then all processes will be selected and the default formating will be used for each process in the output.
 
 ```
 $ ps -e
 ```
 
-However there should be ways of selecting by user, or process game, and so forth, and of course there are. The man page might be the best source when it comes to getting to know all the process section options, however I think that I should get to some examples that have to do with selecting by user and command name at least.
+There is piping the output into a command [like grep](/2020/09/14/linux-grep/) to filter things down, however there should be ways of selecting by user, or process game, and so forth with the ps command alone, and of course there are. The man page might be the best source when it comes to getting to know all the process section options, however I think that I should get to some examples that have to do with selecting by user and command name at least.
 
 ## 1.2 - See just process for a given user
 
