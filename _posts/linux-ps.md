@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-03-09 07:48:01
-version: 1.17
+updated: 2021-03-09 07:53:53
+version: 1.18
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
@@ -17,7 +17,7 @@ There are many options for the command that can be used to control selection of 
 
 ## 1 - Some basic examples of the linux ps command
 
-In this section I will be going over some typical use case examples of the Linux ps command. There are allot of options and ways of formatting the output, and if you really want to dive deep into it all the best source on that might be the [ps command manual page](https://www.man7.org/linux/man-pages/man1/ps.1.html) as always. However here I thought I would write about the top typical options and formatting tricks that I find myself using.
+In this section I will be going over some typical use case examples of the Linux ps command. There are a lot of options and ways of formatting the output, and if you really want to dive deep into it all the best source on that might be the [ps command manual page](https://www.man7.org/linux/man-pages/man1/ps.1.html) as always. However here I thought I would write about the most typical options and formatting tricks that I find myself using thus far.
 
 ## 1.1 - See all process ruining on the system
 
