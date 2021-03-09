@@ -5,13 +5,13 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 11:36:28
-version: 1.3
+updated: 2021-03-09 11:38:27
+version: 1.4
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
 
-So to use the Linux sort command first I need some output that I can pipe into the linux sort command. This output can be from a command like the ps command, ls command, and so forth. In addition it can also be some text in a file that I can open with something like the cat command and pipe to the Linux sort command. In any case the text does need to be in a Linux friendly format where each field is separated by a space, and each line is terminated with a line feed. Most Linux commands do this to begin with, however in some cases the output might have to be formated for sort first.
+So to use the Linux sort command first I need some output that I can pipe into the Linux sort command. This output can be from a command like the ps command, ls command, and so forth. In addition it can also be some text in a file that I can open with something like the cat command and pipe to the Linux sort command. In any case the text does need to be in a Linux friendly format where each field is separated by a space, and each line is terminated with a line feed. Most Linux commands do this to begin with, however in some cases the output might have to be formated for sort first.
 
 <!-- more -->
 
@@ -19,11 +19,13 @@ So to use the Linux sort command first I need some output that I can pipe into t
 
 I will be starting out with some basic examples of the Linux sort command using the Linux Echo command, and also some basic piping. If you are not familiar with the Linux echo command it is a basic command tool for just creating some standard output from the command line that I can then pipe to the standard input of another command, such as the Linux sort command.
 
-The Linuc echo command is one of the first commands that a new Linux user should be aware of when it comes to learning a thing or two about bash, along with commands such as cd, ls, and so forth. I Will not be getting into the echo command in detail here as I have wrote a post on it. You should also know a thing or two about piping in Linux also, which is another topic that Linux users should get up to speed right away if they have not done so all ready.
+The Linux echo command is one of the first commands that a new Linux user should be aware of when it comes to learning a thing or two about bash, along with commands such as cd, ls, and so forth. I Will not be getting into the echo command in detail here as I have wrote a post on it. You should also know a thing or two about piping in Linux also, which is another topic that Linux users should get up to speed right away if they have not done so all ready.
 
 So then if you have a basic working knowledge of echo and piping the focus here will be more so on the sort command then. Echo is just a good command for generating some basic test output to pipe to the sort command.
 
 ### 1.1 - Just using sort by itself
+
+If I want to i can just use the Linux sort command by itself without any options. doing so will work just fine actually if it just so happens that it is the first field of each line that I want to sort by.
 
 ```
 $ echo -e "2 \n7 \n8 \n3 \n5 \n9 \n1 \n6 \n0 \n4" | sort
