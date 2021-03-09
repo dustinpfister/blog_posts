@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:33:43
-version: 1.22
+updated: 2021-03-09 16:37:33
+version: 1.23
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas, some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type that will attack other display objects. 
@@ -78,9 +78,11 @@ u.createCanvas = function(opt){
 
 Just about all of my canvas examples have this kind of module that serves as a kind of project centered utility library of sorts. The create canvas method is one methods that has become a kind of standard for all of my canvas examples now, I do not use a framework for these examples, and I would like to keep it that way for this collection of posts at least. However for now using the create canvas method is just about the only thing that I kind myself using over and over agian for all canvas examples, even then I might still make slight changes to it.
 
-## 2 - the particles module
+## 2 - The particles module
 
 I then have a particles module that will be used to create a simple state object that contains a pool of particle objects. Each particle object in the state objects particle pool is an instance of the Particle class that I have contained in the module. So there is a Particle Class, helper methods for creating and updating a collection of Particle class instances, and a few public methods that are used outside of the module.
+
+I have made lots of modules like this, so many that I made a canvas example where I focus on this subject along that has to do with just making a single [object pool library](/2020/07/20/canvas-example-object-pool/). In that example I am creating a system where I have just a single fixed collection of objects that I set active or not, rather than creating and purging out objects as needed like I am doing in this module.
 
 ### 2.1 - The start of the particles module, and the Particle Class
 
