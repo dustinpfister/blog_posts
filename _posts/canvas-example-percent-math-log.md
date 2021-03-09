@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2021-03-09 16:07:31
-version: 1.22
+updated: 2021-03-09 16:10:44
+version: 1.23
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typically some kind of index value, or numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between and including zero and one. In most cases this value ends up being in a linear, or straight line kind of way which might work okay in some situations, but at other times I might want to do something else with this kind of value. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion. When looking into all kinds of expressions to do something like this one thing that might pop up is the Math.log method.
@@ -87,6 +87,8 @@ So the idea here is to use the createLogPoints method as a way to create an arra
 ## 2 - The draw module
 
 I then have an additional object with draw methods that can be used to draw a simple background, a points array, and info about a state object for this canvas example. I also added a draw method to draw a simple box in the canvas that will be used as a way to show how methods like these work to help set pixels per second rates of display objects. However I will be getting into that more in the demo module that will make use of the utility module and this draw modules.
+
+All of these draw methods can then be pulled out into there own separated javaScript file as a way to keep logic that has to do with rendering away from logic that has to do with state.
 
 ```js
 var draw = {};
