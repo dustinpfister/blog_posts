@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:18:57
-version: 1.19
+updated: 2021-03-09 16:26:43
+version: 1.20
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type. Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from the pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects or in other words a spawn method of sorts.
@@ -20,15 +20,16 @@ So this canvas example will just be an exercise of many aspects of canvas projec
 
 ## 1 - The utils module
 
-For this canvas example I will want a utils module that will contain some methods that I might not want to have in my parti8cles module as well as maybe other modules for this canvas example. This utility module contains a distance formula, along with a method for clamping values and other helpful methods.
+For this canvas example I will want a utils module that will contain some methods that I might not want to have in my particles module as well as maybe other modules for this canvas example. This utility module contains a distance formula, along with a method for clamping values and other helpful methods that come into play with various tasks.
 
 ```js
 // UTILS
 var u = {};
- 
+
 u.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
+
 // clamp the given object to the given world
 u.clamp = function (obj, world) {
     if (obj.x < 0) {
@@ -44,10 +45,32 @@ u.clamp = function (obj, world) {
         obj.y = world.height - 1;
     }
 };
- 
+
 // percent to radian
 u.perToRadian = function (per) {
     return Math.PI * 2 * per;
+};
+
+// create a canvas
+u.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
 };
 ```
 
@@ -163,7 +186,7 @@ I pulled the logic for moving all Particles in a pool into a method, and also di
     };
 ```
 
-### 2.4 - Purge dead Particles, and span new ones
+### 2.4 - Purge dead Particles, and spawn new ones
 
 I will also ant methods for purging out dead Particles that have a hit point value of zero, and spawn in new ones.
 
@@ -201,6 +224,7 @@ The public API of the Particles module consists of tow methods one to create a s
     return {
         create: function (opt) {
             var state = {
+                ver: opt.ver || '',
                 canvas: opt.canvas,
                 ctx: opt.ctx,
                 lt: new Date(),
@@ -301,9 +325,17 @@ var draw = (function () {
                 drawPartAttackRange(part);
                 i += 1;
             }
+        },
+ 
+        ver: function(ctx, canvas, state){
+            ctx.fillStyle = 'gray';
+            ctx.font = '10px arial';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'left';
+            ctx.fillText('v' + state.ver, 5, canvas.height - 15);
         }
  
-    }
+    };
  
 }
     ());
@@ -316,12 +348,11 @@ Now for a main.js file and some html to pull this all together. In my html file 
 ```html
 <html>
     <head>
-        <title>canvas example particles search destroy and spawn</title>
+        <title>canvas example percent math log</title>
     </head>
-    <body style="margin:0px;">
-        <div id="gamearea"></div>
+    <body>
+        <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
         <script src="utils.js"></script>
-        <script src="particles.js"></script>
         <script src="draw.js"></script>
         <script src="main.js"></script>
     </body>
@@ -332,15 +363,12 @@ In the main.js file I create and inject the canvas element into the game area di
 
 ```js
 // MAIN
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+var canvasObj = u.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
  
 var state = paricles.create({
+        ver: '0.0.1',
         canvas: canvas,
         ctx: ctx
     });
@@ -349,11 +377,13 @@ var loop = function () {
     requestAnimationFrame(loop);
     draw.back(state);
     draw.pool(state);
+    draw.ver(state.ctx, state.canvas, state);
     paricles.update(state);
  
 };
  
 loop();
+
 ```
 
 I use the create method of my particles module to create a state object that I can then pass to by draw module methods and the update method of the particles module in the body of the main app loop.
