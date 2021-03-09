@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2021-03-09 16:10:44
-version: 1.23
+updated: 2021-03-09 16:14:59
+version: 1.24
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typically some kind of index value, or numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between and including zero and one. In most cases this value ends up being in a linear, or straight line kind of way which might work okay in some situations, but at other times I might want to do something else with this kind of value. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion. When looking into all kinds of expressions to do something like this one thing that might pop up is the Math.log method.
@@ -285,3 +285,6 @@ So when this is all up and running I get what it is that I expected working. In 
 ## 4 - Conclusion
 
 So maybe this is not the most exciting canvas example I have made thus far, but I did want to make a quick example that will helper to illustrate something that seems to come up now and then with certain projects. I have a percent value that goes from zero to one, but it does so in a straight line kind of way, so I want another way to make it so the value does not behave that way.
+
+What I worked out here will often come up in other projects, I have many canvas examples that are digital art type things, and using Math.log is just one way to go about coming up with interesting expressions for movement. The method often will be used in applications that are games also when it comes to working out logic that has to do with acceleration, leveling up and so forth. For example when it comes to working out my own experience point system that is something that I seem to keep recreating from the ground up, and the expressions that I work out often make use of Math.log.
+
