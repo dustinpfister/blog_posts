@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2021-03-09 15:59:23
-version: 1.20
+updated: 2021-03-09 16:06:28
+version: 1.21
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typically some kind of index value, or numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between and including zero and one. In most cases this value ends up being in a linear, or straight line kind of way which might work okay in some situations, but at other times I might want to do something else with this kind of value. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion. When looking into all kinds of expressions to do something like this one thing that might pop up is the Math.log method.
@@ -22,7 +22,9 @@ So with all that said this will be a quick canvas example where I am using the [
 
 ## 1 - The utility methods
 
-First things first lets start out with the method that I am using to create a percent value from a percent value of that makes any sense. With that said I have an object literal with two methods one of which is used to create a percent value from another percent value, and some additional arguments that are used with the Math log method. The other method I can use to create an array of points with two values that are used with the logPer method and additional arguments that are used to set an area where the array of points will be, and a len property that will set the number of points.
+Just like all my other canvas examples I have a utility library where I park methods that I might use in more than one module, and might also take with me to other canvas examples. This module will contain things that help me to create a canvas element just the way that I like it for example. However this kind of module will change a little from one example to the next, and will often contain new methods that where made just for the current canvas example. This is the case with this project, as i parked some methods that have to do with using Math.log.
+
+So then there is the method that I am using to create a percent value from a percent value of that makes any sense. With that said I have an object literal with two methods one of which is used to create a percent value from another percent value, and some additional arguments that are used with the Math log method. The other method I can use to create an array of points with two values that are used with the logPer method and additional arguments that are used to set an area where the array of points will be, and a len property that will set the number of points.
 
 ```js
 var utils = {};
@@ -55,6 +57,43 @@ utils.createLogPerPoints = function (a, b, sx, sy, w, h, len) {
         i += 1;
     }
     return points;
+};
+// create a canvas
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+// get canvas relative point
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
 };
 ```
 
@@ -132,7 +171,7 @@ var demo = {};
  
 demo.createState = function (canvas) {
     var state = {
-        ver: '0.1.0',
+        ver: '0.1.1',
         canvas: canvas,
         points: [],
         a: 2.2,
@@ -174,7 +213,6 @@ demo.createState = function (canvas) {
 };
  
 demo.update = function (state, secs) {
- 
     var cp = state.currentPoint;
     state.i += state.IPS * secs;
     state.i %= state.iMax;
@@ -212,13 +250,9 @@ So now that I have my utility methods, a draw module, and a module that can be u
 Now that I have my utility methods and some methods that can be used to draw to the canvas it is time to use a little additional javaScript code to test out if all this works as expected. Here I will be creating the canvas element, as well as injecting it into the hard coded HTML. I will be using the crate method of my demo module to create a state of the demo that I worked out for this canvas example, and I will of course have a main app loop that makes use of requestAnimatinFrame to create a render loop.
 
 ```js
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('canvas-app') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 240;
-ctx.translate(0.5, 0.5);
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
  
 var state = demo.createState(canvas);
 var loop = function () {
@@ -253,6 +287,8 @@ So now that I have all the javaScript that I want want I just need a little HTML
     </head>
     <body>
         <div id="canvas-app" style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+        <script src="utils.js"></script>
+        <script src="draw.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
