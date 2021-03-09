@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 12:32:12
-version: 1.14
+updated: 2021-03-09 12:36:50
+version: 1.15
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -88,6 +88,10 @@ $ ps -e -o pcpu,pid,comm | sort -k 1
 
 ## 3 - Die bash script example
 
+With the basic random sort example in mind it would be not so hard to make a die bash script that would give a value between and including 1 and 6. Just like with the random sort example I covered before hand I will just need some text that is the values that I want, one for each line, and then pipe that to sort with the -R option, then pipe that to head with the -n option set to 1.
+
+With that said I could then work out a very simple bash script like this:
+
 ```
 #!/bin/bash
  
@@ -96,10 +100,14 @@ sides="1\n2\n3\n4\n5\n6"
 echo -e $sides | sort -R | head -n 1
 ```
 
+I would then just need to save this above text as something like die.sh, and then make it executable with the chmod command. Once I do that I can just call the script directly and have a nice little die script that works as expected.
+
 ```
 $ chmod 755 die.sh
 $ ./die.sh
 ```
+
+This might not be the most useful example, but that is okay as I just want to cover a basic bash script example of sort just for starters.
 
 ## 4 - Conclusion
 
