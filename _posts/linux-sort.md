@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 11:46:11
-version: 1.5
+updated: 2021-03-09 11:51:25
+version: 1.6
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -29,7 +29,19 @@ If I want to i can just use the Linux sort command by itself without any options
 
 ```
 $ echo -e "2 \n7 \n8 \n3 \n5 \n9 \n1 \n6 \n0 \n4" | sort
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
 ```
+
+So then there you have the basic idea of the Linux sort command for what it is worth. However there is a bit more to cover when it comes to lines of output where there is another field or key of interest that I want to sort by, there is also how to go about sorting by names rather than numbers, how to go about reversion the order of the sort, and so on. So maybe at least a few more basic examples that make use of the echo command are called for.
 
 ### 1.2 - Using the key option
 
