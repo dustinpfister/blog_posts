@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 692
-updated: 2021-03-09 16:06:28
-version: 1.21
+updated: 2021-03-09 16:07:31
+version: 1.22
 ---
 
 I have been busy with things lately so this weeks [canvas example](/2020/03/23/canvas-example/) is going to be a simple one that has to do with percent values that are linear and making them not so linear. In other words having a value that is typically some kind of index value, or numerator value, that is then divided over a max index value, denominator value, or any other value that is a max value relative to another value that is not. The result of such an operation is going to result in a value that is between and including zero and one. In most cases this value ends up being in a linear, or straight line kind of way which might work okay in some situations, but at other times I might want to do something else with this kind of value. So it might be nice in some situations to have one or more methods that can be used to take a percent value such as this, and return another percent value that is not going up in such a strait line kind of fashion. When looking into all kinds of expressions to do something like this one thing that might pop up is the Math.log method.
@@ -78,22 +78,6 @@ utils.createCanvas = function(opt){
     // append canvas to container
     opt.container.appendChild(opt.canvas);
     return opt;
-};
-// get canvas relative point
-utils.getCanvasRelative = function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    pos = {
-        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
-        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
-        bx: bx
-    };
-    // ajust for native canvas matrix size
-    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
-    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
-    // prevent default
-    e.preventDefault();
-    return pos;
 };
 ```
 
