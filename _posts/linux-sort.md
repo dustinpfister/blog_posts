@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 12:12:58
-version: 1.11
+updated: 2021-03-09 12:14:13
+version: 1.12
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -55,7 +55,7 @@ Many Linux commands such as ls and ps will spit out this kind of output, there a
 
 ### 1.3 - Reverse the order
 
-There is then the matter of how to go about reversing the order of something. If the sort is working as exspected and I just want to reverse the order of the sort then doing so is as simple as just using the -r option.
+There is then the matter of how to go about reversing the order of something. If the sort is working as expected and I just want to reverse the order of the sort then doing so is as simple as just using the -r option. The -r option will just simply reverse the order of a sort.
 
 ```
 $ echo -e "1 \n2 \n3"
