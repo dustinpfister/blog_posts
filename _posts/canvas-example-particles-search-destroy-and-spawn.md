@@ -5,15 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 645
-updated: 2021-03-09 16:37:33
-version: 1.23
+updated: 2021-03-09 16:44:39
+version: 1.24
 ---
 
 For todays [canvas example](/2020/03/23/canvas-example/) post I thought I would make a simple example that is some display objects moving around a canvas, some of which are destroyed by others, and they just keep spawning back. There will be just two types of display objects one of which is none, and the other is a hunter type that will attack other display objects. 
 
 So then these Hunters will hurt non hunter display objects, and any display object that will have zero hit points will be purged from the pool of display objects. There will also be a simple method for spawning display objects back into the pool of display objects or in other words a spawn method of sorts.
 
-So this canvas example will just be an exercise of many aspects of canvas projects that has to do with just spawning, and purging display objects from a pool. This is a task that comes up in one form or another for all kinds of game projects, as well as simple animation or digital art type projects such as this one. In addition it is also a basic exercise of creating a primitive AI when it comes to how the hunters, and also how non hunters behave. When it comes to AI that is something that I do not have as much experience as I would like, so working out example ssuch as this now and then is just what needs to happen in order to address that. Anyway for now I will be keeping the AI, if I can call it that, stupid simple, however that is yet another part of this project that I intend to make a focal point of sorts if I keep working on it.
+So this canvas example will just be an exercise of many aspects of canvas projects that has to do with just spawning, and purging display objects from a pool. This is a task that comes up in one form or another for all kinds of game projects, as well as simple animation or digital art type projects such as this one. In addition it is also a basic exercise of creating a primitive AI when it comes to how the hunters, and also how non hunters behave. When it comes to AI that is something that I do not have as much experience as I would like, so working out example such as this now and then is just what needs to happen in order to address that. Anyway for now I will be keeping the AI, if I can call it that, stupid simple, however that is yet another part of this project that I intend to make a focal point of sorts if I keep working on it.
 
 <!-- more -->
 
@@ -192,7 +192,7 @@ I pulled the logic for moving all Particles in a pool into a method, and also di
 
 ### 2.4 - Purge dead Particles, and spawn new ones
 
-I will also ant methods for purging out dead Particles that have a hit point value of zero, and spawn in new ones.
+I will also want methods for purging out dead Particles that have a hit point value of zero, and also while I am at it have a method that will spawn in new ones. When it comes to the purge method I make use of a trick that involves looping backward over the pool, and then using the splice method to mutate the array in place. There are of course a wide range of other ways that I could go about making this kind of method such as using the Array filter method for example, however I had to just go with one or the other and move on.
 
 ```js
     // purge dead particles
