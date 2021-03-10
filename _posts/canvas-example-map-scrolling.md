@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2021-03-10 15:59:45
-version: 1.31
+updated: 2021-03-10 16:04:08
+version: 1.32
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -363,3 +363,5 @@ So when I have this canvas example up and running in my web browser I have a gri
 ## 5 - Conclusion
 
 So hopefully this canvas example helps with some of the basics of making a large map however there is much more work to be done when it comes to making a project that involves a much larger map. There will come a time when working on a project with a large map that something will have to be done to break things down with respect to how to go about rendering the map to the canvas as well as how to go about updating the contents of the map.
+
+There are a number of other canvas examples that I have made thus far that involve scrolling around on a map, it is just that this is one example where the focus is just on this one little aspect of canvas powered game design. Other canvas examples that I have made that involve a scrolling map include my [idle map game](/2020/01/13/canvas-example-game-map-idle) that I started.
