@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 13:02:14
-version: 1.7
+updated: 2021-03-10 13:06:54
+version: 1.8
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -61,6 +61,8 @@ I could go on about the Linux ps command in detail, but for the sake of this pos
 ```
 $ ps -e -o pcpu,pid,comm | sort -rg | head -n 10
 ```
+
+This will create a custom output of the Linux ps command that is the percent of CPU run time of a process along with the process id and name of the command for all processes running on the system. This output is then piped to the Linux sort command to prefrom a general number sort for the first feild in the output which is CPU run time and revirce the order. The full amount of this output will typically be a long list of processes, but I only want to know what the top 10 processes that are eating up CPU overhead are, so I can pipe the output once more to the Linux head command to get that shor list of processes.
 
 ## 3 - Conclusion
 
