@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2021-03-10 15:54:19
-version: 1.29
+updated: 2021-03-10 15:56:26
+version: 1.30
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -211,7 +211,52 @@ var drawMap = function (grid, ctx, canvas) {
 
 In a more complex solution for this sort of thing I would break things down into sections to help improve performance when it comes to larger maps. However as long as I keep the map size small actually then this kind of solution should work okay.
 
-## 3 - The main.js file, and index.html
+## 3 - A utils module
+
+I have been updating all of my canvas examples to make use of a single standard create canvas method to help me have some kind of standard when it comes to creating packages for my site here.
+
+```js
+var utils = {};
+ 
+utils.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
+};
+ 
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // ajust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+```
+
+## 4 - The main.js file, and index.html
 
 Now for the main javaScript file that makes use of the map module, and my draw method that will render the map object to the canvas. In this mainjs file I create the canvas element, and inject it into a container element that I have in my html.
 
@@ -315,6 +360,6 @@ Then I just need to pull everything together with just a little html. I will wan
 
 So when I have this canvas example up and running in my web browser I have a grid that I can scroll around with by clicking and dragging. The basic idea is very much there, but this is still not really a done deal when it comes to just this sort of thing alone when it comes to making a project that would make use of something like this. There is the means by which I scroll around for one thing where I might want to add additional ways to go about moving the may around. There is also making a better system that might work well with larger maps that would work by6 breaking things down into map sections and so forth. Never the less the basic idea that I had in mind for the sake of this canvas example post is there for what it is worth.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So hopefully this canvas example helps with some of the basics of making a large map however there is much more work to be done when it comes to making a project that involves a much larger map. There will come a time when working on a project with a large map that something will have to be done to break things down with respect to how to go about rendering the map to the canvas as well as how to go about updating the contents of the map.
