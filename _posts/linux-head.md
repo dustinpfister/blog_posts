@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 13:26:57
-version: 1.11
+updated: 2021-03-10 13:32:26
+version: 1.12
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -80,6 +80,8 @@ $ ps -e -o pcpu,pid,comm | sort -rg | head -n 10
 This will create a custom output of the Linux ps command that is the percent of CPU run time of a process along with the process id and name of the command for all processes running on the system. This output is then piped to the Linux sort command to prefrom a general number sort for the first feild in the output which is CPU run time and revirce the order. The full amount of this output will typically be a long list of processes, but I only want to know what the top 10 processes that are eating up CPU overhead are, so I can pipe the output once more to the Linux head command to get that shor list of processes.
 
 ## 4 - What if I want the full output, just not all at once
+
+Soemtimes I might not want to cut away all but the first few lines or bytes of output, sometimes I might just not want a whole bunch of output spit out at me all at once. When it comes to a desktop enviorment, I can often use th mouse as a way to scroll back threw the output, however if I am using a command line only enviorment that would not be an option. If I do a ps -e command the whole list of process on the system will be thrown out at me, and I can not go back to look at what is going on from the top down to the bottom. So then in this section I will be going over some options for taking a look at the full output of a command.
 
 ### 4.1 - Using the less command
 
