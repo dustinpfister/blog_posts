@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2021-03-10 15:47:29
-version: 1.28
+updated: 2021-03-10 15:54:19
+version: 1.29
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -219,16 +219,19 @@ I create a grid object with the create grid object method of my grid module that
 
 ```js
 // CANVAS
-var canvas = document.createElement('canvas'),
-ctx = canvas.getContext('2d'),
-container = document.getElementById('gamearea') || document.body;
-container.appendChild(canvas);
-canvas.width = 320;
-canvas.height = 120;
+var canvasObj = utils.createCanvas({
+   width: 320,
+   height: 240
+}),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
+ 
+// scale
+var ratio = window.devicePixelRatio || 1;
  
 // CREATE GRID
-var grid = g.createGridObject(16, 8);
-grid.xOffset = canvas.width / 2 - grid.width * grid.cellSize / 2;
+var grid = g.createGridObject(12, 8);
+grid.xOffset = 0;
 grid.yOffset = 0;
  
 var mousedown = false,
@@ -240,28 +243,32 @@ gridDelta = {
 // MAIN APP LOOP
 var loop = function () {
     requestAnimationFrame(loop);
-    grid.xOffset += gridDelta.x;
-    grid.yOffset += gridDelta.y;
-    var offsets = g.clampedOffsets(grid, canvas);
+    grid.xOffset += gridDelta.x * ratio;
+    grid.yOffset += gridDelta.y * ratio;
+ 
+    var offsets = g.clampedOffsets(grid, canvas, ratio);
     grid.xOffset = offsets.xOffset;
     grid.yOffset = offsets.yOffset;
     // fill black
     ctx.fillStyle = 'black';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     // draw map
-    drawMap(grid, ctx, canvas);
+    drawMap(grid, ctx, canvas, ratio);
+    // draw ver
+    ctx.fillStyle = 'red';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + grid.ver, 5, canvas.height - 15);
 };
 loop();
  
 // EVENTS
 canvas.addEventListener('mousedown', function (e) {
-    var canvas = e.target,
-    bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top;
+    var pos = utils.getCanvasRelative(e);
     e.preventDefault();
     mousedown = true;
-    var cell = g.getCellFromCanvasPoint(grid, x, y);
+    var cell = g.getCellFromCanvasPoint(grid, pos.x / ratio, pos.y / ratio);
     if (cell.i === grid.selectedCellIndex) {
         grid.selectedCellIndex = -1;
     } else {
@@ -279,8 +286,8 @@ canvas.addEventListener('mouseup', function (e) {
 canvas.addEventListener('mousemove', function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
-    x = e.clientX - bx.left,
-    y = e.clientY - bx.top,
+    x = (e.clientX - bx.left) * ratio,
+    y = (e.clientY - bx.top) * ratio,
     deltas = g.getPointerMovementDeltas(grid, canvas, x, y);
     if (mousedown) {
         gridDelta.x = deltas.x;
@@ -297,9 +304,10 @@ Then I just need to pull everything together with just a little html. I will wan
         <title>canvas example map scrolling</title>
     </head>
     <body>
-        <div id="gamearea"></div>
-        <script src="map.js"></script>
-        <script src="draw_map.js"></script>
+        <div id="canvas-app"></div>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/map.js"></script>
+        <script src="./lib/draw_map.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
