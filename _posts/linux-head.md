@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 15:20:10
-version: 1.18
+updated: 2021-03-10 15:24:00
+version: 1.19
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines, or the first few bytes of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines, or bytes of some output. In some situations this is just what I would want to do with some command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano. However if I just want to not have everything spit out at me into the console, there are additional options that allow for me to just look over the full output. Still in this post I will be going over some examples of the head command in Linux, and also a whole bunch of other little related commands and examples that might come up in the process of doing so.
@@ -116,6 +116,8 @@ $ echo -e "one bar\n2 foo\nthree foobar\n4 baz" | grep -E '^[0-9]'
 2 foo
 4 baz
 ```
+
+Getting into grep in depth would require a whole other post on the topic, and maybe even a few posts actaully. This is one of those commands that will come up all the time in bash examples as it is the most flexabule way to go about getting at just what it is that I want in a colection of output or content. Grep could be used to replace the head command, and the tail command while also providing everythin in between. However it is a little involves to work with, there is not just using the command with a few options, learning a thing or two about regular expressions is required in oreder to use it effectivly.
 
 ## 7 - Conclusion
 
