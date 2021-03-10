@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 13:06:54
-version: 1.8
+updated: 2021-03-10 13:15:03
+version: 1.9
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -52,7 +52,17 @@ $ echo "12345678" | head -c 1; echo ""
 1
 ```
 
-## 2 - Using ps, and sort to get a top ten processes that are eating up CPU run time
+## 2 - The Linux cut command and head
+
+The head command with the -n option will give me the first few lines, but what if I want just one string value in each line? For these kinds of situations the Linux head command can be used in conjunction with the Linux cut command.
+
+```
+$ echo -e "1 a foo\n2 b bar\n3 c foobar" | head -n 2 | cut -d " " -f 3
+foo
+bar
+```
+
+## 3 - Using ps, and sort to get a top ten processes that are eating up CPU run time
 
 The Linux ps command is one command that just about any Linux user should be aware of as a basic tool to check out what is going on with processes. In windows systems there is the task moniter, and in Linux desktop enviorments there is often many such tools that will give an idea of what one is dealing with in terms of background processes in a grahical interface type package also. However when it comes to working with what is built into Linux itself, that will be in just about every Linux system, even ones that do not have a desktop environment there is the Linux ps command.
 
@@ -64,6 +74,6 @@ $ ps -e -o pcpu,pid,comm | sort -rg | head -n 10
 
 This will create a custom output of the Linux ps command that is the percent of CPU run time of a process along with the process id and name of the command for all processes running on the system. This output is then piped to the Linux sort command to prefrom a general number sort for the first feild in the output which is CPU run time and revirce the order. The full amount of this output will typically be a long list of processes, but I only want to know what the top 10 processes that are eating up CPU overhead are, so I can pipe the output once more to the Linux head command to get that shor list of processes.
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So if I am ever in a situation in which I have a whole lot of output but I only want the top few lines or bytes of that output then the Linux head command is one command that I can use to get just that top about of data.
