@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 13:15:03
-version: 1.9
+updated: 2021-03-10 13:21:24
+version: 1.10
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -47,6 +47,7 @@ So then that is the basic idea of the head command, it will give me a number of 
 
 The -c option of the Linux head command will also give me some data from the top of some output, however the -c option is what I can use to go with bytes of data, rather than lines of data.
 
+
 ```
 $ echo "12345678" | head -c 1; echo ""
 1
@@ -56,11 +57,15 @@ $ echo "12345678" | head -c 1; echo ""
 
 The head command with the -n option will give me the first few lines, but what if I want just one string value in each line? For these kinds of situations the Linux head command can be used in conjunction with the Linux cut command.
 
+For the sake of just a simple example of this once I again I am going to just use the Linux echo command to create some output. However now I am not just going to have one string value per line, but a few text values seperated with a space between each value. I want to have just the first two lines, but I also only want to have the last string value of each line. For this I can of course pipe the output into the head command to get the first two lines, but then I can pipe the result of that once again into the linux cut command to get just the last bit of text from each line of three strings where eah string is seperated by a space.
+
 ```
 $ echo -e "1 a foo\n2 b bar\n3 c foobar" | head -n 2 | cut -d " " -f 3
 foo
 bar
 ```
+
+The -d option of the cut command can be used to set what the delimiter is, which in this case is a space. The -f option of the cut command is then what I can use to set which string in the line that I want. So then the cut command along with the head command are two basic command line tools for formating command output into something that is a little more clean and gives me only what I want to know.
 
 ## 3 - Using ps, and sort to get a top ten processes that are eating up CPU run time
 
