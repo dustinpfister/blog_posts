@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 705
-updated: 2021-03-10 15:37:01
-version: 1.15
+updated: 2021-03-10 15:40:57
+version: 1.16
 ---
 
 In a Linux environment there is the [Linux grep](https://man7.org/linux/man-pages/man1/grep.1.html) command that is useful for finding text in a file, or a bunch of files in a directory when it comes to using it recursively. The grep command should not be confused with the [find command](/2020/09/23/linux-find/), which is somewhat similar actually only the find command is used to look for patterns in file names, while the grep command is used to look for patterns in the content of files, or some piped in standard input.
@@ -92,7 +92,7 @@ Grep can be used with [regular expressions](http://www.robelle.com/smugbook/rege
 
 ### 4.1 - Matching something that is at the beginning of a line and contains a set of numbers
 
-So I have this collection of markdown files, and each of these files has a line that is an id number of a single blog post such as this one that you are reading now. Say I want to produce a list of post file names followed by what the id is of that file. I can use grep followed by a regular expression to do just this by making tha pattern start with a \^ that will only match the start of a line followed by \'id: \' that each id starts with at the top of the file followed by \[0-9\]\* that will match any number that follows.
+So I have this collection of markdown files, and each of these files has a line that is an id number of a single blog post such as this one that you are reading now. Say I want to produce a list of post file names followed by what the id is of that file. I can use grep followed by a regular expression to do just this by making that pattern start with a \^ that will only match the start of a line followed by \'id: \' that each id starts with at the top of the file followed by \[0-9\]\* that will match any number that follows.
 
 So with that said with the posts folder as the current working path I can do something like this:
 
@@ -106,3 +106,6 @@ To produce a list of markdown files with the id numbers for each as a file in my
 ## 5 - Conclusion
 
 So it goes without saying that the Linux grep command is one command that will come in handy now and then when it comes to looking for certain text patterns in a large collection of files. Say I find that I keep making the same spelling mistake over and over again and then catch wind of it. I can use grep to find all the files where that mistake has happened, and then use it as an aid for making the necessary changes.
+
+There are other commands that come to mind though when it comes to this sort of thing though. The grep command can be used as a way to go about filtering out lines of output that do not fit a given pattern. However if I just want the first few lines of output there is the [head command](/2021/03/10/linux-head/) that can be used to do so and be done with it, as well there is the tail command that I can use to get the last few lines from some output.
+
