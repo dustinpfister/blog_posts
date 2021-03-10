@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 13:32:26
-version: 1.12
+updated: 2021-03-10 13:39:09
+version: 1.13
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -89,6 +89,14 @@ One way to take a look at the full output of a command in a terminal only envior
 
 ```
 $ ps -e | less
+```
+
+### 4.1 - Redirection
+
+Another option in these kinds of situations is to make use of bash redirection. This feature of bash can be used to redirect the standard output of a command into a file, rather than the console. Once that is done I can then read the cotents with a command line text edtior such as vim, or nano.
+
+```
+$ ps -e > ~/out.txt; nano ~/out.txt
 ```
 
 ## 5 - Conclusion
