@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 12:43:05
-version: 1.2
+updated: 2021-03-10 12:45:47
+version: 1.3
 ---
 
-The Linux head command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
+The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
 
 <!-- more -->
 
@@ -18,6 +18,8 @@ The Linux head command is a way to just print the first few lines of some output
 In this section I will be starting out with just some basic examples of the head command, and some related commands, and bash features such as piping, and the echo built in command. There are two general ways of going about using the head command, one is to get the first few lines of output, and the other is to get the first few bytes of output.
 
 The echo built in command is just a way to go about creating some standard output, for the sake of just getting to know how to use the head command this command will work for the ake of just creating some dummy test output. In some real use case examples the output that I am piping into the Linux Head command might come from some other command such as the Linux ps command, or any number of other commands.
+
+In these examples I am also making use of pipping as a way to pipe the standard output of the echo command into the standard input of the head command. I will not be getting into pipping and redirection in detail here, but if you are not up to speed with this part of working with bash I sugrest to read up on this, and many other basic bash features.
 
 ### 1.1 - First few lines of standard output with the Linux Head -n option
 
