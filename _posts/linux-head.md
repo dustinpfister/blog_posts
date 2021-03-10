@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 12:52:54
-version: 1.4
+updated: 2021-03-10 12:54:48
+version: 1.5
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -44,6 +44,8 @@ one
 So then that is the basic idea of the head command, it will give me a number of lines from the top. However it can also give me a set number of bytes also when using another option.
 
 ### 1.2 - First few bytes of standard output with the Linux Head -c option
+
+The -c option of the Linux head command will also give me some data from the top of some output, however the -c option is what I can use to go with bytes of data, rather than lines of data.
 
 ```
 $ echo "12345678" | head -c 1; echo ""
