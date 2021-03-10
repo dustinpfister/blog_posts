@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 15:01:14
-version: 1.16
+updated: 2021-03-10 15:17:37
+version: 1.17
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines, or the first few bytes of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines, or bytes of some output. In some situations this is just what I would want to do with some command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano. However if I just want to not have everything spit out at me into the console, there are additional options that allow for me to just look over the full output. Still in this post I will be going over some examples of the head command in Linux, and also a whole bunch of other little related commands and examples that might come up in the process of doing so.
@@ -98,7 +98,24 @@ Another option in these kinds of situations is to make use of bash redirection. 
 $ ps -e > ~/out.txt; nano ~/out.txt
 ```
 
-## 5 - Conclusion
+## 5 - The tail command
+
+So then becuase there is a head command it would make sense that there is a command that will get the few last lines of bytes of some output also. Well there is and the name of that command is the Linux tail command. This command will take the same options for numbers of lines, or a count of bytes, however it will give that abount that is at the end rather than the begging of some output.
+
+```
+$ echo -e "one\ntwo\nthree" | tail -n 1
+three
+```
+
+## 6 - Using grep to get lines that fit a pattren rather than just what is at the start or end
+
+```
+$ echo -e "one bar\n2 foo\nthree foobar\n4 baz" | grep -E '^[0-9]'
+2 foo
+4 baz
+```
+
+## 7 - Conclusion
 
 So if I am ever in a situation in which I have a whole lot of output but I only want the top few lines or bytes of that output then the Linux head command is one command that I can use to get just that top about of data. The tial command will work with the same options, only it will give the last few line sor bytes of some output. There are also additional options when it comes to cutting out some output, or redirecting some output to a fine that I can then browser over when it comes to redirecting and things like the less command.
 
