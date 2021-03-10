@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2020-05-26 14:33:48
-version: 1.27
+updated: 2021-03-10 15:47:29
+version: 1.28
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -14,6 +14,9 @@ Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), t
 So this will be a not so basic, basic getting started canvas example of a canvas map, and moving around such a map. So it might not be the best solution for large maps, as I have not put a lot of time into this to improve performance. It is not to hard to at least be aware of a concern of sorts though as the size of a map grows. The larger the map, the more cells there are, and as such the more there is to loop over when it comes to updating state and rendering. However in any case I will not be getting into that sort of thing in depth here as I would like to keep this example as simple as possible.
 
 <!-- more -->
+
+<div id="canvas-app"></div>
+<script src="/js/canvas-examples/map-scrolling/0.0.0/pkg.js"></script>
 
 ## 1 - The map module
 
