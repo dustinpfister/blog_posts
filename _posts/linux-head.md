@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 14:58:53
-version: 1.15
+updated: 2021-03-10 15:01:14
+version: 1.16
 ---
 
-The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines, or the first few bytes of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines, or bytes of some output. In some situations this is just what I would want to do with some command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano. However if I just want to not have everything spit ot at me into the console, there are additional options that allow for me to just look over the full output. Still in this post I will be going over some examples of the head command in Linux, and also a whole bunch of other little realted commands and examples that might come up in the process of doing so.
+The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines, or the first few bytes of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines, or bytes of some output. In some situations this is just what I would want to do with some command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano. However if I just want to not have everything spit out at me into the console, there are additional options that allow for me to just look over the full output. Still in this post I will be going over some examples of the head command in Linux, and also a whole bunch of other little related commands and examples that might come up in the process of doing so.
 
 <!-- more -->
 
@@ -100,4 +100,5 @@ $ ps -e > ~/out.txt; nano ~/out.txt
 
 ## 5 - Conclusion
 
-So if I am ever in a situation in which I have a whole lot of output but I only want the top few lines or bytes of that output then the Linux head command is one command that I can use to get just that top about of data.
+So if I am ever in a situation in which I have a whole lot of output but I only want the top few lines or bytes of that output then the Linux head command is one command that I can use to get just that top about of data. The tial command will work with the same options, only it will give the last few line sor bytes of some output. There are also additional options when it comes to cutting out some output, or redirecting some output to a fine that I can then browser over when it comes to redirecting and things like the less command.
+
