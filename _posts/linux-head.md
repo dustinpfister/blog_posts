@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 12:57:39
-version: 1.6
+updated: 2021-03-10 13:02:14
+version: 1.7
 ---
 
 The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with soem command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
@@ -53,6 +53,10 @@ $ echo "12345678" | head -c 1; echo ""
 ```
 
 ## 2 - Using ps, and sort to get a top ten processes that are eating up CPU run time
+
+The Linux ps command is one command that just about any Linux user should be aware of as a basic tool to check out what is going on with processes. In windows systems there is the task moniter, and in Linux desktop enviorments there is often many such tools that will give an idea of what one is dealing with in terms of background processes in a grahical interface type package also. However when it comes to working with what is built into Linux itself, that will be in just about every Linux system, even ones that do not have a desktop environment there is the Linux ps command.
+
+I could go on about the Linux ps command in detail, but for the sake of this post I will just be going over one litl;e example that of course makes use of the Linux head command.
 
 ```
 $ ps -e -o pcpu,pid,comm | sort -rg | head -n 10
