@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 589
-updated: 2021-03-10 15:56:26
-version: 1.30
+updated: 2021-03-10 15:59:45
+version: 1.31
 ---
 
 Time now for another one of my [canvas examples](/2020/03/23/canvas-example/), this time I think I will make a basic example of a scrolling map of tiles or cells as they some times may be called. This is something that will come into play for many any and all projects that involve a large 2d grid. Many strategy and rpg style games come to mind, but that of course is not even the tip of the iceberg with this.
@@ -213,7 +213,7 @@ In a more complex solution for this sort of thing I would break things down into
 
 ## 3 - A utils module
 
-I have been updating all of my canvas examples to make use of a single standard create canvas method to help me have some kind of standard when it comes to creating packages for my site here.
+I have been updating all of my canvas examples to make use of a single standard create canvas method to help me have some kind of standard when it comes to creating packages for my site here. This utility module is where I have place my usual create canvas method, along with my standard get canvas relative method. When it comes to other canvas examples I might have many other functions here that I might want to take with me to other projects, or share across more than one modules in a single project. However for this example there is not so much to write about that stands out from other canvas examples.
 
 ```js
 var utils = {};
