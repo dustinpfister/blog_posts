@@ -5,11 +5,11 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 820
-updated: 2021-03-10 13:47:12
-version: 1.14
+updated: 2021-03-10 14:58:53
+version: 1.15
 ---
 
-The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines of some output. In some situations this is just what I would want to do with some command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano.
+The [Linux head](https://man7.org/linux/man-pages/man1/head.1.html) command is a way to just print the first few lines, or the first few bytes of some output rather than the whole thing. In addition there is also the tail command that can be used as a way to print just the last few lines, or bytes of some output. In some situations this is just what I would want to do with some command output rather than make use of some other options, such as the less command, or redirection of output to a file that I can then option with a text editor like nano. However if I just want to not have everything spit ot at me into the console, there are additional options that allow for me to just look over the full output. Still in this post I will be going over some examples of the head command in Linux, and also a whole bunch of other little realted commands and examples that might come up in the process of doing so.
 
 <!-- more -->
 
