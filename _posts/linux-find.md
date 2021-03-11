@@ -5,13 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 710
-updated: 2021-03-11 15:53:50
-version: 1.10
+updated: 2021-03-11 15:56:04
+version: 1.11
 ---
 
-The [Linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting point in a file system. The starting point can be the current working directory for example, or any other path that one has permission to access for that matter. The command will loop over all folders recursively until it is done searching for files, and will output the paths to files that it finds in the standard output that match the given serach pattern to look for.
+The [Linux find](https://en.wikipedia.org/wiki/Find_%28Unix%29) command can be used to find one or more files from a starting point in a file system. The starting point can be the current working directory for example, or any other path that one has permission to access for that matter. The command will loop over all folders recursively until it is done searching for files, and will output the paths to files that it finds in the standard output that match the given search pattern to look for.
 
-Where the Linux grep command is used to look for patterns in content, the Linux find command is used to look for patterns in file names. So the command can be used by itself if I just want to find one or more files that fit a given pattern, or with grep via piping to find files and on top of that look farther into the content of each file.
+On thing to point out is that the Linux find command should not be confused with the [grep command](/2020/09/14/linux-grep/) although the two commands are a little similar. Where the Linux grep command is used to look for patterns in content, the Linux find command is used to look for patterns in file names. So the command can be used by itself if I just want to find one or more files that fit a given pattern, or with grep via piping to find files and on top of that look farther into the content of each file.
 
 So in this post I will be looking at a few examples of how to get going with the Linux find command.
 
