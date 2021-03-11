@@ -5,11 +5,13 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2021-03-11 16:02:54
-version: 1.10
+updated: 2021-03-11 16:06:07
+version: 1.11
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input would be one reason why I would go about using the echo command. The test output that echo creates can be used as a place holder of sorts for input from something else that would prove to be a real use case scenario.
+
+The echo command can have mnay real would use cases also though, for example when writing a bash script I might want to print some result in string form to the standard output when the script is called, one way to do so would be to use the echo command and pass that string value as the first argument. When doing so there are a number of options that can be used to set of there should be a line break at the end or not, or if some special characters should be used or not to create the final output.
 
 <!-- more -->
 
