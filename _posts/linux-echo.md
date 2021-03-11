@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2021-03-11 16:16:54
-version: 1.15
+updated: 2021-03-11 16:20:28
+version: 1.16
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input would be one reason why I would go about using the echo command. The test output that echo creates can be used as a place holder of sorts for input from something else that would prove to be a real use case scenario.
@@ -44,6 +44,14 @@ bar
 ```
 
 So this is the only option I often find myself using now and then so I thought I would have a brief section here on this.
+
+### 1.3 - make it so echo will not add a line feed at the end
+
+By default the echo command will add a line feed character at the end of the output. Most of the time I will want to have a line feed at the end of the output that echo spits out to the console, however in some cases I might want that to not happen actually. For these kinds of situations there is the -n option of the echo command that I can use to make it so the echo command will not append that final line feed charterer.
+
+```
+$ echo -n 'foo'
+```
 
 ## 2 - The Linux Echo command nodejs examples
 
