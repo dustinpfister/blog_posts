@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2021-03-11 16:12:16
-version: 1.13
+updated: 2021-03-11 16:14:23
+version: 1.14
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input would be one reason why I would go about using the echo command. The test output that echo creates can be used as a place holder of sorts for input from something else that would prove to be a real use case scenario.
@@ -50,6 +50,8 @@ So this is the only option I often find myself using now and then so I thought I
 So when working out a nodejs script that needs to split something out to the standard output, I could use the spawn child process to use the echo command. However there are some other ways to do so that are more piratical when working in a javaScript environment. Namely there is the console log method that will also echo something to the standard output and append a line beak just line that of the Linux echo command. In  addition there is also the stdout property of the process global that is an instance of a writable stream. Still I do like nodejs, and javaScript so I have to have a section on using that here.
 
 ### 2.1 - Using spawn in child process to call the Linux Echo command
+
+So first off a basic node script where I am using the child process module as a way to call the Linux Echo Command. However I will also be showing the two general ways to go about spitting something out into the standard output when it comes to nodejs scripts also here which are what should be used in a nodejs script.
 
 ```js
 // sure I could use echo in nodejs via spawn
