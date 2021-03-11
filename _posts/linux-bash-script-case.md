@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 821
-updated: 2021-03-11 15:44:11
-version: 1.6
+updated: 2021-03-11 15:47:32
+version: 1.7
 ---
 
 When it comes to writing bash scripts I might need to write a [case statement](https://linuxize.com/post/bash-case-statement/) or two once in a while. In just about any programing language there are if statements as a way to go about creating a conditional, however there are often switch statements also as another option when it comes to the subject of control flow. In bash script there are of course if statements, but the scripting lanague also supports switchs it is just that they are often called a case instead actually sense that is the built in bash feature that needs to be used to create one.
@@ -53,6 +53,8 @@ That might be the basic idea there, but a better example would have more than tw
 
 ### 1.2 - Uisng the date command
 
+This example makes use of the date command, and parameter expansion as a way to go about getting a value that is outputed from the date command. It is then that value to which I define some cases for. Like many Linux commands the date command allows for some options that will reult in custom output from the command, with the date command I can use this to print what the current dat of the week is, and that in turn can be used as a case value to define some cases for.
+
 ```
 #!/bin/bash
  
@@ -69,6 +71,8 @@ case $today in
     ;;
 esac
 ```
+
+This might not be the most practical example of a case statement, however this is a getting staretd section, and basic examples are often like this.
 
 ## 2 - Conclusion
 
