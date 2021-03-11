@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2021-03-11 16:14:23
-version: 1.14
+updated: 2021-03-11 16:16:54
+version: 1.15
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input would be one reason why I would go about using the echo command. The test output that echo creates can be used as a place holder of sorts for input from something else that would prove to be a real use case scenario.
@@ -109,3 +109,8 @@ let echo = spawn('echo', [option1, 'So this is a line \\n and another line \\n\\
     stdio: ['pipe', 'inherit', 'pipe']
 });
 ```
+
+## 3 - Conclusion
+
+Well that is it for now when it comes to the Linux echo command, but there really is only so much to write about when it comes to this topic. The echo command is just one way to go about creating some standard output from the string value that is given to it as an argument. So as the name suggests it just echos what is given to it as an argument to the standard output of the console.
+
