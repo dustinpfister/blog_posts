@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 821
-updated: 2021-03-11 15:38:18
-version: 1.5
+updated: 2021-03-11 15:44:11
+version: 1.6
 ---
 
 When it comes to writing bash scripts I might need to write a [case statement](https://linuxize.com/post/bash-case-statement/) or two once in a while. In just about any programing language there are if statements as a way to go about creating a conditional, however there are often switch statements also as another option when it comes to the subject of control flow. In bash script there are of course if statements, but the scripting lanague also supports switchs it is just that they are often called a case instead actually sense that is the built in bash feature that needs to be used to create one.
@@ -20,6 +20,8 @@ In this section I will be starting out with just some basic case examples. The b
 ### 1.1 - Very basic example that makes use of a positional argument
 
 To create a switch in a bash script first I need to type case, followed by a value by which to have case statements for, then the in keyword to finish the line. After that I just need to have at least a few statements for the various cases of values that could happen. To do so I just need to start off with a value followed by a closing parenetese, after that I can do whaever needs to be done for that case and end with two simi colens as a way to termanate a condition. I can use an astrist when it comes to defifing what is often called a default case that will be used if no other case is found for the value.
+
+So here is a basic.sh script example where I am using the first positional argument of the script as something to define a case statement for. WHen calling the script I can pass the value 1 as the first argument that will result in True! being echoed, and any other argumnet will cause the word False to be echoed out to the standard output. This might nto be the best example of a case statement as an if statement would also work well for this kind of thing, but I just want something that is a hello world example of sorts, with that said this should do for that.
 
 ```
 #!/bin/bash
@@ -35,6 +37,8 @@ case $bit in
 esac
 ```
 
+So then if I save this bash script as something like basic.sh, I can then make is exacutabule and run the script. When doing so it will always return false, unless if I pass the value 1 as the first argument.
+
 ```
 $ chmod 755 basic.sh
 $ ./basic.sh
@@ -44,6 +48,8 @@ False
 $ ./basic.sh 1
 True!
 ```
+
+That might be the basic idea there, but a better example would have more than two case statements, otherwise it might be better to just go with an if statement.
 
 ### 1.2 - Uisng the date command
 
