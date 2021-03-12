@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 822
-updated: 2021-03-12 14:25:57
-version: 1.5
+updated: 2021-03-12 14:27:37
+version: 1.6
 ---
 
 The [Linux exit](https://man7.org/linux/man-pages/man3/exit.3.html) command is a one of many commands built into the bash command, which at the name sugests is used to exit. The command will come up when it comes to writing bash scripts, and I want to have a way to end the process with a certial exit status code. By default the status code should be zero, but that might change in some situations, so it is generaly always a good idea to give a status code when using it.
@@ -23,9 +23,13 @@ In this section I will be going over just some very basic Linux exit command exa
 
 ### 1.2 - Very basic Linux exit example
 
+For a very basic example of the Linux exit command the command can just be called in a terminal window like this.
+
 ```
 $ exit
 ```
+
+Doing so will cause the terminal window to close.
 
 ### 1.1 - Using bash -ci, and echo $? to see exit status code
 
