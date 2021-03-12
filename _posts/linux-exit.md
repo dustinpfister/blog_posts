@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 822
-updated: 2021-03-12 14:35:52
-version: 1.9
+updated: 2021-03-12 14:40:04
+version: 1.10
 ---
 
 The [Linux exit](https://man7.org/linux/man-pages/man3/exit.3.html) command is a one of many commands built into the bash command, which at the name sugests is used to exit. The command will come up when it comes to writing bash scripts, and I want to have a way to end the process with a certial exit status code. By default the status code should be zero, but that might change in some situations, so it is generaly always a good idea to give a status code when using it.
@@ -41,6 +41,8 @@ $ bash -ci "exit" &> /dev/null; echo $?
 $ bash -ci "exit 1" &> /dev/null; echo $?
 1
 ```
+
+Now one can see what the deal is when it comes to using the exit command with a status code argument. This allows for me to define if a script ended with an exspected result which would be a zero status, or if some kind of error happended which would be a non zero status. Say I want to write a bash script that checks to see if a process is running and then exit with a zero status if the process is running, or 1 if it is not. I can then use such a script in another script that will call this test script of sorts, and start the process that I am checking in the event that the check script exits with a non zero status. However maybe that should be covered in anotyer section.
 
 ### 1.3 - The type command
 
