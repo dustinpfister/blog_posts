@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 822
-updated: 2021-03-12 14:27:37
-version: 1.6
+updated: 2021-03-12 14:29:23
+version: 1.7
 ---
 
 The [Linux exit](https://man7.org/linux/man-pages/man3/exit.3.html) command is a one of many commands built into the bash command, which at the name sugests is used to exit. The command will come up when it comes to writing bash scripts, and I want to have a way to end the process with a certial exit status code. By default the status code should be zero, but that might change in some situations, so it is generaly always a good idea to give a status code when using it.
@@ -68,3 +68,4 @@ echo $?
 
 ## 3 - Conclusion
 
+The Linxu exit command is then one of the many bash built in commands that a Linux user should be aware of when it comes to starting to write bash scripts. It is the standard go to command to make it so that a script will exit with a 0, or non zero exit code status.
