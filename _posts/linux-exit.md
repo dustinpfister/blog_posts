@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 822
-updated: 2021-03-12 14:48:05
-version: 1.13
+updated: 2021-03-12 14:55:30
+version: 1.14
 ---
 
 The [Linux exit](https://man7.org/linux/man-pages/man3/exit.3.html) command is a one of many commands built into the bash command, which at the name suggests is used to exit. The command will come up when it comes to writing bash scripts, and I want to have a way to end the process with a certain exit status code. By default the status code should be zero, but that might change in some situations, so it is generally always a good idea to give a status code when using it.
@@ -65,13 +65,23 @@ exitWith(){
     bash -ci "exit ${code}" &> /dev/null
 }
  
-if [ $1 == "foo" ];then
+if [ "$1" == "foo" ];then
     exitWith 0
 else
     exitWith 1
 fi
  
 echo $?
+```
+
+```
+$ chmod 755 exit_script.sh
+$ ./exit_script.sh
+1
+$ ./exit_script.sh baz
+1
+$ ./exit_script.sh foo
+0
 ```
 
 ## 3 - Conclusion
