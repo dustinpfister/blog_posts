@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 822
-updated: 2021-03-12 14:43:08
-version: 1.11
+updated: 2021-03-12 14:45:26
+version: 1.12
 ---
 
 The [Linux exit](https://man7.org/linux/man-pages/man3/exit.3.html) command is a one of many commands built into the bash command, which at the name suggests is used to exit. The command will come up when it comes to writing bash scripts, and I want to have a way to end the process with a certain exit status code. By default the status code should be zero, but that might change in some situations, so it is generally always a good idea to give a status code when using it.
@@ -52,6 +52,8 @@ builtin
 ```
 
 ## 2 - Function Bash script example
+
+How about a basic bash script example of the exit command now. This one will make use of a bash function to exit with a given exit code.
 
 ```
 #!/bin/bash
