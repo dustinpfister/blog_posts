@@ -5,19 +5,21 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 822
-updated: 2021-03-12 14:16:05
-version: 1.3
+updated: 2021-03-12 14:22:51
+version: 1.4
 ---
 
 The [Linux exit](https://man7.org/linux/man-pages/man3/exit.3.html) command is a one of many commands built into the bash command, which at the name sugests is used to exit. The command will come up when it comes to writing bash scripts, and I want to have a way to end the process with a certial exit status code. By default the status code should be zero, but that might change in some situations, so it is generaly always a good idea to give a status code when using it.
 
 There might not be that much to write about when it comes to the eit command, for the most part I just type it in the bash script and give a status code as the first and only argument. However when it comes to status codes maybe there is a bit more to brnach off with when it comes to this topic when it comes to [special parameters](/2020/12/08/linux-bash-script-parameters-special), mainly the \$\? parameter that can be used to obtian the exit code of the lass ended process.
 
-
+So then in this post I will be going over a few quick basic Linux exit command examples, and then maybe aslo touch base on some basic bash script exampels that make use of the exit command also.
 
 <!-- more -->
 
 ## 1 - Linux Exit command basics
+
+In this section I will
 
 ### 1.2 - Very basic Linux exit example
 
