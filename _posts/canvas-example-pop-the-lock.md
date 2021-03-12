@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-12 15:14:05
-version: 1.34
+updated: 2021-03-12 15:16:42
+version: 1.35
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -450,7 +450,7 @@ utils.getCanvasRelative = function (e) {
 
 ## 4 - An Object pool module that I am using for buttons in the state machine
 
-I wanetd to add an object pool module, however for this canvas example the only reason why is more so for the sake of having animated buttons, and maybe a few additional effects.
+I wanted to add an object pool module, however for this canvas example the only reason why is more so for the sake of having animated buttons, and maybe a few additional effects. This module is based off of what i worked out in my other canvas example on objects pools, in fact I copied that source code and just made a few changes here and there that I might add in future versions of that canvas example.
 
 ```js
 var poolMod = (function () {
