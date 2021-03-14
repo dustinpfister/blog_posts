@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-14 17:49:50
-version: 1.41
+updated: 2021-03-14 17:53:07
+version: 1.42
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -908,5 +908,7 @@ This was a quick, and fun little project that I put together in a flash, but is 
 
 I like to try to keep the projects in these canvas examples posts fairly simple and basic though so that I do not have to write an extremely lengthly amount of written content outlining the example. However this one is starting to get a little involved and I also have a lot more ideas that I keep writing down on my todo list for this one. The original game that I cloned off of was all ready a little addictive, but I found myself loosing interest fairly quick still. I thought to myself, hey this game is pretty cool actually, and it is so simple too, but it would be even better if it had these features.
 
-I will be continuing to work on this one at least a little while longer, because I think that it could use a few more game modes. Also I think I should have some additional states, and even some basic features are still missing. As I continue to work on this I hope to also work out a half way decent system when it comes to having a state machine, and user interface features to move from one state to another.
+I will be continuing to work on this one at least a little while longer, because I think that it could use a few more game modes. I think I should make at least ne game mode that is more or less the same game as the original, and call it something like classic mode. However what I really want to do is see if I can come up with new modes, and additional features to tweak these modes in order to come up with something that I think will be pretty cool. 
+
+I think I should have some additional states, and even some basic features are still missing. As I continue to work on this I hope to also work out a half way decent system when it comes to having a state machine, and user interface features to move from one state to another.
 
