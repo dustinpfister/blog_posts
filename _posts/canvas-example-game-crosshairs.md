@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2020-12-05 13:34:41
-version: 1.39
+updated: 2021-03-14 17:42:59
+version: 1.40
 ---
 
 <!-- edit bookmark -->
@@ -22,7 +22,7 @@ So in this post I will be wring about all of the source code for the game thus f
 <!-- more -->
 
 <div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script src="/js/canvas-examples/game-crosshairs/0.21.0/pkg.js"></script>
+<script src="/js/canvas-examples/game-crosshairs/0.22.0/pkg.js"></script>
 
 
 So if you are just interested in playing I will inject a package here that reflects the state of the canvas example at the time that I last updated this posts content. I would recommend against spending to much time playing it so far at this time as I have not implement any way to have a save state, but that is on the todo list of course. Auto Play is enabled by default so if you want to can just watch the game play itself for a bit.
