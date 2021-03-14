@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-14 17:43:00
-version: 1.122
+updated: 2021-03-14 18:08:53
+version: 1.123
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -20,7 +20,7 @@ I am going all over the board when it comes to playing around with canvas elemen
 <!-- more -->
 
 
-<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<div id="canvas-app"></div>
 <script src="/js/canvas-examples/game-crosshairs/0.22.0/pkg.js"></script>
 
 Above is v0.22.0 of cross hairs which is a game that I put a fair amount of time into.
