@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-08 10:33:57
-version: 1.120
+updated: 2021-03-14 17:38:26
+version: 1.121
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -37,17 +37,21 @@ Although I now have over 40 canvas examples, and I am still making more, only a 
 
 So I thought I would take a moment to just write about my top pick from this list, and as time goes by I might update this section to reflect the current state of affairs when it comes to half way decent work. Also I think that I might just update this section to reflect what is currently getting more attention then the others when it comes to various improvements when it comes to additional features, graphics, performance, and code readability improvements.
 
-### 2.1 - [Hyper casual space Shooter](/2020/12/11/canvas-example-hyper-casual-space-shooter/)
+### 2.1 - [Pop The Lock Clone](/2019/11/26/canvas-example-pop-the-lock/)
 
-This is a new one the I started in December of 2020 that is just a basic hyper casual style space shooter game in which the player just flys around and blasts blocks. I have some additional plans when it comes to continuing to work on this one, and might make this project the focal point for a while until getting back to work on one of the other canvas examples that need additional work.
+This is a simple game that has a lot of room for originality still also. I have been working on this one a little lately and I think there is still a lot of room for improvement, but only when it comes to additional features. The core of the game itself is so simple that making a clone is something that can happen in a flash. So now that I have the core idea of the game fairly solid the focus has shifted to adding features that make the game more engaging.
 
-### 2.2 - [Cross hairs](/2020/07/29/canvas-example-game-crosshairs/)
+### 2.2 - [Hyper casual space Shooter](/2020/12/11/canvas-example-hyper-casual-space-shooter/)
+
+This is a new one the I started in December of 2020 that is just a basic hyper casual style space shooter game in which the player just moves around and blasts blocks. I have some additional plans when it comes to continuing to work on this one, and might make this project the focal point for a while until getting back to work on one of the other canvas examples that need additional work.
+
+### 2.3 - [Cross hairs](/2020/07/29/canvas-example-game-crosshairs/)
 
 I put a fair amount of time into [cross hairs!](/2020/07/29/canvas-example-game-crosshairs/) thus far. I can not say that this is my dream project, but it is starting to look like a finished product at least. There is still a fair amount of work left to do though when it comes to even features that most might see as basic though.
 
 Eventually I will get cross hairs in good shape, and it will be time to move on to another one from the list below. However for now I think there is still a lot more work to do with that one, so it might be a while yet. So when it comes to actually playing this one I would still say doing so might not be a good idea, as I might introduce game state braking changes at this point.
 
-### 2.3 - [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/)
+### 2.4 - [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/)
 
 I have made not one, but several canvas examples based off of the source code that I started with my [Mr Sun](/2020/11/03/canvas-example-game-mr-sun/) example. This is another canvas example that I would like to poor a fair amount of time into, to create something that is not just fun but also loaded with features. There is not just one idea for a final project, but several ideas, but all of theme share a common set of features. With that said this main canvas example of Mr Sun is just the core source code, along with just a core set of plug ins. There are the other canvas examples though where I am starting to really take off with plug-ins and going beyond just the core set of code that I am working out here.
 
