@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-14 17:31:46
-version: 1.39
+updated: 2021-03-14 17:48:07
+version: 1.40
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -27,6 +27,8 @@ So todays [canvas example](/2020/03/23/canvas-example/) will be a game that is a
 For this canvas example I made a game module that will be used to create and return a game state object, as well as provide methods to update that state object.
 
 The game object contains values such as the current degree of the point in motion, and a value that reflects the total number of degrees in the main circle of the game. In addition there is also a target degree, and margin value that can be used to result in a range area in the circle. This range is the area where the payer will score if they make an action such as clicking or touching the canvas when the current degree is in that range. There are also a number of other values that have to do with the rate at which the current degree will move as well as the current direction, and a boolean that indicates that the current degree is in the range.
+
+In recent version of this game I worked out a few methods for creating new target locations. One of which I like to use when it comes to creating trip up locations, and the other is for creating locations that end up farther away from the current degree location. Speaking of trip up locations this is another feature that I added that can help to make a game mode more challenging, when the trip up location feature is active new targets will spawn close to the current degree location give the player little time to react. I also mentioned modes when is another new feature where I am working out more than one way to go about creating this kind of game.
 
 ```js
 var gameMod = (function(){
