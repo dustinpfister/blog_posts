@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 15:44:53
-version: 1.2
+updated: 2021-03-15 15:49:56
+version: 1.3
 ---
 
 This will be a simple CLI Interface nodejs example that wil serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actauly so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navagate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
@@ -21,6 +21,9 @@ When it comes to doing this sort of thing there are a number of packages to use 
 
 ## 1 - Getting started with this Node CLI example
 
+This is not a getting started post on nodejs, or javaScript, I assume that toy have at least some experence with these subjects. If not chances are you are going to have a hard time with this.
+
+The basic idea of this kind of interface dioes not only require any user space package, I do not even have to require in any built in modules into the script also. This is becuase the kind of interface that I want to create can be set up using just the process global, and mainily the process.stdin property of this global. I will not be getting into detail about every little in and out there is when it comes to this global, if you want to get up to speed with everything there is in the process global there is always the [nodejs docs on the process global](https://nodejs.org/api/process.html) for the version of node that you are using.
 
 ## 2 - The simple CLI Interface starting point script
 
