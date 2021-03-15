@@ -5,11 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 139
-updated: 2021-03-15 16:49:45
-version: 1.5
+updated: 2021-03-15 16:55:39
+version: 1.6
 ---
 
 For some projects it might be required to parse javaScript, often doing so might be a task that is done my a javaScript engine, but sometimes I might want to parse javaScript with javaScript. A popular and well know project for doing just that is [acorn](https://www.npmjs.com/package/acorn) which is one of many user space nodejs project that can be used for this sort of thing.
+
+If you are new to javaScript and nodejs, or programing in general and you do not know what a parser is then maybe a brief definition of a parser is in order. I guess one way of define a parser is software that will take a string from of something and create a workable object from of it. For example say you have a text game program where a player can input a command like move up, that results in a player character in the game moving up. A parse would be the software that takes that text and creates an object maybe that contains an action property with a value of move, and a direction property with the value of up. That object is then in turn what is used to preform the action of moving up in the text only game.
 
 <!-- more -->
 
