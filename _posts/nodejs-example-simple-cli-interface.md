@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 15:58:10
-version: 1.5
+updated: 2021-03-15 16:01:11
+version: 1.6
 ---
 
 This will be a simple CLI Interface nodejs example that will serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actually so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navigate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
@@ -30,6 +30,8 @@ The basic idea of this kind of interface does not only require any user space pa
 I would like to get into the habit of linking to the [git hub repo of this source code example](https://github.com/dustinpfister/nodejs-example-simple-cli-interface) and all other nodejs example that I make from now on. Doing so just strokes me as a standard thing that I should be doing for every one of these posts. The example is just a single file that I will be coping into the content of this post anyway, but I think I should always do that anyway.
 
 ## 2 - The simple CLI Interface starting point script
+
+What I have in mind here is to have a main index or app script that will be called to use the command line tool project that I might use with something like this. The use of any project that I create with this will be used by passing a long sequence of single byte values. These single byte values can be piped in from the standard output of another command, or a user can just call the script and manually enter these bytes one at a time.
 
 ```js
 #!/usr/bin/env node
