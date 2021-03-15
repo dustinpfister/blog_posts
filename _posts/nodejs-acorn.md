@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 139
-updated: 2021-03-15 16:44:24
-version: 1.4
+updated: 2021-03-15 16:49:45
+version: 1.5
 ---
 
 For some projects it might be required to parse javaScript, often doing so might be a task that is done my a javaScript engine, but sometimes I might want to parse javaScript with javaScript. A popular and well know project for doing just that is [acorn](https://www.npmjs.com/package/acorn) which is one of many user space nodejs project that can be used for this sort of thing.
@@ -31,7 +31,7 @@ I then also made a demos folder, and made my first demo called basic.js. It is a
 
 ### 1.1 - Basic example of acorn
 
-For a basic example of acorn I just want to do a kind of hello workd type example. So here I am just calling thr main parser, and passing it a single line of javaScript code in string form.
+For a basic example of acorn I just want to do a kind of hello world type example. So here I am just calling thr main parser, and passing it a single line of javaScript code in string form. Then just pass the output of that to console.log to see what the result of that is.
 
 ```js
 let acorn = require('acorn'),
@@ -59,3 +59,7 @@ Node {
 ```
 
 So acorn will give me an array of objects in a body property that is all the content of my javaScript, broken down into objects that give me useful info like the start, and end character position.
+
+## 2 - Conclusion
+
+That is it for now at least when it comes to using acorn.js. I would have worked out more examples of this package, but I think what I really need to do is start working on some kind of project in which I need a javaScript parser to begin with. So far I do find myself using parsers in real projects, it is just that so far it is only with respect to parsing markdown rather than javaScript. However I think that it does make sense to just play around with a project like this once or twitch now and then, even if it is just for the sake of gaining a sense of what there is to work with out there on the open Internet. With that said if I even need a javaScript parser in a project it would seem like this might be a decent voice for such a project.
