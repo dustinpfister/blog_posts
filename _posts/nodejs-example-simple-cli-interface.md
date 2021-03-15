@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 15:53:57
-version: 1.4
+updated: 2021-03-15 15:58:10
+version: 1.5
 ---
 
 This will be a simple CLI Interface nodejs example that will serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actually so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navigate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
@@ -24,6 +24,10 @@ When it comes to doing this sort of thing there are a number of packages to use 
 This is not a getting started post on nodejs, or javaScript, I assume that toy have at least some experience with these subjects. If not chances are you are going to have a hard time with this. I also assume that you have at least some working knowledge of how to work in a command line environment such as bash.
 
 The basic idea of this kind of interface does not only require any user space package, I do not even have to require in any built in modules into the script also. This is because the kind of interface that I want to create can be set up using just the process global, and mainly the process.stdin property of this global. I will not be getting into detail about every little in and out there is when it comes to this global, if you want to get up to speed with everything there is in the process global there is always the [nodejs docs on the process global](https://nodejs.org/api/process.html) for the version of node that you are using.
+
+### 1.1 - The github repo of this nodejs example
+
+I would like to get into the habit of linking to the [git hub repo of this source code example](https://github.com/dustinpfister/nodejs-example-simple-cli-interface) and all other nodejs example that I make from now on. Doing so just strokes me as a standard thing that I should be doing for every one of these posts. The example is just a single file that I will be coping into the content of this post anyway, but I think I should always do that anyway.
 
 ## 2 - The simple CLI Interface starting point script
 
