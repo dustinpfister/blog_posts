@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 139
-updated: 2021-03-15 16:39:03
-version: 1.2
+updated: 2021-03-15 16:42:50
+version: 1.3
 ---
 
 For some projects it might be required to parse javaScript, often doing so might be a task that is done my a javaScript engine, but sometimes I might want to parse javaScript with javaScript. A popular and well know project for doing just that is [acorn](https://www.npmjs.com/package/acorn) which is one of many user space nodejs project that can be used for this sort of thing.
@@ -15,8 +15,10 @@ For some projects it might be required to parse javaScript, often doing so might
 
 ## 1 - Getting started
 
-Just like any other node.js project I just created a new folder, did an npm init, and installed the latest version of acorn. When I first started writing this post the latest [version of acorn was 5.3.0](https://github.com/acornjs/acorn/tree/5.3.0), however as of the latest edit of this post there is now an 8.x of this project. So if the code examples I have here break that might be a good reason why.
+When I first started writing this post the latest [version of acorn was 5.3.0](https://github.com/acornjs/acorn/tree/5.3.0), however as of the latest edit of this post there is now an 8.x of this project. So if the code examples I have here break that might be a good reason why. Always check what version is being used, and not just with Acorn, often code breaking changes can be introduced into a project, and this should almost be expected when it is a new major version.
 
+
+Just like any other node.js project I just created a new folder, did an npm init, and installed the latest version of acorn. 
 ```
 $ mkdir test_acorn
 $ cd test_acorn
@@ -26,6 +28,8 @@ $ mkdir demos
 ```
 
 I then also made a demos folder, and made my first demo called basic.js. It is a usual practice of mine to start out with a demo like that when trying out a project of any kind.
+
+### 1.1 - Basic example of acorn
 
 ```js
 let acorn = require('acorn'),
