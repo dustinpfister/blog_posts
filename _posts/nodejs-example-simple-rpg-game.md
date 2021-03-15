@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 627
-updated: 2020-03-16 20:53:52
-version: 1.21
+updated: 2021-03-15 16:25:35
+version: 1.22
 ---
 
 I have been wanting to get around to making a simple terminal based [RPG style game](https://en.wikipedia.org/wiki/Role-playing_video_game) with nodejs, and write about it as one of several [nodejs example](https://nodejs.org/api/synopsis.html) posts. So I finally got around to doing just that. The basic idea that I had in mind was just a simple turn based terminal RPG game that uses [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) to draw the state of the game board. Nothing special in terms of item drops, enemy types, spells, and even leveling up as I want to keep this one pretty simple.
@@ -472,5 +472,8 @@ stateMod.loadState()
     });
     draw.newScreen(state);
 });
-
 ```
+
+## 9 - Conclusion
+
+I had a general idea of what I wanted when I started working on this, and that is what this turned out to be. Of course there are all kinds of ideas that come to mind when it comes to continuing to work on this project, but I think that much of what that is should be a canvas game rather than a command line interface only type thing. However maybe it is not such a bad idea to keep working on this as a way to work out the core of what the logic is of a game itself.
