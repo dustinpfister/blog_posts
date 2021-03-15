@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 16:11:06
-version: 1.8
+updated: 2021-03-15 16:17:42
+version: 1.9
 ---
 
 This will be a simple CLI Interface nodejs example that will serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actually so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navigate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
@@ -120,6 +120,26 @@ process.stdin.on('data', (data) => {
         modes['notRaw'](data);
     }
 });
+```
+
+So then I can use this script by pipping something into it with another command, such as echo.
+
+```
+$ echo -n "asdf" | nodejs app
+<Buffer 61>
+<Buffer 73>
+<Buffer 64>
+<Buffer 66>
+```
+
+However I can also just call the script, and when I do so I enter my custom Command Line interface. WHen doing so I can type in the same keys, and when I am done I can press the q key or ctrl+c as I wrote the script in a way in which those to general ways of quiting still work. However if I did not they would not work, so this raw mode is nice then because I can define how to go about quiting the interface.
+
+```
+$ nodejs app
+<Buffer 61>
+<Buffer 73>
+<Buffer 64>
+<Buffer 66>
 ```
 
 ## 3 - Conclusion
