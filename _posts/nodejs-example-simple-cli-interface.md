@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 16:01:11
-version: 1.6
+updated: 2021-03-15 16:05:15
+version: 1.7
 ---
 
 This will be a simple CLI Interface nodejs example that will serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actually so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navigate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
@@ -121,5 +121,7 @@ process.stdin.on('data', (data) => {
 ```
 
 ## 3 - Conclusion
+
+This nodejs example was based off of what I worked out for another [example that is a basic nodejs RPG](/2020/03/13/nodejs-example-simple-rpg-game/) that can be played from the command line. The example that I made there was far more advanced than this, and as such does not work well as a simple starting point. So I took what I learned there, and worked out this simple example that is the core of what needs to happen when it comes to making this kind of interface in a nodejs environment.
 
 This week I think I will be writing a few new posts on nodejs to help break the habit of not working on nodejs related stuff. I do seem to be more interested in front end javaScript alone these days, and also when it comes to writing the kinds of things that I once made with node I have learned a thing or two about bash, and python sense then.
