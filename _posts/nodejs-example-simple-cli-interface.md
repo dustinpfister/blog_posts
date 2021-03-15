@@ -1,12 +1,12 @@
 ---
 title: A simple nodejs Custom CLI example using setRawMode
-date: 2020-03-15 13:33:00
+date: 2021-03-15 13:33:00
 tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 16:21:49
-version: 1.10
+updated: 2021-03-15 16:30:12
+version: 1.11
 ---
 
 This will be a simple CLI Interface nodejs example that will serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actually so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navigate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
