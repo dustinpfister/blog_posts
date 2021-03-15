@@ -5,15 +5,15 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 823
-updated: 2021-03-15 15:49:56
-version: 1.3
+updated: 2021-03-15 15:53:57
+version: 1.4
 ---
 
-This will be a simple CLI Interface nodejs example that wil serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actauly so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navagate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
+This will be a simple CLI Interface nodejs example that will serve as a starting point for a [nodejs](https://nodejs.org/en/) project. I might make a few examples based of this actually so I hope to get this at least somewhat solid before moving on to additional examples. First off the goal here is to create a custom command line interface that works like various command line tools like the nano text editor, or something to that effect. That is that I call a command, maybe pass some options, and then drop into a terminal based interface in which I need to use arrow keys to navigate, and type text, and keyboard shortcuts to move around. This might differ from other kinds of CLI interfaces that work by prompting for some input and function like a command line. This sort of CLI interface can be created by making use of [the setRawMode method](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode), but doing so is a little tricky, thus writing this post is called for.
 
-The use of the setRawMode method will set up an interactive command line enviorment where I can define what all the various key inputs will do. However this will even include keystrokes like ctrl+c that are used to escape a command line interface, so when doing soemthing like this I should take care to make use that I put in a way for the user to escape the Command Line Interface.
+The use of the setRawMode method will set up an interactive command line environment where I can define what all the various key inputs will do. However this will even include keystrokes like ctrl+c that are used to escape a command line interface, so when doing something like this I should take care to make use that I put in a way for the user to escape the Command Line Interface.
 
-So it would be nice to make a custom interface so that when someone just enters the name of the command, or runs my script they enter a Command Line Interface where the arrow keys, or some combination of letter keys can be pressed to move around, and prefrom actions. However it would also be nice to make things work in a way in which input can be passed in by way of pipping when calling the script from the command line also. So there will need to be a raw mode of sorts that will be used when just calling the script by itself, and a not raw mode that will be used when the script is being piped some input.
+So it would be nice to make a custom interface so that when someone just enters the name of the command, or runs my script they enter a Command Line Interface where the arrow keys, or some combination of letter keys can be pressed to move around, and preform actions. However it would also be nice to make things work in a way in which input can be passed in by way of pipping when calling the script from the command line also. So there will need to be a raw mode of sorts that will be used when just calling the script by itself, and a not raw mode that will be used when the script is being piped some input.
 
 When it comes to doing this sort of thing there are a number of packages to use to just get up and running with this fast, but this is not that kind of post. What I am doing here is a simple starting point that is just a little vanilla javaScript code and that is it. I like to make these kinds of scripts now and then that just work with node itself.
 
@@ -21,9 +21,9 @@ When it comes to doing this sort of thing there are a number of packages to use 
 
 ## 1 - Getting started with this Node CLI example
 
-This is not a getting started post on nodejs, or javaScript, I assume that toy have at least some experence with these subjects. If not chances are you are going to have a hard time with this.
+This is not a getting started post on nodejs, or javaScript, I assume that toy have at least some experience with these subjects. If not chances are you are going to have a hard time with this. I also assume that you have at least some working knowledge of how to work in a command line environment such as bash.
 
-The basic idea of this kind of interface dioes not only require any user space package, I do not even have to require in any built in modules into the script also. This is becuase the kind of interface that I want to create can be set up using just the process global, and mainily the process.stdin property of this global. I will not be getting into detail about every little in and out there is when it comes to this global, if you want to get up to speed with everything there is in the process global there is always the [nodejs docs on the process global](https://nodejs.org/api/process.html) for the version of node that you are using.
+The basic idea of this kind of interface does not only require any user space package, I do not even have to require in any built in modules into the script also. This is because the kind of interface that I want to create can be set up using just the process global, and mainly the process.stdin property of this global. I will not be getting into detail about every little in and out there is when it comes to this global, if you want to get up to speed with everything there is in the process global there is always the [nodejs docs on the process global](https://nodejs.org/api/process.html) for the version of node that you are using.
 
 ## 2 - The simple CLI Interface starting point script
 
@@ -116,4 +116,4 @@ process.stdin.on('data', (data) => {
 
 ## 3 - Conclusion
 
-This week I think I will be writing a few new posts on nodejs to help break the habbit of not working on nodejs related stuff. I do seem to be moreinterested in front end javaScript alone these days, and also when it comes to writing the kinds of things that I once made with node I have learned a thing or two about bash, and python sense then.
+This week I think I will be writing a few new posts on nodejs to help break the habit of not working on nodejs related stuff. I do seem to be more interested in front end javaScript alone these days, and also when it comes to writing the kinds of things that I once made with node I have learned a thing or two about bash, and python sense then.
