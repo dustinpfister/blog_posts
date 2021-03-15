@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 139
-updated: 2018-01-31 14:22:50
-version: 1.0
+updated: 2021-03-15 16:36:09
+version: 1.1
 ---
 
-For some projects it might be required to parse javaScript, often doing so might be a task that is done my a javaScript engine, but sometimes on might want to parse javaScript with javaScript. A popular and well know project for doing just that is [acorn](https://www.npmjs.com/package/acorn).
+For some projects it might be required to parse javaScript, often doing so might be a task that is done my a javaScript engine, but sometimes I might want to parse javaScript with javaScript. A popular and well know project for doing just that is [acorn](https://www.npmjs.com/package/acorn) which is one of many user space nodejs project that can be used for this sort of thing.
 
 <!-- more -->
 
