@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 145
-updated: 2021-03-16 14:24:18
-version: 1.2
+updated: 2021-03-16 14:27:38
+version: 1.3
 ---
 
-In my effort to make helpful posts on [node.js](https://nodejs.org/en/), I have been working with the [child_process module](https://nodejs.org/dist/latest-v8.x/docs/api/child_process.html) lately. This is a very useful module that can be used to launch a command on the operating system of the computer that the node.js project is running on, including node itself. However the child process module should for the most part be used to call external commands outside of node, as there are mnay other options when it comes to running a script more than once when it comes to javaScript code.
+In my effort to make helpful posts on [node.js](https://nodejs.org/en/), I have been working with the [child_process module](https://nodejs.org/dist/latest-v8.x/docs/api/child_process.html) lately. This is a very useful module that can be used to launch a command on the operating system of the computer that the node.js project is running on, including node itself. However the child process module should for the most part be used to call external commands outside of node, as there are many other options when it comes to running a script more than once when it comes to javaScript code.
 
 So methods in the child process module like spawn and exec are ways in which I can run another script, or command outside of node, from within a script. When doing so this child process will end up having it's own process id, and is a way to go about doing some things in parallel in a node.js environment.
 
@@ -103,4 +103,6 @@ $ node loop.js
 When called it will return an object, that I have referenced in the variable _script_. This object has methods that allow for me to define event handlers to work with the output of the process, and also to stop it by calling the kill method of this object.
 
 ## 2 - Conclusion
+
+So that is it for now when it comes to the kill method of a child process instance when using methods like spawn and exec in the built in node module. There is more to write about when it comes to this topic though when it comes to things like the process exit method of the process global. There are also maybe some things to be aware of that have to do with the operating systems that I might want to write scripts for when it comes to things like exit codes.
 
