@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:25:22
-version: 1.4
+updated: 2021-03-16 15:28:14
+version: 1.5
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -24,6 +24,8 @@ Now for the lite of examples thus far. So far there are not that many of them so
 This is an example where I am trying out just using the Google chrome browser as a way to have a graphical front end for a desktop application in a nodejs project. When it comes to using python to create a GUI for a project there is the tkinter standard library, but when it comes to nodejs there is no built in module for such things. However it is server side javaScript, and it just makes sense to use a web browser as a way to have a front end for something in node as it is a program that just about everything has installed.
 
 ### 1.2 - [Copy a directory module example](/2020/03/19/nodejs-example-copy-dir/)
+
+There are many nodejs developers that make there own solutions for copying a directory that will work not just on posix systems but all target OS platforms including windows. This kind of project strikes be as the kind of thing where I should just use what someone else has worked out and move on. However oddly enough I ran into trouble finding something that has all the features that I want, and works juts the way that I like it. So I made my own.
 
 ### 1.3 - [Simple custom CLI in raw mode for interactive command line tools](/2021/03/15/nodejs-example-simple-cli-interface/)
 
