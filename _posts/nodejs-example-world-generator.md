@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 632
-updated: 2020-03-23 08:46:00
-version: 1.5
+updated: 2021-03-16 15:51:12
+version: 1.6
 ---
 
-I have a lot of ideas for game related projects, many of which will never see the light of day. However a great deal of them share certain things in common. One of which is a world map that exists as some kind of grid of map sections. That is a massive world map is broken down into smaller sub maps or sections, and each section has a max index of sorts. In other words a kind of grid within a grid. So this post will be a [nodejs example](https://nodejs.org/api/synopsis.html) on making a world map for a game.
+I have a lot of ideas for game related projects, many of which will never see the light of day. However a great deal of them share certain things in common. One of which is a world map that exists as some kind of grid of map sections. That is a massive world map is broken down into smaller sub maps or sections, and each section has a max index of sorts. In other words a kind of grid within a grid. So this post will be a [nodejs example](/2021/03/16/nodejs-example/) on making a world map for a game.
 
 Some ideas for world maps exist as collections of static or fixed width and height map sections others have width and height sections that are variable. Some ideas for game involve a world map that is generated each time a new game starts, and there is no need to save the state of the map necessarily. Other times I might want to save the map that is generated to then load again at a later time. 
 
