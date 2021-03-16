@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:40:40
-version: 1.9
+updated: 2021-03-16 15:43:47
+version: 1.10
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -37,7 +37,7 @@ A simple RPG game using just nodejs that turned out to be a cool little project.
 
 ### 1.5 - [Basic web server starting point](/2020/02/06/nodejs-example-web-server-starting-point/)
 
-This is just a basic wen server starting point.
+This is just a basic wen server starting point. This is the kind of project that I find myself remaking over and over again, but never really getting as solid as I would like. This example is a vanilla javaScript example, but when it comes to starting a real project I would start off using express actually. Still I should have at least a few examples of a basic server using just nodejs by itself, and that is what this nodejs examples is more or less.
 
 ### 1.6 - [Word Count history script](/2020/10/22/nodejs-example-word-count-history/)
 
