@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 607
-updated: 2020-02-06 15:53:18
-version: 1.12
+updated: 2021-03-16 15:51:11
+version: 1.13
 ---
 
-I thought I would start a collection of posts that are [node examples](https://nodejs.org/api/synopsis.html), that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
+I thought I would start a collection of posts that are [nodejs example](/2021/03/16/nodejs-example/), that is examples of simple projects that just make use of nodejs. For the first in the series why not start out with some basic starting points for the beginnings of a web server project. Very basic examples might just involve the use of the create server method of the node built in node module. However when it comes to making a real project there is much more that needs to happen, but still it starts with basic hello world style examples. So lets take a look at a few simple web server node examples and get starting working on something cool.
 
 <!-- more -->
 
