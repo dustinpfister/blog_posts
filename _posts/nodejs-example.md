@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:28:14
-version: 1.5
+updated: 2021-03-16 15:32:03
+version: 1.6
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -28,6 +28,8 @@ This is an example where I am trying out just using the Google chrome browser as
 There are many nodejs developers that make there own solutions for copying a directory that will work not just on posix systems but all target OS platforms including windows. This kind of project strikes be as the kind of thing where I should just use what someone else has worked out and move on. However oddly enough I ran into trouble finding something that has all the features that I want, and works juts the way that I like it. So I made my own.
 
 ### 1.3 - [Simple custom CLI in raw mode for interactive command line tools](/2021/03/15/nodejs-example-simple-cli-interface/)
+
+This is a simple Command Line Interface example that aims to be a basic starting point for making a custom interactive system for a CLI tool. When it comes to Command Line tools there is using the command by piping some input into it, or using an option to open and read a file, however often there is yet another way of using a command where I just type and enter the command and create something with the command itself. This example aims to be a basic starting point for that kind of thing a system where I start a script and enter a custom interface where I can do things, and create content, by just using the keyboard.
 
 ### 1.4 - [A simple RPG using Nodejs](/2020/03/13/nodejs-example-simple-rpg-game/)
 
