@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 632
-updated: 2021-03-16 15:51:12
-version: 1.6
+updated: 2021-03-16 15:56:36
+version: 1.7
 ---
 
 I have a lot of ideas for game related projects, many of which will never see the light of day. However a great deal of them share certain things in common. One of which is a world map that exists as some kind of grid of map sections. That is a massive world map is broken down into smaller sub maps or sections, and each section has a max index of sorts. In other words a kind of grid within a grid. So this post will be a [nodejs example](/2021/03/16/nodejs-example/) on making a world map for a game.
@@ -150,3 +150,7 @@ let world = genMap.genWorldMap({
  
 console.log(JSON.stringify(world));
 ```
+
+## 2 - Conclusion
+
+In order for me to work out what I really had in mind with this I think I first need to work out a half way decent front end system for this. The idea for the full project was to have a canvas game that is some kind of RPG style thing like that of Dragon Warrior or something to that effect. Once I have the core of that kind of game world out there is then having a way to generate a map from nothing in the game itself, but I thought it would be pretty cool to have it so the game world is generated from the state of the content that I have made thus far for this website.
