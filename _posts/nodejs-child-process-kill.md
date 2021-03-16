@@ -5,17 +5,18 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 145
-updated: 2021-03-16 14:19:50
-version: 1.1
+updated: 2021-03-16 14:24:18
+version: 1.2
 ---
 
 In my effort to make helpful posts on [node.js](https://nodejs.org/en/), I have been working with the [child_process module](https://nodejs.org/dist/latest-v8.x/docs/api/child_process.html) lately. This is a very useful module that can be used to launch a command on the operating system of the computer that the node.js project is running on, including node itself. However the child process module should for the most part be used to call external commands outside of node, as there are mnay other options when it comes to running a script more than once when it comes to javaScript code.
 
-So it is a way in which I can run another script from within a script and when doing so this child process will end up having it's own process id, and is a way to go about doing some things in parallel in a node.js environment.
+So methods in the child process module like spawn and exec are ways in which I can run another script, or command outside of node, from within a script. When doing so this child process will end up having it's own process id, and is a way to go about doing some things in parallel in a node.js environment.
+
+When launching such a process there might be some kind of condition in which I will want to kill the child process if it is the kind of process that will keep going otherwise. Luckily doing so is very easy I just need to use the kill method that is provided to the object that is returned when using a child process module method like spawn. So in this post I will be quickly going over the basics of killing a process in nodejs.
 
 <!-- more -->
 
-When launching such a process there might be some kind of condition in which I will want to kill the child process if it is the kind of process that will keep going otherwise. Luckly doing so is very easy I just need to use the kill method that is provided to the object that is returned when using spawn.
 
 ## 1 - Getting started with a simple demo
 
