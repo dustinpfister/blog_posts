@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:33:43
-version: 1.7
+updated: 2021-03-16 15:37:55
+version: 1.8
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -45,9 +45,9 @@ A word count history project that I started, but never really finished.
 
 ### 1.7 - [World generator](/2020/03/20/nodejs-example-world-generator/)
 
-A game world generator script.
+A game world generator script. I had some plans for this when it comes to making an interesting RPG style game where the game world is generated from the content of this website. I did not get as far with this as I would have like to, but never the less the current state of it is working okay for what is is worth. In order to get back into this project I think that there are some canvas examples that i need to work on more first. Once I get them in better shape it is just a mater of using some nodejs tools to create the json files that I want for the game world.
 
 ## 2 - Conclusion 
 
-As I make mor nodejs examples I will come back and expand this list, however for now I think that I would like to try to keep this list short. Most of my efforts should be to improve the quality of the existing examples thus far, and when it comes to making additional examples I should try to start making examples that I actually use. I have a few scripts thus far when it comes to that, but I think that I should start at least one or two projects that are a more well refined and useful examples that are at least starting to look like a finished product.
+As I make more nodejs examples I will come back and expand this list, however for now I think that I would like to try to keep this list short. Most of my efforts should be to improve the quality of the existing examples thus far, and when it comes to making additional examples I should try to start making examples that I actually use. I have a few scripts thus far when it comes to that, but I think that I should start at least one or two projects that are a more well refined and useful examples that are at least starting to look like a finished product.
 
