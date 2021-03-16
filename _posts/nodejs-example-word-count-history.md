@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 727
-updated: 2020-10-22 16:44:52
-version: 1.15
+updated: 2021-03-16 15:51:12
+version: 1.16
 ---
 
-This [nodejs example](https://www.toptal.com/nodejs/why-the-hell-would-i-use-node-js) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
+This [nodejs example](/2021/03/16/nodejs-example/) is a project that I wanted to start a long time ago, but kept putting off. It is a script that will use a git log command to get a list of commit hash ids from the latest commit on master. Once it has a list of commit hash ids it will use a git checkout command to switch to the oldest commit in the list. From there is will loop up back to the newest commit in the list again.
 
 The full idea that I had for this example is to have a script that will create a word count history for my blog post collection. It is just one little idea that I think might help me to stay the course when it comes to working on this blog posts and javaScript examples. In other words the general idea is to have a tool that will help me to track productivity by tracking how much writing I am doing every day, and having a script that will create word count totals per day or commit. However as of this writing I have not got this far with the script, and depending if I get some more time to work on it I might not finish.
 
