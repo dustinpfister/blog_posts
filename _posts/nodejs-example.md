@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:18:03
-version: 1.2
+updated: 2021-03-16 15:20:10
+version: 1.3
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -16,6 +16,8 @@ As of this writing I can not say that I have made anything that is really someth
 <!-- more -->
 
 ## 1 - The List of Nodejs Examples
+
+Now for the lite of examples thus far. So far there are not that many of them so I think I will just have a single list of examples thus far. For each examples I will write a brief description of the examples here, and of course like to the post where I then write about the example in greater detail.
 
 ### 1.1 - [Chrome app nodejs example](/2020/10/27/nodejs-example-chrome-app-mode/)
 
