@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:32:03
-version: 1.6
+updated: 2021-03-16 15:33:43
+version: 1.7
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -33,11 +33,19 @@ This is a simple Command Line Interface example that aims to be a basic starting
 
 ### 1.4 - [A simple RPG using Nodejs](/2020/03/13/nodejs-example-simple-rpg-game/)
 
+A simple RPG game using just nodejs.
+
 ### 1.5 - [Basic web server starting point](/2020/02/06/nodejs-example-web-server-starting-point/)
+
+This is just a basic wen server starting point.
 
 ### 1.6 - [Word Count history script](/2020/10/22/nodejs-example-word-count-history/)
 
+A word count history project that I started, but never really finished.
+
 ### 1.7 - [World generator](/2020/03/20/nodejs-example-world-generator/)
+
+A game world generator script.
 
 ## 2 - Conclusion 
 
