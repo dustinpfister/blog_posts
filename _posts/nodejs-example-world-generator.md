@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 632
-updated: 2021-03-16 15:56:36
-version: 1.7
+updated: 2021-03-16 15:59:34
+version: 1.8
 ---
 
 I have a lot of ideas for game related projects, many of which will never see the light of day. However a great deal of them share certain things in common. One of which is a world map that exists as some kind of grid of map sections. That is a massive world map is broken down into smaller sub maps or sections, and each section has a max index of sorts. In other words a kind of grid within a grid. So this post will be a [nodejs example](/2021/03/16/nodejs-example/) on making a world map for a game.
@@ -128,7 +128,7 @@ console.log(JSON.stringify(world));
 
 ### 1.3 - variable map
 
-Here is a variable map example where the section with and height of each map is set by way of a method rather than static values.
+Here is a variable map example where the section with and height of each map is set by way of a method rather than static values. This might be the best way to go about moving forward when it comes to creating a massive collection of maps where the size of the map depends on the state of some kind of grand input.
 
 ```js
 let genMap = require('./lib/gen_map.js');
