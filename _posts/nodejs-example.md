@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 824
-updated: 2021-03-16 15:37:55
-version: 1.8
+updated: 2021-03-16 15:40:40
+version: 1.9
 ---
 
 I have wrote a lot of posts on nodejs thus far, and I have covered all the basics I think at this point. There are many things that I like to write about, but at this post I think that when it comes to nodejs from this point forward I should just write about some actual nodejs examples. When I do something to this effect with a topic like node I often write a post that will serve as a post where I will link to everything that I have done thus far when it comes to some actual examples that make use of a language, framework, or something to that effect. As such this post will be on the collection of nodejs examples that I have made thus far.
@@ -33,7 +33,7 @@ This is a simple Command Line Interface example that aims to be a basic starting
 
 ### 1.4 - [A simple RPG using Nodejs](/2020/03/13/nodejs-example-simple-rpg-game/)
 
-A simple RPG game using just nodejs.
+A simple RPG game using just nodejs that turned out to be a cool little project. The basic idea that I had in mind is up and running all ready, and if I skin more time into this one it might just be to improve the readability of the code that I have together all ready without adding much in terms of features. This might server as a good starting point for other projects though that I might go in a more advanced direction though.
 
 ### 1.5 - [Basic web server starting point](/2020/02/06/nodejs-example-web-server-starting-point/)
 
