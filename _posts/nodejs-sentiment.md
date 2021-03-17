@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 157
-updated: 2021-03-17 16:27:19
-version: 1.4
+updated: 2021-03-17 16:29:01
+version: 1.5
 ---
 
 A form of natural language processing can be referred to as [Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), which can be thought of as a way to get a sense of the attitude of a speaker, or writer when it comes to text content. The subject can get a little involved, but working out a basic system for getting some kind of emotional index of some text does not have to be to hard. It can just involve a database of values for common words, and use that as a way to get some kind of index value.
@@ -25,6 +25,8 @@ $ cd test_sentiment
 $ npm init
 $ npm install sentiment --save
 ```
+
+For the hell of it I will [link to the github reo](https://github.com/dustinpfister/test_sentiment) of the example I worked out here.
 
 ## 2 - Why sentiment is pretty cool.
 
