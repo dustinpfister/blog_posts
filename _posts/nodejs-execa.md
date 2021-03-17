@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 160
-updated: 2021-03-17 16:50:51
-version: 1.5
+updated: 2021-03-17 16:53:49
+version: 1.6
 ---
 
 I have [written a post](/2018/02/04/nodejs-child-process/) on using the built in node.js [child_process](https://nodejs.org/docs/latest-v8.x/api/child_process.html) module which is one way to go about launching additional processes in a node.js environment. The module is a great built in starting point for starting an external command in the host operating system in which nodejs is running. The built in module seems to work just fine for the most part, however there might come situations in which I might need to use something that builds on top of this core built in nodejs module.
@@ -47,6 +47,8 @@ execa('node', ['script_test', '40','2']).then(function (data) {
  
 });
 ```
+
+So then this main execa method seems to work more or less like that of the spawn method of the child process module in core nodejs. However it will return a promise without having to create a wrapper, which is something that will not happen out of the box, at least not in the old versions of nodejs that I still find myself using now and then at least.
 
 ## 2 - Conclusion
 
