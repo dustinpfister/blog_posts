@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 157
-updated: 2021-03-17 16:22:19
-version: 1.3
+updated: 2021-03-17 16:27:19
+version: 1.4
 ---
 
 A form of natural language processing can be referred to as [Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), which can be thought of as a way to get a sense of the attitude of a speaker, or writer when it comes to text content. The subject can get a little involved, but working out a basic system for getting some kind of emotional index of some text does not have to be to hard. It can just involve a database of values for common words, and use that as a way to get some kind of index value.
@@ -17,7 +17,7 @@ In a node.js environment there is an npm package called [sentiment](https://www.
 
 ## 1 - Installing
 
-Setting up a test project for sentiment is as simple as any other npm package. There are no additional back ends that need to be installed, making it just a pure javaScript dependency.
+Setting up a test project for sentiment is as simple as any other npm package. There are no additional back ends that need to be installed, making it a stand alone javaScript package. So for this example I just created a new test_sentiment folder and did a usual npm init to start a new npm folder and create a package.json file. After that I just install sentiment and make use to add it to my package.json file.
 
 ```
 $ mkdir test_sentiment
