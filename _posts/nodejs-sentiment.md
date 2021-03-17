@@ -5,11 +5,13 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 157
-updated: 2018-02-26 12:13:17
-version: 1.1
+updated: 2021-03-17 16:19:38
+version: 1.2
 ---
 
-A form of natural language processing can be referred to as [Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), which can be thought of as a way to get a sense of the attitude of a speaker. In a node.js environment this is an npm package called [sentiment](https://www.npmjs.com/package/sentiment) that can be used to do just this. It is very easy to use, just feed it some text, and a score can be retrieve that will help give an idea of what the emotional impact of that text is.
+A form of natural language processing can be referred to as [Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), which can be thought of as a way to get a sense of the attitude of a speaker, or writer when it comes to text content. The subject can get a little involved, but working out a basic system for getting some kind of emotional index of some text does not have to be to hard. It can just involve a database of values for common words, and use that as a way to get some kind of index value.
+
+In a node.js environment this is an npm package called [sentiment](https://www.npmjs.com/package/sentiment) that can be used to do just this. It is very easy to use, just feed it some text, and a score can be retrieve that will help give an idea of what the emotional impact of that text is.
 
 <!-- more -->
 
