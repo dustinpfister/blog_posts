@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 160
-updated: 2021-03-17 16:53:49
-version: 1.6
+updated: 2021-03-17 16:58:45
+version: 1.7
 ---
 
 I have [written a post](/2018/02/04/nodejs-child-process/) on using the built in node.js [child_process](https://nodejs.org/docs/latest-v8.x/api/child_process.html) module which is one way to go about launching additional processes in a node.js environment. The module is a great built in starting point for starting an external command in the host operating system in which nodejs is running. The built in module seems to work just fine for the most part, however there might come situations in which I might need to use something that builds on top of this core built in nodejs module.
@@ -56,4 +56,5 @@ I have to admit that I am not making that many nodejs projects these days, and w
 
 If you are looking for something more to read when it comes to running additional processes from a node script there is my main post on the [nodejs child process module](/2018/02/04/nodejs-child-process/) that might be a good starting point when it comes to what to work with when it comes to the built in child process module. The main methods of interest in that module are the [exec method](/2020/10/21/node-child-process-exec/) and the [spawn method](/2019/08/02/nodejs-child-process-spawn/) both of which I have also wrote posts on that are the main methods to use when it comes to the module.
 
+There is a great deal more to write about when it comes to working with child processes, but much of it might be a bit off topic. Also this post should mainly be about the execa module and what it has to offer over the built in child process module. As of this writing when I last edited this post it would seem that this module is still supported. However i am not so sure as to hold necessary it is to use something like this in light of what is possible with the child process lone when it comes to late versions of nodejs. many projects like this where introduced when older versions of nodejs where being used that did not do things like return a promise for many built in methods, however in late versions of nodejs that seems to be changing.
 
