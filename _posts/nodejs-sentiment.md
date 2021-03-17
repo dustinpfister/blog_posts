@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 157
-updated: 2021-03-17 16:30:43
-version: 1.6
+updated: 2021-03-17 16:32:52
+version: 1.7
 ---
 
 A form of natural language processing can be referred to as [Sentiment analysis](https://en.wikipedia.org/wiki/Sentiment_analysis), which can be thought of as a way to get a sense of the attitude of a speaker, or writer when it comes to text content. The subject can get a little involved, but working out a basic system for getting some kind of emotional index of some text does not have to be to hard. It can just involve a database of values for common words, and use that as a way to get some kind of index value.
@@ -50,4 +50,4 @@ As you can see it seems to work pretty well oddly enough. So far any text that i
 
 ## 3 - Conclusion
 
-Its easy to see why this package can be fun to play with for a while. Part of me wants to copy and past peoples comments into it can just start responding to them with a score just for the fun of it. It also goes without saying that this can also have practical uses as well, such as maybe auto flagging a comment if it actually gets a score that is low enough.
+Its easy to see why this package can be fun to play with for a while. Part of me wants to copy and past peoples comments into it can just start responding to them with a score just for the fun of it. It also goes without saying that this can also have practical uses as well, such as maybe auto flagging a comment if it actually gets a score that is low enough. However as of this writing I have not started any kind of actual project that requires the use of something like this. So for now it is just something interesting to play around with.
