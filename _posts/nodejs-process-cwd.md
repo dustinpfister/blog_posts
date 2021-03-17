@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 825
-updated: 2021-03-17 13:13:46
-version: 1.12
+updated: 2021-03-17 13:20:44
+version: 1.13
 ---
 
 One thing that I wish that I got solid early on when I was first starting out with [nodejs](https://nodejs.org/en/) is how to get the current working directory, and also how to always get the directory where a script is located, along with other typical paths of interest on a system. In the process global there is a cwd method that when called will return the current working directory, which is of course a major directory of interest when it comes to creating a nodejs script. However it is not the only directory of interest of course it is also important to know how to go about getting the directory of the current script, and also how to get paths to assets that are relative to that script. There is also how to go about getting the user folder location when it comes to a standard location to park user specific data.
@@ -19,9 +19,29 @@ So in this post I will be covering a basic example of the [process.cwd](https://
 
 If I just want to get the current working directory I can use the process.cwd method to do so. However it is important to remember that the current working directory is just that, the current directory in which I am working with something. It should not be confused with the \_\_dirname global that will give me the path to the current script. More on that and many other little things in a bit, but for now lets just start out with the basic get current working directory example.
 
+So for a very basic example of the process.cwd method I can have a basic.js file where I will just be passing the value of process.cwd to the console.log method. When I run this basic.js file the current working path will be spit out to the standard output.
+
 ```js
 console.log( process.cwd() );
 ```
+
+So say I save the about as basic.js in my home folder I can then call it like this
+
+```
+$ cd ~
+$ node basic.js
+/home/dustin
+```
+
+As expected if I change the current working path to something like the \/usr\/lib folder on Linux systems, I can then call the script like this
+
+```
+$ cd /usr/lib
+$ node ~/basic.js
+/usr/lib
+```
+
+And the result will not of course be the \/usr\/lib folder, however what if I also want to get the folder where the script is located each time? Well this is where other values and methods of interest come into play so lets look at a few more examples of this sort of thing.
 
 ## 2 - Getting gin the path to the current script
 
