@@ -5,19 +5,22 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 160
-updated: 2018-02-28 17:23:05
-version: 1.0
+updated: 2021-03-17 16:41:25
+version: 1.1
 ---
 
-I have [written a post](/2018/02/04/nodejs-child-process/) on using the built in node.js [child_process](https://nodejs.org/docs/latest-v8.x/api/child_process.html) module which is one way to go about launching additional processes in a node.js environment. However I have not ever look into, and tested out something that is an improvement over that. Today I have come across something called [execa](https://www.npmjs.com/package/execa) that does the same thing as child_process, but adds some more features, such as making each method a promise.
+I have [written a post](/2018/02/04/nodejs-child-process/) on using the built in node.js [child_process](https://nodejs.org/docs/latest-v8.x/api/child_process.html) module which is one way to go about launching additional processes in a node.js environment. The module is a great built in starting point for starting an external command in the host operating system in which nodejs is running. The built in module seems to work just fine for the most part, however there might come situations in which I might need to use something that builds on top of this core built in nodejs module.
+
+So far I have not ever really looked into, and tested out something that is an improvement over the built in child process module. However today I have come across something called [execa](https://www.npmjs.com/package/execa) that does the same thing as child_process, but adds some more features, such as making each method a promise.
 
 <!-- more -->
 
-## Basic example of execa
+## 1 - Basic example of execa
 
 So the method that will be used the most typically is what is given in the main method that is exported when requiring execa into a project. This method works just like spawn in the native child_process node.js module, so it is faster, and safer than another method in this project that works like exec.
 
 So I made a simple test script that just does something with arguments.
+
 ```js
 let argv = process.argv.slice(2);
  
