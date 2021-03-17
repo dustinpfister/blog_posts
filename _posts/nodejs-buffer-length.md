@@ -5,11 +5,12 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 515
-updated: 2019-08-05 20:51:17
-version: 1.4
+updated: 2021-03-17 17:06:39
+version: 1.5
 ---
 
 When working with arrays the length property is not really a good way to go about getting the data length of a string. The reason why is because of the nature of Unicode. However in nodejs when working with buffers the [buffer length](https://nodejs.org/api/buffer.html#buffer_buf_length) property of a buffer can be used to get the amount of memory that the buffer is taking up at least. In addition if buffers are used the right way buffer length can be used as a way to get the actual data size of a string. So this will be a quick post on the buffer length property in nodejs and some related topic when it comes to array length.
+
 <!-- more -->
 
 ## 1 - Buffer length basic example
@@ -63,3 +64,7 @@ console.log(buff.length); // 9
 ```
 
 Turns out that the String length property is not a good way to get the size of a string, I could get into the nature of Unicode to explain better why this is, but that is a whole other post maybe.
+
+## 4 - Conclusion
+
+So the buffer length is the number of bytes a buffer is, or at least it should be as far as I can tell at least. So then the buffer length should be a good way to go about finding out the actual data length of a string, that is as long as the proper encoding is used when creating the buffer from the string.
