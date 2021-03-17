@@ -5,11 +5,13 @@ tags: [js,node.js,statistics,JSON]
 layout: post
 categories: node.js
 id: 152
-updated: 2021-03-17 13:30:55
-version: 1.3
+updated: 2021-03-17 13:35:05
+version: 1.4
 ---
 
-I thought about maybe making some projects where I work with some data from my google analytics statistics. Grabbing the data is simple enough, but there is no option to download the data in \*.json format, but there is an option for \*.csv. So all I need is some kind of tool to help me convert data in a \*.csv to \*.json. I prefer to do just about everything with [node.js](https://nodejs.org/en), and as such I was able to come across something called [csvtojson](https://www.npmjs.com/package/csvtojson) which is one user space solutuon for converting a csv file to json.
+I thought about maybe making some projects where I work with some data from my google analytics statistics. Grabbing the data is simple enough, but there is no option to download the data in \*.json format, but there is an option for \*.csv. So all I need is some kind of tool to help me convert data in a \*.csv to \*.json. I prefer to do just about everything with [node.js](https://nodejs.org/en), and as such I was able to come across something called [csvtojson](https://www.npmjs.com/package/csvtojson) which is one user space solution for converting a csv file to json.
+
+Of course it would also be nice to have some easy to use solution for going in the other direction also, that is converting JSON to csv. As much as I like json it does have its draw backs compared to some other options such as with yaml that supports comments when makes it a better option for config files. However when it comes to the nature of this post it is nice to create csv files rather than json files for some things because that is a good standard to allow for data to be opened up in spread sheet programs.
 
 <!-- more -->
 
