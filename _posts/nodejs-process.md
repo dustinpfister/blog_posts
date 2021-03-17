@@ -5,11 +5,13 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-03-17 11:56:42
-version: 1.2
+updated: 2021-03-17 12:02:27
+version: 1.3
 ---
 
-The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and arguments given from the command line when a script is called directly. In addition it can also be used to set some event handlers to give control over the process.
+The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and arguments given from the command line when a script is called directly. However there is even more to it on top of that when it comes to things like piping data into a nodejs script from another application in the command line when calling the script, and also having better control over the standard output of a script beyond that of using the console.log method that will always append a line break to output each time it is used.
+
+In addition it can also be used to set some event handlers to give control over the process. For example I can set up an event handler that will do something each time some data is given to a script from the standard output. So then it is called for to write not just one post, but a few posts actually on the topic of the nodejs process global. In this post I will be just doing a general overview of the global without getting into any one feature in depth.
 
 <!-- more -->
 
