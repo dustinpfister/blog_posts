@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 825
-updated: 2021-03-17 12:50:08
-version: 1.5
+updated: 2021-03-17 12:55:46
+version: 1.6
 ---
 
 One thing that I wish that I got solid early on when I was first starting out with [nodejs](https://nodejs.org/en/) is how to get the current working directory, and also how to always get the directory where a script is located, along with other typical paths of interest on a system. In the process global there is a cwd method that when called will return the current working directory, which is of course a major directory of interest when it comes to creating a nodejs script. However it is not the only directory of interest of course it is also important to know how to go about getting the directory of the current script, and also how to get paths to assets that are relative to that script. There is also how to go about getting the user folder location when it comes to a standard location to park user specific data.
@@ -23,7 +23,9 @@ If I just want to get the current working directory I can use the process.cwd me
 console.log( process.cwd() );
 ```
 
-## 2 -
+## 2 - Getting gin the path to the current script
+
+The process.cwd method will get the current working directory, but [process.cwd should not be confused with dirname](https://stackoverflow.com/questions/9874382/whats-the-difference-between-process-cwd-vs-dirname). When process.cwd will return the current working directory, the \_\_dirname global will return the directory that contains the current javaScript source code file. When first starting out with simple scripts often a new developer will keep calling node in the same root path as the script, and in that case the two options will of course return the same result. However if you take a moment to make your script a project that can be installed globally, of if you just call your script from another folder the values will of course differ.
 
 ```js
 console.log( process.cwd() );
