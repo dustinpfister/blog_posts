@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 160
-updated: 2021-03-17 16:41:25
-version: 1.1
+updated: 2021-03-17 16:43:15
+version: 1.2
 ---
 
 I have [written a post](/2018/02/04/nodejs-child-process/) on using the built in node.js [child_process](https://nodejs.org/docs/latest-v8.x/api/child_process.html) module which is one way to go about launching additional processes in a node.js environment. The module is a great built in starting point for starting an external command in the host operating system in which nodejs is running. The built in module seems to work just fine for the most part, however there might come situations in which I might need to use something that builds on top of this core built in nodejs module.
@@ -32,6 +32,7 @@ if (argv.length >= 2) {
 ```
 
 And my basic.js file that I will be parent process that I will start with node looks like this.
+
 ```js
 let execa = require('execa');
  
@@ -46,3 +47,8 @@ execa('node', ['script_test', '40','2']).then(function (data) {
  
 });
 ```
+
+## 2 - Conclusion
+
+I have to admit that I am not making that many nodejs projects these days, and when I do the built in nodejs child process module seems to still work okay when it comes to starting an external command within a nodejs script.
+
