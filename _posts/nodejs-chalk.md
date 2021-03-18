@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 26
-updated: 2019-09-23 09:53:43
-version: 1.12
+updated: 2021-03-18 16:35:40
+version: 1.13
 ---
 
 When making any kind of node.js project that may involve output to the command line interface, it may be desired to style that output, for the sake of adding emphases, or just to make it look nice. Many CLI tools make use of color, for one reason or another, so if you want to add color to the output of you node.js CLI tools, you might want to check out [chalk](https://www.npmjs.com/package/chalk). Chalk makes changing the color of a terminal fairly easy, but if you are wondering how chalk works the answer is [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). If you just simply know the codes that you want to use you can just append them to the start and end of a string that you are outputting to the console. Chalk just makes working with ANSI escape codes easy
@@ -168,6 +168,6 @@ console.log(chalk.rgb(255,0,0)('This is red text set via a rgb value'));
 
 ## 10 - Conclusion
 
-I have been following the development of chalk for some time now, it's a fun little dependency for setting terminal color to help add emphasis for things like error messages. The go to solution for adding stylish text to CLI tools in node.js for sure.
+I have been following the development of chalk for some time now, it's a fun little dependency for setting terminal color to help add emphasis for things like error messages. The go to solution for adding stylish text to CLI tools in node.js for sure. However when it comes to adding color I have found that I often just use a simple set of ansi codes to turn color on and off when it comes to making some kind of log module for a porject or something to that effect.
 
-Be sure to check out my many other [posts on node.js and npm packages](/categories/node-js/).
+
