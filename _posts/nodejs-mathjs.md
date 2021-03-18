@@ -5,15 +5,15 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2018-03-08 12:25:43
-version: 1.1
+updated: 2021-03-18 12:21:50
+version: 1.2
 ---
 
 When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. It can do everything the Math object can, as well add a whole bunch of new features such as big number support. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
 
 <!-- more -->
 
-## Installing
+## 1 - Installing
 
 Mathjs can be used as a front end solution, as well as in node.js. In anode.js environment just install with npm like always.
 
@@ -23,15 +23,15 @@ $ npm install mathjs --save
 
 In this post I am using mathjs 4.x, and I assume a node.js environment.
 
-## using mathjs in place of the Math Object
+## 2 - using mathjs in place of the Math Object
 
 I tend to favor using mathjs separately as an alternative to the Math Object in core javaScript, rather than monkey patching the Math Object. This means I will have two globals, one lower case, and one upper.
 
-## Plug in system
+## 3 - Plug in system
 
-mathjs has a plug in system, and there are additional projects that wok well with mathjs when it comes to getting into a certain discipline involving math. Of course it is not that hard to add my own functionality as well if I cant fine something.
+The mathjs module has a plug in system, and there are additional projects that wok well with mathjs when it comes to getting into a certain discipline involving math. Of course it is not that hard to add my own functionality as well if I cant fine something.
 
-## The natural logarithm method
+## 4 - The natural logarithm method
 
 For starters I checked out the mathjs natural logarithm method, and have found that it is an improved alternative over the native Math.log method as it can also be used to find base log.
 
