@@ -5,8 +5,8 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:39:26
-version: 1.8
+updated: 2021-03-18 12:41:22
+version: 1.9
 ---
 
 When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. 
@@ -88,5 +88,5 @@ console.log( math.log(n,base) === exp ) // true
 
 ## 3 - Conclusion
 
-As of this writing it would seem that Mathjs is still being supported which is great.
+As of this writing it would seem that Mathjs is still being supported which is great. I do get around to editing my nodejs content once in a while, so next time I come around to this post I hope to expand it with at least a few more additional examples.
 
