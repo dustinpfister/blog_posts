@@ -5,13 +5,13 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 521
-updated: 2021-03-18 13:50:35
-version: 1.5
+updated: 2021-03-18 13:52:11
+version: 1.6
 ---
 
 So there is the question of how to make a [node process exit](https://nodejs.org/api/process.html#process_process_exit_code) when it does not do so normally, and also how to go about setting some events that will fire when the process exits. In this post I will be going over the process exit method and well as exit codes, exit events, and other related topics that mainly have to do with the use of the [process global](/2018/02/11/nodejs-process/).
 
-When a process exits it often does so with an exit code.
+When a process exits it often does so with an exit code. When using the main process.exit method it is possible to pass a code to let any additian scripts that might make use of what I am making know if the script exited as exspect with a code of zero, or if some kind of error happend with a code of one or higher.
 
 <!-- more -->
 
