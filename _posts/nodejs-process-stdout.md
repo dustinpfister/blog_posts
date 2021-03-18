@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 826
-updated: 2021-03-18 16:30:47
-version: 1.8
+updated: 2021-03-18 16:35:41
+version: 1.9
 ---
 
 In some cases I might want to use [process.stdout](https://nodejs.org/api/process.html#process_process_stdout) in place of [console.log](https://nodejs.org/api/console.html#console_console_log_data_args) when working out a [nodejs script](https://nodejs.org/en/). The console.log method works just fine for most typical user case examples, however it does append a line feed at the end of the output each time. Often this might be what I want to happen, however when it comes to having better control over the standard output of a script the write method of the strout stream in the process global is how to go about doing so.
@@ -26,11 +26,11 @@ process.stdout.write('Hello World' + os.EOL);
 
 ## 2 - Custom log methods
 
-The use of console.lof works okay, but often it is a good idea to have a custom log method. Also when it comes to creating a major project it might even be a good idea to have a log module, that way I can have all the calls of a log method point to the use of a method in that log module. WHen it comes to defining what that log function is, I could use console.log, or I could use the write method of the stdout stream in process. I could also making logging point to some whole other kine of stream compleatly if I wanted to. So then in this section I will be going over some examples of basic log functions.
+The use of console.lof works okay, but often it is a good idea to have a custom log method. Also when it comes to creating a major project it might even be a good idea to have a log module, that way I can have all the calls of a log method point to the use of a method in that log module. WHen it comes to defining what that log function is, I could use console.log, or I could use the write method of the stdout stream in process. I could also making logging point to some whole other kine of stream completely if I wanted to. So then in this section I will be going over some examples of basic log functions.
 
 ### 2.1 - A Basic log method
 
-A starting point might be to have a log method at the top of a single script. Ofrten many of my simple nodejs projects are just one file so something liek this might work just fine.
+A starting point might be to have a log method at the top of a single script. Often many of my simple nodejs projects are just one file so something like this might work just fine.
 
 ```js
 let log = (mess, eol, stream) => {
@@ -50,11 +50,13 @@ log('bar', '\n');
 // foobar
 ```
 
-So it is a little neater to call log each time rather than console.log. However there is more to it than just that, for example if something that I am working on starts to become a little more advancaed there is taking the log method and placing it in its own module. I can then use the same log method for all of my modules, and having all logging go to just one place.
+So it is a little neater to call log each time rather than console.log. However there is more to it than just that, for example if something that I am working on starts to become a little more advanced there is taking the log method and placing it in its own module. I can then use the same log method for all of my modules, and having all logging go to just one place.
 
 ### 2.2 - Making a log.js module
 
-The next step from a simple log method would be to make something that is a module that I can pull away into its own file, and then link to from all of my other scripts. When it comes to going all out with something like this there are many little details that I might add to such a module. One feature that I might add is color support, there are npm packages like chalk that can be used to add color, or another way is to just know the ansi codes to turn color on and off. In any case when it comes to adding color to output that is seomthing that I might want to add for output that will be color to a console, but it might not be what I want to end up going to a file, or some other scriopt when it comes to piping standard outpout to another script. So it makese sense to have more than one log method,or ways to turn that kind of feature off when it comes to use case examples where I would not want these ansi codes added to the output.
+The next step from a simple log method would be to make something that is a module that I can pull away into its own file, and then link to from all of my other scripts. When it comes to going all out with something like this there are many little details that I might add to such a module. 
+
+One feature that I might add is color support, there are npm packages like [chalk](/2017/05/31/nodejs-chalk/) that can be used to add color, or another way is to just know the [ansi codes to turn color on and off](/2019/09/19/nodejs-ansi-escape-codes/). In any case when it comes to adding color to output that is something that I might want to add for output that will be color to a console, but it might not be what I want to end up going to a file, or some other script when it comes to piping standard output to another script. So it makes sense to have more than one log method,or ways to turn that kind of feature off when it comes to use case examples where I would not want these ansi codes added to the output.
 
 ```js
 let colorCode = {
