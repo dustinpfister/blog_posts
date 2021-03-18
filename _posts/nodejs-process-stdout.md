@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 826
-updated: 2021-03-18 16:35:41
-version: 1.9
+updated: 2021-03-18 16:36:46
+version: 1.10
 ---
 
 In some cases I might want to use [process.stdout](https://nodejs.org/api/process.html#process_process_stdout) in place of [console.log](https://nodejs.org/api/console.html#console_console_log_data_args) when working out a [nodejs script](https://nodejs.org/en/). The console.log method works just fine for most typical user case examples, however it does append a line feed at the end of the output each time. Often this might be what I want to happen, however when it comes to having better control over the standard output of a script the write method of the strout stream in the process global is how to go about doing so.
@@ -126,7 +126,7 @@ This results in cyan color text for the hello world message, and red color text 
 
 ## 3 - Conclusion
 
-So then that is all when it comes to standard output and nodejs scripts, at least as far as this post goes at least. However there is also the topic of working with [standard input](/2019/07/09/nodejs-process-stdin/) in a nodejs script also, for that I have a simular post on the strin stream of the porcess global. However to really get the hand of standard output, input, and many other little topics it migth be best to start working out some simple actualy [nodejs porject examples](/2021/03/16/nodejs-example/). 
+So then that is all when it comes to standard output and nodejs scripts, at least as far as this post goes at least. However there is also the topic of working with [standard input](/2019/07/09/nodejs-process-stdin/) in a nodejs script also, for that I have a similar post on the stdin stream of the process global. However to really get the hand of standard output, input, and many other little topics it might be best to start working out some simple actually [nodejs project examples](/2021/03/16/nodejs-example/). 
 
 I do have my main post on the [nodejs process global in general](/2018/02/11/nodejs-process/) that might be work checking out also. There is a lot to be aware of when it comes to this global, so it makes sense to work out at least a few basic examples, and simple projects to get the hang of things.
 
