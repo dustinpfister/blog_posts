@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 521
-updated: 2021-03-18 14:32:53
-version: 1.8
+updated: 2021-03-18 14:36:23
+version: 1.9
 ---
 
 So there is the question of how to make a [node process exit](https://nodejs.org/api/process.html#process_process_exit_code) when it does not do so normally, and also how to go about setting some events that will fire when the process exits. In this post I will be going over the process exit method and well as exit codes, exit events, and other related topics that mainly have to do with the use of the [process global](/2018/02/11/nodejs-process/).
@@ -81,5 +81,7 @@ loop();
 ## 4 - Conclusion
 
 The process.exit method is a method in the process global that can be used to end the current process with a given Exit code. Speaking of exit code there is also the process.exitCode property that cen be used as a way to set what the default exit code status should be for a process without actually ending the process when setting the propery. In addition there are a number of events to which handlers can be attached to define some custom logic tofire when the current process does in fact exit.
+
+There is maybe a bit more to write about when it comes to exit codes, but it would seem that much of it might have to do with things that wil chnage a little from one operating system to another. These days I often work, and test on a Linux system, and when it comes to bash there is knowing a thing or two about the speshal paramaters that can be used to check the exit code status of the last process that ended. However that might be a matter for another post that has more to do with bash, and Linux, rather than nodejs scripts think might run in systems other than that of Linux.
 
 
