@@ -5,8 +5,8 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:35:38
-version: 1.7
+updated: 2021-03-18 12:39:26
+version: 1.8
 ---
 
 When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. 
@@ -15,7 +15,7 @@ The mathjs module can do everything the Math object can, however it also adds a 
 
 <!-- more -->
 
-## 1 - Installing
+## 1 - Installing mathjs and some basic points
 
 Mathjs can be used as a front end solution, as well as in node.js, however in this post I will be mainly going over  few nodejs examples. When I first started writing this post I was using mathjs 4.x, and the last time I edited this post there is now a 9.x, so if you run into problems getting some of these examples to work on your end check the version number that you are using first. So then in a node.js environment just install with npm like always when starting a new npm folder.
 
@@ -26,7 +26,7 @@ $ npm init
 $ npm install mathjs --save
 ```
 
-## 1.1 - Cloning down my test mathjs folder that I made for this post
+### 1.1 - Cloning down my test mathjs folder that I made for this post
 
 Another option would be to [clone down the git folder](https://github.com/dustinpfister/test_mathjs) that I made for this post.
 
@@ -37,15 +37,15 @@ $ npm install
 ```
 
 
-## 2 - using mathjs in place of the Math Object
+### 1.2 - using mathjs in place of the Math Object
 
-I tend to favor using mathjs separately as an alternative to the Math Object in core javaScript, rather than monkey patching the Math Object. This means I will have two globals, one lower case, and one upper.
+I tend to favor using mathjs separately as an alternative to the Math Object in core javaScript, rather than monkey patching the Math Object. This means I will have two globals, one lower case, and one upper case. However once goes about importing mathjs the global variable should be separate from the native Math object.
 
-## 3 - Plug in system
+### 1.3 - Plug in system
 
 The mathjs module has a plug in system, and there are additional projects that wok well with mathjs when it comes to getting into a certain discipline involving math. Of course it is not that hard to add my own functionality as well if I cant fine something.
 
-## 4 - The natural logarithm method
+## 2 - The natural logarithm method
 
 For starters I checked out the mathjs natural logarithm method, and have found that it is an improved alternative over the native Math.log method as it can also be used to find base log.
 
@@ -70,7 +70,7 @@ With math.js I can just give a second argument
 
 ```js
 let math = require('mathjs');
-console.log(math.log(8,2)); // 3
+console.log(math.log(8, 2)); // 3
 ```
 
 If you are still wondering what base log is, just think of it as the opposite of using Math.pow. Where I want to find an unknown exponent given a number and base, rater than finding an unknown number given a base, and exponent.
@@ -85,3 +85,8 @@ n = math.pow(base,exp); // 8
 console.log( math.log(n,base) ); // 3
 console.log( math.log(n,base) === exp ) // true
 ```
+
+## 3 - Conclusion
+
+As of this writing it would seem that Mathjs is still being supported which is great.
+
