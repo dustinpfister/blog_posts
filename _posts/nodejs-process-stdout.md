@@ -5,14 +5,13 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 826
-updated: 2021-03-18 16:17:37
-version: 1.6
+updated: 2021-03-18 16:23:41
+version: 1.7
 ---
 
 In some cases I might want to use process.stdout in place of console.log when working out a nodejs script. The console.log method works just fine for most typical user case examples, however it does append a line feed at the end of the output each time. Often this might be what I want to happen, however when it comes to having better control over the standard output of a script the write method of the strout stream in the process global is how to go about doing so.
 
 <!-- more -->
-
 
 ## 1 - console.log and process.stdout
 
@@ -54,6 +53,8 @@ log('bar', '\n');
 So it is a little neater to call log each time rather than console.log. However there is more to it than just that, for example if something that I am working on starts to become a little more advancaed there is taking the log method and placing it in its own module. I can then use the same log method for all of my modules, and having all logging go to just one place.
 
 ### 2.2 - Making a log.js module
+
+The next step from a simple log method would be to make something that is a module that I can pull away into its own file, and then link to from all of my other scripts. When it comes to going all out with something like this there are many little details that I might add to such a module. One feature that I might add is color support, there are npm packages like chalk that can be used to add color, or another way is to just know the ansi codes to turn color on and off. In any case when it comes to adding color to output that is seomthing that I might want to add for output that will be color to a console, but it might not be what I want to end up going to a file, or some other scriopt when it comes to piping standard outpout to another script. So it makese sense to have more than one log method,or ways to turn that kind of feature off when it comes to use case examples where I would not want these ansi codes added to the output.
 
 ```js
 let colorCode = {
@@ -106,6 +107,20 @@ api.fullLog = fullLog;
  
 module.exports = api;
 ```
+
+
+I can then use this log method in ascript like this.
+
+```js
+let path = require('path');
+let log = require( path.join(__dirname, 'log.js') );
+ 
+log('Hello World', 'info', '\n');
+ 
+log('no good', 'error', '\n');
+```
+
+This results in cyan color text for the hello world message, and red color text for errors.
 
 ## 3 - Conclusion
 
