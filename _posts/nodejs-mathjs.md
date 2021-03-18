@@ -5,17 +5,19 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:30:20
-version: 1.5
+updated: 2021-03-18 12:32:54
+version: 1.6
 ---
 
-When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. It can do everything the Math object can, as well add a whole bunch of new features such as big number support. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
+When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. 
+
+The mathjs module can do everything the Math object can, however it also adds a whole bunch of new features such as big number support. When it comes to native javaScript there is now a native Big Number standard, but it still might now work great in all browsers. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
 
 <!-- more -->
 
 ## 1 - Installing
 
-Mathjs can be used as a front end solution, as well as in node.js, however in this post I will be mainly goinf over  few nodejs examples. In this post I am using mathjs 4.x so if you run into problems getting some of these examples to work on yor end check the version number that you are using. So then in a node.js environment just install with npm like always when starting a new npm folder.
+Mathjs can be used as a front end solution, as well as in node.js, however in this post I will be mainly going over  few nodejs examples. In this post I am using mathjs 4.x so if you run into problems getting some of these examples to work on yor end check the version number that you are using. So then in a node.js environment just install with npm like always when starting a new npm folder.
 
 ```
 $ mkdir test_mathjs
