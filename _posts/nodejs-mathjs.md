@@ -5,8 +5,8 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:32:54
-version: 1.6
+updated: 2021-03-18 12:35:38
+version: 1.7
 ---
 
 When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. 
@@ -17,7 +17,7 @@ The mathjs module can do everything the Math object can, however it also adds a 
 
 ## 1 - Installing
 
-Mathjs can be used as a front end solution, as well as in node.js, however in this post I will be mainly going over  few nodejs examples. In this post I am using mathjs 4.x so if you run into problems getting some of these examples to work on yor end check the version number that you are using. So then in a node.js environment just install with npm like always when starting a new npm folder.
+Mathjs can be used as a front end solution, as well as in node.js, however in this post I will be mainly going over  few nodejs examples. When I first started writing this post I was using mathjs 4.x, and the last time I edited this post there is now a 9.x, so if you run into problems getting some of these examples to work on your end check the version number that you are using first. So then in a node.js environment just install with npm like always when starting a new npm folder.
 
 ```
 $ mkdir test_mathjs
