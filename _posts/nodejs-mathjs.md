@@ -5,13 +5,13 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:41:22
-version: 1.9
+updated: 2021-03-18 12:45:28
+version: 1.10
 ---
 
-When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. 
+When it comes to doing anything with math in javaScript there is of course the core javaScript Math object that is very helpful. The Object is packed with a whole bunch of usual suspects when it comes to all kinds of things that have to do with Math such as sin, cosine, a PI constant, and so forth. However the Native Math object does have it's limitations, and does not always work the way I would like it to. I find myself often having ti create a few stand alone methods sometimes such as a nth root method, and also look around for something to help with big number support. There are also many methods missing that have to do with things that have to do with statistics when it comes to things like the various kinds of means, and standard deviation.
 
-The mathjs module can do everything the Math object can, however it also adds a whole bunch of new features such as big number support. When it comes to native javaScript there is now a native Big Number standard, but it still might now work great in all browsers. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
+A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. The mathjs module can do everything the Math object can, however it also adds a whole bunch of new features such as big number support. When it comes to native javaScript there is now a native Big Number standard, but it still might now work great in all browsers. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
 
 <!-- more -->
 
