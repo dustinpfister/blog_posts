@@ -5,8 +5,8 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 13:06:29
-version: 1.11
+updated: 2021-03-18 13:22:37
+version: 1.12
 ---
 
 When it comes to doing anything with math in javaScript there is of course the core javaScript Math object that is very helpful. The Object is packed with a whole bunch of usual suspects when it comes to all kinds of things that have to do with Math such as sin, cosine, a PI constant, and so forth. However the Native Math object does have it's limitations, and does not always work the way I would like it to. I find myself often having ti create a few stand alone methods sometimes such as a nth root method, and also look around for something to help with big number support. There are also many methods missing that have to do with things that have to do with statistics when it comes to things like the various kinds of means, and standard deviation.
@@ -89,6 +89,8 @@ console.log( math.log(n,base) === exp ) // true
 ```
 
 ## 4 - Big Numbers
+
+Another major feature of mathjs is a big number constructor.
 
 ```js
 let math = require('mathjs');
