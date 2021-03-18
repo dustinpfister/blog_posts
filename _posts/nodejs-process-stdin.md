@@ -5,8 +5,8 @@ tags: [js,node.js,heroku]
 layout: post
 categories: node.js
 id: 502
-updated: 2021-03-18 13:47:14
-version: 1.5
+updated: 2021-03-18 14:39:07
+version: 1.6
 ---
 
 So when it comes to doing something in the command line in a posix system, or windows system there is the subject of piping in the command line. That is taking the output of one command line tool and piping it to another tool. For example taking the output of a command that spits out a list of information about the computer the operating system is running on and then piping it to a terminal based txt editor that then saves it as a file in the current working directory.
@@ -43,5 +43,4 @@ So far so good.
 
 ## 2 - Conclusion
 
-That is it for now when it comes to the process.stdin stream, there is also of course the [process.stdout stream also that I have also wrote a quick post on](/2021/03/18/nodejs-process-stdout/) that I will likey come back to now and then when I get around to editing.
-
+That is it for now when it comes to the process.stdin stream, there is also of course the [process.stdout stream also that I have also wrote a quick post on](/2021/03/18/nodejs-process-stdout/) that should also be worth checking out when it comes to more on that kind of stream to work with also.Just like all my other nodejs posts I will likey come back to this post now and then when I get around to editing, and when I do so maybe I can come up with at least a few more examples to write about when it comes to working with standard input.
