@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 826
-updated: 2021-03-18 15:35:37
-version: 1.4
+updated: 2021-03-18 15:38:49
+version: 1.5
 ---
 
 In some cases I might want to use process.stdout in place of console.log when working out a nodejs script. The console.log method works just fine for most typical user case examples, however it does append a line feed at the end of the output each time. Often this might be what I want to happen, however when it comes to having better control over the standard output of a script the write method of the strout stream in the process global is how to go about doing so.
@@ -31,6 +31,8 @@ The use of console.lof works okay, but often it is a good idea to have a custom 
 
 ### 2.1 - A Basic log method
 
+A starting point might be to have a log method at the top of a single script. Ofrten many of my simple nodejs projects are just one file so something liek this might work just fine.
+
 ```js
 let log = (mess, eol, stream) => {
     mess = mess || '';
@@ -48,6 +50,8 @@ log('foo', '');
 log('bar', '\n');
 // foobar
 ```
+
+So it is a little neater to call log each time rather than console.log. However there is more to it than just that, for example if something that I am working on starts to become a little more advancaed there is taking the log method and placing it in its own module. I can then use the same log method for all of my modules, and having all logging go to just one place.
 
 ## 3 - Conclusion
 
