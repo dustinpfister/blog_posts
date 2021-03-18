@@ -5,8 +5,8 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:26:42
-version: 1.3
+updated: 2021-03-18 12:28:23
+version: 1.4
 ---
 
 When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. It can do everything the Math object can, as well add a whole bunch of new features such as big number support. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
@@ -22,6 +22,13 @@ $ mkdir test_mathjs
 $ cd test_mathjs
 $ npm init
 $ npm install mathjs --save
+```
+
+## 1.1 - Cloning down my test mathjs folder that I made for this post
+
+Another option would be to [clone down the git folder](https://github.com/dustinpfister/test_mathjs) that I made for this post.
+
+```
 ```
 
 
