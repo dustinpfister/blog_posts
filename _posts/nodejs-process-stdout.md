@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 826
-updated: 2021-03-18 15:38:49
-version: 1.5
+updated: 2021-03-18 16:17:37
+version: 1.6
 ---
 
 In some cases I might want to use process.stdout in place of console.log when working out a nodejs script. The console.log method works just fine for most typical user case examples, however it does append a line feed at the end of the output each time. Often this might be what I want to happen, however when it comes to having better control over the standard output of a script the write method of the strout stream in the process global is how to go about doing so.
@@ -52,6 +52,60 @@ log('bar', '\n');
 ```
 
 So it is a little neater to call log each time rather than console.log. However there is more to it than just that, for example if something that I am working on starts to become a little more advancaed there is taking the log method and placing it in its own module. I can then use the same log method for all of my modules, and having all logging go to just one place.
+
+### 2.2 - Making a log.js module
+
+```js
+let colorCode = {
+  black: '\u001b[30m',
+  red: '\u001b[31m',
+  green: '\u001b[32m',
+  orange: '\u001b[33m',
+  blue: '\u001b[34m',
+  purple: '\u001b[35m',
+  cyan: '\u001b[36m',
+  white: '\u001b[37m',
+  reset: '\u001b[39m'
+};
+ 
+var logType = function(mess, eol, type, stream, colors){
+    if(colors){
+       stream.write(colorCode[colors[type] || 'white']);
+    }
+    stream.write(mess + eol);
+    if(colors){
+       stream.write(colorCode.reset);
+    }
+};
+ 
+var fullLog = (mess, type, eol, colors, typeObj) => {
+    mess = mess || '';
+    type = type || 'info';
+    eol = eol || '';
+    colors = colors || false;
+    typeObj = typeObj || { info: process.stdout, error: process.stderr }
+    // log
+    logType(mess, eol, type, typeObj[type], colors);
+};
+ 
+// typically log function
+var api = function(mess, type, eol){
+   fullLog(mess, type, eol, {
+       info: 'cyan',
+       error: 'red'
+   });
+};
+ 
+// typical settings for clean output
+api.clean = function(mess, type){
+   fullLog(mess, type, '', false);
+};
+ 
+// making full log method public
+api.fullLog = fullLog;
+ 
+module.exports = api;
+```
 
 ## 3 - Conclusion
 
