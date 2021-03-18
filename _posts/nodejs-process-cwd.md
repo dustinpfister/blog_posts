@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 825
-updated: 2021-03-17 13:24:18
-version: 1.14
+updated: 2021-03-18 15:08:47
+version: 1.15
 ---
 
 One thing that I wish that I got solid early on when I was first starting out with [nodejs](https://nodejs.org/en/) is how to get the current working directory, and also how to always get the directory where a script is located, along with other typical paths of interest on a system. In the process global there is a cwd method that when called will return the current working directory, which is of course a major directory of interest when it comes to creating a nodejs script. However it is not the only directory of interest of course it is also important to know how to go about getting the directory of the current script, and also how to get paths to assets that are relative to that script. There is also how to go about getting the user folder location when it comes to a standard location to park user specific data.
@@ -90,3 +90,5 @@ There is a great deal to get into when it comes to the paths module. There are m
 ## 5 - Conclusion
 
 So the process.cwd method is what there is to use as a standard way to go about getting the current working path. It is a good idea to use it as a way to show what the intention is, and to use it with path module methods to get any paths I might want when it comes to things that should be relative to the current working folder rather than the source code folder that may, and often should be, in another location on a system.
+
+If you are looking for more to read on the process global, then maybe check out my [main post on the nodejs process global](/2018/02/11/nodejs-process/). I keep coming back to it now and then when I get around to editing and creating new posts like this.
