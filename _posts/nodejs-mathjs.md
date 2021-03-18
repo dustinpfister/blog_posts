@@ -1,12 +1,12 @@
 ---
-title: Using mathjs as a more advanced alternative the the corejs Math Object
+title: Using mathjs as a more advanced alternative the the Core JavaScript Math Object
 date: 2018-03-03 20:10:00
 tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:21:50
-version: 1.2
+updated: 2021-03-18 12:26:42
+version: 1.3
 ---
 
 When it comes to doing anything with math in javaScript there is of course the corejs Math object that is very helpful, but it does have it's limitations, and does not always work the way I would like it to. A popular alternative to the corejs Math object is [math.js](http://mathjs.org/), which can be found on [npm](https://www.npmjs.com/package/mathjs), and [github](https://github.com/josdejong/mathjs) like most projects. It can do everything the Math object can, as well add a whole bunch of new features such as big number support. In addition certain mathjs equivalents to the Math object methods have additional features, and also a plug in system exists that can be used to further extend mathjs.
@@ -15,13 +15,15 @@ When it comes to doing anything with math in javaScript there is of course the c
 
 ## 1 - Installing
 
-Mathjs can be used as a front end solution, as well as in node.js. In anode.js environment just install with npm like always.
+Mathjs can be used as a front end solution, as well as in node.js, however in this post I will be mainly goinf over  few nodejs examples. In this post I am using mathjs 4.x so if you run into problems getting some of these examples to work on yor end check the version number that you are using. So then in a node.js environment just install with npm like always when starting a new npm folder.
 
 ```
+$ mkdir test_mathjs
+$ cd test_mathjs
+$ npm init
 $ npm install mathjs --save
 ```
 
-In this post I am using mathjs 4.x, and I assume a node.js environment.
 
 ## 2 - using mathjs in place of the Math Object
 
