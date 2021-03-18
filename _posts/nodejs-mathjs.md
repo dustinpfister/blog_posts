@@ -5,8 +5,8 @@ tags: [js,node.js,math]
 layout: post
 categories: node.js
 id: 161
-updated: 2021-03-18 12:45:28
-version: 1.10
+updated: 2021-03-18 13:06:29
+version: 1.11
 ---
 
 When it comes to doing anything with math in javaScript there is of course the core javaScript Math object that is very helpful. The Object is packed with a whole bunch of usual suspects when it comes to all kinds of things that have to do with Math such as sin, cosine, a PI constant, and so forth. However the Native Math object does have it's limitations, and does not always work the way I would like it to. I find myself often having ti create a few stand alone methods sometimes such as a nth root method, and also look around for something to help with big number support. There are also many methods missing that have to do with things that have to do with statistics when it comes to things like the various kinds of means, and standard deviation.
@@ -73,6 +73,8 @@ let math = require('mathjs');
 console.log(math.log(8, 2)); // 3
 ```
 
+## 3 - mathjs pow method
+
 If you are still wondering what base log is, just think of it as the opposite of using Math.pow. Where I want to find an unknown exponent given a number and base, rater than finding an unknown number given a base, and exponent.
 
 ```js
@@ -86,7 +88,17 @@ console.log( math.log(n,base) ); // 3
 console.log( math.log(n,base) === exp ) // true
 ```
 
-## 3 - Conclusion
+## 4 - Big Numbers
+
+```js
+let math = require('mathjs');
+ 
+let big = new math.bignumber('123456789876543217777777777777777771234444555666123');
+ 
+console.log(big.toString());
+```
+
+## 5 - Conclusion
 
 As of this writing it would seem that Mathjs is still being supported which is great. I do get around to editing my nodejs content once in a while, so next time I come around to this post I hope to expand it with at least a few more additional examples.
 
