@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 827
-updated: 2021-03-19 15:04:56
-version: 1.4
+updated: 2021-03-19 15:07:28
+version: 1.5
 ---
 
 When it comes to working with [buffers in nodejs](/2018/02/07/nodejs-buffer) there is the [nodejs buffer slice](https://nodejs.org/api/buffer.html#buffer_buf_slice_start_end) method that works more or less just like the [Array slice](/2018/12/08/js-array-slice/) method that will create a new array from an array without mutating the source array.
@@ -46,3 +46,8 @@ count = 1;
 buff.write('001a', start, count, 'hex');
 console.log(buff.toString('hex')); // af00cf
 ```
+
+## 3 - Conclusion
+
+That is all that I have for the buffer slice method for now at least today. If You find buffers to hard to work with, but like javaScript arrays here is one tip that might work okay. Just work with javaScript arrays and hex strings. Do whatever you need to do when  it comes to sorting, injecting, slicing and splicing, and then just join the arrays into a string and use Buffer.from to create a buffer.
+
