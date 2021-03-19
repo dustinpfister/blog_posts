@@ -1,15 +1,17 @@
 ---
-title: New Buffers in nodejs do and do not
+title: New Buffers in nodejs the good bad and ugly
 date: 2019-06-17 10:23:00
 tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2019-07-19 14:50:24
-version: 1.12
+updated: 2021-03-19 13:50:10
+version: 1.13
 ---
 
-So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
+So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. The quick and simple answer is that from what I have studied the use of the new keyword is something that should be avoided when creating buffers in nodejs, and other methods provided are what should be used to create them. However in order to really know why that is, some additional context is required.
+
+In this post I will be going over in detail what the deal is with making a new buffer with the new keyword in nodejs, and why it is that you might want to not do that if you have the option to do so.
 
 <!-- more -->
 
