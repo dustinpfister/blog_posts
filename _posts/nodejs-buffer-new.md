@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2021-03-19 13:51:36
-version: 1.14
+updated: 2021-03-19 13:54:47
+version: 1.15
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. The quick and simple answer is that from what I have studied the use of the new keyword is something that should be avoided when creating buffers in nodejs, and other methods provided are what should be used to create them. However in order to really know why that is, some additional context is required.
@@ -61,3 +61,7 @@ console.log(buff.toString()); // 'ABCD'
 ```
 
 In this sub section I am just creating a new buffer from a string and the default encoding is utf8. It is also possible to set the encoding as well as create buffers from arrays and objects also. For more on the buffer from method check out my post on [Buffer.from](/2019/07/19/nodejs-buffer-from/) in which I get into this method in detail.
+
+## 3 - Conclusion
+
+SO then the first step in working with buffers is knowing how to create one to begin with. In this post we looks at a few ways to go about creating them. There is the way of making them by using the buffer constructor which should be avoided. In place of the constructor there is the allocUnsafe, and alloc methods that are generally a better choice for creating a buffer.
