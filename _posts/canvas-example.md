@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-19 15:21:49
-version: 1.124
+updated: 2021-03-19 15:23:29
+version: 1.125
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -105,7 +105,7 @@ If I get some more time to get back into this canvas example though there might 
 
 ### 3.11 - [Making a breakout game clone](/2020/02/13/canvas-example-game-breakout/)
 
-I thought it would be a good idea to start yet another breakout clone. This is one of many ideas of a kind of project that has been all ready done to death, but there still may be a great deal of potential for adding a unique spin to it
+I thought it would be a good idea to start yet another breakout clone. This is one of many ideas of a kind of project that has been all ready done to death, but there still may be a great deal of potential for adding a unique spin to it. I have many ideas when it comes to adding all the various little features that would make this breakout clone stand out aside from all the others. However as of this writing there are so many other canvas examples that I would rather work on at the moment, so I might not get around to that any time soon.
 
 ### 3.12 - [A cannon shoot game canvas example](/2020/02/17/canvas-example-game-cannon-shoot/)
 
