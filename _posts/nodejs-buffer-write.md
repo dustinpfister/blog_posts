@@ -5,13 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 516
-updated: 2019-11-20 10:47:17
-version: 1.7
+updated: 2021-03-19 14:11:49
+version: 1.8
 ---
 
-The [buffer write](https://nodejs.org/api/buffer.html#buffer_buf_write_string_offset_length_encoding) method in the nodejs [buffer global](/2018/02/07/nodejs-buffer/) can be used to write data to a buffer that has been created before hand one way of another. 
-
-There are a few basics to cover when it comes to putting data into a buffer such as encoding and buffer index values. So I thought I would write a quick post on the buffer write prototype method in nodejs. In addition to this I  may branch off with some other related topics on buffers in general.
+The [buffer write](https://nodejs.org/api/buffer.html#buffer_buf_write_string_offset_length_encoding) method in the nodejs [buffer global](/2018/02/07/nodejs-buffer/) can be used to write data to a buffer that has been created before hand one way of another. There are a few basics to cover when it comes to putting data into a buffer such as encoding and byte index values. So I thought I would write a quick post on the buffer write prototype method in nodejs. In addition to this I  may branch off with some other related topics on buffers in general.
 
 <!-- more -->
 
@@ -74,3 +72,7 @@ buff.write('ffff', 1, 1, 'hex');
 console.log(buff.toString('hex'));
 // 00ff0000
 ```
+
+## 4 - Conclusion
+
+The buffer write method is then the best way to go about writing to a buffer, because it gives all the options that I would want when it comes to things like setting a byte index value, and chaining the encoding of the string value that I am give as an argument. There are some other options though when it comes to just [filling a buffer](/2019/07/11/nodejs-buffer-write/) with a given data pattern for that there is a fill buffer method. In addition there is also [how I go about creating buffers to begin with](/2019/06/17/nodejs-buffer-new/) when it comes to using the alloc method over the allocUnsafe method or the buffer constructor function.
