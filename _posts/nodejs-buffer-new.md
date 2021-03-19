@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 480
-updated: 2021-03-19 13:50:10
-version: 1.13
+updated: 2021-03-19 13:51:36
+version: 1.14
 ---
 
 So when making a [new Buffer](https://nodejs.org/api/buffer.html#buffer_new_buffer_array) in nodejs there are some things to be aware of. There is making a new buffer with the new keyword and what result that gives compared to the other options available in late versions of node.js. The quick and simple answer is that from what I have studied the use of the new keyword is something that should be avoided when creating buffers in nodejs, and other methods provided are what should be used to create them. However in order to really know why that is, some additional context is required.
@@ -17,7 +17,7 @@ In this post I will be going over in detail what the deal is with making a new b
 
 ## 1 - New buffer basic example.
 
-So in many code examples the Buffer constructor is used as a way to create a new Buffer.
+So in many code examples the Buffer constructor is used as a way to create a new Buffer. Just like any other constructor function in javaScript this involves the use of the new keyword, followed by calling the constructor function, passing any arguments that I might want to add in the process of doing so.
 
 ```js
 let buff = new Buffer('ABCD');
