@@ -1,12 +1,12 @@
 ---
 title: Buffer fill method and filling buffers completely in nodejs
 date: 2019-07-11 18:07:00
-tags: [js,node.js,heroku]
+tags: [js,node.js]
 layout: post
 categories: node.js
 id: 503
-updated: 2021-03-19 14:06:19
-version: 1.22
+updated: 2021-03-19 14:45:19
+version: 1.23
 ---
 
 Todays post will be a few quick examples on the [buffer fill](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) method in the [nodejs buffer](/2018/02/07/nodejs-buffer/) global. The buffer fill method can be used to fill a buffer with a data pattern, so it similar to [buffer write](/2019/08/06/nodejs-buffer-write/) but is not a replacement for it, in fact that method is a more robust alternative to buffer fill. The buffer fill method is just a convenience method for something that can be done with buffer write that can be used to write to a buffer in general, rather than just filling a buffer with a pattern.
