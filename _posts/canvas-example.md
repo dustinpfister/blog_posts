@@ -5,8 +5,8 @@ categories: canvas
 tags: [canvas]
 layout: post
 id: 633
-updated: 2021-03-14 18:08:53
-version: 1.123
+updated: 2021-03-19 15:21:49
+version: 1.124
 ---
 
 I really like [canvas elements](/2020/07/22/canvas/) they are the coolest HTML elements to work with, so of course I have got myself into the habit of making a bunch of [canvas examples](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) of my own. On top of that I also took the time to go about writing posts on these canvas examples here on my github pages site where I get into detail about the source code of each of them.
@@ -99,7 +99,9 @@ Yet another clock example this time it involves a collection of particle objects
 
 ### 3.10 - [game beach concept](/2020/04/24/canvas-example-game-beach/)
 
-This is a concept for a game that involves turrets and ships to which the turrets attack. I wanted to make something where the whole game of sorts if you can call it is actually fully automated. So this canvas example does not involve any user input, but rather involves javaScript code that automated the actions that the user would otherwise preform.
+This is a concept for a game that involves turrets and ships to which the turrets attack. I wanted to make something where the whole game of sorts if you can call it that is actually fully automated. So this canvas example does not involve any user input, but rather involves javaScript code that automated the actions that the user would otherwise preform.
+
+If I get some more time to get back into this canvas example though there might be some potential for some kind of game that might prove to be a little fun. But for now it would seem that this is just yet another one of my unfinished prototypes.
 
 ### 3.11 - [Making a breakout game clone](/2020/02/13/canvas-example-game-breakout/)
 
