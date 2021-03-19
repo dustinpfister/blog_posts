@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 147
-updated: 2019-11-20 09:05:12
-version: 1.23
+updated: 2021-03-19 13:57:29
+version: 1.24
 ---
 
 When [node.js](https://nodejs.org/en/) was first developed there where no typed arrays such as [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) to help work with binary data. As such [Buffer](https://nodejs.org/dist/latest-v8.x/docs/api/buffer.html) was introduced to help work with binary data in a node.js environment. Buffers are something that I run into when working with streams, ether file io streams, or from http requests. In any case Buffers are helpful when doing anything that involves working with raw binary data. So lets take a look at some examples of buffers in node.js.
@@ -21,7 +21,7 @@ In this post I was using nodejs 8.x LTS which at the time of this writing is sti
 
 ## 2 - New buffers more than one way to do it
 
-So lets start out with some very basic examples of buffers that have to do with just creating a new buffer. There is more than one way to make them, and in both safe, and unsafe ways as well. There is also the old way of making them that you might only bother with if you are still using a real old version of node.js for some reason. So lets get started with some buffer hello world examples of making a new buffer instance in nodejs.
+So lets start out with some very basic examples of buffers that have to do with just creating a new buffer. There is a [post that I wrote on this very topic of creating new buffers](/2019/06/17/nodejs-buffer-new/), but in this section I will be going over a few example here. There is more than one way to make them, and in both safe, and unsafe ways as well. There is also the old way of making them that you might only bother with if you are still using a real old version of node.js for some reason. So lets get started with some buffer hello world examples of making a new buffer instance in nodejs.
 
 ### 2.1 - The old way of doing it (do not do it unless for some reason you have to)
 
