@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 827
-updated: 2021-03-19 14:43:45
-version: 1.2
+updated: 2021-03-19 14:49:16
+version: 1.3
 ---
 
 When it comes to working with [buffers in nodejs](/2018/02/07/nodejs-buffer) there is the [nodejs buffer slice](https://nodejs.org/api/buffer.html#buffer_buf_slice_start_end) method that works more or less just like the [Array slice](/2018/12/08/js-array-slice/) method that will create a new array from an array without mutating the source array.
@@ -18,6 +18,8 @@ So in this post I will be going over a few quick examples of the Buffer slice me
 <!-- more -->
 
 ## 1 - Basic example of the nodejs Buffer Slice method
+
+First off how about a basic example of the buffer slice method. Here I am using the Buffer from method as a way to create a new buffer from a hex encoded string. I then end up with a buffer that is three bytes long with th string, and encoding that I used. Say that later in some source code I want to get a new buffer that is the last two bytes of this 3 byte buffer, without changing the source buffer. To do so I can call slice off of the source buffer, and pass a zero relative starting index, followed by a zero relative ending index. The returned result is then a new buffer that is the last two byes of the source buffer.
 
 ```
 let buff = Buffer.from('afbfcf', 'hex');
