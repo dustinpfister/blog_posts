@@ -5,11 +5,11 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 553
-updated: 2019-11-20 09:02:30
-version: 1.7
+updated: 2021-03-19 14:00:08
+version: 1.8
 ---
 
-The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project. The standard is buffer method is right there as part of the Buffer global, and can be used by just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not a buffer.
+The [node is buffer](https://nodejs.org/api/buffer.html#buffer_class_method_buffer_isbuffer_obj) method is the standard way to find out if something is a buffer or not in a nodejs project, when it comes to working with [buffers in nodejs](/2018/02/07/nodejs-buffer/). The standard is buffer method is right there as part of the Buffer global, and can be used by just passing a value as the first argument. The resulting value that the node is buffer method will return is then a boolean value that will be true if the value is a Buffer, or not if it is not a buffer.
 
 In addition there is also the [is-buffer npm package](https://www.npmjs.com/package/is-buffer) as well, which is a user space option for this kind of task. One might thing that there is no need for such a package, but oddly enough there are often some extending situations in which there might actually need to be some additional logic, or the same task needs to be done a different way.
 
