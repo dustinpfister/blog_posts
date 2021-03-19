@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 827
-updated: 2021-03-19 14:49:16
-version: 1.3
+updated: 2021-03-19 15:04:56
+version: 1.4
 ---
 
 When it comes to working with [buffers in nodejs](/2018/02/07/nodejs-buffer) there is the [nodejs buffer slice](https://nodejs.org/api/buffer.html#buffer_buf_slice_start_end) method that works more or less just like the [Array slice](/2018/12/08/js-array-slice/) method that will create a new array from an array without mutating the source array.
@@ -23,8 +23,26 @@ First off how about a basic example of the buffer slice method. Here I am using 
 
 ```
 let buff = Buffer.from('afbfcf', 'hex');
- 
 let a = buff.slice(1, 3);
  
 console.log(a.toString('hex')); // bfcf
+// the source buffer is not changed
+console.log(buff.toString('hex')); // afbfcf
+```
+
+## 2 - The write method for mutating a buffer in place
+
+So then the buffer slice is a great little buffer equivalent to the array slice method. However what if I do want to mutate a buffer in place? Well for that there is the write method. The Array splice method will take a starting index, and a number or elements to inject into the array at that point. Buffers are a little different from arrays in javaScript though. For one thing a buffer is a fixed size of bytes and the length of a buffer can not just be increased and reduces like with arrays. The way that it must be done is by creating a new buffer often.
+
+However the write method of a buffer is a little like splice in that it can be used to mutate a buffer in place. If I have a source string I can set a buffer index location, and a number of bytes to write at that location. But it will not increase the size of the buffer of course, and that is the way that it should be. These are buffers after all.
+
+```js
+let buff = Buffer.from('afbfcf', 'hex');
+
+// the write method can be used to write in place
+// just like array splice
+var start = 1,
+count = 1;
+buff.write('001a', start, count, 'hex');
+console.log(buff.toString('hex')); // af00cf
 ```
