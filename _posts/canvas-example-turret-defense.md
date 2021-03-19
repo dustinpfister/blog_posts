@@ -5,11 +5,13 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2021-03-19 17:06:43
-version: 1.26
+updated: 2021-03-19 17:12:28
+version: 1.27
 ---
 
-Todays post will be on yet another [canvas example](/2020/03/23/canvas-example/), this time a [gun turret](https://en.wikipedia.org/wiki/Gun_turret) defense style game that will be just a turret at the center of the canvas that shoots at enemies coming in from all directions. For now this example will just be a simple little thing that plays on its own. However if I get some time to work on this one more there is the potential to start to make something a little fun with it. As of this writing this canvas example is in need of a full work over as I am not doing a long of things the way that i would do them now.
+Todays post will be on yet another [canvas example](/2020/03/23/canvas-example/), this time a [gun turret](https://en.wikipedia.org/wiki/Gun_turret) defense style game that will be just a turret at the center of the canvas that shoots at enemies coming in from all directions. There are a number of web based games that have come out over the years that involve a single player controlled turret, rather than a whole bunch of turrets all over the canvas and enemies that follow a path. In any case much of the basic logic is the same when it comes to using Math.atan2 to get an angle from one point to another and so forth. So the skills that are acquired here can be applied to just about any other kind of game that involves something to this effect.
+
+As of this writing this canvas example is in need of a full work over as I am not doing a long of things the way that i would do them now. One thing I would do differently is take logic that has to do with an object pool and pull it out of the main gam.js file that I was using in this example. Also there is much that I would want to change when it comes to turning this into something that is an actual game, rather than something that plays on its own.
 
 This example will make used of a lot of different methods some of which have to do with many concerns surrounding angles. So it will involve creating a utility module of sorts with methods that can be used for things like finding the distance between two points as well as the angular distance between two angles. Once that module is covered I will then be getting into the main game module, and then finally the module that is used to render the sate of this game to the canvas.
 
