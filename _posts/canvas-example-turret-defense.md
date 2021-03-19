@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2021-03-19 16:52:56
-version: 1.24
+updated: 2021-03-19 17:04:05
+version: 1.25
 ---
 
 Todays post will be on yet another [canvas example](/2020/03/23/canvas-example/), this time a [gun turret](https://en.wikipedia.org/wiki/Gun_turret) defense style game that will be just a turret at the center of the canvas that shoots at enemies coming in from all directions. For now this example will just be a simple little thing that plays on its own. However if I get some time to work on this one more there is the potential to start to make something a little fun with it.
@@ -107,6 +107,33 @@ u.shortestAngleDirection = function (a1, a2) {
     }
     // if a1 === a2 or any other case
     return 0;
+};
+```
+
+### 1.7 - Create a canvas element
+
+I now make all of my canvas examples have this one standard utility function at least. It helps me to just quickly create and return a canvas element with everything set up just the way that I like it.
+
+```js
+u.createCanvas = function(opt){
+    opt = opt || {};
+    opt.container = opt.container || document.getElementById('canvas-app') || document.body;
+    opt.canvas = document.createElement('canvas');
+    opt.ctx = opt.canvas.getContext('2d');
+    // assign the 'canvas_example' className
+    opt.canvas.className = 'canvas_example';
+    // set native width
+    opt.canvas.width = opt.width === undefined ? 320 : opt.width;
+    opt.canvas.height = opt.height === undefined ? 240 : opt.height;
+    // translate by 0.5, 0.5
+    opt.ctx.translate(0.5, 0.5);
+    // disable default action for onselectstart
+    opt.canvas.onselectstart = function () { return false; }
+    opt.canvas.style.imageRendering = 'pixelated';
+    opt.ctx.imageSmoothingEnabled = false;
+    // append canvas to container
+    opt.container.appendChild(opt.canvas);
+    return opt;
 };
 ```
 
@@ -328,12 +355,12 @@ Now for the public API that is just a collection of methods that make use of all
 
 ```js
     // PUBLIC API
-    // public api
     var api = {};
  
-    // the game object
+     // the game object
     api.createGameObject = function () {
         return {
+            ver: '0.0.0',
             cx: canvas.width / 2,
             cy: canvas.height / 2,
             heading: 0,
@@ -428,6 +455,14 @@ draw.turretInfo = function (turret, ctx, canvas) {
     ctx.fillText('turret RPS: ' + turret.rps, 5, 45);
 };
  
+draw.ver = function (turret, ctx, canvas) {
+    ctx.fillStyle = 'white';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left';
+    ctx.font = '10px arial';
+    ctx.fillText('v' + turret.ver, 5, canvas.height - 15);
+};
+ 
 draw.enemies = function (game, ctx, canvas) {
     ctx.fillStyle = 'red';
     game.enemies.forEach(function (enemy) {
@@ -443,10 +478,9 @@ draw.enemies = function (game, ctx, canvas) {
 Now it is just time to pull everything together with a main.js file, and an index.html file.
 
 ```js
-var canvas = document.getElementById('the-canvas'),
-ctx = canvas.getContext('2d');
-canvas.width = 320;
-canvas.height = 240;
+var canvasObj = u.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx;
  
 var game = td.createGameObject();
  
@@ -460,6 +494,7 @@ var loop = function () {
     draw.enemies(game, ctx, canvas);
     draw.turretInfo(game, ctx, canvas);
     draw.turretShots(game, ctx, canvas);
+    draw.ver(game, ctx, canvas);
 };
 loop();
  
@@ -483,9 +518,9 @@ canvas.blur();
     </head>
     <body>
         <canvas id="the-canvas"></canvas>
-        <script src="utils.js"></script>
-        <script src="game.js"></script>
-        <script src="draw.js"></script>
+        <script src="./lib/utils.js"></script>
+        <script src="./lib/game.js"></script>
+        <script src="./lib/draw.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
