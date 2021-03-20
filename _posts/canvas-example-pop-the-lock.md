@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 15:35:26
-version: 1.48
+updated: 2021-03-20 15:41:05
+version: 1.49
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -51,7 +51,7 @@ In sudden death mode the game will process to the game over state when the playe
 
 ### 2.3 - Classic Mode
 
-The classic mode is called such because the aim in this mode is to reproduce the same game mechanics as the original pop the lock game. One of the main settings of interest is the level setting which can be set to a value between 1 and 100 which is the number of targets that need to be clicked to win the game.
+The classic mode is called such because the aim in this mode is to reproduce the same game mechanics as the original pop the lock game. One of the main settings of interest is the level setting which can be set to a value between 1 and 100 which is the number of targets that need to be clicked to win the game. Just like sudden death mode the game will come to an end the vary moment that the player misses a single target, but the game will not continue until the game gets to hard to continue also. So in this mode it is possible to win the game, rather than being about how long the player can hold out for until they loose no matter what, or playing until they get board.
 
 
 ### 2.4 - Endurance Mode
