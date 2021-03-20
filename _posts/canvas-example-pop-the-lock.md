@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 15:30:41
-version: 1.46
+updated: 2021-03-20 15:32:21
+version: 1.47
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -50,6 +50,8 @@ The first mode that I put together is a way to just freely play the game without
 In sudden death mode the game will process to the game over state when the player misses a single target, or clicks to soon. The speed of the smaller circle will increase with each target clicked also, and the speed will continue until the player looses. The object then is to just keep playing until a single miss or early click event happens, and get as many targets in the process of doing so to get a high score.
 
 ### 2.3 - Classic Mode
+
+The classic mode is called such because the aim in this mode is to reproduce the same game mechanics as the original pop the lock game.
 
 ### 2.4 - Endurance Mode
 
