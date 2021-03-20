@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 15:53:18
-version: 1.52
+updated: 2021-03-20 15:56:38
+version: 1.53
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -985,7 +985,7 @@ var poolMod = (function () {
 
 So now to make use of everything I worked out in a main javaScript file that will proved the main app loop and the state machine. In this main.js file I create a canvas with the create canvas utils method, and get the drawing context to it.
 
-I then create the state machine object that will contain a game state object as one of itself properties. I then start to create at least one game state, that will have methods for updating, drawing and clicking.
+In the main.js file I have started a basic state machine of sorts, as of version 1.0.1 I have a title state, as well as states for game mode settings, the game itself, and a game over state. As I continue working on this project I might get around to starting to break the main.js file down into the main.js file and a much of states define in stand alone javaScript files in a state folder.
 
 In the main app loop I am calling the game module update method of my pop the lock game module, and passing the game object that I created with the game module create method. I am also using the draw method I have worked out to draw the current state of the game state object in the canvas element. I am also of course using request animation frame as always to create the app loop for the canvas example as with just about any other.
 
