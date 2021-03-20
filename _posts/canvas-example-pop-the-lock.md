@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 16:06:09
-version: 1.54
+updated: 2021-03-20 16:08:22
+version: 1.55
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -1465,7 +1465,7 @@ Once I am playing the current game mode I can press the quit button of the game 
 
 ## 7 - Conclusion
 
-This was a quick, and fun little project that I put together in a flash, but is all ready starting to feel like a game. However there is still a great deal of room for improvement with it also, and I have yet to find a way to turn this kind of project into some more distinct from what I am cloning so that it is not just a knock off. 
+This canvas example started out as a a quick, and fun little project that I put together in a flash, but is all ready starting to feel like a finished game. However there is still a great deal of room for improvement with it also, and I have yet to find a way to turn this kind of project into something more distinct from what I am cloning so that it is not just a knock off. To some extent I think I have done that all ready with the introduction of additional game modes, while still preserving the original game with the classic mode.
 
 I like to try to keep the projects in these canvas examples posts fairly simple and basic though so that I do not have to write an extremely lengthly amount of written content outlining the example. However this one is starting to get a little involved and I also have a lot more ideas that I keep writing down on my todo list for this one. The original game that I cloned off of was all ready a little addictive, but I found myself loosing interest fairly quick still. I thought to myself, hey this game is pretty cool actually, and it is so simple too, but it would be even better if it had these features.
 
