@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 15:41:05
-version: 1.49
+updated: 2021-03-20 15:44:10
+version: 1.50
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -56,6 +56,7 @@ The classic mode is called such because the aim in this mode is to reproduce the
 
 ### 2.4 - Endurance Mode
 
+The endurance mode is like sudden death in that the game will keep getting harder with each target. However it is okay if the player misses a target or clicks to soon a few times. Such actions will not result in an automatic game over, however it will deduct health from a hit points bar of sorts.
 
 ## 3 - The draw method
 
