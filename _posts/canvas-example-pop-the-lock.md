@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 16:11:57
-version: 1.56
+updated: 2021-03-20 16:13:01
+version: 1.57
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -1471,5 +1471,5 @@ I often like to try to keep the projects in these canvas examples posts fairly s
 
 I will be continuing to work on this one at least a little while longer, because I think that it could use a few more game modes. In addition I think some of the game modes still have some ruff edges when it comes to the logic, and some of them could use some more features actually which is what I have in mind for the endurance mode. However what I really want to do is see if I can come up with new modes, and additional features to tweak these modes in order to come up with something that I think will be pretty cool. 
 
-I think I should have some additional states, and even some basic features are still missing. As I continue to work on this I hope to also work out a half way decent system when it comes to having a state machine, and user interface features to move from one state to another.
+I think I should have some additional states, and even some basic features are still missing. I also have ideas of adding things like an experience point system and making game modes and settings features that must be unlocked. As I continue to work on this I hope to also work out a half way decent system when it comes to having a state machine, and user interface features to move from one state to another.
 
