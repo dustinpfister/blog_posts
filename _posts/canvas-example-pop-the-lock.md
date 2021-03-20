@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 571
-updated: 2021-03-20 15:44:10
-version: 1.50
+updated: 2021-03-20 15:47:32
+version: 1.51
 ---
 
 A long time ago I played a game called [pop the lock on android](https://play.google.com/store/apps/details?id=com.sm.popTheLock&hl=en_US), and managed to end up getting hooked for a while. It was a very simple game that just involved a circle moving along the path of another circle, and once it gets close to a target area you need to tap the screen or else you loose, you also loose if you tap to soon. I can then try again and the object is to repeat this process up to a certain count of times to unlock a lock.
@@ -39,7 +39,7 @@ So now that I have a game module worked out I am going to want to have some addi
 
 ## 2 - The game modes thus far
 
-So now that I have a plug in system for game modes I can experiment with different kinds of game modes where I am switching up the rules and settings a little from one game mode to another.
+So now that I have a plug in system for game modes I can experiment with different kinds of game modes where I am switching up the rules and settings a little from one game mode to another. The basic idea of the game is simple enough, but I cant help but think that there is so much more that can be done to make the game more interesting. There is having game modes where the player does not have to worry about missing a target, and the smaller circle moves at a fixed speed. There is then ideas for other modes that they player will loose if they miss just a single target, and each target gained will make the smaller circle go faster, and maybe tweak other features to make the game even more intense. So I thought it would be a good idea to start at least a few game mode files to work out these different ideas when it comes to the core logic of the game.
 
 ### 2.1 - Free Play mode
 
