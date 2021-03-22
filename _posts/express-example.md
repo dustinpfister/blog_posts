@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-22 14:01:07
-version: 1.6
+updated: 2021-03-22 15:29:40
+version: 1.7
 ---
 
 This is a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. There is a lot to know before hand of course, but if you have been playing around with express for a while now and are not looking for some full express app examples of one sort or another on this site this is the right place to be.
@@ -20,7 +20,11 @@ This is not at all a [getting started post](/2018/05/21/express-getting-started/
 
 ## 2 - Very basic Express example that just uses express
 
+For this basic example I am making use of express static as a way to serve up static files, and I am also using body parser as a way to go about parsing incomding requests for data as a speshal data path.
+
 ### 2.1 - The app.js file
+
+Here is the app.js file.
 
 ```js
 let express = require('express'),
@@ -44,6 +48,8 @@ app.listen(8080);
 ```
 
 ### 2.2 - The public/index.html file
+
+I also have a single index.html file.
 
 ```html
 <h1>Express Example</h1>
