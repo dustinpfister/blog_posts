@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 828
-updated: 2021-03-22 14:50:43
-version: 1.8
+updated: 2021-03-22 14:55:34
+version: 1.9
 ---
 
 When working out a nodejs project it would be nice to have a way to just quickly create something that will just serve an index of a public html folder and that is it. I could take the time to work out my own solution when it comes to that, but even simple things like this can often prove to be a little time consuming. If I am willing to make [expressjs](https://expressjs.com/) part of the stack, and often that is one npm package that I do not mide using, then there is a middleware for express called [serve index](https://www.npmjs.com/package/serve-index) that can make quick work of this kind of task.
@@ -19,7 +19,7 @@ So then in this post I will be going over a quick simple [expressjs example](/20
 
 ## 1 - A Basic serve-index express example
 
-In this section I will be going over a quick, simple, example of serve index that I put togetaher in a flash. When I made this I was using nodejs 10.24, with express 4.17.1, and serve-index 1.9.1. If for some reason the code example heer breaks, be sure to check the version numbers of the various assets that you are using.
+In this section I will be going over a quick, simple, example of serve index that I put togetaher in a flash. When I made this I was using nodejs 10.24, with express 4.17.1, and serve-index 1.9.1. If for some reason the code example heer breaks, be sure to check the version numbers of the various assets that you are using. I will be going over the process of setting this up from the ground up, but I also have the [source at my test express repo](https://github.com/dustinpfister/test_express/tree/master/demos/express-example-serve-index)
 
 ### 1.1 - Setting up the project folder
 
