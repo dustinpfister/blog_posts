@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-22 15:37:01
-version: 1.10
+updated: 2021-03-22 15:38:43
+version: 1.11
 ---
 
 This is a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. There is a lot to know before hand of course, but if you have been playing around with express for a while now and are not looking for some full express app examples of one sort or another on this site this is the right place to be.
@@ -73,6 +73,6 @@ xhr.send(JSON.stringify({
 
 ## 2 - Conclusion
 
-In time I might get around to creating more expressjs examples, and when I do I will of course expand this post with more examples. For the most part I just use express for making simple little server projects for many of my github folders that act as ways to serve up examples of things locally. I have to admit that I am a lot more interested in front end development, however maybe that is why I like express so much. When it does come to working out at least a little back end code of course I like to use node because I can use the same scripting language that I have come to like using in front end development.
+In time I might get around to creating more expressjs examples, and when I do I will of course expand this post with more examples. For the most part I just use express for making simple little server projects for many of my github folders that act as ways to serve up examples of things locally. I have to admit that I am a lot more interested in front end development, however maybe that is why I like express so much. When it does come to working out at least a little back end code of course I like to use node because I can use the same scripting language that I have come to like using in front end development. Working out some things with vanilla javaScript alone can often prove to be time consuming when it comes to nodejs itself, so express helps to make quick work of many common tasks, and there is a wealth of well supported middleware for it also.
 
 
