@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 828
-updated: 2021-03-22 14:30:26
-version: 1.4
+updated: 2021-03-22 14:36:38
+version: 1.5
 ---
 
 When working out a nodejs project it would be nice to have a way to just quickly create something that will just serve an index of a public html folder and that is it. I could take the time to work out my own solution when it comes to that, but even simple things like this can often prove to be a little time consuming. If I am willing to make [expressjs](https://expressjs.com/) part of the stack, and often that is one npm package that I do not mide using, then there is a middleware for express called [serve index](https://www.npmjs.com/package/serve-index) that can make quick work of this kind of task.
@@ -21,7 +21,9 @@ So then in this post I will be going over a quick simple [expressjs example](/20
 
 In this section I will be going over a quick, simple, example of serve index that I put togetaher in a flash. When I made this I was using nodejs 10.24, with express 4.17.1, and serve-index 1.9.1. If for some reason the code example heer breaks, be sure to check the version numbers of the various assets that you are using.
 
-### 1.1 - 
+### 1.1 - Setting up the project folder
+
+To set up a project folder I just create a main project folder and then make that the current working dir. Inside the main project folder I then do the ushual npm init to create a new npm folder with a package.json file. Once that is done I then make express and serve-index the two depednces of the project and that is all. After I have the node modules installed for this there is then just creating a public folder, and then a nested folder for javaScript files.
 
 ```
 $ mkdir serve-index-example
@@ -29,9 +31,36 @@ $ cd serve-index-example
 $ npm init
 $ npm install express
 $ npm intsall serve-index
+$ mkdir public
+$ cd public
+$ mkdir js
 ```
 
-### 1.2 - The main static.js file
+### 1.2 - The public folder
+
+```html
+<html>
+  <head>
+    <title>Foo html file</title>
+  </head>
+  <body>
+    <h1>Foo Page</h1>
+    <script src="/js/foo.js"></script>
+  </body>
+</html>
+```
+
+```js
+var container = document.body;
+ 
+var foo = document.createElement('p');
+ 
+foo.innerText = 'javaScript works';
+ 
+container.appendChild(foo);
+```
+
+### 1.3 - The main static.js file
 
 ```js
 // just a way to serve the html folder
