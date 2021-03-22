@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2019-05-01 06:47:13
-version: 1.5
+updated: 2021-03-22 14:01:07
+version: 1.6
 ---
 
 This is a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. There is a lot to know before hand of course, but if you have been playing around with express for a while now and are not looking for some full express app examples of one sort or another on this site this is the right place to be.
@@ -64,3 +64,7 @@ xhr.send(JSON.stringify({
     }));
 </script>
 ```
+
+## 2 - Conclusion
+
+In time I might get around to creating more expressjs examples, and when I do I will of course expand this post with more examples.
