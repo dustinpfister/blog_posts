@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 828
-updated: 2021-03-22 14:39:51
-version: 1.6
+updated: 2021-03-22 14:45:43
+version: 1.7
 ---
 
 When working out a nodejs project it would be nice to have a way to just quickly create something that will just serve an index of a public html folder and that is it. I could take the time to work out my own solution when it comes to that, but even simple things like this can often prove to be a little time consuming. If I am willing to make [expressjs](https://expressjs.com/) part of the stack, and often that is one npm package that I do not mide using, then there is a middleware for express called [serve index](https://www.npmjs.com/package/serve-index) that can make quick work of this kind of task.
@@ -65,6 +65,10 @@ container.appendChild(foo);
 ```
 
 ### 1.3 - The main static.js file
+
+Now for the main event javaScript file that I called static.js that I placed at the main root folder of the project folder. This is the file that I will be starting with node to start the server. Insode here I of course require in express and create an app instance of express just like that of any other express project. I also of cousre require in the serve index middleware also, and I am using the nodejs built in path module to create an absolute path to the public folder.
+
+First I use serve index for the root path of the site, and any addtional paths. For any url then that is a path to a folder the serve index middleware should work for that. In the event that the path is to a file then the flow should continue to the next middleware function adn for this I am using the express built in static function to serve the file. After that I just listen on the port that I want that can be set by enviornment variable, arguments, or a hard coded default of 8080.
 
 ```js
 // just a way to serve the html folder
