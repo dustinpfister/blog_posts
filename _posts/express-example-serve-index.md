@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 828
-updated: 2021-03-22 14:59:19
-version: 1.10
+updated: 2021-03-22 15:04:12
+version: 1.11
 ---
 
 When working out a nodejs project it would be nice to have a way to just quickly create something that will just serve an index of a public html folder and that is it. I could take the time to work out my own solution when it comes to that, but even simple things like this can often prove to be a little time consuming. If I am willing to make [expressjs](https://expressjs.com/) part of the stack, and often that is one npm package that I do not mide using, then there is a middleware for express called [serve index](https://www.npmjs.com/package/serve-index) that can make quick work of this kind of task.
@@ -37,6 +37,8 @@ $ mkdir js
 ```
 
 ### 1.2 - The public folder
+
+Now for the content of the public folder, for this example I am thinking about just having html an html file and just want javaScript file just to test out what I have in mind and make sure that it works as exspected. When I go to the root path, or any path for that matter, of the project in my web browser when the server is up and running I would like to see a list of files at that path. Even in the event that there is an index.html file I would like for that to be listed rather then that be what is served up as html rather than a raw text mime type. However if I click on the index.html file I would liek for that to be what is serve up to me, and for any javaScript files that I have in the public folder work when I use them in that html.
 
 In the public folder I just have a single index.html file that looks like this.
 
