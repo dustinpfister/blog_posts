@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-22 15:38:43
-version: 1.11
+updated: 2021-03-22 15:41:03
+version: 1.12
 ---
 
 This is a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. There is a lot to know before hand of course, but if you have been playing around with express for a while now and are not looking for some full express app examples of one sort or another on this site this is the right place to be.
@@ -49,7 +49,7 @@ app.listen(8080);
 
 ### 2.2 - The public/index.html file
 
-I also have a single index.html file that will just work as a way to test that this example works as expected.
+I also have a single index.html file that will just work as a way to test that this example works as expected. In this html I have some javaScript that I am using to just preform a single post request to that data path that I set up. When the response complete the sever side data is then injected into the html.
 
 ```html
 <h1>Express Example</h1>
