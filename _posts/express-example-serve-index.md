@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 828
-updated: 2021-03-22 14:45:43
-version: 1.7
+updated: 2021-03-22 14:50:43
+version: 1.8
 ---
 
 When working out a nodejs project it would be nice to have a way to just quickly create something that will just serve an index of a public html folder and that is it. I could take the time to work out my own solution when it comes to that, but even simple things like this can often prove to be a little time consuming. If I am willing to make [expressjs](https://expressjs.com/) part of the stack, and often that is one npm package that I do not mide using, then there is a middleware for express called [serve index](https://www.npmjs.com/package/serve-index) that can make quick work of this kind of task.
@@ -93,6 +93,15 @@ app.listen(PORT, function () {
 });
 ```
 
+Now that I have everything in place I can start the ever on a given port of say 8000 like this.
+
 ```
 $ node static 8000
 ```
+
+Assuming that there is no enviorment variable the server should start on port 8000, and then I can navagate to it in my browser by going to localhost:8000 for the address. When I do so I get an index for the javaScript folder, and the index.html file, I can then click the index.html file to go to that page, and when I do my javaScript file works just fine. I can then go back to the root path then click on the javaScript folder and then the javaScript file that then serves up the source code of the javaScript file.
+
+So then this basic example of serve-index seems to work as exspected, I have to say that this is a nice little solution for this sort of thing and I like to use it in some of my reposatores that have to do with collections of examples for framworks and so forth.
+
+
+
