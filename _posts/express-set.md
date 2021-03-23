@@ -5,13 +5,15 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 418
-updated: 2021-03-23 14:23:04
-version: 1.8
+updated: 2021-03-23 14:25:37
+version: 1.9
 ---
 
 This will be a quick post on the [express set](https://expressjs.com/en/api.html#app.set) method in [express.js](https://expressjs.com/) which can be used in conjunction with the express get function when it comes to working with application settings. 
 
 The app.set method to be specific can be used to set application settings like the view engine to use, or a post number to listen on when starting a main server script. In addition it can be used as an alternative to defining global variables for just about anything that has to be stored and accessed at a later point elsewhere in the app. The app get method as you might know can be used to define middleware to use with get requests, but if it is used with just one argument and given a string value the get method can be used as a way to get rather than set application values.
+
+So then in this post I will be going over a few simple quick examples of the app.set method along with the app.get method when working out an express.js project on top of nodejs.
 
 <!-- more -->
 
