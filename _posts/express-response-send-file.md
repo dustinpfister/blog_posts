@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 206
-updated: 2021-03-23 11:27:31
-version: 1.6
+updated: 2021-03-23 11:28:37
+version: 1.7
 ---
 
 When making an [express.js](https://expressjs.com/) project there are a few response methods that can be used to respond to a request with some kind of content. All of these methods of interest are in the standard response object that is one of the three arguments when making a function that will be used with an app method like app.get.
@@ -78,4 +78,5 @@ app.get('/', function (req, res) {
 
 So that is it for now when it comes to the sendFile response method. When it comes to working on some actual express projects of one kind or another I can not say that I use the send file that often thus far though. There are often other options for sending static content to be displayed in the browser, such as the express static built in middle ware, and using the serve index middleware package also with it as a way to create an index of content for a path. 
 
-The send file method however can be used it situations where some additional logic can be used to preform things like check user agent headers to send a file as content depending on factors such as the state of a user agent header, or if a user is currently logged in for example.
+The send file method however can be used it situations where some additional logic can be used to preform things like check user agent headers to send a file as content depending on factors such as the state of a user agent header, or if a user is currently logged in for example. SO then the send file does have its use case examples here and there when I do in fact get into situations in which I would want to use a method such as this.
+
