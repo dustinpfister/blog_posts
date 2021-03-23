@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 415
-updated: 2019-04-27 11:55:03
-version: 1.7
+updated: 2021-03-23 14:47:14
+version: 1.8
 ---
 
 In [express.js](https://expressjs.com/) there is the [app.listen](https://expressjs.com/en/api.html#app.listen) convenience method that can be used to get an express app to start listening for requests on a given port. In many projects this express.js app object method will work just find, but in some situations you might want to use the native node.js http or https methods to get your express app up and running. In this post in will be giving some quick examples of app.listen in express.js as well as the [http.createServer](https://nodejs.org/api/http.html#http_http_createserver_options_requestlistener) node.js http module method as well.
@@ -79,3 +79,8 @@ server.listen(port, function () {
     console.log('server is up on port: ' + port);
 });
 ```
+
+## 4 - Conclusion
+
+That is it for now when it comes to the app listen method that is used to start a express server script. It is a good idea to always pass a port number as the first argument when calling the method, and a callback for it is also a good idea also as a way to know that the server is up and running when calling the script.
+
