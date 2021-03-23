@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 418
-updated: 2021-03-23 14:31:22
-version: 1.11
+updated: 2021-03-23 14:35:41
+version: 1.12
 ---
 
 This will be a quick post on the [express set](https://expressjs.com/en/api.html#app.set) method in [express.js](https://expressjs.com/) which can be used in conjunction with the express get function when it comes to working with application settings. 
@@ -61,3 +61,8 @@ app.get('/', (req, res) => {
 // listen on a port
 app.listen(8080);
 ```
+
+## 3 - Conclusion
+
+That is it for now when it comes to the app.set method, it time I might come up with some additional use case examples of the app.set method and when I do so I might get around to editing this post again. A real express project might make use of an option parser such as commander, and then that could be used to set all kinds of additional options for a main server script. However I think the first and foremost thing to do is come up with some real project examples to work on in order to real put this little aspect of express to use.
+
