@@ -5,11 +5,13 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 829
-updated: 2021-03-23 13:35:52
-version: 1.2
+updated: 2021-03-23 13:39:30
+version: 1.3
 ---
 
-As of [expressjs](https://expressjs.com/) 4.17.x there is now an [express text](http://expressjs.com/en/api.html#express.text) built in middlewar function, that is one of a few built in middleware functions based off of [body parser](/2018/05/27/express-body-parser/), which is also a built in middleware for parsing incoming http post request bodies. Using the body parser middlewar directly might still be the best way to gain the highest degree of control over parsing incoming post request payloads, but there are a number of built in methods now for json, raw data, and plain text.
+As of [expressjs](https://expressjs.com/) 4.17.x there is now an [express text](http://expressjs.com/en/api.html#express.text) built in middleware function, that is one of a few built in middleware functions based off of [body parser](/2018/05/27/express-body-parser/), which is also a built in middleware for parsing incoming http post request bodies. Using the body parser middleware directly might still be the best way to gain the highest degree of control over parsing incoming post request payloads, but there are a number of built in methods now for json, raw data, and plain text.
+
+There is going over every little detail about the body parser middleware, but if I just want to parse text then there is the express text middleware. Using the function helps to keep the rest of my code a little more clean and readabule compared to suing the body parser directly.
 
 <!-- more -->
 
