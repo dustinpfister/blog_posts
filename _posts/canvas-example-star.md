@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-23 15:02:03
-version: 1.49
+updated: 2021-03-23 15:05:21
+version: 1.50
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. One thing that comes to mind is just drawing stars, and making a few different ways of going about doing so, to gain a sense of the best ways to go about doing so. In the process I might learn more about how to go about drawing things in general when it comes to a little javaScript used with canvas elements.
@@ -425,7 +425,7 @@ When this is up and running I get a bunch of stars moving around the canvas with
 
 ## 6 - Conclusion
 
-So this canvas example of a star module worked out pretty well, it was a nice little exercise at making stars for use in a canvas element. There is more than one method for making them both of which have to do with Math.cos and Math.sin that are used to find out points around a given origin point.
+So this canvas example of a star module worked out pretty well, it was a nice little exercise at making stars for use in a canvas element. There is more than one method for making them both of which have to do with Math.cos and Math.sin that are used to find out points around a given origin point. I also have come to find that making a system that will work not just with stars alone, but arrays of points in general, is the best way to go about drawing stars. There is also come up with more than one system for the same thing, I used to like one way of drawing stars, but have come to find that I now like a whole other system for doing so.
 
 In this post I also touched basic on a number of other topics also, such as separating a module from a view by having the star module septate from the model that is used to draw the array of points to the canvas. With that said I hope that you picked up one or two more interesting things when it comes to canvas, and javaScriopt in general that can be applied to your own projects in the future. 
 
