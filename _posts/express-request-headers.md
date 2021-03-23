@@ -5,27 +5,27 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2018-06-04 15:15:40
-version: 1.4
+updated: 2021-03-23 10:42:44
+version: 1.5
 ---
 
 When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in [express.js](https://expressjs.com/) with some help with the req.get method, and the req.headers array that can be found in a request object.
 
 <!-- more -->
 
-## What to know
+## 1 - What to know
 
 This is a post on working with request headers in express.js a node.js powered framework that is used for making full stack web applications. It is not a getting started post on express.js, node.js, javaScript in general, or any additional aspects of full stack web application development. In this post I am using express 4.x, and yes this is a project where the version matters a whole lot.
 
-## Different request headers for different request methods
+## 2 - Different request headers for different request methods
 
 Request headers depend on the method of the request such as GET, and POST. A POST request header for example will contain a content-type header to tell the server the type of content that it is being given in the body of the request. However a GET request would not contain such a header, because it is just simply requesting whatever there is at a given location. Also It goes without saying that response headers differ slightly from request headers.
 
-## Basic example
+## 3 - Basic example
 
-There is the req.get method that can be used to get a header to which you know the name off. If you do not know the name there is also the req.headers array that will store everything of interest when it comes to the request headers.
+There is the [req.get method](http://expressjs.com/en/api.html#req.get) that can be used to get a header to which you know the name off. If you do not know the name there is also the req.headers array that will store everything of interest when it comes to the request headers.
 
-Here is an example of a router that can be added into a express.js demo with app.use, say you save it in a folder at /routes/headers.js:
+Here is an example of a router that can be added into a express.js demo with app.use, say you save it in a folder at \/routes\/headers.js:
 
 ```js
 let express = require('express'),
@@ -77,6 +77,6 @@ If you then start app.js in the command line with node and go to localhost:8080/
 }
 ```
 
-## Conclusion
+## 4 - Conclusion
 
 I am sorry this is a thin post, I might expand on it more as my collection of content, and demos on express.js grows. In the mean time you might want to check one some of my other [posts on express.js](/categories/express/) if interested.
