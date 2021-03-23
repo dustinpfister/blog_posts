@@ -5,11 +5,11 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2021-03-23 10:48:12
-version: 1.7
+updated: 2021-03-23 10:51:10
+version: 1.8
 ---
 
-When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. The subject of headers in general can eat up a lot of time becuase there are a lot of them. However there are great resources such as at [Mozilla as usual that outline what all the typical standard headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) are when it comes to http requests. This is however a post on expressjs a tired yet true nodejs framework and how to work with incoming request headers.
+When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. The subject of headers in general can eat up a lot of time because there are a lot of them. However there are great resources such as at [Mozilla as usual that outline what all the typical standard headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) are when it comes to http requests. This is however a post on expressjs a tired yet true nodejs framework and how to work with incoming request headers.
 
 So then in this post I will be quickly covering some examples of how to work with request headers in [express.js](https://expressjs.com/) with some help with the [req.get method](http://expressjs.com/en/api.html#req.get) method, and the req.headers array that can be found in a request object.
 
@@ -81,4 +81,4 @@ If you then start app.js in the command line with node and go to localhost:8080/
 
 ## 4 - Conclusion
 
-I am sorry this is a thin post, I might expand on it more as my collection of content, and demos on express.js grows. In the mean time you might want to check one some of my other [posts on express.js](/categories/express/) if interested.
+I am sorry this is a thin post, I might expand on it more as my collection of content, and demos on express.js grows. In the mean time there is taking the time to look into what all the standard headers are and what they do. Some headers are obvious such as the user agent header that is used to inform a server what kind of client system is being use. So then this information can then be used to redirect a visitor to a download page for a binary that will work for there operating system for example.
