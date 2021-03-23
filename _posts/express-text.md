@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 829
-updated: 2021-03-23 13:45:19
-version: 1.5
+updated: 2021-03-23 13:53:44
+version: 1.6
 ---
 
 As of [expressjs](https://expressjs.com/) 4.17.x there is now an [express text](http://expressjs.com/en/api.html#express.text) built in middleware function, that is one of a few built in middleware functions based off of [body parser](/2018/05/27/express-body-parser/), which is also a built in middleware for parsing incoming http post request bodies. Using the body parser middleware directly might still be the best way to gain the highest degree of control over parsing incoming post request payloads, but there are a number of built in methods now for json, raw data, and plain text.
@@ -75,4 +75,8 @@ xhr.send('Hello World');
 </body>
 </html>
 ```
+
+## 2 - Conclusion
+
+So there is working directly with the body parser middleware that will come with express, at least as of 4.x anyway. However these convenience methods are a nice touch to make quick work of this typical task when working out an express.js powered project. In actual express projects though I can not say that I use the express text methods that much, the reason why is because I often design my client systems to send objects that will contain a text as one of several properties, so most of the time I am using the express json method.
 
