@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 590
-updated: 2021-03-19 17:12:28
-version: 1.27
+updated: 2021-03-23 15:12:28
+version: 1.28
 ---
 
 Todays post will be on yet another [canvas example](/2020/03/23/canvas-example/), this time a [gun turret](https://en.wikipedia.org/wiki/Gun_turret) defense style game that will be just a turret at the center of the canvas that shoots at enemies coming in from all directions. There are a number of web based games that have come out over the years that involve a single player controlled turret, rather than a whole bunch of turrets all over the canvas and enemies that follow a path. In any case much of the basic logic is the same when it comes to using Math.atan2 to get an angle from one point to another and so forth. So the skills that are acquired here can be applied to just about any other kind of game that involves something to this effect.
@@ -530,6 +530,6 @@ canvas.blur();
 
 ## 5 - Conclusion
 
-So although I have the basic idea of this canvas example of a turret invasion defense type game working okay, there is much more work I would need to do to get this one to start to feel like an actual game. I am not happy with how this one turned out at least at the time of this writing at least. I think I might need to get around to doing a full redo of the source code from the bottom up actually. After making a lot more canvas examples there are certain things that I think I need to just not do when working out a game module.
+So although I have the basic idea of this canvas example of a turret invasion defense type game working okay, there is much more work I would need to do to get this one to start to feel like an actual game. I am not happy with how this one turned out at least at the time of this writing at least. I think I might need to get around to doing a full redo of the source code from the bottom up actually. After making a lot more canvas examples there are certain things that I think I need to just not do when working out a game module. For example I now have a half way decent object pool module that I keep improving as i use it in various other examples, so I would just use that and pull code that has to do with it out of the game.js module.
 
 In any case working on this was not a total loss, much of what I have together here will still work just find, I just need a little more time to clean up what I did here. The bad news with this one though is that there are many other canvas examples that I have made that I think desire more attention, so I may or may not get back around to this one at some point in the future.
