@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 425
-updated: 2021-03-23 14:40:32
-version: 1.6
+updated: 2021-03-23 14:43:05
+version: 1.7
 ---
 
 An [express view](https://expressjs.com/en/guide/using-template-engines.html) folder contains template files that are use for server side rendering. It can be used in place of, or in conjunction with other assets that can be served via [express.static](/2018/05/24/express-static/) when it comes to just simple static hosting of files. Using express static to host a public html folder might work okay, and in some situations in might just be what needs to happen. However by going with a template language, and using a render engine, server side rendering of html can be preformed using nodejs an express.
@@ -68,4 +68,10 @@ Here I have the index.ejs file of this crude, simple, yet function express view.
 </html>
 ```
 
-There is much more to write about when it comes to ejs, but I will not get into depth in ejs to much in this post as I have also wrote a post on [using ejs with express](/2018/05/25/express-rendering-with-ejs), and I have also wrote another post on [using ejs with just node.js by itself](/2017/12/07/nodejs-ejs-javascript-templates/) as well. There are of course many other options when it comes to template langauges, I tend to prefer ejs but another option would be [pug](/2019/04/16/express-pug/). Still when this example is up and working it should help to give a general idea as to why ejs is useful compared to its serving static html assets.
+There is much more to write about when it comes to ejs, but I will not get into depth in ejs to much in this post as I have also wrote a post on [using ejs with express](/2018/05/25/express-rendering-with-ejs), and I have also wrote another post on [using ejs with just node.js by itself](/2017/12/07/nodejs-ejs-javascript-templates/) as well. There are of course many other options when it comes to template languages, I tend to prefer ejs but another option would be [pug](/2019/04/16/express-pug/). Still when this example is up and working it should help to give a general idea as to why ejs is useful compared to its serving static html assets.
+
+## 2 - Conclusion
+
+This is it for now when it comes to a a simple example of setting up a view folder for an express.js project. There is much more to write about when it comes to this topic, but much of it will change a little from one template language to another. However it would seem that there is always going to be a view folder at the root level, or as part of a theme folder of some sort when it comes to creating a view for an express project.
+
+
