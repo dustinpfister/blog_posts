@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 829
-updated: 2021-03-23 14:12:18
-version: 1.9
+updated: 2021-03-23 14:14:58
+version: 1.10
 ---
 
 As of [expressjs](https://expressjs.com/) 4.17.x there is now an [express text](http://expressjs.com/en/api.html#express.text) built in middleware function, that is one of a few built in middleware functions based off of [body parser](/2018/05/27/express-body-parser/), which is also a built in middleware for parsing incoming http post request bodies. Using the body parser middleware directly might still be the best way to gain the highest degree of control over parsing incoming post request payloads, but there are a number of built in methods now for json, raw data, and plain text.
@@ -20,6 +20,18 @@ So then in this post I will be going over soem basics of the express text middle
 ## 1 - Basic express text hello world example
 
 First off in this section I will be going over a very simple hello world type example of the express text built in middleware. This example of the express text built in middleware will just be a very simple hello world type example that should help to give the general idea of what the express text method is all about, but will not sever as a real use case example.
+
+The project will just make use of express built in features inclduing express text as well as the express static built in middeware functions. So a basic set up of the example folder would go something liek this.
+
+```
+$ mkdir express-text-basic
+$ cd express-text-basic
+$ npm init
+$ npm install express
+$ mkdir public
+```
+
+The main app.js file will be at the root of the folder, and I will have a single index.html file in the public folder the source code of which will follow in this section.
 
 ### 1.1 - The app.js file
 
