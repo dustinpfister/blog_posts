@@ -5,11 +5,13 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 206
-updated: 2018-06-13 15:57:57
-version: 1.2
+updated: 2021-03-23 11:16:33
+version: 1.3
 ---
 
-When making an [express.js](https://expressjs.com/) project there are a few response methods that can be used to respond to a request with some kind of content. All of these methods of interest are in the standard response object that is one of the three arguments when making a function that will be used with an app method like app.get. In this post I will be writing about the response send file method for just simply sending a file that is to be displayed in the browser. This differs from other methods like the response download method that is useful for serving up a file that is to be downloaded to the client.
+When making an [express.js](https://expressjs.com/) project there are a few response methods that can be used to respond to a request with some kind of content. All of these methods of interest are in the standard response object that is one of the three arguments when making a function that will be used with an app method like app.get. 
+
+In this post I will be writing about the response send file method for just simply sending a file that is to be displayed in the browser. This differs from other methods like the response download method that is useful for serving up a file that is to be downloaded to the client.
 
 <!-- more -->
 
