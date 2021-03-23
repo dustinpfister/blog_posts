@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 418
-updated: 2021-03-23 14:28:00
-version: 1.10
+updated: 2021-03-23 14:31:22
+version: 1.11
 ---
 
 This will be a quick post on the [express set](https://expressjs.com/en/api.html#app.set) method in [express.js](https://expressjs.com/) which can be used in conjunction with the express get function when it comes to working with application settings. 
@@ -17,10 +17,11 @@ So then in this post I will be going over a few simple quick examples of the app
 
 <!-- more -->
 
-## 1 - Express set basic example
+## 1 - Express set basic example setting a PORT value for app.listen
 
 When it comes to using the express app.set method as a way to store an application setting I can use any key name that I want, but some names are reserved because they are used by express internally such as 'view engine', and 'env'. So for example if I want to store the port number that I will be listening on as an application setting I can use the app.set method as a way to do just that.
 
+Here I am using the app.set method to set a value for a port to listen on, when it comes to setting the port value the first and foremost value to look for will be an environment variable that will contain a port value to listen on. If that does not work the next place to check will be the first positional argument when the script was called. If all else fails a hard coded value will be used for the post to listen on.
 ```js
 let express = require('express'),
 app = express();
