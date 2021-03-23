@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 829
-updated: 2021-03-23 14:00:45
-version: 1.7
+updated: 2021-03-23 14:08:20
+version: 1.8
 ---
 
 As of [expressjs](https://expressjs.com/) 4.17.x there is now an [express text](http://expressjs.com/en/api.html#express.text) built in middleware function, that is one of a few built in middleware functions based off of [body parser](/2018/05/27/express-body-parser/), which is also a built in middleware for parsing incoming http post request bodies. Using the body parser middleware directly might still be the best way to gain the highest degree of control over parsing incoming post request payloads, but there are a number of built in methods now for json, raw data, and plain text.
@@ -51,7 +51,7 @@ app.listen(app.get('port'), () => {
 
 ### 1.2 - The index.html file
 
-Now for my simple client system that sends a post request to the server script. I want to keep this example very simple as it is my ushual getting started example for these kinds of posts. So for now I have just a single script tag where I am using XMLHttpRequest to send a post request that contains the text body of Hello World to the root path of my express server script that will be using the express text function to parse it to a string value server side.
+Now for my simple client system that sends a post request to the server script. I want to keep this example very simple as it is my usual getting started example for these kinds of posts. So for now I have just a single script tag where I am using XMLHttpRequest to send a post request that contains the text body of Hello World to the root path of my express server script that will be using the express text function to parse it to a string value server side.
 
 ```html
 <html>
@@ -75,6 +75,8 @@ xhr.send('Hello World');
 </body>
 </html>
 ```
+
+When this example is up and running the javaScript code will send the simple hello world message to the express app.js file. In the app.js script the express text function is used to parse the incoming text to a string, then the text is echoed back to the client system here as json. The result of that is then loged out to the text area element that I have in the system here. So then that is the basic idea of the express text function, but there is a great deal more to write about when it comes to this. There are some additional things that should happened when it comes to making a real project that have to do with some basic sanitation.
 
 ## 2 - Conclusion
 
