@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 418
-updated: 2021-03-23 14:25:37
-version: 1.9
+updated: 2021-03-23 14:28:00
+version: 1.10
 ---
 
 This will be a quick post on the [express set](https://expressjs.com/en/api.html#app.set) method in [express.js](https://expressjs.com/) which can be used in conjunction with the express get function when it comes to working with application settings. 
@@ -39,7 +39,7 @@ The express app.set method is used in conjunction with the [app.get](/2018/06/20
 
 ## 2 - Express setting view engine
 
-One of the express application settings is the view engine, this is a setting that lets express know what template engine I am using such as [ejs](/2018/05/25/express-rendering-with-ejs/) or [pug](/2019/04/16/express-pug/).
+One of the express application settings is the view engine, this is a setting that lets express know what template engine I am using such as ejs. I could get into that topic in depth, but if you want to learn more about this it would be best to check out my posts on using [ejs](/2018/05/25/express-rendering-with-ejs/) or the [pug](/2019/04/16/express-pug/) temperate engines with an express.js project. 
 
 ```js
 // get express and create an
