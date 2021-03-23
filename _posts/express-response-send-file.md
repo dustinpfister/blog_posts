@@ -5,16 +5,15 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 206
-updated: 2021-03-23 11:16:33
-version: 1.3
+updated: 2021-03-23 11:22:50
+version: 1.4
 ---
 
-When making an [express.js](https://expressjs.com/) project there are a few response methods that can be used to respond to a request with some kind of content. All of these methods of interest are in the standard response object that is one of the three arguments when making a function that will be used with an app method like app.get. 
+When making an [express.js](https://expressjs.com/) project there are a few response methods that can be used to respond to a request with some kind of content. All of these methods of interest are in the standard response object that is one of the three arguments when making a function that will be used with an app method like app.get.
 
-In this post I will be writing about the response send file method for just simply sending a file that is to be displayed in the browser. This differs from other methods like the response download method that is useful for serving up a file that is to be downloaded to the client.
+In this post I will be writing about the [response send file](http://expressjs.com/en/api.html#res.sendFile) method for just simply sending a file that is to be displayed in the browser. This differs from other methods like the [response download](/2018/06/11/express-response-download/) method that is useful for serving up a file that is to be downloaded to the client as an attachment to the local file system. If I want to make a path where the user will be prompted to download a binary for there operating system I would want to use res.download, but if I just want to display an image file as content to be displayed for a path then I would want to use res.sendFile.
 
 <!-- more -->
-
 
 ## Basic example of the response.sendFile method in express.js
 
