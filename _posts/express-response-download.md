@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 204
-updated: 2021-03-23 11:01:28
-version: 1.5
+updated: 2021-03-23 11:03:26
+version: 1.6
 ---
 
 As I continue expanding on [express.js](https://expressjs.com/) this month today I thought I would write about the response download method, which is one of the many methods in express that are part of the standard response object that I might more about this week. This method is useful if you want to have some kind of path that will work as a way to deliver a file as a download when a link is clicked, or something to that effect. It is very easy to use, you do not have to worry about setting the proper headers or anything like that it does it all for you so all that has to be done basically is to just call a method in the response object.
@@ -65,14 +65,14 @@ app.listen(port, function () {
 });
 ```
 
-When I start the app.
+Now I just need to start the app in the command line by calling the script with node.
 
 ```
-node app.js
+$ node app.js
 ```
 
 And go to localhost:8080 in my browser I see the get a doc link, when I click it I end up downloading doc1.txt to the downloads folder.
 
 ## 4 - Conclusion
 
-The response download method works great if you want something to be treated as a file download. this makes the method useful for things like documents and platform dependent binaries thar are meant to be used outside of the browser in some capacity. There are many other such methods like res.sendFile that can also be used to just send a file to the client, although they do work differently. If you want to just host some files in a public folder of sorts you would want to use express.static. If you enjoyed this post consider reading my [other posts on express](https://dustinpfister.github.io/categories/express/).
+The response download method works great if you want something to be treated as a file download. this makes the method useful for things like documents and platform dependent binaries that are meant to be used outside of the browser in some capacity. There are many other such methods like res.sendFile that can also be used to just send a file to the client, although they do work differently. If you want to just host some files in a public folder of sorts you would want to use express.static. If you enjoyed this post consider reading my [other posts on express](https://dustinpfister.github.io/categories/express/).
