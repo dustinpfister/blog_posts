@@ -5,11 +5,13 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 204
-updated: 2021-03-23 11:05:21
-version: 1.7
+updated: 2021-03-23 11:08:49
+version: 1.8
 ---
 
-As I continue expanding on [express.js](https://expressjs.com/) this month today I thought I would write about the response download method, which is one of the many methods in express that are part of the standard response object that I might more about this week. This method is useful if you want to have some kind of path that will work as a way to deliver a file as a download when a link is clicked, or something to that effect. It is very easy to use, you do not have to worry about setting the proper headers or anything like that it does it all for you so all that has to be done basically is to just call a method in the response object.
+As I continue expanding on [express.js](https://expressjs.com/) this month today I thought I would write about the [response download method](https://www.geeksforgeeks.org/express-js-res-download-function/), which is one of the many methods in express that are part of the standard response object that I might write about more this week. 
+
+This download method of the response object of a middleware function is useful if you want to have some kind of path that will work as a way to deliver a file as a download when a link is clicked, or something to that effect. When doing so the user should end up being prompted if they want to download the file, and if it is something they want they can then click to downloaded to a location on there local file system. It is very easy to use, you do not have to worry about setting the proper headers or anything like that it does it all for you so all that has to be done basically is to just call a method in the response object.
 
 <!-- more -->
 
