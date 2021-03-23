@@ -5,11 +5,13 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 197
-updated: 2021-03-23 10:42:44
-version: 1.5
+updated: 2021-03-23 10:46:55
+version: 1.6
 ---
 
-When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. In this post I will be quickly covering some examples of how to work with request headers in [express.js](https://expressjs.com/) with some help with the req.get method, and the req.headers array that can be found in a request object.
+When receiving an http request from a client, that request will contain all kinds of headers that tell the server useful information about the request. The subject of headers in general can eat up a lot of time becuase there are a lot of them. However there are great resources such as at [Mozilla as usual that outline what all the typical standard headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers) are when it comes to http requests.
+
+In this post I will be quickly covering some examples of how to work with request headers in [express.js](https://expressjs.com/) with some help with the [req.get method](http://expressjs.com/en/api.html#req.get) method, and the req.headers array that can be found in a request object.
 
 <!-- more -->
 
@@ -23,7 +25,7 @@ Request headers depend on the method of the request such as GET, and POST. A POS
 
 ## 3 - Basic example
 
-There is the [req.get method](http://expressjs.com/en/api.html#req.get) that can be used to get a header to which you know the name off. If you do not know the name there is also the req.headers array that will store everything of interest when it comes to the request headers.
+There is the req.get method that can be used to get a header to which you know the name off. If you do not know the name there is also the req.headers array that will store everything of interest when it comes to the request headers.
 
 Here is an example of a router that can be added into a express.js demo with app.use, say you save it in a folder at \/routes\/headers.js:
 
