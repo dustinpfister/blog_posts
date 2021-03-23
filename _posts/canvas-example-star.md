@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 611
-updated: 2021-03-23 15:05:21
-version: 1.50
+updated: 2021-03-23 15:07:47
+version: 1.51
 ---
 
 Time for yet another [canvas example](/2020/03/23/canvas-example/) this time I think I will do a quick example of [drawing a star using javaScript and canvas](https://stackoverflow.com/questions/25837158/how-to-draw-a-star-by-using-canvas-html5) just for the sake of doing something fun. One thing that comes to mind is just drawing stars, and making a few different ways of going about doing so, to gain a sense of the best ways to go about doing so. In the process I might learn more about how to go about drawing things in general when it comes to a little javaScript used with canvas elements.
@@ -357,7 +357,7 @@ var draw = (function(){
 }());
 ```
 
-I also have additional helpers for this draw method that have to do with drawing debug info about a star, drawing lines that show the current heading and facing directions. 
+I also have additional helpers for this draw method that have to do with drawing debug info about a star, drawing lines that show the current heading and facing directions. This is a common practice when it comes to canvas examples as i am alwys working on them and I like to have methods for drawing the current state of various state proprieties.
 
 Like all of my canvas examples I also like to have a draw version number method so that I know what version is deployed here at the website. This canvas example like all my others is still very much a work in progress, and I do get around to adding features, improved features in place, and creating new versions.
 
