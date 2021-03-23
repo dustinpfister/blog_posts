@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 829
-updated: 2021-03-23 14:14:58
-version: 1.10
+updated: 2021-03-23 14:19:09
+version: 1.11
 ---
 
 As of [expressjs](https://expressjs.com/) 4.17.x there is now an [express text](http://expressjs.com/en/api.html#express.text) built in middleware function, that is one of a few built in middleware functions based off of [body parser](/2018/05/27/express-body-parser/), which is also a built in middleware for parsing incoming http post request bodies. Using the body parser middleware directly might still be the best way to gain the highest degree of control over parsing incoming post request payloads, but there are a number of built in methods now for json, raw data, and plain text.
@@ -35,7 +35,7 @@ The main app.js file will be at the root of the folder, and I will have a single
 
 ### 1.1 - The app.js file
 
-Here I have the main app.js file that I have at the root of the example folder.
+Here I have the main app.js file that I have at the root of the example folder and will be calling with node to start the server. Here I am requiring in express and creating an instance of a main express app just like with any other express app. I am then using the express set method to set an application value for the port to use with the app listen method at the end of the file. However before that I am using the express static middleware to server my single index.html file in the public folder. After that I am using express text to parse any incoming post requests as text and then have a middleware to handle the requests to the root folder, for this example I am just echoing the request back to the client.
 
 ```js
 let express = require('express'),
