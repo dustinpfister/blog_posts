@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 204
-updated: 2021-03-23 11:03:26
-version: 1.6
+updated: 2021-03-23 11:05:21
+version: 1.7
 ---
 
 As I continue expanding on [express.js](https://expressjs.com/) this month today I thought I would write about the response download method, which is one of the many methods in express that are part of the standard response object that I might more about this week. This method is useful if you want to have some kind of path that will work as a way to deliver a file as a download when a link is clicked, or something to that effect. It is very easy to use, you do not have to worry about setting the proper headers or anything like that it does it all for you so all that has to be done basically is to just call a method in the response object.
@@ -71,7 +71,7 @@ Now I just need to start the app in the command line by calling the script with 
 $ node app.js
 ```
 
-And go to localhost:8080 in my browser I see the get a doc link, when I click it I end up downloading doc1.txt to the downloads folder.
+And go to localhost:8080 in my browser I see the get a doc link, when I click it I end up downloading doc1.txt to the downloads folder. So then the app seems to work as expected the res download method in express can be used to start a download of a file for a user that goes to a given path. this of course can prove to be a useful feature for all kinds of applications that call for such an action.
 
 ## 4 - Conclusion
 
