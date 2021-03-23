@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 206
-updated: 2021-03-23 11:22:50
-version: 1.4
+updated: 2021-03-23 11:25:37
+version: 1.5
 ---
 
 When making an [express.js](https://expressjs.com/) project there are a few response methods that can be used to respond to a request with some kind of content. All of these methods of interest are in the standard response object that is one of the three arguments when making a function that will be used with an app method like app.get.
@@ -15,7 +15,7 @@ In this post I will be writing about the [response send file](http://expressjs.c
 
 <!-- more -->
 
-## Basic example of the response.sendFile method in express.js
+## 1 - Basic example of the response.sendFile method in express.js
 
 For a basic example of this method I made a simple script that just serves up a single \*.png file. For this demo the only dependency i needed to install is just express.js itself.
 
@@ -53,11 +53,11 @@ app.listen(port, function () {
 
 By default the path to the file must be an absolute path, if I want to use a relative path then I need to give a root path with the root option. More on options including root later.
 
-## Options
+## 2 - Options
 
 Like many of these methods there is an options object that can be given to it to set some options for the method.
 
-### Relative paths with the root option
+### 2.1 - Relative paths with the root option
 
 If I want to use relative paths I must give the root path for the relative paths. So in other words if I just want to give a file name for the first argument then I need to set the folder that contains that file with the root option when giving an options object to send file.
 
@@ -73,3 +73,7 @@ app.get('/', function (req, res) {
  
 });
 ```
+
+## 3 - Conclusion
+
+So that is it for now when it comes to the sendFile response method. When it comes to working on some actaul express projects of one kind or another I can not say that I use the send file that often thus far though. There are often other options for sending static content to be displayed in the browser, such as the express static built in middle ware, and using the serve index middleware package also with it as a way to create an index of content for a path.
