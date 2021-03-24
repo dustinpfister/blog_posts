@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 426
-updated: 2021-03-24 13:09:23
-version: 1.4
+updated: 2021-03-24 16:00:47
+version: 1.5
 ---
 
 An [express redirect](https://expressjs.com/en/api.html#res.redirect) is one of several options when it comes to responding to an incoming http request. Often a response will involve just sending some json, text, or html, but in some cases a redirect to another path might be called for as a way to respond to a request.
@@ -46,4 +46,6 @@ app.get('/old/path/to-a-file.html', (req, res) => {
 
 ## 3 - Conclusion
 
-So there are some basics of express redirects, hope you found this post helpful. For more on express you might want to check out my [main post on express](/2018/06/12/express/).
+So there are some basics of express redirects, hope you found this post helpful when it comes to this little aspect of nodejs development using expressjs as a server side framework. 
+
+For more on express you might want to check out my [main post on express](/2018/06/12/express/).
