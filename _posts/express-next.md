@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 830
-updated: 2021-03-24 15:27:29
-version: 1.8
+updated: 2021-03-24 15:31:31
+version: 1.9
 ---
 
 When working out a simple [expressjs](https://expressjs.com/) project for the first time there is starting out with some very basic hello world type examples that involve just a single middleware function attached for a single path of a project. When doing so there is a request object and response object that are both given as arguments for the middleware function. These two objects are useful for working with an http request, as well as creating and sending a response for that request. However there is another typical parameter for these functions that is the express next middleware parameter. This parameter of a middleware function is a function that can be called to allow for express to continue to the next middleware function to be called. The next middileware function can be the next function in an array of functions rather than just a single function, however in other cases it can result in continuing to a whole other path pattern in the main app.js file also.
@@ -86,6 +86,8 @@ app.listen(app.get('port'), () => {
 ## 3 - The user agent header.
 
 Maybe another good example would be to use an array of functions to preform all of the above, but also attach a special property to a request object that can then be used at a later point to do something deferent depending on the state of some kind of request header.
+
+For this example I took my array of functions and placed it into its own file and called it all\_requests.js, to which I then intend to use in my main app.js file with the app.all method. In this new array of functions I am checking the user agent string of the incoming request and using that to set a platform property of the request object.
 
 ```js
 let path = require('path');
