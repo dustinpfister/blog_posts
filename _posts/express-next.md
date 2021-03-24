@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 830
-updated: 2021-03-24 15:19:13
-version: 1.5
+updated: 2021-03-24 15:22:39
+version: 1.6
 ---
 
 When working out a simple [expressjs](https://expressjs.com/) project for the first time there is starting out with some very basic hello world type examples that involve just a single middleware function attached for a single path of a project. When doing so there is a request object and response object that are both given as arguments for the middleware function. These two objects are useful for working with an http request, as well as creating and sending a response for that request. However there is another typical parameter for these functions that is the express next middleware parameter. This parameter of a middleware function is a function that can be called to allow for express to continue to the next middleware function to be called. The next middileware function can be the next function in an array of functions rather than just a single function, however in other cases it can result in continuing to a whole other path pattern in the main app.js file also.
@@ -46,6 +46,8 @@ app.listen(app.get('port'), () => {
 ```
 
 ## 2 - Send a favicon example
+
+In the first example I have noticed that one of the paths that a browser will request on its own is a favicon, so then this can prove as a decent additional example of the next function. Say that I have more or less the same example as before, but now I want to send a favicon.ico file for requests for such a file. For this I can add an addition function in my array of functions, and check the req.url prop of the request object to see if the resource being requested is a favicon. In the event that it is I can respond with such a file by making use of the send file response method. For all other requests I can just call next again.
 
 ```js
 let express = require('express'),
