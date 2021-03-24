@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 416
-updated: 2021-03-24 13:12:38
-version: 1.9
+updated: 2021-03-24 15:45:37
+version: 1.10
 ---
 
 In [express.js](https://expressjs.com/) there are a number of options for view engines, or template languages as they might often be referred to as. I am somewhat partial to ejs which closely resembles the same syntax of html, but another popular option is [pug](https://pugjs.org/api/getting-started.html) that follows a syntax similar to languages like that of python. 
@@ -45,7 +45,7 @@ The name of this file is what I will be passing to the res.render method in my e
 
 ### 1.2 - The basic .js file
 
-back at the root name space of the project folder I created a basic.js file. In here I will be using express and setting pug as the voew engine that is to be used.
+back at the root name space of the project folder I created a basic.js file. In here I will be using express and setting pug as the view engine that is to be used.
 
 ```js
 // get express and create an
@@ -108,4 +108,5 @@ app.listen(8080);
 
 ## 3 - Conclusion
 
-So the express pug view engine is one of many options for a view engine when it comes to writing template files for an [express view](/2019/04/25/express-view/) in [express](/2018/06/12/express/).
+So the express pug view engine is one of many options for a view engine when it comes to writing template files for an [express view](/2019/04/25/express-view/) in [express](/2018/06/12/express/). The use of a vue engine is often used as a substitute for a simple static public folder. Such static folders still work just fine, but mostly for the sake of images, javaScript files, style sheets, and other static resources that should be hosted publicly. The use of a render engine allows for server side rendering of html, which in many cases can project to be a better choice for just sending static html.
+
