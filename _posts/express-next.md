@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 830
-updated: 2021-03-24 14:59:26
-version: 1.1
+updated: 2021-03-24 15:05:29
+version: 1.2
 ---
 
 When working out a simple [expressjs](https://expressjs.com/) project for the first time there is starting out with some very basic hello world type examples that involve just a single middleware function atatched for a single path of a project. When doing so there is a request object and response object that are bolth given as arguments for the middleware function. These two objects are useful for working with an http request, as well as creating and sending a response for that request. However there is another typical parameter for these functioins that is the express next middleware parameter. This parameter of a middleware function is a function that can be called to allow for express to continue to the next middleware function to be called. The next middileware function can be the next function in an array of functions rather than just a single function, however in other cases it can result in continuing to a whole other path pattern in the main app.js file also.
@@ -79,13 +79,9 @@ app.listen(app.get('port'), () => {
 ## 3 - The user agent header.
 
 ```js
-let express = require('express'),
-path = require('path'),
-app = express();
+let path = require('path');
  
-app.set('port', process.argv[2] || process.env.PORT || 8080);
- 
-app.get('*', [
+module.exports = [
     // log request url to the console
     (req, res, next) => {
         console.log(req.url);
@@ -116,7 +112,18 @@ app.get('*', [
         }
         next();
     }
-]);
+];
+```
+
+```js
+let express = require('express'),
+path = require('path'),
+app = express();
+ 
+app.set('port', process.argv[2] || process.env.PORT || 8080);
+ 
+// use all_requests.js for '*' path
+app.all('*', require( path.join(__dirname, 'all_requests.js') ))
  
 app.get('/', (req, res) => {
     res.send('Hello ' + req.platform + ' OS User');
