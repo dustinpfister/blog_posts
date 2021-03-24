@@ -5,11 +5,13 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 426
-updated: 2019-04-26 14:59:57
-version: 1.3
+updated: 2021-03-24 13:09:23
+version: 1.4
 ---
 
-An [express redirect](https://expressjs.com/en/api.html#res.redirect) is one of several options when it comes to responding to an incoming http request. Often a response will involve just sending some json, text, or html, but in some cases a redirect is called for. In express redirects can be done with the res.redirect response method, for the most part just the url of the resource to redirect to is all that needs to be passed, but some times it is not that simple when it comes to the response status codes. So in this post I will be writing about all things express redirect related that I come across that are note worthy.
+An [express redirect](https://expressjs.com/en/api.html#res.redirect) is one of several options when it comes to responding to an incoming http request. Often a response will involve just sending some json, text, or html, but in some cases a redirect to another path might be called for as a way to respond to a request.
+
+In express redirects can be done with the res.redirect response method, for the most part just the url of the resource to redirect to is all that needs to be passed, but some times it is not that simple when it comes to the response status codes. So in this post I will be writing about all things express redirect related that I come across that are note worthy.
 
 <!-- more -->
 
