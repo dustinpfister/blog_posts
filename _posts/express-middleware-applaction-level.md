@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2021-03-24 10:17:36
-version: 1.9
+updated: 2021-03-24 10:21:41
+version: 1.10
 ---
 
 In this post I thought I would focus on application level middleware specifically when working with [expressjs](/2018/06/12/express/) as a server side framework in nodejs. In other words the middleware that I myself make, for a specific application, rather than just using what is built into express itself.
@@ -21,7 +21,7 @@ In express application level middleware is when an app object method like app.us
 
 ## 1 - App.get
 
-A simple example of application level middleware in  express would be something just using the app.get method to respond to GET http requests to a certain path. 
+A simple example of application level middleware in express would be something just using the app.get method to respond to GET http requests to a certain path. 
 
 ```js
 let express = require('express'),
@@ -32,7 +32,7 @@ app.get('/', (req, res) => res.json('foo'));
 app.listen(8080);
 ```
 
-Just call app.get pass the path or pattern to attach to, and then the middleware in the form of a function or array of functions involving used the next callback to move between them.
+Just call app.get and pass the path or pattern to attach to, then pass the middleware in the form of a function or array of functions. Each function will then be passed a request object as the first argument, and a response object as the second argument, and in situations in which there is an array of functions, or for some reason I want to continue to the next middleware in line there is also a next argument that can be used as a third argument in a middleware function.
 
 ## 2 - App.all
 
