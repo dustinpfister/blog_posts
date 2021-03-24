@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2021-03-24 10:15:10
-version: 1.8
+updated: 2021-03-24 10:17:36
+version: 1.9
 ---
 
 In this post I thought I would focus on application level middleware specifically when working with [expressjs](/2018/06/12/express/) as a server side framework in nodejs. In other words the middleware that I myself make, for a specific application, rather than just using what is built into express itself.
@@ -90,4 +90,5 @@ app.listen(8080);
 
 ## 4 - Conclusion
 
-In this post I just covered some very basic examples of application level middleware, however in real examples this topic can end up getting a little involved.
+In this post I just covered some very basic examples of application level middleware, however in real examples this topic can end up getting a little involved. I have not been doing a lot of work with express these days, but the reason why is mainly because I am not doing that much back end programing in nodejs, or at all in any environment for that matter. If I ever do get around to making some kind of actual project with express it would be nice to expand this post with some more real examples of application level middleware in express.
+
