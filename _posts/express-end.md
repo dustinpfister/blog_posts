@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 428
-updated: 2021-03-24 13:17:32
-version: 1.9
+updated: 2021-03-24 15:51:57
+version: 1.10
 ---
 
-The [express end](https://expressjs.com/en/api.html#res.end) response method is one of several ways to go about ending an incoming http request from a client system. The express end method is used for situations in which the request is to just simply be put to an end without sending any data to the client, or prefroming any kinds of other action such as redirection to another path.
+The [express end](https://expressjs.com/en/api.html#res.end) response method is one of several ways to go about ending an incoming http request from a client system. The express end method is used for situations in which the request is to just simply be put to an end without sending any data to the client, or preforming any kinds of other action such as redirection to another path.
 
 It is true that the method can be used to send data in the form of a string or buffer to the client, but another response method should be used such as res.send, or res.json that are also at hand in a [response object](/2019/04/27/express-response-objects/).
 
@@ -111,4 +111,6 @@ app.listen(8080);
 
 ## 4 - Conclusion
 
-So then the express end response method is one of several ways to end an http request from a client that is a good choice when no data needs to be sent to the client. For more expressjs related content on this site be sure to check out the main post on [expressjs](/2018/06/12/express/).
+So then the express end response method is one of several ways to end an http request from a client that is a good choice when no data needs to be sent to the client. There are a number of other options when it comes to ending a response though some of which might provide a wider range of flexibility. There is the res.send, res.sendFile, and res.redirect methods that come to mind when it comes to the various other options when working with express by itself. There is also using a layout engine of one kind or another and using the res.render method as a way to end a request.
+
+For more expressjs related content on this site be sure to check out the [main post on expressjs](/2018/06/12/express/) that will branch off into all kinds of other topics.
