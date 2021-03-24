@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 830
-updated: 2021-03-24 15:36:33
-version: 1.11
+updated: 2021-03-24 15:39:19
+version: 1.12
 ---
 
 When working out a simple [expressjs](https://expressjs.com/) project for the first time there is starting out with some very basic hello world type examples that involve just a single [middleware function](https://expressjs.com/en/guide/writing-middleware.html) attached for a single path of a project. When doing so there is a request object and response object that are both given as arguments for the middleware function. These two objects are useful for working with an http request, as well as creating and sending a response for that request. However there is another typical parameter for these functions that is the express next middleware parameter. This parameter of a middleware function is a function that can be called to allow for express to continue to the next middleware function to be called. The next middileware function can be the next function in an array of functions rather than just a single function, however in other cases it can result in continuing to a whole other path pattern in the main app.js file also.
@@ -82,6 +82,8 @@ app.listen(app.get('port'), () => {
     console.log('app up on port: ' + app.get('port'));
 });
 ```
+
+There are many more ways to go abut sending the favicon, for example if I place the favicon file at the root path of a public folder I can use the express static built in middleware as a way to serve the file, and any and all other files in the public folder. However in the event that I am doing something where there is no public folder, or I am doing something where there are only a few pubic folders for a few paths, then something like this might be needed as a way to host that file.
 
 ## 3 - The user agent header.
 
