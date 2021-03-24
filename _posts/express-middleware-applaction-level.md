@@ -5,17 +5,19 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 422
-updated: 2019-04-22 16:26:22
-version: 1.6
+updated: 2021-03-24 10:12:20
+version: 1.7
 ---
 
-So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html#middleware.application), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/), and I have a post on [express middleware in general](/2018/06/25/express-middleware/) as well. However in this post I thought I would focus on application level middleware specifically.
+In this post I thought I would focus on application level middleware specifically when working with [expressjs](/2018/06/12/express/) as a server side framework in nodejs. In other words the middleware that I myself make, for a specific application, rather than just using what is built into express itself.
+
+So there is a lot to write about concerning [express middleware](https://expressjs.com/en/guide/using-middleware.html#middleware.application), I have all ready covered the [basics of middleware in express](/2019/04/19/express-middleware-basics/) in a previous post and I have a post on [express middleware in general](/2018/06/25/express-middleware/) that is serving as a central point for this topic.
 
 <!-- more -->
 
 ## 1 - Application level Express Middleware
 
-In express application level middleware is when an app object method like app.use or app.get is used to attach on eor more methods thar are used to respond to incoming http requests. This differers slightly from router level middleware, or built in middleware, but all middleware has to do with handling incoming traffic and requests from client systems.
+In express application level middleware is when an app object method like app.use or app.get is used to attach one or more methods that are used to respond to incoming http requests. This differers slightly from router level middleware, or built in middleware, but all middleware has to do with handling incoming traffic and requests from client systems.
 
 ## 1 - App.get
 
