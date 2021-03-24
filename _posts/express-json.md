@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 434
-updated: 2021-03-24 13:33:49
-version: 1.11
+updated: 2021-03-24 15:56:18
+version: 1.12
 ---
 
 In [express json](https://expressjs.com/en/api.html#res.json) can be sent from the server to a client with response methods like res.json, it can also be received from clients by making post requests from a client system, and then parsing the incoming body with the [body parser](/2018/05/27/express-body-parser/) middleware. In late versions of express such as 4.17+ there is now an express.json method that can be used as a kind of short hand for the body parser middleware to quickly parse a json body of an incoming post request.
@@ -108,3 +108,8 @@ app.post('/', (req, res) => {
 // listen
 app.listen(app.get('port'), () => console.log('app up on port: ' + app.get('port')));
 ```
+
+## 4 - Conclusion
+
+So then there are the basics of working with json in an expressjs project, the process of doing so is fairly easy. However the next step is working out all the code that will run on the client system, and coming up with standards when it comes to how to go about formating objects that will be sent back and forth.
+
