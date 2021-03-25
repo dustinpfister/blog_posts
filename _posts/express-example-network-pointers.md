@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:09:03
-version: 1.6
+updated: 2021-03-25 17:10:21
+version: 1.7
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -51,7 +51,9 @@ var sendDeltaObject = function(obj, done){
 };
 ```
 
-### 1.2 - utils.js
+### 1.2 - The /public/js/utils.js file
+
+I have a utils.js file that contains some methods that I will be using to create a canvas element, and preform some other basic tasks for my main client system.
 
 ```js
 var utils = {};
