@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:11:17
-version: 1.8
+updated: 2021-03-25 17:12:39
+version: 1.9
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -158,7 +158,9 @@ setName.addEventListener('change', function(e){
 });
 ```
 
-### 1.4 - style.css
+### 1.4 - The /public/style.css
+
+I also have an extrela css file in my pubmic folder.
 
 ```css
 body{
@@ -188,6 +190,8 @@ body{
 ```
 
 ## 2 - The ejs files
+
+I am using ejs for server side rendering of html in this example.
 
 ### 2.1 - index.ejs
 
