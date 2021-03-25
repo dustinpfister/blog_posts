@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:04:03
-version: 1.3
+updated: 2021-03-25 17:05:23
+version: 1.4
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -17,9 +17,9 @@ I am going to be keeping this example simple in the sense that I am not going to
 
 <!-- more -->
 
-## The public folder
+## 1 - The public folder
 
-### http.js
+### 1.1 - http.js
 
 ```js
 var sendObject = function(obj, done){
@@ -47,7 +47,7 @@ var sendDeltaObject = function(obj, done){
 };
 ```
 
-### utils.js
+### 1.2 - utils.js
 
 ```js
 var utils = {};
@@ -93,7 +93,7 @@ utils.load = function(appName, slotID){
 };
 ```
 
-### client.js 
+### 1.3 - client.js 
 
 ```js
 // set up canvas
@@ -150,7 +150,7 @@ setName.addEventListener('change', function(e){
 });
 ```
 
-### style.css
+### 1.4 - style.css
 
 ```css
 body{
@@ -179,9 +179,9 @@ body{
 }
 ```
 
-## The ejs files
+## 2 - The ejs files
 
-### index.ejs
+### 2.1 - index.ejs
 
 ```
 <!doctype html>
@@ -206,7 +206,7 @@ body{
 ```
 
 
-### home
+### 2.2 - home
 
 ```
 <h1>Client</h1>
@@ -216,14 +216,14 @@ body{
 <script src="/js/client.js"></script>
 ```
 
-### 404
+### 2.3 - 404
 
 ```
 <h1>404 Page not found</h1>
 <p>The page was not found</p>
 ```
 
-## The main app.js file
+## 3 - The main app.js file
 
 ```js
 let express = require('express'),
