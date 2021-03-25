@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:16:19
-version: 1.11
+updated: 2021-03-25 17:22:37
+version: 1.12
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -358,3 +358,10 @@ app.listen(app.get('port'), function () {
     console.log('app is up on port: ' + app.get('port'));
 });
 ```
+
+## 4 - Conclusion
+
+I had a very general ides of what it is that I wanted for this simple express.js examples, and all ready this is more or less what I had in mind. I was able to throw it together in a falsh, but there is just a little more I might add to this, so I can not say that there is much more to do with this.
+
+I just wanted a simple express.js example that serves as a starting point examples for session storage and what can be done with it. When it comes to the database, storage data and so forth that is all just stored in memory. A real project that is worthy to be deployed, and used by a lot of people would involve so much more than this. There would need to be authentication, a user database, a proper store for session data, and so much more. Not to mention all the work that would need to be done when it comes to sever side sanitation, and so forth, and so on. However the crude basic idea of what is possible with nodejs, and express is there, just at a crude micro level, and making a real project is not waht I had in mind.
+
