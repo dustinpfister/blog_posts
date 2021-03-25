@@ -5,11 +5,13 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 16:53:20
-version: 1.1
+updated: 2021-03-25 17:00:23
+version: 1.2
 ---
 
-I would like to make at least a few simple expressjs examples just for the hell of it.
+I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
+
+This express.js example aims to just be a simple little projects that is not intended to be used in production, but just a simple silly little thing to have up and running on a local network for a little while. The idea here is to make use of nodejs, express, ejs, and express session, to just have a simple little canvas powered client system with little pointer circles in it. Each circle in the canvas is a client currently connected to the server on the local network.
 
 <!-- more -->
 
