@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 194
-updated: 2021-03-25 13:09:50
-version: 1.8
+updated: 2021-03-25 13:14:23
+version: 1.9
 ---
 
 When rendering a template in [express.js](https://expressjs.com/) there are many options to choose from, however so far I seem to prefer Embedded javaScript or EJS for short, over other options such as [pug](/2019/04/16/express-pug/). I have written a post on using the [ejs module by itself in node.js](/2017/12/07/nodejs-ejs-javascript-templates/) as the package can be used by itself outside of express as a way to render html with ejs templates, and some data. However this post is more about using it in an express.js environment, as such I will be covering how to set up an express view folder using ejs as a template language.
@@ -15,14 +15,14 @@ When rendering a template in [express.js](https://expressjs.com/) there are many
 
 ## 1 - Express ejs basic example
 
-To get started with a basic example start a new project folder, install express, and ejs. In this post I am using express 4.16.x, and ejs 2.6.x. In no major code breaking changes have happened this post should still be up to date.
+To get started with a basic example start a new project folder, [install express](https://www.npmjs.com/package/express), and the [ejs](https://www.npmjs.com/package/ejs) npm packages. In this post I am using express 4.16.x, and ejs 2.6.x, and if no major code breaking changes have happened the source code examples in this post should still be up to date.
 
 ```
 $ mkdir render-ejs
 $ cd render-ejs
 $ npm init
-$ npm install express@4.16.3 --save
-$ npm install ejs@2.6.1 --save
+$ npm install express@4.16.3
+$ npm install ejs@2.6.1
 $ mkdir views
 ```
 
