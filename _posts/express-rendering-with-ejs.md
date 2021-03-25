@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 194
-updated: 2021-03-25 13:21:38
-version: 1.10
+updated: 2021-03-25 13:22:59
+version: 1.11
 ---
 
 When rendering a template in [express.js](https://expressjs.com/) there are many options to choose from, however so far I seem to prefer Embedded javaScript or EJS for short, over other options such as [pug](/2019/04/16/express-pug/). I have written a post on using the [ejs module by itself in node.js](/2017/12/07/nodejs-ejs-javascript-templates/) as the package can be used by itself outside of express as a way to render html with ejs templates, and some data. However this post is more about using it in an express.js environment, as such I will be covering how to set up an express view folder using ejs as a template language.
@@ -55,15 +55,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
  
 app.get('/', function (req, res) {
- 
     res.render('index',{});
- 
 });
  
 app.listen(port, function () {
- 
     console.log('app is up on port: ' + port);
- 
 });
 ```
 
@@ -71,4 +67,4 @@ app.listen(port, function () {
 
 When I start this and go to localhost:8080 in my browser I am greeted with the "Hello ejs!" message. I have [another post on ejs](/2017/12/07/nodejs-ejs-javascript-templates/) in which I work with the ejs module by itself, which might be a good idea to do if you want to learn more about ejs. Ejs is just one template engine option when it comes to making an [express view](/2019/04/25/express-view/), there is also making use of the [express static](/2018/05/24/express-static/) built in middleware as well for the purpose of hosting static assets that are to be used in a view.
 
-If you liked this post be sure to check out my [main post on expressjs](/2018/06/12/express/) in general.
+If you liked this post be sure to check out my [main post on expressjs](/2018/06/12/express/) in general, this is a post where I am branching off into all kinds of topics that have to do with express, and nodejs.
