@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:07:56
-version: 1.5
+updated: 2021-03-25 17:09:03
+version: 1.6
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -21,7 +21,9 @@ I am going to be keeping this example simple in the sense that I am not going to
 
 First off I will be starting with the public folder that will be at the root of the project folder. In here I have a javaScript folder that will contain a few javaScript files that will compose the client system.
 
-### 1.1 - http.js
+### 1.1 - The /public/js/http.js file that will be my simple http client
+
+I have an http.js file that will serve as my custom http client for this project.
 
 ```js
 var sendObject = function(obj, done){
