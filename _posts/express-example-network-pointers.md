@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:15:24
-version: 1.10
+updated: 2021-03-25 17:16:19
+version: 1.11
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -238,6 +238,8 @@ Here I have my main index.ejs file that I will be calling with app.render in the
 ```
 
 ## 3 - The main app.js file
+
+Now I have my main app.js file at the root of the project folder, this is the file that will be called with nodejs to start the server.
 
 ```js
 let express = require('express'),
