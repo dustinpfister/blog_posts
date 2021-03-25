@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 194
-updated: 2021-03-25 13:25:55
-version: 1.12
+updated: 2021-03-25 13:44:37
+version: 1.13
 ---
 
 When rendering a template in [express.js](https://expressjs.com/) there are many options to choose from, however so far I seem to prefer Embedded javaScript or EJS for short, over other options such as [pug](/2019/04/16/express-pug/). I have written a post on using the [ejs module by itself in node.js](/2017/12/07/nodejs-ejs-javascript-templates/) as the package can be used by itself outside of express as a way to render html with ejs templates, and some data. However this post is more about using it in an express.js environment, as such I will be covering how to set up an express view folder using ejs as a template language.
@@ -42,26 +42,35 @@ index.ejs would look like this for starters
 
 ### 1.3 - The app.js for the basic example
 
-The main file that is called to start the project is often called app.js in an express.js project, often located at the root of the project folder. In this basic example of using ejs to render a template using express.js and node.js, I just need to set the views path to the folder where my ejs template are, and set the view engine to ejs.
+The main file that is called to start the project is often called app.js in an express.js project, often located at the root of the project folder, and for this example that is what I called and placed my script for this. So the basic idea here is that I just need to set the views path to the folder where my ejs template are, and set the view engine to ejs. Once I have that done I can then use the res.render function to render html using a ejs template file in the view folder.
+
+So then I require in express itself, and will also be using the nodejs built in path module for this example. I then create an instnace of a main express app my calling the main express top level function, just like with any other express example. I then use the app.set method to set an applaction setting value for the port that I will be listeneing on for the script, and also use the app.set method to set the render engine and path to the view folder. For this example I am setting the view engine setting to ejs, and the location of the view folder will be a view folder in the same location as the main app.js file. So I just join the value of the dirname global with the name of the folder to make sure that there is an absolute path to that location for the view setting.
+
+With that all set and done when I set up some middile ware that will respond to incoming get requests I can now use the res.render function to redner html using a file in the view folder such as my index.ejs file.
 
 ```js
 let express = require('express'),
 path = require('path'),
-app = express(),
+app = express();
  
 // getting port this way
-port = process.env.PORT || process.argv[2] || 8080;
+app.set('port', process.env.PORT || process.argv[2] || 8080 );
  
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // the render engine
+app.set('views', path.join( __dirname, 'views') ); // the views folder for the *.ejs files
  
+// a single path for /
 app.get('/', function (req, res) {
-    res.render('index',{});
+    // I can now use render to render the index ejs file
+    // in views, for now I am give it an empty object
+    // when it comes to data
+    res.render('index', {}); 
 });
  
-app.listen(port, function () {
-    console.log('app is up on port: ' + port);
+// listen on the port app setting
+app.listen(app.get('port'), function () {
+    console.log('app is up on port: ' + app.get('port'));
 });
 ```
 
