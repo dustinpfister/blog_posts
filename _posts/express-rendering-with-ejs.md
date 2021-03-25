@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 194
-updated: 2021-03-25 13:44:37
-version: 1.13
+updated: 2021-03-25 14:29:07
+version: 1.14
 ---
 
 When rendering a template in [express.js](https://expressjs.com/) there are many options to choose from, however so far I seem to prefer Embedded javaScript or EJS for short, over other options such as [pug](/2019/04/16/express-pug/). I have written a post on using the [ejs module by itself in node.js](/2017/12/07/nodejs-ejs-javascript-templates/) as the package can be used by itself outside of express as a way to render html with ejs templates, and some data. However this post is more about using it in an express.js environment, as such I will be covering how to set up an express view folder using ejs as a template language.
@@ -58,7 +58,7 @@ app.set('port', process.env.PORT || process.argv[2] || 8080 );
  
 // view engine setup
 app.set('view engine', 'ejs'); // the render engine
-app.set('views', path.join( __dirname, 'views') ); // the views folder for the *.ejs files
+app.set('views', path.resolve( __dirname, 'views') ); // the views folder for the *.ejs files
  
 // a single path for /
 app.get('/', function (req, res) {
@@ -74,7 +74,110 @@ app.listen(app.get('port'), function () {
 });
 ```
 
-## 2 - Conclusion
+## 2 - Using ejs partials, and express.static for static assets
+
+### 2.1 - The ejs files
+
+```
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Express EJS and static file hosting.</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="wrap_main">
+        <div class="wrap_header">
+            <h1>EXpress EJS Demo</h1>
+        </div>
+        <div class="wrap_content">
+            <%- include('layouts/'+ layout +'.ejs') %>
+        </div>
+    </div>
+</body>
+```
+
+```
+<h1>Home</h1>
+```
+
+```
+<h1>404 Page not found</h1>
+<p>The page was not found</p>
+```
+
+### 2.2 - A public folder with a style.css file
+
+```css
+body{
+  background: white;
+}
+.wrap_main{
+  padding: 10px;
+  background: #2a2a2a;
+  color: #ffffff;
+  margin-left:auto;
+  margin-right:auto;
+  width:90%;
+}
+.wrap_header{
+  padding: 10px;
+  text-align:center;
+  min-height:150px;
+  background:#5a5a5a;
+}
+.wrap_content{
+  margin-top:10px;
+  padding: 10px;
+  text-align:center;
+  min-height:150px;
+  background:#8a8a8a;
+}
+```
+
+### 2.3 - The app.js file
+
+```js
+let express = require('express'),
+path = require('path'),
+app = express();
+ 
+// getting port this way
+app.set('port', process.env.PORT || process.argv[2] || 8080 );
+app.set('public_html', path.resolve( __dirname, 'public') );
+ 
+// view engine setup
+app.set('view engine', 'ejs'); // the render engine
+app.set('views', path.resolve( __dirname, 'views') ); // the views folder for the *.ejs files
+
+// one main middleware for / using express.static and res.render
+app.use('/', [
+ 
+    // use express.static first to look for a static resource
+    express.static( app.get('public_html') ),
+ 
+    // if not found render main index, but only for / else next
+    function (req, res, next) {
+        if(req.url === '/'){
+            res.render('index', {layout: 'home' });
+        }else{
+            next();
+        } 
+    }
+]);
+ 
+app.get('*', function(req, res){
+    res.render('index', {layout: '404' });
+});
+ 
+// listen on the port app setting
+app.listen(app.get('port'), function () {
+    console.log('app is up on port: ' + app.get('port'));
+});
+```
+
+## 3 - Conclusion
 
 When I start this and go to localhost:8080 in my browser I am greeted with the "Hello ejs!" message. I have [another post on ejs](/2017/12/07/nodejs-ejs-javascript-templates/) in which I work with the ejs module by itself, which might be a good idea to do if you want to learn more about ejs. Ejs is just one template engine option when it comes to making an [express view](/2019/04/25/express-view/), there is also making use of the [express static](/2018/05/24/express-static/) built in middleware as well for the purpose of hosting static assets that are to be used in a view.
 
