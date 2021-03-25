@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:10:21
-version: 1.7
+updated: 2021-03-25 17:11:17
+version: 1.8
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -99,7 +99,9 @@ utils.load = function(appName, slotID){
 };
 ```
 
-### 1.3 - client.js 
+### 1.3 - The /public/js/client.js 
+
+The cleint.js file will serve as the core of my client system for this express example.
 
 ```js
 // set up canvas
