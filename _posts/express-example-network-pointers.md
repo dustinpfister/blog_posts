@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 831
-updated: 2021-03-25 17:12:39
-version: 1.9
+updated: 2021-03-25 17:15:24
+version: 1.10
 ---
 
 I would like to make at least a few simple [express.js examples](/2019/04/30/express-example/) just for the sake of making a few actual projects with the framework. There is learning the basics of working with express, or any framework for that matter, but sooner or later I have to make a few actual projects with it or move on to something else.
@@ -194,6 +194,8 @@ body{
 I am using ejs for server side rendering of html in this example.
 
 ### 2.1 - index.ejs
+
+Here I have my main index.ejs file that I will be calling with app.render in the main app.js file. Each time that I do so I will be passing any object that will contain the current layout to use for the page. For now there is just one layout for a main client system, and another for a 404 page. However if I do get around to working on this a little longer there might be additional layouts.
 
 ```
 <!doctype html>
