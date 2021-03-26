@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2021-03-26 14:58:21
-version: 1.12
+updated: 2021-03-26 14:59:56
+version: 1.13
 ---
 
 The [node.js](https://nodejs.org/en/) powered server side framework [express.js](https://expressjs.com/) is a pretty great when it comes to making full stack web applications. It is part of the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_%28solution_stack%29), and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone) just to name a few. 
@@ -64,7 +64,7 @@ It is common to call the main script that will start the project app.js, and to 
 
 The next step from your first express.js hello world project might be to get into how to serve up static files, render templates with a rendering engine like ejs, or pug, or learn more about routing. Once you have those things down you might be in a good place to start experimenting with different stacks, including database options if the project has a need for one. In the MEAN stack the front end framework used is angular, however I have come to like vuejs a lot more when it comes to choosing a front end framework.
 
-However there is still a whole lot more to learn just when it comes to using express by itself. With that said I have [my main post on express in general](/2018/06/12/express/) that I put together as a kind of grand central location for all my express content on this site. Maybe the best way to learn express would be to just come up with one or two ideas for some actual projects, start working on them, and just learn as you go. When it comes to that I have a post in which I outline a number of express project examples that I have started thus far.
+However there is still a whole lot more to learn just when it comes to using express by itself. With that said I have [my main post on express in general](/2018/06/12/express/) that I put together as a kind of grand central location for all my express content on this site. Maybe the best way to learn express would be to just come up with one or two ideas for some actual projects, start working on them, and just learn as you go. When it comes to that I have a [post in which I outline a number of express project examples](/2019/04/30/express-example/) that I have started thus far.
 
 ### 4.1 - Static files
 
