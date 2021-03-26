@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 14:36:38
-version: 1.12
+updated: 2021-03-26 14:43:08
+version: 1.13
 ---
 
 When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params. 
@@ -53,6 +53,8 @@ This might not be the most compelling example, but thats okay basic examples are
 So now for a more advanced example where I am actually doing something with a parameter value. This example is more or less the same as the first basic example, only now I am making use of some nodejs built in features to get a list of project folders in an examples folder, and send the text of a file in old of these folders, if the folder is in fact there.
 
 In this example I am making use of the [nodejs util promisify](/2019/06/22/nodejs-util-promisify/) method to create functions that will return a promise that would otherwise be functions where I have to use the old callback syntax. At least that out be the case for older versions of node that are often still in use when it comes to using the nodejs built in file system module. In late versions of nidejs this might no longer be needed and the file system module can just be used directly like I am suing it here.
+
+So then in the middileware for the main root path I am now using the [nodejs file system](/2018/02/08/nodejs-filesystem/) modules read dir method to read the contents of an examples folder, and then for each item in that folder I am creating a link to the examples path with the folder name as the additional parameter for the example name. The full list of links for each folder in the examples folder is then what is send for the root path of this example.
 
 ```js
 let express = require('express'),
