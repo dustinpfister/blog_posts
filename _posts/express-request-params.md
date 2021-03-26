@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 14:19:41
-version: 1.7
+updated: 2021-03-26 14:20:39
+version: 1.8
 ---
 
 When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params. 
@@ -46,9 +46,11 @@ app.listen(app.get('port'), () => {
 });
 ```
 
-This might not be the most compenning example, but thats okay basic examples are often like that. The basic idea here though is that part of a path can end up being some kind of value, that value can then be used as a way to help create whatever the content should be for that path.
+This might not be the most compelling example, but thats okay basic examples are often like that. The basic idea here though is that part of a path can end up being some kind of value, that value can then be used as a way to help create whatever the content should be for that path.
 
 ## 2 - Having an examples folder
+
+So now for a more advanced example where I am actually doing something with a parameter value.
 
 ```js
 let express = require('express'),
