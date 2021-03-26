@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2021-03-26 11:34:39
-version: 1.6
+updated: 2021-03-26 11:41:21
+version: 1.7
 ---
 
 With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html) functions and modules for major projects. 
@@ -75,4 +75,8 @@ app.use((err, req, res, next) => {
 app.listen(8080);
 ```
 
-In this example I am just letting the user know what happened, which is a start, but what should really happen is to do something that will address the error. In this case if the error is the result of a file not being located at an expected location then one way to resove the error would be to create the file with a kind of hard coded starting state.
+In this example I am just letting the user know what happened, which is a start, but what should really happen is to do something that will address the error. In this case if the error is the result of a file not being located at an expected location then one way to resolve the error would be to create the file with a kind of hard coded starting state.
+
+## 3 - Conclusion
+
+So then handing errors is just a matter of making use of one more argument in a middleware function. Most of the time I see examples that make use of just two, but then of course there is a third argument which is the next function that comes into play when working with many middleware functions that are involved in responding to a request. However there is also making middleware functions that will have four arguments to handle and error that might happen, check otu the request, form a response, and continue to the next function in that order.
