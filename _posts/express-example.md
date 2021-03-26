@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-26 15:21:23
-version: 1.20
+updated: 2021-03-26 15:23:24
+version: 1.21
 ---
 
 This will be a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. Learning express is something that will take a fair investment of time, but the more I play around with it the more I begin to like it actually. The framework takes a kind of minimalistic approach just like that of vuejs when it comes to front end frameworks, which I think pares well with express.
@@ -87,7 +87,7 @@ This is a simple little network pointers canvas type thing that I started, but d
 
 ### 3.3 - [Making use of the serve index middleware](/2021/03/22/express-example-serve-index/)
 
-The server index middleware that is one official middleware created and maintained by the express team, is a nice little basic tool for serving up and index of files in a path.
+The server index middleware that is one official middleware created and maintained by the express team, is a nice little basic tool for serving up and index of files in a path. In this example I am making use of the serve index middleware to sever an index of files in a folder, and also making use of the built in express static middleware as a way to sever up a file in that folder as content when the item is client in the index.
 
 ### 3.4 - [A basic text editor project](/2019/05/01/express-example-text-editor/)
 
