@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 200
-updated: 2021-03-26 15:30:26
-version: 1.12
+updated: 2021-03-26 15:34:07
+version: 1.13
 ---
 
 As of late I have been writing some content on [express.js](https://expressjs.com/), and as such it was only a matter of time until I came to a point where it is time to look into how to handle session data, and user authentication. If I want to implement user authentication in a way that I perceive as the right way, I will want to use [passport](/2018/05/31/express-passport/). However so far I often find myself making simple hobby apps, as such I can take a more informal route to handling authentication involving some system that is just assignment of a unique id to each client by way of a cookie file for example. In any case this post is about [express-session](https://www.npmjs.com/package/express-session), a great project for working with session data in an express.js project
@@ -200,3 +200,6 @@ When doing so it might be best to make use that the secret value will match up w
 ## 7 - Conclusion
 
 This module is great for getting session management out of the way quickly, I can not say that this is the kind of thing that I want to implement on my own. I did not cover all options that can be used with this module, but maybe that is a job for future posts on express. There is much more to write about with this module, as well as all the other projects that are used with it. So much to write about, and so little time.
+
+When it comes to some kind of actaul little project example that makes use of the express session middelware one of my express examples that is worth mentioning thus far would be my simple little [network pointers express example](/2021/03/25/express-example-network-pointers/).
+
