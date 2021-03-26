@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2021-03-26 12:03:57
-version: 1.9
+updated: 2021-03-26 12:07:53
+version: 1.10
 ---
 
 The [node.js](https://nodejs.org/en/) powered server side framework [express.js](https://expressjs.com/) is a pretty great when it comes to making full stack web applications. It is part of the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_%28solution_stack%29), and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone) just to name a few. 
@@ -119,3 +119,6 @@ As an application grows more complex I can pull paths into these seperate files 
 ## 3 - Conclusion
 
 Getting started with express is easy enough, just set up a new npm folder, install express, and copy and past a simple app.js file to get up and running with a simple hello world example. However making a real project with express, and full stack development in general can get really involved, this really goes without saying when all the work is being done by just one person.
+
+I am not a full stack developer, I often work on projects all by myself, and when doing so it is just to much for one person. That is unless it is a very simple project that will be running on just one node, or some kind of application that will just be used on a local network, by a small group of people. The of course it becomes more realistic to work on some kind of full stack application. However I really am more of a front end only kind of guy, however even so that might be why I like express, and nodejs in general. Express is great for simple quick little small scale projects, but it can also be used when making some kind of major deal also of course.
+
