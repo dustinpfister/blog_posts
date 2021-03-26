@@ -5,13 +5,13 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2021-03-26 11:41:21
-version: 1.7
+updated: 2021-03-26 11:45:30
+version: 1.8
 ---
 
 With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html) functions and modules for major projects. 
 
-When writing an error handling middleware for express the process of doing so is more or less the same as writing any other middleware in express only there are four arguments to be aware of rather than the usual three. Th additional argument as you might guess contains information about the kind of error that happened.
+When writing an error handling middleware for express the process of doing so is more or less the same as writing any other middleware in express, only there are four arguments to be aware of rather than the usual three. There are many basic midleware functions where there are just two arguments one for the request object, and another for the response object. As one starts making more complex examples there is making use of a third next argument that is a function that can be called to continue to the next middelware function that may apply to the request. When it comes to errors there is a additional fourth argument as you might guess contains information about the kind of error that happened.
 
 <!-- more -->
 
@@ -79,4 +79,4 @@ In this example I am just letting the user know what happened, which is a start,
 
 ## 3 - Conclusion
 
-So then handing errors is just a matter of making use of one more argument in a middleware function. Most of the time I see examples that make use of just two, but then of course there is a third argument which is the next function that comes into play when working with many middleware functions that are involved in responding to a request. However there is also making middleware functions that will have four arguments to handle and error that might happen, check otu the request, form a response, and continue to the next function in that order.
+So then handing errors is just a matter of making use of one more argument in a middleware function. Most of the time I see examples that make use of just two, but then of course there is a third argument which is the next function that comes into play when working with many middleware functions that are involved in responding to a request. However there is also making middleware functions that will have four arguments to handle and error that might happen, check out the request, form a response, and continue to the next function in that order.
