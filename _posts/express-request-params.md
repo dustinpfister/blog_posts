@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 14:45:46
-version: 1.14
+updated: 2021-03-26 14:51:01
+version: 1.15
 ---
 
 When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params. 
@@ -100,6 +100,8 @@ app.listen(app.get('port'), () => {
     console.log('app is up on port: ' + app.get('port') );
 });
 ```
+
+I often make scripts like this for repositories that are a large collection of examples for a framework that I am writing about, or learning how to use for the first time. In such scripts I will often make use of some additional packages, and features such as some kind of rendering engine. The path to the example will result in a javaScript file of the example being useed for the value of a script tag in a example, or something to that effect that needs to happen on a per examples basis. In any case it is more or less the same thing, I have a collection of examples folders, or some kind of file, and I want to have a path where I do soemthing for each file in such a collection.
 
 ## 3 - Conclusion
 
