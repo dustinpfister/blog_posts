@@ -5,11 +5,13 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 14:03:50
-version: 1.2
+updated: 2021-03-26 14:11:28
+version: 1.3
 ---
 
-When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params.
+When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params. 
+
+For example say that you have a folder that contains a whole collection of project folders. With that said lets say you want to create an express script where there will be an examples path, and then there can be a folder name that will correspond with s folder name in this examples folder. In each example folder there is a file that I would like to send for the project folder when that path is requested. One way to go about doing so would be to make use of these path parameters.
 
 <!-- more -->
 
