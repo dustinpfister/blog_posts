@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-26 15:13:26
-version: 1.16
+updated: 2021-03-26 15:16:14
+version: 1.17
 ---
 
 This will be a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. Learning express is something that will take a fair investment of time, but the more I play around with it the more I begin to like it actually. The framework takes a kind of minimalistic approach just like that of vuejs when it comes to front end frameworks, which I think pares well with express.
@@ -82,6 +82,8 @@ In this Section I will be briefly writing about all the expressjs example that I
 I started a project where the idea was to have something that I would start on one computer on my network, and then use a front end system to edit a collection of markdown files on that computer from any computer on the network.
 
 ### 3.2 - [Network pointers](/2021/03/25/express-example-network-pointers/)
+
+This is a simple little network pointers canvas type thing that I started, but did not get around to finishing to work jst the way that I wanted to. However the basic idea was to make something where any user on a network can connect to the sever that is running this, and then will send up with a circle in a canvas that repentants them. So the general idea was to start something that could work as some kind of starting point for network games, but there is still more to work on with this when it comes to the very basics of it.
 
 ### 3.3 - [Making use of the serve index middleware](/2021/03/22/express-example-serve-index/)
 
