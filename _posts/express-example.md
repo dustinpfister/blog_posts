@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-22 15:44:02
-version: 1.13
+updated: 2021-03-26 15:06:22
+version: 1.14
 ---
 
 This will be a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. Learning express is something that will take a fair investment of time, but the more I play around with it the more I begin to like it actually. The framework takes a kind of minimalistic approach just like that of vuejs when it comes to front end frameworks, which I think pares well with express.
@@ -73,7 +73,17 @@ xhr.send(JSON.stringify({
 </script>
 ```
 
-## 2 - Conclusion
+## 3 - Express project examples thus far.
+
+### 3.1 - [A simple markdown editor](/2019/05/02/express-example-markdown-editor/)
+
+### 3.2 - [Network pointers](/2021/03/25/express-example-network-pointers/)
+
+### 3.3 - [Making use of the serve index middleware](/2021/03/22/express-example-serve-index/)
+
+### 3.4 - [A basic text editor project](/2019/05/01/express-example-text-editor/)
+
+## 4 - Conclusion
 
 In time I might get around to creating more expressjs examples, and when I do I will of course expand this post with more examples. For the most part I just use express for making simple little server projects for many of my github folders that act as ways to serve up examples of things locally. I have to admit that I am a lot more interested in front end development, however maybe that is why I like express so much. When it does come to working out at least a little back end code of course I like to use node because I can use the same scripting language that I have come to like using in front end development. Working out some things with vanilla javaScript alone can often prove to be time consuming when it comes to nodejs itself, so express helps to make quick work of many common tasks, and there is a wealth of well supported middleware for it also.
 
