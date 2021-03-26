@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2021-03-26 11:52:08
-version: 1.10
+updated: 2021-03-26 11:54:35
+version: 1.11
 ---
 
 With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html) functions and modules for major projects. Also one should be aware of how to make use of the next function in a middleware function when it comes to working with functions that have callbacks that might have an error object, or promises that can possibly trigger a catch block.
@@ -19,7 +19,7 @@ So then in this post I will be going over just a few quick, simple middleware fu
 
 ## 1 - Express Error handing middleware sync example
 
-If a middleware throws an error that is not the result of some kind of async type action, then express will just handle the error. The default error handler will fire, unless a custom error handler middleware is defined.
+If a middleware throws an error that is not the result of some kind of async type action, then express will just handle the error. The default error handler will fire, unless a custom error handler middleware is defined. To define a custom error handler that will be used first, one way is to just pass a middleware function to the app use method. This middleware function should have four arguments, and when doing so the first argument will be the error object. This kind of hander should be placed at the bottom of the app.js file so that it will be used after all the other paths that might apply.
 
 ```js
 let express = require('express'),
