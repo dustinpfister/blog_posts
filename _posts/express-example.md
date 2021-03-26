@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-26 15:10:10
-version: 1.15
+updated: 2021-03-26 15:13:26
+version: 1.16
 ---
 
 This will be a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. Learning express is something that will take a fair investment of time, but the more I play around with it the more I begin to like it actually. The framework takes a kind of minimalistic approach just like that of vuejs when it comes to front end frameworks, which I think pares well with express.
@@ -78,6 +78,8 @@ xhr.send(JSON.stringify({
 In this Section I will be briefly writing about all the expressjs example that I have made so far when it comes to starting to make something that is at least starting to look like some kind of project. Many of these are not production worthy, but just sever as some examples to get a general idea of what express is all about when it comes to making full stack web applications. making a real full stack application often requires a great investment of time and effort if it is just one developer doing all the work, which is the case wit me and these examples.
 
 ### 3.1 - [A simple markdown editor](/2019/05/02/express-example-markdown-editor/)
+
+I started a project where the idea was to have something that I would start on one computer on my network, and then use a front end system to edit a collection of markdown files on that computer from any computer on the network.
 
 ### 3.2 - [Network pointers](/2021/03/25/express-example-network-pointers/)
 
