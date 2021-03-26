@@ -5,11 +5,15 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2018-05-29 10:34:38
-version: 1.6
+updated: 2021-03-26 12:00:02
+version: 1.7
 ---
 
-The node.js powered server side framework [express.js](https://expressjs.com/) is a pretty when it comes to making full stack web applications with [node.js](https://nodejs.org/en/). It is part of the MEAN stack, and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone). In any case express is worthy of a series of posts on it for starting with the typical getting started post, so lets get this one out of the way so we can get into making some interesting stuff.
+The [node.js](https://nodejs.org/en/) powered server side framework [express.js](https://expressjs.com/) is a pretty great when it comes to making full stack web applications. It is part of the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_%28solution_stack%29), and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone) just to name a few. 
+
+However the framework can just be used by itself, and just a few additional packages as a way to quickly get up and running with a nodejs project compared to doing everything from the ground up. I do not have to go with angular when it comes to a client side framework, in fact as of the last time I edited this post I enjoy using vuejs over angular actually.
+
+In any case express is worthy of a series of posts on it for starting with the typical getting started post, so lets get this one out of the way so we can get into making some interesting stuff.
 
 <!-- more -->
 
