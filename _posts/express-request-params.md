@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 14:20:39
-version: 1.8
+updated: 2021-03-26 14:25:13
+version: 1.9
 ---
 
 When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params. 
@@ -94,3 +94,10 @@ app.listen(app.get('port'), () => {
     console.log('app is up on port: ' + app.get('port') );
 });
 ```
+
+## 3 - Conclusion
+
+Well that is all I have to say for now at least when it comes to the basics of user parameters when working out some middleware for an express.js project. 
+
+There are many more use case examples that come to mind that I might come around to making for this post at some point in the future if I put more time into this, or make some more examples that make use of this feature. For example say I am making some kind of express.js project that involves allowing for visitors to create and mangaue a user account. When it comes to such a project chances are there will need to be a user path that starts with user, but then the user name, and when going to the root of such a path you end up with a user profile.
+
