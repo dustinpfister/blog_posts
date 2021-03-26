@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2021-03-26 11:48:35
-version: 1.9
+updated: 2021-03-26 11:52:08
+version: 1.10
 ---
 
-With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html) functions and modules for major projects. 
+With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html) functions and modules for major projects. Also one should be aware of how to make use of the next function in a middleware function when it comes to working with functions that have callbacks that might have an error object, or promises that can possibly trigger a catch block.
 
 When writing an error handling middleware for express the process of doing so is more or less the same as writing any other middleware in express, only there are four arguments to be aware of rather than the usual three. There are many basic midleware functions where there are just two arguments one for the request object, and another for the response object. As one starts making more complex examples there is making use of a third next argument that is a function that can be called to continue to the next middelware function that may apply to the request. When it comes to errors there is a additional fourth argument as you might guess contains information about the kind of error that happened.
 
