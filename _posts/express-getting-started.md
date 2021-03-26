@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2021-03-26 12:00:02
-version: 1.7
+updated: 2021-03-26 12:01:37
+version: 1.8
 ---
 
 The [node.js](https://nodejs.org/en/) powered server side framework [express.js](https://expressjs.com/) is a pretty great when it comes to making full stack web applications. It is part of the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_%28solution_stack%29), and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone) just to name a few. 
@@ -17,11 +17,11 @@ In any case express is worthy of a series of posts on it for starting with the t
 
 <!-- more -->
 
-## What to know before getting started with express
+## 1 - What to know before getting started with express
 
 This is a getting started post on the server side web application framework known as express.js, it is not a getting started post on javaScript in general as that is outside the scope of this post and any additional posts that I will write in the future. So I assume that you have at least some knowledge of javaScript. I also assume that you have node.js installed, and have some experience with that as well.
 
-## Just getting started without express-generator
+## 2 - Just getting started without express-generator
 
 So far when I work with express I just start a new npm project, and install express.js as one of the dependencies like with any other node.js project.
 
@@ -32,7 +32,7 @@ $ npm init
 $ npm install express --save
 ```
 
-## Basic hello world example
+## 3 - Basic hello world example
 
 An express.js hello world might involve just getting e reference to what is exported from the express module like with any npm package, then calling the function that is given when doing so which will result in an instance of an express app object.
 
@@ -60,11 +60,11 @@ app.listen(port, function () {
 
 It is common to call the main script that will start the project app.js, and to place this file in the root name space of the project. In all my demos I tent to stay true to that practice.
 
-## Whats next
+## 4 - Whats next
 
 The next step from your first express.js hello world project might be to get into how to serve up static files, render templates with a rendering engine like ejs, or pug, or learn more about routing. Once you have those things down you might be in a good place to start experimenting with different stacks, including database options if the project has a need for one.
 
-### Static files
+### 4.1 - Static files
 
 You might want to check out [my post on staic file hosting in express](/2018/05/24/express-static/), but it is not to hard. Just have a public folder in the root of the project, place static assets in there including an index.html file, and add this to the app.js file.
 
@@ -74,7 +74,7 @@ app.use('/', express.static('public'));
 
 Of course there are options that can be passed to the express.static method via a second argument, and sometimes you might want to bind to a path other than rought but thats the basic idea.
 
-### Adding a routes folder
+### 4.2 - Adding a routes folder
 
 I think routers are one of the most important things to be aware of it you are new to express. If not you might find yourself defining all your paths in the main app.js file, eventually ending up with a lengthy mess of code. Routers help to keep things way more neat and organized by allowing me to define a routes folder in which I can add a whole bunch of javaScript files that define all kinds of paths that I can then add into my main app.js file by way of the app.use method.
 
@@ -116,6 +116,6 @@ app.listen(port, function () {
 
 As an application grows more complex I can pull paths into these seperate files that make used of routers, export thous routers, and then make use of theme in my main script using app.use.
 
-## Conclusion
+## 3 - Conclusion
 
 Thats it for my getting started post on express.js, as my content and demos on this subject grow it can be expected that this post will be revised.
