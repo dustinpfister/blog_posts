@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 430
-updated: 2021-03-26 15:18:14
-version: 1.19
+updated: 2021-03-26 15:21:23
+version: 1.20
 ---
 
 This will be a post on express examples from very basic examples that are just use [expressjs](https://expressjs.com/) by itself, to more complex projects that use a fair number of npm packages, one or more front end frameworks, or a whole lot of vanilla js code. Learning express is something that will take a fair investment of time, but the more I play around with it the more I begin to like it actually. The framework takes a kind of minimalistic approach just like that of vuejs when it comes to front end frameworks, which I think pares well with express.
@@ -91,7 +91,7 @@ The server index middleware that is one official middleware created and maintain
 
 ### 3.4 - [A basic text editor project](/2019/05/01/express-example-text-editor/)
 
-A basic text editor example that I started.
+A basic text editor example that I started, but never really got around to completing. I just wanted to have a simple little express example that can eb used to create and edit text files from a web browser. I did not get around to adding all the little features that I wanted when it comes to logging in any so forth so it goes without saying that if this is ever to be used it should only be used on a trusted network, and with files that you do not really care about.
 
 ## 4 - Conclusion
 
