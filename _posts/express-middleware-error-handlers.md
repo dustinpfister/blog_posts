@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 433
-updated: 2021-03-24 13:19:24
-version: 1.5
+updated: 2021-03-26 11:34:39
+version: 1.6
 ---
 
 With express middleware there is a default error handling middleware that works okay for simple projects, but there will come a time now and then where it might be necessary to write custom [error handling middleware](https://expressjs.com/en/guide/error-handling.html) functions and modules for major projects. 
@@ -43,7 +43,7 @@ To define an error handling middleware in express just do so in the same way as 
 
 ## 2 - Express Error handing middleware async example
 
-When it comes to anything async that is happening in a express middleware that might result in an error, the error should be passed as an argument to the next method.
+When it comes to anything async that is happening in a express middleware that might result in an error, the error should be passed as an argument to the next method. This way the error object that is in question will be used in the error handler.
 
 ```js
 let express = require('express'),
@@ -74,3 +74,5 @@ app.use((err, req, res, next) => {
  
 app.listen(8080);
 ```
+
+In this example I am just letting the user know what happened, which is a start, but what should really happen is to do something that will address the error. In this case if the error is the result of a file not being located at an expected location then one way to resove the error would be to create the file with a kind of hard coded starting state.
