@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 14:16:18
-version: 1.6
+updated: 2021-03-26 14:19:41
+version: 1.7
 ---
 
 When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params. 
@@ -21,7 +21,7 @@ So then in todays express post I will be going over just a few quick, simple, ex
 
 To start out with how about a simple copy and past example that will just be a single app.js file. When it comes to this example I start out by just requiring in express and creating an app object just like any other express.js project. I then use the app.set method to set a port value to listen on like I do with many of my other simple express examples.
 
-I will then also want a middleware for the root path of the example. For this example I will be just sending a single link to an examples path, with a value for what will be an example folder name.
+I will then also want a middleware for the root path of the example. For this example I will be just sending a single link to an examples path, with a value for what will be an example folder name. I then have middleware set up for a path in whiich I am making use of the path parameters feature. For now it is something in which I will just be sending the name of the parameter back to the client, and that is it.
 
 ```js
 let express = require('express'),
@@ -45,6 +45,8 @@ app.listen(app.get('port'), () => {
     console.log('app is up on port: ' + app.get('port') );
 });
 ```
+
+This might not be the most compenning example, but thats okay basic examples are often like that. The basic idea here though is that part of a path can end up being some kind of value, that value can then be used as a way to help create whatever the content should be for that path.
 
 ## 2 - Having an examples folder
 
