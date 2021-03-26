@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 191
-updated: 2021-03-26 12:07:53
-version: 1.10
+updated: 2021-03-26 14:03:49
+version: 1.11
 ---
 
 The [node.js](https://nodejs.org/en/) powered server side framework [express.js](https://expressjs.com/) is a pretty great when it comes to making full stack web applications. It is part of the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_%28solution_stack%29), and is also a major component of many other projects like [sails](https://www.npmjs.com/package/sails), and [keystone](https://www.npmjs.com/package/keystone) just to name a few. 
@@ -72,13 +72,13 @@ You might want to check out [my post on staic file hosting in express](/2018/05/
 app.use('/', express.static('public'));
 ```
 
-Of course there are options that can be passed to the express.static method via a second argument, and sometimes you might want to bind to a path other than rought but thats the basic idea.
+Of course there are options that can be passed to the express.static method via a second argument, and sometimes you might want to bind to a path other than rough but thats the basic idea.
 
 ### 4.2 - Adding a routes folder
 
 I think routers are one of the most important things to be aware of it you are new to express. If not you might find yourself defining all your paths in the main app.js file, eventually ending up with a lengthy mess of code. Routers help to keep things way more neat and organized by allowing me to define a routes folder in which I can add a whole bunch of javaScript files that define all kinds of paths that I can then add into my main app.js file by way of the app.use method.
 
-For example I can make a file at /routes/foo.js that responds to any get request with bar.
+For example I can make a file at \/routes\/foo.js that responds to any get request with bar.
 
 ```js
 let express = require('express'),
@@ -114,11 +114,12 @@ app.listen(port, function () {
 });
 ```
 
-As an application grows more complex I can pull paths into these seperate files that make used of routers, export thous routers, and then make use of theme in my main script using app.use.
+As an application grows more complex I can pull paths into these separate files that make used of routers, export thous routers, and then make use of theme in my main script using app.use.
 
 ## 3 - Conclusion
 
 Getting started with express is easy enough, just set up a new npm folder, install express, and copy and past a simple app.js file to get up and running with a simple hello world example. However making a real project with express, and full stack development in general can get really involved, this really goes without saying when all the work is being done by just one person.
 
 I am not a full stack developer, I often work on projects all by myself, and when doing so it is just to much for one person. That is unless it is a very simple project that will be running on just one node, or some kind of application that will just be used on a local network, by a small group of people. The of course it becomes more realistic to work on some kind of full stack application. However I really am more of a front end only kind of guy, however even so that might be why I like express, and nodejs in general. Express is great for simple quick little small scale projects, but it can also be used when making some kind of major deal also of course.
+
 
