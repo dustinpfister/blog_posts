@@ -5,11 +5,11 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 832
-updated: 2021-03-26 13:44:42
-version: 1.1
+updated: 2021-03-26 14:03:50
+version: 1.2
 ---
 
-When working out what a path should be for some expressj middleware it is possible to make use of some parameters for paths.
+When working out what a [path should be for some expressj middleware](https://expressjs.com/en/guide/routing.html) it is possible to make use of some parameters for paths. These parameters are a way to make it so that a part of a path is a kind of parameter, the value of which can then in turn be obtained in a request object property called req.params.
 
 <!-- more -->
 
