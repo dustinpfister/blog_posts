@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 105
-updated: 2021-03-29 16:00:17
-version: 1.7
+updated: 2021-03-29 16:05:15
+version: 1.8
 ---
 
 Part of my debugging process involves placing a console.log in my code at some point to log out to the console the status of some value. Often it might be placed in the body of some code that ends up getting called often, and as such it will get logged to the console a whole bunch of times real fast. So for this reason, along with many others this might not always be the best solution for debugging.
@@ -181,4 +181,5 @@ trap('nope'); // (nothing)
 
 ## 7 - Conclusion
 
-The \_.once method is a great example of closures in action. For me it was also a great experience to look into the source code of lodash to find that many of these methods work very much the same way as if I was to take the time t write them myself.
+The \_.once method is a great example of closures in action. For me it was also a great experience to look into the source code of lodash to find that many of these methods work very much the same way as if I was to take the time the write them myself. With that said it is not so hard to create my own log once method, maybe there is a bot more to it when it comes to making a simple utility module that will work well in both a nodejs and browser environment though. With that said I have made a [javaScript example that is a utility module that contains custom logging methods, including a create log once](/2021/03/29/js-javascript-example-log-once/) method.
+
