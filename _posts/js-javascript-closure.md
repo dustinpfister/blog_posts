@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2020-07-10 19:26:30
-version: 1.8
+updated: 2021-03-29 13:44:20
+version: 1.9
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to what a closure is there are many ways to go about defining what a closure is. Some definitions are very simple yet technically still correct, while other definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them and why they are useful. 
@@ -70,4 +70,7 @@ do {
 
 ## 4 - Conclusion
 
-So closures are functions that return a function, and when doing so that inner function has access to the outer functions local variable scope.
+So closures are functions that return a function, and when doing so that inner function has access to the outer functions local variable scope. 
+
+The basic idea of a closure is not so hard to understand, but it can lead to things that might result in hard to debug code of they are used carelessly. One draw back is that a closure can result in this state that is separate from that of what might be passed using just arguments. In other words the use of a closure goes against the rules of the use of pure functions.
+
