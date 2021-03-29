@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 13:53:54
-version: 1.12
+updated: 2021-03-29 14:08:25
+version: 1.13
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -29,7 +29,43 @@ This is defiantly true, but just saying that alone does leave a great deal to th
 
 Okay that one was a little more intense, sure, but maybe it still does not cover everything there is to know about them, and why it is that they are useful. That being said maybe it is best to just study some code examples. Some very simple, others maybe not so simple. In addition of course there is learning by doing, taking the time to reproduce your own unique examples of javaScript closures. So lets take a look at some closure examples then.
 
-### 1.2 - Basic closure example
+### 1.1 - Using globals
+
+```js
+
+var x = 15,
+y = 5;
+ 
+var movePoint = function(dx, dy) {
+    return {
+        x: x += dx,
+        y: y += dy
+    }
+};
+ 
+console.log( movePoint(-5,5) ); // { x: 10, y: 10 }
+```
+
+### 1.2 - Using a Class
+
+```js
+var Point = function (x, y) {
+    this.x = x;
+    this.y = y;
+};
+ 
+Point.prototype.move = function (dx, dy) {
+   this.x += dx;
+   this.y += dy;
+   return this;
+};
+ 
+var pt = new Point(15, 5);
+ 
+console.log(pt.move(-5, 5)); // Point { x: 10, y: 10 }
+```
+
+### 1.3 - Basic closure example
 
 For starters here is a basic example of a closure where the outer function is one where I pass and x and y argument. When I do so those arguments become local variables within the scope of that outer function. I then return an inner function that has parameters of it's own, that are used with the parameters of the outer function.
 
