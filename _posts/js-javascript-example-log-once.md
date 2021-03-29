@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 833
-updated: 2021-03-29 16:00:16
-version: 1.3
+updated: 2021-03-29 16:05:14
+version: 1.4
 ---
 
 The next step after learning javaScript is to start creating some actual projects, or at least some examples of basic features and modules. For todays new javaScript example post I thought I should write a quick post on having a long once method that often proves to be an important part of a basic debugging kit of sorts.
@@ -89,4 +89,4 @@ while(i--){
 
 ## 3 - Conclusion
 
-So that is it for now when it comes to logging something to a console just once. There are many frameworks that might have this kind of method at the readu to begin with though.
+So that is it for now when it comes to logging something to a console just once. There are many frameworks that might have this kind of method at the ready to begin with though. A few years back I wrote about once such method in lodash which is called the [lodash once](/2017/12/04/lodash_once/) method.
