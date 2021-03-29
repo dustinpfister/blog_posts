@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:08:25
-version: 1.13
+updated: 2021-03-29 14:12:24
+version: 1.14
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -17,7 +17,7 @@ SO then today I will be looking into closures in javaScript with some basic, and
 
 <!-- more -->
 
-## 1 - javaScript closure
+## 1 - javaScript Closure Basics
 
 One of the simplest definitions of a closure that I have come across in my travels on-line can be summarized like this.
 
@@ -27,7 +27,11 @@ This is defiantly true, but just saying that alone does leave a great deal to th
 
 *A closure is a collection of two functions where there is an inner and outer function, the outer function closes over the inner function, and provides a function level scope that can be accessed from within the inner function, and in addition the inner function level scope can not be accessed from within the scope of the outer function.*
 
-Okay that one was a little more intense, sure, but maybe it still does not cover everything there is to know about them, and why it is that they are useful. That being said maybe it is best to just study some code examples. Some very simple, others maybe not so simple. In addition of course there is learning by doing, taking the time to reproduce your own unique examples of javaScript closures. So lets take a look at some closure examples then.
+Okay that one was a little more intense, sure, but maybe it still does not cover everything there is to know about them, and why it is that they are useful. That being said maybe it is best to just study some code examples in order to really get the hang of closures, and also what the alternatives are. Some very simple, others maybe not so simple, but for this first section in the post I think I will start with some very simple code examples. In addition of course there is learning by doing, taking the time to reproduce your own unique examples of javaScript closures. 
+
+In this section I will be covering a few javaScript examples that involve having a state in the form of an x and y value, and then updating that state with a function. I will be going over a few ways f doing this including the use of globals, a class, and of course a closure.
+
+So lets take a look at some basic closure, and closure related javaScript examples then.
 
 ### 1.1 - Using globals
 
