@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 833
-updated: 2021-03-29 16:32:01
-version: 1.8
+updated: 2021-03-29 16:38:56
+version: 1.9
 ---
 
 The next step after learning javaScript is to start creating some actual projects, or at least some examples of basic features and modules. For todays new javaScript example post I thought I should write a quick post on having a long once method that often proves to be an important part of a basic debugging kit of sorts.
@@ -107,4 +107,6 @@ So that is it for now when it comes to logging something to a console just once.
 There are many frameworks that might have this kind of method at the ready to begin with though. A few years back I wrote about once such method in lodash which is called the [lodash once](/2017/12/04/lodash_once/) method. As you would expect that function works more or less the same way, so if a framework that is all ready part of the stack has something like this then there is just making use of what there is to work with to begin with.
 
 There is a lot more to add to this kind of module when it comes to things like the use of color in the output of the log method in a nodejs environment. When it comes to that there is a nodejs [npm package called chalk](/2017/05/31/nodejs-chalk/) that is a popular solution for that sort of thing, but another option is to just learn a thing or two about [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) when it comes to creating color terminal output.
+There are maybe just a few more features I might want to add to this kind of module that I might get around to it I come back to this, or start using this module in some actual projects. one such feature is to have control, over the end of line character when using this in a nodejs environment. One way to do so is to make use of the [process.stdout.write method](/2021/03/18/nodejs-process-stdout/) in place of console.log if the module is used in a nodejs rather than browser environment. Another idea is that have more than one type of message that can be logged, such as an info and error type where error logs with be logged to the standard error stream, and info type messages will be logged to the standard output. I am sure that even more might pop up if I where to really get into this one, but I have some many other things I would like to work on, and so little time to do so.
+
 
