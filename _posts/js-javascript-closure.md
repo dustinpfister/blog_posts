@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:33:32
-version: 1.20
+updated: 2021-03-29 14:36:35
+version: 1.21
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -77,7 +77,7 @@ console.log(pt.move(-5, 5)); // Point { x: 10, y: 10 }
 
 ### 1.3 - Using pure functions
 
-Another option is to get into the habit of writing pure functions.
+Another option is to get into the habit of writing pure functions. The basic idea of pure functions is to not mutate source values of function arguments, always return the same result for the same arguments, and to not use globals.
 
 ```js
 var createPoint = function (x, y) {
