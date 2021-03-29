@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 13:52:40
-version: 1.11
+updated: 2021-03-29 13:53:54
+version: 1.12
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -29,7 +29,7 @@ This is defiantly true, but just saying that alone does leave a great deal to th
 
 Okay that one was a little more intense, sure, but maybe it still does not cover everything there is to know about them, and why it is that they are useful. That being said maybe it is best to just study some code examples. Some very simple, others maybe not so simple. In addition of course there is learning by doing, taking the time to reproduce your own unique examples of javaScript closures. So lets take a look at some closure examples then.
 
-## 2 - Basic closure example
+### 1.2 - Basic closure example
 
 For starters here is a basic example of a closure where the outer function is one where I pass and x and y argument. When I do so those arguments become local variables within the scope of that outer function. I then return an inner function that has parameters of it's own, that are used with the parameters of the outer function.
 
@@ -51,7 +51,7 @@ console.log( pt(32,90) ); // { x: 42, y: 100 }
 
 When calling the outer function the inner function is returned, and I can then use that inner function as a way to work with a state that exists in the scope of the outer function. This comes in handy now and then when a situation arises that calls for it, the nature of this is one that helps to sore a state, and keep things organized.
 
-## 3 - JavaScript closure example involving setTimeout
+## 2 - JavaScript closure example involving setTimeout
 
 So there are many javaScript examples out on the open web that have to do with the use of setTimeout that can be used to delay the execution of a javaScript function by a set amount of time.
 
@@ -70,7 +70,7 @@ do {
 } while (i < len - 1);
 ```
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 So closures are functions that return a function, and when doing so that inner function has access to the outer functions local variable scope. 
 
