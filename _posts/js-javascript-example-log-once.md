@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 833
-updated: 2021-03-29 16:13:16
-version: 1.5
+updated: 2021-03-29 16:18:10
+version: 1.6
 ---
 
 The next step after learning javaScript is to start creating some actual projects, or at least some examples of basic features and modules. For todays new javaScript example post I thought I should write a quick post on having a long once method that often proves to be an important part of a basic debugging kit of sorts.
@@ -59,7 +59,11 @@ At the end of this module I am making use of [environment detection](https://sta
 
 ## 2 - Some basic use case examples of Create Log Once
 
+So now it is time to test out this utils module to make sure that it will work they way that I want it to in both a nodejs and bowser environment. So there will need to be at least two basic examples that involve doing a few things in a loop, but only log once for just one item in the loop.
+
 ### 2.1 - A nodejs example
+
+For a nodejs example I just need to require in the utils.js file, and then I can create a single log once method at the top of the file. I can then call the log once method in a while loop, and as I expected a message will only log to the console once.
 
 ```js
 let path = require('path'),
