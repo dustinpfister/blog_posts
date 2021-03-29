@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:38:31
-version: 1.23
+updated: 2021-03-29 14:42:37
+version: 1.24
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -122,6 +122,27 @@ So now when I call this point function that is a closure, the returned function 
 
 So there are many javaScript examples out on the open web that have to do with the use of setTimeout that can be used to delay the execution of a javaScript function by a set amount of time.
 
+First of take into account this little bit of javaScript.
+
+```js
+var arr = [1, 2, 3, 4],
+len = arr.length,
+i = -1;
+do {
+    i += 1;
+    setTimeout(function () {
+        console.log(arr[i]);
+    }, 1000);
+
+} while (i < len - 1);
+// 4
+// 4
+// 4
+// 4
+```
+
+This might not be the expected output when doing this. The reason why is because the while loop will step the i value to then end and finish long before the first settimeout function call runs the function that is given to it as a callback. So then the value of i will remain at the index value of the last index in the array. One way to go about resolving something  like this would be to use a closure.
+
 ```js
 var arr = [1, 2, 3, 4],
 len = arr.length,
@@ -135,6 +156,10 @@ do {
     }
         (i));
 } while (i < len - 1);
+// 1
+// 2
+// 3
+// 4
 ```
 
 ## 3 - Conclusion
