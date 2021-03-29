@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 833
-updated: 2021-03-29 16:26:54
-version: 1.7
+updated: 2021-03-29 16:32:01
+version: 1.8
 ---
 
 The next step after learning javaScript is to start creating some actual projects, or at least some examples of basic features and modules. For todays new javaScript example post I thought I should write a quick post on having a long once method that often proves to be an important part of a basic debugging kit of sorts.
@@ -18,6 +18,8 @@ Anyway I also often find myself in situations in which if something happens I ju
 <!-- more -->
 
 ## 1 - The utils lib that contains my Create Log Once method
+
+In this section I will be going over the source code of a utility library that can be used as a kind of custom log module. There are many different ways to go about writing this kind of module, and there are some differences to take into account depending if I want something that will work okay in a browser, or in nodejs. For this javaScript example though I think I will be making something that will work out of the box in both javaScript environments by making use of a few more additional tricks when it comes to javaScript environment detection.
 
 At the top of the module I have my log function that will take a mess argument to be logged. I then have a create log once method that when called will return a function that when called will call the utils.log function only once. Any additional calls to the function after that will result in no further action of any kind.
 
