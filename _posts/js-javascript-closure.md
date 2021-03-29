@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 13:44:20
-version: 1.9
+updated: 2021-03-29 13:49:55
+version: 1.10
 ---
 
-What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to what a closure is there are many ways to go about defining what a closure is. Some definitions are very simple yet technically still correct, while other definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them and why they are useful. 
+What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
 
 There are all ready many posts on the subject of closures in javaScript, just about any js developer that writes a blog on javaScript will likely get around to writing a post on them sooner or later, along with things like the this keyword, and the nature of prototype inheritance. So it was only a matter of time until I wrote this post also, so as such, here it is. Today I will be looking into closures with some basic, and maybe not so basic examples.
 
