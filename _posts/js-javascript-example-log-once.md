@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 833
-updated: 2021-03-29 16:05:14
-version: 1.4
+updated: 2021-03-29 16:13:16
+version: 1.5
 ---
 
 The next step after learning javaScript is to start creating some actual projects, or at least some examples of basic features and modules. For todays new javaScript example post I thought I should write a quick post on having a long once method that often proves to be an important part of a basic debugging kit of sorts.
@@ -18,6 +18,8 @@ Anyway I also often find myself in situations in which if something happens I ju
 <!-- more -->
 
 ## 1 - The utils lib that contains my Create Log Once method
+
+At the top of the module I have my log function that will take a mess argument to be logged. I then have a create log once method that when called will return a function that when called will call the utils.log function only once. Any additional calls to the function after that will result in no further action of any kind.
 
 ```js
 var utils = {};
@@ -51,6 +53,9 @@ if (!utils.isBrowser()) {
     module.exports = utils;
 }
 ```
+
+
+At the end of this module I am making use of [environment detection](https://stackoverflow.com/questions/17575790/environment-detection-node-js-or-browser) to export the value of the utils global in the event that this module is being used in a nodejs environment. I made the code that will return true or not another utility method of the module in the forum of an is browser method. This function makes use of a [javaScript try catch](/2019/03/02/js-javascript-try/) statement that will cause an exception if the function is called in a nodejs environment, so then in the catch blog of the try catch statement I return false.
 
 ## 2 - Some basic use case examples of Create Log Once
 
