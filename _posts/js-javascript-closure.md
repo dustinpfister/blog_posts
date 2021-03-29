@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:12:24
-version: 1.14
+updated: 2021-03-29 14:16:32
+version: 1.15
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -35,6 +35,8 @@ So lets take a look at some basic closure, and closure related javaScript exampl
 
 ### 1.1 - Using globals
 
+First off here is an example that makes use of global variables to create, store, and work with a single point value. When I first started out with javaScript I was making functions like this.
+
 ```js
 
 var x = 15,
@@ -49,6 +51,8 @@ var movePoint = function(dx, dy) {
  
 console.log( movePoint(-5,5) ); // { x: 10, y: 10 }
 ```
+
+This will work find for just this simple little example, but there is all ready some draw backs to talk about. First off the x and y values are global values that might conflict with other code on the page. Another draw back that will drive some developers nuts is that I am making use of global variables inside the body of the move point function.
 
 ### 1.2 - Using a Class
 
