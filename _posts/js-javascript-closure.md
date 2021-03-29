@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:21:45
-version: 1.18
+updated: 2021-03-29 14:27:35
+version: 1.19
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -52,7 +52,7 @@ var movePoint = function(dx, dy) {
 console.log( movePoint(-5,5) ); // { x: 10, y: 10 }
 ```
 
-This will work find for just this simple little example, but there is all ready some draw backs to talk about. First off the x and y values are global values that might conflict with other code on the page. Another draw back that will drive some developers nuts is that I am making use of global variables inside the body of the move point function. However one thing that is also worth mentioning is that I am returning an object in the move point method, and the values of that object are new values that will not result in mutation of the source values.
+This will work find for just this simple little example, but there is all ready some draw backs to talk about. First off the x and y values are global values that might conflict with other code on the page. Another draw back that will drive some developers nuts is that I am making use of global variables inside the body of the move point function.
 
 ### 1.2 - Using a Class
 
@@ -77,7 +77,7 @@ console.log(pt.move(-5, 5)); // Point { x: 10, y: 10 }
 
 ### 1.3 - Basic closure example
 
-For starters here is a basic example of a closure where the outer function is one where I pass and x and y argument. When I do so those arguments become local variables within the scope of that outer function. I then return an inner function that has parameters of it's own, that are used with the parameters of the outer function.
+So then here is a basic example of a closure where the outer function is one where I pass and x and y argument that I want.The returned result of the outer function is then in turn also a function. When I do so those arguments that I giveb when calling the outer function become local variables within the scope of that outer function. The innter function that is returned then has parameters of it's own, that are used when calling the inner function that is returned. When passing arguments to the inner function that inner function has access to the values that are closed over into the scope of the outer function.
 
 ```js
 var point = function (x, y) {
@@ -90,12 +90,10 @@ var point = function (x, y) {
 };
  
 var pt = point(15,5);
- 
 console.log( pt(-5,5) ); // { x: 10, y: 10 }
-console.log( pt(32,90) ); // { x: 42, y: 100 }
 ```
 
-When calling the outer function the inner function is returned, and I can then use that inner function as a way to work with a state that exists in the scope of the outer function. This comes in handy now and then when a situation arises that calls for it, the nature of this is one that helps to sore a state, and keep things organized.
+So now when I call this point function that is a closure, the returned function is then my move point function. I can then pass the delta values that I want to use to the returned inner function that will return a point object. This comes in handy now and then when a situation arises that calls for it, the nature of this is one that helps to sore a state, and keep things organized.
 
 ## 2 - JavaScript closure example involving setTimeout
 
