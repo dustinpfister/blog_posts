@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:27:35
-version: 1.19
+updated: 2021-03-29 14:33:32
+version: 1.20
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -75,7 +75,30 @@ var pt = new Point(15, 5);
 console.log(pt.move(-5, 5)); // Point { x: 10, y: 10 }
 ```
 
-### 1.3 - Basic closure example
+### 1.3 - Using pure functions
+
+Another option is to get into the habit of writing pure functions.
+
+```js
+var createPoint = function (x, y) {
+    return {
+        x: x,
+        y: y
+    };
+};
+ 
+var newPointFrom = function (pt, dx, dy) {
+    return createPoint(pt.x + dx, pt.y + dy);
+};
+ 
+var pt = createPoint(15, 5);
+// new point at position with given deltas
+console.log(newPointFrom(pt, -5, 5)); // { x: 10, y: 10 }
+// source point was not mutated
+console.log(pt); // { x: 15, y: 5 }
+```
+
+### 1.4 - Basic closure example
 
 So then here is a basic example of a closure where the outer function is one where I pass and x and y argument that I want.The returned result of the outer function is then in turn also a function. When I do so those arguments that I giveb when calling the outer function become local variables within the scope of that outer function. The innter function that is returned then has parameters of it's own, that are used when calling the inner function that is returned. When passing arguments to the inner function that inner function has access to the values that are closed over into the scope of the outer function.
 
