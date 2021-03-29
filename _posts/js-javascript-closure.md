@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:37:11
-version: 1.22
+updated: 2021-03-29 14:38:31
+version: 1.23
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -100,7 +100,7 @@ console.log(pt); // { x: 15, y: 5 }
 
 ### 1.4 - Basic closure example
 
-So then here is a basic example of a closure where the outer function is one where I pass and x and y argument that I want.The returned result of the outer function is then in turn also a function. When I do so those arguments that I giveb when calling the outer function become local variables within the scope of that outer function. The innter function that is returned then has parameters of it's own, that are used when calling the inner function that is returned. When passing arguments to the inner function that inner function has access to the values that are closed over into the scope of the outer function.
+So then here is a basic example of a closure where the outer function is one where I pass and x and y argument that I want.The returned result of the outer function is then in turn also a function. When I do so those arguments that I give when calling the outer function become local variables within the scope of that outer function. The inner function that is returned then has parameters of it's own, that are used when calling the inner function that is returned. When passing arguments to the inner function that inner function has access to the values that are closed over into the scope of the outer function.
 
 ```js
 var point = function (x, y) {
