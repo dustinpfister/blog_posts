@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 833
-updated: 2021-03-29 16:18:10
-version: 1.6
+updated: 2021-03-29 16:26:54
+version: 1.7
 ---
 
 The next step after learning javaScript is to start creating some actual projects, or at least some examples of basic features and modules. For todays new javaScript example post I thought I should write a quick post on having a long once method that often proves to be an important part of a basic debugging kit of sorts.
@@ -78,6 +78,8 @@ while(i--){
 
 ### 2.2 - an HTML example of the Log Once method
 
+When it comes to using the library in a client side javaScript environment I just need to link to the file in a public folder with a script tag just as with any other javaScript file in the front end. I can then use the create log once method in more or less the same way with the same results.
+
 ```html
 <html>
     <head>
@@ -98,4 +100,9 @@ while(i--){
 
 ## 3 - Conclusion
 
-So that is it for now when it comes to logging something to a console just once. There are many frameworks that might have this kind of method at the ready to begin with though. A few years back I wrote about once such method in lodash which is called the [lodash once](/2017/12/04/lodash_once/) method.
+So that is it for now when it comes to logging something to a console just once. These might not be the most compelling use case examples, but when it comes to working on a real project I often might get around to making some kind of custom logging utility such as this. The feature of having all my logs going to one method helps, and also I am often in a situation in which I just want to log something once when a certain condition happens.
+
+There are many frameworks that might have this kind of method at the ready to begin with though. A few years back I wrote about once such method in lodash which is called the [lodash once](/2017/12/04/lodash_once/) method. As you would expect that function works more or less the same way, so if a framework that is all ready part of the stack has something like this then there is just making use of what there is to work with to begin with.
+
+There is a lot more to add to this kind of module when it comes to things like the use of color in the output of the log method in a nodejs environment. When it comes to that there is a nodejs [npm package called chalk](/2017/05/31/nodejs-chalk/) that is a popular solution for that sort of thing, but another option is to just learn a thing or two about [ANSI escape codes](/2019/09/19/nodejs-ansi-escape-codes/) when it comes to creating color terminal output.
+
