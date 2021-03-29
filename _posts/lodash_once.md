@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 105
-updated: 2020-07-27 09:54:55
-version: 1.6
+updated: 2021-03-29 16:00:17
+version: 1.7
 ---
 
 Part of my debugging process involves placing a console.log in my code at some point to log out to the console the status of some value. Often it might be placed in the body of some code that ends up getting called often, and as such it will get logged to the console a whole bunch of times real fast. So for this reason, along with many others this might not always be the best solution for debugging.
 
-So when it comes to getting into situstions where something is being logged to the console to fast this is where using something like the [\_.once](https://lodash.com/docs/4.17.4#once) in [lodash](https://lodash.com/) can be helpful when working on a project that uses lodash as part of it's code base. The method will return a new function that will call a given function only once when called, and any additional calls after that will not call the given function as an argument.
+So when it comes to getting into situations where something is being logged to the console to fast this is where using something like the [\_.once](https://lodash.com/docs/4.17.4#once) in [lodash](https://lodash.com/) can be helpful when working on a project that uses lodash as part of it's code base. The method will return a new function that will call a given function only once when called, and any additional calls after that will not call the given function as an argument.
 
-It is also not so hard to create a vanilla javaScript once method also, and if you hav not done so at any time thus far I would say that it is a good idea to do so if you are still somewhat new to javaScript. A once method is a good, simple example of [closure](/2019/02/22/js-javascript-closure/) in javaScript.
+It is also not so hard to create a vanilla javaScript once method also, and if you have not done so at any time thus far I would say that it is a good idea to do so if you are still somewhat new to javaScript. A once method is a good, simple example of [closure](/2019/02/22/js-javascript-closure/) in javaScript.
 
 <!-- more -->
 
