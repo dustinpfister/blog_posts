@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:42:37
-version: 1.24
+updated: 2021-03-29 14:47:11
+version: 1.25
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -161,6 +161,8 @@ do {
 // 3
 // 4
 ```
+
+By passing the value of i to the outer function the value of i is copied by value because it is a primitive. Things will get a little more complicated if we where taking about an object, but that might be a whole other can of worms when it comes to the subject of copying objects. Any way when each function is called one second later, the value of n is what will be used to get the element in the array, and the result is getting them in order rather than just the last element for each.
 
 ## 3 - Conclusion
 
