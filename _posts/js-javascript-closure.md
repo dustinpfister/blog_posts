@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 14:19:10
-version: 1.17
+updated: 2021-03-29 14:21:45
+version: 1.18
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -56,7 +56,7 @@ This will work find for just this simple little example, but there is all ready 
 
 ### 1.2 - Using a Class
 
-So then another option for this sort of thing would be to make a Point Class.
+So then another option for this sort of thing would be to make a Point Class. This works by creating what is called a constructor function that will be used with the new keyword to create an instance of the Point class. I can then add a move function to the prototype of the class and then call that method off of the Point instance.
 
 ```js
 var Point = function (x, y) {
