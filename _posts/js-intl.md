@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 15:23:42
-version: 1.11
+updated: 2021-03-30 15:24:50
+version: 1.12
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -111,5 +111,5 @@ document.getElementById('disp-money').innerText = formatter.format(1234.56);
 
 ## 3 - Conclusion
 
-SO the Intl Object is useful for just getting this kind of task over with so I can then move on to what I really want to do in a project. This is still a relativity new feature in javaScript so if you care about your code breaking on old versions of Internet explorer mainly version 10 and older than another option will have to be explored when it comes to formatting numbers.
+SO the Intl Object is useful for just getting this kind of task over with so I can then move on to what I really want to do in a project. This is still a relativity new feature in javaScript so if you care about your code breaking on old versions of Internet explorer mainly version 10 and older than another option will have to be explored when it comes to formatting numbers. However I am not seeing a lot of people using browser that old any more, so this might be my first go to solution for formatting numbers when it comes to working on various projects.
 
