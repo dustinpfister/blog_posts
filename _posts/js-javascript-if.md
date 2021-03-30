@@ -1,12 +1,12 @@
 ---
-title: javaScript if statements and related concerns
+title: If statements in javaScript, and other control flow stuff
 date: 2019-02-25 11:22:00
 tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 11:52:18
-version: 1.18
+updated: 2021-03-30 11:54:19
+version: 1.19
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -14,7 +14,7 @@ If statements are a fundamental component of javaScript code, or in any programi
 
 <!-- more -->
 
-## 1 - javaScript if basic example
+## 1 - Start out with a basic javaScript if example
 
 A basic if statement in javaScript would involve using the if keyword followed by a set of parenthesis in which an expression or value will evaluated to or contain a value that will be used as condition. If the condition is true then the code in the if statement will execute else it will not.
 
