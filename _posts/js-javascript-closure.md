@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-03-29 15:49:55
-version: 1.26
+updated: 2021-03-30 11:42:38
+version: 1.27
 ---
 
 What is often considered an aspect of advanced javaScript is the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in some situations. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -164,9 +164,36 @@ do {
 
 By passing the value of i to the outer function the value of i is copied by value because it is a primitive. Things will get a little more complicated if we where taking about an object, but that might be a whole other can of worms when it comes to the subject of copying objects. Any way when each function is called one second later, the value of n is what will be used to get the element in the array, and the result is getting them in order rather than just the last element for each.
 
-## 3 - A basic log once method example
+## 3 - Call once, and log once methods
 
-I made a module in which I have some [basic custom, logging functions in the form of one of my javaScript example](/2021/03/29/js-javascript-example-log-once) posts that contains a long once method. This kind of a method is a good example of the use of a closure in javaScript.
+I made a module in which I have some [basic custom, logging functions in the form of one of my javaScript example](/2021/03/29/js-javascript-example-log-once) posts that contains a long once method. In [lodash there is a once](/2017/12/04/lodash_once/) method that is similar to a log once method but will call a given function only once. That kind of function is not just a good example of closures, but also a nice simple example of a higher order function. Not only does the once method return a function it can also take a function as an argument. This kind of a method is not so hard to make in vanilla javaScript though, something like this can be slapped together in a flash for example.
+
+```js
+// call a function just one time
+let callOnce = (func) => {
+    let calls = 1;
+    return function () {
+        if (calls > 0) {
+            func.apply(null, arguments);
+            calls--;
+        }
+    };
+};
+ 
+// create a method that will just log a message once
+let createLogOnce = () => {
+    return callOnce((mess) => {
+        console.log(mess);
+    });
+};
+ 
+let trap = createLogOnce();
+ 
+trap('okay'); // 'okay' logged to the console
+trap('nope'); // (nothing)
+trap('nope'); // (nothing)
+trap('nope'); // (nothing)
+```
 
 ## 4 - Conclusion
 
