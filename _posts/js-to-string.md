@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2020-07-21 17:36:19
-version: 1.9
+updated: 2021-03-30 12:56:06
+version: 1.10
 ---
 
-In javaScript there is a standard way for creating a method for an object that will return the string value for an object. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the value of method that is a way to set what the number primitive value for an object should be.
+In javaScript there is a standard way for creating a method for an object that will return what the string value for an object should be. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the [value of method](/2020/03/06/js-value-of/) that is a way to set what the number primitive value for an object should be.
 
 So then the toString method along with the value of methods of an object are standard way to define logic that will create a string or number primitive value of an object. In addition to this there are also constructor functions, and other static methods that will create an object from a primitive value. In is then worth it to write at least a little about this topic, so lets get to it here.
 
