@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:01:47
-version: 1.21
+updated: 2021-03-30 12:04:11
+version: 1.22
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -171,4 +171,5 @@ Speaking of canvas examples I have a main post on canvas examples that might be 
 
 ## 6 - Conclusion
 
-So the javaScript if statement s one of the many core aspects of javaScript programing and programing in general actually. There are many other ways of controlling the flow of code though such the use of switch statements and state machines. In any case getting comfortable with if statements is a must when it comes to getting up to speed with javaScript.
+So the javaScript if statement is one of the many core aspects of javaScript programing, and programing in general actually as just about any language is going to have them. There are other ways of controlling the flow of code though that a new developer should be aware of such the use of switch statements, loops, and state machines. In any case getting comfortable with if statements is a must when it comes to getting up to speed with javaScript, but it is also just one of many little features to be aware of.
+
