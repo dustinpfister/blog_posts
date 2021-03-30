@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:38:26
-version: 1.28
+updated: 2021-03-30 12:40:19
+version: 1.29
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -182,6 +182,8 @@ State machines come into play when working on some kind of project that is a lit
 Speaking of canvas examples I have a main post on canvas examples that might be worth checking out, but when it comes to [state machines alone I have a single canvas example](/2020/01/28/canvas-example-state-machine/) where that is the focus. In addition I have many canvas examples where a state machine is very much a part of the over all project, one of my best examples thus far might be my [pop the lock game that features a fairly complex state machine](/2019/11/26/canvas-example-pop-the-lock/) module.
 
 ## 5 - Array methods, and A word on when not to use if statements
+
+If statements and conditional operators are great, and they should be used when and where called for, which is often. However it is also a good idea to know when not to use them, as often the use of them might be a more complex solution to a problem that can be resolved with something not so complex.
 
 ### 5.1 - The Array.filter prototype method
 
