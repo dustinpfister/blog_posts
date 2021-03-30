@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 14:53:42
-version: 1.10
+updated: 2021-03-30 15:23:42
+version: 1.11
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -77,7 +77,39 @@ console.log(utils.format_percent(8, 4)); // 200%
 console.log(utils.format_percent(8, 4, true)); // 100%
 ```
 
-## 2 - Conclusion
+## 2 - Getting a page lang
+
+One way to get the language value of a page is to use the document element property of the document object in client side javaScript. This value can then be passed as the first argument for a formatter. In addition to this it can also be used as a way to set a value for other values such as the currency property of a Number Formatter constructor instance. I can check the lang of a page and if it is qual to en-US I can set the currency as US dollars \(USD\) as the currency, for all other languages I can set the currency to something else such as Euros \(EUR\).
+
+```html
+<html lang="en-US">
+  <html>
+    <title>Get Lang</title>
+  </html>
+  <body>
+    <div> Page lang is: <span id="disp-lang"></span></div>
+    <div> Using currency: <span id="disp-cur"></span></div>
+    <div> Using currency: <span id="disp-money"></span></div>
+    <script>
+var pageLang = document.documentElement.lang;
+ 
+var currency = pageLang === 'en-US' ? 'USD' : 'EUR';
+ 
+var formatter = new Intl.NumberFormat(pageLang, {
+        style: 'currency',
+        currency: currency
+});
+ 
+document.getElementById('disp-lang').innerText = pageLang;
+document.getElementById('disp-cur').innerText = currency;
+document.getElementById('disp-money').innerText = formatter.format(1234.56);
+ 
+    </script>
+  </body>
+</html>
+```
+
+## 3 - Conclusion
 
 SO the Intl Object is useful for just getting this kind of task over with so I can then move on to what I really want to do in a project. This is still a relativity new feature in javaScript so if you care about your code breaking on old versions of Internet explorer mainly version 10 and older than another option will have to be explored when it comes to formatting numbers.
 
