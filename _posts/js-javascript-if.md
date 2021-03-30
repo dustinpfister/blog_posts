@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:10:16
-version: 1.23
+updated: 2021-03-30 12:15:37
+version: 1.24
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -88,7 +88,7 @@ console.log(isNeg(-1)); // true
 
 ## 4 - Conditional operator
 
-There is also a conditional operator in JavaScript this is an operator that takes three operands and returns one of two values depending on the boolean value of the left most operand before the question mark symbol that is used..
+There is also a [conditional operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) in JavaScript this is an operator that takes three operands and returns one of two values depending on the boolean value of the left most operand before the question mark symbol that is used. For example say I have an obj value that can end up having a value of undefined in some cases, but I always want it to end up being at least an empty object. One way to do so would be to use a conditional operator to test for undefined, and then return an empty object in that case, or the value that it is all ready in the event that it is not undefined.
 
 ```js
 var obj = undefined;
@@ -114,6 +114,8 @@ console.log( func(10) ); // 'high'
 console.log( func(-20) ); // 'high'
 console.log( func(-32) ); // 'low'
 ```
+
+So the conditional operator is helpful because I can use it in an expression, doing so with if statements is a little complicated often involving the use of an IIFE in the expression with results in hard to read code that is harder to debug.
 
 ## 5 - State machines as a way to control logic
 
