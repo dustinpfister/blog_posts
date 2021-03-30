@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:43:13
-version: 1.30
+updated: 2021-03-30 12:45:47
+version: 1.31
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -188,6 +188,8 @@ If statements and conditional operators are great, and they should be used when 
 ### 5.1 - The Array.filter prototype method
 
 Say I have an array of mixed values that contain numbers, and all kinds of other types. What I want is to have an array of jusy numbers from this source array. I could work out a function that will make use of a while loop, to loop over the contents of this source array. Then inside the body of the while loop I can use an if statement with an expression that make use of the typeof operator to check the type of a current element in the source array. In the event that an element is indeed a number I can then push that element to a new array, and then when done return this new array.
+
+That kind of method that makes use of all kinds of core javaScript features will work just fine, but so would another method that makes use of the Array.filter prototype method and a single expression involving the typeof operator in a function that I pass to it.
 
 ```js
 // say I have a source array like this
