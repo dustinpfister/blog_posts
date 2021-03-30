@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:17:41
-version: 1.26
+updated: 2021-03-30 12:21:48
+version: 1.27
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -15,6 +15,10 @@ If statements are a fundamental component of javaScript code, or in any programi
 <!-- more -->
 
 ## 1 - Start out with a basic javaScript if example
+
+In this section I will be starting out with just some very basic javaScript if statement examples.
+
+### 1.1 - First basic if statement example
 
 A basic if statement in javaScript would involve using the if keyword followed by a set of parenthesis in which an expression or value will evaluated to or contain a value that will be used as condition. If the condition is true then the code in the if statement will execute else it will not.
 
@@ -31,7 +35,7 @@ if (str === 'foo') {
 
 So the value or expression that evaluates to a value does not have to be a boolean value, as just about any kind of value in javaScript has a true or false equivalent depending on the type and value of what is being evaluated. For example an empty string will evaluate to false, and a string with one or more characters will evaluate to true. So all kinds of expressions and values can eb use as a way to control when a set of logic will execute or not in a javaScript if statement.
 
-## 2 - Some more basic examples of javaScript if statements
+### 1.2 - Some more basic examples of javaScript if statements
 
 If statements can have brackets or not, and can also be used with an optional else block that will fire if the condition is only not true. I generally always do use brackets with if statements even if it does have only one line of code because I find that it helps to make things more clear to me, but it is just one of many things that one might come across when reading code on the open web.
 
@@ -64,7 +68,7 @@ if (n === '42') {
 
 These are all examples of javaScript if statements there is also the Conditional operator that can be used in expressions. More on that a little later in this post.
 
-## 3 - Else is not needed when making a function that returns something
+## 2 - Else is not needed when making a function that returns something
 
 If a function that is being made that is using the return keyword to return a result when called then else does not need to be used. The reason why is that return will stop any further execution of any additional code, so it can be used as a way to break out of a function. This differs from blocks of code where I might only want some code to run if and only if a condition is not met. 
 
@@ -86,7 +90,7 @@ console.log(isNeg(42)); // false
 console.log(isNeg(-1)); // true
 ```
 
-## 4 - Conditional operator
+## 3 - Conditional operator
 
 There is also a [conditional operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) in JavaScript this is an operator that takes three operands and returns one of two values depending on the boolean value of the left most operand before the question mark symbol that is used. For example say I have an obj value that can end up having a value of undefined in some cases, but I always want it to end up being at least an empty object. One way to do so would be to use a conditional operator to test for undefined, and then return an empty object in that case, or the value that it is all ready in the event that it is not undefined.
 
@@ -117,7 +121,7 @@ console.log( func(-32) ); // 'low'
 
 So the conditional operator is helpful because I can use it in an expression, doing so with if statements is a little complicated often involving the use of an IIFE in the expression with results in hard to read code that is harder to debug.
 
-## 5 - State machines as a way to control logic
+## 4 - State machines as a way to control logic
 
 Another way to control the flow of logic is to use what is often called a state machine. This is typically a collection of two or more methods that will fire only when a variable or object property is a given value that will cause the method to fire, or at least that might be what one is in a very basic form. Really getting into this subject can end up getting a little complex, and as such truly doing it justace would require writitng a whole other post on the topic alone, and maybe event a few such posts.
 
@@ -177,7 +181,7 @@ State machines come into play when working on some kind of project that is a lit
 
 Speaking of canvas examples I have a main post on canvas examples that might be worth checking out, but when it comes to [state machines alone I have a single canvas example](/2020/01/28/canvas-example-state-machine/) where that is the focus. In addition I have many canvas examples where a state machine is very much a part of the over all project, one of my best examples thus far might be my [pop the lock game that features a fairly complex state machine](/2019/11/26/canvas-example-pop-the-lock/) module.
 
-## 6 - Conclusion
+## 5 - Conclusion
 
 So the javaScript if statement is one of the many core aspects of javaScript programing, and programing in general actually as just about any language is going to have them. There are other ways of controlling the flow of code though that a new developer should be aware of such the use of switch statements, loops, and state machines. In any case getting comfortable with if statements is a must when it comes to getting up to speed with javaScript, but it is also just one of many little features to be aware of.
 
