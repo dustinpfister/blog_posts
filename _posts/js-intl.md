@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 15:35:52
-version: 1.14
+updated: 2021-03-30 15:37:08
+version: 1.15
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -79,7 +79,7 @@ console.log(utils.format_percent(8, 4, true)); // 100%
 
 ### 1.3 - Just format a decimal
 
-Sometimes I might just want to format a decimal number that refers to something other than money. For these kinds of situations there is a plain decimal style than can be used to format a number.
+Sometimes I might just want to format a decimal number that refers to something other than money. For these kinds of situations there is a plain decimal style than can be used to format a number. This will give more or less the same effect as the currency style but without the currency symbol append to the output as one might expect.
 
 ```js
 var utils = {};
