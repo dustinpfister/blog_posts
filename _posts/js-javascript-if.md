@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:21:48
-version: 1.27
+updated: 2021-03-30 12:38:26
+version: 1.28
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -181,7 +181,48 @@ State machines come into play when working on some kind of project that is a lit
 
 Speaking of canvas examples I have a main post on canvas examples that might be worth checking out, but when it comes to [state machines alone I have a single canvas example](/2020/01/28/canvas-example-state-machine/) where that is the focus. In addition I have many canvas examples where a state machine is very much a part of the over all project, one of my best examples thus far might be my [pop the lock game that features a fairly complex state machine](/2019/11/26/canvas-example-pop-the-lock/) module.
 
-## 5 - Conclusion
+## 5 - Array methods, and A word on when not to use if statements
+
+### 5.1 - The Array.filter prototype method
+
+```js
+// say I have a source array like this
+// and I want a new array that is just numbers
+let sourceArray = [1, 'a', null, 2, {}, 3];
+ 
+// I could work out something like this, using a function,
+// while loop, and an if statement.
+let onlyNums = (source) => {
+    let newArr = [],
+    el,
+    len = source.length,
+    i = len;
+    while (i--) {
+        el = source[len - 1 - i];
+        if (typeof el === 'number') {
+            newArr.push(el);
+        }
+    }
+    return newArr;
+};
+ 
+// and that of course will work just fine
+console.log(onlyNums(sourceArray)); // [1,2,3]
+ 
+// however another option would be to just use array.filter
+// with just the expression of interest that will produce the return
+// value for the method that I pass to Array.filter
+let onlyNums_filter = (source) => {
+    return source.filter((el) => {
+        return typeof el === 'number'
+    });
+};
+ 
+// which also works just fine
+console.log(onlyNums_filter(sourceArray)); // [1,2,3]
+```
+
+## 6 - Conclusion
 
 So the javaScript if statement is one of the many core aspects of javaScript programing, and programing in general actually as just about any language is going to have them. There are other ways of controlling the flow of code though that a new developer should be aware of such the use of switch statements, loops, and state machines. In any case getting comfortable with if statements is a must when it comes to getting up to speed with javaScript, but it is also just one of many little features to be aware of.
 
