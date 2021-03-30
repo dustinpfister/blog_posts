@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 11:54:19
-version: 1.19
+updated: 2021-03-30 11:56:26
+version: 1.20
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
@@ -165,7 +165,7 @@ i=3
 */
 ```
 
-State machines come into play when working on some kind of project that is a little advanced in which there are many application states. Such as a state in which assets need to be loaded, and a state that will run when all those assets are done loading.
+State machines come into play when working on some kind of project that is a little advanced in which there are many application states. Such as a state in which assets need to be loaded, and a state that will run when all those assets are done loading. I often work out this kind of system when making canvas games, even ones that do not involve such a task, becuase it is often just needs to break things down into many different states. For example there might be a main game state, but then there will be another state that will set up some settings before starting a new game in the main game state, and yet another state that is a main title menu, and so forth.
 
 ## 6 - Conclusion
 
