@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 14:11:41
-version: 1.3
+updated: 2021-03-30 14:18:22
+version: 1.4
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -19,6 +19,8 @@ When it comes to formating numbers in javaScript there is now a built in feature
 The Intl.NumberFormat constructor can be used to work with language sensitive number formatting. This includes money, as well as percent values. Properties can be used to format money in terms of the USD, or any kind of other currency if the right options are set.
 
 ### 1.1 - Format Money
+
+To format money with the Number Format constructor of the Intl Object first off I just need to call the constructor with the new keyword just like any other constructor function in javaScript. However I will of course want to pass some arguments, the first of which should be the language tag, for me and the sites I often work n thus far this would always be en-US, for a full list of other options for the language tag hough I would check out a [BCP 47 language tag list](https://appmakers.dev/bcp-47-language-codes-list/).
 
 ```js
 var utils = {};
