@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 14:10:04
-version: 1.2
+updated: 2021-03-30 14:11:41
+version: 1.3
 ---
 
-When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string.
+When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
 
 <!-- more -->
 
