@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 14:51:13
-version: 1.9
+updated: 2021-03-30 14:53:42
+version: 1.10
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -46,7 +46,7 @@ The returned result then is a formatter, that I can then call and pass a number 
 ### 1.2 Format a Percent value
 
 Another useful feature of this NumberFormat constructor is to use to to format a percent value. This is done more or less the same way as with the currency style, but I just set a percent style rather than currency. I can then pass a number value to the returned formatter and when doing so the number given should be a fraction between and including zero and one. 
-When making a formating method off of this I might want to have just a few more options and features when it comes to producing the number value to give to the formatter. For example I might want to use it my passing a numerator and denominator value to get a percentage. Also it might be nice ot have an option to turn on clamping of a percent value in some situations.
+When making a formating method off of this I might want to have just a few more options and features when it comes to producing the number value to give to the formatter. For example I might want to use it my passing a numerator and denominator value to get a percentage. Also it might be nice to have an option to turn on clamping of a percent value in some situations.
 
 ```js
 var utils = {};
@@ -79,4 +79,5 @@ console.log(utils.format_percent(8, 4, true)); // 100%
 
 ## 2 - Conclusion
 
-SO the Intl Object is useful for just getting this kind of task over with so I can then move on to what I really want to do in a project.
+SO the Intl Object is useful for just getting this kind of task over with so I can then move on to what I really want to do in a project. This is still a relativity new feature in javaScript so if you care about your code breaking on old versions of Internet explorer mainly version 10 and older than another option will have to be explored when it comes to formatting numbers.
+
