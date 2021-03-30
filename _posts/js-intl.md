@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-03-30 15:41:56
-version: 1.17
+updated: 2021-03-30 15:44:26
+version: 1.18
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -134,4 +134,5 @@ So the Intl Object is useful for just getting this kind of task over with so I c
 
 The intl object does have its limitations, it can be used for formating, but it can not be used to do everything that might come up with converting one value to another. This goes without saying when it comes to currency, of course this alone will not do that as exchange rates are always go up and down all over the place. When it comes to doing that in a javaScript environment one just has to make use of some kind of API, and all the ones that I know of cost money to use for a certain number of requests over time.
 
+I did not get around to covering every little feature of the Intl object in this post, but I wanted to get into the Number Formatter a little at least because that is the one function that will will likely be using the most often in actual projects. If I get some more time to come back ground to this post maybe I will expand this content with a few more examples but I think I covered the most important parts of it that I at least will actually be using.
 
