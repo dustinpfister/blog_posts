@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2021-03-30 12:54:13
-version: 1.16
+updated: 2021-03-30 13:00:50
+version: 1.17
 ---
 
 The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object should be. This is a way to define a function for a single object, or a Class of Objects that will be called when the object is used in an expression where the object will be teated as a number in the expression.
@@ -21,7 +21,9 @@ In this post the focus will be more so on the vlaueOf method, and how this can c
 
 ## 1 - js value of basic example
 
-So to get a basic idea of what the value of method is all about here is a very basic example of the value of method in action. I have just a simple object literal with two number values, and a value of method that returns another number value that makes use of those properties. I then assign this object literal to a variable named obj which I then use in an expression to get a number value that i then assign to the variable n.
+So to get a basic idea of what the value of method is all about here is a very basic example of the value of method in action. I have just a simple object literal with two number values, and a value of method that returns another number value that makes use of those properties using the core javaScript built in Math.pow method that will return a number using those two numbers in the object. When doing so the this keyword can be used inside th body of the valueOf method to refer to the object, and its properties.
+
+I then assign this object literal to a variable named obj which I then use in an expression with the addition operator and a number literal when the evaluates to a number value that I then assign to the variable n.
 
 ```js
 var obj = {
