@@ -5,13 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2020-09-27 09:07:34
-version: 1.16
+updated: 2021-03-31 11:13:43
+version: 1.17
 ---
 
-In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of piratical application also. There are many game frameworks that might have this built in, there are also well know javaScript dependencies such as [pathfinding.js](https://github.com/qiao/PathFinding.js/) that [can be used](https://qiao.github.io/PathFinding.js/visual/) to make quick work of this aspect of javaScript Game development by making it part of the apparitions dependences.
+In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
 
-However pathfinding.js is a little bloated, it comes with a collection of methods for path finding rather than just one tired yet true solution. It is also true that pathfinding.js no longer appears to be supported, which is not always such a bad thing might you, it is true that if something is not broken there might very well not be a need to fix it after all. Still there might be a need to work out a custom solution for path finding for a number of other reasons that might come up, so in this post I will be writing about making a custom path finding method in javaScript. I have not tested this solution extensively, but it is based off of what I have studied in pathfinder.js, and in any case it should still serve as a decent starting point for this sort of thing.
+There are many game frameworks that might have this built in, there are also well know javaScript dependencies such as [pathfinding.js](https://github.com/qiao/PathFinding.js/) that [can be used](https://qiao.github.io/PathFinding.js/visual/) to make quick work of this aspect of javaScript Game development by making it part of the applications dependences.
+
+However pathfinding.js is a little bloated, it comes with a collection of methods for path finding rather than just one tired yet true solution. It is also true that pathfinding.js no longer appears to be supported, which is not always such a bad thing mind you. It is true that if something is not broken there might very well not be a need to fix it after all, that sort of things happens now and then and that might very well be the case with pathinging.js. 
+
+Still there might be a need to work out a custom solution for path finding for a number of other reasons that might come up, including just making something that is a little lighter, so in this post I will be writing about making a custom path finding method in javaScript. I have not tested this solution extensively, but it is based off of what I have studied in pathfinder.js, and in any case it should still serve as a decent starting point for this sort of thing.
 
 <!-- more -->
 
