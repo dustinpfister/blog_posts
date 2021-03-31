@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2021-03-31 09:25:32
-version: 1.17
+updated: 2021-03-31 09:27:48
+version: 1.18
 ---
 
 The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and [constructor functions](/2019/02/27/js-javascript-constructor/) that are what the new operator is often used with.
@@ -88,6 +88,8 @@ console.log(Point(5, 5));
 ## 4 - Arguments and calling is optional
 
 When using the new keyword with no arguments passed to the constructor this will still result in a new instance of the constructor, but with undefined values for all the arguments. So it is often a good idea to work out some kind of solution to have default values for arguments that are not given. When it comes to using the built in Date constructor it is possible to not give any arguments at all, and when doing so the default end up being the current local system time.
+
+One way to go about doing this is to just test for the value of undefined using a conditional operator, and then set a default value in the event that the value is undefined, while just passing along the argument value that is given in any other case.
 
 ```js
 let Point = function (x, y) {
