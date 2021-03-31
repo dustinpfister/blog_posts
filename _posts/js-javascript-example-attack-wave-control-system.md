@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-03-31 17:05:37
-version: 1.4
+updated: 2021-03-31 17:10:42
+version: 1.5
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -362,6 +362,8 @@ var poolMod = (function () {
 ```
 
 ## 4 - A game module
+
+I made a quick place holder game module for this example, for now this is just a very simple game where units spawn at the top of the canvas and move to the bottom of the canvas. I did not put much time into this because the main thing I wanted to work out for this post is of course the wave control module. However In a real game I might only built so much more on top of this.
 
 ```js
 var gameMod = (function () {
