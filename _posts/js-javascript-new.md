@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2021-03-31 09:34:55
-version: 1.19
+updated: 2021-03-31 09:37:33
+version: 1.20
 ---
 
 The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and [constructor functions](/2019/02/27/js-javascript-constructor/) that are what the new operator is often used with.
@@ -102,8 +102,11 @@ console.log( new Point() );
 console.log( new Point );
 ```
 
+There are many more ways to go about doing this sort of thing that I might get around to here at some point when it comes to editing. However maybe getting to deep into this would be a little off topic.
+
 ## 5 - Conclusion
 
 So then the new keyword is how to go about using the power of user defined, and built in constructor functions in javaScript. There is using built in constructors such as the Date constructor, but also it is not so hard to make ones own constructor functions that often prove to be a useful tool in the tool box. However it is still important to remember that it is not the only tool to work with, and also these days I find myself preferring to not create constructor functions so much, or even at all, in favor of writing pure functions. I will not be getting into detail about pure functions here as that is without question a matter for a whole other post, or maybe even a small collection of posts actually. However I would say that the use of the new keyword and constructor functions goes hand in hand with object oriented rather than functional programming. If you take the time to study both topics you too might come to prefer a functions approach, and for good reasons.
 
-Still the new keyword, constructor functions, the prototype chain, and object orientated programming is still very much a core part of what javaScript is. Even if you like function programing better it still makes sense to know a thing or two about the alternative.
+Still the new keyword, constructor functions, the prototype chain, and object orientated programming is still very much a core part of what javaScript is. Even if you like function programing better it still makes sense to know a thing or two about the alternative. So working out a few simple examples at least now and then is called for to get a feel for what the new keyword is all about when calling a function.
+
