@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-03-31 17:12:30
-version: 1.6
+updated: 2021-03-31 17:13:37
+version: 1.7
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -544,6 +544,8 @@ var draw = (function () {
 ```
 
 ## 6 - Main javaScript file
+
+I now just have a little more javaScript that will make use of everything that I put together here, and also a place to pack the main application loop.
 
 ```js
 var canvasObj = utils.createCanvas({
