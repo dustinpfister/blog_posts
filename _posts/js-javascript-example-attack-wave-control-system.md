@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-03-31 17:26:24
-version: 1.10
+updated: 2021-03-31 17:29:34
+version: 1.11
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -447,7 +447,7 @@ var gameMod = (function () {
 
 ## 5 - A draw module
 
-I made the full example of this a canvas example, so I have a draw module that I put together real fast. Most of what i have here I copied over from one of my canvas examples, called pop the lock when it comes to the draw pool methods.
+I made the full example of this a canvas example, so I have a draw module that I put together real fast. Most of what i have here I copied over from one of my canvas examples, called pop the lock when it comes to the draw pool methods. For this example I am just going to want to have draw pool methods for the wave buttons, and the units that will spawn into the canvas when a wave button reaches the top of the canvas. In the event That I start to make some kind of real example with this I might have a few more things that i use the object pool library for that have to do with navigating menus and displaying all kinds of info and so forth.
 
 ```js
 var draw = (function () {
