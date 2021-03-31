@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 18
-updated: 2020-07-14 13:17:22
-version: 1.7
+updated: 2021-03-31 09:57:46
+version: 1.8
 ---
 
 In core javaScript [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are technically not Arrays, but [Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), that is that an array is a kind, or class of an object. The thing about Arrays that are made with the core js Array constructor, or literal syntax, is that they are a special kind of object in which the objects constructor name is Array. This also means there there are a bunch of array prototype methods that can be used with that instance of Array also. However there are also array like objects in addition to Arrays. What this means is that if any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays. If you are confused then in this post I will try to help reduce some of this confusion, and of course it will be best for you to just work out some examples of your own when it comes to learning by doing.
@@ -21,7 +21,7 @@ console.log( [].constructor.name ); // Array
 
 Any object created with the Array literal notation, like in the above example, will result in an object that is an instance of Array, and therefore has Array methods like splice, slice, and join in it's prototype.
 
-## Making a plain old object like an Array.
+## 1 - Making a plain old object like an Array.
 
 It is possible to make just a plain old object with the object literal notation, and call Array methods on it using call.
 
@@ -47,7 +47,7 @@ console.log( [].slice.call(obj,1,3) );
 
 So it is not an Object with a constructor name of Array, but if it is formatted in a certain way it can still be used as an Array. Often you may come across something in javaScript that looks like an Array, but is really just a plain old Object, or an instance of some other constructor function such as HTMLCollection.
 
-## The arguments object in functions.
+## 2 - The arguments object in functions.
 
 An example of an Array like Object that is not an Array is the [arguments](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) object in functions. Every time a function is called there is an arguments object that is Array like in the sense that each of the arguments that you pass to the function is in it, in a fashion where the first argument is in a property called '0', and the second argument is in a property called '1', and so forth. In addition it even has a length property just like an Array, but it is not.
 
@@ -69,7 +69,7 @@ function func(one,two,three){
 };
 ```
 
-## HTMLCollection Objects
+## 3 - HTMLCollection Objects
 
 Another example of Array like Objects that are not Arrays are instances of [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection). This is what you end up with when you use a method like document.getElementsBytagName to get a collection of HTML DOM element references in a document, when it comes to client side javaScript.
 
@@ -101,7 +101,7 @@ console.log( [].slice.call(p_tags,1,3)[1].innerText ); // three
 
 Again to some extent you can call Array methods on them, as long as the are read only methods, methods such as splice will cause an error, you need to use appropriate DOM manipulation methods to edit HTML.
 
-## making an Array Object like
+## 4 - Making an Array Object like
 
 Because Arrays are objects you can treat them like so. We have covered some examples of how you can treat Plain Objects, or any Object that is Array like, like an Array. How about treating an Array like an Object.
 
@@ -118,6 +118,7 @@ console.log(Object.keys(array).length) // 3
  
 ```
 
-## Conclusion
+## 5 - Conclusion
 
-I hope this post has helped to address some confusion, and be sure to check out my other [posts on javaScript](/categories/js/)
+I hope this post has helped to address some confusion when it comes to arrays in javaScript and why they seem to be more or less just like objects in general. Part of the reason why that is can be explained by saying that they are in fact a kind of object rather than this whole other kind of data type all together which might be the case in other languages.
+
