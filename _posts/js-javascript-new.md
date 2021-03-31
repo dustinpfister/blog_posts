@@ -5,13 +5,16 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2021-03-31 09:37:33
-version: 1.20
+updated: 2021-03-31 09:40:51
+version: 1.21
 ---
 
-The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there, knowing what it does, and being aware of the many other subjects that branch off from it is a must for any javaScript developer. In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and [constructor functions](/2019/02/27/js-javascript-constructor/) that are what the new operator is often used with.
+The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there. So knowing a thing or two about what the new operator does, and being aware of the many other subjects that branch off from it, is a must for any javaScript developer. It is also a good idea to know what also happens when one does not use the new operator when calling a function also, and that functions in javaScript can be designed in a way in which they will work well and as exspected both with and without the use of the new operator when calling them.
 
 A constructor function is a way to create a function that will constructor a type of object that contains methods and properties that are not unique properties and methods of the object itself, but are contained in the prototype object of it. If you have logged any about of time at all playing around with javaScipt chances are you might have all ready used the new keyword with a built in constructor such as the Date constructor for example.
+
+In this post I will be touching base with some examples that make use of the new operator, and some related subjects to the use of the new operator and [constructor functions](/2019/02/27/js-javascript-constructor/) that are what the new operator is often used with.
+
 
 <!-- more -->
 
