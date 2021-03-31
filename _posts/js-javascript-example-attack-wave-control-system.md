@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-03-31 17:21:43
-version: 1.9
+updated: 2021-03-31 17:26:24
+version: 1.10
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -597,6 +597,8 @@ var loop = function () {
 };
 loop()
 ```
+
+When this javaScript example is up and running things seem to work more or less as I expect. I get a collection of wave buttons on the side of the canvas that start moving up to the top of the canvas. Once a wave button gets to the top of the canvas the unit count of the wave is added to a total count stored in my main game module object. In the main game module object units are then spawn from the top of the canvas and they then move to the bottom of the canvas. If a unit reach the bottom of the canvas it will become inactive, and a unit will also become inactive if I click a unit.
 
 ## 7 - Conclusion
 
