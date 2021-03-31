@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-03-31 08:55:05
-version: 1.24
+updated: 2021-03-31 09:16:07
+version: 1.25
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations.
@@ -19,9 +19,16 @@ The break keyword also comes into play when doing something with a [switch state
 
 ## 1 - javaScript break basics
 
-The break keyword can be used to break out of a loop by itself, but typically it would be used when a certain condition happens so it will often be used with an if statement, and some kind of expression. This can help avoid having to loop run threw the full contents of an array for example. If the array is fairly large the break keyword can help reduce the amount of time it takes for the loop to complete. Also the break keyword could be used to keep some code from running that I would not want to run if a condition is met that warrants a break statement.
+The break keyword would typically be used used in the body of a certain conditional statement within the body of a loop as a way to get out of something that would otherwise be an infinite loop, or to just get out of a loop sooner compared to how long it would take for some other condition to happen that will result in an end to the loop. 
 
-So late being said take a look at this very simple example of the javaScript break statement in action.
+So then the break keyword can help avoid having to loop over the full contents of an array for example whe looping over the contents of an array that way. If the array is fairly large the break keyword can help reduce the amount of time it takes for the loop to complete which proves to be more efficient compared to other options such as Array.forEach that will always loop over the full contents of an array. Also the break keyword could be used to keep some code from running that I would not want to run if a condition is met that warrants a break statement. 
+
+There are other options to the use of a break statement when it comes to this that are worth mentioning later, but for now in this section I will be sticking mainly with some basic hello world style javaScript break examples.
+
+
+### 1.1 - Break out of a while loop before the end
+
+When using a while loop I often like to make use of the trick where I start an index value at the end and then subtract from the index value while also using th result new value as a way to break out of the loop. That is that the number 0 evaluates to false so by starting a number at a value above zero and subtracting by one for each loop the value will become zero at some point which will result in and end to the loop. However I can use this in conjunction with a break statement to also get out before that happens, simply put something like this:
 
 ```js
 let arr = [3, 'foo', 4],
@@ -33,7 +40,7 @@ console.log(i); // 1
 
 ```
 
-With a simple example like this it does not make much of any difference really, but then it comes to a far more complex block of code that involves a much larger array, and some resource intensive code that does not need to be applied for all elements in an array, or all permutations of a loop the break keyword can be used in conjunction with if statements and continue to help reduce the number of operations preformed.
+With a simple example like this it does not make much of any difference really, but then it comes to a far more complex block of code that involves a much larger array, and some resource intensive code that does not need to be applied for all elements in an array in can of course make a difference. Using while loops seems to be one of the fastest ways to go about looping in javaScript, but there is also just fining ways to go about reducing the volume of work to do to begin with.
 
 ## 2 - switch statements and javaScript break
 
