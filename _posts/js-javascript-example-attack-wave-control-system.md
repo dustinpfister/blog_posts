@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-03-31 16:57:41
-version: 1.2
+updated: 2021-03-31 17:03:38
+version: 1.3
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -137,7 +137,9 @@ var waveMod = (function () {
     ());
 ```
 
-## 2 - utils.js
+## 2 - A utils.js unilty library
+
+This is a javaScript example, and as such the main feature is something that can be used in just about any kind of javaScript environment. However the typical use of the wave module will be as a canvas project in front end javaScript. As with just about any other canvas example I have a utility library that contains a bunch of copy and past methods that I use from one canvas example to another. This is s module that will change up a little from one example to another thigh, so for this example I am using bound box collision detection, as well as some additional methods that have to do with creating a canvas and getting a point relative to a canvas element.
 
 ```js
 var utils = {};
