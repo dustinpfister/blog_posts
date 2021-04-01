@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:18:11
-version: 1.9
+updated: 2021-04-01 14:21:15
+version: 1.10
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -151,4 +151,7 @@ When this is up and running the demo seems to work just fine. I get the shapes a
 
 ## 3 - Conclusion
 
-There are maybe a few more things here and there that i would like to add, but maybe I should only get around to doing that once I start using this in a real projects or two so I gain a better sense of what is actually needed for this. I do not care to spend time adding features that I think that I might want, or need, for now I just want to have want I know that I want and need. Which os of course just a better draw points method.
+There are maybe a few more things here and there that i would like to add, but maybe I should only get around to doing that once I start using this in a real projects or two so I gain a better sense of what is actually needed for this. I do not care to spend time adding features that I think that I might want, or need, for now I just want to have want I know that I want and need. Which of of course just a better draw points method, and so far I think that I all ready have what it is that I wanted.
+
+I all ready have one canvas example in mind that I am sure that I would like to use this with whenI get around to putting a little more time into it. In time I am sure that I might want to use a method like this in a whole bunch of other projects that I might start at some point. It is just a question of creating methods that will create and return the arary of arrays in the format that will work with this draw points method.
+
