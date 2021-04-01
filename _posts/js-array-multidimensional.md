@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-04-01 14:54:49
-version: 1.12
+updated: 2021-04-01 14:56:47
+version: 1.13
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -148,7 +148,7 @@ console.log(grid.get(2, 3)); // 'e'
 
 ## 3 - Three or more dimensions
 
-So then there is working something out for working with three or more dimensions. I quickly put something together for that, but it is still not working the way I would like it to really.
+So then there is working something out for working with three or more dimensions. I quickly put something together for that, but it is still not working the way I would like it to really. I do get around to editing these posts now and then, maybe at some point I will come back to this one, or just come up with a better example all together when it comes to this sort of thing.
 
 ```js
 var lengthFromDims = function (dims) {
