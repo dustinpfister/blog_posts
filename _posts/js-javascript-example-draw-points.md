@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:01:08
-version: 1.4
+updated: 2021-04-01 14:03:24
+version: 1.5
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -82,7 +82,7 @@ First off I want to go over the draw points javaScript file that will just creat
 
 ## 2 - Demo of the draw points method
 
-Now for a simple demo to try this draw points method out to make sure that it is working the way that I want it to. 
+Now for a simple demo to try this draw points method out to make sure that it is working the way that I want it to. For this demo I will just have a simple draw.js file, and then add to it with my draw points file that I covered above. After that I think that I will just have everything else in the main.js file when it comes to creating the canvas element, creating an array of points arrays, and using the draw points method.
 
 ### 2.1 - A draw.js file
 
