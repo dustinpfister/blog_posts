@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:15:07
-version: 1.8
+updated: 2021-04-01 14:18:11
+version: 1.9
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -79,6 +79,8 @@ First off I want to go over the draw points javaScript file that will just creat
 }
     (this));
 ```
+
+When calling the method the first thing that I will want to give as an argument is the drawing context of the canvas element that I want to draw to. In some use case examples I might use this method to draw directly to a canvas element over and over again, however in other uses cases I might want to use this method to render a sprite sheet in the from of a canvas element just once.
 
 ## 2 - Demo of the draw points method
 
