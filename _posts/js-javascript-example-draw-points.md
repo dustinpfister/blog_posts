@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:11:25
-version: 1.7
+updated: 2021-04-01 14:15:07
+version: 1.8
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -17,7 +17,7 @@ When I make a basic draw points method such a method will just draw an array of 
 
 ## 1 - The draw_points.js file
 
-First off I want to go over the draw points javaScript file that will just create, or add to a draw object that it is used with.
+First off I want to go over the draw points javaScript file that will just create, or add to a draw object that it is used with. For this module I made a file where I place the draw points method in a javaScript iife, inside this iife I am going to create or append to a draw object that should be a property of the global object. This might not be the best way to go about doing this, in some projects I might add this method to a draw object in some other way, but for as far as this post is concerned I wanted to make a stand alone method.
 
 ```js
 
