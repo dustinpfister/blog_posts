@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 18
-updated: 2021-03-31 09:57:46
-version: 1.8
+updated: 2021-04-01 15:25:43
+version: 1.9
 ---
 
 In core javaScript [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are technically not Arrays, but [Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), that is that an array is a kind, or class of an object. The thing about Arrays that are made with the core js Array constructor, or literal syntax, is that they are a special kind of object in which the objects constructor name is Array. This also means there there are a bunch of array prototype methods that can be used with that instance of Array also. However there are also array like objects in addition to Arrays. What this means is that if any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays. If you are confused then in this post I will try to help reduce some of this confusion, and of course it will be best for you to just work out some examples of your own when it comes to learning by doing.
@@ -23,7 +23,7 @@ Any object created with the Array literal notation, like in the above example, w
 
 ## 1 - Making a plain old object like an Array.
 
-It is possible to make just a plain old object with the object literal notation, and call Array methods on it using call.
+It is possible to make just a plain old object with the object literal notation, and call Array methods on it using call. One way to do so would be to just create a plain object like always, but make some public keys that are numbers rather than named. The next step would be to add a length property that will be the max number of elements for the array. I now have an object that is not really an array, but it is an array like object that is formated like one. So then I can use the object with an array prototype method by calling the call method of the array prototype method that i would like to use with ssuch an object.
 
 ```js
 // make an object like this
