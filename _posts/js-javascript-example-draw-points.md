@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:03:24
-version: 1.5
+updated: 2021-04-01 14:06:42
+version: 1.6
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -98,6 +98,8 @@ draw.background = function(ctx, canvas, style){
 ```
 
 ### 2.2 - The main.js file
+
+Here I have the main javaScript file of the demo of the draw points method. In this main file I create the canvas element, and append it to the hard coded html. I then test out the draw points methods with two examples of the format that I had in mind. One is a literal from where I am just creating a literal array of arrays, and placing some points and settings into the arrays. The other way of creating one of these arrays or arrays is with a method from that I call to create something like this.
 
 ```js
 
