@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:27:54
-version: 1.13
+updated: 2021-04-01 14:29:16
+version: 1.14
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -84,7 +84,7 @@ When calling the method the first thing that I will want to give as an argument 
 
 The next argument that I pass when using the method is the points array that I want to use with the method. This time the points array should not just be an array of points, but an array of arrays of points. In addition for each array of points I can put in some string values that will set values for a single line such as the stroke color, fill color, and if the line should be closed or not.
 
-After the points array I can then set the position of the center point for the drawing of the image, and also give an options options object at the end to set some default values for the various properties of each line.
+After the points array I can then set the position of the center point for the drawing of the image, and also give an options options object at the end to set some default values for the various properties of each line. Now with all of this together the only thing that I want to do now is just put together a quick little demo to make sure that this method works the way I expected it to with the format of points arrays that I want to use with it.
 
 ## 2 - Demo of the draw points method
 
