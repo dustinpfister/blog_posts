@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-04-01 14:56:47
-version: 1.13
+updated: 2021-04-01 14:58:34
+version: 1.14
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -91,7 +91,7 @@ console.log(cell); // 'e'
 
 ## 2 - Using just one linear array
 
-Although arrays of arrays work okay, I often just use a single array, and then work out a formula that is used to figure the proper index value for this single array.
+Although arrays of arrays work okay, I often just use a single array, and then work out a formula that is used to figure the proper index value for this single array. Working out an expression for just two dimensions is not so hard, and adding even more levels really is only that much more involved.
 
 ### 2.1 - A static example of using a single array and formula to get the proper index value
 
