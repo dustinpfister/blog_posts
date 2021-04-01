@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-04-01 15:03:50
-version: 1.16
+updated: 2021-04-01 15:18:50
+version: 1.17
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -255,5 +255,7 @@ console.log(print(three));
 
 ## 4 - Conclusion
 
-So then there is making an array of arrays, and then there is just having a single array, and just having a formula that can be used to get what you want from it. For an additional example of a multi denominational array there is my [draw points function](/2021/04/01/) that I made where I am using an array fo arrays to store points as well as settings for a bunch of lies that draw something to a canvas. The typical use case example though is to make some kind of grid module that will be an array fo arrays, or a single array that make use of an expression to knowhow to get and put values into the array. If you are having a hard time making a decision with it though there is always making methods that will convert one from to another, and other that might just be what needs to happen. When working out a project there might be typical forms that are used for various modules, but often developers come up with there own weird formats for things to, present company included.
+So then there is making an array of arrays, and then there is just having a single array, and just having a formula that can be used to get what you want from it. Both options work just fine when it comes to most simple projects that are typical with a little javaScript. However for many reasons I think that I like to take a single array kind of approach to this sort of thing, expect for situations in which it might just be easier to go with arrays of arrays.
+
+For an additional example of a multi denominational array there is my [draw points function](/2021/04/01/) that I made where I am using an array fo arrays to store points as well as settings for a bunch of lies that draw something to a canvas. The typical use case example though is to make some kind of grid module that will be an array fo arrays, or a single array that make use of an expression to knowhow to get and put values into the array. If you are having a hard time making a decision with it though there is always making methods that will convert one from to another, and other that might just be what needs to happen. When working out a project there might be typical forms that are used for various modules, but often developers come up with there own weird formats for things to, present company included.
 
