@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2020-07-14 14:15:42
-version: 1.30
+updated: 2021-04-01 15:21:46
+version: 1.31
 ---
 
 In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as [on focus](/2019/01/05/js-onfocus/), [on blur](/2019/01/08/js-onblur/), [on change](/2019/01/04/js-onchange/), and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens.
@@ -224,4 +224,4 @@ When the example is up and running I can change the position of the circles by m
 
 ## 5 - Conclusion
 
-There is way more to write about when it comes to event listeners in javaScript, there are a wide range of different types that have to do with all kinds of events. Events such as touch events, mouse events and there are even ways to write my own events and define what it is that triggers such custom events.
+There is way more to write about when it comes to event listeners in javaScript, there are a wide range of different types that have to do with all kinds of events. Events such as touch events, mouse events and there are even ways to write my own events and define what it is that triggers such custom events. There is also how to go about simulating such events also, for example each html element has a click method that when called will trigger any on click events that my be attached to that element.
