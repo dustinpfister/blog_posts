@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 18
-updated: 2021-04-01 15:31:54
-version: 1.11
+updated: 2021-04-01 15:33:59
+version: 1.12
 ---
 
 In core javaScript [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are technically not Arrays, but [Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), that is that an array is a kind, or class of an object. The thing about Arrays that are made with the core js Array constructor, or literal syntax, is that they are a special kind of object in which the objects constructor name is Array. This also means there there are a bunch of array prototype methods that can be used with that instance of Array also. However there are also array like objects in addition to Arrays. What this means is that if any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays. If you are confused then in this post I will try to help reduce some of this confusion, and of course it will be best for you to just work out some examples of your own when it comes to learning by doing.
@@ -71,7 +71,7 @@ function func(one,two,three){
 
 ## 3 - HTMLCollection Objects
 
-Another example of Array like Objects that are not Arrays are instances of [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection). This is what you end up with when you use a method like document.getElementsBytagName to get a collection of HTML DOM element references in a document, when it comes to client side javaScript.
+Another example of Array like Objects that are not Arrays are instances of [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection). This is what you end up with when you use a method like document.getElementsBytagName to get a collection of HTML DOM element references in a document, when it comes to client side javaScript. These values might seem to be arrays, but they are very much not. When it comes to working with a collection like this it is a good idea to use the dom methods to do things like removed and append elements to such collections.
 
 Say you just have some simple paragraph elements.
 
@@ -103,7 +103,7 @@ Again to some extent you can call Array methods on them, as long as the are read
 
 ## 4 - Making an Array Object like
 
-Because Arrays are objects you can treat them like so. We have covered some examples of how you can treat Plain Objects, or any Object that is Array like, like an Array. How about treating an Array like an Object by adding some namded keys to the object though.
+Because Arrays are objects you can treat them like so. We have covered some examples of how you can treat Plain Objects, or any Object that is Array like, like an Array. How about treating an Array like an Object by adding some named keys to the object though.
 
 ```js
 var array = [ 'one' , 'two'];
