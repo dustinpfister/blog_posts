@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-03-31 17:41:35
-version: 1.14
+updated: 2021-04-01 14:39:03
+version: 1.15
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -18,6 +18,8 @@ There are a number of canvas examples that I would like to improve with a system
 ## 1 - The wave module
 
 I am going to start off this post with the main event of the over all system rather than starting with support modules. I will be getting to them later in this post, but many of them are just more of the same when it comes to the various other topics that I write about when it comes to the various resources that I make for a javaScript project.
+
+At the top of the module I have some constant values that have to do with the size, as well as the min and max speed at which the wave buttons move. When I start using this in some games I might want to make some of these settings that I can change in the create method of the module. However for now I think I will just leave them as hard coded settings, I just wanted to get the basic idea that I had in mind up and running fast and did not get to doing things like that.
 
 ```js
 var waveMod = (function () {
@@ -139,7 +141,7 @@ var waveMod = (function () {
     ());
 ```
 
-There might be a few more things that I might want to add here and there, but I do not want to go to nuts with this for now. WHen it comes to all the other little ideas that come to mind many of them might change a little form one project to another. So maybe I should hold off for now at least, and get to that kind of stuff when I start to use this in a real game of some kind.
+There might be a few more things that I might want to add here and there, but I do not want to go to nuts with this for now. When it comes to all the other little ideas that come to mind many of them might change a little form one project to another. So maybe I should hold off for now at least, and get to that kind of stuff when I start to use this in a real game of some kind.
 
 ## 2 - A utils.js unilty library
 
