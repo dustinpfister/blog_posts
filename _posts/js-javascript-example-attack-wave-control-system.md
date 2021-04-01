@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-04-01 14:40:52
-version: 1.16
+updated: 2021-04-01 14:42:30
+version: 1.17
 ---
 
 For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
@@ -22,6 +22,8 @@ I am going to start off this post with the main event of the over all system rat
 At the top of the module I have some constant values that have to do with the size, as well as the min and max speed at which the wave buttons move. When I start using this in some games I might want to make some of these settings that I can change in the create method of the module. However for now I think I will just leave them as hard coded settings, I just wanted to get the basic idea that I had in mind up and running fast and did not get to doing things like that.
 
 I then have the spawn and update methods that I will be using when creating an instance of the object pool that will be used for this module. I will nt be getting into detail with the object pool module here of course, but I will be getting to the file that I am using for this example in a later section.
+
+I then have my create, update and on click public methods.
 
 ```js
 var waveMod = (function () {
