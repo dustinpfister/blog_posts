@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-04-01 14:49:35
-version: 1.10
+updated: 2021-04-01 14:51:48
+version: 1.11
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -253,4 +253,5 @@ console.log(print(three));
 
 ## 4 - Conclusion
 
-So then there is making an array of arrays, and then there is just having a single array, and just having a formula that can be used to get what you want from it.
+So then there is making an array of arrays, and then there is just having a single array, and just having a formula that can be used to get what you want from it. For an additional example of a multi denominational array there is my [draw points function](/2021/04/01/) that I made where I am using an array fo arrays to store points as well as settings for a bunch of lies that draw something to a canvas.
+
