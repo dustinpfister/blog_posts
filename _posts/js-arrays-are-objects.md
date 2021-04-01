@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 18
-updated: 2021-04-01 15:29:09
-version: 1.10
+updated: 2021-04-01 15:31:54
+version: 1.11
 ---
 
 In core javaScript [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are technically not Arrays, but [Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object), that is that an array is a kind, or class of an object. The thing about Arrays that are made with the core js Array constructor, or literal syntax, is that they are a special kind of object in which the objects constructor name is Array. This also means there there are a bunch of array prototype methods that can be used with that instance of Array also. However there are also array like objects in addition to Arrays. What this means is that if any object contains a length property that has a value that is a number from 0 to the max safe integer, then it is "Array like" and can be used with methods that act on arrays. If you are confused then in this post I will try to help reduce some of this confusion, and of course it will be best for you to just work out some examples of your own when it comes to learning by doing.
@@ -122,4 +122,6 @@ When doing so this will result in the length of the array still remaining what t
 ## 5 - Conclusion
 
 I hope this post has helped to address some confusion when it comes to arrays in javaScript and why they seem to be more or less just like objects in general. Part of the reason why that is can be explained by saying that they are in fact a kind of object rather than this whole other kind of data type all together which might be the case in other languages.
+
+At times it might event seem that everything in javaScript is an object, I hear people saying such things now and then but that just simply is not true. JavaScript does very much have primitive values, and all though things like a string value might seem to be an object, this object is just a wrapper of the primitive value.
 
