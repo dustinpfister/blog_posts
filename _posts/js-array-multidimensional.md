@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-04-01 15:01:05
-version: 1.15
+updated: 2021-04-01 15:03:50
+version: 1.16
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -109,6 +109,8 @@ var grid = {
  
 console.log(grid.get(2, 3)); // 'e'
 ```
+
+So by multiplying the width of the matrix by a y value of an element that I want, and then just adding the x value I can get an element that is at that location. The same trick can then be used to set the values of such elements in such arrays also. In addition looping over the contents of such an array is far more simple. I can do so with just any other array, it is just that I need to use an expression to know what element it is in the matrix.
 
 ### 2.2 - Making a function that will return an API with a single array and get method
 
