@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-04-01 14:58:34
-version: 1.14
+updated: 2021-04-01 15:01:05
+version: 1.15
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -95,7 +95,7 @@ Although arrays of arrays work okay, I often just use a single array, and then w
 
 ### 2.1 - A static example of using a single array and formula to get the proper index value
 
-One again lets start out with a simple static hard coded form of this kind of multinational array in javaScript.
+Once again lets start out with a simple static hard coded form of this kind of multinational array in javaScript. In such an array I can have values stored just like that of a simple array that is just one dimension. The multidimensional aspect then is not so much how elements are stored, but how they are retrieved and placed into the array.
 
 ```js
 var grid = {
