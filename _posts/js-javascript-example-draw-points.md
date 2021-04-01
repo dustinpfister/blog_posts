@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 836
-updated: 2021-04-01 14:06:42
-version: 1.6
+updated: 2021-04-01 14:11:25
+version: 1.7
 ---
 
 For todays javaScript example I worked out a new draw points method that I might use in one or more canvas examples that I am working on. I have made such a method many times, but I thought I should work out a half way decent method that will work well with certain situations where I want to have a display object that constitutes many lines. 
@@ -144,3 +144,9 @@ console.log(demoMethod());
  
 draw.points(ctx, demoMethod(), 80, 100);
 ```
+
+When this is up and running the demo seems to work just fine. I get the shapes and colors that I would expect, so this draw points method seems to work great. When it comes to using this method in a project doing so is just a matter of working out the methods that I want that will create the arrays of arrays the way that they should be. 
+
+## 3 - Conclusion
+
+There are maybe a few more things here and there that i would like to add, but maybe I should only get around to doing that once I start using this in a real projects or two so I gain a better sense of what is actually needed for this. I do not care to spend time adding features that I think that I might want, or need, for now I just want to have want I know that I want and need. Which os of course just a better draw points method.
