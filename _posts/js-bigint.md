@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2021-04-02 10:18:45
-version: 1.16
+updated: 2021-04-02 10:34:50
+version: 1.17
 ---
 
 So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number at, and beyond max safe integer you might end up with the same number as the result of the expression. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name Max Safe Integer.
@@ -17,13 +17,37 @@ So with that said in modern browsers, and node 10.4.x+ there is now the BigInt O
 
 <!-- more -->
 
-## 1 - JavaScript BigInt Numbers might not be the best option for now at least
+## 1 - The basics of JavaScript BigInt Numbers
 
 As of this writing BigInts are still a fairly new addition to native core javaScript itself. If the nature of the project consists of front end code BigInts might not be the best option because of poor browser support, unless of course some additional code is added to help function as a fallback in the event that it is not there. 
 
 In addition if it is a nodejs project then it might still not be a good idea to use BigInts unless you are confident that the project will always be used in later versions of node that are version 10.4.x or later. Even if you go with BigInt there are still some drawbacks that might not make a library solution outdated just yet, BigInt numbers can not be used with native javaScript Math Object methods such as Math.pow for example.
 
 Still in this section I will be going over some simple examples of BigInt to serve as a way to get started with this javaScript feature.
+
+### 1.2 - The deal with MAX SAFE INTEGER
+
+Tired yet true javaScript numbers work just fine in most situations, but they do have there limits. I could get into detail about the data type behind javaScript numbers, but one major taking point that will come now and then is the deal with Number.MAX\_SAFE\_INTEGER. If I have a value that goes beyond Max Safe Integer and add another number to it I will start to loose precession. This is one reason why I would want to use some kind of library that will give me higher precession numbers to work with in the form of an object class, and special methods to work with such objects. However now with bigint there is a native solution that can be used.
+
+
+```js
+// a is MAX_SAFE_INTEGER + 1
+var a = Number.MAX_SAFE_INTEGER + 1;
+ 
+// b is now MSI+1 + 1
+var b = a + 1;
+ 
+// If I compare a === b one might
+// expect a false value, but this is not the
+// case, thus the name MAX_SAFE_INTEGER
+console.log(a === b); // true
+ 
+// however with bigint values I can not go beyond
+// max safe integer and retain precession
+var a = BigInt(Number.MAX_SAFE_INTEGER) + BigInt(1);
+var b = a + BigInt(1);
+console.log(a === b); // false
+```
 
 ### 1.1 - BigInt basics creating them
 
