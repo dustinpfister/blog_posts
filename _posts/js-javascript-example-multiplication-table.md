@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2021-04-02 12:41:11
-version: 1.20
+updated: 2021-04-02 13:25:13
+version: 1.21
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](/2021/04/02/js-javascript-example/). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -23,7 +23,7 @@ Well lets get to it then so that we can move on to something else that might pro
 
 ## 1 - A starring multiplication table javaScript example
 
-In this section I will be staring out with a basic multiplication table javaScript example. This kind of solution should work out okay in both a browser and node environment.
+In this section I will be staring out with a basic multiplication table javaScript example. This kind of solution should work out okay in both a browser and node environment as it will be a module that will just create a state object, but not draw that state object using some kind of renderer. I will be covering just one render function in this section but it is just a front end one, and even then just one way to go about doing it. In later sections I will be getting into other ways to go about rendering the state of the module.
 
 ### 1.1 - The multiplication table module for the javaScript example
 
