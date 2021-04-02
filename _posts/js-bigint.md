@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2021-04-02 10:12:50
-version: 1.15
+updated: 2021-04-02 10:18:45
+version: 1.16
 ---
 
 So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number at, and beyond max safe integer you might end up with the same number as the result of the expression. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name Max Safe Integer.
@@ -52,6 +52,8 @@ So a BigInt in javaScript is a whole new data type all together so they are not 
 
 ### 2.1 - Know what you are dealing with by using typeof
 
+First off it is a good ideal to get into the habit of using the typeof operator as a way to know what data types a variable is. This is something that a javaScript developer should be aware of to begin with, but never the less there is just starting out with using this to gain insight as to what kind of value a variable is.
+
 ```js
 var bigN = BigInt(42),
 n = 42;
@@ -66,6 +68,8 @@ console.log(typeof n);
 ```
 
 ### 2.2 - The valueOf method, the Number method, and using functions that call for a number rather than bigint
+
+When calling the valueOf method of a bigint the returned result will be a bigint and not a number. This is what I would expect and want to happen actually so that I can use these bigint values with javaScript operators and use the type in expressions. However the drawback is that is I need a number values of a big int value to use with a function that will only work with regular javaScript numbers this presents a problem. In many libraries the valueOf method of a bug integer class object will return a regular javaScript number, but with the native solution for this it will not be the case. So in situations in which I need to convert a big int value to a regular number I can use the Number method.
 
 ```js
 var bigN = BigInt(8);
