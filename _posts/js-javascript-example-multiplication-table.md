@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2020-07-23 13:52:57
-version: 1.16
+updated: 2021-04-02 12:25:26
+version: 1.17
 ---
 
-This will be the first post of a new series of posts that serve as [javaScript examples](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
+This will be the first post of a new series of posts that serve as [javaScript examples](/2021/04/02/js-javascript-example/). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
 
 This javaScript example post will be on [making a multiplication](https://www.mathsisfun.com/tables.html) table module example with just core javaScript code. I will then be going over some additional client side javaScript code that can then be used as a way to render this multiplication table. So this might not prove to be the most interesting javaScript example post, but I have to start somewhere with these, and in time I might get around to making a few that will prove to be more interesting.
 
