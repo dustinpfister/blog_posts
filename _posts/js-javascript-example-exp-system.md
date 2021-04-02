@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 652
-updated: 2020-08-17 07:07:39
-version: 1.16
+updated: 2021-04-02 11:45:53
+version: 1.17
 ---
 
-As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](https://www.tutorialrepublic.com/javascript-examples.php) for this one so I always have something to look back on.
+As of late I was working on one of my [canvas examples](/2020/03/23/canvas-example/) and I wanted a simple [exp point](https://en.wikipedia.org/wiki/Experience_point) system for it. Working out an experience point system can end up becoming a bit of a rabbit hole for me, so I thought I would start a blog post on a [javaScript example](/2021/04/02/js-javascript-example/) for this one so I always have something to look back on.
 
 I said that this can end up being a bit of a rabbit hole, because there are many ways of going about making an experience point system, and also how it should be applied to objects in a game. For example an experience point system can just be applied to a variable that holds experience points for an object that repentants stats of a player object. However experience points could also be the number of kills that a unit has scored, or the amount of money that something costs, and so forth depending on the game where it is used. 
 
