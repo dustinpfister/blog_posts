@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 11:45:54
-version: 1.5
+updated: 2021-04-02 11:49:56
+version: 1.6
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -25,3 +25,6 @@ There are many games that follow a kind of system where a period of time goes by
 This is a javaScript example where I worked out a system for drawing a collection of points rather than just one point to a canvas element. When it comes to drawing a single point to a canvas there is often just using the canvas arc method to do so, or doing something that involves drawing a box, and then lines from each corner. However there is also having a collection of points, and how to go about drawing a line with this collection of points. Having a simple system where it is just a single array of points is easy enough, but things get at least a little more involved when it is a situation in which I want to draw a few lines, where some of them will be closed off into shapes, and others will be just lines.
 
 ## 3 - [An exp point system](/2020/04/27/js-javascript-example-exp-system/)
+
+This is my first attempt at making a module, reusable experience point system that I can take with me from one project to the next. I have used this system in a few of my canvas examples, but I am not happy with it. Still I would say that I have managed to get a few things solid with this system to say the least. I think that a good experience point system should provide at least two pure functions that will both return a kind of standard level object. One pure function where the experience points are know, but the level is not, and another that will work where the level is known, but the experience point values are not known.
+
