@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 12:08:19
-version: 1.10
+updated: 2021-04-02 12:10:59
+version: 1.11
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -36,4 +36,8 @@ Often I need to make the same thing over an over again at least a few times befo
 
 In this example I have a grid and I am working out some basic logic when it comes to moving those units around in the grid.
 
+
+## Conclusion
+
+That is it for now when it comes to this collection of javaScript examples, as I come up with more I will be sure to come around to expand this list and link back to if from the newer posts. If you want to check out additional posts like this, but with other collections of examples I have a similar post where I am just going over [canvas examples](/2020/03/23/canvas-example/) rather than just things that might just have to do with a little javaScript code and that is it.
 
