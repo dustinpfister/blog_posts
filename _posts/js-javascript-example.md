@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 13:20:24
-version: 1.17
+updated: 2021-04-02 13:29:01
+version: 1.18
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -48,6 +48,7 @@ This was my first post on this collection of javaScript examples, and as such I 
 
 So there is having a simple expression like 3 \/ 4 that will result in a value between 0 and 1 that will be \0.25. In other words there is having a numerator and denominator value and getting a fraction between the two. However if a numerator value starts at 0 and approaches the denominator value as a fixed static rate, then the change happens along a straight line when graphed.
 
+## 9 - [Skill Point System](/2020/08/26/js-javascript-example-kill-point-system/)
 
 ## Conclusion
 
