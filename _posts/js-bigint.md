@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2021-04-02 08:25:31
-version: 1.10
+updated: 2021-04-02 08:31:15
+version: 1.11
 ---
 
 So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number at, and beyond max safe integer you might end up with the same number as the result of the expression. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name Max Safe Integer.
@@ -59,7 +59,7 @@ console.log(typeof n);
 
 ## 4 - Equality and BigInt
 
-So when it comes to equality and other types things are as a javaScript developer would expect when using the identity and equality operators. When using identity a BigInt will not equal a number or string of the same value because they are different types. However when using the loose typing equality operator a bog int will equal and equivalent number or string value.
+So when it comes to equality things are as a javaScript developer would expect when using the identity and equality operators with a big int value compared to a number and string value. When using identity a BigInt will not equal a number or string of the same value because they are different types. However when using the loose typing equality operator a bog int will equal and equivalent number or string value because type conversion is preformed.
 
 ```js
 var bigN = BigInt(42);
@@ -68,6 +68,8 @@ console.log(bigN === 42); // false
 console.log(bigN == 42); // true
 console.log(bigN == '42'); // true
 ```
+
+So simply put the big int type is a whole new data type in javaScript to work with. However javaScript is also a typeless language so any variable can be a big int, regular JavaScript number, a string value, or any other type for that matter at any time. So it is still a good idea to stick to the use of the identity operator, and make sure that you always know what you are dealing with.
 
 ## 5 - Conclusion
 
