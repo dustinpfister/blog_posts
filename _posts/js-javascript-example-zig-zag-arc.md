@@ -5,10 +5,10 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-02 13:35:44
-version: 1.10
+updated: 2021-04-02 13:39:20
+version: 1.11
 ---
-When making a javaScript project that is some kind of game or something to that effect I often end u working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
+When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
 <!-- more -->
 
@@ -252,8 +252,8 @@ And just a little html to tie it all up together.
 </html>
 ```
 
-When this javaScript example is up and running in the browser I have display objects become active, and follow one of the two update methods that are used to update position as expected. In this example I am using the methods as a way to help directly set position, but in other projects thay could be used to set other values such as a pixels per second speed rate or something to that effect.
+When this javaScript example is up and running in the browser I have display objects become active, and follow one of the two update methods that are used to update position as expected. In this example I am using the methods as a way to help directly set position, but in other projects that could be used to set other values such as a pixels per second speed rate or something to that effect.
 
 ## 5 - Conclusion
 
-So I just wanted t get together a quick javaScript example that makes use of some methods that will create and return percentage values that go up in a way that is different from just what is usual when diving a numerator type value over a denominator type value.
+So I just wanted to get together a quick javaScript example that makes use of some methods that will create and return percentage values that go up in a way that is different from just what is usual when diving a numerator type value over a denominator type value.
