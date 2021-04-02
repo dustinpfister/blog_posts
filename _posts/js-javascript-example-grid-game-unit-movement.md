@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-04-02 12:03:55
-version: 1.15
+updated: 2021-04-02 12:06:52
+version: 1.16
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around one or more grids.
@@ -266,7 +266,7 @@ var draw = (function () {
 
 ## 5 - The main.js file and the start of a State machine
 
-So now it is time to get to my main.js file for this javaScript example.
+So now it is time to get to my main.js file for this javaScript example where I will make use of all the modules that I have put together for this example. Here I create the canvas element that I will be using, and set up a simple state machine object that for the same of this example is not really much of a state machine but just a place holder for such a thing. Also here in the main.js file I have my main application loop that is typically for any of my canvas examples.
 
 ```js
 (function () {
