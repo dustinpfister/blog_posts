@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2021-04-02 12:39:57
-version: 1.19
+updated: 2021-04-02 12:41:11
+version: 1.20
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](/2021/04/02/js-javascript-example/). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -153,7 +153,7 @@ module.exports = function (w, h, forN, wOffset, hOffset) {
 
 ### 2.2 - Making a render method to the console.
 
-Now to use the module to create a table, and to render the table somehow. In this example I am just logging to the standard output of the console by way of the console log method.
+Now to use the module to create a table, and to render the table somehow. In this example I am just logging to the standard output of the console by way of the console log method. There is another way of going about doing this in nodejs that allows for a greater deal of control, but maybe that is a but off topic.
 
 ```js
 var mTable = require('./mtable.js');
@@ -187,4 +187,4 @@ renderTable(t);
 
 So working out a multiplication table is a nice simple javaScript example, however even something not so simple can end up becoming a little intense when it comes to all the various ways to go about creating a main state object, and then displaying some or all of that state data. Even in client side javaScript alone there are a number fo ways of spiting the state of something like this out at the user. There is making a table, using a canvas element, and using a text area element and creating a plain text format for it. 
 
-Then there is of course nodje and all the various ways to go about display g the data in that kind of environment when it comes to outout the state of the table as standard output, writing a file, sending it over http to some server, and so on.
+Then there is of course nodje and all the various ways to go about display g the data in that kind of environment when it comes to output the state of the table as standard output, writing a file, sending it over http to some server, and so on.
