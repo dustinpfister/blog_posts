@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 11:56:21
-version: 1.8
+updated: 2021-04-02 11:59:46
+version: 1.9
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -30,7 +30,7 @@ This is my first attempt at making a module, reusable experience point system th
 
 ## 4 - [Fizz buzz](/2020/06/26/js-javascript-example-fizzbuzz)
 
-Often I need to make the same thing over an over again at least a few times before I even begin to get a clear idea as to how it is that I want to design a system.
+Often I need to make the same thing over an over again at least a few times before I even begin to get a clear idea as to how it is that I want to design a system. When I first start working out a prototype for an idea on something I often get a basic work proof of that idea, but often there is a great deal wrong with it. So I then make a new system where I end up making the whole thing all over again, but now a slightly better system that does not have all the problems of the first prototype. This process then often repeats at least a few times until I get something that is fairly solid, or at least good enough. This fixxbuzz javaScript example is then an exercise of this sort of thing on a micro scale with a very simple idea, rather than a complex module, or full feature application of some kind.
 
 ## 5 - [Grid Game Unit Movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/)
 
