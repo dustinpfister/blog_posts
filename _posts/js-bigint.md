@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2021-04-02 09:48:29
-version: 1.13
+updated: 2021-04-02 09:49:47
+version: 1.14
 ---
 
 So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number at, and beyond max safe integer you might end up with the same number as the result of the expression. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name Max Safe Integer.
@@ -29,7 +29,7 @@ Still in this section I will be going over some simple examples of BigInt to ser
 
 So If you are confident that the use of native javaScript BigInt numbers will work for your project rather than a user space library solution for this sort of thing then getting started with them is fairly simple. The BigInt Object can be used as a way to create an instance of BigInt from a number or a string of a number that I want the value of the BigInt to be. There is also a literal syntax that can be used by just appending an n after a number value.
 
-Once I have some BigInt values there are a number of operators that can be used with BigInts just like plain old javaScript numbers. They can be added together, multiplied, and so forth.
+Once I have some BigInt values there are a number of operators that can be used with BigInts just like plain old javaScript numbers. They can be added together, multiplied, and so forth. This is one nice feature of the native solution for this as I do not have to bother with library built in features to preform operations I can just make javaScript expressions like always.
 
 ```js
 // create BigInts from a Number
