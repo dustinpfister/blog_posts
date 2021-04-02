@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 12:25:27
-version: 1.15
+updated: 2021-04-02 12:28:50
+version: 1.16
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -42,7 +42,7 @@ One thing that I would like to have as part of a basic utility library that I ta
 
 ## 7 - [A nice basic multiplication table example](/2020/02/10/js-javascript-example-multiplication-table)
 
-This was my first post on this collection of javaScript examples, and as such I wanted to start out with something very basic.
+This was my first post on this collection of javaScript examples, and as such I wanted to start out with something very basic. SO working out a javaScript example that is just a simple multiplication table sure doe strink me as one of those simple hello world type projects that help out for people that are very new to javaScript. However even when it comes to this kind of example there is still a lot to cover, even with something like this. There is not just making a multiplication table and moving on, there is making a function that will create a state object of a multiplication table, and then making at least one if not more renderer's that will render the state of this multiplication table.
 
 ## Conclusion
 
