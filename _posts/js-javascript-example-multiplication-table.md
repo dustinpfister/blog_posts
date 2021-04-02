@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 609
-updated: 2021-04-02 12:25:26
-version: 1.17
+updated: 2021-04-02 12:35:54
+version: 1.18
 ---
 
 This will be the first post of a new series of posts that serve as [javaScript examples](/2021/04/02/js-javascript-example/). They will aim to be simple getting started examples for new developers that are just learning javaScript for the first time, while also maybe still being of interest for more experienced developers also. 
@@ -99,7 +99,7 @@ console.log(htmlDiv(table, 32));
 
 ### 1.3 - The resulting html
 
-So the render method that I made will create the following html as a string when making a five by five table.
+So the render method that I made will create the following html as a string when making a five by five table. This can then in turn be used to create the view of the multiplication table by making use of a client side javaScript feature such as the innerHTML property of a container element.
 
 ```html
 <div style="position:absolute;"><div style="position:absolute;left:32px;top:32px;">1</div><div style="position:absolute;left:64px;top:32px;">2</div><div style="position:absolute;left:96px;top:32px;">3</div><div style="position:absolute;left:128px;top:32px;">4</div><div style="position:absolute;left:160px;top:32px;">5</div><div style="position:absolute;left:32px;top:64px;">2</div><div style="position:absolute;left:64px;top:64px;">4</div><div style="position:absolute;left:96px;top:64px;">6</div><div style="position:absolute;left:128px;top:64px;">8</div><div style="position:absolute;left:160px;top:64px;">10</div><div style="position:absolute;left:32px;top:96px;">3</div><div style="position:absolute;left:64px;top:96px;">6</div><div style="position:absolute;left:96px;top:96px;">9</div><div style="position:absolute;left:128px;top:96px;">12</div><div style="position:absolute;left:160px;top:96px;">15</div><div style="position:absolute;left:32px;top:128px;">4</div><div style="position:absolute;left:64px;top:128px;">8</div><div style="position:absolute;left:96px;top:128px;">12</div><div style="position:absolute;left:128px;top:128px;">16</div><div style="position:absolute;left:160px;top:128px;">20</div><div style="position:absolute;left:32px;top:160px;">5</div><div style="position:absolute;left:64px;top:160px;">10</div><div style="position:absolute;left:96px;top:160px;">15</div><div style="position:absolute;left:128px;top:160px;">20</div><div style="position:absolute;left:160px;top:160px;">25</div></div>*/
