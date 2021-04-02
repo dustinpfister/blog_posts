@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 672
-updated: 2020-10-26 17:22:10
-version: 1.16
+updated: 2021-04-02 11:53:01
+version: 1.17
 ---
 
 When looking for code examples that solve a given problem many of us might just seek out [something that just works often on stack overflow](https://stackoverflow.com/questions/16620665/fizzbuzz-program-details-given-in-javascript), copy and past it in, and move on. Although there might be many great code examples for certain problems out in the open web that work fine, they might not always work great all the time, in every little way. 
 
-In this post I will be going over not one, but many JavaScript examples of a solution to a simple game of sorts know as [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz). The you tube user [Tom Scott did a video of fizzbuzz on youtube](https://www.youtube.com/watch?v=QPZ0pIK_wsc&t=160s) that I managed to catch that inspired me to write this post, and expand on my collection of javaScript example posts that I would like to keep working on a little now and then. 
+In this post I will be going over not one, but many [JavaScript examples](/2021/04/02/js-javascript-example/) of a solution to a simple game of sorts know as [fizzbuzz](https://en.wikipedia.org/wiki/Fizz_buzz). The you tube user [Tom Scott did a video of fizzbuzz on youtube](https://www.youtube.com/watch?v=QPZ0pIK_wsc&t=160s) that I managed to catch that inspired me to write this post, and expand on my collection of javaScript example posts that I would like to keep working on a little now and then. 
 
 Tom brings up a lot of important points that I try to keep in mind when writing code, not just for the sake of this post but in general. There is of course just quickly throwing together something that works, and then there is thinking more in terms of readability, and preparing for the future. Getting together a few code examples on a simple programing things such as fizz buzz might help to get a better idea of the fact that just because something works it does not meed that there is something wrong with it.
 
