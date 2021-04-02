@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 12:18:24
-version: 1.13
+updated: 2021-04-02 12:20:26
+version: 1.14
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -38,7 +38,7 @@ In this example I have a grid and I am working out some basic logic when it come
 
 ## 6 - [A long once method](/2021/03/29/js-javascript-example-log-once/)
 
-One thing that I would like to have as part of a basic utility library that I take with me from one project to another is a log once, or call once type method.
+One thing that I would like to have as part of a basic utility library that I take with me from one project to another is a log once, or call once type method. When first starting out with the basic of debugging there is using the console.log method to log things out to the javaScriot console as they happen. I do not think that this is such a bad way to go about debugging, and I still find myself doing it, however there are some things to gain from starting to use my own system for logging things that are going on.
 
 ## Conclusion
 
