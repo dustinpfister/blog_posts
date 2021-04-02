@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-02 12:10:59
-version: 1.11
+updated: 2021-04-02 12:15:36
+version: 1.12
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -34,7 +34,7 @@ Often I need to make the same thing over an over again at least a few times befo
 
 ## 5 - [Grid Game Unit Movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/)
 
-In this example I have a grid and I am working out some basic logic when it comes to moving those units around in the grid.
+In this example I have a grid and I am working out some basic logic when it comes to moving those units around in the grid. There is a bit to it actually when it comes to making a system for this sort of thing from the ground up. However what is also great about it is that it is not so hard to get something working, and once I have a basic system for the kinds of games that I have in mind I can use it to not just make one game but a few taking this system with me to each new project. However as of this writing this one is still a work in progress that I have not put as much time into as I would have liked to. I do have a lot of other things going on that get in the way of me working much of this stuff out.
 
 
 ## Conclusion
