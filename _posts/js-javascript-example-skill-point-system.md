@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2020-08-26 14:45:40
-version: 1.9
+updated: 2021-04-02 13:29:01
+version: 1.10
 ---
 
-I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game.
+I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game. So maybe it would be a good idea to start one or more [javaScript examples](/2021/04/02/js-javascript-example/) in which I explore this topic.
 
 What I have in mind is a system that is a more advanced version of the [experience point system that I made a while back](/2020/04/27/js-javascript-example-exp-system/). So my skill point system will be more or less then same thing as that, but with maybe one additional public method that can eb used as a way to create values that are based off of level object, and a skill point value.
 
-So in this post I will be writing about another kind of experience point system, but with this additional feature that can be used as a way to create stat values with a level object, and a skill point value from zero to positive infinity. This will not be a post in which I will be going over every little detail when it comes to using a module like this in an actual project though. However I will be going over a simple demo that will make use of it jusy for the sake of getting an idea how this will work as a player levels up in a game.
+So in this post I will be writing about another kind of experience point system, but with this additional feature that can be used as a way to create stat values with a level object, and a skill point value from zero to positive infinity. This will not be a post in which I will be going over every little detail when it comes to using a module like this in an actual project though. However I will be going over a simple demo that will make use of it just for the sake of getting an idea how this will work as a player levels up in a game.
 
 <!-- more -->
 
