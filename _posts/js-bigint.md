@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2021-04-02 08:22:40
-version: 1.9
+updated: 2021-04-02 08:25:31
+version: 1.10
 ---
 
 So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number at, and beyond max safe integer you might end up with the same number as the result of the expression. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name Max Safe Integer.
@@ -71,4 +71,4 @@ console.log(bigN == '42'); // true
 
 ## 5 - Conclusion
 
-So the BigInt type is a great addition to native javaScript, but I would say that it is not yet a replacement for library solutions as there are many features missing that are present in [library solutions](/2017/05/29/nodejs-big-integer/) for [big numbers](http://www.thealmightyguru.com/Pointless/BigNumbers.html) in javaScript.
+So the BigInt type is a great addition to native javaScript, but I would say that it is not yet a replacement for library solutions as there are many features missing that are present in [library solutions](/2017/05/29/nodejs-big-integer/) for [big numbers](http://www.thealmightyguru.com/Pointless/BigNumbers.html) in javaScript. There is also not the question of just preforming operations with these kinds of numbers, but also how to go about formatting them when it comes to displaying a value. Many user space modules for this sort of thing include not just methods for preforming operations, but also methods for formatting a number for display.
