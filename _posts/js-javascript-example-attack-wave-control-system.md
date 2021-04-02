@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 835
-updated: 2021-04-01 14:42:30
-version: 1.17
+updated: 2021-04-02 11:28:48
+version: 1.18
 ---
 
-For todays javaScript example I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
+For todays [javaScript example](/2021/04/02/js-javascript-example/) I worked out an attack wave control system that I might use in one or move canvas projects that will be games that might make use of such a system. What I am taking about here is a system where there is an object pool that is used for buttons that from a bar or sorts. As time goes by the buttons move along to a given point such as the top of the canvas element. When a button reaches the top of the canvas it will become inactive, and that wave will then become the current wave, and as such will add however many enemies the wave will add to a queue.
 
 There are a number of canvas examples that I would like to improve with a system such as this, and a whole bunch of additional ides for canvas element powered games that might make use of this feature in one way or another. So for this post for starters I would like to get a solid starting point for this kind of system up and running. Once I have that it is just a matter of shoehorning it into a project.
 
