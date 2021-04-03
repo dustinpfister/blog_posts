@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2021-04-03 08:39:08
-version: 1.15
+updated: 2021-04-03 08:43:45
+version: 1.16
 ---
 
 I have found that a component that I would like to have in many game projects that I might start, or improve in time would be a skill point system. This skill point system as I have come to call it would be a way to gain skill points in a game, and then have a way to invest these skill points into upgrades. The upgrades in turn would then increase stats for various items in a main game state object. So maybe it would be a good idea to start one or more [javaScript examples](/2021/04/02/js-javascript-example/) in which I explore, and refine this narrow little topic when it comes to javaScript game design.
@@ -234,4 +234,6 @@ draw.ver(ctx, canvas, state);
 
 This skill point system seems to work okay thus far, but I would like to polish things a little more before using it in an actual project. Still I think I have the basic idea that I had in mind working the way that I would like it to, so there is not much more to get done with this beyond maybe working out some different expressions when it comes to setting values.
 
-I have a few projects in the works all ready in which I would like to use a system like this, so in the not to distant future I will likely start using some kind of rendition of this in some projects that I have in the works now. I also am pretty sure that I will likely be suing this in some future projects that I have not even started yet also. So when I get around to it I will likely update this post and link to other posts in which I am using this.
+I have a few projects in the works all ready in which I would like to use a system like this, so in the not to distant future I will likely start using some kind of rendition of this in some projects that I have in the works now. I also am pretty sure that I will likely be using this in some future projects that I have not even started yet also. So when I get around to it I will likely update this post and link to other posts in which I am using this.
+
+Still I think that I might want to make at least one additional system for this kind of thing. Something that is totally independent from the experience point system that I am using. By thinking is that a Skill point system will have at least some involvement with an experience point system in the sense that skill points are something that will be granted to a player with each new level. However it does not have to be so closely tied to that system, and can be used in other projects
