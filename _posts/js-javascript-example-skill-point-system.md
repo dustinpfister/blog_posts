@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2021-04-03 08:31:01
-version: 1.13
+updated: 2021-04-03 08:35:36
+version: 1.14
 ---
 
 I have found that a component that I would like to have in many game projects that I might start, or improve in time would be a skill point system. This skill point system as I have come to call it would be a way to gain skill points in a game, and then have a way to invest these skill points into upgrades. The upgrades in turn would then increase stats for various items in a main game state object. So maybe it would be a good idea to start one or more [javaScript examples](/2021/04/02/js-javascript-example/) in which I explore, and refine this narrow little topic when it comes to javaScript game design.
@@ -19,7 +19,7 @@ So in this post I will be writing about another kind of experience point system,
 
 ## 1 - The utils module
 
-I have a single utility method that my skill point system uses. This log percent method that I have made in a previous project is a method that I work out that will return a percent value from zero to one based on a given percent value that has the same range. The idea with this method is to just have a way to convert a percent value that normally goes up in a linear way to instead go up in a not so linear way.
+I have a single utility method that my skill point system uses that is a function that will work with a percent value. This log percent method that I have made in a previous project is a method that I work out that will return a percent value from zero to one based on a given percent value that has the same range. The idea with this method is to just have a way to convert a percent value that normally goes up in a linear way to instead go up in a not so linear way.
 
 ```js
 var utils = {};
