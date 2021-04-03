@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2021-04-03 08:27:52
-version: 1.12
+updated: 2021-04-03 08:31:01
+version: 1.13
 ---
 
 I have found that a component that I would like to have in many game projects that I might start, or improve in time would be a skill point system. This skill point system as I have come to call it would be a way to gain skill points in a game, and then have a way to invest these skill points into upgrades. The upgrades in turn would then increase stats for various items in a main game state object. So maybe it would be a good idea to start one or more [javaScript examples](/2021/04/02/js-javascript-example/) in which I explore, and refine this narrow little topic when it comes to javaScript game design.
 
-What I have in mind is a system that is a more advanced version of the [experience point system that I made a while back](/2020/04/27/js-javascript-example-exp-system/). So my skill point system will be more or less then same thing as that, but with maybe one additional public method that can eb used as a way to create values that are based off of level object, and a skill point value.
+What I have in mind is a system that is a more advanced version of the [experience point system that I made a while back](/2020/04/27/js-javascript-example-exp-system/). So my skill point system will be more or less the same thing as that at the core of it, but with maybe one additional public method that can be used as a way to create values that are based off of a level object of the experience point system, and a skill point value. In time I might make additional skill point systems that are there own independent thing, that may of may not be a better way of doing things, but as far as this post is concerned this is the system that I will be writing about here.
 
 So in this post I will be writing about another kind of experience point system, but with this additional feature that can be used as a way to create stat values with a level object, and a skill point value from zero to positive infinity. This will not be a post in which I will be going over every little detail when it comes to using a module like this in an actual project though. However I will be going over a simple demo that will make use of it just for the sake of getting an idea how this will work as a player levels up in a game.
 
