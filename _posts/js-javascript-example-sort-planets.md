@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2021-04-02 13:30:13
-version: 1.10
+updated: 2021-04-03 09:01:10
+version: 1.11
 ---
 
 I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and then general idea here is to have at least a few [javaScript example](/2021/04/02/js-javascript-example/) posts that help to show why the array sort method is useful. very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful.
@@ -94,9 +94,10 @@ So the get targets method of this module is the main method of interest here. I 
 ## 2 - A canvas app that makes use of the module
 
 Now that I have a javaScript module that can be used to create and sort a list of planet objects, and that it seems to work okay. It would be nice to put together a quick little canvas project that makes use of this planets module.
+
 ### 2.1 - draw.js
 
-Here I have a draw module that has a few methods to help with drawing to a canvas element.
+Here I have a draw module that has a few methods to help with drawing to a canvas element. For this example I just want a draw background method, and of course a method to draw the current status with the targets.
 
 ```js
 var draw = {};
