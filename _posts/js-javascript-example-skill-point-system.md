@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 696
-updated: 2021-04-02 13:29:01
-version: 1.10
+updated: 2021-04-03 08:24:36
+version: 1.11
 ---
 
-I have found that a component that I would like to have in many ideas for games would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game. So maybe it would be a good idea to start one or more [javaScript examples](/2021/04/02/js-javascript-example/) in which I explore this topic.
+I have found that a component that I would like to have in many game projects that I might start, or improve in time would be a skill point system. That is having a way to gain skill points in a game, and then have a way to invest these skill points into upgrades that will then increase stats for various items in the game. So maybe it would be a good idea to start one or more [javaScript examples](/2021/04/02/js-javascript-example/) in which I explore this topic.
 
 What I have in mind is a system that is a more advanced version of the [experience point system that I made a while back](/2020/04/27/js-javascript-example-exp-system/). So my skill point system will be more or less then same thing as that, but with maybe one additional public method that can eb used as a way to create values that are based off of level object, and a skill point value.
 
