@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2021-04-04 11:22:45
-version: 1.17
+updated: 2021-04-04 11:27:14
+version: 1.18
 ---
 
 I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and the general idea I have in mind now is to have at least a one if not more [javaScript example](/2021/04/02/js-javascript-example/) posts that help to show why the array sort method is useful. Very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful. Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. 
@@ -18,6 +18,8 @@ This javaScript example will not be a full game, but it will be one little mecha
 ## 1 - The planets Module
 
 So this javaScript example will start off with, and also center around just a javaScript module that is used to create an array of planet objects. There are just two public methods for now, one that will create an return an array of planets, and another that can be used to get a list of target objects for each planet. In a real project this module would contain a whole lot more methods of course, but for now I am going to keep things simple just for the sake of this post.
+
+The create planets method will create an return just an array of planets, each planet will just have a x and y value, as well as a radius. For now I also put in a minerals value also, but as of this writing I am not sure that I am going to go much beyond that when it comes to turning this into some kind of actual game. So then the create planets method is just a way to create a simple array of objects that contains properties that I can use to get a distance value by making use of a simple distance formula.
 
 ```js
 var planetMod = (function () {
