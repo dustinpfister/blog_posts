@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-04 11:41:04
-version: 1.21
+updated: 2021-04-04 11:44:17
+version: 1.22
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -50,7 +50,7 @@ So there is having a simple expression like 3 \/ 4 that will result in a value b
 
 ### 1.9 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
 
-This is a skill point system that I put togetaher to make use of in some canvas examples.
+This is a skill point system that I put together to make use of in some canvas examples that might call for such a system. The general idea here is that in a game where there is an experience point system on each level some skill points will be given to the player. These skill points can then be invested into upgrades that have various effects on a main game state object.
 
 ### 1.10 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
 
