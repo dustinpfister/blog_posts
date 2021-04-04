@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2021-04-04 11:34:14
-version: 1.19
+updated: 2021-04-04 11:36:30
+version: 1.20
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place rather than creating and returning a new sorted array. This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method. 
@@ -178,5 +178,5 @@ So the array sort prototype method will work okay when one knows how to get arou
 
 The main appeal of the array sort method is of course the fact that it is there to work with in javaScript by itself without having to introduce an additional external library which of course would be the case with the lodash \_.sortBy method.
 
-Working out some simple examples of array sort is one thing, but in order to really have fun, or doing anything truly worth while of course there is taking a moment to create some kind of game, or project of some kind that would make use of array sort. When it comes to my collection of [javaScript examples](/2021/04/02/js-javascript-example/) thus far I have [one example where I am making use of array sort](/2020/08/31/js-javascript-example-sort-planets/) to sort an array of planets in an example that is serving as a basic starting point for something that might become a full game some day
+Working out some simple examples of array sort is one thing, but in order to really have fun, or doing anything truly worth while of course there is taking a moment to create some kind of game, or project of some kind that would make use of array sort. When it comes to my collection of [javaScript examples](/2021/04/02/js-javascript-example/) thus far I have [one example where I am making use of array sort](/2020/08/31/js-javascript-example-sort-planets/) to sort an array of planets in an example that is serving as a basic starting point for something that might become a full game some day. However when it comes to seeing a collection of full canvas examples there is also my collection of [canvas examples](/2020/03/23/canvas-example/) that might also be worth checking out.
 
