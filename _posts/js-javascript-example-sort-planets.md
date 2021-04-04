@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2021-04-04 11:16:11
-version: 1.15
+updated: 2021-04-04 11:18:01
+version: 1.16
 ---
 
 I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and the general idea I have in mind now is to have at least a one if not more [javaScript example](/2021/04/02/js-javascript-example/) posts that help to show why the array sort method is useful. Very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful. Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. 
@@ -97,7 +97,7 @@ Now that I have a javaScript module that can be used to create and sort a list o
 
 ### 2.1 - draw.js
 
-Here I have a draw module that has a few methods to help with drawing to a canvas element. For this example I just want a draw background method, and of course a method to draw the current status with the targets.
+Here I have a draw module that has a few methods to help with drawing the state of an array of targets to a canvas element. For this example I just want a draw background method, and of course a method to draw the current status with the targets list.
 
 ```js
 var draw = {};
@@ -124,9 +124,9 @@ draw.targets = function (ctx, targets) {
 };
 ```
 
-### 2.2 - main.js and index.html
+### 2.2 - Main.js and index.html
 
-now for some additional javaScript code that will create and inject a canvas element, as well as make use of my planets module, and attach an event handler that will update the list of targets based on a location where the canvas is clicked.
+Now for some additional javaScript code that will create and inject a canvas element, as well as make use of my planets module, and attach an event handler that will update the list of targets based on a location where the canvas is clicked.
 
 ```js
 var container = document.getElementById('canvas-app'),
