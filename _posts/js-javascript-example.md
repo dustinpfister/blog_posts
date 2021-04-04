@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-04 11:44:17
-version: 1.22
+updated: 2021-04-04 11:45:25
+version: 1.23
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -58,7 +58,7 @@ A simple sort of planets objects example that I might use if a future game if I 
 
 ### 1.11 - [tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
-A tax brackets example
+A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax.
 
 ### 1.12 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
