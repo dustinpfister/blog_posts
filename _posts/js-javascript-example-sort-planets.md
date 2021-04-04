@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2021-04-04 11:18:01
-version: 1.16
+updated: 2021-04-04 11:22:45
+version: 1.17
 ---
 
 I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and the general idea I have in mind now is to have at least a one if not more [javaScript example](/2021/04/02/js-javascript-example/) posts that help to show why the array sort method is useful. Very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful. Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. 
@@ -180,6 +180,9 @@ Some html that will pull this all together.
 </html>
 ```
 
+When this canvas example is up and running I get all the targets draw to the canvas and there is an index number for each planet drawn on each of them. At first each index number reflects the distance from the center of the canvas because of the first update call. However when I click on the canvas the index numbers change to reflect the closest and farthest planets from that given point. So simply put things seem to work as expected thus far.
+
 ## 3 - Conclusion
 
 So I was able to quickly throw together a little example of array.sort that might prove to be a little fun and interesting. In this example I worked out something where a list of target planets is based on distance to a given position, however this is something that can be expansed on of course. Say each planet has various levels of resources I might want a list then that is based on distance and value in terms of resources. There are many other ideas that come to might such as filtering out planets that are under control by the player, rather than neutral or enemy planets.
+
