@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2020-07-18 16:46:42
-version: 1.17
+updated: 2021-04-04 11:32:30
+version: 1.18
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place rather than creating and returning a new sorted array. This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method. 
@@ -126,7 +126,7 @@ var sort = function (arr, sorter, reverseWeight) {
 
 ### 2.2 - Sorting a simple array of numbers
 
-So the sort method works as expected when it comes to a simple array of numbers. In addition the use of the methid does not mutate the original array that I give it as the first argument.
+So the sort method works as expected when it comes to a simple array of numbers. In addition the use of the method does not mutate the original array that I give it as the first argument.
 
 ```js
 // numbers
@@ -174,6 +174,9 @@ console.log(byFresh);
 
 ## 3 - Conclusion
 
-So the array sort prototype method will work okay when one knows how to get around its shortcomings. The main draw back is that it will mutate the array in place, but aside from that it will work okay just fine. there are ways of getting around the mutation in place thing anyway. For example often I might want to do something with array map before sorting, and that will of course return a new array.
+So the array sort prototype method will work okay when one knows how to get around its shortcomings. The main draw back is that it will mutate the array in place, but aside from that it will work okay just fine. There are ways of getting around the mutation in place thing anyway. For example often I might want to do something with array map before sorting, and that will of course return a new array.
 
 The main appeal of the array sort method is of course the fact that it is there to work with in javaScript by itself without having to introduce an additional external library which of course would be the case with the lodash \_.sortBy method.
+
+Working out some simple examples of array sort is one thing, but in order to really have fun, or doing anything truly worth while of course there is taking a moment to create some kind of game, or project of some kind that would make use of array sort. When it comes to my collection of javaScript examples thus far I have one example where I am making use of array sort to sort an array of planets in an example that is serving as a basic starting point for something that might become a full game some day
+
