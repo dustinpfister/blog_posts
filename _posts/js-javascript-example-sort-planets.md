@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2021-04-04 11:09:27
-version: 1.13
+updated: 2021-04-04 11:11:44
+version: 1.14
 ---
 
 I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and the general idea I have in mind now is to have at least a one if not more [javaScript example](/2021/04/02/js-javascript-example/) posts that help to show why the array sort method is useful. Very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful. Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. 
@@ -89,7 +89,7 @@ var planetMod = (function () {
     ());
 ```
 
-So the get targets method of this module is the main method of interest here. I am looping over all the planets in the passed planets collection, and creating a target object for each planet. This target object contains things like a reference to the planet object, but also a distance value. This distance value is then used as a way to sort the array of targets with the array sort method.
+So the get targets method of this module is the main method of interest here with respect to the array sort method. I am looping over all the planets in the passed planets collection, and creating a target object for each planet. This target object contains things like a reference to the planet object, but also a distance value from the planet to the given point when the method is called. This distance value is then used as a way to sort the array of targets with the array sort method, and the list of targets are returned by the method.
 
 ## 2 - A canvas app that makes use of the module
 
