@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 698
-updated: 2021-04-04 11:11:44
-version: 1.14
+updated: 2021-04-04 11:16:11
+version: 1.15
 ---
 
 I have wrote a post on the [array sort](/2019/12/02/js-array-sort/) method before hand, and the general idea I have in mind now is to have at least a one if not more [javaScript example](/2021/04/02/js-javascript-example/) posts that help to show why the array sort method is useful. Very basic examples are helpful, but they do not help to get people to really understand the connection between the array sort method, and something that is at least starting to look like some kind of project that is fun, interesting or useful. Sorting an array of objects is something that will come up often in javaScript so I thought I would make a fun little javaScript project that would be an example of why sorting is helpful. 
@@ -93,7 +93,7 @@ So the get targets method of this module is the main method of interest here wit
 
 ## 2 - A canvas app that makes use of the module
 
-Now that I have a javaScript module that can be used to create and sort a list of planet objects, and that it seems to work okay. It would be nice to put together a quick little canvas project that makes use of this planets module.
+Now that I have a javaScript module that can be used to create and sort a list of planet objects, and that it seems to work okay when I work with it by itself. It would be nice to put together a quick little canvas project that makes use of this planets module. In time if I do get more time to work on this maybe I will start a full canvas example that will contain additional logic that will be more of a game. However for this simple javaScript example It will just be a canvas example where clicking on a point in the canvas will be the value that is passed to the get targets method. The results will then be displayed on each of the planets which will also be drawn in the canvas.
 
 ### 2.1 - draw.js
 
