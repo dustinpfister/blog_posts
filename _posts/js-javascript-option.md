@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2020-07-17 12:55:03
-version: 1.11
+updated: 2021-04-05 07:04:06
+version: 1.12
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. 
@@ -101,3 +101,8 @@ sel.add(opt);
 ```
 
 In this example I get the string 'default' in the console because I did not set an actual value attribute for the hard coded option, so the inner text of the element is what is used in that case. However if I select the mode2 option I get 2 as a value because I set a value for that option with the javaScript Option constructor.
+
+## 4 - Conclusion
+
+That is it for now when it comes to the Option constructor, as well as option elements, and the select parent element that that option elements are nested in. There is a bit to write about when it comes to everything that surrounds an option element, so in time I might get back around to this post and expand it with some more examples when and if I get to it.
+
