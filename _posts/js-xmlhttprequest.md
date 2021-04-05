@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2020-07-17 13:05:45
-version: 1.7
+updated: 2021-04-05 13:49:47
+version: 1.8
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/). Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used. Call be old fashion by I still find myself using [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -205,9 +205,9 @@ This should be the goal when making any kind of project like this. If I am makin
 
 ## 3 - Using a fetch pollyfill
 
-Of course you could do what I just did, and throw together your own solution, but it might be best to just use something that is out there all ready, and see that it confroms to some kind of newer standard for this sort of thing. Because fetch is poised to be the new replacement for XMLHttprequest it might be a good idea to make (or find) some kind of pollyfill that does a good job of bringing fetch to older browsers. for that you might want to check out [fetch.js](https://github.com/github/fetch/blob/master/fetch.js).
+Of course you could do what I just did, and throw together your own solution, but it might be best to just use something that is out there all ready, and see that it conforms to some kind of newer standard for this sort of thing. Because fetch is poised to be the new replacement for XMLHttprequest it might be a good idea to make (or find) some kind of pollyfill that does a good job of bringing fetch to older browsers. for that you might want to check out [fetch.js](https://github.com/github/fetch/blob/master/fetch.js).
 
 ## 4 - Conclusion
 
-XMLhttprequest is the best solution for scripting http if you care about trying to get your code to work on a wide range of browsers, as it is the tired yet way of doing it. For the most part I would not loose sleep over it thought if you choose to go with something more modern.
+The XMLhttprequest method might be the best solution for scripting http if you care about trying to get your code to work on a wide range of browsers, as it is the tired yet way of doing so. For the most part I would not loose sleep over it thought if I where to choose to go with something more modern, at least when it comes to looking at what is going on with browser vender's and versions with this site at least.
 
