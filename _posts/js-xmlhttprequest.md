@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-04-05 14:24:37
-version: 1.14
+updated: 2021-04-05 14:25:15
+version: 1.15
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -21,7 +21,7 @@ Still if I do choose to make my own custom tailored http client I will most like
 
 ### 1.1 - Get an image and append the image to html
 
-When downloading images using XMLHttprequest it is possible that I might run into cross domain problems. If So addressing that might be outside the scope of this post, assuming that it is possible to begin with depending on the situation. However if I am trying to get something that is in my own domian something like this should work.
+When [downloading images using XMLHttprequest](https://stackoverflow.com/questions/8778863/downloading-an-image-using-xmlhttprequest-in-a-userscript) it is possible that I might run into cross domain problems. If So addressing that might be outside the scope of this post, assuming that it is possible to begin with depending on the situation. However if I am trying to get something that is in my own domain something like this should work.
 
 ```html
 <html>
