@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-04-05 13:59:19
-version: 1.11
+updated: 2021-04-05 14:04:36
+version: 1.12
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -17,41 +17,7 @@ Still if I do choose to make my own custom tailored http client I will most like
 
 <!-- more -->
 
-## 1 - Using an XMLHTTPRequest pollyfill
-
-There was once a time where the use of a pollyfill for XMLHttpRequest was a must, today more often then not it might not be as big of a deal. Of course it really comes down to browser share of your site, for me it does not seem to matter everyone is using late versions of IE, when they are using IE, which is not often.
-
-Still If it is desired to push backward compatibility as far back as possible a pollyfill like this might be used.
-
-```js
-  var xhr;
-  if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-    xhr = new XMLHttpRequest();
-  } else if (window.ActiveXObject) { // IE
-    try {
-      xhr = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-      try {
-        xhr = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (e) {
-        console.log('error, no XHR support at all');
-        return;
-      }
-    }
-  }
-```
-
-This is only really needed if for some reason you want to march backward comparability of your project all the way back to IE 5. Maybe if for some reason you get a lot of traffic from china, or some country where there are still a lot of people using these browsers a Polly fill will be of interest.
-
-However if you site analytics show nothing but IE 7, and older chances are there is not much of a reason to bother with the polly fill anymore, and you can just assume that it is there in window to work with.
-
-In which case you can just use the constructor.
-
-```js
-var xhr = new XMLHttpRequest();
-```
-
-## 2 - Using XMLHttprequest to make a method for scripting http
+## 1 - Using XMLHttprequest to make a method for scripting http
 
 I often prefer to make some kind of easy to use method that can be used with just one or two arguments, but can also be given additional things to work with via an options object, just like that of the popular solutions like axios.
 
@@ -203,6 +169,37 @@ http(
 ```
 
 This should be the goal when making any kind of project like this. If I am making a simple get request I should only have to give a url, and a callback. However if I do need to do something more advanced with custom content types, and payloads I can do that without hacking over the source code.
+
+## 2 - Using an XMLHTTPRequest pollyfill
+
+There was once a time where the use of a pollyfill for XMLHttpRequest was a must, today more often then not it might not be as big of a deal as this is only something that would apply to really old versions of Internet explorer these days. Of course it really comes down to browser share of your site, for me it does not seem to matter everyone is using late versions of IE, when they are using IE at all to begin with, which is not often.
+
+Still If it is desired to push backward compatibility as far back as possible a pollyfill like this might be used to do so.
+
+```js
+  var xhr;
+  if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) { // IE
+    try {
+      xhr = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+      try {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch (e) {
+        console.log('error, no XHR support at all');
+        return;
+      }
+    }
+  }
+```
+
+This is only really needed if for some reason you want to march backward comparability of your project all the way back to IE 5 which at this time is a browser that is over 15 years old now. Maybe if for some reason you get a lot of traffic from China, or some country where there are still a lot of people using old browsers a Polly fill will be of interest. I am a bit of a nostalgia nerd myself, but even I do not bother with this any more.
+
+However if you site analytics show nothing but IE 7, and older chances are there is not much of a reason to bother with the polly fill anymore, and you can just assume that it is there in window to work with.
+
+In which case you can just use the constructor and move on.
+
 
 ## 3 - Using a fetch pollyfill
 
