@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-04 11:45:25
-version: 1.23
+updated: 2021-04-05 17:09:33
+version: 1.24
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -48,19 +48,23 @@ This was my first post on this collection of javaScript examples, and as such I 
 
 So there is having a simple expression like 3 \/ 4 that will result in a value between 0 and 1 that will be \0.25. In other words there is having a numerator and denominator value and getting a fraction between the two. However if a numerator value starts at 0 and approaches the denominator value as a fixed static rate, then the change happens along a straight line when graphed.
 
-### 1.9 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
+### 1.9 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
+
+This is an example where I worked out some basic logic for a turret define game when it comes to how the turrets will behave.
+
+### 1.10 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
 
 This is a skill point system that I put together to make use of in some canvas examples that might call for such a system. The general idea here is that in a game where there is an experience point system on each level some skill points will be given to the player. These skill points can then be invested into upgrades that have various effects on a main game state object.
 
-### 1.10 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
+### 1.11 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
 
 A simple sort of planets objects example that I might use if a future game if I ever get around to it. The idea of this example is that I just wanted to make a simple fun little example that makes use of the array sort method to which I wrote a quick blog post on. I wanted to go at least one step beyond just having a simple copy and paste hello world style example of array sort, and with that goal in mind I guess this example is more or less just that. I am not sure if I will every get around to expanding on this by making a real game based off of it, but in any case I all ready have an interesting starting point for something here to say the least.
 
-### 1.11 - [tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
+### 1.12 - [tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
 A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax.
 
-### 1.12 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.13 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example.
 
