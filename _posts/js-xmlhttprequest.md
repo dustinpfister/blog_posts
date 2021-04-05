@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-04-05 14:33:05
-version: 1.18
+updated: 2021-04-05 14:47:50
+version: 1.19
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -23,7 +23,33 @@ In this section I will be starting out with just some basic, simple, copy and pa
 
 The basic process will switch up a little here and there though depending on the kind of request that I would like to make. Often I might need to set some additional headers for the server that I will be sending the request to, and so forth. I will not be covering all the bases with the various kinds of requests here, but I should at least cover some basic examples of get requests at least to start off with.
 
-### 1.1 - Get an image and append the image to html
+### 1.1 - Get json example
+
+To get json I just need to make the responseType prop JSON, after that the process is more or less the same as plain text. I do not even have to parse the response when I do it this way now.
+
+```html
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://dustinpfister.github.io/json/fakekeys.json', true);
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log(this.response['fake-site-one']);
+        }
+    };
+    xhr.send();
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Get an image and append the image to html
 
 When [downloading images using XMLHttprequest](https://stackoverflow.com/questions/8778863/downloading-an-image-using-xmlhttprequest-in-a-userscript) it is possible that I might run into cross domain problems. If So addressing that might be outside the scope of this post, assuming that it is possible to begin with depending on the situation. However if I am trying to get something that is in my own domain something like this should work.
 
