@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-05 16:23:58
-version: 1.4
+updated: 2021-04-05 16:25:49
+version: 1.5
 ---
 
 Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple javaScript example where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
@@ -29,3 +29,7 @@ For this javaScript example I am making use of a canvas element to provide a cru
 ## 4 - The main.js javaScript file
 
 I am not going to want to have a main.js file in which I can make use of all the above javaScript code and add a main app loop, along with some event handers.
+
+## 5 - Conclusion
+
+SO it looks like I have the basic idea that I has in mind up and running just great, In fact this time around I would say that it is working better than the old buggy code that I am not replacing in my canvas example that will make use of what I worked out here today.
