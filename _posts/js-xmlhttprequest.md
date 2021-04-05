@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-04-05 14:07:57
-version: 1.13
+updated: 2021-04-05 14:24:37
+version: 1.14
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -16,6 +16,36 @@ It does have it's draw backs, compared to more modern solutions, but it is not t
 Still if I do choose to make my own custom tailored http client I will most likely use XMLHttpRequest as a way of making the request. Often I just go with it for examples where I just need to make a request for an example when working out a simple client system for an examples that has to do with a back end framework, or something to that effect as to not complicated the process any father than it needs to. In this post then I will be going over some very basic use case examples of the XMLHttpRequest method, as well as any additional topics that might come up when using the method.
 
 <!-- more -->
+
+## 1 - Basic XmlHttpRequest examples
+
+### 1.1 - Get an image and append the image to html
+
+When downloading images using XMLHttprequest it is possible that I might run into cross domain problems. If So addressing that might be outside the scope of this post, assuming that it is possible to begin with depending on the situation. However if I am trying to get something that is in my own domian something like this should work.
+
+```html
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://dustinpfister.github.io/favicon.ico', true);
+    xhr.responseType = 'blob';
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var img = document.createElement('img')
+            img.src = window.URL.createObjectURL(this.response);
+            document.getElementById('out').appendChild(img);
+        }
+    };
+    xhr.send();
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - Using XMLHttprequest to make my own method for scripting http
 
