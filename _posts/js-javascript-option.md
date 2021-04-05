@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2021-04-05 07:04:06
-version: 1.12
+updated: 2021-04-05 07:09:57
+version: 1.13
 ---
 
-So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. 
+So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements as a way to change some kind of application setting. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. 
 
-So there is the document.createElement method which is what is often used when it comes to making Option elements, or any kind of element for that matter, but there are also dedicated constructors for creating many elements in client side javaScriopt also and Options Elements are no exception. With that said on top of the create element method there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript. 
+So there is the document.createElement method which is what is often used when it comes to making Option elements, or any kind of element for that matter, but there are also dedicated constructors for creating many elements in client side javaScriopt also, and Options Elements are no exception. With that said on top of the create element method there is also the [javaScript Option](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option) constructor in the window object that can be used to quickly create an option element in client side javaScript.
+
+There are a few things to cover when it comes to option elements, there is not just how to create them, but also how to use them. In this post I will be going over some basic examples of the javaScript Option constructor, but I will also be touching base on event handers, and other related topics when it comes to making use of these elements in a client side javaScript project.
 
 <!-- more -->
 
