@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2021-04-05 07:09:57
-version: 1.13
+updated: 2021-04-05 07:12:53
+version: 1.14
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements as a way to change some kind of application setting. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. 
@@ -19,7 +19,7 @@ There are a few things to cover when it comes to option elements, there is not j
 
 ## 1 - JavaScript Option constructor basic example.
 
-The javaScript Option constructor can be used as an alternative to document.createElement and given the additional parameters that can eb given to it, it can also result in a more concise solution when it comes to create Option elements for a select element.
+The javaScript Option constructor can be used as an alternative to document.createElement and given the additional parameters that can be given to it, it can also result in a more concise solution when it comes to create Option elements for a select element.
 
 Here I have some very basic example of both general options when it comes to creating an option element with javaScript, as well as some options when it comes to how to append such and element to a select element.
 
@@ -62,7 +62,7 @@ So now that we have the very basics out of the way lets more on to some addition
 
 ## 2 - Parameter options for the javaScript Option constructor
 
-Here I have a simple example of the Option constructor where I am using all the available options.
+Here I have a simple example of the Option constructor where I am using all the available options. This results in an option element that has an inner text value of mode2, but a value of 2, more on that when we get into events. In addition there are two boolean values that can be passed to set the option as the default option and to make it selected when the page loads in that order.
 
 ```html
 <html>
@@ -83,7 +83,8 @@ sel.add(opt);
 </html>
 ```
 
-This results in an option element that has an inner text value of mode2, but a value of 2, more on that when we get into events. In addition there are two boolean values that can be passed to set the option as the default option and to make it selected when the page loads.
+In this example I am also using the add method of the select elemets as a wa to add an additional option to a hard coded select element.
+
 
 ## 3 - On change event for a select and options
 
