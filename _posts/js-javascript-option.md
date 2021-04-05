@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 557
-updated: 2021-04-05 07:14:33
-version: 1.15
+updated: 2021-04-05 07:19:24
+version: 1.16
 ---
 
 So now and then when I work out various projects I sometimes want to use a [select element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) to provide an interface to select two or more option elements as a way to change some kind of application setting. Just like any other html element, these option elements can be hard coded in the html itself, but they can also be added with javaScript when it comes to dom manipulation. 
@@ -83,7 +83,7 @@ sel.add(opt);
 </html>
 ```
 
-In this example I am also using the add method of the select elemets as a wa to add an additional option to a hard coded select element.
+In this example I am also using the add method of the select elements as a way to add an additional option to a hard coded select element. However I am still not doing much of anything with the select element, and the options for it. In order to have a functioning select tag drop down menu I am going to want to have at least one event listener for it that will preform any necessary actions that must happen each time the options is changed.
 
 
 ## 3 - On change event for a select and options
