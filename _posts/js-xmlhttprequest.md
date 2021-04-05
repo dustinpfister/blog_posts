@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-04-05 14:25:15
-version: 1.15
+updated: 2021-04-05 14:26:35
+version: 1.16
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -18,6 +18,8 @@ Still if I do choose to make my own custom tailored http client I will most like
 <!-- more -->
 
 ## 1 - Basic XmlHttpRequest examples
+
+In this section I will be starting out with just some basic, simple, copy and past style examples of XMLHttprequest, for typical situations of the use of the method.
 
 ### 1.1 - Get an image and append the image to html
 
