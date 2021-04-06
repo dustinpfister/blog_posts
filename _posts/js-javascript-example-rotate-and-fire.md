@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-06 14:57:52
-version: 1.10
+updated: 2021-04-06 15:00:15
+version: 1.11
 ---
 
 Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple [javaScript example](/2021/04/02/js-javascript-example/) where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
@@ -290,6 +290,8 @@ canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mousemove', pointerMove);
 canvas.addEventListener('mouseup', pointerUp);
 ```
+
+When this example is up and running I have a turret that moves from its current facing direction to the heading direction if I just leave it alone. When I click on the canvas the facing direction moved to the point on the canvas that I am clicking on, and when it gets within the fire range it begins to fire shots.
 
 ## 5 - Conclusion
 
