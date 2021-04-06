@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-06 14:51:19
-version: 1.8
+updated: 2021-04-06 14:53:44
+version: 1.9
 ---
 
 Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple [javaScript example](/2021/04/02/js-javascript-example/) where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
@@ -291,4 +291,5 @@ canvas.addEventListener('mouseup', pointerUp);
 
 ## 5 - Conclusion
 
-SO it looks like I have the basic idea that I has in mind up and running just great, In fact this time around I would say that it is working better than the old buggy code that I am not replacing in my canvas example that will make use of what I worked out here today.
+So it looks like I have the basic idea that I has in mind up and running just great, In fact this time around I would say that it is working better than the old buggy code that I am not replacing in my canvas example that will make use of what I worked out here today. So it should go without saying that I will apply what I have worked out here in this example in my turret defense canvas example to say the least. I also have a lot of ideas of other games that might involve this kind of system so it might pop up in some other future projects here and there as time goes by.
+
