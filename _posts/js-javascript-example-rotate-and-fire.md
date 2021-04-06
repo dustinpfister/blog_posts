@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-06 14:53:44
-version: 1.9
+updated: 2021-04-06 14:57:52
+version: 1.10
 ---
 
 Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple [javaScript example](/2021/04/02/js-javascript-example/) where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
@@ -244,7 +244,9 @@ draw.shots = function (ctx, state) {
 
 ## 4 - The main.js javaScript file
 
-I am not going to want to have a main.js file in which I can make use of all the above javaScript code and add a main app loop, along with some event handers.
+I am now going to want to have a main.js file in which I can make use of all the above javaScript code and add a main app loop, along with some event handers. Often when it comes to this kind of file I might have a state machine, and a whole bunch of other things going on. However this javaScript example is fairly simple so I only need one state to work with really.
+
+Here I create and append the canvas element that i will be using for the example, then create the state object with the sate module that I worked out above. I then have my main app loop in which I update the state of the state object, and draw some things using the draw module also in each app loop.
 
 ```js
 var canvas = document.createElement('canvas'),
