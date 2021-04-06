@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-06 15:06:22
-version: 1.13
+updated: 2021-04-06 15:08:29
+version: 1.14
 ---
 
 Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple [javaScript example](/2021/04/02/js-javascript-example/) where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
@@ -202,6 +202,8 @@ var stateMod = (function () {
 }
     ());
 ```
+
+SO that is it for my main state module for this javaScript example, but this is just to create and update an object that will sever as a model of sorts. When it comes to drawing the state of this model to a canvas element, or any kind of display for that example I am going to need to use some kind of draw method.
 
 ## 3 - The draw module
 
