@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-06 14:45:41
-version: 1.25
+updated: 2021-04-06 15:33:25
+version: 1.26
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -42,7 +42,7 @@ One thing that I would like to have as part of a basic utility library that I ta
 
 ### 1.7 - [Simple map system for selecting a level in a game](/2021/04/06/js-javascript-example-map-system-simple/)
 
-In this example I am working out a simple map system that will set some options for a main game state constructor.
+In this example I am working out a simple map system that will set some options for a main game state create method. In other words this is a simple system for having a collection of display objects in a canvas where each display object is for a level in a game, when the player clicks on one of these display objects they then progress to another state of the application that will be used to set additional settings, or progress directly to the game state. The display object in the map contains properties that will be passed to the game create method that will set up the state of the game object.
 
 ### 1.8 - [A nice basic multiplication table example](/2020/02/10/js-javascript-example-multiplication-table)
 
