@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-05 17:09:33
-version: 1.24
+updated: 2021-04-06 14:45:41
+version: 1.25
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -36,35 +36,39 @@ Often I need to make the same thing over an over again at least a few times befo
 
 In this example I have a grid and I am working out some basic logic when it comes to moving those units around in the grid. There is a bit to it actually when it comes to making a system for this sort of thing from the ground up. However what is also great about it is that it is not so hard to get something working, and once I have a basic system for the kinds of games that I have in mind I can use it to not just make one game but a few taking this system with me to each new project. However as of this writing this one is still a work in progress that I have not put as much time into as I would have liked to. I do have a lot of other things going on that get in the way of me working much of this stuff out.
 
-### 1.6 - [A long once method](/2021/03/29/js-javascript-example-log-once/)
+### 1.6 - [A log once method](/2021/03/29/js-javascript-example-log-once/)
 
 One thing that I would like to have as part of a basic utility library that I take with me from one project to another is a log once, or call once type method. When first starting out with the basic of debugging there is using the console.log method to log things out to the javaScriot console as they happen. I do not think that this is such a bad way to go about debugging, and I still find myself doing it, however there are some things to gain from starting to use my own system for logging things that are going on.
 
-### 1.7 - [A nice basic multiplication table example](/2020/02/10/js-javascript-example-multiplication-table)
+### 1.7 - [Simple map system for selecting a level in a game](/2021/04/06/js-javascript-example-map-system-simple/)
+
+In this example I am working out a simple map system that will set some options for a main game state constructor.
+
+### 1.8 - [A nice basic multiplication table example](/2020/02/10/js-javascript-example-multiplication-table)
 
 This was my first post on this collection of javaScript examples, and as such I wanted to start out with something very basic. SO working out a javaScript example that is just a simple multiplication table sure doe stink me as one of those simple hello world type projects that help out for people that are very new to javaScript. However even when it comes to this kind of example there is still a lot to cover, even with something like this. There is not just making a multiplication table and moving on, there is making a function that will create a state object of a multiplication table, and then making at least one if not more renderer's that will render the state of this multiplication table.
 
-### 1.8 - [A percent module experiment](/2020/11/25/js-javascript-example-percent-module/)
+### 1.9 - [A percent module experiment](/2020/11/25/js-javascript-example-percent-module/)
 
 So there is having a simple expression like 3 \/ 4 that will result in a value between 0 and 1 that will be \0.25. In other words there is having a numerator and denominator value and getting a fraction between the two. However if a numerator value starts at 0 and approaches the denominator value as a fixed static rate, then the change happens along a straight line when graphed.
 
-### 1.9 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
+### 1.10 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
 
 This is an example where I worked out some basic logic for a turret define game when it comes to how the turrets will behave.
 
-### 1.10 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
+### 1.11 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
 
 This is a skill point system that I put together to make use of in some canvas examples that might call for such a system. The general idea here is that in a game where there is an experience point system on each level some skill points will be given to the player. These skill points can then be invested into upgrades that have various effects on a main game state object.
 
-### 1.11 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
+### 1.12 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
 
 A simple sort of planets objects example that I might use if a future game if I ever get around to it. The idea of this example is that I just wanted to make a simple fun little example that makes use of the array sort method to which I wrote a quick blog post on. I wanted to go at least one step beyond just having a simple copy and paste hello world style example of array sort, and with that goal in mind I guess this example is more or less just that. I am not sure if I will every get around to expanding on this by making a real game based off of it, but in any case I all ready have an interesting starting point for something here to say the least.
 
-### 1.12 - [tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
+### 1.13 - [tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
 A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax.
 
-### 1.13 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.14 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example.
 
