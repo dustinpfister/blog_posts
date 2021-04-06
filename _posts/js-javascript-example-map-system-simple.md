@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-06 15:27:02
-version: 1.6
+updated: 2021-04-06 15:29:37
+version: 1.7
 ---
 
 This week I am continuing to work on one of my canvas examples that is just simply called turret defense because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game. There are a lot of ideas that come up when it comes to just having this kind of system in a game, but for the sake of this post I would like to have just a simple basic system for this sort of thing.
@@ -38,10 +38,14 @@ Now for the game state module for this javaScript example of a map system. You s
 
 ## 4 - The draw module
 
+Just like with any other example where I am using canvas to create a view for the application I have a draw module that contains methods that help me draw to a canvas element.
+
 ```js
 ```
 
 ## 5 - the main javaScript file
+
+Not for the main javaScript file will I will have a basic state machine for a map menu, and main game state, along with a main app loop, and anything else that should be placed in such a javaScript file.
 
 ```js
 ```
