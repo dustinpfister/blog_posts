@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-06 15:03:17
-version: 1.12
+updated: 2021-04-06 15:06:22
+version: 1.13
 ---
 
 Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple [javaScript example](/2021/04/02/js-javascript-example/) where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
@@ -89,6 +89,8 @@ utils.shortestAngleDirection = function (a1, a2, scale) {
 I put together a quick state module that will create and return, as well as update the main state object of this javaScript example. In a real projects I might have a lot of files that will make up the state including a state machine, a game module, along with many plug ins for this modules. However this is a simple little javaScript example where I just have a single file for this sort of thing.
 
 The main public method of this module is the create method, this will create the main state object for this module, and the javaScript example as a whole. This state object contains properties like the x and y position of the turret, the width and height of the area of the turret, as well as a number of other properties that have to do with the rotational speed and rate of fire of the turret.
+
+I then have a number of public methods that are used to mutate a state object created with the main create method of this module. I have things broken down when it comes to this where I have an update method that will just update the target property of the state object, and then another that will update the current facing direction of the turret. I then have another update method that will update the state of a shots object pool that I am using inside this module.
 
 ```js
 var stateMod = (function () {
