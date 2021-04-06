@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 838
-updated: 2021-04-05 17:11:41
-version: 1.7
+updated: 2021-04-06 14:51:19
+version: 1.8
 ---
 
-Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple javaScript example where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
+Lately I have been giving my turret defense canvas example a much needed overhaul as I do not like the state that I have it in. I added a whole bunch of code that brings things to the example that start to make it look like an actual game to some extent for once. However there is much more work to do when it comes to making a quality game that people might actually want to play. For today though I wanted to work out a simple [javaScript example](/2021/04/02/js-javascript-example/) where I am just focusing one one little aspect of the game, and that is just having the turret move and fire.
+
+This fire control system is just working out a standard way to control what will cause the turret to move, in what direction, and at at what rate of movement. This example then makes use of a bunch of methods that have to do with working with angles, because I will want to know the shortest direction between two angles, and also the angular distance from one angle to another, and so forth. Also it is true that what I am working out here will ally to all kind of games that will make use of this kind of control system, or something like it.
 
 <!-- more -->
 
