@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 12:12:37
-version: 1.19
+updated: 2021-04-07 12:18:11
+version: 1.20
 ---
 
 This week I am continuing to work on one of my [canvas examples](/2020/03/23/canvas-example/) that is just simply called [turret defense](/2020/01/10/canvas-example-turret-defense/) because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game.
@@ -318,7 +318,7 @@ var gameMod = (function () {
 
 ## 4 - The draw module
 
-Just like with any other example where I am using canvas to create a view for the application I have a draw module that contains methods that help me draw to a canvas element.
+Just like with any other example where I am using canvas to create a view for the application I have a draw module that contains methods that help me draw to a canvas element. I always have a draw method to draw the background of the canvas which is almost always a solid simple solid color background, I also have methods that i am using to draw the state of display objects in the main game state of the over all example. The main method of interest here as far as the subject mater of this post is concerned though if of course the draw map method.
 
 ```js
 var draw = {};
