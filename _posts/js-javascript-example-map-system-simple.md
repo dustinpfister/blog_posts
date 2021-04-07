@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 10:04:14
-version: 1.8
+updated: 2021-04-07 11:24:04
+version: 1.9
 ---
 
 This week I am continuing to work on one of my canvas examples that is just simply called turret defense because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game. There are a lot of ideas that come up when it comes to just having this kind of system in a game, but for the sake of this post I would like to have just a simple basic system for this sort of thing.
@@ -36,7 +36,7 @@ var mapMod = (function () {
                 startPos: {x: 0, y: 0},
                 curPos: {x:0, y:0 },
                 dist: 0,
-                moveing: false
+                moving: false
             },
             yOffset: 0,
             yMax: 480,
