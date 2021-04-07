@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 12:03:12
-version: 1.18
+updated: 2021-04-07 12:12:37
+version: 1.19
 ---
 
 This week I am continuing to work on one of my [canvas examples](/2020/03/23/canvas-example/) that is just simply called [turret defense](/2020/01/10/canvas-example-turret-defense/) because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game.
@@ -130,6 +130,8 @@ One last additional feature that I put in is an on object with functions for eac
 ## 2 - The utils lib
 
 Like many of my javaScript and canvas examples I have a main utility library that serves as a way to have a base set of methods to use in the example. Mayne of these methods are usual suspect type methods that I take with be from one project to another, however in other examples I might work out some methods that have to do with the specific example that are new, but I might just want to park here for one reason or another.
+
+The only method here that I am using in the map module is the distance method, which is a method that I am typically going to want to have with just about any example such as this. The other methods are used in the game module, and oter files such as the main javaScript file, but I might also use them elsewhere, so I park them here.
 
 ```js
 var utils = {};
