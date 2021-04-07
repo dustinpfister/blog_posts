@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-07 16:08:48
-version: 1.30
+updated: 2021-04-07 16:11:20
+version: 1.31
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -68,7 +68,7 @@ A simple sort of planets objects example that I might use if a future game if I 
 
 ### 1.13 - [Tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
-A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax.
+A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax. I would not use this as a way to do ones own taxes of course, but it is a module that I might use in one form or another in some kind of game where I might want a module such as this.
 
 ### 1.14 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
