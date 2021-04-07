@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 840
-updated: 2021-04-07 15:54:35
-version: 1.12
+updated: 2021-04-07 15:57:11
+version: 1.13
 ---
 
 Today I would like to work out another simple [javaScript example](/2021/04/02/js-javascript-example/), this time I wanted to start a very simple trade simulator example. Nothing major as I like to just work out simple basic examples of things when it comes to many of these javaScript examples, that I may, or may not continue to work on when it comes to truing it into something that I might use in a real project of some kind.
@@ -115,6 +115,8 @@ var tradeMod = (function () {
 }
     ());
 ```
+
+This is more or less the kind of module that I had in mind, there might be a lot more to add to it, but much of that might change a little from one project to the next. For this example at least, I just wanted to have a simple hello world type form of the module. So with that said I think this might be more or less what I had in mind.
 
 ## 2 - Simple console only use example
 
