@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 840
-updated: 2021-04-07 15:27:43
-version: 1.2
+updated: 2021-04-07 15:32:21
+version: 1.3
 ---
 
 Today I would like to work out another simple [javaScript example](/2021/04/02/js-javascript-example/), this time I wanted to start a very simple trade simulator example. Nothing major as I like to just work out simple basic examples of things when it comes to many of these javaScript examples, that I may, or may not continue to work on when it comes to truing it into something that I might use in a real project of some kind.
+
+What I wanted to make is just a very simple starting point for a system where there are a number of items at a game market of some kind. At any given moment each item can be bought or sold at the market, and the current price of the items will go up and down within a certain range. The player can then buy an item at the market at a low price, and then later on sell it back when they are worth more to make money.
+
+This trade simulator might just be a feature of a game, or I guess it could be the central focal point of the game actually. There are a lot of little details here, and there when it comes to something like this, such as the logic at play that will set prices, and how often prices will change. However I have to start somewhere when it comes to something like this, so in this post I will just be going over a very simple, basic, example of this sort of thing.
 
 <!-- more -->
 
