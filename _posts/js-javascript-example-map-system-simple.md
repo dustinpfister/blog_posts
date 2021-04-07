@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 12:18:11
-version: 1.20
+updated: 2021-04-07 12:20:34
+version: 1.21
 ---
 
 This week I am continuing to work on one of my [canvas examples](/2020/03/23/canvas-example/) that is just simply called [turret defense](/2020/01/10/canvas-example-turret-defense/) because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game.
@@ -370,7 +370,7 @@ draw.shots = function (ctx, game) {
 
 ## 5 - The main javaScript file
 
-Not for the main javaScript file will I will have a basic state machine for a map menu, and main game state, along with a main app loop, and anything else that should be placed in such a javaScript file.
+Now for the main javaScript file will I will have a basic state machine for a map menu, and main game states.  On top of this crude yet effective state machine I also have a main app loop for the example, and anything else that should be placed in such a javaScript file. I am also creating an instance of the main map object here, and in additn to this I am also pushing in some display objects for the map in addition to this.
 
 ```js
 var canvas = document.createElement('canvas'),
