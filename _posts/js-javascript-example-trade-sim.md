@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 840
-updated: 2021-04-07 15:52:20
-version: 1.11
+updated: 2021-04-07 15:54:35
+version: 1.12
 ---
 
 Today I would like to work out another simple [javaScript example](/2021/04/02/js-javascript-example/), this time I wanted to start a very simple trade simulator example. Nothing major as I like to just work out simple basic examples of things when it comes to many of these javaScript examples, that I may, or may not continue to work on when it comes to truing it into something that I might use in a real project of some kind.
@@ -20,6 +20,8 @@ This trade simulator might just be a feature of a game, or I guess it could be t
 ## 1 - The trade sim library
 
 So here I have a simple trade module that contains the base idea of what I had in mind for this trade simulator javaScript example. I am going to want to have some kind of Item database, for this example I am just using some hard coded data in the module itself for this. Each item should have a value range at least, or some set of properties that are used to set the total range of what an item can end up being worth.
+
+I will then want to create a main state object for this module that will hold current market process for these items in the database. In addition it can also be used as a way to create, and mutate a players collection of these items, and mutate a state object that contains a money property.
 
 ```js
 var tradeMod = (function () {
