@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-06 15:33:25
-version: 1.26
+updated: 2021-04-07 15:22:59
+version: 1.27
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -64,11 +64,15 @@ This is a skill point system that I put together to make use of in some canvas e
 
 A simple sort of planets objects example that I might use if a future game if I ever get around to it. The idea of this example is that I just wanted to make a simple fun little example that makes use of the array sort method to which I wrote a quick blog post on. I wanted to go at least one step beyond just having a simple copy and paste hello world style example of array sort, and with that goal in mind I guess this example is more or less just that. I am not sure if I will every get around to expanding on this by making a real game based off of it, but in any case I all ready have an interesting starting point for something here to say the least.
 
-### 1.13 - [tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
+### 1.13 - [Tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
 A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax.
 
-### 1.14 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.14 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
+
+This is a simple trade simulator game.
+
+### 1.15 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example.
 
