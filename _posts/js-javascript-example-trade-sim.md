@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 840
-updated: 2021-04-07 15:39:10
-version: 1.5
+updated: 2021-04-07 15:41:40
+version: 1.6
 ---
 
 Today I would like to work out another simple [javaScript example](/2021/04/02/js-javascript-example/), this time I wanted to start a very simple trade simulator example. Nothing major as I like to just work out simple basic examples of things when it comes to many of these javaScript examples, that I may, or may not continue to work on when it comes to truing it into something that I might use in a real project of some kind.
@@ -167,6 +167,8 @@ var TradeSim = (function(){
  
 }());
 ```
+
+So when it comes to playing around with this in the javaScript console, if I keep buying low, and selling high, I make money in the game. That is it when it comes to the basic idea that i had in mind with this, now the question is do I want to put more time into this? I can not see this by itself taking off as a stand alone game, but my thinking is that I have something like this as a feature of a game as a way to go about making some play money in the game, along with at least a few other options.
 
 ## 3 - Conclusion
 
