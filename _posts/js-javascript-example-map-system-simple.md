@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 11:49:09
-version: 1.16
+updated: 2021-04-07 11:53:43
+version: 1.17
 ---
 
 This week I am continuing to work on one of my [canvas examples](/2020/03/23/canvas-example/) that is just simply called [turret defense](/2020/01/10/canvas-example-turret-defense/) because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game.
@@ -124,6 +124,8 @@ var mapMod = (function () {
 ```
 
 I then have a main update method that will take a map object along with a secs value to update the current map offset position of the map. For now I have a system where the player can click on any area of the map and if they move far enough away from a start point that will cause the ma to begin to move. The rate at which the map moves will change depending on the distance from the start point, this seems to work fine for now, but in a more advanced system I would maybe want to add some features for keyboard support and other ways of moving the map that involve just pointing to an edge of the map or something to that effect.
+
+One last additional feature that I put in is an on object with functions for each type of general pointer event. There is using the on.start function in event handler of a mouse down and touch start events for example. This is then just want way to go about changing the state of the offset value that is really the main feature of this map level select system. Really that is all that this needs to do, just move around on a map and then click on an item that will then result in the player moving on to another state where they are playing a game, or setting some additional options for the game before doing so.
 
 ## 2 - The utils lib
 
