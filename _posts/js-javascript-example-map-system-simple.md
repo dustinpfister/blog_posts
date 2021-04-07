@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 11:34:55
-version: 1.12
+updated: 2021-04-07 11:37:26
+version: 1.13
 ---
 
 This week I am continuing to work on one of my [canvas examples](/2020/03/23/canvas-example/) that is just simply called [turret defense](/2020/01/10/canvas-example-turret-defense/) because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game.
@@ -22,6 +22,8 @@ What I will be writing about here then today will be yet another one of my [java
 ## 1 - The map module
 
 First of I will get right to the main event of this javaScript example and start writing about the map module rater than any additional files that will be needed in order to have something that will make use of it, I can get to that later in this post. This module will contain at least two public methods, one to create a map object, and another that will serve as a way to know if a map item object has been clicked or not.
+
+Like all of my other modules like this there is a main create public method, this is the method that I will be calling in my main.js javaScript file, or in a state machine module, or any other module where I will want to create an instance of a main level map object.
 
 ```js
 var mapMod = (function () {
