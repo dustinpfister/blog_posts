@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 840
-updated: 2021-04-07 15:34:53
-version: 1.4
+updated: 2021-04-07 15:39:10
+version: 1.5
 ---
 
 Today I would like to work out another simple [javaScript example](/2021/04/02/js-javascript-example/), this time I wanted to start a very simple trade simulator example. Nothing major as I like to just work out simple basic examples of things when it comes to many of these javaScript examples, that I may, or may not continue to work on when it comes to truing it into something that I might use in a real project of some kind.
@@ -115,6 +115,10 @@ var tradeMod = (function () {
 ```
 
 ## 2 - Simple console only use example
+
+TO start off with I created a very simple way of going about using this that works by just calling methods in the javaScript console. So For now this is all I have to work with the trade module that is just a nice way to work with it in the javaScript console only.
+
+This module is just used to create a main game state, and does so once when it first starts. I can then call TradeSim.startNew to create a new game in the console if I want to. The main way that I work with this then is to call the action method of this module, I can then pass a buy, or sell value for a kind of action, then an item key followed by a count of that item.
 
 ```js
 var TradeSim = (function(){
