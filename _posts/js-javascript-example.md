@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-07 15:22:59
-version: 1.27
+updated: 2021-04-07 16:02:22
+version: 1.28
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -70,7 +70,7 @@ A tax brackets example that helps me to get a general idea of how a progressive 
 
 ### 1.14 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
-This is a simple trade simulator game.
+This is a simple trade simulator module that I might use as a starting point for a more advanced version that could be used in a game. The general idea here is that the player has a way to buy items as a certain rate, and then sell them at another rate later on. Depending if the rate goes up or down they will stand to gain or lose money.
 
 ### 1.15 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
