@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-07 16:03:30
-version: 1.29
+updated: 2021-04-07 16:08:48
+version: 1.30
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
+
+In this post I will be briefly writing about and linking to each of my javaScript example posts where I am just writing about a little code that constitutes some kind of simple javaScript project. Many of these javaScript examples are modules that will just provide one little feature of a game, or some kind of reusable function that could be part of an over all larger framework.
 
 <!-- more -->
 
