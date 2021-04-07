@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 839
-updated: 2021-04-07 12:24:39
-version: 1.22
+updated: 2021-04-07 12:26:47
+version: 1.23
 ---
 
 This week I am continuing to work on one of my [canvas examples](/2020/03/23/canvas-example/) that is just simply called [turret defense](/2020/01/10/canvas-example-turret-defense/) because I am really bad at names. Anyway for the game I would like to have a level selection map where there are a bunch of display objects for each level in the game.
@@ -507,7 +507,7 @@ canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
 canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 ```
 
-When I have this example up and running the basic, crude, unpolished idea is working for what it is worth. I have a bunch of display objects on the canvas, I can move up and down to see more display objects, and when I click on one I progress to a new state in which the main game object is created with options set depending on the object I click on.
+When I have this example up and running the basic, crude, unpolished idea is working for what it is worth. I have a bunch of display objects on the canvas, I can move up and down to see more display objects, and when I click on one I progress to a new state in which the main game object is created with options set depending on the object I click on. Of course there is way more to add to the level select map system, as well as to the over all structure of the example as a whole. However when it comes to just the map system there really is only so much more that i would want to add and change. I just wanted a simple starting point for this, and I would say that this is what I have, not it is just a question of what he next step might be.
 
 ## 6 - Conclusion
 
