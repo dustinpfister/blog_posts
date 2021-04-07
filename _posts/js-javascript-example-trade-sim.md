@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 840
-updated: 2021-04-07 15:44:12
-version: 1.7
+updated: 2021-04-07 15:46:14
+version: 1.8
 ---
 
 Today I would like to work out another simple [javaScript example](/2021/04/02/js-javascript-example/), this time I wanted to start a very simple trade simulator example. Nothing major as I like to just work out simple basic examples of things when it comes to many of these javaScript examples, that I may, or may not continue to work on when it comes to truing it into something that I might use in a real project of some kind.
@@ -172,4 +172,4 @@ So when it comes to playing around with this in the javaScript console, if I kee
 
 ## 3 - Conclusion
 
-So that is it for now when it comes to this little javaScript example at least, at some point in the future I might use this in a larger game, and when I do maybe I will come around to edit this post.
+So that is it for now when it comes to this little javaScript example at least, at some point in the future I might use this in a larger game, and when I do maybe I will come around to edit this post. One thing that might work would be to create some kind of life simulator type game, and this kind of feature might pop up in one or more places in the game. For example there could be a stock exchange type place, and something not all that more involve than this could be one way to go about buying and selling shares of places in the game.
