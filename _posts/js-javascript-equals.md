@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2021-04-08 14:52:48
-version: 1.33
+updated: 2021-04-08 14:54:51
+version: 1.34
 ---
 
 So the javaScipt == or [Equality operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) is used to find equality in expressions. However there are a number of other options to be aware of in javaScript in addition to the equality operator there is also the === or identity operator that is used to preform a more strict, type sensitive kind of comparison between two values. There is yet even another option that comes to mind that is not an operator, but a static method called the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method that brings yet even another standard to be aware of. However none of these should be confused with just a single = operator, that is used for assignment, and there is really only that when it comes to doing so.
@@ -130,6 +130,10 @@ console.log(n === 7); // true
  
 console.log(n === Number(str)); // true
 ```
+
+## 4 - Object.is
+
+The object.is method is then another topic of concern when it comes to making a comparison between two values.
 
 ## 5 - Comparing to NAN
 
