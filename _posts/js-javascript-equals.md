@@ -1,12 +1,12 @@
 ---
-title: JavaScript =, == , ===, and Object.is
+title: =, == , ===, and Object.is in javaScript
 date: 2019-02-06 17:47:00
 tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2021-04-08 14:16:30
-version: 1.25
+updated: 2021-04-08 14:17:38
+version: 1.26
 ---
 
 So the javaScipt == or [Equality operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) is used to find equality in expressions. However there are a number of other options to be aware of in javaScript in addition to the equality operator there is also the === or identity operator that is used to preform a more strict, type sensitive kind of comparison between two values. There is yet even another option that comes to mind that is not an operator, but a static method called the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method that brings yet even another standard to be aware of. However none of these should be confused with just a single = operator, that is used for assignment, and there is really only that when it comes to doing so.
@@ -102,3 +102,8 @@ I [wrote a post in the past about NAN](/2017/09/23/js-nan/) which is a special k
 console.log(NaN == NaN); // false
 console.log(isNaN(NaN) == isNaN(isNaN)); // true
 ```
+
+## 4 - Conclusion
+
+So that is it for now when it comes to assignment, equality, and identity in javaScript.
+
