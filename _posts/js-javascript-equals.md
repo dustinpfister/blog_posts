@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2020-07-17 13:18:54
-version: 1.21
+updated: 2021-04-08 14:12:19
+version: 1.22
 ---
 
-So the javaScipt == or [Equality operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) is used to find equality in expressions, in addition there is also the === or identity operator that is used to preform a more strict type sensitive kind of comparison between two values. There is yet even another options that comes to mind that is not an opoerator, but a static method called the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method.
+So the javaScipt == or [Equality operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) is used to find equality in expressions. However there are a number of other options to be aware of in javaScript in addition to the equality operator there is also the === or identity operator that is used to preform a more strict, type sensitive kind of comparison between two values. There is yet even another option that comes to mind that is not an operator, but a static method called the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method that brings yet even another standard to be aware of.
 
 So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This might case some confusion, but if you take a moment to just work out some simple examples that confusion can be quickly dispelled.
 
