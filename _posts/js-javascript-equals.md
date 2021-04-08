@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2021-04-08 14:17:38
-version: 1.26
+updated: 2021-04-08 14:20:27
+version: 1.27
 ---
 
 So the javaScipt == or [Equality operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) is used to find equality in expressions. However there are a number of other options to be aware of in javaScript in addition to the equality operator there is also the === or identity operator that is used to preform a more strict, type sensitive kind of comparison between two values. There is yet even another option that comes to mind that is not an operator, but a static method called the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method that brings yet even another standard to be aware of. However none of these should be confused with just a single = operator, that is used for assignment, and there is really only that when it comes to doing so.
@@ -105,5 +105,6 @@ console.log(isNaN(NaN) == isNaN(isNaN)); // true
 
 ## 4 - Conclusion
 
-So that is it for now when it comes to assignment, equality, and identity in javaScript.
+So that is it for now when it comes to assignment, equality, and identity in javaScript. First off there is finding out of you just want to assign a value to something, for that there is just using = and that is all there is to it. Things only get a little involved when it comes to making comparisons between two values in an expresion that will evaluate to true of false.
+
 
