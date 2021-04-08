@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 372
-updated: 2021-04-08 14:51:10
-version: 1.32
+updated: 2021-04-08 14:52:48
+version: 1.33
 ---
 
 So the javaScipt == or [Equality operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) is used to find equality in expressions. However there are a number of other options to be aware of in javaScript in addition to the equality operator there is also the === or identity operator that is used to preform a more strict, type sensitive kind of comparison between two values. There is yet even another option that comes to mind that is not an operator, but a static method called the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) method that brings yet even another standard to be aware of. However none of these should be confused with just a single = operator, that is used for assignment, and there is really only that when it comes to doing so.
 
 So there is more than one [comparison operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) in javaScript because of javaScripts typeless nature. This might case some confusion, but if you take a moment to just work out some simple examples that confusion can be quickly dispelled.
 
-A variable can be of any kind of type at any given moment, at one time it can be the number 5, and at another moment it can be the string 5. So there is a need for a comparison operator that does type conversion, and another that does not. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one. So then in this post I will be going over a few quick examples of comapting to values to each other that might be equal to each other in javaScript.
+A variable can be of any kind of type at any given moment, at one time it can be the number 5, and at another moment it can be the string 5. So there is a need for a comparison operator that does type conversion, and another that does not. This is a subject that comes up often in javaSciprt related discussions so it goes without saying that I should write a post on this one. So then in this post I will be going over a few quick examples of comparing to values to each other that might be equal to each other in javaScript.
 
 <!-- more -->
 
@@ -31,6 +31,8 @@ console.log(n); // 42
 ```
 
 ### 1.2 - Assignment and comparison expressions
+
+Things will just get a little involved when it comes to using assignment with more complex expressions that involve comparisons, and maybe a conditional operator.
 
 ```js
 let func1 = (a) => {
