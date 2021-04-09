@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:30:27
-version: 1.11
+updated: 2021-04-09 13:32:57
+version: 1.12
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -321,6 +321,66 @@ utils.shortestAngleDirection = function (a1, a2, scale) {
     }
     // if a1 === a2 or any other case
     return 0;
+};
+```
+
+## 3 - The Draw module
+
+For this example I worked out a new draw method to render the turret, as well as a unit of type none for starters. As I add more unit types I will just need to add additional draw methods for each unit.
+
+```js
+var draw = {};
+ 
+draw.back = function (ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+ 
+var drawUnit = {
+    none: function(ctx, unit){
+        ctx.save();
+        ctx.translate(unit.x, unit.y);
+        // draw base area
+        ctx.fillStyle = 'lime';
+        ctx.fillRect(0, 0, unit.w, unit.h);
+        ctx.restore();
+    },
+    turret: function(ctx, turret){
+        ctx.save();
+        ctx.translate(turret.x, turret.y);
+        // draw base area
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(0, 0, turret.w, turret.h);
+        ctx.translate(turret.w / 2, turret.h / 2);
+        ctx.rotate(turret.data.facing);
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'red';
+        ctx.fillRect(-8, -8, 16, 16);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(turret.w, 0);
+        ctx.stroke();
+        ctx.restore();
+    }
+};
+ 
+draw.player_units = function(ctx, game){
+   game.player_units.forEach(function(unit){
+       drawUnit[unit.data.unitType](ctx, unit)
+   });
+};
+ 
+draw.shots = function (ctx, game) {
+    var shots = game.shots;
+    shots.forEach(function (shot) {
+        if (shot.active) {
+            ctx.save()
+            ctx.fillStyle = 'white';
+            ctx.translate(shot.x, shot.y);
+            ctx.fillRect(0, 0, shot.w, shot.h);
+            ctx.restore();
+        }
+    });
 };
 ```
 
