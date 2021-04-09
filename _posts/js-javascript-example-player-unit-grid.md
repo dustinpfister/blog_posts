@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:05:20
-version: 1.4
+updated: 2021-04-09 13:08:33
+version: 1.5
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -252,5 +252,5 @@ var gameMod = (function () {
 
 ## - Conclusion
 
-That is it for now when it comes to this one little feature that I might very well add to my turret defense canvas game.
+That is it for now when it comes to this one little feature that I might very well add to my turret defense canvas game. The real system for this might take about a week of work, or at least one full long solid day of just working on this and nothing else to get solid. When it comes to introducing this to my canvas game, it is not just a question of shoehorning it into the source code of the game and that is it. I am going to want to add additional features that will alone for the player to create and remove units, or more accurately just change the types of units at each grid location.
 
