@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:03:40
-version: 1.3
+updated: 2021-04-09 13:05:20
+version: 1.4
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -249,3 +249,8 @@ var gameMod = (function () {
 }
     ());
 ```
+
+## - Conclusion
+
+That is it for now when it comes to this one little feature that I might very well add to my turret defense canvas game.
+
