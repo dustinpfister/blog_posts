@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:22:35
-version: 1.9
+updated: 2021-04-09 13:26:15
+version: 1.10
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -253,6 +253,8 @@ var gameMod = (function () {
 }
     ());
 ```
+
+For now I just have one unit other than the default for the unit pool that is a player controlled turret. SO for now there are just two types of units which are none, and turret. I plain to add AI controlled turrets, and have it so that a player controlled turret is just a single starting unit. In some levels I might have it so there is more than one player controlled turret, maybe, but that is a topic for a whole other post.
 
 ## - Conclusion
 
