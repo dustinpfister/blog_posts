@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:26:15
-version: 1.10
+updated: 2021-04-09 13:30:27
+version: 1.11
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -255,6 +255,74 @@ var gameMod = (function () {
 ```
 
 For now I just have one unit other than the default for the unit pool that is a player controlled turret. SO for now there are just two types of units which are none, and turret. I plain to add AI controlled turrets, and have it so that a player controlled turret is just a single starting unit. In some levels I might have it so there is more than one player controlled turret, maybe, but that is a topic for a whole other post.
+
+## 2 - Here I have the utils.js file
+
+This is the utility library that I am using for this javaScript example. I do not think I added anything major to this as of this writing from some of my earlier javaScript examples to which this one is based oof of. Still I should place a copy of it that I am using just for the hell of it.
+
+```js
+var utils = {};
+ 
+utils.pi2 = Math.PI * 2;
+ 
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+ 
+// get canvas relative point
+utils.getCanvasRelative = function (e) {
+    var canvas = e.target,
+    bx = canvas.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // adjust for native canvas matrix size
+    pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
+    pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
+    // prevent default
+    e.preventDefault();
+    return pos;
+};
+ 
+// mathematical modulo
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+ 
+utils.normalizeHalf = function (n, scale) {
+    var c = scale || Math.PI * 2,
+    h = c / 2;
+    return utils.mod(n + h, c) - h;
+};
+ 
+// the angular distance between two angles
+utils.angleDistance = function (a, b, scale) {
+    var m = scale || Math.PI * 2,
+    h = m / 2,
+    diff = utils.normalizeHalf(a - b, scale);
+    if (diff > h) {
+        diff = diff - m;
+    }
+    return Math.abs(diff);
+};
+ 
+// get -1, 1, or 0 depending on the the state of two angles
+utils.shortestAngleDirection = function (a1, a2, scale) {
+    var z = a1 - a2,
+    x = utils.normalizeHalf(z, scale);
+    if (x < 0) {
+        return -1; // Left
+    }
+    if (x > 0) {
+        return 1; // Right
+    }
+    // if a1 === a2 or any other case
+    return 0;
+};
+```
 
 ## - Conclusion
 
