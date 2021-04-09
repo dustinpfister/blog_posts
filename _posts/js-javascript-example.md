@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-09 12:53:22
-version: 1.32
+updated: 2021-04-09 12:56:44
+version: 1.33
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -55,6 +55,8 @@ This was my first post on this collection of javaScript examples, and as such I 
 So there is having a simple expression like 3 \/ 4 that will result in a value between 0 and 1 that will be \0.25. In other words there is having a numerator and denominator value and getting a fraction between the two. However if a numerator value starts at 0 and approaches the denominator value as a fixed static rate, then the change happens along a straight line when graphed.
 
 ### 1.10 - [Player unit grid](/2021/04/08/js-javascript-example-player-unit-grid/)
+
+This is a javaScript example where I was experimenting with a simple grid in the center of a canvas that a player can built player units for a game This is one of sever javaScript examples where I am working out some basic logic in an independent project that I might in turn add to a game that I am making.
 
 ### 1.11 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
 
