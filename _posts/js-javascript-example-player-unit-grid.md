@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:08:33
-version: 1.5
+updated: 2021-04-09 13:12:51
+version: 1.6
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -252,5 +252,8 @@ var gameMod = (function () {
 
 ## - Conclusion
 
-That is it for now when it comes to this one little feature that I might very well add to my turret defense canvas game. The real system for this might take about a week of work, or at least one full long solid day of just working on this and nothing else to get solid. When it comes to introducing this to my canvas game, it is not just a question of shoehorning it into the source code of the game and that is it. I am going to want to add additional features that will alone for the player to create and remove units, or more accurately just change the types of units at each grid location.
+That is it for now when it comes to this one little feature that I might very well add to my turret defense canvas game. The real system for this might take about a week of work, or at least one full long solid day of just working on this and nothing else to get solid. When it comes to introducing this to my canvas game, it is not just a question of shoehorning it into the source code of the game and that is it. I am going to want to add additional features that will alone for the player to create and remove units, or more accurately just change the types of units at each grid location, as well as the units being targeted and destroyed by incoming enemy units. 
+
+There is also the question of what more additional types I would want to add. In this example I just have a fixed collection of objects for each location where a unit can be, and creating a unit is just a mater of making a blank place holder object a type of object other than that. I am not sure if I can say this is the best way of going about doing this sort of thing or not, but I have come to find that I am starting to care less about those kinds of things. What really matters is what the experience is from the perspective of the player, with that said I think a system like this might add value to my over all game, but I am going to need way more than just this alone going on for sure.
+
 
