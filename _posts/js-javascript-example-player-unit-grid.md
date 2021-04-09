@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:15:26
-version: 1.7
+updated: 2021-04-09 13:20:23
+version: 1.8
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -19,6 +19,8 @@ In this post I am writing abound a quick amount of code that I thrashed together
 ## 1 - The game module
 
 First off for this post I will want to go over the state of the main game.js file for this example, rather than the additional code that supports this.
+
+At the top of the module I have some constants which is a typical thing that I do for modules like this often, but then I have to methods that are the base of what I have in mind here. I have a method that will set a standard set of properties for a display object, and another method that will create a base display object. The idea here is that I want to have a method that I will call to create a base, plain, standard object for a each grid location. then the process of creating something at a location, or removing it, is just a matter of changing the type property of an object that is all ready there, rather than creating and purging objects as needed.
 
 ```js
 var gameMod = (function () {
