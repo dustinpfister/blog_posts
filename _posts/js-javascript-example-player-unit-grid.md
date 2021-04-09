@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:01:23
-version: 1.2
+updated: 2021-04-09 13:03:40
+version: 1.3
 ---
 
-This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature of the over all game.
+This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
+
+In this post I am writing abound a quick amount of code that I thrashed together in a single day that might prove to be a better system for placing a player controlled turret in the game, along with additional units that can be placed in this player unit area of a canvas element.
 
 <!-- more -->
 
