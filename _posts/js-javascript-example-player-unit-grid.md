@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:12:51
-version: 1.6
+updated: 2021-04-09 13:15:26
+version: 1.7
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
 
-In this post I am writing abound a quick amount of code that I thrashed together in a single day that might prove to be a better system for placing a player controlled turret in the game, along with additional units that can be placed in this player unit area of a canvas element.
+In this post I am writing abound a quick amount of code that I thrashed together in a single day that might prove to be a better system for placing a player controlled turret in the game, along with additional units that can be placed in this player unit area of a canvas element. There are a number of ways to go about making this kind of system, but for this kind of unit grid I think a system where there is a fixed collection of objects for each gird location will work okay actually. The reason why I say that is because the gird will be rather small, I am thinking maybe only 3 by 3, or maybe one as large as 5 x 5, and that is it.
 
 <!-- more -->
 
