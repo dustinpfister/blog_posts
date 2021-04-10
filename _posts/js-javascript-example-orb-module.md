@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-10 09:29:15
-version: 1.3
+updated: 2021-04-10 09:32:38
+version: 1.4
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -179,7 +179,7 @@ var orbMod = (function () {
     ());
 ```
 
-## 2 - testing out the orb module
+## 2 - Testing out the orb module
 
 So now that I have an Orb module worked out I will want to take a moment to just test it out to make sure that it is working as expected. I could make some full blown project around this Orb module, and in time I might get around to doing just that. However for now it might be best to just work out some simple text script.
 
@@ -220,3 +220,8 @@ b = orbMod.create({points:[1,0,2,0]});
 var orb = orbMod.fromOrbs([a, b]);
 printOrbData(orb);
 ```
+
+## 3 - Conclusion
+
+There is still maybe a great deal more work to do with this module, but maybe more so with what it is that I would pile on of of it rather than the core of what it is. There are some additional features that I would like to add this this Orb module, but much of the additional work that will be involved in turning this into an actual game of some kind would involve additional modules such as an object pool, and a state machine.
+
