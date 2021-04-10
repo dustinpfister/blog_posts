@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-10 09:34:40
-version: 1.5
+updated: 2021-04-10 10:02:02
+version: 1.6
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -15,7 +15,82 @@ The general idea here is that I have an Orb object that contains an array of fou
 
 <!-- more -->
 
-## 1 - The orb Module
+## 1 - The utils module
+
+```js
+var utils = {};
+ 
+utils.GCD = function (a, b) {
+    if (!b) {
+        return a;
+    }
+    return utils.GCD(b, a % b);
+};
+ 
+utils.GCDFromArray = function (points) {
+    var ai = 0,
+    d,
+    gd = 1,
+    bi;
+    while (ai < points.length) {
+        if (points[ai] < 1) {
+            ai += 1;
+            continue;
+        }
+        bi = 0;
+        while (bi < points.length) {
+            if (bi === ai || points[bi] < 1) {
+                bi += 1;
+                continue;
+            }
+            d = utils.GCD(points[ai], points[bi]);
+            if (points[ai] === points[bi]) {
+                d = 1;
+            }
+            if (d > gd) {
+                gd = d;
+            }
+            bi += 1;
+        }
+        ai += 1;
+    }
+    return gd;
+};
+ 
+// are all non-zero elements in the ratio equal to each other?
+utils.allNonZeroEqual = function (array) {
+    var a = 0;
+    return array.filter(function (num) {
+        return num > 0;
+    }).every(function (num) {
+        if (a === 0) {
+            a = num;
+            return true;
+        }
+        return num === a;
+    });
+};
+ 
+// get the simple ratio from a set of points (or simplify a ratio)
+// [0,0,14,2] => [0,0,7,1]
+utils.getSimpleRatio = function (points) {
+    // make sure pure, dual, triple, and quad
+    // work they way they should
+    if (utils.allNonZeroEqual(points)) {
+        return points.map(function (el) {
+            return el === 0 ? 0 : 1;
+        });
+    }
+    // if we get this far use utils.GDCFromArray
+    var gcd = utils.GCDFromArray(points);
+    // get simple ratio by diving all points by gd
+    return points.map(function (pt, i) {
+        return pt / gcd;
+    });
+};
+```
+
+## 2 - The orb Module
 
 TIme to jump right into the main event of this javaScript example now when it comes to the orb module.
 
@@ -24,90 +99,11 @@ var orbMod = (function () {
  
     var api = {};
  
-    // Greatest Common Divisor
-    var gcd = function (a, b) {
-        if (!b) {
-            return a;
-        }
-        return gcd(b, a % b);
-    };
- 
-    // get the number I need to divide points by to get the simple ratio
-    var getGCDFromPoints = function (points) {
-        var ai = 0,
-        d,
-        gd = 1,
-        bi;
-        while (ai < points.length) {
-            if (points[ai] < 1) {
-                ai += 1;
-                continue;
-            }
-            bi = 0;
-            while (bi < points.length) {
-                if (bi === ai || points[bi] < 1) {
-                    bi += 1;
-                    continue;
-                }
-                d = gcd(points[ai], points[bi]);
-                if (points[ai] === points[bi]) {
-                    d = 1;
-                }
-                if (d > gd) {
-                    gd = d;
-                }
-                bi += 1;
-            }
-            ai += 1;
-        }
-        return gd;
-    };
- 
-    // are all non-zero elements in the ratio equal to each other?
-    var allEqual = function(ratio){
-        var i = 0,
-        len = ratio.length,
-        el,
-        n = 0;
-        while(i < len){
-           el = ratio[i];
-           if(el){
-               if(n === 0){
-                   n = el;
-               }else{
-                   if(n != el){
-                       return false;
-                   }
-               }
-           }
-           i += 1;
-        }
-        return true;
-    };
- 
-    // get the simple ratio from a set of points (or simplify a ratio)
-    // [0,0,14,2] => [0,0,7,1]
-    var getSimpleRatio = function (points) {
-        // make sure pure, dual, triple, and quad
-        // work they way they should
-        if(allEqual(points)){
-            return points.map(function(el){
-                return el === 0 ? 0 : 1;
-            });
-        }
-        // if we get this far use getGDCFromPoints
-        var gd = getGCDFromPoints(points);
-        // get simple ratio by diving all points by gd
-        return points.map(function (pt, i) {
-            return pt / gd;
-        });
-    };
- 
     // set orb values based on a given points array
     var setByPoints = function (orb, points) {
         orb.points = Array.from(points);
         // find the simple ratio
-        orb.ratio = getSimpleRatio(orb.points);
+        orb.ratio = utils.getSimpleRatio(orb.points);
         // find type
         findType(orb);
         return orb;
