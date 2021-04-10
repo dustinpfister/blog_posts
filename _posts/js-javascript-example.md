@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-09 12:56:44
-version: 1.33
+updated: 2021-04-10 09:15:08
+version: 1.34
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -46,39 +46,43 @@ One thing that I would like to have as part of a basic utility library that I ta
 
 In this example I am working out a simple map system that will set some options for a main game state create method. In other words this is a simple system for having a collection of display objects in a canvas where each display object is for a level in a game, when the player clicks on one of these display objects they then progress to another state of the application that will be used to set additional settings, or progress directly to the game state. The display object in the map contains properties that will be passed to the game create method that will set up the state of the game object.
 
-### 1.8 - [A nice basic multiplication table example](/2020/02/10/js-javascript-example-multiplication-table)
+### 1.8 - [A basic multiplication table example](/2020/02/10/js-javascript-example-multiplication-table)
 
 This was my first post on this collection of javaScript examples, and as such I wanted to start out with something very basic. SO working out a javaScript example that is just a simple multiplication table sure doe stink me as one of those simple hello world type projects that help out for people that are very new to javaScript. However even when it comes to this kind of example there is still a lot to cover, even with something like this. There is not just making a multiplication table and moving on, there is making a function that will create a state object of a multiplication table, and then making at least one if not more renderer's that will render the state of this multiplication table.
 
-### 1.9 - [A percent module experiment](/2020/11/25/js-javascript-example-percent-module/)
+### 1.9 - [An Orb Module example about ratios](/2021/04/09/js-javascript-example-orb-module/)
+
+This is a module where I am working out some basic core logic for something that I might use in a future game.
+
+### 1.10 - [A percent module experiment](/2020/11/25/js-javascript-example-percent-module/)
 
 So there is having a simple expression like 3 \/ 4 that will result in a value between 0 and 1 that will be \0.25. In other words there is having a numerator and denominator value and getting a fraction between the two. However if a numerator value starts at 0 and approaches the denominator value as a fixed static rate, then the change happens along a straight line when graphed.
 
-### 1.10 - [Player unit grid](/2021/04/08/js-javascript-example-player-unit-grid/)
+### 1.11 - [Player unit grid](/2021/04/08/js-javascript-example-player-unit-grid/)
 
 This is a javaScript example where I was experimenting with a simple grid in the center of a canvas that a player can built player units for a game This is one of sever javaScript examples where I am working out some basic logic in an independent project that I might in turn add to a game that I am making.
 
-### 1.11 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
+### 1.12 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
 
 This is an example where I worked out some basic logic for a turret define game when it comes to how the turrets will behave.
 
-### 1.12 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
+### 1.13 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
 
 This is a skill point system that I put together to make use of in some canvas examples that might call for such a system. The general idea here is that in a game where there is an experience point system on each level some skill points will be given to the player. These skill points can then be invested into upgrades that have various effects on a main game state object.
 
-### 1.13 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
+### 1.14 - [Sort planets](/2020/08/31/js-javascript-example-sort-planets/)
 
 A simple sort of planets objects example that I might use if a future game if I ever get around to it. The idea of this example is that I just wanted to make a simple fun little example that makes use of the array sort method to which I wrote a quick blog post on. I wanted to go at least one step beyond just having a simple copy and paste hello world style example of array sort, and with that goal in mind I guess this example is more or less just that. I am not sure if I will every get around to expanding on this by making a real game based off of it, but in any case I all ready have an interesting starting point for something here to say the least.
 
-### 1.14 - [Tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
+### 1.15 - [Tax brackets](/2020/02/27/js-javascript-example-tax-brackets/)
 
 A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax. I would not use this as a way to do ones own taxes of course, but it is a module that I might use in one form or another in some kind of game where I might want a module such as this.
 
-### 1.15 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
+### 1.16 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
 This is a simple trade simulator module that I might use as a starting point for a more advanced version that could be used in a game. The general idea here is that the player has a way to buy items as a certain rate, and then sell them at another rate later on. Depending if the rate goes up or down they will stand to gain or lose money. I have come across this kind of feature in games here and there in the past and I think it is a nice feature to have in certain types of games, so I made a simple starting point for this kind of feature.
 
-### 1.16 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.17 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example.
 
