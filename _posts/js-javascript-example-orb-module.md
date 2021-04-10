@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-10 18:18:05
-version: 1.7
+updated: 2021-04-10 18:20:18
+version: 1.8
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -17,7 +17,7 @@ The general idea here is that I have an Orb object that contains an array of fou
 
 ## 1 - The utils module
 
-First off I have a custom made utility module for this javaScript example in which I have some new methods that I have not used in any other such example in which I have a module like this.
+First off I have a custom made utility module for this javaScript example in which I have some new methods that I have not used in any other such example in which I have a module like this. I have a method that I am using to get the greatest common divisor.
 
 ```js
 var utils = {};
