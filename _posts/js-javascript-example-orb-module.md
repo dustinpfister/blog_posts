@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-12 12:32:33
-version: 1.11
+updated: 2021-04-12 12:43:21
+version: 1.12
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -18,6 +18,8 @@ The general idea here is that I have an Orb object that contains an array of fou
 ## 1 - The orb Module
 
 Time to jump right into the main event of this javaScript example now when it comes to the orb module. When it comes to this module the main public method of interest is the create from points method, all the other methods that are used to create an orb will end up calling this method in an indirect way. This method is used by passing an array of numbers like 4,8,8,0 which will be used directly as the points property of the orb, the simple ratio of the points array would then be 1,2,2,0, and this type of orb would then be composite.
+
+At the top of the file I have my find type method that is used to, well kind out what the current type of an orb is based off the ratio of the orb. For example a ratio that is 1,0,0,0 or 0,0,1,0 would be an example of a pure orb as all of the points are of a single element. However an orb with a ratio like 1,0,0,1 pr 0,1,1,0 would be an example of a dual orb as it has an even number of pints between two elements. Any ratio like 1,0,7,3 is a composite orb for now, but I have plains for additional featurs when it comes to orbs with this kind of ratio if I ever get around to it.
 
 ```js
 var orbMod = (function (global) {
