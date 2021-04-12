@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-12 12:48:13
-version: 1.13
+updated: 2021-04-12 12:49:36
+version: 1.14
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -91,6 +91,8 @@ var orbMod = (function (global) {
 }
     (this));
 ```
+
+That is it for now when it comes to my orbs module, I am sure that I will add a bit more in time but to really know what is meiing I will want to start creating at least a few projects using this module.
 
 ## 2 - The ratio module
 
