@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 16:02:22
-version: 1.19
+updated: 2021-04-12 16:04:46
+version: 1.20
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -21,7 +21,7 @@ There are many frameworks that are used as a way to go about running tests, but 
 
 ## 1 - The test module
 
-Here is the source code of the test module that I will be requiring in when I write my test scripts. For now this test module just has one public method that is used to run a test object that I will pass it when it comes to writing a test script.
+Here is the source code of the test module that I will be requiring in when I write my test scripts. For now this test module just has one public method that is used to run a test object that I will pass it when it comes to writing a test script. This test object will contain an array of tests for a given module method, each test will contain an array of arguments to call the method with along with an expected return value for the method.
 
 ```js
 let path = require('path')
