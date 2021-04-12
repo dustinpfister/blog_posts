@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:52:58
-version: 1.14
+updated: 2021-04-12 15:54:48
+version: 1.15
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -158,7 +158,7 @@ if (!utils.isBrowser()) {
 
 ### 2.2 - Testing the distance method
 
-So now it is time to write by first test, this time for that distance formula. For this example I am going to want to write by own test function, and often that might be required for just about every test that I write for this.
+So now it is time to write by first test, this time for that distance formula. For this example I am going to want to write by own test function, and often that might be required for just about every test that I write for this. The reason why is because I am going to want to have control over things like if a result should be rounded first or not.
 
 ```js
 let path = require('path'),
@@ -183,6 +183,8 @@ testMod.runTest({
     ]
 });
 ```
+
+So when I run this test the utility modules distance function passes both tests, seems like the function works more or less the way that it should.
 
 ### 2.3 - Testing the bounding box method
 
