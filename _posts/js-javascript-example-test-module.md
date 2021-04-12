@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:39:43
-version: 1.10
+updated: 2021-04-12 15:41:17
+version: 1.11
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -120,6 +120,8 @@ Well now that I have my test module I am ready to start writing some test script
 In this section I will be testing out my test module with a simple utility module. This module will contain two simple pure function examples that are typical methods that I use in most projects. The functions thus far work just fine when I use them, and I can not say there have been any instances with them gibing me unexpected results. So this should just be a smooth hello world example of the test module that will just confirm that things are working as I expect.
 
 ### 2.1 - The module to test
+
+So then here is the simple utility module that I will be using to test my test module. In it I have just two methods, one of which is a distance formula, and the other is bounding box collision detection.
 
 ```js
 var utils = {};
