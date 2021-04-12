@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-12 12:49:36
-version: 1.14
+updated: 2021-04-12 12:52:59
+version: 1.15
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -92,7 +92,7 @@ var orbMod = (function (global) {
     (this));
 ```
 
-That is it for now when it comes to my orbs module, I am sure that I will add a bit more in time but to really know what is meiing I will want to start creating at least a few projects using this module.
+That is it for now when it comes to my orbs module, I am sure that I will add a bit more in time but to really know what is missing I will want to start creating at least a few projects using this module. There is not just thinking in terms or the features that I want to add, there is also thinking if a feature should be a part of this module to begin with. I would like to try to keep this module as simple as possible by not adding anything that should be part of another module. For example I am sure than many of the games that I will be using this with will involve a collection of display objects, as such I could make properties like x, y, width, and height part of this orb module, however I think that I should not do that, and rather just make that all part of a whole other module.
 
 ## 2 - The ratio module
 
