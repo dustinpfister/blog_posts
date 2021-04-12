@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-12 16:28:11
-version: 1.19
+updated: 2021-04-12 16:31:52
+version: 1.20
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -227,45 +227,16 @@ ratio.sum = function(arr){
 
 ## 3 - Testing out the orb module
 
-So now that I have an Orb module worked out I will want to take a moment to just test it out to make sure that it is working as expected. I could make some full blown project around this Orb module, and in time I might get around to doing just that. However for now it might be best to just work out some simple text script.
+So now that I have an Orb module worked out I will want to take a moment to just test it out to make sure that it is working as expected. I could make some full blown project around this Orb module, and in time I might get around to doing just that. However for now it might be best to just work out some simple test script of sorts.
 
 ```js
-var printOrbData = function(orb){
-    console.log(orb.points, orb.ratio); // [1, 0, 0, 0]
-    console.log(orb.type);
-    console.log('');
-};
- 
-// pure ( [1,0,0,0], [0,1,0,0] )
-printOrbData( orbMod.create({points:[1,0,0,0]}) );
-printOrbData( orbMod.create({points:[0,7,0,0]}) );
-printOrbData( orbMod.create({points:[0,0,8,0]}) );
-printOrbData( orbMod.create({points:[0,0,0,3]}) );
- 
-// dule ( [1,0,0,1], [0,1,1,0])
-printOrbData( orbMod.create({points:[0,7,0,7]}) );
-printOrbData( orbMod.create({points:[7,0,0,7]}) );
-printOrbData( orbMod.create({points:[0,7,7,0]}) );
-printOrbData( orbMod.create({points:[7,0,7,0]}) );
- 
-// triple ( [1,1,1,0], [1,0,1,1] )
-printOrbData( orbMod.create({points:[3,3,0,3]}) );
-printOrbData( orbMod.create({points:[3,3,3,0]}) );
- 
-// quad ( [1,1,1,1] )
-printOrbData( orbMod.create({points:[8,8,8,8]}) );
- 
-// composite ( [1,1,0,2], [4,0,1,4] )
-printOrbData( orbMod.create({points:[2,2,0,4]}) );
-printOrbData( orbMod.create({points:[0,2,1,3]}) );
-printOrbData( orbMod.create({points:[8,0,2,8]}) );
- 
-// from orbs test
-var a = orbMod.create({points:[1,0,0,0]}),
-b = orbMod.create({points:[1,0,2,0]});
-var orb = orbMod.fromOrbs([a, b]);
-printOrbData(orb);
+
+var level = 4;
+var orb = orbMod.createFromLevel([1,0,2,0], level);
+console.log(orb.points);
 ```
+
+So far it would seem that my orb module is working more or less the way that I expect it to. However I have yet to make a real project on tp of this module. A few bugs that I am managing to miss might still be there, and in any case I will likely want to add a few more features in the event that the mouse seems to work fine. In any case I will of course update this section once I have a nice simple little game of some kind for this.
 
 ## 3 - Conclusion
 
