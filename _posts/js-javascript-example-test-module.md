@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:20:00
-version: 1.3
+updated: 2021-04-12 15:24:19
+version: 1.4
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
 
-I could just start using a module in a project, and just address any problems for the methods as they come up, however by doing things that way problems can end up being harder to debug later on.
+I could just start using a module in a project, and just address any problems for the methods as they come up, however by doing things that way problems can end up being harder to debug later on. So I think that it is better to just have a given module in its own folder, or maybe even better yet a whole separate repository. In the project folder for the module I will just have the source code of the module itself, and then a bunch of test scripts that are just a way to make sure that the modules is working the way that it should. 
+
+Writing test scripts might eat up a little time, but it will still be a whole lot less time then writing a whole application on tip of the module as a way to test it. Also if something goes wrong with the application it can often prove to be harder to debug compared to just having tests for each module that the application uses.
 
 <!-- more -->
 
