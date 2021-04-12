@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:14:04
-version: 1.1
+updated: 2021-04-12 15:16:26
+version: 1.2
 ---
 
-For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using them.
+For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also alays get a result that I would expect for a given set of arguments.
 
 <!-- more -->
 
