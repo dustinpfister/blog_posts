@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-10 18:20:18
-version: 1.8
+updated: 2021-04-12 12:27:24
+version: 1.9
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -15,171 +15,208 @@ The general idea here is that I have an Orb object that contains an array of fou
 
 <!-- more -->
 
-## 1 - The utils module
+## 1 - The orb Module
 
-First off I have a custom made utility module for this javaScript example in which I have some new methods that I have not used in any other such example in which I have a module like this. I have a method that I am using to get the greatest common divisor.
-
-```js
-var utils = {};
- 
-utils.GCD = function (a, b) {
-    if (!b) {
-        return a;
-    }
-    return utils.GCD(b, a % b);
-};
- 
-utils.GCDFromArray = function (points) {
-    var ai = 0,
-    d,
-    gd = 1,
-    bi;
-    while (ai < points.length) {
-        if (points[ai] < 1) {
-            ai += 1;
-            continue;
-        }
-        bi = 0;
-        while (bi < points.length) {
-            if (bi === ai || points[bi] < 1) {
-                bi += 1;
-                continue;
-            }
-            d = utils.GCD(points[ai], points[bi]);
-            if (points[ai] === points[bi]) {
-                d = 1;
-            }
-            if (d > gd) {
-                gd = d;
-            }
-            bi += 1;
-        }
-        ai += 1;
-    }
-    return gd;
-};
- 
-// are all non-zero elements in the ratio equal to each other?
-utils.allNonZeroEqual = function (array) {
-    var a = 0;
-    return array.filter(function (num) {
-        return num > 0;
-    }).every(function (num) {
-        if (a === 0) {
-            a = num;
-            return true;
-        }
-        return num === a;
-    });
-};
- 
-// get the simple ratio from a set of points (or simplify a ratio)
-// [0,0,14,2] => [0,0,7,1]
-utils.getSimpleRatio = function (points) {
-    // make sure pure, dual, triple, and quad
-    // work they way they should
-    if (utils.allNonZeroEqual(points)) {
-        return points.map(function (el) {
-            return el === 0 ? 0 : 1;
-        });
-    }
-    // if we get this far use utils.GDCFromArray
-    var gcd = utils.GCDFromArray(points);
-    // get simple ratio by diving all points by gd
-    return points.map(function (pt, i) {
-        return pt / gcd;
-    });
-};
-```
-
-## 2 - The orb Module
-
-TIme to jump right into the main event of this javaScript example now when it comes to the orb module.
+Time to jump right into the main event of this javaScript example now when it comes to the orb module.
 
 ```js
-var orbMod = (function () {
+var orbMod = (function (global) {
  
+    // PUBLIC API
     var api = {};
  
-    // set orb values based on a given points array
-    var setByPoints = function (orb, points) {
-        orb.points = Array.from(points);
-        // find the simple ratio
-        orb.ratio = utils.getSimpleRatio(orb.points);
-        // find type
-        findType(orb);
-        return orb;
-    };
- 
-    var findType = function (orb) {
-        var oneCT = 0,
-        nonOne = false,
-        oneTypes = ['pure', 'dual', 'triple', 'quad'];
-        // find count of 1's in the ratio
-        orb.ratio.forEach(function (pt) {
-            if (pt === 1) {
-                oneCT += 1;
-            } else {
-                if (pt != 0) {
-                    nonOne = true;
-                }
-            }
-        });
-        // default to a type based on count of ones in ratio
-        orb.type = oneTypes[oneCT - 1];
-        // if any value that is not 1 is in the ratio then default to composite
-        if (nonOne) {
-            orb.type = 'composite';
+    // fire the type of the orb
+    var findType = function(orb){
+        var type = 'composite',
+        binArr = ratio.isBinaryArray(orb.ratio),
+        elCount = ratio.countNonZero(orb.ratio);
+        if(binArr){
+           type = ['pure', 'dual', 'tripple', 'quad'][elCount - 1];
         }
+        return type;
     };
  
-    // create and return an Orb Object
-    api.create = function(opt){
+    // create from points
+    api.createFromPoints = function(points){
+        points = points || [1,0,0,0];
         var orb = {};
-        opt = opt || {};
-        opt.points = opt.points || null;
-        opt.ratio = opt.ratio || null;
-        opt.level = opt.level || null;
-        // if points i opt, set by points
-        if (opt.points) {
-            setByPoints(orb, opt.points);
-        }
-        // if just calling new Orb()
-        if (!opt.points && !opt.ratio && !opt.orbs) {
-            setByPoints(orb, [1, 0, 0, 0]);
-        }
-        return orb;
+        orb.points = points;
+        orb.ratio = ratio.getSimpleRatio(orb.points);
+        orb.type = findType(orb);
+ 
+        // LEVEL, and INCREMENTAL
+        // The level of the orb is the power of the simple ratio to the power of 2
+        // the ratio.getLevel method should use if the points array is given along with the 
+        // base set to 2, the same method should also work to get the 
+        //  incremental by just setting base to 1
+        orb.level = Math.floor(ratio.getLevel(orb.points, 2)) + 1;
+        orb.incremental = ratio.getLevel(orb.points, 1);
+ 
+        return orb
     };
  
-    // create an orb from a collection of orbs
-    api.fromOrbs = function (orbCollection) {
-        var points = [0, 0, 0, 0],
-        tab = function (a) {
-            a.points.forEach(function (pt, i) {
-                points[i] += pt;
+    // create from ratio helper
+    api.createFromRatio = function(r, n, base){
+        n = n === undefined ? 1: n;
+        base = base === undefined ? 1: base;
+        return api.createFromPoints(ratio.getRaisedRatio(r, n, base));
+    };
+ 
+    // create from a ratio and 1 relative level
+    api.createFromLevel = function(r, level){
+        var simp = ratio.getSimpleRatio(r);
+        return api.createFromRatio(simp, Math.pow(2, level - 1), 1);
+    };
+ 
+    // create from a collection of orbs made before hand
+    api.createFromOrbs = function(orbCollection){
+        // just add up the points
+        var points = orbCollection.map(function(orb){
+            return orb.points;
+        }).reduce(function(acc, points){
+            return acc.map(function(el, i){
+                return el + points[i];
             });
-        };
-        // if Array of Orbs (combine, new from)
-        if (orbCollection.constructor.name === 'Array') {
-            orbCollection.forEach(function (a) {
-                tab(a);
-            });
-            var orb = setByPoints(api.create(), points);
-            return orb;
-        } else {
-            // assume just single orb is given
-            // then just set by the given orbs points (clone orb)
-            return setByPoints(api.create(), orbCollection.points);
-        }
+        });
+        // and create a new orb with the sum of the points
+        return api.createFromPoints(points);
     };
  
     return api;
  
 }
-    ());
+    (this));
 ```
 
-## 2 - Testing out the orb module
+## 2 - The ratio module
+
+I have a custom made ratio module that I made primarily for my orbs module, however this ratio module contains some methods that I might want to use in additional projects.
+
+```js
+var ratio = {};
+ 
+// Greatest Common Divisor
+// https://en.wikipedia.org/wiki/Greatest_common_divisor
+ratio.GCD = function (a, b) {
+    if (!b) {
+        return a;
+    }
+    return ratio.GCD(b, a % b);
+};
+ 
+// Greatest Common Divisor from array
+// https://www.geeksforgeeks.org/gcd-two-array-numbers/
+ratio.GCDFromArray = function(arr, n){
+    let result = arr[0];
+    n = n === undefined ? arr.length: n;
+    for (let i = 1; i < n; i++){
+        result = ratio.GCD(arr[i], result);
+        if(result == 1){
+            return 1;
+        }
+    }
+    return result;
+}
+ 
+// Are all non-zero elements in the ratio equal to each other?
+// ratio.allNonZeroEqual([1,0,1,1]); // true
+// ratio.allNonZeroEqual([1,2,0,4]); // false
+ratio.allNonZeroEqual = function (array) {
+    var a = 0;
+    return array.every(function(num){
+        if(num === 0){ // if 0 return true
+            return true;
+        }
+        if (a === 0) { // if first non-zero value return true
+            a = num;
+            return true;
+        }
+        // if any additional non-zero value does not equal the 
+        // first non zero value return false, else true
+        return num === a;
+    });
+};
+ 
+// count nonZero array elements
+ratio.countNonZero = function(array){
+    return array.reduce(function(acc, n, i){
+        acc = i === 1 ? acc === 0 ? 0 : 1 : acc;
+        return acc += n > 0 ? 1 : 0;
+    });
+};
+ 
+// is binary only array
+ratio.isBinaryArray = function(array){
+    var i = 0,
+    len = array.length;
+    while(i < len){
+        if(Number(array[i]) === 0 || Number(array[i]) === 1){
+           i += 1;
+           continue;
+        }
+        return false;
+    }
+    return true;
+};
+ 
+// get the simple ratio from a set of arr (or simplify a ratio)
+// ratio.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
+ratio.getSimpleRatio = function (arr) {
+    // make sure pure, dual, triple, and quad
+    // work they way they should
+    if (ratio.allNonZeroEqual(arr)) {
+        return arr.map(function (el) {
+            return el === 0 ? 0 : 1;
+        });
+    }
+    // if we get this far use ratio.GDCFromArray
+    var gcd = ratio.GCDFromArray(arr);
+    // get simple ratio by diving all arr by gd
+    return arr.map(function (pt, i) {
+        return pt / gcd;
+    });
+};
+ 
+// raise the given array of numbers n time with the given base
+// The array of numbers will be simplified
+// ratio.getRaisedRatio([2,2,0,1], 2, 1); // [4,4,0,2]
+// ratio.getRaisedRatio([2,2,0,1], 4, 2); // [32,32,0,16]
+ratio.getRaisedRatio = function(arr, n, base){
+    n = n === undefined ? 1 : n;
+    base = base === undefined ? 1 : base;
+    var simp = ratio.getSimpleRatio(arr);
+    return simp.map(function(el){
+        //return n * Math.pow(el, base);
+        return n * Math.pow(el, base);
+    });
+};
+ 
+// The inverse of ratio.getRaisedRatio
+// ratio.getLevel([4,4,0,2], 1); // 2
+// ratio.getLevel([32,32,0,16], 2); // 4
+ratio.getLevel = function(arr, base){
+    base = base === undefined ? 1 : base;
+    // get lowest non zerro number
+    var a = Math.min.apply(null, arr.filter(function(n){
+        return n > 0;
+    }));
+    // if base is one just divide
+    if(base === 1){
+        return a / base;
+    }
+    // else use Math.log
+    return Math.log(a) / Math.log(base);
+};
+ 
+// just the sum of the numbers
+ratio.sum = function(arr){
+    return arr.reduce(function(acc, n){
+        return acc + n;
+    });
+};
+```
+
+## 3 - Testing out the orb module
 
 So now that I have an Orb module worked out I will want to take a moment to just test it out to make sure that it is working as expected. I could make some full blown project around this Orb module, and in time I might get around to doing just that. However for now it might be best to just work out some simple text script.
 
