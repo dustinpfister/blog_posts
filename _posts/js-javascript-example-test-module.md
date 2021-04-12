@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:49:40
-version: 1.12
+updated: 2021-04-12 15:51:20
+version: 1.13
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -121,7 +121,7 @@ In this section I will be testing out my test module with a simple utility modul
 
 ### 2.1 - The module to test
 
-So then here is the simple utility module that I will be using to test my test module. In it I have just two methods, one of which is a distance formula, and the other is bounding box collision detection. The distance formula is a method that takes four arguments that are the axis values for two points in a plain, the returned value should then me the distance between the two points.
+So then here is the simple utility module that I will be using to test my test module. In it I have just two methods, one of which is a distance formula, and the other is bounding box collision detection. The distance formula is a method that takes four arguments that are the axis values for two points in a plain, the returned value should then me the distance between the two points. The other function of interest that I will be testing will take eight arguments that are the position as well as the width and height of two box areas, if the two box areas overlap the function will return true, else false.
 
 ```js
 var utils = {};
