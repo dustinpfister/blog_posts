@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:58:04
-version: 1.18
+updated: 2021-04-12 16:02:22
+version: 1.19
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -221,4 +221,5 @@ What prompted me to create this module, and write this post about it is to have 
 
 So far I have to say that testing is helping me to write better code, and I should not have put off getting into writing tests for as long as I have. In The back of my mind I did understand the importance of writing tests for module functions, but I often just thought that it is just a waste of time, or I can just address problems with methods as they turn up.
 
+There are a few more features that I might end up adding to this test module if I do keep working on it and using in in projects of course. One major feature I can think of is to have another pubic method that will be used to test statistic methods rather than pure functions. The general idea of testing those kinds of methods is to just call them a whole bunch of times, maybe a few hundred if not a few thousand and just make sure that the returned results always fit within a given expected range.
 
