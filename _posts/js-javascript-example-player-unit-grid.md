@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-12 16:37:17
-version: 1.15
+updated: 2021-04-12 16:40:33
+version: 1.16
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -463,6 +463,8 @@ canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
 canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
 canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
 ```
+
+When this is up and running I have a bunch of player controlled turrets for each of the areas in the grid that I set one up for. When I click an area in the canvas all of the turrets fire shots as that location. This kind of system seems to be working out okay thus far, but it does still have some draw backs maybe when it comes to a large enough map. However I am going to keep map sizes small when it comes to what I want to do, so maybe this will work out okay for some projects that I would like to start, and improve.
 
 ## 5 - Conclusion
 
