@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:56:01
-version: 1.16
+updated: 2021-04-12 15:57:07
+version: 1.17
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -212,6 +212,8 @@ testMod.runTest({
     ]
 });
 ```
+
+Once agian the results of this test look good, seems like my test module is working out okay.
 
 ## 3 - Conclusion
 
