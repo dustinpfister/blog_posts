@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:27:52
-version: 1.6
+updated: 2021-04-12 15:29:37
+version: 1.7
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -112,6 +112,8 @@ api.runTest = (opt) => {
 // export api
 module.exports = api;
 ```
+
+Well now that I have my test module I am ready to start writing some test scripts for a module with it. So in the next section I will be going over an example module, and some test scripts for that module.
 
 ## 2 - Trying it out
 
