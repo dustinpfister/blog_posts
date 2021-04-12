@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-10 09:15:08
-version: 1.34
+updated: 2021-04-12 16:12:01
+version: 1.35
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -78,11 +78,15 @@ A simple sort of planets objects example that I might use if a future game if I 
 
 A tax brackets example that helps me to get a general idea of how a progressive tax system works when it comes to things like income tax. I would not use this as a way to do ones own taxes of course, but it is a module that I might use in one form or another in some kind of game where I might want a module such as this.
 
-### 1.16 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
+### 1.16 - [Test Module](/2021/04/12/js-javascript-example-test-module/)
+
+This is a test module that can be used to run a collection of tests on a method to make sure that the results that the method returns are expected results.
+
+### 1.17 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
 This is a simple trade simulator module that I might use as a starting point for a more advanced version that could be used in a game. The general idea here is that the player has a way to buy items as a certain rate, and then sell them at another rate later on. Depending if the rate goes up or down they will stand to gain or lose money. I have come across this kind of feature in games here and there in the past and I think it is a nice feature to have in certain types of games, so I made a simple starting point for this kind of feature.
 
-### 1.17 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+### 1.18 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example.
 
