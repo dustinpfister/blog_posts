@@ -5,12 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-12 12:54:58
-version: 1.16
+updated: 2021-04-12 16:17:15
+version: 1.17
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
-
 The general idea here is that I have an Orb object that contains an array of four numbers, each number is an integer from zero upwards and represents a count of a certain kind of element. For example the first element in the points array can represent a count of Earth elements, then Wind, Fire, and Water when it comes to that kind of idea with elements in a game. There is then the ratio of these elements that is of interest for example an Orb object with a points value of 14,4,2,2 would have a simple ratio of 7,2,1,1. The ratio could be a kind of recipe, for a special kind of Orb, with special attributes, or it could just be an unknown ratio that does not have any special meaning.
 
 <!-- more -->
@@ -266,5 +265,5 @@ printOrbData(orb);
 
 ## 3 - Conclusion
 
-There is still maybe a great deal more work to do with this module, but maybe more so with what it is that I would pile on of of it rather than the core of what it is. There are some additional features that I would like to add this this Orb module, but much of the additional work that will be involved in turning this into an actual game of some kind would involve additional modules such as an object pool, and a state machine.
+There is still maybe a great deal more work to do with this module, but maybe more so with what it is that I would pile on of of it rather than the core of what it is. There are some additional features that I would like to add this this Orb module, but much of the additional work that will be involved in turning this into an actual game of some kind would involve additional modules such as an object pool, and a state machine. I am thinking that the objects that I create with the orb module should be part of a data object of a display object, rather than a kind of display object. There is also a lot of little things when it comes to how the properties of an orb objects effect other properties of this display objects that have to do with game mechanics. I am thinking that I might want to keep all that apart from the orb module itself, but maybe that is something that will prove to be hard to avoid. In which case each time I use this module in a game I am going to want to hack over the source code of it just a little, so that makes creating an maintaining a clean version of the file that much more important.
 
