@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 843
-updated: 2021-04-12 15:33:19
-version: 1.8
+updated: 2021-04-12 15:36:30
+version: 1.9
 ---
 
 For todays [javaScript example](/2021/04/02/js-javascript-example/) I will be going over a simple test module for testing javaScript modules that I am making to make sure that I get expected results when using a method in them. Most of the modules that I make are often a collection of pure functions where for a given set of arguments I should always get the same result, however I should also always get a result that I would expect for a given set of arguments. So it would make sense to have some scripts that will just call a method a bunch of times each time with a given set of arguments, the result of the call should then be compared to an expected result. If the function call equals the expected result, then it passes the test, if not it fails.
@@ -205,6 +205,8 @@ testMod.runTest({
 
 ## 3 - Conclusion
 
-What prompted me to create this module, and write this post about it is to have a way to make sure that the methods of my orb module are working the way that they should. The orb module as well as a dependency of it is a little complex, and I have noticed that some of the methods that I wrote for it in an older version where returning results that are wrong. So I wanted to create a system where I call methods for these modules and make sure that for each call an expected result is returned.
+What prompted me to create this module, and write this post about it is to have a way to make sure that the methods of my orb module are working the way that they should. The orb module as well as a dependency of it is a little complex, and I have noticed that some of the methods that I wrote for it in an older version where returning results that are wrong. So I wanted to create a system where I call methods for these modules and make sure that for each call an expected result is returned. 
+
+So far I have to say that testing is helping me to write better code, and I should not have put off getting into writing tests for as long as I have. In The back of my mind I did understand the importance of writing tests for module functions, but I often just thought that it is just a waste of time, or I can just address problems with methods as they turn up.
 
 
