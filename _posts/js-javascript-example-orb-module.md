@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 842
-updated: 2021-04-12 16:17:15
-version: 1.17
+updated: 2021-04-12 16:24:11
+version: 1.18
 ---
 
 Todays [javaScript example](/2021/04/02/js-javascript-example/) is going to be on a module that I have started a long time ago, but have come around to clean it up a bit because I might want to use it in a game in the near or distance future. The module has to do with and array of point values, and finding a simple ratio of those values, and using the ratio to set one of several kinds of types.
@@ -96,6 +96,8 @@ That is it for now when it comes to my orbs module, I am sure that I will add a 
 ## 2 - The ratio module
 
 I have a custom made ratio module that I made primarily for my orbs module, however this ratio module contains some methods that I might want to use in additional projects. So I will be pulling a lot of code that had to do with ratios out of the orb module and into this module unlike what I have done in previous attempts at making this kind of module.
+
+A certain method to this module, and thus also the orb module is the [Greatest Common Divisor](https://en.wikipedia.org/wiki/Greatest_common_divisor) method. This method will find a number that is the highest number that two numbers can be divided by. For example the GCD of 15 and 5 is 5, and the GCD of 7 and 3 is 1. This can then in turn be used as a way to create a simple ratio form of a set of numbers, for example getting 1,1,4,0 from 3,3,12,0 thanks to an [array function form of this kind of method](https://www.geeksforgeeks.org/gcd-two-array-numbers/).
 
 ```js
 var ratio = {};
