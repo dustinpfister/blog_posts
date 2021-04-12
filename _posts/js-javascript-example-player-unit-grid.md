@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-09 13:34:33
-version: 1.13
+updated: 2021-04-12 16:34:33
+version: 1.14
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -386,7 +386,7 @@ draw.shots = function (ctx, game) {
 
 ## 4 - Main
 
-Now for the main javaScript file.
+Now for the main javaScript file where I will be making use of this new system for having a grid of units for a turret defense type game. In the main project that I might use this with I have a few states all ready but for this one I am just going to need a main game state that I will just jump right into.
 
 ```js
 var canvas = document.createElement('canvas'),
