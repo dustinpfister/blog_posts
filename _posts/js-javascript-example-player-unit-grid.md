@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 841
-updated: 2021-04-12 16:34:33
-version: 1.14
+updated: 2021-04-12 16:37:17
+version: 1.15
 ---
 
 This week I am continuing to get a little more work on my turret defense canvas example, and as such I think I will make another simple [javaScript example](/2021/04/02/js-javascript-example/) where I am working out a separate stand alone project that is just one little feature that I may or may not add to the actual game.
@@ -386,7 +386,9 @@ draw.shots = function (ctx, game) {
 
 ## 4 - Main
 
-Now for the main javaScript file where I will be making use of this new system for having a grid of units for a turret defense type game. In the main project that I might use this with I have a few states all ready but for this one I am just going to need a main game state that I will just jump right into.
+Now for the main javaScript file where I will be making use of this new system for having a grid of units for a turret defense type game. In the main project that I might use this with I have a few states all ready but for this one I am just going to need a main game state that I will just jump right into. Stll I am makign use of a kind of standard that I have worked out for state machines, however this is one thing that I seem to keep switching up a little now and then.
+
+In this main.js file I have my main app loop of course where I am calling request animation frame, and I am also setting up some event handers here also.
 
 ```js
 var canvas = document.createElement('canvas'),
