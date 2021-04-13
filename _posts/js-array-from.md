@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:04:35
-version: 1.10
+updated: 2021-04-13 11:09:08
+version: 1.11
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers.
@@ -37,7 +37,7 @@ console.log( str );
 // 4;16;64
 ```
 
-There are some draw backs with this though so lets look at some additional options for creating an array from something other than an array.
+So then that is it when it comes to array from however there are some draw backs with this though. For example if the aim is to use the array from method to make a copy of an array this method will only preform a shallow copy of it. Another draw back is that this method will only work with arrays, array like objects, and iterable objects, so it will not work with strings. So lets look at some additional options for creating an array from something other than an array.
 
 ### 1.1 - Additional arguments for Array.from
 
