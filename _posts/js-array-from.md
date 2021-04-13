@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:20:54
-version: 1.15
+updated: 2021-04-13 11:25:18
+version: 1.16
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
@@ -85,7 +85,9 @@ arr.sort();
 console.log(arr); // [1,2,3]
 ```
 
-## 3 - Other ways to create an array from somthing else
+Both plain old objects and arrays are objects in javaScript, typically the problem is that I am dealing with a situation in which an object is a collection of named public keys rather than numbered ones, and the object is not an instance of an Array. So this Object.values method is one way to take an object that is not an array and create and return an array where each element is a value of the object that I passed it.
+
+## 3 - Other ways to create an array from something else
 
 In this section I will be looking at some additional options for creating an array from an object or string. there are tones of ways of doing so, so this is not at all in any way a complete list. The array from static method was introduced in ES2015 spec javaScript, so if that is an issue and you want to better browser support you will need to polyfill, or use another option. There are many other reasons why one of the options in this section might work out better also, so lets dive in.
 
