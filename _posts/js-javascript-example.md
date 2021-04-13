@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-13 13:53:37
-version: 1.36
+updated: 2021-04-13 13:54:57
+version: 1.37
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -63,6 +63,8 @@ So there is having a simple expression like 3 \/ 4 that will result in a value b
 This is a javaScript example where I was experimenting with a simple grid in the center of a canvas that a player can built player units for a game This is one of sever javaScript examples where I am working out some basic logic in an independent project that I might in turn add to a game that I am making.
 
 ### 1.12 - [Ratio module](/2021/04/13/js-javascript-example-ratio-module)
+
+This is a module that I made as a foundation for my orb module, which in turn might sever to be another modules that I will be using in at least one if not more canvas games.
 
 ### 1.13 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
 
