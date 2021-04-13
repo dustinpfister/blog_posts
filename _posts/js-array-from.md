@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:13:06
-version: 1.13
+updated: 2021-04-13 11:18:49
+version: 1.14
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
@@ -91,7 +91,7 @@ In this section I will be looking at some additional options for creating an arr
 
 ### 3.1 - String split
 
-The string split method comes in handy if there is a static separator between each item in a string that i want to become an element in an array.
+The string split method comes in handy if there is a static separator between each item in a string that I want to become an element in an array. To use this method I just call the split string prototype method off of the string, and then pass what the separator is for each element as the first and only argument for the string split method. The returned result is then an array with each value as an element in the resulting array, however there might be just one thing to be aware of after that which is that they will all be string values. This can easily resolved though by just doing something to make sure the desired type is returned by running over the elements with the array map method for example.
 
 ```js
 var str = '1-3-5-7-9';
