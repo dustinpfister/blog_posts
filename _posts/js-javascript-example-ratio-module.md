@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:06:15
-version: 1.4
+updated: 2021-04-13 14:08:43
+version: 1.5
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -16,6 +16,10 @@ This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a 
 ## 1 - The ratio module
 
 In this section I will be going over the ratio module as it stands of this writing. The modules contains basic tool functions like a greatest common divisor method, and all kinds of additional methods that I have found that I needed when making my orb.js module that prompted the creation of this module. The way that I made it is to just have the very simple object literal module pattern, this seems to work okay for this module at least as all the functions are pubic methods.
+
+### 1.1 - The start of the module, and the GCD methods
+
+I start off the module with an object literal assigned to a single global variable called ratio. After that the first method that I have is a Greatest Common Divisor method that will find the highest number that can be used to divide two numbers to a whole number.
 
 ```js
 var ratio = {};
@@ -28,7 +32,7 @@ ratio.GCD = function (a, b) {
     }
     return ratio.GCD(b, a % b);
 };
- 
+
 // Greatest Common Divisor from array
 // https://www.geeksforgeeks.org/gcd-two-array-numbers/
 ratio.GCDFromArray = function(arr, n){
@@ -41,8 +45,10 @@ ratio.GCDFromArray = function(arr, n){
         }
     }
     return result;
-}
- 
+};
+```
+
+```js
 // Are all non-zero elements in the ratio equal to each other?
 // ratio.allNonZeroEqual([1,0,1,1]); // true
 // ratio.allNonZeroEqual([1,2,0,4]); // false
