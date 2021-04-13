@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:20:08
-version: 1.10
+updated: 2021-04-13 14:30:24
+version: 1.11
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -50,6 +50,8 @@ ratio.GCDFromArray = function(arr, n){
 
 ### 1.2 - Do all Non Zero elements Equal each other
 
+Do all the elements in the array that are not zero equal each other?
+
 ```js
 // Are all non-zero elements in the ratio equal to each other?
 // ratio.allNonZeroEqual([1,0,1,1]); // true
@@ -73,6 +75,8 @@ ratio.allNonZeroEqual = function (array) {
 
 ### 1.3 - Count Non Zero elements
 
+Count the number of elements in an array that are not zero.
+
 ```js
 // count nonZero array elements
 ratio.countNonZero = function(array){
@@ -84,6 +88,8 @@ ratio.countNonZero = function(array){
 ```
 
 ### 1.4 - Is the array binary?
+
+Is the given array a binary array or not.
 
 ```js
 // is binary only array
@@ -102,6 +108,8 @@ ratio.isBinaryArray = function(array){
 ```
 
 ### 1.5 - Get simple ratio
+
+This one helps me to get the simple ratio of a set of numbers.
 
 ```js
 // get the simple ratio from a set of arr (or simplify a ratio)
