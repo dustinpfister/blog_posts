@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2021-04-13 11:52:37
-version: 1.20
+updated: 2021-04-13 11:57:37
+version: 1.21
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript, however there are also some additional things to look out for when it comes to really knowing what one is dealing with when it comes to values. For example when it comes to objects the typeof operator will always return object, but will not give insight into the type of object. So the typeof operator is not a replacement for other keywords such as the instance of operator that will help to know what kind of object a value is when it is in fact an object.
@@ -69,9 +69,9 @@ console.log(f instanceof Foo); // true
 console.log(f instanceof Date); // false
 ```
 
-## 5 - constructor name
+## 5 - Constructor name
 
-When dealing with an object another way to get the actual constructor name of the object rather than just always getting object is to look at the constructor property.
+When dealing with an object another way to get the actual constructor name of the object rather than just always getting object is to look at the constructor property. All objects should have a constructor object that will contain the constructor function that was used to create the object. For example if it is a Date object then the constructor should be the Date constructor. There is then a name property of this object that is then the name of that constructor function that was used.
 
 ```js
 let d = new Date();
