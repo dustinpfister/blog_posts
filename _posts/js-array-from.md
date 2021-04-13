@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2020-07-21 13:18:03
-version: 1.8
+updated: 2021-04-13 11:01:56
+version: 1.9
 ---
 
-If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. There is of course the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. There are of course other options here and there without having to write some sort of method by hand. For example in the string prototype there is the split prototype method that more often then not works great for creating an array from a string.
+If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers.
+
+There is of course the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. There are of course other options here and there without having to write some sort of method by hand. For example in the string prototype there is the split prototype method that more often then not works great for creating an array from a string.
 
 So in this post I will be looking at the array from static method as well as a number of other options for creating an array from something other than an array in javaScript.
 
