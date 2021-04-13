@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:29:30
-version: 1.18
+updated: 2021-04-13 11:32:09
+version: 1.19
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
@@ -141,6 +141,8 @@ console.log( Object.values(obj) );
 
 ## 4 - Conclusion
 
-Well there is the low down on the array from static method, as well as a whole bunch of other options for creating an array from something else in javaScript other than an array. There is much more to cover when it comes to doing this sort of thing though, for example the array from method creates a shallow clone of an array, but what if I want a deep clone? When it comes to the topic of deep cloning an array there are a number of options when it comes to that sort of thing, and also it is something that comes up when working with objects in general actually. However getting into that would be a whole other post completely.
+Well there is the low down on the array from static method, as well as a whole bunch of other options for creating an array from something else in javaScript other than an array. The array from method is a bit lacking actually as it will only work well with array like objects, which is one reason why I seem to prefer using Object.values as my first go to method for this sort of thing.
+
+There is much more to cover when it comes to creating a new array from another array, or another object of one kind or another though, for example the array from method creates a shallow clone of an array, but what if I want a deep clone? When it comes to the topic of deep cloning an array there are a number of options when it comes to that sort of thing, and also it is something that comes up when working with objects in general actually. However getting into that would be a whole other post completely.
 
 In any case hopeful you found this post somewhat useful when it comes to creating arrays form other values in javaScript.
