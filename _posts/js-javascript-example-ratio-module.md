@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:30:24
-version: 1.11
+updated: 2021-04-13 14:31:59
+version: 1.12
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -50,7 +50,7 @@ ratio.GCDFromArray = function(arr, n){
 
 ### 1.2 - Do all Non Zero elements Equal each other
 
-Do all the elements in the array that are not zero equal each other?
+Do all the elements in the array that are not zero equal each other? This is an important step when it comes to finding the type of orb when it comes to my orb module. However I thought I would make it part of this module.
 
 ```js
 // Are all non-zero elements in the ratio equal to each other?
