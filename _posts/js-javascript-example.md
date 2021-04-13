@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-13 13:54:57
-version: 1.37
+updated: 2021-04-13 13:57:47
+version: 1.38
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -68,7 +68,7 @@ This is a module that I made as a foundation for my orb module, which in turn mi
 
 ### 1.13 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
 
-This is an example where I worked out some basic logic for a turret define game when it comes to how the turrets will behave.
+This is an example where I worked out some basic logic for a turret defense game when it comes to how the turrets will behave when it comes to rotation and fire control. For example I could make it so that when a player clicks an area of a canvas a turret is just set to an angle that points to that location and then it fires a shot for every click of the canvas. However another way to program this kind of game is to have a rotation rate, as well as a fire rate, and for the turret to only fire once it gets within a certain angular range of the target location that was clicked.
 
 ### 1.14 - [Skill Point System](/2020/08/26/js-javascript-example-skill-point-system/)
 
