@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2020-07-22 07:14:30
-version: 1.18
+updated: 2021-04-13 11:49:21
+version: 1.19
 ---
 
-The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. The typeof operator might not always give the desired results, in many some cases. So there are some other keywords, as well as additional properties of objects in javaScript that can be used to gain some insight into what you are dealing with when it comes to all the various kinds of values, classes, and so forth in javaScript.
+The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript, however there are also some additional things to look out for when it comes to really knowing what one is dealing with when it comes to values. For example when it comes to objects the typeof operator will always return object, but will not give insight into the type of object. So the typeof operator is not a replacement for other keywords such as the instance of operator that will help to know what kind of object a value is when it is in fact an object.
+
+The typeof operator might not always give the desired results, in many some cases. 
 
 <!-- more -->
 
