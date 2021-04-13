@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-13 14:00:50
-version: 1.40
+updated: 2021-04-13 14:02:42
+version: 1.41
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -92,7 +92,7 @@ This is a simple trade simulator module that I might use as a starting point for
 
 ### 1.19 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
-Another basic example that makes use of some methods I work out in my percent module example.
+Another basic example that makes use of some methods I work out in my percent module example. This is a canvas example that makes use of functions in my percent module that result in zig zag like movement across the canvas. This is then just one of many applications of the percent modules that I had in mind.
 
 ## 2 - Conclusion
 
