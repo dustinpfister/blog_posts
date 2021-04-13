@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2021-04-13 11:57:37
-version: 1.21
+updated: 2021-04-13 12:01:46
+version: 1.22
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript, however there are also some additional things to look out for when it comes to really knowing what one is dealing with when it comes to values. For example when it comes to objects the typeof operator will always return object, but will not give insight into the type of object. So the typeof operator is not a replacement for other keywords such as the instance of operator that will help to know what kind of object a value is when it is in fact an object.
@@ -81,3 +81,7 @@ console.log(d.constructor.name); // Date
 ## 6 - Conclusion
 
 So it would seem that the javaScript typeof operator can be used as a way to find out the type of something in javaScript, but it might not aways work as expected. In addition when it comes to objects it is vague and can even return a value of object for null, so it still needs to be used with other operators to find out more in these situations.
+
+JavaScript might be a typeless language however that just means that a variable can be any type at any given moment, it does not meed that javaScript does not have types. There are a number of data types to be aware of, also the javaScript of today is not the javaScript of yesterday as new specs  of javaScript keep coming out additional types are being added. One note worthy example of this might be the Big integer data type that has been introduced in recent years.
+
+
