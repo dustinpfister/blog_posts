@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 13:51:08
-version: 1.3
+updated: 2021-04-13 14:06:15
+version: 1.4
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -15,7 +15,7 @@ This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a 
 
 ## 1 - The ratio module
 
-In this section I will be going over the ratio module as it stands of this writing. The modules contains basic tool functions like a greatest common divisor method, and all kinds of additional methods that I have found that I needed when making my orb.js module that prompted the creation of this module.
+In this section I will be going over the ratio module as it stands of this writing. The modules contains basic tool functions like a greatest common divisor method, and all kinds of additional methods that I have found that I needed when making my orb.js module that prompted the creation of this module. The way that I made it is to just have the very simple object literal module pattern, this seems to work okay for this module at least as all the functions are pubic methods.
 
 ```js
 var ratio = {};
