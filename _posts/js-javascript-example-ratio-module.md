@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:31:59
-version: 1.12
+updated: 2021-04-13 14:35:06
+version: 1.13
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -75,7 +75,7 @@ ratio.allNonZeroEqual = function (array) {
 
 ### 1.3 - Count Non Zero elements
 
-Count the number of elements in an array that are not zero.
+Count the number of elements in an array that are not zero, and return that value.
 
 ```js
 // count nonZero array elements
@@ -89,7 +89,7 @@ ratio.countNonZero = function(array){
 
 ### 1.4 - Is the array binary?
 
-Is the given array a binary array or not.
+Is the given array a binary array or not, that is of the array is compose of elements that are 0 and 1 return true, else return false.
 
 ```js
 // is binary only array
