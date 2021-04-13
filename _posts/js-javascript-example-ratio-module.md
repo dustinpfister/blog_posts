@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:08:43
-version: 1.5
+updated: 2021-04-13 14:10:15
+version: 1.6
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -19,7 +19,7 @@ In this section I will be going over the ratio module as it stands of this writi
 
 ### 1.1 - The start of the module, and the GCD methods
 
-I start off the module with an object literal assigned to a single global variable called ratio. After that the first method that I have is a Greatest Common Divisor method that will find the highest number that can be used to divide two numbers to a whole number.
+I start off the module with an object literal assigned to a single global variable called ratio. After that the first method that I have is a Greatest Common Divisor method that will find the highest number that can be used to divide two numbers to a whole number. This method is central to creating a simplified form of a set of numbers so that I have the ratio of that set of numbers. AFter the main GCD method I then have another method that will  work with an array of numbers, rather than just two.
 
 ```js
 var ratio = {};
