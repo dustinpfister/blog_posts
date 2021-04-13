@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:16:13
-version: 1.8
+updated: 2021-04-13 14:17:39
+version: 1.9
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -142,6 +142,8 @@ ratio.getRaisedRatio = function(arr, n, base){
 ```
 
 ### 1.7 - Get level with the given base
+
+I might want to have a function where I can base an array of numbers, alone with a base, and the result will be the number of times that simple ratio of that set of numbers is raised with the given base.
 
 ```js
 // The inverse of ratio.getRaisedRatio
