@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-13 14:02:42
-version: 1.41
+updated: 2021-04-13 14:04:47
+version: 1.42
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -84,7 +84,7 @@ A tax brackets example that helps me to get a general idea of how a progressive 
 
 ### 1.17 - [Test Module](/2021/04/12/js-javascript-example-test-module/)
 
-This is a test module that can be used to run a collection of tests on a method to make sure that the results that the method returns are expected results.
+This is a test module that can be used to run a collection of tests on a method to make sure that the results that the method returns are expected results when given a certain set of arguments. There are many popular frameworks out in the open web that have to do with this sort of thing. Many of those might prove to be a better solution than what I have slapped together here, but still I think that this is an important part of the process of creating, and certainly maintaining a real javaScript project.
 
 ### 1.18 - [Trade Sim](/2021/04/07/js-javascript-example-trade-sim/)
 
