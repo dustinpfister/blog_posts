@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-13 13:59:59
-version: 1.39
+updated: 2021-04-13 14:00:50
+version: 1.40
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -64,7 +64,7 @@ This is a javaScript example where I was experimenting with a simple grid in the
 
 ### 1.12 - [Ratio module](/2021/04/13/js-javascript-example-ratio-module)
 
-This is a module that I made as a foundation for my orb module, which in turn might sever to be another modules that I will be using in at least one if not more canvas games. As the name suggests it has to do with ratios, and there is a gerat deal that comes up when working with them. For example say I have a set of numbers like 5,20,0,15 and I want a function that will return 1,4,0,3 when I pass the previous set of numbers to it.
+This is a module that I made as a foundation for my orb module, which in turn might sever to be another modules that I will be using in at least one if not more canvas games. As the name suggests it has to do with ratios, and there is a great deal that comes up when working with them. For example say I have a set of numbers like 5,20,0,15 and I want a function that will return 1,4,0,3 when I pass the previous set of numbers to it. This module provides such a method that helps with this, and there are a whole bunch of other methods like that as well.
 
 ### 1.13 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
 
