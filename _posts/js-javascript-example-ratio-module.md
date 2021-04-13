@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:10:15
-version: 1.6
+updated: 2021-04-13 14:15:18
+version: 1.7
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -48,6 +48,8 @@ ratio.GCDFromArray = function(arr, n){
 };
 ```
 
+### 1.2 - Do all Non Zero elements Equal each other
+
 ```js
 // Are all non-zero elements in the ratio equal to each other?
 // ratio.allNonZeroEqual([1,0,1,1]); // true
@@ -67,7 +69,11 @@ ratio.allNonZeroEqual = function (array) {
         return num === a;
     });
 };
- 
+```
+
+### 1.3 - Count Non Zero elements
+
+```js
 // count nonZero array elements
 ratio.countNonZero = function(array){
     return array.reduce(function(acc, n, i){
@@ -75,7 +81,11 @@ ratio.countNonZero = function(array){
         return acc += n > 0 ? 1 : 0;
     });
 };
- 
+```
+
+### 1.4 - Is the array binary?
+
+```js
 // is binary only array
 ratio.isBinaryArray = function(array){
     var i = 0,
@@ -89,7 +99,11 @@ ratio.isBinaryArray = function(array){
     }
     return true;
 };
- 
+```
+
+### 1.5 - Get simple ratio
+
+```js
 // get the simple ratio from a set of arr (or simplify a ratio)
 // ratio.getSimpleRatio([0,0,14,2]); // [0,0,7,1]
 ratio.getSimpleRatio = function (arr) {
@@ -107,7 +121,11 @@ ratio.getSimpleRatio = function (arr) {
         return pt / gcd;
     });
 };
- 
+```
+
+### 1.6 - Get raises ratio
+
+```js
 // raise the given array of numbers n time with the given base
 // The array of numbers will be simplified
 // ratio.getRaisedRatio([2,2,0,1], 2, 1); // [4,4,0,2]
@@ -121,7 +139,11 @@ ratio.getRaisedRatio = function(arr, n, base){
         return n * Math.pow(el, base);
     });
 };
- 
+```
+
+### 1.7 - Get level with the given base
+
+```js
 // The inverse of ratio.getRaisedRatio
 // ratio.getLevel([4,4,0,2], 1); // 2
 // ratio.getLevel([32,32,0,16], 2); // 4
@@ -138,7 +160,11 @@ ratio.getLevel = function(arr, base){
     // else use Math.log
     return Math.log(a) / Math.log(base);
 };
+```
  
+### 1.8 - Just a simple sum
+ 
+```js
 // just the sum of the numbers
 ratio.sum = function(arr){
     return arr.reduce(function(acc, n){
