@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:09:08
-version: 1.11
+updated: 2021-04-13 11:12:10
+version: 1.12
 ---
 
-If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers.
+If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
 
-There is of course the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. There are of course other options here and there without having to write some sort of method by hand, which I should always go for first an foremost as i hate waisting time making my own methods for simple tasks like this. For example in the string prototype there is the split prototype method that more often then not works great for creating an array from a string.
+The array from method might work okay with array like objects, but even then it might not always work out the way I want it to deeding on what I am trying to do. For example when it comes to making a copy of an array, the array from method might work okay when it comes to making a shallow copy of an array, but not a deep one.
 
-So in this post I will be looking at the array from static method as well as a number of other options for creating an array from something other than an array in javaScript.
+There are of course other options here and there without having to write some sort of method by hand, which I should always go for first an foremost as I hate waisting time making my own methods for simple tasks like this. So in this post I will be looking at the array from static method as well as a number of other options for creating an array from something other than an array in javaScript.
 
 <!-- more -->
 
