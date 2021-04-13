@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:32:09
-version: 1.19
+updated: 2021-04-13 11:44:06
+version: 1.20
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
@@ -121,7 +121,26 @@ console.log(powStr);
 // 1;9;25;49;81
 ```
 
-### 3.3 - Object values, and Object keys
+### 3.3 - A for in loop
+
+Of course there is also the use of a for in loop as a way to go about creating an array with object key values, or the names for that matter. This is one of the tired yet true ways of going about doing this, it still works okay for some simple examples, but there are so many other ways of doing so now. Also this might not be the fastest way of doing this, I did not get around to researching or testing performance with these various options, but I am sure this might prove to be one of the slowest options. As such this is only what one should go for if for some reason you do not want your code to break on old platforms that a few nostalgia nerds might still use.
+
+```js
+var obj = {
+    baz: '3',
+    foo: '1',
+    bar: '2'
+};
+ 
+var arr = [];
+for (var key in obj) {
+    var value = obj[key];
+    arr.push(parseInt(value, 10));
+}
+console.log(arr); // [3,1,2]
+```
+
+### 3.4 - Object values, and Object keys
 
 So in an above section I covered the Object values static method that can create an array from an object with named key names, but what if I want an array of key names rather than values. This is where the Object keys static method can come into play.
 
