@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:18:49
-version: 1.14
+updated: 2021-04-13 11:20:54
+version: 1.15
 ---
 
 If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
@@ -106,7 +106,7 @@ console.log(powStr);
 
 ### 3.2 - String match
 
-The string match method is yet another option for creating a new array from a string, assuming that you have some knowledge of how to work with regular expressions.
+The string match method is yet another option for creating a new array from a string, assuming that you have some knowledge of how to work with regular expressions. If not then they are with out question a topic to get into at some point sooner or later as they are a great way to preform all kinds of complex pattern matching tasks that might come up now and then.
 
 ```js
 var str = '1-3-5-7-9';
