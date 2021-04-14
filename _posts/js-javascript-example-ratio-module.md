@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-14 09:52:22
-version: 1.21
+updated: 2021-04-14 09:58:26
+version: 1.22
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -109,6 +109,8 @@ ratio.isBinaryArray = function(array){
     return true;
 };
 ```
+
+The method seems to pass all tests that I would expect it to pass, but it might still not work as expected for some values.
 
 ### 1.5 - Get simple ratio
 
