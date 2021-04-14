@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-13 14:35:06
-version: 1.13
+updated: 2021-04-14 09:17:14
+version: 1.14
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -176,7 +176,7 @@ ratio.getLevel = function(arr, base){
  
 ### 1.8 - Just a simple sum
 
-This is a method that will just return a sum of all the elements of the ratio or set of points.
+This is a method that will just return a sum of all the elements of the ratio or set of points. I have not run into many used case example where I would need to use this method, but I thought it was just another method that I should have at the ready when it comes to using this module in some actual projects.
  
 ```js
 // just the sum of the numbers
