@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-14 09:58:26
-version: 1.22
+updated: 2021-04-14 10:00:36
+version: 1.23
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -75,7 +75,7 @@ ratio.allNonZeroEqual = function (array) {
 
 ### 1.3 - Count Non Zero elements
 
-Count the number of elements in an array that are not zero, and return that value.
+Count the number of elements in an array that are not zero, and return that value. This is yet another method that I might want to have at the ready now and then when it comes to the kind of projects that I might use it in. Of course to know for sure I will need to work more on those kinds of projects to find out of I really need this, or I am just waisting time adding features that I think I will need.
 
 ```js
 // count nonZero array elements
