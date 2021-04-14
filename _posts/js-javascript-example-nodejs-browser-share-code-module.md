@@ -5,12 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-14 14:59:55
-version: 1.1
+updated: 2021-04-14 15:01:58
+version: 1.2
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
 
+One of the cool things about nodejs is that I can use the programing language of the open web to create scripts that will run in my operating system environment. However it would be nice to make modules for nodejs that will also work in a browser environment also without hacking over the code a little first.
 
 <!-- more -->
 
