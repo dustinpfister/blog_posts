@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2021-04-14 08:46:16
-version: 1.27
+updated: 2021-04-14 08:51:57
+version: 1.28
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript.
@@ -55,7 +55,9 @@ From  what I have [gathered so far with the typeof null equals object](https://s
 
 ## 4 - The Instanceof operator is what can be used for finding out what kind of object I am dealing with
 
-In most cases the typeof operator works just fine if I want to find out if something is a number, string, or an object. However if I want to find out what kind of object I am dealing with then in most cases typeof does not help much unless it the object is a function. When it comes to javaScript there are plain old objects that are cerated with the Object constructor, or the object literal syntax, but there is also a whole worlds of different kinds of objects created with a constructor function. There are a number of built in constructor functions like Date, and Function, but it is also possible to create ones own Constructor functions also.
+In most cases the typeof operator works just fine if I want to find out if something is a number, string, or an object. However if I want to find out what kind of object I am dealing with then in most cases typeof does not help much unless it the object is a function. When it comes to javaScript there are plain old objects that are cerated with the Object constructor, or the object literal syntax, but there is also a whole worlds of different kinds of objects created with a constructor function. 
+
+There are a number of built in constructor functions like Date, and Function, but it is also possible to create ones own Constructor functions also. So it is a good idea to know how to go about finding out what kind of object one is dealing with when type checking, there are a few ways to do this, but maybe the instanceof operator is the first and foremost option that will come up.
 
 The instanceof operator accepts two operands one to the left that is what should be an object, and the other is a constructor function. If the variable or value that is being evaluated is an instance of the constructor then the expression will evaluate to true, else false.
 
