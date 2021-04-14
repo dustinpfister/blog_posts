@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2021-04-13 12:01:46
-version: 1.22
+updated: 2021-04-14 08:20:21
+version: 1.23
 ---
 
-The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript, however there are also some additional things to look out for when it comes to really knowing what one is dealing with when it comes to values. For example when it comes to objects the typeof operator will always return object, but will not give insight into the type of object. So the typeof operator is not a replacement for other keywords such as the instance of operator that will help to know what kind of object a value is when it is in fact an object.
+The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript.
+
+However when it comes to data type checking in javaScript there are also some additional things to look out for when it comes to really knowing what one is dealing with when it comes to values. For example when it comes to objects the typeof operator will always return object, but will not give insight into the type of object. So the typeof operator is not a replacement for other keywords such as the instance of operator that will help to know what kind of object a value is when it is in fact an object.
 
 The typeof operator might not always give the desired results in many cases. Maybe the most note worthy issue to be aware of is that it will return the value 'object' when used with a null value. This is actually the value that it should return, but some developers might considered this a bit confusion, and in any case it is something that one has to adjust for no matter what anyway.
 
