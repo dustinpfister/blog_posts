@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-14 09:20:20
-version: 1.15
+updated: 2021-04-14 09:24:03
+version: 1.16
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -189,4 +189,5 @@ ratio.sum = function(arr){
 
 ## 2 - Conclusion
 
-So for now that is all I have to say about my ratio.js module, so far it is proving itself to be a useful tool for working with ratios. In time when I get more time to write some simple use case examples I might get around to expanding this post a bit more. For now that main module of interest that makes use of this is my orb javaScript module, that I intend to use in at least one, if not a few canvas games.
+So for now that is all I have to say about my ratio.js module, so far it is proving itself to be a useful tool for working with ratios. In time when I get more time to write some simple use case examples I might get around to expanding this post a bit more. For now that main module of interest that makes use of this is my [orb javaScript module](/2021/04/09/js-javascript-example-orb-module), that I intend to use in at least one, if not a few canvas games. So as those games come together I will be coming around to expand this module and post at that point. I am sure that there are some additional methods that I might want to park here, and there might also be a few bugs that I have missed that I will need to deal with at some point also.
+
