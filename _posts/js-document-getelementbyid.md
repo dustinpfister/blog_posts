@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2020-07-29 10:59:11
-version: 1.24
+updated: 2021-04-14 12:46:20
+version: 1.25
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -44,7 +44,7 @@ Works fine assuming that the desired element has an id, and you know what it is.
 
 ### 1.1 - Wrapping document.getElementById
 
-When making a complex project in which document.getElementById is going to be called many times there might be a desire to wrap the method in another method that will just serve as a more concise way of doing the same thing. There is not much wrong with just repating the lengthly method over and over again really, it is just the many would say that it looks bad.
+When making a complex project in which document.getElementById is going to be called many times there might be a desire to wrap the method in another method that will just serve as a more concise way of doing the same thing. There is not much wrong with just repeating the lengthly method over and over again really, it is just the many would say that it looks bad.
 
 ```js
 var get = function(id){
@@ -64,9 +64,9 @@ get('foo').innerHTML = 'bar';
 
 If document.getElementById is only used once or twice there is no need, but at some point it might be a good move to do something like this. The other option is to find other ways of going about getting and working with html collections rather than just a single element. The document.getElementById method is just one tool in the toolbox after all, so maybe a better option would be to drop the use of the method all together, and get at your html code by some other means.
 
-## 2 - getElementsByClassName
+## 2 - The document.getElementsByClassName method
 
-So one of the many alternatives to getElementById is the document.getElementsByClassName method that will get a collection of elements by way of class name rather than id. So then as the name suggests this method will return an HTMLcollection rather than  just a single element reference where each of the elements in the collection has the given class name when calling the method.
+So one of the many alternatives to getElementById is the [document.getElementsByClassName](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName) method that will get a collection of elements by way of class name rather than by id. So then as the name suggests this method will return an [HTMLcollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection) rather than  just a single element reference where each of the elements in the collection has the given class name when calling the method.
 
 ```html
 <html>
@@ -95,16 +95,18 @@ So one of the many alternatives to getElementById is the document.getElementsByC
 </html>
 ```
 
-An HTMLCollection is not an Array, but it is an Array like object, so Array methods can be used via Function.call. You might still see this used in code examples now and then, but as of late there is querySelectorAll that might prove to be a better option as that can be used to get by class also as well as many other ways, more on that one later.
+An HTMLCollection is not an Array, but it is an Array like object, so Array methods can be used via Function.call and doing so will work okay ore often than not as long as it is a read only like method. You might still see this used in code examples now and then, but as of late there is more modern alternatives such as querySelectorAll that might prove to be a better option as that can be used to get by class also as well as many other ways, more on that one later.
 
 ## 3 - document.getElementsByTagName
 
-There is also a way to get a html collection of all elements of a given tag name such as div rather than any elements that have a class name or just one element by id. This method would be the document.getElementsByTagName method.
+There is also a way to get a html collection of all elements of a given tag name such as div rather than any elements that have a class name or just one element by id. This method would be the [document.getElementsByTagName](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByTagName) method that like the get elements by class name will also return an html collection of all elements that are of a given tag..
 
 ```js
 var divs = document.getElementsByTagName('div');
 console.log(divs.length);
 ```
+
+Just like document.getElementBy id this is a tired yet true method that will work in really old browsers, and still works just fine if I just want to get elements by a tag name. However when it comes to not caring so much about code breaking on old browsers any more there is again document.querySelector and document.querySelectorAll that are flexible methods that can do everything that these tired yet true methods do and more.
 
 ## 4 - Document.querySelector, and Document.querySelectorAll
 
