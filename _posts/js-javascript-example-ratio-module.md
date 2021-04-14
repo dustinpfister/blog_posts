@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-14 09:37:29
-version: 1.19
+updated: 2021-04-14 09:51:12
+version: 1.20
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -89,15 +89,18 @@ ratio.countNonZero = function(array){
 
 ### 1.4 - Is the array binary?
 
-Is the [given array a binary array or not](https://stackoverflow.com/questions/49743318/fast-way-to-check-if-a-javascript-array-is-binary-contains-only-0-and-1), that is of the array is compose of elements that are 0 and 1 return true, else return false.
+Is the [given array a binary array or not](https://stackoverflow.com/questions/49743318/fast-way-to-check-if-a-javascript-array-is-binary-contains-only-0-and-1), that is of the array is compose of elements that are 0 and 1 return true, else return false. One might think that making a method like this would be pretty easy, and it is, but there are a few situations in which one might get unexpected results. So for my method that does this I went with parseInt rather than the Number method to make sure that an element values is converted to a number before being compared to 0 or 1 literals with the identity operator.
 
 ```js
-// is binary only array
 ratio.isBinaryArray = function(array){
     var i = 0,
     len = array.length;
+    // return false for empty array
+    if(len === 0){
+        return false;
+    }
     while(i < len){
-        if(Number(array[i]) === 0 || Number(array[i]) === 1){
+        if(parseInt(array[i]) === 0 || parseInt(array[i]) === 1){
            i += 1;
            continue;
         }
