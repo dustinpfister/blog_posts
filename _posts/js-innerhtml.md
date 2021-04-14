@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2020-07-17 12:09:27
-version: 1.30
+updated: 2021-04-14 09:10:17
+version: 1.31
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference. 
@@ -170,9 +170,9 @@ var el = document.getElementById('out');
 el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
 ```
 
-## 4 - innerHTML alternatives
+## 4 - Now for the innerHTML alternatives
 
-In this section I will be covering alternatives to innerHTML. This includes the use of many methods that are used together, and simple alternatives that work in a similar way as is the case with innerText.
+In this section I will be covering alternatives to innerHTML, which for the most part is the create element method. However the create element method is never typically just used by itself, but in combination with a whole bunch of other html element methods and objects, the full breath of which will take time to get used to. This is of course one reason why so many developers like to just use innerHTML as it is fairly easy to use to just create elements, but it does have its draw backs, and as such innerHTML is not at all a replacement for the alternative way of creating elements with javaScript.
 
 ### 4.1 - document.createElement, document.createTextNode, and el.appendChild
 
