@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-04-14 12:46:20
-version: 1.25
+updated: 2021-04-14 12:49:39
+version: 1.26
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -110,7 +110,9 @@ Just like document.getElementBy id this is a tired yet true method that will wor
 
 ## 4 - Document.querySelector, and Document.querySelectorAll
 
-If you are familiar with jQuery then you will like [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) when as a way to gain references to elements in javaScript. This allows for a wide range of possibilities for gaining accesses to dom elements, by Id, class, tag name, and more.
+If you are familiar with jQuery then you will like [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) then as a way to gain references to elements in javaScript by a range of different query strings. There is also document.quesySlectroAll that can be used to get an html collection rather than a single element. This allows for a wide range of possibilities for gaining accesses to dom elements, by Id, class, tag name, and more. 
+
+For example if I want to get all elements that are of a given class like the docuemnt.getElementsByClassName method for that I can call document.querySelectorAll and pass a string that begins with a dot which means I want to select by class name, and then the name of the class.
 
 ```html
 <html>
