@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-04-14 11:37:35
-version: 1.23
+updated: 2021-04-14 11:39:27
+version: 1.24
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript. To cut quickly to the chase with this one there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -19,7 +19,7 @@ I might also touch base on some other related topics as well when it comes to a 
 
 ## 1 - Get parent element AKA DOM NODE if there is one
 
-Once a reference to an element is gained by use of a method like getElementById or querySelector, there is the parentElement property of the element reference if it has one. This property is there to get a parent DOM element rather than a node in general, as there are some kinds of nodes that are often used that are not really actual html elements, such is the case with things like SVG.
+Once a reference to an element is gained by use of a method like getElementById or querySelector, there is the parentElement property of the element reference if it has one. This property is there to get a parent DOM element rather than a node in general, as there are some kinds of nodes that are often used that are not really actual html elements, such is the case with things like SVG. Tis then is the main different between parent element and parent node, the node property is more general and should work with nodes in general and not just standard html elements that are part of an html spec.
 
 ```js
 <html>
