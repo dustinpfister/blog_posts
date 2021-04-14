@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-14 15:07:54
-version: 1.4
+updated: 2021-04-14 15:09:38
+version: 1.5
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
@@ -43,6 +43,8 @@ First off I just need to write a [IIFE](/2020/02/04/js-iife) or Immediately Invo
 ```
 
 ## 2 - Using the module in a node script
+
+So now to test out if this module works in a node script, to do so I just need to require the script in like always. I can then call one of the public methods of the module from the script that makes use of it. So then the module is working as exspected in node, but what about a browser example.
 
 ```js
 let path = require('path');
