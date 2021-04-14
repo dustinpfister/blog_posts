@@ -1,12 +1,12 @@
 ---
-title: javaScript typeof operator
+title: The typeof javaScript operator and other data type related things
 date: 2019-02-15 12:08:00
 tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2021-04-14 08:38:51
-version: 1.24
+updated: 2021-04-14 08:39:50
+version: 1.25
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript.
