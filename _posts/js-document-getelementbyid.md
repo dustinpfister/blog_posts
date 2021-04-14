@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-04-14 12:50:48
-version: 1.27
+updated: 2021-04-14 13:04:41
+version: 1.28
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -117,7 +117,7 @@ For example if I want to get all elements that are of a given class like the doc
 ```html
 <html>
     <head>
-        <title>document getelementbyid </title>
+        <title>document query selector all</title>
     </head>
     <body>
         <span class="foo">one</span>
@@ -135,7 +135,33 @@ console.log(foos[1].innerText); // two
 </html>
 ```
 
-## 5 - Conclusion
+## 5 - Get a reference to an element by way of a global click handler
+
+All if the methods that I have covered so far are ways to go about getting a reference to an element by way of an id, class name, or tag name right away when a line of javaScript code is executed.
+
+```html
+<html>
+    <head>
+        <title>get by event target</title>
+    </head>
+    <body>
+        <input id="action_foo" type="button" value="foo">
+        <input id="action_bar" type="button" value="bar">
+        <input id="action_baz" type="button" value="baz">
+        <p id="out"></p>
+        <script>
+var out = document.querySelector('#out');
+document.addEventListener('click', function(e){
+    // getting a reference to the button that was clicked
+    // by the target prop of this events event object
+    out.innerText = e.target.id;
+});
+        </script>
+    </body>
+</html>
+```
+
+## 6 - Conclusion
 
 There are many other ways to go about getting references to elements in client side javaScript. In some cases you might all ready have a reference to work with in some object that you might not even be aware of actually. For example in the body of an event handler there is the target and currentTarget properties of events objects that are references to the element where an event was dispatched, and the current element in the event of event bubbling. So if you are working something out in an event hander and want a reference to an element of interest for the event, changes are you all ready have a reference just take a closer look at the event object.
 
