@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 608
-updated: 2020-07-22 15:26:43
-version: 1.13
+updated: 2021-04-14 11:16:10
+version: 1.14
 ---
 
 So then [Long division](https://en.wikipedia.org/wiki/Long_division) is one of those things that as an adult I might end up forgetting how to do, as it is something that I can not say I do on a regular basis. However of course it is not so hard to get back up to speed with again by just finding a decent source on how to do it, and reeducate myself on how to do it. Long division is elementary school level math after all, so it should not be to hard to get back up to speed with again. However often coming up with a javaScript solution to replicate the process of long division is not so elementary. Solutions for doing so can often work okay, but might not work out as well as I might like.
@@ -17,7 +17,7 @@ The main reason why I might take the time to look into solutions for long divisi
 
 ## 1 - JavaScript Long Division solution ONE
 
-So just quickly searching around fo solutions for log division I came across [this one here](https://bocoup.com/blog/long-division-in-javascript) that I just hacked over a little, but left largely unchanged.
+So just quickly searching around fir solutions for log division JavaScript methods I came across [this one here](https://bocoup.com/blog/long-division-in-javascript) that I just hacked over a little, but left largely unchanged.
 
 ```js
 var div = function (n, d) {
