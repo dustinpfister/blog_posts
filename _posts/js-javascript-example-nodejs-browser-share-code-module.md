@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-14 15:09:38
-version: 1.5
+updated: 2021-04-14 15:13:51
+version: 1.6
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
@@ -44,7 +44,7 @@ First off I just need to write a [IIFE](/2020/02/04/js-iife) or Immediately Invo
 
 ## 2 - Using the module in a node script
 
-So now to test out if this module works in a node script, to do so I just need to require the script in like always. I can then call one of the public methods of the module from the script that makes use of it. So then the module is working as exspected in node, but what about a browser example.
+So now to test out if this module works in a node script, to do so I just need to require the script in like always. I can then call one of the public methods of the module from the script that makes use of it. So then the module is working as expected in node, but what about a browser example.
 
 ```js
 let path = require('path');
@@ -55,6 +55,8 @@ console.log( Math.floor(utils.distance(0,0,45,45)) ); // 63
 
 
 ## 3 - Using the module in client side javaScript
+
+So now to see if this utils module will still work as expected when using it in a client side javaScript environment. With that said when I open up the following in my browser it seems to work just fine also.
 
 ```html
 <html>
@@ -71,6 +73,8 @@ container.innerText = utils.distance(37, 20, 10, 0);
     </body>
 </html>
 ```
+
+So then this kind of pattern will work for most of the kinds of modules that I make, but not all of them. There is a point where a script that I have in mind is just going to need to be very much node only, and the same can still be said of many of the modules that I make that are very much client side only when it comes to something that has to do a lot with canvas elements for example. Still when it comes to some kind of module that has to do with the creating and mutating of a simple object state, a parser, or something to that effetc this kind of module pattern seems to work just fine.
 
 ## 4 - Conclusion
 
