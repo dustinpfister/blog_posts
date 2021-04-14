@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 844
-updated: 2021-04-14 09:24:03
-version: 1.16
+updated: 2021-04-14 09:26:49
+version: 1.17
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a ratio module that I put together that I intend to use with a bunch of other modules to create one or more games that involve the use of ratios. The main project thus far with this is my orb.js module that I have been working on as of late, but I am sure that I might find additional uses for this in future projects.
@@ -109,7 +109,7 @@ ratio.isBinaryArray = function(array){
 
 ### 1.5 - Get simple ratio
 
-This one helps me to get the simple ratio of a set of numbers.
+This one helps me to get the simple ratio of a set of numbers. The process of doing so with this method uses the all non zero equal method to fist check if all the elements other than zero equal each other or not. If this is the case then the result should just be 1 for any and all non zero elements and that is it. In my orb.js module orbs that have these kinds of rations are treated as certain kinds of special types compared to orbs that have rations that are not in this kind of form.
 
 ```js
 // get the simple ratio from a set of arr (or simplify a ratio)
