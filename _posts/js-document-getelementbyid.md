@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-04-14 13:04:41
-version: 1.28
+updated: 2021-04-14 14:10:43
+version: 1.29
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -137,7 +137,7 @@ console.log(foos[1].innerText); // two
 
 ## 5 - Get a reference to an element by way of a global click handler
 
-All if the methods that I have covered so far are ways to go about getting a reference to an element by way of an id, class name, or tag name right away when a line of javaScript code is executed.
+All if the methods that I have covered so far are ways to go about getting a reference to an element by way of an id, class name, or tag name right away when a line of javaScript code is executed. However when it comes to event handlers there is a way to get a refernce to the element from which the event happed by way of the event target property.
 
 ```html
 <html>
