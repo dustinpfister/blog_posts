@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 383
-updated: 2021-04-14 08:39:50
-version: 1.25
+updated: 2021-04-14 08:43:11
+version: 1.26
 ---
 
 The [javaScript typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) operator will return a string that is the type of the operand that is given to it from the right of the typeof keyword when used in an expression. It is the first go to operator then to go about preforming type checking of values in javaScript.
@@ -28,7 +28,7 @@ console.log(ty); // 'number'
 
 Here the javaScript typeof operator works as expected, I give it a number and it returns the string 'number'. So far the type of operator works the way it should without issue. However there are certain values like NaN that stands for Not a Number yet its type if number. Things also get a little weird when I pass it the null value for example so lets continue looking at some more examples here.
 
-## 2 - no need to call typeof as it is an operator and not a function
+## 2 - No need to call typeof as it is an operator and not a function
 
 In some examples I see new javaScript developers placing parentheses around what it is that they want to find the type of. This is not necessary as the typeof operator is an operator and not a function. However in some cases you might still want to use parentheses as a way to group an expression as you might get undesired results.
 
@@ -53,7 +53,7 @@ console.log( typeof null ); // 'object'
 
 From  what I have [gathered so far with the typeof null equals object](https://stackoverflow.com/questions/18808226/why-is-typeof-null-object) deal in javaScript it it would seem that this is a mistake that dates all the way to the beginning of javaScript. However maybe object is an appropriate value to return considering that the value is often used as a placeholder for what should be an object. There is some talk as to the subject of if it will be fixed or not but so far it seems like that is not happening. Also it would not be a good idea to change it at this point as that would result in a whole world of code breaking, so it would seem that this is just once little thing that javaScript developers just need to adjust for when using typeof.
 
-## 4 - Instanceof for finding out what an object is an instance of
+## 4 - The Instanceof operator is what can be used for finding out what kind of object I am dealing with
 
 In most cases the typeof operator works just fine if I want to find out if something is a number, or an object. However if I want to find out what kind of object I am dealing with then in most cases typeof does not help much unless it is a function. The instanceof operator accepts two operands one to the left that is what should be an object, and the other is a constructor function. If the variable or value that is being evaluated is an instance of the constructor then the expression will evaluate to true, else false.
 
