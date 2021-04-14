@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-04-14 12:21:10
-version: 1.25
+updated: 2021-04-14 12:29:26
+version: 1.26
 ---
 
 So this will be a quick post on getting parent elements of a given element with native javaScript. To cut quickly to the chase with this one there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference that I will be getting to in this post.
@@ -70,7 +70,7 @@ So then these are the two main properties of interest when it comes to getting a
 
 ## 2 - The closest method for getting parent nodes with a query string
 
-So a modern option now is the closest element method that works on most modern browsers. One draw back though is that it will get the closest element that matches the query string including the child element from which it is called.
+So a modern option now is the closest element method that works on most modern browsers. One draw back though is that it will get the closest element that matches the query string including the element from which it is called. So it may not work out so well when it comes to getting the parent element depending on the situation, and how it is used. However I think that it is of course work mentioning here in this post, as the method strikes me as a more flexible way of getting elements near a target element of interest. There is of course going beyond just getting that parent element, and being able to get any element that meets a given query that is near a given element regardless if it is a parent or a child element.
 
 ```html
 <html>
