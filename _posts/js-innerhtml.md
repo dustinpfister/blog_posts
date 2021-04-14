@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-04-14 09:10:17
-version: 1.31
+updated: 2021-04-14 09:14:31
+version: 1.32
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference. 
@@ -176,7 +176,9 @@ In this section I will be covering alternatives to innerHTML, which for the most
 
 ### 4.1 - document.createElement, document.createTextNode, and el.appendChild
 
-If you are not familiar with document.createElement, then you should play around with that one a little at some point. The createElement method as the name suggests is what can be used in client side javaScript to create an element with javaScript. The method can be used with additional methods like document.createTextNode, and el.appendChild to do the same thing as innerHTML.
+If you are not familiar with document.createElement, then you should play around with that one a little at some point sooner or later. The createElement method as the name suggests is what can be used in client side javaScript to create an element with javaScript. The method can be used with additional methods like document.createTextNode, and el.appendChild to do the same thing as innerHTML.
+
+To use the create element method just call the method off of the document object, passing the tag name of the element that you want to create, the returned result is then a new element that can be assigned to a variable. However this alone will just create the element, it will not append it to the html. To do that a reference to a mount point must be obtained, at which point a method such as append child can be called off of the mount point and the new element can be passed to append child to actual append the new element to the html.
 
 ```js
 var el = document.getElementById('out');
@@ -187,6 +189,6 @@ el.appendChild(p);
 
 ## 5 - Conclusion
 
-So suing innerHTNL as a way to inject content is nice because it makes the process fairly easy as the content can just be created by generating a string representation of html markup. However it is no replacement for the more professional alternatives that involve create an new element object with the createElement method and then appending that with an element method like appendChild.
+So using innerHTNL as a way to inject content is nice because it makes the process fairly easy as the content can just be created by generating a string representation of html markup. However it is no replacement for the more professional alternatives that involve create an new element object with the createElement method and then appending that with an element method like appendChild.
 
 Although innerHTML and html in general is a great way to go about creating a user interface, it might not be the best choice for all projects. There are many other ways of creating an interface in a web browser and not all of them are subject to page re-flow, there is of course canvas elements and svg that are there to play with as well.
