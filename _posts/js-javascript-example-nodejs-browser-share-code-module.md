@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-14 15:13:51
-version: 1.6
+updated: 2021-04-15 13:10:03
+version: 1.7
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
@@ -74,7 +74,7 @@ container.innerText = utils.distance(37, 20, 10, 0);
 </html>
 ```
 
-So then this kind of pattern will work for most of the kinds of modules that I make, but not all of them. There is a point where a script that I have in mind is just going to need to be very much node only, and the same can still be said of many of the modules that I make that are very much client side only when it comes to something that has to do a lot with canvas elements for example. Still when it comes to some kind of module that has to do with the creating and mutating of a simple object state, a parser, or something to that effetc this kind of module pattern seems to work just fine.
+So then this kind of pattern will work for most of the kinds of modules that I make, but not all of them. There is a point where a script that I have in mind is just going to need to be very much node only, and the same can still be said of many of the modules that I make that are very much client side only when it comes to something that has to do a lot with canvas elements for example. Still when it comes to some kind of module that has to do with the creating and mutating of a simple object state, a parser, or something to that effect this kind of module pattern seems to work just fine.
 
 ## 4 - Conclusion
 
