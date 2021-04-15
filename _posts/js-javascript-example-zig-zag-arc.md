@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-15 14:50:44
-version: 1.15
+updated: 2021-04-15 14:52:17
+version: 1.16
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -260,4 +260,4 @@ When this javaScript example is up and running in the browser I have display obj
 
 ## 5 - Conclusion
 
-So I just wanted to get together a quick javaScript example that makes use of some methods that will create and return percentage values that go up in a way that is different from just what is usual when diving a numerator type value over a denominator type value.
+So I just wanted to get together a quick javaScript example that makes use of some methods that will create and return percentage values that go up in a way that is different from just what is usual when diving a numerator type value over a denominator type value. Now from this post forward the question is how does any of this apply to some kind of real project. Well there are lots of things that come to mind, but thus far most of it is artful stuff rather that practical stuff.
