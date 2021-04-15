@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2020-08-18 18:23:33
-version: 1.13
+updated: 2021-04-15 13:38:54
+version: 1.14
 ---
 
 So [javaScript null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time that stands the absence of an object value. On the surface it might seem that null is more or less the same as undefined, but this is not the case. There are some subtle differences and null is not meant to be a replacement for undefined or vice versa. 
@@ -95,4 +95,5 @@ console.log( undefined + 1 ); // NaN
 
 ## 4 - Conclusion
 
-So null in javaScript is one of several primitive values in javaScript that a developer should be aware of. It will evaluate to false when it comes to converting to boolean, and has a type of object. It is often confused with undefineds but there are many little deferences between the two types of values.
+So null in javaScript is one of several primitive values in javaScript that a developer should be aware of. It will evaluate to false when it comes to converting to boolean, and has a type of object. It is often confused with the undefined value but there are many little deferences between the two types of values.
+
