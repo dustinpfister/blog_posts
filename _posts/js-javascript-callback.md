@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2021-04-15 13:45:10
-version: 1.18
+updated: 2021-04-15 13:48:15
+version: 1.19
 ---
 
-In javaScript a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) is often used as a way to define some logic that is to execute at some point later on rather than right at the moment. For example when I go to pass a function as an argument for the add event listener function when in client side javaScript that can be thought of as a callback function. The code in the function will not run at that very moment, but it will when the event happens.
+In javaScript a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) is often used as a way to define some logic that is to execute at some point later on rather than right at the moment. For example when I go to pass a function as an argument for the add event listener function when in client side javaScript that can be thought of as a callback function. The code in the function will not run at that very moment, but it will when the event happens. There is then all the various built in functions in nodejs that will take a callback also when it comes to sever side javaScript.
 
 It would also seem that a callback is also used as an umbrella term for any function that is passed as an argument to another function that is used at some point or place inside the body of that outer function that is called. So there might be some overlap here with other terms that might come up such as [higher order functions, and closures](/2019/02/22/js-javaScript-closure/).
 
