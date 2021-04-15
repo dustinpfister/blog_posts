@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-15 14:56:04
-version: 1.18
+updated: 2021-04-15 14:58:40
+version: 1.19
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -167,6 +167,8 @@ var gameMod = (function () {
 }
     ());
 ```
+
+Often I might have a septate module for an object pool, and this sort of thing will actually end up being a few modules. However this javaScript example is going to remain fairly simple and I do not want to have all of this code distract from the real core of what the post is about. Which is of course those methods that I covered in the utility module.
 
 ## 3 - Draw to a canvas element
 
