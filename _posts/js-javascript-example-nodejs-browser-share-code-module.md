@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-15 13:12:50
-version: 1.8
+updated: 2021-04-15 13:15:46
+version: 1.9
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
@@ -20,7 +20,7 @@ One of the cool things about nodejs is that I can use the programing language of
 
 First off I just need to write a [IIFE](/2020/02/04/js-iife) or Immediately Invoked Function Expression that is a kind of self executing function. The only thing that is special about this IIFE is the value that I will be passing to it when calling it. The value will be the result of an expression that makes use of the conditional expression to test for the presence of the module global in node.
 
-For this module I will have just a few pure functions that just make use of core javaScript itself which will work nice for this kind of module.
+For this module I will have just a few pure functions that just make use of core javaScript itself which will work nice for this kind of module. When it comes to any kind of function where a client side or server side only feature is used that is where things will end up getting a little complicated.
 
 ```js
 (function (api) {
