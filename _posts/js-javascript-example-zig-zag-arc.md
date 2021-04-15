@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-15 14:58:40
-version: 1.19
+updated: 2021-04-15 15:01:56
+version: 1.20
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -41,6 +41,8 @@ utils.linPerToBiasPer = function (linPer) {
     return 1 - Math.abs(0.5 - linPer) / 0.5;
 };
 ```
+
+Now that I have this out of the way I am now going to want to build a whole lot of code on top of this in order to really get a good idea of how these kinds of methods can effect something. I am thinking some kind of canvas example that has a bunch of display objects that will move around in different ways as a result of the use of these methods. So I will want a module that will be used to create a state object of some kind, another modules to draw aspects of one of these stats to a canvas element, and a little more code to pull this all together.
 
 ## 2 - A Game module that makes use of the methods
 
