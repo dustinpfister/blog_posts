@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-15 14:53:45
-version: 1.17
+updated: 2021-04-15 14:56:04
+version: 1.18
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -171,6 +171,8 @@ var gameMod = (function () {
 ## 3 - Draw to a canvas element
 
 One way to go about drawing the state of things in a client side environment would be to use canvas, so I worked out a few quick draw methods to be used with canvas which is what I often do when going in that direction. I generally always like to separate javaScript code that has to do with the creating and mutation of a module away from code that draws that model to a canvas element.
+
+In just about any module like this I often have a method that will just draw a simple solid color background for the canvas element, and another that will draw some basic debug into to the canvas. For this example though I have a method that will draw the current state of the object pool of a game state object creation with the game module that I went over.
 
 ```js
 var draw = {};
