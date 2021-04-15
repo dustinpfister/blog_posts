@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-15 13:15:46
-version: 1.9
+updated: 2021-04-15 13:20:40
+version: 1.10
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
@@ -43,6 +43,8 @@ For this module I will have just a few pure functions that just make use of core
  
 }(  typeof module === 'undefined' ? this['utils'] = {} : module.exports ));
 ```
+
+So if all works as expected with this I should be able to use these methods in a client side or sever side javaScript environment. To know for sure I would need to work out some quick examples that will make use of this, so lets take a look at a few examples.
 
 ## 2 - Using the module in a node script
 
