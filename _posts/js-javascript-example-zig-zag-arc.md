@@ -5,12 +5,12 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-15 14:43:53
-version: 1.12
+updated: 2021-04-15 14:46:08
+version: 1.13
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
-In other words there is just taking a value like 25 and diving it over 100 to get 0.25, and as I increase the first value that is the numerator by one on each update then the value between zero and one will go up in a way in which the change can be graphed as a straight line.
+In other words there is just taking a value like 25 and diving it over 100 to get 0.25, and as I increase the first value that is the numerator by one on each update then the value between zero and one will go up in a way in which the change can be graphed as a straight line. Another way of thinking about this is having a box and having a straight line draw from the bottom left corner to the upper left corner. However sometimes I might want things to move or update in a way that would be graphed in a different way than that.
 
 <!-- more -->
 
