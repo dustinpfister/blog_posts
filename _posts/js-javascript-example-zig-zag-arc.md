@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 693
-updated: 2021-04-15 14:52:17
-version: 1.16
+updated: 2021-04-15 14:53:45
+version: 1.17
 ---
 When making a javaScript project that is some kind of game or something to that effect I often end up working with percentage values that are in the from of a number between and including zero and one. So I thought I would work out a quick [javaScript example](/2021/04/02/js-javascript-example/) that makes use of some custom utility methods that take a percentage value and return another percentage value that does not go from zero to one in a linear way.
 
@@ -210,7 +210,7 @@ draw.info = function (ctx, game) {
 
 ## 4 - Main javaScript and HTML
 
-Now for just a little more client side javaScript to make use of what it is that I have worked out with the game, and draw modules.
+Now for just a little more client side javaScript to make use of what it is that I have worked out with the game, and draw modules. I am going to want a little jaavScript code that will create and inject a canvas element that I will then use with my draw module along with a state object that I created with the game module.
 
 ```js
 var canvas = document.createElement('canvas'),
