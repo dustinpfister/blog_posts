@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2020-07-25 09:36:44
-version: 1.10
+updated: 2021-04-15 13:26:20
+version: 1.11
 ---
 
-So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, so I thought I would write a quick post on this when it comes to the basics of adding elements to an array in javaScript.
+So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
+
+There are many other ways of going about adding elements to an array also though, shuch as just using the object bracket syntax, as well as a range of other methods. So I thought I would write a quick post on this when it comes to the basics of adding elements to an array in javaScript.
 
 <!-- more -->
 
