@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-14 15:19:29
-version: 1.43
+updated: 2021-04-15 14:20:23
+version: 1.44
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However maybe the best way to go about learning javaScript would be to just start making some fun, or useful [javaScript examples](https://www.tutorialrepublic.com/javascript-examples.php) that you can start to actually play with, or use to help solve some kind of problem.
@@ -56,7 +56,7 @@ One great thing about nodejs is that I am using the same programing language tha
 
 ### 1.10 - [An Orb Module example about ratios](/2021/04/09/js-javascript-example-orb-module/)
 
-This is a module where I am working out some basic core logic for something that I might use in a future game.
+This is a module where I am working out some basic core logic for something that I might use in a future game or two. It is a module that makes use of ratios as a way to set what kind of object it is. This idea then is to use ratios and point values as a way to set other object properties. These orb objects can then be used in a few different ideas i have for games, many of which are tower defense type games, and other kinds of strategy games.
 
 ### 1.11 - [A percent module experiment](/2020/11/25/js-javascript-example-percent-module/)
 
