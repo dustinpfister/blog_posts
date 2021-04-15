@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 380
-updated: 2021-04-15 14:35:24
-version: 1.16
+updated: 2021-04-15 14:37:53
+version: 1.17
 ---
 
-The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment, or time stamp at a point in the past, the current time, or the future. SO then the Date constructor is the first go to method for working with time in a javaScript programing environment.
+The [javaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) constructor can be used to create Date objects that represent a single moment, or time stamp at a point in the past, the current time, or the future. So then the Date constructor is the first go to method for working with time in a javaScript programing environment.
 
 The Date object is an example of a [constructor function](/2019/02/27/js-javascript-constructor/) meaning that it is a function that can be used to create a class of an object that has prototype object methods that can be called off of an instance of the Class object. When it comes to date objects as one would expect there are a whole bunch of methods that have to do with getting the number of seconds, minutes, and hours many many other such values from such a class object.
 
@@ -68,7 +68,8 @@ console.log(d2.toDateString()); // Mon Dec 31 2018
 
 ### 3.2 - Two or more arguments
 
-When setting from two or more arguments the first argument is the full year followed by the zero relative month of the year and then so on all the way to milliseconds.
+When creating a date object from two or more arguments the first argument is the full year followed by the zero relative month of the year and then so on all the way to milliseconds.
+
 ```js
 let d = new Date(2009,1,13,18,31,30);
  
