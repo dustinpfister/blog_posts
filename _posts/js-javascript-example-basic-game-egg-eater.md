@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 16:06:57
-version: 1.23
+updated: 2021-04-16 16:09:22
+version: 1.24
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -332,7 +332,9 @@ To display what is going on I am going to want to make use of a canvas element, 
 
 ## 6 - Main.js
 
-Now that I have a game module as well as all the other modules that will help to support it I just need a little more javaScript code to pull everything together. Here in the main javaScript file I use the create canvas utility method to create the main canvas element that i will be drawing to. I then create a new game object, and some additional variables that I will be using with a simple application loop. Inside this main app loop I am updating the main game object, and drawing the current state of the main game object to the camvas with the draw module methods.
+Now that I have a game module as well as all the other modules that will help to support it I just need a little more javaScript code to pull everything together. Here in the main javaScript file I use the create canvas utility method to create the main canvas element that i will be drawing to. I then create a new game object, and some additional variables that I will be using with a simple application loop. Inside this main app loop I am updating the main game object, and drawing the current state of the main game object to the canvas with the draw module methods.
+
+In full blown projects I might have a state machine, and a whole bunch more modules, but for this series of posts I do not want to go to nuts with things. I just wanted to create a simple prototype of something just to get a feel for what it is like to play this very simple game, and maybe go a little farther at some point with some additional features, or set again maybe not.
 
 ```js
 
