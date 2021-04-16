@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 15:50:38
-version: 1.15
+updated: 2021-04-16 15:53:04
+version: 1.16
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -143,7 +143,7 @@ I then have two helper methods for the main public update method, and then the u
 
 ## 2 - The utility module
 
-I often have a generic utility module for examples such as this that is a kind of first and foremost dumping ground for methods that I d not yet know where else to park them.
+I often have a generic utility module for examples such as this that is a kind of first and foremost dumping ground for methods that I do not yet know where else to park them. For this example I have a mathematical modulo method that I am using in my angles module that I will be getting to shortly. I also of course am going to want to have bounding box collision detection, which I am making use in the game module above to check if a display object has hit the guy or not.
 
 ```js
 var utils = {};
