@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 13:57:20
-version: 1.5
+updated: 2021-04-16 13:59:16
+version: 1.6
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -32,7 +32,7 @@ Here I have the main game module that I can use to create the main game state ob
           gameOver: false,
           gameOverSecs: 0,
           score: 0,
-          spawn: {  // object spawn setings
+          spawn: {  // object spawn settings
               rate: opt.spawnRate || 1,
               objectsPerSpawn: opt.objectsPerSpawn || 5,
               bombChance: opt.bombChance === undefined ? 0.05 : opt.bombChance,
@@ -139,7 +139,9 @@ Here I have the main game module that I can use to create the main game state ob
 }(this['gameMod'] = {}));
 ```
 
-## 2 - The utils mod
+## 2 - The utility module
+
+I often have a generic utility module for examples such as this that is a kind of first and foremost dumping ground for methods that I d not yet know where else to park them.
 
 ```js
 var utils = {};
