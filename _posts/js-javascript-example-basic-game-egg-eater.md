@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 16:09:22
-version: 1.24
+updated: 2021-04-16 16:12:01
+version: 1.25
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -380,6 +380,8 @@ canvas.addEventListener('touchstart', pointerDown);
 canvas.addEventListener('touchend', pointerUp);
 ```
 
+Now I just need a little html to provide a container element, and to link to all the scripts that I worked out here.
+
 ```html
 <html>
     <head>
@@ -396,6 +398,8 @@ canvas.addEventListener('touchend', pointerUp);
     </body>
 </html>
 ```
+
+When this example is up and running the prototype works as expected. Display objects spawn and move to the guy object, when I click and hold the canvas element I rack up score eating the egg types objects, but once a bomb hits the guy while I am clicking and holding the canvas that will result in a game over.
 
 ## 7 - Conclusion
 
