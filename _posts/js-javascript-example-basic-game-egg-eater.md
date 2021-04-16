@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 15:46:24
-version: 1.12
+updated: 2021-04-16 15:47:44
+version: 1.13
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -17,7 +17,7 @@ The idea is simple enough and it should prove to be the kind of game to which I 
 
 ## 1 - The game module
 
-Here I have the main game module that I can use to create the main game state object of the game, as well as update such an object. Speaking of which the first public method returned by the module is a create method that will be used in my main javaScrit file to create the main game object. This method takes a single object as an argument that is a way to set a whole bunch of properties for the state of a new game. So far the main options of interest have to do with setting the rate, and count of objects that will be spawned at the stat location.
+Here I have the main game module that I can use to create the main game state object of the game, as well as update such an object. Speaking of which the first public method returned by the module is a create method that will be used in my main javaScrit file to create the main game object. This method takes a single object as an argument that is a way to set a whole bunch of properties for the state of a new game. So far the main options of interest have to do with setting the rate, and count of objects that will be spawned at the stat location. In this create method I am also creating a display object for the guy that eats eggs, and the pool of objects that will be eggs as well as the occasional bomb.
 
 ```js
 (function(api){
