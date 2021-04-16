@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 15:54:30
-version: 1.17
+updated: 2021-04-16 15:58:08
+version: 1.18
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -186,7 +186,7 @@ utils.createCanvas = function(opt){
 
 ## 3 - The angles module
 
-For this example I am going to want to have a module that will help me work with problems that have to do with angles.
+For this example I am going to want to have a module that will help me work with problems that have to do with angles. I have a method that will help me normalize an angle to a given scale, as well as methods that will help me get the angle from an object to the guy object. I also have a get shortest direction method that will help me find out which way to turn to rotate the heading of an object the right way, rather than just having it set to the angle to go to move to the location of the guy object.
 
 ```js
 (function(anglesMod){
@@ -197,17 +197,6 @@ For this example I am going to want to have a module that will help me work with
         var c = scale || anglesMod.PI2,
         h = c / 2;
         return utils.mod(n + h, c) - h;
-    };
- 
-    // the angular distance between two angles
-    anglesMod.distance = function (a, b, scale) {
-        var m = scale || angles.PI2,
-        h = m / 2,
-        diff = anglesMod.normalizeHalf(a - b);
-        if (diff > h) {
-            diff = diff - m;
-        }
-        return utils.mod( Math.abs(diff), scale);
     };
  
     // get the angle from one point to another
