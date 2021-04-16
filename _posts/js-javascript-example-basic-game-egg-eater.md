@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 846
-updated: 2021-04-16 14:01:26
-version: 1.8
+updated: 2021-04-16 14:02:22
+version: 1.9
 ---
 
 For today I want to go in a new direction with these [javaScript example](/2021/04/02/js-javascript-example/) posts by starting the first of what might be a bunch of basic games using javaScript and canvas elements. This game is a simple idea where there are a bunch of display objects that spawn at the upper right corner of the canvas, and move to an object that represents a guy at the lower left corner of the canvas that likes to eat a whole lot of eggs. The good news is that most of these objects are eggs, the bad news is that now and then one of them is a bomb. When the player clicks the canvas and holds down onto the canvas the guy will start eating whatever it is that is hitting him. For each egg the player gains score, however if even one bomb is eaten the game is over.
@@ -301,6 +301,8 @@ I made a new object pool librray for this example.
 ```
 
 ## 5 - The draw module
+
+To display what is going on I am going to want to make use of a canvas element, so I have a module where I will be packing my display obejcts.
 
 ```js
 (function(api){
