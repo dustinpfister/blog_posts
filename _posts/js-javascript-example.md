@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-19 14:14:18
-version: 1.54
+updated: 2021-04-19 14:17:08
+version: 1.55
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -19,8 +19,7 @@ In this post I will be briefly writing about and linking to each of my javaScrip
 
 ### 1.1 - [An angles module](/2021/04/16/js-javascript-example-angles-module/)
 
-I often run into all kinds of problems that have to do with angles. I have found, or made solutions for many of these problems, but it would maybe be a good idea to have a stand alone module with some, if not all of these methods as they come up.
-
+I often run into all kinds of problems that have to do with angles. I have found, or made solutions for many of these problems, but it would maybe be a good idea to have a stand alone module with some, if not all of these methods as they come up. For example there is figuring out what direction a current angle should change to face a target angle, when doing so there are two angles and two directions, but it would be nice to know which way would be faster. That is just one of many little things that will come up with angles, and this module aims to help address at least some of them. 
 ### 1.2 - [Attack wave control system](/2021/03/31/js-javascript-example-attack-wave-control-system)
 
 First off I have an attack wave control system that I might use in one or more canvas games, when it comes to my collection of canvas examples, and any other similar future project that revolves around the canvas element or some kind of game framework. The goal with this javaScript example was not to make a full, complete game, but is was to create a way to control the flow of waves of enemies units coming into a game world area. 
