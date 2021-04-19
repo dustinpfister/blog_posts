@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 847
-updated: 2021-04-17 07:45:05
-version: 1.1
+updated: 2021-04-19 14:22:38
+version: 1.2
 ---
 
-WHen working on various [javaScript examples](/2021/04/02/js-javascript-example/) I often run into problems that have to do with angles. I often find or make solutions for these problems, but they ended up littered all over various collections of examples, and I can not always remember where a certain method that solves a given problem with angles can be found. So I thought it would be a good idea to start a javaScript example that is a stand alone module that can be used to work with angles, and various problems that have to do with angles.
+When working on various [javaScript examples](/2021/04/02/js-javascript-example/) I often run into problems that have to do with angles. I often find or make solutions for these problems, but they ended up littered all over various collections of examples, and I can not always remember where a certain method that solves a given problem with angles can be found. So I thought it would be a good idea to start a javaScript example that is a stand alone module that can be used to work with angles, and various problems that have to do with angles.
+
+There are two general problems that I think many javaScript developers will run into when starting to make canvas games from the ground up without a framework. One of which is to find out how to go about getting an angle from point point in the canvas to another. This problem can be result by making use of the Math.atan2 method in core javaScript, the use of it is a little weird tough so it make a little sense at least to have an abstraction of sorts for it, which would make a good additional to a library like this. The other general problem that comes to mind has to do with finding out what direction to rotate an object in order to face the direction of another object, so another method of interest is a kind of get shortest angle direction method.
 
 <!-- more -->
 
