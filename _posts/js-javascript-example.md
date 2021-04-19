@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-19 14:08:59
-version: 1.52
+updated: 2021-04-19 14:10:55
+version: 1.53
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -18,6 +18,8 @@ In this post I will be briefly writing about and linking to each of my javaScrip
 <!-- more -->
 
 ### 1.1 - [An angles module](/2021/04/16/js-javascript-example-angles-module/)
+
+I often run into all kinds of problems that have to do with angles. I have found, or made solutions for many of these problems, but it would maybe be a good idea to have a stand alone module with some, if not all of these methods as they come up.
 
 ### 1.2 - [Attack wave control system](/2021/03/31/js-javascript-example-attack-wave-control-system)
 
