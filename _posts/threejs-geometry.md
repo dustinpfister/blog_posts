@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-04-19 13:45:27
-version: 1.18
+updated: 2021-04-19 13:54:42
+version: 1.19
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry.
@@ -266,4 +266,9 @@ geometry.scale(5,5,1);
 
 ## 8 - Conclusion
 
-The geometry constructor is a good place to start when it comes to learning how to make custom geometry from code. In time I will likely update this post at least a few times as my collection of [posts on three.js](/categories/three-js/) continues to grow. Be sure to also read up more on [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) if you have not done so before hand as these are also important constructors that are related to the Geometry constructor in three.js
+The geometry constructor was a good place to start when it comes to learning how to make custom geometry from code, and it still is when it comes to using older versions of threejs. However when it comes to working with later versions it is no longer an option, at least as of r125 for the moment. In the past when features where removed there was often files that would appear in the examples folder of the github repository that would bring that feature back by way of making that external file part of stack of a project. For example that was the case when it came to the removal of the 2d canvas renderer which can still be used, it is just no longer built into threejs itself. I assume that the same will happen with the Geometry constructor, and if so I will come around to editing this post again when it comes to using that.
+
+ In time I will likely update this post at least a few times when and if I become aware of more options when it comes to transitioning from using the Geometry constructor to bufferedGeomorty only. 
+
+Be sure to also read up more on [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) if you have not done so before hand as these are also important constructors that are related to the Geometry constructor in three.js.
+
