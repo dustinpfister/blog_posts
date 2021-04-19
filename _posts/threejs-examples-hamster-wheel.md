@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-04-19 17:57:01
-version: 1.10
+updated: 2021-04-19 17:58:21
+version: 1.11
 ---
 
 This week I am going to pay a little attention to my [threejs](https://threejs.org/) content by editing some older posts, but also writing a [few new examples posts](/2021/02/19/threejs-examples/) also, as I feel that is the next real step forward for me at this point. Anyway when it comes to starting to make something that is starting to look like an actual project of one kind of another I have found that I like to just make very simple basic models that are just groups of the built in geometries. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
@@ -27,7 +27,7 @@ For this example I was using threejs version r127, in many of my older posts I w
 
 ## 1 - A Wheel Model
 
-First off is my wheel module that will create an return a hamsetr wheel model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor.
+First off is my wheel module that will create an return a hamster wheel model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor.
 
 ```js
 (function (WheelMod) {
@@ -149,6 +149,8 @@ First off is my wheel module that will create an return a hamsetr wheel model. T
 ```
 
 ## 2 - A Guy Model
+
+I am now going to want to also have a simple guy model to place inside the wheel of the hamster wheel model.
 
 ```js
 (function (GuyMod) {
