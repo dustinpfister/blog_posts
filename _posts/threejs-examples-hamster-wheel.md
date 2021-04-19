@@ -5,24 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-04-19 17:27:07
-version: 1.2
+updated: 2021-04-19 17:28:56
+version: 1.3
 ---
 
 This week I am going to pay a little attention to my [threejs](https://threejs.org/) content by editing some older posts, but also writing a [few new examples posts](/2021/02/19/threejs-examples/) also, as I feel that is the next real step forward for me at this point. Anyway when it comes to starting to make something that is starting to look like an actual project of one kind of another I have found that I like to just make very simple basic models that are just groups of the built in geometries. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
 
 <!-- more -->
 
-## 1 - A Whell Model
+## 1 - A Wheel Model
 
 ```js
 (function (WheelMod) {
-
+ 
     var material = new THREE.MeshStandardMaterial({
-
         color: 0xafafaf
     });
-
+ 
     // create a base for the given wheel object
     var createBase = function(wheel){
         wheel.base = new THREE.Group();
@@ -36,7 +35,6 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
                 py: 0,
                 pz: 0.5
             }, {
-
                 len: 4,
                 rx: 0,
                 rz: Math.PI / 4,
@@ -82,7 +80,7 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
             }
         });
     };
-
+ 
     // create the wheel with rims and tubes connected between them
     var createWheel = function(wheel){
         wheel.wheel = new THREE.Group();
@@ -122,8 +120,7 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
             i += 1;
         }
     };
-
-
+ 
     // the Wheel constructor
     WheelMod.create = function () {
         var wheel = {};
@@ -133,9 +130,8 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
         createBase(wheel);
         return wheel;
     };
-
+ 
 }( this['WheelMod'] = {} ));
-
 ```
 
 ## 2 - A Guy Model
@@ -250,7 +246,6 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
     // per is 0 to 1
     GuyMod.moveHead = function (guy, per) {
         guy.head.rotation.set(0, Math.PI * 2 * per, 0);
-
     };
     // move legs in respect to a walk cycle
     // where per is between 0, and 1.
@@ -279,22 +274,18 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
 
 ```js
 (function(){
-
     // SCENE
     var scene = new THREE.Scene();
-
     // WHEEL
     var wheel = WheelMod.create(); //new HamsterWheel();
     wheel.group.position.set(0, 0, 1);
     scene.add(wheel.group);
-
     // GUY
     var guy = GuyMod.create(); //new Guy();
     guy.group.scale.set(0.5, 0.5, 0.5);
     guy.group.position.set(0,  - .4, 0);
     guy.group.rotation.set(0, Math.PI / 2, 0)
     scene.add(guy.group);
-
     // Plane
     var plane = new THREE.Mesh(
         new THREE.PlaneGeometry(20, 30, 8, 8),
@@ -305,24 +296,20 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
     plane.rotation.x = -Math.PI / 2;
     plane.position.y = -2.9;
     scene.add(plane);
-
     // CAMERA
     var camera = new THREE.PerspectiveCamera(50, 8 / 6, .05, 100);
     camera.position.set(4, 4, 9);
     camera.lookAt(0, 0, 0);
     camera.add(new THREE.PointLight());
     scene.add(camera);
-
     // RENDER
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(800, 600);
     var container = document.getElementById('demo') || document.body;
     container.appendChild(renderer.domElement);
-
     // CONTROLS
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.autoRotate = true;
-
     // LOOP
     var frame = 0, 
     maxFrame = 200,
@@ -347,5 +334,4 @@ This week I am going to pay a little attention to my [threejs](https://threejs.o
     };
     loop();
 }());
-
 ```
