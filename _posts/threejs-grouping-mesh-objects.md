@@ -5,11 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-04-19 18:09:09
-version: 1.9
+updated: 2021-04-19 18:14:35
+version: 1.10
 ---
 
-After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or more on to something new. I do not care to move on away from three.js, this project is worth a serious investment of time to get solid with for sure. So with that said, it might be time for me to get into animation with three.js. One way is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other, and have the whole group move as well. Or for whatever the reason it might be a good idea to group two or more objects together, so this post today will be about the three.js [Group](https://threejs.org/docs/index.html#api/objects/Group) constructor.
+After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. 
+
+I do not care to move on away from three.js to other topics just yet, this project is worth a serious investment of time to get solid with for sure because threejs is just plain awesome. So with that said, it might be time for me to get into animation with three.js. One way is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move as well on top of that.
+
+Also for one reason or another it is often a good idea to have a way to group two or more objects together, so this post today will be about the three.js [Group](https://threejs.org/docs/index.html#api/objects/Group) constructor. Just the basics of getting stated with this, but also maybe have a little fun with this while I am at it.
 
 <!-- more -->
 
