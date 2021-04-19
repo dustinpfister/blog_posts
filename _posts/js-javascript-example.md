@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-19 14:07:32
-version: 1.51
+updated: 2021-04-19 14:08:59
+version: 1.52
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -26,6 +26,8 @@ First off I have an attack wave control system that I might use in one or more c
 There are many games that follow a kind of system where a period of time goes by, and a wave of enemies enters a game world area that must be completely destroyed. Many of them are a little fun, and addictive, so having a system like this worked out is a good first step for making a few games that make use of this.
 
 ### 1.3 - [Basic game about eating Eggs, but not bombs](/2021/04/15/js-javascript-example-basic-game-egg-eater/)
+
+This is a simple game prototype idea that came to mind that i put together in a single day.
 
 ### 1.4 - [A Draw points canvas method](/2021/04/01/js-javascript-example-draw-points/)
 
