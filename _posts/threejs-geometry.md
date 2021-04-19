@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-04-19 13:33:59
-version: 1.15
+updated: 2021-04-19 13:37:30
+version: 1.16
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry.
@@ -19,19 +19,23 @@ So then the examples here as of this writing will break in late versions of thre
 
 For now I will be leaving this post up, however as of this writing the content here should only apply to situations in which one might still be using older versions of threejs where the code here will still not break. In late versions it will of course not work as it will result in calling undefined. I have been keeping an eye out for a javaScript file in the examples folder that will work for helping to get legacy code up and running fast, but for now it seems that there is no working official option for doing so.
 
-## What to know before hand with three geometry
+## 1 - What to know before hand with three geometry
 
 I assume that you know a thing or two about javaScript, also it would be a good idea to [learn the basics](/2018/04/04/threejs-getting-started/) of three.js first if you have not. This is an advanced post on the [three.js Geometry constructor](https://threejs.org/docs/index.html#api/core/Geometry) that is an easy, but maybe not so efficient way of creating geometry that can be used in a Mesh that can be viewed, and worked with in a scene in three.js.
 
 This post is also on the regular Geometry constructor, rather than BufferGeometry.
 
-## Geometry vs BufferGeometry
+## 2 - Geometry vs BufferGeometry
 
 In three.js there is [BufferGeometry](https://threejs.org/docs/index.html#api/core/BufferGeometry), and then regular [Geometry](https://threejs.org/docs/index.html#api/core/Geometry) constructors. The reason for this is that the regular Geometry constructor is easier to work with as the vertices, faces, and so forth are stored directly. However this comes at a performance loss.
 
 Still if you are new to making custom geometry it would make sense to start with the regular Geometry first, then progress into the more advanced BufferGeometry to know how to make your projects run faster.
 
-## BuferGeomeetry from Geometry
+## 3 - BuferGeomeetry from Geometry
+
+### 3.1 - The BufferGeomorty.fromGeomoty method
+
+As of r125+ it would seem that this method has been removed from the core of threejs. As such in late versions of threejs this is no longer an effective way of converting an old Geometry constructor instance into a buffed geometry instance.
 
 I will not be getting into buffered geometry and why it is faster, at least not in this post. I think that it is at least worth mentioning that there is a method of Buffered Geometry instance that can be used to create a Buffered Geometry from an instance of regular geometry. So it is possible to create something with the regular geometry constructor, and then just convert it later.
 
@@ -41,7 +45,7 @@ var bufferGeometry = new THREE.BufferGeometry().fromGeometry(geometry);
 
 So don't worry about it to much, at least for now, as you might find the regular geometry constructor easier to work with.
 
-## Basic three.js Geometry example.
+## 4 - Basic three.js Geometry example.
 
 The basic process is to first create an instance of Geometry by calling the constructor, and saving the instance of Geometry to a variable. Once you have your instance of Geometry you can now start adding some vertices to it, these are just points in space that are created using the [Vector3](https://threejs.org/docs/index.html#api/math/Vector3) constructor. 
 
@@ -124,7 +128,7 @@ Here is an example of what it is I am talking about here.
 
 In this example I am repeating the use of [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) constructors over and over again for each instance. However in more advanced examples you can of course get into making helper functions that will involve loops that will involve the use of these constructors in just one line of your code.
 
-## Creating a helper method that returns a Geometry
+## 5 - Creating a helper method that returns a Geometry
 
 As a project grows more complex it might be a good idea to make methods that create, and return a geometry, just like the build in constructors that do just that. To pull that off I just need to have a method that returns an instance of Geometry that is created by way of some javaScript rather than just hard coded data.
 
@@ -214,7 +218,7 @@ As a project grows more complex it might be a good idea to make methods that cre
     ());
 ```
 
-## Normalizing Geometry
+## 6 - Normalizing Geometry
 
 A common task to do when you have an off centered geometry, is to center it. In addition it may Also be desirable to have it set within a bounding sphere of area that has a radius of one, so that it is easily scaled up or down from there. To achieve this you will want to use the normalize method.
 
@@ -251,7 +255,7 @@ This is typically what I will always want to do with a geometry, after all it is
 
 In Other words think of this Geometry as being relative to the center of a Cube, or Sphere if you prefer, and then you are going to move and rotate this object in a Scene that might contain many such objects. So chances are you are going to want it centered to this relative origin, and scaled to a certain standard.
 
-## Scale a geometry
+## 7 - Scale a geometry
 
 If you want to scale a geometry, it can be done with the scale method. This is something that might typically be done only once if it is a static Geometry. There is also a scale method with the Mesh that will be available when using the geometry, this is what should be typically used in a loop.
 
@@ -259,6 +263,6 @@ If you want to scale a geometry, it can be done with the scale method. This is s
 geometry.scale(5,5,1);
 ```
 
-## Conclusion
+## 8 - Conclusion
 
 The geometry constructor is a good place to start when it comes to learning how to make custom geometry from code. In time I will likely update this post at least a few times as my collection of [posts on three.js](/categories/three-js/) continues to grow. Be sure to also read up more on [Vector3](/2018/04/15/threejs-vector3/), and [Face3](/2018/05/11/threejs-face3/) if you have not done so before hand as these are also important constructors that are related to the Geometry constructor in three.js
