@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-04-19 13:17:53
-version: 1.12
+updated: 2021-04-19 13:23:00
+version: 1.13
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry.
@@ -14,6 +14,8 @@ When working with [three.js](https://threejs.org/) there are many built in geome
 <!-- more -->
 
 There are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if you want to make a geometry by way of some javaScript code, rather than external json data? This is where the Geometry constructor comes into play, or at least it did before r125.
+
+When I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the buffered geometry constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+
 
 ## What to know before hand with three geometry
 
