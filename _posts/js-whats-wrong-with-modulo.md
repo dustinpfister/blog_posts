@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 34
-updated: 2021-04-19 14:41:22
-version: 1.19
+updated: 2021-04-19 14:42:39
+version: 1.20
 ---
 
 When working with many javaScript projects the use of [modulo](https://en.wikipedia.org/wiki/Modulo_operation) comes up from time to time. Modulo is an [Arithmetic Operator in core javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) that helps to find out the remainder of a division operation between two numbers.
@@ -106,6 +106,6 @@ Now that I am using a custom cut modulo method that does work as expected I now 
 
 So often I use the custom modulo in situations in which module is called for. Often I might be using modulo in expressions with values that might go into the negative number range, and thus using a custom modulo method to get the results that I want is often called for. 
 
-The angles.js library that contained the mathematical modulo method that prompted me to write this post appears to no longer be maintained. That is not always such a bad thing assuming that the methods still work okay, and I would say that is more or less the case. Still I have taken the time to make my own angles.js module that I might come back to now and then when it comes to working out all kinds of things that have to do with angles. As such the mathematical modulo method should be a part of that kind of module, so the post that I wrote on it might be worth checking out when it comes to applications of the mathematical modulo method.
+The angles.js library that contained the mathematical modulo method that prompted me to write this post appears to no longer be maintained. That is not always such a bad thing assuming that the methods still work okay, and I would say that is more or less the case. Still I have taken the time to make my own angles.js module that I might come back to now and then when it comes to working out all kinds of things that have to do with angles. As such the mathematical modulo method should be a part of that kind of module, [so the post that I wrote on my angles module might be worth checking out when it comes to applications of the mathematical modulo method](/2021/04/16/js-javascript-example-angles-module/).
 
 
