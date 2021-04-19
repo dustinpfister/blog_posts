@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-04-19 13:37:30
-version: 1.16
+updated: 2021-04-19 13:42:34
+version: 1.17
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry.
@@ -33,17 +33,18 @@ Still if you are new to making custom geometry it would make sense to start with
 
 ## 3 - BuferGeomeetry from Geometry
 
+Now that the Geometry Constructor has been deprecated this might not be a topic of interest when it comes to updating older code that made use of the Geometry Constructor.
+
 ### 3.1 - The BufferGeomorty.fromGeomoty method
 
-As of r125+ it would seem that this method has been removed from the core of threejs. As such in late versions of threejs this is no longer an effective way of converting an old Geometry constructor instance into a buffed geometry instance.
+As of r125+ it would seem that this method has been removed from the core of threejs. As such in late versions of threejs this is no longer an effective way of converting an old Geometry constructor instance into a buffed geometry instance as it will result in calling undefined.
 
-I will not be getting into buffered geometry and why it is faster, at least not in this post. I think that it is at least worth mentioning that there is a method of Buffered Geometry instance that can be used to create a Buffered Geometry from an instance of regular geometry. So it is possible to create something with the regular geometry constructor, and then just convert it later.
+If by chance you are using an older version of threejs that has this method, then of course it should still work assuming that it is there.
 
 ```js
 var bufferGeometry = new THREE.BufferGeometry().fromGeometry(geometry);
 ```
 
-So don't worry about it to much, at least for now, as you might find the regular geometry constructor easier to work with.
 
 ## 4 - Basic three.js Geometry example.
 
