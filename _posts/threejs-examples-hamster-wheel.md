@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-04-19 17:44:31
-version: 1.6
+updated: 2021-04-19 17:48:58
+version: 1.7
 ---
 
 This week I am going to pay a little attention to my [threejs](https://threejs.org/) content by editing some older posts, but also writing a [few new examples posts](/2021/02/19/threejs-examples/) also, as I feel that is the next real step forward for me at this point. Anyway when it comes to starting to make something that is starting to look like an actual project of one kind of another I have found that I like to just make very simple basic models that are just groups of the built in geometries. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
@@ -16,6 +16,10 @@ With that said this post will be on an example where I have a simple little guy 
 I am experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time left over for working on any kind of real project that I truly would like to work on. So I thought that this kind of threejs example would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
 
 <!-- more -->
+
+## What to know before hand
+
+This is a threejs example that is intended for people that all ready have a solid grasp on the basics of threejs and are not looking to start making some actual projects of some kind. So this is not a getting stared post on threejs, let alone javaScript in general. So I assume that you have at least some basic working knowledge of threejs and javaScript and thus might gain something of value from reading this. If not you might want to start out with a getting started post on threejs, and maybe javaScript before starting to get into a framework like threejs.
 
 ## 1 - A Wheel Model
 
