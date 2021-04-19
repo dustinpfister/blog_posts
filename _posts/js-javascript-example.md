@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-04-19 14:10:55
-version: 1.53
+updated: 2021-04-19 14:14:18
+version: 1.54
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -29,7 +29,7 @@ There are many games that follow a kind of system where a period of time goes by
 
 ### 1.3 - [Basic game about eating Eggs, but not bombs](/2021/04/15/js-javascript-example-basic-game-egg-eater/)
 
-This is a simple game prototype idea that came to mind that i put together in a single day.
+This is a simple game prototype idea that came to mind that I put together in a single day. It is a game where a bunch of display objects will spawn in one area of a canvas, and then move to another display object in the canvas that are of two kinds of types. One type of display object is will represent an egg, while the other will represent a bomb. When the player clicks and holds down on the canvas the player character object will begin eating whatever is thrown at it, eggs will result in a gain of score, while a bomb will result in game over.
 
 ### 1.4 - [A Draw points canvas method](/2021/04/01/js-javascript-example-draw-points/)
 
