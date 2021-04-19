@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-04-19 17:28:56
-version: 1.3
+updated: 2021-04-19 17:30:45
+version: 1.4
 ---
 
 This week I am going to pay a little attention to my [threejs](https://threejs.org/) content by editing some older posts, but also writing a [few new examples posts](/2021/02/19/threejs-examples/) also, as I feel that is the next real step forward for me at this point. Anyway when it comes to starting to make something that is starting to look like an actual project of one kind of another I have found that I like to just make very simple basic models that are just groups of the built in geometries. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
+
+With that said this post will be on an example where I have a simple little guy model that is walking inside a human sized hamster wheel.
 
 <!-- more -->
 
