@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-04-19 13:42:34
-version: 1.17
+updated: 2021-04-19 13:45:27
+version: 1.18
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry.
@@ -33,7 +33,7 @@ Still if you are new to making custom geometry it would make sense to start with
 
 ## 3 - BuferGeomeetry from Geometry
 
-Now that the Geometry Constructor has been deprecated this might not be a topic of interest when it comes to updating older code that made use of the Geometry Constructor.
+Now that the Geometry Constructor has been deprecated this might not be a topic of interest when it comes to updating older code that made use of the Geometry Constructor. Having a quick, duck tape like solution for this might be nice for starters, but ultimately the best way to do so would be to just use the buffered Geometry constructor. Never the less I will be covering this here when it comes to any and all future edits of this post for what it is worth.
 
 ### 3.1 - The BufferGeomorty.fromGeomoty method
 
