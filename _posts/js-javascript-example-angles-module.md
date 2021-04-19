@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 847
-updated: 2021-04-19 14:35:09
-version: 1.5
+updated: 2021-04-19 14:36:48
+version: 1.6
 ---
 
 When working on various [javaScript examples](/2021/04/02/js-javascript-example/) I often run into problems that have to do with angles. I often find or make solutions for these problems, but they ended up littered all over various collections of examples, and I can not always remember where a certain method that solves a given problem with angles can be found. So I thought it would be a good idea to start a javaScript example that is a stand alone module that can be used to work with angles, and various problems that have to do with angles.
@@ -19,7 +19,7 @@ There are two general problems that I think many javaScript developers will run 
 
 The module follows a pattern that I am now using the works well for making a module that will work okay in both a nodejs as well as a browser environment. It involves using an IIFE and passing a value that will be the object to append to when calling the self executing function. This kind of module pattern will not work well in all situations whne it comes to making a module that is very browser, or nodejs centric, but for this kind of module I think it would be a good choice. I will not be getting into this topic in detail here as I have [wrote a post on this kind of module that can be used to share code between nodejs and the browser](/2021/04/14/js-javascript-example-nodejs-browser-share-code-module/), if you want to read more about it that would be a good place to start.
 
-One method that I have in here is a mathematical modulo method, this is also a topic that I got into detail with when it comes to my post on what it is that is wrong with the javaScript modulo operator. In short there is actually nothing wrong with the javaScript modulo operator actually, it is just that the built in javaScript modulo operator uses a convention that is not what some developers might be used to coming from other programing environments.
+One method that I have in here is a mathematical modulo method, this is also a topic that I got into detail with when it comes to [my post on what it is that is wrong with the javaScript modulo operator](/2017/09/02/js-whats-wrong-with-modulo/) that I wrote a few years back. In short there is actually nothing wrong with the javaScript modulo operator actually, it is just that the built in javaScript modulo operator uses a convention that is not what some developers might be used to coming from other programing environments.
 
 ```js
 (function(anglesMod){
