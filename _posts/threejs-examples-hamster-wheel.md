@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-04-19 17:39:44
-version: 1.5
+updated: 2021-04-19 17:44:31
+version: 1.6
 ---
 
 This week I am going to pay a little attention to my [threejs](https://threejs.org/) content by editing some older posts, but also writing a [few new examples posts](/2021/02/19/threejs-examples/) also, as I feel that is the next real step forward for me at this point. Anyway when it comes to starting to make something that is starting to look like an actual project of one kind of another I have found that I like to just make very simple basic models that are just groups of the built in geometries. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
 
 With that said this post will be on an example where I have a simple little guy model that is walking inside a human sized hamster wheel. So this is a a fun little project that has to do with [something that is often used as an analogy for being stuck in a loop](https://lifecoachonthego.com/stuck-on-a-hamster-wheel-what-do-you-need-to-thrive/) where I keep doing the same things over and over again, and never really get anywhere which of course results in a kind of burn out. In other words getting stuck on a hamster wheel of life sort of speak, which then raises the question how does one get off this hamster wheel?
+
+I am experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time left over for working on any kind of real project that I truly would like to work on. So I thought that this kind of threejs example would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
 
 <!-- more -->
 
