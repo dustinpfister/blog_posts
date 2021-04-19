@@ -5,17 +5,19 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-04-19 13:29:06
-version: 1.14
+updated: 2021-04-19 13:33:59
+version: 1.15
 ---
 
 When working with [three.js](https://threejs.org/) there are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry.
 
 <!-- more -->
 
-There are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if you want to make a geometry by way of some javaScript code, rather than external json data? This is where the Geometry constructor comes into play, or at least it did before r125. When I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the Buffered Geometry constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs.
+There are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if you want to make a geometry by way of some javaScript code, rather than external json data? This is where the Geometry constructor comes into play, or at least it did before r125. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the Buffered Geometry constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs.
 
-For now I will be leaving this post up, however as of this writing the content here should only apply to situations in which one might still be using older versions of threejs where the code here will still not break. The examples here as of this writing will break in late versions of threejs. It might be possible to get the old Geometry constructor working on a later version of threejs at some point in the future by making use of a file in the examples folder of the threejs github repository. The same has happed in the past with other features that where removed from the core of threejs, however at this time it might be best to just not use the Geometry constructor, and just learn how to use the Buffered Geometry constructor alone.
+So then the examples here as of this writing will break in late versions of threejs. It might be possible to get the old Geometry constructor working on a later version of threejs at some point in the future by making use of a file in the examples folder of the threejs github repository. The same has happed in the past with other features that where removed from the core of threejs, however at this time it might be best to just not use the Geometry constructor, and just learn how to use the Buffered Geometry constructor alone.
+
+For now I will be leaving this post up, however as of this writing the content here should only apply to situations in which one might still be using older versions of threejs where the code here will still not break. In late versions it will of course not work as it will result in calling undefined. I have been keeping an eye out for a javaScript file in the examples folder that will work for helping to get legacy code up and running fast, but for now it seems that there is no working official option for doing so.
 
 ## What to know before hand with three geometry
 
