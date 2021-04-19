@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-04-19 17:48:58
-version: 1.7
+updated: 2021-04-19 17:52:54
+version: 1.8
 ---
 
 This week I am going to pay a little attention to my [threejs](https://threejs.org/) content by editing some older posts, but also writing a [few new examples posts](/2021/02/19/threejs-examples/) also, as I feel that is the next real step forward for me at this point. Anyway when it comes to starting to make something that is starting to look like an actual project of one kind of another I have found that I like to just make very simple basic models that are just groups of the built in geometries. With that said todays post will be yet another one of those kinds of examples where I am just having a little fun with three.js.
@@ -20,6 +20,10 @@ I am experiencing a kind of burn out because I spend a great deal of time doing 
 ## What to know before hand
 
 This is a threejs example that is intended for people that all ready have a solid grasp on the basics of threejs and are not looking to start making some actual projects of some kind. So this is not a getting stared post on threejs, let alone javaScript in general. So I assume that you have at least some basic working knowledge of threejs and javaScript and thus might gain something of value from reading this. If not you might want to start out with a getting started post on threejs, and maybe javaScript before starting to get into a framework like threejs.
+
+### version numbers matter with threejs
+
+For this example I was using threejs version r127, in many of my older posts I was using older versions of threejs in some of them I was using r91. There are some javaScript libraries where much has not changed in the last few years, and as such older code will still work just fine. However this is not the case with threejs, it is a very fast moving library in terms of development so if this code is breaking the first thing you should check is the version number of threejs that is being used.
 
 ## 1 - A Wheel Model
 
