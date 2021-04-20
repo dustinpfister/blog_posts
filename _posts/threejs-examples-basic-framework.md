@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:16:48
-version: 1.5
+updated: 2021-04-20 16:18:28
+version: 1.6
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -18,7 +18,7 @@ For now I am not interesting in doing anything to involve when it comes to makin
 
 ## 1 - The source code of the basic framework
 
-For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-iife/) and attaching all the public methods to a single global object property called threeFrame.
+For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-iife/) and attaching all the public methods to a single global object property called threeFrame. When it comes to public methods of this framework, so far I just have two, one to create an instance of this main frame work API, and another that will just create a simple cube mesh.
 
 ```js
 (function (threeFrame) {
