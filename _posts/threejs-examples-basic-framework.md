@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:19:28
-version: 1.7
+updated: 2021-04-20 16:20:46
+version: 1.8
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -98,7 +98,7 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
 
 ## 2 - Now just a single use case example of the framework
 
-Now that I have my basic framework together it is time to create a simple demo of this to make sure that it is working out okay thus far.
+Now that I have my basic framework together it is time to create a simple demo of this to make sure that it is working out okay thus far. To start out with this I do not need to do anything fancy, just a simple rotating cube like demo will work just fine for now.
 
 ```js
 // basic rotating cube
