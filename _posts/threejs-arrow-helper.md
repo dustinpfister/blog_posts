@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 13:55:40
-version: 1.19
+updated: 2021-04-20 13:58:30
+version: 1.20
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -131,7 +131,97 @@ loop = function () {
 loop();
 ```
 
-## 3 - Conclusion
+## 4 - Making a utility module to help abstract some things
+
+### 4.1 - The utility module
+
+```js
+(function (utils) {
+ 
+    // add arrow helper method
+    utils.addArrow = function (obj3d, x, y, z, len, color) {
+        x = x === undefined ? 0 : x;
+        y = y === undefined ? 2 : y;
+        z = z === undefined ? 0 : z;
+        len = len === undefined ? 3 : len;
+        color = color === undefined ? 0x00ff00 : color;
+        var arrow = new THREE.ArrowHelper(
+                new THREE.Vector3(x, y, z).normalize(),
+                new THREE.Vector3(0, 0, 0),
+                len,
+                color);
+        obj3d.add(arrow);
+        return arrow;
+    };
+ 
+    // add cube helper method
+    utils.addCube = function (obj3d, x, y, z, size, color, wireframe) {
+        x = x === undefined ? 0 : x;
+        y = y === undefined ? 0 : y;
+        z = z === undefined ? 0 : z;
+        size = size === undefined ? 2 : size;
+        var geometry = new THREE.BoxGeometry(size, size, size);
+        var material = new THREE.MeshBasicMaterial({
+                color: color === undefined ? 0x00ff00 : color,
+                wireframe: wireframe === undefined ? true : wireframe
+            });
+        var cube = new THREE.Mesh(geometry, material);
+        cube.position.set(x, y, z);
+        obj3d.add(cube);
+        return cube;
+    };
+ 
+    // create a basic scene
+    utils.createBasicScene = function () {
+        // scene
+        var scene = new THREE.Scene();
+        // camera
+        var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+        camera.position.set(2.5, 2.5, 2.5);
+        camera.lookAt(0, 0, 0);
+        // RENDERER
+        var renderer = new THREE.WebGLRenderer();
+        document.getElementById('demo').appendChild(renderer.domElement);
+        renderer.render(scene, camera);
+        // return an object with refs to scene and other items of interest
+        return {
+            scene: scene,
+            camera: camera,
+            renderer: renderer,
+            canvas: renderer.domElement,
+            draw: function () {
+                renderer.render(scene, camera);
+            }
+        };
+    };
+ 
+}
+    (typeof utils === 'undefined' ? this['utils'] = {}
+        : utils));
+```
+
+### 4.2 - A main.js file that makes use of this utility module
+
+```js
+// basic scene
+var sceneObj = utils.createBasicScene(),
+scene = sceneObj.scene;
+ 
+// ARROWS FOR SCENE
+utils.addArrow(scene, 2, 0, 0, 3.2, 'lime');
+utils.addArrow(scene, 0, 2, 0, 2.5, 'blue');
+utils.addArrow(scene, 0, 0, 2, 2.7, 'cyan');
+ 
+// cube
+var cube = utils.addCube(scene, -2.5, 0, .5);
+// ARROW FOR CUBE
+utils.addArrow(cube, 0, 2, 0, 2.5, 'blue');
+ 
+// render
+sceneObj.draw();
+```
+
+## 5 - Conclusion
 
 Thats all there is to it when it comes to arrow helpers in three.js for now at least. If you enjoyed this post you might want to check out my many other posts on three.js, with that a good starting point might be my main post on my current set of [threejs examples](/2021/02/19/threejs-examples/). Working out simple little examples that have to do with just using the arrow helper with a few simple built in geometries is one thing, but sooner or later it is time to start really getting into using threejs to have some fun making something real.
 
