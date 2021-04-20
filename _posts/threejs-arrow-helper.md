@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 14:03:53
-version: 1.23
+updated: 2021-04-20 14:05:27
+version: 1.24
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -205,6 +205,8 @@ Here I have the utility method that I works out that has a bunch of methods that
 ```
 
 ### 4.2 - A main.js file that makes use of this utility module
+
+Not that I have this utility method I can link to after threejs has been loaded, at which point my main.js file can be just a little additional code.
 
 ```js
 // basic scene
