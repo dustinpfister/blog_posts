@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 15:09:09
-version: 1.26
+updated: 2021-04-20 15:12:35
+version: 1.27
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -137,7 +137,7 @@ While I was working out some new code for this post I thought I would take a mom
 
 ### 4.1 - The utility module
 
-Here I have the utility method that I works out that has a bunch of methods that I can use to quickly create a basic scene alone with the other usual suspects such as a camera and a renderer.
+Here I have the utility method that I works out that has a bunch of methods that I can use to quickly create a basic scene along with the other usual suspects such as a camera and a renderer. So there is a create basic scene method that will just create a scene, and set it up with a camera and web gl renderer so I can just call this one method in a main javaScript file. Then I just need to add some mesh object to the scene, so for that I again have some methods that help make quick work of that.
 
 ```js
 (function (utils) {
