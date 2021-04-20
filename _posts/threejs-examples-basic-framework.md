@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:10:23
-version: 1.3
+updated: 2021-04-20 16:14:05
+version: 1.4
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
+
+For now I am not interesting in doing anything to involve when it comes to making this kind of project. What I want is a way to just have things like an application loop, and some mash creation type stuff abstracted away into a framework. This way I can have just a single main.js file where I just call a main create method of this framework, and pass an options object with a few methods and proprieties as a way to make a quick simple looping animation type thing.
 
 <!-- more -->
 
