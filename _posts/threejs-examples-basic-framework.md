@@ -5,10 +5,116 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:03:00
-version: 1.0
+updated: 2021-04-20 16:05:27
+version: 1.1
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
 
 <!-- more -->
+
+
+## 1 - First off the source code of the basic framework
+
+```js
+(function (threeFrame) {
+ 
+    // Just an add cube method for now
+    threeFrame.addCube = function (api, obj3d, x, y, z, size, materialIndex) {
+        x = x === undefined ? 0 : x;
+        y = y === undefined ? 0 : y;
+        z = z === undefined ? 0 : z;
+        size = size === undefined ? 2 : size;
+        var geometry = new THREE.BoxGeometry(size, size, size);
+        var cube = new THREE.Mesh(geometry, api.materials[materialIndex || 0]);
+        cube.position.set(x, y, z);
+        obj3d.add(cube);
+        return cube;
+    };
+ 
+    // create a basic scene
+    var createAPIObject = function (opt) {
+        // scene
+        var scene = new THREE.Scene();
+        // camera
+        var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+        camera.position.set(2.5, 2.5, 2.5);
+        camera.lookAt(0, 0, 0);
+        // RENDERER
+        var renderer = new THREE.WebGLRenderer();
+        document.getElementById('demo').appendChild(renderer.domElement);
+        renderer.render(scene, camera);
+        // return an object with refs to scene and other items of interest
+        return {
+            scene: scene,
+            camera: camera,
+            renderer: renderer,
+            canvas: renderer.domElement,
+            fps_target: 24,
+            init: opt.init,
+            update: opt.update,
+            materials: opt.materials || [new THREE.MeshBasicMaterial({
+                    color: 0x00ffff,
+                    wireframe: true
+                })]
+        };
+    };
+ 
+    // create a main app loop function, for the given api object
+    var createLoopFunction = function (api) {
+        var lt = new Date();
+        var loop = function () {
+            var now = new Date(),
+            secs = (now - lt) / 1000;
+            requestAnimationFrame(loop);
+            if (secs >= 1 / api.fps_target) {
+                api.update(api, secs); ;
+                api.renderer.render(api.scene, api.camera);
+                lt = now;
+            }
+        };
+        return loop;
+    };
+ 
+    // create a main project object
+    threeFrame.create = function (opt) {
+        opt = opt || {};
+        // create api
+        var api = createAPIObject(opt);
+        // call init method
+        api.init(api);
+        // start loop
+        var loop = createLoopFunction(api);
+        loop();
+        return api;
+    };
+ 
+}(typeof threeFrame === 'undefined' ? this['threeFrame'] = {} : threeFrame));
+```
+
+## 2 - Now just a single use case example of the framework
+
+```js
+// basic rotating cube
+threeFrame.create({
+    materials: [new THREE.MeshBasicMaterial({
+            color: 0x00ff00,
+            wireframe: true
+        }),
+        new THREE.MeshNormalMaterial({})],
+    init: function (api) {
+        api.cube1 = threeFrame.addCube(api, api.scene, 0, 0, 0, 1, 1);
+        api.cube2 = threeFrame.addCube(api, api.scene, -2.5, 1, 0, 1, 0);
+        api.rotation = 0;
+    },
+    update: function (api, secs) {
+        api.rotation += 1 * secs;
+        api.rotation %= Math.PI * 2;
+        api.cube1.rotation.set(0, api.rotation, 0);
+        api.cube2.rotation.set(0, api.rotation, api.rotation);
+    }
+});
+```
+
+## 3 - Conclusion
+
