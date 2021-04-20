@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:22:55
-version: 1.9
+updated: 2021-04-20 16:26:14
+version: 1.10
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -123,6 +123,8 @@ threeFrame.create({
 ```
 
 So when this is all up and running it would seem that things are working out as expected. I have two cubes in the scene, and they are both rotating, nothing to much to write home about, but I did just want a basic starting point up and running for now and with that said it looks like I have something that is working okay so far.
+
+There is all ready a great deal that I might want to change and add, but for now I think I just want to be happy with this as a basic starting point. When it comes to adding more on top of this that might change a great deal depending on what I want to do with threejs, making some kind of game is not the same thing as making some kind of looping animation that I might want to export to a stand alone video file contain of some kind.
 
 ## 3 - Conclusion
 
