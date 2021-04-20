@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 13:41:32
-version: 1.13
+updated: 2021-04-20 13:45:17
+version: 1.14
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -25,37 +25,49 @@ This is a post on using the built in arrow helpers in three.js to get a visual o
 
 When I first started this post I was using revision 98 of three.js, which was released in late October 2018. The last time I edited this post I was using revision revision 127 of threejs, and when it comes to the arrow helper at least it would seem that not much has changed. Still three.js is a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
 
-### 2 - Example of ArrowHelper
+### 2 - Basic Example of a ArrowHelper in threejs
 
-So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. The direction and origin should be insistences of THREE.Vector3. The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value.
+So a basic example of an Arrow helper would involve setting a direction, origin, length, and color by passing those values to the THREE.ArrowHelper constructor in that order. 
+
+The direction and origin should be insistences of THREE.Vector3 which is one of several constructors that you should be aware of when making a three.js project. I will not be getting into detail with this constructor here, but I have [wrote a post on vector three](/2018/04/15/threejs-vector3/) of course that you might want to check out if you have not done so.
+
+The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value.
 
 ```js
-// SCENE
+
+// scene
 var scene = new THREE.Scene();
-
-// CAMERA
-var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
-camera.position.set(0, 0, 3);
-camera.lookAt(0, 0, 0);
-
-var arrow = new THREE.ArrowHelper(
+ 
+// ARROW HELPER
+var up = new THREE.ArrowHelper(
         // first argument is the direction
-        new THREE.Vector3(2, 2, 0).normalize(),
-        // second argument is the orgin
+        new THREE.Vector3(0, 2, 0).normalize(),
+        // second argument is the origin
         new THREE.Vector3(0, 0, 0),
         // length
         2.2,
         // color
         0x00ff00);
-
-scene.add(arrow);
-
+scene.add(up);
+ 
+// camera
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(0, 2.5, 2.5);
+camera.lookAt(0, 0, 0);
+ 
+// cube
+var geometry = new THREE.BoxGeometry(2, 2, 2);
+var material = new THREE.MeshBasicMaterial({
+        color: 0xff0000,
+        wireframe: true
+    });
+var cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+ 
 // RENDERER
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
 document.getElementById('demo').appendChild(renderer.domElement);
-
-// just render once
+ 
 renderer.render(scene, camera);
 ```
 
