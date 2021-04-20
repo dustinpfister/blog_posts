@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 13:45:17
-version: 1.14
+updated: 2021-04-20 13:48:03
+version: 1.15
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -31,7 +31,7 @@ So a basic example of an Arrow helper would involve setting a direction, origin,
 
 The direction and origin should be insistences of THREE.Vector3 which is one of several constructors that you should be aware of when making a three.js project. I will not be getting into detail with this constructor here, but I have [wrote a post on vector three](/2018/04/15/threejs-vector3/) of course that you might want to check out if you have not done so.
 
-The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value.
+The length should be a number value consistent with the desired length relative to the other values of the camera and objects in the scene, and the color should be a hex value, but can also be a number of other kinds of values depending on the version of tree.js that is being used. In late versions of three.js just about all of the usual options for setting color seem to work okay.
 
 ```js
 
