@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 15:06:37
-version: 1.25
+updated: 2021-04-20 15:09:09
+version: 1.26
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -206,7 +206,9 @@ Here I have the utility method that I works out that has a bunch of methods that
 
 ### 4.2 - A main.js file that makes use of this utility module
 
-Not that I have this utility method I can link to after threejs has been loaded, at which point my main.js file can be just a little additional code. One thing that is worth mentioning is that the arrow helper can be attached to anything that inherits from the object32 class in threejs, so I can bass the scene object as the first argument when calling my add arrow method, but I can also pass a mesh, or anything else that is based off of object3d.
+Not that I have this utility method I can link to after threejs has been loaded, at which point my main.js file can be just a little additional code. One thing that is worth mentioning is that the arrow helper can be attached to anything that inherits from the object3d class in threejs, so I can bass the scene object as the first argument when calling my add arrow method, but I can also pass a mesh, or anything else that is based off of object3d.
+
+With that said in this main javaScript file I am using the create basic scene method to create a basic scene along with a camera and renderer. After that I just need to add some things to the scene object and to do that I make use of my add arrow method. When doing so I can add arrow helpers to the scene object, but I can also add them to a mesh object such as a cube that I can add with the add cube method of the utility module.
 
 ```js
 // basic scene
