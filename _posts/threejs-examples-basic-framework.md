@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:07:52
-version: 1.2
+updated: 2021-04-20 16:10:23
+version: 1.3
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -119,3 +119,5 @@ threeFrame.create({
 ## 3 - Conclusion
 
 Well I was able to slap this basic framework example together in a flash today, but it is still very mush just that a basic framework. Still something like this might still prove to work okay when it comes to making very simple examples that just involve some kind of looping animation type effect. I am sure that I might make at least a few more examples such as this where I might add at least a few more additional features here and there as needed.
+
+One feature that might be nice is to have a single overlay canvas element that I layer on top of the canvas element that draws the 3d scene using threejs. This overlay canvas can be used as a way to attach some event handers when it comes to working with user input, but it can also be used to draw on top of the scene using just the plain 2d drawing context. That however is one idea that I might reserve for a future post, maybe I will even get to that in the next few days.
