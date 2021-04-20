@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 14:00:26
-version: 1.21
+updated: 2021-04-20 14:02:33
+version: 1.22
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -133,7 +133,7 @@ loop();
 
 ## 4 - Making a utility module to help abstract some things
 
-While I was working out some new code for this post I thought I would take a moment to make a quick simple utilty module as a way to abstract some things away, so that I can create, and add arrow helpers, and other parts of a scene with very little code.
+While I was working out some new code for this post I thought I would take a moment to make a quick simple utilty module as a way to abstract some things away, so that I can create, and add arrow helpers, and other parts of a scene with very little code. This might be a little off topic, but there really is only so much to write about when it comes to only the arrow helper alone. Also the use of the arrow helper might be part of something more that can be summed up as having ways to go about making things a little better organized. With that said maybe this is not so far off base then.
 
 ### 4.1 - The utility module
 
