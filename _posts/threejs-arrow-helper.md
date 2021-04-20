@@ -5,13 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 13:35:08
-version: 1.10
+updated: 2021-04-20 13:37:39
+version: 1.11
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
 
 The [THREE.ArrowHelper](https://threejs.org/docs/#api/en/helpers/ArrowHelper) constructor is one such helper that can be used for visualizing directions in three.js. So then it is a nice addition to work with when it comes to know what direction is what in a scene. These arrow helpers can be attached to the scene object, but also just about anything that inherits from the object32 class, so they can also be attached to a mesh, or an instance of a group.
+
+So then in this post I will be going over some basic examples of arrow helpers, and the features to work with when it comes to such helpers. In the process I will also be touching base on some other threejs related topics that have to do with making the code of a threejs project a little more organized so it is not such a thin post as there is only so much to write about when it comes to the arrow helper.
 
 <!-- more -->
 
