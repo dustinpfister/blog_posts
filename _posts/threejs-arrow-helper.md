@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 15:12:35
-version: 1.27
+updated: 2021-04-20 15:15:05
+version: 1.28
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -130,6 +130,8 @@ loop = function () {
 };
 loop();
 ```
+
+For this example I also set up a basic app loop where I am chaining the direction each time the app loop is called. the result is then the arrow pointing in all directions alone the circumference of a circle.
 
 ## 4 - Making a utility module to help abstract some things
 
