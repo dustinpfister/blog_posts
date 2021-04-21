@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-04-21 12:50:32
-version: 1.11
+updated: 2021-04-21 12:54:39
+version: 1.12
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the Buffered Geometry constructor.
@@ -183,3 +183,8 @@ Say for example I want to have a cube with three different materials that will e
 ```
 
 The value that I give to material index should be the index value of the material I want to use in the array of materials.
+
+## 5 - Conclusion
+
+The Face3 constructor is something that I might not need to bother with anymore, at least when it comes to using newer versions of threejs. There are only so many things that I might need to do when it comes to working with a geometry, or a mesh, and one of which is to set the material index values to use with each face of an object. The way to do that might have been to set the material index of face3 instances, but now with newer versions of threejs there is no Geometry of Face3 constructor, at least nt in the core of the library. So a modern way of doing that must be followed.
+
