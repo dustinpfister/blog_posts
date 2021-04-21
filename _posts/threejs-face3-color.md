@@ -5,19 +5,24 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2021-04-21 13:09:23
-version: 1.8
+updated: 2021-04-21 13:14:02
+version: 1.9
 ---
 
 It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
 
 <!-- more -->
 
-## THE CODE HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
+## 1 - What to know before hand
+
+This is a post on using the Face3 Constructor to set custom vertex colors, and to use those colors with a material when using the geometry with a mesh. So then this is nit a getting started post on threejs, javaScript, and any additional skills that are required before hand to get something of value from this post. Also there are some additional talking points that I should mention here before continuing with the code examples.
+
+## 1.1 - THE CODE HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
 
 The old code examples here will break if you are using a late version of threejs. The reason why is that the Face3 Constructor was removed from threejs in version r126, and in r125 the Geometry constructor which was closely related to face3 was also removed. I will be keeping this post up because it does still apply to older versions of threejs, and also it might still be possible to get some of these older code examples working on later versions of threejs if one can find a way to bring back what was removed by way of external files beyond that of the threejs library by itself.
+However it is possible to pull off a simular effect to what is worked out here with the Buffered Geometry constructor which is still part of the core of threejs. I worked out some new examples for that and will place those examples at the bottom of this post
 
-## 1 - Face3 color in vertices 
+## 2 - Face3 color in vertices 
 
 In order to use face3 vertex colors the vertexColors property of the material that is being used must be set to the THREE.FaceColors constant. A quick example of the use of face3 vertex colors might look something like this.
 
@@ -68,7 +73,7 @@ renderer.render(scene, camera);
 
 The fifth parameter of the THREE.face3 constructor can be a single color that will set a color to be used for the whole face3 instance, or it can also be an array of colors that will be a color for each vertex in the geometry of the face3. This can then be used as a crude yet effective way of styling faces in a project.
 
-## 2 - Set the vertex colors for an existing geometry
+## 3- Set the vertex colors for an existing geometry
 
 When creating a custom geometry the face3 constructor can be used directly and a single color or array of colors can be given when calling the face3 constructor. However when working with a geometry that all ready exists another way of setting the vertex colors or a single face color is by going over each instance of face3 and just set the color or vertexColors properties of each face3 instance.
 
