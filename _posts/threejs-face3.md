@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2018-09-15 09:06:05
-version: 1.6
+updated: 2021-04-21 12:42:05
+version: 1.7
 ---
 
-The [Face3 constructor](https://threejs.org/docs/#api/core/Face3) in [three.js](https://threejs.org/) is used to define a Face when [making a custom geometry](/2018/04/14/threejs-geometry/). When using any kind of built in geometry, instances of Face3 are created automatically, but whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3.
+The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that chnage the Face3 Constructor was used to define a Face when [making a custom geometry](/2018/04/14/threejs-geometry/) with the Geometry Constructor which has also been removed as of revision 125.
+
+When using any kind of built in geometry, instances of Face3 are created automatically, but whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3.
 
 <!-- more -->
 
