@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2021-04-21 13:17:55
-version: 1.10
+updated: 2021-04-21 13:27:06
+version: 1.11
 ---
 
 It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -111,5 +111,42 @@ var mesh = new THREE.Mesh(box,
             vertexColors: THREE.FaceColors
         }));
 scene.add(mesh);
+renderer.render(scene, camera);
+```
+
+## 4 - Using the Buffered Geometry Constructor and then NOT Face3 (doing the same thing in r125+)
+
+To do the same thing more or less with Buffered Geometry rather that the older and now removed Geometry constructor the process of doing so is just a little different.
+
+```js
+// create a buffed geometry
+var geometry = new THREE.PlaneGeometry(1, 2, 1, 1);
+// add a colors prop to the geometry
+var colors = new Uint8Array([
+            255, 0, 0,
+            0, 255, 0,
+            0, 0, 255,
+            0, 0, 255,
+            0, 255, 0,
+            255, 0, 0,
+        ]);
+// Don't forget to normalize the array! (third param = true)
+geometry.addAttribute('color', new THREE.BufferAttribute(colors, 3, true));
+ 
+// SCENE
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// MESH that uses the vertex colors
+var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+            side: THREE.DoubleSide,
+            vertexColors: true
+        }));
+scene.add(mesh);
+ 
 renderer.render(scene, camera);
 ```
