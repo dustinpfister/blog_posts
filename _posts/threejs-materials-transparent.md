@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2021-04-21 16:34:16
-version: 1.4
+updated: 2021-04-21 17:03:09
+version: 1.5
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic materials the process is not that hard at all actually. When creating the material I just need to set the transparent property of the material to true, and then it is just a matter of setting the desired opacity value for the material, and that is it.
@@ -107,8 +107,81 @@ renderer.render(scene, camera);
 
 ## 3 - canvas elements and alpha maps
 
-Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a mesh to set locations in a face that should be transparent.
+Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a mesh to set locations in a face that should be transparent. One way to do so would be to load extral images as a way to load some textures for this sort of thing. However when it comes to just using a little javaScript code I can use canvas elements as a way to create textures which in turn can be used for a alpha map.
 
+```js
+// create a cube
+var createCube = function (size, material, x, y, z) {
+    var geometry = new THREE.BoxGeometry(size, size, size),
+    cube = new THREE.Mesh(geometry, material);
+    cube.position.set(x, y, z);
+    return cube;
+};
+ 
+var createCanvasTexture = function (draw, size) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    canvas.width = size || 64;
+    canvas.height = size || 64;
+    draw(ctx, canvas);
+    return new THREE.CanvasTexture(canvas);
+};
+ 
+var alphaMap = createCanvasTexture(function (ctx, canvas) {
+        // drawing gray scale areas
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(0, 0, 32, 32);
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(32, 0, 32, 32);
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(0, 32, 32, 32);
+        ctx.fillStyle = '#f0f0f0';
+        ctx.fillRect(32, 32, 32, 32);
+    });
+ 
+var materials = {};
+// Using the standard material
+materials.sand = new THREE.MeshStandardMaterial({
+        color: 'yellow'
+    });
+materials.glass = new THREE.MeshStandardMaterial({
+        color: 'cyan',
+        alphaMap: alphaMap,     // using an alpha map
+        side: THREE.DoubleSide,
+        depthFunc: THREE.AlwaysDepth,
+        transparent: true,
+        opacity: 0.2
+    });
+ 
+var glassCube = createCube(1, materials.glass, 0, 0, 2),
+cube = createCube(1, materials.sand, 0, 0, 0);
+ 
+// scene
+var scene = new THREE.Scene();
+ 
+// adding a point light
+var pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(2, -5, 5);
+scene.add(pointLight);
+ 
+// add AmbientLight
+var light = new THREE.AmbientLight(0xffffff);
+light.intensity = 0.4;
+scene.add(light);
+ 
+// add cubes
+scene.add(glassCube);
+scene.add(cube);
+ 
+// camera
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, 1, 1000);
+camera.position.set(0.9, 0, 3.5);
+camera.lookAt(-1, 0, 0);
+// RENDERER
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
 
 ## 4 - Conclusion
 
