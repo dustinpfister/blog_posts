@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2021-04-21 16:27:48
-version: 1.3
+updated: 2021-04-21 16:34:16
+version: 1.4
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic materials the process is not that hard at all actually. When creating the material I just need to set the transparent property of the material to true, and then it is just a matter of setting the desired opacity value for the material, and that is it.
@@ -58,7 +58,7 @@ renderer.render(scene, camera);
 
 ## 2 - Using a light source and the standard material
 
-Things get a little more involve when using a light source, when this is the case I will have to use a material that will respond to light. Once such material is the standard material rather than the basic material. Then I am going to need to add at least one light source, there are a number of options for that, the one I often go for is a point light. This is is anice direction light that will shine light in all directions form the position at which it is located.
+Things get a little more involve when using a light source, when this is the case I will have to use a material that will respond to light. Once such material is the standard material rather than the basic material. Then I am going to need to add at least one light source, there are a number of options for that, the one I often go for is a point light. This is is a nice direction light that will shine light in all directions form the position at which it is located.
 
 ```js
 // create a cube
@@ -104,3 +104,12 @@ var renderer = new THREE.WebGLRenderer();
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+## 3 - canvas elements and alpha maps
+
+Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a mesh to set locations in a face that should be transparent.
+
+
+## 4 - Conclusion
+
+So then transparency is something that can be set for a material as a whole, but it can also be set in at a texture level also when it comes to alpha maps.
