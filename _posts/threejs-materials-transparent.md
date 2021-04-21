@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2021-04-21 17:07:48
-version: 1.6
+updated: 2021-04-21 17:10:53
+version: 1.7
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic materials the process is not that hard at all actually. When creating the material I just need to set the transparent property of the material to true, and then it is just a matter of setting the desired opacity value for the material, and that is it.
@@ -110,6 +110,10 @@ renderer.render(scene, camera);
 Another kind of transparency is to get into using [alpha maps](/2019/06/06/threejs-alpha-map/) this is a kind of texture map that can be added to a mesh to set locations in a face that should be transparent. One way to do so would be to load extremal images as a way to load some textures for this sort of thing. However when it comes to just using a little javaScript code I can use canvas elements as a way to create textures which in turn can be used for a alpha map.
 
 So once again I added a bit more to what was once my basic example on transparency in threejs, by adding a method that will help me to make a texture for a map. There are a number of maps to work with when it comes to making a material, but for this example I will just be sticking to an alpha map for the glass cube. When drawing to the canvas element i will want to stick to using gray scale color values, when a color is black that will mean that area in the texture will be fully transparent, while white will mean fully opaque.
+
+Things will get a little involve beyond just that of adding the alpha map to the glass material though, I will want to play around with some additional material properties to get things to work the way that I want them to. For example there is the question of drawing just the front sides of a cube, or all sides. I might want to also play around with the depth function that is used for the material.
+
+For this example I also added an ambient light to make sure that there is always a certain amount of base light for all surfaces.
 
 ```js
 // create a cube
