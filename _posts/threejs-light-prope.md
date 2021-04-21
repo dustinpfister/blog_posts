@@ -5,17 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-04-21 08:56:21
-version: 1.8
+updated: 2021-04-21 08:58:05
+version: 1.9
 ---
 
-So in threejs r104 light probes have been introduced. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
+When threejs version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
 
 <!-- more -->
 
 ## 1 - Light Probes and what to know before hand
 
-This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a getting started post on three.js, or javaScript in general, so it would be a good idea to start with some basics before geting into light probes and other advanced three.js topics if you are new to three.js.
+This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a getting started post on three.js, or javaScript in general, so it would be a good idea to start with some basics before getting into light probes and other advanced three.js topics if you are new to three.js.
 
 From what I have gathered so far it seems that light probes are a way to pull in light from a given point and then use that in conjunction with environment maps that can be used with a mesh. They can allow for some interesting effects when it comes to backgrounds and reflections of that background in a mesh.
 
