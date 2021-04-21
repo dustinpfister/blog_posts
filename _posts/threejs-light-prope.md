@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-04-21 10:17:09
-version: 1.17
+updated: 2021-04-21 11:35:52
+version: 1.18
 ---
 
 When threejs version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
@@ -23,9 +23,9 @@ From what I have gathered so far it seems that light probes are a way to pull in
 
 To use this feature you will need revision 104 or later of three.js, as this is a new feature that was introduced in that revision. If you are using and older version of three.js the code example here will of course break, and the only practical way to get it to work would be to just use a later  version of threejs, which is something that you should consider doing anyway and not just for this reason. 
 
-### 1.2 - Know the basics of light in threejs first
+### 1.2 - Know the basics of light and materials in threejs first
 
-Another thing that you should have solid before messing around with light probes is to first know a thing or two about working with light in a threejs project. There is going to need to be a light source of course and when it comes to that there are a few options.
+Another thing that you should have solid before messing around with light probes is to first know a thing or two about working with light in a threejs project. There is going to need to be a light source of course and when it comes to that there are a few options. However for post projects my first go to option for a light source is a point light which is what I will be using in this example. There are also the very basics of materials that are worth mentioning also when it comes to light sources and that is that not all materials will respond to light sources. Just like light sources there are a few options when it comes to materials that will respond to one or more light sources, but for this example I will be going with the standard material which is one such option.
 
 ### 1.3 - Know a think or two about cube textures
 
