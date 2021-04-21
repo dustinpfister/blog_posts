@@ -5,13 +5,17 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2019-06-05 15:50:22
-version: 1.6
+updated: 2021-04-21 13:06:22
+version: 1.7
 ---
 
-It is time for me to revisit the face3 constructor in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://threejs.org/docs/#api/en/core/Face3.color), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
+It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
 
 <!-- more -->
+
+## THE CODE HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
+
+The old code examples here will break if you are using a late version of threejs. The reason why is that the Face3 Constructor was removed from threejs in version r126, and in r125 the Geometry constructor which was closely related to face3 was also removed.
 
 ## 1 - Face3 color in vertices 
 
