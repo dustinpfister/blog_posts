@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-04-21 09:02:53
-version: 1.10
+updated: 2021-04-21 09:17:21
+version: 1.11
 ---
 
 When threejs version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
@@ -31,9 +31,9 @@ Another thing that you should have solid before messing around with light probes
 
 ## 2 - Light probe example in threejs r104
 
-I tried to simply the official example in the repository, but could only get away with crunching things down so much. The basic thing to do is create the light probe by calling the THREE.LightProbe constructor with the new keyword. Once you have that it can be added to the scene, and positioned somewhere just like a point light or anything to that effect.
+I tried to make the official example in the repository a little more simple to follow, but could only get away with crunching things down so much. The basic thing to do is create the light probe by calling the [THREE.LightProbe constructor](https://threejs.org/docs/#api/en/lights/LightProbe) with the new keyword. Once you have that it can be added to the scene, and positioned somewhere just like a point light or anything to that effect.
 
-The copy method can then be used with the THREE.LightProbeGenerator constructor that at this time seems to only work with cube textures at least that is the only method at this time it would seem.
+The copy method can then be used with the THREE.LightProbeGenerator constructor that at this time seems to only work with cube textures, at least that is the only method at time that I wrote this anyway. So then in this example I am using the cube texture loader to load skybox image assets.
 
 ```js
 var scene = new THREE.Scene();
