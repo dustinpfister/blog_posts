@@ -1,12 +1,12 @@
 ---
 title: Basic Framework threejs example
-date: 2021-04-20 16:0:00
+date: 2021-04-20 16:00:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-20 16:26:14
-version: 1.10
+updated: 2021-04-21 14:06:01
+version: 1.11
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
