@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-04-21 09:39:39
-version: 1.16
+updated: 2021-04-21 10:17:09
+version: 1.17
 ---
 
 When threejs version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
@@ -44,6 +44,7 @@ I tried to make the official example in the repository a little more simple to f
 The copy method can then be used with the THREE.LightProbeGenerator constructor that at this time seems to only work with cube textures, at least that is the only method at time that I wrote this anyway. So then in this example I am using the cube texture loader to load skybox image assets.
 
 ```js
+// BASIC SETUP of scene, camera, and renderer
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
 camera.position.set(25, 25, 25);
@@ -51,11 +52,11 @@ camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer({
         antialias: true
     });
-renderer.setSize(320, 240);
 renderer.gammaOutput = true;
 renderer.gammaFactor = 2.2; // approximate sRGB
 document.getElementById('demo').appendChild(renderer.domElement);
  
+// ADD A POINT LIGHT
 var pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0, 50, 0);
 scene.add(pointLight);
@@ -64,24 +65,8 @@ scene.add(pointLight);
 var lightProbe = new THREE.LightProbe();
 scene.add(lightProbe);
  
-new THREE.CubeTextureLoader()
-.setPath('/img/cube/skybox/')
-.load(
-    [
-        'px.jpg',
-        'nx.jpg',
-        'py.jpg',
-        'ny.jpg',
-        'pz.jpg',
-        'nz.jpg'
-    ],
-    function (cubeTexture) {
-    cubeTexture.encoding = THREE.sRGBEncoding;
-    scene.background = cubeTexture;
- 
-    // Using the lightProbe copy method with LightPropeGen
-    lightProbe.copy(new THREE.LightProbeGenerator.fromCubeTexture(cubeTexture));
- 
+// ADD SPHERE HELPER
+var addSphere = function (cubeTexture) {
     var mesh = new THREE.Mesh(
             new THREE.SphereBufferGeometry(20, 32, 32),
             new THREE.MeshStandardMaterial({
@@ -92,6 +77,10 @@ new THREE.CubeTextureLoader()
                 envMapIntensity: 1
             }));
     scene.add(mesh);
+};
+ 
+// create loop method
+var createLoop = function () {
     var frame = 0,
     maxFrame = 250;
     var loop = function () {
@@ -100,24 +89,31 @@ new THREE.CubeTextureLoader()
         bias = 1 - Math.abs(0.5 - per) / 0.5;
         frame += 1;
         frame %= maxFrame;
- 
         // Change Light Probe intensity
         lightProbe.intensity = bias;
- 
-        // Change the light probe position
-        var radian = Math.PI * 2 * per;
-        pointLight.position.set(
-            Math.cos(radian) * 50,
-            Math.sin(radian) * 50,
-            0);
- 
         renderer.render(scene, camera);
     };
+    return loop;
+};
+ 
+// WHAT TO DO WHEN CUBE TEXTURE IS LOADED
+var cubeTextureLoaded = function (cubeTexture) {
+    cubeTexture.encoding = THREE.sRGBEncoding;
+    scene.background = cubeTexture;
+    // Using the lightProbe copy method with LightPropeGen
+    lightProbe.copy(new THREE.LightProbeGenerator.fromCubeTexture(cubeTexture));
+    addSphere(cubeTexture);
+    var loop = createLoop();
     loop();
-});
+};
+ 
+// LOAD CUBE TEXTURE
+new THREE.CubeTextureLoader()
+.setPath('/img/cube/skybox/')
+.load( ['px.jpg','nx.jpg','py.jpg','ny.jpg','pz.jpg','nz.jpg'], cubeTextureLoaded);
 ```
 
-Playing around with the intensity property of the light probe can then be used as a way to get an idea of what kind of effect a light probe has on an object that makes use of the cube texture as an environment map. Moving the position of the lightProbe or changing around the situation with light sources can also lead to some interesting effects as well.
+Playing around with the intensity property of the light probe can then be used as a way to get an idea of what kind of effect a light probe has on an object that makes use of the cube texture as an environment map. The light prob itself does not emit any light of its own, which is why I still needed to add the point light for this example. What is really going on here is that the light probe is having an impact on how light that is moving throw the 3d space effects the cube texture.
 
 ## 3 - Conclusion
 
