@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2021-04-21 13:27:06
-version: 1.11
+updated: 2021-04-21 13:30:17
+version: 1.12
 ---
 
 It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -116,7 +116,7 @@ renderer.render(scene, camera);
 
 ## 4 - Using the Buffered Geometry Constructor and then NOT Face3 (doing the same thing in r125+)
 
-To do the same thing more or less with Buffered Geometry rather that the older and now removed Geometry constructor the process of doing so is just a little different.
+To do the same thing more or less with Buffered Geometry rather that the older and now removed Geometry constructor the process of doing so is just a little different. The basic process is that one additional attribute will need to be added to the Buffered Geometry that is custom, or made from one of the built in geometry constructors such as the PlaneGeometry constructor.
 
 ```js
 // create a buffed geometry
