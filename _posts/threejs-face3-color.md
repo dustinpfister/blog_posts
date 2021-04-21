@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2021-04-21 13:14:02
-version: 1.9
+updated: 2021-04-21 13:17:55
+version: 1.10
 ---
 
 It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
@@ -21,6 +21,10 @@ This is a post on using the Face3 Constructor to set custom vertex colors, and t
 
 The old code examples here will break if you are using a late version of threejs. The reason why is that the Face3 Constructor was removed from threejs in version r126, and in r125 the Geometry constructor which was closely related to face3 was also removed. I will be keeping this post up because it does still apply to older versions of threejs, and also it might still be possible to get some of these older code examples working on later versions of threejs if one can find a way to bring back what was removed by way of external files beyond that of the threejs library by itself.
 However it is possible to pull off a simular effect to what is worked out here with the Buffered Geometry constructor which is still part of the core of threejs. I worked out some new examples for that and will place those examples at the bottom of this post
+
+## 1.2 - So yest version numbers matter when using threejs
+
+When I first started writing content on threejs here I was using r91 of threejs, back when I first wrote this post I was using r104, and the last time I edited this post I was using r127. Features are constantly being added, and other features are being removed which often result in code breaking changes to examples like the ones here. If you are having problems with the examples here, or anywhere for that matter the first thing you should check is the version number of three.js that you are using.
 
 ## 2 - Face3 color in vertices 
 
