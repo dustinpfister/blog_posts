@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-04-21 12:54:39
-version: 1.12
+updated: 2021-04-21 12:59:35
+version: 1.13
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the Buffered Geometry constructor.
@@ -18,6 +18,10 @@ When using any kind of built in geometry, instances of Face3 are created automat
 ## THE CODE HERE WILL BREAK IF YOU ARE USING A NEW VERSION OF THREEJS (r125+)
 
 This is a post on the old Face3 constructor of the three.js library that is used to work with 3d graphics using javaScript. The code examples here might still work okay on older versions of threejs, but on newer versions of threejs the code will of course break. As of revision r125 the Geometry Constructor was removed, and as of revision 5126 the Face3 constructor was also removed.
+
+I will be looking into making some new examples where I am doing the same things that I wanted to get done when working with face3 but with the new versions of threejs where this class is no longer part of the core of the library. As I work out those examples I am sure I will get around to editing this post with new examples to do those things without Face3.
+
+Still I might leave this post up for the sake of historical reasons, if you are still using older versions of threejs, or have found a way to add the Geometry and Face3 constructors back to three.js by way of some additional plug ins then the examples here should still work.
 
 ## 1 - What to know before you continue reading
 
