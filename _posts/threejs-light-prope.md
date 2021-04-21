@@ -5,27 +5,27 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2019-05-28 21:50:41
-version: 1.6
+updated: 2021-04-21 08:54:25
+version: 1.7
 ---
 
-So in threejs r104 light probes have been introduced. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repo as well as another asset of interest in the repo that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
+So in threejs r104 light probes have been introduced. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
 
 <!-- more -->
 
 ## 1 - Light Probes and what to know before hand
 
-This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript project. This is not a getting started post on three.js, or javaScript in general, so it would be a good idea to start with some basics before geting into light probes and other advanced three.js topics if you are new to three.js.
+This is an advanced post on three.js and a new feature that was introduced in revision 104 of this javaScript library. This is not a getting started post on three.js, or javaScript in general, so it would be a good idea to start with some basics before geting into light probes and other advanced three.js topics if you are new to three.js.
 
 From what I have gathered so far it seems that light probes are a way to pull in light from a given point and then use that in conjunction with environment maps that can be used with a mesh. They can allow for some interesting effects when it comes to backgrounds and reflections of that background in a mesh.
 
 ### 1 - Revision 104+ of three.js as well as one additional assets needed
 
-To use this feature you will need revision 104 or later of three.js, as this is a new feature that was introduced in that revision. If you are using and older version of three.js the code example here will break. In addition there is at least one more additional asset that you will need to get this example working. That asset can be found in the three.js repo and is called [LightProbeGenerator.js](https://github.com/mrdoob/three.js/blob/master/examples/js/lights/LightProbeGenerator.js). This file will need to be linked to along with three.js in the html of a project making use of the new light probe feature.
+To use this feature you will need revision 104 or later of three.js, as this is a new feature that was introduced in that revision. If you are using and older version of three.js the code example here will break. In addition there is at least one more additional asset that you will need to get this example working. That asset can be found in the three.js repository and is called [LightProbeGenerator.js](https://github.com/mrdoob/three.js/blob/master/examples/js/lights/LightProbeGenerator.js). This file will need to be linked to along with three.js in the html of a project making use of the new light probe feature.
 
 ## 2 - Light probe example in threejs r104
 
-I tried to simply the official example in the repo, but could only get away with crunching things down so much. The basic thig to do is create the light probe by calling the THREE.LightProbe constructor with the new keyword. Once you have that it can be added to the scene, and positioned somewhere just like a point light or anything to that effect.
+I tried to simply the official example in the repository, but could only get away with crunching things down so much. The basic thing to do is create the light probe by calling the THREE.LightProbe constructor with the new keyword. Once you have that it can be added to the scene, and positioned somewhere just like a point light or anything to that effect.
 
 The copy method can then be used with the THREE.LightProbeGenerator constructor that at this time seems to only work with cube textures at least that is the only method at this time it would seem.
 
