@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-04-21 09:33:10
-version: 1.13
+updated: 2021-04-21 09:35:19
+version: 1.14
 ---
 
 When threejs version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
@@ -32,10 +32,9 @@ Another thing that you should have solid before messing around with light probes
 
 ### 1.4 - An additional file that can be found in the examples folder needs to be added
 
-In addition to knowing the basics of threejs and javaScript, using at least revision 104 plus of threejs, knowing the basics of light and light sensitive materials, and cube textures there is one more additional little thing to know before getting into the use of light probes. There is one more additional asset that you will need to get this example working. That asset can be found in the three.js repository and is called [LightProbeGenerator.js](https://github.com/mrdoob/three.js/blob/master/examples/js/lights/LightProbeGenerator.js) which can be found in the examples folder of the main threejs repository along with many other useful external fines that can be used on top of the threejs library by itself. 
+In addition to knowing the basics of threejs and javaScript, using at least revision 104 plus of threejs, knowing the basics of light and light sensitive materials, and cube textures there is one more additional little thing to know before getting into the use of light probes. There is one more additional asset that you will need to get this example working. That asset can be found in the three.js repository and is called [LightProbeGenerator.js](https://github.com/mrdoob/three.js/blob/master/examples/js/lights/LightProbeGenerator.js) which can be found in the examples folder of the main threejs repository along with many other useful external files that can be used on top of the threejs library by itself. 
 
-This file will need to be linked to along with three.js in the html of a project making use of the new light probe feature.
-
+This file will need to be linked to along with three.js in the html of a project making use of the new light probe feature. last i check when editing this post to make sure things are still working for r127 there are now to methods that are added with this file. One if the fromCubeTexture method, and the other is a fromCubeRenderTarget method. In this example I am using the  fromCubeTexture and I have not yet looked into what the other method is all about just yet.
 
 ## 2 - Light probe example in threejs r104
 
