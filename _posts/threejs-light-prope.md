@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-04-21 09:35:19
-version: 1.14
+updated: 2021-04-21 09:36:43
+version: 1.15
 ---
 
 When threejs version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
@@ -29,6 +29,7 @@ Another thing that you should have solid before messing around with light probes
 
 ### 1.3 - Know a think or two about cube textures
 
+The example that I worked out makes use of what is called a cube texture, and when it comes to this subject that also in turn deserves a whole other post, or more when it comes to what these kinds of textures are all about.
 
 ### 1.4 - An additional file that can be found in the examples folder needs to be added
 
