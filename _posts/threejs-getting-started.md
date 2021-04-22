@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2020-11-25 10:44:59
-version: 1.15
+updated: 2021-04-22 14:46:11
+version: 1.16
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with.
@@ -21,9 +21,9 @@ Of course it goes without saying that you need a decent understanding of front e
 
 There is a lot that should be covered first before moving on to three.js, and I do not think I can cover all of it in a single blog post such as this. However I will try my best to cover at least some of the most impotent topics that one should know about before getting started with three.js.
 
-### 1.1 - make sure you are hosting what you aee working on via HTTP rather than the file protocol
+### 1.1 - make sure you are hosting what you are working on via HTTP rather than the file protocol
 
-One think that I think should be worth mentioning is that three.js and any additional assets should be hosted via http rather than the file protocol. In other words it is not a good idea to jus copy and past files into a folder and then open up an index html file in a browser by way of ctral+o. So it is a good idea to host what is being worked on via http, even when working on it locally. To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http.
+One think that I think should be worth mentioning is that three.js and any additional assets should be hosted via http rather than the file protocol. In other words it is not a good idea to just copy and past files into a folder and then open up an index html file in a browser by way of ctrl+o. So it is a good idea to host what is being worked on via http, even when working on it locally. To do this one will need some way to set up and run some back end code, or at least some kind of static web sever to host a public folder via http.
 
 ### 1.2 - A word about three.js versions
 
