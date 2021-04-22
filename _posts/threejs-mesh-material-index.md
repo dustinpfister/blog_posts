@@ -5,13 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2019-12-25 19:44:09
-version: 1.3
+updated: 2021-04-22 09:03:15
+version: 1.4
 ---
 
-When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the mesh.
+When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
 
-This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. When working with an array of materials there is a property of a [face3](/2018/05/11/threejs-face3/) instance in the geometry of the mesh that is of interest when setting the material index property of the faces. In this post I will be covering some basic demos of how to work with more than one material, and how to go about setting the material index values of a geometry.
+When working with an array of materials there is a property of a [face3](/2018/05/11/threejs-face3/) instance in the geometry of the mesh that is of interest when setting the material index property of the faces, or at least that was the case with the old Geometry Constructor that was removed in r125 of threejs. So there is how to go about doing this sort of thing with a Buffered Geometry that is still part of the core f the three.js library.
+
+In this post I will be covering some basic demos of how to work with more than one material, and how to go about setting the material index values of a geometry.
 
 <!-- more -->
 
