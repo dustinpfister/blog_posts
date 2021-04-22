@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2021-04-22 16:51:27
-version: 1.14
+updated: 2021-04-22 16:54:49
+version: 1.15
 ---
 
 As of revision 125 pf [threejs](https://threejs.org/) The Geometry Constructor has been removed which will result in code breaking changes for a whole Internet of threejs example. So this week I have been editing old posts, and writing some new ones on threejs, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -15,6 +15,9 @@ The basic example of a [buffer Geometry in the three.js documentation works okay
 
 <!-- more -->
 
+## 1 - The buffer geometry constructor in threejs and what to know first
+
+This is a post on the buffer geometry constructor in three.js which was one of two options to create a custom geometry in three.js before r125, but after r125 is now they only way to do so when it comes to the core library by itself anyway. This is then not a getting started type post with three.js or any additional skills that are required before hand.
 
 ## 2 - A Basic starting point for the Buffer Geometry Constructor in threejs
 
