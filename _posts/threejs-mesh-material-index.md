@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 09:59:57
-version: 1.11
+updated: 2021-04-22 10:02:27
+version: 1.12
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -27,7 +27,7 @@ Three.js has been, and as of this writing still is, a fast moving target of a li
 
 ## 2 - New example with groups array using r127
 
-So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r127.
+So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r127. In any case the process is somewhat similar an array of materials must be used rather than just a single material. After that it is just a matter of making sure that each face has the proper index value in the materials array set.
 
 ```js
 (function () {
