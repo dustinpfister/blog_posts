@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 10:06:43
-version: 1.13
+updated: 2021-04-22 10:11:59
+version: 1.14
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -28,6 +28,8 @@ Three.js has been, and as of this writing still is, a fast moving target of a li
 ## 2 - New example with groups array using r127
 
 So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r127. In any case the process is somewhat similar an array of materials must be used rather than just a single material. After that it is just a matter of making sure that each face has the proper index value in the materials array set.
+
+In late versions of threejs that only support the use of Buffered Geometry in the core of the library itself there should be a groups array for a geometry. This is now the array of face objects that contain matreial index properties. When it comes to this example I am using the built in Box Geometry constructor that will create and return a buffered geometry, and on top of that there will be index values set for it by default that will work well with an array of materials that is a collection of six materials one for each side. However what if I just want to use three? In that case I will want to do something to make sure that I am only using index values in that range, such as looping over the groups object and setting the material index values that way.
 
 ```js
 
