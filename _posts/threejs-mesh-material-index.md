@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 09:09:46
-version: 1.6
+updated: 2021-04-22 09:11:27
+version: 1.7
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -17,7 +17,9 @@ In this post I will be covering some basic demos of how to work with more than o
 
 <!-- more -->
 
-## 1 - What to know before getting into mesh Material index values
+## 1 - What to know before getting into Mesh Material index values
+
+It should go without saying that this is not a getting started post with three.js, and I also will not be getting into the basics of javaScript and any additional topics that you should have a solid grasp on before hand.
 
 ### 1.1 - Version Numbers matter big time with three.js
 
