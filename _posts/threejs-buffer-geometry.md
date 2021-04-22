@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2021-04-22 16:28:18
-version: 1.6
+updated: 2021-04-22 16:31:55
+version: 1.7
 ---
 
 As of revision 125 pf [threejs](https://threejs.org/) The Geometry Constructor has been removed which will result in code breaking changes for a whole Internet of threejs example. So this week I have been editing old posts, and writing some new ones on threejs, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -18,10 +18,27 @@ The basic example of a [buffer Geometry in the three.js documentation works okay
 
 ## 2 - A Basic starting point for the Buffer Geometry Constructor in threejs
 
-This first example is not all that different from that of the example that I have found at the official three.js documentation website.
+This first example is not all that different from that of the example that I have found at the official three.js documentation website. However I made an effort to try to make the example yet even more easy to follow by having the geometry be just a single triangle.
 
 ```js
 (function () {
+ 
+    // GEOMETRY
+    var geometry = new THREE.BufferGeometry();
+    var vertices = new Float32Array([
+                0, 0, 0,
+                1, 0, 0,
+                1, 1, 0
+            ]);
+    // create position property
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+ 
+    // MESH with GEOMETRY, and Basic MATERIAL
+    var custom = new THREE.Mesh(
+            geometry,
+            new THREE.MeshBasicMaterial({
+                side: THREE.DoubleSide
+            }));
  
     // SCENE
     var scene = new THREE.Scene();
@@ -30,22 +47,8 @@ This first example is not all that different from that of the example that I hav
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
     camera.position.set(0, 0.5, 3);
  
-    // GEOMETRY
-    var geometry = new THREE.BufferGeometry();
-    var vertices = new Float32Array([
-                0,0,0,
-                1,0,0,
-                1,1,0
-            ]);
-    // create position property
-    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
- 
-    // MESH with GEOMETRY, and Normal MATERIAL
-    scene.add(new THREE.Mesh(
-            geometry,
-            new THREE.MeshBasicMaterial({
-                side: THREE.DoubleSide
-            })));
+    // add custom to the scene
+    scene.add(custom);
  
     // RENDER
     var renderer = new THREE.WebGLRenderer();
