@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 10:02:27
-version: 1.12
+updated: 2021-04-22 10:06:43
+version: 1.13
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -30,14 +30,13 @@ Three.js has been, and as of this writing still is, a fast moving target of a li
 So the first example that I should cover here is an example that makes use of a new version of threejs, as of this writing I was using r127. In any case the process is somewhat similar an array of materials must be used rather than just a single material. After that it is just a matter of making sure that each face has the proper index value in the materials array set.
 
 ```js
+
 (function () {
  
     // REVISION 127 was used for this example
     console.log(THREE.REVISION);
  
-    // SCENE
-    var scene = new THREE.Scene();
- 
+    // ARRAY OF MATERIALS
     var materials = [
         new THREE.MeshBasicMaterial({
             color: 0xff0000
@@ -50,21 +49,24 @@ So the first example that I should cover here is an example that makes use of a 
         })
     ];
  
-    // GEOMETRY
+    // geometry
     var geometry = new THREE.BoxGeometry(1, 1, 1);
  
+    // SET THE INDEX VALUES FOR EACH FACE
     geometry.groups.forEach(function (face, i) {
         face.materialIndex = Math.floor(i % materials.length);
     });
-    // MESH
+ 
+    // mesh
     var mesh = new THREE.Mesh(
             // geometry as first argument
             geometry,
             // array of materials as the second argument
             materials);
+    // scene, add mesh
+    var scene = new THREE.Scene();
     scene.add(mesh);
- 
-    // CAMERA, RENDER
+    // camera, renderer
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
