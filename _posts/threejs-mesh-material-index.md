@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 09:13:01
-version: 1.8
+updated: 2021-04-22 09:14:48
+version: 1.9
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -25,7 +25,7 @@ It should go without saying that this is not a getting started post with three.j
 
 Three.js has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and at this time there is now an r127 which is what I am observing at the time that I have edited this post last.
 
-## 2 - Basic Example of an array of materials, and face material index values.
+## 2 - Basic Example of an array of materials, and face material index values (r91 - r124).
 
 A basic example of this would be to just have an array of instances of some kind of Mesh Material such as the Mesh Basic Material. Once I have an array the materials can be used by setting the material index value of all face3 instances in the geometry that I am using to point to the corresponding index of the material in the array of materials that I want to use with a given face.
 
@@ -48,17 +48,12 @@ var geometry = new THREE.SphereGeometry(1, 15, 15);
  
 // looping over all faces and setting the material index property
 geometry.faces.forEach(function (face, i) {
- 
     face.materialIndex = Math.floor(i % materialArray.length);
- 
 });
  
 var sphere = new THREE.Mesh(
- 
         geometry,
- 
         materialArray);
- 
 scene.add(sphere);
 ```
 
