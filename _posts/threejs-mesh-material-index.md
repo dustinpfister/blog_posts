@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 10:11:59
-version: 1.14
+updated: 2021-04-22 10:12:49
+version: 1.15
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -80,6 +80,8 @@ In late versions of threejs that only support the use of Buffered Geometry in th
 }
     ());
 ```
+
+The situation will change up a little from one situation to the next, but the basic idea is there.
 
 ## 3 - Old Basic Example of an array of materials, and face material index values using r91.
 
