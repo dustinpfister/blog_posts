@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 187
-updated: 2021-04-22 09:05:57
-version: 1.5
+updated: 2021-04-22 09:09:46
+version: 1.6
 ---
 
 When working with a [mesh](/2018/05/04/threejs-mesh/) in [three.js](https://threejs.org/) a single instance of some kind of mesh material can be passed to the mesh constructor as the second argument which will be used to skin the the whole geometry of the mesh. This is fine if you are okay with every face in the [geometry](/2018/04/14/threejs-geometry/) being skinned with the same material, otherwise you might want to pass an array of [materials](/2018/04/30/threejs-materials/) instead. 
@@ -17,7 +17,13 @@ In this post I will be covering some basic demos of how to work with more than o
 
 <!-- more -->
 
-## 1 - Basic Example of an array of materials, and face material index values.
+## 1 - What to know before getting into mesh Material index values
+
+### 1.1 - Version Numbers matter big time with three.js
+
+Three.js has been, and as of this writing still is, a fast moving target of a library when it comes to development. When I first wrote this post back in May of 2018 I was using r91 of threejs, and at this time there is now an r127 which is what I am observing at the time that I have edited this post last.
+
+## 2 - Basic Example of an array of materials, and face material index values.
 
 A basic example of this would be to just have an array of instances of some kind of Mesh Material such as the Mesh Basic Material. Once I have an array the materials can be used by setting the material index value of all face3 instances in the geometry that I am using to point to the corresponding index of the material in the array of materials that I want to use with a given face.
 
@@ -56,7 +62,7 @@ scene.add(sphere);
 
 Using modulo to get the remainder when diving the current face index over the length of materials will result in an effect where each material is used in an alternating fashion. I can write different expressions to get different effects, but you should get the basic idea. The process is to have a collection of materials, and then do what is necessary to see that each face is painted with the desired material.
 
-## 2 - Conclusion
+## 3 - Conclusion
 
 When starting to make a real project of one kind or another it is important to know how to go about doing this sort of thing of course. Event when it comes to developing some kind of crude yet effective kind of style for 3d modeling I am still going to want to know how to skin different faces with different materials.
 
