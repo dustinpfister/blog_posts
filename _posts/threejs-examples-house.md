@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:59:33
-version: 1.15
+updated: 2021-04-23 13:03:04
+version: 1.16
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
@@ -112,6 +112,8 @@ I then have the create method of the module which as of this writing is the one 
 So now I am going to want to test out this house model by setting up a scene, and maybe at least one more attentional mesh that will serve as the ground of an over all larger scene. When it comes to really using this I will want to have at least a few more mesh objects, and models like this including a person model, but maybe that is all a matter for another post.
 
 For now I start out by creating the scene and then set the background color for the scene to something other than the default black. I am then choosing to use some directional light along with some ambient light because the use of this hose module will always be some kind of outdoor scene, and this is a good way to simulate daylight I have found. I am then also going to set things up so that the light will case a shadow.
+
+I am then setting up a camera and a web GL renderer to use for this demo, nothing out of the ordinary with this aside from maybe a few changes to allow for shadows. I am then creating an instance of my house model, and then having a simple plane geometry based mesh to serve as a crude yet effective ground for now.
 
 ```js
 var scene = new THREE.Scene();
