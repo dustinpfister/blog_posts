@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2021-04-23 13:31:22
-version: 1.9
+updated: 2021-04-23 13:36:20
+version: 1.10
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) with is one of several types of light to choose from. A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing as the light is coming from a certain direction to a certain target location, rather than just a base light intensity for all materials in a scene as is the case with ambient light. A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner.
@@ -158,3 +158,9 @@ var loop = function () {
 };
 loop();
 ```
+
+When this is up and running I have directional light working as expected, but when the direction light is not longer hitting the surface of a mesh the ambient light is still doing its thing to make sure that there is still a base amount of light.
+
+## 4 - Conclusion
+
+I went a little farther with the house example of this post and ended up making a slightly more advanced model of a house that is not just a box geometry but a group of meshes being used together to create something that I am calling a house. If you would like to check it out it is one of my many [three.js example](/2021/02/19/threejs-examples/) posts, I have it listed there along with all the other basic project examples I have together thus far.
