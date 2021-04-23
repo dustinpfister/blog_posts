@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:10:20
-version: 1.7
+updated: 2021-04-23 12:12:15
+version: 1.8
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
@@ -18,6 +18,8 @@ Today I thought I would make another [threejs example](/2021/02/19/threejs-examp
 This is a post on using the javaScript library known as three.js to create a simple 3d scene with built in geometries and the Buffer Geometry constructor.
 
 ## 2 - The House Module
+
+So now for the house module where I will be pulling all the javaScript code that I am using to create this simple crude model of a house. Inside the body of an IIFE I have an object that contains default materials to use with the house that can be replaced when using the model.
 
 ```js
 (function (HouseMod) {
