@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-02-19 15:41:28
-version: 1.9
+updated: 2021-04-23 12:21:57
+version: 1.10
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -17,29 +17,35 @@ There is the official set of [threejs examples](https://threejs.org/examples/) t
 
 <!-- more -->
 
-## [ 1 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
+## [ 1 - A Basic Framework](/2021/04/20/threejs-examples-basic-framework/)
+
+## [ 2 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
 
 The first example on this list is an example where I am making a simple biplane model to play around with. I am not taking the time to work out a serious model rather, but just slapping a bunch of box geometries together into an instance of [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/). I am then using the [Object3d.userData](/2021/02/16/threejs-userdata/) object to append some properties to an instance of one of these biplane models. The module that is used to create one of these is also the module that I use to update one of theme also.
 
-## [ 2 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/)
+## [ 3 - A Biplane Group Example](/2021/02/18/threejs-examples-biplane-group/)
 
 This is another example of a model but this time around I experimented with creating a model that is a model of models. This is taking the biplane model that I made and create a new model that is just working with a collection of these biplane models.
 
-## [ 3 - A Basic Clock Example](/2019/12/16/threejs-examples-clock-basic/)
+## [ 4 - A Basic Clock Example](/2019/12/16/threejs-examples-clock-basic/)
 
 This is just a Basic clock example which is another kind of example that I like to make when working with a new framework like threejs or any kind of canvas framework. Clocks are nice because they are generally easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting direction with it.
 
-## [ 4 - Land Sections](/2021/02/15/threejs-examples-land-sections/) 
+## [ 5 - Hamster Wheel](/2021/04/19/threejs-examples-hamster-wheel/) 
+
+## [ 6 - House](/2021/04/23/threejs-examples-house/) 
+
+## [ 7 - Land Sections](/2021/02/15/threejs-examples-land-sections/) 
 
 This is an example that I worked out that is an attempt at a 3d view for my Mr Sun game idea to which I have many prototypes for. There is also a vuejs example that I have started where I am focusing more so on what the core of the game logic should be while not putting to much into graphics. I also have a few canvas examples on Mr Sun where I have started simple 2d views for the game, and have all ready started many forks off of the general idea of the game.
 
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
-## [ 5 - Tree](/2019/07/30/threejs-examples-tree/)
+## [ 8 - Tree](/2019/07/30/threejs-examples-tree/)
 
 This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
-## [ 6 - Waves](/2018/11/14/threejs-examples-waves/) 
+## [ 9 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
