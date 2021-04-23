@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:12:15
-version: 1.8
+updated: 2021-04-23 12:14:44
+version: 1.9
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
@@ -100,6 +100,8 @@ So now for the house module where I will be pulling all the javaScript code that
 ```
 
 ## 3 - Now for a Demo of this
+
+So now I am going to want to test out this house model by setting up a scene, and maybe at least one more attentional mesh that will serve as the ground of an over all larger scene. When it comes to really using this I will want to have at least a few more mesh objects, and models like this including a person model, but maybe that is all a matter for another post.
 
 ```js
 var scene = new THREE.Scene();
