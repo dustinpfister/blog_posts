@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 11:52:56
-version: 1.1
+updated: 2021-04-23 12:00:19
+version: 1.2
 ---
 
-Today I thought I would make another [threejs](https://threejs.org/) eample type post, this time by making yet another simple model of something.
+Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house.
 
 <!-- more -->
 
