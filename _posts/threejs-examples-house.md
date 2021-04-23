@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:52:23
-version: 1.13
+updated: 2021-04-23 12:55:28
+version: 1.14
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
@@ -27,7 +27,7 @@ So now for the house module where I will be pulling all the javaScript code that
 
 I then have a house triangle helper method that makes use of the Buffer Geometry constructor to create just a single triangle that I will be using to built part of the house. You see I think the basic idea here is that I will be using a three.js built in Box Geometry constructor to create he base of the house, and use the plane Geometry constructor to create the roof. However I am then going to need some triangle areas to fill in the gaps on each side, so then this is where this helper comes into play.
 
-I then have the create method of the module which as of this writing is the one and only public method of the model. I am not thinking that a model like this will be needing some kind of update method. If I am going to make some kind of weird animation in which a house is something that ends up becoming very animated maybe I will cross that bride when and if I come to it.
+I then have the create method of the module which as of this writing is the one and only public method of the model. I am not thinking that a model like this will be needing some kind of update method. If I am going to make some kind of weird animation in which a house is something that ends up becoming very animated maybe I will cross that bride when and if I come to it. Anyway in this create method I am using the THREE.Group constructor to create a group that will contain all the mesh objects for this model. I am using a Box Geometry for the base of the house, meshes that make use of the plane geometry for parts of the roof. I am then also using my Triangle helper to create th mesh objects that I need to fill in the gaps between the base and the roof.
 
 ```js
 (function (HouseMod) {
