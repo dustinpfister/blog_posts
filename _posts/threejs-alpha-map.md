@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2021-04-23 16:09:03
-version: 1.10
+updated: 2021-04-23 16:22:11
+version: 1.11
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -25,7 +25,9 @@ When I first wrote this post I was using three.js version r104, and the last tim
 
 ## 2 - Alpha map example in three js
 
-So for a basic example of an alpha map in three js I have this example that makes used of a texture that is created from a canvas element. I just create a canvas and then make gray scale areas of the canvas, I then used the THREE.CanvasTexture constructor to create a texture that I can then use with the alpha map property of a material that supports alpha maps such as the Mesh basic Material.
+So for a basic example of an alpha map in three js I have this example that makes used of a texture that is created from a canvas element. I just create a canvas and then make gray scale areas of the canvas by using the 2d drawing context. When drawing to the canvas any area that I draw as black will end up being totally transparent, and any area that is white will be fully opaque, shads of gray then set values between the two extreams. 
+
+I then used the THREE.CanvasTexture constructor to create a texture that I can then use with the alpha map property of a material that supports alpha maps such as the Mesh basic Material.
 
 ```js
 var scene = new THREE.Scene();
@@ -33,7 +35,7 @@ var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1, 1.3, 1);
 camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
  
 // creating a texture with canvas
@@ -52,7 +54,7 @@ ctx.fillStyle = '#f0f0f0';
 ctx.fillRect(32, 32, 32, 32);
 var texture = new THREE.CanvasTexture(canvas);
  
-// creating a mesh that is uing the Basic material
+// creating a mesh that is using the Basic material
 var mesh = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshBasicMaterial({
@@ -63,6 +65,9 @@ var mesh = new THREE.Mesh(
             // I also need to make sure the transparent
             // property is true
             transparent: true,
+            // even when opacity is one the alpha map will 
+            // still effect transparency this can just be used to set it even lower
+            opacity: 1,
             side: THREE.DoubleSide
         }));
 scene.add(mesh);
