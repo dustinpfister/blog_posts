@@ -5,15 +5,19 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2021-04-23 13:37:59
-version: 1.11
+updated: 2021-04-23 13:41:55
+version: 1.12
 ---
 
-In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from. Other options that I find myself using the most thus far include point lights, and ambient light.
+In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from. Other options that I find myself using the most thus far include point lights, and ambient light. 
 
 A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing as the light is coming from a certain direction to a certain target location, rather than just a base light intensity for all materials in a scene as is the case with ambient light. A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner.
 
 <!-- more -->
+
+## 1 - What to know first
+
+The subject of light is a little involves with three.js, but should not be to hard to do for most javaScript developers that have some experience. On top of adding a light source to a scene of course you need to know how to even get that far first when it comes to the very basics of getting started with three.js. Beyond knowing how to add a light source it is also required to know that not all materials will respond to light such as the basic and normal materials. When I work with light I often go with the standard material, but there are some additional options when it comes to materials.
 
 ## 1 - Directional Light threejs example
 
