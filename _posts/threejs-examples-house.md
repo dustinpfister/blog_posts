@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:07:23
-version: 1.5
+updated: 2021-04-23 12:08:56
+version: 1.6
 ---
 
 Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
@@ -167,5 +167,5 @@ loop();
 
 ## 3 - Conclusion
 
-So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project.
+So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project. I am not interested in making games with three.js at this time, I think a project like that would end up eating up to much time, however simple crude animations might work it I am willing to put in enough time.
 
