@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:00:19
-version: 1.2
+updated: 2021-04-23 12:03:01
+version: 1.3
 ---
 
-Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house.
+Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project.
 
 <!-- more -->
 
