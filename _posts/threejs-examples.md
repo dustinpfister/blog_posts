@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-04-23 12:21:57
-version: 1.10
+updated: 2021-04-23 12:24:39
+version: 1.11
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -18,6 +18,8 @@ There is the official set of [threejs examples](https://threejs.org/examples/) t
 <!-- more -->
 
 ## [ 1 - A Basic Framework](/2021/04/20/threejs-examples-basic-framework/)
+
+This example aims to be the start of a basic framework that I might use on top of three.js. Every time I start a new three.js project, or even just a simple example there is a lot of code that I find myself repeating over and over again. So it would make sense to pull some of this code into a collection of reusable functions, and maybe make this collection of functions part of an over all larger project.
 
 ## [ 2 - A Biplane Example](/2021/02/17/threejs-examples-biplane/)
 
