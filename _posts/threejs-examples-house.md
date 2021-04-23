@@ -5,15 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 852
-updated: 2021-04-23 12:04:40
-version: 1.4
+updated: 2021-04-23 12:07:23
+version: 1.5
 ---
 
-Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other simular objects that can then be used to make some kind of crude animation.
+Today I thought I would make another [threejs example](/2021/02/19/threejs-examples/) type post, this time by making yet another simple model of something, this time of a basic house. I do not care to make anything that complex with this one just a very simple, basic house like model that might end up being part of a larger scene of some kind if a future project. My general idea that I have in mind is that if I make enough of these kinds of models I can use them to make an over all larger scene that will include a house model like this, along with some trees, cars, people and other similar objects that can then be used to make some kind of crude animation.
 
 <!-- more -->
 
-## 1 - The House Module
+## 1 - What to know before continuing with this Three.js house model
+
+## 2 - The House Module
 
 ```js
 (function (HouseMod) {
@@ -93,7 +95,7 @@ Today I thought I would make another [threejs example](/2021/02/19/threejs-examp
     (this['HouseMod'] = {}));
 ```
 
-## 2 - Demo
+## 3 - Now for a Demo of this
 
 ```js
 var scene = new THREE.Scene();
@@ -162,4 +164,8 @@ var loop = function () {
 };
 loop();
 ```
+
+## 3 - Conclusion
+
+So this is not much to look at for now, but as I make more models like this I think I will eventually start something where I am working with a bunch of models like this to produce an over all larger project.
 
