@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2019-06-05 21:00:41
-version: 1.7
+updated: 2021-04-23 13:29:21
+version: 1.8
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) with is one of several types of light to choose from. A directional light is like ambient light in the sense that it is a good way to go about simulating day light, but it is not the same thing as the light is coming from a certain direction to a certain target location, rather than just a base light intensity for all materials in a scene as is the case with ambient light. A directional light is also like a spot light in the sense that it is coming from a certain location to a certain target location, but not in a cone like manner.
@@ -88,3 +88,73 @@ loop();
 ```
 
 Changing the position of the directional light is just on f two points of interest when it comes to changing the direction of the light. The other point of interest is the target property of the directional light that can also be changed to something other than the default as well.
+
+## 3 - Very basic house example with vase AmbientLight and shadows
+
+So I am thinking that directional light might be one of the best choices when it comes to simulating sunlight. Still I think that I might only want to use directional light in conjunction with at least one additional light source such as ambient light.
+
+```js
+var scene = new THREE.Scene();
+
+// directional light
+var dl = new THREE.DirectionalLight(0xffffff, 1);
+dl.castShadow = true;
+scene.add(dl);
+ 
+dl.shadow.mapSize.width = 256;
+dl.shadow.mapSize.height = 256;
+dl.shadow.camera.near = 0.5;
+dl.shadow.camera.far = 15;
+ 
+// add AmbientLight
+var light = new THREE.AmbientLight(0xffffff);
+light.intensity = 0.1;
+scene.add(light);
+ 
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(7, 10, 7);
+camera.lookAt(0, 0, 0);
+ 
+var renderer = new THREE.WebGLRenderer();
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var materials = {
+    house_sides: new THREE.MeshStandardMaterial({
+        color: 0xffffff
+    }),
+    ground: new THREE.MeshStandardMaterial({
+        color: 0x00ff00
+    })
+};
+ 
+var house = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), materials.house_sides);
+house.position.y = 1;
+house.castShadow = true; //default is false
+house.receiveShadow = false; //default
+scene.add(house);
+ 
+var plane = new THREE.Mesh(new THREE.PlaneGeometry(12, 12, 8), materials.ground);
+plane.rotation.set(-Math.PI / 2, 0, 0);
+plane.castShadow = false; //default is false
+plane.receiveShadow = true; //default
+scene.add(plane);
+ 
+// Loop in which the directional light position changes
+var frame = 0,
+maxFrame = 100;
+var loop = function () {
+    setTimeout(loop, 33);
+    var per = frame / maxFrame,
+    r = Math.PI * 2 * per;
+ 
+    // change directional light position
+    dl.position.set(Math.cos(r) * 5, 5, Math.sin(r) * 5 );
+ 
+    frame = (frame + 1) % maxFrame;
+    renderer.render(scene, camera);
+};
+loop();
+```
