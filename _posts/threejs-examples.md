@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-04-23 12:41:29
-version: 1.13
+updated: 2021-04-23 12:44:52
+version: 1.14
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -38,6 +38,8 @@ This is just a Basic clock example which is another kind of example that I like 
 This is a fun example that I made that is a human sized hamster wheel, and I placed a simple person model inside the hamster wheel. This is one that I keep coming back to now and then because I can help but feel that I am expressing something that is very relatable for many people here.
 
 ## [ 6 - House](/2021/04/23/threejs-examples-house/) 
+
+This one is just a simple house model that I might use in one or more additional examples as a way to built and over all scene of some kind. This one alone can be made in all kinds of different ways, some to be used just to add an out door scene, others might be more of an actual full scale house model complete with interior. However this one aims to just be a very basic starting point for this kind of thing.
 
 ## [ 7 - Land Sections](/2021/02/15/threejs-examples-land-sections/) 
 
