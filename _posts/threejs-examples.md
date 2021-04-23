@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-04-23 12:24:39
-version: 1.11
+updated: 2021-04-23 12:25:51
+version: 1.12
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -34,6 +34,8 @@ This is another example of a model but this time around I experimented with crea
 This is just a Basic clock example which is another kind of example that I like to make when working with a new framework like threejs or any kind of canvas framework. Clocks are nice because they are generally easy to make, but yet there is also still all kinds of room for improvement when it comes to going in a new and interesting direction with it.
 
 ## [ 5 - Hamster Wheel](/2021/04/19/threejs-examples-hamster-wheel/) 
+
+This is a fun example that I made that is a human sized hamster wheel, and I placed a simple person model inside the hamster wheel.
 
 ## [ 6 - House](/2021/04/23/threejs-examples-house/) 
 
