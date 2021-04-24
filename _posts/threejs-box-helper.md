@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-04-24 15:11:17
-version: 1.11
+updated: 2021-04-24 16:46:50
+version: 1.12
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter.
@@ -56,7 +56,7 @@ var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(6, 6, 6);
 camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
  
 var mesh1 = new THREE.Mesh(
@@ -112,3 +112,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 3 - Conclusion
+
+The box helper is then one of several kinds of helpers that can be used to gain a sense of what is going on with a three.js project. The box helper will help to gain insight as to what is going on with an area, but it will not help to shed light on what is going on in terms of directions. So then another useful helper is the arrow helper that can be used to know which way is what in a scene.
