@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-04-24 16:46:50
-version: 1.12
+updated: 2021-04-24 17:32:51
+version: 1.13
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter.
@@ -113,6 +113,49 @@ var loop = function () {
 loop();
 ```
 
-## 3 - Conclusion
+## 3 - A Box helper can be used with a group
+
+I often like to use groups when working out a three.js project, they are a great way of making a few meshes all part of a given area. I can then move and rotate this collection of mesh objects just like that of a single mesh object. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single  mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
+
+```js
+// create a GROUP
+var group = new THREE.Group();
+ 
+// add a Sphere to the group
+var sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 30, 30), 
+    new THREE.MeshNormalMaterial());
+group.add(sphere);
+// add a Box to the group
+var box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1), 
+    new THREE.MeshNormalMaterial());
+box.position.set(2,0,0);
+group.add(box);
+ 
+// add a BOX HELPER for the GROUP
+var helper = new THREE.BoxHelper(group, 0xffffff);
+group.add(helper);
+ 
+// Once the helper is added I can then change the position
+group.position.set(0,-1,0);
+group.rotation.set(-1,1.57,2);
+ 
+// start a scene
+var scene = new THREE.Scene();
+// add the GROUP to the scene
+scene.add(group);
+ 
+// everything else
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 4 - Conclusion
 
 The box helper is then one of several kinds of helpers that can be used to gain a sense of what is going on with a three.js project. The box helper will help to gain insight as to what is going on with an area, but it will not help to shed light on what is going on in terms of directions. So then another useful helper is the arrow helper that can be used to know which way is what in a scene.
