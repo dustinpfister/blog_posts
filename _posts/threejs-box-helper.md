@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-04-24 14:59:16
-version: 1.9
+updated: 2021-04-24 15:08:59
+version: 1.10
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter.
@@ -17,29 +17,31 @@ The box can be moved and rotated just like many other objects in three js, and i
 
 ## 1 - Box helper basic example in threejs
 
-A basic example of a box helper in three js might involve just calling the THREE.BoxHelper constructor by calling that constructor, and then passing the object that is to be boxed in with the helper in as the first argument. A second argument can then also be used to set the color of the box helper lines. Once the instance of the box helper is created it just needs to be added to the scene, or to a group or object that is in the scene of course, such as in this example right here.
+A basic example of a box helper in three js might involve just calling the THREE.BoxHelper constructor by calling that constructor, however in order to do that I will first need something to use th box helper with. So to start off this example of the box helper I will first want something that inherits from the object3d class such as a mesh. With that said I will need a basic mesh consisting of some kind of geometry and a material, nothing fancy. So I just created a sphere geometry and used that with the normal material which does not require a light source to help keep things simple and to the point here.
+
+
+A second argument can then also be used to set the color of the box helper lines. Once the instance of the box helper is created it just needs to be added to the scene, or to a group or object that is in the scene of course, such as in this example right here.
 
 ```js
+// a mesh
+var mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 30, 30), 
+    new THREE.MeshNormalMaterial());
+// add a box helper
+mesh.add(new THREE.BoxHelper(mesh, 0xffffff));
+
+// start a scene
 var scene = new THREE.Scene();
+// add the mesh to the scene
+scene.add(mesh);
+
+// everything else
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
- 
-var mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 30, 30), new THREE.MeshStandardMaterial({
-            color: 0xff0000
-        }));
-// add a box helper
-mesh.add(new THREE.BoxHelper(mesh, 0xffffff));
-scene.add(mesh);
- 
-// light
-var light = new THREE.PointLight(0xffffff);
-light.position.set(0,2,2);
-scene.add(light);
- 
 renderer.render(scene, camera);
 ```
 
