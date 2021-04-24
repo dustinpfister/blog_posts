@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-04-24 15:08:59
-version: 1.10
+updated: 2021-04-24 15:11:17
+version: 1.11
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter.
@@ -19,8 +19,7 @@ The box can be moved and rotated just like many other objects in three js, and i
 
 A basic example of a box helper in three js might involve just calling the THREE.BoxHelper constructor by calling that constructor, however in order to do that I will first need something to use th box helper with. So to start off this example of the box helper I will first want something that inherits from the object3d class such as a mesh. With that said I will need a basic mesh consisting of some kind of geometry and a material, nothing fancy. So I just created a sphere geometry and used that with the normal material which does not require a light source to help keep things simple and to the point here.
 
-
-A second argument can then also be used to set the color of the box helper lines. Once the instance of the box helper is created it just needs to be added to the scene, or to a group or object that is in the scene of course, such as in this example right here.
+Once I have my mesh object I can then pass that object as the first argument for the THREE.BoxHelper constructor, a second argument can then also be used to set the color of the box helper lines. Once the instance of the box helper is created it just needs to be added to the scene, or to a group or object that is in the scene. In this example I am adding the box helper to the mesh which also works.
 
 ```js
 // a mesh
