@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-04-25 10:16:06
-version: 1.10
+updated: 2021-04-25 10:23:14
+version: 1.11
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -25,8 +25,18 @@ The cone Geometry constructor can accept a few arguments, just like the box and 
 
 ```js
 (function () {
+ 
+    // CONE
+    var coneGeo = new THREE.ConeGeometry(1, 7),
+    coneMaterial = new THREE.MeshStandardMaterial({
+            color: 0x00ff00
+        }),
+    cone = new THREE.Mesh(coneGeo, coneMaterial);
+ 
     // SCENE
     var scene = new THREE.Scene();
+    // add cone to the scene
+    scene.add(cone);
     // CAMERA
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(8, 8, 8);
@@ -35,14 +45,6 @@ The cone Geometry constructor can accept a few arguments, just like the box and 
     scene.add(camera);
     var light = new THREE.PointLight(0xffffff);
     camera.add(light);
- 
-    // CONE
-    var cone = new THREE.ConeGeometry(1, 7),
-    material = new THREE.MeshStandardMaterial({
-            color: 0x00ff00
-        }),
-    mesh = new THREE.Mesh(cone, material);
-    scene.add(mesh);
  
     // RENDER
     var renderer = new THREE.WebGLRenderer();
