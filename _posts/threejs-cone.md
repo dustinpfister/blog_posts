@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-04-25 10:40:35
-version: 1.13
+updated: 2021-04-25 10:44:35
+version: 1.14
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -56,7 +56,21 @@ The cone Geometry constructor can accept a few arguments, just like the box and 
     ());
 ```
 
-## 3 - Making a half cone
+## 3 - Cone Segments
+
+The first two arguments that the most important when it comes to creating a cone shape, so they of course come first. However there are a few additional arguments that are also of importance when making a cone shape, such as setting the number of segments relative to the base of the circle, and the length of the code. With that said, the next two arguments can be used to do just that.
+
+```js
+var coneGeo = new THREE.ConeGeometry(2, 4,
+        60 // radian segments,
+        20 // height segments),
+coneMaterial = new THREE.MeshStandardMaterial({
+        color: 0x00ff00
+    }),
+cone = new THREE.Mesh(coneGeo, coneMaterial);
+```
+
+## 4 - Making a half cone
 
 To make a half cone I just need to use the last to arguments that are given to the cone geometry constructor that can be used to set a starting and ending angle for the base arc of the cone. So then this example will make use of all of the arguments that can be used when creating a cone geometry.
 
@@ -83,7 +97,7 @@ To make a half cone I just need to use the last to arguments that are given to t
     scene.add(mesh);
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So the cone geometry constructor is yet another basic tool in the toolbox when it comes to quickly creating basic geometries in three.js. The various arguments can be tweaked to create other typical shapes also of course. For example to make a four sided pyramid I just need to set a value of 4 for the radial segments argument.
 
