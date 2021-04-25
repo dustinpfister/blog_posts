@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2019-07-31 18:23:03
-version: 1.4
+updated: 2021-04-25 09:51:13
+version: 1.5
 ---
 
-When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes. One of these is the cone geometry constructor.
+When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
 
 <!-- more -->
 
