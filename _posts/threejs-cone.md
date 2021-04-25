@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-04-25 10:46:51
-version: 1.15
+updated: 2021-04-25 10:50:59
+version: 1.16
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -103,5 +103,5 @@ To make a half cone I just need to use the last to arguments that are given to t
 
 So the cone geometry constructor is yet another basic tool in the toolbox when it comes to quickly creating basic geometries in three.js. The various arguments can be tweaked to create other typical shapes also of course. For example to make a four sided pyramid I just need to set a value of 4 for the radial segments argument.
 
-The next step with the cone geometry constructor would be to move on to making some kind of actual project of some kind with it rather than just a few quick simple hello world type examples. That of course is where things will start to get a little fun of course. One simple, basic project that I have started is a crude tree model that makes use of the cone geometry constructor along with the group constructor to make a simple tree model.
+The next step with the cone geometry constructor would be to move on to making some kind of actual project of some kind with it rather than just a few quick simple hello world type examples. That of course is where things will start to get a little fun as simple examples like this can get boring at first, but it is a necessary step to get to working on something real. One simple, basic project that I have started is a crude [tree model that makes use of the cone geometry constructor](/2019/07/30/threejs-examples-tree/) along with the group constructor to make a simple tree model. This is just one of my mainly [three.js examples](/2021/02/19/threejs-examples/) that I have at least started, and might come back to at some point.
 
