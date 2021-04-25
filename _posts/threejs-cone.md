@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-04-25 10:04:13
-version: 1.8
+updated: 2021-04-25 10:07:18
+version: 1.9
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -21,7 +21,7 @@ this is a post on a built in geometry constructor in three js that can be used w
 
 ## 2 - Three js geometry cone basic example
 
-The cone Geometry constructor can accept a few arguments, just like the box and sphere constructors. However just the first two are the most important when it comes to a basic example of the cone geometry constructor at least. The first one is the radius of the base of the cone and then second is the height or length of the cone from the base to the tip.
+The cone Geometry constructor can accept a few arguments, just like the box and sphere constructors. However just the first two are the most important when it comes to a basic example of the cone geometry constructor at least. The first one is the radius of the base of the cone and then second is the height or length of the cone from the base to the tip. The additional arguments might need to be used in a few cases here and there, but for the most part those are the two parameters that are most important so for a basic example I will be starting out with something where those tow are used, and everything else will be left to hard coded defaults.
 
 ```js
 (function () {
