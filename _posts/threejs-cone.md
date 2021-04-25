@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-04-25 10:30:59
-version: 1.12
+updated: 2021-04-25 10:40:35
+version: 1.13
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -71,7 +71,7 @@ To make a half cone I just need to use the last to arguments that are given to t
             5, // height
             4, //radial segments,
             1, // height segments
-            false, // open ended or capped
+            false, // open ended or capped, false means capped
             0, // start angle
             Math.PI // angle length from start
         );
@@ -85,5 +85,7 @@ To make a half cone I just need to use the last to arguments that are given to t
 
 ## 4 - Conclusion
 
-So the cone geometry constructor is yet another basic tool in the toolbox when it comes to quickly creating basic geometries in three.js.
+So the cone geometry constructor is yet another basic tool in the toolbox when it comes to quickly creating basic geometries in three.js. The various arguments can be tweaked to create other typical shapes also of course. For example to make a four sided pyramid I just need to set a value of 4 for the radial segments argument.
+
+The next step with the cone geometry constructor would be to move on to making some kind of actual project of some kind with it rather than just a few quick simple hello world type examples. That of course is where things will start to get a little fun of course. One simple, basic project that I have started is a crude tree model that makes use of the cone geometry constructor along with the group constructor to make a simple tree model.
 
