@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 16:53:05
-version: 1.26
+updated: 2021-04-26 16:55:28
+version: 1.27
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -266,6 +266,8 @@ All of the examples here make use of this create canvas texture helps method. In
 ```
 
 ### 5.2 - Basic color map example using the Basic Material
+
+If I do not want or need to do anything fancy with lighting, transparency and so forth I can just use the Basic material. The problem with using the basic material without a texture is that iw will end up being a solid mass of color, and because the basic material does not respond to a light source there is no way of showing some depth for the cube, unless a color map is used.
 
 ```js
 var colorMap = utils.createCanvasTexture(function (ctx, canvas) {
