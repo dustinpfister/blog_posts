@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 16:05:48
-version: 1.20
+updated: 2021-04-26 16:06:44
+version: 1.21
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the Box Geometry Constructor. I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -52,7 +52,7 @@ renderer.render(scene, camera);
 
 ## 3 - Position and rotation
 
-Once that basic hello world cube example is up and running, the first thing I remember wanting to do next was to learn how to rotate and move the box. This is more so a subject of the Mesh Class than the Box Geometry Constructor, and even then it is really more of a subject of the Object3d class from which the Mesh Class inherits from. With that said reading up more on the Mesh Class and really Object3d would be best, but for the hell of it I will cover an example of this here.
+Once that basic hello world cube example is up and running, the first thing I remember wanting to do next was to learn how to rotate and move the box. This is more so a subject of the Mesh Class than the Box Geometry Constructor, and even then it is really more of a subject of the [Object3d class](/2018/04/23/threejs-object3d/) from which the Mesh Class inherits from. With that said reading up more on the Mesh Class and really Object3d would be best, but for the hell of it I will cover an example of this here.
 
 The two properties of interest here are the rotation property and position properties of the mesh when creating a box with the Box Geometry constructor and a material. The rotation property is an instance of [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler), and the position property is an instance of [THREE.Vector3](/2018/04/15/threejs-vector3/). With that said it would be best to look into each of these classes in detail to know everything there is to work with them. However the main methods of interest with both of these classes are the set and copy methods.
 
