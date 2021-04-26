@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 16:55:28
-version: 1.27
+updated: 2021-04-26 16:58:18
+version: 1.28
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -287,6 +287,47 @@ var box = new THREE.Mesh(
         }));
 var scene = new THREE.Scene();
 scene.add(box);
+ 
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+renderer.render(scene, camera);
+```
+
+### 5.3 - Using the standard material and a light source
+
+The basic material works okay if I just want to have a color map, and I do not want to bother with light at all. However when it does come to working with light I will want to use a material that will respond to a light source. There are a few options when it comes to this kind of material, however I often like to go with the standard material.
+
+```js
+var colorMap = utils.createCanvasTexture(function (ctx, canvas) {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.rect(1, 1, canvas.width - 2, canvas.height - 2);
+        ctx.stroke();
+    });
+ 
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        // using the standard material
+        new THREE.MeshStandardMaterial({
+            map: colorMap
+        }));
+var scene = new THREE.Scene();
+scene.add(box);
+ 
+var sun = new THREE.Mesh(
+        new THREE.SphereGeometry(1),
+        new THREE.MeshBasicMaterial());
+sun.add(new THREE.PointLight(0xffffff, 1));
+sun.position.set(2, 8, 4);
+scene.add(sun);
  
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
 camera.position.set(1, 1, 1);
