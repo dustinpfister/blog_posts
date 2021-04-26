@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 17:00:25
-version: 1.29
+updated: 2021-04-26 17:04:25
+version: 1.30
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -242,6 +242,8 @@ loop();
 ## 5 - Canvas Generated Textures, maps, light, and light responding materials.
 
 Now it is time to get into something fun with a simple cube in three.js using the Box Geometry Constructor for the geometry. In this section I will be creating textures using canvas elements, and then use the state of those canvas elements to create textures for the various kind of maps when it comes to skinning faces of a cube.
+
+To create a canvas texture I am first going to have a canvas element, and something drawn to it to use as a texture. This is of course a topic that is beyond the scope of this post. I have my [getting started post on canvas elements](/2017/05/17/canvas-getting-started/) that might be a good starting point if you are new to canvas, and I have also made a number of canvas example type posts that might also be worth checking out on this topic.
 
 ### 5.1 - First off the Create Canvas texture helper
 
