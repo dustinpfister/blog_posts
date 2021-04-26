@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2021-04-26 16:16:35
-version: 1.18
+updated: 2021-04-26 16:19:26
+version: 1.19
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with.
@@ -223,4 +223,6 @@ Another class of interest that you should at least be aware of is [vector3](http
 There is a lot more to write about, but because this is just a getting started post, I thought I would just stick to writing about some of the most important aspects of three.js that one needs to be aware of in order to get anything done at all. 
 
 I First wrote this post back in April of 2018, and as of this writing it is now April of 2021, much has changed with three.js sense then and with that said I will continue to update this post now and then when I get some time to do so. As my content on three.js grows, and treat this as a good starting point to other posts of interest on three.js as I tinker with three.js more.
-If you are still fairly new to three.js but have some of the basics worked out maybe it would be a good idea to work out a whole bunch of examples where you are just using the Box Geometry Constructor. There is not just having a Cube on the screen, but doing a whole word of things with that cube. For example there is moving it, rotating it, using an array of materials rather than just one, changing what the index values are for those materials, doing things with light and shadow and so forth. With that said maybe my post on the Box Geometry Constructor will be a good next step from here.
+If you are still fairly new to three.js but have some of the basics worked out maybe it would be a good idea to work out a whole bunch of examples where you are just using the Box Geometry Constructor. There is not just having a Cube on the screen, but doing a whole word of things with that cube. For example there is moving it, rotating it, using an array of materials rather than just one, changing what the index values are for those materials, doing things with light and shadow and so forth. With that said maybe [my post on the Box Geometry Constructor](/2021/04/26/threejs-getting-started/) will be a good next step from here.
+
+In the long run thought of course what really needs to happen sooner or later is to start making one or two real examples using three.js. That is some kind of game or animation type thing typically, so with that said maybe another step forward would be to [look at some of my basic project examples](/2021/02/19/threejs-examples/).
