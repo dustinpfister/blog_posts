@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 14:46:04
-version: 1.10
+updated: 2021-04-26 14:47:14
+version: 1.11
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the Box Geometry Constructor. I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -116,7 +116,7 @@ loop();
 
 ### 3.2 - Using an array of materials more or less than six
 
-When using an array of materials that is more or less than six chances are that I am going to want to change what the material index values are for the Box Geometry.
+When using an array of materials that is more or less than six chances are that I am going to want to change what the material index values are for the Box Geometry. To do this I just need to loop over the groups array of the box geometry and set the material index values for each group t the desired index value in the array of the materials.
 
 ```js
 // the array of materials that is only two materials
