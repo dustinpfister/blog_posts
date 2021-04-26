@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 15:29:35
-version: 1.15
+updated: 2021-04-26 15:54:40
+version: 1.16
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the Box Geometry Constructor. I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -50,13 +50,76 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 3 - Using an Array of Materials
+## 3 - Position and rotation
+
+Once that basic hello world cube example is up and running, the first thing I remember wanting to do next was to learn how to rotatate and move the box.
+
+```js
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+var scene = new THREE.Scene();
+scene.add(box);
+ 
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var lt = new Date(),
+state = {
+    frame: 0,
+    maxFrame: 100,
+    per: 0,
+    bias: 0,
+    radian: 0,
+    r: new THREE.Euler(0, 0, 0),
+    p: new THREE.Vector3(0, 0, 0)
+};
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+ 
+    requestAnimationFrame(loop);
+ 
+    state.per = state.frame / state.maxFrame;
+    state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
+    state.radian = Math.PI * 2 * state.bias;
+ 
+    state.p.z = -2 * Math.cos(Math.PI * 2 * state.bias);
+    state.p.x = -2 * Math.sin(Math.PI * 8 * state.bias);
+ 
+    // changing values
+    state.r.x += 1 * secs;
+    state.r.y += 2 * secs;
+    state.r.z += 3 * secs;
+ 
+    // copy the state of the THREE.Euler instance in the state object
+    // as the new rotation value of the box
+    box.rotation.copy(state.r);
+ 
+    // using the copy method for Vector3 also
+    box.position.copy(state.p);
+ 
+    renderer.render(scene, camera);
+ 
+    state.frame += 4 * secs;
+    state.frame %= state.maxFrame;
+ 
+    lt = now;
+};
+loop();
+```
+
+## 4 - Using an Array of Materials
 
 An Array of materials can be passed to the Mesh constructor rather than just a single material. When doing so by default I would want to pass an array of six materials, one for each face. However it is possible to pass less than six materials when doing this, it is just that when doing so I might want to change what the material index values are for the Box geometry. In this section I will be going over a few quick basic cube examples using the Box Geometry constructor and an array of materials. 
 
 For more on this kind of subject you might want to check out my post on [material index values when working with geometries and a array of materials with a mesh](/2018/05/14/threejs-mesh-material-index/). I do not care to get into this subject in depth here, but I think I should go over at least a few quick basic examples making use of just the box geometry.
 
-### 3.1 - Using an array of six materials
+### 4.1 - Using an array of six materials
 
 A property of interest when working with a buffer geometry as of late versions of three.js is the groups array of the geometry. This is, or at least should be an array of objects where each objects is a material index for a side, or face if you prefer of the geometry. When making a custom geometry this groups array will have to be created manually by making use of the add group method, however with the built in Box Geometry constructor this array should all ready be there.
 
@@ -118,7 +181,7 @@ var loop = function () {
 loop();
 ```
 
-### 3.2 - Using an array of materials more or less than six
+### 4.2 - Using an array of materials more or less than six
 
 When using an array of materials that is more or less than six chances are that I am going to want to change what the material index values are for the Box Geometry. To do this I just need to loop over the groups array of the box geometry and set the material index values for each group t the desired index value in the array of the materials.
 
@@ -172,7 +235,7 @@ var loop = function () {
 loop();
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So then the Box geometry is a great starting point when it comes to starting to explore everything that there is to work with when it comes to three.js. Much of what applies for a Box geometry will also apply for other built in geometries when it comes to geometries and the index values for a geometry. However sooner or later it might be called for to get into creating a custom geometry using the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) directly rather than using one of the built in geometries. However it is also possible to just create simple, crude, yet effective models of things using just groups of the built in geometry constructors such as the Box Geometry constructor.
 
