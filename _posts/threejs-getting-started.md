@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 167
-updated: 2021-04-22 14:46:11
-version: 1.16
+updated: 2021-04-26 16:11:47
+version: 1.17
 ---
 
 I have been wanting to write a series of posts on [three.js](https://threejs.org/) for a while now, and I do not care to put it off any longer. I have fiddled with three.js in the past, but never really got into it. I have enough experience with it to know that it helps making projects that involve 3d objects very easy, yet it is still something that takes a significant investment of time to get fairly solid with.
@@ -220,4 +220,6 @@ Another class of interest that you should at least be aware of is [vector3](http
 
 ## 11 - Conclusion
 
-There is a lot more to write about, but because this is just a getting started post, I thought I would just stick to writing about some of the most important aspects of three.js that one needs to be aware of in order to get anything done at all. I will likely update this post many times, as my content on three.js grows, and treat this as a good starting point to other posts of interest on three.js as I tinker with it more.
+There is a lot more to write about, but because this is just a getting started post, I thought I would just stick to writing about some of the most important aspects of three.js that one needs to be aware of in order to get anything done at all. 
+
+I First wrote this post back in April of 2018, and as of this writing it is now April of 2021, much has changed with three.js sense then and with that said I will continue to update this post now and then when I get some time to do so. As my content on three.js grows, and treat this as a good starting point to other posts of interest on three.js as I tinker with three.js more.
