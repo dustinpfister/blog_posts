@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 14:36:01
-version: 1.6
+updated: 2021-04-26 14:39:11
+version: 1.7
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the Box Geometry Constructor. I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -48,7 +48,9 @@ renderer.render(scene, camera);
 
 ## 3 - Using an Array of Materials
 
-An Array of materials can be passed to the Mesh constructor rather than just a single material. When doing so by default I would want to pass an array of six materials, one for each face. However it is possible to pass less than six materials when doing this, it is just that when doing so I might want to change what the material index values are for the Box geometry.
+An Array of materials can be passed to the Mesh constructor rather than just a single material. When doing so by default I would want to pass an array of six materials, one for each face. However it is possible to pass less than six materials when doing this, it is just that when doing so I might want to change what the material index values are for the Box geometry. In this section I will be going over a few quick basic cube examples using the Box Geometry constructor and an array of materials. 
+
+For more on this kind of subject you might want to check out my post on [material index values when working with geometries and a array of materials with a mesh](/2018/05/14/threejs-mesh-material-index/).
 
 ### 3.1 - Using an array of six materials
 
