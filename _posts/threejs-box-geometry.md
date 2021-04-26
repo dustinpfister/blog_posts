@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 16:58:18
-version: 1.28
+updated: 2021-04-26 17:00:25
+version: 1.29
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -301,6 +301,8 @@ renderer.render(scene, camera);
 ### 5.3 - Using the standard material and a light source
 
 The basic material works okay if I just want to have a color map, and I do not want to bother with light at all. However when it does come to working with light I will want to use a material that will respond to a light source. There are a few options when it comes to this kind of material, however I often like to go with the standard material.
+
+When it comes to using the standard material over the basic material the process is more or less the same as the basic material, when it comes to what it is that I do with the texture. Once again I am going to want to set the texture as the value for the map property of the material. However now nothing will show up, unless of course I use a light source. When it comes to light sources there are once again many options, however I often light to use the point light.
 
 ```js
 var colorMap = utils.createCanvasTexture(function (ctx, canvas) {
