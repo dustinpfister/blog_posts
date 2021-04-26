@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 16:11:47
-version: 1.23
+updated: 2021-04-26 16:49:00
+version: 1.24
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -239,7 +239,60 @@ var loop = function () {
 loop();
 ```
 
-## 5 - Conclusion
+## 5 - Canvas Generated Textures, maps, light, and light responding materials.
+
+### 5.1 - First off the Create Canvas texture helper
+
+```js
+(function (utils) {
+ 
+    utils.createCanvasTexture = function (draw, size) {
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = size || 32;
+        canvas.height = size || 32;
+        canvas.style.imageRendering = 'pixelated';
+        ctx.imageSmoothingEnabled = false;
+        draw(ctx, canvas);
+        return new THREE.CanvasTexture(canvas);
+    };
+ 
+}
+    (this['utils'] = {}));
+```
+
+### 5.2 - Basic color map example using the Basic Material
+
+```js
+var colorMap = utils.createCanvasTexture(function (ctx, canvas) {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = 'white';
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.rect(1, 1, canvas.width - 2, canvas.height - 2);
+        ctx.stroke();
+    });
+ 
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: colorMap
+        }));
+var scene = new THREE.Scene();
+scene.add(box);
+ 
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+renderer.render(scene, camera);
+```
+
+## 6 - Conclusion
 
 So then the Box geometry is a great starting point when it comes to starting to explore everything that there is to work with when it comes to three.js. Much of what applies for a Box geometry will also apply for other built in geometries when it comes to geometries and the index values for a geometry. However sooner or later it might be called for to get into creating a custom geometry using the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) directly rather than using one of the built in geometries. However it is also possible to just create simple, crude, yet effective models of things using just groups of the built in geometry constructors such as the Box Geometry constructor.
 
