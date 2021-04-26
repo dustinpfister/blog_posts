@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 14:49:27
-version: 1.12
+updated: 2021-04-26 14:53:21
+version: 1.13
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the Box Geometry Constructor. I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -171,3 +171,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 4 - Conclusion
+
+So then the Box geometry is a great starting point when it comes to starting to explore everything that there is to work with when it comes to three.js.
