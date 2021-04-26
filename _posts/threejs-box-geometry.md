@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-04-26 14:47:14
-version: 1.11
+updated: 2021-04-26 14:49:27
+version: 1.12
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the Box Geometry Constructor. I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -18,6 +18,10 @@ This will then be a basic post, or at least it will start out that way, for thos
 ## 1 - Box Geometry in thee.js and what to know first
 
 This is a post on the Box Geometry Constructor in three.js, and many little related topics that branch off from that. This is not a getting started post on three.js, but many of the examples here will be not so far beyond that point. So I assume that you know how to set up a basic client side javaScript project using three.js, and so forth.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I wrote this post I was using three.js r127, and many code breaking changes where made recently. Always take note of what version of three.js you are using.
 
 ## 2 - Basic Box Geometry example using Normal Material
 
