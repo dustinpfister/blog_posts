@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2021-04-27 09:17:25
-version: 1.11
+updated: 2021-04-27 09:19:07
+version: 1.12
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far. 
@@ -25,7 +25,7 @@ When I first wrote this post I was using r111 of three.js, and the last time I e
 
 ### 1.2 - You should really look into the Object3d class when it comes to movement of objects in general in three.js
 
-A camera in three.js inherits from a base class in three.js called [Object3d](/2018/04/23/threejs-object32/), which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects.
+A camera in three.js inherits from a base class in three.js called [Object3d](/2018/04/23/threejs-object32/), which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects. So my learning how to work with the Object32 class you in turn learn how to work with everything to which is built on top of Object3d which includes cameras.
 
 ## 2 - Basic threejs camera movement example that moves the camera via javaScript code
 
