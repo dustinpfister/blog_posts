@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-04-27 11:24:15
-version: 1.9
+updated: 2021-04-27 11:27:06
+version: 1.10
 ---
 
 The process of copying an object in javaScript can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as my post on [copying an array](/2020/09/03/js-array-copy/). However if I am making a threejs project and I want to copy a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance.
@@ -65,6 +65,8 @@ renderer.render(scene, camera);
 ## 3 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
 
 When copying a Mesh it is the Mesh that will be copied, but not the material that the mesh is using. This is what I would expect to happen, but never the less I should write a quick section about this away.
+
+If I take the above simple example of the mesh clone method and make use of the standard material rather than the normal material I can set a color value for the material when it comes to making the original. When I go to make clones of the original mesh properties that have to do with the mesh itself will of course be copied, so I can give new positions and rotations for example that will not effect the original and bis versa. However if I make a change to the material that will effect all mesh object as that is not being cloned.
 
 ```js
 // SCENE
