@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-04-27 11:46:03
-version: 1.13
+updated: 2021-04-27 11:47:47
+version: 1.14
 ---
 
 The process of copying an object in javaScript can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as my post on [copying an array](/2020/09/03/js-array-copy/). However if I am making a threejs project and I want to copy a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance.
@@ -188,4 +188,5 @@ renderer.render(scene, camera);
 
 ## 5 - Conclusion
 
-So then the Mesh clone method will indeed clone a mesh object, and also any children it might have. However that is it, the method will not deep clone everything when it comes to what might be going on with the geometry and material.
+So then the Mesh clone method will indeed clone a mesh object, and also any children it might have. However that is it, the method will not deep clone everything when it comes to what might be going on with the geometry and material. When I get some more time to work on this one I think I could stand to work out a few more examples on this topic. There is what the Mesh clone method does, and there is what the Mesh clone method does not do.
+
