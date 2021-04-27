@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2021-04-27 09:29:43
-version: 1.14
+updated: 2021-04-27 09:35:18
+version: 1.15
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far. 
@@ -31,11 +31,15 @@ The main property of interest with the Object3d class in the position property w
 
 All of these classes are worth looking into in depth in order to really know how to move things around, not just cameras but many objects in general.
 
-## 2 - Basic threejs camera movement example that moves the camera via javaScript code
+### 2 - You might want to check out the Three.js orbit controls, and other official controls first
+
+When it comes to moving a camera the first thing you might want to figure out is if you just want to move about in the scene using the mouse. I often use the Orbit Controls that are in the examples folder of the Three.js repository for many of my examples as a way to be able to have the basic typical movement right away. There are also a number of other options when it comes to official controls use in the official three.js examples, as well as many other useful libraries to work with in the examples folder.
+
+## 3 - Basic threejs camera movement example that moves the camera via javaScript code
 
 In this section I will be starting out with a basic threejs example that has to do with moving a camera. I pulled everything that has to do with moving the camera into a function to help keep things more fine grain with this kind of task, and for now it is a move camera method that is always looking at the origin of the scene.
 
-### 2.1 - A move camera method
+### 3.1 - A move camera method
 
 Here is the move camera method for this example. I made it so that I just have to pass a reference to the camera that I want to move, and then a percent value in the form of a value between zero. The percent value is what is used to set the position of the camera by making it so a radian value is set between 0 and PI2. This radians value is then used in additional expressions to find x y and z.
 
@@ -54,7 +58,7 @@ var moveCamera = function (camera, per) {
 };
 ```
 
-### 2.2 - Create a camera
+### 3.2 - Create a camera
 
 Now that I have a move camera method worked out I need to create a camera.
 
@@ -69,7 +73,7 @@ far = 1000,
 camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
 ```
 
-### 2.3 The rest of the example
+### 3.3 The rest of the example
 
 So then now I just need to work out the rest of the example when it comes to a scene, renderer, a mesh to look at, and a main app loop that makes use of the move camera method.
 
@@ -103,6 +107,6 @@ var loop = function () {
 loop();
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So moving a camera is more or less the same as moving anything else in three.js that inherits from the Object3d class by making use of the position and rotation properties of the object, and cameras are no exception.
