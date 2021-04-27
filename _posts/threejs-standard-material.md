@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-04-27 16:06:55
-version: 1.11
+updated: 2021-04-27 16:09:38
+version: 1.12
 ---
 
 A log time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) in threejs. When it comes to [mesh materials](/2018/04/30/threejs-materials/) in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps the standard material is maybe one of the best options to go with.
@@ -63,7 +63,7 @@ renderer.render(scene, camera);
 
 What is great about the standard material is that there are a lot of texture maps that can be used with the standard material. There is having a regular color map like that of the basic material, it is just that one needs to use a light source with it just like with the plain solid color setting. There are a number of ways to create a texture, typically I might want to load an external file to do so. However for these kinds of examples I like to go with some kind of solution that avoids bothering with external images by making use of a solution that involves using canvas elements and a little javaScript code.
 
-To create canvas textures I will want to use the canvas texture constructor in thee.js, but first I will need a canavs element with the desired texture drawn on it to pass to the constructor. The topic of working with canvas elements is beyond the scope of this post of course, however I have a [getting started post on canvas](/2017/05/17/canvas-getting-started/), as well as a lot of [canvas example](/2020/03/23/canvas-example/) type posts when it comes to learning how to work with canvas elements.
+To create canvas textures I will want to use the canvas texture constructor in thee.js, but first I will need a canvas element with the desired texture drawn on it to pass to the constructor. The topic of working with canvas elements is beyond the scope of this post of course, however I have a [getting started post on canvas](/2017/05/17/canvas-getting-started/), as well as a lot of [canvas example](/2020/03/23/canvas-example/) type posts when it comes to learning how to work with canvas elements.
 
 ```js
 (function (utils) {
@@ -144,6 +144,8 @@ loop();
 ```
 
 ## 4 - The emissive map and other related properties
+
+Now for one more map example this time using the emissve map option to make it so that the material will still show something at least even if there is not light at all. With the basic material there is just having a color map, but with the standard material the color map will only should up when there is some light. The functionally of the basic material color map can still show up though I just need to do so by having an emissve map.
 
 ```js
 (function (utils) {
