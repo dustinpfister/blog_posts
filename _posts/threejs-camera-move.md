@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2021-04-27 09:12:35
-version: 1.9
+updated: 2021-04-27 09:14:34
+version: 1.10
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far. 
@@ -18,6 +18,10 @@ So in this post I will be writing about some threejs examples that have to do wi
 ## 1 - Moving a camera in three.js and what to know first
 
 This is a post on how to move a camera in three.js a front end javaScript library that has to do with 3d modeling. This is not a getting started post on three.js, or javaScript in general so I assume that you have at least some background on this to get started with, otherwise you might have a hard time gaining something of value from reading this.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I first wrote this post I was using r111 of three.js, and the last time I edited this post I was using r127. Three.js is a fast moving target when it comes to development, at some point in the future these three.js examples might break become of this.
 
 ## 2 - Basic threejs camera movement example that moves the camera via javaScript code
 
