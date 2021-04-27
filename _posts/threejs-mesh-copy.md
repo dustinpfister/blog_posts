@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-04-27 10:51:23
-version: 1.7
+updated: 2021-04-27 10:53:08
+version: 1.8
 ---
 
 The process of copying an object in javaScript can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as my post on [copying an array](/2020/09/03/js-array-copy/). However if I am making a threejs project and I want to copy a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance.
@@ -18,6 +18,10 @@ So then this will be a quick post on the mesh clone method in threejs that can b
 ## 1 - What to know first before getting into copying a mesh
 
 This is a post on a method of the clone method of a THREE.Mesh class instance in three.js. As such you should have at least some background when it comes to the basics of getting started with three.js and client side javaScript in general. If not chnaces are you might not gain much of anything from reading this.
+
+### 1.1 - Version Numbers matter big time with three.js
+
+When I first write this post I was using r111 of three.js, and then last time I edited this post I was using r127.
 
 ## 2 - Mesh copy basic example
 
