@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2021-04-27 09:49:17
-version: 1.19
+updated: 2021-04-27 09:51:15
+version: 1.20
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far. 
@@ -62,7 +62,7 @@ var moveCamera = function (camera, per) {
 
 ### 3.2 - Create a camera
 
-Now that I have a move camera method worked out I need to create a camera.
+Now that I have a move camera method worked out I need to create a camera to pass to this helper function. When doing so there are a number of arguments to be aware of when using the perspective camera. There is the field of view, aspect ratio, and the near and far render settings for the camera.
 
 ```js
 // CAMERA
