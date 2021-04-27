@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-04-27 11:27:06
-version: 1.10
+updated: 2021-04-27 11:33:37
+version: 1.11
 ---
 
 The process of copying an object in javaScript can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as my post on [copying an array](/2020/09/03/js-array-copy/). However if I am making a threejs project and I want to copy a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance.
@@ -118,3 +118,6 @@ original.material.color.setRGB(0, 1, 0);
  
 renderer.render(scene, camera);
 ```
+
+So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to that color. The same will happen to the original when I change the color that way. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However I am sure that there are other ways of making it so each mesh has its own independent material while still using the same geometry.
+
