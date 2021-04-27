@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-04-27 11:33:37
-version: 1.11
+updated: 2021-04-27 11:44:38
+version: 1.12
 ---
 
 The process of copying an object in javaScript can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as my post on [copying an array](/2020/09/03/js-array-copy/). However if I am making a threejs project and I want to copy a mesh object then I just need to use the [clone method of a mesh](https://threejs.org/docs/#api/en/objects/Mesh.clone) instance.
@@ -121,3 +121,67 @@ renderer.render(scene, camera);
 
 So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to that color. The same will happen to the original when I change the color that way. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However I am sure that there are other ways of making it so each mesh has its own independent material while still using the same geometry.
 
+## 4 - Changes to the geometry will effect all the clone also
+
+The clone method of a mesh will just clone the mesh object and not the material, or the geometry. So just like with the material used by all clones, any change to the geometry of the original or any clone will also effect all copies.
+
+```js
+// SCENE
+var scene = new THREE.Scene();
+ 
+// CAMERA
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 6, 10);
+camera.lookAt(0, 0, 0);
+ 
+// RENDER
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.setSize(640, 480);
+ 
+// MESH original
+var original = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        // Now using an array of materials
+        [
+            new THREE.MeshStandardMaterial({
+                color: 'red'
+            }),
+            new THREE.MeshStandardMaterial({
+                color: 'lime'
+            }),
+            new THREE.MeshStandardMaterial({
+                color: 'blue'
+            })
+        ]);
+scene.add(original);
+ 
+// add a light source
+var sun = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 40, 40),
+        new THREE.MeshBasicMaterial());
+sun.add(new THREE.PointLight(0xffffff, 1));
+sun.position.set(8, 4, 2);
+scene.add(sun);
+ 
+// Mesh cloned a bunch of times from original
+var i = 0, mesh, rad, x, z;
+while (i < 10) {
+    mesh = original.clone();
+    // changes made to position and rotation to not effect original
+    rad = Math.PI * 2 * (i / 10);
+    x = Math.cos(rad) * 3;
+    z = Math.sin(rad) * 3;
+    mesh.position.set(x, 0, z);
+    mesh.lookAt(original.position);
+    scene.add(mesh);
+    i += 1;
+}
+ 
+// a change to the original geometry will effect all the clones
+original.geometry.groups.forEach(function (face, i) {
+    face.materialIndex = i % original.material.length;
+});
+ 
+renderer.render(scene, camera);
+```
