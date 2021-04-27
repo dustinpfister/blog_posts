@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2021-04-27 09:19:07
-version: 1.12
+updated: 2021-04-27 09:27:18
+version: 1.13
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far. 
@@ -26,6 +26,10 @@ When I first wrote this post I was using r111 of three.js, and the last time I e
 ### 1.2 - You should really look into the Object3d class when it comes to movement of objects in general in three.js
 
 A camera in three.js inherits from a base class in three.js called [Object3d](/2018/04/23/threejs-object32/), which is also the case with many other objects that will be part of a scene such as Mesh, Group objects, and many helper objects. So my learning how to work with the Object32 class you in turn learn how to work with everything to which is built on top of Object3d which includes cameras.
+
+The main property of interest with the Object3d class in the position property which is an instance of a class known as [Vector3](/2018/04/15/threejs-vector3/), which in turn is another class of interest that applies to many things in three.js when it comes to positions of things. The set method of an instance of this Vector3 class is one way to set the position of a camera when it comes to the position property. However there is also changing the orientation of the camera when doing so, for this there is the rotation property that is also part of the Object3d class. This rotation property is an instance of the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) which is like Vector3, only we are taking angles rather than a matrix position.
+
+All of these classes are worth looking into in depth in order to really know how to move things around, not just cameras but many objects in general.
 
 ## 2 - Basic threejs camera movement example that moves the camera via javaScript code
 
