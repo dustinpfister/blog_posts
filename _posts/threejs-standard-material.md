@@ -1,12 +1,12 @@
 ---
 title: The Standard Material in Threejs
-date: 2021-04-27 15:25:00S
+date: 2021-04-27 15:25:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-04-27 16:41:22
-version: 1.14
+updated: 2021-04-28 14:35:45
+version: 1.15
 ---
 
 A log time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) in threejs. When it comes to [mesh materials](/2018/04/30/threejs-materials/) in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps the standard material is maybe one of the best options to go with.
@@ -19,7 +19,7 @@ There are some additional materials that might be worth mentioning as contenders
 
 This is a post on the standard material in three.js that is used along with a geometry to skin a Mesh object that can then be added to a scene when making a three.js project. There is a great deal that you should be aware of before getting into the depth of what there is to know about when it comes to materials, so in other words this is not a getting started post on three.js let alone javaScript in general. So I assume that you have worked out at least a few basic examples of three.js and are not just looking into what the options are when it comes to skinning a mesh object.
 
-### 1.1 - Version Numers matter with three.js
+### 1.1 - Version Numbers matter with three.js
 
 When I wrote this post I was using r127 of three.js.
 
@@ -234,5 +234,5 @@ Another options when it comes to something like this is to use some ambient ligh
 
 ## 5 - Conclusion
 
-More often than not the standard material is my default go to material that I use with just about every project in which I start playing around with light. There is a great deal more to write about when it comes to the various kind of maps to work with when it comes to using this material. When it comes to getting more into the details of this material I might come around to edit this post, or write some new ones as I get around to it.
+More often than not the standard material is my default go to material that I use with just about every project in which I start playing around with light. There is a great deal more to write about when it comes to the various kind of maps to work with when it comes to using this material. When it comes to getting more into the details of this material I might come around to edit this post, or write some new ones as I get around to it. For now there is my main post on [mesh materials](/2018/04/30/threejs-materials/) in general in which I briefly go over most of the materials that are built into three.js.
 
