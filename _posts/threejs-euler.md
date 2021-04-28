@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2021-04-28 14:41:41
-version: 1.2
+updated: 2021-04-28 14:44:14
+version: 1.3
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js. For example the rotation property of the Object3d class is an instance of Euler, and the Object3d class is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras.
@@ -18,7 +18,7 @@ The Euler class goes hand in hand with the Vector3 Class as the Euler class has 
 
 ## 2 - Basic example of The Euler Class, and the copy method
 
-This will aim to be a basic getting started example of the Euler Class where I am creating an instance of THREE.Euler directly. Once I have an instance of Euler there is the question of what to do with it in a three.js example. With that said there is the copy method of a Euler instance that can be used to copy the state of one Euler Class to another.
+This will aim to be a basic getting started example of the Euler Class where I am creating an instance of THREE.Euler directly. Once I have an instance of Euler there is the question of what to do with it in a three.js example. With that said there is the copy method of a Euler instance that can be used to copy the state of one Euler Class to another. So in this example I am creating a Mesh with the Box Geometry Constructor and the Normal Material, and then making a few clones of the mesh. After that I am then using the copy method of the Euler instance that is located at the rotation property of the mesh objects to set some of them to the value that I have set with the single Euler Class instance.
 
 ```js
 // AN INSTANCE OF THREE.Euler
