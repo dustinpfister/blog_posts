@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2021-04-28 15:38:27
-version: 1.13
+updated: 2021-04-28 15:42:21
+version: 1.14
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/theejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras.
@@ -70,6 +70,8 @@ renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+For this example I am not doing anything fancy with an app loop, events, or anything to that effect. However the basic idea of what the Euler class is all about is there for what it is worth for starters. The copy method is one way to set the value of a Euler class instance such as the ones used for the rotation properties of these mesh clones as each one that I set with the Euler class instance that I made at the top is also rotated at a 45 degree angle. However maybe it would be a good idea to work out at least a few more examples that make use of the set method of the Euler class, and maybe a main app loop to start to make something interesting.
 
 ## 3 - Conclusion
 
