@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2021-04-28 16:30:57
-version: 1.17
+updated: 2021-04-28 16:35:19
+version: 1.18
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/theejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras.
@@ -131,7 +131,55 @@ loop();
 
 So then this is one way to go about rotating objects, but then there is also the set method that can also be used as a way to set the values of a Euler instance.
 
-## 4 - Conclusion
+## 4 - Using the set method
+
+On top of the properties of the Euler class instance there is also the set method that is another way to go about setting what the angles are for a Euler Class instance. For this I just call the set method of the Euler Instance and then pass and x, y, and z value as arguments in that order by default. A fourth argument can be used to set the order of these values, but the default setting is what I always seem to use for this.
+
+```js
+// a Mesh
+var meshA = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+// creating a scene
+var scene = new THREE.Scene();
+// add the box mesh to the scene
+scene.add(meshA);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var lt = new Date();
+var state = {
+    x: 0,
+    y: 0,
+    z: 0
+};
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs >= 0.075) {
+        lt = now;
+        state.x += 0.5 * secs;
+        state.y += 1.0 * secs;
+        state.z += 1.5 * secs;
+        state.x %= Math.PI * 2;
+        // USING EULER SET METHOD
+        meshA.rotation.set(state.x, state.y, state.z);
+        renderer.render(scene, camera);
+    }
+ 
+};
+ 
+loop();
+```
+
+## 5 - Conclusion
 
 The Euler Class is something that I work with all the time when it comes to rotating an object in three.js. There is mainly just knowing the set and clone methods of the Class and that is it. At least those two methods are the ones that I find myself actually using so far.
 
