@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2021-04-28 16:04:32
-version: 1.15
+updated: 2021-04-28 16:16:59
+version: 1.16
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/theejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras.
@@ -75,7 +75,7 @@ For this example I am not doing anything fancy with an app loop, events, or anyt
 
 ## 3 - The Euler x, y, and z props
 
-One way to rotate objects would be to use the x, y, and z properties of the Euler instance that is locaed in the roation projects of a Mesh, or anything that inherits from Object3d for that matter.
+One way to rotate objects would be to use the x, y, and z properties of the Euler instance that is located in the rotation projects of a Mesh, or anything that inherits from Object3d for that matter. This allows for a decent way to mutate values in place rather than setting them to a given set of values.
 
 ```js
 // a Mesh
