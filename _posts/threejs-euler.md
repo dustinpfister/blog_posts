@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 855
-updated: 2021-04-28 15:42:21
-version: 1.14
+updated: 2021-04-28 16:04:32
+version: 1.15
 ---
 
 In [three js](https://threejs.org/) there is the [Euler Class](https://threejs.org/docs/#api/en/math/Euler) that is the standard class in three.js that has to do with setting angles for the rotation of an object in three.js. For example the rotation property of the Object3d class is an instance of Euler, and the [Object3d class](/2018/04/23/theejs-object3d/) is a base Class for many objects in three.js including things like a Mesh, Groups, and Cameras.
@@ -73,7 +73,61 @@ renderer.render(scene, camera);
 
 For this example I am not doing anything fancy with an app loop, events, or anything to that effect. However the basic idea of what the Euler class is all about is there for what it is worth for starters. The copy method is one way to set the value of a Euler class instance such as the ones used for the rotation properties of these mesh clones as each one that I set with the Euler class instance that I made at the top is also rotated at a 45 degree angle. However maybe it would be a good idea to work out at least a few more examples that make use of the set method of the Euler class, and maybe a main app loop to start to make something interesting.
 
-## 3 - Conclusion
+## 3 - The Euler x, y, and z props
+
+One way to rotate objects would be to use the x, y, and z properties of the Euler instance that is locaed in the roation projects of a Mesh, or anything that inherits from Object3d for that matter.
+
+```js
+// a Mesh
+var meshA = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+// cloning ths mesh
+var box1 = meshA.clone(),
+box2 = meshA.clone(),
+box3 = meshA.clone();
+ 
+// adjusting positions
+box2.position.set(-1.5, 0, 0);
+box3.position.set(1.5, 0, 0);
+ 
+// creating a scene
+var scene = new THREE.Scene();
+ 
+// add the box mesh to the scene
+scene.add(box1);
+scene.add(box2);
+scene.add(box3);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(3, 3, 3);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var lt = new Date();
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs >= 0.075) {
+        lt = now;
+        // USING EULER XYZ PROPS
+        box2.rotation.x += 1 * secs;
+        box2.rotation.x %= Math.PI * 2;
+        box3.rotation.y += 1 * secs;
+        box3.rotation.y %= Math.PI * 2;
+        renderer.render(scene, camera);
+    }
+ 
+};
+ 
+loop();
+```
+
+## 4 - Conclusion
 
 The Euler Class is something that I work with all the time when it comes to rotating an object in three.js. There is mainly just knowing the set and clone methods of the Class and that is it. At least those two methods are the ones that I find myself actually using so far.
 
