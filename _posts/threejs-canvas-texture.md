@@ -5,11 +5,13 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-04-29 09:31:03
-version: 1.24
+updated: 2021-04-29 10:45:18
+version: 1.25
 ---
 
-So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It is with materials that textures come into play, when it comes to the various kinds of maps there are to work with, and one way to go about creating a texture is with a canvas element.
+So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so I thought that I should put and end to that today. In three.js I have a scene, and in that scene I place things like cameras, and other objects like a Mesh that is composed of a Geometry, and a Material. It is with these Materials for the most part that textures come into play. 
+
+When it comes to the various kinds of maps there are to work with in a material I need a texture to use with the map, and one way to go about creating a texture is with a canvas element. So canvas elements are a nice way to get started wit textures in three.js that involves just additional javaScript code rather than loading extremal binary image files. Maybe in the long run that is just what will need to happen if we are taking about a lot of textures, but if it is just a few, and I keep them low res, a canvas might still work okay. So then with just a little javaScript code I can start playing around with various types of maps in three.js such as a basic color map, emissive maps, alpha maps, and many more.
 
 When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. 
 
