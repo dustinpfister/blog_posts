@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2021-04-29 16:31:08
-version: 1.15
+updated: 2021-04-29 16:40:52
+version: 1.16
 ---
 
 In [three.js](https://threejs.org/) you might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a box, resulting in a background that is different for any given general direction in 3d space. You might also want to have that kind of texture placed over the surface of some kind of mesh as well. In three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture).
@@ -125,7 +125,11 @@ This results in a scene where I have the cube texture as the background, and I a
 
 ## 3 - Creating a Cube Texture with canvas elements
 
+In this section I will be quickly going over an example where I am using canvas elements as a way to create an image to use to create a cube texture. However this is just for the sake of showing that it can be done and that is it.
+
 ### 3.1 - A Canvas texture module
+
+I will want a canvas texture module that I often use when it comes to a project where I am using canvas elements to generate textures.
 
 ```js
 (function (canvasTextureMod) {
