@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2021-04-29 15:04:13
-version: 1.13
+updated: 2021-04-29 15:06:32
+version: 1.14
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -172,7 +172,7 @@ So then the whole idea is to just have a way to create an instance of one of the
 
 ## 3 - A Basic demo of the guy.js module
 
-Now to test out this guy model to see if things work out okay so far, and it would seem that they do for what it is worth.
+Now to test out this guy model to see if things work out okay so far, and it would seem that they do. Here I am creating not one, not two, but three instances of this guy model. For each guy model I am doing something a little different, where one is just shaking there head, another is moving there arms up and down, and another is being really animated in a few ways.
 
 ```js
 (function () {
