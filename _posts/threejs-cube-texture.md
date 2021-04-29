@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2018-05-10 21:36:24
-version: 1.9
+updated: 2021-04-29 16:05:14
+version: 1.10
 ---
 
 In [three.js](https://threejs.org/) you might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a box, resulting in a background that is different for any given general direction in 3d space. You might also want to have that kind of texture placed over the surface of some kind of mesh as well. In three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture).
@@ -15,17 +15,17 @@ A CubeTexture can be used with any property, of any material that makes use of a
 
 <!-- more -->
 
-## What to know before hand
+## 1 - What to know before hand
 
 This is not a post for people that are new to three.js. If you are new to three.js you might try starting with my [getting started post](/2018/04/04/threejs-getting-started/) on the subject. This is also not a post on the basics of javaScript, and all other related background that might be require to get to this point. There is a great deal to learn about three.js, I am going to be suing things like materials, and meshes in this post you might try bouncing around [my other posts on three.js](/categories/three-js/), and as always there is the [official site](https://threejs.org/)on three.js as well to check out other topics in further detail.
 
-## Having some images
+### 1.1 -  Having some images
 
 Before getting started making a cue texture one of the first things to work out is the images. I will need not just one, but six images, one for each side of a cube, thus the name cube texture. These should not just be any images also, they should be generated in a way in which they will work well for the intended purpose.
 
 Getting into how to go about making these images could prove to be a whole other post by itself. So for this post I will just be using one of the examples provided in the official three.js repository. The collection of examples can be found in the [examples/textures/cube](https://github.com/mrdoob/three.js/tree/r91/examples/textures/cube) folder of the repository.
 
-## The Cube Texture Loader
+### 1.2 - The Cube Texture Loader
 
 Although it is possible to work directly with the [CubeTexture constructor](https://threejs.org/docs/index.html#api/textures/CubeTexture), typical use will involve the [CubeTextureLoader](https://threejs.org/docs/index.html#api/loaders/CubeTextureLoader) that will give me an instance of CubeTexture.
 
@@ -63,7 +63,7 @@ The setPath method of the CubeTextureLoader instance can be used to set the base
 
 If desired a third argument can be used that will be the on progress method, and a final argument given can be an on error method.
 
-## Basic example of Cube Texture use
+## 2 - Basic example of Cube Texture use
 
 For a basic example of cube texture use I used the Cube Texture loader to load a set of images that compose a [cube mapping](https://en.wikipedia.org/wiki/Cube_mapping) that I borrowed from the three.js repository as mentioned earlier to procure an instance of CubeTexture.
 
@@ -134,3 +134,8 @@ I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wik
 ```
 
 This results in a scene where I have the cube texture as the background, and I am also using it as a means of cheep reflection with respect to the sphere. In order to get the full effect of what is going on I should add some [orbit controls](/2018/04/13/threejs-orbit-controls/), or failing that do something to move the camera around.
+
+## 3 - Conclusion
+
+The cube texture is mainly used for sky maps, at least that is what I have been using for thus far anyway. In this post I was just going over how to make use of a sky map in terms of a set of images that have been made before hand. However I did not get around to how to go about making them from the ground up. Thus far I have found a number of resources on how to make them, but often the process of doing so is a little involved.
+
