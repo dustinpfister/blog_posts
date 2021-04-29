@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2021-04-29 14:58:24
-version: 1.11
+updated: 2021-04-29 15:02:09
+version: 1.12
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -29,7 +29,7 @@ This is something that I have found that I just need to repeat over and over aga
 
 ## 2 - The guy.js file
 
-Here I have the source code of my first basic guy model.
+Here I have the source code of my first basic guy model. When I made this I was thinking in terms of having a base class that I might built on top of when it comes to making additional variants of this kind of thing for better or worse. When it comes to actually using this though I have made other modules that are just like this only they take a more functional approach. However what I really care about is to just have a very crude basic guy, or person type module that I can just skin with some textures by hacking over the materials that are being used a little. With that said this is more or less what I hand in mind when it comes to having something to that effect.
 
 ```js
 var Guy = (function () {
