@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-04-29 14:19:23
-version: 1.27
+updated: 2021-04-29 15:54:24
+version: 1.28
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so I thought that I should put and end to that today. In three.js I have a scene, and in that scene I place things like cameras, and other objects like a Mesh that is composed of a Geometry, and a Material. It is with these Materials for the most part that textures come into play. 
@@ -283,3 +283,8 @@ Something like this:
 ```
 
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
+
+## 5 - Conclusion
+
+That about does it when it comes to the basics at least when it comes to suing canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and material index vluaes but maybe all of those things are matters for other posts on three.js.
+
