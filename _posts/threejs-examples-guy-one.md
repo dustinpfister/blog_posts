@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2021-04-29 15:06:32
-version: 1.14
+updated: 2021-04-29 15:12:15
+version: 1.15
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -251,7 +251,11 @@ Now to test out this guy model to see if things work out okay so far, and it wou
     ());
 ```
 
-## Conclusion
+So now I think what I need to do is make some examples that are not just about a single model like this, but a number of models like this. I will want to have one or more of these kinds of models in a scene, along with some additional models that are other objects to place in the scene. Then there is just working out what the over all project is from that point forward when it comes to the animation, and things that are outside of animation all together like having a script, or a storyboard, but maybe getting into that kind of thing is a matter for a whole other post.
+
+For now I just want to have a very basic, crude, guy model, and with that said I think I have something. Maybe when I start to use this I will want to add at least a few more methods, mesh objects, and so forth, but I think I want to keep this very basic and crude. For whever the reason I seem to like that kind of style actually.
+
+## 4 - Conclusion
 
 I am happy with this basic kind of guy module, and moving forward with it from here might just involve adding a few more features when it comes to how I go about using in an other projects. I might want to make a slightly more advanced version of this kind of guy model, but once I have a few models like this it gets to the point where all I have to do is just re-skin them in different ways.
 
