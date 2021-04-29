@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2021-04-29 16:17:42
-version: 1.14
+updated: 2021-04-29 16:31:08
+version: 1.15
 ---
 
 In [three.js](https://threejs.org/) you might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a box, resulting in a background that is different for any given general direction in 3d space. You might also want to have that kind of texture placed over the surface of some kind of mesh as well. In three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture).
@@ -123,7 +123,98 @@ I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wik
 
 This results in a scene where I have the cube texture as the background, and I am also using it as a means of cheep reflection with respect to the sphere. In order to get the full effect of what is going on I should add some [orbit controls](/2018/04/13/threejs-orbit-controls/), or failing that do something to move the camera around. However I just wanted to have a basic getting started type example with this sort of thing, so I do not want to do anything that further complicate this.
 
-## 3 - Conclusion
+## 3 - Creating a Cube Texture with canvas elements
+
+### 3.1 - A Canvas texture module
+
+```js
+(function (canvasTextureMod) {
+    // create a canvas texture with a draw method and size
+    canvasTextureMod.createCanvasTexture = function (draw, size) {
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = size || 64;
+        canvas.height = size || 64;
+        draw(ctx, canvas);
+        return new THREE.CanvasTexture(canvas);
+    };
+    // random grid draw helper
+    var randomGridDraw = function (ctx, canvas, colorsArray, minValue, maxValue) {
+        var i = 0,
+        r1,
+        r,
+        g,
+        b,
+        x,
+        y,
+        len = canvas.width * canvas.height;
+        while (i < len) {
+            x = i % canvas.width;
+            y = Math.floor(i / canvas.width);
+            r1 = minValue + Math.floor((maxValue - minValue) * Math.random());
+            r = colorsArray[0] === 'r1' ? r1 : colorsArray[0];
+            g = colorsArray[1] === 'r1' ? r1 : colorsArray[1];
+            b = colorsArray[2] === 'r1' ? r1 : colorsArray[2];
+            ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+            ctx.fillRect(x, y, 1, 1);
+            i += 1;
+        }
+    };
+    // create a basic square texture
+    canvasTextureMod.basicSquare = function (colorsArray, size, lineSize, lineStyle, minValue, maxValue) {
+        colorsArray = colorsArray === undefined ? ['r1', 'r1', 'r1'] : colorsArray;
+        size = size || 32;
+        return canvasTextureMod.createCanvasTexture(function (ctx, canvas) {
+            // draw random grid texture
+            randomGridDraw(ctx, canvas, colorsArray, minValue || 0, maxValue === undefined ? 64 : maxValue);
+            // draw lines
+            ctx.strokeStyle = lineStyle || 'white';
+            ctx.lineWidth = lineSize || 3;
+            ctx.rect(0, 0, canvas.width, canvas.height);
+            ctx.stroke();
+        }, size);
+    };
+}(this['canvasTextureMod'] = {}));
+```
+
+### 3.2 - Using the canvas texture module
+
+So now I can use this canvas texture module to just quickly create some textures, and then in turn I can use that texture to create a cube texture instance.
+
+```js
+var scene = new THREE.Scene();
+ 
+// CREATING A CUBE TEXTURE WITH CANVAS
+var texture = canvasTextureMod.basicSquare(['r1', 'r1', 'r1'], 128, 6, 'black', 32, 64).image;
+cubeTexture = new THREE.CubeTexture(new Array(6).fill(texture));
+cubeTexture.needsUpdate = true;
+scene.background = cubeTexture;
+ 
+// CAMERA
+var camera = new THREE.PerspectiveCamera(50, 640 / 480, 1, 1000);
+camera.position.set(14, 6, 14);
+camera.lookAt(0, 0, 0);
+ 
+// RENDERER
+var renderer = new THREE.WebGLRenderer();
+//renderer.width = 640;
+renderer.domElement.width = 640;
+renderer.domElement.height = 480;
+renderer.setViewport(0, 0, 640, 480);
+var container = document.getElementById('demo');
+container.appendChild(renderer.domElement);
+ 
+// CONTROLS
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+var loop = function () {
+    requestAnimationFrame(loop);
+    controls.update();
+    renderer.render(scene, camera);
+};
+loop();
+```
+
+## 4 - Conclusion
 
 The cube texture is mainly used for sky maps, and to use for a material when it comes to having an environment map, at least that is what I have been using for thus far anyway. In this post I was just going over how to make use of a sky map in terms of a set of images that have been made before hand. However I did not get around to how to go about making them from the ground up. Thus far I have found a number of resources on how to make them, but often the process of doing so is a little involved. I am interesting in finding ways to make these kinds of assets though, so if I find a quick sane way to go about making them maybe I will get around to edit this post with some info on that one.
 
