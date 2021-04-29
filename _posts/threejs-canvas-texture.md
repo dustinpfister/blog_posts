@@ -5,7 +5,7 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-04-29 10:45:18
+updated: 2021-04-29 10:47:14
 version: 1.25
 ---
 
@@ -13,9 +13,9 @@ So far I have not written any posts on textures with my [three.js](https://three
 
 When it comes to the various kinds of maps there are to work with in a material I need a texture to use with the map, and one way to go about creating a texture is with a canvas element. So canvas elements are a nice way to get started wit textures in three.js that involves just additional javaScript code rather than loading extremal binary image files. Maybe in the long run that is just what will need to happen if we are taking about a lot of textures, but if it is just a few, and I keep them low res, a canvas might still work okay. So then with just a little javaScript code I can start playing around with various types of maps in three.js such as a basic color map, emissive maps, alpha maps, and many more.
 
-When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. 
+When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. With the basic material it is just a basic color map for the most part that is of interest, while with the Lambert material there are some additional maps that have to do with light.
 
-The Image used to define a Texture can be loaded from an external source such as a \*png image, but it can also be defined with javaScript, by making something with canvas, and then using that as an Image source. This is useful to help make projects that do not depend an an extremal source asset aside from three.js, or to make dynamic animated textures because it is well canvas.
+The Image used to define a Texture can be loaded from an external source such as a \*png image, but it can also be defined with javaScript, by making something with canvas, and then using that as an Image source. This is useful to help make projects that do not depend an an extremal source asset aside from three.js, or to make dynamic animated textures because it is well canvas
 
 To achieve just this there is the [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor however the plain old Texture constructor can be used also by just setting one little property value for the texture after it is created.  Both constructors can be used by just passing a reference to the canvas element that is to be used.
 
