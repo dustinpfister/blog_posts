@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-04-29 10:47:14
-version: 1.25
+updated: 2021-04-29 10:53:41
+version: 1.26
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so I thought that I should put and end to that today. In three.js I have a scene, and in that scene I place things like cameras, and other objects like a Mesh that is composed of a Geometry, and a Material. It is with these Materials for the most part that textures come into play. 
@@ -15,9 +15,9 @@ When it comes to the various kinds of maps there are to work with in a material 
 
 When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. With the basic material it is just a basic color map for the most part that is of interest, while with the Lambert material there are some additional maps that have to do with light.
 
-The Image used to define a Texture can be loaded from an external source such as a \*png image, but it can also be defined with javaScript, by making something with canvas, and then using that as an Image source. This is useful to help make projects that do not depend an an extremal source asset aside from three.js, or to make dynamic animated textures because it is well canvas
+The Image used to define a Texture can be loaded from an external source such as a \*png image, but it can also be defined with javaScript, by making a canvas element, drawing to the canvas element with the 2d drawing context, and then using that as an Image source for a texture. This is useful to help make projects that do not depend an an extremal source asset aside from three.js.  However another great bonus with canvas is that the texture can be updated over time, or by way of some kind of event or condition, so it is a way to make dynamic animated textures that can be [stochastic in nature](https://en.wikipedia.org/wiki/Stochastic_process) which would be hard, or resource consuming, or just not possible to do with static image file assets.
 
-To achieve just this there is the [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor however the plain old Texture constructor can be used also by just setting one little property value for the texture after it is created.  Both constructors can be used by just passing a reference to the canvas element that is to be used.
+The main three.js constructor of interest with this is the [CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor, however the plain old Texture constructor can be used also by just setting one little property value for the texture after it is created. Both constructors can be used by just passing a reference to the canvas element that is to be used for the texture. There are a few things to be aware of there and there though, so in this post I will be trying to cover everything that I have become aware of with canvas elements and textures in three.js.
 
 <!-- more -->
 
