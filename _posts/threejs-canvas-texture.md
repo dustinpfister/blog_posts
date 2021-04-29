@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-04-29 15:59:14
-version: 1.30
+updated: 2021-04-29 16:00:37
+version: 1.31
 ---
 
 So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so I thought that I should put and end to that today. In three.js I have a scene, and in that scene I place things like cameras, and other objects like a Mesh that is composed of a Geometry, and a Material. It is with these Materials for the most part that textures come into play. 
@@ -286,7 +286,7 @@ It should go without saying that this will use more overhead compared to a stati
 
 ## 5 - Conclusion
 
-That about does it when it comes to the basics at least when it comes to suing canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and material index vluaes but maybe all of those things are matters for other posts on three.js.
+That about does it when it comes to the basics at least when it comes to suing canvas elements to create textures in three.js. Of course there is much more to write about when it comes to working with textures, maps, materials, and [material index values](/2018/05/14/threejs-mesh-material-index/) but maybe all of those things are matters for other posts on three.js.
 
 There are also a lot more to write about when it comes to drawing to a canvas elements that is to be used as a texture also. However all of that is also mainly a matter for another post, or even a collection of posts on canvas. With that said I have  [getting started post on canvas](/2017/05/17/canvas-getting-started/), and also a post in which I am listing all the [canvas project example type posts](/2020/03/23/canvas-example/) that I have made thus far.
 
