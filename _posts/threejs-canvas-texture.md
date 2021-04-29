@@ -5,11 +5,11 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2019-12-18 16:30:02
-version: 1.23
+updated: 2021-04-29 09:31:03
+version: 1.24
 ---
 
-So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It s with materials that textures come into play, and one way to go about creating a texture is with canvas.
+So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so lets put and end to that today. In three.js you have a Scene, and in that scene you place things like cameras, and other Objects like a Mesh that is composed of a Geometry, and a Material. It is with materials that textures come into play, when it comes to the various kinds of maps there are to work with, and one way to go about creating a texture is with a canvas element.
 
 When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. 
 
