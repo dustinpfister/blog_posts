@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 179
-updated: 2021-04-29 16:12:53
-version: 1.12
+updated: 2021-04-29 16:16:17
+version: 1.13
 ---
 
 In [three.js](https://threejs.org/) you might want to have a way to set up a background that will actually be a bunch of images that would line each side of the inside of a box, resulting in a background that is different for any given general direction in 3d space. You might also want to have that kind of texture placed over the surface of some kind of mesh as well. In three.js there is a constructor that will produce this kind of texture that can be used with an array of materials, called [CubeTexture](https://threejs.org/docs/index.html#api/textures/CubeTexture).
@@ -75,25 +75,20 @@ I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wik
 
 ```js
 (function () {
- 
-    // SCENE
+    // camera
     var scene = new THREE.Scene();
- 
-    // CAMERA
+    // camera
     var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
     camera.position.set(1, 1, 1);
     camera.lookAt(0, 0, 0);
- 
-    // RENDER
+    // renderer
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
- 
     // LOAD CUBE TEXTURE
     new THREE.CubeTextureLoader()
     .setPath('/img/cube/skybox/')
     .load(
- 
         // urls of images used in the cube texture
         [
             'px.jpg',
@@ -103,41 +98,30 @@ I then used the CubeTexture as an [environment map](https://en.wikipedia.org/wik
             'pz.jpg',
             'nz.jpg'
         ],
- 
         // what to do when loading is over
         function (cubeTexture) {
- 
             // Geometry
             var geometry = new THREE.SphereGeometry(1, 20, 20);
- 
             // Material
             var material = new THREE.MeshBasicMaterial({
- 
                 // CUBE TEXTURE can be used with
                 // the environment map property of
                 // a material.
                 envMap: cubeTexture
- 
             });
- 
             // Mesh
             var mesh = new THREE.Mesh(geometry, material);
             scene.add(mesh);
- 
             // CUBE TEXTURE is also an option for a background
             scene.background = cubeTexture;
- 
             renderer.render(scene, camera);
- 
         }
- 
     );
- 
 }
     ());
 ```
 
-This results in a scene where I have the cube texture as the background, and I am also using it as a means of cheep reflection with respect to the sphere. In order to get the full effect of what is going on I should add some [orbit controls](/2018/04/13/threejs-orbit-controls/), or failing that do something to move the camera around.
+This results in a scene where I have the cube texture as the background, and I am also using it as a means of cheep reflection with respect to the sphere. In order to get the full effect of what is going on I should add some [orbit controls](/2018/04/13/threejs-orbit-controls/), or failing that do something to move the camera around. However I just wanted to have a basic getting started type example with this sort of thing, so I do not want to do anything that further complicate this.
 
 ## 3 - Conclusion
 
