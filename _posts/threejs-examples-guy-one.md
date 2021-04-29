@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 856
-updated: 2021-04-29 14:54:06
-version: 1.9
+updated: 2021-04-29 14:57:45
+version: 1.10
 ---
 
 I want to start thinking in terms of what the long term plan with [threejs](https://threejs.org/) might be for me if I am going to continue writing new posts on it. It would seem that I could write a lot more just when it comes to basic, and not so basic features of the library, and maybe with that alone there will always be something more to write about. However I think what I really need to start doing is making a [few examples](/2021/02/19/threejs-examples/) that are some kind of starting point for an actual project of some kind. With that said I think I will be writing about my first, basic guy, or person model using three.js that I made a while back, and then updated just a little for the sake of this post.
@@ -252,3 +252,6 @@ Now to test out this guy model to see if things work out okay so far, and it wou
 ## Conclusion
 
 I am happy with this basic kind of guy module, and moving forward with it from here might just involve adding a few more features when it comes to how I go about using in an other projects. I might want to make a slightly more advanced version of this kind of guy model, but once I have a few models like this it gets to the point where all I have to do is just re-skin them in different ways.
+
+I am all ready using this guy model, and many variations of this in other projects, and examples. I have a few in the works actually, but so far one that I am most happy with thus far is my [guy stuck on hamster wheel](/2021/04/19/threejs-examples-hamster-wheel/) example. I am sure that I will be making at least a few other examples here and there that make use of this, or other modules that are based on it, and as I do I will try to come back here and edit this post. However if I forget maybe it world be best to just look at my main examples post on three.js examples, as I will be doing a good job of keeping that up to date for sure.
+
