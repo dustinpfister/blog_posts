@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2021-04-30 12:24:26
-version: 1.6
+updated: 2021-04-30 12:27:09
+version: 1.7
 ---
 
 I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format that I can just use right away with blender by itself when it comes to creating the files.
@@ -26,6 +26,10 @@ When I wrote this post I was using r127 of three.js, in the future this code mig
 ### 1.2 - Start Playing around with blender a little at least
 
 In order to create a dea file a program like blender has to be used to create and export such a file. You do not have to learn everything about using it at this point, exporting the default cube that is added when first starting blender will work as a starting file to load. However the whole point of doing this is to get into the swing of creating files in blender that can then be loaded into a three.js project.
+
+## 1.3 - You will need additional javaScript files beyond just that of three.js
+
+On top of loading the usual three.js file, the Collada file loader will also need to be loaded first before any additional javaScript that makes use of three.js and the  Collada loader. In many of these examples I am also using the Orbit Controls file which is yet another external files that can be located in the examples folder.
 
 ## 2 - Load a single dae file
 
