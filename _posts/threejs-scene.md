@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-04-30 17:23:57
-version: 1.16
+updated: 2021-04-30 17:26:48
+version: 1.17
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material. There is a great deal of other things to cover when it comes to a scene though, such as the background and fog properties, and the fact that it inherits from Object3d to a whole scene can be repositioned, and rotated just like mesh objects, and cameras. SO in this post I will be going over at least a few details here and there when it comes to a scene object in three.js.
@@ -54,7 +54,7 @@ So a basic example of THREE.Scene might look something like this:
     ());
 ```
 
-By default a Mesh will use the Basic material with a random color used to paint the faces of the geometry. Of course I could create an instance of some other material, or give a color or texture to another instance of basic material that I would then give as the second argument to the Mesh constructor, but this is a post on THREE.Scene so I will not be getting into that in depth. However I will be getting into the properties of THREE.Scene including the material override property, more on that later.
+If I did not give a normal material when creating the mesh then by default a Mesh will use the Basic material with a random color used to paint the faces of the geometry. Of course I could create an instance of some other material, or give a color or texture to another instance of basic material that I would then give as the second argument to the Mesh constructor. However getting into materials in depth might be a bot off topic, I have wrote a a post on materials in general anyway so I do not care to repeat that all here. I will however be getting into the properties of THREE.Scene including the material override property, more on that later.
 
 ## 3 - Fog
 
