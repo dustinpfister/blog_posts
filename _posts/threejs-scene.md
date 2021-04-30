@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-04-30 16:15:24
-version: 1.9
+updated: 2021-04-30 16:19:02
+version: 1.10
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course objects composed of a geometry and material.
@@ -165,33 +165,25 @@ scene.overrideMaterial = new THREE.MeshBasicMaterial({
 
 ## 6 - Using Object3D methods in scene
 
-read my full [post on Object3D](/2018/04/23/threejs-object3d/)
+Be sure to read my full [post on the Object3D](/2018/04/23/threejs-object3d/) class in order to help gain more insight into what the Object3d class is all about, and why it is a big deal. However simply put, like a lot of things in three.js the Scene Class inherits from the Object3D class. This Object3d class gives THREE.Scene properties and methods like Object3D.position, Object3D.rotation and Object3D.add which can be used to add additional objects to the scene.
 
-Like a lot of things in three.js the Scene Class inherits from [Object3D](/2018/04/23/threejs-object3d/). This gives THREE.Scene properties and methods like Object3D.position, Object3D.rotation and Object3D.add.
-
-So if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it.
+There is a lot that could be written about this, and how it applies the a scene object, but one interesting thing is that if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that is stored in the position property of my scene instance this will change the position of the whole Scene, and everything in it that is added relative to the scene.
 
 ```js
     var frame = 0,
     maxFrame = 50,
     loop = function () {
- 
         var per = frame / maxFrame,
         bias = Math.abs(.5 - per) / .5;
- 
         requestAnimationFrame(loop);
- 
         // using Object3D properties to change
         // the position and rotation of a scene
         scene.position.set(0, 1 * bias, 0);
         scene.rotation.set(Math.PI * 2 * per, 0, 0);
         renderer.render(scene, camera);
- 
         frame += 1;
         frame %= maxFrame;
- 
     };
- 
     loop();
 ```
 
