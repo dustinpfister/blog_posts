@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-04-30 13:23:02
-version: 1.5
+updated: 2021-04-30 13:45:22
+version: 1.6
 ---
 
 Adding Fog to a Scene in [three.js](https://threejs.org/) is a fairly easy, and straight forward process, so this should be a quick post for today. A Fog is a nice effect to have for most projects as it allows for a more graceful transition from rendering within range to no longer rendering when an object is to far from the camera, as apposed to the object just all of a sudden disappearing. Even if you have the far value of the camera set to a high value so that the object is just a single pixel before it is no longer rendered, it can still be a nice additional effect on top of the object just simply getting smaller.
@@ -40,55 +40,55 @@ A full working demo will require all the usual components that make up a fully f
 
 ```js
 (function () {
- 
     // Scene
     var scene = new THREE.Scene();
-    fogColor = new THREE.Color(0xffffff);
- 
+    // ADDING BACKGROUND AND FOG
+    fogColor = new THREE.Color(0x00af00);
     scene.background = fogColor;
-    scene.fog = new THREE.Fog(fogColor, 0.0025, 20);
+    scene.fog = new THREE.FogExp2(fogColor, 0.5);
+ 
+    // A Material that DOES SUPPORT FOG
+    // being use in a Mesh
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xff0000,
+                emissive: 0x080808
+            }));
+    scene.add(mesh);
  
     // Camera
     var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
     camera.position.set(1, 1, 1);
     camera.lookAt(0, 0, 0);
- 
-    // Geometry
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
-    // Material
-    var material = new THREE.MeshLambertMaterial({
-            color: 0xff0000,
-            emissive: 0x000000
-        });
- 
-    // Mesh
-    var mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
- 
+    camera.add(new THREE.PointLight(0xffffff));
+    scene.add(camera);
     // Render
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
     // Loop
     var frame = 0,
     maxFrame = 500,
-    loop = function () {
- 
+    target_fps = 30;
+    lt = new Date();
+    var loop = function () {
         var per = frame / maxFrame,
-        bias = Math.abs(.5 - per) / .5;
- 
+        bias = Math.abs(.5 - per) / .5,
+        now = new Date(),
+        secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
- 
-        camera.position.z = 1 * 14 * bias;
-        camera.lookAt(0, 0, 0);
-
-        renderer.render(scene, camera);
- 
-        frame += 1;
-        frame = frame % maxFrame;
- 
+        if (secs > 1 / target_fps) {
+            mesh.position.z = 1 + 4 * bias;
+            mesh.rotation.x = Math.PI * 2 * 4 * per;
+            mesh.rotation.y = Math.PI * 2 * 2 * per;
+            camera.lookAt(mesh.position);
+            renderer.render(scene, camera);
+            frame += target_fps * secs;
+            frame = frame % maxFrame;
+            lt = now;
+        }
     };
  
     loop();
