@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2021-04-30 12:05:46
-version: 1.5
+updated: 2021-04-30 12:24:26
+version: 1.6
 ---
 
-I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format.
+I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format that I can just use right away with blender by itself when it comes to creating the files.
+
+Once I have a Collada files exported from blender it is then just a question of how to load that files into three.js. The Collada file loader is not built into three.js itself, but it can be added by way of an external files loaded in the examples folder of the three.js github repository. The loader is fairly easy to use, but there are still just a few things here and there to be aware of that call for a quick post on this subject.
 
 <!-- more -->
 
