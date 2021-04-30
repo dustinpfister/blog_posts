@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2018-05-03 16:31:43
-version: 1.7
+updated: 2021-04-30 16:10:43
+version: 1.8
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course objects composed of a geometry and material.
@@ -15,11 +15,11 @@ A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](ht
 
 In this post I will be covering Scenes in a bit of detail as I continue to expand, and improve [my content on three.js](/categories/three-js/)
 
-## What to know
+## 1 - What to know
 
 This is an advanced post on [three.js](https://threejs.org/) that covers just one little constructor known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with my getting started post on three.js. If you are new to javaScript in general that is outside the scope of this whole collection of [posts on three.js](/categories/three-js/).
 
-## Basic example of THREE.Scene
+## 2 - Basic example of THREE.Scene
 
 At a minimum you will want to have at least some kind of object to look at added to a Scene. This could just be a mesh that used a geometry from one of the built in geometry constructors in three.js such as [THREE.BoxGeometry](https://threejs.org/docs/index.html#api/geometries/BoxGeometry) with no material given to it.
 
@@ -60,7 +60,7 @@ So a basic example of THREE.Scene might look something like this:
 
 By default a Mesh will use the Basic material with a random color used to paint the faces of the geometry. Of course I could create an instance of some other material, or give a color or texture to another instance of basic material that I would then give as the second argument to the Mesh constructor, but this is a post on THREE.Scene so I will not be getting into that in depth. However I will be getting into the properties of THREE.Scene including the material override property, more on that later.
 
-## Fog
+## 3 - Fog
 
 my full [post on fog](/2018/04/16/threejs-fog/)
 
@@ -76,7 +76,7 @@ scene.fog = new THREE.FogExp2(fogColor, 0.1);
 
 There are two kinds of fog that can be added to a scene in three.js which are [Fog](https://threejs.org/docs/index.html#api/scenes/Fog), and [FogExp2](https://threejs.org/docs/index.html#api/scenes/FogExp2). The regular Fog constructor will add a fog that works in a linear way, while the FogExp2 constructor works in an exponential way. Check out my full [post on fog](/2018/04/16/threejs-fog/) for more on this.
 
-## Changing the background of the Scene with Scene.background
+## 4 - Changing the background of the Scene with Scene.background
 
 It goes without saying that an important part of the scene instance is the background property. By default it is a solid black color, but it can be set to another solid color using THREE.Color.
 
@@ -86,7 +86,7 @@ scene.background = THREE.Color(0xffffff);
 
 If you want to use a texture, or a cube texture that can be used as well. I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail.
 
-## Using Scene.overrideMaterial to add a material that overrides all materials
+## 5 - Using Scene.overrideMaterial to add a material that overrides all materials
 
 There is the scene override property of a scene that will do exactly as you would expect, override all materials used in the scene with the material given to the material override property of the scene instance.
 
@@ -163,7 +163,7 @@ scene.overrideMaterial = new THREE.MeshBasicMaterial({
 });
 ```
 
-## Using Object3D methods in scene
+## 6 - Using Object3D methods in scene
 
 read my full [post on Object3D](/2018/04/23/threejs-object3d/)
 
@@ -194,3 +194,8 @@ So if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that i
  
     loop();
 ```
+
+## 7 - Conclusion
+
+That is all that I have to say about these scene of a three.js project example for now. There is a great deal more to write about when it comes to a scene in three.js, but much of that might branch off into just about everything with the library actually. A scene is a major part of any three.js project, along with other vital components such as a camera, and a renderer.
+
