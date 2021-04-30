@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-04-30 16:33:37
-version: 1.14
+updated: 2021-04-30 17:21:59
+version: 1.15
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material. There is a great deal of other things to cover when it comes to a scene though, such as the background and fog properties, and the fact that it inherits from Object3d to a whole scene can be repositioned, and rotated just like mesh objects, and cameras. SO in this post I will be going over at least a few details here and there when it comes to a scene object in three.js.
@@ -23,39 +23,33 @@ When I first wrote this post I was using three.js r91, and the last time I edite
 
 ## 2 - Basic example of THREE.Scene
 
-At a minimum you will want to have at least some kind of object to look at added to a Scene. This could just be a mesh that used a geometry from one of the built in geometry constructors in three.js such as [THREE.BoxGeometry](https://threejs.org/docs/index.html#api/geometries/BoxGeometry) with no material given to it.
+First off I will want to create the scene by just calling the THREE.Scene constructor with the new keyword, and saving the result of that to a variable. This result will be my scene object but there at least a little more to do if I want to actual see something. At a minimum beyond just having a scene object I will want to have at least some kind of mesh object to look at added to a Scene.  For now this mesh object could just be a mesh that used a geometry from one of the built in geometry constructors in three.js such as [THREE.BoxGeometry](https://threejs.org/docs/index.html#api/geometries/BoxGeometry), and then I can use something like the Normal material which does not require a light source.
 
-Unless I aim to do something headless with a scene and one or more objects, I will also want a camera and a renderer to look at what it is that I am doing.
+Unless I aim to do something headless with a scene and one or more mesh objects, I will also want a camera and a renderer to look at what it is that I am doing with this scene object. There are a number of options when it comes to a camera, but I typically like to go with the [perspective camera](/2018/04/07/threejs-camera-perspective/).
 
 So a basic example of THREE.Scene might look something like this:
 
 ```js
 (function () {
  
-    // create a Scene
+    // CREATE A SCENE
     var scene = new THREE.Scene();
  
-    // add something to it
-    scene.add(new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1)));
- 
+    // add a Mesh to look at
+    var mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshNormalMaterial());
+    mesh.position.set(0, 0, -2);
+    scene.add(mesh);
     // add a CAMERA to it so we can see something
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
- 
-    // position The camera away from the origin
-    // and have it look at the origin
-    // by default that is where something goes.
-    camera.position.set(2, 2, 2);
-    camera.lookAt(0, 0, 0);
- 
+    camera.position.set(1, 1, 1); // position the camera away from the mesh
+    camera.lookAt(mesh.position); // look at the mesh
     // we need a RENDERER to render the scene
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
-    document.getElementById('demo').appendChild(renderer.domElement);
- 
+    renderer.setSize(640, 480);
+    var container = document.getElementById('demo') || document.body;
+    container.appendChild(renderer.domElement);
     // render the scene with the camera
     renderer.render(scene, camera);
- 
 }
     ());
 ```
