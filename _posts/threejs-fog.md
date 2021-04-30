@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-04-30 15:35:47
-version: 1.14
+updated: 2021-04-30 15:38:31
+version: 1.15
 ---
 
 Adding Fog to a Scene in [three.js](https://threejs.org/) is a fairly easy, and straight forward process, so this should be a quick post for today. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog when creating it with the [THREE.FogExp2 constructor](https://threejs.org/docs/#api/en/scenes/FogExp2).
@@ -108,7 +108,7 @@ A full working demo will require all the usual components that make up a fully f
     ());
 ```
 
-In this demo I put in a simple loop to to have a camera move back and forth from a simple mesh as a way to show off the fog effect.
+In this demo I put in a simple loop to have a mesh move back and forth from the camera as a way to show off the fog effect. The effect seems to work just as I would expect, and adjusting the density value will make the fog more or less dense when it comes to playing around with this a little.
 
 ## 4 - Check your materials
 
