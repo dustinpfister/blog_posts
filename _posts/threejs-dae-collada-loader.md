@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2021-04-30 12:35:53
-version: 1.9
+updated: 2021-04-30 12:39:54
+version: 1.10
 ---
 
 I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format that I can just use right away with blender by itself when it comes to creating the files.
@@ -32,6 +32,8 @@ In order to create a dea file a program like blender has to be used to create an
 On top of loading the usual three.js file, the Collada file loader will also need to be loaded first before any additional javaScript that makes use of three.js and the  Collada loader. In many of these examples I am also using the Orbit Controls file which is yet another external files that can be located in the examples folder.
 
 ## 2 - Load a single dae file
+
+In this example I will just be loading a single dae file using the THREE.ColladaLoader constructor to create an instance of such a loader. I then just need to call the load method of this collada loader instance and pass the url to the dae file that I want to load.
 
 ```js
 (function () {
@@ -82,6 +84,6 @@ On top of loading the usual three.js file, the Collada file loader will also nee
 
 ## 3 - Conclusion
 
-The dae format seems to work okay thus far, in order to really know what I can do with the collada format I am going to need to look into how to use blender more. I am thinking for now I will want to just focus on making simple static models, but there is also looking into how to go about create animations for a dae file also that can then be used in three.js with the Animation mixer. However maybe all of that is a matter for a whole other post, for now I just waned to have this kind of getting started type post.
+The dae format seems to work okay thus far, in order to really know what I can do with the Collada format I am going to need to look into how to use blender more. I am thinking for now I will want to just focus on making simple static models, but there is also looking into how to go about create animations for a dae file also that can then be used in three.js with the Animation mixer. However maybe all of that is a matter for a whole other post, for now I just waned to have this kind of getting started type post.
 
 The alternative to getting into the various extremal file formats is to just make crude yet effective models using just three.js, and javaScript alone. This might actually be a decent starting point when it comes to making assets for three.js actually as thus far I find it to be the easiest way to go about making them. However there is a draw back to this sort of thing when it comes to making something that can be shared between three.js, blender, and other applications. So with that said it makes sense to look into what the options are with external file formats that are fairly open and standard and the Collada format seems to be just that.
