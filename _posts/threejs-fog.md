@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-04-30 15:19:29
-version: 1.10
+updated: 2021-04-30 15:21:38
+version: 1.11
 ---
 
 Adding Fog to a Scene in [three.js](https://threejs.org/) is a fairly easy, and straight forward process, so this should be a quick post for today. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog when creating it with the [THREE.FogExp2 constructor](https://threejs.org/docs/#api/en/scenes/FogExp2).
@@ -19,7 +19,11 @@ So in this post I will be going over a basic example of fog in a three.js projec
 
 ## 1 - What to know before hand
 
-This is a post on how to go about adding fog to a three.js project. You should have some knowledge of three.js, and javaScript development in general in order to get any benefit from this post. I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js. The version of three.js is something that is important when writing post on it, and in this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91).
+This is a post on how to go about adding fog to a three.js project. You should have some knowledge of three.js, and javaScript development in general in order to get any benefit from this post. I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js. 
+
+### 1.1 - Version numbers matter with three.js
+
+The version of three.js is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91).
 
 ## 2 - Adding a Fog to a Scene in three.js
 
