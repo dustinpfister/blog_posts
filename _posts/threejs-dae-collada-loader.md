@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2021-04-30 11:59:57
-version: 1.3
+updated: 2021-04-30 12:02:23
+version: 1.4
 ---
 
 I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format.
@@ -16,6 +16,10 @@ I would like to look into the extremal file formats more with [threejs](https://
 ## 1 - DAE AKA Collada files with three.js and what to know first
 
 This is a post on using the ColladaLoader which can be added on top of three.js to load Collada files with a DAE file extension which is the default file format used in blender. So this is not a getting started post on three.js, and client side javaScript in general. It is also not a getting started post with blender also. The subject here is just using the Collada file loader in the examples folder of the three.js repository to load an external dae file into a three.js scene.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I wrote this post I was using r127 of three.js, in the future this code might break on later versions. I try to do a half way decent job of editing files, but I have a lot of pots boiling with that. So if the code breaks the first thing you should check is what version of three.js you are using, it really matters a lot.
 
 ## 2 - Load a single dae file
 
