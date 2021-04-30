@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-04-30 17:29:59
-version: 1.18
+updated: 2021-04-30 17:32:34
+version: 1.19
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material. There is a great deal of other things to cover when it comes to a scene though, such as the background and fog properties, and the fact that it inherits from Object3d to a whole scene can be repositioned, and rotated just like mesh objects, and cameras. SO in this post I will be going over at least a few details here and there when it comes to a scene object in three.js.
@@ -58,7 +58,7 @@ If I did not give a normal material when creating the mesh then by default a Mes
 
 ## 3 - Adding Fog to a scene
 
-A property of interest in a scene instance is the [fog Property](/2018/04/16/threejs-fog/) which can be used to add a fog effect to that will effect mesh objects that use materials that are effected by a fog. When adding a fog I typically keep the background color, and the color of the fog the same, and stick to using materials that will work with a fog like that of the standard material.
+A property of interest in a scene instance is the [scene.fog Property](/2018/04/16/threejs-fog/) which can be used to add a fog effect to that will effect mesh objects that use materials that are effected by a fog. When adding a fog I typically keep the background color, and the color of the fog the same, and stick to using materials that will work with a fog like that of the standard material.
 
 ```js
 var scene = new THREE.Scene(),
@@ -78,7 +78,7 @@ It goes without saying that an important part of the scene instance is the backg
 scene.background = THREE.Color(0xffffff);
 ```
 
-If you want to use a texture, or a cube texture that can be used as well. I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail.
+If you want to use a texture, or a cube texture that can be used as well. I have written a [post on how to used a cube texture](/2018/04/22/threejs-cube-texture/) in which I get into how to go about doing just that in detail. The process of doing so is a little complicated when it comes to using a cube texture that was made before hand, and making a skymap can prove to be a little involved. However it is a pretty cool background effect that can result in this texture that one can see in all directions so it is worth looking into more for sure.
 
 ## 5 - Using Scene.overrideMaterial to add a material that overrides all materials
 
