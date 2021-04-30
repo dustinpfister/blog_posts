@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-04-30 16:29:06
-version: 1.13
+updated: 2021-04-30 16:33:37
+version: 1.14
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material. There is a great deal of other things to cover when it comes to a scene though, such as the background and fog properties, and the fact that it inherits from Object3d to a whole scene can be repositioned, and rotated just like mesh objects, and cameras. SO in this post I will be going over at least a few details here and there when it comes to a scene object in three.js.
@@ -16,6 +16,10 @@ A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](ht
 ## 1 - What to know
 
 This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point an three.js. If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) also that may help a little.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I first wrote this post I was using three.js r91, and the last time I edited this post I was using r127.
 
 ## 2 - Basic example of THREE.Scene
 
