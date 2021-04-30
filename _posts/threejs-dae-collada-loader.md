@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 857
-updated: 2021-04-30 13:00:45
-version: 1.14
+updated: 2021-04-30 13:13:04
+version: 1.15
 ---
 
 I would like to look into the extremal file formats more with [threejs](https://threejs.org/), and maybe a good place to start would be with the dae file, also known as the Collada file loader. The [Collada file format](https://en.wikipedia.org/wiki/COLLADA) is the default file format that is used by [blender](https://www.blender.org/) to export files. This format uses an XML schema as a way to store data for all objects in a blender project, so right off the bat I like it for that reason as it is a plain text file format that I can just use right away with blender by itself when it comes to creating the files.
@@ -47,6 +47,7 @@ In this example I will just be loading a single dae file using the THREE.Collada
     pl.position.set(2, 5, 3);
     // scene
     var scene = new THREE.Scene();
+    scene.background = new THREE.Color('cyan');
     //scene.add(pl);
     // camera
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
@@ -75,8 +76,7 @@ In this example I will just be loading a single dae file using the THREE.Collada
     // TO THE *.DAE FILE AS THE FIRST ARGUMENT, AND A DONE CALLBACK
     // AS THE SECOND ARGUMENT
     loader.load("/dae/obj/obj.dae", function (result) {
-        console.log(result);
-        scene.background = new THREE.Color('cyan');
+        // adding the child that I want to the scene
         scene.add(result.scene.children[2]);
         // start the app loop
         loop();
@@ -87,6 +87,9 @@ In this example I will just be loading a single dae file using the THREE.Collada
 ```
 
 For this example I am just loading a single file, and I am sure nothing will go wrong when doing so. However when it comes to making something that is ready for production, or is staring to go in the direction of a full bug time project of some kind I am going to want to pass a few more functions to the loader method that have to do with tracking load progress, and handing errors.
+Still for this basic example I just wanted to load a single object in the dae file, to do so there is the scene object of the result. In this scene object there are all the children in the scene loaded from the dae file, with the file I used there where three children and I just happen to know which child it is that I wanted to load. Alternatively I could also just load the full scene rather than just the single child object that I wanted. 
+
+After I  have what I wanted from the file added to my main three.js scene, I just started my main app loop function in which I am rendering the scene, and updating the orbit controls that i am also making use of that I can then use to look at the module that I have loaded.
 
 ## 3 - Conclusion
 
