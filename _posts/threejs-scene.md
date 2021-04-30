@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-04-30 16:10:43
-version: 1.8
+updated: 2021-04-30 16:15:24
+version: 1.9
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) in [three.js](https://threejs.org/) is a constructor that can be used to create an instance of Scene that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course objects composed of a geometry and material.
@@ -197,5 +197,6 @@ So if I play with the instance of [Vector3](/2018/04/15/threejs-vector3/) that i
 
 ## 7 - Conclusion
 
-That is all that I have to say about these scene of a three.js project example for now. There is a great deal more to write about when it comes to a scene in three.js, but much of that might branch off into just about everything with the library actually. A scene is a major part of any three.js project, along with other vital components such as a camera, and a renderer.
+That is all that I have to say about these scene of a three.js project example for now. There is a great deal more to write about when it comes to a scene in three.js, but much of that might branch off into just about everything with the library actually. A scene is a major part of any three.js project, along with other vital components such as a camera, and a renderer all of which just about every three.js example I have made includes each of those.
 
+The best way to learn more about the THREE.Scene constructor and everything else that is used with it would be to just start making some actual projects of some kind with three.js and just start learning as one goes. With that said I have some simple project examples to start off with in my [post on three.js examples](/2021/02/19/threejs-examples/) that might be worth checking out when it comes to getting some ideas for actual projects of some kind.
