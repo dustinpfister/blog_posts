@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2021-05-01 10:00:27
-version: 1.11
+updated: 2021-05-01 10:05:00
+version: 1.12
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
@@ -26,7 +26,9 @@ Also when it comes to making a 3d model with a 3d modeling program I have come t
 
 ### 1.2 -  Version Numbers matter.
 
-I know there are a lot of projects where newer versions just patch programing mistakes, and the actual use of the project renames the same. This is not so true with three.js, major changes happen often. In this post i am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018. Also in this post I am using blender 2.79 also released in March of 2018. When it comes to using the io_three plug-in it is important to use a late version of blender.
+I know there are a lot of projects where newer versions just patch programing mistakes, and the actual use of the project renames the same when it comes to the use of the public API. This is not so true with three.js, major changes happen often that result in code breaking changes. When I first wrote this post I was using [three.js r91](https://github.com/mrdoob/three.js/tree/r91) that was release in March of 2018, and the last time I edited the post I was using r127 of three.js that was released in March of 2021.
+
+Also in this post I am using blender 2.79 also released in March of 2018. When it comes to using the io_three plug-in it is important to use a late version of blender.
 
 ### 1.3 Why use the buffered geometry loader?
 
@@ -100,7 +102,7 @@ C:\Users\USERNAME\AppData\Roaming\Blender Foundation\Blender\2.6X\scripts\addons
 /Users/(myuser)/Library/Application Support/Blender/2.7X/scripts/addons
 ```
 
-Wherever it is you are looking for, it is the addons folder that is used by blender. Out of the box there should be a bunch of plug-ins there before hand, you just want to add the io_three plug-in to the collection there.
+Wherever it is you are looking for, it is the add ons folder that is used by blender. Out of the box there should be a bunch of plug-ins there before hand, you just want to add the io_three plug-in to the collection there.
 
 ## 2 - Basic demo using the buffered geometry loader.
 
