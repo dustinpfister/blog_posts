@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2021-05-01 16:49:24
-version: 1.20
+updated: 2021-05-01 16:52:51
+version: 1.21
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
@@ -16,6 +16,10 @@ A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon 
 ## 1 - Threejs Mesh objects and what to know before continuing
 
 This is a post on making and working with a Mesh in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScipt in general. So I assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project.
+
+### 1.1 - Version Numbers matter with three.js
+
+The last time I edited this post I was using version r127 of three.js, and when I first wrote this post I was using version r91 of three.js. Between r91 and r127 a whole lot of code breaking changes have happened, so always check what version of three.js you are using when looking at old code examples of three.js on the open web.
 
 ## 2 - Basic example of using a mesh
 
