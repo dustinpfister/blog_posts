@@ -5,19 +5,19 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2021-05-01 15:57:45
-version: 1.10
+updated: 2021-05-01 16:00:34
+version: 1.11
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The Mesh Constructor is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
 
 <!-- more -->
 
-## What to know before continuing
+## 1 - Threejs Mesh objects and what to know before continuing
 
-This is a post on making and working with a Mesh in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScipt in general.
+This is a post on making and working with a Mesh in the javaScript library called three.js. It is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScipt in general. So I assume that you have at least some background with client side javaScript, and know how to set up a basic threejs project.
 
-## Basic example of using a mesh
+## 2 - Basic example of using a mesh
 
 A Basic example of using a mesh would involve creating an instance of Mesh with the THREE.Mesh constructor, passing it the geometry that you want to use. Be default the basic material will be used with a random color, if you want to use something else for a [material](/2018/04/30/threejs-materials/) then you will want to pass that to the Mesh Constructor as the second argument.
 
@@ -52,7 +52,7 @@ A Basic example of using a mesh would involve creating an instance of Mesh with 
 
 In this demo I am just calling all the relevant constructors to produce a Mesh that will then directly be placed in the Scene. I can get away with this because it is a very basic demo, in more complex projects I will typically want to store the instance of Mesh to a variable so I can later work with it elsewhere.
 
-## Moving a Mesh
+## 3 - Moving a Mesh
 
 it is important to note that THREE.Mesh is just one of many constructors in three.js that inherit from [Object3D](/2018/04/23/threejs-object3d/) which I will not get into detail about here. However for now it is a good idea to just know that Object3D brings a whole bunch of methods, and properties to THREE.Mesh that can be used to do things like moving the mesh around, and changing its rotation.
 
@@ -118,7 +118,7 @@ That might come off as a mouth full so maybe another way of explaining it is tha
 
 Also In this demo I am using the lookAt Method, which is another useful methods that is inherited from, use guessed it, Object3D.
 
-## Using an array of materials
+## 4 - Using an array of materials
 
 Read my full post on [material index](/2018/05/14/threejs-mesh-material-index/), and arrays of materials
 
@@ -161,6 +161,6 @@ I have a post on this in which I get into this in detail but I can also provide 
             materials));
 ```
 
-## Conclusion
+## 5 - Conclusion
 
 There is not much more to write about with Mesh, at least not at this time. However that is not at all the case with many other topics that branch off from Mesh such as [geometry](/2018/04/14/threejs-geometry/), [materials](/2018/04/30/threejs-materials/), [Object3D](/2018/04/23/threejs-object3d/), [Vector3](/2018/04/15/threejs-vector3/), the [Scenes](/2018/05/03/threejs-scene/), and [many more](/categories/three-js/).
