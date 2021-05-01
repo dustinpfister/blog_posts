@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2021-05-01 17:01:20
-version: 1.24
+updated: 2021-05-01 17:05:10
+version: 1.25
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
@@ -21,7 +21,11 @@ This is a post on making and working with a Mesh in the javaScript library calle
 
 The last time I edited this post I was using version r127 of three.js, and when I first wrote this post I was using version r91 of three.js. Between r91 and r127 a whole lot of code breaking changes have happened, so always check what version of three.js you are using when looking at old code examples of three.js on the open web.
 
-### 1.2 - At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
+### 1.2 - Geometry and materials are needed to create a mesh object
+
+When creating a mesh instance the first argument that is passed to the mesh constructor is a geometry, followed by a second argument that is a single material, or an array of materials that will be used to skin that geometry. The mesh is then an object that contains the geometry and materials, or references to such things. So then it pays to know a thing or two about how to go about creating a geometry, and to know what the options are with materials.
+
+### 1.3 - At some point you might want to read more on the Object3d, Vercor3 and Euler classes also
 
 A mesh object is based off of the Object3d class, and there are many additional objects in three.js that are based off of it also beyond just Mesh Objects. The Vector3 class also comes up a lot in code examples of three.js which is used for creating and working with a vector, or point in 3d space. With a mesh object the position property of a mesh is an instance of vector3 and that is what can be used to set and change the position of a mesh Object. There is also the Euler class that is like vecor3 only we are dealing with angles rather than a position.
 
