@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2021-05-01 16:44:11
-version: 1.19
+updated: 2021-05-01 16:49:24
+version: 1.20
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
@@ -118,38 +118,52 @@ One thing about a mesh is that a [material index](/2018/05/14/threejs-mesh-mater
 I have a post on this in which I get into this in detail but I can also provide a basic example of this here.
 
 ```js
-    // a box geometry
-    var geometry = new THREE.BoxGeometry(1, 1, 1),
+(function () {
+    // SCENE
+    var scene = new THREE.Scene();
  
     // the materials array
-    materials = [
+    var materials = [
+        // material 0 (red basic)
         new THREE.MeshBasicMaterial({
             color: 0xff0000,
             side: THREE.DoubleSide
         }),
+        // material 1 (green basic)
         new THREE.MeshBasicMaterial({
             color: 0x00ff00,
             side: THREE.DoubleSide
         }),
+ 
+        // material 2 (blue basic)
         new THREE.MeshBasicMaterial({
             color: 0x0000ff,
             side: THREE.DoubleSide
         })
     ];
- 
+    // a box geometry
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
     // for all faces
-    geometry.faces.forEach(function (face,i) {
- 
-        // use each of the three materials 2 times
-        face.materialIndex = Math.floor(i/2) % 3
- 
+    geometry.groups.forEach(function (face, i) {
+        face.materialIndex = i % materials.length;
     });
- 
     // add to scene with the Mesh
     scene.add(new THREE.Mesh(
- 
             geometry,
             materials));
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    // RENDER
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
 ```
 
 ## 5 - Conclusion
