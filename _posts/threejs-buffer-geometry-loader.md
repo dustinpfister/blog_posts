@@ -5,11 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2018-04-12 11:54:12
-version: 1.6
+updated: 2021-05-01 09:27:55
+version: 1.7
 ---
 
-In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. In three.js if you want to import a 3d model that has been created in a 3d modeling program like [blender](https://www.blender.org/), it will have to be converted to a standard JSON format used by three.js. luckly there is an ofishal plugin to do just that for blender at least in the three.js repositories [exporters folder](https://github.com/mrdoob/three.js/tree/r91/utils/exporters/blender). The Buffered Geometry loader can be used to load a JSON file that has a type of BufferGeometry.
+In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
+
+In three.js if you want to import a 3d model that has been created in a 3d modeling program like [blender](https://www.blender.org/), and if you want to use the built in buffer geometry loader rather than an additional extremal file, it will have to be converted to a standard JSON format used by three.js and the built in Buffer Geometry Loader. Luckily there is an official plugin to do just that for blender at least in the three.js repositories [exporters folder](https://github.com/mrdoob/three.js/tree/r91/utils/exporters/blender). The Buffered Geometry loader can be used to load a JSON file that has a type of BufferGeometry.
+
+There are other options though when it comes to loading assets into three.js though, one way would be to use the [Collada file loader](/2021/04/30/threejs-dae-collada-loader/), which will allow for me to load files that are the default export format used by blender. This way I do not have to bother adding a plugin to blender, but I do have to add an additional file to load Collada Files as that loader is not built into three.js like that of the Buffer Geometry loader.
 
 
 <!-- more -->
