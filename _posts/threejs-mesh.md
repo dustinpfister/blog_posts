@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2021-05-01 16:34:48
-version: 1.16
+updated: 2021-05-01 16:40:19
+version: 1.17
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
@@ -52,7 +52,7 @@ So then this is a basic hello world type example of three.js where I am just loo
 
 ## 3 - Moving a Mesh
 
-it is important to note that THREE.Mesh is just one of many constructors in three.js that inherit from [Object3D](/2018/04/23/threejs-object3d/) which I will not get into detail about here. However for now it is a good idea to just know that Object3D brings a whole bunch of methods, and properties to THREE.Mesh that can be used to do things like moving the mesh around, and changing its rotation.
+It is important to note that THREE.Mesh is just one of many constructors in three.js that inherit from [Object3D](/2018/04/23/threejs-object3d/) which would be worth checking out in detail because much of what applies for a mesh will also apply for a camera, groups, a light source, and even a whole scene because all those things are built on top of Object3d. However for now it is a good idea to just know that Object3D brings a whole bunch of methods, and properties to THREE.Mesh that can be used to do things like moving the mesh around, and changing its rotation.
 
 ```js
 (function () {
@@ -107,11 +107,9 @@ it is important to note that THREE.Mesh is just one of many constructors in thre
     ());
 ```
 
-Here I am using the Object3D position property that stores an instance of [Vector3](/2018/04/15/threejs-vector3/) that can be used to change what should be the center point of the Mesh geometry assuming it has been normalized.
+Here I am using the Object3D position property that stores an instance of [Vector3](/2018/04/15/threejs-vector3/) that can be used to change what should be the center point of the Mesh geometry assuming it has been normalized. That might come off as a mouth full so maybe another way of explaining it is that there is a point in space in which the geometry of the mesh is relative to. The position property can be used to change the value of that point in space.
 
-That might come off as a mouth full so maybe another way of explaining it is that there is a point in space in which the geometry of the mesh is relative to. The position property can be used to change the value of that point in space.
-
-Also In this demo I am using the lookAt Method, which is another useful methods that is inherited from, use guessed it, Object3D.
+Also In this demo I am using the rotation property, which is another useful property that is inherited from, use guessed it, Object3D. This rotation property stores an instance of the Euler class which is like vercor3 only we are taking angles rather than a matrix position.
 
 ## 4 - Using an array of materials
 
