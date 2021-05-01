@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2021-05-01 09:35:41
-version: 1.9
+updated: 2021-05-01 09:42:45
+version: 1.10
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
@@ -186,4 +186,6 @@ loader.load(
 
 ## 4 - Conclusion
 
-There are many more loaders, some of which do more than just load geometry. It is possible to other assets besides just geometry as well. In this post I also did not get into depth about Buffered Geometry, and why it is that you might want to use Buffered geometry over plain old Geometry.
+There are many more loaders, some of which do more than just load geometry after all there are many other kinds of assets to use rather than just geometry such as textures, and materials. It is possible to load other assets besides just geometry as well with some of the built in loaders, however maybe those are all matters for another post. 
+
+In this post I also did not get into depth about [Buffer Geometry Constructor](/2021/04/22/threejs-buffer-geometry/), and why it is that you might want to use Buffered geometry over plain old [Geometry Constructor](/2018/04/14/threejs-geometry/).
