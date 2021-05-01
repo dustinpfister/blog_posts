@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 183
-updated: 2021-05-01 16:52:51
-version: 1.21
+updated: 2021-05-01 16:54:50
+version: 1.22
 ---
 
 A Mesh is used in [three.js](https://threejs.org/) to create triangular polygon based mesh Object with a [geometry](/2018/04/14/threejs-geometry/), and a [material](/2018/04/30/threejs-materials/) of which there are a number of options to choose form. The [Mesh Constructor](https://threejs.org/docs/#api/en/objects/Mesh) is one of many constructors that I find myself using often as I get into making three.js projects. It is typically what is used for any kind of 3d Object that will be placed in a [Scene](/2018/05/03/threejs-scene/) that will be some kind of object to look at or interact with then the is based off the [Object3d class](/2018/04/23/threejs-object3d/).
@@ -138,7 +138,6 @@ I have a post on this in which I get into this in detail but I can also provide 
             color: 0x00ff00,
             side: THREE.DoubleSide
         }),
- 
         // material 2 (blue basic)
         new THREE.MeshBasicMaterial({
             color: 0x0000ff,
@@ -169,6 +168,8 @@ I have a post on this in which I get into this in detail but I can also provide 
 }
     ());
 ```
+
+So then the process of skinning a mesh is just a matter of passing an array of materials to the mesh constructor rather than just a single material. After that it is just a question of making sure that the material index values are what they should be when it comes to the instance of the geometry that is being used with the mesh.
 
 ## 5 - Conclusion
 
