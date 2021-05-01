@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2021-05-01 10:05:00
-version: 1.12
+updated: 2021-05-01 10:06:56
+version: 1.13
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
@@ -30,7 +30,7 @@ I know there are a lot of projects where newer versions just patch programing mi
 
 Also in this post I am using blender 2.79 also released in March of 2018. When it comes to using the io_three plug-in it is important to use a late version of blender.
 
-### 1.3 Why use the buffered geometry loader?
+### 1.3 - Why use the buffered geometry loader?
 
 When first starting out with three.js one might use one of the built in constructors to create a simple geometry such as a cube geometry using the [BoxBufferGeometry](https://threejs.org/docs/index.html#api/geometries/BoxBufferGeometry) constructor. That works fine when you are just aiming to make a three.js hello world type project involving a spinning cube on the screen, but when making an actual project chances are you are going to want to make your own geometry one way or another.
 
@@ -211,6 +211,5 @@ loader.load(
 
 There are many more loaders, some of which do more than just load geometry after all there are many other kinds of assets to use rather than just geometry such as textures, and materials. It is possible to load other assets besides just geometry as well with some of the built in loaders, however maybe those are all matters for another post. 
 
-In this post I also did not get into depth about [Buffer Geometry Constructor](/2021/04/22/threejs-buffer-geometry/), and why it is that you might want to use Buffered geometry over plain old [Geometry Constructor](/2018/04/14/threejs-geometry/).
-
+In this post I also did not get into depth about [Buffer Geometry Constructor](/2021/04/22/threejs-buffer-geometry/), and why it is that you might want to use Buffered geometry over plain old [Geometry Constructor](/2018/04/14/threejs-geometry/) which is now no longer part of the core of three.js as of r127.
 
