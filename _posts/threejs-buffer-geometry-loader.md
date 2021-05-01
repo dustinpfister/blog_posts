@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2021-05-01 09:34:06
-version: 1.8
+updated: 2021-05-01 09:35:41
+version: 1.9
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
@@ -36,7 +36,7 @@ Of course there are ways of making a hard coded geometry, or generating a geomet
 
 The good thing about the Buffer Geometry loader is that it is one of the loaders that is built into three.js itself, the bad news is that there is a little leg work when it comes to adding a plug-in to blender to export to the standard that is used by the built in buffer geometry loader. To make matters worse if you are using a 3d modeling program other than blender there may not be a plug in to convert to this json format. So it might be a good idea to look into what the other options are, but the buffer geometry loader may still be a good starting point when it comes to looking into what the options are.
 
-## The JSON file format
+### 1.4 - The JSON file format
 
 The format of a json file that can be loaded with the buffered geometry loader should have a type of "BufferedGeometry" in it's meta data. A simple example that I made in blender and exported with the io_three plug in looks like this:
 
@@ -76,7 +76,7 @@ The format of a json file that can be loaded with the buffered geometry loader s
 }
 ```
 
-## Choosing a 3d modeling program
+### 1.5 - Choosing a 3d modeling program
 
 In order to load buffered geometry you first must have such geometry to load in the first place. Typically you will create a model in a 3d modeling program, and one way or another produce a JSON file that resembles the example I have given.
 
@@ -86,7 +86,7 @@ The process of exporting from sketchup to blender is a [little involved](https:/
 
 So for this post I will be writing about the blender plug-in, and as of late I have been using blender over sketchup. It is open source, and also a bit more professional when it comes to this sort of thing anyway. In the three.js repositories exporters folder there is the io_three plugin that can be used to export a model to the JSON format used by the loader.
 
-## Setting up the blender plugin
+### 1.6 - Setting up the blender plugin
 
 The [readme file](https://github.com/mrdoob/three.js/blob/r91/utils/exporters/blender/README.md) at the repository covers this process well, and it is pretty quick, easy, and painless. You just copy and paste the contents of the plug-in folder to a path on your computers file system. the path depends on your operating system, and the version of blender used.
 
@@ -102,7 +102,7 @@ C:\Users\USERNAME\AppData\Roaming\Blender Foundation\Blender\2.6X\scripts\addons
 
 Wherever it is you are looking for, it is the addons folder that is used by blender. Out of the box there should be a bunch of plug-ins there before hand, you just want to add the io_three plug-in to the collection there.
 
-## Basic demo using the buffered geometry loader.
+## 2 - Basic demo using the buffered geometry loader.
 
 A basic example of the loader will involve creating an instance of the loader, and then calling the load method of that instance. When calling the load method you will want to pass at least two arguments to the method which are the url of the json file that you want to load, and a callback method that will fire when the file is loaded, and ready to use.
 
@@ -150,7 +150,7 @@ A basic example of the loader will involve creating an instance of the loader, a
 
 The callback gives just one argument that is the geometry that can be used to make a mesh that can then be added to the scene, at which point the external geometry can be rendered. Aside from that I do not have to do anything out of the usual with respect to the scene, camera, and renderer as it is just another way to acquire a geometry to create a mesh.
 
-## Additional callbacks
+## 3 - Additional callbacks
 
 If desired additional callbacks can be given to the load method for reporting load progress, and handing errors if they happen.
 
@@ -184,6 +184,6 @@ loader.load(
 );
 ```
 
-## Conclusion
+## 4 - Conclusion
 
 There are many more loaders, some of which do more than just load geometry. It is possible to other assets besides just geometry as well. In this post I also did not get into depth about Buffered Geometry, and why it is that you might want to use Buffered geometry over plain old Geometry.
