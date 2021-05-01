@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 172
-updated: 2021-05-01 09:42:45
-version: 1.10
+updated: 2021-05-01 10:00:27
+version: 1.11
 ---
 
 In this post I will be writing about the [BufferGeometryLoader](https://threejs.org/docs/index.html#api/loaders/BufferGeometryLoader) in[three.js](https://threejs.org/). The Buffer Geometry Loader is one of several loaders in three.js that can be used to load an external JSON asset. 
@@ -114,13 +114,34 @@ A basic example of the loader will involve creating an instance of the loader, a
  
     // Camera
     var camera = new THREE.PerspectiveCamera(65, 4 / 3, .5, 10);
-    camera.position.set(-1.5, 2.5, 1.5);
+    camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
  
     // Render
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var light = new THREE.PointLight(0xffffff, 1, 100);
+    light.position.set(2, 2, 2);
+    scene.add(light);
+ 
+    var light2 = new THREE.PointLight(0xffffff, 1, 100);
+    light2.position.set(-2, -2, -2);
+    scene.add(light2);
+ 
+    var frame = 0,
+    maxFrame = 200,
+    mesh;
+    var loop = function () {
+        var per = frame / maxFrame;
+        requestAnimationFrame(loop);
+        mesh.rotation.set(Math.PI / 2, Math.PI * 2 * per, 0);
+        // render the scene
+        renderer.render(scene, camera);
+        frame += 1;
+        frame %= maxFrame;
+    };
  
     // Loader
     var loader = new THREE.BufferGeometryLoader();
@@ -128,24 +149,24 @@ A basic example of the loader will involve creating an instance of the loader, a
     // load a resource
     loader.load(
         // resource URL
-        'loader-buffer-geometry/js/three_2.json',
- 
+        'buffer-geometry-loader/js/three_1.json',
         // onLoad callback
         function (geometry) {
+        // create a mesh with the geometry
+        // and a material, and add it to the scene
+        mesh = new THREE.Mesh(
+                geometry,
+                new THREE.MeshStandardMaterial({
+                    color: 0x00ff0000,
+                    emissive: 0x2a2a2a,
+                    side: THREE.DoubleSide
+                }));
+        scene.add(mesh);
+        loop();
+    });
  
-            // create a mesh with the geometry
-            // and a material, and add it to the scene
-            var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({}));
-            scene.add(mesh);
- 
-            // render the scene
-            renderer.render(scene, camera);
- 
-        }
- 
-    );
- 
-}());
+}
+    ());
 ```
 
 The callback gives just one argument that is the geometry that can be used to make a mesh that can then be added to the scene, at which point the external geometry can be rendered. Aside from that I do not have to do anything out of the usual with respect to the scene, camera, and renderer as it is just another way to acquire a geometry to create a mesh.
@@ -189,3 +210,5 @@ loader.load(
 There are many more loaders, some of which do more than just load geometry after all there are many other kinds of assets to use rather than just geometry such as textures, and materials. It is possible to load other assets besides just geometry as well with some of the built in loaders, however maybe those are all matters for another post. 
 
 In this post I also did not get into depth about [Buffer Geometry Constructor](/2021/04/22/threejs-buffer-geometry/), and why it is that you might want to use Buffered geometry over plain old [Geometry Constructor](/2018/04/14/threejs-geometry/).
+
+
