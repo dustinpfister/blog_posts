@@ -5,17 +5,17 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-05-02 12:51:07
-version: 1.12
+updated: 2021-05-02 12:55:50
+version: 1.13
 ---
 
-In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, r a whole scene actually.
+In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, or a whole scene actually.
 
-This post is about the [Vector3](https://threejs.org/docs/index.html#api/math/Vector3) constructor that is useful in 3d space. A 3d Vector3 Instance consists of an x,y, and z value which makes it useful for plotting a single point in 3d space. It also has a few more uses, such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin (0,0,0).
+This post is then about the [Vector3](https://threejs.org/docs/index.html#api/math/Vector3) constructor that is a useful class for various things in a three.js project. A 3d Vector3 Instance consists of an x, y, and z value which makes it useful for plotting a single point in 3d space. It also has a few more uses, such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin for example.
 
 <!-- more -->
 
-Vector3 instances are also used when creating geometry that will be used in a mesh, and there are also many properties in various objects that expect an instance of Vector3. There also have a whole bunch of useful methods that can be used for typical tasks such as finding the distance between two points in space.
+Vector3 instances are also used when creating geometry that will be used in a mesh, and there are also many properties in various objects that expect an instance of Vector3. There are also a whole bunch of useful methods that can be used for typical tasks such as finding the distance between two points in space, or to copy the values of one vector instance to another. While I am looking into the vector3 class I might also touch base one some other Class instances of interest such as the Euler class which is like Vecor3 only it deals with angles rather than a position.
 
 ## What to know
 
