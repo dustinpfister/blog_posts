@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2021-05-02 13:16:51
-version: 1.21
+updated: 2021-05-02 13:17:34
+version: 1.22
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recoding for an amount of time.
@@ -25,7 +25,7 @@ In this post I was using three.js r91,
 
 ## 2 - Exporting a simple rotating cube example
 
-For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an three.js animation to webm with whammy. Uising whammy is fairly simple, but there are a few pitfalls that I have ran into. Nothing major, but I will be going over them here.
+For the sake of keeping this post simple and to the point I will just be using a simple rotating cube example for this post. This will help to take the focus away from the animation and place it more so with the process of exporting an three.js animation to webm with whammy. Using whammy is fairly simple, but there are a few pitfalls that I have ran into. Nothing major, but I will be going over them here.
 
 ### 2.1 - Create Whammy instance, and setup some variables
 
