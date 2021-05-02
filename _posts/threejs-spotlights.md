@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2021-05-02 10:21:57
-version: 1.16
+updated: 2021-05-02 12:43:25
+version: 1.17
 ---
 
 There are lights, and there is having a camera, and then there is having some action or movement in a scene. In this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). Spotlights as the name suggests is a directional light that will concentrate light in a cone like shape at a given target. This kind of light source differs from other options that will just brighten things up in general such as with [ambient light](/2018/11/02/threejs-ambientlight/), or give a cylinder like beam of light that where all rays move in a single parallel direction such as the case with [directional light](/2019/06/04/threejs-directional-light/). So then in addition to adding directional or ambient light to a project, spotlights can be used as an additional kind of light source that can be moved around and focus light in on a specific area.
@@ -220,22 +220,97 @@ spotLight.penumbra = .5;
 
 ## 6 - Spotlight helper
 
-If you want to see what is going on with the spotlight, by having a way of showing the current area of the cone with some lines, there is no need to make your own object for dong so. There is a special helper class in three.js just for this purpose.
+If you want to see what is going on with the spotlight, by having a way of showing the current area of the cone with some lines, there is no need to make your own object for dong so. There is a special helper class in three.js just for this purpose. To use this helper I just need to create an instance of new THREE.SpotLightHelper and pass a reference to the spotlight that I want to use the helper with. I will then want to pass reference to the resulting spot like helper to the spotlights add method so that the helper is a child of the spotlight.
 
 ```js
+(function () {
+ 
+    // SCENE
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x0a0a0a);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(40, 320 / 240, 1, 5000);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+ 
+    // CUBE
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xaffe00,
+                emissive: 0x0a0a0a,
+                side: THREE.DoubleSide
+            }));
+    cube.position.set(0, 0.5, 0);
+    cube.castShadow = true;
+    scene.add(cube);
+ 
+    // RENDER
+    var renderer = new THREE.WebGLRenderer();
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // spotlight
     var spotLight = new THREE.SpotLight(0xffffff),
     spotLightHelper = new THREE.SpotLightHelper(spotLight);
- 
-    // add a spotlight helper to the spotlight
+    spotLight.castShadow = true;
+    spotLight.position.set(-2.5, 3.5, 2.5);
+    spotLight.intensity = 2;
+    spotLight.penumbra = 0.5;
+    spotLight.angle = Math.PI * 0.15;
+    spotLight.distance = 6;
     spotLight.add(spotLightHelper);
     scene.add(spotLight);
     scene.add(spotLight.target);
  
-    // when changing the spotlight position
-    // or target I will want to update the helper
-    spotLight.position.set(-100, 100, -100);
-    spotLight.target.position.set(20, 5, 5);
-    spotLightHelper.update();
+    // add plane to the scene
+    var plane = new THREE.Mesh(
+            new THREE.PlaneBufferGeometry(8, 8),
+            new THREE.MeshStandardMaterial({
+                color: 0x00afaf,
+                emissive: 0x202020,
+                side: THREE.DoubleSide
+            }));
+    plane.rotation.x = Math.PI / 2;
+    plane.receiveShadow = true;
+    scene.add(plane);
+ 
+    // INIT
+    renderer.setSize(640, 480);
+ 
+    // LOOP
+    var frame = 0,
+    maxFrame = 500,
+    lt = new Date(),
+    fps = 24;
+    loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5,
+        r = Math.PI * 2 * per,
+        x = Math.cos(r) * 3,
+        y = Math.sin(r) * 3,
+        z = 2;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            spotLight.position.set(x, z, y);
+            spotLight.target.position.set(-1 * 2 * bias, 0, 0);
+            spotLightHelper.update();
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame = frame % maxFrame;
+            lt = now;
+        }
+    };
+ 
+    loop();
+ 
+}
+    ());
+ 
 ```
 
 ## 7 - Conclusion
