@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2021-05-02 09:55:27
-version: 1.10
+updated: 2021-05-02 10:00:04
+version: 1.11
 ---
 
 There are lights, and there is having a camera, and then there is having some action or movement in a scene. In this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). Spotlights as the name suggests is a directional light that will concentrate light in a cone like shape at a given target. This kind of light source differs from other options that will just brighten things up in general, or give a cylinder like beam of light in a given direction. In addition to adding directional light to a project, spotlights can be used to generate shadows, if the render used can do so, and is set up to render shadows.
@@ -25,9 +25,9 @@ This is something that I should mention in every three.js post, yes three.js is 
 
 The last time I edited this post I was using three.js 0.127.0 \( or just simply r127 \) that came out in March of 2021, and when I first wrote this post I was using three.js 0.91.0  released in March of 2018.
 
-## Basic example of spotlight use
+## 2 - Basic example of spotlight use
 
-When starting out with a basic example of spotlight use, at a very minimum I would want to create an instance of a spotlight by calling the THREE.SpotLight constructor with the new keyword, and saving that instance to a variable. One I have my instance I would want to change its position using the Object3D position.set method to a point far away from the origin.
+When starting out with a basic example of  a spotlight in three.js, at a very minimum I would want to create an instance of a spotlight by calling the THREE.SpotLight constructor with the new keyword, and then save that instance to a variable. Once I have my instance I would want to change its position using the Object3D position.set method to a point far away from the origin, or position it wherever I want it to be. I will then want to also make sure that the spotlight is facing the object that i want to shine light on.
 
 ```js
 // SPOTLIGHT
@@ -42,35 +42,33 @@ like this:
 ```js
 (function () {
  
-    // Scene
+    // SPOTLIGHT
+    var spotLight = new THREE.SpotLight(0xffffff);
+    spotLight.position.set(4.2, 3.4, 1.7);
+ 
+    // scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0f0f0f);
- 
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
-    camera.position.set(500, 500, 500);
-    camera.lookAt(0,0,0);
+    // ADD THE SPOTLIGHT TO THE SCENE
+    scene.add(spotLight);
  
     // A MESH with Lambert Material
     // which responds to a light source.
     var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(200, 200, 200),
+            new THREE.BoxGeometry(3, 3, 3),
             new THREE.MeshLambertMaterial({
                 color: 0xff0000
             }));
-    cube.position.set(0, 100, 0);
     scene.add(cube);
  
-    // SPOTLIGHT
-    var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.position.set(350, 340, 170);
-    scene.add(spotLight);
- 
-    // RENDER
+    // camera
+    var camera = new THREE.PerspectiveCamera(50, 320 / 240, 1, 3000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0,0,0);
+    // renderer
     var renderer = new THREE.WebGLRenderer();
     document.getElementById('demo').appendChild(renderer.domElement);
-    renderer.setSize(320, 240);
- 
+    renderer.setSize(640, 480);
     // render what we have
     renderer.render(scene, camera);
  
