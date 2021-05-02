@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2021-05-02 10:00:04
-version: 1.11
+updated: 2021-05-02 10:03:27
+version: 1.12
 ---
 
 There are lights, and there is having a camera, and then there is having some action or movement in a scene. In this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). Spotlights as the name suggests is a directional light that will concentrate light in a cone like shape at a given target. This kind of light source differs from other options that will just brighten things up in general, or give a cylinder like beam of light in a given direction. In addition to adding directional light to a project, spotlights can be used to generate shadows, if the render used can do so, and is set up to render shadows.
@@ -78,7 +78,7 @@ like this:
 
 By default a spotlight will point at the origin (0,0,0), because the mesh I am using in this demo is located at the origin, and I am not moving anything around, this works just okay with the default settings when it comes to things like the angle of the cone, and the light intensity. However if I want to change the target point that the spotlight is pointing at, and tweak some additional values, there is a great deal more to know about spotlights. Also there is more to know about materials as well, after all a material is what will respond to a light source. There is also a helper class that can be used to get a sense of what is going on with the spotlight by showing some lines that indicate it's present status with respect to it's position, angle, and what it is pointing at. In addition there is what to do in order to get shadows working if interested, so lets get to it.
 
-## Changing the target of the spotlight
+## 3 - Changing the target of the spotlight
 
 The target property of the spotlight is what is of interest if you want to change what it is that the spotlight is pointing at. This can be something like an instance of Object3D, or a mesh in the scene. If you just want to change the target position of the spotlight, you will still want to add it's target to the scene when you create the spotlight. If you do not at least do that then any change to the spotlights target position will not take effect.
 
@@ -99,13 +99,13 @@ It is also possible to set the target of the spotlight to a mesh that you have i
 spotLight.target = mesh;
 ```
 
-## Getting shadows to work with a spotlight
+## 4 - Getting shadows to work with a spotlight
 
 Spotlights are a type of light in three.js that can be used to cast shadows. This is something that will not just work right out of the gate, as properties need to be set for the spotLight, renderer, and the objects in your scene that will cast, and receive shadows. Also shadows will not work with some renderer's, but It should in most cases work just fine with the webGL renderer. 
 
 One thing to keep in mind though is that shadows will of course eat up more processing power compared to not using them, which is why you might consider putting in an option to turn them off when designing your project.
 
-### Setting up the renderer for shadows
+### 4.1 - Setting up the renderer for shadows
 
 First off make sure you are using a renderer that supports shadows in the first place, the plane old 2d canvas renderer for instance does not. If you are using a renderer that does support shadows, and think you might do okay with the default settings for the shadow map of the renderer then all you have to do, for the renderer at least, is to set the shadowMap.enabled boolean to true.
 
@@ -114,7 +114,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.shadowMap.enabled = true;
 ```
 
-### Setting up Objects for shadows
+### 4.2 - Setting up Objects for shadows
 
 The Object3D class has castShadow, and receiveShadow properties that both default to false. You will want to set one, the other, or both of these booleans to true for any and all objects in your scene that you want to have cast or receive shadows.
 
@@ -131,7 +131,7 @@ scene.add(cube);
 
 Notice that I am also using the Lambert material with my cube that will respond to light, be sure you are using a material like that unless for some reason you want an object that will cast a shadow, but not reflect a light source.
 
-### Setting up the spotLight, and full shadow demo
+### 4.3 - Setting up the spotLight, and full shadow demo
 
 Just like the objects that will case or receive shadows, you will want to set the castShadow boolean of the spotLight instance to true. In addition there are some more properties of the spotLight that you may want to play with that have to do with setting the resolution of the shadow map, and the geometry of the cone of the spotlight.
 
@@ -202,7 +202,7 @@ Just like the objects that will case or receive shadows, you will want to set th
     ());
 ```
 
-## Spotlight geometry and other metrics
+## 5 - Spotlight geometry and other metrics
 
 There are a number of properties that can be used to change the geometry of the cone that composes the area of the spotlight. two major values that may come to mind are the angle of the cone, as well as the distance.
 
@@ -218,7 +218,7 @@ spotLight.intensity = 2;
 spotLight.penumbra = .5;
 ```
 
-## Spotlight helper
+## 6 - Spotlight helper
 
 If you want to see what is going on with the spotlight, by having a way of showing the current area of the cone with some lines, there is no need to make your own object for dong so. There is a special helper class in three.js just for this purpose.
 
@@ -238,6 +238,6 @@ If you want to see what is going on with the spotlight, by having a way of showi
     spotLightHelper.update();
 ```
 
-## Conclusion
+## 7 - Conclusion
 
-There is much more to know about spotlights, and lights in general as well as the differences in the materials that respond to lights like the spotlight. As I author, and update more demos I might get around to updating, and expanding this post.
+There is much more to know about spotlights, and lights in general as well as the differences in the materials that respond to lights like the spotlight. As I author more content on three.js, and update more demos, I often get around to updating by older content on three.js now and then, and this post is no exception to this.
