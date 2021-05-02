@@ -5,25 +5,25 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 171
-updated: 2021-05-02 09:42:33
-version: 1.9
+updated: 2021-05-02 09:55:27
+version: 1.10
 ---
 
 There are lights, and there is having a camera, and then there is having some action or movement in a scene. In this post will will be covering all three of those things in [three.js](https://threejs.org/), but with an emphases on [spotlights](https://threejs.org/docs/index.html#api/lights/SpotLight). Spotlights as the name suggests is a directional light that will concentrate light in a cone like shape at a given target. This kind of light source differs from other options that will just brighten things up in general, or give a cylinder like beam of light in a given direction. In addition to adding directional light to a project, spotlights can be used to generate shadows, if the render used can do so, and is set up to render shadows.
 
 <!-- more -->
 
-## What to know before hand
+## 1 - What to know before hand
 
 This is not a [getting started](/2018/04/04/threejs-getting-started/) post on three.js, or javaScript in general. I assume that you have at least a basic working knowledge on javaScript, and that you have your feet wet with three.js. If not I have other posts that may help.
 
 In this post I will not be covering materials in three.js in detail, but I also assume that you know that in three.js some materials respond to a light source, and others do not.
 
-## The Three.js version matters
+## 1.1 - The Three.js version matters
 
 This is something that I should mention in every three.js post, yes three.js is a javaScript project where the version number is very important. New versions of three.js come out all the time, and when they do it's not exactly just some spelling fixes in the readme file. Often there are many major, project breaking changes that are made.
 
-In this post I am using three.js 0.91.0 (or just simply r91) released in March of 2018.
+The last time I edited this post I was using three.js 0.127.0 \( or just simply r127 \) that came out in March of 2021, and when I first wrote this post I was using three.js 0.91.0  released in March of 2018.
 
 ## Basic example of spotlight use
 
