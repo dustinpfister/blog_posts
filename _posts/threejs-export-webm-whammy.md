@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 318
-updated: 2021-05-02 17:01:00
-version: 1.23
+updated: 2021-05-02 17:06:04
+version: 1.24
 ---
 
 When I am playing around with [three.js](https://threejs.org/) I often like to use it to make simple looping animations, and it would be nice to have at least one or two ways to export these projects to a reliable, well supported video file format like the [webm file format](https://en.wikipedia.org/wiki/WebM) making it easy to share as a stand alone video file. Now there may be a great number of ways to go about doing this sort of thing actually on [stack overflow I saw an example the makes use of some built in browser features](https://stackoverflow.com/questions/50681683/how-to-save-canvas-animation-as-gif-or-webm) as a way to go about capturing video from a canvas element on the fly. However what I have in mind is something where I can create a video on a frame by frame basis rather than recoding for an amount of time.
@@ -133,4 +133,8 @@ animate();
 
 ## 3 - Conclusion
 
-So far this seems like one of the best options for converting a simple three.js looping animation to a stand alone webm file. I have look into other options, but some of them are more complected, or I could not find a way to build the file on a frame by frame basis. If you know of any other methods of getting this done, or have an questions or concerns please let me know in the comments, and thanks for reading.
+So far this seems like one of the best options for converting a simple three.js looping animation to a stand alone webm file. I might till want to look into other options, but some of them are more complex then that need to be, or I could not find a way to build the file on a frame by frame basis which is what I want to do. 
+
+Still the use of whammy will allow me to create a webm file of an animation using three.js, from there it is just a question of what I do with that. With that said I have found that I like to use a [program called Open Shot](https://www.openshot.org/) to create a finished video with audio. I could also use just about any video editing program with one or more webm files crated with whammy, and then do editing and any additional processing to create a finished product of some kind.
+
+If you know of any other methods of getting this done, or have an questions or concerns please let me know in the comments, and thanks for reading.
