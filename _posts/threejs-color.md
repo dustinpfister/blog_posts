@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-05-03 12:57:00
-version: 1.11
+updated: 2021-05-03 12:59:48
+version: 1.12
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a class object instance that represents a specific color. When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
@@ -55,6 +55,8 @@ renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+In this example I am also using the THREE.COlor constructor to set the color of the Point Light that I am using for a light source for the box that is skinned with the standard material. When I create a color for a point light I typically will want to keep it white like in this example, but if I make the color of the mesh while I can set the color of the point light to something else. ANother cool thing to get into is having an array of point lights, and set different colors to each of them and place them in different areas of a scene, but that might all be a little to much for now. I wanted to keep this example relative basic.
 
 ## 3 - Color and Emissive Color
 
