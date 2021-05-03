@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 09:32:41
-version: 1.8
+updated: 2021-05-03 09:37:08
+version: 1.9
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -17,19 +17,17 @@ There is only so much to write about with the [Line](https://threejs.org/docs/#a
 
 So there is a great deal to know about when it comes to making lines in three.js for both 3d, and 2d actually. I say that because there is also drawing lines in a 2d canvas using the 2d drawing context, and then using that as a way to skin the faces of a geometry. However in this post I will be briefly covering the Line Constructor and topics closely related to that.
 
-## What you should know before hand
+## 1 - What you should know before hand
 
-This is an advanced post on just one little aspect of three.js which is a javaScript project that allows for doing things involving solid geometry. It is not a getting started post on three.js, or any additional aspects of javaScript in general. 
+This is a post on just one little aspect of three.js which is a javaScript project that allows for doing things involving solid geometry. It is not a getting started post on three.js, or any additional aspects of javaScript in general that are required in order to work with the library. You will want to know about the Vector3 constructor as that is what is used to define points in 3d space in three.js. You should be aware of Materials, Cameras, Renderer's, and the Scene that are all needed to make a three.js project.
 
-You will want to know about the Vector3 constructor as that is what is used to define points in 2d space in three.js. You should be aware of Materials, Cameras, Renderer's, and the Scene that are all needed to make a three.js project.
+### 1.1 - Version Numbers matter
 
-As I say in every three.js post of mine, three.js is a project where the version number matters big time. In this post I am using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) ( or just r91 for short )
+As I say in every three.js post of mine, three.js is a project where the version number matters big time. In this post I am using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) \( or just r91 for short \)
 
-## A word On Materials when working with lines.
+### 1.2 -  A word On Materials when working with lines.
 
-If you are just making lines, and nothing that will compose a solid object or face, the it does not make sense to use a material that is designed to be used with something that is just a string of points in space.
-
-So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in three.js that are intended to be used with just lines. LineBasicMaterial, and [LineDashedMaterial](https://threejs.org/docs/index.html#api/materials/LineDashedMaterial)
+If you are just making lines, and nothing that will compose a solid object or face, then it does not make sense to use a material that is designed to be used with something that is just a string of points in space. So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in three.js that are intended to be used with just lines. There materials are the LineBasicMaterial, and the LineDashedMaterial materials.
 
 ## Using the dashed line material
 
