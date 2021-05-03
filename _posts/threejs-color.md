@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-05-03 12:51:56
-version: 1.9
+updated: 2021-05-03 12:55:12
+version: 1.10
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a class object instance that represents a specific color. When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
@@ -95,7 +95,7 @@ renderer.render(scene, camera);
 
 ## 4 - Background and Fog
 
-Another use case example of the THREE.Color constructor would be to set the background color and or a fog color. When doing so I typically will want to make the background color the same as the fog color, and I will also want to use the fog color for the color property of materials also.
+Another use case example of the THREE.Color constructor would be to set the background color and or a fog color. When doing so I typically will want to make the background color the same as the fog color, and I will also want to use the fog color for the color property of materials also. So it would make sense to have some kind of global, or constant local variable that is a fog color variable and set the color for that once with the THREE.Color Constructor. Then use that values for the scene.background property, as well as the value to pass to THREE.fogExp2 to create the value for scene.fog, and to use the color for mesh materials.
 
 ```js
 // creating a scene
