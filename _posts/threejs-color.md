@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-05-03 12:45:38
-version: 1.6
+updated: 2021-05-03 12:48:25
+version: 1.7
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a class object instance that represents a specific color. When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
@@ -23,7 +23,7 @@ When I first wrote this post I was using r127 of three.js.
 
 ## 2 - Basic color example
 
-So first things first how about a basic use case example of the THREE.COlor constructor where I am just setting the regular color of a materials of a cube created with the Box geometry constructor.
+So first things first how about a basic use case example of the THREE.COlor constructor where I am just setting the regular color of a material of a cube created with the Box geometry constructor. When setting the color value of a material it is important to take into consideration what kind of material it is to begin with. In this example I am using the Standard material which is a kind of material that will respond to a light source. So when using this kind of material, and setting a color for it, I need to also add a light to the scene. However if I was using the basic material I would not have to bother with a light, and the color property of that material is used to just set what the basic solid color of the material is.
 
 ```js
 // creating a box mesh with the Box Geometry constructor,
