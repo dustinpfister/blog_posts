@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 11:06:26
-version: 1.18
+updated: 2021-05-03 11:09:25
+version: 1.19
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -92,7 +92,9 @@ As with any three.js example that is fully complete there must be a scene, camer
 
 ### 2.1 - First off a new threejs r127 example using BufferGemoetry
 
-If I am using a late version of three.js that is r125 or higher I have to use the Buffer Geometry Constructor for the geometry of the line as the old Geometry constructor has been removed from that point forward. So then the first thing I need to do is create an array and then use the vecor3 class to create the points that I want for the line. After that I can use the setFromPoints method of a Buffer Geometry instance to create an instance of buffer geometry with this array of points. The resulting geometry can then be used with the THREE.Line constructor by passing the geometry as the first argument followed by the kine oif line material that I want to use.
+If I am using a late version of three.js that is r125 or higher I have to use the Buffer Geometry Constructor for the geometry of the line as the old Geometry constructor has been removed from that point forward. So then the first thing I need to do is create an array and then use the vecor3 class to create the points that I want for the line. After that I can use the setFromPoints method of a Buffer Geometry instance to create an instance of buffer geometry with this array of points. The resulting geometry can then be used with the THREE.Line constructor by passing the geometry as the first argument followed by the kine of line material that I want to use.
+
+Once I have my instance of THREE.line I can then add it to a scene, then create a camera, and a renderer and use the scene and camera with the render just like any other example.
 
 ```js
 (function () {
