@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2021-05-03 13:26:34
-version: 1.15
+updated: 2021-05-03 13:28:18
+version: 1.16
 ---
 
-When playing around with lines in [three.js](https://threejs.org/) it would be nice to set the width of lines. Although there is a linewidth property of the lineBasicMaterial, on most platforms any width other than the default value of 1 will not work anyway. However looking over the examples at the three.js site there are some official additional resources that can be used to make think lines that seems to work just fine.
+When playing around with lines in [three.js](https://threejs.org/) it would be nice to set the width of lines. Although there is a line width property of the lineBasicMaterial, on most platforms any width other than the default value of 1 will not work anyway. However looking over the examples at the three.js site there are some official additional resources that can be used to make thick lines that seems to work just fine. The only thing about it is that these features are not built into the core of the three.js library itself.
 
 <!-- more -->
 
