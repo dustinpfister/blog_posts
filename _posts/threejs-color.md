@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-05-03 13:12:29
-version: 1.17
+updated: 2021-05-03 13:15:36
+version: 1.18
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a class object instance that represents a specific color. When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
@@ -154,6 +154,8 @@ var loop = function () {
 };
 loop();
 ```
+
+In this example I am now making use of a loop that make used of the requestiAnimationFrame method to call the render function of the web gl render over and over again. Each time I do so I update some things when it comes to the position and rotation of the box object. The effect is then that the box will disappear as it moves away from the camera and will gradually appear again as it comes back in range of the camera.
 
 ## 5 - Random Color example
 
