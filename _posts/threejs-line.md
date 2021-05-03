@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 10:11:23
-version: 1.14
+updated: 2021-05-03 10:13:25
+version: 1.15
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -51,7 +51,26 @@ Certain properties such as the line width might not work as expected on all plat
 
 One of the best ways to go about getting started with lines in three.js is to just use the Line constructor. There is also the LineSegments constructor that works pretty much the same way only it uses a different rendering method. A basic example of one of these would be to just create a geometry, push points to an array, and then use that geometry with a line material to create an instance of Line that can then be added to a scene. However the process of doing so has changed a little when it comes to more recent versions of three.js
 
-#### 1.4.2 - Uisng the Geometry Constructor \( removed as of r125+ \)
+#### 1.4.1 - Using the BufferGeometry Constructor
+
+In general I will want to use the Buffer Geometry constructor to create the geometry of a line. In fact in late versions of three.js this is the only way to do so now.
+
+```js
+    var points = [];
+    points.push(
+        new THREE.Vector3(-10, -10, 0),
+        new THREE.Vector3(10, 0, 0),
+        new THREE.Vector3(-10, 10, 0));
+    var geometry = new THREE.BufferGeometry().setFromPoints( points );
+    // CREATE THE LINE
+    var line = new THREE.Line(
+            geometry,
+            new THREE.LineBasicMaterial({
+                color: 0x0000ff
+            }));
+```
+
+#### 1.4.2 - Using the Geometry Constructor \( removed as of r125+ \)
 
 When I first wrote this post I was using r91 of three.js, back then I could make likes by using the geometry constructor. I guess I can still level these examples up but I will of course have to just make it clear that code like this will break on recent versions of three.js unless you can bring back the gometry constructor by some kind of means involving additional extremal files.
 
