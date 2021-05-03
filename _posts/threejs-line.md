@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 09:37:08
-version: 1.9
+updated: 2021-05-03 09:42:17
+version: 1.10
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -29,7 +29,7 @@ As I say in every three.js post of mine, three.js is a project where the version
 
 If you are just making lines, and nothing that will compose a solid object or face, then it does not make sense to use a material that is designed to be used with something that is just a string of points in space. So if you aim to just draw some lines, and not something that will compose a solid object there are two special materials in three.js that are intended to be used with just lines. There materials are the LineBasicMaterial, and the LineDashedMaterial materials.
 
-## Using the dashed line material
+### 1.3 -  Using the Dashed Line material
 
 If you are trying to use the dashed line material rather than the basic material, but are scratching your head wondering why it is that it is not dashed, then changes are you have not called a
 
@@ -45,9 +45,9 @@ line.computeLineDistances();
 scene.add(line);
 ```
 
-Certain properties such as the line Width might not work as expected on all platforms, as such it might be best to always expect a width of only 1, or at least be happy with how it looks when it is just 1.
+Certain properties such as the line width might not work as expected on all platforms, as such it might be best to always expect a width of only 1, or at least be happy with how it looks when it is just 1.
 
-## The Line, and LineSegments Constructors
+### 1.4 - The Line, and LineSegments Constructors
 
 One of the best ways to go about getting started with lines in three.js is to just use the Line constructor. There is also the LineSegments constructor that works pretty much the same way only it uses a different rendering method.
 
@@ -65,7 +65,7 @@ scene.add(new THREE.Line(geometry, new THREE.LineBasicMaterial({
 })));
 ```
 
-## Full line demo example
+## 2 - Full line demo example
 
 As with any three.js example that is fully complete there must be a scene, camera, and renderer on top of the use of the Line constructor, geometry, and line materials.
 
@@ -136,10 +136,8 @@ I often place these examples just to have a complete copy and paste, functioning
 
 I will not be getting into the canvas 2d drawing api in detail here, but becuase it is another way of drawing lines in three.js it is sure worth mentioning to say the least.
 
-## Using 2d lines made in a canvas project with three.js
+## 3 - Using 2d lines made in a canvas project with three.js
 
-Read my [full post on using canvas to make a texture](/2018/04/17/threejs-canvas-texture/) in three.js
+I have wrote a [full post on using canvas to make a texture](/2018/04/17/threejs-canvas-texture/) in three.js, and when doing so there is drawing 2d lines on a canvas element and then using that to skin the face of a geometry. So then because I wrote a post on that in great detail I will not be getting into that here, but I think it is worth mentioning in this post.
 
-If you are familiar with the 2d canvas drawing api that can be used to draw 2d lines by making a texture using a canvas element. I have [written a post](/2018/04/17/threejs-canvas-texture/) on this that covers how to do this in detail.
-
-How it is done in a nut shell is to use the 2d canvas drawing context line methods to draw a line like normal, then pass the canvas to the Texture constructor, or better yet the CanvasTexture constructor that is put in place for this specific purpose. The texture can then be used with a material that is used in a Mesh. The Mesh can then use any geometry that will have one or more faces that will make use of the texture.
+How it is done in a nut shell is to use the 2d canvas drawing context line methods to draw a line like normal, then pass the canvas to the Texture constructor, or better yet the CanvasTexture constructor that is put in place for this specific purpose. The texture can then be used with a material that is used in a Mesh for the various types of maps such as the plain color map, alpha map, and so forth. The Mesh can then use any geometry that will have one or more faces that will make use of the texture.
