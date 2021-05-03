@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 09:46:04
-version: 1.11
+updated: 2021-05-03 09:53:48
+version: 1.12
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -134,7 +134,7 @@ I often place these examples just to have a complete copy and paste, functioning
     scene.add(mesh);
 ```
 
-I will not be getting into the canvas 2d drawing api in detail here, but becuase it is another way of drawing lines in three.js it is sure worth mentioning to say the least.
+I will not be getting into the canvas 2d drawing api in detail here, but because it is another way of drawing lines in three.js it is sure worth mentioning to say the least.
 
 ## 3 - Using 2d lines made in a canvas project with three.js
 
