@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 11:09:25
-version: 1.19
+updated: 2021-05-03 11:11:47
+version: 1.20
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -131,6 +131,8 @@ Once I have my instance of THREE.line I can then add it to a scene, then create 
 ```
 
 ### 2.2 - My old r91 example Using the now removed Geometry constructor as of r125+
+
+If I am using an older version of three.js or can somehow get the old geometry constructor on a new version of three.js I can create the geometry that way. Aside from that there is not much of any difference when it comes to everything else. I can not say that I will be creating actual projects like this any more, but I thought I should leave this up for historical reasons.
 
 ```js
 (function () {
