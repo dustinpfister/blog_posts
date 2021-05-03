@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 178
-updated: 2021-05-03 10:13:25
-version: 1.15
+updated: 2021-05-03 10:15:40
+version: 1.16
 ---
 
 This month I have been working towards developing a solid understanding of the basics of [three.js](https://threejs.org/) as it is a great project that helps with everything, and anything 3d in a javaScript environment. As such it was only a matter of time until I would get around to working out a few quick demos about how to work with lines in three.js. Doing so is not that hard at all, and can quickly become very fun allowing me to draw in 3d.
@@ -23,7 +23,7 @@ This is a post on just one little aspect of three.js which is a javaScript proje
 
 ### 1.1 - Version Numbers matter
 
-As I say in every three.js post of mine, three.js is a project where the version number matters big time. In this post I am using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) \( or just r91 for short \)
+As I say in every three.js post of mine, three.js is a project where the version number matters big time. When I first wrote this post I was using [three.js 0.91.0](https://github.com/mrdoob/three.js/tree/r91) \( or just r91 for short \), and the last time I edited the post I was using three.s r127. Sense then many code breaking changes have happened in three.js with all sorts of things, and when it comes to lines the geometry now has to be an Instance of Buffer Geometry.
 
 ### 1.2 -  A word On Materials when working with lines.
 
@@ -72,7 +72,7 @@ In general I will want to use the Buffer Geometry constructor to create the geom
 
 #### 1.4.2 - Using the Geometry Constructor \( removed as of r125+ \)
 
-When I first wrote this post I was using r91 of three.js, back then I could make likes by using the geometry constructor. I guess I can still level these examples up but I will of course have to just make it clear that code like this will break on recent versions of three.js unless you can bring back the gometry constructor by some kind of means involving additional extremal files.
+When I first wrote this post I was using r91 of three.js, back then I could make likes by using the geometry constructor. I guess I can still level these examples up but I will of course have to just make it clear that code like this will break on recent versions of three.js unless you can bring back the geometry constructor by some kind of means involving additional extremal files.
 
 ```js
 var geometry = new THREE.Geometry();
