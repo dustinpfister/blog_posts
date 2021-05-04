@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2019-12-17 10:49:00
-version: 1.9
+updated: 2021-05-04 14:34:06
+version: 1.10
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -218,3 +218,7 @@ So for a threejs example of the perspective camera I threw together this full co
 }
     ());
 ```
+
+## 7 - Conclusion
+
+The perspective camera is my default go to cameras for just about every three.js code example and project that I have made thus far. I can not say that this is a subject that I want to get to deep into, because there is so much more to be aware of when it comes to using three.js and cameras are just one little part of the library as a whole.
