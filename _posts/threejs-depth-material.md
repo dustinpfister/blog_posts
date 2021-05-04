@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2021-05-04 13:41:56
-version: 1.6
+updated: 2021-05-04 13:44:40
+version: 1.7
 ---
 
 The depth material in [threejs](https://threejs.org/) is a material that shows depth of a mesh object, it is based on the near and far values of a camera and of course the distance of that camera from the mesh. So in this post I thought I would write about a few examples about this kind of material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
@@ -15,7 +15,7 @@ The depth material in [threejs](https://threejs.org/) is a material that shows d
 
 ## 1 - The Depth Material and what to know first
 
-This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more getting started type posts on three.js, and also maybe javaScript in general.
+This is a post on the depth material in three.js, as such I expect for you to at least understand the basics of creating a three.js project. If not there is looking into one or more getting started type posts on three.js, and also maybe javaScript in general. On top of knowing the very basis of getting started on three.js there is maybe a few more things that a developer should look into more with cameras, and certain base classes such as the Vector3 and Object3d classes, but that goes without saying for just about any three.js example. Still in this section I will just be outline a few things that you should know about before continuing reading with this post.
 
 ### 1.1 - Version Numbers matter with three.js
 
