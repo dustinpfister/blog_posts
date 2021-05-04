@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2021-05-04 13:48:54
-version: 1.8
+updated: 2021-05-04 13:51:43
+version: 1.9
 ---
 
 The depth material in [threejs](https://threejs.org/) is a material that shows depth of a mesh object, it is based on the near and far values of a camera and of course the distance of that camera from the mesh. So in this post I thought I would write about a few examples about this kind of material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
@@ -52,6 +52,8 @@ renderer.render(scene, camera);
 ## 3 - Changing the near and far values of a camera
 
 The near and far values of a camerae are what are mainly used to adjust the outcome of how the depth material looks on top of things like the distance of the object from the camera. So then there is taking a moment to play around with the near and far values of a camera just as a way to confirm this first hand, and also to gain a better sense of what the near and far values of a camera should be for a given project. After all I often seem to just set the values to some kind of value that comes to might that might be a good range, but I never really look into it much more than that.
+
+The thing about adjusting the near and far values of a camera after it has been created though is that after making any kind of change there is a special method of a camera instance that I am going to want to call after changing a value like near or far. This method is called the [update projecting matrix method](https://threejs.org/docs/#api/en/cameras/PerspectiveCamera.updateProjectionMatrix) of the perspective camera.
 
 ```js
 // creating a box mesh with the Box Geometry constructor,
