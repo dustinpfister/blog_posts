@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2021-05-04 14:04:10
-version: 1.14
+updated: 2021-05-04 14:07:41
+version: 1.15
 ---
 
 The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that shows depth of a mesh object, it is based on the near and far values of a camera and of course the distance of that camera from the mesh. So in this post I thought I would write about a few examples about this kind of material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
@@ -24,6 +24,10 @@ When I wrote this post I was using r127 of three.js, always be aware of what ver
 ### 1.2 - Might want to read up more on the perspective camera
 
 There are a few options when it comes to cameras in three.js, but the typical camera that i use just about all the time would of course be the [perspective camera](/2018/04/07/threejs-camera-perspective/). Each time I create an instance of a perspective camera there are a few arguments that I pass to the constructor such as the filed of view, aspect ratio, and the near and far render values of the camera. When it comes to the depth material it is the position from the camera, and the near and far settings that are used to set what the state of the color should be when rendering a texture for the mesh that uses the depth material.
+
+### 1.3 - Check out Object3d, Vector3, and Euler if you have not done so
+
+So then the near and far values of a camera are used for the depth material, but there is also the position of the mesh from the camera, and also the orientation of the mesh and or camera that will have an effect also. With that said it might be a good idea to look into the Object3d class a bot more if you are still relative new to three.js at this time. The object3d class is a base class of other class objects in three.js such as Mesh, and Camera.
 
 ## 2 - Basic Depth Material example
 
