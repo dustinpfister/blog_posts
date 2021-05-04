@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 859
-updated: 2021-05-04 14:23:27
-version: 1.21
+updated: 2021-05-04 14:27:37
+version: 1.22
 ---
 
-The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that shows depth of a mesh object, it is based on the near and far values of a camera and of course the distance of that camera from the mesh. So in this post I thought I would write about a few examples about this kind of material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
+The [depth material](https://threejs.org/docs/#api/en/materials/MeshDepthMaterial) in [threejs](https://threejs.org/) is a material that shows depth of a mesh object, it is based on the near and far values of a camera and of course the distance of that camera from the mesh. There are a [few materials](/2018/04/30/threejs-materials/) to choose from when it comes to skinning a mesh object, and I typical like to go with the basic material, or the standard material. However there are some good things to write about when it comes to the depth materials, and what branches off from the use of the material.
+
+So in this post I thought I would write about a few examples about this kind of material, and in the process of doing so I think I will be touching base on some things that have to do with cameras also. For example there is adjusting the near and far values of a camera as a way to change how the depth material looks and when doing so a method needs to be called each time to update the projection matrix.
 
 <!-- more -->
 
