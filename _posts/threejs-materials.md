@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2021-04-27 15:41:52
-version: 1.17
+updated: 2021-05-04 14:30:25
+version: 1.18
 ---
 
 In [three.js](https://threejs.org/) there are some eight materials to choose from to help skin a mesh. There are also additional materials for rendering lines, points, shadows, and sprites. This post will serve as a general overview of materials in general in three.js. I will give a very basic overview of the base Material class, and get into some of the differences between materials used with a Mesh.
@@ -80,7 +80,7 @@ This comes in handy when I just want to quickly add some solid color to a mesh, 
 
 ### 2.2 - Mesh Depth Material
 
-This is another basic material that is not used for anything advanced involving a light source, and shadows. The [depth material](https://threejs.org/docs/index.html#api/materials/MeshDepthMaterial) can be used to show some depth to a mesh, rather than just having a solid color painted on each face.
+This is another basic material that is not used for anything advanced involving a light source, and shadows. The [depth material](/2021/05/04/threejs-depth-material/) can be used to show some depth to a mesh, rather than just having a solid color painted on each face like with the basic material without a texture map.
 
 ```js
 // CUBE
@@ -95,7 +95,7 @@ scene.add(new THREE.Mesh(
 ));
 ```
 
-Depth is based off the near, and far plane of the camera. White areas indicate that an area of the mesh is closer to the camera, while darker areas indicate that the area of the mesh is farther away.
+Depth is based off the near, and far plane of the camera when can be set when creating the camera, and can also be changed in a loop by calling a special update method. White areas indicate that an area of the mesh is closer to the camera, while darker areas indicate that the area of the mesh is farther away.
 
 There does not appear to be much to write about in terms of other properties to know about with this one aside from the fact that the depth packing encoding can be changed from the default which is basic depth packing. The only other constant seems to be rgba packing.
 
