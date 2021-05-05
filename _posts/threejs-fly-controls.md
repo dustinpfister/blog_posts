@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2021-05-05 13:51:27
-version: 1.8
+updated: 2021-05-05 13:53:52
+version: 1.9
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I wrote a post on one of these camera control options which was the orbit controls a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -27,7 +27,7 @@ The official fly controls can be found in the [examples folder of the official t
 
 ## 2 - Basic fly controls example
 
-Now that I have the basic out of the way when it comes to getting started with things, lets take a look at a basic fly controls example.
+Now that I have the basic out of the way when it comes to getting started with things, lets take a look at a basic fly controls example. Like always I start off by creating a scene object just like with any other three.js example, and I am then also going to want to have something to look at. For this I made a few mesh objects one to serve as a kind of ground object, and then another as just some additional object at the center of the scene.
 
 ```js
 (function () {
@@ -80,3 +80,4 @@ Now that I have the basic out of the way when it comes to getting started with t
 ## 3 - Conclusion
 
 So that is all that I have to say about the official fly controls in three.js so far, when I get some time to edit this post I will be sure to expand things when and if I get the time to do so. For now there is maybe taking a moment to look into some of the other official controls to worth with such as the orbit controls also, before considering to look into how to get started with making ones own custom camera controls.
+
