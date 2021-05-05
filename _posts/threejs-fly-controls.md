@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2021-05-05 13:47:51
-version: 1.6
+updated: 2021-05-05 13:49:11
+version: 1.7
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I wrote a post on one of these camera control options which was the orbit controls a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -26,6 +26,8 @@ When I wrote this post I was using [r127 of three.js](https://github.com/mrdoob/
 The official fly controls can be found in the [examples folder of the official three.js github repository](https://github.com/mrdoob/three.js/blob/r127/examples/js/controls/FlyControls.js). When grabbing a copy from there make sure that it is for the version of three.js that you are using.
 
 ## 2 - Basic fly controls example
+
+Now that I have the basic out of the way when it comes to getting started with things, lets take a look at a basic fly controls example.
 
 ```js
 (function () {
