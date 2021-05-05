@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2019-12-17 11:25:11
-version: 1.12
+updated: 2021-05-05 16:51:01
+version: 1.13
 ---
 
-If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, but it must be used with a render method in order to view anything in a scene.
+If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
 
-In three.js there are a few cameras to work with, but typically you will want to work with a perspective camera most of the time. This post is about the camera class that is shared across all cameras, and can be thought of as a kind of home base for all content on cameras in three.js content on my site here at github pages.
+In three.js there are a few cameras to work with, but typically you will want to work with a perspective camera most of the time, at least that is the one that I actually used in most projects thus far. A camera like many other objects in three.js inherits from the object3d class, which contains properties that can be used to set the position and orientation of the camera. In this post is about the camera class that is shared across all cameras, and can be thought of as a kind of home base for all content on cameras in three.js content on my site here at github pages.
 
 <!-- more -->
 
