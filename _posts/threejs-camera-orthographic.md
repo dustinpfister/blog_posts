@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2019-12-17 10:48:59
-version: 1.4
+updated: 2021-05-05 11:52:37
+version: 1.5
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in must cases I would use the perspective camera, however there is also the orthographic camera as well that can come in handy. In this post I will be writing about the orthographic camera, how it compares to the perspective camera, and why you might want to use it with certain projects.
 
 <!-- more -->
 
-## The Cube Stack Model
+### 2.1 - The Cube Stack Model
 
 So In order to appreciate the differences between the orthographic, and perspective cameras in three.js I will first need some kind of scene that will help express that well. So that being said I made a model that I think will help make a scene that can do that very well.
 
@@ -46,65 +46,39 @@ var CubeStack = (function () {
                 // plane geometry
                 new THREE.PlaneGeometry(this.gx, this.gy, this.gx, this.gy),
                 // materials
-                [
-                    new THREE.MeshStandardMaterial({
-                        color: 0x00ff00,
-                        emissive: 0x0a0a0a
-                    }),
-                    new THREE.MeshStandardMaterial({
-                        color: 0x0000ff,
-                        emissive: 0x0a0a0a
-                    })
-                ]);
+                new THREE.MeshStandardMaterial({
+                    color: 0x00ff00,
+                    emissive: 0x0a0a0a
+                }));
         plane.position.set(0, -0.5, 0);
         plane.rotation.set(-Math.PI / 2, 0, 0);
-        plane.geometry.faces.forEach(function (face, i) {
-            face.materialIndex = i % 2;
-        });
         this.group.add(plane);
  
         // place some boxes on the plane
         while (boxIndex < this.boxCount) {
- 
             box = new THREE.Mesh(
- 
                     new THREE.BoxGeometry(1, 1, 1),
- 
                     new THREE.MeshStandardMaterial({
- 
                         color: 0x00ffff,
                         emissive: 0x0a0a0a
- 
                     }));
- 
             x = Math.floor(this.gx * Math.random());
             y = 0;
             z = Math.floor(this.gy * Math.random());
- 
             if (boxArray[z] === undefined) {
- 
                 boxArray[z] = [];
- 
             }
- 
             if (boxArray[z][x] === undefined) {
- 
                 boxArray[z][x] = [];
- 
             }
- 
             boxArray[z][x].push(box);
             y = boxArray[z][x].length - 1;
- 
             box.position.set(
- 
                 -2 + x,
                 y,
                 -2 + z);
             this.group.add(box);
- 
             boxIndex += 1;
- 
         }
  
     };
@@ -122,13 +96,88 @@ scene.add(stack.group);
 
 I could have it be a lot more that what it is but for the purpose of the subject of this post by doing this it will just add a group that contains a bunch of Mesh Object instances positioned in a way that might resemble a city. The reason why this is of interest comes when switching between the kinds of cameras used to view something like this.
 
-## The Three.js Orthographic Camera Example
+### 2.2 - The main.js file for the basic orthographic camera example
+
+```js
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+ 
+    // ORTHOGRAPHIC CAMERA
+    var width = 3.2,
+    height = 2.4,
+    left = width * -1,
+    right = width,
+    top = height,
+    bottom = height * -1,
+    near = 0.01,
+    far = 10,
+    camera = new THREE.OrthographicCamera(
+            left,
+            right,
+            top,
+            bottom,
+            near,
+            far);
+    camera.position.set(4, 4, 4);
+    camera.lookAt(0, 0, 0);
+    camera.zoom = .75;
+    camera.updateProjectionMatrix();
+    var light = new THREE.PointLight(); // point light above the camera
+    light.position.set(0, 2, 0);
+    camera.add(light);
+    scene.add(camera); // make the camera part of the scene
+ 
+    // create and add the cube stack
+    var stack = new CubeStack({
+            boxCount: 25
+        });
+    scene.add(stack.group);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // loop
+    var frame = 0,
+    maxFrame = 200,
+    fps = 30,
+    radian,
+    x,
+    y,
+    z,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            renderer.render(scene, camera);
+            radian = Math.PI * 2 * per;
+            x = Math.cos(radian) * 5;
+            y = 3 + Math.sin(radian) * 2;
+            z = Math.sin(radian) * 5;
+            camera.position.set(x, y, z);
+            camera.lookAt(0, 0, 0);
+            lt = now;
+            frame += fps * secs;
+            frame %= maxFrame;
+        }
+    };
+ 
+    loop();
+ 
+}
+    ());
+```
+
+## The Three.js Orthographic Camera Example compared to the perspective camera
 
 Now that I have the model I can use it in a demo. I will want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo.
 
 ### An Array of cameras
 
-In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One wll be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera.
+In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One will be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera.
 
 ```js
 // CAMERAS
