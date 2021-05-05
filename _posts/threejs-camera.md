@@ -1,12 +1,12 @@
 ---
 title: Cameras in three.js
 date: 2018-04-06 11:14:00
-tags: [js,canvas,three.js]
+tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-05 16:51:01
-version: 1.13
+updated: 2021-05-05 16:53:53
+version: 1.14
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -95,4 +95,4 @@ If you have not done so all ready it might be a good idea to read up more on the
 
 ## 5 - Conclusion
 
-There is much more to cover when it comes to cameras in threejs, however hopefully this post will help cover the basic of cameras at least.
+There is much more to cover when it comes to cameras in threejs, however hopefully this post will help cover the very basics of cameras at least. When it comes to additional reading it might be a good idea to look more into the [object3d class](/2018/04/23/threejs-object3d/) if you have not done so before hand, as this class applies to cameras and many other objects in three.js such as Mesh objects, Groups, and a whole scene for that matter.
