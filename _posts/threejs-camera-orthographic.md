@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 12:04:35
-version: 1.10
+updated: 2021-05-05 12:05:52
+version: 1.11
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -23,7 +23,7 @@ When I first wrote this post back in May of 2018 I as using revision r91 of thre
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
-In this example I am just using the Orthographic Camera alone to look at a random cube stack module instance thing that I made for this post alone. This cune stack thing resembles a small city scape or something to that effect, but it is really just to have something that is composed mainly of a bunch of cubes that are all the same uniform size.
+In this example I am just using the Orthographic Camera alone to look at a random cube stack module instance thing that I made for this post alone. This cube stack thing resembles a small city scape or something to that effect, but it is really just to have something that is composed mainly of a bunch of cubes that are all the same uniform size.
 
 ### 2.1 - The Cube Stack Model
 
@@ -183,11 +183,11 @@ I could have it be a lot more that what it is but for the purpose of the subject
     ());
 ```
 
-## The Three.js Orthographic Camera Example compared to the perspective camera
+## 3 - The Three.js Orthographic Camera Example compared to the perspective camera
 
 Now that I have the model I can use it in a demo. I will want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo.
 
-### An Array of cameras
+### 3.1 - An Array of cameras
 
 In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One will be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera.
 
@@ -218,7 +218,7 @@ cameras.forEach(function(camera){
 
 Any code that I will want to apply to all cameras I will of course put in the forEach loop, such as setting the position,a dn zoom level of the cameras.
 
-## The example in full
+## 3.2 - The example in full
 
 So the example will look like this then:
 
