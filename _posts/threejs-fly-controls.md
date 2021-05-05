@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2021-05-05 13:56:11
-version: 1.10
+updated: 2021-05-05 14:10:12
+version: 1.11
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I wrote a post on one of these camera control options which was the orbit controls a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -35,10 +35,10 @@ Now that I have the basic out of the way when it comes to getting started with t
     // Scene
     var scene = new THREE.Scene();
     scene.background = new THREE.Color('blue');
- 
+
     // Camera
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 100);
-    camera.position.set(4, 4, 4);
+    camera.position.set(0, 0, 10);
     camera.lookAt(0, 0, 0);
  
     // Something to look at
@@ -62,12 +62,17 @@ Now that I have the basic out of the way when it comes to getting started with t
     var flyControls = new THREE.FlyControls(camera, renderer.domElement);
     flyControls.autoForward = false;
     flyControls.dragToLook = true;
-    flyControls.rollSpeed = 0.1;
+    flyControls.movementSpeed = 10;
+    flyControls.rollSpeed = 1;
     // loop
+    var lt = new Date();
     var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        lt = now;
         requestAnimationFrame(loop);
         // UPDATE CONTROLS
-        flyControls.update(0.125);
+        flyControls.update(1 * secs);
         renderer.render(scene, camera);
     };
  
@@ -76,6 +81,8 @@ Now that I have the basic out of the way when it comes to getting started with t
 }
     ());
 ```
+
+So now that I have all the basic stuff in place when it comes to having a scene object as well as something to look at in terms of one or more mesh objects, a camera object, and a renderer all in place now I can get to the actual fly controls. To use the Fly Controls I just need to call the THREE.FlyControls constructor that is added by way of the additional files in the examples folder of the three.js github repo that I mentioned in the basic section of this post.
 
 ## 3 - Conclusion
 
