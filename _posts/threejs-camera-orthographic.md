@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 16:22:55
-version: 1.15
+updated: 2021-05-05 16:29:12
+version: 1.16
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -317,4 +317,9 @@ So the example will look like this then:
     ());
 ```
 
-When all goes well this will result in a rotating scene that looks like a bunch of buildings. The example will switch between camera 0 (perspective), and camera 1 (orthographic). If you take the time to reproduce this you will notice that it is easier to tell what the size is of things.
+When all goes well this will result in a rotating scene that looks like a bunch of buildings. The example will switch between camera 0 \(perspective\), and camera 1 \(orthographic\). If you take the time to reproduce this you will notice that it is easier to tell what the size is of things.
+
+## 4 - Conclusion
+
+I just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list.
+
