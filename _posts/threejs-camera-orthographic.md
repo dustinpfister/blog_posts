@@ -5,13 +5,17 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 11:59:00
-version: 1.8
+updated: 2021-05-05 12:01:08
+version: 1.9
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
 
 <!-- more -->
+
+## 1 - The Orthographic Camera and what to know first
+
+This is a post on the Orthographic Camera in the javaScript library known as three.js, it is not a getting started post on ether three.js, or javaScript in general. I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looling into all the other little details about three.js here and there.
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
