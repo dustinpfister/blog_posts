@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2019-06-11 15:16:42
-version: 1.17
+updated: 2021-05-05 10:26:24
+version: 1.18
 ---
 
 In late releases of [Three.js](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself. It is possible to still use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. For the most part these days there is no need to bother with the 2d canvas powered software renderer as the built in [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer) will work just fine on most clients, but if for some reason you do want to add more robust support for older clients that do not have great web gl support than the software renderer will have to be added in, and feature testing for web gl will need to be preformed.
@@ -17,7 +17,7 @@ In late releases of [Three.js](https://threejs.org/) the 2d canvas software rend
 
 This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a getting started post with three.js, webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
 
-When writing this post I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and on top of that I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering as in many cases it is just unnecessary extra bloatware.
+When writing this post I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and on top of that I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering, one note worth example might be the 2d canvas drawing api renderer.
 
 ## 2 - Using the Software Renderer in the event there is no WebGl support
 
