@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2021-05-05 14:19:14
-version: 1.14
+updated: 2021-05-05 14:24:36
+version: 1.15
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I wrote a post on one of these camera control options which was the orbit controls a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -83,7 +83,11 @@ Now that I have the basic out of the way when it comes to getting started with t
 
 So now that I have all the basic stuff in place when it comes to having a scene object as well as something to look at in terms of one or more mesh objects, a camera object, and a renderer all in place now I can get to the actual fly controls. To use the Fly Controls I just need to call the THREE.FlyControls constructor that is added by way of the additional files in the examples folder of the three.js github repo that I mentioned in the basic section of this post. When calling the constructor the first argument that I am going to want to pass is a reference to the camera object that I want to control with the fly controls, followed by a dom element reference that should typically be the dom element used by the renderer that I am using. AFter that I am more often than not going to want to save the returned instance of fly controls to a variable or object property to set some additional values, and also to call the update method in a main app loop method.
 
-When it comes to the additional properties there is the draw to look boolean that I have chose to set to true from the default false value of the controls. There is also the movement speed, and rotation speed values that I have played around with a little nd it would seem that these are the per second deltas to use when passing a time delta value when calling the update method.
+When it comes to the additional properties there is the draw to look boolean that I have chose to set to true from the default false value of the controls. There is also the movement speed, and rotation speed values that I have played around with a little and it would seem that these are the per second deltas to use when passing a time delta value when calling the update method.
+
+After that I have my main app loop in which I am getting a seconds value each time the loop method is called and I am then of course passing that to the update method of the fly controls each time.
+
+There is then how to go about using the fly controls when and if you do get them up and running, with that said there are the w,a,s,d keys along with the q, and e keys on the keyboard that should be of interest for you. The wasd keys can be used to change the camera position along a forward backward and up and down kind of movement. The q and e keys are then ways to adjust rotation with the keyboard rather than the mouse. The kosue then can be used as a way to look around from the current camera position.
 
 ## 3 - Conclusion
 
