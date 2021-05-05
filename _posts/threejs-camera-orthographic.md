@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 16:18:31
-version: 1.14
+updated: 2021-05-05 16:22:55
+version: 1.15
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -186,6 +186,8 @@ After that I can use set method of the Vector3 instance of the position property
 }
     ());
 ```
+
+I then created and added to the scene an instance of this cube stack model that I made. Arther that is set and done I set up and append to the html an instance of a WebGl renderer. I am then going to want to have a main animation loop in which I will be changing the position of the camera and make it so that the camera will orbit around this cube stack module.
 
 ## 3 - The Three.js Orthographic Camera Example compared to the perspective camera
 
