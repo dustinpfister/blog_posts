@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 12:01:08
-version: 1.9
+updated: 2021-05-05 12:04:35
+version: 1.10
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -15,7 +15,11 @@ In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018
 
 ## 1 - The Orthographic Camera and what to know first
 
-This is a post on the Orthographic Camera in the javaScript library known as three.js, it is not a getting started post on ether three.js, or javaScript in general. I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looling into all the other little details about three.js here and there.
+This is a post on the Orthographic Camera in the javaScript library known as three.js, it is not a getting started post on ether three.js, or javaScript in general. I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looking into all the other little details about three.js here and there.
+
+### 1.1 - Version numbers matter in three.js
+
+When I first wrote this post back in May of 2018 I as using revision r91 of three.js, and as of this writing I was using r127 of three.js last time I came around to doing a little editing with this post. With that said I have got into the habit of briefly mentioning what versions I was using when first writing this, and also when I took a moment to review how the code example work with late versions of three.js.
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
