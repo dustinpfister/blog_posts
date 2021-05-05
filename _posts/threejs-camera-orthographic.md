@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 11:57:08
-version: 1.7
+updated: 2021-05-05 11:59:00
+version: 1.8
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -15,7 +15,7 @@ In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018
 
 ## 2 - A Orthographic Camera example involving a fun little code stack module
 
-In this example I am just using the Orthographic Camera alone to look at a random cube stack module instnace thing that I made for this post alone.
+In this example I am just using the Orthographic Camera alone to look at a random cube stack module instance thing that I made for this post alone. This cune stack thing resembles a small city scape or something to that effect, but it is really just to have something that is composed mainly of a bunch of cubes that are all the same uniform size.
 
 ### 2.1 - The Cube Stack Model
 
