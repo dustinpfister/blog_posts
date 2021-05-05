@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 476
-updated: 2021-05-05 10:41:08
-version: 1.20
+updated: 2021-05-05 10:46:19
+version: 1.21
 ---
 
 As of [version r69](https://github.com/mrdoob/three.js/releases/tag/r69) of [Three.js](https://threejs.org/) the 2d canvas software renderer has been removed from the core of threejs itself, and moved to the examples folder. It is still possible to use it of course it just needs to be added as an additional asset for a project on top of just three js by itself. It would seem that the motivation behind doing so was because support for webGL is now pretty good in general when it comes to modern web browsers which mode people who visit my website do in fact use.
@@ -18,6 +18,8 @@ For the most part these days there is no need to bother with the 2d canvas power
 ## 1 - WebGL in three.js and what to know before hand
 
 This is a post on feature testing for web gl, and using the software renderer in three js in the event that there is no webGL support at all. This is a not a getting started post with three.js, webGL, or javaScript in general. So then I assume that you have at least some background with three.js and javaScript.
+
+### 1.1 - Version numbers matter
 
 When writing this post I was using [revision 104 of three.js](https://github.com/mrdoob/three.js/tree/r104), and on top of that I am also using some additional assets in the renderer's folder of the js folder in the examples folder of the three.js repo. When it comes to rendering a three js scene with a renderer other than the built in webGL renderer additional assets must be used to provide that additional way of rendering, one note worth example might be the 2d canvas drawing api renderer.
 
@@ -129,4 +131,7 @@ In this post I am mostly writing about feature testing for webGL and then doing 
 
 ## 4 - Conclusion
 
-Even if a client does support webgl that does not mean that all the webgl features will work as expected. For example I have noticed that on raspberry pi webgl support is fairly poor, at least out of the box. A simple check if webgl is there or not will result in a true response with a simple feature test for webgl alone, but things will still not render as expected.
+Even if a client does support webgl that does not mean that all the webgl features will work as expected. A simple check if webgl is there or not will result in a true response with a simple feature test for webgl alone, but things will still not render as expected.
+
+Also when it comes to trying to get things work on both new and old platforms it is not always a question of using this late version of three.js, and then using the 2d canvas renderer with a later version of three.js as a later version of three.js might very well break on older platforms. Doing this sorth of thing can prove to be very time consuming, and often it is just not worth the hassle.
+
