@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-06 11:07:36
-version: 1.29
+updated: 2021-05-06 11:10:33
+version: 1.30
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -88,7 +88,7 @@ I will not get into the Euler Class in detail here, but it is similar to [Vector
 
 ## 4 - Examples of use in other constructors
 
-There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of.
+There are many objects in three.js that inherit from object3D, which is why this is a good class to have a solid understanding of as it applies to a lot of different objects in three.js. When it comes to setting the position and orientation of a perspective camera for example the Object3d position property is the way to go about doing so. The Object3d look at method can also be used to set the rotation of the camera to look at a given point or object.
 
 Camera's such as the perspective camera inherit from Object3D
 
