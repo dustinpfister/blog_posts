@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-06 11:13:18
-version: 1.31
+updated: 2021-05-06 11:20:42
+version: 1.32
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -85,6 +85,37 @@ In this example I am directly creating an instance of Object3d, and then using t
 ```
 
 I will not get into the Euler Class in detail here, but it is similar to [Vector3](/2018/04/15/threejs-vector3/) only when using the set method you want to give [radians](https://en.wikipedia.org/wiki/Radian) rather than, and x, y, z position in the scene.
+
+### 3.3 - Setting the Roation by making use of the Object3d lookAt method
+
+One very useful method of the Object3d class is the lookAt method which is another way to go about setting the rotation value of an instance of Objected or anything that is based on top of Object3d such as a Mesh object.
+
+```js
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+ 
+    // camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+ 
+    // making the mesh look at the position of the camera
+    mesh.lookAt(camera.position);
+ 
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+}
+    ());
+```
 
 ## 4 - Examples of use in other constructors
 
