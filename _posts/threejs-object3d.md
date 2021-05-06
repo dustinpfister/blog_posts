@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-06 09:43:00
-version: 1.25
+updated: 2021-05-06 10:57:36
+version: 1.26
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -46,19 +46,36 @@ The position property of Object3d can be used to set the center point of the obj
 
 ## 3 - Rotation of an Object
 
-Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles).
+Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles). So when creating or changing the values of a Euler class instance there are three angles that need to be given in the form of a radian value between 0 and Math.PI \* 2. The set method of a Euler class instance can be used to set the values of these angles by passing three angle values for the Euler instance. Another way to set the value of a Euler class instance is to use the copy method that will set the values of the Euler class instance from which the copy method is called to the given Euler Class instance.
 
 ```js
-// creating an instance of Object3D
-var obj = new THREE.Object3D();
-
-//{"_x":0,"_y":0,"_z":0,"_order":"XYZ"}
-console.log(JSON.stringify(obj.rotation));
-
-obj.rotation.set(0, 0, Math.PI * 1.75);
-
-// {"_x":0,"_y":0,"_z":5.497787143782138,"_order":"XYZ"}
-console.log(JSON.stringify(obj.rotation));
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+ 
+    // OBJECT3D INSTANCE
+    var obj = new THREE.Object3D();
+    obj.rotation.set(0, 0, Math.PI * 1.75);
+    // creating a mesh that has object3d as a base class
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    // copying OBJECT3d rotation property instance of Euler in obj 
+    // to the instance of Euler the mesh
+    mesh.rotation.copy(obj.rotation);
+    scene.add(mesh);
+ 
+    // camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 I will not get into the Euler Class in detail here, but it is similar to [Vector3](/2018/04/15/threejs-vector3/) only when using the set method you want to give [radians](https://en.wikipedia.org/wiki/Radian) rather than, and x, y, z position in the scene.
