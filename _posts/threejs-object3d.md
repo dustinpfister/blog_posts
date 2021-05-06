@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-06 12:08:26
-version: 1.37
+updated: 2021-05-06 12:25:31
+version: 1.38
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -119,9 +119,69 @@ One very useful method of the [Object3d class is the lookAt method](https://thre
 
 So then there is using the look at method, and then there is working directly with the instance of Euler. However in any case this is a major part of what the Object3d class is about. There is setting the position of an object, and then there is setting the orientation of an object.
 
-### 3.3 - An rotation animation making a mesh following a point moving up and down on the z axis
+### 3.3 - Basic spin animation example of a rotation
 
-Now I think I should get into at least one or more simple animations that involve just playing around with the Euler instance of a Mesh object, or some other things that make use of the Object3d class and thus the rotation property of the class. In this example I have an instance of vector3 in a state object along with many other little values that have to do with updating the state of an animation. This vector3 instance in the state object is juts having its z axis value move up and down along the z axis and that is it. I can then use that instance of verctor3 to set the position of a mesh object that has a sphere as a geometry. In addition sense this is a demo about rotation I can set the orientation of another mesh object of a box to look at this instance of vector3 with the lookAt method.
+Now I think I should get into at least one or more simple animations that involve just playing around with the Euler instance of a Mesh object, or some other things that make use of the Object3d class and thus the rotation property of the class. To start off with maybe it would be good to just have a simple rotating or spinning cube animation example.
+
+```js
+(function () {
+    // scene and grid helper
+    var scene = new THREE.Scene();
+    var gridHelper = new THREE.GridHelper(6, 6);
+    scene.add(gridHelper);
+ 
+    // box is a MESH base off of OBJECT3D
+    var box = new THREE.Mesh(
+            new THREE.BoxGeometry(3, 3, 3),
+            new THREE.MeshNormalMaterial());
+    scene.add(box);
+ 
+    // camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // state object
+    var state = {
+        frame: 0,
+        maxFrame: 200,
+        fps: 30,
+        lt: new Date(),
+        euler: new THREE.Euler(0, 0, 0)
+    };
+    // update
+    var update = function (state, secs) {
+        // DOING A SPIN ALONG THE Z AXIS
+        state.euler.z = Math.PI * 8 * state.per;
+        box.rotation.copy(state.euler);
+    };
+    // loop
+    var loop = function () {
+        state.per = state.frame / state.maxFrame;
+        state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
+        var now = new Date();
+        secs = (now - state.lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / state.fps) {
+            update(state, secs);
+            renderer.render(scene, camera);
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
+            state.lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+### 3.4 - An rotation animation making a mesh following a point moving up and down on the z axis
+
+In this object3d rotation animation example I have an instance of vector3 in a state object along with many other little values that have to do with updating the state of an animation. This vector3 instance in the state object is juts having its z axis value move up and down along the z axis and that is it. I can then use that instance of verctor3 to set the position of a mesh object that has a sphere as a geometry. In addition sense this is a demo about rotation I can set the orientation of another mesh object of a box to look at this instance of vector3 with the lookAt method.
 
 ```js
 (function () {
