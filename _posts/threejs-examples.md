@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-05-06 14:23:11
-version: 1.18
+updated: 2021-05-06 14:24:37
+version: 1.19
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -56,6 +56,8 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
 ### [ 2.9 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
+
+This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
 ### [ 2.10 - Tree](/2019/07/30/threejs-examples-tree/)
 
