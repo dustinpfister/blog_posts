@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-06 12:25:31
-version: 1.38
+updated: 2021-05-06 14:19:29
+version: 1.39
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -380,4 +380,6 @@ It may be true that Object3D by itself is not intended to be used from grouping 
 
 ## 6 - Conclusion
 
-From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. There is working out some examples that involve using the rotation and position properties in an instance of a camera to change the position and orientation of a camera over time. If you enjoyed this post you might also like to check out my [many other posts](/categories/three-js/) on the subject of threejs.
+From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. There is working out some examples that involve using the rotation and position properties in an instance of a camera to change the position and orientation of a camera over time. 
+
+If you enjoyed this post you might also like to check out my [many other posts](/categories/three-js/) on the subject of threejs, or better yet by [post on my main three.js project examples](/2021/02/19/threejs-examples/) that I have made thus far. One example that I have made that [applies to object3d is my scene shake example](/2021/05/06/threejs-examples-scene-shake/), where I have a shake module that will shake the whole scene if I pass the scene object as the object to apply the shake to and I do not add the camera to the scene, however I can also pass anything that is based off of object3d also.
