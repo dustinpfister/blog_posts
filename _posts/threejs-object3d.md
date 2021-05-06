@@ -5,13 +5,15 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2019-12-19 10:44:44
-version: 1.24
+updated: 2021-05-06 09:43:00
+version: 1.25
 ---
 
-The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Meshes that are placed in a Scene. 
+The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
 
-The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position in the scene. Properties of the Object3d class can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects in a scene. Once you know a thing or two about Object3D the same methods will work with any and all objects that inherent from Object3D, which is a lot so lets get started.
+The Object3d class adds a whole bunch of common properties, and methods for any kind of object in a project that needs to have a position, and orientation in a scene. Properties of the Object3d class can be used to set the position, and rotation of an object along with many other common things that are shared across all such objects in a scene. Once you know a thing or two about the Object3D class the same methods and properties can be applied to any and all objects that inherent from this Object3D base class.
+
+In this post I will be going over many of the basics of what the Object3d class is all about in three.js, there is working with the class directly. However more often than not it is a class that I am working with indirectly each time i want to move or rotate a camera, mesh object, or anything to that effect. In the process of going over the Object3d class I will also be touching base on many other classes that are important in three.js also, such as the [Vector3](/2018/04/15/threejs-vector3/) class and the [Euler Class](/2021/04/28/threejs-euler/).
 
 <!-- more -->
 
@@ -38,13 +40,13 @@ Typically I do not work with the class directly, I work with something that inhe
     console.log(JSON.stringify(obj3d.position));
 ```
 
-Here I made just a simple example where I am just playing with the position property, which is an instance of [Vector3](/2018/04/15/threejs-vector3/). Vector3 is yet another class in threejs that a developer should be familiar with as it has to do with a single point in 3d space, so it goes without saying that class will come up a lot also.
+Here I made just a simple example where I am just playing with the position property, which is an instance of Vector3. Vector3 is yet another class in threejs that a developer should be familiar with as it has to do with a single point in 3d space, so it goes without saying that class will come up a lot also.
 
 The position property of Object3d can be used to set the center point of the object in a Scene. In the case that the Object is a child of another object it would be the position relative to the parent Object.
 
 ## 3 - Rotation of an Object
 
-Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the [Euler Class](https://threejs.org/docs/index.html#api/math/Euler), Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles).
+Another property of the Object3D base class that I use often is the rotation property. This property expects an instance of the Euler Class, Which is the Class used in three.js that has anything to do with a set of [Euler Angles](https://en.wikipedia.org/wiki/Euler_angles).
 
 ```js
 // creating an instance of Object3D
