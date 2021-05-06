@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2021-05-06 14:30:00
-version: 1.5
+updated: 2021-05-06 14:33:08
+version: 1.6
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object, and if I do not add the camera to the scene I can see the shake. In the event that I do need to add the camera to the scene then the shake object can be applied to ny object in three.js that is based off of the object3d class such as a group or a camera.
@@ -16,7 +16,7 @@ Today I made another [threejs example](/2021/02/19/threejs-examples/) this time 
 
 ## 2 - The shake module
 
-First off I will want to go over the shake module first before getting into any kind of demo that makes use of this module.
+First off I will want to go over the shake module first before getting into any kind of demo that makes use of this module. This module had a public create method that I can use in a project to create an instance of a shake object, this object will contain data about the current state of the shake object. Main value of interest with the shake object are the active flag and values that have to do with the current intensity of the position and angle range of the shake effect.
 
 ```js
 (function (api) {
