@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2021-05-06 16:00:26
-version: 1.9
+updated: 2021-05-06 16:41:55
+version: 1.10
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object, and if I do not add the camera to the scene I can see the shake. In the event that I do need to add the camera to the scene then the shake object can be applied to ny object in three.js that is based off of the object3d class such as a group or a camera.
@@ -123,6 +123,7 @@ Now that I have my shake module together I am going to want a little more javaSc
     document.getElementById('demo').appendChild(renderer.domElement);
  
     // state object
+    var canvas = renderer.domElement;
     var state = {
         frame: 0,
         maxFrame: 3000,
@@ -131,25 +132,49 @@ Now that I have my shake module together I am going to want a little more javaSc
         shake: ShakeMod.create({
             deg: 5.25,
             pos: 0.1,
-            active: true
+            active: false
         })
     };
  
     // events
     var pointerDown = function () {
-        state.shake.active = false;
-    };
-    var pointerUp = function () {
         state.shake.active = true;
     };
+    var pointerUp = function () {
+        state.shake.active = false;
+    };
+    var pointerMove = function (shake, canvas) {
+        return function (e) {
+            e.preventDefault();
+            var canvas = e.target,
+            box = canvas.getBoundingClientRect(),
+            x = e.clientX - box.left,
+            y = e.clientY - box.top;
+            if (e.changedTouches) {
+                x = e.changedTouches[0].clientX - box.left;
+                y = e.changedTouches[0].clientY - box.top;
+            };
+            // Adjust pos and deg based on pointer position
+            shake.pos = x / canvas.width * 0.95;
+            shake.deg = y / canvas.height * 18;
+        };
+    };
+    // mouse
     renderer.domElement.addEventListener('mousedown', pointerDown);
+    renderer.domElement.addEventListener('mousemove', pointerMove(state.shake, canvas));
     renderer.domElement.addEventListener('mouseup', pointerUp);
+    renderer.domElement.addEventListener('mouseout', pointerUp);
+    // touch
+    renderer.domElement.addEventListener('touchstart', pointerDown);
+    renderer.domElement.addEventListener('touchmove', pointerMove(state.shake, canvas));
+    renderer.domElement.addEventListener('touchend', pointerUp);
+    renderer.domElement.addEventListener('touchcancel', pointerUp);
  
     // update
     var update = function (state, secs) {
         if (state.shake.active) {
-            state.shake.pos = 0.05 + 1.9 * state.bias;
-            state.shake.deg = 0.50 + 18 * state.bias;
+            //state.shake.pos = 0.05 + 1.9 * state.bias;
+            //state.shake.deg = 0.50 + 18 * state.bias;
             ShakeMod.roll(state.shake);
         } else {
             state.frame = 0;
@@ -177,3 +202,10 @@ Now that I have my shake module together I am going to want a little more javaSc
 }
     ());
 ```
+
+For this demo of the shake module I am using events as a way to adjust the shake pos and deg properties based on the position of a touch move or mouse move event on the canvas element. It is tempting to pull some of this into the module, but I think that this sort of thing will end up changing a little from one use case example to the next actually.
+
+## 4 - Conclusion
+
+This turned out to be a quick fun little example of using three.js as a way to create a scene shake module, that can also be used to shake other objects in a three.js environment. When it comes to suing this in projects in which I end up adding the camera to the scene then of course I am not going to want to make the scene object the object to which the shake applies then as the camera will then be relative to the scene object and things will not end up shaking. That kind of problem is easily fixed though by just wrapping everything that I want to shake into a group and then make that group the object that I use with my public method that apples the shake object to a three.js object based off of object 3d.
+
