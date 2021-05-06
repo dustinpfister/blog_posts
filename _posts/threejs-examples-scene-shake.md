@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2021-05-06 15:50:00
-version: 1.7
+updated: 2021-05-06 15:55:13
+version: 1.8
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object, and if I do not add the camera to the scene I can see the shake. In the event that I do need to add the camera to the scene then the shake object can be applied to ny object in three.js that is based off of the object3d class such as a group or a camera.
@@ -24,6 +24,8 @@ When I made this shake module and the demos that make use of it I was using thre
 ## 2 - The shake module
 
 First off I will want to go over the shake module first before getting into any kind of demo that makes use of this module. This module had a public create method that I can use in a project to create an instance of a shake object, this object will contain data about the current state of the shake object. Main value of interest with the shake object are the active flag and values that have to do with the current intensity of the position and angle range of the shake effect.
+
+After the create effect I have a roll effect which will change the current state of the instances of Euler and Vector3 that are used to set the position of the object to which the shake object is applied to. And speaking of doing that I also have one more additional public method that is used to do just that apply the current state of shake object to a given object in three.js hat inherits from three.js. This object can be the scene object which is what I originally intended to use this with, but it can also be used with any other object based on object3d such as a group, mesh, or camera.
 
 ```js
 (function (api) {
@@ -92,6 +94,8 @@ First off I will want to go over the shake module first before getting into any 
 }
     (this['ShakeMod'] = {}));
 ```
+
+There might be many more features I might want to add to something like this, and also maybe change the whole way that I go about creating the shake values to begin with even. However for the sake of this post, and also for the example itself maybe it would be best to try to keep this module relative simple and not go to far beyond what I all ready have here.
 
 ## 3 - base demo of the shake module where I am shaking the whole scene
 
