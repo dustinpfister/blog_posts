@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 861
-updated: 2021-05-06 15:55:13
-version: 1.8
+updated: 2021-05-06 16:00:26
+version: 1.9
 ---
 
 Today I made another [threejs example](/2021/02/19/threejs-examples/) this time a scene shake module that can be used to shake the whole scene. When I do so that way I just need to pass the scene object to a method that will apply the current state of a shake object to the scene object, and if I do not add the camera to the scene I can see the shake. In the event that I do need to add the camera to the scene then the shake object can be applied to ny object in three.js that is based off of the object3d class such as a group or a camera.
@@ -97,9 +97,9 @@ After the create effect I have a roll effect which will change the current state
 
 There might be many more features I might want to add to something like this, and also maybe change the whole way that I go about creating the shake values to begin with even. However for the sake of this post, and also for the example itself maybe it would be best to try to keep this module relative simple and not go to far beyond what I all ready have here.
 
-## 3 - base demo of the shake module where I am shaking the whole scene
+## 3 - Base demo of the shake module where I am shaking the whole scene
 
-Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out.
+Now that I have my shake module together I am going to want a little more javaScript code that will serve as a way to test this module out. Much of this example is just more of the same when it comes to any other simple three.js code example, of full blown project in which I create a scene, one or more mesh objects, a camera, and a renderer. However one important thing to note os that if I want to use the shake with the scene object like I am doing in this example then I am going to want to not add the camera to the scene.
 
 ```js
 (function () {
