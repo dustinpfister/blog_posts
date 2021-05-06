@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-06 12:03:45
-version: 1.36
+updated: 2021-05-06 12:08:26
+version: 1.37
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -192,6 +192,8 @@ Now I think I should get into at least one or more simple animations that involv
 }
     ());
 ```
+
+So then this is where things can start to get a little run with it comes to playing around with rotation and position. There is not much to look at here, but it is a start at least when it comes to really getting up and running with three.js. When this demo is up and running a sphere is moving up and down along the z axis, and the box ends up facing that sphere. However there is doing much more with rotations than just having a box face another mesh.
 
 ## 4 - Examples of use in other constructors
 
