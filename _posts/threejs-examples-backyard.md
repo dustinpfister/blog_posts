@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:36:07
-version: 1.12
+updated: 2021-05-07 14:38:28
+version: 1.13
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -242,7 +242,7 @@ This is another copied of my basic guy module that I worked out for one of my ot
 
 ## 4 - Hamster wheel
 
-I also wanted to place my hamster wheel model into the backyard scene, just for the hell of it.
+I also wanted to place my hamster wheel model into the backyard scene, just for the hell of it. In my main example post of this model I made it so my guy model was running inside of it, but for this example I just want to place the model in there just to have something more in the scene. It seems like I was going in the direction of just turning this example into some kind of crude clock like example, so I intended to have the wheel spin in relation to some kind of unit of time.
 
 ```js
 (function (WheelMod) {
