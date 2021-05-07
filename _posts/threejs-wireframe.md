@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 10:10:53
-version: 1.13
+updated: 2021-05-07 10:16:52
+version: 1.14
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
 
-So then this post will be on wireframe mode in threejs, the basic use of the property of most materials that just involves setting a boolean value to true, as well as more complex solutions that will take a bit more to get working, but will result in a similar effect.
+So then this post will be on wireframe mode in threejs, the basic use of the property of most materials that just involves setting a boolean value to true. So when it comes to doing that there is typically not much to it, as that is all that needs to happen to set a material into a wire frame mode. However just for the sake of having something more to write about I could also take a moment to get into some more complex solutions that will take a bit more to get working, but will result in a similar effect, but with some kind of added benefit when it comes to creating some kind of style.
 
 <!-- more -->
 
@@ -63,7 +63,7 @@ var createCanvasTexture = function (draw) {
 };
 ```
 
-### 1.3 - A create canvas write cube helper
+### 1.3 - A create canvas wire cube helper
 
 Now I can make a more advanced canvas powered helper that creates a cube that uses a material with a texture for the map property that results in a wire frame like effect. The process involves more than just simply creating a texture where I am drawing lines at the corners of the texture. I need to make sure the texture is transparent, and I also want to draw the texture on both sides of a face.
 
