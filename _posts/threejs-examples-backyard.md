@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:18:54
-version: 1.4
+updated: 2021-05-07 14:22:14
+version: 1.5
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -22,6 +22,8 @@ This is a full threejs project example in which I am making use of all kinds of 
 When I started this example I was using r127 of three.js, and last i check the example works okay on top of that version of three.js.
 
 ## 2 - The canvas texture module
+
+I wanted to have a way to create some quick textures for this example without having to bother with extremal image assets. So the way that I often choose to do that is to make use of canvas elements. This module provides a create canvas texture helper where I just have to give a draw method and an image size and the result is a texture that I can use as a map for a material. I also have a few built in methods that make use of this to quickly create some basic textures that are just random color grids, to just quickly add some texture to materials.
 
 ```js
 (function (canvasTextureMod) {
