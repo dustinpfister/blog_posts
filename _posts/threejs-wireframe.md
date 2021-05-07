@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 13:58:27
-version: 1.29
+updated: 2021-05-07 16:20:36
+version: 1.30
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -264,6 +264,76 @@ When using a materials like that of the standard material for a mesh, setting th
 
 When working with light I have found that it is often a good idea to have more than one light source. Typically I will add an ambient light source, and then a light source like of the point light that I used in this example.
 
-## 6 - Conclusion
+## 6 - Using the override material scene object property to set all mesh objects into a wire frame mode
+
+I think I should take a moment to write about the material override property of the scene object at this point that can be used to set a materials that will be applied to all mesh objects.
+
+```js
+(function () {
+    // Scene
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x2f2f2f);
+ 
+    var material_override = new THREE.MeshBasicMaterial({
+            color: new THREE.Color('lime'),
+            wireframe: true
+        });
+    scene.overrideMaterial = material_override;
+ 
+    // mesh1
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshDepthMaterial());
+    scene.add(mesh);
+ 
+    var mesh2 = new THREE.Mesh(
+            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.MeshNormalMaterial());
+    mesh2.position.set(-1.5, 0, 0);
+    scene.add(mesh2);
+ 
+    // Camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.75, 10);
+    camera.position.set(1.15, 0.85, 0.75);
+    camera.lookAt(0, 0, 0);
+    var light = new THREE.PointLight(0xffffff, 1);
+    light.position.set(1, 1, 0);
+    camera.add(light)
+    scene.add(camera);
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var lt = new Date(),
+    time = 0,
+    switchTime = 1.0,
+    fps = 30;
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            time += secs;
+            if (time >= switchTime) {
+                if (scene.overrideMaterial) {
+                    scene.overrideMaterial = null;
+                } else {
+                    scene.overrideMaterial = material_override;
+                }
+                time %= switchTime;
+            }
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+ 
+    loop();
+ 
+}
+    ());
+```
+
+## 7 - Conclusion
 
 For the most part just setting the wire frame property of a material to true will work just fine, however if I want a more custom look then I am going to need to do something with textures. The wire frame look is great for when I am just trying to work out a geometry and do not care about the final look of an object just yet. However when it comes to skinning a mesh object I am going to want to start making some textures by one way or another. There is creating textures with just javaScript code using canvas elements, and then there is creating some custom textures with an image editor and using the texture loader as a way to get into skinning mesh object materials.
