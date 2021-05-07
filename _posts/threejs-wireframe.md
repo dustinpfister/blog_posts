@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 16:20:36
-version: 1.30
+updated: 2021-05-07 16:23:46
+version: 1.31
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -266,7 +266,7 @@ When working with light I have found that it is often a good idea to have more t
 
 ## 6 - Using the override material scene object property to set all mesh objects into a wire frame mode
 
-I think I should take a moment to write about the material override property of the scene object at this point that can be used to set a materials that will be applied to all mesh objects.
+I think I should take a moment to write about the material override property of the scene object at this point that can be used to set a materials that will be applied to all mesh objects. This scene object property can be used to set all mesh object to a single material that is set in wire frame mode, and then everything can be set back again by just stetting the value of the property back to the default value of null.
 
 ```js
 (function () {
