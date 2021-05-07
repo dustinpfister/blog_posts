@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 12:15:26
-version: 1.15
+updated: 2021-05-07 12:34:27
+version: 1.16
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -17,7 +17,11 @@ So then this post will be on wireframe mode in threejs, the basic use of the pro
 
 ## 1 - Wireframe mode of a material in three.js and what to know first
 
-This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling.
+This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling. This is not a getting started type post on three.js as well as many addition skills that might be needed in order to gain something of value from reading this.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I first wrote this post I was using r111 of three.js, and the last time I cam around to do a little editing of this content I was testing things out on r127. Code breaking changes are introduced to three.js all the time, si I need to repate this in every three.js post regardless of what the post might be on. When it comes to just using the wire frame mode boolean of a material I can not say that has changed much, but other aspects of these examples might break in future versions of three.js.
 
 ## 2 - Basic wire frame example as well as canvas texture powered custom wire frame
 
