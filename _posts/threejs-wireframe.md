@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 10:16:52
-version: 1.14
+updated: 2021-05-07 12:15:26
+version: 1.15
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -15,14 +15,17 @@ So then this post will be on wireframe mode in threejs, the basic use of the pro
 
 <!-- more -->
 
+## 1 - Wireframe mode of a material in three.js and what to know first
 
-## 1 - Basic wire frame example as well as canvas texture powered custom wire frame
+This is a post on wire frames in three.js which is a javaScript library for working with 3d modeling.
+
+## 2 - Basic wire frame example as well as canvas texture powered custom wire frame
 
 In this section I will be going over some helper methods that create cubes that make use of materials that are in wireframe mode, or create a wireframe like effect using textures and various material properties.
 
 In this post I was using version r111 of threejs, so if the code breaks it might be because you are using and older or newer version number than that. I also trust that you have at least some background with threejs, javaScript, and client side web programing in general. If not this is not a good starting point for the very basics.
 
-### 1.1 - A create basic write cube helper
+### 2.1 - A create basic write cube helper
 
 Here I have a basic create wire cube helper method. This helper returns a new mesh that uses a simple box geometry and a basic material that is in wire frame mode. To set a basic material in write frame mode I just need to set the wire frame property to true when  passing an options object to the Mesh Basic Material constructor.
 
@@ -38,7 +41,7 @@ var createBasicWireCube = function () {
 };
 ```
 
-### 1.2 - a Create canvas texture helper
+### 2.2 - a Create canvas texture helper
 
 Here I have a create canvas texture helper method. This method creates a texture using a canvas element by creating the canvas element, drawing to the 2d drawing context, and then used the THREE.Texture constructor to created a texture by passing the canvas element to it as the first argument.
 
@@ -63,7 +66,7 @@ var createCanvasTexture = function (draw) {
 };
 ```
 
-### 1.3 - A create canvas wire cube helper
+### 2.3 - A create canvas wire cube helper
 
 Now I can make a more advanced canvas powered helper that creates a cube that uses a material with a texture for the map property that results in a wire frame like effect. The process involves more than just simply creating a texture where I am drawing lines at the corners of the texture. I need to make sure the texture is transparent, and I also want to draw the texture on both sides of a face.
 
@@ -84,7 +87,7 @@ var createCanvasWireCube = function () {
 };
 ```
 
-### 1.4 - The rest of the example
+### 2.4 - The rest of the example
 
 So now to test out what I put together for this section. I start out by creating a scene, camera, and renderer like always. However I now just call my create basic write cube, and create canvas wire cube helpers to created cubes that make use of the wire frame solutions. I then add them to the scene with the add method of the scene instance.
 
@@ -111,6 +114,6 @@ renderer.render(scene, camera);
 
 This results in two cubes that both have a write frame like look.
 
-## 2 - Conclusion
+## 3 - Conclusion
 
 For the most part just setting the wire frame property of a material to true will work just fine, however if I want a more custom look then I am going to need to do something with textures. The wire frame look is great for when I am just trying to work out a geometry and do not care about the file look of an object just yet.
