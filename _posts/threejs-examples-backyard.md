@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:26:43
-version: 1.8
+updated: 2021-05-07 14:27:49
+version: 1.9
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -450,6 +450,8 @@ This is a backyard type scene, so of course I need to add a house.
 ```
 
 ## 6 - Main javaScript file
+
+Now I am going to want a fair amount of additional javaScript code and a few more mesh obejcts and so forth that I have not yet packed away into there own files.
 
 ```js
 var scene = new THREE.Scene();
