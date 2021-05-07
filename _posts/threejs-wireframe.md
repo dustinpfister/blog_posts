@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 12:34:27
-version: 1.16
+updated: 2021-05-07 12:44:16
+version: 1.17
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -34,15 +34,15 @@ In this post I was using version r111 of threejs, so if the code breaks it might
 Here I have a basic create wire cube helper method. This helper returns a new mesh that uses a simple box geometry and a basic material that is in wire frame mode. To set a basic material in write frame mode I just need to set the wire frame property to true when  passing an options object to the Mesh Basic Material constructor.
 
 ```js
-// create a basic write frame cube
-var createBasicWireCube = function () {
-    return new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            wireframe: true
-        }));
-};
+    // create a basic write frame cube
+    var createBasicWireCube = function () {
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                wireframe: true
+            }));
+    };
 ```
 
 ### 2.2 - a Create canvas texture helper
@@ -50,24 +50,23 @@ var createBasicWireCube = function () {
 Here I have a create canvas texture helper method. This method creates a texture using a canvas element by creating the canvas element, drawing to the 2d drawing context, and then used the THREE.Texture constructor to created a texture by passing the canvas element to it as the first argument.
 
 ```js
-// create a canvas texture
-var createCanvasTexture = function (draw) {
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 16;
-    canvas.height = 16;
-    draw = draw || function (ctx, canvas) {
-        ctx.lineWidth = 1;
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = '#ffffff';
-        ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+    // create a canvas texture
+    var createCanvasTexture = function (draw) {
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = 16;
+        canvas.height = 16;
+        draw = draw || function (ctx, canvas) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+        };
+        draw(ctx, canvas);
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        return texture;
     };
-    draw(ctx, canvas);
-    var texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    return texture;
-};
 ```
 
 ### 2.3 - A create canvas wire cube helper
@@ -75,45 +74,46 @@ var createCanvasTexture = function (draw) {
 Now I can make a more advanced canvas powered helper that creates a cube that uses a material with a texture for the map property that results in a wire frame like effect. The process involves more than just simply creating a texture where I am drawing lines at the corners of the texture. I need to make sure the texture is transparent, and I also want to draw the texture on both sides of a face.
 
 ```js
-// create a cube with a canvas as a texture
-// the material is transparent and rendering is done on
-// both sides.
-var createCanvasWireCube = function () {
-    var texture = createCanvasTexture();
-    return new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            transparent: true,
-            opacity: 0.2,
-            map: texture,
-            side: THREE.DoubleSide
-        }));
-};
+    // create a cube with a canvas as a texture
+    // the material is transparent and rendering is done on
+    // both sides.
+    var createCanvasWireCube = function () {
+        var texture = createCanvasTexture();
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                transparent: true,
+                opacity: 0.8,
+                map: texture,
+                side: THREE.DoubleSide
+            }));
+    };
 ```
 
-### 2.4 - The rest of the example
+### 2.4 - create the scene and everything else
 
 So now to test out what I put together for this section. I start out by creating a scene, camera, and renderer like always. However I now just call my create basic write cube, and create canvas wire cube helpers to created cubes that make use of the wire frame solutions. I then add them to the scene with the add method of the scene instance.
 
 ```js
-// Scene
-var scene = new THREE.Scene();
+    // Scene
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('blue');
  
-// Camera
-var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-camera.position.set(5, 5, 5);
-camera.lookAt(1, 0, 0);
+    // Camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(1, 0, 0);
  
-scene.add(createBasicWireCube());
-var cube = createCanvasWireCube();
-cube.position.set(3, 0, 0)
-scene.add(cube);
+    scene.add(createBasicWireCube());
+    var cube = createCanvasWireCube();
+    cube.position.set(3, 0, 0)
+    scene.add(cube);
  
-// Render
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.render(scene, camera);
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
 ```
 
 This results in two cubes that both have a write frame like look.
