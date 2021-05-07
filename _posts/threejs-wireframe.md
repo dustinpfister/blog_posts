@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 12:52:31
-version: 1.20
+updated: 2021-05-07 12:56:08
+version: 1.21
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -124,4 +124,4 @@ This results in two cubes that both have a write frame like look.
 
 ## 3 - Conclusion
 
-For the most part just setting the wire frame property of a material to true will work just fine, however if I want a more custom look then I am going to need to do something with textures. The wire frame look is great for when I am just trying to work out a geometry and do not care about the file look of an object just yet.
+For the most part just setting the wire frame property of a material to true will work just fine, however if I want a more custom look then I am going to need to do something with textures. The wire frame look is great for when I am just trying to work out a geometry and do not care about the final look of an object just yet. However when it comes to skinning a mesh object I am going to want to start making some textures by one way or another. There is creating textures with just javaScript code using canvas elements, and then there is creating some custom textures with an image editor and using the texture loader as a way to get into skinning mesh object materials.
