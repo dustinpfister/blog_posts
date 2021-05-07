@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 12:57:32
-version: 1.22
+updated: 2021-05-07 13:01:35
+version: 1.23
 ---
 
-It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. That will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
+It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
 
 So then this post will be on wireframe mode in threejs, the basic use of the property of most materials that just involves setting a boolean value to true. So when it comes to doing that there is typically not much to it, as that is all that needs to happen to set a material into a wire frame mode. However just for the sake of having something more to write about I could also take a moment to get into some more complex solutions that will take a bit more to get working, but will result in a similar effect, but with some kind of added benefit when it comes to creating some kind of style.
 
