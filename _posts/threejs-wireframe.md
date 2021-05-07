@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 13:25:43
-version: 1.25
+updated: 2021-05-07 13:30:04
+version: 1.26
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -59,7 +59,7 @@ Some people might not like the outcome of this though when it comes to having a 
 
 ## 3 - Using Line Segments
 
-Another option is to convert a geometry to an instance of THREE.EdgesGeomerty and then use that to create an instance of THREE.LineSegments with a Line Material such as THREE.LineBasicMaterial.
+Another option is to convert a geometry to an instance of [THREE.EdgesGeomerty](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) and then use that to create an instance of [THREE.LineSegments](https://threejs.org/docs/#api/en/objects/LineSegments) with a Line Material such as [THREE.LineBasicMaterial](https://threejs.org/docs/#api/en/materials/LineBasicMaterial). This will result in a look that differs from what the usual is when just setting a material into wire frame mode that I tend to like better. The result of this is lines draw in a way in which it is just the sides of a cube and not all the triangles that make up the cube.
 
 ```js
 (function () {
@@ -90,6 +90,8 @@ Another option is to convert a geometry to an instance of THREE.EdgesGeomerty an
 }
     ());
 ```
+
+However there are still some drawbacks with this when it comes to how things look and that is not being able to set the line width to something other than 1.
 
 ## 4 - Wire frame style effect using canvas textures
 
