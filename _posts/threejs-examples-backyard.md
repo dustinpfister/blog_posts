@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:17:49
-version: 1.3
+updated: 2021-05-07 14:18:54
+version: 1.4
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -16,6 +16,10 @@ For yet another [threejs example](/2021/02/19/threejs-examples/) post I made thi
 ## 1 - What to know fist
 
 This is a full threejs project example in which I am making use of all kinds of features in three.js to make something that is starting to look like a final product of some kind. So it should go without saying that this is not in any way a getting started type post for people that are new to three.js.
+
+### 1.1 - version numbers used
+
+When I started this example I was using r127 of three.js, and last i check the example works okay on top of that version of three.js.
 
 ## 2 - The canvas texture module
 
