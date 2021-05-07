@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:25:06
-version: 1.6
+updated: 2021-05-07 14:25:56
+version: 1.7
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -241,6 +241,8 @@ This is another copied of my basic guy module that I worked out for one of my ot
 ```
 
 ## 4 - Hamster wheel
+
+I also wanted to place my hamster wheel model into the backyard scene, just for the hell of it.
 
 ```js
 (function (WheelMod) {
