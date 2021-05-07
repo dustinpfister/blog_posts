@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-05-06 14:24:37
-version: 1.19
+updated: 2021-05-07 09:08:24
+version: 1.20
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -19,7 +19,7 @@ There is the official set of [threejs examples](https://threejs.org/examples/) t
 
 ## 2 - The lost of three.js examples so far
 
-So then here is the lst of my threejs simple project examples thus far.
+Here is the list of my threejs simple project examples thus far, at this time I do not have them broken down into categories but if I keep up with this it is only a matter of time until I will have to do something to that effect.
 
 ### [ 2.1 - A Basic Framework](/2021/04/20/threejs-examples-basic-framework/)
 
