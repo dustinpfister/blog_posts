@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:32:59
-version: 1.11
+updated: 2021-05-07 14:36:07
+version: 1.12
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -369,7 +369,7 @@ I also wanted to place my hamster wheel model into the backyard scene, just for 
 
 ## 5 - House
 
-This is a backyard type scene, so of course I need to add a house.
+This is a backyard type scene, so of course I need to add a house, and for that I went with the house module example that I made. In fact this backyard example is more or less just a far more advanced version of that starting point. In that example I just wanted to make a crude house module like that of my many other crude yet effective type modules. Nothing fancy with this one though except for that I experimented with making a custom geometry for a small triangle type area of the house.
 
 ```js
 (function (HouseMod) {
