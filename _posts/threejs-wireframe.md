@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 584
-updated: 2021-05-07 13:51:30
-version: 1.27
+updated: 2021-05-07 13:54:06
+version: 1.28
 ---
 
 It is often desirable to set a material into a [wire frame](https://en.wikipedia.org/wiki/Wire-frame_model) type mode so that just the basic form of the object is apparent without any faces rendered. Many materials in threejs such as the Basic material have a [wireframe property](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.wireframe) that when set to true will render the mesh in a wireframe mode of sorts. The built in wireframe mode will work okay for the most part, but many might not like the look of it, so there is a need to look for [additional ways to create a wireframe such as using the line material with a custom geometry](https://stackoverflow.com/questions/20153705/three-js-wireframe-material-all-polygons-vs-just-edges). will work fine most of the time, but another solution might involve creating custom textures that can then be applied to another property of a material such as the map property in the basic material.
@@ -194,7 +194,7 @@ This results in two cubes that both have a write frame like look.
 
 ## 5 - Wire frame mode and lighting
 
-When using a materials like that of the standard material for a mesh, setting the material into wire frame mode will not change the situation when it comes to lighting.
+When using a materials like that of the standard material for a mesh, setting the material into wire frame mode will not change the situation when it comes to lighting. If I set the emissive color of the material to that of the background color, and I do not currently have a light source then the material will not show up. So when working with a materials that will respond to light sources I am still going to want to make sure that there is one or more light sources, and I am still going to want to set the color and emissve color properties of the material to appropriate values so that things show up.
 
 ```js
 (function () {
