@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 15:49:08
-version: 1.14
+updated: 2021-05-07 15:52:46
+version: 1.15
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -664,6 +664,8 @@ new THREE.CubeTextureLoader()
     }
 });
 ```
+
+For this example I also wanted to add a sky map just for the sake of having something other than a solid color background. For this I made use of the cube texture loader to load a collection of cube texture image files the should be at a given absolute path when hosting this. However in the event that there is an error loading the texture does not load I just create a default texture using canvas generated content.
 
 ## 7 - Conclusion
 
