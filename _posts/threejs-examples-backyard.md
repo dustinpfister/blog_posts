@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 862
-updated: 2021-05-07 14:38:28
-version: 1.13
+updated: 2021-05-07 15:49:08
+version: 1.14
 ---
 
 For yet another [threejs example](/2021/02/19/threejs-examples/) post I made this backyard scene example that I should write at least one post on just because I put a little time into making it. I stooped working on it because the example was starting to turn into a black hole of a project where it just stared eating up my time, but I had to clear idea what the end game was when it comes to working on it. Still what I wanted to do is have at least one or more three.js examples where I am starting to create something that is starting to look like some kind of finished scene of some kind just for the heck of it. With that goal in mind I guess this project was a success, but now I think I need to put a little more time into what the final product is with an actual three.js project example before even getting started.
@@ -452,6 +452,8 @@ This is a backyard type scene, so of course I need to add a house, and for that 
 ## 6 - Main javaScript file
 
 Now I am going to want a fair amount of additional javaScript code and a few more mesh objects and so forth that I have not yet packed away into there own files. So then I am going to want a main.js javaScript file just like with any other major three.js example where I create my main scene object, as well as a camera, renderer, and animation loop method.
+
+After creating the scene object here I then create and add an instance of the house module, then I am going to want to have some ground for the house to be on. For this I went with a box geometry rather than a plane geometry, and also made some custom materials for this ground mesh object using my canvas texture module. Next I add in my guy, and hamster wheel models, followed by an additional mesh that will act as a sun object for the scene. Because it will be a light source for this I made the sun object have a point light as a child.
 
 ```js
 var scene = new THREE.Scene();
