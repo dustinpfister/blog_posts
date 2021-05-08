@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2019-12-24 09:56:54
-version: 1.11
+updated: 2021-05-08 11:35:47
+version: 1.12
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -17,7 +17,7 @@ The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) con
 
 ## 1 - Three Plane basic example
 
-So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. When it comes to the segment width and height of the plane an additional two arguments can eb used to set that width and height of the plane geometry also. 
+So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. When it comes to the segment width and height of the plane an additional two arguments can be used to set that width and height of the plane geometry also. 
 
 The Plane geometry can then be used with a mesh and material object like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this:
 
@@ -47,9 +47,9 @@ scene.add(plane);
 renderer.render(scene, camera);
 ```
 
-This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments. I also need to give an array of materials rather than just one, and I also need to set the material index values as desired. So lets look at some more examples in whih I am getting into doing just that.
+This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments. I also need to give an array of materials rather than just one, and I also need to set the material index values as desired. So lets look at some more examples in which I am getting into doing just that.
 
-## 2 -Styling a plane as a checkered board
+## 2 - Styling a plane as a checkered board
 
 So when it comes to styling a plane that has some sections with it, doing so can be a little confusing, but might not prove to be to hard. I have found solutions on line at [stack overflow](https://stackoverflow.com/questions/22689898/three-js-checkerboard-plane) that will work okay in some situations but not others depending on the number of sections. I was able to work out a solution for this that seems to work okay with any combination of width and height sections though and in the section I will be going over just that.
 
