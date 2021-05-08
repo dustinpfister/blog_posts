@@ -3,7 +3,7 @@ body{
 	color:white;
 	background:black;
 	padding:0px;
-	margin:0px;
+	margin:10px;
 }
 
 /* header */
@@ -30,7 +30,7 @@ table{
 	width:100%;
 }
 table, th, td {
-  border: 1px solid #8a8a8a;
+	border: 1px solid #8a8a8a;
 }
 
 /* month title */
@@ -48,8 +48,6 @@ table, th, td {
 	color: black;
 	background:white;
 }
-
-
 
 /* fresh styles */
 .fresh_old{
