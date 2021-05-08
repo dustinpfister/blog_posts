@@ -14,13 +14,9 @@ klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 app.use('/css', express.static( path.join( __dirname, './public/css') ) );
 
 app.get('*', (req, res, next) => {
-
     console.log(req.query);
-
     app.set('days_back', req.query.d || app.get('days_back'));
-
     next();
-
 });
 
 app.get('/', [

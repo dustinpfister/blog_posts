@@ -6,6 +6,7 @@ getId = require('../next-id').getId,
 
 header = require('./header'),
 wc = require('./wc'),
+linkCount = require('./link_count');
 
 opt_defaults = {
     forPost: function (item, next) {
@@ -38,6 +39,7 @@ let klawAll = (opt) => {
                     item.md = header.remove(md);
                     item.header = header.get(md);
                     item.wc = wc.getWC(item.md);
+                    item.linkObjects = linkCount(item.md);
 
                     item.fn = path.basename(item.path, '.md');
 
@@ -56,7 +58,7 @@ let klawAll = (opt) => {
 
                 })
 
-                .catch ((e) => {
+                .catch((e) => {
 
                     console.log(e.message);
                     next();
