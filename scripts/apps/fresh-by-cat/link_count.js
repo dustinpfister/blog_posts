@@ -2,11 +2,19 @@
 
 var markdown = 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)';
 
-markdown.match(/\]\(\S+/g).forEach(function (a) {
-    var text = a.match(/([a-z]|[:/.])+/)[0].toLowerCase(),
-    external = false;
-    if (text.substr(0, 8) === 'https://') {
-        external = true;
+var patt_link = /\]\(\S+/g,
+patt_linkurl = /([a-z]|[:/.])+/;
+
+var forAllLinks = function (a) {
+    var m = a.match(patt_linkurl);
+    if (m) {
+        var text = m[0].toLowerCase(),
+        external = false;
+        if (text.substr(0, 8) === 'https://') {
+            external = true;
+        }
+        console.log(text, external);
     }
-    console.log(text, external);
-});
+};
+
+markdown.match(patt_link).forEach(forAllLinks);
