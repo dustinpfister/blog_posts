@@ -18,7 +18,7 @@ var forLink = function (a) {
         }
     }
     return {
-        extrenal: external,
+        external: external,
         url: url
     }
 };

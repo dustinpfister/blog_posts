@@ -31,8 +31,6 @@ module.exports = (opt) => {
                     m = date.getMonth(),
                     t = now - update;
 
-                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
-
                     let cat = cats.find((c) => {
 
                             return c.catName === catName;
@@ -59,9 +57,14 @@ module.exports = (opt) => {
                         title: item.header.title,
                         fresh: fresh,
                         linkCount: item.linkObjects.length,
+                        linkCountInternal: item.linkInternalCount,
                         wc: item.wc
                     });
                     cat.wc += item.wc;
+
+                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
+                    console.log('internal links: ' + item.linkInternalCount, ' total links: ' + item.linkObjects.length);
+                    console.log('');
 
                     nextPost();
                 },

@@ -21,7 +21,8 @@ let getInteralLinkCount = (linkObjects) => {
         return 0;
     }
     if (linkObjects.length === 1) {
-        return Number(!linkObjects[0].external);
+        var n = linkObjects[0].external === true ? 0 : 1;
+        return n;
     }
     return linkObjects.reduce((acc, linkObj) => {
         acc = typeof acc === 'object' ? Number(!acc.external) : acc;
@@ -47,7 +48,6 @@ let klawAll = (opt) => {
                     item.wc = wc.getWC(item.md);
                     item.linkObjects = linkCount(item.md);
                     item.linkInternalCount = getInteralLinkCount(item.linkObjects);
-                    console.log(item.linkInternalCount);
                     item.fn = path.basename(item.path, '.md');
                     opt.forPost(item, () => {
                         // if ct === nextId then we are done for real

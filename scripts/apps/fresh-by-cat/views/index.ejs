@@ -22,7 +22,7 @@
             <tr><td><%= post.fn %></td>
             <td class="<%- getFreshClassName(post.fresh) %>"><%= post.fresh.toFixed(2) %></td>
             <td class="<%- getWcClassName(post.wc) %>"><%= post.wc %></td>
-            <td> i: <%= post.linkInternalCount %> t: <%= post.linkCount %> </td></tr>
+            <td> i: <%= post.linkCountInternal %> t: <%= post.linkCount %> </td></tr>
         <% }); %>
         </table>
         <br>
