@@ -58,6 +58,7 @@ module.exports = (opt) => {
                         fn: item.fn,
                         title: item.header.title,
                         fresh: fresh,
+                        linkCount: item.linkObjects.length,
                         wc: item.wc
                     });
                     cat.wc += item.wc;

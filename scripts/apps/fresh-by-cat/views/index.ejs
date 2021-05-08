@@ -17,11 +17,12 @@
             <span>avg wc per post: <span class="<%- getWcClassName(cat.wc / cat.posts.length) %>"><%= Number(cat.wc / cat.posts.length).toFixed(2); %></span>; </span>
         </p>
         <table>
-        <tr><th>file name</th><th>fresh</th><th>word count</th></tr>
+        <tr><th>file name</th><th>fresh</th><th>word count</th><th>Links</th></tr>
         <% cat.posts.forEach(function(post){ %>
             <tr><td><%= post.fn %></td>
             <td class="<%- getFreshClassName(post.fresh) %>"><%= post.fresh.toFixed(2) %></td>
-            <td class="<%- getWcClassName(post.wc) %>"><%= post.wc %></td></tr>
+            <td class="<%- getWcClassName(post.wc) %>"><%= post.wc %></td>
+            <td><%= post.linkCount %></td></tr>
         <% }); %>
         </table>
         <br>
