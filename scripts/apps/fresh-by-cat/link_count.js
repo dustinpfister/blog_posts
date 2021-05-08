@@ -1,8 +1,10 @@
 // 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)'.match(/\]\(\S+/g)
 
-var markdown = 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)';
+//var markdown = 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)';
+var markdown = 'this makrdown sample has no links, ![GitHub Logo](/images/logo.png) but it does have an image' ;
 
-var patt_link = /\]\(\S+/g,
+var patt_img = /\!\[[\s\S]+\]\([\s\S]+\)/g
+    patt_link = /\]\(\S+/g,
 patt_linkurl = /([a-z]|[:/.])+/;
 
 var forAllLinks = function (a) {
@@ -13,8 +15,18 @@ var forAllLinks = function (a) {
         if (text.substr(0, 8) === 'https://') {
             external = true;
         }
-        console.log(text, external);
+        console.log(a, text, external);
     }
 };
 
-markdown.match(patt_link).forEach(forAllLinks);
+var removeImg = function (text) {
+    return text.replace(patt_img, '');
+};
+
+console.log( removeImg(markdown) );
+
+//var m = markdown.match(patt_link);
+
+//if (m) {
+//    m.forEach(forAllLinks);
+//}
