@@ -1,21 +1,28 @@
 // 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)'.match(/\]\(\S+/g)
 
-//var markdown = 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)';
-var markdown = 'this makrdown sample has no links, ![GitHub Logo](/images/logo.png) but it does have an image' ;
+var markdown = 'foo [bar](/foo/bar) and also [external](https://www.foosite.com/)';
+//var markdown = 'this makrdown sample has no links, ![GitHub Logo](/images/logo.png) but it does have an image' ;
 
 var patt_img = /\!\[[\s\S]+\]\([\s\S]+\)/g
     patt_link = /\]\(\S+/g,
 patt_linkurl = /([a-z]|[:/.])+/;
 
-var forAllLinks = function (a) {
-    var m = a.match(patt_linkurl);
+var forLink = function (a) {
+    var m = a.match(patt_linkurl),
+    url = '',
+    external = false;
     if (m) {
-        var text = m[0].toLowerCase(),
-        external = false;
-        if (text.substr(0, 8) === 'https://') {
+        url = m[0].toLowerCase();
+        if (url.substr(0, 8) === 'https://') {
             external = true;
         }
-        console.log(a, text, external);
+        if (url.substr(0, 7) === 'http://') {
+            external = true;
+        }
+    }
+    return {
+        extrenal: external,
+        url: url
     }
 };
 
@@ -23,10 +30,9 @@ var removeImg = function (text) {
     return text.replace(patt_img, '');
 };
 
-console.log( removeImg(markdown) );
+var m = removeImg(markdown).match(patt_link);
 
-//var m = markdown.match(patt_link);
-
-//if (m) {
-//    m.forEach(forAllLinks);
-//}
+if (m) {
+    var a = m.map(forLink);
+    console.log(a);
+}
