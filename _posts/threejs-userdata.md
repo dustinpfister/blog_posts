@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 14:56:35
-version: 1.7
+updated: 2021-05-09 15:31:05
+version: 1.8
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -32,7 +32,6 @@ In the create sphere group helper I am just appending some values to each mesh o
 In the update sphere group method I am using the distance to method of the Vercor3 Class instance of the current mesh position object relative to another Vector3 instance of the origin. This distance is then used as a way to know if I should reset the position of the mesh or not.
 
 ```js
-
 (function () {
  
     var GROUPSIZE = 9,
@@ -56,23 +55,24 @@ In the update sphere group method I am using the distance to method of the Verco
         })
     ];
     // random angles helper
-    var randomAngles = function(mesh){
+    var randomAngles = function (mesh) {
         mesh.userData.pitch = Math.PI * 2 * Math.random();
         mesh.userData.heading = Math.PI * 2 * Math.random();
     };
-    var randomSpeed = function(mesh){
+    // random speed value
+    var randomSpeed = function (mesh) {
         mesh.userData.pitchPPS = PPS_MIN + (PPS_MAX - PPS_MIN) * Math.random();
         mesh.userData.headingPPS = PPS_MIN + (PPS_MAX - PPS_MIN) * Math.random();
     };
     // create a sphere group
-    var createSphereGroup = function(){
+    var createSphereGroup = function () {
         var group = new THREE.Group();
         var i = 0;
-        while(i < GROUPSIZE){
+        while (i < GROUPSIZE) {
             var mesh = new THREE.Mesh(
-                new THREE.SphereGeometry(1, 20),
-                materials[0]
-            );
+                    new THREE.SphereGeometry(1, 20),
+                    materials[0]);
+            // SETTING VALUES IN USER DATA OBJECT
             mesh.userData.materalIndex = i % materials.length;
             randomSpeed(mesh);
             randomAngles(mesh);
@@ -82,16 +82,17 @@ In the update sphere group method I am using the distance to method of the Verco
         return group;
     };
     // update a sphere group
-    var updateSphereGroup = function(group, secs){
-        group.children.forEach(function(mesh){
+    var updateSphereGroup = function (group, secs) {
+        group.children.forEach(function (mesh) {
+            // USING VALUES IN USER DATA OBJECT
             var ud = mesh.userData;
             mesh.material = materials[ud.materalIndex];
             mesh.position.x += Math.cos(ud.pitch) * ud.pitchPPS * secs;
             mesh.position.y += Math.sin(ud.pitch) * ud.pitchPPS * secs;
             mesh.position.z += Math.cos(ud.heading) * ud.headingPPS * secs;
-            var d = mesh.position.distanceTo(new THREE.Vector3(0,0,0));
-            if(d >= MAXDIST){
-                mesh.position.set(0,0,0);
+            var d = mesh.position.distanceTo(new THREE.Vector3(0, 0, 0));
+            if (d >= MAXDIST) {
+                mesh.position.set(0, 0, 0);
                 randomAngles(mesh);
                 randomSpeed(mesh);
             }
@@ -113,21 +114,24 @@ In the update sphere group method I am using the distance to method of the Verco
  
     // Render
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
     // loop
-    var lt = new Date();
-    function animate() {
+    var lt = new Date(),
+    fps = 24;
+    function loop() {
         var now = new Date(),
         secs = (now - lt) / 1000;
-        requestAnimationFrame(animate);
-        updateSphereGroup(group, secs);
-        renderer.render(scene, camera);
-        lt = now;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            updateSphereGroup(group, secs);
+            renderer.render(scene, camera);
+            lt = now;
+        }
     };
  
-    animate();
+    loop();
  
 }
     ());
