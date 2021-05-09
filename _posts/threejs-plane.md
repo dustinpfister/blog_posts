@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 13:05:56
-version: 1.32
+updated: 2021-05-09 13:10:53
+version: 1.33
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -302,6 +302,8 @@ For this example then I started to make a kind of tile index module that i can u
 
 ### 5.2 - Demo of the tile index module
 
+Now it is time to test out this module to see if what I worked out is working the way that I would like it to, and it would seem that it is.
+
 ```js
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
@@ -349,6 +351,8 @@ scene.add(plane2);
  
 renderer.render(scene, camera);
 ```
+
+There is then coming up with additional methods for setting the index values in a whole bunch of different ways, and also making such functions that will take some arguments. However there is not just the material index values of course there is aso working out new ways to add the groups in different ways also. never the less after working out this example I now have a decent grasp on how to go about  feating groups and setting material index values for plane geometries. Also much of what I have worked out here of course applies to buffered geometry in general also.
 
 ## 6 - Styling a plane as a checkered board in three.js r104 - r124
 
