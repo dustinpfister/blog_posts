@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:53:50
-version: 1.27
+updated: 2021-05-09 12:55:57
+version: 1.28
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -342,11 +342,13 @@ scene.add(plane2);
 renderer.render(scene, camera);
 ```
 
-## 3 - Styling a plane as a checkered board in three.js r104 - r124
+## 6 - Styling a plane as a checkered board in three.js r104 - r124
 
-So when it comes to styling a plane that has some sections with it, doing so can be a little confusing, but might not prove to be to hard. I have found solutions on line at [stack overflow](https://stackoverflow.com/questions/22689898/three-js-checkerboard-plane) that will work okay in some situations but not others depending on the number of sections. I was able to work out a solution for this that seems to work okay with any combination of width and height sections though and in the section I will be going over just that.
+This is the older example for a checkered board plane geometry that I made when I first wrote this post, back then I was using three.hs r104, so this will likely break on newer versions of three.js.
 
-### 3.1 - The checker helpers 
+When it comes to styling a plane that has some sections with it, doing so can be a little confusing, but might not prove to be to hard. I have found solutions on line at [stack overflow](https://stackoverflow.com/questions/22689898/three-js-checkerboard-plane) that will work okay in some situations but not others depending on the number of sections. I was able to work out a solution for this that seems to work okay with any combination of width and height sections though and in the section I will be going over just that.
+
+### 6.1 - The checker helpers 
 
 Here I have two functions that create a plane geometry that has the material index values set for each tile section in the plane. So in other words when the geometry is used with a mesh that has an array of materials the material index values of 0 and 1 will be used for every other tile section in the plane, just like that of a checker board pattern.
 
@@ -391,7 +393,7 @@ var mkChecker = function (opt) {
 };
 ```
 
-### 3.2 - The checker helpers in action
+### 6.2 - The checker helpers in action
 
 So now I can use my mkCheker to create a mesh that uses a plane geometry with the material index values set to the right values for each section in the plane.
 
@@ -426,6 +428,6 @@ scene.add(oddCheck);
 renderer.render(scene, camera);
 ```
 
-## 4 - Conclusion
+## 7 - Conclusion
 
 That will be it for now when it comes to plane geometry in three.js, I have a lot of other posts that I am getting around to editing a little, but I do not always have enough time to give every post the attention that it might need. The plane geometry works okay for what typically use if for, however as of late I often just use a box geometry to sever as a crude yet functional floor.
