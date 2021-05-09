@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:08:15
-version: 1.16
+updated: 2021-05-09 12:14:11
+version: 1.17
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -53,6 +53,50 @@ renderer.render(scene, camera);
 ```
 
 This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments from a value of 1 by 1. I also need to give an array of materials rather than just one material like in this example, and I also need to set the material index values as desired that will change a little depending on the effect that I want. Also before I even get to that point as of late versions of three.js I need to add the groups first. So lets look at some more examples in which I am getting into doing things with an array of materials, creating groups, and setting material index values for plane geometries.
+
+## 3 - Adding one or more groups to a plane geometry and working with an array of materials
+
+Often I might want to use more than one material when it comes to skinning a plane geometry. For starers there is just passing an array of two materials rather than just a single material instance object to the mesh constructor that I use with the plane geometry. However that might just be a first step, as with late versions of three.js there will be no groups added by default by just calling the plane geometry constructor. The groups must be added then by calling the app group method of the buffer geometry class. When doing so I need to give a vertex index value as the first argument, followed by a count of vertext index values fro that start point, followed by a material index value.
+
+```js
+// An Array of materials
+var materialArray = [
+    new THREE.MeshBasicMaterial({
+        color: 0xe0e0e0,
+        side: THREE.DoubleSide
+    }),
+    new THREE.MeshBasicMaterial({
+        color: 0x505050,
+        side: THREE.DoubleSide
+    })
+];
+ 
+// PLANE
+var plane = new THREE.Mesh(
+        new THREE.PlaneGeometry(5, 5, 1, 2),
+        materialArray);
+// USING ADD GROUP METHOD TO SET MATERIAL
+// INDEX VLAUES
+plane.geometry.addGroup(0, 6, 0);
+plane.geometry.addGroup(6, 6, 1);
+ 
+plane.position.set(0, 0, 0);
+plane.rotation.set(-Math.PI * 0.5, 0, 0);
+ 
+// add plane to scene
+var scene = new THREE.Scene();
+scene.add(plane);
+ 
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(3.5, 5.5, 3.5);
+camera.lookAt(0, -1.5, 0);
+var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
 
 ## 3 - Styling a plane as a checkered board in three.js r104 - r124
 
