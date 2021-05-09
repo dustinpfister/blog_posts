@@ -5,15 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 15:57:15
-version: 1.17
+updated: 2021-05-09 16:01:17
+version: 1.18
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
 
 It is a good idea to place any data that has to do with the application in this user data object as that will help to make sure that I do so in a safe way that will not conflict with anything internal with three.js. Many frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object like a display object, sprite, or in threejs anything based off of Object3d.
 
-So in this post I will be going over a few simple examples of the user data property of the object3d class. Nothing majot for starers, but I thik I would like to get into some more advanced examples if I can get to it in order to really help showcase what this object is for when it comes to being creative and having a little fun with three.js.
+So in this post I will be going over a few simple examples of the user data property of the object3d class. Nothing major for starers, but I think I would like to get into some more advanced examples if I can get to it in order to really help showcase what this object is for when it comes to being creative and having a little fun with three.js.
 
 <!-- more -->
 
@@ -224,4 +224,6 @@ The result of this then is a bunch of spheres start out positioned at the center
 
 ## 4 - Conclusion
 
-So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects.
+So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects. However it is good to know that there is an official object in every object based on the Object3d class that can be used as a way to go about packing application and module specific data. This allows me to create three.js modules that returned mesh objects, or groups, rather than my own weired object standards where there is a property that is a group or mesh. Which is a habit that I am not going to start to break because that sounds like a good idea to me.
+
+
