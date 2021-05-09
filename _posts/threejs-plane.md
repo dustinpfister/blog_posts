@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:17:47
-version: 1.19
+updated: 2021-05-09 12:20:00
+version: 1.20
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -21,7 +21,7 @@ In this post I am writing about the plane geometry constructor in threejs a java
 
 ### 1.1 -  version Numbers matter
 
-When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r127. Sense then some code breaking changes have been introduced that will case some of these examples to break when it comes to having a checkerboard pattern on a plane.
+When I first wrote this post I was using three.js revision r104, and the last time I came around to do a little editing of this post I was using r127. Sense then some code breaking changes have been introduced that will cause some of these examples to break when it comes to having a checkerboard pattern on a plane depending on what version you are using. I am generally keeping the newer code examples to the top of the post, and leaving the older examples at the bottom for the sake of historical reasons, or if for some reason you are still using an older versions of three.js.
 
 ## 2 - Three Plane basic example
 
