@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:55:57
-version: 1.28
+updated: 2021-05-09 12:59:26
+version: 1.29
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -112,7 +112,7 @@ In this section I will be going over a checker board example of plane geometry i
 
 ### 4.1 - The helper methods for creating a checker board plane geometry
 
-I worked out two helper method for this example by making ine function that will create and return a plane geometry, and another function that will use that method that creates the plane geometry in a mesh.
+I worked out two helper method for this example by making a function that will create and return a plane geometry, and another function that will use that method that creates the plane geometry in a mesh.
 
 ```js
 var mkCheckerGeo = function (w, h, sw, sh) {
@@ -163,7 +163,9 @@ var mkChecker = function (opt) {
 };
 ```
 
-### 4.2 - 
+### 4.2 - Demo of the mk checker function
+
+I can then just call my mkChekcer function that will create and return the plane geometry with the groups and material index values set up for me. I then just need to add the returned mesh object to the scene, and the effect seems to work more or less as I would expect it to for just about any values that I set the the width and height of the sections.
 
 ```js
 var scene = new THREE.Scene();
