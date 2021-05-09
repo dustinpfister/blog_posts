@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 15:36:56
-version: 1.9
+updated: 2021-05-09 15:39:57
+version: 1.10
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -22,6 +22,8 @@ So in this post I will be going over a simple example of the user data property 
 This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment.
 
 ## 2 - Basic User Data Object3d Example with rotating cubes
+
+This will be a basic getting started example of the user data object of the object3d class. In this example I have a create cube helper that will create and return a mesh that uses the Box geometry, and the normal material. In this create cube function I am using the userData object as a way to set some rotation rates for each angle in an instance of THREE.Euler in radians per second. There rotation rates as well as the starting position of the cube can be set by way of the create cube helper functions arguments.
 
 ```js
 (function () {
