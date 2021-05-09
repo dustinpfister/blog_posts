@@ -5,19 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-02-17 15:56:27
-version: 1.6
+updated: 2021-05-09 14:56:35
+version: 1.7
 ---
 
-In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object32 class](/2018/04/23/threejs-object32/) which is a class to which a mesh, and many other objects in three.js inherit from.
+In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
 
-It is a good idea to place any data that has to do with the application in this user data object as that will help to make sure that I do so in a safe way. Many frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object like a display object, sprite, or in threejs a mesh.
+It is a good idea to place any data that has to do with the application in this user data object as that will help to make sure that I do so in a safe way that will not conflict with anything internal with three.js. Many frameworks have some kind of data object that is part of an instance of some kind of class as a way to park data that I want to have assigned to a given object like a display object, sprite, or in threejs anything based off of Object3d.
 
 So in this post I will be going over a simple example of the user data property of the object3d class. 
 
 <!-- more -->
 
-## 1 - The javaScript file
+## 1 - Objected user data and what to know first
+
+This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment.
+
+## 2 - An Object3d user data example
 
 This example will not be anything to involved so it will be just a single file that contains all the threejs code as well as my own user data code. 
 
@@ -133,6 +137,6 @@ So once I have my helpers that create and return a group of mesh objects I just 
 
 The result of this then is a bunch of spheres start out positioned at the center origin point and then move out from there in random directions and speeds. When the distance of a mesh goes out of the rang that I set with the MAX DIST value then the user data values get set to new values, and the position of the mesh goes back to the origin.
 
-## 2 - Conclusion
+## 3 - Conclusion
 
 So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects.
