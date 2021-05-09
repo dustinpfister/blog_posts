@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 15:31:05
-version: 1.8
+updated: 2021-05-09 15:36:56
+version: 1.9
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -21,7 +21,78 @@ So in this post I will be going over a simple example of the user data property 
 
 This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment.
 
-## 2 - An Object3d user data example
+## 2 - Basic User Data Object3d Example with rotating cubes
+
+```js
+(function () {
+ 
+    var createCube = function (rotationRates, position) {
+        var cube = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshNormalMaterial());
+        var ud = cube.userData;
+        ud.rotationRates = rotationRates || [0, 3.14, 0];
+        cube.position.copy(position || new THREE.Vector3(0, 0, 0));
+        return cube;
+    };
+ 
+    var clampRadian = function (radian) {
+        return radian %= Math.PI * 2;
+    };
+ 
+    var updateCube = function (cube, secs) {
+        var ud = cube.userData,
+        rr = ud.rotationRates;
+        cube.rotation.x += rr[0] * secs;
+        cube.rotation.y += rr[1] * secs;
+        cube.rotation.z += rr[2] * secs;
+        cube.rotation.x = clampRadian(cube.rotation.x);
+        cube.rotation.y = clampRadian(cube.rotation.y);
+        cube.rotation.z = clampRadian(cube.rotation.z);
+    };
+ 
+    // Scene
+    var scene = new THREE.Scene();
+ 
+    // add some cubes
+    var cubes = new THREE.Group();
+    cubes.add(createCube([1.57, 0.00, 0.00], new THREE.Vector3(3, 0, 0)));
+    cubes.add(createCube([3.14, 1.57, 0.25], new THREE.Vector3(0, 0, 0)));
+    cubes.add(createCube([0.00, 0.00, 6.28], new THREE.Vector3(-3, 0, 0)));
+    scene.add(cubes);
+ 
+    // Camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // loop
+    var lt = new Date(),
+    fps = 24;
+    function loop() {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            cubes.children.forEach(function (cube) {
+                updateCube(cube, secs);
+            });
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+ 
+    loop();
+ 
+}
+    ());
+```
+
+## 3 - Another example of Spheres changing position and setting back when the go out of range.
 
 This example will not be anything to involved so it will be just a single file that contains all the threejs code as well as my own user data code. 
 
@@ -141,6 +212,6 @@ So once I have my helpers that create and return a group of mesh objects I just 
 
 The result of this then is a bunch of spheres start out positioned at the center origin point and then move out from there in random directions and speeds. When the distance of a mesh goes out of the rang that I set with the MAX DIST value then the user data values get set to new values, and the position of the mesh goes back to the origin.
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects.
