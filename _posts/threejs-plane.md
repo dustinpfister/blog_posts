@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:28:17
-version: 1.23
+updated: 2021-05-09 12:38:29
+version: 1.24
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -60,7 +60,7 @@ This will result in a plane that is ten by ten and is broken down into a single 
 
 ## 3 - Adding one or more groups to a plane geometry and working with an array of materials
 
-Often I might want to use more than one material when it comes to skinning a plane geometry. For starers there is just passing an array of two materials rather than just a single material instance object to the mesh constructor that I use with the plane geometry. However that might just be a first step, as with late versions of three.js there will be no groups added by default by just calling the plane geometry constructor. The groups must be added then by calling the [add group](https://threejs.org/docs/#api/en/core/BufferGeometry.addGroup) method of the buffer geometry class. When doing so I need to give a vertex index value as the first argument, followed by a count of vertext index values fro that start point, followed by a material index value.
+Often I might want to use more than one material when it comes to skinning a plane geometry. For starers there is just passing an array of two materials rather than just a single material instance object to the mesh constructor that I use with the plane geometry. However that might just be a first step, as with late versions of three.js there will be no groups added by default by just calling the plane geometry constructor. The groups must be added then by calling the [add group](https://threejs.org/docs/#api/en/core/BufferGeometry.addGroup) method of the buffer geometry class. When doing so I need to give a vertex index value as the first argument, followed by a count of vertex index values from that start point, followed by a material index value. If you still find that confusing maybe it would be best to learn by doing and just start playing around with a code example of this.
 
 ```js
 // An Array of materials
@@ -81,8 +81,10 @@ var plane = new THREE.Mesh(
         materialArray);
 // USING ADD GROUP METHOD TO SET MATERIAL
 // INDEX VLAUES
-plane.geometry.addGroup(0, 6, 0);
-plane.geometry.addGroup(6, 6, 1);
+plane.geometry.addGroup(0, 3, 0);
+plane.geometry.addGroup(3, 3, 1);
+plane.geometry.addGroup(6, 3, 1);
+plane.geometry.addGroup(9, 3, 0);
  
 plane.position.set(0, 0, 0);
 plane.rotation.set(-Math.PI * 0.5, 0, 0);
@@ -101,6 +103,8 @@ renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+In this example I am calling the add group method a total of four times, one time for each triangle in this plane geometry that is 1 by 2 in terms of the dimensions of the sections. I could call the the add group method just two times with a different set of values for the start vertex and count of vertex points. And there is also changing up what the material index values are for these add group calls also when it comes to the third argument.
 
 ## 3 - Styling a plane as a checkered board in three.js r104 - r124
 
