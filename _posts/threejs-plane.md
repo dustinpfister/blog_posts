@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:40:00
-version: 1.25
+updated: 2021-05-09 12:44:28
+version: 1.26
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -105,6 +105,238 @@ renderer.render(scene, camera);
 ```
 
 In this example I am calling the add group method a total of four times, one time for each triangle in this plane geometry that is 1 by 2 in terms of the dimensions of the sections. I could call the the add group method just two times with a different set of values for the start vertex and count of vertex points. And there is also changing up what the material index values are for these add group calls also when it comes to the third argument. Once you get a fell for what the situation is with these arguments and the effect that they end up having, it is time to move on to working out some functions that can help with creating groups and setting material index values.
+
+## 4 - Checker board example
+
+### 4.1 - The helper methods for createing a checker board plane geometry
+
+```js
+var mkCheckerGeo = function (w, h, sw, sh) {
+    w = w === undefined ? 16 : w;
+    h = h === undefined ? 16 : h;
+    sw = sw === undefined ? 8 : sw;
+    sh = sh === undefined ? 8 : sh;
+    var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
+    tileIndex = 0,
+    len = sw * sh,
+    mi,
+    y,
+    i;
+    while(tileIndex < len){
+        i = tileIndex * 6;
+        mi = tileIndex % 2;
+        if (sw % 2) {
+            mi = tileIndex % 2;
+        } else {
+            y = Math.floor(tileIndex / sw);
+            mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
+        }
+        planeGeo.addGroup(i, 3, mi);
+        planeGeo.addGroup(i + 3, 3, mi);
+        tileIndex += 1;
+    }
+    return planeGeo;
+};
+ 
+var mkChecker = function (opt) {
+    opt = opt || {};
+    opt.materials = opt.materials || [
+            new THREE.MeshBasicMaterial({
+                color: 0xe0e0e0,
+                side: THREE.DoubleSide
+            }),
+            new THREE.MeshBasicMaterial({
+                color: 0x505050,
+                side: THREE.DoubleSide
+            })
+        ];
+    // add a plane
+    var plane = new THREE.Mesh(
+            mkCheckerGeo(opt.w, opt.h, opt.sw, opt.sh),
+            opt.materials);
+    plane.rotation.set(-Math.PI / 2, 0, 0);
+    return plane;
+};
+```
+
+### 4.2 - 
+
+```js
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// standard checker
+var check = mkChecker({
+        w: 10,
+        h: 10,
+        sw: 12,
+        sh: 12
+    });
+scene.add(check);
+ 
+renderer.render(scene, camera);
+```
+
+## 5 - Tile index module example
+
+### 5.1 - The tile module
+
+```js
+(function (api) {
+ 
+    var MATERIALS = [
+        new THREE.MeshBasicMaterial({
+            color: 0xe0e0e0,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshBasicMaterial({
+            color: 0x505050,
+            side: THREE.DoubleSide
+        })
+    ];
+ 
+    var planeTileGeo = function (w, h, sw, sh) {
+        w = w === undefined ? 16 : w;
+        h = h === undefined ? 16 : h;
+        sw = sw === undefined ? 8 : sw;
+        sh = sh === undefined ? 8 : sh;
+        var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
+        tileIndex = 0,
+        len = sw * sh,
+        mi,
+        y,
+        i;
+        while (tileIndex < len) {
+            i = tileIndex * 6;
+            mi = 0;
+            planeGeo.addGroup(i, 3, mi);
+            planeGeo.addGroup(i + 3, 3, mi);
+            tileIndex += 1;
+        }
+        return planeGeo;
+    };
+ 
+    // create and return a plane with tile groups
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.materials = opt.materials || MATERIALS;
+        // add a plane
+        var plane = new THREE.Mesh(
+                planeTileGeo(opt.w, opt.h, opt.sw, opt.sh),
+                opt.materials);
+        plane.rotation.set(-Math.PI / 2, 0, 0);
+        return plane;
+    };
+ 
+    // set checkerBoard material index values
+    api.setCheckerBoard = function (plane) {
+        var w = plane.geometry.parameters.widthSegments,
+        h = plane.geometry.parameters.heightSegments,
+        tileIndex = 0,
+        gi,
+        len = w * h,
+        mi,
+        y;
+        while (tileIndex < len) {
+            if (w % 2) {
+                mi = tileIndex % 2;
+            } else {
+                y = Math.floor(tileIndex / w);
+                mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
+            }
+            gi = tileIndex * 2;
+            plane.geometry.groups[gi].materialIndex = mi;
+            plane.geometry.groups[gi + 1].materialIndex = mi;
+            tileIndex += 1;
+        }
+    };
+ 
+    // set checkerBoard material index values
+    api.setBoxBoard = function (plane) {
+        var w = plane.geometry.parameters.widthSegments,
+        h = plane.geometry.parameters.heightSegments,
+        tileIndex = 0,
+        len = w * h,
+        gi,
+        mi,
+        x,
+        y;
+        while (tileIndex < len) {
+            x = tileIndex % w;
+            y = Math.floor(tileIndex / w);
+            mi = 0;
+            if (y > 0 && y < h - 1) {
+                if (x > 0 && x < w - 1) {
+                    mi = 1;
+                }
+            }
+            gi = tileIndex * 2;
+            plane.geometry.groups[gi].materialIndex = mi;
+            plane.geometry.groups[gi + 1].materialIndex = mi;
+            tileIndex += 1;
+        }
+    };
+ 
+}
+    (this['TileMod'] = {}));
+```
+
+### 5.2 - Demo of the tile index module
+
+```js
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
+camera.position.set(10, 10, 10);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var materialArray = [
+    new THREE.MeshBasicMaterial({
+        color: 0xeffff00,
+        side: THREE.DoubleSide
+    }),
+    new THREE.MeshBasicMaterial({
+        color: 0x2f2f2f,
+        side: THREE.DoubleSide
+    })
+];
+ 
+var plane = TileMod.create({
+        materials: materialArray,
+        w: 10,
+        h: 10,
+        sw: 4,
+        sh: 4
+    });
+// set checkerBoard material index values
+TileMod.setCheckerBoard(plane);
+scene.add(plane);
+ 
+var plane2 = TileMod.create({
+        materials: materialArray,
+        w: 10,
+        h: 10,
+        sw: 8,
+        sh: 8
+    });
+// set checkerBoard material index values
+TileMod.setBoxBoard(plane2);
+plane.position.set(-11, 0, 0);
+scene.add(plane2);
+ 
+renderer.render(scene, camera);
+```
 
 ## 3 - Styling a plane as a checkered board in three.js r104 - r124
 
