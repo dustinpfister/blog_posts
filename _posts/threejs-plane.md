@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-08 12:36:53
-version: 1.15
+updated: 2021-05-09 12:08:15
+version: 1.16
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -25,37 +25,34 @@ When I first wrote this post I was using three.js revision r104, and the last ti
 
 ## 2 - Three Plane basic example
 
-So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. When it comes to the segment width and height of the plane an additional two arguments can be used to set that width and height of the plane geometry also. 
+So a plane geometry can be made by just calling the THREE.PlaneGeometry constructor and then passing the desired width and height of the plane in terms of the object size as the first two arguments. When it comes to the segment width and height of the plane an additional two arguments can be used to set that width and height of the plane geometry also in terms of the segment width and height.
 
-The Plane geometry can then be used with a mesh and material object like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this:
+The Plane geometry can then be used with a mesh and material object like any other built in geometry constructor in three js to produce a display object that can then be added to a scene. So A Basic example of the three plane geometry constructor might look something like this.
 
 ```js
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 1000);
 camera.position.set(10, 10, 10);
 camera.lookAt(0, 0, 0);
- 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
+var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
  
 // add a plane
-var width = 10,
-height = 10,
-widthSegments = 1,
-heightSegments = 1;
 var plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(width, height, widthSegments, heightSegments),
+        new THREE.PlaneGeometry(10, 10, 1, 1),
         new THREE.MeshBasicMaterial({
             color: 0x0000ff
         }));
-plane.rotation.set(-Math.PI / 2, 0, 0);
+plane.rotation.set(-Math.PI/2,0,0);
 scene.add(plane);
  
 renderer.render(scene, camera);
 ```
 
-This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments. I also need to give an array of materials rather than just one, and I also need to set the material index values as desired. So lets look at some more examples in which I am getting into doing just that.
+This will result in a plane that is ten by ten and is broken down into a single segment. If I want a checkered board effect it is not just a question of increasing the segment size arguments from a value of 1 by 1. I also need to give an array of materials rather than just one material like in this example, and I also need to set the material index values as desired that will change a little depending on the effect that I want. Also before I even get to that point as of late versions of three.js I need to add the groups first. So lets look at some more examples in which I am getting into doing things with an array of materials, creating groups, and setting material index values for plane geometries.
 
 ## 3 - Styling a plane as a checkered board in three.js r104 - r124
 
