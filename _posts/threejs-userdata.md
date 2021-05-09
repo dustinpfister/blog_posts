@@ -1,12 +1,12 @@
 ---
-title: Custom User Data for a Mesh in three.js
+title: User Data for a Mesh or anything based on Object3d in three.js
 date: 2021-02-16 16:20:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 15:52:55
-version: 1.14
+updated: 2021-05-09 15:54:16
+version: 1.15
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -20,6 +20,10 @@ So in this post I will be going over a few simple examples of the user data prop
 ## 1 - Objected user data and what to know first
 
 This is a post on some examples that make use of the object3d user data object as a way to park some properties that have to do with and over all application, or module that runs on top of three.js in a client side javaScript environment. So then this is not really a post for people that are new to three.js, as I think that you should have at least some background with the library and javaScript in general before getting into these kinds of examples. There might still be at least a few things that I should cover before getting into the user data examples, so in this section I will be getting those things out of the way.
+
+### 1.1 - Version numbers matter with three.js
+
+
 
 ## 2 - Basic User Data Object3d Example with rotating cubes
 
