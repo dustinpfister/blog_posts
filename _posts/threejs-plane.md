@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 13:00:46
-version: 1.30
+updated: 2021-05-09 13:03:32
+version: 1.31
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -193,6 +193,8 @@ renderer.render(scene, camera);
 Although this seems to work okay, I think that it might be even better to pull the logic that has to do with setting material index values out of the function that created the geometry, and have a module where there are a few options for setting material index values.
 
 ## 5 - Tile index module example
+
+The example where I am just setting a checker board like pattern is a good start, but now I think I should make a module where there is just creating the groups like that, but pulling the logic that has to do with setting material index values out into a function of its own. There is then experimenting with creating at least a few functions that have to do with setting material index values in different ways.
 
 ### 5.1 - The tile module
 
