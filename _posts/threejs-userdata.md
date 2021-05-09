@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 15:56:03
-version: 1.16
+updated: 2021-05-09 15:57:15
+version: 1.17
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -23,7 +23,7 @@ This is a post on some examples that make use of the object3d user data object a
 
 ### 1.1 - Version numbers matter with three.js
 
-I get emails and comments that tell me that this is something that I just need to mention in every post on three.js. When I write this post I was using r125 of three.js when I first started writing it. The last time I came around to do a little editing I was using r127 of three.js.
+I get emails and comments that tell me that this is something that I just need to mention in every post on three.js. When I write this post I was using r125 of three.js when I first started writing it. The last time I came around to do a little editing I was using r127 of three.js. Code breaking changes are made to three.js often, so it is always a good idea to look into how old a post might be, or how long it has been sense the last time someone came around to edit the post.
 
 ## 2 - Basic User Data Object3d Example with rotating cubes
 
