@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 473
-updated: 2021-05-09 12:16:43
-version: 1.18
+updated: 2021-05-09 12:17:47
+version: 1.19
 ---
 
 In [three js](https://threejs.org/) there are a lot of built in constructors for making quick geometries that can be used with a material to create a mesh than can the be placed in a scene. One of these is for plane geometry that is just a flat simple 2d plane, which is a desired geometry for most simple projects. So it is nice to have a convenience method in the framework that can be used to quickly create such a geometry.
@@ -17,7 +17,7 @@ The [three plane](https://threejs.org/docs/#api/en/geometries/PlaneGeometry) con
 
 ## 1 - Plane Geometry in three.js and what to know first
 
-In this post I am writing about the plane geometry constructor in threejs a javaScript library that has to do with 3d modeling. As such I expect that you have spent at least a little time [learning how to get started with three.js](/2018/04/04/threejs-getting-started/), and how to program in general with client side javaScript.
+In this post I am writing about the plane geometry constructor in threejs a javaScript library that has to do with 3d modeling. As such I expect that you have spent at least a little time [learning how to get started with three.js](/2018/04/04/threejs-getting-started/), and how to program in general with client side javaScript. In any case in this section I will be going over a few things that you might want to read up on a bit more before really getting into the plane geometry constructor.
 
 ### 1.1 -  version Numbers matter
 
