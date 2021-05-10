@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2021-05-10 15:57:09
-version: 1.5
+updated: 2021-05-10 16:01:54
+version: 1.6
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use example of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application or module specific data to help make sure that there are no conflicts with properties that are used with three.js. When making my own code for an over all three.js project I am going to end up with a log of my own properties and javaScript code that updates those properties. I could do something where I keep all of my own code separate, and then apply that to mesh objects, groups, cameras and so forth. However another way of attaching my own user data to anything in three.js that is based off of the object3d class would be to append it to this user data object.
@@ -16,6 +16,14 @@ This will be a post on a nested groups [threejs example](/2021/02/19/threejs-exa
 ## 1 - What to know first before reading more about this three.jsexample
 
 This is one of my many three.js examples that makes use of the client side javaScript library known as three.js. This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the basics of three.js, and know at least a thing or two about javaScript in general. So I will nto be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
+
+### 1.1 - version Numbers matter with three.js
+
+When I first wrote this post I was using three.js revision r127, as such the code here might break in future versions of three.js.
+
+### 1.2 - Read up more on the user data property of the Object3d class
+
+This example is an advanced continuation of [one of the examples that I worked out for my post on the user data object](/2021/02/16/threejs-userdata/) of the object3d class. This object is the official object in a Mesh, Group, Camera, or anything the is based on the object3d class that can be used to park user defined data. This user defined data is just data that belongs to a given object of some kind of a three.js project that has to do with ones own code rather than three.js internal logic.
 
 ## 2 - The cube groups module
 
