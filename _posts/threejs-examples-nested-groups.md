@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2021-05-10 16:01:54
-version: 1.6
+updated: 2021-05-10 16:16:23
+version: 1.7
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use example of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application or module specific data to help make sure that there are no conflicts with properties that are used with three.js. When making my own code for an over all three.js project I am going to end up with a log of my own properties and javaScript code that updates those properties. I could do something where I keep all of my own code separate, and then apply that to mesh objects, groups, cameras and so forth. However another way of attaching my own user data to anything in three.js that is based off of the object3d class would be to append it to this user data object.
@@ -23,9 +23,13 @@ When I first wrote this post I was using three.js revision r127, as such the cod
 
 ### 1.2 - Read up more on the user data property of the Object3d class
 
-This example is an advanced continuation of [one of the examples that I worked out for my post on the user data object](/2021/02/16/threejs-userdata/) of the object3d class. This object is the official object in a Mesh, Group, Camera, or anything the is based on the object3d class that can be used to park user defined data. This user defined data is just data that belongs to a given object of some kind of a three.js project that has to do with ones own code rather than three.js internal logic.
+This example is an advanced continuation of [one of the examples that I worked out for my post on the user data object](/2021/02/16/threejs-userdata/) of the object3d class. This object is the official object in a Mesh, Group, Camera, or anything the is based on the object3d class that can be used to park user defined data. This user defined data is just data that belongs to a given object of some kind of a three.js project that has to do with ones own code rather than three.js internal logic. Speaking of the [object3d class](/2018/04/23/threejs-object3d/) it might be a good idea to read up more on that class in general as it is a major part of three.js that I tend to use just about all the time.
 
 ## 2 - The cube groups module
+
+This is the cube group module that I started in my post that has to do with the user data object of the object3d class. I do not think that I did much to it when it comes to changes from what I wrote about in that post, but still I think I should write a thing or two about it here as I am using it in my main nested groups module that I will be getting to later in this post.
+
+This cube groups module will return a group of mesh objects where each mesh object is a box geometry and a given material that is given when calling the main create method of this module. Tne idea here is to just have a collection of eight of these mesh objects, and then be able to tweak some options to change the way that these groups of objects move over time.
 
 ```js
 (function (api) {
@@ -139,6 +143,8 @@ This example is an advanced continuation of [one of the examples that I worked o
 ```
 
 ## 3 - The nested groups module
+
+Here I now I have my main nested groups module that will create an return a main group that I will be adding to the scene in my main javaScript file. The general idea I have here is to have a main module like this that will return a group object, and then everything else the composes the example that is attached to that group as a child. This group will contain additional groups, and thus be a situation in which I am dealing with nested groups, thus the name of this example.
 
 ```js
 (function (api) {
@@ -267,6 +273,8 @@ This example is an advanced continuation of [one of the examples that I worked o
 ```
 
 ## 4 - The main javaScript file
+
+The main javaScript file of this example is then pretty thin as much of the logic is pulled away into the nested groups module. I do not even create a camera here in as I typically would in most other projects because this time I want the camera to be part of the nested groups module.
 
 ```js
 (function () {
