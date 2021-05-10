@@ -5,17 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 863
-updated: 2021-05-10 16:16:23
-version: 1.7
+updated: 2021-05-10 16:28:25
+version: 1.8
 ---
 
 This will be a post on a nested groups [threejs example](/2021/02/19/threejs-examples/) that I made today that is a continuation of what I started with my post on use example of the user data object in the object3d class. The user data object of the Object3d class is a standard object for everything based on object3d for parking application or module specific data to help make sure that there are no conflicts with properties that are used with three.js. When making my own code for an over all three.js project I am going to end up with a log of my own properties and javaScript code that updates those properties. I could do something where I keep all of my own code separate, and then apply that to mesh objects, groups, cameras and so forth. However another way of attaching my own user data to anything in three.js that is based off of the object3d class would be to append it to this user data object.
 
 <!-- more -->
 
-## 1 - What to know first before reading more about this three.jsexample
+## 1 - What to know first before reading more about this three.js example
 
-This is one of my many three.js examples that makes use of the client side javaScript library known as three.js. This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the basics of three.js, and know at least a thing or two about javaScript in general. So I will nto be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
+This is one of my many three.js examples that makes use of the client side [javaScript library known as three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene). This post is intended for javaScript developers that have learned a thing or two about the basics and are not looking into how to go about getting started when it comes to making some actual projects of some kind with three.js. So I assume that you have at least some background with the basics of three.js, and know at least a thing or two about javaScript in general. So I will not be touching base on the basics of three.js and javaScript here, but in this section I will be going over a few things that I think you should read up mre on before getting into this example.
 
 ### 1.1 - version Numbers matter with three.js
 
@@ -145,6 +145,10 @@ This cube groups module will return a group of mesh objects where each mesh obje
 ## 3 - The nested groups module
 
 Here I now I have my main nested groups module that will create an return a main group that I will be adding to the scene in my main javaScript file. The general idea I have here is to have a main module like this that will return a group object, and then everything else the composes the example that is attached to that group as a child. This group will contain additional groups, and thus be a situation in which I am dealing with nested groups, thus the name of this example.
+
+At the top of the file I have a create point light, and create point light group helpers. The method that is used to create a point light group is one of several nested groups that I will be attaching to the main group that is returned by the create method of this module. This group of lights is a collection of three point lights one lime, one blue, and another that is read along with a white one that I have placed at the center. I can then rotate and position this group of lights relative to the main group.
+
+I then have a create world group helper that will contain all the instances of my cube group module that I wen over in an above section in this post. I wanted to create at least a few instances of this kind of group and position them all over the place in the world group. At the time of this writing the only other object that I have in this word group is a grid helper that that I often like to add to many examples like this. Although I might not be doing much of anything with this group now, if I keep working on this I might want to do something that will effect all mesh objects in this group, but not any objects or groups outside of it, such as a screen shake type thing or something to that effect.
 
 ```js
 (function (api) {
@@ -305,6 +309,8 @@ The main javaScript file of this example is then pretty thin as much of the logi
 }
     ());
 ```
+
+When I have this example up and running I end up with a pretty cool looking scene, but there is still more I think I would like to change around a little when it comes to making this a little more interesting maybe. I like how everything is pretty animated and that it is all combined together into this one main module. If I get more time to work on this example I might want to break things down more by having separates modules for the light objects, as well as maybe bring some additional modules that I have worked out in other examples into this scene.
 
 ## 5 - Conclusion
 
