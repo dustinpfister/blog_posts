@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-10 12:28:01
-version: 1.23
+updated: 2021-05-10 12:31:16
+version: 1.24
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -108,7 +108,7 @@ So now that I have the basic idea out of the way it is time to get into having s
 
 ### 3.1 - A Cube Groups module
 
-For this example I made a cube groups module that has a main create method that will create and return an Instance of THREE.Group.
+For this example I made a cube groups module that has a main create method that will create and return an Instance of THREE.Group. Inside the body of this create method I am assigning all kinds of values for the group as a whole by way of the user data object of the group. With that said I can set values like the total number of frames for the group animation, as well as the frame rate at which that animation will update. I can also pass options that will set user data objects for each mesh also though, for example I can set the number of rotations for each axis for each cube, and each instance of this cube groups is a collection of eight cubes.
 
 ```js
 
