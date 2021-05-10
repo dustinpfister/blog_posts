@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-10 12:33:39
-version: 1.25
+updated: 2021-05-10 12:35:34
+version: 1.26
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -220,7 +220,7 @@ Another major public method of this module is the update method where the first 
 
 ### 3.2 - Using the Cube Groups module
 
-Now that I have this cube groups module worked out it is time to test things out with the usual three.js setup.
+Now that I have this cube groups module worked out it is time to test things out with the usual three.js setup. In this main javaScript file where I create my three.js scene as well as the camera, renderer and so forth I decided to create a few instances of this cube group created with this cube group module of mine.
 
 ```js
 (function () {
