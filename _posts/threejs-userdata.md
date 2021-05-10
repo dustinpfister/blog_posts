@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-09 16:03:01
-version: 1.20
+updated: 2021-05-10 12:23:12
+version: 1.21
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -102,7 +102,189 @@ I then also have a function that will update a given cube by these rates in the 
 
 So after I create the main scene object for the example I then create an instance of THREE.Group, and then create and add a bunch of these cube objects that use the user data object with my create cube helper. In the body of my animation loop I then call the update cube method by looping over all the children of this group, and calling the update cube function for each of them. The end result is then having each of these cubes rotate in different ways and rates, because of there unique values in the userData object.
 
-## 3 - Another example of Spheres changing position and setting back when the go out of range.
+## 3 - The userData object can also be used in groups becuase that is also based on object3d
+
+So now that I have the basic idea out of the way it is time to get into having some fun with the user data object. In this section I will be writing about a module that I made where I am using the user data object as a way to set values for an instance of THREE.Group, and then I also have user data objects for each mesh in the group.
+
+### 3.1 - A Cube Groups module
+
+```js
+
+(function (api) {
+ 
+    var ANGLES_A = [225, 315, 135, 45];
+ 
+    var toRadians = function (array) {
+        return array.map(function(deg){
+            return Math.PI / 180 * deg;
+        });
+    };
+ 
+    // create a single cube mesh
+    var createCube = function (rotationCounts, position) {
+        var cube = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshNormalMaterial());
+        // USER DATA OBJECT FOR A SINGLE CUBE
+        var ud = cube.userData;
+        ud.rotationCounts = rotationCounts || [0, 0, 0];
+        cube.position.copy(position || new THREE.Vector3(0, 0, 0));
+        return cube;
+    };
+ 
+    // update a single cube
+    var updateCube = function (cube, per) {
+        var ud = cube.userData,
+        rc = ud.rotationCounts,
+        pi2 = Math.PI * 2;
+        cube.rotation.x = pi2 * rc[0] * per;
+        cube.rotation.y = pi2 * rc[1] * per;
+        cube.rotation.z = pi2 * rc[2] * per;
+    };
+ 
+    // public method to create a cube group
+    api.create = function(opt) {
+        opt = opt || {};
+        opt.cubeRotations = opt.cubeRotations || [];
+        var cubes = new THREE.Group(),
+        // USER DATA OBJECT FOR A GROUP OF CUBES
+        gud = cubes.userData;
+        gud.frame = 0;
+        gud.maxFrame = opt.maxFrame || 180;
+        gud.fps = opt.fps || 30;
+        gud.anglesA = toRadians(opt.anglesA || ANGLES_A);
+        gud.yDelta = opt.yDelta === undefined ? 2 : opt.yDelta;
+        gud.xzDelta = opt.xzDelta === undefined ? 2 : opt.xzDelta;
+        gud.secs = 0;
+        var i = 0;
+        while(i < 8){
+            var cubeRotations = opt.cubeRotations[i] || [0.00, 0.00, 0.00];
+            var cube = createCube(
+                cubeRotations, 
+                new THREE.Vector3(0, 0, 0));
+            cubes.add(cube);
+            i += 1;
+        };        
+        return cubes;
+    };
+ 
+    var setCubesRotation = function(cubes, per){
+        var x = Math.PI * 0 * per,
+        y = Math.PI * 0 * per,
+        z = Math.PI * 0 * per;
+        cubes.rotation.set(x, y, z);
+    };
+ 
+    // update the group
+    api.update = function(cubes, secs) {
+        // GROUP USER DATA OBJECT
+        var gud = cubes.userData;
+        var per = gud.frame / gud.maxFrame,
+        bias = 1 - Math.abs(per - 0.5) / 0.5;
+        // update cubes
+        cubes.children.forEach(function (cube, i) {
+            // start values
+            var sx = i % 2 - 0.5,
+            sz = Math.floor(i / 2) - Math.floor(i / 4) * 2 - 0.5,
+            sy = Math.floor(i / (2 * 2)) - 0.5;
+            // adjusted
+            var aIndex = i % 4,
+            bIndex = Math.floor(i / 4),
+            r1 = gud.anglesA[aIndex],
+            x = sx + Math.cos(r1) * gud.xzDelta * bias,
+            y = sy + gud.yDelta * bias * (bIndex === 0 ? -1 : 1),
+            z = sz + Math.sin(r1) * gud.xzDelta * bias;
+            // set position of cube
+            cube.position.set(x, y, z);
+            // call cube update method
+            updateCube(cube, per);
+        });
+        // whole group rotation
+        setCubesRotation(cubes, per);
+        // step frame
+        gud.secs += secs;
+        if(gud.secs >= 1 / gud.fps){
+            gud.frame += 1; // gud.fps * secs;
+            gud.frame %= gud.maxFrame;
+            gud.secs %= 1 / gud.fps; 
+        }
+    };
+ 
+}
+    (this['CubeGroupMod'] = {}));
+```
+
+### 3.2 - Using the Cube Groups module
+
+```js
+(function () {
+ 
+    var scene = new THREE.Scene();
+ 
+    var gridHelper = new THREE.GridHelper(10, 10);
+    scene.add(gridHelper);
+ 
+    var cubes1 = CubeGroupMod.create({maxFrame: 50, fps: 30});
+    cubes1.position.set(4,0,4);
+    scene.add(cubes1);
+ 
+    var cubes2 = CubeGroupMod.create({maxFrame: 50, fps: 1});
+    cubes2.position.set(-4,0,4);
+    scene.add(cubes2);
+ 
+    var cubes3 = CubeGroupMod.create({
+       anglesA:[180, 270, 90, 0],
+       yDelta: 1.25,
+       xzDelta: 0.75,
+       maxFrame: 60,
+       fps: 30,
+       cubeRotations: [
+          [0, 0, 1],
+          [0, 1, 0],
+          [0, 1, 1],
+          [1, 0, 0],
+          [1, 0, 1],
+          [1, 1, 0],
+          [1, 1, 1],
+          [0, 0, 1]
+       ]
+    });
+    scene.add(cubes3);
+ 
+    // Camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(0, 10, 10);
+    camera.lookAt(0, 0, 0);
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+   
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
+    // loop
+    var lt = new Date(),
+    fps = 24;
+    function loop() {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            CubeGroupMod.update(cubes1, secs);
+            CubeGroupMod.update(cubes2, secs);
+            CubeGroupMod.update(cubes3, secs);
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+ 
+    loop();
+ 
+}
+    ());
+```
+
+## 4 - Another example of Spheres changing position and setting back when the go out of range.
 
 This example will not be anything to involved so it will be just a single file that contains all the threejs code as well as my own user data code. 
 
@@ -222,7 +404,7 @@ So once I have my helpers that create and return a group of mesh objects I just 
 
 The result of this then is a bunch of spheres start out positioned at the center origin point and then move out from there in random directions and speeds. When the distance of a mesh goes out of the rang that I set with the MAX DIST value then the user data values get set to new values, and the position of the mesh goes back to the origin.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So the user data object is one way to go about having some custom data set to a given mesh object, or any object in threejs that inherits from object 3d such as a camera object. There might be other ways of going about doing this sort of thing though such as having two sets of objects, one would be a collection of mesh objects in threejs, and another would be an independent array of user data objects. However it is good to know that there is an official object in every object based on the Object3d class that can be used as a way to go about packing application and module specific data. This allows me to create three.js modules that returned mesh objects, or groups, rather than my own weired object standards where there is a property that is a group or mesh. Which is a habit that I am not going to start to break because that sounds like a good idea to me.
 
