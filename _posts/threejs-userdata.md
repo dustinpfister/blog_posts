@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-10 12:23:12
-version: 1.21
+updated: 2021-05-10 12:26:11
+version: 1.22
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -104,7 +104,7 @@ So after I create the main scene object for the example I then create an instanc
 
 ## 3 - The userData object can also be used in groups becuase that is also based on object3d
 
-So now that I have the basic idea out of the way it is time to get into having some fun with the user data object. In this section I will be writing about a module that I made where I am using the user data object as a way to set values for an instance of THREE.Group, and then I also have user data objects for each mesh in the group.
+So now that I have the basic idea out of the way it is time to get into having some fun with the user data object. In this section I will be writing about a module that I made where I am using the user data object as a way to set values for an instance of THREE.Group, and then I also have user data objects for each mesh in the group. Just like that of Mesh objects the THREE.Group class is also based off the Object3d Class so there is also a user Data object for an instance of a Group. So when it comes to creating a group that is a collection of Mesh objects, or any number of additional objects I can use the user data object of a group to park any values that will apply to the group as a whole.
 
 ### 3.1 - A Cube Groups module
 
