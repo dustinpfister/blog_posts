@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 804
-updated: 2021-05-10 12:37:41
-version: 1.27
+updated: 2021-05-10 12:44:06
+version: 1.28
 ---
 
 In [threejs](https://threejs.org/) there is a standard way of adding custom user data for a mash object which is the [user data object](https://threejs.org/docs/#api/en/core/Object3D.userData). The user data object is actually a property of the [object3d class](/2018/04/23/threejs-object3d/) which is a class to which a mesh, and many other objects in three.js inherit from as a base class.
@@ -289,6 +289,8 @@ Now that I have this cube groups module worked out it is time to test things out
 }
     ());
 ```
+
+So then this example has turned into a somewhat interesting example of using the user data object of the object3d class with both mesh objects as well as groups. However there are a lot of other kinds of objects based in three.js such as cameras and even the whole scene object that contains just about everything of interest when rendering a three.js project. The user data object can be used with one or more mesh objects as well as groups, I can also nest groups, and also part data for other objects such as cameras and helpers. So maybe I should get into at least a few more examples of this user data object as a way to really start to exercise what user data is all about when it comes to making my own projects and examples with three.js
 
 ## 4 - Another example of Spheres changing position and setting back when the go out of range.
 
