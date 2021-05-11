@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 11:40:13
-version: 1.11
+updated: 2021-05-11 13:48:17
+version: 1.12
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -124,7 +124,144 @@ renderer.render(scene, camera);
 
 I often do something to this effect when it comes to creating crude models using just the built in three.js constructors for geometry and materials. There is just using all the properties and methods of the Object3d class and Mesh objects that are based off of it to create objects that compose a grater whole. The scale property can then be used to change the size of parts of the model as well as an instance of a model itself.
 
-## 4 - Conclusion
+## 4 - An Animation example of scale along with many other object3d features
+
+### 4.1 - The Cube Group module
+
+```js
+(function (api) {
+ 
+    var getPerValues = function (frame, maxFrame, base) {
+        frame = frame === undefined ? 0 : frame;
+        maxFrame = maxFrame === undefined ? 100 : maxFrame;
+        base = base || 2;
+        var per = frame / maxFrame,
+        bias = 1 - Math.abs(per - 0.5) / 0.5;
+        return {
+            frame: frame,
+            maxFrame: maxFrame,
+            fps: 30,
+            per: per,
+            bias: bias,
+            base: base,
+            biasLog: Math.log(1 + bias * (base - 1)) / Math.log(base)
+        };
+    };
+ 
+    var createGroup = function () {
+        var size = 1,
+        scale = 1 / 2,
+        halfScale = scale / 2;
+        var group = new THREE.Group();
+        var box = new THREE.Mesh(
+                new THREE.BoxGeometry(size, size, size),
+                new THREE.MeshNormalMaterial());
+        box.position.set(0, 0, 0);
+        group.add(box);
+        var i = 0,
+        len = 4;
+        while (i < len) {
+            var copy1 = box.clone(),
+            r = Math.PI * 2 / 4 * i,
+            x = Math.cos(r) * 1,
+            z = Math.sin(r) * 1;
+            copy1.scale.set(scale, scale, scale);
+            copy1.position.set(x, 0, z);
+            group.add(copy1);
+            i += 1;
+        }
+        return group;
+    };
+    // create the full group object with user data
+    api.create = function (opt) {
+        opt = opt || {};
+        var group = createGroup(),
+        ud = group.userData;
+        ud.perObj = getPerValues(
+                opt.frame === undefined ? 0 : opt.frame,
+                opt.maxFrame === undefined ? 0 : opt.maxFrame);
+        return group;
+    };
+    // update
+    api.update = function (cubeGroup, secs) {
+        var ud = cubeGroup.userData,
+        perObj = ud.perObj,
+        s = 0.25 + 0.75 * perObj.biasLog;
+        // SET CURRENT SCALE
+        cubeGroup.scale.set(s, s, s);
+        cubeGroup.rotation.z = Math.PI * 2 * perObj.per;
+        // update frame and perObj
+        perObj.frame += perObj.fps * secs;
+        perObj.frame %= perObj.maxFrame;
+        ud.perObj = getPerValues(perObj.frame, perObj.maxFrame);
+    };
+ 
+}
+    (this['CubeGroup'] = {}));
+```
+
+### 4.2 - The main javaScript file
+
+```js
+// scene
+var scene = new THREE.Scene();
+ 
+var state = {
+    lt: new Date,
+    fps: 30,
+    groups: new THREE.Group()
+};
+scene.add(state.groups);
+ 
+// a group created with the cube group module
+var i = 0,
+len = 6,
+radius = 3,
+radian, x, z;
+while (i < len) {
+    radian = Math.PI * 2 / len * i;
+    x = Math.cos(radian) * radius;
+    z = Math.sin(radian) * radius;
+    var group = CubeGroup.create({
+            frame: Math.floor(120 * (i / len)),
+            maxFrame: 120
+        });
+    state.groups.add(group);
+    group.position.set(x, 0, z);
+    i += 1;
+}
+ 
+var grid = new THREE.GridHelper(7, 7);
+scene.add(grid);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 100);
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var loop = function () {
+    var now = new Date(),
+    secs = (now - state.lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / state.fps) {
+        state.groups.children.forEach(function (group, i) {
+            CubeGroup.update(group, secs);
+        });
+        state.groups.rotation.x += Math.PI / 180 * 5 * secs;
+        state.groups.rotation.x %= Math.PI * 2;
+        state.groups.rotation.y += Math.PI / 180 * 10 * secs;
+        state.groups.rotation.y %= Math.PI * 2;
+        renderer.render(scene, camera);
+        state.lt = now;
+    }
+};
+loop();
+```
+
+## 5 - Conclusion
 
 The scale property of object3d can then be used to change the scale of a Mesh object, and many other such objects in three.js. The scale property can the be used along with many other useful methods of Object3d and Mesh objects such as position, rotation, and copy to create interesting artful animations and projects just using the built in geometry and material constructors.
 
