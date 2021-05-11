@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 11:26:19
-version: 1.9
+updated: 2021-05-11 11:31:52
+version: 1.10
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -60,7 +60,9 @@ renderer.render(scene, camera);
 
 ## 3 - Group example of the Object3d Scale property
 
-The Object3d class is not just the base class of Mesh objects but other classes of objects also such as THREE.Group for example. What is great about this is that I can use the scale property to not just adjust the scale of a single mesh object, but also a collection of mesh objects also when it comes to setting the scale property of a Group.
+The Object3d class is not just the base class of Mesh objects but other classes of objects also such as THREE.Group for example. What is great about this is that I can use the scale property to not just adjust the scale of a single mesh object, but also a collection of mesh objects also when it comes to setting the scale property of a Group. 
+
+When creating a group I can use the add method of a group, which is also a method of Object3d actually, and pass an instance of a Mesh, Camera, or anything based on object3d even another Group. When I do so what I pass to the add method becomes a child of that object, and by doing so setting a value for the scale property of that parent object will also effect all children of that object. In this example I am once again creating a few copies of a Mesh object, and using the scale property to adjust the scale of the copies of this mesh object, but I am then also adding all of the mesh objects to a group. This is all done in a helper function to which I return the group as the return value of the helper function. The scale property can then be adjusted with the resulting group also to adjust the scale of the group that is returned, and I can also make more than one instance of this group of mesh objects.
 
 ```js
 var createCubeGroup = function () {
