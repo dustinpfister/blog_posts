@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 13:56:43
-version: 1.16
+updated: 2021-05-11 13:58:32
+version: 1.17
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -205,7 +205,7 @@ It is time to start breaking things down a little now, so for this example I mad
 
 ### 4.2 - The main javaScript file that contains my animation loop function.
 
-In the main javaScript file I still create my scene, camera, and renderer as always. However now I am creating a state object that will contain a group that will be a collection of these cube groups that I will be making with the cube group module.
+In the main javaScript file I still create my scene, camera, and renderer as always. However now I am creating a state object that will contain a group that will be a collection of these cube groups that I will be making with the cube group module. I also have a main animation loop in which I am making use of the request animation frame method to create an animation type product rather than just a static scene.
 
 ```js
 // scene
