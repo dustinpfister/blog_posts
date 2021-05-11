@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 13:51:29
-version: 1.13
+updated: 2021-05-11 13:53:51
+version: 1.14
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -126,8 +126,7 @@ I often do something to this effect when it comes to creating crude models using
 
 ## 4 - An Animation example of scale along with many other object3d features
 
-So then the scale property can be used to set the scale of a single mesh object, and because it is a property of a base class the same property can also be used to set the scale of a group of mesh objects also. So now there is getting into having some fun with this and starting to create some kind of interesting animation or something to that effect just for the sake of exercise.
-
+So then the scale property can be used to set the scale of a single mesh object, and because it is a property of a base class the same property can also be used to set the scale of a group of mesh objects also. So now there is getting into having some fun with this and starting to create some kind of interesting animation or something to that effect just for the sake of exercise. In this example I will be going over a more advanced example of the scale property for single mesh objects, as well as group objects. On top of the use of the scale property I will also be making use of other note worthy aspects of the Object3d class that come into play when making a complex three.js project such as the user data object, position, and rotation properties of the bject3d class.
 ### 4.1 - The Cube Group module
 
 ```js
