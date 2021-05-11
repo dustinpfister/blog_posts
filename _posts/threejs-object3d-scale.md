@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 10:08:42
-version: 1.8
+updated: 2021-05-11 11:26:19
+version: 1.9
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -58,6 +58,69 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 3 - Conclusion
+## 3 - Group example of the Object3d Scale property
+
+The Object3d class is not just the base class of Mesh objects but other classes of objects also such as THREE.Group for example. What is great about this is that I can use the scale property to not just adjust the scale of a single mesh object, but also a collection of mesh objects also when it comes to setting the scale property of a Group.
+
+```js
+var createCubeGroup = function () {
+    var size = 1,
+    scale = 1 / 2,
+    halfScale = scale / 2;
+    var group = new THREE.Group();
+    var box = new THREE.Mesh(
+            new THREE.BoxGeometry(size, size, size),
+            new THREE.MeshNormalMaterial());
+    box.position.set(0, 0, 0);
+    group.add(box);
+    var i = 0,
+    len = 4;
+    while (i < len) {
+        var copy1 = box.clone(),
+        r = Math.PI * 2 / 4 * i,
+        x = Math.cos(r) * 1,
+        z = Math.sin(r) * 1;
+        copy1.scale.set(scale, scale, scale);
+        copy1.position.set(x, 0, z);
+        group.add(copy1);
+        i += 1;
+    }
+    return group;
+};
+ 
+// scene
+var scene = new THREE.Scene();
+var grid = new THREE.GridHelper(7, 7);
+scene.add(grid);
+ 
+// group1 with DEFAULT SCALE
+var group1 = createCubeGroup();
+group1.position.set(0, 0, 0);
+scene.add(group1);
+ 
+// group2 with 0.5 SCALE
+var group2 = createCubeGroup();
+group2.scale.set(0.5, 0.5, 0.5);
+group2.position.set(3, 0, 3);
+scene.add(group2);
+ 
+// group3 with 2 SCALE
+var group3 = createCubeGroup();
+group3.scale.set(2, 2, 2);
+group3.position.set(-3, 0, -3);
+scene.add(group3);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(40, 320 / 240, 0.1, 100);
+camera.position.set(7, 7, 7);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 4 - Conclusion
 
 The scale property of object3d can then be used to change the scale of a Mesh object, and many other such objects in three.js. The scale property can the be used along with many other useful methods of Object3d and Mesh objects such as position, rotation, and copy to create interesting artful animations and projects just using the built in geometry and material constructors.
+
