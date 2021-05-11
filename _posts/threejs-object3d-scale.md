@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 10:04:45
-version: 1.6
+updated: 2021-05-11 10:06:52
+version: 1.7
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -28,7 +28,7 @@ If you are still relatively new to threejs, and have not done so before hand, it
 
 ## 2 - Basic Object3d Scale example with a Mesh and the Mesh copy method
 
-Frst off a very basic example of the scale property of the Object3d class that involves a Mesh object. In this example I am creating just a single Mesh object with the Mesh Constructor that uses the BoxGeometry and the Normal Material. I am then using the copy method of that mesh object instance to create to copies on this mesh object. I can then change the scale of these copies with the scale property of them and that will change the scale of these copies without effecting the original.
+First off a very basic example of the scale property of the Object3d class that involves a Mesh object. In this example I am creating just a single Mesh object with the Mesh Constructor that uses the BoxGeometry and the Normal Material. I am then using the copy method of that mesh object instance to create to copies on this mesh object. I can then change the scale of these copies with the scale property of them and that will change the scale of these copies without effecting the original. The copy method will not fully deep clone the mesh object though when it comes to things like the geometry and material of the mesh object though, however for this example, and the scale property alone things work as expected.
 
 ```js
 var box = new THREE.Mesh(
