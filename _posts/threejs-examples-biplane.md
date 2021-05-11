@@ -5,18 +5,21 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-02-19 15:01:13
-version: 1.8
+updated: 2021-05-11 17:16:23
+version: 1.9
 ---
 
-When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself. However for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project.
+When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a Biplane.
 
-There is the prim and proper way of going about creating a 3d model of something, and that is all fine and good. However it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a Biplane.
+This example will involve create a bunch of mesh objects, combining them into a group, and then positioning and skinning things to make something that looks like a little plane. It would then be fun to add a few more models to create a plane, and a main world object for a crude scene of some kind. For now I think I would like to have just one plane, and have it fly around in a circle, and move the camera around to have a nice neat looping animation.
 
 <!-- more -->
 
+## 1 - What to know first
 
-## 1 - The biplane module
+This is a post on a full working three.js project example of a little looping animation of a simple biplane model made from mesh objects using the built in three.js geometry constructor functions.
+
+## 2 - The biplane module
 
 The idea here is to create a javaScript module that will create and return an instance of a [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) which is just a way to pack a whole bunch of Mesh objects into a single group.
 
@@ -28,14 +31,14 @@ An instance of THREE.Group like a Mesh object also inherits from the [Object3d c
 var Biplane = (function () {
  
     var materials = {
-        plane: new THREE.MeshLambertMaterial({
-            color: 0x00ff00
+        plane: new THREE.MeshStandardMaterial({
+            color: 0x88afaf
         }),
-        guy: new THREE.MeshLambertMaterial({
+        guy: new THREE.MeshStandardMaterial({
             color: 0xffffff
         }),
-        prop: new THREE.MeshLambertMaterial({
-            color: 0x808080
+        prop: new THREE.MeshStandardMaterial({
+            color: 0x404040
         })
     };
  
@@ -117,87 +120,265 @@ var Biplane = (function () {
         return plane;
     };
  
-    api.update = function(bi, secs){
+    api.update = function(bi, per){
         var ud = bi.userData;
-        ud.propRadian += (Math.PI * 2 * ud.propRPS) * secs;
-        ud.propRadian %= (Math.PI * 2);
+        ud.propRadian = Math.PI * 64 * per;
         ud.prop.rotation.set(ud.propRadian,0,0)
     };
  
     return api;
 }
     ());
- 
 ```
 
-## 2 - Very basic example making use of the biplane model so far
+## 3 - An example making use of the biplane model so far
 
 So then now it is just a question of having a very simple main javaScript file where I am making use of this model. In this file I will be doing all the usual when it comes to making a threejs project such as creating a scene, camera, and renderer. However when it comes to having a mesh I am going to be using this biplane module to create groups of mesh objects.
 
 I can change the propRPS value of one of these biplane models userData objects to change the rate at which the prop rotates. Just about any additional properties that I might add if I do continue working on this can be changed that way.
 
+### 3.1 - A utils module
+
+```js
+var utils = {};
+ 
+utils.pi2 = Math.PI * 2;
+ 
+utils.getPerValues = function (frame, maxFrame, base) {
+    frame = frame === undefined ? 0 : frame;
+    maxFrame = maxFrame === undefined ? 100 : maxFrame;
+    base = base || 2;
+    var per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5;
+    return {
+        frame: frame,
+        maxFrame: maxFrame,
+        fps: 30,
+        per: per,
+        bias: bias,
+        base: base,
+        biasLog: Math.log(1 + bias * (base - 1)) / Math.log(base)
+    };
+};
+ 
+// mathematical modulo
+utils.mod = function (x, m) {
+    return (x % m + m) % m;
+};
+ 
+utils.normalizeRadian = function (radian) {
+    return utils.mod(radian, utils.pi2);
+};
+```
+
+### 3.2 - a Tile Index module
+
+```js
+(function (api) {
+ 
+    var MATERIALS = [
+        new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            emissive: 0x00ff00,
+            emissiveIntensity: 0.75,
+            side: THREE.DoubleSide
+        }),
+        new THREE.MeshStandardMaterial({
+            color: 0xaaaaaa,
+            emissive: 0x00ff00,
+            emissiveIntensity: 0.2,
+            side: THREE.DoubleSide
+        })
+    ];
+ 
+    var planeTileGeo = function (w, h, sw, sh) {
+        w = w === undefined ? 16 : w;
+        h = h === undefined ? 16 : h;
+        sw = sw === undefined ? 8 : sw;
+        sh = sh === undefined ? 8 : sh;
+        var planeGeo = new THREE.PlaneGeometry(w, h, sw, sh),
+        tileIndex = 0,
+        len = sw * sh,
+        mi,
+        y,
+        i;
+        while (tileIndex < len) {
+            i = tileIndex * 6;
+            mi = 0;
+            planeGeo.addGroup(i, 3, mi);
+            planeGeo.addGroup(i + 3, 3, mi);
+            tileIndex += 1;
+        }
+        return planeGeo;
+    };
+ 
+    // create and return a plane with tile groups
+    api.create = function (opt) {
+        opt = opt || {};
+        opt.materials = opt.materials || MATERIALS;
+        // add a plane
+        var plane = new THREE.Mesh(
+                planeTileGeo(opt.w, opt.h, opt.sw, opt.sh),
+                opt.materials);
+        plane.rotation.set(-Math.PI / 2, 0, 0);
+        return plane;
+    };
+ 
+    // set checkerBoard material index values
+    api.setCheckerBoard = function (plane) {
+        var w = plane.geometry.parameters.widthSegments,
+        h = plane.geometry.parameters.heightSegments,
+        tileIndex = 0,
+        gi,
+        len = w * h,
+        mi,
+        y;
+        while (tileIndex < len) {
+            if (w % 2) {
+                mi = tileIndex % 2;
+            } else {
+                y = Math.floor(tileIndex / w);
+                mi = y % 2 ? 1 - tileIndex % 2 : tileIndex % 2
+            }
+            gi = tileIndex * 2;
+            plane.geometry.groups[gi].materialIndex = mi;
+            plane.geometry.groups[gi + 1].materialIndex = mi;
+            tileIndex += 1;
+        }
+    };
+ 
+    // set checkerBoard material index values
+    api.setBoxBoard = function (plane) {
+        var w = plane.geometry.parameters.widthSegments,
+        h = plane.geometry.parameters.heightSegments,
+        tileIndex = 0,
+        len = w * h,
+        gi,
+        mi,
+        x,
+        y;
+        while (tileIndex < len) {
+            x = tileIndex % w;
+            y = Math.floor(tileIndex / w);
+            mi = 0;
+            if (y > 0 && y < h - 1) {
+                if (x > 0 && x < w - 1) {
+                    mi = 1;
+                }
+            }
+            gi = tileIndex * 2;
+            plane.geometry.groups[gi].materialIndex = mi;
+            plane.geometry.groups[gi + 1].materialIndex = mi;
+            tileIndex += 1;
+        }
+    };
+ 
+}
+    (this['TileMod'] = {}));
+```
+
+### 3.3 - A world module
+
+```js
+(function (api) {
+    // create world
+    api.create = function () {
+        var world = new THREE.Group();
+        // CREATING A BIPLANE and adding it to the world
+        var bp = world.userData.bp = Biplane.create();
+        world.add(bp);
+        // Camera
+        var camera = world.userData.camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.5, 150);
+        camera.position.set(-15, 10, 0);
+        bp.add(camera);
+        // ground
+        var ground = TileMod.create({
+                w: 100,
+                h: 100
+            });
+        ground.position.set(0, -5, 0);
+        TileMod.setCheckerBoard(ground);
+        world.add(ground);
+        // point light
+        var pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(28, 20, 40);
+        pointLight.add(new THREE.Mesh(
+                new THREE.SphereGeometry(0, 100, 10),
+                new THREE.MeshBasicMaterial({
+                    color: 'white'
+                })));
+        world.add(pointLight);
+        // ambient light
+        //world.add(new THREE.AmbientLight(0xffffff, 0.00))
+        // return world group
+        return world;
+    };
+    // update world
+    api.update = function (world, frame, maxFrame) {
+        var wud = world.userData;
+        wud.perObj = utils.getPerValues(frame, maxFrame);
+        // biplane
+        Biplane.update(wud.bp, wud.perObj.per);
+        var radian1 = utils.normalizeRadian(utils.pi2 * wud.perObj.per),
+        radian2 = utils.normalizeRadian(radian1 + Math.PI / 180 * 1 + Math.PI * 1.5);
+        wud.bp.position.set(
+            Math.cos(radian1) * 30,
+            5,
+            Math.sin(radian1) * 30);
+        wud.bp.lookAt(new THREE.Vector3(
+                Math.cos(radian2) * 10,
+                0,
+                Math.sin(radian2) * 10));
+        // camera
+        wud.camera.position.set(-20, 10, -20 + 40 * wud.perObj.biasLog);
+        wud.camera.lookAt(wud.bp.position);
+    };
+}
+    (this['worldMod'] = {}));
+```
+
+### 3.4 - The main JavaScript file
+
 ```js
 (function () {
- 
     // Scene
     var scene = new THREE.Scene();
- 
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
-    camera.position.set(20, 20, 20);
-    camera.lookAt(0, 0, 10);
- 
-    // light
-    var pointLight = new THREE.PointLight('white');
-    pointLight.position.set(28, 20, 40);
-    pointLight.add(new THREE.Mesh(
-            new THREE.SphereGeometry(1, 10, 10),
-            new THREE.MeshBasicMaterial({
-                color: 'white'
-            })));
-    scene.add(pointLight);
- 
-    var bi1 = Biplane.create();
-    scene.add(bi1);
- 
-    var materials = {
-        plane: new THREE.MeshLambertMaterial({
-            color: 0xff0000
-        })
-    },
-    bi2 = Biplane.create({
-        materials: materials
-    });
-    bi2.userData.propRPS = 2;
-    bi2.position.set(0,0,15);
-    scene.add(bi2);
- 
+    scene.background = new THREE.Color('cyan');
+    // create state
+    var state = {
+        lt: new Date(),
+        fps: 30,
+        frame: 0,
+        maxFrame: 600,
+        world: worldMod.create() // create the world
+    };
+    scene.add(state.world);
     // Render
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
- 
     // loop
-    var lt = new Date();
-    function animate() {
+    function loop() {
         var now = new Date(),
-        secs = (now - lt) / 1000;
-        requestAnimationFrame(animate);
-        Biplane.update(bi1, secs);
-        Biplane.update(bi2, secs);
-        renderer.render(scene, camera);
-        lt = now;
+        secs = (now - state.lt) / 1000,
+        wud = state.world.userData;
+        requestAnimationFrame(loop);
+        if (secs > 1 / state.fps) {
+            worldMod.update(state.world, state.frame, state.maxFrame);
+            renderer.render(scene, state.world.userData.camera);
+            state.lt = now;
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
+        }
     };
- 
-    animate();
- 
+    loop();
 }
     ());
 ```
 
 The result of all of this then is having two biplane models one is the default lime color, and the other I made red. The props spin at two different speeds, and that is just about it for now. the next step would be to create another project where I am making use of this model, and maybe a few more just like it to create some kind of scene.
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 I like to make models this way, I can just slap something together and it just works. I am sure that in a real project I might run into problems sooner or later. However yet again maybe not if the final project is some kind of video rather than a game. What really matters is how things look, and this kind of very low poly look is kind of nice I think.
 
