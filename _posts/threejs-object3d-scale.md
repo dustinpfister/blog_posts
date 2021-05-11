@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 14:13:16
-version: 1.23
+updated: 2021-05-11 14:14:11
+version: 1.24
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -275,5 +275,5 @@ The end result of this is then a ring of these cube groups rotating and scaling 
 
 The scale property of object3d can then be used to change the scale of a Mesh object, and many other such objects in three.js. The scale property can the be used along with many other useful methods of Object3d and Mesh objects such as position, rotation, and copy to create interesting artful animations and projects just using the built in geometry and material constructors.
 
-I have a whole lot more ideas that come to mind for examples with the scale property of course, however maybe I should save a lot of them for my growing collection of three.js project examples. This is just a single blog post on this one little topic of three.js development and the final example that I have made for this is all ready starting to look like some kind of major deal.
+I have a whole lot more ideas that come to mind for examples with the scale property of course, however maybe I should save a lot of them for my growing collection of [three.js project examples](/2021/02/19/threejs-examples/). This is just a single blog post on this one little topic of three.js development and the final example that I have made for this is all ready starting to look like some kind of major deal.
 
