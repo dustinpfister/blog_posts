@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-05-11 14:18:00
-version: 1.22
+updated: 2021-05-11 15:19:50
+version: 1.23
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -26,6 +26,8 @@ If you are new to three.js you might want to start off with a getting started po
 Here is the list of my threejs simple project examples thus far, at this time I do not have them broken down into categories but if I keep up with this it is only a matter of time until I will have to do something to that effect.
 
 ### [ 2.1 - A Backyard ](/2021/05/07/threejs-examples-backyard/)
+
+This is an example of a backyard type scene that makes use of several modules that create groups of mesh objects.
 
 ### [ 2.2 - A Basic Framework](/2021/04/20/threejs-examples-basic-framework/)
 
@@ -62,6 +64,8 @@ This is an example that I worked out that is an attempt at a 3d view for my Mr S
 If I get a solid idea for the core of what the game should be I might like to experiment with a 3d view for the game, so this example is just that.
 
 ### [ 2.10 - nested groups](/2021/05/10/threejs-examples-nested-groups/)
+
+An example that is a collection of mesh objects in a group nested in another group.
 
 ### [ 2.11 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
