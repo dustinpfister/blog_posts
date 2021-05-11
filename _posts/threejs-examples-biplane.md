@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-05-11 17:16:23
-version: 1.9
+updated: 2021-05-11 17:30:16
+version: 1.10
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a Biplane.
@@ -133,11 +133,13 @@ var Biplane = (function () {
 
 ## 3 - An example making use of the biplane model so far
 
-So then now it is just a question of having a very simple main javaScript file where I am making use of this model. In this file I will be doing all the usual when it comes to making a threejs project such as creating a scene, camera, and renderer. However when it comes to having a mesh I am going to be using this biplane module to create groups of mesh objects.
+So then now it is just a question of having a main javaScript file where I am making use of this model directly or indirectly by way of another main world module of some kind. In this section I will be doing all the usual when it comes to making a threejs project such as creating a scene, camera, and renderer when it comes to the typical main javaScript file where I often do such things. However before I get to write about that file there are a bunch of additional modules that I would like to use with this biplane module of mine. I will want to have a module to create something that will serve as some ground, and it should have something to sever as a texture so that I know that the plane is moving around. In other worlds it would be nice to have something to serve as a frame of reference. Also I am sure that when it comes to using this biplane module I am going to use it in a way where I will be creating one or more instances of it in a main world module that will contain the ground, lights, and anything else I might want to add to the over all scene.
 
-I can change the propRPS value of one of these biplane models userData objects to change the rate at which the prop rotates. Just about any additional properties that I might add if I do continue working on this can be changed that way.
+So then in this section I will be going over all the additional files that I am using to do something interesting with this biplane module.
 
 ### 3.1 - A utils module
+
+I have a general utility module for this example that I am using in the main world module, and any additional areas in the over all example. Here in this module I have a get per values method that will create and return a collection of values that I use to update the position and rotation of objects by a frame over max frame values.
 
 ```js
 var utils = {};
@@ -172,6 +174,8 @@ utils.normalizeRadian = function (radian) {
 ```
 
 ### 3.2 - a Tile Index module
+
+This is a tile index module that I borrowed from [my post on the plane geometry constructor](/2019/06/05/threejs-plane/). This tile index module is a nice little module that I can use to quickly create a plane geometry with a checkered texture. As you might suspect I will be using this module to create a geometry and mesh that will serve as the ground of this little animation loop example of this biplane.
 
 ```js
 (function (api) {
@@ -279,6 +283,8 @@ utils.normalizeRadian = function (radian) {
 
 ### 3.3 - A world module
 
+I will then want a main world module that will be used to wrap everything g that I want together into one main module.
+
 ```js
 (function (api) {
     // create world
@@ -338,6 +344,8 @@ utils.normalizeRadian = function (radian) {
 ```
 
 ### 3.4 - The main JavaScript file
+
+Now I just need a little additional javaScript code to make use of the main world module and everythjng that it is built on top of, including of course the biplane module.
 
 ```js
 (function () {
