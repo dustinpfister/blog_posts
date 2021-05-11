@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 864
-updated: 2021-05-11 14:05:08
-version: 1.20
+updated: 2021-05-11 14:08:57
+version: 1.21
 ---
 
 When it comes to [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) I am trying to think in terms of what the long term plan is, but I have also found that I still need to write a post or two here and there on the basics also, and one thing that I have not got around to yet is the [scale property of the object3d class](https://threejs.org/docs/index.html#api/en/core/Object3D.scale). This scale property contains an instance of vector3 that by default will contain a value of one for each axis. As you might expect setting a fraction for one of the axis values will start to make the object based off of object3d smaller for that axis, while setting a value above one will start to make the object bigger.
@@ -20,7 +20,7 @@ I trust that you have covered the basics at least when it comes to getting up an
 
 ### 1.1 - Version Numbers matter with three.js
 
-When I wrote this post I was using revision 127 of three.js
+When I wrote this post I was using revision 127 of three.js which was release in April of 20201. It would seem that much has not changes with the Object3d scale property and the Vercor3 class to which the scale property is an instance of. However it is still possible that the code examples here might break with future versions of three.js.
 
 ### 1.2 Read up more on Object3d in general if you have not done so
 
