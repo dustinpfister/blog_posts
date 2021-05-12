@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2021-05-12 15:48:59
-version: 1.18
+updated: 2021-05-12 15:54:00
+version: 1.19
 ---
 
 In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. Still the material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map also. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/).
@@ -74,7 +74,9 @@ This results in a cube that is sold red all over, but it looks like just one blo
 
 ## 3 - Adding a color map texture to a basic material in three.js using canvas
 
-The Basic material is a good choice if you do not what to do much of anything involving light, but do still want to have some kind of color map texture. A texture can be added in from an external image using a loader, or it can be created with javaScript using the 2d canvas drawing context of a canvas element.
+The Basic material is a good choice if you do not what to do much of anything involving light, but do still want to have some kind of color map texture at least as a way to show that the mesh is indeed some kind of solid geometry object. A texture can be added in from an external image using a loader, or it can be created with javaScript using the 2d canvas drawing context of a canvas element.
+
+To create a texture with canvas I am going to want to create the canvas element using the document.createElement method and then also get the 2d drawing context from that canvas element by way of the get context canvas prototype method. Getting into every little detail about the 2d drawing context with canvas is of course beyond the scope of this post. However I will start out with a basic texture where I am just drawing a circle and square on the canvas element. Once I am done drawing to the canvas element I can use the THREE.CanvasTexture constructor to create a texture with the canvas element. The resulting texture created with that constrictor can then be used as the value for the map value of the material.
 
 ```js
 (function () {
