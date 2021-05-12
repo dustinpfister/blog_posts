@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-12 12:27:21
-version: 1.11
+updated: 2021-05-12 12:29:05
+version: 1.12
 ---
 
 When it comes to getting a reference to a mesh object in three.js things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. When it comes to the Object3d class in three.js there is an id property of each object3d instance, however I have found that this is something that I should not mess around with when it comes to setting my own id strings for mesh objects, groups, cameras and anything based off of object3d. There is another property of Object3d that I can set to what I want, and that is the name property of the Object3d class. There is then the get object by name method of the object3d class that I can then use as a way to get an object in three.js that has a set name for it.
@@ -71,6 +71,8 @@ That is then the basic idea of the name property it is just like that of the id 
 ## 3 - Using get by name to set custom scale values for each box in a group
 
 Now that I have the basic idea of what the name property is used for it is time to move into making a more complex example where I am using the name property and the get by name property to get at specific objects and change there properties to desired values. When it comes to making an actual project with three.js I often like to make simple little animations using models that are just groups of mesh objects. When doing so I often have many parts of these kinds of models so it makes sense to use this name property as a way to set names for the various parts, or just use this as a way to set and change values of the mesh objects to make a kind of crude model of something.
+
+In this example I have a method that just creates and returns a group of mesh objects and when doing so it sets a name for each mesh object.
 
 ```js
 // creating a group
