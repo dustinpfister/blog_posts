@@ -5,19 +5,27 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2021-05-12 15:28:33
-version: 1.15
+updated: 2021-05-12 15:34:58
+version: 1.16
 ---
 
 In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. Still the material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map also. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/).
 
-The Basic material is then a goot starting point to work with, but of course the material does have its draw backs. For example if I want to do anything with light, and many additional texture maps that have to do with light, I am going to want to use something like the standard material, or Lambert material along with a few other options. However still the basic material can often prove to work out okay for many basic examples, and even full projects actually because I do not always want to bother with light sources. So today I thought I would continue expanding my [collection of posts on three.js](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a three.js project. This will be some basic examples of the materials, but also a few examples in which I am getting into textures created with canvas elements.
+The Basic material is then a good starting point to work with, but of course the material does have its draw backs. For example if I want to do anything with light, and many additional texture maps that have to do with light, I am going to want to use something like the standard material, or Lambert material along with a few other options. However still the basic material can often prove to work out okay for many basic examples, and even full projects actually because I do not always want to bother with light sources. So today I thought I would continue expanding my [collection of posts on three.js](/categories/three-js/) by writing a post on the basic material, and what it has to offer when making a three.js project. This will be some basic examples of the materials, but also a few examples in which I am getting into textures created with canvas elements.
 
 <!-- more -->
 
-## 1 - What to know
+## 1 - What to know before reading up more on the Basic Material
 
-This is a post on the basic material used in three.js, one of several options when it comes to skinning a mesh object. If you are new to three.js, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on three.js. You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more posts on the various material options in threejs.
+This is a post on the basic material used in three.js, one of several options when it comes to skinning a mesh object. If you are new to three.js, you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on three.js. I will not be getting into detail with the very basic of three.js here, however of course I will be keeping many of these examples fairly simple. There are still a few things that you should maybe know before continuing to read this post on the basic material along so in this section I will be just outlining some of these things.
+
+### 1.1 - Version Numbers are impotent with three.js
+
+When I first wrote this post I was using version r91 of three.js and the last time I came around to do some serious editing I was using r127 of three.js. Sense then not much has changed when it comes to using the basic material, at least as far as I can tell. Still code breaking changes are introduced all the time into three.js so always be mindful of the versions of three.js that where used when looking at three.js examples on the open web.
+
+### 1.2 - Be aware of what the full options are with materials
+
+You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more posts on the various material options in threejs.
 
 ## 2 - Basic example of the basic material
 
