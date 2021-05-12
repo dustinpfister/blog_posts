@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-12 12:12:10
-version: 1.7
+updated: 2021-05-12 12:20:31
+version: 1.8
 ---
 
 When it comes to getting a reference to a mesh object in three.js things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. When it comes to the Object3d class in three.js there is an id property of each object3d instance, however I have found that this is something that I should not mess around with when it comes to setting my own id strings for mesh objects, groups, cameras and anything based off of object3d. There is another property of Object3d that I can set to what I want, and that is the name property of the Object3d class. There is then the get object by name method of the object3d class that I can then use as a way to get an object in three.js that has a set name for it.
@@ -23,7 +23,7 @@ When I wrote this post I was using three.js revision r127 of three.js which was 
 
 ## 2 - Basic get by name example
 
-So then I should start off with a basic getting started type example with the name property and the get by name method of the object3d class.
+So then I should start off with a basic getting started type example with the name property and the get by name method of the object3d class. In this example I create a group using the THREE.Group constructor which is also based on the Object3d class, so I set a name property for it. In then add to mesh objects to this group, each of them I also set a name for called just simply box1 and box2. Later on in the example I can then call the get object by name method off of the group to get the first box object in the group. I can then do something simple to that mesh object such as changing the rotation of the object.
 
 ```js
 // creating a group
@@ -66,7 +66,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 3 - Using get by name for a group of mesh objects
+## 3 - Using get by name to set custom scale values for each box in a group
 
 Now that I have the basic idea of what the name property is used for it is time t move into making a more complex example where I am using the name property and the get by name property to get at specific objects and change there properties to desired values.
 
