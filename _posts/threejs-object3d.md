@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-12 12:57:37
-version: 1.42
+updated: 2021-05-12 12:59:34
+version: 1.43
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -384,10 +384,10 @@ Yet another note worthy aspect of the [Object3d class is the name property of th
 
 ## 7 - Setting the Scale of an object
 
-The scale property of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object.
+The [scale property](/2021/05/11/threejs-object3d-scale/) of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object.
 ## 8 - The user data object.
 
-The user data object is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
+The [user data object](/2021/02/16/threejs-userdata/) is the standard go to object in an instance of Object3d that can be used to park user defined data. In other words when it comes to me making my own modules and applications based off of three.js and I want to append some data to an object in three.js this user data object is how I can go about doing so without messing up anything that three.js depends on.
 
 ## 9 - Conclusion
 
