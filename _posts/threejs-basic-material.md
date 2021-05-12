@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2021-05-12 15:54:00
-version: 1.19
+updated: 2021-05-12 16:03:46
+version: 1.20
 ---
 
 In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. Still the material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map also. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/).
@@ -136,6 +136,10 @@ I have written a [post on using canvas as a texture]( /2018/04/17/threejs-canvas
 
 ## 4 - An Alpha map with the Basic material
 
+One more quick example of the basic material in action for now until I come around to edit this post once again at some point in the future. So the basic material is a bit limited in terms of the options when it comes to texture maps, but there are still a few to chose from, and getting into all of them might be beyond the scope of this post. Yet again maybe not, in any case I will need time to work out some more basic examples of each of the features of the basic materials when it comes to texture maps. However for now I think I will write about one more texture map option with the basic material when is an alpha map.
+
+An alpha map is a way to apply a texture that does not change color like the color map example that I coved above, but what it does do is apply a texture that will effect the transparency of the mesh. When using the alpha map it is important to make sure that the transparent boolean of the material is set to true. In addition to that I might also want to play around with the global opacity of the material.
+
 ```js
 (function () {
  
@@ -182,6 +186,8 @@ I have written a [post on using canvas as a texture]( /2018/04/17/threejs-canvas
 }
     ());
 ```
+
+For this example of an alpha map I once again used a canvas element as a way to create a texture. However when it comes to alpha maps I want to make sure that the resulting image is in gray scale. The levels of black and white are what are used to set the range of opacity and transparency.
 
 ## 5 - Conclusion
 
