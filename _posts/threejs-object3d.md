@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 180
-updated: 2021-05-12 12:53:32
-version: 1.40
+updated: 2021-05-12 12:55:08
+version: 1.41
 ---
 
 The [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) base class in [three.js](https://threejs.org/) is one of the most important classes to be aware of when making some kind of project involving three.js. It is in use in many objects in three.js including things like cameras, lights, and the the Mesh Objects that are placed in a Scene on top of the scene object itself also.
@@ -382,7 +382,11 @@ It may be true that Object3D by itself is not intended to be used from grouping 
 
 Yet another note worthy aspect of the [Object3d class is the name property of the class](/2021/05/12/threejs-object3d-get-by-name/) as well as the get object by name method of Object3d. This name property is a way to set a unique name for an object, once that is done the get object by name method can be used as a way to gain a reference to the object at a later point in a body of javaScipt code.
 
-## 7 - Conclusion
+## 7 - Setting the Scale of an object
+
+The scale property of an instance of Object3d contains and instance of Vector3 that can be used to change the scale of an object.
+
+## 8 - Conclusion
 
 From here you might choose to make some more demos that have to do with exercising the use of working with objects in three.js. There is working out some examples that involve using the rotation and position properties in an instance of a camera to change the position and orientation of a camera over time. 
 
