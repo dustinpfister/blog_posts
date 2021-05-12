@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 184
-updated: 2021-05-12 15:34:58
-version: 1.16
+updated: 2021-05-12 15:41:37
+version: 1.17
 ---
 
 In [three.js](https://threejs.org/) the [basic material](https://threejs.org/docs/index.html#api/materials/MeshBasicMaterial) seems to come up a lot, for example it is the default material that is used when creating a Mesh if a material is not specified. Also it is still a decent material if you want to just skin a mesh with a texture, and do not want to do anything special involving the reflection of light. Still the material supports a few options when it comes to texture maps, there is the basic color map, but there is are a few more options such as an alpha map also. Still there are even more options when it comes to texture maps with other materials that will respond to light sources such as the [standard material](/2021/04/27/threejs-standard-material/).
@@ -25,7 +25,11 @@ When I first wrote this post I was using version r91 of three.js and the last ti
 
 ### 1.2 - Be aware of what the full options are with materials
 
-You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more posts on the various material options in threejs.
+You might also want to check out my post on [three.js materials](/2018/04/30/threejs-materials/) in general for more posts on the various material options in threejs. The basic material is fine when I just want to skin a geometry with a texture, but not do anything to far beyond that. There are a whole lot of other materials that might be a better choice for other situations though, for example the depth material might be a good choice when it comes to figuring out what the values should be for the near and far values of a camera.
+
+### 1.3 - Learn a thing or two about canvas elements, or figure out the texture loader
+
+If you like javaScript as much as I do, but have not got into canvas elements and the 2d drawing context just yet it might be time to look into how to do at least a little drawing with canvas elements and some javaScript code. The reason why I say that is because when working with the basic material the only way to make sure that the result is not just one solid blob of color is to add some texture to the basic material. This can be done by adding at least a basic color map to the material, and in order to do that a texture is needed. There is the texture loader of three.js that can be used to load some textures in the form of external image files, but what is cool about canvas is that it is a way to create textures with just javaScript code.
 
 ## 2 - Basic example of the basic material
 
