@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-12 12:38:23
-version: 1.15
+updated: 2021-05-12 12:40:15
+version: 1.16
 ---
 
 When it comes to getting a reference to a mesh object in three.js things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. When it comes to the Object3d class in three.js there is an id property of each object3d instance, however I have found that this is something that I should not mess around with when it comes to setting my own id strings for mesh objects, groups, cameras and anything based off of object3d. There is another property of Object3d that I can set to what I want, and that is the name property of the Object3d class. There is then the get object by name method of the object3d class that I can then use as a way to get an object in three.js that has a set name for it.
@@ -186,4 +186,4 @@ The name property is one of the many basic things about three.js that I should g
 
 There are a number of other basic features of the three.js object3d class that a javaScript developer should be aware of when using three.js such as the user data object, the look at method, and the rotation and position properties. Mush of what has to do with working with three.js seems to center around the object3d class so looking into additional resources to learn more about the class is advised.
 
-What I have worked out for this example can and will apply to new three.js examples, and it is also something that I would like to keep in mind when it comes to editing my older content when it comes to making three.js project examples. I have a number of examples where I am working out modules, and over all whole animations composed of these modules that are collections of group objects. From now on I should get in the habit of setting sound name string values for the mesh objects, and groups that are created when making these modules.
+What I have worked out for this example can and will apply to new three.js examples, and it is also something that I would like to keep in mind when it comes to editing my older content when it comes to making three.js project examples. I have a number of examples where I am working out modules, and over all whole animations composed of these modules that are collections of group objects. From now on I should get in the habit of setting sound name string values for the mesh objects, and groups that are created when making these modules. If you would like to check out some of these there is my main post on my three.js examples that is worth checking out to see what the current states is with these examples, and I often update that post when I add new examples, and edit old ones.
