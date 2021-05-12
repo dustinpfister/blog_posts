@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-12 12:48:24
-version: 1.18
+updated: 2021-05-12 12:49:28
+version: 1.19
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -25,7 +25,7 @@ When I wrote this post I was using three.js revision r127 of three.js which was 
 
 ### 1.2 - Might want to read up more on the Object3d class in general
 
-There is a great deal more to be aware of when it comes to working with the object3d class so it would be a good idea to read up more on the object3d class in general if you have some time to do so. The object3d class is a major base class in three.js, and here are a lot of other objects that are based off of the Object3d class such as Mesh objects, cameras, Groups, and even the Scene object just to name a few things. So when it comes to learning something about the Object3d class such as the name property this is then something that can be applies to everything that is built on top of Object3d. SO the name property can be set for a mesh object, but it can also be set for things like groups, and cameras.
+There is a great deal more to be aware of when it comes to working with the object3d class so it would be a good idea to read up more on the [object3d class in general](/2018/04/23/threejs-object3d/) if you have some time to do so. The object3d class is a major base class in three.js, and here are a lot of other objects that are based off of the Object3d class such as Mesh objects, cameras, Groups, and even the Scene object just to name a few things. So when it comes to learning something about the Object3d class such as the name property this is then something that can be applies to everything that is built on top of Object3d. SO the name property can be set for a mesh object, but it can also be set for things like groups, and cameras.
 
 ## 2 - Basic get by name example
 
