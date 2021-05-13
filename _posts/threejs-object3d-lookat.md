@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2021-05-13 15:40:04
-version: 1.16
+updated: 2021-05-13 15:49:21
+version: 1.17
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
@@ -119,7 +119,7 @@ renderer.render(scene, camera);
 
 ### 3.2 - Pointing to the cube relative to group space
 
-If I want to have a mesh face a child within a group than I am going to want to do something to adjust the values that I give to look at to point to the equivalent location of the mesh object in world space.
+If I want to have a mesh face a child within a group then I am going to want to do something to adjust the values that I give to look at to point to the equivalent location of the mesh object in world space. I could create an new instance of Vector3 and then manually do the math to get the desired position in world space rather than the position relative to the group position. However there is another useful Object3d method in the class that can be used to make quick work of this kind of task called [Object3d.getWorldPosition](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition)
 
 ```js
 // creating a scene
@@ -150,15 +150,9 @@ group.position.set(-2.0, 0, -2.0);
 scene.add(group);
  
 // IF I WANT TO HAVE THE POINTER LOOK AT THE CUBE
-// THEN I WILL WANT TO ADJUST FOR THAT
-var vg = group.position,
-vc = cube.position;
-var v = new THREE.Vector3(
-   vg.x - vc.x,
-   vg.y - vc.y,
-   vg.z + vc.z
-);
-pointer.lookAt(v);
+// THAT IS A CHILD OF THE GROUP, THEN I WILL WANT TO ADJUST 
+// FOR THAT FOR THIS THERE IS THE getWorldPosition Method
+pointer.lookAt(cube.getWorldPosition());
  
 // camera and renderer
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
