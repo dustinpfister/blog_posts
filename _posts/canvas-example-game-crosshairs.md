@@ -5,8 +5,8 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 689
-updated: 2021-03-14 17:42:59
-version: 1.40
+updated: 2021-05-13 11:12:02
+version: 1.41
 ---
 
 <!-- edit bookmark -->
@@ -21,7 +21,7 @@ So in this post I will be wring about all of the source code for the game thus f
 
 <!-- more -->
 
-<div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
+<div id="canvas-app"></div>
 <script src="/js/canvas-examples/game-crosshairs/0.22.0/pkg.js"></script>
 
 
