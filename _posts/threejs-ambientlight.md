@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-05-13 15:59:20
-version: 1.17
+updated: 2021-05-13 16:03:35
+version: 1.18
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from other light sources in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
@@ -19,7 +19,7 @@ So then in this post I will just be going over a few quick examples of using amb
 
 ## 1 - What to know
 
-This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#Ambient_lighting) to a three.js project. This is not a getting started post on three.js or javaScript in general, but being aware of ambient light is just one of several options when it comes to adding a light source to a three.js project, so it is something that one should at least be aware of.
+This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#Ambient_lighting) to a three.js project to set a base amount of light for all mesh object materials. This is not a getting started post on three.js or javaScript in general as getting into the very basics is outside the scope of this post. So I assume that you have gone beyond the hello world stage of three.js at thins point and are now just trying to figure out some of the basics when it comes to light sources. Being aware of ambient light is just one of several options when it comes to adding a light source to a three.js project, so it is something that one should at least be aware of.
 
 ## 2 - Basic example of ambient light
 
