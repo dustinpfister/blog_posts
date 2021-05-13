@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2021-05-13 13:56:45
-version: 1.6
+updated: 2021-05-13 14:02:38
+version: 1.7
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
@@ -26,3 +26,135 @@ When I first wrote this post I was using three.js version r127.
 ### 1.2 - Read up more on the object3d class and other related topics if you have not done so
 
 The look at method is just one method of the object3d base class, there is a great deal more about the class that is also worth looking into more.
+
+
+## 2 - Basic Object3d look at method example
+
+```js
+// creating a scene
+var scene = new THREE.Scene();
+ 
+var m1 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(m1);
+ 
+var m2 = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+m2.position.set(2, 0, 2)
+scene.add(m2);
+ 
+// MAKING THESE TWO MESH OBJECTS LOOK AT EACH OTHER
+m1.lookAt(m2.position);
+m2.lookAt(m1.position);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+// MAKING THE CAMREA LOOK AT 0,0,0
+camera.lookAt(0, 0, 0);
+ 
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 3 - Group with a mesh pointing to a cube in the group, but pointing to the cubes location relative to the word rather than the group
+
+### 3.1 - Pointing to the cube location relative to word space
+
+```js
+// creating a scene
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+ 
+// creating a group
+var group = new THREE.Group();
+// creating and adding a pointer mesh to the group
+var geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
+geo.rotateX(Math.PI * 0.5);
+var pointer = new THREE.Mesh(
+        geo,
+        new THREE.MeshNormalMaterial());
+pointer.position.set(0, 0, 0);
+group.add(pointer);
+// creating and adding a cube
+var cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+cube.position.set(0, 0, 4);
+group.add(cube);
+// box helper for the group
+group.add(new THREE.BoxHelper(group));
+// changing the position of the group to something other that 0,0,0
+group.position.set(-2.0, 0, -2.0);
+// add group to the scene
+scene.add(group);
+ 
+// POINTER LOOKS AT CUBE POSITION RELATIVE TO THE SCENE, BUT NOT RELATIVE TO THE GROUP
+pointer.lookAt(cube.position);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
+camera.position.set(0, 4, 4);
+camera.lookAt(0, 0, 0);
+ 
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+### 3.2 - Pointing to the cube relative to group space
+
+```js
+// creating a scene
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5));
+ 
+// creating a group
+var group = new THREE.Group();
+// creating and adding a pointer mesh to the group
+var geo = new THREE.CylinderGeometry(0, 0.5, 1, 12);
+geo.rotateX(Math.PI * 0.5);
+var pointer = new THREE.Mesh(
+        geo,
+        new THREE.MeshNormalMaterial());
+pointer.position.set(0, 0, 0);
+group.add(pointer);
+// creating and adding a cube
+var cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+cube.position.set(0, 0, 4);
+group.add(cube);
+// box helper for the group
+group.add(new THREE.BoxHelper(group));
+// changing the position of the group to something other that 0,0,0
+group.position.set(-2.0, 0, -2.0);
+// add group to the scene
+scene.add(group);
+ 
+// IF I WANT TO HAVE THE POINTER LOOK AT THE CUBE
+// THEN I WILL WANT TO ADJUST FOR THAT
+var vg = group.position,
+vc = cube.position;
+var v = new THREE.Vector3(
+   vg.x - vc.x,
+   vg.y - vc.y,
+   vg.z + vc.z
+);
+pointer.lookAt(v);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 1, 100);
+camera.position.set(0, 4, 4);
+camera.lookAt(0, 0, 0);
+ 
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
