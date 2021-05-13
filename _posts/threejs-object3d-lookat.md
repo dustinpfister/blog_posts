@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2021-05-13 15:13:43
-version: 1.10
+updated: 2021-05-13 15:20:51
+version: 1.11
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
@@ -21,7 +21,7 @@ The look at method in three.js is a prototype method of the Object3d class in a 
 
 ### 1.1 - version numbers matter with three.js
 
-When I first wrote this post I was using three.js version r127.
+When I first wrote this post I was using three.js version r127 which was a late version of three.js as of April of 2021. I do not think much has changed with the look at method from the point that I started write posts on three.js back in 2018 when I was using r91. Still it is possible that code breaking changed will be made to three.js that might effect other parts of the code examples that I am writing about here. So always take care when reading about three.js code examples on the open web, more so than usual with three.js as this is still a very fast moving library in terms of development.
 
 ### 1.2 - Read up more on the object3d class and other related topics if you have not done so
 
