@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-13 11:24:44
-version: 1.26
+updated: 2021-05-13 11:26:19
+version: 1.27
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -287,7 +287,7 @@ The logic that I first worked out in my previous example is now pulled into its 
 
 ### 4.2 - A main.js module
 
-Now that I have my code that has to do with the creation and mutation of these model objects pulled into an additional separate file the main javaScript file is now a little lighter.
+Now that I have my code that has to do with the creation and mutation of these model objects pulled into an additional separate file the main javaScript file is now a little lighter. I can now just create a scene and then start creating and adding these groups of objects to the scene by calling the create method of the module.
 
 ```js
 // scene
