@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-13 11:03:19
-version: 1.23
+updated: 2021-05-13 11:05:00
+version: 1.24
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -186,6 +186,8 @@ The name property of object3d is then a great way to set some string values for 
 It might make sense to go all out with name values by making sure that all mesh objects have their one unique values as this will enable me to get any mesh object that I want by calling the get by name value off from the scene object. However this might also prove to be overkill assuming that I can also get a reference of a group object by some other means. In any case when it comes to having more than one instance of a group of mesh objects it just starts to make more sense to do something to this effect.
 
 ### 4.1 - The Box Group module
+
+The logic that I first worked out in my previous example is now pulled into its own module. This is just something that I often end up doing when I start to make something that is starting to look like an actual project rather than just a simple copy and paste code snippet.
 
 ```js
 (function (api) {
