@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-05-13 16:03:35
-version: 1.18
+updated: 2021-05-13 16:06:27
+version: 1.19
 ---
 
 When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from other light sources in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
@@ -20,6 +20,10 @@ So then in this post I will just be going over a few quick examples of using amb
 ## 1 - What to know
 
 This is a post on adding [ambient light](https://en.wikipedia.org/wiki/Shading#Ambient_lighting) to a three.js project to set a base amount of light for all mesh object materials. This is not a getting started post on three.js or javaScript in general as getting into the very basics is outside the scope of this post. So I assume that you have gone beyond the hello world stage of three.js at thins point and are now just trying to figure out some of the basics when it comes to light sources. Being aware of ambient light is just one of several options when it comes to adding a light source to a three.js project, so it is something that one should at least be aware of.
+
+### 1.1 - What version of three.js are you using?
+
+When I first wrote this post I was using r98 of three.js, and the last time I cam a round to do a little updating of the code examples I was using three.js r125 of three.js. I do not thing that much has changed with ambient light in three.js sense then, but a whole lot has changed with three.js. There is still a lot chaining with three.js real fast, so it is possible that some of these code examples here might break at some point in the future for this reason.
 
 ## 2 - Basic example of ambient light
 
