@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2021-05-13 15:32:02
-version: 1.14
+updated: 2021-05-13 15:38:05
+version: 1.15
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
@@ -69,9 +69,11 @@ renderer.render(scene, camera);
 
 One of the draw backs of the Object3d look at method is that it will always look at the given point relative to word space. This is just fine when it comes to having a scene that is not moved from th default starting position, and I am just working with mesh objects that are children of that scene object. However if for some reason I am moving the scene objects around, or trying to get the look at method to look at another child within a group this can present problems.
 
-However the Look at method will always look at the given point relative to world space, so the solution to these problems just involves creating an instance of Vector3, or by one way or another giving adjusted values to the look at method that will case the look at method to rotate the mesh to look at a point relative to the group, or translated scene, rather than world space. If you are still confused, maybe the mest way to get a feel of what it going on would be to work out some of your own examples with this. In this section I will be going over such examples that I have worked out, but it would be best to play around with something like what I am writing about here a little.
+However the Look at method will always look at the given point relative to world space, so the solution to these problems just involves creating an instance of Vector3, or by one way or another giving adjusted values to the look at method that will case the look at method to rotate the mesh to look at a point relative to the group, or translated scene, rather than world space. If you are still confused, maybe the best way to get a feel of what it going on would be to work out some of your own examples with this. In this section I will be going over such examples that I have worked out, but it would be best to play around with something like what I am writing about here a little.
 
-### 3.1 - Pointing to the cube location relative to word space
+### 3.1 - Pointing to the cube location relative to word space from with a group
+
+If I want to have a mesh object point to some world location outside of the group rather than relative to the group then I can just call the look at method and pass that location. However if I want to have a mesh point to another child within a group that is where things will get a little involved. In this example I have a mesh that is a kind of pointer mesh because I am using the cylinder geometry constructor to create a cone like geometry and then I am rotating that geometry so that it points in the direction in which the mesh is facing. However when I have this pointer mesh face another cube mesh that is a child of the group this results in the pointer mesh facing the position of the cube relative to the would rather than the group.
 
 ```js
 // creating a scene
