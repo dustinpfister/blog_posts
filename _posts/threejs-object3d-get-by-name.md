@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-13 11:05:00
-version: 1.24
+updated: 2021-05-13 11:06:57
+version: 1.25
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -187,7 +187,7 @@ It might make sense to go all out with name values by making sure that all mesh 
 
 ### 4.1 - The Box Group module
 
-The logic that I first worked out in my previous example is now pulled into its own module. This is just something that I often end up doing when I start to make something that is starting to look like an actual project rather than just a simple copy and paste code snippet.
+The logic that I first worked out in my previous example is now pulled into its own module. This is just something that I often end up doing when I start to make something that is starting to look like an actual project rather than just a simple copy and paste code snippet. The main feature of interest with this module with respect to the theme of this post is the create box group method at the top of the source code. In the body of this function I am setting names that should end up being unique for the group, and also each child of the group.
 
 ```js
 (function (api) {
