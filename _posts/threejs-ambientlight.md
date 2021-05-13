@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 319
-updated: 2021-02-22 13:48:52
-version: 1.16
+updated: 2021-05-13 15:59:20
+version: 1.17
 ---
 
-When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. 
+When making a [three.js](https://threejs.org/) project, and working with materials that respond to light such as the standard material it might be desirable to add some [ambient light](https://threejs.org/docs/index.html#api/en/lights/AmbientLight) to a scene. Ambient Light differs from other light sources in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account with this kind of light source. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light when it is added to the scene object. 
 
-Ambient Light differs from other light sources in that it will evenly illuminate materials evenly from all directions, actually direction is not really even taken into account. By adding an ambient light it will just simply light up all surfaces of all mesh objects that are skinned with a material that will respond to light. 
+This kind of light source is very different from spot lights or point lights that radiant out light from a certain point in space and only illuminate surfaces that strike the surfaces that they come in contact with. However it is often a good idea to combine ambient light with one of these kinds of lights in order to see a kind of depth. I also like to tone down the intensity of an ambient light so that it does not end up making all the surfaces fully intense canceling out the effects of any additional direction light sources I might have added.
 
-This kind of light source is very different from spot lights or point lights that radiant out light from a certain point in space and only illuminate surfaces that strike the surfaces that they come in contact with. However it is often a good idea to combine ambient light with one of these kinds of lights in order to see a kind of depth. I also light to tone down the intensity of an ambient light so that it does not end up making all the surfaces fully intense canceling out the effects of any additional direction light sources I might have added.
+So then in this post I will just be going over a few quick examples of using ambient light in a three.js project. In the process of doing so I will also be covering a few other loosely related topics when it comes to light in general, such as the kinds of materials that can be used that will be effected by light.
 
 <!-- more -->
 
@@ -71,7 +71,7 @@ scene.add(light);
 
 ## 4 - Add a point light, with ambient light that has reduced intensity
 
-So adding an ambient light is just a way to set a kind of even baseline amount of light. Doing so if often a good idea because if there is no light at all then materials that respond to light but do not have any kind of emissive map will not show up at all. However an ambient light is not a replacement for directional light, I often do add al least one direction light source to a scene such as a point light.
+So adding an ambient light is just a way to set a kind of even baseline amount of light. Doing so if often a good idea because if there is no light at all then materials that respond to light but do not have any kind of emissive map will not show up at all. However an ambient light is not a replacement for directional light, I often do add at least one direction light source to a scene such as a point light.
 
 ```js
 // SCENE
