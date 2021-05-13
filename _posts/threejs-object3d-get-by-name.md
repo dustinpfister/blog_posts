@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-12 12:49:28
-version: 1.19
+updated: 2021-05-13 10:55:10
+version: 1.20
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -74,7 +74,7 @@ renderer.render(scene, camera);
 
 That is then the basic idea of the name property it is just like that of the id property when it comes to HTML elements. I can set a string value to a mesh object, and then I can get a reference to that mesh object later by using a method that can be used to get a reference to the object by this name string value. However in order to really get what this is all about solid I might want to work out at least a few more examples that prove to be something that is at least starting to look like some kind of actual project.
 
-## 3 - Using get by name to set custom scale values for each box in a group
+## 3 - Using get by name to set custom values for each box in a group
 
 Now that I have the basic idea of what the name property is used for it is time to move into making a more complex example where I am using the name property and the get by name property to get at specific objects and change there properties to desired values. When it comes to making an actual project with three.js I often like to make simple little animations using models that are just groups of mesh objects. When doing so I often have many parts of these kinds of models so it makes sense to use this name property as a way to set names for the various parts, or just use this as a way to set and change values of the mesh objects to make a kind of crude model of something.
 
@@ -90,7 +90,7 @@ var createBoxGroup = function(count){
     len = count;
     while(i < len){
         box = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5, 0.5, 0.5),
+            new THREE.BoxGeometry(1, 1, 1),
             new THREE.MeshNormalMaterial());
         box.position.set(0, 0, 0);
         box.name = 'box_' + i;
@@ -99,37 +99,27 @@ var createBoxGroup = function(count){
     }
     return group;
 };
-// set group of box objects into a circular position
-var toCircleGroup = function(boxGroup, radianAdjust){
-    // RADIAN ADJUST SET TO MATH.PI * 0.5 BY DEFAULT
-    radianAdjust = radianAdjust === undefined ? Math.PI * 0.5 : radianAdjust;
-    var len = boxGroup.children.length;
-    boxGroup.children.forEach(function(box, i){
-        var radian = Math.PI * 2 / len * i + radianAdjust,
-        x = Math.cos(radian) * 2,
-        z = Math.sin(radian) * 2;
-        box.position.set(x, 0, z);
-    });
-    return boxGroup;
-};
  
 // SETTING SCALE OF BOX GROUP AND GETTING BOX OBJECTS BY NAME
 // WHEN DOING SO
 var createObject1 = function(){
     var group = createBoxGroup(4);
-    toCircleGroup(group);
     // set cube zero to a bigger scale than the others
     // this should be the front
     var box = group.getObjectByName('box_0');
-    box.scale.set(3, 3, 4);
+    box.scale.set(1, 1, 3);
+    box.position.set(0, 0, 1);
     // side box objects
-    var box = group.getObjectByName('box_1');
-    box.scale.set(8, 1, 1);
-    var box = group.getObjectByName('box_3');
-    box.scale.set(8, 1, 1);
-    // rear box object
-    var box = group.getObjectByName('box_2');
-    box.scale.set(1, 1, 12);
+    box = group.getObjectByName('box_1');
+    box.scale.set(1, 1, 1);
+    box.position.set(2, 0, 0);
+    box = group.getObjectByName('box_2');
+    box.scale.set(1, 1, 1);
+    box.position.set(-2, 0, 0);
+    // rear
+    box = group.getObjectByName('box_3');
+    box.scale.set(1, 1, 1);
+    box.position.set(0, 0, -2);
     return group
 };
  
@@ -140,7 +130,7 @@ group.add(new THREE.BoxHelper(group));
 // scene
 var scene = new THREE.Scene();
 // grid helper
-scene.add(new THREE.GridHelper(5, 5));
+scene.add(new THREE.GridHelper(7, 7));
 // add group
 scene.add(group);
 // dir mesh
@@ -150,11 +140,14 @@ var dir = new THREE.Mesh(
 scene.add(dir);
 // camera and renderer
 var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
-camera.position.set(6, 6, 6);
+camera.position.set(5, 5, 5);
 camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
 // loop
 var lt = new Date(),
 frame = 0,
@@ -186,7 +179,163 @@ loop();
 
 So then this is starting to look like something kind of interesting now, however there is a great deal that I would like to add and change. In this example I just have one instance of this object 1 model of sorts, and of course things will get a little weird when I have more than one group with the same name, and then each of those groups having the same set of names for each child. So maybe I should get around to making at least one or two more examples where I am working out some kind of system for creating and setting name values for mesh objects and groups of such objects..
 
-## 4 - Conclusion
+## 4 - A model where I am setting truly unique name values for each mesh object of interest
+
+### 4.1 - The Box Group module
+
+```js
+(function (api) {
+ 
+    // CREATE A BOX GROUP HELPERS
+ 
+    // creating a group
+    var createBoxGroup = function (count, groupNamePrefix, groupNameCount, childNamePrefix) {
+        var group = new THREE.Group();
+        // SETTING A NAME FOR THE GROUP
+        group.name = groupNamePrefix + '_' + groupNameCount;
+        var i = 0,
+        box,
+        len = count;
+        while (i < len) {
+            box = new THREE.Mesh(
+                    new THREE.BoxGeometry(1, 1, 1),
+                    new THREE.MeshNormalMaterial());
+            box.position.set(0, 0, 0);
+            // SETTING A NAME FOR THE CHILD
+            box.name = group.name + '_' + childNamePrefix + '_' + i;
+            group.add(box);
+            i += 1;
+        }
+        return group;
+    };
+ 
+    // position children
+    var positionChildren = function (group) {
+        var prefix = group.name + '_' + 'box_'
+            // front
+            var box = group.getObjectByName(prefix + '0');
+        box.scale.set(1, 1, 3);
+        box.position.set(0, 0, 1);
+        // side box objects
+        box = group.getObjectByName(prefix + '1');
+        box.scale.set(1, 1, 1);
+        box.position.set(2, 0, 0);
+        box = group.getObjectByName(prefix + '2');
+        box.scale.set(1, 1, 1);
+        box.position.set(-2, 0, 0);
+        // rear
+        box = group.getObjectByName(prefix + '3');
+        box.scale.set(1, 1, 1);
+        box.position.set(0, 0, -2);
+    };
+    // create user data object
+    var createUserData = function (wrap, group) {
+        var ud = wrap.userData;
+        ud.group = group;
+        ud.heading = 0; // heading 0 - 359
+        ud.pitch = 0; // pitch -180 - 180
+        // direction object
+        ud.dir = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshNormalMaterial());
+        wrap.add(ud.dir);
+    };
+ 
+    // CREATE A BOX GROUP
+    var groupCount = 0;
+    api.create = function () {
+        var wrap = new THREE.Group();
+        var group = createBoxGroup(4, 'boxgroup', groupCount, 'box');
+        wrap.add(group);
+        positionChildren(group);
+        createUserData(wrap, group);
+        api.update(wrap);
+        group.add(new THREE.BoxHelper(group, 0xffffff));
+        // step group count
+        groupCount += 1;
+        return wrap;
+    };
+ 
+    // UPDATE A BOX GROUP
+ 
+    api.update = function (wrap) {
+        var ud = wrap.userData,
+        group = ud.group;
+        var headingRadian = Math.PI / 180 * ud.heading;
+        var x = Math.cos(headingRadian) * 5,
+        z = Math.sin(headingRadian) * 5,
+        // might light to work out a better expression for pitch
+        y = Math.abs(ud.pitch) / 180 * 5 * (ud.pitch < 0 ? -1 : 1);
+        ud.dir.position.set(x, y, z);
+        // look at is relative to world space, so this needs to be adjusted for that
+        var v = new THREE.Vector3(
+                wrap.position.x - ud.dir.position.x,
+                wrap.position.y - ud.dir.position.y,
+                wrap.position.z - ud.dir.position.z);
+        group.lookAt(v);
+    };
+ 
+}
+    (this['BoxGroup'] = {}));
+```
+
+### 4.2 - A main.js module
+
+```js
+// scene
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(5, 5)); // grid helper
+ 
+// create some of these groups with the BoxGroup Module
+var group1 = BoxGroup.create();
+group1.position.set(-15, 0, 0);
+scene.add(group1);
+var group2 = BoxGroup.create();
+group2.position.set(-15, 0, -15);
+scene.add(group2);
+var group3 = BoxGroup.create();
+console.log(group3.name);
+scene.add(group3); // add group
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(10, 5, 5);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// loop
+var lt = new Date(),
+frame = 0,
+maxFrame = 600,
+fps = 30;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        group1.userData.heading = 360 * per;
+        BoxGroup.update(group1);
+        group2.userData.heading = 90;
+        group2.userData.pitch = 180 * Math.sin(Math.PI * 4 * per);
+        BoxGroup.update(group2);
+        group3.userData.heading = 360 * per;
+        group3.userData.pitch = 180 * Math.sin(Math.PI * 4 * per);
+        group3.position.z = -5 + 10 * bias;
+        BoxGroup.update(group3);
+        renderer.render(scene, camera);
+        lt = now;
+        frame += fps * secs;
+        frame %= maxFrame;
+    }
+};
+loop();
+```
+
+## 5 - Conclusion
 
 The name property is one of the many basic things about three.js that I should get into the habit of using, but just never really took the time to look into. It is true that I will not be using every little feature of every little class when it comes to using three.js to make an actual project. However I think that the name property is just one of these little aspects of three.js that I should be using often when making my crude yet effective modules that are just groups of mesh objects.
 
