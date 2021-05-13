@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-13 11:26:19
-version: 1.27
+updated: 2021-05-13 16:21:01
+version: 1.28
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -274,11 +274,7 @@ The logic that I first worked out in my previous example is now pulled into its 
         y = Math.abs(ud.pitch) / 180 * 5 * (ud.pitch < 0 ? -1 : 1);
         ud.dir.position.set(x, y, z);
         // look at is relative to world space, so this needs to be adjusted for that
-        var v = new THREE.Vector3(
-                wrap.position.x - ud.dir.position.x,
-                wrap.position.y - ud.dir.position.y,
-                wrap.position.z - ud.dir.position.z);
-        group.lookAt(v);
+        group.lookAt(ud.dir.getWorldPosition());
     };
  
 }
