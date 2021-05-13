@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 865
-updated: 2021-05-13 10:55:10
-version: 1.20
+updated: 2021-05-13 10:59:28
+version: 1.21
 ---
 
 When it comes to getting a reference to a mesh object in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) things are not the same as what I have become accustomed to when it comes to working with the Document Object Model. When it comes to html elements there is setting an id to an element, and then having the option to get a reference to that element by id later in a body of javaScript code. 
@@ -180,6 +180,8 @@ loop();
 So then this is starting to look like something kind of interesting now, however there is a great deal that I would like to add and change. In this example I just have one instance of this object 1 model of sorts, and of course things will get a little weird when I have more than one group with the same name, and then each of those groups having the same set of names for each child. So maybe I should get around to making at least one or two more examples where I am working out some kind of system for creating and setting name values for mesh objects and groups of such objects..
 
 ## 4 - A model where I am setting truly unique name values for each mesh object of interest
+
+The name property of object3d is then a great way to set some string values for each mesh object of interest and then use that as a way to get and set values for mesh objects that have a given unique string value. In this example I am taking the basic idea that I started in the previous example and am not going just a little farther with it by making name values that are unique for all parent and child mesh objects.
 
 ### 4.1 - The Box Group module
 
