@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 866
-updated: 2021-05-13 14:08:27
-version: 1.9
+updated: 2021-05-13 15:13:43
+version: 1.10
 ---
 
 I thought that I knew everything I needed to know about the [object3d class look at](https://threejs.org/docs/#api/en/core/Object3D.lookAt) method in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but it turns out that there is a little more to it at least when it comes to some things that branch off from the method. Using the look at method is fairly straight forward I just call the method off of some kind of object in three.js that is based off of the object3d class and then pass an instance of Vector3 or a set of numbers that ether way is a position to look at, and the result is that the object ends up looking at that point in space. However things might not always work the way that I might expect it to, and one reason why is because the look at method will always get an object to look at something that is called world space. This world space is not relative to a group object, or even the scene object also as that is also an instance of object3d that can have its position changed.
@@ -25,7 +25,7 @@ When I first wrote this post I was using three.js version r127.
 
 ### 1.2 - Read up more on the object3d class and other related topics if you have not done so
 
-The look at method is just one method of the object3d base class, there is a great deal more about the class that is also worth looking into more.
+The look at method is just one method of the object3d base class, there is a great deal more about the class that is also worth looking into more. The object3d class is the base class for a lot of object classes in tree.js such as Camera, Mesh, Group, and Scene just to name a few. So by learning about a method the the look at method one will end up learning about a method that can be applied to Cameras, but also Mesh objects, groups and anything based on Object3d.
 
 
 ## 2 - Basic Object3d look at method example
