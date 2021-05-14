@@ -5,21 +5,21 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:15:52
-version: 1.14
+updated: 2021-05-14 15:18:02
+version: 1.15
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
 
 I often like to combine a point light with [ambient light](/2018/11/02/threejs-ambientlight/) as a way to have a base line amount of light for all materials, while still having a sense of depth that can be obtained by still having some kind of directional light source such as with a point light.
 
-In this post I will be going over a quick examples of the point light in three js as well as touching base on some other three js related topics as well when it comes to setting up mesh objects that will respond to light. So then this might prove to be a quick fun example of three.js and light as well as some othet things that come up when making a three.js project in general
+In this post I will be going over a quick examples of the point light in three js as well as touching base on some other three js related topics as well when it comes to setting up mesh objects that will respond to light. So then this might prove to be a quick fun example of three.js and light as well as some other things that come up when making a three.js project in general
 
 <!-- more -->
 
 ## 1 - Point lights in threejs and what to know before hand
 
-The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in oder o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here.
+The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in order o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here. If you like you might want to check out [my getting started post on three.js](/2018/04/04/threejs-getting-started/), and also check out the offical website when it comes to how to get up and running with the basic of three.js.
 
 ## 2 - A point light example in three.js
 
