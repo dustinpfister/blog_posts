@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 13:43:32
-version: 1.8
+updated: 2021-05-14 13:47:05
+version: 1.9
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in three.js, but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic threejs project examples. Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -180,3 +180,8 @@ var loop = function () {
 }
 loop();
 ```
+
+## 4 - Conclusion
+
+I learned a lot about three.js while working on this example, and a whole lot of other examples that I worked on this week. There are still a few methods and properties of classes like the object3d class that I have just not been using that much thus far, but now have a better understand of the class and why I some times need to use methods like the get world position method of the object 3d class. As such much of what I have worked out here will apply to future edits of other three.js posts, and examples when it comes to addressing some problems that I have discovered with some of my older work.
+
