@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:27:15
-version: 1.17
+updated: 2021-05-14 15:29:09
+version: 1.18
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
@@ -49,6 +49,7 @@ var addPointLight = function (scene, color, x, y, z) {
 };
 ```
 
+Now that I have this helpful add point light helper I think I will want another helper to add a mesh, then a setup where I create my scene object and so forth along with an animation loop in order to have a full example of some kind up and running.
 
 ### 2.2 - The add cube method
 
