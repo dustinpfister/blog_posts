@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:08:53
-version: 1.12
+updated: 2021-05-14 15:11:37
+version: 1.13
 ---
 
 In three js there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. 
@@ -63,10 +63,13 @@ var addCube = function (scene, size, x, y, z) {
 
 ### 2.3 - The scene setup
 
-Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to create a scene. I just create a new three.js scene with the THREE.Scebe constructor, and then I can use that scene with my add point light and add cube methods.
+Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to create a scene. I just create a new three.js scene with the THREE.Scene constructor, and then I can use that scene with my add point light and add cube methods.
 
 ```js
 var scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1f1f1f);
+var gridHelper = new THREE.GridHelper(40, 10);
+scene.add(gridHelper);
 // create some point lights and add it to the scene
 var whitePointLight = addPointLight(scene, 0xffffff, 0, 0, 0),
 redPointLight = addPointLight(scene, 0xff0000, 30, 0, 0),
@@ -84,7 +87,7 @@ camera.lookAt(0, 0, 0);
 var renderer = new THREE.WebGLRenderer({
         antialias: true
     });
-renderer.setSize(320, 240);
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 ```
 
@@ -98,25 +101,39 @@ Here I have the loop of the project in which I will be rendering the current sta
 // loop
 var frame = 0,
 maxFrame = 180,
+lt = new Date(),
+fps = 30,
 per,
 bias,
 loop = function () {
-    setTimeout(loop, 33);
-    per = frame / maxFrame;
-    bias = 1 - Math.abs(0.5 - per) / 0.5,
-    r = Math.PI * 2 * per,
+    requestAnimationFrame(loop);
+    var r = Math.PI * 2 * per,
     sin = Math.sin(r) * 30,
-    cos = Math.cos(r) * 30;
-    // update point lights
-    whitePointLight.position.y = 20 * bias;
-    redPointLight.position.set(cos, sin, 0);
-    greenPointLight.position.set(cos, 0, sin);
-    bluePointLight.position.set(0, cos, sin);
-    // render
-    renderer.render(scene, camera);
-    // step frame
-    frame += 1;
-    frame %= maxFrame;
+    cos = Math.cos(r) * 30,
+    now = new Date(),
+    secs = (now - lt) / 1000;
+ 
+    per = frame / maxFrame;
+    bias = 1 - Math.abs(0.5 - per) / 0.5;
+ 
+    if (secs > 1 / fps) {
+ 
+        // update point lights
+        whitePointLight.position.y = 20 * bias;
+        redPointLight.position.set(cos, sin, 0);
+        greenPointLight.position.set(cos, 0, sin);
+        bluePointLight.position.set(0, cos, sin);
+ 
+        // render
+        renderer.render(scene, camera);
+        lt = new Date();
+ 
+        // step frame
+        frame += fps * secs;
+        frame %= maxFrame;
+ 
+    }
+ 
 };
 loop();
 ```
