@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 13:28:21
-version: 1.4
+updated: 2021-05-14 13:30:43
+version: 1.5
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in three.js, but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic threejs project examples. Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -19,7 +19,7 @@ When writing the source code for this example I ended up exercising a few method
 
 ## 1 - What to know first before getting into this Sphere Surface Mesh Placement example
 
-
+This is a post on a three.js project example that is a module that I can use to create a sphere, with other mesh objects positioned onto the surface of the sphere.
 
 ### 1.1 - Version Numbers matter with three.js
 
