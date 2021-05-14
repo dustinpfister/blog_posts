@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:35:13
-version: 1.19
+updated: 2021-05-14 15:39:32
+version: 1.20
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
@@ -146,6 +146,8 @@ loop = function () {
 loop();
 ```
 
+The result when this example is up and ruining is a cool little effect where I have all these point lights shining different colors on to cube objects that are skinned with a material that is while in color.
+
 ## 3 - Conclusion
 
-The point like is one of the typical light sources that I like to go with. Of often do like to add an additional mesh to the light so that I know where the light source is while I am at it. The other typical light source that I like to use is the ambient light, which is a way to just have a base amount of light for all the mesh objects in the scene.
+The point like is one of the typical light sources that I like to go with just about all of the time when I make my own three.js examples. However often do like to add an additional mesh to the light so that I know where the light source is while I am at it like I did with the example in this post. The other typical light source that I like to use is the ambient light, which is a way to just have a base amount of light for all the mesh objects in the scene. So ambient light and point lights are mu usual go to light sources. However there are still some additional options that might prove to be a better choice in some situations. It is said that a directional light instance would be best to reproduce day light, and also now and then it might be a good idea to go with a spot light actually.
