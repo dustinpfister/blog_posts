@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 13:40:09
-version: 1.7
+updated: 2021-05-14 13:43:32
+version: 1.8
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in three.js, but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic threejs project examples. Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -27,7 +27,6 @@ When I wrote this post I was using three.js version r127 which was a late versio
 ## 2 - The Sphere wrap module
 
 In this section I will be going over the source code of this sphere warp module that creates an instance of a special group that contains a sphere as a child, along with another group that contains object wrap groups. Each object wrap group then contains a Mesh Object. The system is a little convoluted, and I am sure than in time I might be able to find or more elegant solution for this sort of thing, however when  it just comes to how things look the module seems to work as I expect it to.
-
 ```js
 (function (api) {
  
@@ -96,6 +95,8 @@ In this section I will be going over the source code of this sphere warp module 
 ```
 
 ## 3 - Time to test this module out
+
+In this section I will now be going over one demo of this module to test things out and make usre they everything is working as it should before toying with the idea of using this module in additional examples..
 
 ```js
 var scene = new THREE.Scene();
