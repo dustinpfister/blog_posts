@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 14:08:44
-version: 1.14
+updated: 2021-05-14 14:10:47
+version: 1.15
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -102,7 +102,7 @@ I then also have my set object to lat and long method that is what I can use to 
 
 ## 3 - Time to test this module out
 
-In this section I will now be going over one demo of this module to test things out and make sure that everything is working as it should before toying with the idea of using this module in additional examples..
+In this section I will now be going over one demo of this module to test things out and make sure that everything is working as it should before toying with the idea of using this module in additional examples. In this demo of the sphere wrap module I set up an instance of a scene object, and then also set up my camera and renderer as well as an an animation loop method like mmany other such three.js examples.
 
 ```js
 var scene = new THREE.Scene();
