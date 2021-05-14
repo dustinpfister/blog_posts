@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-02-22 13:56:52
-version: 1.11
+updated: 2021-05-14 15:08:53
+version: 1.12
 ---
 
 In three js there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. 
@@ -45,7 +45,7 @@ var addPointLight = function (scene, color, x, y, z) {
 
 ### 2.2 - The add cube method
 
-When creating any kind of mesh for these scene it is important to use a material that will respond to light of course, si I am using the standard material rather than the basic material for the cubes.
+When creating any kind of mesh for a scene it is important to use a material that will respond to light of course, so I am using the standard material rather than the basic material for the cubes. For this example I am using a helper method that will create and add a cube for a given scene object like this.
 
 ```js
 // create some cubes
