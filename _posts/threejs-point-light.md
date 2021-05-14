@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:11:37
-version: 1.13
+updated: 2021-05-14 15:15:52
+version: 1.14
 ---
 
-In three js there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point. 
+In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
 
-I often like to combine a point light with [ambient light](/2018/11/02/threejs-ambientlight/) as a way to have a base line amount of light for all materials, while still having a sense of depth that can be obtained by still having some kind of directional light source.
+I often like to combine a point light with [ambient light](/2018/11/02/threejs-ambientlight/) as a way to have a base line amount of light for all materials, while still having a sense of depth that can be obtained by still having some kind of directional light source such as with a point light.
 
-In this post I will be going over some quick examples of the point light in three js as well as touching base on some other three js related topics as well, so lets get to it.
+In this post I will be going over a quick examples of the point light in three js as well as touching base on some other three js related topics as well when it comes to setting up mesh objects that will respond to light. So then this might prove to be a quick fun example of three.js and light as well as some othet things that come up when making a three.js project in general
 
 <!-- more -->
 
