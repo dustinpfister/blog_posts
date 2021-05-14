@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:22:02
-version: 1.16
+updated: 2021-05-14 15:27:15
+version: 1.17
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
@@ -31,7 +31,9 @@ This example I put together makes use of a few point lights that shine light in 
 
 ### 2.1 - The add point light method
 
-Here I have a method that I used in this example to create a point light, add it to a given scene, and return a reference to that point light as well. A point light by itself will not display anything in the scene just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example.
+Here I have a method that I am using in this example to create a point light, add it to a given scene, and return a reference to that point light also in the process of doing so. I often like to take a more functional approach with helper functions, but three.js is a more object oriented type library so there are a lot of functions that mutate objects in place and so forth. 
+
+A point light by itself will not display anything in the scene, it will just shine light in all directions from the current location in which it is located. So for this example I added a Sphere for each point light as a way to see the current location of each point light in the example. When it comes to this mesh I can use something like the basic material if I want because it is a mesh that is closely related to a light source. However when it comes to mesh objects that I will be adding to the scene I will want to use some other material that will react to light, the basic material is not one such options with that.
 
 ```js
 var addPointLight = function (scene, color, x, y, z) {
@@ -46,6 +48,7 @@ var addPointLight = function (scene, color, x, y, z) {
     return pointLight;
 };
 ```
+
 
 ### 2.2 - The add cube method
 
