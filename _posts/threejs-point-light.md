@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:29:09
-version: 1.18
+updated: 2021-05-14 15:35:13
+version: 1.19
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
@@ -71,7 +71,7 @@ var addCube = function (scene, size, x, y, z) {
 
 ### 2.3 - The scene setup
 
-Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to create a scene. I just create a new three.js scene with the THREE.Scene constructor, and then I can use that scene with my add point light and add cube methods.
+Now that I have some methods that I can used to create one or more point lights and some cubes for starters, lets used those methods to add point lights and mesh objects to a scene object. So then first I will want a main scene object for that I just create a one with the THREE.Scene constructor. Once I have a scene object I can now use that add point light and add cube methods to add lights and cubes to the scene.
 
 ```js
 var scene = new THREE.Scene();
@@ -99,11 +99,11 @@ renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 ```
 
-Here I can also setup a camera and the renderer as well. However I cam not calling the render method of the renderer here, I course if I just wanted to make it a static scene, but I want this example to be a cool little animation so I will do that in the loop of this project.
+One I have my scene and lights set up I can also setup a camera and a renderer as well that will be used to look at the scene from a given position and then render that view with the scene object using the renderer in the main animation loop that I will be getting to next
 
 ### 2.4 - The app loop
 
-Here I have the loop of the project in which I will be rendering the current state of the scene as well as updating the scene as well.
+Here I have the loop of the project in which I will be rendering the current state of the scene as well as updating the scene also over time. When it comes to making animation loops I will just about always use the request animation frame method which is the typical go to method for these kinds of functions in client side javaScript. I will want to have a few variables with a scope outside of that of the function for storing things like the last time an update was preformed and so forth.
 
 ```js
 // loop
