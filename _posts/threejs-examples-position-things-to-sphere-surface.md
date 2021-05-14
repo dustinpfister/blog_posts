@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 14:04:29
-version: 1.13
+updated: 2021-05-14 14:08:44
+version: 1.14
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -98,9 +98,11 @@ To add a Mesh object to be placed on the surface of the sphere I will want to us
     (this['SphereWrap'] = {}));
 ```
 
+I then also have my set object to lat and long method that is what I can use to set the position of the mesh relative to a location on the surface of the sphere. When calling this method I pass the wrap object as the first object followed by the name of the object I want to set the position for. I can then set a latitude and longitude values in the form of numbers between 0 and 1. I then also have an additional argument that can be used to adjust the distance from the center of the sphere.
+
 ## 3 - Time to test this module out
 
-In this section I will now be going over one demo of this module to test things out and make usre they everything is working as it should before toying with the idea of using this module in additional examples..
+In this section I will now be going over one demo of this module to test things out and make sure that everything is working as it should before toying with the idea of using this module in additional examples..
 
 ```js
 var scene = new THREE.Scene();
