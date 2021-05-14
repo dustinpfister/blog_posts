@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 13:30:43
-version: 1.5
+updated: 2021-05-14 13:33:38
+version: 1.6
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in three.js, but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic threejs project examples. Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -14,7 +14,6 @@ I still have some more writing when it comes to all the various little methods a
 I am sure that there are a number of ways of going about doing this sort of thing, but the example that I worked out that I will be writing about here involves rotating a group, and then just changing the position of a child of this group as a way to go about doing this. In any case the general idea that I have in mind here is to actually have some kind of 2d coordinate system when it comes to latitude and longitude type values. That is that i just want to have a way to position a mesh object onto the surface of a sphere by way of just setting two values that will determine the position of the sphere on the surface.
 
 When writing the source code for this example I ended up exercising a few methods and features of three.js that are worth writing about also that can apply to a great many other things. For example there is using the look at method of the object3d class to get a mesh object to look at the center of the sphere. However when doing so I want to mesh to look at the actual center of the sphere rather than the location relative to world space so I am also using the get world position method of the object3d class to do so. However because I am always having the mesh objects look at the center of the sphere I will also want to make sure that the geometries of the mesh objects are always looking up away from the sphere, or in any other direction that I might want apart from the downward direction. So to help with this there are methods to work with when it comes to an instance of Buffer Geometry to change the orientation of the geometry independent from that of the mesh object.
-
 <!-- more -->
 
 ## 1 - What to know first before getting into this Sphere Surface Mesh Placement example
@@ -25,4 +24,156 @@ This is a post on a three.js project example that is a module that I can use to 
 
 When I wrote this post I was using three.js version r127 which was a late version of three.js at of April of 2021. Always be mindful of the dates of posts, as well as the dates at which I have last updated them. many code breaking changes are introduced to three.js that will case code examples such as the ones I have outline here to stop working. I do make an effort to update my content and the code examples in them now and then, but I have a whole lot of other posts on three.js and other categories that are also in need of some editing.
 
+## 2 - The Sphere wrap module
 
+```js
+(function (api) {
+ 
+    // create wrap method
+    api.createWrap = function () {
+        // create a wrap group
+        var wrap = new THREE.Group();
+        // add a sphere to the wrap
+        var sphere = new THREE.Mesh(
+                new THREE.SphereGeometry(1, 40, 40),
+                new THREE.MeshNormalMaterial({
+                    wireframe: true
+                }));
+        wrap.userData.sphere = sphere;
+        wrap.add(sphere);
+        // create a surface group and add to wrap
+        var surface = new THREE.Group();
+        wrap.userData.surface = surface;
+        wrap.add(surface);
+        return wrap;
+    };
+ 
+    // set to lat and long helper
+    api.setObjToLatLong = function (wrap, childName, latPer, longPer, dist) {
+        var childWrap = wrap.getObjectByName('objwrap_' + childName),
+        child = childWrap.children[0]; //wrap.getObjectByName(childName),
+        // set lat
+        var radian = Math.PI * -0.5 + Math.PI * latPer,
+        x = Math.cos(radian) * dist,
+        y = Math.sin(radian) * dist;
+        child.position.set(x, y, 0);
+        // set long
+        childWrap.rotation.y = Math.PI * 2 * longPer;
+        // look at origin of wrap
+        var v = new THREE.Vector3();
+        wrap.getWorldPosition(v);
+        child.lookAt(v);
+    };
+ 
+    // Add an Object to a Sphere Wrap Group
+    api.addObjectToWrap = function (wrap, objectName, obj) {
+        // create an obj
+        obj = obj || new THREE.Mesh(
+                new THREE.BoxGeometry(0.5, 0.5, 0.5),
+                new THREE.MeshNormalMaterial({
+                    wireframe: false
+                }));
+        obj.name = objectName;
+        var objWrap = new THREE.Group();
+        objWrap.name = 'objwrap_' + objectName;
+        objWrap.add(obj);
+        // obj wrap user data object
+        var ud = objWrap.userData;
+        ud.latPer = 0;
+        ud.longPer = 0;
+        var radius = wrap.userData.sphere.geometry.parameters.radius;
+        ud.dist = radius + 0.25;
+        // add the objWrap group to the surface group
+        wrap.userData.surface.add(objWrap);
+        //set position for the first time
+        api.setObjToLatLong(wrap, objectName, ud.latPer, ud.longPer, ud.dist);
+    };
+ 
+}
+    (this['SphereWrap'] = {}));
+```
+
+## 3 - Time to test this module out
+
+```js
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(3.0, 3.0, 3.0);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
+// add wrap the the scene, and some cube objects
+var wrap = SphereWrap.createWrap();
+scene.add(wrap);
+SphereWrap.addObjectToWrap(wrap, 'cube');
+SphereWrap.addObjectToWrap(wrap, 'cube2');
+ 
+// adding a cone rather than the default cube
+// some times I might want to rotate the geometry when doing so
+// rather than Object3d as I will always have that looking at the origin of the
+// sphere wrap group
+var cone = new THREE.Mesh(
+        new THREE.ConeGeometry(0.25, 0.5, 30, 30),
+        new THREE.MeshNormalMaterial({
+            wireframe: true
+        }));
+cone.geometry.rotateX(Math.PI * 1.5);
+SphereWrap.addObjectToWrap(wrap, 'cone', cone);
+ 
+var wrap2 = SphereWrap.createWrap();
+SphereWrap.addObjectToWrap(wrap2, 'box');
+SphereWrap.setObjToLatLong(wrap2, 'box', 0.75, 0.9, 1.25);
+wrap2.position.set(-4, 0, -4);
+scene.add(wrap2);
+ 
+// dist and lat log values
+var dist = 1.25, // radius + half of mesh height
+latPer = 0.75, // 0 - 1
+longPer = 0.5; // 0 - 1
+SphereWrap.setObjToLatLong(wrap, 'cube', latPer, longPer, dist);
+SphereWrap.setObjToLatLong(wrap, 'cube2', 0, 0, 1.25);
+SphereWrap.setObjToLatLong(wrap, 'cone', 0.9, 1, 1.25);
+// loop
+var lt = new Date(),
+frame = 0,
+maxFrame = 600,
+fps = 30;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+ 
+        // setting lat and long for 'cube'
+        latPer = 0.25 + Math.sin(Math.PI * bias) * 0.25;
+        longPer = per;
+        SphereWrap.setObjToLatLong(wrap, 'cube', latPer, longPer, dist);
+ 
+        // rotating cube2
+        var obj = wrap.getObjectByName('cube2');
+        obj.geometry.rotateZ(Math.PI / 180 * 20 * secs);
+ 
+        // cone
+        SphereWrap.setObjToLatLong(wrap, 'cone', 1 - 0.25 * bias, 1 - 1 * per, dist);
+ 
+        // whole group
+        wrap.position.x = 1 - 2 * bias;
+        wrap.position.z = Math.sin(Math.PI * 2 * bias) * 2;
+ 
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+}
+loop();
+```
