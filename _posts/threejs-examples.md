@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-05-14 13:50:53
-version: 1.24
+updated: 2021-05-14 13:56:03
+version: 1.25
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -67,17 +67,19 @@ If I get a solid idea for the core of what the game should be I might like to ex
 
 An example that is a collection of mesh objects in a group nested in another group.
 
-### [2.11 - position things on the surface of a sphere]()
+### [2.11 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
-### [ 2.11 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
+This is an example where I have worked out a crude yet effective module that can be used to create a special kind of sphere wrap group. The main create method of this sphere wrap group returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
+
+### [ 2.12 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
 This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
-### [ 2.12 - Tree](/2019/07/30/threejs-examples-tree/)
+### [ 2.13 - Tree](/2019/07/30/threejs-examples-tree/)
 
 This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
-### [ 2.13 - Waves](/2018/11/14/threejs-examples-waves/) 
+### [ 2.14 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
