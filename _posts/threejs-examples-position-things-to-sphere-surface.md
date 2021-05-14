@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 13:22:56
-version: 1.3
+updated: 2021-05-14 13:28:21
+version: 1.4
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in three.js, but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic threejs project examples. Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -16,3 +16,13 @@ I am sure that there are a number of ways of going about doing this sort of thin
 When writing the source code for this example I ended up exercising a few methods and features of three.js that are worth writing about also that can apply to a great many other things. For example there is using the look at method of the object3d class to get a mesh object to look at the center of the sphere. However when doing so I want to mesh to look at the actual center of the sphere rather than the location relative to world space so I am also using the get world position method of the object3d class to do so. However because I am always having the mesh objects look at the center of the sphere I will also want to make sure that the geometries of the mesh objects are always looking up away from the sphere, or in any other direction that I might want apart from the downward direction. So to help with this there are methods to work with when it comes to an instance of Buffer Geometry to change the orientation of the geometry independent from that of the mesh object.
 
 <!-- more -->
+
+## 1 - What to know first before getting into this Sphere Surface Mesh Placement example
+
+
+
+### 1.1 - Version Numbers matter with three.js
+
+When I wrote this post I was using three.js version r127 which was a late version of three.js at of April of 2021. Always be mindful of the dates of posts, as well as the dates at which I have last updated them. many code breaking changes are introduced to three.js that will case code examples such as the ones I have outline here to stop working. I do make an effort to update my content and the code examples in them now and then, but I have a whole lot of other posts on three.js and other categories that are also in need of some editing.
+
+
