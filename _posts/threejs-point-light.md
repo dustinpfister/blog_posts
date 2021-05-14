@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 470
-updated: 2021-05-14 15:18:02
-version: 1.15
+updated: 2021-05-14 15:22:02
+version: 1.16
 ---
 
 In [three js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there is a number of options when it comes to light sources for materials that respond to light, but my favorite option for the most part would be the three js [point light](https://threejs.org/docs/#api/en/lights/PointLight). This lighting option can be sued to shine light in all directions from a single given point so it is a light source where direction matters, but it is not restricted to a clone like area as with a spot light.
@@ -19,7 +19,11 @@ In this post I will be going over a quick examples of the point light in three j
 
 ## 1 - Point lights in threejs and what to know before hand
 
-The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in order o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here. If you like you might want to check out [my getting started post on three.js](/2018/04/04/threejs-getting-started/), and also check out the offical website when it comes to how to get up and running with the basic of three.js.
+The example in this post is a little involved but so is any three.js project when it comes to all the various aspects of three.js that a developer needs understand in order o do anything interesting with three.js. I assume that you have at least some background with three.js and javaScript in general as I will not be getting into the basics with three.js and javaScript here. If you like you might want to check out [my getting started post on three.js](/2018/04/04/threejs-getting-started/), and also check out the official website when it comes to how to get up and running with the basic of three.js.
+
+### 1.1 - Version Numbers matter
+
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing in terms of both text and code I was using r127 of three.js. I can not say that much has changed with the point light alone between those two version numbers, but of course a great deal has changes with many other things in three.js. In any case always be mindful of what version of three.js you are using when playing around with threejs code examples on the open web not everything odes a good job of keeping their content up to date with this.
 
 ## 2 - A point light example in three.js
 
