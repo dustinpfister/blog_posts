@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-05-11 15:19:50
-version: 1.23
+updated: 2021-05-14 13:50:53
+version: 1.24
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -66,6 +66,8 @@ If I get a solid idea for the core of what the game should be I might like to ex
 ### [ 2.10 - nested groups](/2021/05/10/threejs-examples-nested-groups/)
 
 An example that is a collection of mesh objects in a group nested in another group.
+
+### [2.11 - position things on the surface of a sphere]()
 
 ### [ 2.11 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
