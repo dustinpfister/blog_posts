@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 867
-updated: 2021-05-14 14:13:49
-version: 1.16
+updated: 2021-05-14 14:20:51
+version: 1.17
 ---
 
 I still have some more writing when it comes to all the various little methods and classes to worth with in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), but I am getting to the point where it is time to start thinking in terms of some actual projects of some kind, so I started  writing some posts about basic [threejs project examples](/2021/02/19/threejs-examples/). Today I think I will write about another basic project idea and this time it is a simple module for creating a group that contains one Mesh that is a sphere, and then another groups that is a collection of groups that contain a mesh that will be positioned and rotated so that the child of the group is positioned over the surface of the sphere.
@@ -188,6 +188,8 @@ var loop = function () {
 }
 loop();
 ```
+
+In the main animation loop of this demo I am moving the objects in the surface of one of the sphere wrap instances, and also moving the sphere wrap group itself. It would seem that everything is working they way that it should thus far with this the objects on the surface move as they should along the surface of the sphere, and the whole group moves when I change those values.
 
 ## 4 - Conclusion
 
