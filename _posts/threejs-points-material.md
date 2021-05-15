@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 11:47:19
-version: 1.22
+updated: 2021-05-15 11:53:46
+version: 1.23
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -26,6 +26,10 @@ So although I will not be getting into detail about the basics of three.js here,
 ### 1.1 - Version Numbers matter with three.js
 
 When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r127. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
+
+### 1.2 - The Buffer Geometry Constructor
+
+Although built in geometries can be used with the Points material, more often than not I think that main reason why developers might be looking into the points material and the Points constructor is to get into making custom geometries. So it would make sense to also look into the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at some point, maybe before or around the same time as starting to work with the Points Martial.
 
 ## 2 - Points vs Mesh Constructors, and basic Three.Points Constructor example
 
