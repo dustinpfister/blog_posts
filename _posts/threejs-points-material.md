@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 11:35:41
-version: 1.19
+updated: 2021-05-15 11:43:52
+version: 1.20
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -22,6 +22,10 @@ There is always at least a few different ways of going about doing something, I 
 This is a post on three.js, a javaScript library that is used to work with objects in a 3d space. It is not a getting stared post on three.js, or javaScript in general, so if you are new to three.js you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on the subject. I then assume that you have at least some experience making three.js demos, and are now at thins point only interested in making a certain kind of demo where you are just dealing with a collection of points. The process of doing so is not all that different from what you might all ready be familial with when it comes to working with the Mesh constructor.
 
 So although I will not be getting into detail about the basics of three.js here, let alone everything else that you should be up to speed with before reading this. In this section I will be briefly be going over a few things that you should know, or many read up a bit more on before continuing with the Points Constructor and the Points material.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I first wrote this post back in May of 2018 I was using version r91 of three.js, and the last time I got around to editing this post I was using r127. Sense then a number of code breaking changes have happened when it comes to using the geometry constructor rather than the Buffer Geometry constructor. The old Geometry constructor has been removed from three.js as of version r125, so the examples here have been updated to work with the buffer geometry constructor as well as versions other chances that have happened sense then.
 
 ## 2 - Points vs Mesh Constructors, and basic Three.Points Constructor example
 
