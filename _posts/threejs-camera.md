@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-15 12:39:26
-version: 1.17
+updated: 2021-05-15 12:41:24
+version: 1.18
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -33,9 +33,7 @@ All instances of Camera gain a whole bunch of common properties and methods from
 
 ## 2 - Perspective Camera
 
-read full post on [perspective Camera](/2018/04/07/threejs-camera-perspective/)
-
-The most commonly used camera might be the perspective camera, and if you are only going to stick with one, it might be a good idea to make it this one. The perspective camera mimics the way that the human eye actually sees, and often that is what is desired.
+The most commonly used camera might be the [perspective camera](/2018/04/07/threejs-camera-perspective/), and if you are only going to stick with one, it might be a good idea to make it this one. The perspective camera mimics the way that the human eye actually sees, and is thus often that is what is desired. When creating an instance of this kind of camera I need to pass a filed of view value, followed by a ratio and then a near and far render distance value.
 
 ## 3 - Orthographic camera
 
