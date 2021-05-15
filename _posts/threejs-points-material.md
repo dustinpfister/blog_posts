@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 11:44:54
-version: 1.21
+updated: 2021-05-15 11:47:19
+version: 1.22
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -178,6 +178,8 @@ The next step with this is starting to experiment with creating custom geometrie
 }
     ());
 ```
+
+There is a great deal more to look into when it comes to making a solid custom geometry, however maybe one of the first things that should be worked out is the position of the vertices. Just working out that logic with the use of the Points constructor is then a good starting point, and then from there it is just a question of adding all the additional properties that are needs when it comes to drawing triangles between the points, and setting material index values as well as a uv array.
 
 ## 5 - Conclusion
 
