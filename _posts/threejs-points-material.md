@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 10:01:27
-version: 1.11
+updated: 2021-05-15 10:11:55
+version: 1.12
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -42,7 +42,7 @@ The [Mesh](/2018/05/04/threejs-mesh/) is something that binds everything togethe
 
 ### 2.2 - A Basic THREE.Points example
 
-So then the Points constructor is like that Mesh constructor only instead however it is just the position attribute of a Buffer Geometry instance that will be used. I am just giving it a geometry that can just simple be a collection of vertices only, and a Material that is used just to render those points in space. So in other words the points constructor is just a more primitive kind of mesh, that can only be used with a special points material, but aside from that an instance of THREE.Points is very similar to that of THREE.Mesh instances.
+So then the Points constructor is like that Mesh constructor only it is just the position attribute of a Buffer Geometry instance that will be mainly what is used in rendering. This geometry that I give the THREE.Points constructor could be a custom geometry like the one on the documentation page of the THREE.Points constrictor on the three.js website. However it can also be one of the geometries that is created and returned by one of the Built in geometry constructors such as the THREE.SphereGeomerty constructor.
 
 ```js
 (function () {
@@ -69,6 +69,8 @@ So then the Points constructor is like that Mesh constructor only instead howeve
 }
     ());
 ```
+
+So in other words the points constructor is just a more primitive kind of mesh, that can only be used with a special points material, but aside from that an instance of THREE.Points is very similar to that of THREE.Mesh instances. Just like the that of A mesh and Instance of Points is based on the Object3d class, so when it comes to positioning and rotating the Points instance all of that is more or less the same as Mesh. Also it is still and instance of buffer geometry that is passed as the first argument, that can be created by using the Buffer Geometry constructor directly, or by using one of the built in constructors, it is just that many of the attributes that would be used in the Mesh constructor are ignored.
 
 ## 3 - Conclusion
 
