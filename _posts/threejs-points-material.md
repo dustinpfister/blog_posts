@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 10:16:35
-version: 1.14
+updated: 2021-05-15 10:20:21
+version: 1.15
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -72,7 +72,60 @@ So then the Points constructor is like that Mesh constructor only it is just the
 
 So in other words the points constructor is just a more primitive kind of mesh, that can only be used with a special points material, but aside from that an instance of THREE.Points is very similar to that of THREE.Mesh instances. Just like the that of A mesh and Instance of Points is based on the Object3d class, so when it comes to positioning and rotating the Points instance all of that is more or less the same as Mesh. Also it is still and instance of buffer geometry that is passed as the first argument, that can be created by using the Buffer Geometry constructor directly, or by using one of the built in constructors, it is just that many of the attributes that would be used in the Mesh constructor are ignored.
 
-## 3 - Conclusion
+## 3 - The Points Material and creating a custom geometry with the Buffer Geometry Constructor, and Rand Float Spread
+
+Now that I have coved the basics of the TREE.Point constructor, and how it compares to the Mesh Constructor it is now time to start to look at a few more examples of the Points constructor and of course the Points material
+
+```js
+(function () {
+ 
+    // SCENE
+    var scene = new THREE.Scene();
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(50, 50, 50);
+    camera.lookAt(0, 0, 0);
+ 
+    var i = 0,
+    verts = [];
+    while (i < 500) {
+        var pt = new THREE.Vector3();
+        pt.set(
+            THREE.Math.randFloatSpread(45),
+            THREE.Math.randFloatSpread(45),
+            THREE.Math.randFloatSpread(45));
+        verts.push(pt.x, pt.y, pt.z);
+        i += 1;
+    }
+    // GEOMETRY
+    var geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
+    // MESH with GEOMETRY, and Normal MATERIAL
+    scene.add(
+        new THREE.Points(
+            geometry,
+            new THREE.PointsMaterial({
+                color: 0x00afaf
+            })));
+ 
+    // RENDER
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var loop = function () {
+        requestAnimationFrame(loop);
+        renderer.render(scene, camera);
+    };
+ 
+    loop();
+ 
+}
+    ());
+```
+
+## 4 - Conclusion
 
 So the points material is an interesting alternative to the typical basic or standard material that I often use in my basic project examples that I have made thus far with working with the typical Mesh rather than points class. There should be at least one such option when it comes to just having a way to see the location of points in a geometry, and the points material seems to work fine when it comes to this. However there are a number of draw backs from using the Points class, and I think that I often will want to use a  mesh instance even in situations in which I am interested in the points, by using a geometry positions attribute as a way to set position values for a collection of mesh objects.
 
