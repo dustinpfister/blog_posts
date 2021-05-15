@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 09:45:55
-version: 1.10
+updated: 2021-05-15 10:01:27
+version: 1.11
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -21,9 +21,11 @@ There is always at least a few different ways of going about doing something, I 
 
 This is a post on three.js, a javaScript library that is used to work with 3d space. It is not a getting stared post on three.js, or javaScript in general. If you are new to three.js you might want to start with my [getting started post](/2018/04/04/threejs-getting-started/) on the subject. I assume that you have at least some experience making three.js demos, and are not only interested in making a certain kind of demo where you are only dealing with a collection of points. Also in this post I will not be getting into every little additional detail on every other little thing about three.js, but I do have [many other posts](/categories/three-js/) on this subject.
 
-### 1.2 - Points vs Mesh Constructors
+## 2 - Points vs Mesh Constructors, and basic Three.Points Constructor example
 
-If you have made at least a few three.js demos you might be at the point where you understand that at least part of the process is to create and add a [Mesh](/2018/05/04/threejs-mesh/) that is composed of a Geometry, and at least one material to be used when rendering that Geometry.
+If you have made at least a few basic three.js demos you might be at the point where you understand that at least part of the process is to create and add a [Mesh](/2018/05/04/threejs-mesh/) object and add that object to a scene object. That scene object is then passed to a renderer along with a camera to create a render instance that can then be used to draw to a canvas element. This Mesh Object is composed of a Geometry, and at least one material to be used when rendering that Geometry. The THREE.Points class is then just a different kind of mesh that is used to just draw points of a geometry. In this section I will be going over a basic example of the THREE.Mesh Constructor, and then go on to an example of THREE.Points.
+
+## 2.1 - Basic THREE.Mesh Example
 
 ```js
 scene.add(
@@ -38,30 +40,34 @@ scene.add(
 
 The [Mesh](/2018/05/04/threejs-mesh/) is something that binds everything together into a single package of sorts, and it has properties and methods that are appropriate for it. In the above example I am just using the Box geometry constructor as a way to just go about quickly creating a geometry, and I am using that geometry with the [basic material](/2018/05/05/threejs-basic-material/) as a way to go about skinning that geometry. However when it comes to using the THREE.Points constructor in place of THREE.Mesh, I need to create a custom instance of Buffer Geometry.
 
+### 2.2 - A Basic THREE.Points example
+
 So then the Points constructor is like that Mesh constructor only instead however it is just the position attribute of a Buffer Geometry instance that will be used. I am just giving it a geometry that can just simple be a collection of vertices only, and a Material that is used just to render those points in space. So in other words the points constructor is just a more primitive kind of mesh, that can only be used with a special points material, but aside from that an instance of THREE.Points is very similar to that of THREE.Mesh instances.
 
 ```js
-   var i = 0,
-    verts = [];
-    while (i < 500) {
-        var pt = new THREE.Vector3();
-        pt.set(
-            THREE.Math.randFloatSpread(45),
-            THREE.Math.randFloatSpread(45),
-            THREE.Math.randFloatSpread(45));
-        verts.push(pt.x, pt.y, pt.z);
-        i += 1;
-    }
+(function () {
+    // SCENE
+    var scene = new THREE.Scene();
+ 
     // GEOMETRY
-    var geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
-    // MESH with GEOMETRY, and Normal MATERIAL
-    scene.add(
-        new THREE.Points(
+    var geometry = new THREE.SphereGeometry(1, 30, 30);
+    var pt = new THREE.Points(
             geometry,
             new THREE.PointsMaterial({
-                color: 0x00afaf
-            })));
+                color: 0x00afaf,
+                size: 0.05
+            }));
+    scene.add(pt);
+ 
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
+    camera.position.set(2, 2, 2);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer(); // render
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 ## 3 - Conclusion
