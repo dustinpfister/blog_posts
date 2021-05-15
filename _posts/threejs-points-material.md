@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-02-22 13:58:18
-version: 1.5
+updated: 2021-05-15 05:52:40
+version: 1.6
 ---
 
-The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. Everything that will be placed in a [Scene](/2018/05/03/threejs-scene/) will contain at least a few points in space made with Vector3, typically combined with a collection of [Face3](/2018/05/11/threejs-face3/) instances to help compose a [geometry](/2018/04/14/threejs-geometry/) representing some kind of solid geometric object. However what if you just want to work with a collection of vectors, and have some kind of way of just displaying some points in space? For this there is the Points constructor that can be used with the Special Points Material that is put in place just for this purpose.
+The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. Everything that will be placed in a [Scene](/2018/05/03/threejs-scene/) will contain at least a few points in space made with Vector3. However there is not just the geometry used the position property in the object3d class is an instance of Vector3, and this property is used to set the position of mesh objects, camreas, and a whole lot of other objects.
+
+ However what if you just want to work with a collection of vectors, and have some kind of way of just displaying some points in space? For this there is the Points constructor that can be used with the Special Points Material that is put in place just for this purpose.
 
 <!-- more -->
 
