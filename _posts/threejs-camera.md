@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-15 12:41:24
-version: 1.18
+updated: 2021-05-15 12:48:11
+version: 1.19
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -37,7 +37,7 @@ The most commonly used camera might be the [perspective camera](/2018/04/07/thre
 
 ## 3 - Orthographic camera
 
-Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
+Another option when it comes to cameras that I might actually use in a project is the [orthographic camera](/2018/05/17/threejs-camera-orthographic/). this type of camera is more in tune with how objects actually exist in 3d space rather than how they look with the human eye when it comes to perspective.
 
 ## 4 - Basic move camera example
 
