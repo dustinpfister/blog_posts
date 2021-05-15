@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-15 12:38:11
-version: 1.16
+updated: 2021-05-15 12:39:26
+version: 1.17
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -18,6 +18,10 @@ In three.js there are a few cameras to work with, but typically you will want to
 ## 1 - Camera Objects in three.js and what to know first
 
 This is a post on cameras in general when working with three.js in a client side javaScript environment. There is a great deal more to be aware of beyond just that of working with cameras when it comes to working out even some basic examples of three.js, so if you are still pretty new to three.js it might be best to start out with some kind of getting started with three.js type post. I will not be going over every little detail about three.js in general here though, but I will be going over some of the core things to be aware of with cameras. In this section I will be outlining some things you should be aware of before getting into cameras in greater detail.
+
+### 1.1 - Always check your version numbers when using three.js
+
+When I first wrote this post I was using three.js version r91, and the last time I came around to do a little editing I was using r127.
 
 ### 1.2 - The Camera Class
 
