@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 11:43:52
-version: 1.20
+updated: 2021-05-15 11:44:54
+version: 1.21
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -124,7 +124,7 @@ Now that I have coved the basics of the TREE.Point constructor, and how it compa
 
 ## 4 - A spiral example of THREE.Points and THREE.PointsMatreial
 
-The next step with this is starting to experiment with creating custom geometries, and just looking at the state of the points alone.  With that said there is starting to work out expressions for creating the array of values to be used just for the position attribute of an instance of Buffer Geometry. The full process of making a geometry instance that will work well with THREE.Mesh is a little involves, and working out the position array is just one part of the process. However when it comes to just using the THREE.Points constructor and the Points material I can just focus on the points in space, and that is all.
+The next step with this is starting to experiment with creating custom geometries, and just looking at the state of the points alone.  With that said there is starting to work out expressions for creating the array of values to be used just for the position attribute of an instance of Buffer Geometry. The full process of making a geometry instance that will work well with THREE.Mesh is a little involves, and working out the position array is just one part of the process. However when it comes to just using the THREE.Points constructor and the Points material I can just focus on the points in space, and that is all. In this example I was paying around with some expressions that result in the formation of a spiral like pattern of points.
 
 ```js
 (function () {
