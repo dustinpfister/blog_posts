@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 186
-updated: 2021-05-15 10:30:00
-version: 1.17
+updated: 2021-05-15 11:31:02
+version: 1.18
 ---
 
 The use of [Vector3](/2018/04/15/threejs-vector3/) class instances in [three.js](https://threejs.org/) is a major part of the process of doing much of anything in three.js. There is not just the geometry used with a material to compose a mesh object when it comes to vectors, the position property in the Object3d class is an instance of Vector3. This position property is used to set the position of mesh objects, cameras, and a whole lot of other objects.
@@ -48,19 +48,19 @@ So then the Points constructor is like that Mesh constructor only it is just the
 
 ```js
 (function () {
-    // SCENE
+    // scene
     var scene = new THREE.Scene();
- 
-    // GEOMETRY
-    var geometry = new THREE.SphereGeometry(1, 30, 30);
+    // geometry
+    var geometry = new THREE.SphereGeometry(1, 10, 60);
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
     var pt = new THREE.Points(
             geometry,
             new THREE.PointsMaterial({
                 color: 0x00afaf,
-                size: 0.05
+                size: 0.025
             }));
     scene.add(pt);
- 
+    // camera and renderer
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000); // camera
     camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
@@ -80,15 +80,10 @@ Now that I have coved the basics of the TREE.Point constructor, and how it compa
 
 ```js
 (function () {
- 
-    // SCENE
+    // scene
     var scene = new THREE.Scene();
  
-    // CAMERA
-    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
-    camera.position.set(50, 50, 50);
-    camera.lookAt(0, 0, 0);
- 
+    // geometry
     var i = 0,
     verts = [];
     while (i < 500) {
@@ -100,10 +95,9 @@ Now that I have coved the basics of the TREE.Point constructor, and how it compa
         verts.push(pt.x, pt.y, pt.z);
         i += 1;
     }
-    // GEOMETRY
     var geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(verts, 3));
-    // MESH with GEOMETRY, and Normal MATERIAL
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
     scene.add(
         new THREE.Points(
             geometry,
@@ -111,23 +105,77 @@ Now that I have coved the basics of the TREE.Point constructor, and how it compa
                 color: 0x00afaf
             })));
  
-    // RENDER
+    // renderer and camera
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(50, 50, 50);
+    camera.lookAt(0, 0, 0);
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
- 
-    var loop = function () {
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
-    };
- 
-    loop();
+    renderer.render(scene, camera);
  
 }
     ());
 ```
 
-## 4 - Conclusion
+## 4 - A spiral example of THREE.Points and THREE.PointsMatreial
+
+The next step with this is starting to experiment with creating custom geometries, and just looking at the state of the points alone.
+
+```js
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+ 
+    // geometry
+    var i = 0,
+    iMax = 50,
+    rotationCount = 4,
+    vert,
+    vertices = [],
+    per,
+    r;
+    while (i < iMax) {
+        // percent
+        per = i / iMax;
+        // radian
+        r = Math.PI * 2 * rotationCount * per;
+        r %= Math.PI * 2;
+        // current vertex
+        vert = new THREE.Vector3();
+        vert.x = Math.cos(r) * (1 + 5 * per);
+        vert.y = -10 + 15 * per;
+        vert.z = Math.sin(r) * (1 + 5 * per);
+        vertices.push(vert.x, vert.y, vert.z);
+        i += 1;
+    }
+    var geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+ 
+    // THREE.Points INSTANCE UISNG THREE.PointsMaterial
+    var points = new THREE.Points(
+            // geometry as first argument
+            geometry,
+            // then Material
+            new THREE.PointsMaterial({
+                size: .05
+            }));
+    scene.add(points);
+ 
+    // camera and renderer
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(10, 10, 10);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+## 5 - Conclusion
 
 So the points material is an interesting alternative to the typical basic or standard material that I often use in my basic project examples that I have made thus far with working with the typical Mesh rather than points class. There should be at least one such option when it comes to just having a way to see the location of points in a geometry, and the points material seems to work fine when it comes to this. However there are a number of draw backs from using the Points class, and I think that I often will want to use a  mesh instance even in situations in which I am interested in the points, by using a geometry positions attribute as a way to set position values for a collection of mesh objects.
 
