@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-16 09:16:11
-version: 1.22
+updated: 2021-05-16 09:32:57
+version: 1.23
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -35,7 +35,45 @@ All instances of Camera gain a whole bunch of common properties and methods from
 
 The most commonly used camera might be the [perspective camera](/2018/04/07/threejs-camera-perspective/), and if you are only going to stick with one, it might be a good idea to make it this one. The perspective camera mimics the way that the human eye actually sees, and is thus often that is what is desired. When creating an instance of this kind of camera I need to pass a filed of view value, followed by a ratio and then a near and far render distance value.
 
-### 2.1 - Changing aspect and field of view in a loop
+### 2.1 - Basic perspective camera example
+
+```js
+(function () {
+    // a scene is needed to place objects in
+    var scene = new THREE.Scene();
+ 
+    // so here I am setting the values of the perspective camera
+    var fieldOfView = 40,
+    width = 4 * 160,
+    height = 3 * 160,
+    aspectRatio = 4 / 3,
+    near = 1,
+    far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+ 
+    // In order to see anything I will also need a renderer
+    // to use with my scene, and camera
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(width, height);
+    // I must append the dom element used by the renderer to the html
+    // that I am using.
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // add a cube to the scene
+    cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(cube);
+    cube.position.set(0, 0, 0);
+    camera.position.set(2, 2, 2);
+    camera.lookAt(cube.position);
+ 
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+### 2.2 - Changing aspect and field of view in a loop
 
 One thing that I might want to do now and then is adjust the aspect ratio and field of view of a perspective camera in a loop. To do so I can just set the values for the aspect and fov properties of the camera instance, however there is one additional step that I must do after changing those values which is to call the update projection matrix method. Calling this update projection matrix method is something that must be preformed when it comes to changing just several other static values when it comes to a camera.
 
