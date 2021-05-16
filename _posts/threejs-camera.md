@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-16 10:01:44
-version: 1.26
+updated: 2021-05-16 10:03:47
+version: 1.27
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -230,6 +230,8 @@ If you have not done so all ready it might be a good idea to read up more on the
 ## 5 - The near and far values and the depth material
 
 Another thing that might come up when it comes to working with a camera is what values to give the constructor when it comes to the near and far values. I often just pass number literals for these values, but in some cases this is something that I might want to be able to adjust threw a user interface, an animation loop, or something to that effect. However even then the question is what to set when it comes to the range for these values. How close is to close, and how far is to far can be good questions for these values. One thing to do that might help is to use the depth material for all objects in the scene, and then adjust things until the situation looks good.
+
+The depth material is a special kind of materials that will render in different ways depending on the distance of the camera and an object in the scene, but also the near and far values of the camera will also impact the rendering of the textures for mesh objects that make use of this depth material.
 
 ```js
 (function () {
