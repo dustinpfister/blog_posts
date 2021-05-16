@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 168
-updated: 2021-05-16 08:32:47
-version: 1.20
+updated: 2021-05-16 08:36:27
+version: 1.21
 ---
 
 If you want to make a [three.js](https://threejs.org/) project you are going to want to know a thing or two about how to go about working with cameras. A Camera must be created with one of several constructor options, once an instance of a camera is obtained it does not need to be added to the scene, although doing so might still generally be a good idea. However in any case at least one camera needs to be created that can be used with a render method in order to view anything in a scene.
@@ -37,7 +37,7 @@ The most commonly used camera might be the [perspective camera](/2018/04/07/thre
 
 ### 2.1 - Changing aspect and field of view in a loop
 
-One thing that I might want to do now and then is adjust the aspect ratio and field of view of a perspective camera in a loop.
+One thing that I might want to do now and then is adjust the aspect ratio and field of view of a perspective camera in a loop. To do so I can just set the values for the aspect and fov properties of the camera instance, however there is one additional step that I must do after changing those values which is to call the update projection matrix method.
 
 ```js
 (function () {
