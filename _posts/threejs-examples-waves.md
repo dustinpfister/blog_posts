@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-05-17 15:51:02
-version: 1.19
+updated: 2021-05-17 15:54:37
+version: 1.20
 ---
 
 So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on just simple examples of certain basic things here and there, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is a set of points that move in a wave like pattern.
@@ -99,7 +99,7 @@ Here I have a method that makes use of my waveGrid method to go about making the
 
 ### 2.3 - Update Points
 
-I again use my waveGrid method to update points.
+I again use my waveGrid method to update points by just using the for point option of the wave grid method. I just need to set the desired values for x, y, and z for all points in the geometry. When calling this method I will want to pass a percent value as a second argument after passing the instance of points as the first method. More on this later when I use it in the main update loop of this example when it comes to how to go about getting that percent value.
 
 ```js
     // update points
