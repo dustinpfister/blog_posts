@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-05-17 16:02:21
-version: 1.22
+updated: 2021-05-17 16:06:43
+version: 1.23
 ---
 
 So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on just simple examples of certain basic things here and there, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is a set of points that move in a wave like pattern.
@@ -181,6 +181,8 @@ So now it is time to get this all working with the usual scene, camera, renderer
  
     loop();
 ```
+
+The result of this up and running is then a bunch of dots in the canvas moving up and down in a wave like pattern, I am also doing a number of other things in this example that have to do with many other note worthy features of three.js. For example I wanted to do something that involves moving the camera around by making use of the position and rotation properties as well as the look at method of the camera all of which are methods and properties of the base class known as Object3d.
 
 ## 3 - Conclusion
 
