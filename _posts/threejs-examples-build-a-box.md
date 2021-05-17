@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:25:40
-version: 1.10
+updated: 2021-05-17 14:27:31
+version: 1.11
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -114,6 +114,8 @@ I also have an update method that can be used to create this basic animation loo
 ```
 
 ## 3 - Using the build a box module
+
+Now that I have my build a box module I will just want a little additional javaScript code to make use of this module. In this main javaScript file I can just create my scene object, and then create and add an instance of this box group to the scene by calling the create method of the build a box module.
 
 ```js
 var scene = new THREE.Scene();
