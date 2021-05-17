@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:30:24
-version: 1.13
+updated: 2021-05-17 14:34:50
+version: 1.14
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -160,4 +160,6 @@ loop();
 ## 4 - Conclusion
 
 This example made me become aware of some things when it comes to making a box out of a single board of wood, however I really learned that I still need to figure out some additional things when it comes to working with three.js also. I would like to make custom geometry that is like that of the box geometry constructor, but with one or more sides cut at 45 degree angles for example. So in the not to distance future I will need to revisit how to create custom geometries with the buffer geometry class as I have a bot more to learn with that one to make geometries just the way I want them for this type of thing.
+
+When it comes to really getting into creating models for wood working projects I guess I am really going to have to learn how to use blender or some other 3d modeling program. However I do like three.js a lot, and I like making animations and simple client side javaScript projects with three.js and a little javaScript. So Maybe it would not be such a bad thing to learn how to use three.js as a way to create some modules of sorts for this sort of thing. If I get fairly professional with this sort of thing I can end up posting the three.js examples up on my website here, and it will then be possible to interact with them in certain ways which could be fun.
 
