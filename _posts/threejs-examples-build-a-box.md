@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:38:19
-version: 1.16
+updated: 2021-05-17 15:23:33
+version: 1.17
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -19,7 +19,11 @@ This is a post on a three.js example that helps be get a crude visual idea of wh
 
 ### 1.1 - Version Numbers matter with three.js
 
-When I wrote this post I was using three.js r127 of three.js, and this example was working fine for me with the version.
+When I wrote this post I was using three.js r127 of three.js, and this example was working fine for me with the version. However it is true that changes are being made to three.js all the time that might cause this comes example to break when it comes to using it with a future version of three.js.
+
+### 1.2 - Look into Groups and Object3d if you have not done so yet
+
+In this example I am creating a crude model of a box with a collection of Mesh objects that are pulled together into a group. This is how I often go about making simple, basic models with three.js rather that doing something with an extremal file format, at least for now. So it might be a good idea to read up more on the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as well as the [Object3d base class](/2018/04/23/threejs-object3d/) in general if you are still fairly new to three.js
 
 ## 2 - The Build a Box module
 
