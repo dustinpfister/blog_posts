@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:36:03
-version: 1.15
+updated: 2021-05-17 14:38:19
+version: 1.16
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -157,7 +157,8 @@ var loop = function () {
 loop();
 ```
 
-Then end result of this when it is up and running is a simple animation of the mesh objects moving in and out of position.
+Then end result of this when it is up and running is a simple animation of the mesh objects moving in and out of position. On e thing that I have learned off the bat is that I am going to end up with some scrap pieces if I cut things the way that I intend to do so. There are a few additional touches that I might want to make to this source code when and if I get to it, but I do not thing that there is much more to get done with this one. I had a crude, basic idea of what it is that I wanted to do and this is more or less it for what it is worth.
+
 ## 4 - Conclusion
 
 This example made me become aware of some things when it comes to making a box out of a single board of wood, however I really learned that I still need to figure out some additional things when it comes to working with three.js also. I would like to make custom geometry that is like that of the box geometry constructor, but with one or more sides cut at 45 degree angles for example. So in the not to distance future I will need to revisit how to create custom geometries with the buffer geometry class as I have a bot more to learn with that one to make geometries just the way I want them for this type of thing.
