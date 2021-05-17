@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:18:01
-version: 1.6
+updated: 2021-05-17 14:18:58
+version: 1.7
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -15,7 +15,7 @@ I would like to start using three.js to work out a basic model when it comes to 
 
 ## 1 - Building a box with three.js and what to know before hand
 
-This is a post on a three.js example that helps be get a crude visual idea of what the situation will be if I cut a length of wood into 5 equal pieces to create an open box without a lid just for the sake of starting out with using three.js as a way to design some basic things that I can then build in real life using wood and simple hand tools maybe.
+This is a post on a three.js example that helps be get a crude visual idea of what the situation will be if I cut a length of wood into 5 equal pieces to create an open box without a lid just for the sake of starting out with using three.js as a way to design some basic things that I can then build in real life using wood and simple hand tools maybe. So then this is not a getting started type post for three.js or any additional skills that are required in order to get something of values from reading this.
 
 ## 2 - The Build a Box module
 
