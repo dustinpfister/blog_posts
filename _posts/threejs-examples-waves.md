@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-02-19 16:03:55
-version: 1.16
+updated: 2021-05-17 15:38:04
+version: 1.17
 ---
 
 So I wanted to start making some posts on [three.js](/2021/02/19/threejs-examples/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
@@ -21,7 +21,7 @@ This is a post on a three.js example where I made some waves. In this example I 
 
 ### 1.1 - version numbers matter
 
-When working out this example for the first time I was using revision 98 of three.js. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
+When working out this example for the first time I was using revision 98 of three.js, and the last time I can aroind to do some editing on this post I have found that this example still works okay on revision 127. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
 
 ## 2 - The wave Example
 
@@ -34,47 +34,38 @@ Here is the wave grid helper method that accepts a method that I can use to defi
 ```js
     // Wave grid helper
     var waveGrid = function (opt) {
- 
         opt = opt || {};
         opt.width = opt.width || 30;
         opt.depth = opt.depth || 30;
-        opt.height = opt.height || 1;
+        opt.height = opt.height || 2;
         opt.forPoint = opt.forPoint || function () {};
         opt.context = opt.context || opt;
         opt.xStep = opt.xStep || 0.075;
         opt.yStep = opt.yStep || 0.1;
         opt.zStep = opt.zStep || 0.075;
         opt.waveOffset = opt.waveOffset === undefined ? 0 : opt.waveOffset;
- 
         var points = [],
         radPer,
         x = 0,
         i = 0,
         y,
         z;
- 
         // points
         while (x < opt.width) {
- 
             z = 0;
             while (z < opt.depth) {
- 
                 // radian percent
                 radPer = (z / opt.depth + (1 / opt.width * x) + opt.waveOffset) % 1;
- 
                 // y value of point
                 y = Math.cos(Math.PI * 4 * radPer) * opt.height;
- 
                 // call forPoint
                 opt.forPoint.call(opt.context, x * opt.xStep, y * opt.yStep, z * opt.zStep, i);
- 
                 // step z, and point index
                 z += 1;
                 i += 3;
             }
             x += 1;
         };
- 
     };
 ```
 
@@ -85,34 +76,24 @@ Here I have a method that makes use of my waveGrid method by making the initial 
 ```js
     // make a points mesh
     var makePoints = function () {
- 
         var geometry = new THREE.BufferGeometry();
- 
         var points = [],
         opt = {};
         opt.forPoint = function (x, y, z, i) {
             points.push(x, y, z);
         };
- 
         waveGrid(opt);
- 
         var vertices = new Float32Array(points);
- 
         // itemSize = 3 because there are 3 values (components) per vertex
         geometry.addAttribute('position', new THREE.BufferAttribute(vertices, 3));
- 
         return new THREE.Points(
- 
             // geometry as first argument
             geometry,
- 
             // then Material
             new THREE.PointsMaterial({
- 
-                size: .05
- 
+                size: .125,
+                color: new THREE.Color(0.0, 0.25, 0.25)
             }));
- 
     };
 ```
 
@@ -123,9 +104,7 @@ I again use my waveGrid method to update points.
 ```js
     // update points
     var updatePoints = function (points, per) {
- 
         var position = points.geometry.getAttribute('position');
- 
         // update points
         waveGrid({
             waveOffset: per,
@@ -138,7 +117,6 @@ I again use my waveGrid method to update points.
             }
         });
         position.needsUpdate = true;
- 
     }
 ```
 
@@ -151,11 +129,14 @@ So now it is time to get this all working with the usual scene, camera, and rend
     var renderer = new THREE.WebGLRenderer({
             antialias: true
         });
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
     // SCENE
     var scene = new THREE.Scene();
+    var fogColor = new THREE.Color(1.0, 0.25, 0.0);
+    scene.background = fogColor;
+    scene.fog = new THREE.FogExp2(fogColor, 0.3);
  
     // POINTS
     var points = makePoints();
@@ -163,27 +144,38 @@ So now it is time to get this all working with the usual scene, camera, and rend
  
     // CAMERA
     var camera = new THREE.PerspectiveCamera(40, 320 / 240, .001, 1000);
-    camera.position.set(3.4, 8, 3.4);
+ 
+    // position of points an camera
+    points.position.set(0, 2.5, 0);
+    camera.position.set(2.5, 2.5, 2.5);
  
     // CONTROLS
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
  
-    renderer.render(scene, camera);
- 
     // LOOP
     var frame = 0,
-    maxFrame = 100,
+    maxFrame = 300,
+    lt = new Date(),
+    fps = 30,
     loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000,
+        per = frame / maxFrame,
+        bias = 1 - Math.abs(per - 0.5) / 0.5;
  
         requestAnimationFrame(loop);
  
-        updatePoints(points, frame / maxFrame);
- 
-        renderer.render(scene, camera);
- 
-        frame += 1;
-        frame %= maxFrame;
- 
+        if (secs > 1 / fps) {
+            updatePoints(points, per * 8 % 1);
+            var d = 0.5 + 2.5 * (1 - bias);
+            camera.position.set(d, 2.5, d);
+            camera.lookAt(-10, -10, -10);
+            camera.rotation.z = Math.PI * 2 * per;
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= maxFrame;
+            lt = now;
+        }
     };
  
     loop();
