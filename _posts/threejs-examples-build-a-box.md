@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:23:22
-version: 1.9
+updated: 2021-05-17 14:25:40
+version: 1.10
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood. These equal lengths of wood that are created from the dimensions of a single board will then end up being represented by a collection of five mesh objects in a group. I can then rotate an position these lengths to form what would become a finished product that is just a simple open box.
@@ -25,7 +25,9 @@ When I wrote this post I was using three.js r127 of three.js, and this example w
 
 The first thing that I will want is a build a box module that will create a collection of mesh objects based on the dimensions of a single board. The idea here is that I have an object that is the length height and width of a single board and then that data is used to create a collection of mesh objects where the length, which should be the longest side, is divided by 5 and then that length is used to create a collection of five mesh objects with one side being this new computed length while all the other sides are the same. I will then just want to rotate and position these mesh objects in a proper way so that they from a box, and that will be just about it for this module.
 
-So then this module has a main create method that will create and return a group of mesh objects that are created from a build in hard coded value that is the size of a piece of scrap wood that I got my hands on. If I did this right though I should be able to pug in any values for that and get the same result that I wanted when it comes to this crude idead of a three.js project for a very basic wood working project.
+So then this module has a main create method that will create and return a group of mesh objects that are created from a build in hard coded value that is the size of a piece of scrap wood that I got my hands on. If I did this right though I should be able to pug in any values for that and get the same result that I wanted when it comes to this crude idea of a three.js project for a very basic wood working project.
+
+I also have an update method that can be used to create this basic animation loop with the pieces that is an exposition of all the pieces moving out from a single piece that will be the bottom of the box.
 
 ```js
 (function(api){
