@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 868
-updated: 2021-05-17 14:05:28
-version: 1.1
+updated: 2021-05-17 14:09:34
+version: 1.2
 ---
 
 I would like to start using three.js to work out a basic model when it comes to creating a simple wooden box. So with that said todays [threejs example](/2021/02/19/threejs-examples/) post will be on a quick module that I put together that will help me get an idea of what the situation will be when I cut a board into 5 equal lengths of wood.
@@ -147,3 +147,4 @@ loop();
 
 ## 4 - Conclusion
 
+This example made me become aware of some things when it comes to making a box out of a single board of wood, however I really learned that I still need to figure out some additional things when it comes to working with three.js also. I would like to make custom geometry that is like that of the box geometry constructor, but with one or more sides cut at 45 degree angles for example. So in the not to distance future I will need to revisit how to create custom geometries.
