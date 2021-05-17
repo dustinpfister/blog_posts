@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-05-17 15:38:04
-version: 1.17
+updated: 2021-05-17 15:43:51
+version: 1.18
 ---
 
-So I wanted to start making some posts on [three.js](/2021/02/19/threejs-examples/) examples, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is set of points that move in a wave like pattern.
+So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on just simple examples of certain basic things here and there, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is a set of points that move in a wave like pattern.
 
-So this threejs example might be a good starting point when it comes to figuring out how to go about creating a custom geometry with a little javaScript code.
+So this threejs example might be a good starting point when it comes to figuring out how to go about creating a custom geometry with a little javaScript code, and also how to work with the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/). In this example I am just creating the points of a geometry though, so I will be using the THREE.Points constructor and the points material rather than the usual mesh constructor.
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ This is a post on a three.js example where I made some waves. In this example I 
 
 ### 1.1 - version numbers matter
 
-When working out this example for the first time I was using revision 98 of three.js, and the last time I can aroind to do some editing on this post I have found that this example still works okay on revision 127. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
+When working out this example for the first time I was using revision 98 of three.js, and the last time I can around to do some editing on this post I have found that this example still works okay on revision 127. Threejs is a library that is a very fast moving target when it comes to development, it seems like to new revision is coming out every few months. If the code here breaks the first thing that you should check is the version number, because this was working for me when it comes to the version of threejs that I was using at the time.
 
 ## 2 - The wave Example
 
