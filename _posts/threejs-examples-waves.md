@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 331
-updated: 2021-05-17 15:54:37
-version: 1.20
+updated: 2021-05-17 15:57:03
+version: 1.21
 ---
 
 So I wanted to start making some posts on [three.js examples](/2021/02/19/threejs-examples/), rather that the usual posts on just simple examples of certain basic things here and there, and one of the first ideas that came to mind was to make a waves example. In this post I will be writing about a helper method that I made that can be used to create an instance of buffered geometry that is a set of points that move in a wave like pattern.
@@ -122,7 +122,7 @@ I again use my waveGrid method to update points by just using the for point opti
 
 ### 2.4 - Get it going
 
-So now it is time to get this all working with the usual scene, camera, and renderer. I just use my makePoints helper to make the instance of a Points mesh that makes use of my geometry, and the Points material.
+So now it is time to get this all working with the usual scene, camera, renderer, and animation loop function that I often do in examples like this. After setting up the renderer and scene object I just use my makePoints helper to make the instance of a Points mesh that makes use of my geometry, and the Points material. I then set up a camera, and then I have some values for my main app loop function that will be using request animation frame.
 
 ```js
     // RENDER
@@ -148,9 +148,6 @@ So now it is time to get this all working with the usual scene, camera, and rend
     // position of points an camera
     points.position.set(0, 2.5, 0);
     camera.position.set(2.5, 2.5, 2.5);
- 
-    // CONTROLS
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
  
     // LOOP
     var frame = 0,
