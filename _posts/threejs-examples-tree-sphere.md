@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-19 17:17:15
-version: 1.3
+updated: 2021-05-19 17:18:44
+version: 1.4
 ---
 
 I wrote a post on a simple crude three model example using three.js, but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -15,6 +15,9 @@ So it goes without saying that I am going for a kind of style where I am just ma
 
 <!-- more -->
 
+## 1 - A tree Sphere model example in three.js and what to know first
+
+This is a post On using some built in geometry constructors and many other aspects of the three.js javaScript library to create a basic tree model for a scene.
 
 ## 2 - The tree sphere module
 
