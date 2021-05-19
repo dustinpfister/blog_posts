@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-19 17:27:57
-version: 1.10
+updated: 2021-05-19 17:29:04
+version: 1.11
 ---
 
 I wrote a post on a simple crude three model example using three.js, but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -156,5 +156,5 @@ To make sure that this tree module works the way that I expect it to I am going 
 
 ## 4 - Conclusion 
 
-This tree model might end up being used in a few additional three.js examples here and there when I want to have something that I can use to just quickly create some groups of objects that will look like trees.
+This tree model might end up being used in a few additional three.js examples here and there when I want to have something that I can use to just quickly create some groups of objects that will look like trees. More often than not something like this will work just fine, however that is because I am going for a very simplistic art style when it comes to this sort of thing.
 
