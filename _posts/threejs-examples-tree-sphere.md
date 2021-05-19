@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-19 17:11:55
-version: 1.1
+updated: 2021-05-19 17:14:02
+version: 1.2
 ---
 
-I wrote a post on a simple crude three model example using three.js, but I thought I would come around to making another one of these just for the sake of doing the same thing a different way.
+I wrote a post on a simple crude three model example using three.js, but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
 
 <!-- more -->
 
