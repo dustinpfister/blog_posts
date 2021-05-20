@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2021-05-20 10:09:32
-version: 1.10
+updated: 2021-05-20 10:12:21
+version: 1.11
 ---
 
 When it comes to rotating things in three.js there is the rotation property of the object3d class that stores an instance of the Euler class. When it comes to a Mesh object that is based off of Object3d that can be used as a way to rotate the mesh as a whole. However it is also worth pointing out that the geometry of a mesh object can also be rotated independently of a mesh objects orientation also.
@@ -77,4 +77,5 @@ A good starting example of buffer geometry rotation in combination with mesh obj
 
 ## 3 - Conclusion
 
-That is it for now when it comes to rotating a geometry in three.js, I did just want to touch base on this topic for now. If I do get more time to work on editing my three.js content more I am sure I will come around to adding a few more examples with this as I think doing so is called for.
+That is it for now when it comes to rotating a geometry in three.js, I did just want to touch base on this topic for now. If I do get more time to work on editing my three.js content more I am sure I will come around to adding a few more examples with this as I think doing so is called for. The main thing to keep in mind is that a geometry can be rotated in its own way separately from any mesh, or additional containing group of a mesh object. When rotating a geometry this is something that should often just be done once though just as a way to make sure that the front of a geometry is lines up with the front of a containing mesh object.
+
