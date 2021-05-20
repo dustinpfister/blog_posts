@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2021-05-20 10:21:04
-version: 1.13
+updated: 2021-05-20 10:25:32
+version: 1.14
 ---
 
 When it comes to rotating things in three.js there is the rotation property of the object3d class that stores an instance of the Euler class. When it comes to a Mesh object that is based off of Object3d that can be used as a way to rotate the mesh as a whole. However it is also worth pointing out that the geometry of a mesh object can also be rotated independently of a mesh objects orientation also.
@@ -77,7 +77,7 @@ So now I can create the cone geometry and rotate it the way that it should be fa
     ());
 ```
 
-In this example I am just rendering a static scene once, however it would not take that much more work to create a simple animation in which I am moving the cube around and having the cone continue to point in the direction of the cube.
+In this example I am just rendering a static scene once, however it would not take that much more work to create a simple animation in which I am moving the cube around and having the cone continue to point in the direction of the cube. When doing so the general idea here is to rotate the geometry just once to get the geometry to face the right direction within the mesh object, then change the rotation of the mesh object in the loop as needs when needed to create the animation rather than rotating the geometry.
 
 ## 3 - Conclusion
 
