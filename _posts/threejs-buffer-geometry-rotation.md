@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2021-05-20 10:02:51
-version: 1.8
+updated: 2021-05-20 10:07:27
+version: 1.9
 ---
 
 When it comes to rotating things in three.js there is the rotation property of the object3d class that stores an instance of the Euler class. When it comes to a Mesh object that is based off of Object3d that can be used as a way to rotate the mesh as a whole. However it is also worth pointing out that the geometry of a mesh object can also be rotated independently of a mesh objects orientation also.
@@ -27,7 +27,9 @@ If are not familial with the Vector3 and Euler classes now would be a good time 
 
 It should go without saying why the Euler class is important when it comes to rotating a geometry, but the vector3 class is also of interest when it comes to using something like the look at method as a way to set the orientation of a geometry or a mesh object as the value passed to such a method when using just one argument needs to be an instance of vector3.
 
-### 1.3 - Check out the Object3d class.
+### 1.3 - Check out the Object3d class also.
+
+There is rotating a geometry and then there is rotating something that contains that geometry. A geometry is often used with a Mesh, and a mesh is based off of the Object3d class. The Mesh if what should often be what is used to set orientation first and foremost, it is just that there are some situations in which the orientation of a geometry will need to be adjusted too at least once.
 
 ## 2 - Rotation of a cone geometry and using object3d.lookAt to have the point of the cone face something
 
