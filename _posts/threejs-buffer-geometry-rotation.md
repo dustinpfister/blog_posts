@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 871
-updated: 2021-05-20 09:31:08
-version: 1.1
+updated: 2021-05-20 09:34:00
+version: 1.2
 ---
 
 When it comes to rotating things in three.js there is the rotation property of the object3d class that stores an instance of the Euler class. When it comes to a Mesh object that is based off of Object3d that can be used as a way to rotate the mesh as a whole. However it is also worth pointing out that the geometry of a mesh object can also be rotated independently of a mesh objects orientation also.
@@ -15,6 +15,8 @@ When it comes to rotating things in three.js there is the rotation property of t
 
 
 ## 2 - Rotation of a cone geometry and using object3d.lookAt to have the point of the cone face something
+
+A good starting example of buffer geometry rotation in combination with mesh object rotation might be to start out with an instance of the built in cone geometry constructor, and rotating that geometry so that it will work as expected when using the look at method of a mesh object.
 
 ```js
 (function () {
