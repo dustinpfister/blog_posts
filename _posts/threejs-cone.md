@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-05-22 14:38:35
-version: 1.17
+updated: 2021-05-22 14:40:41
+version: 1.18
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -102,6 +102,48 @@ To make a half cone I just need to use the last to arguments that are given to t
 ## 5 - Rotating the geometry of a cone so that it works as you might want it to when using the look at method of the mesh
 
 Often a cone geometry might be used as a way to go about pointing to something in a scene, however be default the geometry of a cone will not line up as expected when using the look at method of a mesh that contains a cone geometry. This issue can easily be fixed by just rotating the cone geometry in a way so that the geometry of the cone will line up with the front of a containing mesh object. The rotateX method of the geometry instance of the cone is what can be used to make this kind of adjustment.
+
+```js
+(function () {
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(7, 7)); // grid helper for the scene
+    // geometry
+    var geometry = new THREE.ConeGeometry(0.5, 03, 30, 30);
+    // Mesh
+    var cone = new THREE.Mesh(
+            geometry,
+            new THREE.MeshNormalMaterial());
+ 
+    // USING BUFFER GEOMERTY ROTATEX METHOD
+    cone.geometry.rotateX(Math.PI * 0.5);
+ 
+    cone.add(new THREE.BoxHelper(cone)); // adding a box helper
+    scene.add(cone); // add custom to the scene
+ 
+    // adding a cube to have the cone point to
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    cube.position.set(3, 0, 3);
+    scene.add(cube)
+ 
+    cone.lookAt(cube.position); // using Object3d (base class of Mesh) lookAt
+ 
+    // camera render
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(6, 8, 6);
+    camera.lookAt(cone.position);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+Getting into this subject in detail might be a little off topic, but if interested you might want to check out my post on [rotating buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) in three.js.
 
 ## 6 - Conclusion
 
