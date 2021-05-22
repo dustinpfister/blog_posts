@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2021-05-22 09:57:43
-version: 1.10
+updated: 2021-05-22 10:01:01
+version: 1.11
 ---
 
 Earlier this week I wrote a post on a simple tree model in three.js, so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using canvas elements to create textures for the trees as well as the world sphere itself. So this time around the three.js example in this post is actually now just one example but a combination of several examples that I have worked out all ready in the past.
@@ -20,6 +20,10 @@ This is a post on a three.js project example in which I am creating a main world
 ### 1.1 - Version numbers matter with three.js
 
 When this post was written I was using three.js revision 127 of three.js. Just like with any other javaScript library it is impotent to keep in mind which version of the library is being used when working out source code examples, as code breaking changes are often made to the public api of the library.
+
+### 1.2 - Experiment with creating simple models that are just groups of mesh objects
+
+I have wrote a number of posts thus far that have to do with crating a model that is really just a group of mesh objects. It is these mesh objects that are used to create an over all model that looks like something. This kind of approve might be crude compared to the more professional way of doing this sort of thing that would just involve a single geometry, however I have found that this kind of model still works fine with what it is that I would like to do with three.js.
 
 ## 2 - The World model
 
