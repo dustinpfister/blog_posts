@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-04-25 10:50:59
-version: 1.16
+updated: 2021-05-22 14:38:35
+version: 1.17
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -99,7 +99,11 @@ To make a half cone I just need to use the last to arguments that are given to t
     scene.add(mesh);
 ```
 
-## 5 - Conclusion
+## 5 - Rotating the geometry of a cone so that it works as you might want it to when using the look at method of the mesh
+
+Often a cone geometry might be used as a way to go about pointing to something in a scene, however be default the geometry of a cone will not line up as expected when using the look at method of a mesh that contains a cone geometry. This issue can easily be fixed by just rotating the cone geometry in a way so that the geometry of the cone will line up with the front of a containing mesh object. The rotateX method of the geometry instance of the cone is what can be used to make this kind of adjustment.
+
+## 6 - Conclusion
 
 So the cone geometry constructor is yet another basic tool in the toolbox when it comes to quickly creating basic geometries in three.js. The various arguments can be tweaked to create other typical shapes also of course. For example to make a four sided pyramid I just need to set a value of 4 for the radial segments argument.
 
