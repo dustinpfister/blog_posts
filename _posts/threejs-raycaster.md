@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2021-05-22 13:32:37
-version: 1.13
+updated: 2021-05-22 13:35:24
+version: 1.14
 ---
 
 When making a three.js project there might be situations in which it would be nice to have a way to click on a mesh object in a scene. When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the camera outward based on a 2d location of the canvas, and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the RayCaster Class.
@@ -345,6 +345,9 @@ var loop = function () {
 }
 loop();
 ```
+
+
+So then the outcome of this is more or less what I had in mind when it comes to what I wanted to do. When I mouse over a cube group the cube group beginnings an animation loop, until the loop is over at which point the active false ends up getting set back to false. Maybe not the most interesting example, but I wanted to do something at least a little more advanced then just the usual basic copy and paste cook book style code examples.
 
 ## 4 - Conclusion
 
