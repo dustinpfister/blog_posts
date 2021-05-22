@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2021-05-19 08:52:39
-version: 1.6
+updated: 2021-05-22 13:04:34
+version: 1.7
 ---
 
-When making a three.js project there might be situations in which it would be nice to have a way to click on a mesh object in a scene. When dong so this will result in some kind of action being preformed that is even driven. To do this I need a way to cast a ray from the camera outward based on a 2d location of the canvas, and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the RayCaster Class.
+When making a three.js project there might be situations in which it would be nice to have a way to click on a mesh object in a scene. When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the camera outward based on a 2d location of the canvas, and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the RayCaster Class.
+
+There is just getting started with the very basics when it comes to ray casting in three.js, and of course I will be starting out with that in this post. However there might be a whole bunch more advanced topics that will also come up when it comes to this sort of thing. So I think that it might be called for to go over at least a few examples of the ray cater class in three.js.
 
 <!-- more -->
 
