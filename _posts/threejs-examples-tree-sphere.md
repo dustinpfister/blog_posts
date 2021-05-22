@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-22 13:51:15
-version: 1.15
+updated: 2021-05-22 13:52:25
+version: 1.16
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -31,7 +31,7 @@ In this three.js example I am making use of the [THREE.Group constructor](/2018/
 
 So then here I have the tree sphere model as it currently stands as of this writing. There is not much to write about when it comes to a crude, simple static model that is created using the built in geometry constructors of three.js like this. However I think I have the few things that I should be ware of solid as it seems to be working the way I expect it to when it comes to how I intend to use it in an over all scene.
 
-Like may of my javaScript modules I have everything wrapped up into an IIFE and I have a single global variable to which I will be attaching public methods. With the tree sphere module however there is going to just be one pubic method that will be the create method that I use outside of this module to create an instance of a sphere tree.
+Like may of my javaScript modules I have everything wrapped up into an [IIFE](/2020/02/04/js-iife/) and I have a single global variable to which I will be attaching public methods. With the tree sphere module however there is going to just be one pubic method that will be the create method that I use outside of this module to create an instance of a sphere tree.
 
 ```js
 (function (api) {
