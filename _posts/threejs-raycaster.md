@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2021-05-22 13:16:03
-version: 1.10
+updated: 2021-05-22 13:17:27
+version: 1.11
 ---
 
 When making a three.js project there might be situations in which it would be nice to have a way to click on a mesh object in a scene. When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the camera outward based on a 2d location of the canvas, and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the RayCaster Class.
@@ -248,6 +248,8 @@ Here I have the state of the cube group module as I have used it for this exampl
 ```
 
 ### 3.2 - the main javaScript file
+
+Now for a main javaScript file in which I am using the Raycaster class to run an animation for any and all cube groups that intersect when using a Raycater.
 
 ```js
 var raycaster = new THREE.Raycaster();
