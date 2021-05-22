@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-22 13:58:08
-version: 1.18
+updated: 2021-05-22 14:00:19
+version: 1.19
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -97,7 +97,7 @@ That is it for the tree sphere module, the idea here was to just make a very sim
 
 ## 3 - A Simple demo of this tree sphere module
 
-To make sure that this tree module works the way that I expect it to I am going to want to work out a little additional code that will make use of it. So then I made an additional main javaScript file in which I set up the usual scene object along with a camera, renderer, and animation loop.
+To make sure that this tree module works the way that I expect it to I am going to want to work out a little additional code that will make use of it. So then I made an additional main javaScript file in which I set up the usual scene object along with a camera, renderer, and animation loop. In the animation loop I am not going to be doing much of anything to animate the tree, but I think I will just have a point light move around the tree or something to that effect. When it comes to using this tree model I am thinking that it is not going to be very animated in any way, it is after all a tree.
 
 ```js
 (function () {
