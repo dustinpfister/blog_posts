@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-22 13:54:51
-version: 1.17
+updated: 2021-05-22 13:58:08
+version: 1.18
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -92,6 +92,8 @@ Like may of my javaScript modules I have everything wrapped up into an [IIFE](/2
 }
     (this['TreeSphereMod'] = {}));
 ```
+
+That is it for the tree sphere module, the idea here was to just make a very simple crude model that looks a little like a tree following a every simple art style. I do not thing that it can get much more simple than this, so now it is just a question of using the is some kind of basic scene to make sure that it works as it should when using the look at method of the over all group that contains both the trunk and the sphere at top.
 
 ## 3 - A Simple demo of this tree sphere module
 
