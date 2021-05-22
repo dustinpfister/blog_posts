@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-22 14:04:23
-version: 1.20
+updated: 2021-05-22 14:18:13
+version: 1.21
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -163,4 +163,8 @@ the main thing here is the line where I am using the look at method of the tree 
 ## 4 - Conclusion 
 
 This tree model might end up being used in a few additional three.js examples here and there when I want to have something that I can use to just quickly create some groups of objects that will look like trees. More often than not something like this will work just fine, however that is because I am going for a very simplistic art style when it comes to this sort of thing.
+
+There is not much to say about this, however there might be a lot to say about some over all project in which I am using the tree sphere model as just one assets in an over all larger scene of some kind. One other example that I have made thus far that make use of this tree sphere model will be [my tree sphere world example](/2021/05/21/threejs-examples-tree-sphere-world/). In this example I am making a main world module that creates a bunch of these tree models and places them along the surface of a sphere that represents some kind of small little world.
+
+
 
