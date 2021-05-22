@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-22 13:41:11
-version: 1.12
+updated: 2021-05-22 13:46:24
+version: 1.13
 ---
 
 I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
@@ -25,7 +25,7 @@ When I wrote this post, and tested out the code examples here I was using r127 o
 
 ### 1.2 - Groups and the Object3d class
 
-In this three.js example I am making use of the THREE.Group constructor as a way to create a collection of mesh objects that compose something that looks a little like a tree. I am also using a lot of other features that are part of the object3d class.
+In this three.js example I am making use of the [THREE.Group constructor](/2018/05/16/threejs-grouping-mesh-objects/) as a way to create a collection of mesh objects that compose something that looks a little like a tree. I am also using a lot of other features that are part of the object3d class such as the look at method of that class just to name on little feature. The [Object3d class](/2018/04/23/threejs-object3d/) is a base class of a whole lot of other classes in three.js that include Groups, but also things like Mesh Objects, and Cameras so the class is worth looking into in death if you have not done so before hand.
 
 ## 2 - The tree sphere module
 
