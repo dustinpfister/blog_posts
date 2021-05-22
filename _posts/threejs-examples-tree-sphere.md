@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 870
-updated: 2021-05-19 17:29:04
-version: 1.11
+updated: 2021-05-22 13:41:11
+version: 1.12
 ---
 
-I wrote a post on a simple crude three model example using three.js, but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
+I wrote a post on a [simple crude three model example](/2019/07/30/threejs-examples-tree/) using [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), but I thought I would come around to making another one of these just for the sake of doing the same thing a different way. The last tree model that I made involves making a whole bunch of cone geometries and then positioning them and rotating them in a way to make something that looks a little like an ever green tree. This is another model like that where I am just using a sphere geometry and a box geometry to create another kind of tree.
 
 So it goes without saying that I am going for a kind of style where I am just making simple basic models using the built in three.js geometries. This is then a fairly basic example of this kind of model but there are still a few basic things that I need to work out when it comes to creating these kinds of groups of mesh objects. One thing to be aware of is what happens when I use the object3d look at method with out of these. For this tree model I would want for the look at method to make it so that the bottom of the trunk is what is facing the position that I give to the look at method. 
 
@@ -21,7 +21,7 @@ This is a post On using some built in geometry constructors and many other aspec
 
 ### 1.1 - Version Numbers matter with three.js
 
-When I wrote this post, and tested out the code examples here I was using r127 of three.js.
+When I wrote this post, and tested out the code examples here I was using r127 of three.js. Changes are made to three.js all the time that often end up making code examples on the open web break, more so than usual compares to many other javaScript libraries where development moves a little slower.
 
 ### 1.2 - Groups and the Object3d class
 
