@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2021-05-22 09:08:25
-version: 1.3
+updated: 2021-05-22 09:10:04
+version: 1.4
 ---
 
-Earlier this week I wrote a post on a simple tree model in three.js, so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere.
+Earlier this week I wrote a post on a simple tree model in three.js, so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. So todays three.js example is actually now just one example but a combination of several examples that I have worked out all ready in the past.
 
 <!-- more -->
 
