@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-05-22 14:40:41
-version: 1.18
+updated: 2021-05-22 14:43:50
+version: 1.19
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -143,7 +143,7 @@ Often a cone geometry might be used as a way to go about pointing to something i
     ());
 ```
 
-Getting into this subject in detail might be a little off topic, but if interested you might want to check out my post on [rotating buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) in three.js.
+Getting into this subject in detail might be a little off topic, but if interested you might want to check out my post on [rotating buffer geometry](/2021/05/20/threejs-buffer-geometry-rotation/) in three.js. However I will just bring up one thing when it comes to rotating geometry in threejs and that is that it is something that such typically be done only once. When it comes to this issue the geometry just needs to be rotated so that things line up when using the object3d look at method of the mesh object. It is the object3d level methods and properties that should always be used to change the position and rotation of an over all mesh object.
 
 ## 6 - Conclusion
 
