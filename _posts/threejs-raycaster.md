@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2021-05-22 13:04:34
-version: 1.7
+updated: 2021-05-22 13:09:30
+version: 1.8
 ---
 
 When making a three.js project there might be situations in which it would be nice to have a way to click on a mesh object in a scene. When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the camera outward based on a 2d location of the canvas, and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the RayCaster Class.
@@ -24,6 +24,8 @@ This is a post on using the THREE.Raycaster class in three.js as a way to help w
 When I made these examples and wrote this post I was using r127 of three.js which was still a fairly later version of three.js as of this writing. Code breaking changes are always made with three.js as new revision s come out so if you run into problems with getting this to work on your end that might be the first thing you should check actually.
 
 ## 2 - A Basic Raycaster example
+
+The main method of interest with the Raycaster class is the intersect objects method, but in order to set the state of the Raycaster instance first I will want to use the set from camera method. In order to use the set from camera method of course I am going to need an instance of a camera, but I am also going to need a Vector2 instance that is the mouse position in the canvas.
 
 ```js
 var raycaster = new THREE.Raycaster();
