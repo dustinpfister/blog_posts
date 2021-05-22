@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-05-22 14:25:43
-version: 1.27
+updated: 2021-05-22 14:29:26
+version: 1.28
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -84,6 +84,8 @@ This is an example of a module that can be used to shake the whole scene that wi
 This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
 ### [2.15 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
+
+This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
 
 ### [2.16 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
 
