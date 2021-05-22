@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 869
-updated: 2021-05-22 13:17:27
-version: 1.11
+updated: 2021-05-22 13:23:28
+version: 1.12
 ---
 
 When making a three.js project there might be situations in which it would be nice to have a way to click on a mesh object in a scene. When dong so this will result in some kind of action being preformed that is event driven by way of user input rather than some kind of script. To do this I need a way to cast a ray from the camera outward based on a 2d location of the canvas, and then get a collection of mesh objects that intersect with this ray that is going from the camera outward. Luckily this kind of functionality is built into three.js itself and it is called the RayCaster Class.
@@ -348,4 +348,4 @@ loop();
 
 ## 4 - Conclusion
 
-SO then the raycasetr class is a useful tool to go about clicking on mesh objects in three.js. However I am sure that there are many uses for the class that will come up when it comes to writing scripts that update some kind of simulation also when it comes to getting a collection of mesh objects from a given object outward.
+So then the raycaster class is a useful tool to go about clicking on mesh objects in three.js. However I am sure that there are many uses for the class that will come up when it comes to writing scripts that update some kind of simulation also when it comes to getting a collection of mesh objects from a given object outward or anything to that effect. I think that there might be a need for maybe a few more basic examples of this kind of class as I am sure that there are a number of issues that will come up here and there when using this class. Not just with the class itself, but also when it comes to three.js, and javaScript in general. For example many of the examples that I have worked out as of this writing will just work with a mouse, but I did not do anything when it comes to working with touch devices, and this day in age I have to take that into account when making any kind of production project.
