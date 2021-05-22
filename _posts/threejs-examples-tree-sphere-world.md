@@ -5,11 +5,12 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2021-05-22 14:18:54
-version: 1.16
+updated: 2021-05-22 14:21:31
+version: 1.17
 ---
 
-Earlier this week I wrote a [post on a simple tree model](/2021/05/19/threejs-examples-tree-sphere/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using canvas elements to create textures for the trees as well as the world sphere itself. So this time around the three.js example in this post is actually now just one example but a combination of several examples that I have worked out all ready in the past.
+Earlier this week I wrote a [post on a simple tree model](/2021/05/19/threejs-examples-tree-sphere/) in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using canvas elements to create textures for the trees as well as the world sphere itself. 
+So this time around the [three.js example](/2021/02/19/threejs-examples/) in this post is actually now just one example but a combination of several examples that I have worked out all ready in the past. This is not the first such example that I have made think this, but I think that I would like to make at least a few of these as I try t find out what I might like to do with three.js over the long term when it comes to making animations, games, or maybe even something practical if I can manage doing so.
 
 <!-- more -->
 
