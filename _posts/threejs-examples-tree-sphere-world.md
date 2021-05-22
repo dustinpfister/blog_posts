@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2021-05-22 09:53:46
-version: 1.9
+updated: 2021-05-22 09:57:43
+version: 1.10
 ---
 
 Earlier this week I wrote a post on a simple tree model in three.js, so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using canvas elements to create textures for the trees as well as the world sphere itself. So this time around the three.js example in this post is actually now just one example but a combination of several examples that I have worked out all ready in the past.
@@ -16,6 +16,10 @@ Earlier this week I wrote a post on a simple tree model in three.js, so today I 
 ## 1 - What to know first with this World of tree sphere models in three.js
 
 This is a post on a three.js project example in which I am creating a main world module that makes use of another model that is used to create an instance of a crude tree module that I worked out in another post. In this post I am making use of a while lot of features to work with in three.js, but for the most part I am sticking to using just built in geometries, and materials, and not doing anything to off the rails. Still this is not a post that is intended for developers that are new to three.js, and even if you have some experience with three.js there are still a few things that you might want to brush up on before reading more on this example.
+
+### 1.1 - Version numbers matter with three.js
+
+When this post was written I was using three.js revision 127 of three.js. Just like with any other javaScript library it is impotent to keep in mind which version of the library is being used when working out source code examples, as code breaking changes are often made to the public api of the library.
 
 ## 2 - The World model
 
