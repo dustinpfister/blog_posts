@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2021-05-22 12:50:50
-version: 1.12
+updated: 2021-05-22 12:56:38
+version: 1.13
 ---
 
 Earlier this week I wrote a post on a simple tree model in three.js, so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using canvas elements to create textures for the trees as well as the world sphere itself. So this time around the three.js example in this post is actually now just one example but a combination of several examples that I have worked out all ready in the past.
@@ -272,6 +272,10 @@ A while back I worked out another example where I was making use of canvas eleme
 ```
 
 ## 5 - The main javaScript file
+
+Just like with any other three.js example of mine I am always going to want to have some kind of main javaScript file. In some examples that are simple enough I might just have this file alone, but in more complex examples such as this one there are just a few core features that are just about always parked here. In this file I create my scene object, renderer, and main application animation loop. this is also where I will just end up placing anything else that might come up before it ends up having some kind of module of its own, or because I am not sure where to go with it.
+
+In this main javaScript file I am creating some custom materials for the sphere and trunk parts of trees using the canvas texture module of mine. These materials are what will be used to override what it is that I am using as hard coed defaults in the tree module.
 
 ```js
 (function () {
