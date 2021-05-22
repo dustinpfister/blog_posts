@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 512
-updated: 2021-05-22 14:46:44
-version: 1.20
+updated: 2021-05-22 14:50:37
+version: 1.21
 ---
 
 When it comes to [three js geometry](https://threejs.org/docs/#api/en/core/Geometry) there are a number of built in constructors that can be used to make most basic shapes such as the Box GeoMetry Constructor, and the Sphere Geometry Constructor. These constructors can be used to quickly create a geometry that can then in turn be used with a materials to produce a mesh that can then be added to a scene. One of these is the [cone geometry constructor](https://threejs.org/docs/#api/en/geometries/ConeGeometry), that is yet another basic typical shape that I would like to use in basic projects.
@@ -18,6 +18,10 @@ There is also getting into ways to go about coming up with a custom geometry by 
 ## 1 - This is a post on three js
 
 This is a post on a built in geometry constructor in three js that can be used to make a cone shape buffer geometry that can then be used with a materials to compose a mesh object. This is not a getting started post on three js let alone javaScript in general so I assume that you have at least some exposure with three js. I will not be going over every little basic detail in this section, but I can take the time to cover some basic that you should know by now when looking into all the various built in geometry constructors to work with in three.js.
+
+### 1.1 - Check your version numbers
+
+When I first wrote this post I was using version r106 of three.js and the last time I got around to do a little editing with this post I as using r127. When it comes to the cone geometry constructor alone it would seem that not much has changes from an user perspective. However code breaking changes are made to three.js all the time, so if things are not working on your end with code examples in this post, or any three.js post on the open web for that matter take into account what version you are using and the version that the author of the example was using first
 
 ## 2 - Three js geometry cone basic example
 
