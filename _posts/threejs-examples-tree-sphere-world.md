@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 872
-updated: 2021-05-22 09:38:49
-version: 1.6
+updated: 2021-05-22 09:45:52
+version: 1.7
 ---
 
 Earlier this week I wrote a post on a simple tree model in three.js, so today I thought I would write a post on another example in which I am using that tree model to create a simple world of sorts with these trees all over it. The idea here is to just have instances of this simple tree model positioned on the surface of a sphere. With that said I am going to want to have a main world module that will create and position a collection of three models, and it will also make use of some additional features that I have worked out in other examples, such as using canvas elements to create textures for the trees as well as the world sphere itself. So this time around the three.js example in this post is actually now just one example but a combination of several examples that I have worked out all ready in the past.
@@ -192,3 +192,197 @@ Here I have the source code of the tree sphere model that i will be using in the
 }
     (this['TreeSphereMod'] = {}));
 ```
+
+## 4 - Going to make use of canvas textures for this example
+
+```js
+(function (canvasTextureMod) {
+    // create a canvas texture with a draw method and size
+    canvasTextureMod.createCanvasTexture = function (draw, size) {
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = size || 64;
+        canvas.height = size || 64;
+        draw(ctx, canvas);
+        return new THREE.CanvasTexture(canvas);
+    };
+ 
+    var randomGridDraw = function (ctx, canvas, colorsArray, minValue, maxValue) {
+        var i = 0,
+        r1,
+        r,
+        g,
+        b,
+        x,
+        y,
+        len = canvas.width * canvas.height;
+        while (i < len) {
+            x = i % canvas.width;
+            y = Math.floor(i / canvas.width);
+            r1 = minValue + Math.floor((maxValue - minValue) * Math.random());
+            r = colorsArray[0] === 'r1' ? r1 : colorsArray[0];
+            g = colorsArray[1] === 'r1' ? r1 : colorsArray[1];
+            b = colorsArray[2] === 'r1' ? r1 : colorsArray[2];
+            ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+            ctx.fillRect(x, y, 1, 1);
+            i += 1;
+        }
+    };
+ 
+    // create random gird texture
+    canvasTextureMod.randomGrid = function (colorsArray, size, valueMin, valueMax) {
+        colorsArray = colorsArray === undefined ? ['r1', 'r1', 'r1'] : colorsArray;
+        size = size || 32;
+        valueMin = valueMin === undefined ? 64 : valueMin;
+        valueMax = valueMax === undefined ? 128 : valueMax;
+        return canvasTextureMod.createCanvasTexture(function (ctx, canvas) {
+            randomGridDraw(ctx, canvas, colorsArray, valueMin, valueMax);
+        }, size);
+    };
+    // create a basic square texture
+    canvasTextureMod.basicSquare = function (colorsArray, size, lineSize, lineStyle, minValue, maxValue) {
+        colorsArray = colorsArray === undefined ? ['r1', 'r1', 'r1'] : colorsArray;
+        size = size || 32;
+        return canvasTextureMod.createCanvasTexture(function (ctx, canvas) {
+            // draw random grid texture
+            randomGridDraw(ctx, canvas, colorsArray, minValue || 0, maxValue === undefined ? 64 : maxValue);
+            // draw lines
+            ctx.strokeStyle = lineStyle || 'white';
+            ctx.lineWidth = lineSize || 3;
+            ctx.rect(0, 0, canvas.width, canvas.height);
+            ctx.stroke();
+        }, size);
+    };
+}
+    (this['canvasTextureMod'] = {}));
+```
+
+## 5 - The main javaScript file
+
+```js
+(function () {
+    var MATERIALS_TREE = {
+        sphere: new THREE.MeshStandardMaterial({
+            //color: 0x00ff80,
+            map: canvasTextureMod.randomGrid(['0', 'r1', '64'], 32, 32, 150),
+            side: THREE.DoubleSide
+        }),
+        trunk: new THREE.MeshStandardMaterial({
+            color: 0xffaf80,
+            map: canvasTextureMod.randomGrid(['r1', 'r1', '64'], 32, 32, 150),
+            side: THREE.DoubleSide
+        })
+    };
+    var MATERIALS_LIGHTS = {
+        sun: new THREE.MeshStandardMaterial({
+            emissive: 'white',
+            emissiveMap: canvasTextureMod.randomGrid(['r1', 'r1', '0'])
+        }),
+        moon: new THREE.MeshStandardMaterial({
+            emissive: 'white',
+            emissiveMap: canvasTextureMod.randomGrid(['0', 'r1', 'ri'])
+        })
+    };
+    var MATERIALS_GROUND = {
+        grass: new THREE.MeshStandardMaterial({
+            color: 'white',
+            map: canvasTextureMod.randomGrid(['0', 'r1', '64'], 128, 125, 200),
+        })
+    };
+ 
+    // creating a scene
+    var scene = new THREE.Scene();
+ 
+    var worldOptions = {
+        MATERIALS_GROUND: MATERIALS_GROUND,
+        MATERIALS_TREE: MATERIALS_TREE,
+        MATERIALS_LIGHTS: MATERIALS_LIGHTS,
+        lightsDPSY: 20,
+        lightsDPSZ: 5,
+        worldRotation: 5
+    };
+    var world = WorldMod.create(worldOptions);
+    scene.add(world);
+ 
+    // world2
+    worldOptions.worldRotation = 65;
+    worldOptions.lightsDPSY = 75;
+    worldOptions.lightsDPSZ = 25;
+    var world2 = WorldMod.create(worldOptions);
+    world2.position.set(-28, -3, -5);
+    scene.add(world2);
+ 
+    // world3
+    worldOptions.worldRotation = 1;
+    worldOptions.lightsDPSX = 25;
+    worldOptions.lightsDPSY = 25;
+    worldOptions.lightsDPSZ = 0;
+    var world3 = WorldMod.create(worldOptions);
+    world3.position.set(-15, -20, -50);
+    scene.add(world3);
+ 
+    // camera and renderer
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(12, 12, 12);
+    camera.lookAt(0, 0, 0);
+ 
+    // RENDERER
+    var renderer = new THREE.WebGLRenderer();
+    //renderer.width = 640;
+    renderer.domElement.width = 640;
+    renderer.domElement.height = 480;
+    renderer.setViewport(0, 0, 640, 480);
+    var container = document.getElementById('demo');
+    container.appendChild(renderer.domElement);
+    var full = false;
+    var toggleFull = function (canvas) {
+        var canvas = renderer.domElement;
+        full = !full;
+        container.style.position = 'static';
+        container.style.width = '640px';
+        container.style.height = '480px';
+        canvas.style.width = '640px';
+        canvas.style.height = '480px';
+        if (full) {
+            canvas.style.width = 'auto';
+            canvas.style.height = window.innerHeight + 'px';
+            canvas.style.margin = 'auto';
+            container.style.position = 'fixed';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.background = 'black';
+            container.style.left = '0px';
+            container.style.top = '0px';
+        }
+    };
+    // press f for full screen
+    window.addEventListener('keydown', function (e) {
+        if (e.key === 'f') {
+            toggleFull();
+        }
+    });
+ 
+    var lt = new Date(),
+    sunRadian = Math.PI,
+    fps = 30;
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            WorldMod.update(world, secs);
+            WorldMod.update(world2, secs);
+            WorldMod.update(world3, secs);
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+ 
+}
+    ());
+```
+
+## 6 - Conclusion
+
+This example has proved to be a half way decent exercise with a great many various topics in three.js that I am using together to create a single project. There is having a single model of a tree that is composed of just a sphere and a box geometry of a trunk, but then there is getting into having a collection of these kinds of models, and also beginning a number of other things into play in order to make a somewhat interesting over all scene. This was more or less the goal with this three.js example, and I am to make at least a few more examples such as this when it comes to making something that is at least starting to look like some kind of finished product.
