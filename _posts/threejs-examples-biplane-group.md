@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 14:35:58
-version: 1.25
+updated: 2021-05-23 14:37:12
+version: 1.26
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -255,7 +255,7 @@ Now for some additional javaScript to make use of this new biplane group model. 
 
 I then went ahead and made a collection of these bi plane group models so there is yet another collection level of sorts when it comes to each instance of the biplane group model. I have to say that that [THREE.group](/2018/05/16/threejs-grouping-mesh-objects/) constructor is great for keeping things compartmentalized when working out things like this that might be many nested levels of objects.
 
-I then set up my renderer and also a main application loop. It is inside this animation loop that I am going over the collection of bi plane groups and updating the position of each group.
+I then set up my renderer and also a main application loop. It is inside this animation loop that I am going over the collection of bi plane groups and updating the position of each group. For now I am thinking that I should just have each group move from one side of the scene over to another side and then just have a way so that they reposition back on the starting side once they pass a given range.
 
 ```js
 (function () {
