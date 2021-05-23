@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 14:18:20
-version: 1.20
+updated: 2021-05-23 14:20:44
+version: 1.21
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -118,6 +118,8 @@ var BiplaneGroup = (function () {
 }
     ());
 ```
+
+There is a great deal that I could do when it comes to working out what the logic should be when it comes to updating the position of each plane relative to the origin of the bi plane group. However I think for now I will do something simple were each biplane just moves up and down a little, and also have each first child of the group do a rotation.
 
 
 ## 3 - Biplane model
