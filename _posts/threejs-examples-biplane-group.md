@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 14:16:16
-version: 1.19
+updated: 2021-05-23 14:18:20
+version: 1.20
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -30,7 +30,7 @@ First off is the biplane group that will create a group of groups where each nes
 
 I thought that maybe it would be a good idea to have a set number of biplanes for each biplane group for now when it comes to making something like this. So for now it is just a group of three biplane models each positioned in a circle around the origin point of the group.
 
-Like many of my other modules like this there is a create method that will just create a single instance of this bi plane group model, and another method that will update the state of a biplane group.
+Like many of my other modules like this there is a create method that will just create a single instance of this bi plane group model, and another method that will update the state of a biplane group. The create method will return an instance of THREE.Group, and each Child of that group will be a group of mesh objects created with the biplane module. Inside this create method I am also attaching a number of values for the user data objects for the main biplane group as well as for each bi plane group also.
 
 
 ```js
