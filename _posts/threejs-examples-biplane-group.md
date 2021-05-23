@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 13:56:38
-version: 1.17
+updated: 2021-05-23 14:12:55
+version: 1.18
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -22,7 +22,7 @@ This is a post on a three.js example where I am creating a Group of Groups of Me
 
 ### 1.1 - Version Numbers matter with three.js
 
-When I first wrote this post I was using r125 of three.js, and the last time I cam around to do a little editing I was using r127 of three.js
+When I first wrote this post I was using r125 of three.js, and the last time I cam around to do a little editing I was using r127 of three.js which was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time so when working with code examples on the open web make sure that what you are working with is up to date.
 
 ## 2 - Biplane Group model
 
