@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-23 14:54:36
-version: 1.15
+updated: 2021-05-23 14:55:52
+version: 1.16
 ---
 
-I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun javaScript, rather than dull but useful jaavScript. Also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas elements, yet there is a great deal of room for creativity when it comes to that kind of project. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) that is a javaScript powered basic clock.
+I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun javaScript, rather than dull but useful jaavScript. Also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas elements, yet there is a great deal of room for creativity when it comes to that kind of project. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) that is a javaScript powered basic clock which should prove to be a simple fun little project.
 
 <!-- more -->
 
