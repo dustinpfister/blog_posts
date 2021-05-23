@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-05-23 10:05:56
-version: 1.15
+updated: 2021-05-23 10:08:55
+version: 1.16
 ---
 
-When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a [Biplane](https://en.wikipedia.org/wiki/Biplane) using just the built in three.js geometry constructors and groups.
+When it comes to [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a [Biplane](https://en.wikipedia.org/wiki/Biplane) using just the built in three.js geometry constructors mainly the [box geometry](/2021/04/26/threejs-box-geometry/) constructor and [groups](/2018/05/16/threejs-grouping-mesh-objects/).
 
 This example will involve create a bunch of mesh objects, combining them into a group, and then positioning and skinning things to make something that looks like a little plane. It would then be fun to add a few more models to create a plane, and a main world object for a crude scene of some kind. For now I think I would like to have just one plane, and have it fly around in a circle, and move the camera around to have a nice neat looping animation.
 
