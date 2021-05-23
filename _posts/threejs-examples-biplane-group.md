@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 14:28:27
-version: 1.23
+updated: 2021-05-23 14:32:03
+version: 1.24
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -251,7 +251,7 @@ var Biplane = (function () {
 
 ## 4 - The main javaScript file
 
-Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always when many of these examples. When it comes to adding a light source I went with a [point light](/2019/06/02/threejs-point-light) and I also wanted to add at least a little [ambient light](/2018/11/02/threejs-ambientlight/) that works well with the Lambert material that I am using with the biplanes.
+Now for some additional javaScript to make use of this new biplane group model. I start off with a scene and a camera like always with just about any of these examples like always. However with this example I am using materials that will respond to light so in this example I will want a light source, and when it comes to adding a light source I went with a [point light](/2019/06/02/threejs-point-light) and I also wanted to add at least a little [ambient light](/2018/11/02/threejs-ambientlight/) also. This is a typical situation with light where I have a baseline amount of light and then something like a point light to help show some depth with the materials that I am using with the biplanes.
 
 I then went ahead and made three groups of these biplane group models to which each has three biplanes. In addition each biplane is a group of mesh objects. I have to say that that [THREE.group](/2018/05/16/threejs-grouping-mesh-objects/) constructor is great for keeping things compartmentalized for when working out things like this.
 
