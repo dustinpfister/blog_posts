@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 14:40:19
-version: 1.28
+updated: 2021-05-23 15:00:31
+version: 1.29
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -283,7 +283,8 @@ I then set up my renderer and also a main application loop. It is inside this an
     light.intensity = 0.1;
     scene.add(light);
  
-    var biGroups = [];
+    var biGroups = new THREE.Group();
+    scene.add(biGroups);
  
     var i = 0,
     group;
@@ -292,8 +293,7 @@ I then set up my renderer and also a main application loop. It is inside this an
         group.position.z = -50 + 50 * (i % 3);
         group.position.y = 50 - 50 * Math.floor(i / 3);
         group.rotation.y = Math.PI * 0.5;
-        biGroups.push(group);
-        scene.add(group);
+        biGroups.add(group);
         i += 1;
     }
  
@@ -302,16 +302,13 @@ I then set up my renderer and also a main application loop. It is inside this an
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
-    // Orbit Controls The DOM element must now be given as a second argument
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
- 
     // loop
     var lt = new Date();
     function animate() {
         var now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(animate);
-        biGroups.forEach(function (biGroup) {
+        biGroups.children.forEach(function (biGroup) {
             BiplaneGroup.update(biGroup, secs);
             if (!biGroup.userData.active) {
                 biGroup.position.x = -200;
