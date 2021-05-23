@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-02-19 15:01:12
-version: 1.12
+updated: 2021-05-23 13:27:03
+version: 1.13
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/). That is to take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. I do not thing I want to sink to much time into this, but it can still prove to be a little fun as a quick side project. Also I think that there is only so much more to write about when it comes to the basics of three.js, so when it comes to continuing to write about threejs the next steps forward are going to have to be about some actual projects, or simple examples at least, where I am making use of the library.
@@ -29,44 +29,60 @@ var BiplaneGroup = (function () {
  
     var api = {};
  
-    var bias = function(per){
+    var bias = function (per) {
         return Math.abs(0.5 - per) / 0.5;
     };
  
-    // update
-    api.update = function(group, secs){
+    var updateChildPositions = function (group, secs) {
         var i = 0,
+        gud = group.userData,
         bi,
         radian,
-        x,y,z,
+        x,
+        y,
+        z,
         len = group.children.length;
-        while(i < len){
+        while (i < len) {
             bi = group.children[i];
             radian = Math.PI * 2 / len * i;
             x = Math.cos(radian) * 10;
             y = -5 + 10 * bias(bi.userData.yFrame / MAX_FRAME);
             z = Math.sin(radian) * 10;
-            bi.position.set(x,y,z);
+            bi.position.set(x, y, z);
             // make leader roll
-            if(bi.userData.rotate){
-                bi.rotation.set(bi.userData.r,0,0);
+            if (bi.userData.rotate) {
+                bi.rotation.set(0, 0, bi.userData.r);
                 bi.userData.r += Math.PI / 180 * bi.userData.rSpeed * secs;
                 bi.userData.r %= (Math.PI * 2);
             }
-            Biplane.update(bi, secs);
+            Biplane.updateProp(bi, gud.propPer);
             bi.userData.yFrame += 1;
             bi.userData.yFrame %= MAX_FRAME;
             i += 1;
         }
     };
  
+    // update
+    api.update = function (group, secs) {
+        var gud = group.userData;
+        group.visible = false;
+        if (gud.active) {
+            group.visible = true;
+            gud.propPer += 0.8 * secs;
+            gud.propPer %= 1;
+            updateChildPositions(group, secs);
+        }
+    };
+ 
     // main create method
-    api.create = function(opt){
+    api.create = function (opt) {
         opt = opt || {};
-        var group = new THREE.Group();
-        var i = 0;
-        while(i < BIPLANE_COUNT){
-            var bi = Biplane.create();
+        var group = new THREE.Group(),
+        gud = group.userData;
+        var i = 0,
+        bi;
+        while (i < BIPLANE_COUNT) {
+            bi = Biplane.create();
             bi.userData.yFrame = Math.floor(MAX_FRAME * (i / BIPLANE_COUNT));
             bi.userData.rSpeed = 360;
             bi.userData.rotate = false;
@@ -74,7 +90,15 @@ var BiplaneGroup = (function () {
             group.add(bi);
             i += 1;
         }
+        bi = group.children[0];
+        bi.userData.rotate = true;
+        bi.userData.rSpeed = 180;
+ 
+        gud.active = true;
         api.update(group, 0);
+        gud.active = false;
+        gud.propPer = 0;
+        gud.pps = 32;
         return group;
     };
  
@@ -92,74 +116,79 @@ Here is the source code of the biplane model that I am using in the biplane grou
 var Biplane = (function () {
  
     var materials = {
-        plane: new THREE.MeshLambertMaterial({
-            color: 0x00ff00
+        plane: new THREE.MeshStandardMaterial({
+            color: 0x0000af,
+            emissive: 0x000044
         }),
-        guy: new THREE.MeshLambertMaterial({
-            color: 0xffffff
+        guy: new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            emissive: 0x444444
         }),
-        prop: new THREE.MeshLambertMaterial({
-            color: 0x808080
+        prop: new THREE.MeshStandardMaterial({
+            color: 0x404040,
+            emissive: 0x202020
         })
     };
  
     var api = {};
  
     // create a wing
-    var createWing = function(opt, y){
+    var createWing = function (opt, y) {
         var wing = new THREE.Mesh(
-            new THREE.BoxGeometry(2,1,10),
-            opt.materials.plane || materials.plane
-        );
+                new THREE.BoxGeometry(10, 1, 2),
+                opt.materials.plane || materials.plane);
         wing.position.y = y;
+        wing.position.z = 2.5;
         return wing;
     };
  
     // create a body
-    var createBody = function(opt){
+    var createBody = function (opt) {
         var body = new THREE.Mesh(
-            new THREE.BoxGeometry(10,2,2),
-            opt.materials.plane || materials.plane
-        );
-        body.position.x = -2;
+                new THREE.BoxGeometry(2, 2, 10),
+                opt.materials.plane || materials.plane);
         return body;
     };
  
     // create a body
-    var createTail = function(opt){
+    var createTail = function (opt) {
         var body = new THREE.Mesh(
-            new THREE.BoxGeometry(1,2,2),
-            opt.materials.plane || materials.plane
-        );
-        body.position.x = -6.5;
+                new THREE.BoxGeometry(1, 2, 2),
+                opt.materials.plane || materials.plane);
+        body.position.z = -4.0;
         body.position.y = 2;
         return body;
     };
  
     // create guy
-    var createGuy = function(){
+    var createGuy = function () {
         var guy = new THREE.Mesh(
-            new THREE.BoxGeometry(1,1,1),
-            materials.guy
-        );
-        guy.position.x = -2;
+                new THREE.BoxGeometry(1, 1, 1),
+                materials.guy);
+        guy.position.z = 0;
         guy.position.y = 1.5;
         return guy;
     };
  
     // create prop
-    var createProp = function(){
+    var createProp = function () {
         var prop = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5,4,0.5),
-            materials.prop
-        );
-        
-        prop.position.x = 3.25;
+                new THREE.BoxGeometry(0.5, 4, 0.5),
+                materials.prop);
+        prop.position.set(0, 0, 5.25);
         return prop;
     };
  
+    var createUserData = function (bp, opt) {
+        var ud = bp.userData;
+        ud.propData = {
+            rotations: 80, // number of rotations
+            radian: 0 // current radian of prop
+        };
+    };
+ 
     // main create method
-    api.create = function(opt){
+    api.create = function (opt) {
         opt = opt || {};
         opt.materials = opt.materials || {};
  
@@ -175,17 +204,30 @@ var Biplane = (function () {
         plane.add(createWing(opt, 1));
         // guy
         plane.add(createGuy());
-        // prop radian to move prop
-        plane.userData.propRadian = 0;
-        plane.userData.propRPS = 0.25;
+        // box helper
+        plane.add(new THREE.BoxHelper(plane, 0xffffff));
+        // create user data object
+        createUserData(plane, opt);
         return plane;
     };
  
-    api.update = function(bi, secs){
-        var ud = bi.userData;
-        ud.propRadian += (Math.PI * 2 * ud.propRPS) * secs;
-        ud.propRadian %= (Math.PI * 2);
-        ud.prop.rotation.set(ud.propRadian,0,0)
+    // set the prop for the given biplane using a (0 - 1) value
+    api.updateProp = function (bp, per) {
+        var ud = bp.userData;
+        ud.propData.radian = Math.PI * ud.propData.rotations * per;
+        ud.prop.rotation.set(0, 0, ud.propData.radian);
+    };
+ 
+    api.updateRoll = function (bp, per, dir) {
+        dir = dir === undefined ? 1 : dir;
+        // rotate whole group
+        bp.rotation.z = Math.PI * 2 * per * dir;
+    };
+ 
+    api.updatePitch = function (bp, per, dir) {
+        dir = dir === undefined ? 1 : dir;
+        // rotate whole group
+        bp.rotation.x = Math.PI * 2 * per * dir;
     };
  
     return api;
@@ -204,11 +246,11 @@ I then went ahead and made three groups of these biplane group models to which e
  
     // Scene
     var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(1000, 100, 0xff0000, 0x4a4a00));
  
     // Camera
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 1000);
-    camera.position.set(40, 40, 180);
-    //camera.lookAt(0, 0, 30);
+    camera.position.set(80, 80, 80);
  
     // light
     var pointLight = new THREE.PointLight('white');
@@ -227,20 +269,17 @@ I then went ahead and made three groups of these biplane group models to which e
  
     var biGroups = [];
  
-    var i = 0, group;
-    while(i < 3){
+    var i = 0,
+    group;
+    while (i < 9) {
         group = BiplaneGroup.create();
-        group.position.z = 50 * i;
+        group.position.z = -50 + 50 * (i % 3);
+        group.position.y = 50 - 50 * Math.floor(i / 3);
+        group.rotation.y = Math.PI * 0.5;
         biGroups.push(group);
         scene.add(group);
         i += 1;
     }
- 
-    group = biGroups[1];
-    group.position.x = 30;
-    var bi = group.children[0];
-    bi.userData.rotate = true;
-    bi.userData.rSpeed = 90;
  
     // Render
     var renderer = new THREE.WebGLRenderer();
@@ -256,8 +295,18 @@ I then went ahead and made three groups of these biplane group models to which e
         var now = new Date(),
         secs = (now - lt) / 1000;
         requestAnimationFrame(animate);
-        biGroups.forEach(function(biGroup){
+        biGroups.forEach(function (biGroup) {
             BiplaneGroup.update(biGroup, secs);
+            if (!biGroup.userData.active) {
+                biGroup.position.x = -200;
+                biGroup.userData.pps = 32 + Math.round(64 * Math.random());
+                biGroup.userData.active = true;
+            } else {
+                biGroup.position.x += biGroup.userData.pps * secs;
+                if (biGroup.position.x >= 200) {
+                    biGroup.userData.active = false;
+                }
+            }
         });
         controls.update();
         renderer.render(scene, camera);
