@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-23 14:55:52
-version: 1.16
+updated: 2021-05-23 15:09:03
+version: 1.17
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun javaScript, rather than dull but useful jaavScript. Also I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas elements, yet there is a great deal of room for creativity when it comes to that kind of project. So then todays post will be on a [threejs example](/2021/02/19/threejs-examples/) that is a javaScript powered basic clock which should prove to be a simple fun little project.
@@ -16,6 +16,10 @@ I feel as though I need to work on things that are fun now and then with javaScr
 ## 1 - This is a threejs example
 
 This is a post on a three.js example of a basic analog clock using revision number r111 of threejs. This is not a getting started post on threejs, canvas, or javaScript in general so I assume that you have at least some background with these topics.
+
+### 1.1 - version numbers matter
+
+When I first wrote this post I was using three.js version r111, and the last time I came around to test out that this example is still working, and do a little editing I was using r127 of three.js. between those two version numbers there have been a few major changes, however none of them seem to have effected anything with this basic clock example at least.
 
 ## 2 - The clock.js module
 
