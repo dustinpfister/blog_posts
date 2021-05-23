@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 805
-updated: 2021-05-23 10:00:25
-version: 1.13
+updated: 2021-05-23 10:03:46
+version: 1.14
 ---
 
 When it comes to [threejs](https://threejs.org/) maybe there is still a great deal more for me to learn about the framework itself, however for now I would like to make at least a [few examples](/2021/02/19/threejs-examples/) of what can be done with three.js when it comes to making some kind of actual project. With that said there is the prim and proper way of going about creating a 3d model of something, and that is all fine and good, but it also strikes me as something that would end up eating up a lot of time. So there is also the not so prim and proper way to go about creating a 3d model of something. It is the later that I will be going over today by making a simple crude yet effective 3d model of a Biplane using just the built in three.js geometry constructors and groups.
@@ -18,6 +18,10 @@ This example will involve create a bunch of mesh objects, combining them into a 
 ## 1 - What to know first
 
 This is a post on a full working three.js project example of a little looping animation of a simple biplane model made from mesh objects using the built in three.js geometry constructor functions. In this example I am also making use of a number of other features built into three.js such as groups. So this post is not intended for developers that are still a little new to three.js, as I assume that you have at least covered some of the basics when it comes to using three.js and javaScript to create some kind of scene. So I will not be covering the very basic of three.js itself here, however I will be going over a few things that I think that you should have solid at this point before continuing to read this post.
+
+### 1.1 - Version Numbers matter with three.js
+
+When I first wrote this post I was using r125 of three.js and I have also been doing a fare about or editing of this post as i continue to refine this basic three.js model. The last time I edited this post then I was using three.js version r127. I have made a habit of mentioning what version numbers I am using in every three.js post that I write, and also make note of it as I edit older posts also. Code braking changes are made to three.js all the time, so I think doing so is called for.
 
 ## 2 - The biplane module
 
