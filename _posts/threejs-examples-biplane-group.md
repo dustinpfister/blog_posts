@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 806
-updated: 2021-05-23 14:38:51
-version: 1.27
+updated: 2021-05-23 14:40:19
+version: 1.28
 ---
 
 Today I think I will continue with my biplane model in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) by making a model of models that will serve as another [threejs example](/2021/02/19/threejs-examples/) when it comes to working out some fun project examples of three.js in action. So in other words in this example I will take the [biplane model that I worked out in my last post](/2021/02/17/threejs-examples-biplane/) and make another model that is just a group of these biplane models. So then this will just be a kind of group or groups, and then I will be moving this group of groups independently of each individual biplane group that is a child of one of these groups.
@@ -335,7 +335,7 @@ I then set up my renderer and also a main application loop. It is inside this an
     ());
 ```
 
-The final result of all of this is having a cool little animation of sorts where there are all these bi plane groups moving from one side of the scene over to the other side at various speeds. 
+The final result of all of this is having a cool little animation of sorts where there are all these bi plane groups moving from one side of the scene over to the other side at various speeds. I might want to add and change a whole lot of things here and there when it doe come to the idea of putting even more time into this one. However for now I think that this is more or less what I had in mind for this example that was just a little exercise of sorts and that is about it.
 
 ## 5 - Conclusion
 
