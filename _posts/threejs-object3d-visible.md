@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 13:52:46
-version: 1.17
+updated: 2021-05-24 13:55:31
+version: 1.18
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the visible property of the Object3d class in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -73,7 +73,7 @@ That is it more or less when it comes to just using the visible boolean, sure th
 
 ## 3 - There is just moving an object out of range of the camera
 
-The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the camera that is being used with the render method of the renderer that I am using.
+The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the camera that is being used with the render method of the renderer that I am using. The typically camera that I often use for an example is the perspective camera and with the kind of camera there is the near and var values of the camera that I can set via arguments when calling the constructor of the perspective camera. If I then just simply move a mesh object to a location where the object is just to near, or to far away from the camera, then the object will not render.
 
 ```js
 var scene = new THREE.Scene();
