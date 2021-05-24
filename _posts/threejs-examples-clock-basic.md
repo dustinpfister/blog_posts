@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-24 14:48:11
-version: 1.23
+updated: 2021-05-24 14:49:45
+version: 1.24
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love if it make it all about work and no play. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript, rather than dull but useful jaavScript. Sure there might prove to be many examples of practical application of threejs to write about, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -192,4 +192,5 @@ loop();
 
 ## 4 - Conclusion
 
-This basic clock example was a good start at least when it comes to making this kind of project with three.js, but I think that there is still a great deal more work to do even when it comes to making a simple clock example such as this.
+This basic clock example was a good start at least when it comes to making this kind of project with three.js, but I think that there is still a great deal more work to do even when it comes to making a simple clock example such as this. Still I think there the basic idea of what I hand in mind is there, I like to have a simple module that i can use to create and update some values that I can then use to set or change the position of some mesh objects.
+
