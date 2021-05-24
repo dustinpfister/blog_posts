@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 13:23:06
-version: 1.16
+updated: 2021-05-24 13:52:46
+version: 1.17
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the visible property of the Object3d class in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -71,6 +71,56 @@ loop();
 
 That is it more or less when it comes to just using the visible boolean, sure the conditions that are used to set the value of the property might change up a little now and then. However if I just simple want to set the visibly of an object to false without having to do something like removing a reference from one group and placing it into a pool or sorts, or setting the position of the mesh to a distance far away from the camera or something to that effect this will work.
 
-## 3 - Conclusion
+## 3 - There is just moving an object out of range of the camera
+
+The visibility property of an object is one way to make it so an object is not visible, however there are of course many ways to go about getting a similar result. One of which would be to just move the object out of range of the render distance of the camera that is being used with the render method of the renderer that I am using.
+
+```js
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+ 
+// some values
+var near = 8.25,
+far = 20,
+maxDist = 10;
+ 
+// CREATING CAMERA WITH NEAR AND FAR VALUES
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 8.25, far);
+camera.position.set(8, 8, 8);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(box);
+ 
+var lt = new Date(),
+frame = 0,
+maxFrame = 240,
+fps = 15;
+var loop = function () {
+    var now = new Date(),
+    per = frame / maxFrame,
+    bias = 1 - Math.abs(per - 0.5) / 0.5,
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // CHANGING POSITION OF BOX SO THAT IT GOES IN ANY OUT OF THE RENDER RANGE OF THE CAMERA
+        var dist = maxDist - (maxDist * 2) * bias;
+        box.position.x = dist * -1;
+        box.position.z = dist * -1;
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+loop();
+```
+
+## 4 - Conclusion
 
 So I hope that this post help to clear up some things when it comes to setting the visibly of on object in three.js. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you. However just about every solution that comes to mind for me will be ways that just change the visibility of an object and that is all, or something that changes other properties of the object, makes the object a child of some other parent object that is not added to the scene, or removing the object completely.
