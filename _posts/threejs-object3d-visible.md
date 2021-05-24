@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 14:18:06
-version: 1.20
+updated: 2021-05-24 14:27:57
+version: 1.21
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -123,6 +123,46 @@ loop();
 
 In this example I am just simply using the position property of a mesh object to move that mesh object into and out of range of a camera as a way to make the mesh visible and not visible by just making use of the near and far value of the camera as a means to do so. There is also the ides of not moving the mesh object, but moving the camera back and forth as a way to change the visibility of the mesh object. There is also yet even another way to go about doing so which would involve adjusting the near and far values of the camera and keep the camera and mesh in fixed locations. When doing so I need to call the update projection matrix method of the camera to do so.
 
-## 4 - Conclusion
+## 4 - Removing a child from the scene, or a group that was added to the scene
+
+Maybe another important thing to keep in mind is that a mesh object will not render in a scene, if it is not part of that scene. There is creating a mesh object and not adding it to a scene object that is passed to the render method, and when doing so the mesh will of course not render because it is not in that scene. So there is creating a reference to a mesh object, and then adding and removing that mesh object to and from the scene as needed.
+
+```js
+var scene = new THREE.Scene();
+// Creating and adding the box to the scene
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(box);
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var lt = new Date(),
+fps = 2;
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        // ADDING AND REMOVING CHILD
+        var child = scene.getObjectById(box.id);
+        if (child) {
+            scene.remove(box);
+        } else {
+            scene.add(box);
+        }
+        renderer.render(scene, camera);
+        lt = now;
+    }
+};
+loop();
+```
+
+## 5 - Conclusion
 
 So I hope that this post help to clear up some things when it comes to setting the visibly of on object in three.js. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you. However just about every solution that comes to mind for me will be ways that just change the visibility of an object and that is all, or something that changes other properties of the object, makes the object a child of some other parent object that is not added to the scene, or removing the object completely.
