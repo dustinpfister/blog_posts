@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 12:57:46
-version: 1.6
+updated: 2021-05-24 12:59:58
+version: 1.7
 ---
 
 There should be standard way to go about making an object in three.js visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the visible property of the Object3d class in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -25,6 +25,8 @@ When I wrote this post and made the examples for it I was using threejs version 
 
 One way to go about making a mesh object visible or not is to just set the visible property of the mesh to false and be done with it. This visible property is not a property of a Mesh object though but the base class of mesh which is object3d. There are a great number of other features in object3d and other classes in three.js that are based off of object3d such as groups. 
 
-It is not like using the visible property is the only way to go about doing this sort of thing and just using the visible property may fall short. For example by just setting the visible property of a mesh in a group to false that will make it so it will not be visible, but it will still be in the group, and as such will still be subject to any kind of update procedure. So maybe a better way would be to have two groups one added to the scene and one not added to it and just move mesh objects between the two as a way to achieve a similar effect to that of using the visible property. In order to do so I would want to use a number of other features in the object3d class when it comes to adding and removing mesh objects from a parent object such as a group. So this object3d class is worth spending a fair about of time to work with just to get a fell for what there is to work with when using this class.
+It is not like using the visible property is the only way to go about doing this sort of thing and just using the visible property may fall short. For example by just setting the visible property of a mesh in a group to false that will make it so it will not be visible, but it will still be in the group, and as such will still be subject to any kind of update procedure. So maybe a better way would be to have two groups one added to the scene and one not added to it and just move mesh objects between the two as a way to achieve a similar effect to that of using the visible property. In order to do so I would want to use a number of other features in the object3d class when it comes to adding and removing mesh objects from a parent object such as a group. 
+
+In this post I will be going over some examples that have a lot to do with object3d and how to use features of the class to make objects visible or not. However this object3d class is worth spending a fair about of time to work with just to get a fell for what there is to work with when using this class. So you might want to check out my main post on object3d that might prove to be a good resource for learning more about this class in general.
 
 ## 2 - Making a mesh visible or not with the Object3d.visible propery
