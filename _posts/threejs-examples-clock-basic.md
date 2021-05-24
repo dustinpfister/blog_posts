@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-24 14:43:14
-version: 1.20
+updated: 2021-05-24 14:44:11
+version: 1.21
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love if it make it all about work and no play. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript, rather than dull but useful jaavScript. Sure there might prove to be many examples of practical application of threejs to write about, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -17,7 +17,7 @@ I often find myself making clocks because they are a quick yet fun thing to make
 
 ## 1 - This is a threejs example
 
-This is a post on a three.js example of a basic analog clock using revision number r111 of threejs. This is not a getting started post on threejs, canvas, or javaScript in general so I assume that you have at least some background with these topics.
+This is a post on a three.js example of a basic analog clock using threejs and a little additional javaScript code on top of the use of this librray. This is not a getting started post on threejs, canvas, or javaScript in general so I assume that you have at least some background with these topics.
 
 ### 1.1 - version numbers matter
 
