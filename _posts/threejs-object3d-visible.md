@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 13:12:11
-version: 1.12
+updated: 2021-05-24 13:14:36
+version: 1.13
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the visible property of the Object3d class in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -35,7 +35,7 @@ There is a lot to be said about the object3d class and how that can be used to m
 
 ## 2 - Making a mesh visible or not with the Object3d.visible property
 
-The first and foremost feature in three.js that comes to mind when it comes to making an object visible or not would be to just set the visible boolen of the object to false. This might prove to be one of the most easy ways to go about doing this, so it would make sense to start out with a basic example of just using the visible boolen.
+The first and foremost feature in three.js that comes to mind when it comes to making an object visible or not would be to just set the visible boolean of the object to false. This might prove to be one of the most easy ways to go about doing this, so it would make sense to start out with a basic example of just using the visible boolean. Here then I have an example where I am just creating a single mesh object, setting the visible boolean value to false, and then adding the mesh to the scene. I then have a simple loop where I am toggling the boolean value of the visible property between true and false a set number of times per second.
 
 ```js
 var scene = new THREE.Scene();
