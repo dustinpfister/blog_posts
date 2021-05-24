@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 13:20:23
-version: 1.15
+updated: 2021-05-24 13:23:06
+version: 1.16
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the visible property of the Object3d class in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -73,4 +73,4 @@ That is it more or less when it comes to just using the visible boolean, sure th
 
 ## 3 - Conclusion
 
-So I hope that this post help to clear up some things when it comes to setting the visibly of on object in three.js. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you.
+So I hope that this post help to clear up some things when it comes to setting the visibly of on object in three.js. If not then I guess you will just need to work out some additional examples of your own, and keep looking until you find or make something that will work for you. However just about every solution that comes to mind for me will be ways that just change the visibility of an object and that is all, or something that changes other properties of the object, makes the object a child of some other parent object that is not added to the scene, or removing the object completely.
