@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 14:27:57
-version: 1.21
+updated: 2021-05-24 14:34:05
+version: 1.22
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the [visible property of the Object3d class](https://threejs.org/docs/#api/en/core/Object3D.visible) in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -162,6 +162,10 @@ var loop = function () {
 };
 loop();
 ```
+
+This kind of solution might prove to be the way that I will want to do things when it comes to visibility. The reason why is that it is often not just the visibility of a mesh that will be of interest when working on a project. For example say I have a group of mesh objects, and I am looping over the whole group on each update of the scene. 
+
+If I just set the visibility of a mesh to false that will just make it no longer visible, it will still very much be a part of the group, and as such will still be part of the update cycle and that can often lead to undesired results. So a better way might be to create a group that will serve as an object pool of sorts, and this object pool does not need to be added to the scene object that will be passed to the render method. Mesh Objects can just be moved from this object pool to the scene or a group that will be subject to an update procedure and back again as needed. This way mesh objects that are not being used will not be visible, and they will also not be taken into account when updating the scene.
 
 ## 5 - Conclusion
 
