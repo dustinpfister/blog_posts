@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 873
-updated: 2021-05-24 13:08:38
-version: 1.10
+updated: 2021-05-24 13:10:41
+version: 1.11
 ---
 
 There should be standard way to go about making an object in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) visible or not just like that of the visible and display css properties when it comes to styling some html. It would seem that there is such a standard property which would be the visible property of the Object3d class in threejs, this property is a boolean value that is set to true by default and is used as a way to inform a renderer if the given mesh should even be rendered or not. However it is true there there are also a number of other subjects of interest such as setting the transparency property of materials, and moving mesh objects from one group that is added to a scene to another group that is not. So in this post I will of course be going over the object3d visible property, but I will also be going over a number of other related topics an code examples so that might also be better ways of getting a desired result when it comes to the visibility of an object in three.js.
@@ -34,6 +34,8 @@ In this post I will be going over some examples that have a lot to do with objec
 There is a lot to be said about the object3d class and how that can be used to make it so objects will or will not show up in a scene. However there is also maybe a thing or two to be said about the materials that are used to skin mesh objects that are based off of object3d also. Many materials will support a transparency boolean that when set will apply a transparency effect for the material, and opacity property can then be set form 0 to 1 to set the level of transparency for the material.
 
 ## 2 - Making a mesh visible or not with the Object3d.visible property
+
+The first and foremost feature in three.js that comes to mind when it comes to making an object visible or not would be to just set the visible boolen of the object to false.
 
 ```js
 var scene = new THREE.Scene();
