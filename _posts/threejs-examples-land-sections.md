@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 803
-updated: 2021-02-19 15:01:13
-version: 1.11
+updated: 2021-05-24 14:59:48
+version: 1.12
 ---
 
 I have been neglecting my content on [threejs](https://threejs.org/), so I thought it would be a good idea to put an end to that by writing some new content on threejs this week, and edit a few posts while I am at it. I have all ready wrote a bunch of posts on the very basics of threejs and although there might sill be more for me to learn about the library itself I think I am at a point now where I should start working on some [actual examples](/2021/02/19/threejs-examples/) using threejs. So to start off this week I thought I would at least start an example that is another way of displaying the basic idea of my [Mr Sun game](/2020/11/03/canvas-example-game-mr-sun/) that I have been working on and off for a while.
@@ -15,7 +15,11 @@ The basic idea of my Mr Sun game is to have a display object that represents a s
 
 <!-- more -->
 
-## 1 - The game object
+## 1 - What to know first before continuing
+
+This is a post on a threejs project example prototype that has to do with a basic game mechanic that I was exploring with an idea for a game.
+
+## 2 - The game object
 
 First off I just worked out a simple game object module that creates a game object that is formated like many of the modules that I have created for this game thus far. If often end up with a main game state object where I have a sun object that contains the current position of the sun, and an array of section objects that share a common set of values for position and radius.
 
@@ -63,7 +67,7 @@ var game = (function () {
     ());
 ```
 
-## 2 - The sections.js file
+## 3 - The sections.js file
 
 I made a sections.js file that will create and return a [threejs group](/2018/05/16/threejs-grouping-mesh-objects/) object based off of a game object that I pass to a create method. The idea here is to make a standard game object that I can use in a plain 2d view of the game, but I can also use the same game object to create a basic 3d view of the game with threejs. So I just need a module that will create a bunch of groups of mesh objects to which I can then add to a scene in the main.js file. I am pretty sure I am going to go with a plain 2d view, but it would be nice to play around with a 3d option also, and maybe even some kind of project that is a hybrid of sorts actually.
 
@@ -139,7 +143,7 @@ var Sections = (function () {
     ());
 ```
 
-## 3 - main.js
+## 4 - main.js
 
 I then just have a main.js file that makes use of the game module and sections modules to create this basic three.js example of my Mr sun game idea. In this file I create the main scene, and add a camera to use of the scene. I create a main group object with the sections module and pass the game object to it. For now I just update the state of the main group once also, and set up a renderer for the example.
 
@@ -182,7 +186,7 @@ I am making use of the orbit controls provided in the three.js repo. I will not 
     ());
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 I might get around to working on this example a little more at some point, but yet again I might not ever go much beyond what I have together here. I am trying to work out the core logic of what the game should be that is independent of having a 2d or 3d view of the game. When it comes to that I have a [land sections vuejs example](/2021/02/02/vuejs-example-land-sections/) actually where I am trying to focus on working out what might be fun when it comes to the basic logic of the game. 
 
