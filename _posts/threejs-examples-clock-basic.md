@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-24 14:52:33
-version: 1.25
+updated: 2021-05-24 14:54:38
+version: 1.26
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love if it make it all about work and no play. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript, rather than dull but useful jaavScript. Sure there might prove to be many examples of practical application of threejs to write about, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -100,7 +100,7 @@ clock.get = function (date) {
 
 ## 3 - The main.js file
 
-So now that I have my clock.js module I can not work out some methods that make used of threejs to create groups of cubes for a face of a clock as well has hands on the clock.
+So now that I have my clock.js module I can now work out some methods that make used of threejs to create groups of cubes for a face of a clock as well has hands on the clock. In this section then I will be writing about the rest of the javaScript code for this example that I have in one traditional main.js javaScript file. Here I have methods that create and update mesh objects, and have all the usual suspects when  it comes to a scene object, camera, and so forth.
 
 ### 3.1 - Create the face cubes
 
