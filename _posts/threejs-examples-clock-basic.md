@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-24 14:49:45
-version: 1.24
+updated: 2021-05-24 14:52:33
+version: 1.25
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love if it make it all about work and no play. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript, rather than dull but useful jaavScript. Sure there might prove to be many examples of practical application of threejs to write about, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
@@ -149,7 +149,7 @@ createHandCubes = function (material) {
 
 ### 3.3 - The rest of the threejs example
 
-I then have the rest of the code of this threejs example. Here I create the scene, camera, and renderer just as with any other three.js example.
+I then have the rest of the code of this threejs example that contains the usual suspects from any other three.js project example. Here I create the scene, camera, and renderer just as with any other three.js example. However here I am of course using the create hand cubes method to create the mesh objects that will serve as the hands of the clock, and of course I am updating the values of those method objects in a main animation loop in which I am passing the current system time as a time to use to the the values of them.
 
 ```js
 // the demo
