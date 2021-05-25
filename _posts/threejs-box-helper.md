@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-05-25 13:31:13
-version: 1.18
+updated: 2021-05-25 13:36:58
+version: 1.19
 ---
 
-In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter. The helper just draws a box outline around the area of the group, or object that will help to get a better vishual idea of what is going on with position, size, and orientation.
+In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter. The helper just draws a box outline around the area of the group, or object that will help to get a better visual idea of what is going on with position, size, and orientation.
 
-The box can be moved and rotated just like many other objects in three js, and it can also be resized as well. So lets take a look at some quick examples of the box helper in three js.
+There are maybe a few little problems here and there that might come up when using the box helper though. For example one might expect that when a mesh is moved or rotated that box will move and rotate with the mesh object, however this is not always the case. Typically I will want to add a box helper to the object that I have created it for as a child, so that when I move or rotate that object the box helper will move or rotate with it. However even then there are some situations in which I will want to update the box helper. So in this post I will be going over a few quick examples of the box helper in three.js that might help to address some of these issues that might pop up.
 
 <!-- more -->
 
