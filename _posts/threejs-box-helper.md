@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-05-25 13:26:02
-version: 1.16
+updated: 2021-05-25 13:27:44
+version: 1.17
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter.
@@ -18,6 +18,11 @@ The box can be moved and rotated just like many other objects in three js, and i
 ## 1 - The Box helper in threejs and what to know first
 
 This is a post on just using a box helper in threejs to gain a scene as to what is going on with an area in threejs that is a mesh object, group, or anything that that is based off of object3d really. The Box helper is one of several helper classes in threejs that help to gain a better visual understanding of the situation that is going on with a scene. I trust that you have at least a little basic understanding of how to get started with three.js and javaScript in general, if not this post might still prove to be a little to advanced for now. I will not be going over the very basic of threejs here, but in this section I will be going over some things that you should understand at this point.
+
+### 1 - version numbers matter with threejs
+
+When I first wrote this post I was using r104 of threejs, and the last time I came around to do a little editing I was using r127 of threejs.
+
 
 ## 2 - Box helper basic example in threejs
 
