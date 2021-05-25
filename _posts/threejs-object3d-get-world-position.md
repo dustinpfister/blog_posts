@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2021-05-25 12:45:52
-version: 1.15
+updated: 2021-05-25 12:49:31
+version: 1.16
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is getting into using groups as a way to compartmentalize a collection of mesh objects, and when doing so there is using the look at method to get a mesh to look at another child object of the group, or some other group. When doing so it is important to remember that the look at method will always case the object to look at something relative to world space, and not that position retaliative to the group. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space.
@@ -100,3 +100,7 @@ With the group in which I am using the get world position method as a way to get
 ## 3 - Conclusion
 
 The get world position method of the object3d class seems to work well for the sake of having a way to go about getting an instance of Vector3 that is relative to a fixed static world space rather than a parent instance of object3d such as a group, or even a scene. The look at method will always point to a position that it is given relative to world space, so it is nice to always have a way to go about getting that kind of position by just calling a method that will always return that kind of position.
+
+Understanding the difference between positions that a relative to group, and positions that are relative to world space is an impotent part of the process of learning how to go about making crude yet effective models that are collections of mesh objects. As of this writing there are still a few ruff edges in my understanding of little topics like this, so each time I become aware of something that I think I should have solid by now I write a lengthly post such as this as a way to help me get a topic like this hardwired into my mind.
+
+
