@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2021-05-25 12:21:29
-version: 1.10
+updated: 2021-05-25 12:25:08
+version: 1.11
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is getting into using groups as a way to compartmentalize a collection of mesh objects, and when doing so there is using the look at method to get a mesh to look at another child object of the group, or some other group. When doing so it is important to remember that the look at method will always case the object to look at something relative to world space, and not that position retaliative to the group. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space.
@@ -32,7 +32,9 @@ There is working out not just one but many examples of the look at method of the
 
 The use of the get world position often ends up going hand in hand with the use of groups, or in any way shape or form the use of objects that are a child of a parent object. That parent object can be a group, but it can also be anything that is based off of object3d, including even the scene object.
 
-## 2 - Basic group example
+## 2 - Basic group example of lookat using and not using get world position
+
+In this example I am making a helper function that will create and return a group that I can then add to a scene object. This group object contains two mesh objects, one of which is a cone, and the other is a cube. In this helper function that creates the group I am doing a rotation of the geometry of the cone once to make it so that the orientation of the cone geometry lines up with the face of the mesh object. So it is now just a question of using the look at method of the cone mesh to have it point at something where the tip of the cone is facing the given direction.
 
 ```js
 var createGroup = function () {
