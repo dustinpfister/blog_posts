@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 874
-updated: 2021-05-25 12:13:11
-version: 1.7
+updated: 2021-05-25 12:16:20
+version: 1.8
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is getting into using groups as a way to compartmentalize a collection of mesh objects, and when doing so there is using the look at method to get a mesh to look at another child object of the group, or some other group. When doing so it is important to remember that the look at method will always case the object to look at something relative to world space, and not that position retaliative to the group. To help with these kinds of problems there is the [get world position method of the object3d class](https://threejs.org/docs/#api/en/core/Object3D.getWorldPosition) that when called will return the position of an object relative to world space, rather than the position property of the object which is a position relative to the group rather than world space.
@@ -21,6 +21,8 @@ Knowing the difference between world space and space that is relative to a group
 In this post I will be writing about the [get world position method in the object3d base class](https://stackoverflow.com/questions/15098479/how-to-get-the-global-world-position-of-a-child-object) in the javaScript library known as three.js. So the content here has to do with just one little issue in an over all larger library that is written in a specific programing language called javaScript. I assume that you have at least some basic working knowledge of how to get up and running with the basics at least, because I am not going to do that here in this post. However I always like to start off my three.js posts with a section like this in which I outline some things that you should be aware of before continuing to read the rest of the content.
 
 ### 1.1 - version numbers matter in three.js
+
+When I first wrote this post I was using revision 127 of threejs which was a late version of threejs as of April of 2021. When it comes to just the get world position method of the object3d class I do not think much has changed over the years, however a great deal has changed throughout the library. Code breaking changes are introduced to three.js all the time so if the code examples are not working as expected always check your version numbers first.
 
 ### 1.2 - Read my more on the look at method of object3d and what it has to do with world space
 
