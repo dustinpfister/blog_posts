@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-05-25 13:20:54
-version: 1.15
+updated: 2021-05-25 13:26:02
+version: 1.16
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter.
@@ -15,7 +15,11 @@ The box can be moved and rotated just like many other objects in three js, and i
 
 <!-- more -->
 
-## 1 - Box helper basic example in threejs
+## 1 - The Box helper in threejs and what to know first
+
+This is a post on just using a box helper in threejs to gain a scene as to what is going on with an area in threejs that is a mesh object, group, or anything that that is based off of object3d really. The Box helper is one of several helper classes in threejs that help to gain a better visual understanding of the situation that is going on with a scene. I trust that you have at least a little basic understanding of how to get started with three.js and javaScript in general, if not this post might still prove to be a little to advanced for now. I will not be going over the very basic of threejs here, but in this section I will be going over some things that you should understand at this point.
+
+## 2 - Box helper basic example in threejs
 
 A basic example of a box helper in three js might involve just calling the THREE.BoxHelper constructor by calling that constructor, however in order to do that I will first need something to use th box helper with. So to start off this example of the box helper I will first want something that inherits from the object3d class such as a mesh. With that said I will need a basic mesh consisting of some kind of geometry and a material, nothing fancy. So I just created a sphere geometry and used that with the normal material which does not require a light source to help keep things simple and to the point here.
 
@@ -46,7 +50,7 @@ renderer.render(scene, camera);
 
 This is a nice simple example of the box helper, but what about resizing the helper, and moving it as well. Lets take a look at some more examples of the box helper then.
 
-## 2 - Moving an object with a Box Helper
+## 3 - Moving an object with a Box Helper
 
 When moving a box helper it is impotent to know if the box helper was added to a mesh or the scene. If a mesh that a box helper was created for is moved, but the box helper is added to the scene or any object or group outside of that mesh, then the box helper will not move with the mesh but will stay relative to the group or object that it was added to.
 
@@ -119,7 +123,7 @@ var loop = function () {
 loop();
 ```
 
-## 3 - A Box helper can be used with a group
+## 4 - A Box helper can be used with a group
 
 I often like to use groups when working out a three.js project, they are a great way of making a few meshes all part of a given area. I can then move and rotate this collection of mesh objects just like that of a single mesh object. So it is important for me to find out if this box helper will work okay with a group of mesh objects, and not just a single  mesh. After taking a moment to play around with a simple example of this it would seem that it does in fact work as I would expect. The Box helper will enclose the area in which all of the mesh objects are.
 
@@ -164,6 +168,6 @@ renderer.render(scene, camera);
 
 However there are some things to be aware of such as what happens when I set the position of the group before adding meshes, and the box helper. There is also what happens when I add additional mesh objects to the group after the helper, and so forth.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 The box helper is then one of several kinds of helpers that can be used to gain a sense of what is going on with a three.js project. The box helper will help to gain insight as to what is going on with an area, but it will not help to shed light on what is going on in terms of directions. So then another useful helper is the arrow helper that can be used to know which way is what in a scene.
