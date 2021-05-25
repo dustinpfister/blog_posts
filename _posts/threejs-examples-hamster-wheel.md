@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 848
-updated: 2021-05-25 08:55:21
-version: 1.21
+updated: 2021-05-25 08:59:04
+version: 1.22
 ---
 
 I am experiencing a kind of burn out because I spend a great deal of time doing what I think I need to do, rather than what I want to do. Sadly often I end up spending all day writing these posts, and simple source code examples for such posts. As such there often is no time and energy left over for working on any kind of real project that I truly would like to work on when it comes to making things that are useful, or at least mildly amusing in some way. So I thought that some kind of [threejs example](/2021/02/19/threejs-examples/) would be a nice break from the usual kind of post where I am just writing about some kind of method in a framework, or some kind of native javaScript feature.
@@ -26,7 +26,7 @@ For this example I was using threejs version r127, in many of my older posts I w
 
 ## 2 - The Wheel Model
 
-First off is my wheel module that will create an return a hamster wheel model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor.
+First off is my wheel module that will create and return a hamster wheel model that I can then add to a scene object in a main javaScript file that will make use of this model. This module has just one public method that will create and return an object that contains a few instances of the [THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) constructor. There is not update method for this model because the only animation effect would be to just rotate the wheel part of the hamster wheel model and that can easily be done when it comes to writing a little additional code outside of this model.
 
 ```js
 (function (WheelMod) {
