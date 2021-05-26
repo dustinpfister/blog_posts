@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 14:05:37
-version: 1.16
+updated: 2021-05-26 14:31:12
+version: 1.17
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -241,7 +241,66 @@ I might want to create an object that is a dome, but a dome with a cap on one si
     ());
 ```
 
-## 5 - Conclusion
+## 5 - Using more than one material with a sphere
+
+This is where things can get a little tricky when it comes to using materials with a mesh. That is more than one materials rather than just a single material.
+
+```js
+(function () {
+ 
+    // creating a scene
+    var scene = new THREE.Scene();
+ 
+    var materials = [
+        new THREE.MeshStandardMaterial({
+            color: 0xff0000,
+            emissive: 0x101010
+        }),
+        new THREE.MeshStandardMaterial({
+            color: 0x00ff00,
+            emissive: 0x202020
+        })];
+ 
+    var geometry = new THREE.SphereGeometry(0.5, 15, 15);
+ 
+    var position = geometry.attributes.position,
+    len = position.array.length,
+    mi = 0,
+    i = 0;
+    while (i < len) {
+        mi = i / 3 % 2 === 0 ? 0 : 1;
+        geometry.addGroup(i, 3, mi);
+        i += 3;
+    }
+ 
+    // mesh
+    var mesh = new THREE.Mesh(
+            // USING A SPHERE GEOMETRY
+            geometry,
+            // PASSING AN ARRAY OF MATERIALS
+            materials);
+    scene.add(mesh); // add the mesh to the scene
+ 
+    // camera
+    var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+    camera.position.set(0.75, 1, 0.75);
+    var light = new THREE.PointLight(0xffffff); // point light
+    light.position.x = 1;
+    light.position.y = 1;
+    camera.add(light);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+## 6 - Conclusion
 
 That is it for now when it comes to there sphere geometry constructor in threejs and a hold bunch of other little side topics that stem off from the use of the constructor. There is knowing all the arguments of the sphere geometry constrictor and how they can be used to help make smoother or more course sphere surfaces, and also how to make other sphere like shapes such as a dome. However it is not just a question or learning a thing or two about the Sphere Geometry constructor though, learning a think or two about Mesh Objects, Object3d in general, materials, and the other geometry constructors helper to get to a point where one can start to make crude models that are just collections of mesh objects using these built in constructors.
 
