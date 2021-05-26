@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 12:33:04
-version: 1.7
+updated: 2021-05-26 12:35:13
+version: 1.8
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -32,6 +32,8 @@ When I first wrote this post I was using version r127 of three.js. I have been p
 ## 2 - Basic Sphere Geometry Example
 
 First thins first when it comes to getting into the sphere geometry and that is starting out with just a basic striped down hello world type example. In this example I start out by creating a main scene object that I will be passing to the render function of the renderer along with a camera later. After that I create and add a Mesh object to the scene, and when doing so I will pass an instance of the Sphere Geometry as the first argument of the Mesh constructor, and after that I will want to pass a material as the second argument.
+
+First this example when I create the instance of the Sphere geometry I am passing just one argument that is the radius that I want for it. There are a fair number of other arguments that are also worth mentioning but those can be introduced in additional examples later on in this post.
 
 ```js
 (function () {
