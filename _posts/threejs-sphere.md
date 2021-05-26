@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 14:35:46
-version: 1.18
+updated: 2021-05-26 14:40:13
+version: 1.19
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -244,6 +244,8 @@ I might want to create an object that is a dome, but a dome with a cap on one si
 ## 5 - Using more than one material with a sphere
 
 This is where things can get a little tricky when it comes to using materials with a mesh. That is more than one materials rather than just a single material. The first step with this might be to just simply pass an array of where each element is a single material that I would like to use with a sphere. However after doing just that I will end up not seeing anything. With some built in geometry constructors there are some default groups set up for the geometry and it is just a matter of looping over the groups and setting the desired material index values if the default values are not to my liking, however this is not the case with the Sphere geometry constructor. So I must add the groups first and while doing so I can also set the material index values for each triangle of the sphere.
+
+When it comes to doing this sort of thing with a sphere geometry or any buffer geometry there is the groups array of the geometry that is worth checking out. When it comes to some built in geometry there will all ready be an array of groups in the groups array, but with the sphere geometry it is empty, so I must add them. When it comes to adding groups to a geometry the positions array is a good way to get an idea of how many groups I will need to add, there is suing the length of the array property of the position attribute that will let me know how many verticies there are.
 
 ```js
 (function () {
