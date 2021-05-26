@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 12:14:25
-version: 1.2
+updated: 2021-05-26 12:17:02
+version: 1.3
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -16,6 +16,8 @@ I have wrote a number of posts on the built in geometry constructors in [three.j
 ## 1 - Sphere Geometry in threejs and what to know first
 
 ### 1.1 - Version Numbers matter with three.js
+
+When I first wrote this post I was using version r127 of three.js. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js.
 
 ## 2 - Basic Sphere Geometry Example
 
