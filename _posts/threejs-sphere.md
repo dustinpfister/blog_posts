@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 12:20:06
-version: 1.4
+updated: 2021-05-26 12:23:45
+version: 1.5
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -17,7 +17,11 @@ I have wrote a number of posts on the built in geometry constructors in [three.j
 
 In this post I will be writing about a few examples of the Sphere Geometry constructor in a javaScript library known as three.js. I will be trying to keep these examples fairly simple, at least the first few at the top of the post anyway. However you should know at least a few things when it comes to the very basics of getting started with three.js and javaScript in general. I will not be oing over little detail that should be known before hand, however in this section I will be briefly mentioning some things that come to mind that you should have solid first.
 
-### 1.1 - Version Numbers matter with three.js
+### 1.1 - Understand the basics of setting up a scene, camera, and renderer.
+
+I trust that you have worked out at least the very basics of setting up a scene object, and a cameras, and using this scene object and camera with a renderer such as the built in webgl renderer. If not you might want to read up [my getting started post on three.js](/2018/04/04/threejs-gettingg-started/), or some content on cameras and renderer's first.
+
+### 1.2 - Version Numbers matter with three.js
 
 When I first wrote this post I was using version r127 of three.js. I have been playing around with three.js off and of for a long time now, and I can not say that much has changed with the Sphere Geometry constructor alone when it comes to code breaking changes. Still in many of these examples I am using many other features in three.js that might break when it comes to trying to use them with future versions of three.js.
 
