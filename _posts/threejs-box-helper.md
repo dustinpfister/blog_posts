@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 475
-updated: 2021-05-26 14:54:37
-version: 1.20
+updated: 2021-05-26 14:56:02
+version: 1.21
 ---
 
 In [three js](https://threejs.org/) there is a built in [box helper](https://threejs.org/docs/index.html#api/en/helpers/BoxHelper) that can be used to help when it comes to debugging tasks with a mesh, or anything else that inherits from the [Object3d Class](/2018/04/23/threejs-object32/) for that matter. The helper just draws a box outline around the area of the group, or object that will help to get a better visual idea of what is going on with position, size, and orientation.
@@ -21,7 +21,7 @@ This is a post on just using a box helper in threejs to gain a scene as to what 
 
 ### 1.1 - There are many other useful helpers in threejs use them
 
-The box helper is great, but I often use it in conjunction with many other helpers such as the grid helper and direction helper.
+The box helper is great, but I often use it in conjunction with many other helpers such as the grid helper and direction helper. There are also a hole bunch of additional helpers that can be used to gain a better awareness of what the situation is with an object, or a whole scene that I might be working on.
 
 ### 1.2 - version numbers matter with threejs
 
