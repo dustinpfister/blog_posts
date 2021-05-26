@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 875
-updated: 2021-05-26 12:54:31
-version: 1.14
+updated: 2021-05-26 13:35:07
+version: 1.15
 ---
 
 I have wrote a number of posts on the built in geometry constructors in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) all ready, but oddly enough I never got around to writing a thing or two about the [sphere geometry constructor](https://threejs.org/docs/#api/en/geometries/SphereGeometry), and everything that centers around it. Just like any other built in geometry constructor I just call THREE.SpeherGeomerty with the new keyword and what is returned is a buffer geometry instance that will be a sphere, I can then add the geometry as the first argument to a Mesh along with a material and add it to a scene. However there is a great deal more to it than just that, with the constructor itself, and of course a great many things that branch off from it.
@@ -128,6 +128,8 @@ Now that I have a very basic example out of the way there is taking a look at so
 ## 3 - Making a dome shape with Sphere Geometry
 
 Okay so the first argument can be used to set the radius, and the second and third arguments can be used to set the number of with and height segments to use for the sphere. The remaining arguments then have to do with setting angles and angle sweeps that allow for the creating of shapes like that of a dome like shape.
+
+In this example I am making a create dome at helper method that is just like the helper that I made in a previous example but with a few changes. I am not using fixed static values for the width and height segments and I am not passing some arguments for the four additional arguments that are used to set starting angles and sweep angles for the horizontal and vertical parts of the sphere. With the values that I am passing this results in a dome like shape, however it will not be a closed dome, so I am making use of the side property of the material that I am using to make sure that both sides of the geometry and rendered.
 
 ```js
 (function () {
