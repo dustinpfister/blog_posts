@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2021-05-27 14:01:41
-version: 1.17
+updated: 2021-05-27 15:41:16
+version: 1.18
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -16,9 +16,10 @@ Today I thought I world write another post on a built in geometry constructor in
 ## 1 - A donut or torus geometry in threejs and what to know first
 
 This is a post on the Torus Geometry constructor in the javaScript library known as three.js. In addition to the constructor function itself I will also be making use of a whole bunch of other features of the threejs library in these code examples. So I trust that you have at least some background when it comes to the very basic of how to get up and running with a three.js project, if nit you might want to start out with some kind of getting started guide.
+
 ### 1.1 - Do not just stop with the Torus Constructor of course
 
-The torus geometry constructor is of course just one option when it comes to the many built in geometry constrictors there are to work with in three.js. The Sphere, plane, and Box geometry constructors are all also worth checking out in detail if you have not done so before hand. There is a lot to learn about these constructors and not just with respect to how to just call the function and pass a few arguments when calling them. In the long run sooner or later in make sense to look into the buffer geometry constructor and how to create a custom geometry.
+The torus geometry constructor is of course just one option when it comes to the many built in geometry constrictors there are to work with in three.js. The [Sphere](/2021/05/26/threejs-sphere/), [plane](/2019/06/05/threejs-plane/), and [Box geometry](/2021/04/26/threejs-box-geometry/) constructors are all also worth checking out in detail if you have not done so before hand. There is a lot to learn about these constructors and not just with respect to how to just call the function and pass a few arguments when calling them. In the long run sooner or later in make sense to look into the [buffer geometry constructor](/2021/04/22/threejs-buffer-geometry/) and how to create a custom geometry.
 
 ### 1.2 - Version Numbers matter with three.js
 
