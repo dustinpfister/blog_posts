@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2021-05-27 14:18:48
-version: 1.14
+updated: 2021-05-27 14:26:19
+version: 1.15
 ---
 
-In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic materials the process is not that hard at all actually. When creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true, and then it is just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material, and that is it. However there might be a bit more to write about when it comes to a few more additional things that branch off from that s lets get to it.
+In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic material for example the process is not that hard at all actually, when creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true. Once I have the transparency value set to true it is then just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material, and that is it. However there might be a bit more to write about when it comes to a few more additional things that branch off from that, as there is a think or two about more advanced topics such as alpha maps, so lets get to it when it comes to transparency in threejs.
 
 <!-- more -->
 
