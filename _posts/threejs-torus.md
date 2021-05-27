@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2021-05-27 13:43:31
-version: 1.14
+updated: 2021-05-27 13:46:10
+version: 1.15
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -16,9 +16,13 @@ Today I thought I world write another post on a built in geometry constructor in
 ## 1 - A donut or torus geometry in threejs and what to know first
 
 This is a post on the Torus Geometry constructor in the javaScript library known as three.js. In addition to the constructor function itself I will also be making use of a whole bunch of other features of the threejs library in these code examples. So I trust that you have at least some background when it comes to the very basic of how to get up and running with a three.js project, if nit you might want to start out with some kind of getting started guide.
+### 1.1 - Version Numbers matter with three.js
+
+When I first made the source code for these examples and wrote this post I was using r127 of three.js. I do not think a lot of changes hand been made to the torus geometry constructor that will case code breaking changes, but still in the future many such changes might happen to other features of the library that I am using.
+
 ## 2 - Starting out with a basic Torus example
 
-To start out with there is just making a simple hello world tyoe demo of the Torus Constructor with a simple example that is just one mesh object. With that said when calling the THREE.TorusGeometry constructor function the first argument is the main radius of the torus as a whole, while the second argument is the radius of each circle in the torus or the tube radius if you prefer. The next two arguments of the constructor are to set the number of circles in the torus, and how many sides per circle.
+To start out with there is just making a simple hello world type demo of the Torus Constructor with a simple example that is just one mesh object. With that said when calling the THREE.TorusGeometry constructor function the first argument is the main radius of the torus as a whole, while the second argument is the radius of each circle in the torus or the tube radius if you prefer. The next two arguments of the constructor are to set the number of circles in the torus, and how many sides per circle.
 
 Once I have my torus geometry I can then pass it as the first argument to the mesh constructor, and pass a material as the second argument for the mesh constructor and then add the resulting mesh to a scene object. After that I just need to set up a camera and a renderer for this example.
 
