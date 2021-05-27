@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2021-05-27 13:29:50
-version: 1.9
+updated: 2021-05-27 13:33:56
+version: 1.10
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -184,4 +184,5 @@ loop();
 
 ## 5 - Conclusion
 
-The torus geometry constructor is fun geometry constructor to play around with when it comes to making a few quick examples and getting a feel for how to make some interesting animations with three.js. There is many other little details to work with here and there also when it comes to a lot of these examples. There is learning how to work with not just the torus geometry, but geometry in general.
+The torus geometry constructor is fun geometry constructor to play around with when it comes to making a few quick examples and getting a feel for how to make some interesting animations with three.js. There is many other little details to work with here and there also when it comes to a lot of these examples. For example there is learning how to work with not just the torus geometry, but geometry in general when it comes to rotating them, and working with the various properties of a geometry. There is also not just the geometry, but the objects that contain the geometry, and groups of such objects when it come to the Mesh constructor and the Object3d class that it is based on.
+
