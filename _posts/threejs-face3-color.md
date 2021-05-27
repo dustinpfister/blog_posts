@@ -5,11 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 471
-updated: 2021-05-27 15:56:09
-version: 1.17
+updated: 2021-05-27 16:01:23
+version: 1.18
 ---
 
-It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on threejs in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
+It is time for me to revisit the [face3 constructor](/2018/05/11/threejs-face3/) in three.js, in fact I will be writing more content on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) in general in the next few days. Todays post will be on [face3 color](https://stackoverflow.com/questions/51172095/change-the-color-of-mesh-created-using-face3), that is setting colors for each vertex in a face3 instance and how to use it with a material and mesh. In This post I will be going over some examples of the face3 constrictor in general, but this will mostly be on face3 color.
+
+Also now that the face3 and geometry constructors have been removed from three.js as of r125, I will want to come back and edit things post once in a while when I start to learn more about what the current situation is with all of this. I have some working examples now that make use of the buffer geometry constructor that I will be getting to later in this post.
 
 <!-- more -->
 
@@ -157,4 +159,4 @@ When it comes to Face3 color I can still use the Face3 constructor and set verte
 
 So then maybe a better post to read would be something on using the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) constructor, and the groups array that is not the modern replacement for what face3 was all about. In my post on the buffer geometry constructor I have some examples that have to do with working with the groups array, but I also have some examples on my posts on the various geometry constructors such as the [plane geometry](/2019/06/05/threejs-plane/) constructor that might be a good starting point when it comes to learning about the groups array.
 
-If you are just looking for more three.js content to read I have a [post in which I outline a collection of simple threejs project examples](/2021/02/19/threejs-examples/) that I keep coming back to now that might be worth checking out.
+If you are just looking for more three.js content to read I have a [post in which I outline a collection of simple threejs project examples](/2021/02/19/threejs-examples/) that I keep coming back to now that might be worth checking out. Playing around with simple little code examples is one thing but sooner or later it comes time to figure out what the long term plan should be with threejs aside from just making simple code examples and writing blog posts about them.
