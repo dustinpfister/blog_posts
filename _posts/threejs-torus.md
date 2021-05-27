@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 876
-updated: 2021-05-27 13:33:56
-version: 1.10
+updated: 2021-05-27 13:35:49
+version: 1.11
 ---
 
 Today I thought I world write another post on a built in geometry constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), this time the [Torus Geometry Constructor](https://threejs.org/docs/#api/en/geometries/TorusGeometry) which results in a donut like shape. There are many interesting things about the [geometry of a torus in general](https://en.wikipedia.org/wiki/Torus) that are worth looking into in detail. It is a shape that is composed of a collection of circles where each circle is positioned and rotated around a point that results in the formation of a tube that in turn is a kind of 3d circle. So then there are two general arguments of concern that come up with this when it comes to the number of sides of each circle, and the number of circles, as one might expect these values can be tweaked when calling the geometry constructor.
@@ -98,7 +98,7 @@ renderer.render(scene, camera);
 
 ## 4 - Camera moving threw holes animation
 
-So now there is an idea that I just have to do with this because it is just a cool thing to do when it comes to just playing around with three.js. In this example I am once again creating a group of mesh objects that are using the torus geometry constructor but this time I am positing each of them in a circle, so then all the torus objects then begin to from another torus of sorts out of torus objects.
+So now there is an idea that I just have to do with this because it is just a cool thing to do when it comes to just playing around with three.js. In this example I am once again creating a group of mesh objects that are using the torus geometry constructor but this time I am positing each of them in a circle, so then all the torus objects then begin to from another torus of sorts out of torus objects. I am then creating an animation loop, and moving the camera so that it passes along the the holes of each torus mesh object which results in a cool effect.
 
 ```js
 var MAIN_RADIUS = 8,
