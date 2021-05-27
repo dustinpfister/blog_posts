@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 850
-updated: 2021-05-26 15:17:27
-version: 1.13
+updated: 2021-05-27 14:18:48
+version: 1.14
 ---
 
 In [threejs](https://threejs.org/) there are a few things to know about when it comes to making transparent materials, so I think it is called for to write a post on the topic. When it comes to working with just the Basic materials the process is not that hard at all actually. When creating the material I just need to set the [transparent property of the material](https://threejs.org/docs/#api/en/materials/Material.transparent) to true, and then it is just a matter of setting the desired [opacity value](https://threejs.org/docs/#api/en/materials/Material.opacity) for the material, and that is it. However there might be a bit more to write about when it comes to a few more additional things that branch off from that s lets get to it.
@@ -19,7 +19,7 @@ In this post I am mainly writing about the transparent and opacity properties of
 
 ### 1.1 - The visible property of the Object3d class
 
-If I want to just make a mesh object, or just about any display object based off of object3d not visible for a while I can always just set the [visible boolean of the object](/2021/05/24/threejs-object3d-visible/) to false.
+If I want to just make a mesh object, or just about any display object based off of object3d not visible for a while I can always just set the [visible boolean of the object](/2021/05/24/threejs-object3d-visible/) to false. There are also a number of other topics to cover when it comes to making an object completely not visible or not. There is just setting the visible boolean to false, but in some cases it might be a better idea to swap objects from a group that is attached to the scene and another group that is not that acts as a pool of sorts. In any case all of this is outside the scope of this post, here I assume that you just want to play around with the opacity of a material.
 
 ### 1.2 - Version Numbers matter with three.js
 
