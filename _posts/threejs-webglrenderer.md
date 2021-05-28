@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-04 14:48:43
-version: 1.11
+updated: 2021-05-28 13:29:09
+version: 1.12
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -23,32 +23,32 @@ In this post I am using [three.js r98](https://github.com/mrdoob/three.js/tree/r
 
 ## 2 - Basic three.js example using the WebGLRenderer
 
-To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like setSize to set the native size of the canvas that is to be used to render my project. 
+To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like setSize to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a camera. So in this example I will be creating a basic scene, and camera just for the sake of having a basic full working getting started type example.
 
 The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my html.
 
 ```js
 (function () {
  
-    // RENDER
+    // CREATING A WEBL RENDER
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
-    // SCENE
+    // scene
     var scene = new THREE.Scene();
- 
-    // CAMERA
+    // camera
     var camera = new THREE.PerspectiveCamera(40, 320 / 240, .5, 1000);
     camera.position.set(3, 3, 3);
     camera.lookAt(0, 0, 0);
- 
     // add something to the scene
-    scene.add(new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1), new THREE.MeshBasicMaterial({
+    scene.add(new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
                 color: 0xff0000
             })));
  
-    // render the scene with the camera
+    // RENDERING
     renderer.render(scene, camera);
  
 }
