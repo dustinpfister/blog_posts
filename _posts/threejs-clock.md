@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2021-05-28 13:03:33
-version: 1.13
+updated: 2021-05-28 13:06:35
+version: 1.14
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in JavaScript Date class along with request animation frame, but have not been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. Still better late than never, so in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
@@ -19,7 +19,7 @@ This is a post on using the THREE.Clock class in the javaScript library known as
 
 ### 1.1 - There are some client side javaScript features you should be aware of.
 
-The use of the THREE.Clock class can be used with, or as a replacement for the built in javaScript Date object when it comes to setting up an animation loop with function. This kind of function is something that deserves a post on its own when it comes to how to go about making such a loop outside of threejs when it comes to native javaScript features. In fact I have wrote a few posts on this sort of thing when it comes to the use of the setTimeout method, and requestAnaimationFrame.
+The use of the THREE.Clock class can be used with, or as a replacement for the built in javaScript Date object when it comes to setting up an animation loop with function. This kind of function is something that deserves a post on its own when it comes to how to go about making such a loop outside of threejs when it comes to native javaScript features. In fact I have wrote a few posts on this sort of thing when it comes to the use of the [setTimeout method](/2018/12/06/js-settimeout/), and [requestAnaimationFrame](/2018/03/13/js-request-animation-frame/) methods that are typically used to cerate main application update loops.
 
 ### 1.2 - Version Numbers matter with threejs
 
