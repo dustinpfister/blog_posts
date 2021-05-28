@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2021-05-28 12:05:16
-version: 1.4
+updated: 2021-05-28 12:09:24
+version: 1.5
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in JavaScript Date class along with request animation frame, but have not been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. Still better late than never, so in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
@@ -112,4 +112,4 @@ loop();
 
 ## 4 - Conclusion
 
-The THREE.Clock class might prove to me a more convenient solution when it comes to setting up an animation loop in threejs compared to what I often work out with just plane vanilla javaScript features.
+The THREE.Clock class might prove to me a more convenient solution when it comes to setting up an animation loop in threejs compared to what I often work out with just plane vanilla javaScript features. However there is not just using the Clock class when it comes to learning a thing or two about what is oing on when it comes to vanilla javaScript by itself. What if I want to apply what it is that the Clock class is all about to a project outside that os three.js when it comes to a vanilla javaScript project for example? With that said there is not just using the Clock class there is also looking into the preference object in general in client side javaScript, however maybe getting deep into that is a matter for a whole other post.
