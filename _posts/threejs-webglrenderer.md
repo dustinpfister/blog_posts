@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-28 13:45:43
-version: 1.14
+updated: 2021-05-28 13:49:08
+version: 1.15
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -19,7 +19,7 @@ There is more than one option when it comes to rendering a three.js scene and ca
 
 ### 1.1 - Version numbers matter
 
-In this post I am using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) which was released on nov 1st 2018. In this version the canvas renderer was removed, there where also a number of other significant changes. So if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
+In this post I was using [three.js r98](https://github.com/mrdoob/three.js/tree/r98) when I first wrote the post which was released in November of 2018, and the last time I edited this post I was using r127 which was still a late version of three.js in early 2021. In the r98 of three.s the canvas renderer was removed, there where also a number of other significant changes in that version. I also fixed some code breaking changes with these examples and they seem to be workin fine with r127 as of this writing. Still lots of code breaking changes are made to threejs all the time so if the code in this example, or any of my three.js examples breaks be sure to check the revision number of the three.js file you are using first.
 
 ## 2 - Basic three.js example using the WebGLRenderer
 
