@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2021-05-28 12:20:12
-version: 1.8
+updated: 2021-05-28 12:23:31
+version: 1.9
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in JavaScript Date class along with request animation frame, but have not been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. Still better late than never, so in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
@@ -15,7 +15,7 @@ When it comes to making an animation loop in [three.js](https://threejs.org/docs
 
 ## 1 - THREE.Clock and what to know first
 
-This is a post on using the THREE.Clock class in the javaScript library known as three.js. In this post I am also using a lot of other features of the library that I will not be getting into detail here.
+This is a post on using the THREE.Clock class in the javaScript library known as three.js. In this post I am also using a lot of other features of the library, and client side javaScript in general that I will not be getting into detail here. So I assume that you have at least some experience working with threejs, and client side javaScript, otherwise you might end up having a hard time gaining something of value from reading this. So in this section I will be mentioning some things that you might want to look into if you feel you need to take a step back.
 
 ## 2 - Basic loop example using THREE.Clock
 
