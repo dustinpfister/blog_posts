@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2021-05-28 12:29:38
-version: 1.11
+updated: 2021-05-28 13:00:05
+version: 1.12
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in JavaScript Date class along with request animation frame, but have not been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. Still better late than never, so in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
@@ -122,6 +122,55 @@ var loop = function () {
 loop();
 ```
 
-## 4 - Conclusion
+## 4 - Cap FPS example
+
+One thing that is impotent to be aware of when it comes to these loop functions is having a way to limit the number or frames that are being rendered for every second. If no effort is made to do so the example might prove to eat up to much processor overhead on many clients and result in a bad user experience. It might be best to have some way to let users let what the target frame rate should be when it comes to some kind of options menu in a user interface. However maybe a good starting point would be to cope up with some kind of hard coded frame rate that still works well, while still being a low frame rate. Basically the lower the frame rate the lower the load on the processor and graphics adapter of the client, that means it will then use less power, and also have more resources to do other things that might be going on in the page.
+
+```js
+// A STATE OBJECT WITH A THREE.CLOCK INSTANCE
+var state = {
+    clock: new THREE.Clock(),
+    frame: 0,
+    maxFrame: 90,
+    fps: 12, // capping at 12 fps
+    per: 0
+};
+// a scene
+var scene = new THREE.Scene();
+// a mesh
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial());
+scene.add(box);
+// camera render
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// loop
+var loop = function () {
+    var wSecs = performance.now() - state.clock.oldTime,
+    secs;
+    requestAnimationFrame(loop);
+    if (wSecs > 1 / state.fps) {
+        secs = state.clock.getDelta();
+        state.per = state.frame / state.maxFrame;
+        box.rotation.y = Math.PI * 2 * state.per;
+        state.frame += state.fps * secs;
+        state.frame %= state.maxFrame;
+        renderer.render(scene, camera);
+    }
+};
+// START CLOCK
+state.clock.start();
+console.log();
+// start loop
+loop();
+```
+
+## 5 - Conclusion
 
 The THREE.Clock class might prove to me a more convenient solution when it comes to setting up an animation loop in threejs compared to what I often work out with just plane vanilla javaScript features. However there is not just using the Clock class when it comes to learning a thing or two about what is going on when it comes to vanilla javaScript by itself. What if I want to apply what it is that the Clock class is all about to a project outside that of three.js when it comes to a vanilla javaScript project for example? With that said there is not just using the Clock class there is also looking into the preference object in general in client side javaScript, however maybe getting deep into that is a matter for a whole other post.
