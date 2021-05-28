@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-28 13:35:08
-version: 1.13
+updated: 2021-05-28 13:45:43
+version: 1.14
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -68,43 +68,54 @@ Many of the projects I make with three.js are just simple looping animations. To
  
     // RENDER
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
     // SCENE
     var scene = new THREE.Scene();
  
     // CAMERA
-    var camera = new THREE.PerspectiveCamera(40, 320 / 240, .5, 1000);
-    camera.position.set(3, 3, 3);
+    var camera = new THREE.PerspectiveCamera(40, 4 / 3, 0.5, 100);
+    camera.position.set(2, 2, 2);
     camera.lookAt(0, 0, 0);
+    var light = new THREE.PointLight(0xffffff, 0.5);
+    light.position.set(2, 0, 2);
+    camera.add(light);
+    scene.add(camera);
  
     // add something to the scene
-    var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 1, 1), new THREE.MeshBasicMaterial({
-                color: 0xff0000
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0xff0000,
+                emissive: 0x2a0000
             }));
     scene.add(cube);
  
-    // render the scene with the camera
-    var frame = 0,
-    frameMax = 50;
- 
+    var state = {
+        clock: new THREE.Clock(),
+        frame: 0,
+        maxFrame: 90,
+        fps: 20, // capping at 12 fps
+        per: 0
+    };
     var loop = function () {
- 
+        var wSecs = performance.now() - state.clock.oldTime,
+        secs;
         requestAnimationFrame(loop);
- 
-        var per = frame / frameMax,
-        a = Math.PI * 2 * per;
- 
-        cube.rotation.y = a;
- 
-        renderer.render(scene, camera);
- 
-        frame += 1;
-        frame %= frameMax;
- 
+        if (wSecs > 1 / state.fps) {
+            secs = state.clock.getDelta();
+            state.per = state.frame / state.maxFrame;
+            // update
+            cube.rotation.y = Math.PI * 2 * state.per;
+            // RENDER
+            renderer.render(scene, camera);
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
+        }
     };
  
+    state.clock.start();
     loop();
  
 }
