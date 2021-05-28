@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2021-05-28 12:14:13
-version: 1.6
+updated: 2021-05-28 12:18:10
+version: 1.7
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in JavaScript Date class along with request animation frame, but have not been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. Still better late than never, so in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
@@ -19,9 +19,9 @@ This is a post on using the THREE.Clock class in the javaScript library known as
 
 ## 2 - Basic loop example using THREE.Clock
 
-To start out with the THREE.Clock class I made a basic example where I am using the THREE.Clock class as a way to replace the use of the javaScript Date constructor. 
+To start out with the THREE.Clock class I made a basic example where I am using the THREE.Clock class as a way to replace the use of the javaScript Date constructor. When I make an animation loop I often have some kind of state object that will contain a property that contains a date object that is the time stamp at which the last time a frame tick was rendered. I then use that as a way to gage how much time has elapsed sense the last time the scene has rendered and then use that as a way to update objects by way of a per second value for everything. For example say I want to rotate a cube on the y axis at a rate of 45 degrees per second, I can take Math.PI divide by 180, multiply by 45, and then multiply by the number of seconds that have passed sense the last frame update to get a delta value in radians.
 
-When I make an animation loop I often have some kind of state object that will contain a property that contains a date object that is the time stamp at which the last time a frame tick was rendered. I then use that as a way to gage how much time has elapsed sense the last time the scene has rendered and then use that as a way to update objects by way of a per second value for everything. For example say I want to rotate a cube on the y axis at a rate of 45 degrees per second, I can take Math.PI divide by 180, multiply by 45, and then multiply by the number of seconds that have passed sense the last frame update to get a delta value in radians.
+With this example in place of having an instance of Date, I am creating an instance of THREE.Clock. I then start the clock by calling the state method of the clock instance, and start the loop. I then call the get delta method of the clock inside the body of the loop which will return an amount of time in seconds. I can then use this seconds value to update the state of objects when it comes to working out some expressions for doing so. On top of that each time I call the get delta method that will result in the old time property of the clock being reset, so just calling the method is all I need to do, for this example at least.
 
 ```js
 // A STATE OBJECT WITH A THREE.CLOCK INSTANCE
