@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 877
-updated: 2021-05-28 13:06:35
-version: 1.14
+updated: 2021-05-28 13:14:11
+version: 1.15
 ---
 
 When it comes to making an animation loop in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) I have been using the built in JavaScript Date class along with request animation frame, but have not been making use of the Built in [THREE.Clock](https://threejs.org/docs/#api/en/core/Clock) constructor. Turns out that there are still a whole lot of basic features that I have not got around to looking into with three.js when it comes to this constructor and why it might be a good idea to go with this in place of the way that I have been making animation loops thus far. Still better late than never, so in this post I will be looking into the THREE.Clock constructor and also touching base on some client side javaScript features that are closely related to the class such as the [performance global](https://developer.mozilla.org/en-US/docs/Web/API/Performance) mainly the [now method](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) of that.
@@ -177,4 +177,4 @@ The THREE.Clock class might prove to me a more convenient solution when it comes
 
 This is a topic that I seem to keep coming back to now and then, not so much the THREE.Clock class, but the subject of main application loops in general. There is a lot to write about when it comes to this one little thing about client side javaScript in general, and every now and then I come up with new ways to go about doing the same thing when it comes to this. So I should end up getting around to editing this post at some point in the future when I become aware of something more about it.
 
-
+There is not juct the THREE.Clock class but also getting into making one or more simple project examples where the goal is to create some kind of clock using three.js. These kind sof examples can prove to be simple, fun little projects, but there is also a great deal or room to do all kinds of things that are creative and original. I made a [threejs project example in which the goal was to make a simple clock](/2019/12/16/threejs-examples-clock-basic/) type project with three.js that might be worth checking out.
