@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-28 13:49:08
-version: 1.15
+updated: 2021-05-28 13:51:34
+version: 1.16
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -15,7 +15,7 @@ There are a few core components to making a [three.js](https://threejs.org/), th
 
 ## 1 - What to know
 
-There is more than one option when it comes to rendering a three.js scene and camera. The 2d canvas renderer is another option, but many three.js features will not work with it, it renders a lot slower, and as of three.js r98 it is not even part of three.js anymore. So for the most part it just makes sense to just use the web gl renderer.
+There is more than one option when it comes to rendering a three.js scene and camera with a renderer in threejs, maybe not so much with the core library but there are some additional render options in the github repo examples folder. The 2d canvas renderer is another option, but many three.js features will not work with it, it renders a lot slower, and as of three.js r98 it is not even part of three.js anymore. So for the most part it just makes sense to just use the web gl renderer as support for web gl is now pretty good with modern web browsers.
 
 ### 1.1 - Version numbers matter
 
