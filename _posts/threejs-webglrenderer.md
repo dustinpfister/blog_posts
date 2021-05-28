@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-28 13:29:09
-version: 1.12
+updated: 2021-05-28 13:35:08
+version: 1.13
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -25,7 +25,9 @@ In this post I am using [three.js r98](https://github.com/mrdoob/three.js/tree/r
 
 To get started with the WebGLRenderer all I need to do is just call the THREE.WebGLRenderer constructor method to create a new instance of the web gl renderer. Once I have my web gl renderer instance I can then call methods like setSize to set the native size of the canvas that is to be used to render my project. I can also use the render function of the renderer to draw the current state of a scene with a camera. So in this example I will be creating a basic scene, and camera just for the sake of having a basic full working getting started type example.
 
-The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my html.
+So for this basic example I just create a web gl renderer by calling the THREE.WebGlRenderere constructor, and then use the set size method to set the view port side of the canvas it will be using. The domElement property stores the dom element that will be used to render so I can use something like the appendChild method to append to an element that I have in my html.
+
+Now that I have the renderer I will want a scene object with something to look at attached to it, and a camera. So the nest step is to just create a new scene object, and then a camera too such as the perspective camera. I then created a Mesh with a simple geometry and material for it, and made sure to ass the mesh to the scene object. Now I can use the render function of the web gl renderer, with that said all I have to do is call the render function, pass the scene object as the first argument, and the camera as the second argument.
 
 ```js
 (function () {
