@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 581
-updated: 2021-05-24 14:54:38
-version: 1.26
+updated: 2021-05-28 13:10:52
+version: 1.27
 ---
 
 I feel as though I need to work on things that are fun now and then with javaScript at least once in a while, otherwise I will end up hating what I love if it make it all about work and no play. With that being said [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is certainly an example of fun and exciting javaScript, rather than dull but useful jaavScript. Sure there might prove to be many examples of practical application of threejs to write about, however I often see it more as something to play with when it comes to making simple animations, games, and toy like projects. 
 
 I often find myself making clocks because they are a quick yet fun thing to make with javaScript and canvas elements, yet there is a great deal of room for creativity when it comes to this kind of project if I do take a moment to pour some serious time into one of them. However for the sake of this post at least I think I will be starting out with just a basic example of a clock using three.js. With that said this post will be on a [threejs example](/2021/02/19/threejs-examples/) that is a javaScript powered basic clock which should prove to be a simple fun little project.
+
+This is an example type post in which I am making a threejs project where things are updated by way of the local client system time. This is then not to be confused with the [THREE.Clock](/2021/05/28/) constructor which is a class that can eb used to keep track of time that has elapsed from a starting point.
 
 <!-- more -->
 
