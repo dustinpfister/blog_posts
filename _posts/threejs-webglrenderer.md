@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-29 08:12:02
-version: 1.20
+updated: 2021-05-29 08:14:02
+version: 1.21
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -64,7 +64,8 @@ To render the scene I just need to pass the scene, and camera to the render meth
 Many of the projects I make with three.js are just simple looping animations. To have a loop I just need to call the render method in a method that is going to be called over and over again using something like the request animation frame method. There is a wide range of ways to go about doing something like this so I will not be getting into the full depth of this topic here. However I should cover at last one or two examples of this kind of loop using threejs  and native javaScript features.
 
 ### 3.1 - Using request animation frame
-.
+
+One way to set up an animation loop would be to use the native client side javaScript [request animation frame](/2018/03/13/js-request-animation-frame/) method.
 
 ```js
 (function () {
