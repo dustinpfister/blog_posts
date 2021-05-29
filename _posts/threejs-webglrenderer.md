@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 335
-updated: 2021-05-29 08:16:06
-version: 1.22
+updated: 2021-05-29 08:18:53
+version: 1.23
 ---
 
 There are a few core components to making a [three.js](https://threejs.org/), there needs to be a scene, at least one mesh to look at that is composed of a geometry, and a material. There also needs to be a camera to set the point in space by which to look at the mesh in the scene as well, however there is still one final other component that is needed as well and that is a render. In older versions of three.js there was both a 2d canvas and webgl renderer but in later versions it has been removed, and now when making a three.js project I am pretty much always working with the webgl renderer. As such this post will serve as a general overview of the [webgl renderer](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer), I will not get into every little detail here, but I will link to other relevant posts when it is called for.
@@ -130,7 +130,7 @@ In this example I am doing something to limit the number of frames that are rend
 
 ### 3.2 - Using the set animation loop method
 
-Another option for setting up and animation loop in which the render function will be called would be to use the set animation loop method of the web gl renderer instance.
+Another option for setting up and animation loop in which the render function will be called would be to use the [set animation loop method](https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer.setAnimationLoop) of the web gl renderer instance. The process of using it is pretty straight forward I just need to call the method off of the renderer instance and pass the function that I want called over and over again as the first argument for the function. If I want to stop the animation for any reason I can then just pass a null value as a way to stop it.
 
 ```js
 (function () {
