@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 14:51:20
-version: 1.45
+updated: 2021-05-31 14:57:31
+version: 1.46
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -433,6 +433,8 @@ There might be a number of other ways to go about creating a wire frame look rat
 
 ## 7 - Conclusion
 
-So then the Box geometry is a great starting point when it comes to starting to explore everything that there is to work with when it comes to three.js. Much of what applies for a Box geometry will also apply for other built in geometries when it comes to geometries and the index values for a geometry. However sooner or later it might be called for to get into creating a custom geometry using the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) directly rather than using one of the built in geometries. However it is also possible to just create simple, crude, yet effective models of things using just groups of the built in geometry constructors such as the Box Geometry constructor.
+So then the Box geometry is a great starting point when it comes to begging to explore everything that there is to work with when it comes to three.js. Much of what applies for a Box geometry will also apply for other built in geometries, custom geometries, and the buffer geometry class in general so to some extent by learning a thing or two about box geometry one learns a thing or two about geometry in general with threejs.
+
+Sooner or later it might be called for to get into creating a custom geometry using the [Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) directly rather than using one of the built in geometries. However it is also possible to just create simple, crude, yet effective models of things using just groups of the built in geometry constructors such as the Box Geometry constructor.
 
 
