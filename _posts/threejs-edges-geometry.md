@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2021-05-31 13:25:09
-version: 1.21
+updated: 2021-05-31 13:29:08
+version: 1.22
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. I became aware of how this constructor can be useful when I took a second look into how to o about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in three.js. When it comes to wite frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this constructor can help with that when used with the line constructor. However I think that this constructor deserves a quick post on its own, so here it is.
@@ -65,6 +65,8 @@ To create an edges geometry I will first want a geometry by which to get the edg
 
 The result of this is then a box that looks like it is in a kind of wire frame mode, however it looks different from a Mesh object that just has its material set to wire frame mode. There may be a few other ways to get this kind of effect, such as doing something with textures and alpha maps, but that kind of approach will also have a few down sides that I have not found solutions for just yet.
 ## 3 - A sphere example, mesh in wire frame mode, and the threshold angle argument of edges geometry
+
+Now that I have the basic example out of the way it is time to start to look into some slightly more advanced examples of the edge geometry. One thing to look into is what the deal is with this threshold angle argument when calling the edge geometry constructor. It would seem that an edge is only created if the angle between the face normals of the adjoining faces exceeds the given threshold angle. The default value for this angle is one degree but in some situations I might want to set that higher, or lower depending on what I want to do.
 
 ```js
 (function () {
