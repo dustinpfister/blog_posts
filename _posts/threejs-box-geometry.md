@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 14:45:51
-version: 1.43
+updated: 2021-05-31 14:49:05
+version: 1.44
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -98,6 +98,8 @@ renderer.render(scene, camera);
 
 The two properties of interest here are the rotation property and position properties of the mesh when creating a box with the Box Geometry constructor and a material. The rotation property is an instance of [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler), and the position property is an instance of [THREE.Vector3](/2018/04/15/threejs-vector3/). With that said it would be best to look into each of these classes in detail to know everything there is to work with them. However the main methods of interest with both of these classes are the set and copy methods.
 
+In this example I am using the copy method to copy the instances of Euler and Vector 3 in my state object as the values for the corresponding properties for position and rotation. However there is also the set method that can be used to set the values of these class instances of a mesh. Both set methods will take three values, only with a Vector3 instance I will want to given position values for x, y, and z, and with a Euler instance I will want to give radian values for the angles of the rotation.
+
 ```js
 var scene = new THREE.Scene();
 scene.add(new THREE.GridHelper(10, 10)); // grid helper
@@ -164,7 +166,7 @@ var loop = function () {
 loop();
 ```
 
-In this example I am using the copy method to copy the instances of Euler and Vector 3 in my state object as the values for the corresponding properties for position and rotation. However there is also the set method that can be used to set the values of these class instances of a mesh. Both set methods will take three values, only with a Vector3 instance I will want to given position values for x, y, and z, and with a Euler instance I will want to give radian values for the angles of the rotation.
+In this example I am also setting up an animation loop, there is a whole lot of different ways to go about setting up this sort of thing. I would not worry to much about the fine details about animation loop functions, but I still think it is a good idea to use request animation frame, or something that is an abstraction if it, and to do something to limit the frame rate a little so that I am not slamming the client system to much.
 
 ## 4 - Using an Array of Materials
 
