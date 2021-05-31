@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2021-05-31 12:56:51
-version: 1.16
+updated: 2021-05-31 12:58:57
+version: 1.17
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. I became aware of how this constructor can be useful when I took a second look into how to o about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in three.js. When it comes to wite frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this constructor can help with that when used with the line constructor. However I think that this constructor deserves a quick post on its own, so here it is.
@@ -64,7 +64,7 @@ The result of this is then a box that looks like it is in a kind of wire frame m
 
 One way to go about getting a better look at the over all situation of what is going on here would be to move the camera around, or the line segments instance. In any case this will require that I set up some kind of animation loop to update the position, or rotation of the line segments instance or the camera. There are a number of ways to go about doing something like this, but I think that it might be a good idea to make use of the THREE.Clock Constructor along with the use of request animation frame. However this is a topic where I keep finding other ways to go about doing this that might be a little better for one reason or another. I dont want to get into all of that in detail here as doing so is a little off topic.
 
-In this example I took the source code of my basic example of the edges geometry that I coved above in this post and I just added a animation loop at the end of the source code.
+In this example I took the source code of my basic example of the edges geometry that I coved above in this post and I just added a animation loop at the end of the source code. In the body of the animation loop I call an update function and in the body of that I am just using the rotation property of the line segments instance to rotate the line segments along the y axis.
 
 ```js
 (function () {
