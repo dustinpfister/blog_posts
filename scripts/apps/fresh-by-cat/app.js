@@ -4,7 +4,7 @@ app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-app.set('port', process.env.PORT || process.argv[2] || 8080);
+app.set('port', process.env.PORT || process.argv[2] || 8000);
 
 app.set('days_back', process.argv[3] || 1500);
 

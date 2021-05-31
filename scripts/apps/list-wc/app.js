@@ -3,7 +3,7 @@ path = require('path'),
 app = express();
 
 app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || process.argv[2] || 8080);
+app.set('port', process.env.PORT || process.argv[2] || 8010);
 app.set('days_back', 365 * 2);
 
 let dir_cli = path.resolve(__dirname, '../../cli'),
