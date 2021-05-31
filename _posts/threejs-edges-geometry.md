@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2021-05-31 12:32:32
-version: 1.9
+updated: 2021-05-31 12:37:34
+version: 1.10
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. I became aware of how this constructor can be useful when I took a second look into how to o about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in three.js. When it comes to wite frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this constructor can help with that when used with the line constructor. However I think that this constructor deserves a quick post on its own, so here it is.
@@ -17,7 +17,11 @@ The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) 
 
 This is a post on the THREE.EdgesGeometry constructor function in the javaScript library known as three.js. In order to gain something of value from reading this it is called for to have at least some background on these subjects as I will not be getting into the very basics of three.js and javaScript here. I will however take a moment to go over a few things that you might want to read up on more if you find this post a little to advanced still.
 
-### 1.1 - Need to keep version numbers in mind with three.js
+### 1.1 - Read up a bit more on buffer geometry in general first
+
+The first argument for the Edges Geometry constructor should be an instance of buffer geometry from which to create edges from. In other words in order to create an Edge Geometry to use with Line Segments you first need a geometry. There are a number of options to choose from in threejs when it comes to built in geometry constructors such as the box geometry constructor, and the sphere geometry constructor. There is also loading a geometry in from an external file, or creating a custom geometry with a little javaScript code using the Buffer Geometry constructor directly.
+
+### 1.2 - Need to keep version numbers in mind with three.js
 
 When I wrote this post I was using three.js r127 which was still a fairly late version of threejs at the time of this writing. In the future changes might be made that will case the code examples here to break, so make sure to always be aware of the version number of threejs that you are using if you run into problems.
 
