@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 14:49:05
-version: 1.44
+updated: 2021-05-31 14:51:20
+version: 1.45
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -166,7 +166,7 @@ var loop = function () {
 loop();
 ```
 
-In this example I am also setting up an animation loop, there is a whole lot of different ways to go about setting up this sort of thing. I would not worry to much about the fine details about animation loop functions, but I still think it is a good idea to use request animation frame, or something that is an abstraction if it, and to do something to limit the frame rate a little so that I am not slamming the client system to much.
+In this example I am also setting up an animation loop, there is a whole lot of different ways to go about setting up this sort of thing. I would not worry to much about the fine details about animation loop functions, but I still think it is a good idea to use request animation frame, or something that is an abstraction if it, and to do something to limit the frame rate a little so that I am not slamming the client system to much. It might be best to have a user interface where the user can adjust the frame rate capping, but when it comes to setting a fixed value the lower the better until the video gets to choppy.
 
 ## 4 - Using an Array of Materials
 
