@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2021-05-31 12:47:49
-version: 1.13
+updated: 2021-05-31 12:52:48
+version: 1.14
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. I became aware of how this constructor can be useful when I took a second look into how to o about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in three.js. When it comes to wite frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this constructor can help with that when used with the line constructor. However I think that this constructor deserves a quick post on its own, so here it is.
@@ -60,7 +60,66 @@ To create an edges geometry I will first want a geometry by which to get the edg
 ```
 
 The result of this is then a box that looks like it is in a kind of wire frame mode, however it looks different from a Mesh object that just has its material set to wire frame mode. There may be a few other ways to get this kind of effect, such as doing something with textures and alpha maps, but that kind of approach will also have a few down sides that I have not found solutions for just yet.
-## 3 - Conclusion
+## 3 - Creating and example with an animation loop
+
+One way to go about getting a better look at the over all situation of what is going on here would be to move the camera around, or the line segments instance. In any case this will require that I set up some kind of animation loop to update the position, or rotation of the line segements instance or the camera.
+
+```js
+(function () {
+ 
+    // box geometry and...
+    var boxGeo = new THREE.BoxGeometry(1, 1, 1),
+    // AN EDGE GEOMETRY CREATED FROM IT
+    edgeGeo = new THREE.EdgesGeometry(boxGeo);
+    var line = new THREE.LineSegments(
+            edgeGeo,
+            new THREE.LineBasicMaterial({
+                color: new THREE.Color('white')
+            }));
+ 
+    // Scene, camera renderer
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color('blue');
+    scene.add(line);
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
+    camera.position.set(1.25, 1.75, 1.25);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // loop
+    var state = {
+        clock: new THREE.Clock(),
+        frame: 0,
+        maxFrame: 90,
+        fps: 12, // capping at 12 fps
+        per: 0
+    };
+    var update = function (state) {
+        line.rotation.y = Math.PI * 2 * state.per;
+    };
+    var loop = function () {
+        var wSecs = performance.now() - state.clock.oldTime,
+        secs;
+        requestAnimationFrame(loop);
+        if (wSecs > 1 / state.fps) {
+            secs = state.clock.getDelta();
+            state.per = state.frame / state.maxFrame;
+            update(state);
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
+            renderer.render(scene, camera);
+        }
+    };
+    // START CLOCK
+    state.clock.start();
+    loop();
+}
+    ());
+```
+
+## 4 - Conclusion
 
 So then the use of an instance of an Edges Geometry constructor will result in another way to go about getting something that looks like a kind of wire frame, and if you ask me it looks good. However there are still some draw backs, on of which is that I can not seem to set the line width to anything other than one. Another way to go about having a kind of wire frame type look would be to try to work something out with some textures, but so far I can not say that I have found anything that works as well as I would like it to when it comes to that kind of approach. So I think that maybe the best way to go about getting a kind of wire frame mode with thick lines might be to think in terms of using the cylinder geometry, sphere geometry, and create a collection of mesh objects but maybe getting into that sort of thing would be a matter for a whole other post.
 
