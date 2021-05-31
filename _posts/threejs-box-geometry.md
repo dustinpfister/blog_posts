@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 13:46:32
-version: 1.33
+updated: 2021-05-31 13:51:26
+version: 1.34
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -345,7 +345,7 @@ renderer.render(scene, camera);
 
 ## 6 - The edge geometry constructor and the line segments constructor
 
-There is the subject of setting one or more materials that are being used with a box geometry in a mesh into wire frame mode. However there is a number of ways of getting a similar look that might prove to be a more desirable result. I mean wire frame mode of a material like the mesh basic material will work okay, but it will draw all the triangles of a mesh and not just the edges of the mesh. So another way of getting a similar result would be to use the [edges geometry](/2021/05/31/threejs-edges-geometry/) constructor to create a new geometry from the box geometry, and then pass that to the line segments constructor.
+There is the subject of setting one or more materials that are being used with a box geometry in a mesh into wire frame mode. However there is a number of ways of getting a similar look that might prove to be a more desirable result. I mean wire frame mode of a material like the mesh basic material will work okay, but it will draw all the triangles of a mesh and not just the edges of the mesh. So another way of getting a similar result would be to use the [edges geometry](/2021/05/31/threejs-edges-geometry/) constructor to create a new geometry from the box geometry, and then pass that to the line segments constructor. This will result in a look that is like that of wire frame mode, but it will just be the edges of the box, not all the tingles which I  for one like better.
 
 ```js
 (function () {
@@ -377,6 +377,8 @@ There is the subject of setting one or more materials that are being used with a
 }
     ());
 ```
+
+There might be a number fo other ways to go about creating a wire frame look rather than just making use of the wire fame mde of mesh materials. I would say that this is not the end all solution for this sort of thing because there is one draw back when it comes to setting the line width. It would seem that I can not set the thickness of the lines to anything other that 1, so maybe there is yet another way to do something like this that might have to involve some kind of custom geometry or other advanced use case.
 
 ## 7 - Conclusion
 
