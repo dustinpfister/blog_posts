@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 13:43:53
-version: 1.32
+updated: 2021-05-31 13:46:32
+version: 1.33
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -345,7 +345,7 @@ renderer.render(scene, camera);
 
 ## 6 - The edge geometry constructor and the line segments constructor
 
-There is the subject of setting one or more materials that are being used with a box geometry in a mesh into wire frame mode. However there is a number of ways of getting a similar look that might prove to be a more desirable result.
+There is the subject of setting one or more materials that are being used with a box geometry in a mesh into wire frame mode. However there is a number of ways of getting a similar look that might prove to be a more desirable result. I mean wire frame mode of a material like the mesh basic material will work okay, but it will draw all the triangles of a mesh and not just the edges of the mesh. So another way of getting a similar result would be to use the [edges geometry](/2021/05/31/threejs-edges-geometry/) constructor to create a new geometry from the box geometry, and then pass that to the line segments constructor.
 
 ```js
 (function () {
