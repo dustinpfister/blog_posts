@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 878
-updated: 2021-05-31 12:59:27
-version: 1.18
+updated: 2021-05-31 13:01:50
+version: 1.19
 ---
 
 The [edges geometry](https://threejs.org/docs/#api/en/geometries/EdgesGeometry) constructor in [three.js](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) is yet another useful little feature of threejs that can be a handy tool when I just want to view the edges of a geometry. I became aware of how this constructor can be useful when I took a second look into how to o about working with [wire frames when updating my post on that subject](/2019/12/19/threejs-wireframe/) in three.js. When it comes to wite frame mode that works more or less as expected, however it will work by showing all the triangles of a geometry, not just the edges of a geometry as a line, or collection of line segments. So when it comes to creating another kind of wire frame mode that is just the edges of a geometry this constructor can help with that when used with the line constructor. However I think that this constructor deserves a quick post on its own, so here it is.
@@ -25,7 +25,11 @@ The first argument for the Edges Geometry constructor should be an instance of b
 
 Once A geometry is passed to the Edges geometry constrictor another geometry is returned, but then in order to see anything the nest step would be to pass the resulting Edges geometry to the [Line segments](https://threejs.org/docs/#api/en/objects/LineSegments) constructor. You might all ready be somewhat familiar with the Mesh Constructor in threejs, this Line Segments constructor is somewhat similar in the sense that it is yet another object in three.js that is based off of the object3d class, and it will work with a geometry instance. However there is a restriction on what materials can be used as I can only use Line materials such as the Line basic material with an instance of line segments.
 
-### 1.3 - Need to keep version numbers in mind with three.js
+### 1.3 - The Object3d class is also worth looking into more also.
+
+The line segments constructor that is used with the geometry that is returned by the edges geometry constrictor is based on a class known as object3d. If you have not done so take a moment to look into this class in great detail, there is a lot to know about it and it apples to a whole lot of objects in three.js.
+
+### 1.4 - Need to keep version numbers in mind with three.js
 
 When I wrote this post I was using three.js r127 which was still a fairly late version of threejs at the time of this writing. In the future changes might be made that will case the code examples here to break, so make sure to always be aware of the version number of threejs that you are using if you run into problems.
 
