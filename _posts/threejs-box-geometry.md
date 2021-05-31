@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 13:52:26
-version: 1.35
+updated: 2021-05-31 13:58:46
+version: 1.36
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -17,7 +17,7 @@ This will then be a basic post, or at least it will start out that way, for thos
 
 ## 1 - Box Geometry in thee.js and what to know first
 
-This is a post on the Box Geometry Constructor in three.js, and many little related topics that branch off from that. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), but many of the examples here will be not so far beyond that point. So I assume that you know how to set up a basic client side javaScript project using three.js, and so forth.
+This is a post on the Box Geometry Constructor in three.js, and many little related topics that branch off from that specific constructor function in the javaScript library known as threejs. This is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), but many of the examples here will be not so far beyond that point. Still I assume that you know how to set up a basic client side javaScript project as I will not be getting into the very basics of setting things up. If however you have got your hello world example up and running but would like to learn more about just playing around with a cube, or box of some kind with threejs and a little javaScript code you might gain something of value from reading this post.
 
 ### 1.1 - Version Numbers matter with three.js
 
@@ -378,7 +378,7 @@ There is the subject of setting one or more materials that are being used with a
     ());
 ```
 
-There might be a number fo other ways to go about creating a wire frame look rather than just making use of the wire fame mode of mesh materials. I would say that this is not the end all solution for this sort of thing because there is one draw back when it comes to setting the line width. It would seem that I can not set the thickness of the lines to anything other that 1, so maybe there is yet another way to do something like this that might have to involve some kind of custom geometry or other advanced use case.
+There might be a number of other ways to go about creating a wire frame look rather than just making use of the wire fame mode of mesh materials. I would say that this is not the end all solution for this sort of thing because there is one draw back when it comes to setting the line width. It would seem that I can not set the thickness of the lines to anything other that 1, so maybe there is yet another way to do something like this that might have to involve some kind of custom geometry or other advanced use case.
 
 ## 7 - Conclusion
 
