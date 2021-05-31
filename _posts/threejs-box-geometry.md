@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 14:44:23
-version: 1.42
+updated: 2021-05-31 14:45:51
+version: 1.43
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -52,7 +52,7 @@ renderer.render(scene, camera);
 
 ## 3 - Position and rotation
 
-Once that basic hello world cube example is up and running, the first thing I remember wanting to do next was to learn how to rotate and move the box. When it comes to doing this there is rotating and translating the box geometry, and then there is rotating and translating the mesh object that contains the geometry. There is also just leaving the box at a fixed location and moving rotating the camera while having it continue to look at the box.
+Once that basic hello world cube example is up and running, the first thing I remember wanting to do next was to learn how to rotate and move the box. When it comes to doing this there is rotating and translating the box geometry, and then there is rotating and translating the mesh object that contains the geometry. There is also just leaving the box at a fixed location and moving rotating the camera while having it continue to look at the box. It will also involve setting up a basic animation loop using request animation frame, or some other means to go about calling a method over and over again changing the state of values and drawing the scene each time the method is called.
 
 With that said reading up more on the Mesh Class and really [Object3d class](/2018/04/23/threejs-object3d/) would be best when it comes to the core of positing and rotating things by way of the Mesh object. When it comes to rotating an positioning a box by changing the state of the geometry there is looking into the buffer geometry constructor in general to learn more about how to do such things that way.
 
