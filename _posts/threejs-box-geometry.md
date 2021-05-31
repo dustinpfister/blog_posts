@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 853
-updated: 2021-05-31 14:38:45
-version: 1.40
+updated: 2021-05-31 14:41:38
+version: 1.41
 ---
 
 After looking over my old content on [three js](https://threejs.org/) it would seem that I never took a moment to write a post On the [Box Geometry Constructor](https://threejs.org/docs/#api/en/geometries/BoxGeometry). I guess I thought that I knew what I need to know about it and thus I could move on to more advanced topics, if so maybe that was a mistake. Better late than never though so I thought I would take a moment to work out some examples centered around just using the basic Box Geometry constructor in three.js as a way to create a Geometry to be used with a Mesh in a three.js scene.
@@ -59,6 +59,8 @@ With that said reading up more on the Mesh Class and really [Object3d class](/20
 ### 3.2 - Rotation and position of the box geometry
 
 First off in this example I will be looking at how to go about rotating and positioning a cube by mutating the state of the geometry rather than the mesh object, or any kind of parent object to that of the mesh object. When it comes to doing positing and rotating this way I will typically want to only do this one just for the sake of changing the position and orientation relative to the containing mesh object. When it comes to changing these values over and over again in a loop it would be better to mutate the object3d values of the containing mesh object.
+
+The thing to keep in mind here is that when working with the box geometry I am working with an instance of buffer geometry and when it comes to that class there are methods like rotateX, rotateY, and rotateZ than can be used as a way to adjust the geometry rotation. When it comes to adjusting the position of the geometry there is the translate method of the buffer geometry class.
 
 ```js
 var scene = new THREE.Scene();
