@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2021-06-01 14:33:53
-version: 1.21
+updated: 2021-06-01 14:40:54
+version: 1.22
 ---
 
 Today I thought I would look into making a few quick examples of the [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry. So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -139,7 +139,49 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-## 5 - Conclusion
+## 5 - Punching a hole in  shape with another shape
+
+```js
+// creating a scene
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(4, 4));
+ 
+// make the shape
+var tri = new THREE.Shape();
+tri.moveTo(0, 2);
+tri.lineTo(2, -2);
+tri.lineTo(-2, -2);
+// add the hole
+var hole = new THREE.Shape();
+hole.arc(0, -0.8, 1.0, 0, Math.PI * 2);
+// push to the shapes holes array
+tri.holes.push(hole);
+ 
+// geometry
+var extrudeSettings = {
+    depth: 1,
+    bevelEnabled: false
+};
+var geometry = new THREE.ExtrudeGeometry(tri, extrudeSettings);
+geometry.rotateX(Math.PI * 1); // might want to center
+geometry.center();
+// mesh
+var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial());
+mesh.add(new THREE.BoxHelper(mesh));
+// add the mesh to the scene
+scene.add(mesh);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(4, 4, 4);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 6 - Conclusion
 
 The Shape Constructor can prove to be yet another helpful tool in the toolbox of sorts that is threejs. It can be used with the extrude geometry constructor to help create the geometry for all kinds of mesh objects that can be used on there own, or as part of a group actually. For example I can have a mesh that makes use of a box geometry, and then have a extruded triangle shape geometry added to another mesh that can then be positioned next to it.
 
