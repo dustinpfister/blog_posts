@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2021-06-01 14:23:07
-version: 1.19
+updated: 2021-06-01 14:24:52
+version: 1.20
 ---
 
 Today I thought I would look into making a few quick examples of the [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry. So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -99,7 +99,7 @@ There may be a great deal more to cover when it comes to the THREE.ExtrudeGeomet
 
 ## 4 - Heat shape example and the bezierCurveTo method of the Shape Class
 
-The official example of the Shape class makes use of the bezier curve to method as a way to go about making a heart shape.
+The official example of the Shape class makes use of the bezier curve to method as a way to go about making a heart shape. It would seem that the Sharp class has a number of methods to work with when it comes to creating the lines that will be used to create the shape. There is making use of them, or just working out the math when it comes to just sticking to the move to and line to methods.
 
 ```js
  
