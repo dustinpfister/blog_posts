@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-06-01 11:11:02
-version: 1.13
+updated: 2021-06-01 11:20:14
+version: 1.14
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be another basic [project example of threejs](/2021/02/19/threejs-examples/), this time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -19,8 +19,11 @@ There is a wide range of different ways that I could go when it comes to this so
 
 <!-- more -->
 
+## 1 - A Basic threejs framework example and what to know first
 
-## 1 - The source code of the basic framework
+This is a post on a basic threejs framework starting point, and because it is a very basic starting point technically it might not really be a framework to begin with. However that all depends on what your definitions of framework, library, and module are to begin with.
+
+## 2 - The source code of the basic framework
 
 For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-iife/) and attaching all the public methods to a single global object property called threeFrame. When it comes to public methods of this framework, so far I just have two, one to create an instance of this main frame work API, and another that will just create a simple cube mesh.
 
@@ -100,7 +103,7 @@ For this frame work I am packing everything into a [single IIFE](/2020/02/04/js-
 }(typeof threeFrame === 'undefined' ? this['threeFrame'] = {} : threeFrame));
 ```
 
-## 2 - Now just a single use case example of the framework
+## 3 - Now just a single use case example of the framework
 
 Now that I have my basic framework together it is time to create a simple demo of this to make sure that it is working out okay thus far. To start out with this I do not need to do anything fancy, just a simple rotating cube like demo will work just fine for now.
 
@@ -130,7 +133,7 @@ So when this is all up and running it would seem that things are working out as 
 
 There is all ready a great deal that I might want to change and add, but for now I think I just want to be happy with this as a basic starting point. When it comes to adding more on top of this that might change a great deal depending on what I want to do with threejs, making some kind of game is not the same thing as making some kind of looping animation that I might want to export to a stand alone video file contain of some kind.
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 Well I was able to slap this basic framework example together in a flash today, but it is still very mush just that a basic framework. Still something like this might still prove to work okay when it comes to making very simple examples that just involve some kind of looping animation type effect. I am sure that I might make at least a few more examples such as this where I might add at least a few more additional features here and there as needed.
 
