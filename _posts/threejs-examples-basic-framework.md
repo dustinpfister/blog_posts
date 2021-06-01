@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-06-01 11:24:38
-version: 1.15
+updated: 2021-06-01 11:29:06
+version: 1.16
 ---
 
 This will be yet another [threejs](https://threejs.org/) post that will be another basic [project example of threejs](/2021/02/19/threejs-examples/), this time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
@@ -23,7 +23,9 @@ There is a wide range of different ways that I could go when it comes to this so
 
 ### 1.1 - What is a framework to begin with anyway?
 
-This is a post on a basic threejs framework starting point, and because it is a very basic starting point technically it might not really be a framework to begin with. However that all depends on what your definitions of framework, library, and module are to begin with. The general idea that I have in mind is to create something that is almost a finished application by itself actually, and using it is just a matter of adding a few additional lines of code that that act as a way to soft code this almost finished application to create, you guessed it a finished application. I would say that such code would constitute a framework, however it might also fit the definition of a module actually.
+This is a post on a basic threejs framework starting point, and because it is a very basic starting point technically it might not really be a framework to begin with. However that all depends on what your definitions of framework, library, and module are to begin with. The general idea that I have in mind is to create something that is almost a finished application by itself actually, and using it is just a matter of adding a few additional lines of code that that act as a way to soft code this almost finished application to create, you guessed it a finished application. 
+
+I would say that what I have in mind here would constitute something that could be called a framework, however it might also loosely fit the definition of a module actually as it is also a single stand alone file ready to be used by itself. However that would only be true assuming that threejs is there to work with as that is the only dependency with this framework starting point. If I where to counting working on this to make something far more advanced I might end up having a whole bunch of modules all working together to create this single stand alone framework that I can work within.
 
 ## 2 - The source code of the basic framework
 
