@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 849
-updated: 2021-04-21 14:06:01
-version: 1.11
+updated: 2021-06-01 10:47:06
+version: 1.12
 ---
 
-This will be yet another [threejs](https://threejs.org/) post that will be yet another basic [project example of threejs](/2021/02/19/threejs-examples/) this time around I think I should start at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
+This will be yet another [threejs](https://threejs.org/) post that will be another basic [project example of threejs](/2021/02/19/threejs-examples/), this time though I am thinking more in terms of a framework rater than a full project example. So in this post I think I should start out with at least a few examples that are basic starting points for some kind of framework where I am building on top of threejs.
+
+When making one threejs demo after another I have found that there are patterns that I keep repeating over and over again when it comes to setting up a basic scene. There is typically always setting up a scene object, creating an instance of a perspective camera, and of course a renderer. On top of that I often have some kind of main application loop in which I am update the state of a scene, and rendering that scene over and over again. So it would make sense to create something in which I am creating abstractions for all of this, so I can just like to one more additional external file beyond that of just three.js, and write less code when it comes to what sets the specific demo, or project, apart from everything else.
 
 For now I am not interesting in doing anything to involve when it comes to making this kind of project. What I want is a way to just have things like an application loop, and some mash creation type stuff abstracted away into a framework. This way I can have just a single main.js file where I just call a main create method of this framework, and pass an options object with a few methods and proprieties as a way to make a quick simple looping animation type thing.
 
