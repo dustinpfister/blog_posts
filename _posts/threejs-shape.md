@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2021-06-01 14:49:07
-version: 1.27
+updated: 2021-06-01 14:49:58
+version: 1.28
 ---
 
 Today I thought I would look into making a few quick examples of the [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry. So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -143,7 +143,7 @@ renderer.render(scene, camera);
 
 One thing that comes up when it comes to working with shapes is how to go about [punching a hole in a shape with another shape](https://stackoverflow.com/questions/28532878/three-js-punch-hole-in-shape-with-another-shape). To do this all I need to do is just create two shapes actually one of which will be the base shape, and the other will be a shape that will represent a hole in the shape. The shape that will be the hole just needs to be added to the holes array that is a property of an instance of Shape.
 
-In this example then I am just creating a triangle type shape again, but then I am creating another shape that will be a hole in the shape. When it comes to this shape I am using the [arc method of the path class](https://threejs.org/docs/index.html#api/en/extras/core/Path.arc) to create a hole shape that will be a circle. This method works just like the [arc method of the 2d canvas drawing context](/2019/03/05/canvas-arc/) method when it comes to the order of the arguments. In other words the first argument is the x axis position of the center of the arc, the second argument is the y position, then the radius, and the start and end angles of the arc.
+In this example then I am just creating a triangle type shape again, but then I am creating another shape that will be a hole in the shape. When it comes to this shape I am using the [arc method of the path class](https://threejs.org/docs/index.html#api/en/extras/core/Path.arc) to create a hole shape that will be a circle. This method works just like the [arc method of the 2d canvas drawing context](/2019/03/05/canvas-arc/) method when it comes to the order of the arguments. In other words the first argument is the x axis position of the center of the arc, the second argument is the y position, then the radius, and the start and end angles of the arc. Once I have my hole shape I just need to punch that shape to the holes array of the shape that I want to punch a hole in and that should be it.
 
 ```js
 // creating a scene
