@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:24:36
-version: 1.16
+updated: 2021-06-02 13:30:52
+version: 1.17
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -70,6 +70,8 @@ This might not be the most compelling example of the Object3d.parent property as
 ## 3 - The parent property, object3d.name, and Object3d.traverse
 
 Now that I have got a basic example out of the way when it comes to the parent property of object3d it is now time to get into something that is just a little more advanced. In this example I have a method that will create and return not just a mesh object, but a group object that is a collection of two or more mesh objects. I then have another helper function that will process any given object that I pass to it by checking the value of the name property of the object. In the event that the first part of the name property starts with mesh it will get a reference to the parent object by way of you guessed it the Object3d.parent property.
+
+In this example I am also attaching an event handler to the canvas element of the renderer and in the body of the callback for the event handler I am making use of another useful feature of the object3d class for getting references to objects which is the and Object3d.traverse method.
 
 ```js
 var createGroup = function(gid){
