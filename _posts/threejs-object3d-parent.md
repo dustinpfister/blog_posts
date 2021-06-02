@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:42:51
-version: 1.19
+updated: 2021-06-02 13:44:16
+version: 1.20
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -149,6 +149,8 @@ renderer.domElement.addEventListener('click', function(){
 ANother note worthy use case example of the object3d parent property might have to do with clicking a group of mesh objects rather than just a single stand alone mesh object.
 
 ### 4.1 - The main javaScript file
+
+First off the main javaScript file of this example of the parent property where I am using the parent property in the update method that I worked out for this example.
 
 ```js
 var raycaster = new THREE.Raycaster();
