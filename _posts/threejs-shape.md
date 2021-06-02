@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 879
-updated: 2021-06-02 09:40:26
-version: 1.32
+updated: 2021-06-02 09:43:55
+version: 1.33
 ---
 
 Today I thought I would look into making a few quick examples of the [THREE.Shape](https://threejs.org/docs/#api/en/extras/core/Shape) constructor in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene). This Shape Constructor is a way to go about creating a 2d shape which can then in turn be used with THREE.ShapeGeometry, or THREE.ExtrudeGeometry. So then the shape geometry constructor might come in handy as a way to quickly and easily go about making some custom geometries that are just 2d geometries that can then be brought into a threejs project as a custom cut surface, or a solid object that is extended.
@@ -190,6 +190,8 @@ So then If I want to add more than one hole to a shape then the process is just 
 ## 6 - Shapes and Groups
 
 I wanted to make at least a quick example of using shapes to create mesh objects along with other mesh objects created with built in geometry constructors such as the box geometry constructor to create a group of mesh objects. I often like to create groups of mesh objects that can come together to resemble some kind of over all object of one kind or another. I often make these kinds of groups just composed of mesh objects that use built in geometry constructors however with the shape geometry constructor this allows me to make some interesting custom objects without getting to in depth with making a truly custom geometry constructor.
+
+So in this example I made an instance of THREE.Group, and then created and added a mesh to that group that uses the THREE.BoxGeometry constructor for the geometry. I then wanted to add another mesh object to that group this time using the THREE.ExtrudeGeometry constructor and of course a Shape.
 
 ```js
 // creating a scene
