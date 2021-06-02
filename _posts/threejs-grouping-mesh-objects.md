@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-04-19 18:14:35
-version: 1.10
+updated: 2021-06-02 10:22:52
+version: 1.11
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. 
@@ -23,11 +23,11 @@ This is not a post on three.js for beginners, I have a post for that, and if you
 
 I also often try to mention that three.js is a project where the version number matters a great deal, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
 
-## 2 - THREE.Object3D vs THREE.Group
+### 1.1 - THREE.Object3D vs THREE.Group
 
 When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. As far as I can tell there is not much of any difference other than it makes the readability of your code more clear.
 
-## 3 - Basic Mesh Group example in three.js
+## 2 - Basic Mesh Group example in three.js
 
 For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and groups them all together using THREE.Group. I just used the simple plain old Box Geometry constructor for the geometry, and positioned them all around the origin, and have them all face the origin as well.
 
@@ -112,7 +112,7 @@ Each time I make a new Mesh I just add it to the instance of group rather than S
     ());
 ```
 
-## 4 - Example of grouping with a camera
+## 3 - Example of grouping with a camera
 
 Grouping is basically whenever you use the add property of anything that inherits from the Object3D class. This includes things like cameras, as such I can use the add method to add things like lights, and a Mesh, and position them relative to the camera. Say for example I want to have a point light on top of camera, and a Mesh that is always in front of the camera as it moves around in a scene, no problem.
 
@@ -145,7 +145,7 @@ camera.add(withCamera);
 scene.add(camera);
 ```
 
-## 5 - Using Grouping when making a Model
+## 4 - Using Grouping when making a Model
 
 Grouping comes in handy when I want to make a Constructor function that will include a group of Mesh Object instances that can be added to a Scene that will constitute some kind of model. The group will typically be one of many properties of the constructor, and will also contain methods that I can use on that group.
 
@@ -346,7 +346,7 @@ So I would use it in a main.js file to make something like this:
 
 This results in three instances of the model, each with different radius, count of boxes, and color. I am also changing the state of one of theme in a loop, by calling one of the methods of the model, as well as by directly working with the group instance as it has all the [Object3D](/2018/04/23/threejs-object3d/) methods to play with that will effect the group as a whole when used.
 
-## 6 - Conclusion
+## 5 - Conclusion
 
 Grouping is a useful in three.js projects, don't forget that it is also something that you can do with anything in three.js that inherits from the Object3D class. So not only can you use grouping with Mesh Object instances, it can also be done with things like lights, and cameras, and also even additional groups.
 
