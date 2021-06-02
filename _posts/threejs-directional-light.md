@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 472
-updated: 2021-06-02 10:02:25
-version: 1.17
+updated: 2021-06-02 10:04:41
+version: 1.18
 ---
 
 In [three js](https://threejs.org/) there is an option to use [directional light](https://threejs.org/docs/#api/en/lights/DirectionalLight) which is one of several types of light to choose from when getting into the subject of adding light to a scene. Other options that I find myself using the most thus far include [point lights](/2019/06/02/threejs-point-light/), and [ambient light](/2018/11/02/threejs-ambientlight/), but in some cases I might want to use directional light in place of or on top of these other options that I seem to prefer. 
@@ -17,7 +17,11 @@ A directional light is like ambient light in the sense that it is a good way to 
 
 ## 1 - What to know first
 
-The subject of light is a little involved with three.js, but should not be to hard to do for most javaScript developers that have some experience. If you still need to take a step back when it comes to the very basics of threejs I will be keeping these examples fairly simple, but it would likely be best to start out with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/). Beyond knowing how to add a light source it is also required to know that not all materials will respond to light such as the basic and normal materials. When I work with light I often go with the standard material, but there are some additional options when it comes to materials.
+The subject of light is a little involved with three.js, but should not be to hard to do for most javaScript developers that have some experience. If you still need to take a step back when it comes to the very basics of threejs I will be keeping these examples fairly simple, but it would likely be best to start out with some kind of [getting started post on threejs](/2018/04/04/threejs-getting-started/). So I will not be getting into the very basics of threejs and javaScript here. However I will mentioning a few things in this section that you should have an understanding of before continuing to read he rest of this post.
+
+### 1.1 - Know a thing or two about materials
+
+Beyond knowing how to add a light source, or any kind of object to a scene, it is also required to know that not all materials will respond to light such as the basic and normal materials. When I work with light I often go with the standard material, but there are some additional options when it comes to materials.
 
 ## 2 - Directional Light threejs example
 
