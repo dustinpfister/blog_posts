@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:04:57
-version: 1.7
+updated: 2021-06-02 13:06:22
+version: 1.8
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in threejs, and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the parent property of an object3d instance which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -51,7 +51,7 @@ renderer.render(scene, camera);
 
 ## 3 - The parent property, object3d.name, and Object3d.traverse
 
-Now that I have got a basic example out of the way when it comes to the parent property of object3d it is now time to get into something that is just a little more advanced.
+Now that I have got a basic example out of the way when it comes to the parent property of object3d it is now time to get into something that is just a little more advanced. In this example I have a method that will create and return not just a mesh object, but a group object that is a collection of two or more mesh objects.
 
 ```js
 var createGroup = function(gid){
