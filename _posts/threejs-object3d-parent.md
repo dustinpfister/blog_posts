@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:13:29
-version: 1.11
+updated: 2021-06-02 13:15:55
+version: 1.12
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in threejs, and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the parent property of an object3d instance which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -19,7 +19,7 @@ So then in this post I will be going over a few examples that make use of the pa
 
 ## 1 - The parent property of the Object3d class and what to know first.
 
-This is a post on the parent property of the object3d class which is a major class in threejs.
+This is a post on the parent property of the object3d class which is a major class in threejs as it is a base class of all kinds of other classes in the library such as Mesh, and Camera just to name a few. I will be keeping these examples fairly simple, however this is still not a getting started type post on threejs in general. However in this section I will be quickly going over a few things that you might want to read up on more if you have not done so before hand at this time.
 
 ## 2 - Basic object3d parent example
 
