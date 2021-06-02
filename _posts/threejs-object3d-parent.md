@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:11:55
-version: 1.10
+updated: 2021-06-02 13:13:29
+version: 1.11
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in threejs, and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the parent property of an object3d instance which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -16,6 +16,10 @@ For example say I am looping over all the objects of a scene object and for each
 So then in this post I will be going over a few examples that make use of the parent property of objects that are based on the object3d class. While I am at it I might also touch base on a wide range of other threejs related topics that might also be work checking into in detail, so lets get to it.
 
 <!-- more -->
+
+## 1 - The parent property of the Object3d class and what to know first.
+
+This is a post on the parent property of the object3d class which is a major class in threejs.
 
 ## 2 - Basic object3d parent example
 
