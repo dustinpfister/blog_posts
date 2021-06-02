@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:09:08
-version: 1.9
+updated: 2021-06-02 13:11:55
+version: 1.10
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in threejs, and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the parent property of an object3d instance which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -48,6 +48,8 @@ renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+This might not be the most compelling example of the Object3d.parent property as I could just use the scene variable to do the same thing. However never the less this is a basic example, and as such you should get the basic idea. As one might expect the Object3d.parent property is just a reference to the parent object of an object of there is one. So now that I have this out of the way I can get into some real use case examples of the parent property.
 
 ## 3 - The parent property, object3d.name, and Object3d.traverse
 
