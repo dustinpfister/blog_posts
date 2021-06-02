@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:44:16
-version: 1.20
+updated: 2021-06-02 13:45:22
+version: 1.21
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -248,6 +248,8 @@ loop();
 ```
 
 ### 4.2 - The cube group module
+
+In this example I am also using one additional file that is just the module that I use to create and return one of these groups of mesh objects.
 
 ```js
 (function (api) {
