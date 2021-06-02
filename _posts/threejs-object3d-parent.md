@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 12:54:05
-version: 1.4
+updated: 2021-06-02 12:57:41
+version: 1.5
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in threejs, and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the parent property of an object3d instance which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -19,7 +19,9 @@ So then in this post I will be going over a few examples that make use of the pa
 
 ## 2 - Basic object3d parent example
 
-For a basic example of this parent property I thought I would start out with something that just involves getting a reference to the scene object by way of the parent property. So in other words this example is just a very basic hello world type threejs example where I am creating a scene object, adding a mesh to the scene, and then setting up a camera and a renderer.
+For a basic example of this parent property I thought I would start out with something that just involves getting a reference to the scene object by way of the parent property. So in other words this example is just a very basic hello world type threejs example where I am creating a scene object, adding a mesh to the scene, and then setting up a camera and a renderer. I am then getting a reference to the scene object by way of the parent property of the mesh object as it was added to the scene object rather than a child of some other object.
+
+
 
 ```js
 // scene
@@ -33,7 +35,7 @@ var mesh = new THREE.Mesh(
 mesh.position.set(0, 0.5, 0);
 scene.add(mesh);
  
-// getting the parent of the mesh, and prefroming an action on it
+// getting the parent of the mesh, and preforming an action on it
 var parent = mesh.parent;
 parent.rotation.x = Math.PI * 2 * Math.random();
  
