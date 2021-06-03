@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2021-06-03 12:31:51
-version: 1.5
+updated: 2021-06-03 12:35:25
+version: 1.6
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the scene object, or any object based off the object3c class for that matter, and pass a callback function as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -20,6 +20,8 @@ So then in this post I will be going over the use of the traverse method of the 
 This is a post centered on using just one little method in the object3d class in the javaScript library known as threejs, as well as a whole bunch of other little things that might branch off from this method.
 
 ## 2 - Loop Over all objects in a scene
+
+So first off this will be just a basic example of the object3d traverse method just for the sake of getting started with this method. In this example I am creating a main scene object and then I am adding some grid hepers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be suing.
 
 ```js
 (function () {
