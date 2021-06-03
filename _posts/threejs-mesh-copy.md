@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 11:05:24
-version: 1.23
+updated: 2021-06-03 11:13:16
+version: 1.24
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
@@ -126,9 +126,9 @@ renderer.render(scene, camera);
 
 So when I change the color of the material used in the original mesh to green from red, that will result in all the mesh objects that are cloned from that mesh to change to that color. The same will happen to the original when I change the color that way. If this is a desired effect then there is no problem, if it is not a desired effect then there are a number of ways to address this. One way would be to just drop the use of the mesh clone method and just make new Mesh objects along with geometries all together. However I am sure that there are other ways of making it so each mesh has its own independent material while still using the same geometry.
 
-## 4 - Changes to the geometry will effect all the clone also
+## 4 - Changes to the geometry will effect all the copies of the mesh also
 
-The clone method of a mesh will just clone the mesh object and not the material, or the geometry. So just like with the material used by all clones, any change to the geometry of the original or any clone will also effect all copies.
+The clone method of a mesh will just clone the mesh object and not the material, or the geometry. So just like with the material used by all clones, any change to the geometry of the original or any clone will also effect all copies. For example if I again have a situation in which I make a whole bunch of copies from an original mesh object, and then do something like change the material index values of the geometry used by the original that in turn will effect all the copies also.
 
 ```js
 // SCENE
