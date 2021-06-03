@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 10:24:52
-version: 1.20
+updated: 2021-06-03 10:49:22
+version: 1.21
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
@@ -25,7 +25,7 @@ This is a post on the clone method of a THREE.Mesh class instance in three.js th
 
 ### 1.1 - Version Numbers matter big time with three.js
 
-When I first write this post I was using r111 of three.js, and then last time I edited this post I was using r127.
+When I first write this post I was using version r111 of three.js, and the last time I edited this post I was using r127 when I came around to doing a little editing. I can not say much has changed with the mesh clone method at least between these two versions, however a lot has changed to many other threejs features, and these changes can often result in code breaking. always be mindful of the version of threejs that you are using, and the version that was used when a code example was authored and published to the web.
 
 ## 2 - Mesh copy basic example
 
