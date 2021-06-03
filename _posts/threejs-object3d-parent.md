@@ -1,12 +1,12 @@
 ---
 title: Getting parent of an object in threejs
-date: 2021-06-01 12:24:00
+date: 2021-06-02 12:24:00
 tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-02 13:45:22
-version: 1.21
+updated: 2021-06-03 12:19:32
+version: 1.22
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
