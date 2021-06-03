@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 10:56:39
-version: 1.22
+updated: 2021-06-03 11:05:24
+version: 1.23
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
@@ -31,42 +31,41 @@ When I first write this post I was using version r111 of three.js, and the last 
 
 To copy a mesh in threejs all I need to do is just call the clone method of a mesh object instance, and what will be returned is a copy of that mesh. It is just important to know what a copy of a mesh object is and what it is not. The resulting copy is a copy of things like the position and rotation of the mesh, but not the state of the geometry that it is using, or whatever might be going on with the materials that are being used. 
 
-Here I have a simple example where I am creating an original mesh with the THREE.Mesh constructor, and then creating a bunch of copies with the clone method of the Mesh instance.
+Here I have a simple example where I am creating an original mesh with the THREE.Mesh constructor, and then creating a bunch of copies with the clone method of that Mesh instance.
 
 ```js
 // SCENE
 var scene = new THREE.Scene();
- 
 // CAMERA
-var camera = new THREE.PerspectiveCamera(40, 16 / 9, 0.1, 1000);
-camera.position.set(6, 6, 6);
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(5, 3, 5);
 camera.lookAt(0, 0, 0);
- 
 // RENDER
 var renderer = new THREE.WebGLRenderer();
 document.getElementById('demo').appendChild(renderer.domElement);
-renderer.setSize(360, 180);
- 
-// MESH
+renderer.setSize(640, 480);
+// MESH original
 var original = new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
         new THREE.MeshNormalMaterial());
 scene.add(original);
- 
-// Copy the mesh a bunch of times
+// Mesh cloned a bunch of times from original
 var i = 0, mesh, rad, x, z;
 while (i < 10) {
     mesh = original.clone();
+    // changes made to position and rotation to not effect original
     rad = Math.PI * 2 * (i / 10);
     x = Math.cos(rad) * 3;
     z = Math.sin(rad) * 3;
     mesh.position.set(x, 0, z);
+    mesh.lookAt(original.position);
     scene.add(mesh);
     i += 1;
 }
- 
 renderer.render(scene, camera);
 ```
+
+This results in a bunch of mesh objects placed around the original mesh object, I am also having each of the new mesh objects face the position of the original mesh object. So each copy can have its own position, and rotation, but they still share the same reference to the same objects when it comes to geometry and materials.
 
 ## 3 - Mesh copy will not copy the material used, so changes to the original material will effect the clones.
 
