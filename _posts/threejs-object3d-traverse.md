@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2021-06-03 12:37:59
-version: 1.7
+updated: 2021-06-03 12:40:21
+version: 1.8
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the scene object, or any object based off the object3c class for that matter, and pass a callback function as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -17,7 +17,7 @@ So then in this post I will be going over the use of the traverse method of the 
 
 ## 1 - Looping over all objects using Object3d traverse and what to know first
 
-This is a post centered on using just one little method in the object3d class in the javaScript library known as threejs, as well as a whole bunch of other little things that might branch off from this method.
+This is a post centered on using just one little method in the object3d class in the javaScript library known as threejs, as well as a whole bunch of other little things that might branch off from this method. This is then not a getting started type post on threejs so I assume that you have the basic of the library out of the way so far. However in any case in this section I will be going over some things that you might want to get solid before continuing to read the rest of this post.
 
 ## 2 - Loop Over all objects in a scene
 
