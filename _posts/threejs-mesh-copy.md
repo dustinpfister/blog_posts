@@ -5,9 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 09:08:56
-version: 1.17
+updated: 2021-06-03 09:11:50
+version: 1.18
 ---
+
+When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
 
 The process of copying an object in javaScript can be tricky business, as such I have wrote a few posts on this when it comes to [cloning objects with lodash methods](/2017/10/02/lodash_clone/) as well as native javaScript by itself such as with my post on [copying an array](/2020/09/03/js-array-copy/) with just vanilla javaScript by itself. When doing so there are two general ways of thinking about the process of copying an object, shallow cloning, and deep cloning. Shallow cloning is creaating an new object where it is more or less just the properties of the object itself that are copied, and not anything when it comes to nested objects that are values of the source object. Deep cloning then is then the general term for getting into the subject of what should and should not be copied when it comes to looping over all the nested properties of an object.
 
