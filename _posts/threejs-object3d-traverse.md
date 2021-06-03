@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2021-06-03 14:48:41
-version: 1.17
+updated: 2021-06-03 14:54:51
+version: 1.18
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the scene object, or any object based off the object3c class for that matter, and pass a callback function as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -29,7 +29,7 @@ This is something that I think that I just need to mentioning in ever post I wri
 
 ## 2 - Loop Over all objects in a scene
 
-So first off this will be just a basic example of the object3d traverse method just for the sake of getting started with this method. In this example I am creating a main scene object and then I am adding some grid hepers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be suing.
+So first off this will be just a basic example of the object3d traverse method just for the sake of getting started with this method. In this example I am creating a main scene object and then I am adding some grid helpers objects to the scene. These grid helper objects are based off of the object3d class so they will show up in the traverse call that I will be using later in the source code. On top of the helpers I am also adding a group, and this group will have a whole bunch of children, each of which will be an instance of a Mesh. After that I am also adding a camera to the scene when it comes to setting up the camera, and the renderer that I will be suing.
 
 So then before I call the render method of my web gl renderer instance I call the traverse method off of the scene object and then pass a function that I want o call for every object attached to the scene object as a child. This will not just call for all the children, but also all the children of children which is the case for the group of mesh objects that I attached. In the body of the function I cam preforming an action for each mesh object, but then I am also looping over all the children for each group also.
 
@@ -89,6 +89,8 @@ So then before I call the render method of my web gl renderer instance I call th
 }
     ());
 ```
+
+So then this should help to show the basic idea of what the traverse method is all about. It is a little more advanced than just looping over the children of an object as the traverse method will loop over the children, the children of children, and it will also include the object itself.
 
 ## 3 - Setting names for objects example
 
