@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2021-06-03 14:43:13
-version: 1.15
+updated: 2021-06-03 14:46:16
+version: 1.16
 ---
 
 If for some reason I want to [loop over all objects](https://discourse.threejs.org/t/to-get-array-of-all-meshes/17458/2) in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) scene, or all the objects attached to any single object I can use the [object3d traverse](https://threejs.org/docs/index.html#api/en/core/Object3D.traverse) method. The way this works is I just call the traverse method off of the scene object, or any object based off the object3c class for that matter, and pass a callback function as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
@@ -93,6 +93,8 @@ So then before I call the render method of my web gl renderer instance I call th
 ## 3 - Setting names for objects example
 
 One use case example for traverse that comes to mind is that I can use it as a way to set name values for all objects if interest that are attached to a scene object. In this example I have a create cube method that will create and return a cube object with a cube group type set to the user data object of the mesh object that it is returned. I then have a create cube group helper that creates a collection of these cubes and also has a cube group type value set for the user data object of the group. I can then use these values parked in the user data object as a way to flag this object for the creation of a name. This is then done in the next method that does just that.
+
+I can then get a reference to any of these group objects, or a single mesh of one of the group objects, or a single stand alone method with the get by name method. This get by name method is yet another useful method of the object3d class that is a way to go about getting referenced to objects in a scene by way of a name that is set by the developer. In other worlds a name is like an id when it comes to html elements, I can set a unique value for the object and then use that as a way to get a reference to it later on when needed.
 
 ```js
 (function () {
