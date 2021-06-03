@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 11:31:45
-version: 1.25
+updated: 2021-06-03 11:36:01
+version: 1.26
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
@@ -193,7 +193,7 @@ renderer.render(scene, camera);
 
 ## 5 - Using a create helper to create stand alone mesh objects with there own geometry and material
 
-Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copied the mesh and the children of the mesh.
+Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copied the mesh and the children of the mesh. This results in a more efficient way of creating a whole bunch of mesh objects that all share the same geometry and materials. Often it might just be mesh objects level property values that I will want to change up a little here and there, so this kind of approach will not result in a problem. However in some cases I will want each mesh to have its own geometry and material values. So when it comes to this kind of situation I often just drop the use of the mesh clone method all together and just create stand alone mesh, as well as stand alone geometry, and material objects for each mesh
 
 ```js
 // SCENE
