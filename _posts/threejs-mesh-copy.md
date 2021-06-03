@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 583
-updated: 2021-06-03 11:13:16
-version: 1.24
+updated: 2021-06-03 11:31:45
+version: 1.25
 ---
 
 When I am working on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) demos and simple project examples I will often get into a situation in which I might want to copy a mesh object. When doing so there is the idea of just copied the own properties of the mesh object, but then there is also the question of nested properties of the mesh object such as child objects that have been attached, the geometry of the mesh, and materials.
@@ -191,7 +191,68 @@ original.geometry.groups.forEach(function (face, i) {
 renderer.render(scene, camera);
 ```
 
-## 5 - Conclusion
+## 5 - Using a create helper to create stand alone mesh objects with there own geometry and material
+
+Using the clone method might be the way that I would want to go about creating a whole much of copies of some kind of main mesh object because doing so results in just copied the mesh and the children of the mesh.
+
+```js
+// SCENE
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(10, 10));
+ 
+var group = new THREE.Group();
+scene.add(group);
+ 
+var createBox = function(w, h, d){
+    var box = new THREE.Mesh(
+        new THREE.BoxGeometry(w, h, d),
+        new THREE.MeshStandardMaterial({
+            color: 'red'
+        }));
+    return box;
+};
+var mainBox = createBox(1, 1, 1);
+group.add(mainBox);
+ 
+// Mesh cloned a bunch of times from original
+var i = 0, mesh, rad, s, x, z;
+while (i < 10) {
+    s = 0.25 + 0.25 * ( Math.random() * 5 );
+    mesh = createBox(s, s, s);
+    // changes made to position and rotation to not effect original
+    rad = Math.PI * 2 * (i / 10);
+    x = Math.cos(rad) * 3;
+    z = Math.sin(rad) * 3;
+    mesh.position.set(x, 0, z);
+    mesh.lookAt(mainBox.position);
+    group.add(mesh);
+    i += 1;
+}
+ 
+// changing the color of the main box ONLY EFFECTS THE MAIN BOX
+mainBox.material.color.setRGB(0, 1, 0);
+ 
+// CAMERA
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(8, 5, 8);
+camera.lookAt(0, 0, 0);
+// add a light source
+var sun = new THREE.Mesh(
+        new THREE.SphereGeometry(0.5, 40, 40),
+        new THREE.MeshBasicMaterial());
+sun.add(new THREE.PointLight(0xffffff, 1));
+sun.position.set(8, 3, 0);
+scene.add(sun);
+ 
+// RENDER
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.setSize(640, 480);
+ 
+renderer.render(scene, camera);
+```
+
+## 6 - Conclusion
 
 So then the Mesh clone method will indeed clone a mesh object, and also any children it might have. However that is it, the method will not deep clone everything when it comes to what might be going on with the geometry and material. When I get some more time to work on this one I think I could stand to work out a few more examples on this topic. There is what the Mesh clone method does, and there is what the Mesh clone method does not do.
 
