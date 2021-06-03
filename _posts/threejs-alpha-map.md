@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2021-06-03 15:01:31
-version: 1.12
+updated: 2021-06-03 15:03:08
+version: 1.13
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -82,4 +82,5 @@ The transparent property of the material also needs to be set to true, and a ren
 
 ## 3 - Conclusion
 
-There are a whole bunch of different maps to be aware of when it comes to skinning faces of a geometry with a material in three js. There is the plain old color map that can also be used, and it materials that respond to light sources there are many other maps of interest as well such as an emissive map. Still alpha maps are one ogf the many types of maps to be aware of, and they can be fun to play around with.
+There are a whole bunch of different maps to be aware of when it comes to skinning faces of a geometry with a material in three js. There is the plain old color map that can also be used, and it materials that respond to light sources there are many other maps of interest as well such as an emissive map. Still alpha maps are one of the many types of maps to be aware of, and they can be fun to play around with when working out details with the materials that are going to be used with objects in a scene.
+
