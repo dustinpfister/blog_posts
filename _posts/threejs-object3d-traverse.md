@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 881
-updated: 2021-06-03 12:21:26
-version: 1.1
+updated: 2021-06-03 12:25:19
+version: 1.2
 ---
 
-If For some reason I want to loop over all objects in a threejs scene, or all the objects attached to any single object I can use the object3d traverse method.
+If for some reason I want to loop over all objects in a threejs scene, or all the objects attached to any single object I can use the object3d traverse method. The way this works is I just call the traverse method off of the scene object, or any object based off the object3c class for that matter, and pass a callback function as the first argument. This call back function will then be called for every nested child attached to the object that I call traverse, including the object itself. A reference to the current object will be passed as the first argument of the given callback function and it is then in the body of this function that I can preform whatever action I want to happen for all objects.
 
 <!-- more -->
 
