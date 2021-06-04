@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-04-25 10:53:04
-version: 1.13
+updated: 2021-06-04 15:27:35
+version: 1.14
 ---
 
-So this is another [three js example](/2021/02/19/threejs-examples/) post this time I made a quick model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and groups to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of modles that I like to make just when it comes to having a little fun with three.js and a little javaScript code.
+So this is another [three js example](/2021/02/19/threejs-examples/) post this time I made a quick model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and groups to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of models that I like to make just when it comes to having a little fun with three.js and a little javaScript code.
 
 This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger sense that contains trees, and also other things going on in the sense in addition to just this.
 
@@ -18,6 +18,10 @@ This kind of example is a very basic getting started type example when it comes 
 ## 1 - Before continuing with this three js example post
 
 This is a post on using the javaScript library three js that can be used to work with 3d objects. This is not a getting started post on three js as well as the many constructors and so forth in the library. It is assumed that you have at least some background with the basics when it comes to suing three js as well as javaScript programing in general. If not you might have a hard time following the content of this post.
+
+### 1.1 - Be sure to check the version number you are using
+
+When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 127 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using.
 
 ## 2 - The tree constructor
 
