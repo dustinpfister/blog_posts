@@ -21,7 +21,7 @@ module.exports = (opt) => {
             days_back = opt.app.get('days_back');
 
             klawAll({
-                forPost: (item, nextPost) => {
+                forPost: (item, nextPost, i) => {
 
                     // the publish date
                     let date = new Date(item.header.date),
@@ -32,9 +32,7 @@ module.exports = (opt) => {
                     t = now - update;
 
                     let cat = cats.find((c) => {
-
                             return c.catName === catName;
-
                         });
 
                     if (!cat) {
@@ -62,7 +60,7 @@ module.exports = (opt) => {
                     });
                     cat.wc += item.wc;
 
-                    console.log(item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
+                    console.log(i, item.header.title.substr(0, 30).padEnd(30, '.'), item.header.updated, t);
                     console.log('internal links: ' + item.linkInternalCount, ' total links: ' + item.linkObjects.length);
                     console.log('');
 
