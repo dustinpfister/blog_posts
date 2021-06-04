@@ -89,6 +89,22 @@ table, th, td {
 .wordcount_2400{
 	color:lime;
 }
+
+/* link count */
+.linkcount_0{
+	color:red;
+}
+.linkcount_1{
+	color:orange;
+}
+.linkcount_5{
+	color:green;
+}
+.linkcount_10{
+	color:lime;
+}
+
+
 a:link{color:#00ff80;}
 a:visited{color:#00cf00;}
 a:hover{color:#ffffff;}

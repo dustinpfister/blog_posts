@@ -11,7 +11,7 @@ app.set('days_back', process.argv[3] || 1500);
 let dir_cli = path.join(__dirname, '../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
 
-app.use('/css', express.static( path.join( __dirname, './public/css') ) );
+app.use('/css', express.static(path.join(__dirname, './public/css')));
 
 app.get('*', (req, res, next) => {
     console.log(req.query);
@@ -47,6 +47,13 @@ app.get('/', [
                     cn = wc >= 1000 ? 'wordcount_1000' : cn;
                     cn = wc >= 1800 ? 'wordcount_1800' : cn;
                     cn = wc >= 2400 ? 'wordcount_2400' : cn;
+                    return cn;
+                },
+                getLcClassName: (lc) => {
+                    let cn = 'linkcount_0';
+                    cn = lc >= 1 ? 'linkcount_1' : cn;
+                    cn = lc >= 5 ? 'linkcount_5' : cn;
+                    cn = lc >= 10 ? 'linkcount_5' : cn;
                     return cn;
                 }
             });
