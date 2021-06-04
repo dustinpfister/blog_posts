@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2021-05-05 13:03:49
-version: 1.14
+updated: 2021-06-04 15:08:16
+version: 1.15
 ---
 
 It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch. It would involve some event handlers, and the use of a few [Object3D](https://threejs.org/docs/#api/core/Object3D) methods like lookAt, and position.set. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
@@ -279,7 +279,7 @@ scope.domElement.addEventListener( 'contextmenu', onContextMenu, false );
 
 ## 11 - Other Controls of interest
 
-If you take a look at the [other controls](https://github.com/mrdoob/three.js/tree/r125/examples/js/controls) in the three.js examples folder it looks like there are some additional options for quickly adding some typical controls to a three.js project, including fly controls. I have not check out all of these options yet as there is a lot to get to when it comes to looking I to what there is to worth with in the official three.js repo, but I feel they might also come in handy at some point as well I am sure.
+If you take a look at the [other controls](https://github.com/mrdoob/three.js/tree/r125/examples/js/controls) in the three.js examples folder it looks like there are some additional options for quickly adding some typical controls to a three.js project, including [fly controls](/2021/05/05/threejs-orbit-controls/). I have not check out all of these options yet as there is a lot to get to when it comes to looking I to what there is to worth with in the official three.js repo, but I feel they might also come in handy at some point as well I am sure.
 
 ## 12 - Conclusion
 
