@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-04 15:43:01
-version: 1.16
+updated: 2021-06-04 15:53:22
+version: 1.17
 ---
 
-So this is another [three js example](/2021/02/19/threejs-examples/) post using just [threjs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) and a little additional vanilla javaScript this time I made a quick model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of models that I like to make just when it comes to having a little fun with three.js and a little javaScript code.
+So this is another [three js example](/2021/02/19/threejs-examples/) post using just [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) and a little additional vanilla javaScript to make a quick crude model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of models that I like to make just when it comes to having a little fun with three.js to make just basic stand ins type models that often tend to still look okay actually. That is if one just makes the decision to set the bar fairly low anyway, make a simple model of something, and then move on to the next thing when it comes to an over all project.
 
-This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger sense that contains trees, and also other things going on in the sense in addition to just this.
+This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger scene that contains trees, and also other things going on in the sense in addition to just this.
 
 <!-- more -->
 
