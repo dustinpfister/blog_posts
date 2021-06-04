@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2021-06-04 14:56:24
-version: 1.19
+updated: 2021-06-04 15:00:02
+version: 1.20
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -26,7 +26,11 @@ In order to have an alpha map I need to have a texture, one way to have a textur
 
 Alpha maps are a way to go about adjusting opacity of a material with a texture rather than setting the opacity of the material over all. When it comes to just setting the opacity of a material over all there is the [transparent and opacity properties of a material](/2021/04/21/threejs-materials-transparent/). Also there are a number of features when it comes to just turning the visibility of an object on and off completely also. There is the [visible boolean](/2021/05/24/threejs-object3d-visible/) of the object3d base class of Mesh objects, and there is also getting into learning a thing or two about layers.
 
-### 1.3 - Version Numbers matter with three.js
+### 1.3 - You might want to read up more on what the options are with materials
+
+It is a good idea to really look into what the options are when it comes to materials. I often go with the basic material if I am not going to do anything involving light, but when I do get into using light I have found that I like the standard material. However you should not just use that as a way to make a decision when it comes to materials there are many other options with materials that also support the alpha mo feature along with many other features.
+
+### 1.4 - Version Numbers matter with three.js
 
 When I first wrote this post I was using three.js version r104, and the last time I edited this post I was using r127. Three.js is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of three.js that you are using.
 
