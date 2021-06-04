@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 12:24:05
-version: 1.17
+updated: 2021-06-04 12:27:46
+version: 1.18
 ---
 
 There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
@@ -75,6 +75,8 @@ So now it is just a question of what layers the camera is enabled for, for this 
 ## 3 - Having a layers modes array, and using thr Layers.enable method
 
 So there is the enable all method that will enable an object for all layers, and there is the set method that will enabled an object for just one layer, however what if I want to enable just a certain collection of layers? For this there is the disable all method that can be used to make it so all layers are disabled, then I can use the enable method rather than the set method to just switch on whatever layers I want to use.
+
+So then in this example I am creating an array of layer numbers that I would like to each mode. Thai is a kind of layer modes array that is an an array of arrays where each nested array is a layer that is to be active for that mode index. I have one mode that is just layer 0, layer 1, layer 2, and another that is both layer 0 and 1. The idea here then is to just have a basic system working where I can set any object to one of these modes where the layers will be enabled for each layer index in a gievn array index number.
 
 ```js
 (function () {
