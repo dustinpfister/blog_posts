@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-04 15:37:46
-version: 1.15
+updated: 2021-06-04 15:43:01
+version: 1.16
 ---
 
 So this is another [three js example](/2021/02/19/threejs-examples/) post using just [threjs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) and a little additional vanilla javaScript this time I made a quick model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of models that I like to make just when it comes to having a little fun with three.js and a little javaScript code.
@@ -17,7 +17,7 @@ This kind of example is a very basic getting started type example when it comes 
 
 ## 1 - Before continuing with this three js example post
 
-This is a post on using the javaScript library three js that can be used to work with 3d objects. This is not a getting started post on three js as well as the many constructors and so forth in the library. It is assumed that you have at least some background with the basics when it comes to suing three js as well as javaScript programing in general. If not you might have a hard time following the content of this post.
+This is a post on using the javaScript library three js that can be used to work with 3d objects. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) by itself as well as how to use the many various constructors functions and what a constructor function is to begin with. It is assumed that you have at least some background with the basics when it comes to suing three js as well as javaScript programing in general. If not you might have a hard time following the content of this post as I am using a lot of features in the source code that you should have at least some understanding of.
 
 ### 1.1 - Do not just stop with this example when it comes to making trees
 
