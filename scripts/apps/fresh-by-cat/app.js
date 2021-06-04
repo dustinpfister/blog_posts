@@ -53,7 +53,7 @@ app.get('/', [
                     let cn = 'linkcount_0';
                     cn = lc >= 1 ? 'linkcount_1' : cn;
                     cn = lc >= 5 ? 'linkcount_5' : cn;
-                    cn = lc >= 10 ? 'linkcount_5' : cn;
+                    cn = lc >= 10 ? 'linkcount_10' : cn;
                     return cn;
                 }
             });
