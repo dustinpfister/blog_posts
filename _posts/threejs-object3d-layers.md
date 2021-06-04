@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 11:56:28
-version: 1.11
+updated: 2021-06-04 12:01:02
+version: 1.12
 ---
 
 There are a number of ways to have control over visibility in threejs such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the layers property of an object3d instance as a way to go about setting objects to different layers. It is then possible to set what layers a camera should draw and then use this as a way to have control over visibility.
@@ -29,7 +29,7 @@ Still the layers property is a good option for setting certain objects to certai
 
 When I made these soure code examples I was suing threejs r127.
 
-## 2 - Basic Object3d layers property example
+## 2 - Basic Object3d layers property example using Layers.enableAll and Layers.set
 
 I like to try my best to keep the first example of something in a post like this as basic as possible while still being a full working example for the sake of being kind to people that are still a little new to threejs, as well as just getting to the basic idea which is nice anyway. In this example I am just creating a scene object, and then creating and adding a grid helper to the scene object. Before I add the grid helper to the scene object though I am calling the enable all method off of the layers property of the grid helper. This will result in the grid helper being active for all layers, not just the default layer 0.
 
@@ -69,6 +69,8 @@ I then also created and added a mesh object to the scene, and before adding the 
 }
     ());
 ```
+
+So now it is just a question of what layers the camera is enabled for, for this example I am once again using the set method of the layers property of the cameras to switch between layer 0 and layer 1. The result is then a situation where the grid is always drawn when the camera is set to layer 0 or 1, and the mesh is only drawn when the layer of the camera is set to 1. So you get the basic idea when it comes to layers, there is what layers an object in a scene is set to, and there is what layer index values a camera is set to. A camera that is used to render a scene will only render objects that are enabled for the layers to which the cameras is enabled for.
 
 ## 3 - Having a layers modes array.
 
