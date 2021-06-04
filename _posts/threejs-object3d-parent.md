@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 880
-updated: 2021-06-03 12:19:32
-version: 1.22
+updated: 2021-06-04 15:03:54
+version: 1.23
 ---
 
 I have been taking a second long look at everything there is to work with in the object3d class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and it turns out that there is still a great deal more to the class that I still feel as though I need to get solid with. One such property of the object3d class is the [parent property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D) which is something that can come in handy now and then just like that of the children property. That is where the children property might be a collection of other objects that are descendant of an object, the parent property is well the parent of the current object.
@@ -23,11 +23,11 @@ This is a post on the parent property of the object3d class which is a major cla
 
 ### 1.1 - Check out the Object3d class in general
 
-The obejct3d class is worth checking out in detail, when doing so there is a whole lot of ground to cover even when it comes to just this one little class in threejs. That is what I started writing all these little posts, as I keep learning about something in the class that I should know about by now, so in order to remember that it is there to work with I wrote a post.
+The [obejct3d class is worth checking out in detail](/2018/04/23/threejs-object3d/), when doing so there is a whole lot of ground to cover even when it comes to just this one little class in threejs. That is what I started writing all these little posts, as I keep learning about something in the class that I should know about by now, so in order to remember that it is there to work with I wrote a post.
 
 ### 1.2 - Take a look at names as yet another way to get a reference to an object.
 
-The parent property is one of many ways to go about getting a reference to an objects that is based on object 3d from another objects that is based on object3d. The parent property is indeed useful for what it is intended for, however in major project it might be a good idea to work out some kind of system when it comes to setting the name values of objects and using the get by name method.
+The parent property is one of many ways to go about getting a reference to an object that is based on object 3d from another objects that is based on object3d. The parent property is indeed useful for what it is intended for, however in a major project it might be a good idea to work out some kind of system when it comes to setting the [name values of objects](/2021/05/12/threejs-object3d-get-by-name/) and using the get by name method.
 
 ### 1.3 - version numbers matter
 
