@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 12:13:38
-version: 1.15
+updated: 2021-06-04 12:17:59
+version: 1.16
 ---
 
 There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
@@ -21,13 +21,13 @@ This is a post on the layers property of the object3d class that holds an instan
 
 ### 1.1 - Layers are just one way to control visibility of objects
 
-layers are just one tool in the tool box of threejs when it comes to controlling the visibility of objects in threejs. There are a number of other features such as the visible property of an objects based on object3d that can be used to completely disable the visibility of an object all together for example. Another feature of interested has to do with materials when it comes to the transparency boolean, and the opacity property of materials, as well as alpha maps. These material level features can be used to make objects look a little transparency, or completely invisible if the opacity value is set to a value that will result in that kind of effect. There is also just simply having more than one scene object and just having control over what scene object gets passed to a renderer at any given moment, or having a pool of objects that is not attached to any scene, but objects get swapped between a group that is attached to a scene object, and back to the pool as needed.
+The layers property of an object is just one tool in the tool box of threejs when it comes to controlling the visibility of objects in threejs. There are a number of other features such as the [visible property](/2021/05/24/threejs-object3d-visible/) of an objects based on object3d that can be used to completely disable the visibility of an object all together for example. Another feature of interested has to do with materials when it comes to the [transparency boolean, and the opacity property](/2021/04/21/threejs-materials-transparent/) of materials, as well as alpha maps. These material level features can be used to make objects look a little transparency, or completely invisible if the opacity value is set to a value that will result in that kind of effect. There is also just simply having more than one scene object and just having control over what scene object gets passed to a renderer at any given moment, or having a pool of objects that is not attached to any scene, but objects get swapped between a group that is attached to a scene object, and back to the pool as needed.
 
 Still the layers property is a good option for setting certain objects to certain layers and then just having some way to control what layers get rendered.
 
 ### 1.2 - version numbers matter with threejs
 
-When I made these soure code examples I was suing threejs r127.
+When I made these source code examples I was using [threejs r127](https://github.com/mrdoob/three.js/releases/tag/r127), which was a late versions of threejs in late March of 2021.
 
 ## 2 - Basic Object3d layers property example using Layers.enableAll and Layers.set
 
