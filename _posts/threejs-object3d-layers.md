@@ -5,14 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 10:26:53
-version: 1.1
+updated: 2021-06-04 10:29:40
+version: 1.2
 ---
 
 There are a number of ways to have control over visibility in threejs such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the layers property of an object3d instance as a way to go about setting objects to different layers. It is then possible to set what layers a camera should draw and then use this as a way to have control over visibility.
 
 <!-- more -->
 
+## 1 - layers in threejs and what else you show know about first
+
+This is a post on the layers property of the object3d class that holds an instance of the Layers class in the javaScript library known as threejs.
 
 ## 2 - Basic Object3d layers property example
 
