@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 12:05:17
-version: 1.13
+updated: 2021-06-04 12:09:13
+version: 1.14
 ---
 
 There are a number of ways to have control over visibility in threejs such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the layers property of an object3d instance as a way to go about setting objects to different layers. It is then possible to set what layers a camera should draw and then use this as a way to have control over visibility.
@@ -144,3 +144,8 @@ So there is the enable all method that will enable an object for all layers, and
 }
     ());
 ```
+
+## 4 - Conclusion
+
+That is all I have to write about when it comes to layers alone at least, if I get some time to edit this post I might expand this at some point with more examples, however the basic idea is there at least for now. If you are looking for some additional reading it might be a good idea to take a look at my post on the object3d class in general. That is a post that I keep coming back to now and then each time I work out some more examples for all the little features that there are to work with when it comes to this base class in threejs. It is a good idea to gain a solid understanding of everything there is to work with when it comes to object3d because this is a class that is at the core of so many objects in the library such as Mesh objects Groups, and even a whole Scene object.
+
