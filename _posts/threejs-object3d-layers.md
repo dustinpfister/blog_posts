@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 12:17:59
-version: 1.16
+updated: 2021-06-04 12:24:05
+version: 1.17
 ---
 
 There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
@@ -79,7 +79,7 @@ So there is the enable all method that will enable an object for all layers, and
 ```js
 (function () {
  
-    var layerModes = [[0], [1], [0, 1]],
+    var layerModes = [[0], [1], [2], [0, 1]],
     layerModeIndex = 0;
  
     var setToLayerMode = function (obj, index) {
@@ -96,7 +96,7 @@ So there is the enable all method that will enable an object for all layers, and
                     color: color
                 }));
         var boxHelper = new THREE.BoxHelper(mesh);
-        setToLayerMode(boxHelper, 2);
+        setToLayerMode(boxHelper, 3);
         mesh.add(boxHelper);
         mesh.position.set(x, 0, 0);
         setToLayerMode(mesh, layerMode);
@@ -114,6 +114,8 @@ So there is the enable all method that will enable an object for all layers, and
     scene.add(createBoxForLayer(0, 'red', 2));
     // ADDING A MESH FOR LAYER MODE 1 ONLY
     scene.add(createBoxForLayer(1, 'lime', -2));
+    // ADDING A MESH FOR LAYER MODE 2 ONLY
+    scene.add(createBoxForLayer(2, 'white', 0));
  
     // camera, and renderer
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 100);
