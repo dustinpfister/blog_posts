@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 860
-updated: 2021-05-05 14:27:54
-version: 1.17
+updated: 2021-06-04 15:08:15
+version: 1.18
 ---
 
 There are a number of official camera controls that can be used with [threejs](https://threejs.org/) it is just that they are not built into the core of three.js itself. I wrote a post on one of these camera control options which was the orbit controls a long time ago, but I thought that I should take a moment to look into at least one of the other options to make use of in some examples such as the [three.js fly controls](https://threejs.org/docs/#examples/en/controls/FlyControls.dragToLook). So then this will be a quick post on use the official fly controls in a three.js project.
@@ -17,13 +17,13 @@ There are a number of official camera controls that can be used with [threejs](h
 
 In this post I am writing about the official three.js fly controls in three.js which is a javaScript library that can be used to work with 3d models. So then this is not a getting started type post with three.js as I have wrote a post on that topic before. However in this section I will be going over a few quick things to know about before continuing with the code examples that I am writing about here with the three.js fly controls.
 
-### 1.1 - Version Numbers matter with three.js
-
-When I wrote this post I was using [r127 of three.js](https://github.com/mrdoob/three.js/tree/r127). Code breaking changes are made to three.js every now and then so if the examples here are not working the first thing to check is what version of three.js is being used. After that there are some additional things to be aware of such as the fact that these code examples will break if you are not adding the official fly controls on top of three.js by itself.
-
-### 1.2 - Make sure that you have added the fly controls after adding three.js in the html
+### 1.1 - Make sure that you have added the fly controls after adding three.js in the html
 
 The official fly controls can be found in the [examples folder of the official three.js github repository](https://github.com/mrdoob/three.js/blob/r127/examples/js/controls/FlyControls.js). When grabbing a copy from there make sure that it is for the version of three.js that you are using. Changes are rare with many of these controls, but I have found that they do happen once in a while.
+
+### 1.3 - Version Numbers matter with three.js
+
+When I wrote this post I was using [r127 of three.js](https://github.com/mrdoob/three.js/tree/r127). Code breaking changes are made to three.js every now and then so if the examples here are not working the first thing to check is what version of three.js is being used. After that there are some additional things to be aware of such as the fact that these code examples will break if you are not adding the official fly controls on top of three.js by itself.
 
 ## 2 - Basic fly controls example
 
@@ -91,5 +91,5 @@ There is then how to go about using the fly controls when and if you do get them
 
 ## 3 - Conclusion
 
-So that is all that I have to say about the official fly controls in three.js so far, when I get some time to edit this post I will be sure to expand things when and if I get the time to do so. For now there is maybe taking a moment to look into some of the other official controls to worth with such as the orbit controls also, before considering to look into how to get started with making ones own custom camera controls. I think that I will be getting around to working one or two demos about making custom controls sooner or later, but for now I just like to make use of what there is to work with that is official to just save some time.
+So that is all that I have to say about the official fly controls in three.js so far, when I get some time to edit this post I will be sure to expand things when and if I get the time to do so. For now there is maybe taking a moment to look into some of the other official controls to worth with such as the [orbit controls](/2018/04/13/threejs-orbit-controls/) also, before considering to look into how to get started with making ones own custom camera controls. I think that I will be getting around to working one or two demos about making custom controls sooner or later, but for now I just like to make use of what there is to work with that is official to just save some time.
 
