@@ -22,8 +22,9 @@
             <tr><td><%= post.fn %></td>
             <td class="<%- getFreshClassName(post.fresh) %>"><%= post.fresh.toFixed(2) %></td>
             <td class="<%- getWcClassName(post.wc) %>"><%= post.wc %></td>
-            <td class="<%- getLcClassName(post.linkCount) %>">
-                 i: <%= post.linkCountInternal %> t: <%= post.linkCount %>
+            <td>
+                 <span class="<%- getLcClassName(post.linkCountInternal) %>"> i: <%= post.linkCountInternal %> </span>
+                 <span class="<%- getLcClassName(post.linkCount) %>"> t: <%= post.linkCount %> </span>
             </td></tr>
         <% }); %>
         </table>
