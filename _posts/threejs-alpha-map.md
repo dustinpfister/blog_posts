@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2021-06-04 14:25:59
-version: 1.16
+updated: 2021-06-04 14:48:58
+version: 1.17
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -81,7 +81,7 @@ scene.add(mesh);
 renderer.render(scene, camera);
 ```
 
-The transparent property of the material also needs to be set to true, and a renderer that supports transparency also needs to be used. The usual webGl renderer worked just fine for me in this example, but other renderers may not support this feature.
+The transparent property of the material also needs to be set to true, and a renderer that supports transparency also needs to be used. The usual webGl renderer worked just fine for me in this example, but other renderer options may not support this feature. Still that is the basic idea to create a texture that is in gray scale and then just add that texture to the alpha map property of the material to which I want to add an alpha map for.
 
 ## 3 - Conclusion
 
