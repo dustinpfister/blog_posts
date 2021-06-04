@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 882
-updated: 2021-06-04 12:09:13
-version: 1.14
+updated: 2021-06-04 12:13:38
+version: 1.15
 ---
 
-There are a number of ways to have control over visibility in threejs such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the layers property of an object3d instance as a way to go about setting objects to different layers. It is then possible to set what layers a camera should draw and then use this as a way to have control over visibility.
+There are a number of ways to have control over visibility in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) such as with this visible property of the obejct3d class or just simple not adding an object to a scene object, or having more than one scene object, so forth and so on. This post however will be on making use of the [layers property of an object3d instance](https://threejs.org/docs/index.html#api/en/core/Object3D.layers) which contains an instance of the [Layers class](https://threejs.org/docs/index.html#api/en/core/Layers) that can be used as a way to go about setting objects to different layers. It is then possible to [set what layers a camera should draw](https://stackoverflow.com/questions/34099808/how-to-make-objects-visible-to-only-one-camera-in-a-three-js-scene) which is then a way to go about having control over the visibility of objects.
 
 Any object in threejs that is based on the object3d class such as a Mesh, Group, or Camera has a layers property that by default is set to just layer 0. When using the render function of a renderer such as the web gl renderer as scene object is passed as the first argument followed by a reference to a camera to use to render a view of the scene. When doing so the camera used will only render objects that are enabled for one or more of the layer index values enabled for the camera.
 
@@ -147,5 +147,5 @@ So there is the enable all method that will enable an object for all layers, and
 
 ## 4 - Conclusion
 
-That is all I have to write about when it comes to layers alone at least, if I get some time to edit this post I might expand this at some point with more examples, however the basic idea is there at least for now. If you are looking for some additional reading it might be a good idea to take a look at my post on the object3d class in general. That is a post that I keep coming back to now and then each time I work out some more examples for all the little features that there are to work with when it comes to this base class in threejs. It is a good idea to gain a solid understanding of everything there is to work with when it comes to object3d because this is a class that is at the core of so many objects in the library such as Mesh objects Groups, and even a whole Scene object.
+That is all I have to write about when it comes to layers alone at least, if I get some time to edit this post I might expand this at some point with more examples, however the basic idea is there at least for now. If you are looking for some additional reading it might be a good idea to take a look at [my post on the object3d class](/2018/04/23/threejs-object3d/) in general. That is a post that I keep coming back to now and then each time I work out some more examples for all the little features that there are to work with when it comes to this base class in threejs. It is a good idea to gain a solid understanding of everything there is to work with when it comes to object3d because this is a class that is at the core of so many objects in the library such as Mesh objects Groups, and even a whole Scene object.
 
