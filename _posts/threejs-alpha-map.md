@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 474
-updated: 2021-06-04 12:37:23
-version: 1.14
+updated: 2021-06-04 12:41:31
+version: 1.15
 ---
 
 When working with materials in three js many of the materials support one or more types of maps for skinning the faces of a geometry, one such map is an [alpha map](https://threejs.org/docs/#api/en/materials/MeshBasicMaterial.alphaMap). An alpha map is a gray scale texture where white areas of the texture will result in a face being fully opaque while black areas will result in the face being fully transparent. So then an aplha map will come into play when it comes to working things out with [transparency in a three.js project](/2021/04/21/threejs-materials-transparent/) along with the the transparency and opacity properties of a material.
@@ -22,8 +22,11 @@ This is a post on three js the javaScript powered 3d modeling library, in additi
 ### 1.1 - You might want to brush up on textures
 
 In order to have an alpha map I need to have a texture, one way to have a texture is to load an external image file and use that as a texture. However another option would be to [use canvas elements as a way to create a texture](/2018/04/17/threejs-canvas-texture/) using a little javaScript code by way of the canvas 2d drawing context. Getting into this subject would be a little off topic, but one way or another a texture is needed to have an alpha map. Also the texture needs to be in gray scale as that is what is used to set the transparency values of the material with the texture used as an alpha map.
+### 1.2 - There are many other ways to control visibility in threejs.
 
-### 1.2 - Version Numbers matter with three.js
+Alpha maps are a way to go about adjusting opacity of a material with a texture rather than setting the opacity of the material over all. When it comes to just setting the opacity of a material over all there is the transparent and opacity properties of a material. Also there are a number of features when it comes to just turning the visibility of an object on and off completely also. There is the [visible boolean](/2021/05/24/threejs-object3d-visible/) of the object3d base class of Mesh objects, and there is also getting into learning a thing or two about layers.
+
+### 1.3 - Version Numbers matter with three.js
 
 When I first wrote this post I was using three.js version r104, and the last time I edited this post I was using r127. Three.js is still being developed and is moving pretty fast, in the future there might come another time where this code might break. So if things are not working out for you with this example, and many other examples on the open Internet the first thing you should check is the version of three.js that you are using.
 
