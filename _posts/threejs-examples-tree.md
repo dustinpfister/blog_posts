@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-06 14:39:56
-version: 1.21
+updated: 2021-06-06 14:42:11
+version: 1.22
 ---
 
 So this is another [three js example](/2021/02/19/threejs-examples/) post using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of every green type tree. 
@@ -205,6 +205,8 @@ var tree = new Tree({
     });
 scene.add(tree.group);
 ```
+
+This feature was just added in just for the heck of it, and I am not sure if this is a feature that I would really want or need in this kind of project. I also made this tree constructor back before I was aware of an object3d method known as object3d.traverse that I can also use as a way to loop over all the mesh objects of a group. So at some point in the future it is possible that I might remove this feature actually.
 
 ## 5 - Conclusion
 
