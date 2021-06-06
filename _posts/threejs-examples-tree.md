@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-04 15:53:22
-version: 1.17
+updated: 2021-06-06 14:00:40
+version: 1.18
 ---
 
 So this is another [three js example](/2021/02/19/threejs-examples/) post using just [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) and a little additional vanilla javaScript to make a quick crude model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of models that I like to make just when it comes to having a little fun with three.js to make just basic stand ins type models that often tend to still look okay actually. That is if one just makes the decision to set the bar fairly low anyway, make a simple model of something, and then move on to the next thing when it comes to an over all project.
@@ -35,7 +35,6 @@ I am not doing much of anything with the prototype but it contains a few static 
 
 ```js
 var Tree = function (opt) {
- 
     // options
     opt = opt || {};
     this.sections = opt.sections || 5;
@@ -46,25 +45,20 @@ var Tree = function (opt) {
     this.coneMaxRadius = opt.coneMaxRadius || 0.7;
     this.coneRadiusReduction = opt.coneRadiusReduction || 0.3;
     this.coneMaxLength = opt.coneRadiusReduction || 5;
-    this.coneLengthReduction = opt.coneRadiusReduction || 4.5;
- 
+    this.coneLengthReduction = opt.coneLengthReduction || 4.5;
     // call backs
     this.forConeValues = opt.forConeValues || function () {};
     this.forConeMesh = opt.forConeMesh || function () {};
     this.forSection = opt.forSection || function () {};
     this.onDone = opt.onDone || function () {};
- 
     // the main group to add to scene
     this.group = new THREE.Group();
- 
     // section object
     var secObj = {
         i: 0
     }
- 
     // loop sections
     while (secObj.i < this.sections) {
- 
         var groupSection = new THREE.Group();
         // cone object
         var coneObj = {
@@ -73,22 +67,17 @@ var Tree = function (opt) {
         // standard radius and length
         // and set default radius and y position of section
         secObj.stdRadius = this.coneMaxRadius - this.coneRadiusReduction * (secObj.i / this.sections);
-        secObj.stdLength = this.coneMaxLength - this.coneLengthReduction * (Math.pow(2, secObj.i) - 1) / Math.pow(2, this.sections);
+        secObj.stdLength = this.coneMaxLength - (this.coneLengthReduction * (secObj.i / this.sections) );
         secObj.radius = secObj.stdLength - secObj.stdLength / 2;
         secObj.y = secObj.stdRadius * 2 * secObj.i;
         secObj.radOffset = (secObj.i % 2) * Math.PI;
- 
         // call for section
         this.forSection.call(this, secObj);
- 
         // loop cones
         while (coneObj.i < this.conesPerSection) {
- 
             Tree.defaultConeObj(this, coneObj, secObj);
- 
             // call any forConeValues method that may be given
             this.forConeValues.call(this, coneObj, secObj);
- 
             // create the cone geometry
             var cone = new THREE.ConeGeometry(
                     coneObj.radius,
@@ -98,42 +87,30 @@ var Tree = function (opt) {
                     coneObj.open,
                     coneObj.thetaStart,
                     coneObj.thetaLength);
- 
             // create the mesh
             var mesh = new THREE.Mesh(
                     cone,
                     coneObj.material || this.coneMaterial);
- 
             // position and rotate
             mesh.position.set(coneObj.x, coneObj.y, coneObj.z);
             mesh.rotation.set(coneObj.r.x, coneObj.r.y, coneObj.r.z)
- 
             // call forConeMesh
             this.forConeMesh.call(this, mesh, coneObj, secObj);
- 
             groupSection.rotation.set(0, secObj.radOffset, 0);
- 
             // add mesh to group
             groupSection.add(mesh);
- 
             // next cone
             coneObj.i += 1;
- 
         }
- 
         // set y position of section
         // and add the section to the group
         groupSection.position.y = secObj.y;
         this.group.add(groupSection);
- 
         // next section
         secObj.i += 1;
- 
     }
- 
     // call on done if given
     this.onDone.call(this);
- 
 };
  
 Tree.defaultConeObj = function (tree, coneObj, secObj) {
