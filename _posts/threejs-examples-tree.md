@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-06 14:35:35
-version: 1.20
+updated: 2021-06-06 14:39:56
+version: 1.21
 ---
 
 So this is another [three js example](/2021/02/19/threejs-examples/) post using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of every green type tree. 
@@ -186,7 +186,7 @@ For a basic example I just called the constructor and only used a custom materia
 
 ## 4 - Using the forConeValues option
 
-If for some reason I want to use a custom expression when it comes to setting the position and rotation of the cones I can use the forConeValues option to do so.
+If for some reason I want to use a custom expression when it comes to setting the position, rotation, or any other value on a cone by cone basis of the cones I can use the forConeValues option as one way to go about doing so.
 
 ```js
 // TREE with custom forConeValues method
@@ -208,4 +208,8 @@ scene.add(tree.group);
 
 ## 5 - Conclusion
 
-I hope to get around to making some more three js examples in the near future. I have forgot how fun it can be to make these kinds of projects. So far I have made a few additional simple models like this, such as one that is of a simple little [biplane example](/2021/02/17/threejs-example-biplane/), and also one that is a [group of biplane models](/2021/02/18/threejs-examples-biplane-group/). I might get around to making at least a few more examples that will start to be some kind of interesting animations, or artful like ting, but there is so more more to write about and learn about in the process.
+I might get around to making a few more additional changes to these models at some point in the future, but only if I start to actually use this in a project or two.
+
+I hope to get around to making some more three js examples in the near future as they prove to be quick, simple, basic projects at least when it comes to the ones that I like to make thus far. I have forgot how fun it can be to make these kinds of projects, and when I keep things simple progress and move along fast. 
+
+So far I have made a few additional simple models like this, such as one that is of a simple little [biplane example](/2021/02/17/threejs-example-biplane/), and also one that is a [group of biplane models](/2021/02/18/threejs-examples-biplane-group/). I might get around to making at least a few more examples that will start to be some kind of interesting animations, or artful like ting, but there is so more more to write about and learn about in the process.
