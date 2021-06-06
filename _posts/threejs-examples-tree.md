@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-06 14:00:40
-version: 1.18
+updated: 2021-06-06 14:30:33
+version: 1.19
 ---
 
 So this is another [three js example](/2021/02/19/threejs-examples/) post using just [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) and a little additional vanilla javaScript to make a quick crude model of a tree. This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree. It is one of my many crude yet effective kinds of models that I like to make just when it comes to having a little fun with three.js to make just basic stand ins type models that often tend to still look okay actually. That is if one just makes the decision to set the bar fairly low anyway, make a simple model of something, and then move on to the next thing when it comes to an over all project.
@@ -29,7 +29,7 @@ When I first wrote this post and the source code of the example here I was using
 
 ## 2 - The tree constructor
 
-Here is the javaScript that I worked out that gave me a decent tree model to work with. The Model is a constructor that creates an instance of the tree module and has a group as one of its properties that I add to a scene when creating a project that makes use of the model.
+Here is the javaScript that I worked out that gave me a decent tree model to work with in various projects where I just want a crude yet effective looking type of tree in the scene. The Model is a constructor that creates an instance of this Tree class and has a group as one of its properties that I add to a scene when creating a project that makes use of the model. When calling the constructor function there are a number of options that I can pass it it my way of an options object. These options are for setting things like the number of cone sections to use.
 
 I am not doing much of anything with the prototype but it contains a few static methods. This might change if I ever get around to doing more work on this at some point in the future.
 
