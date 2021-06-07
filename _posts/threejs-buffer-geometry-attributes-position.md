@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 14:18:29
-version: 1.19
+updated: 2021-06-07 14:20:11
+version: 1.20
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -299,3 +299,5 @@ Now I am going to want to make some kind of animation example of what I have wor
 ## 6 - Conclusion
 
 This week I think I will be focusing on the buffer geometry class more when it comes to continuing to learn a thing or two about using threejs in a client side javaScript project. There is a great deal more to learn about when it comes to making a custom geometry in threejs, or mutating one that has all ready been created using one of the built in geometry constructors. The position attribute is just one of many attributes that will come into play when creating custom geometry, addition now worthy attributes are normals and uis just to name a few.
+
+However there might still be a great deal more to cover when it comes to just messing around with the position array, and creating such an array for a custom geometry. So at some point in the future I should come back around to expand this post even more with additional examples of the position attribute.
