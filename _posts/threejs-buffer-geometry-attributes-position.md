@@ -5,10 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 13:22:21
-version: 1.2
+updated: 2021-06-07 13:26:09
+version: 1.3
 ---
 
+When getting into the subjects of making a custom geometry in threejs there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
 
 <!-- more -->
 
