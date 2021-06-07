@@ -5,19 +5,23 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 13:32:01
-version: 1.6
+updated: 2021-06-07 13:37:16
+version: 1.7
 ---
 
 When getting into the subjects of making a custom [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
 
 There is taking the time to create a blank instance of a Buffer geometry using the [THREE.BufferGeometry](https://threejs.org/docs/index.html#api/en/core/BufferGeometry) constructor and then created the position attribute from the ground up. However maybe a good starting point would be to study the results of one of the built in geometry constructors such as the THREE.boxGeometry constrictor to get an idea of what a position attribute is all about. There is also taking a look at some other features of a built in geometry instance such as the index property of a buffer geometry to gain a sense of what that is for when it comes to working with a set of triangles.
 
+So then this post might get a little involved when it comes to the position property of a geometry in threejs, but still the subject is only so complicated. When it comes to the position property alone as one might guess it is an array that holds all the values of each point in space, and that is all there is to it. 
+
 <!-- more -->
 
 ## 1 - The Attributes of a buffer geometry instance and what to know first
 
 ## 2 - Basic example of the position attribute of a buffer geometry
+
+However things can still get a little confusing as the number of points in the array is not what one might expect when it comes to a cube for example. In a way there is only eight points to a cube, so one might think that the length of a position array for a cube would be 24 when it comes to all the axis positions for each point.
 
 ```js
 (function () {
