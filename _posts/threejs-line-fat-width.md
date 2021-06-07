@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2021-06-07 14:48:37
-version: 1.19
+updated: 2021-06-07 14:56:45
+version: 1.20
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, in fact all platforms I think, any width other than the default value of 1 will not work anyway. So it would seem that I am just stuck with having to just have a thickness of 1 when it comes to drawing lines in threejs. However there is not just thinking in terms of drawing a line in space, but drawing a tube like structure in space. When doing so I should be able to use THREE.Mesh, rather than TREE.Line, and then make the radius of this tubing any thickness that I want right?
@@ -17,7 +17,7 @@ However looking over the examples at the three.js site there are some official a
 
 ## 1 - What to know
 
-This is a post on using some additional assets with three.js to make fat lines, or lines that have a thickness larger than that of one which seems to be a limitation when working with Lines and the line basic material as a way to draw lines in 3d space using threejs and a little javaScript. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), or javaScript in general so I trust that yo have at least some experience with these things before hand.
+This is a post on using some additional assets with three.js to make fat lines, or lines that have a thickness larger than that of one which seems to be a limitation when working with Lines and the line basic material as a way to draw lines in 3d space using threejs and a little javaScript. This is not a [getting started post with three.js](/2018/04/04/threejs-getting-started/), or javaScript in general so I trust that yo have at least some experience with these things before hand. In any case in this section I will be going over a few quick key details that you should be aware of before containing to read the rest of this post.
 
 ### 1.1 - Version numbers matter
 
@@ -98,7 +98,7 @@ var createFatLineGeometry = function (opt) {
 
 ## 2.1 - The cretaeFatLine helper
 
-This helper makes use of a geometry made with the createFatLineGemomety helper, using it with a material made with the LineMaterial class to return an instance of Line2.
+This helper makes use of a geometry made with the create Fat Line Geometry helper, using it with a material made with the Line Material class to return an instance of the Line2 class. This is just so I can have a way to just quickly create and return a complete ready to go instance of the Line2 class with a material and given geometry.
 
 ```js
 var createFatLine = function (opt) {
@@ -198,4 +198,6 @@ When using the createFatLine helper I then also call my createFatLineGeometry he
 
 ## 3 - Conclusion
 
-So the process of making fat lines in three.js is a little complicated, but with a little will power it is not to hard to find a work around. If you enjoyed reading this post you might want to check out [my many other posts on three.js](/categories/three-js/). Also if you have any questions of concerns be sure to let me know in the comments, The more feedback I receive the more inclined I will be to get around to expanding the content on this post, and others like it. In any case thank you for reading and have fun with three.js.
+So the process of making fat lines in three.js is a little complicated, but with a little will power it is not to hard to find a work around. There are a number of other great features that can be worth with in my own projects that exist in the examples folder of the official threejs github repository, such as [orbit](/2018/04/13/threejs-orbit-controls/) and [fly controls](/2021/05/05/threejs-fly-controls/) just to name a few of the features to worth with there.
+
+If you enjoyed reading this post you might want to check out [my many other posts on three.js](/categories/three-js/). Also if you have any questions of concerns be sure to let me know in the comments, The more feedback I receive the more inclined I will be to get around to expanding the content on this post, and others like it. In any case thank you for reading and have fun with three.js.
