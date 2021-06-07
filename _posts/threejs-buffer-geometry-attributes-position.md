@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 13:38:48
-version: 1.8
+updated: 2021-06-07 13:40:40
+version: 1.9
 ---
 
 When getting into the subjects of making a custom [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -18,6 +18,8 @@ So then this post might get a little involved when it comes to the position prop
 <!-- more -->
 
 ## 1 - The Attributes of a buffer geometry instance and what to know first
+
+This is a post on the position attribute of a buffer geometry instance in the javaScript library known as three.js. There is a great deal more that you show know at least a little about before hand, or else you might end up finding this post a little hard to follow.
 
 ## 2 - Basic example of the position attribute of a buffer geometry
 
