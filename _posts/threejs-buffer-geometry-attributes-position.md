@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 13:47:20
-version: 1.13
+updated: 2021-06-07 13:49:07
+version: 1.14
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -79,6 +79,8 @@ However things can still get a little confusing as the number of points in the a
 ```
 
 ## 3 - Set vert helper example
+
+In this example I worked out a simple set vertext helper where I can just pass a geometry, then a vertext instance, and then a position object or instance of vector 3 that can be used to set the position of the vertext.
 
 ```js
 (function () {
