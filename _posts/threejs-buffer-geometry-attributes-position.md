@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 14:26:37
-version: 1.22
+updated: 2021-06-07 14:29:06
+version: 1.23
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -297,6 +297,8 @@ When doing anything that involves mutating the geometry over an over again by ch
 }
     ());
 ```
+
+So then this animation works out the way that I would more or less expect it to the faces of each side of the cube move out from each other and then back again. There is the a whole bunch of other things that I could do when it comes to creating various other kind sof animations that are just slightly different use case of these basic helper functions.
 
 ## 6 - Conclusion
 
