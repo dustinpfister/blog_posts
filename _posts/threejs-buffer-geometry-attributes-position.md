@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 13:46:25
-version: 1.12
+updated: 2021-06-07 13:47:20
+version: 1.13
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -24,6 +24,10 @@ This is a post on the position attribute of a buffer geometry instance in the ja
 ### 1.1 - Read up more on buffer geometry in general
 
 There is a great deal more to write about when it comes to [buffer geometry](/2021/04/22/threejs-buffer-geometry/) in threejs. It might be best to start out with getting to know the various prototype methods of the buffer geometry class, and how to do simpler tasks such as translating, or rotating a all ready made geometry.
+
+### 1.2 - Version Numbers matter
+
+When I made these source code examples, and first wrote this post I was using revision 127 of threejs.
 
 ## 2 - Basic example of the position attribute of a buffer geometry
 
