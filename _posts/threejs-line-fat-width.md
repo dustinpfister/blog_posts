@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 324
-updated: 2021-06-07 14:44:18
-version: 1.17
+updated: 2021-06-07 14:46:28
+version: 1.18
 ---
 
 When playing around [with lines](/2018/04/19/threejs-line/) in [three.js](https://threejs.org/) it would be nice to set the width of lines to a thickness greater than that of one. That is that although there is a line width property of the [Line Basic Material](https://threejs.org/docs/index.html#api/en/materials/LineBasicMaterial), on most platforms, in fact all platforms I think, any width other than the default value of 1 will not work anyway. So it would seem that I am just stuck with having to just have a thickness of 1 when it comes to drawing lines in threejs. However there is not just thinking in terms of drawing a line in space, but drawing a tube like structure in space. When doing so I should be able to use THREE.Mesh, rather than TREE.Line, and then make the radius of this tubing any thickness that I want right?
 
-However looking over the examples at the three.js site there are some official additional resources that can be used to make thick lines that seems to work just fine. The only thing about it is that these features are not built into the core of the three.js library itself.
+However looking over the examples at the three.js site there are some official additional resources that can be used to make thick lines that seems to work just fine. The only thing about it is that these features are not built into the core of the three.js library itself. They must be added to a project as an additional external file alone with threejs, however once added to the stack the feature seems to work pretty good.
 
 <!-- more -->
 
