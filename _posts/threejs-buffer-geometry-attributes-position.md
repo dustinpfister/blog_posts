@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 14:36:27
-version: 1.25
+updated: 2021-06-07 14:38:14
+version: 1.26
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -32,6 +32,8 @@ When I made these source code examples, and first wrote this post I was using re
 ## 2 - Basic example of the position attribute of a buffer geometry
 
 In this section I will be going over a basic example of mutating the position attribute of a built in box geometry. However things can still get a little confusing as the number of points in the array is not what one might expect when it comes to a cube. For example in a way there is only eight points to a cube, so one might think that the length of a position array for a cube would be 24 when it comes to all the axis positions for each point. However that is not the case, the count vlue of the position property is indeed 24, but the actual length of the position array is 72. This is because the idea here is to not think in the number of sides that are needed, but the number of triangles that are needed.
+
+If you are still a little confused about all this maybe it would be best to just start playing around with an instance of box geometry, and do a little basic math with some things. Also while you are at it you might chose to change one of the values in the position array to see what the effect is.
 
 ```js
 (function () {
