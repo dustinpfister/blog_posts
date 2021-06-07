@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 14:20:11
-version: 1.20
+updated: 2021-06-07 14:22:40
+version: 1.21
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -212,7 +212,7 @@ So now that I have a set vertx helper that seems to work okay I thought it might
 
 ## 5 - Animation loop example
 
-Now I am going to want to make some kind of animation example of what I have worked out thus far. When doing anything that involves mutating the geometry over an over again by changing values in the position attribute there is one thing that I must always do and that is to make sure that I always set the needs update boolean of the position attribute to true each time I change the values in the position array.
+Now I am going to want to make some kind of animation example of what I have worked out thus far. When doing anything that involves mutating the geometry over an over again by changing values in the position attribute there is one thing that I must always do and that is to make sure that I always set the needs update boolean of the position attribute to true each time I change the values in the position array. Thus far doing so was not that important because I was just updating the geometry once, and that seems to work okay even if i do not make sure it is set to true. However now if I forget that step the geometry will update only once, and then not again on the next call of the animation function.
 
 ```js
 (function () {
