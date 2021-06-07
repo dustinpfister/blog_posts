@@ -5,11 +5,10 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 13:19:13
-version: 1.1
+updated: 2021-06-07 13:22:21
+version: 1.2
 ---
 
-This week I think I will be focusing on the buffer geometry class more when it comes to continuing to learn a thing or two about using threejs in a client side javaScript project.
 
 <!-- more -->
 
@@ -273,3 +272,7 @@ This week I think I will be focusing on the buffer geometry class more when it c
 }
     ());
 ```
+
+## 6 - Conclusion
+
+This week I think I will be focusing on the buffer geometry class more when it comes to continuing to learn a thing or two about using threejs in a client side javaScript project. There is a great deal more to learn about when it comes to making a custom geometry in threejs, or mutating one that has all ready been created using one of the built in geometry constructors.
