@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 883
-updated: 2021-06-07 14:22:40
-version: 1.21
+updated: 2021-06-07 14:26:37
+version: 1.22
 ---
 
 When getting into the subjects of making a custom buffer geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a lot of various little details to cover. There are a number of attributes that must be created from scratch when it comes to the positions of the vertices, normals, and other various values. However one has to start somewhere when it comes to learning how to do this sort of thing, and with that said maybe a good starting point would be the position attribute.
@@ -212,7 +212,9 @@ So now that I have a set vertx helper that seems to work okay I thought it might
 
 ## 5 - Animation loop example
 
-Now I am going to want to make some kind of animation example of what I have worked out thus far. When doing anything that involves mutating the geometry over an over again by changing values in the position attribute there is one thing that I must always do and that is to make sure that I always set the needs update boolean of the position attribute to true each time I change the values in the position array. Thus far doing so was not that important because I was just updating the geometry once, and that seems to work okay even if i do not make sure it is set to true. However now if I forget that step the geometry will update only once, and then not again on the next call of the animation function.
+Now I am going to want to make some kind of animation example of what I have worked out thus far when it comes to muttaing the values of a buffer geometry position attribute. In this example I am not suing the set vertex and set triangle helpers to create an update box geometry helper. In this helper method I am doing the same thing that I did for my example on the set tri helper, only I worked out a way to do so in a while loop rather than a whole bunch of lines calling the ti method over and over again. The one major different in this update method beyond that is that I can also pass a percent value that can be used to set the state of an animation in terms of a value between 0 and 1.
+
+When doing anything that involves mutating the geometry over an over again by changing values in the position attribute there is one thing that I must always do and that is to make sure that I always set the needs update boolean of the position attribute to true each time I change the values in the position array. Thus far doing so was not that important because I was just updating the geometry once, and that seems to work okay even if i do not make sure it is set to true. However now if I forget that step the geometry will update only once, and then not again on the next call of the animation function.
 
 ```js
 (function () {
