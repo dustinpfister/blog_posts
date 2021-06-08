@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 10:49:48
-version: 1.29
+updated: 2021-06-08 10:52:13
+version: 1.30
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -37,11 +37,11 @@ When I first wrote this post and the source code of the example here I was using
 
 ## 2 - The tree constructor
 
-So now lets get to the source code of this basic tree model that are present is just a single constructor function that will create and return an instance of this Tree Class. This tree class has many properties to it, but the main property of interst here is the group property that contains an instance of THREE.Group. It is this group that I will want to add to a scene object when it comes to using this in an over all threejs project.
+So now lets get to the source code of this basic tree model that are present is just a single constructor function that will create and return an instance of this Tree Class. This tree class has many properties to it, but the main property of interest here is the group property that contains an instance of THREE.Group. It is this group that I will want to add to a scene object when it comes to using this in an over all threejs project.
 
 When calling the constructor function there are a number of options that I can pass to it by way of an options object. These options are for setting things like the number of cone sections to use, and how many cones there should be per section. Other options of interest include the material to use when skinning the cones, by default I am using the Mesh basic Material, however in other use case examples I will of course what create create and pass a custom material for the cones.
 
-I am not doing much of anything with the prototype but it contains a few static methods. This might change if I ever get around to doing more work on this at some point in the future.
+I am not doing much of anything with the prototype at the time of this writing, but it contains a few static methods. This might change if I ever get around to doing more work on this at some point in the future.
 
 ```js
 var Tree = function (opt) {
@@ -153,7 +153,7 @@ When I use the model to create an instance of the tree model there are a wide ra
 
 ## 3 - Basic example of the tree model
 
-For a basic example I just called the constructor and only used a custom material that will respond to a light source, the standard material is one such material that will work light. In this example I am also using the three js built in orbit controls also.
+For a basic example I just called the constructor and only used a custom material that will respond to a light source, the standard material is one such material that will work light. In this example I am also using the [three js built in orbit controls](/2018/04/13/threejs-orbit-controls/) also.
 
 ```js
 (function () {
