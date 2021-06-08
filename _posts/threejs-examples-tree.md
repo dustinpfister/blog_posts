@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 10:58:02
-version: 1.31
+updated: 2021-06-08 12:41:07
+version: 1.32
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -220,7 +220,7 @@ This feature was just added in just for the heck of it, and I am not sure if thi
 
 ## 5 - Conclusion
 
-I might get around to making a few more additional changes to these models at some point in the future, but only if I start to actually use this in a project or two.
+I might get around to making a few more additional changes to this model at some point in the future, but only if I start to actually use this in a project or two. As of the last time I edited this post I can not say that I made these kinds of models this way anymore in the from of a class, but rather returning a public API with a create method. So that is one thing that I might change at some point, but there is also maybe adding some additional features when it comes to updating the state of the tree when it comes to making it a but animated. I can not say that this is a feature that I would use often though so maybe doing something like that would prove to be wasting time adding features that I do not really want or need, or can be part of the application code.
 
 I hope to get around to making some more three js examples in the near future as they prove to be quick, simple, basic projects at least when it comes to the ones that I like to make thus far. I have forgot how fun it can be to make these kinds of projects, and when I keep things simple progress and move along fast. 
 
