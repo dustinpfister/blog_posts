@@ -5,13 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2021-06-08 14:55:34
-version: 1.3
+updated: 2021-06-08 15:00:08
+version: 1.4
 ---
 
 Yesterday I wrote a post on the position attribute of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. the values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the normal material.
 
 <!-- more -->
+
+## 1 - The normals attribute in a buffer geometry, and what to know first
+
+This is a post on the nature of the normal attribute in an instance of buffer geometry in the javaScript library known as threejs. This is just one of several core attributes of any given geometry in the library alone with position, and the uvs attribute. This is not a post on buffer geometry in general let alone any kind of getting started post on threejs and javaScript in general. So I assume that you have worked out at least some basic examples of threejs projects, and are not just at the point where you want to learn more about what the deal is with the normals attribute of a geometry.
 
 ## 2 - basic example of the normals attribute
 
