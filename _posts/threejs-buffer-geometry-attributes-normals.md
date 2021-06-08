@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2021-06-08 15:29:18
-version: 1.15
+updated: 2021-06-08 15:35:28
+version: 1.16
 ---
 
 Yesterday I wrote a post on the position attribute of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. the values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the normal material.
@@ -171,6 +171,8 @@ So now that I have the very basics out of the way when it comes to mutating the 
 }
     ());
 ```
+
+When this code example is up and running the result is that the colors for the triangle to which I am changing the direction of the normals used will as one might expect change. The typical situation when using the Mesh Normal material with a cube is that the color range will include purple, blue, and cyan, but never green or any other colors beyond these three. This is because the normals with the Box Geometry constrictor are set up to begin with and they are all pointing outward from the inside of the cube. When the direction is changed away from this default setting that results in other colors showing up, and this is generally an indication that something is wrong with the normal values of the geometry, unless for some reason I want them facing other ways.
 
 ## 3 - Conclusion
 
