@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 10:16:15
-version: 1.25
+updated: 2021-06-08 10:23:34
+version: 1.26
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -15,13 +15,13 @@ This model makes use of the three js built in [cone geometry](/2019/07/31/threej
 
 I have made a number of other models like this that can be described as a crude yet effective kinds of model that can be used in an over all larger project, when it comes to creating a typical outdoor like scene. There is not just stopping with this kind of model for a tree, but going on to make a few more with a similar style, I will want at least a few models like this and not just one. These kinds of models in my opinion work when it comes to a kind of simple low polly art style, where the focus is more on the over all subject of the project and not so much the graphics. Also there are many other things in a project that I would like to move on with, and not end up spending vast abouts of time making models, so it seems like a good idea to just slap some quick solutions together and focus on something else when it comes to this. So it would seem that I would just like to make the decision to set the bar fairly low, make a simple model of something, and then move on to the next thing when it comes to an over all project.
 
-This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger scene that contains trees, and also other things going on in the sense in addition to just this.
+This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger over all project in which I might make use of this. There is not just making a module that will be used to create and maybe mutate this kind of group of mesh objects, but using this tree modle with a bunch of other little projects to make an over all larger project.
 
 <!-- more -->
 
 ## 1 - Before continuing with this three js example post
 
-This is a post on using the javaScript library three js that can be used to work with 3d objects. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) by itself as well as how to use the many various constructors functions and what a constructor function is to begin with. It is assumed that you have at least some background with the basics when it comes to suing three js as well as javaScript programing in general. If not you might have a hard time following the content of this post as I am using a lot of features in the source code that you should have at least some understanding of.
+This is a post on using the javaScript library known as three.js that can be used to create and work with 3d objects in a client side JavaScript environment. This is not a [getting started post on three js](/2018/04/04/threejs-getting-started/) by itself as well as how to use the many various constructors functions in threejs, as well as [what a constructor function is to begin with](/2019/02/27/js-javascript-constructor/). So then I assume that you have at least some background with the basics when it comes to using three js, as well as javaScript programing in general. If not you might have a hard time following the content of this post as I am using a lot of features in the source code that you should have at least some understanding of before hand. I will not be getting into every little detail that you show know at this point here, but I will be outline some things tht you might want to read up on more before continuing with this post.
 
 ### 1.1 - Do not just stop with this example when it comes to making trees
 
