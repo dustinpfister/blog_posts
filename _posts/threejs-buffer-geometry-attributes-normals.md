@@ -5,10 +5,10 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2021-06-08 14:43:25
-version: 1.0
+updated: 2021-06-08 14:45:26
+version: 1.1
 ---
 
-yesterday I wrote a post on the position attribute of a buffer geometry in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute.
+Yesterday I wrote a post on the position attribute of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute.
 
 <!-- more -->
