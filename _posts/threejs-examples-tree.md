@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 10:37:31
-version: 1.28
+updated: 2021-06-08 10:49:48
+version: 1.29
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -29,15 +29,17 @@ This model of a tree is a collection of Mesh Objects that are part of a Group th
 
 ### 1.2 - Do not just stop with this example when it comes to making trees
 
-There are a lot of ways of going about making tree models even with it comes to the crude informal style that I like to make them with. This is an example where I am making a whole bunch of mesh objects using the cone geometry, but another nice way to just quickly make something that looks a little like a three is to just place a sphere on top of a box or cylinder geometry and calling it a day. In fact I [have another tree model worked out](/2021/05/19/threejs-examples-tree-sphere/) that is just that simple, and if you ask me it still works when it comes to a crude low Polly art style.
+There are a lot of ways of going about making tree models even when it comes to the crude informal style that I like to make them with. This is an example where I am making a whole bunch of mesh objects using the cone geometry, but another nice way to just quickly make something that looks a little like a three is to just place a sphere on top of a box or cylinder geometry and calling it a day. In fact I [have another tree model worked out](/2021/05/19/threejs-examples-tree-sphere/) that is just that simple, and if you ask me it still works when it comes to a crude low Polly art style.
 
 ### 1.3 - Be sure to check the version number you are using
 
-When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 127 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using.
+When I first wrote this post and the source code of the example here I was using revision 106 of threejs, and the last time I tested things out and did a little editing of this post I was using revision 127 of threejs. Code breaking changes are made to threejs all the time so be mindful of what version you are using when working with threejs code example on the open web.
 
 ## 2 - The tree constructor
 
-Here is the javaScript that I worked out that gave me a decent tree model to work with in various projects where I just want a crude yet effective looking type of tree in the scene. The Model is a constructor that creates an instance of this Tree class and has a group as one of its properties that I add to a scene when creating a project that makes use of the model. When calling the constructor function there are a number of options that I can pass it it my way of an options object. These options are for setting things like the number of cone sections to use.
+So now lets get to the source code of this basic tree model that are present is just a single constructor function that will create and return an instance of this Tree Class. This tree class has many properties to it, but the main property of interst here is the group property that contains an instance of THREE.Group. It is this group that I will want to add to a scene object when it comes to using this in an over all threejs project.
+
+When calling the constructor function there are a number of options that I can pass to it by way of an options object. These options are for setting things like the number of cone sections to use, and how many cones there should be per section. Other options of interest include the material to use when skinning the cones, by default I am using the Mesh basic Material, however in other use case examples I will of course what create create and pass a custom material for the cones.
 
 I am not doing much of anything with the prototype but it contains a few static methods. This might change if I ever get around to doing more work on this at some point in the future.
 
