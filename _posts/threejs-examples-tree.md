@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 10:35:14
-version: 1.27
+updated: 2021-06-08 10:37:31
+version: 1.28
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -25,7 +25,7 @@ This is a post on using the javaScript library known as three.js that can be use
 
 ### 1.1 - Read up on THREE.Group, THREE.Mesh, and the Object3d base class in general
 
-This model of a tree is a collection of Mesh Objects that are part of a Group that are in turn a part of another Group. There is reading up more on the Mesh class, and also the Group class, but it might be best to read up more on the Object3d class in general. The Object3d class is a base class of Mesh objects, Groups, Cameras, and even a whole Scene object. So my learning everything there is to know about the Object3d class it is then possible to apply that to all kinds of other objects in three.js.
+This model of a tree is a collection of Mesh Objects that are part of a Group that are in turn a part of another Group. There is reading up more on the Mesh class, and also the Group class, but it might be best to read up more on the [Object3d class in general](/2018/04/23/threejs-object3d/). The Object3d class is a base class of Mesh objects, Groups, Cameras, and even a whole Scene object. So my learning everything there is to know about the Object3d class it is then possible to apply that to all kinds of other objects in three.js.
 
 ### 1.2 - Do not just stop with this example when it comes to making trees
 
