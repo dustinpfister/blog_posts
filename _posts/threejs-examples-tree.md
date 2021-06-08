@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 10:52:13
-version: 1.30
+updated: 2021-06-08 10:58:02
+version: 1.31
 ---
 
 I want to start creating some video projects some of which will feature an outdoor type scene, so I would like to make some crude yet functional models composed of built in threejs geometry constructors, and one such model that I will want will be a kind of tree. I might want to end up making a few models that are a kind of tree actually, but one will be something that looks like a pine tree rather than one of the other general types of trees. So this post will be another one of my posts on a [three js basic model example](/2021/02/19/threejs-examples/) using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
@@ -153,7 +153,9 @@ When I use the model to create an instance of the tree model there are a wide ra
 
 ## 3 - Basic example of the tree model
 
-For a basic example I just called the constructor and only used a custom material that will respond to a light source, the standard material is one such material that will work light. In this example I am also using the [three js built in orbit controls](/2018/04/13/threejs-orbit-controls/) also.
+So now it is is time to just work out a basic threejs scene just to make sure that this tree model works the way that I expect it to. First off I create a scene object, and camera, and renderer just like with any other three.js example. I will be using a custom material when calling the tree constructor that will respond to light so I am adding a white point light to the scene object.  In addition I am also using the [three js built in orbit controls](/2018/04/13/threejs-orbit-controls/) in this example so I can just move around the camera and look at the tree.
+
+Then what it comes to creating and adding a tree to the scene object I just called the constructor and only used a custom material that will respond to a light source, the standard material is one such material that will work light. 
 
 ```js
 (function () {
