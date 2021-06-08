@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2021-06-08 15:19:27
-version: 1.12
+updated: 2021-06-08 15:23:29
+version: 1.13
 ---
 
 Yesterday I wrote a post on the position attribute of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. the values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the normal material.
@@ -31,8 +31,9 @@ The version of threejs that I was using when I worked out these source code exam
 
 ## 2 - Basic example of the normals attribute
 
-First off I think I should start out with a very basic example of thee normal array that involves just playing around with the attribute that will be set up to begin with when using one of the built in geometry constrictors.
+First off I think I should start out with a very basic example of thee normal attribute that involves just playing around with the normal attribute that will be set up to begin with when using one of the built in geometry constructors such as the box geometry constructor. I have found that the best way to learn abut these attributes is to just study the results of a geometry that has all ready been made and then mutate the values of them to see what the effect is.
 
+So in this basic example I just create a scene object, and then I intend to create and add a Mesh object to the scene that uses a geometry created with the THREE.BoxGeometry constructor, and uses the THREE.MeshNormalMaterial as a way to go about skinning the geometry.
 
 ```js
 (function () {
