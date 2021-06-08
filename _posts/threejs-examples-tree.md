@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 511
-updated: 2021-06-08 09:58:53
-version: 1.23
+updated: 2021-06-08 10:04:51
+version: 1.24
 ---
 
 I want to start creating some over all outdoor type scenes using crude yet functional models composed of built in geometry constructors, and one such model that I will want will be a kind of tree. So this is another [three js example](/2021/02/19/threejs-examples/) post using just the [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) JavaScript library, and a little additional vanilla javaScript code to make a quick crude model of a tree that looks like some kind of ever green type tree. 
 
-This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree rather than other general type of trees. It is one of my many crude yet effective kinds of models that I have made thus far that I can use in over all larger projects when it comes to having some kind of outdoor like scene. There kinds of models in my opinion work when it comes to a kind of simple low polly type of art style, and also there are many other things in a project that I would like to move on with anyway.So it would seem that I just like to make the decision to set the bar fairly low, make a simple model of something, and then move on to the next thing when it comes to an over all project.
+This model makes use of the three js built in [cone geometry](/2019/07/31/threejs-cone/) constructor, and the [THREE.group constructor](/2018/05/16/threejs-grouping-mesh-objects/) to make collections of cones sized and positioned in such a way that they look like a kind of evergreen tree rather than some other general type of tree. 
+
+It is one of my many crude yet effective kinds of models that I have made thus far that I can use in an over all larger project, when it comes to creating some kind of outdoor like scene. These kinds of models in my opinion work when it comes to a kind of simple low polly type of art style, and also there are many other things in a project that I would like to move on with anyway, so i do not want to spend to much time just making trees. So it would seem that I would just like to make the decision to set the bar fairly low, make a simple model of something, and then move on to the next thing when it comes to an over all project.
 
 This kind of example is a very basic getting started type example when it comes to just figuring out some basic ideas for projects, and reusable assets that I can use in a larger project. This might not be the most fun and exciting example, but working out a half way decent way of creating a tree model is a good start for creating a larger scene that contains trees, and also other things going on in the sense in addition to just this.
 
