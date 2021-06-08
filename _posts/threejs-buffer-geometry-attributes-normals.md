@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2021-06-08 15:35:28
-version: 1.16
+updated: 2021-06-08 15:39:41
+version: 1.17
 ---
 
 Yesterday I wrote a post on the position attribute of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. the values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the normal material.
@@ -81,6 +81,8 @@ So then this shows be the direction of the first normal of the box geometry, but
 ## 2 - Mutating the values of the normals array
 
 So now that I have the very basics out of the way when it comes to mutating the values of a normal attribute in a buffer geometry maybe now the next step is to work out a slightly more advanced example that involves the use of an animation loop that will show what happens as the direction of one or more normals changes when using the THREE.MeshNormalMatreial.
+
+In this example I now have some helper methods that I worked out. One of which is the set normal helper for setting the direction of a given normal by way passing the geometry, followed by the normal index the corresponding with the vertex index, and then the new direction in the form of a Vector3 instance or position object that will be used to set the new direction of the normal. The other helper method that I made is for updating an arrow helper to use the current values of a given normal index value. So the intention is that I will be using these methods to mutate three normal values for the first triangle and then update arrow helpers that will show the new direction of each normal.
 
 ```js
 (function () {
