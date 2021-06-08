@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 884
-updated: 2021-06-08 15:28:01
-version: 1.14
+updated: 2021-06-08 15:29:18
+version: 1.15
 ---
 
 Yesterday I wrote a post on the position attribute of a [buffer geometry](https://threejsfundamentals.org/threejs/lessons/threejs-custom-buffergeometry.html) in threejs, and today I thought I would continue the trend by writing another post on an attribute of buffer geometry this time the normal attribute. the values in this attribute are used to find out what the direction is of each point of each triangle in an instance of buffer geometry. These values are then used when it comes to rendering textures for various materials such as with the normal material.
@@ -80,7 +80,7 @@ So then this shows be the direction of the first normal of the box geometry, but
 
 ## 2 - Mutating the values of the normals array
 
-So now that I have the very basics out of the way when it comes to mutating the values of a normal attribute in a buffer geometry maybe now the next step is to work out a slightly more advanced example that involves the use of an animation loop.
+So now that I have the very basics out of the way when it comes to mutating the values of a normal attribute in a buffer geometry maybe now the next step is to work out a slightly more advanced example that involves the use of an animation loop that will show what happens as the direction of one or more normals changes when using the THREE.MeshNormalMatreial.
 
 ```js
 (function () {
