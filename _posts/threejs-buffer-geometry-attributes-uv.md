@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:33:55
-version: 1.12
+updated: 2021-06-09 12:38:25
+version: 1.13
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -22,6 +22,11 @@ This is a post on an advanced topic in threejs that has to do with creating, or 
 ### 1.1 - One way or another you are going to need a texture to use with a material
 
 The uv attribute has to do with how a texture is to be applied to a face of a geometry in a mesh. So in order to make use of uvs and to play around with them you are going to need a texture to use as a color map of a material. In this post I am creating textures using canvas elements which is one way to go about making some textures with javaScript code rather than an external image.
+
+### 1.2 - There is much more to read about when it comes to buffer geometry in general
+
+The way that I think about it is that learning about the uv attribute of a geometry comes after learning about the normal, and position attributes. those attributes of a geometry are also very important as they define the position of the points in space, and the directions that they are facing which is something that is used when it comes to light or the use of the normal material. However there is even more to a geometry beyond the position, normal, and uv attributes, when it comes to prototype methods of buffer geometry class instance as well as other properties such as groups and material index values.
+
 
 ## 2 - Basic uv mutation example using a Plane, and a canvas texture
 
