@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 15:16:59
-version: 1.25
+updated: 2021-06-09 15:22:39
+version: 1.26
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -192,6 +192,8 @@ renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
+
+In this example I am once again using the rotate x method of the cone geometry to make it so the point of the cone geometry is line up with the front of the mesh object that is using the cone geometry. I am then adding this cone geometry to a group, along with another child object that is a cube. I am then changing the position of the group so that it is at a location other than the origin. Because I am using the get world position method of the cube to set the values of a vector3 instance and using that with the look at method, this results in the cone pointing to the cube at its location relative to the group, rather than its location relative to world space.
 
 ## 5 - Example of grouping with a camera
 
