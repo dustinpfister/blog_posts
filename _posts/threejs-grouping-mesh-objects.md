@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 13:47:22
-version: 1.13
+updated: 2021-06-09 13:51:27
+version: 1.14
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -15,15 +15,17 @@ Also for one reason or another it is often a good idea to have a way to group tw
 
 <!-- more -->
 
-## 1 - What to know
+## 1 - Groups in threejs and what else to know
 
-This is not a post on three.js for beginners, I have a post for that, and if you are new you might want to [start there](/2018/04/04/threejs-getting-started/). This is an advanced post on three.js that has to do with grouping two or more [Mesh Object](/2018/05/04/threejs-mesh/) instances into a single Group that can then be worked with by itself in a scene. I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general. 
-
-I also often try to mention that three.js is a project where the version number matters a great deal, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
+This is not a post on three.js for beginners, I have a post for that, and if you are still fairly to threejs you might want to [start by reading some kind of getting started post on threejs first](/2018/04/04/threejs-getting-started/). The main focus in this post has to do with creating a group of two or more or more [Mesh Object](/2018/05/04/threejs-mesh/) instances to create a single Group that can then be worked with by itself in a scene. These groups of objects can from complex shapes composed of many mesh objects using a collection of built in geometry constructors and materials. So then I assume that you have at least a basic working knowledge of three.js, and of course javaScript in general. 
 
 ### 1.1 - THREE.Object3D vs THREE.Group
 
 When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. As far as I can tell there is not much of any difference other than it makes the readability of your code more clear.
+
+### 1.2 - Version numbers matter
+
+I also often try to mention that three.js is a project where the version number matters a great deal, in this post I am using [three.js r91](https://github.com/mrdoob/three.js/tree/r91).
 
 ## 2 - Basic Mesh Group example in three.js
 
