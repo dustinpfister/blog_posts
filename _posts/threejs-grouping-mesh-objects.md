@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 14:25:23
-version: 1.18
+updated: 2021-06-09 14:29:02
+version: 1.19
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -80,7 +80,9 @@ Once I have my group together I can do something like changing the position, rot
 
 ## 3 - Example of grouping with a camera
 
-Grouping is basically whenever you use the add property of anything that inherits from the Object3D class. This includes things like cameras, as such I can use the add method to add things like lights, and a Mesh, and position them relative to the camera. Say for example I want to have a point light on top of camera, and a Mesh that is always in front of the camera as it moves around in a scene, no problem.
+Grouping is basically whenever you use the add property of anything that inherits from the Object3D class and it is not just Groups that are based on the Object3d class. The Object3d class is a base class of many other objects in threejs which includes things like cameras, as such I can use the add method to add things like lights, and a Mesh, and position them relative to the camera. 
+
+So then say for example I want to have a point light on top of camera, and a Mesh that is always in front of the camera as it moves around in a scene, no problem. I can just add the point light, and mesh object to the camera via the add method of the camera. and then just adjust the position and orientation of these child objects of the camera as needed.
 
 ```js
 // Camera
