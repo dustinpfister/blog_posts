@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:27:52
-version: 1.10
+updated: 2021-06-09 12:31:02
+version: 1.11
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -14,6 +14,10 @@ When working out a custom geometry or playing around with a built in geometry in
 Today though I will be getting into the uv attribute that is used to position the textures that are used when skinning the geometry with a material. It is a way to change the locations of where the texture is to be applied for a given face that will be using the texture, by creating an array of values for each vertex. Each vertex have a horizontal and vertical value for it in the array. So if a geometry is a plane that has a vertex count of 4 then there will be two numbers for each vertex that will result in a length of 8 values when it comes to the uvs for that plane.
 
 <!-- more -->
+
+## 1 - The uv attribute of a buffer geometry and what to know first
+
+This is a post on an advanced topic in threejs that has to do with creating, or mutating an array of uv values for an instance of buffer geometry. This is then not a getting started type post with threejs or javaScript in general and I assume that you have logged a fair amount fo time working with threejs before hand. In any case in this section I will be going over some things that you should maybe be aware of before hand, or maybe read up on a bit more before reading the rest of this post.
 
 ## 2 - Basic uv mutation example using a Plane, and a canvas texture
 
