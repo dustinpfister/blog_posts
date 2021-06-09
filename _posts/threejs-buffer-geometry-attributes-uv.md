@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:38:25
-version: 1.13
+updated: 2021-06-09 12:42:45
+version: 1.14
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -27,6 +27,9 @@ The uv attribute has to do with how a texture is to be applied to a face of a ge
 
 The way that I think about it is that learning about the uv attribute of a geometry comes after learning about the normal, and position attributes. those attributes of a geometry are also very important as they define the position of the points in space, and the directions that they are facing which is something that is used when it comes to light or the use of the normal material. However there is even more to a geometry beyond the position, normal, and uv attributes, when it comes to prototype methods of buffer geometry class instance as well as other properties such as groups and material index values.
 
+### 1.3 - Do not confuse uvs with the material index values of groups.
+
+The uvs have to do with how a texture is to be applied to a face when it comes to offsets, and generally more often that not I am going to want to use the whole texture. When it comes to having more than one texture and switching between two or more textures for the same face messing around with uvs might not be the best way to do so. There is having groups in a geometry also, and passing an array of materials to a mesh rather than just one material. There is also just having one material, changing what the texture is for a map, and updating the material. These things might prove to be better options when it comes to switching textures at run time.
 
 ## 2 - Basic uv mutation example using a Plane, and a canvas texture
 
