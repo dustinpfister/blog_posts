@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 11:54:58
-version: 1.5
+updated: 2021-06-09 12:07:16
+version: 1.6
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -32,7 +32,7 @@ Today though I will be getting into the uv attribute that is used to position th
     ctx.strokeStyle = 'white';
     ctx.fillStyle = 'red';
     ctx.beginPath(); // draw red and white circle
-    ctx.arc(16, 16, 8, 0, Math.PI * 2);
+    ctx.arc(10, 10, 8, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
     ctx.beginPath(); // draw white square
@@ -50,8 +50,16 @@ Today though I will be getting into the uv attribute that is used to position th
     // MUTATING THE UV VALUES
     uv.array[0] = 0.27;
     uv.array[1] = 0.73;
-    uv.array[6] = 0.27;
-    uv.array[7] = 0.73;
+ 
+    uv.array[2] = 0.73;
+    uv.array[3] = 0.73;
+ 
+    uv.array[4] = 0.27;
+    uv.array[5] = 0.27;
+ 
+    uv.array[6] = 0.73;
+    uv.array[7] = 0.27;
+ 
     // use the geometry with a mesh
     var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
                 side: THREE.DoubleSide,
