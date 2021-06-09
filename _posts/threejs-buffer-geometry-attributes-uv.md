@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:16:03
-version: 1.9
+updated: 2021-06-09 12:27:52
+version: 1.10
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -17,7 +17,7 @@ Today though I will be getting into the uv attribute that is used to position th
 
 ## 2 - Basic uv mutation example using a Plane, and a canvas texture
 
-To get a general ides of what the uvs are for when it comes to textures it might be best to start working with a plane geometry and look at the values of the plane that are cerated when using the built in geometry constructor.
+To get a general idea of what the uvs are for when it comes to textures it might be best to start working with a plane geometry and look at the values of uv attribute of the plane that is created when using the built in geometry constructor. For example if I create a plane geometry that is a size of 1 by 1 and also has a section size of 1 by 1 then that results in a geometry composed of just 4 points, and because there are 2 uv values for each point it will result in just 8 values in the uv attribute. This is then a nice simple starting point when it comes to playing around with these values to gain a sense of what happens when the values are changed.
 
 ```js
 (function () {
@@ -45,8 +45,19 @@ To get a general ides of what the uvs are for when it comes to textures it might
     var scene = new THREE.Scene();
  
     // GEOMETRY - starting with a plane
-    var geometry = new THREE.PlaneGeometry(1, 1);
-    var uv = geometry.getAttribute('uv');
+    var geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
+ 
+    var uv = geometry.getAttribute('uv'),
+    position = geometry.getAttribute('position');
+ 
+    // the position attribute
+    console.log(position.count); // 4 ( the are points or vertices )
+    console.log(position.array.length); // 12 ( x, y, and z for each point )
+ 
+    // THE UV ATTRIBUTE
+    console.log(uv.count); // 4 ( the are points or vertices )
+    console.log(uv.array.length); // 8 ( there is a u and v value for each point )
+ 
     // MUTATING THE UV VALUES
     uv.array[0] = 0.27;
     uv.array[1] = 0.73;
