@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 11:42:26
-version: 1.2
+updated: 2021-06-09 11:46:24
+version: 1.3
 ---
 
 When working out a custom geometry or playing around with a built in geometry there are a number of attributes for the geometry. I have wrote posts on the position and normal attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. Today though I will be getting into the uv attribute that is used to position the textures that are used when skinning the geometry with a material.
@@ -146,4 +146,4 @@ When working out a custom geometry or playing around with a built in geometry th
 
 ## 4 - Conclusion
 
-The uvs of a geometry are for setting up the [texture cornets](http://paulyg.f2s.com/uv.htm) of a geometry when it comes to what portions of a texture should be used when applying it to the face of geometry. This array of values should not be confused with other values of a geometry such as the groups that are used when setting material index values.
+The uvs of a geometry are for setting up the [texture cornets](http://paulyg.f2s.com/uv.htm) of a geometry when it comes to what portions of a texture should be used when applying it to the face of geometry. This array of values should not be confused with other values of a geometry such as the groups that are used when setting material index values. That is that another part of creating a custom geometry would involve also creating an array of groups, and each group object would contain a material index value to use for a given set of triangles when using an array of materials for a mesh object that will be used with a buffer geometry.
