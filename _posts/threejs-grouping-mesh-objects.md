@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 14:54:37
-version: 1.21
+updated: 2021-06-09 14:59:25
+version: 1.22
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -80,7 +80,7 @@ Once I have my group together I can do something like changing the position, rot
 
 ## 3 - Rotation of geometry to make it line up with the front of a mesh object
 
-In some cases I will want to rotate the geometry that I am using with a mesh so that the front of the geometry will line up with the front of the mesh object, so that things wil look the way I want it to when using something like the object3d look at method.
+In some cases I will want to rotate the geometry that I am using with a mesh so that the front of the geometry will line up with the front of the mesh object, so that things will look the way I want it to when using something like the object3d look at method. For example say I have a group of cone geometries and I want the point of the cones to face the center of the group, or maybe I want them to face away from the center. To do this I will just want to call the rotate x method of the buffer geometry class instance that is the cone geometry and adjust the rotation alone that axis so that it is the way it should be relative to the face of the mesh object. When doing this I will typically just want to rotate the geometry once, and then use th object3d level properties and methods to adjust orientation of the mesh objects.
 
 ```js
 (function () {
