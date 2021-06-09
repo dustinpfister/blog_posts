@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 13:51:27
-version: 1.14
+updated: 2021-06-09 13:54:26
+version: 1.15
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -21,7 +21,7 @@ This is not a post on three.js for beginners, I have a post for that, and if you
 
 ### 1.1 - THREE.Object3D vs THREE.Group
 
-When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. As far as I can tell there is not much of any difference other than it makes the readability of your code more clear.
+When it comes to grouping two ore more Mesh Objects together it may be preferable to use the Group constructor in place of just using Object3D by itself. However as far as I can tell there is not much of any difference other than it makes the readability of your code more clear as to what the object is. The fat of the matter is that when it comes to grouping things together such a task can be done with any object that is based off the Object3d class. This includes Groups, Mesh objects, Cameras, various helpers, and even a whole Scene object.
 
 ### 1.2 - Version numbers matter
 
