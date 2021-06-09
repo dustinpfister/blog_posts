@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 14:29:02
-version: 1.19
+updated: 2021-06-09 14:37:49
+version: 1.20
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -85,32 +85,64 @@ Grouping is basically whenever you use the add property of anything that inherit
 So then say for example I want to have a point light on top of camera, and a Mesh that is always in front of the camera as it moves around in a scene, no problem. I can just add the point light, and mesh object to the camera via the add method of the camera. and then just adjust the position and orientation of these child objects of the camera as needed.
 
 ```js
-// Camera
-var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 50);
-camera.position.set(10, 10, 10);
-camera.lookAt(0, 0, 0);
+(function () {
  
-// positioning a light above the camera
-var light = new THREE.PointLight();
-light.position.set(0, 5, 0);
-camera.add(light);
+    // Scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(7, 7));
  
-// positioning a mesh in front of the camera
-var withCamera = new THREE.Mesh(
+    // Camera
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, .5, 50);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera); // adding the camera to the scene
  
-    new THREE.BoxGeometry(.1, .1, .1),
-    new THREE.MeshStandardMaterial({
+    // positioning a light above the camera
+    var light = new THREE.PointLight();
+    light.position.set(0, 5, 0);
+    camera.add(light);
  
-        color: 0xffffff,
-        emissive: 0x1a1a1a
+    // positioning a mesh in front of the camera
+    var withCamera = new THREE.Mesh(
+            new THREE.BoxGeometry(.1, .1, .1),
+            new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                emissive: 0x1a1a1a
+            }));
+    withCamera.position.set(-0.25, .2, -0.75);
+    camera.add(withCamera);
  
-    })
-);
-withCamera.position.set( - .25, .2,  - .75);
-camera.add(withCamera);
+    // adding another mesh object directly to the scene
+    scene.add(new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({
+                color: 0x00ff00
+            })));
  
-// adding the camera to the scene
-scene.add(camera);
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // loop
+    var frame = 0,
+    maxFrame = 500;
+    var loop = function () {
+        var per = frame / maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        withCamera.rotation.set(Math.PI * 4 * per,
+            Math.PI * 2 * per, 0);
+        camera.position.set(-2 + 8 * bias, 8, 8);
+        camera.lookAt(0, 0, 0);
+        frame += 1;
+        frame = frame % maxFrame;
+        renderer.render(scene, camera);
+    };
+    loop();
+ 
+}
+    ());
 ```
 
 ## 4 - Using Grouping when making a Model
