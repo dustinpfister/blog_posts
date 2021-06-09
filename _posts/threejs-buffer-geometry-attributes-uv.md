@@ -5,19 +5,19 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:07:16
-version: 1.6
+updated: 2021-06-09 12:11:15
+version: 1.7
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
 
 Today though I will be getting into the uv attribute that is used to position the textures that are used when skinning the geometry with a material. It is a way to change the locations of where the texture is to be applied for a given face that will be using the texture, by creating an array of values for each vertex. Each vertex have a horizontal and vertical value for it in the array. So if a geometry is a plane that has a vertex count of 4 then there will be two numbers for each vertex that will result in a length of 8 values when it comes to the uvs for that plane.
 
-
-
 <!-- more -->
 
 ## 2 - Basic uv mutation example using a Plane, and a canvas texture
+
+To get a general ides of what the uvs are for when it comes to textures it might be best to start working with a plane geometry and look at the values of the plane that are cerated when using the built in geometry constructor.
 
 ```js
 (function () {
