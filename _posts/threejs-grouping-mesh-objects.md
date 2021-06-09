@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 14:19:59
-version: 1.17
+updated: 2021-06-09 14:25:23
+version: 1.18
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -29,13 +29,12 @@ I also often try to mention that three.js is a project where the version number 
 
 ## 2 - Basic Mesh Group example in three.js
 
-For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh basic material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
+For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh Normal Material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
 
-Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group.
+Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group. With this example i am just changing the position and rotation of the group, and as I would expect doing so will effect not just the group, but everything that is attached to the group as a child including these method objects.
 
 ```js
 (function () {
- 
     // Scene
     var scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(10, 10));
@@ -44,15 +43,12 @@ Once I have my group together I can do something like changing the position, rot
     var group = new THREE.Group();
     var i = 0,
     radius = 2,
-    count = 5;
+    count = 8;
     while (i < count) {
         // creating a mesh
         var bx = new THREE.Mesh(
                 new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshBasicMaterial({
-                    color: 0x00ff00,
-                    wireframe: true
-                })),
+                new THREE.MeshNormalMaterial()),
         r = Math.PI * 2 / count * i;
         // set position of mesh
         bx.position.set(
@@ -64,6 +60,10 @@ Once I have my group together I can do something like changing the position, rot
         i += 1;
     }
     scene.add(group);
+ 
+    // changing position and rotation of the group
+    group.position.set(-4, 0, -4);
+    group.rotation.z = Math.PI / 180 * 90;
  
     // Camera and Render
     var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 50);
