@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 15:13:04
-version: 1.23
+updated: 2021-06-09 15:14:59
+version: 1.24
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largely involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -143,6 +143,8 @@ In some cases I will want to rotate the geometry that I am using with a mesh so 
 ## 4 - The object3d look at method, getting world position, and groups
 
 One nice feature of the object3d class is the look at method, that helps a lot when it comes to setting the orientation of an object such as a group. I can call this method off of an instance of something that is based off of object3d and pass a position in the from of a few number arguments, or a single instance of vector3. This method works fine in most situations but there are a few draw backs and limitations one of which is that the look at method will always set the orientation of the object relative to world space rather than a space that is relative to a group.
+
+So if I am in a situation in which I want to use the look at method to set the orientation of a group to a position of something in a group, I will want to get the world location of that object in the group. One way to go about doing this would be to use the get world position method of the object3d class.
 
 ```js
 // creating a scene
