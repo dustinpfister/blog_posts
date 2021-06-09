@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:14:24
-version: 1.8
+updated: 2021-06-09 12:16:03
+version: 1.9
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -94,6 +94,8 @@ To get a general ides of what the uvs are for when it comes to textures it might
 ### 3 - updating uvs at run time in an Animation loop
 
 Just because the array of uvs can be updated at run time that does not mean that doing so is a good idea. I think that generally uvs are something that should be set up once and only once and if I want to do something that involves more than one texture for a face it might be better to think in terms of more than one texture file and material and updating the textures used with materials rather than messing around with uvs.
+
+Still if for some reason I do need to change the state of the uvs over time in a loop I just need to make sure that I keep setting the needs update property of the uv attribute back to true each time.
 
 ```js
 (function () {
