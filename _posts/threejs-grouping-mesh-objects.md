@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 13:54:26
-version: 1.15
+updated: 2021-06-09 14:18:26
+version: 1.16
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -29,7 +29,7 @@ I also often try to mention that three.js is a project where the version number 
 
 ## 2 - Basic Mesh Group example in three.js
 
-For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances, and groups them all together using THREE.Group. I just used the simple plain old Box Geometry constructor for the geometry, and positioned them all around the origin, and have them all face the origin as well.
+For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh basic material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
 
 Each time I make a new Mesh I just add it to the instance of group rather than Scene, by doing this the origin of each Mesh is relative to the instance of Group rather than the Scene. Once that is done whenever I change the position, or rotation of the group it changes the position, and rotation of the whole group.
 
@@ -38,75 +38,41 @@ Each time I make a new Mesh I just add it to the instance of group rather than S
  
     // Scene
     var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
  
-    // Camera
-    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 50);
-    camera.position.set(10, 10, 10);
- 
-    // Orbit Controls
-    var controls = new THREE.OrbitControls(camera);
-    camera.lookAt(0, 0, 0);
- 
+    // CREATING A GROUP
     var group = new THREE.Group();
- 
     var i = 0,
+    radius = 2,
     count = 5;
     while (i < count) {
- 
+        // creating a mesh
         var bx = new THREE.Mesh(
                 new THREE.BoxGeometry(1, 1, 1),
                 new THREE.MeshBasicMaterial({
                     color: 0x00ff00,
                     wireframe: true
                 })),
- 
         r = Math.PI * 2 / count * i;
- 
+        // set position of mesh
         bx.position.set(
- 
-            Math.cos(r) * 4,
+            Math.cos(r) * radius,
             0,
-            Math.sin(r) * 4);
- 
-        bx.lookAt(0, 0, 0);
- 
-        // anding a box to the group
+            Math.sin(r) * radius);
+        // add mesh to the group
         group.add(bx);
- 
         i += 1;
     }
- 
-    // adding the group to the scene
     scene.add(group);
  
-    // Render
+    // Camera and Render
+    var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 50);
+    camera.position.set(8, 8, 8);
+    camera.lookAt(0, 0, 0);
     var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(320, 240);
+    renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
- 
-    // loop
-    var frame = 0,
-    maxFrame = 1000;
-    var loop = function () {
- 
-        var per = frame / maxFrame,
-        bias = Math.abs(.5 - per) / .5;
- 
-        requestAnimationFrame(loop);
-        renderer.render(scene, camera);
- 
-        group.rotation.set(
-            Math.PI * 2 * per,
-            Math.PI * 16 * per,
-            0);
- 
-        frame += 1;
-        frame = frame % maxFrame;
- 
-    };
- 
     renderer.render(scene, camera);
-    loop();
  
 }
     ());
