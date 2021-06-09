@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:42:45
-version: 1.14
+updated: 2021-06-09 12:44:55
+version: 1.15
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -30,6 +30,10 @@ The way that I think about it is that learning about the uv attribute of a geome
 ### 1.3 - Do not confuse uvs with the material index values of groups.
 
 The uvs have to do with how a texture is to be applied to a face when it comes to offsets, and generally more often that not I am going to want to use the whole texture. When it comes to having more than one texture and switching between two or more textures for the same face messing around with uvs might not be the best way to do so. There is having groups in a geometry also, and passing an array of materials to a mesh rather than just one material. There is also just having one material, changing what the texture is for a map, and updating the material. These things might prove to be better options when it comes to switching textures at run time.
+
+### 1.4 - always check your version numbers
+
+When I made this post I was using r127 of threejs, and the examples here where working okay with that version of threejs. In time code breaking changes might be made to the library that will result in these examples no longer working until I get around to editing this post again.
 
 ## 2 - Basic uv mutation example using a Plane, and a canvas texture
 
