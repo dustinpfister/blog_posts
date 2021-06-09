@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 188
-updated: 2021-06-09 14:18:26
-version: 1.16
+updated: 2021-06-09 14:19:59
+version: 1.17
 ---
 
 After writing a lot of demos in [three.js](https://threejs.org/) I have arrived at a point where it is time to start getting into some more advanced topics in three.js, or at least something new beyond just the very basics of getting started with the library. So with that said, it might be time for me to get into animation with three.js, but doing so the professional way will prove to be a little complicated, and it will also largly involve the use of an application like blender as a way to create models with animations. So another simple way of making some animations is to have Mesh Objects grouped together, and then have it so they are moving in relation to each other. In addition to this I can also have the whole group move by updating the position property of the group just like it was a single mesh object.
@@ -31,7 +31,7 @@ I also often try to mention that three.js is a project where the version number 
 
 For a basic example of grouping in three.js I put together a demo that involves creating a whole bunch of Mesh Object instances. Each time I create a mesh object I of course change a few values when it comes to the position of the mesh object. and then add it to a group ht was created with the THREE.Group constructor. I just used the simple plain old Box Geometry constructor for the geometry, and when with the Mesh basic material when it comes to skinning these mesh objects. When changing the positions of the mesh objects the positions are going to be relative to the position of the group rather than the main scene object, and for this example I am just positing them around the center of the group.
 
-Each time I make a new Mesh I just add it to the instance of group rather than Scene, by doing this the origin of each Mesh is relative to the instance of Group rather than the Scene. Once that is done whenever I change the position, or rotation of the group it changes the position, and rotation of the whole group.
+Once I have my group together I can do something like changing the position, rotation or scale of the group and when I do so it will effect the group as well as all the children of the group.
 
 ```js
 (function () {
