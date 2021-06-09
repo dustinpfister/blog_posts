@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 885
-updated: 2021-06-09 12:49:56
-version: 1.16
+updated: 2021-06-09 12:52:08
+version: 1.17
 ---
 
 When working out a custom geometry or playing around with a built in geometry in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), there are a number of attributes for the geometry. I have wrote posts on the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/) and [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/) attributes that have to do with the position of points in space, and the direction that those points are facing that is used for lighting. 
@@ -196,3 +196,5 @@ Still if for some reason I do need to change the state of the uvs over time in a
 ## 4 - Conclusion
 
 The uvs of a geometry are for setting up the [texture cornets](http://paulyg.f2s.com/uv.htm) of a geometry when it comes to what portions of a texture should be used when applying it to the face of geometry. This array of values should not be confused with other values of a geometry such as the groups that are used when setting material index values. That is that another part of creating a custom geometry would involve also creating an array of groups, and each group object would contain a material index value to use for a given set of triangles when using an array of materials for a mesh object that will be used with a buffer geometry.
+
+That is it for now when it comes to the uv attribute, at some point in the future I might be able to get around to doing some editing for this post as I often do for my threejs content. Some additional examples that have to do with creating a geometry from the ground up might be called for, as well as some other ways of explaining what uvs are all about might help.
