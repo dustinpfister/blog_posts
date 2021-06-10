@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2021-06-10 14:58:31
-version: 1.12
+updated: 2021-06-10 15:00:59
+version: 1.13
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the position attribute in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. So I think it might be a good idea to wrap this week up with a few simple [threejs project examples](/2021/02/19/threejs-examples/) that have to do with mutating the position attributes of built in geometry constructors. one such constructor to work with when it comes to this is the sphere geometry constructor which is just one of many kinds of built in geometry constructors where it might prove to be an interesting learning experience to work out some methods that have to do with changing the geometry a little.
@@ -31,7 +31,7 @@ When I wrote this post I was using threejs version r127.
 
 So now for the source code of this threejs example where I am changing the position of a point at the top of a sphere. In this example I started out with by set vertex helper method that I worked out in a previous example this week that had to do with the position attribute in general. This helper makes use of the geometry.index property as a way to help change the right position data in the position attribute of a given geometry.
 
-I then have my update sphere top point helper method where I just pass a sphere geometry as the first argument, and then the y value for the top point of the sphere. So in other words this is a method where I can pull the top point of a sphere up or down along the y axis.
+I then have my update sphere top point helper method where I just pass a sphere geometry as the first argument, and then the y value for the top point of the sphere. So in other words this is a method where I can pull the top point of a sphere up or down along the y axis. Inside this helper method I get a reference to the position attribute of the sphere geometry, and then I also create a new position object that will be used for all points of all triangles that are at that point. I then use the set vertex helper to set the position of all of these points in the body of a while loop.
 
 ```js
 (function () {
