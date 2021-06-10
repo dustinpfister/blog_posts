@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2021-06-10 15:06:25
-version: 1.14
+updated: 2021-06-10 15:10:25
+version: 1.15
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the position attribute in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. So I think it might be a good idea to wrap this week up with a few simple [threejs project examples](/2021/02/19/threejs-examples/) that have to do with mutating the position attributes of built in geometry constructors. one such constructor to work with when it comes to this is the sphere geometry constructor which is just one of many kinds of built in geometry constructors where it might prove to be an interesting learning experience to work out some methods that have to do with changing the geometry a little.
@@ -120,6 +120,8 @@ I then set up a scene object, renderer and camera just like with any other three
 }
     ());
 ```
+
+This example might have turned out into a decent starting point at least when it comes to just playing around with sphere geometry, however there are so many other things that come to mind that I would like t work out and have a better understanding of. Some things that might help would be to just loop over all the points in a geometry and return all the points that share the same point in space. That way I can just call that method and move all points that are at that location which might prove to be a very helpful tool when it comes to doing things like this.
 
 ## 3 - Conclusion
 
