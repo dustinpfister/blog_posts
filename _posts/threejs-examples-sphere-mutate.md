@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2021-06-10 14:36:05
-version: 1.6
+updated: 2021-06-10 14:36:53
+version: 1.7
 ---
 
 This week I was learning more about how to work with a buffer geometry in threejs when it comes to the various attributes that make up such a feature in threejs. There is the position attribute in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. So I think it might be a good idea to wrap this week up with a few simple examples that have to do with mutating the position attributes of built in geometry constructors. one such constructor to work with when it comes to this is the sphere geometry constructor which is just one of many kinds of built in geometry constructors where it might prove to be an interesting learning experience to work out some methods that have to do with changing the geometry a little.
@@ -22,6 +22,10 @@ This is a post on a threejs example where I am mutating the geometry of a sphere
 ### 1.1 - Might want to read up more on the buffer geometry class in general
 
 It might be a good idea to read up more on the buffer geometry class in general, as there are a great number of properties and methods in an instance of buffer geometry that you should be aware of before getting into an example like this.
+
+### 1.2 - version numbers matter
+
+When I wrote this post I was using threejs version r127.
 
 ## 2 - The mutation of sphere example
 
