@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-06-10 10:48:15
-version: 1.19
+updated: 2021-06-10 10:50:23
+version: 1.20
 ---
 
 Adding Fog to a Scene in [three.js](https://threejs.org/) is a fairly easy, and straight forward process, so this should be a quick post for today. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog when creating it with the [THREE.FogExp2 constructor](https://threejs.org/docs/#api/en/scenes/FogExp2).
@@ -41,7 +41,11 @@ You pass the Fog constructor three arguments the first is the color, the second 
 
 Typically you will also want to set the Fog color, as the same color as the background. You also might want to have the near, and far distances correspond to your camera as well.
 
-### 1.3 - Version numbers matter with three.js
+### 1.3 - Read up more on the scene object in general
+
+The scene.for property of of course a feature of the THREE.Scene class, and there is a great deal more to know about this class and the objects that it creates beyond just that of the fog property.
+
+### 1.4 - Version numbers matter with three.js
 
 The version of three.js is something that is important when writing post on it, often many code breaking changes are introduced that will result in older examples no longer working. When I first started writing this post I am using three.js [r91](https://github.com/mrdoob/three.js/tree/r91), and the last time I edited this [post I as using r127](https://github.com/mrdoob/three.js/tree/r127). It would seem that not much of anything has changed with fog alone at least thus far, but still this is always something that a developer should be aware of when it comes to the fact that three.js is a fairly fast moving target in terms of development.
 
