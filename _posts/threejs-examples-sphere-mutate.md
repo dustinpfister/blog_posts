@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 886
-updated: 2021-06-10 14:45:51
-version: 1.9
+updated: 2021-06-10 14:51:57
+version: 1.10
 ---
 
 This week I was learning more about how to work with a [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) when it comes to the various attributes that make up such a feature in threejs. There is the position attribute in the geometry which is the attribute that holds the current positions of all the points in the geometry for example. So I think it might be a good idea to wrap this week up with a few simple [threejs project examples](/2021/02/19/threejs-examples/) that have to do with mutating the position attributes of built in geometry constructors. one such constructor to work with when it comes to this is the sphere geometry constructor which is just one of many kinds of built in geometry constructors where it might prove to be an interesting learning experience to work out some methods that have to do with changing the geometry a little.
@@ -120,3 +120,5 @@ So now for the source code of this threejs example where I am changing the posit
 ## 3 - Conclusion
 
 So then that will be it for now when it comes to this threejs example on mutating the values of a position attribute of a geometry of a sphere. WHat I have together thus far has proven to be a good start at least when it comes to just sinking a hour or two of time into this sort of thing, however there is more I would like to figure out when it comes to sphere geometry.
+
+At some point in the future I hope to get back ground to working on this source code and see about making some more methods that have to do with just moving the points on a sphere around a little to get weird sphere like shapes that are not really a sphere. I might want to work out a lot more example before coming back ground to this one though, so it might be a while till I get around to doing that.
