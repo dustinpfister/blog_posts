@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-06-10 10:50:23
-version: 1.20
+updated: 2021-06-10 10:57:08
+version: 1.21
 ---
 
 Adding Fog to a Scene in [three.js](https://threejs.org/) is a fairly easy, and straight forward process, so this should be a quick post for today. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog when creating it with the [THREE.FogExp2 constructor](https://threejs.org/docs/#api/en/scenes/FogExp2).
@@ -43,7 +43,7 @@ Typically you will also want to set the Fog color, as the same color as the back
 
 ### 1.3 - Read up more on the scene object in general
 
-The scene.for property of of course a feature of the THREE.Scene class, and there is a great deal more to know about this class and the objects that it creates beyond just that of the fog property.
+The scene.for property of of course a feature of the THREE.Scene class, and there is a [great deal more to know about this scene class](/2018/05/03/threejs-scene/) and the objects that it creates beyond just that of the fog property. For example there is the background property of the scene object which can be used to set a solid color background, or a [cube texture](/2018/04/22/threejs-cube-texture/) for the scene. There is also a great deal that branches off from the scene object such as the fact that a scene object is one of many objects in threejs that is based on the [Object3d class](/2018/04/23/threejs-object3d/), and that it is also a good idea to become familiar with the [THREE.Color](/2021/05/03/threejs-color/) class that can be used to create a color object for the background, as well as for the fog color of a scene.
 
 ### 1.4 - Version numbers matter with three.js
 
