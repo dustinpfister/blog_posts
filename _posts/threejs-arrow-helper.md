@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 12:04:58
-version: 1.33
+updated: 2021-06-11 12:08:08
+version: 1.34
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -19,7 +19,7 @@ So then in this post I will be going over some basic examples of arrow helpers, 
 
 ## 1 - What to know
 
-This is a post on using the built in arrow helpers in three.js to get a visual on directions in a three.js project. This is a fairly simple post but it is still not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScript in general. So I assume that you have at least a little background when it comes to those topics and are just interested in reading more about how to use the library in new and interesting ways.
+This is a post on using the built in arrow helpers in three.js to get a visual on directions in a three.js project. This is a fairly simple post, well at least when it comes to the very basics of using the constructor at least, but it is still not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScript in general. So I assume that you have at least a little background when it comes to those topics and are just interested in reading more about how to use the library in new and interesting ways when it comes to helper methods, and all kinds of things that might branch off from there. So i will not be going over every little detail when it comes to the very basics, however in this section I will be going over a few things that you might want to know before continuing to read the rest of this post
 
 ### 1.1 - Make sure you are solid with some basic things first
 
