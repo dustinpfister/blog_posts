@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 11:55:45
-version: 1.31
+updated: 2021-06-11 12:00:37
+version: 1.32
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -21,13 +21,17 @@ So then in this post I will be going over some basic examples of arrow helpers, 
 
 This is a post on using the built in arrow helpers in three.js to get a visual on directions in a three.js project. This is a fairly simple post but it is still not a [getting started post on three.js](/2018/04/04/threejs-getting-started/), let alone javaScript in general. So I assume that you have at least a little background when it comes to those topics and are just interested in reading more about how to use the library in new and interesting ways.
 
-### 1.1 - Version numbers matter
-
-When I first started this post I was using revision 98 of three.js, which was released in late October 2018. The last time I edited this post I was using revision revision 127 of threejs, and when it comes to the arrow helper at least it would seem that not much has changed. Still three.js is a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
-
-### 1.2 - make sure you are solid with some basic things first
+### 1.1 - Make sure you are solid with some basic things first
 
 If you are not familiar with the object3d class of threejs it might be a good idea to read up on that first, along with other classes that inherit from the object3d class which include mesh objects, groups, and many other objects in threejs. The reason why I say that is because an arrow helper can be attached to the main scene object, but it can also be attached to anything and everything that is based on object3d. So it would be a good idea to maybe [read up a little on object3d first](/2018/04/23/threejs-object3d/) of you have not done so before hand.
+
+### 1.2 - Read up more on the Vector3 class and also what a Unit Vector is
+
+If you have not done so before hand it might be a good idea to log some time getting a more solid grasp on everything there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/). Also while you are at it it might also be a good idea to learn about, or refresh your understanding of what a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) is in general.
+
+### 1.3 - Version numbers matter
+
+When I first started this post I was using revision 98 of three.js, which was released in late October 2018. The last time I edited this post I was using revision revision 127 of threejs, and when it comes to the arrow helper at least it would seem that not much has changed. Still three.js is a project that is being developed, and at a fairly fast rate with new revisions continuing out what seems like every month almost. Although not much has changed with the arrow helper, a great deal has changed elsewhere in the library when I first started this post, and many of my other posts, and these changes can often result in code breaking. So if the code examples here break the first thing you should check is the version number of threejs that you are using.
 
 ### 2 - Basic Example of a ArrowHelper in threejs
 
