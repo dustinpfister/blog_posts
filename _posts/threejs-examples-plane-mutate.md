@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 13:42:59
-version: 1.4
+updated: 2021-06-11 13:45:28
+version: 1.5
 ---
 
-There is still a great deal more to learn when it comes to buffer geometry class in threejs, not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry.
+There is still a great deal more to learn when it comes to [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry. So in this post I will be going over the current state of a threejs example where I am just mutating the position attribute of a plane geometry as a way to start to learn how to mess around with the values of a simple starting geometry in threejs.
 
 <!-- more -->
 
