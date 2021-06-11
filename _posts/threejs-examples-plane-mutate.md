@@ -5,14 +5,17 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 13:48:16
-version: 1.6
+updated: 2021-06-11 13:55:24
+version: 1.7
 ---
 
 There is still a great deal more to learn when it comes to [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry. So in this post I will be going over the current state of a threejs example where I am just mutating the position attribute of a plane geometry as a way to start to learn how to mess around with the values of a simple starting geometry in threejs. I do not aim to do anything to advanced here because I have found that there is a lot to be aware of when it comes to just moving a single point in a geometry, as it is often not just a mater of changing the position of a single vertex and one might assume. In some cases I have to move a few points actually, and also I have found that I run into problems with lighting that will require adjusting values in the normal attribute also.
 
 <!-- more -->
 
+## 1 - Mutating the positions of a plane geometry and what to know first
+
+This is post that has to do with changing the values of the position attribute in a plane geometry in the javaScript library know as threejs. So then this is a somewhat advanced post that has to do with a subject that one might get around to after logging a fair about of time learning the basics of the library first. What I mean by that is after progressing far beyond a simple hello world style rotating cube type example there is the question of what comes to mind when it comes to getting into advanced topics with threejs. There are many a few things that come to mind, but one of them is how to go about making custom geometry constructors. What I am working out here might not really be that, however it might be a first step in that direction that involves just playing around with the values of a geometry created with one of the built in geometry constructors such as the plane geometry constrictor.
 
 ## 2 - The plane mutation example as it currently stands
 
