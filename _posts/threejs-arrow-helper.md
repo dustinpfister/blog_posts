@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 11:53:16
-version: 1.30
+updated: 2021-06-11 11:55:45
+version: 1.31
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -237,7 +237,7 @@ sceneObj.draw();
 
 ## 5 - Moving an object along a direction
 
-What about moving an object along a direction that is shared with the direction that is being pointed out with an arraow helper. That is having a Vector3 instance and having that vector normalized to a unit vector that has a length of one, and then using that normalized vector to position a mesh object along that direction.
+What about moving an object along a direction that is shared with the direction that is being pointed out with an arrow helper. That is having a Vector3 instance and having that vector normalized to a unit vector that has a length of one, and then using that normalized vector to position a mesh object along that direction. This might prove to be a decent exercise when it comes to getting a better grasp on the vector3 class and how various methods such as the Vector3 normalize can come into play and also how they work. The normalize method will mutate a vector3 instance in place actually, so in some cases I might want to create a clone from the vector3 and then normalized that clone actually.
 
 ```js
 // NORAMIZED DIRECTION AS UNIT VECTOR
