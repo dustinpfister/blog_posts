@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 14:28:34
-version: 1.16
+updated: 2021-06-11 14:29:41
+version: 1.17
 ---
 
 There is still a great deal more to learn when it comes to [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry. So in this post I will be going over the current state of a [threejs example](/2021/02/19/threejs-examples/) where I am just mutating the position attribute of a plane geometry as a way to start to learn how to mess around with the values of a simple starting geometry in threejs. I do not aim to do anything to advanced here because I have found that there is a lot to be aware of when it comes to just moving a single point in a geometry, as it is often not just a mater of changing the position of a single vertex and one might assume. In some cases I have to move a few points actually, and also I have found that I run into problems with lighting that will require adjusting values in the normal attribute also.
@@ -23,7 +23,7 @@ In this post I am just playing around with the position attribute of a geometry 
 
 ### 1.2 - Read up more on buffer geometry in general
 
-before getting into working on examples like this it might also be a good idea to read up more on the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) class in general. Also it is important to know the differences between the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/), [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/), and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry.
+before getting into working on examples like this it might also be a good idea to read up more on the [buffer geometry](/2021/04/22/threejs-buffer-geometry/) class in general. Also it is important to know the differences between the [position](/2021/06/07/threejs-buffer-geometry-attributes-position/), [normal](/2021/06/08/threejs-buffer-geometry-attributes-normals/), and [uv](/2021/06/09/threejs-buffer-geometry-attributes-uv/) attributes of a geometry. When it comes to the subject of this post it would be the position and normal attributes that will be the most important to learn the basic of first.
 
 ### 1.3 - Version Numbers matter
 
