@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 13:40:19
-version: 1.3
+updated: 2021-06-11 13:42:59
+version: 1.4
 ---
 
 There is still a great deal more to learn when it comes to buffer geometry class in threejs, not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry.
@@ -94,4 +94,5 @@ loop();
 
 ## 3 - Conclusion
 
-I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class. A plane geometry created with the built in THREE.PlaneGeometry constructor just strokes me as a good starting point when it comes to starting to learn the basics of this sort of thing.
+I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class. A plane geometry created with the built in THREE.PlaneGeometry constructor just strokes me as a good starting point when it comes to starting to learn the basics of this sort of thing. It would be nice if I could just move a single point and be done with it, however the process is not always just that simple it would seem. In some cases I will not just want to just change the position of a vertex, but the position of a few vertices, and also there is updating the values of the normals also so that light will look the way that it should with the new position values.
+
