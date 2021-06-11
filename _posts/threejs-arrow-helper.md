@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 12:08:08
-version: 1.34
+updated: 2021-06-11 12:09:59
+version: 1.35
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -319,4 +319,4 @@ loop();
 
 Thats all there is to it when it comes to arrow helpers in three.js for now at least. If you enjoyed this post you might want to check out my many other posts on three.js, with that a good starting point might be my main post on my current set of [threejs examples](/2021/02/19/threejs-examples/). Working out simple little examples that have to do with just using the arrow helper with a few simple built in geometries is one thing, but sooner or later it is time to start really getting into using threejs to have some fun making something real.
 
-In any case thank you for reading this post, and I hope that you gained at least a little something from reading it.
+In any case thank you for reading this post, and I hope that you gained at least a little something from reading it. In time I am sure that I will come around to expand this post even more with additional examples that Might help to better illustrate various things that branch off from the use of arrow helpers.
