@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 19
-updated: 2017-12-21 10:57:39
-version: 1.6
+updated: 2021-06-11 10:29:19
+version: 1.7
 ---
 
-Some times you might want to delete a whole bunch of files that exist in a file system structure. If the project you are making is aways going to be running in a POSIX environment, you could use the rm command with a child process, but say you want to make the app more portable. This is where something like [rimraf](https://www.npmjs.com/package/rimraf) may come in handy.
+Some times I might want to delete a whole bunch of files that exist in a file system structure on the host operating system of a script that will run on top of [nodejs](https://nodejs.org/en/about/). If the project I am making is aways going to be running in a POSIX environment, I could use the rm command with a child process, but say I want to make the app more portable and work okay in a win32 environment also. This is where something like the npm package [rimraf](https://www.npmjs.com/package/rimraf) may come in handy when it comes to making use of what there is to work with in user space.
 
 <!-- more -->
 
