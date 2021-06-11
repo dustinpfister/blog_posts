@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 13:37:23
-version: 1.1
+updated: 2021-06-11 13:38:51
+version: 1.2
 ---
 
 There is still a great deal more to learn when it comes to buffer geometry class in threejs, not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry.
@@ -91,3 +91,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 3 - Conclusion
+
+I will have to come back to this example sooner or later when it comes to working on getting a better grasp on the various things to be aware of when mutating the position attribute of a buffer geometry class.
