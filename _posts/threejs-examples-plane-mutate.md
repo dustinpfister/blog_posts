@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 14:07:31
-version: 1.10
+updated: 2021-06-11 14:11:17
+version: 1.11
 ---
 
 There is still a great deal more to learn when it comes to [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry. So in this post I will be going over the current state of a threejs example where I am just mutating the position attribute of a plane geometry as a way to start to learn how to mess around with the values of a simple starting geometry in threejs. I do not aim to do anything to advanced here because I have found that there is a lot to be aware of when it comes to just moving a single point in a geometry, as it is often not just a mater of changing the position of a single vertex and one might assume. In some cases I have to move a few points actually, and also I have found that I run into problems with lighting that will require adjusting values in the normal attribute also.
@@ -20,6 +20,10 @@ This is post that has to do with changing the values of the position attribute i
 ## 2 - The plane mutation example as it currently stands
 
 So then here is the source code of my plane geometry mutation threejs example as it currently stands. The idea that I had in mind here is to just work out a module, or even just a single method that I can use to just adjust the y position of a given vertex in the plane geometry. So then I have this adjust plane point helper method and in the body of the function I am getting a reference to the position property of a geometry that I pass to it as the first argument. This function then adjusts the y value of a given vertex index to a given y value, and then sets the needs update boolean of the position attribute. That alone will of course change the position of a given vertex, however there is more to it than just that. If I use a material like the normal material or any material that will respond to light things will not look just right, and the main reason why that would be is because I just changed position values and did not change anything when it comes to the normal attribute values.
+
+
+As of this writing I am just changing the direction of the corresponding normal value, but just to a value that is pointing in a single fixed direction. The next step that I might want to get to with this example when and if I get to it would be to take a better look at what is going on with the normal values, and see about working out a way to adjust those to the way that they should be also for the given state if a position attribute array.
+
 
 ```js
 var adjustPlanePoint = function (geo, vertIndex, yAdjust) {
