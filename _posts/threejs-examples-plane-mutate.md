@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 887
-updated: 2021-06-11 14:12:41
-version: 1.12
+updated: 2021-06-11 14:16:00
+version: 1.13
 ---
 
 There is still a great deal more to learn when it comes to [buffer geometry](https://threejs.org/docs/#api/en/core/BufferGeometry) class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), not just with the class itself, but playing around with the various attributes when it comes to learning how to go about making custom geometry. So in this post I will be going over the current state of a threejs example where I am just mutating the position attribute of a plane geometry as a way to start to learn how to mess around with the values of a simple starting geometry in threejs. I do not aim to do anything to advanced here because I have found that there is a lot to be aware of when it comes to just moving a single point in a geometry, as it is often not just a mater of changing the position of a single vertex and one might assume. In some cases I have to move a few points actually, and also I have found that I run into problems with lighting that will require adjusting values in the normal attribute also.
@@ -105,7 +105,9 @@ var loop = function () {
 loop();
 ```
 
-So then this example is working okay at least those far when it comes to a simple plane geometry mutation type example, however there is a bit more work to do on this one when and if I can get around to it.
+So then this example is working okay at least those far when it comes to a simple plane geometry mutation type example, however there is a bit more work to do on this one when and if I can get around to it. I am in a good place thus far when it comes to adjusting the position values at least, however I will want to see if I can work out something when it comes to setting the normal values also. 
+
+There is also the question of the uv attribute also, which I may or may not want to adjust also when it comes to this sort of thing. That attribute has to do with offsets when it comes to using a texture, and when it comes to that the default values that are created with the plane geometry constructor might still work okay for the direction I want to go with this.
 
 ## 3 - Conclusion
 
