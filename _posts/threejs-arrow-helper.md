@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 12:09:59
-version: 1.35
+updated: 2021-06-11 12:13:08
+version: 1.36
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -314,6 +314,8 @@ var loop = function () {
 // start loop
 loop();
 ```
+
+So then when this example is up and running I have a cube that is moving along the distance of the arrow helper, and as I change the direction of the arrow helper that two in turn effects the position of the cube. It might be called for to work out a whole lot more examples based off of the basic idea that is going on here, but I think this might prove to be a decent starting point at least.
 
 ## 6 - Conclusion
 
