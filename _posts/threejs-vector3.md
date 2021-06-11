@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-05-02 13:00:53
-version: 1.14
+updated: 2021-06-11 12:38:23
+version: 1.15
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, or a whole scene actually.
@@ -21,7 +21,11 @@ Vector3 instances are also used when creating geometry that will be used in a me
 
 This is an advanced post on three.js in which I am writing about the Vector3 constructor, this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or javaScipt in general. Vector3 instances are used in the process of making custom geometry, I will not be getting into that in depth, or many of the other use cases for Vector three. This post will focus on what there is to know about the constructor.
 
-### 1.1 - Three.js version number matters.
+### 1.1 - Check out arrow helpers also
+
+There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/11/10/threejs-arrow-helper/) that can be sued to create and add a helper to a scene that can be used to know the direction of a vector.
+
+### 1.2 - Three.js version number matters.
 
 Three.js is a project where the version number matters, in this post I am using [r91](https://github.com/mrdoob/three.js/tree/r91), if the code examples in this post or [any three.js post](/categories/three-js/) of mine that might be a reason why.
 
