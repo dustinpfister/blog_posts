@@ -5,21 +5,25 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 19
-updated: 2021-06-11 10:33:05
-version: 1.8
+updated: 2021-06-11 10:40:13
+version: 1.9
 ---
 
 Some times I might want to delete a whole bunch of files that exist in a file system structure on the host operating system of a script that will run on top of [nodejs](https://nodejs.org/en/about/). If the project I am making is aways going to be running in a POSIX environment, I could use the rm command with a [child process](/2018/02/04/nodejs-child-process/), but say I want to make the app more portable and work okay in a win32 environment also. This is where something like the npm package [rimraf](https://www.npmjs.com/package/rimraf) may come in handy when it comes to making use of what there is to work with in user space.
 
 <!-- more -->
 
-## My test_rimraf project
+## 1 - Rimraft in node and what to know before hand
+
+This is a post on some javaScript examples that have to do with using nodejs and the npm package known as rimraft to delete a whole bunch of files recursively. There are of course a number of other ways to go about doing this sort of thing including just making use of native nodejs features in the file system module. However there are a few nice things about rimraft that make this sort of thing a quick and painless process by just making the package part of the dependences of a project.
+
+### 1.1 - My test_rimraf project on github
 
 When testing out any kind of node.js project I often make a test\_\[name-of-project\] folder, and test it out in there, often writing some demo scripts that make use of that project.
 
 If you want to check out my test\_rimraf on this post you can [find it here](https://github.com/dustinpfister/test_rimraf). 
 
-## Making some files
+## 2 - Making some files
 
 To test out rimraf I first need a way to make some files in a path, so I made a mkfiles.js script that provides a method that helps me make a bunch of files at a given path. I then made two scripts make-basic.js, and make-junk.js that can be used to simulate the creation of a basic file structurer that contains files that I might want to keep, and files that I want gone.
 
@@ -178,7 +182,7 @@ mkFiles.mkFiles({
 So when calling my make-junk script I end up with a bunch of \*.html, \*.css, and \*.txt files. This represents a situation in which I want to delete the \*.txt files while not touching everything else. Get it? good moving on.
 
 
-## Deleting all files of a certain type recursively
+## 3 - Deleting all files of a certain type recursively
 
 So this is pretty much the whole point of using rimraf, to go over the whole of a file structure and delete all files that fix a certain [glob](https://en.wikipedia.org/wiki/Glob_%28programming%29] pattern.
 
@@ -195,7 +199,7 @@ rimraf('./source/**/*.txt', function (e) {
 
 Notice the \*\* glob, this will cause rimraf to search the whole structure in the source folder for text files and delete them.
 
-## Plain JS alternative
+## 4 - Plain JS alternative
 
 You may be of a mindset where you always think to yourself "do I really need this dependency". You may often think about how hard it might be to put together something on your own, just working with what there is to play with when it comes to the node.js core modules.
 
@@ -263,7 +267,7 @@ readDir('./source', function (itemLoc) {
 
 Keep in mind this is something I put together in about fifteen minutes maybe. I could invest some more time, and make it a bit more robust. It could make use of promises, work well as a CLI tool, so forth, and so on. It may be a bit time consuming to get this solution to work well with respect to a wide range of use case scenarios.
 
-## Conclusion
+## 5 - Conclusion
 
 rimraf works pretty well for this task. It might be nice to have something that does this that also has RegEx support, but most of the time globs get the job done just fine.
 
