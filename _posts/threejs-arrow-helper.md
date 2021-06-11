@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-04-20 15:19:28
-version: 1.29
+updated: 2021-06-11 11:53:16
+version: 1.30
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -235,7 +235,83 @@ utils.addArrow(cube, 0, 2, 0, 2.5, 'blue');
 sceneObj.draw();
 ```
 
-## 5 - Conclusion
+## 5 - Moving an object along a direction
+
+What about moving an object along a direction that is shared with the direction that is being pointed out with an arraow helper. That is having a Vector3 instance and having that vector normalized to a unit vector that has a length of one, and then using that normalized vector to position a mesh object along that direction.
+
+```js
+// NORAMIZED DIRECTION AS UNIT VECTOR
+var V = new THREE.Vector3(1, 1, 0),
+DIR = V.normalize(),
+LENGTH = 3;
+ 
+// scene
+var scene = new THREE.Scene();
+scene.add(new THREE.GridHelper(9, 9));
+ 
+// ARROW HELPER
+var arrow = new THREE.ArrowHelper(
+        // first argument is the direction
+        DIR,
+        // second argument is the origin
+        new THREE.Vector3(0, 0, 0),
+        // length
+        LENGTH,
+        // color
+        0x00ff00);
+scene.add(arrow);
+ 
+// cube
+var cube = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            wireframe: true,
+            color: 'yellow'
+        }));
+scene.add(cube);
+ 
+// camera, render
+var camera = new THREE.PerspectiveCamera(75, 320 / 240, 0.1, 1000);
+camera.position.set(1.75, 2.5, 2.5);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+// LOOP
+var frame = 0,
+maxFrame = 90,
+fps = 30,
+lt = new Date();
+// update
+var update = function (secs, per, bias) {
+    var x = DIR.x * LENGTH * per,
+    y = DIR.y * LENGTH * per,
+    z = DIR.z * LENGTH * per;
+    cube.position.set(x, y, z);
+    V.z = 5 * per; ;
+    DIR = V.clone().normalize();
+    arrow.setDirection(DIR);
+};
+// loop function
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000,
+    per = frame / maxFrame,
+    bias;
+    requestAnimationFrame(loop);
+    if (secs > 1 / fps) {
+        update(secs, per, bias)
+        renderer.render(scene, camera);
+        frame += fps * secs;
+        frame %= maxFrame;
+        lt = now;
+    }
+};
+// start loop
+loop();
+```
+
+## 6 - Conclusion
 
 Thats all there is to it when it comes to arrow helpers in three.js for now at least. If you enjoyed this post you might want to check out my many other posts on three.js, with that a good starting point might be my main post on my current set of [threejs examples](/2021/02/19/threejs-examples/). Working out simple little examples that have to do with just using the arrow helper with a few simple built in geometries is one thing, but sooner or later it is time to start really getting into using threejs to have some fun making something real.
 
