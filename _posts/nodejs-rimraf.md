@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 19
-updated: 2021-06-11 10:29:19
-version: 1.7
+updated: 2021-06-11 10:33:05
+version: 1.8
 ---
 
-Some times I might want to delete a whole bunch of files that exist in a file system structure on the host operating system of a script that will run on top of [nodejs](https://nodejs.org/en/about/). If the project I am making is aways going to be running in a POSIX environment, I could use the rm command with a child process, but say I want to make the app more portable and work okay in a win32 environment also. This is where something like the npm package [rimraf](https://www.npmjs.com/package/rimraf) may come in handy when it comes to making use of what there is to work with in user space.
+Some times I might want to delete a whole bunch of files that exist in a file system structure on the host operating system of a script that will run on top of [nodejs](https://nodejs.org/en/about/). If the project I am making is aways going to be running in a POSIX environment, I could use the rm command with a [child process](/2018/02/04/nodejs-child-process/), but say I want to make the app more portable and work okay in a win32 environment also. This is where something like the npm package [rimraf](https://www.npmjs.com/package/rimraf) may come in handy when it comes to making use of what there is to work with in user space.
 
 <!-- more -->
 
@@ -180,7 +180,7 @@ So when calling my make-junk script I end up with a bunch of \*.html, \*.css, an
 
 ## Deleting all files of a certain type recursively
 
-So this is pretty much the whole point of using rimraf, to go over the whole of a file structure and delete all files that fix a certain [glob](https://en.wikipedia.org/wiki/Glob_(programming) pattern.
+So this is pretty much the whole point of using rimraf, to go over the whole of a file structure and delete all files that fix a certain [glob](https://en.wikipedia.org/wiki/Glob_%28programming%29] pattern.
 
 ```js
 var rimraf = require('rimraf');
@@ -193,7 +193,7 @@ rimraf('./source/**/*.txt', function (e) {
 });
 ```
 
-Notice the \*\* [glob](https://en.wikipedia.org/wiki/Glob_(programming), this will cause rimraf to search the whole structure in the source folder for text files and delete them.
+Notice the \*\* glob, this will cause rimraf to search the whole structure in the source folder for text files and delete them.
 
 ## Plain JS alternative
 
