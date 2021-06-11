@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 327
-updated: 2021-06-11 12:00:37
-version: 1.32
+updated: 2021-06-11 12:04:58
+version: 1.33
 ---
 
 For todays post on [three.js](https://threejs.org/) I thought I would write a quick post on the subject of arrow helpers. In three.js there are a number of built in helper methods than can be used to quickly create structures that helper to visualize what is going on with orientation of objects and other components of a threejs project, the arrow helper is one of these such methods. 
@@ -27,7 +27,7 @@ If you are not familiar with the object3d class of threejs it might be a good id
 
 ### 1.2 - Read up more on the Vector3 class and also what a Unit Vector is
 
-If you have not done so before hand it might be a good idea to log some time getting a more solid grasp on everything there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/). Also while you are at it it might also be a good idea to learn about, or refresh your understanding of what a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) is in general.
+If you have not done so before hand it might be a good idea to log some time getting a more solid grasp on everything there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/). Also while you are at it it might also be a good idea to learn about, or refresh your understanding of what a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) is in general. I say that because the use of the Vector3 class is closely related to the use of the Vector3 class and when it comes to setting the direction of an arrow helper I generally want to pass the arrow helper a normalized vector3 instance with a unit vector length of 1. Also it is important to know that the Vector3 normalize method will mutate the vector in place so you might want to call the clone method of a vector first and then normalize that clone.
 
 ### 1.3 - Version numbers matter
 
