@@ -5,13 +5,15 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 08:26:46
-version: 1.21
+updated: 2021-06-12 11:00:52
+version: 1.22
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
 
-When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
+What is nice about the THREE.Color class is that the class is packed with a number of features that allow for me to create a color in a number of different ways, including just passing three numbers for red, green and blue between 0 and 1 as arguments when calling the constructor function. Regardless of how I create the color what is returned is an instance of THREE.Color, rather than a string value for a color, and as such there is a red, green, and blue property of the object. 
+
+So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
 
 <!-- more -->
 
@@ -21,7 +23,7 @@ This is a post on the THREE.Color constructor in three.js that is used to create
 
 ### 1.1 Version Numbers matter with three.js
 
-When I first wrote this post I was using r127 of three.js wich was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time, so be sure to always check the version of three.js that you are using relative to the dates of the code examples that you are looking at on the open web.
+When I first wrote this post I was using r127 of three.js which was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time, so be sure to always check the version of three.js that you are using relative to the dates of the code examples that you are looking at on the open web.
 
 ## 2 - Basic color example
 
