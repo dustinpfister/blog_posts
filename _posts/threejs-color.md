@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 11:40:39
-version: 1.29
+updated: 2021-06-12 11:46:28
+version: 1.30
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -70,7 +70,7 @@ So in this example it is just the color property of the standard material that I
 
 ## 3 - Setting Color and Emissive Color with THREE.Color
 
-Another property of interest when it comes to setting the color values of a material that responds to light is the emissive property of a material. This property is a color that will be used always regardless of what the situation might be when  it comes to what is going on with light in the scene. Just like with the color property the emissve property can also be set with a color object created with THREE.Color. When doing so I will often want to adjust the emissive intensity of the material as I might now always want the emmisve color to be full bast of course.
+Another property of interest when it comes to setting the color values of a material that responds to light is the emissive property of a material. This property is a color that will be used always regardless of what the situation might be when  it comes to what is going on with light in the scene. Just like with the color property the emissive property can also be set with a color object created with THREE.Color. When doing so I will often want to adjust the emissive intensity of the material as I might now always want the emmisve color to be full bast of course.
 
 ```js
 // creating a scene
@@ -104,6 +104,8 @@ document.getElementById('demo').appendChild(renderer.domElement);
  
 renderer.render(scene, camera);
 ```
+
+There is also creating a texture to use as an emmisive map which can often be used as a way to create cool effects with textures. The use of this emissive map will allow me to set what areas of a face will be effected by the emmisve color and intensity, as well as what areas will not be effected by these values.
 
 ## 4 - Background and Fog
 
