@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 11:15:02
-version: 1.25
+updated: 2021-06-12 11:24:16
+version: 1.26
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -21,7 +21,11 @@ So in this post I will be going over a number of typical use case examples of th
 
 This is a post on the THREE.Color constructor in three.js that is used to create an object that represents a certain color that can be used for various other features in threejs. This is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background, and just want to learn more about color in three.js. Still in this section I will be going over a few key details that you might want to be aware of before hand if you are nit all ready.
 
-### 1.1 Version Numbers matter with three.js
+### 1.1 - A Transparent effect is a whole other can of worms
+
+When it comes to working with color in a general client side javaScript environment there are ways of having an alpha channel for a color. In the THREE.Color class there are just properties for red, green, and blue, but not for an alpha channel. If is of course possible to make [materials transparent](/2021/04/21/threejs-materials-transparent/), but doing so involves setting the transparency boolean for the material to true. Then it is the opacity property of a material that will act as the alpha channel value. 
+
+### 1.2 - Version Numbers matter with three.js
 
 When I first wrote this post I was using r127 of three.js which was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time, so be sure to always check the version of three.js that you are using relative to the dates of the code examples that you are looking at on the open web.
 
