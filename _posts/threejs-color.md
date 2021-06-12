@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-05-03 13:21:08
-version: 1.20
+updated: 2021-06-12 08:26:46
+version: 1.21
 ---
 
-When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a class object instance that represents a specific color. When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
+When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
+
+When it comes to color in three.js there are a number of places here and there where I might want to use this constructor to create a color. Such as setting the background color, a fog color, and the plain color and emissive colors of a material. So in this post I will be going over a number of typical use case examples of the THREE.Color constructor, and will also likely touch base on a number of other topics while in the process of doing so.
 
 <!-- more -->
 
