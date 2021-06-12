@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 11:46:28
-version: 1.30
+updated: 2021-06-12 12:03:42
+version: 1.31
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -107,7 +107,53 @@ renderer.render(scene, camera);
 
 There is also creating a texture to use as an emmisive map which can often be used as a way to create cool effects with textures. The use of this emissive map will allow me to set what areas of a face will be effected by the emmisve color and intensity, as well as what areas will not be effected by these values.
 
-## 4 - Background and Fog
+## 4 - Using an Emmsive map, canvas textures and the THREE.Color.getStyle method
+
+```js
+var createCanvasTexture = function (draw) {
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+    draw(ctx, canvas);
+    return new THREE.CanvasTexture(canvas);
+};
+ 
+var COLOR_EMISSIVE_MAP_FRONT = new THREE.Color(1, 1, 1);
+ 
+var texture = createCanvasTexture(function (ctx, canvas) {
+        ctx.strokeStyle = COLOR_EMISSIVE_MAP_FRONT.getStyle();
+        ctx.strokeRect(1, 1, canvas.width - 1, canvas.height - 1);
+    });
+ 
+// scene
+var scene = new THREE.Scene();
+ 
+// mesh
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial({
+            color: new THREE.Color(0, 1, 0),
+            emissiveIntensity: 4,
+            emissive: new THREE.Color(1, 0.5, 0),
+            emissiveMap: texture
+        }));
+scene.add(box);
+ 
+// light
+var light = new THREE.PointLight(new THREE.Color(1, 1, 1), 1);
+light.position.set(1, 3, 2);
+scene.add(light);
+ 
+// camera, render
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1, 1, 1);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 5 - Background and Fog
 
 Another use case example of the THREE.Color constructor would be to set the background color and or a fog color. When doing so I typically will want to make the background color the same as the fog color, and I will also want to use the fog color for the color property of materials also. So it would make sense to have some kind of global, or constant local variable that is a fog color variable and set the color for that once with the THREE.Color Constructor. Then use that values for the scene.background property, as well as the value to pass to THREE.fogExp2 to create the value for scene.fog, and to use the color for mesh materials.
 
@@ -169,7 +215,7 @@ loop();
 
 In this example I am now making use of a loop that make used of the [requestiAnimationFrame method](/2018/03/13/js-request-animation-frame/) to call the render function of the web gl render over and over again. Each time I do so I update some things when it comes to the position and rotation of the box object. The effect is then that the box will disappear as it moves away from the camera and will gradually appear again as it comes back in range of the camera. When doing so I am using th set method of the [vector3](/2018/04/15/threejs-vector3/) instance when it comes to the position of the box, and a similar set method for the [Euler instance](/2021/04/28/threejs-euler/) when it comes to setting rotation. These classes are also worth checking out in detail if you have not done so before hand.
 
-## 5 - Random Color example
+## 6 - Random Color example
 
 Now for a random color example, for this I made a few helper method one of which is of course a random color helper. In there I just need to call Math.random for red, green and blue values of the THREE.Color Constructor. At least that is all I need to do in order to have a full range of possibles when it comes to random colors.
 
@@ -251,7 +297,7 @@ loop();
 
 When it comes to some kind of simple random color example such as this there are a great number of things that I might want to change when it comes to creating random colors. However for the most part it might be just playing around with the expressions that are used to create a color.
 
-## 6 - Conclusion
+## 7 - Conclusion
 
 Well I think that might be it for now at least when it comes to the THREE.Color constructor in three.js until I get around to editing this post. There is not just setting solid color values though when it comes to everything that has to do with color in three.js though. There is a great deal more to write about when it comes to color and the various types of texture maps there are to work with when ti comes to creating a material for example. With an alpha map for example I want to set the colors of the various pixels to colors that are gray scale rather than solid colors as gray scale colors are what are used to set levels of transparency for the alpha map. WHen creating a texture for a mesh I might often use a canvas element, so setting the color values for the texture might not make use of the THREE.Color constrictor but that is never the less one of many additional little details that have to do with color in three.js.
 
