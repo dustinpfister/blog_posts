@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-06-10 14:49:38
-version: 1.31
+updated: 2021-06-12 11:27:48
+version: 1.32
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -71,31 +71,35 @@ If I get a solid idea for the core of what the game should be I might like to ex
 
 An example that is a collection of mesh objects in a group nested in another group.
 
-### [ 2.12 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
+### [ 2.12 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
+
+Here i have a quick example that I worked out where I am mutating the position attribute of a plane geometry instance.
+
+### [ 2.13 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
 This is an example where I have worked out a crude yet effective module that can be used to create a special kind of sphere wrap group. The main create method of this sphere wrap group returns a group that of course has a sphere as one of the children, however it then also has a surface group. I then have another public method of this module that will create and add a object wrap group to the surface group and then this object wrap group contains a mesh that will end up being positioned on top of the surface of the sphere.
 
-### [ 2.13 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
+### [ 2.14 - scene or object3d shake example](/2021/05/06/threejs-examples-scene-shake/)
 
 This is an example of a module that can be used to shake the whole scene that will work if I do not add the camera to the scene of course. However any object in three.js that is based off of object3d can also be used with this shake module.
 
-### [ 2.14  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
+### [ 2.15  - Mutate a sphere ](/2021/06/10/threejs-examples-sphere-mutate/)
 
 In this example I am just working out a helper method that will just move the position of the top point of a sphere geometry. This is just an example that I worked out after writing a bunch of posts on the buffer geometry class in threejs and when I did so I learned a lot more about what the various attributes are for a geometry class in causing the position attribute. So I thought that I should work out at least on or two more examples that have to do with creat8ng a custom geometry, or just mutating the values of a geometry that is created with one of the built in geometry constructors such a s the sphere geometry constructor.
 
-### [ 2.15 - Tree](/2019/07/30/threejs-examples-tree/)
+### [ 2.16 - Tree](/2019/07/30/threejs-examples-tree/)
 
 This is a typical example when it comes to starting to get a list like this together. So I might as well get this one out of the way for what it is worth. Still when it comes to a simple example like this I think there is still a great deal of room for originality actually when it comes to making some kind of interesting animation with a basic tree model actually.
 
-### [2.16 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
+### [ 2.17 - Tree sphere](/2021/05/19/threejs-examples-tree-sphere/)
 
 This is a very basic static model of a tree that is just a sphere geometry placed on the top of a box geometry that has dimensions that look like a trunk of a tree. It is then one of the most simplistic models of this kind that I have made thus far, and might prove as a good starting point when it comes to making models this way.
 
-### [2.17 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
+### [ 2.18 - Tree sphere world](/2021/05/21/threejs-examples-tree-sphere-world/)
 
 This is an example where I am using my simple tree sphere models and just creating a whole bunch of those and placing them around the surface of a sphere. It is then just a basic example of creating a main world type model and then having a whole bunch of instances of another model be a part of this kind of model.
 
-### [ 2.18 - Waves](/2018/11/14/threejs-examples-waves/) 
+### [ 2.19 - Waves](/2018/11/14/threejs-examples-waves/) 
 
 The is a basic example of some waves which strokes me as another simple example that I should start out with. In this example I played around with creating a custom geometry and used Math.cos, and Math.sin as a way to create a wave like pattern.
 
