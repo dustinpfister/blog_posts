@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 11:07:41
-version: 1.24
+updated: 2021-06-12 11:15:02
+version: 1.25
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -19,7 +19,7 @@ So in this post I will be going over a number of typical use case examples of th
 
 ## 1 - THREE.Color and what to know first
 
-This is a post on the THREE.Color constructor in three.js that is used to create an object that represents a certain color that can be used for various other features in threejs. This is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background, and just want to learn more about color in three.js.
+This is a post on the THREE.Color constructor in three.js that is used to create an object that represents a certain color that can be used for various other features in threejs. This is not a post on the [basics of getting started with three.js](/2018/04/04/threejs-getting-started/), and client side javaScript in general, so I assume that you have at least some background, and just want to learn more about color in three.js. Still in this section I will be going over a few key details that you might want to be aware of before hand if you are nit all ready.
 
 ### 1.1 Version Numbers matter with three.js
 
