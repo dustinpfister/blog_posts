@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 807
-updated: 2021-06-12 11:27:48
-version: 1.32
+updated: 2021-06-12 11:30:00
+version: 1.33
 ---
 
 I have wrote a number of posts on [threejs](https://threejs.org/) that is the standard goto library for doing anything with 3d modeling in a client side javaScript environment for me, and many others for that matter. Many of the posts that I have wrote so far have to do with the various features of threejs, but thus far I can not say that I have made any kind of real project or example with threejs thus far.
@@ -73,7 +73,7 @@ An example that is a collection of mesh objects in a group nested in another gro
 
 ### [ 2.12 - Mutate a plane ](/2021/06/11/threejs-examples-plane-mutate/)
 
-Here i have a quick example that I worked out where I am mutating the position attribute of a plane geometry instance.
+Here i have a quick example that I worked out where I am mutating the position attribute of a plane geometry instance. This is one of a few examples that I worked out after logging some time learning more about working with the buffer geometry class in general. There is learning how to make a custom geometry from the ground up, but there is also learning how to just adjust a few things with a built in geometry also.
 
 ### [ 2.13 - position things on the surface of a sphere](/2021/05/14/threejs-examples-position-things-to-sphere-surface/)
 
