@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 12:03:42
-version: 1.31
+updated: 2021-06-12 12:07:38
+version: 1.32
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -108,6 +108,8 @@ renderer.render(scene, camera);
 There is also creating a texture to use as an emmisive map which can often be used as a way to create cool effects with textures. The use of this emissive map will allow me to set what areas of a face will be effected by the emmisve color and intensity, as well as what areas will not be effected by these values.
 
 ## 4 - Using an Emmsive map, canvas textures and the THREE.Color.getStyle method
+
+Getting into emissive maps might be a little off topic from the THREE.Color class, but yet again maybe not as it might prove to serve as a way to demonstrate a use case example for the get style method of THREE.Color. This get style method will return a string value like 'rgb\(255,0,0\)' from an instance of the color class like this new THREE.Color(1, 0, 0). So I can use the THREE.Color class not just for properties of materials and the scene object, but also to set the value of a style for an instance of the 2d drawing context of a canvas when creating a texture with a canvas element.
 
 ```js
 var createCanvasTexture = function (draw) {
