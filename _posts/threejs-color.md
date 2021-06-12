@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 11:24:16
-version: 1.26
+updated: 2021-06-12 11:36:35
+version: 1.27
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -29,9 +29,11 @@ When it comes to working with color in a general client side javaScript environm
 
 When I first wrote this post I was using r127 of three.js which was a late version of three.js in April of 2021. Code breaking changes are made to three.js all the time, so be sure to always check the version of three.js that you are using relative to the dates of the code examples that you are looking at on the open web.
 
-## 2 - Basic color example
+## 2 - Basic color example involving setting the color property of a material
 
-So first things first how about a basic use case example of the THREE.COlor constructor where I am just setting the regular color of a material of a cube created with the Box geometry constructor. When setting the color value of a material it is important to take into consideration what kind of material it is to begin with. In this example I am using the Standard material which is a kind of material that will respond to a light source. So when using this kind of material, and setting a color for it, I need to also add a light to the scene. However if I was using the basic material I would not have to bother with a light, and the color property of that material is used to just set what the basic solid color of the material is.
+So first things first how about a basic use case example of the THREE.Color constructor where I am just setting the regular color property of a material of a cube created with the Box geometry constructor. When setting the color value of a material it is important to take into consideration what kind of material it is to begin with. In this example I am using the Standard material which is a kind of material that will respond to a light source. So when using this kind of material, and setting a color for it, I need to also add a light to the scene. However if I was using the basic material I would not have to bother with a light, and the color property of that material is used to just set what the basic solid color of the material is.
+
+In this example I am also using the THREE.Color constructor to set the color of the Point Light that I am using for a light source for the box that is skinned with the standard material. When I create a color for a point light I typically will want to keep it white like in this example, but if I make the color of the mesh while I can set the color of the point light to something else. Another cool thing to get into is having an array of point lights, and set different colors to each of them and place them in different areas of a scene, but that might all be a little to much for now. I wanted to keep this example relative basic.
 
 ```js
 // creating a box mesh with the Box Geometry constructor,
@@ -64,7 +66,7 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-In this example I am also using the THREE.COlor constructor to set the color of the Point Light that I am using for a light source for the box that is skinned with the standard material. When I create a color for a point light I typically will want to keep it white like in this example, but if I make the color of the mesh while I can set the color of the point light to something else. ANother cool thing to get into is having an array of point lights, and set different colors to each of them and place them in different areas of a scene, but that might all be a little to much for now. I wanted to keep this example relative basic.
+So in this example it is just the color property of the standard material that I am setting a solid color for. However when it comes to the standard material it is not just the color property that is of interest as there is also the emissve property also that I can set with the THREE.Color class.
 
 ## 3 - Color and Emissive Color
 
