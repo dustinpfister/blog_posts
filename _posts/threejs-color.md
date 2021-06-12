@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 858
-updated: 2021-06-12 12:12:33
-version: 1.33
+updated: 2021-06-12 12:14:37
+version: 1.34
 ---
 
 When it comes ton[threejs](https://threejs.org/) it looks like I never got around to writing a quick post about some examples of the [THREE.Color](https://threejs.org/docs/#api/en/math/Color) constructor. This constructor can be used to create a THREE.Color class object instance that represents a specific color that can then be used to set the background color of a scene, the fog color, or the color of various properties of a material. 
@@ -112,6 +112,8 @@ There is also creating a texture to use as an emmisive map which can often be us
 Getting into emissive maps might be a little off topic from the THREE.Color class, but yet again maybe not as it might prove to serve as a way to demonstrate a use case example for the get style method of THREE.Color. This get style method will return a string value like 'rgb\(255,0,0\)' from an instance of the color class like this new THREE.Color(1, 0, 0). So I can use the THREE.Color class not just for properties of materials and the scene object, but also to set the value of a style for an instance of the 2d drawing context of a canvas when creating a texture with a canvas element.
 
 You see in order to use the emissive map property of a material I will want to have a texture, and when it comes to having textures one way is to load an external file. However when it comes to examples of threejs I like to stick to solutions that just involve javaScript code only and not any more additional external files, so one way to go about creating textures with javaScript code alone would be to use canvas elements. I have wrote a [post on using canvas elements to create textures for materials in threejs](/2018/04/17/threejs-canvas-textures/) in detail, but for this example I am just gong to stick to using them to create a texture to use with the emissive map property.
+
+Anyway when it comes to setting a fill style or stroke style I can not just use the THREE.Color object directly, however I can call the get style method of a THREE.Color instance and then use the resulting string to set such a value.
 
 ```js
 var createCanvasTexture = function (draw) {
