@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-13 10:23:00
-version: 1.18
+updated: 2021-06-13 10:27:11
+version: 1.19
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, or a whole scene actually.
@@ -27,7 +27,7 @@ There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/
 
 ### 1.2 - Three.js version number matters.
 
-Three.js is a project where the version number matters, in this post I am using [r91](https://github.com/mrdoob/three.js/tree/r91), if the code examples in this post or [any three.js post](/categories/three-js/) of mine that might be a reason why.
+Three.js is a project where the version number matters, when I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r127. However some of the code examples here where still made when I was using a much older version of threejs, so if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
 
 ## 2 - Basic example of Vector3
 
