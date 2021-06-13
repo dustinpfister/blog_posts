@@ -5,11 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-13 10:33:06
-version: 1.20
+updated: 2021-06-13 10:35:39
+version: 1.21
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
+
+Although an instance of Vector3 can very much be used to set a position of something it can also very much be used to set the direction of something also. This is where things might be a little confusing because when it comes to setting the orientation of something based off of Object3d there is the rotation property. This rotation property is not an instance of Vector3, but an Instance of the Euler class.
 
 This post is then about the [Vector3](https://threejs.org/docs/index.html#api/math/Vector3) constructor that is a useful class for various things in a three.js project. A 3d Vector3 Instance consists of an x, y, and z value which makes it useful for plotting a single point in 3d space. It also has a few more uses, such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin for example.
 
