@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-13 09:43:01
-version: 1.16
+updated: 2021-06-13 09:45:35
+version: 1.17
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, or a whole scene actually.
@@ -133,7 +133,7 @@ Remember that objects are copied by reference in in javaScript so you will want 
 
 ## 8 - Normalize a Vector
 
-Normalizing a vector will keep it's direction from the origin the same, but change its distance from it to 1.
+Normalizing a vector will keep it's direction from the origin the same, but change its distance from it to a unit vector of 1.
 
 ```js
     var vec = new THREE.Vector3(7, 7, 7);
@@ -190,7 +190,7 @@ Read my [full post on lines](/2018/04/19/threejs-line/).
 
 So now that you have at least the basic idea of Vector3 down, another typical use example of the use of Vector3 is to make lines. There are a number of ways to make 3d, and 2d lines in three.js. However maybe the most important way to do so is with the Line constructor.
 
-Doing so is not so different from making a custom geometry that will be used in a material that renders faces. The main difference is that you only really have to work about the array of vertacies, and not at all about the faces if there is not going to be any. There are two special materials that can be used with the Line constructor that are in place for this purpose that do not make use of faces, and are there purely for lines only.
+Doing so is not so different from making a custom geometry that will be used in a material that renders faces. The main difference is that you only really have to work about the array of verticies, and not at all about the faces if there is not going to be any. There are two special materials that can be used with the Line constructor that are in place for this purpose that do not make use of faces, and are there purely for lines only.
 
 ```js
 var geometry = new THREE.Geometry();
