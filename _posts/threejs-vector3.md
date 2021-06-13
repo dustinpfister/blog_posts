@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-13 10:44:37
-version: 1.24
+updated: 2021-06-13 10:45:29
+version: 1.25
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -36,15 +36,55 @@ Three.js is a project where the version number matters, when I first wrote this 
 To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector.
 
 ```js
-    var r = Math.PI / 180 * 45,
-    x = Math.cos(r),
-    y = Math.sin(r),
+(function () {
  
-    vec = new THREE.Vector3(x, y, 0);
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
  
+    // CREATING AN INSTANCE OF Vector3 WITH
+    // THE THREE.Vector3 CONSTRUCTOR
+    var r = Math.PI / 180 * 90,
+    x = Math.cos(r) * 2,
+    z = Math.sin(r) * 2;
+    var vec = new THREE.Vector3(x, 0, z);
+ 
+    // PROPERTIES OF Vector3
     console.log(vec.isVector3); // true
     console.log(vec.x, vec.y, vec.z); // 0.70... 0.70... 0
     console.log(vec.length()); // 1
+ 
+    // THE POSITION PROPERTY OF A MESH (OR ANYTHING BASED OFF OF OBJECT3D )
+    // IS AN INSTANCE OF Vector3 SO I CAN USE THE Vector3.copy METHOD TO
+    // COPY THE VALUES OF A STAND ALONE INSTANCE OF Vector3 TO THE INSTANCE
+    // OF Vector3 STORED IN THE POSITON PROPERTY OF A MESH TO SET THE POSTION
+    // OF THE MESH
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    cube.position.copy(vec);
+    scene.add(cube);
+ 
+    // I CAN ALSO USE THE Vector3.set METHOD OF THE INSTNACE OF Vector3 IN THE
+    // POSIITON PROPERTY TO SET THE POSIITON OF THE MESH WITH NUMBERS IN THE FORM
+    // OF NUMBER LITERALS AND/OR VARIABLES
+    var cube2 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    cube2.position.set(2, 0, 0);
+    scene.add(cube2);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
 ```
 
 There are only 3 public properties of a Vector3 instance that are of interest which are of course is the x , y, and z properties of the Vector3 object that is returned when calling the constructor. To my knowledge there are only four properties in total, the fourth being the isVector3 property which should always be true. Every thing else of interest in a Vector3 instance is a method, such as the length method that will give the current Euclidean distance, or distance from the origin.
