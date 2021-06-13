@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-11 12:38:23
-version: 1.15
+updated: 2021-06-13 09:43:01
+version: 1.16
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, or a whole scene actually.
@@ -31,7 +31,7 @@ Three.js is a project where the version number matters, in this post I am using 
 
 ## 2 - Basic example of Vector3
 
-To create a single instance of Vector3 I just need to call the constructor ans pass three arguments that are the x,y, and z values of the vector.
+To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector.
 
 ```js
     var r = Math.PI / 180 * 45,
@@ -45,7 +45,7 @@ To create a single instance of Vector3 I just need to call the constructor ans p
     console.log(vec.length()); // 1
 ```
 
-There are for the most part only 3 properties of a Vector3 instance that are of interest in most situations which of course is the x , y, and z properties. To my knowledge there are only four properties in total, the fourth being the isVector property which should always be true. Every thing else of interest in a Vector3 instance is a method, such as the length method that will give the current Euclidean distance, or distance from the origin.
+There are only 3 public properties of a Vector3 instance that are of interest which are of course is the x , y, and z properties of the Vector3 object that is returned when calling the constructor. To my knowledge there are only four properties in total, the fourth being the isVector3 property which should always be true. Every thing else of interest in a Vector3 instance is a method, such as the length method that will give the current Euclidean distance, or distance from the origin.
 
 ## 3 - Setting the values of Vector3
 
