@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-13 09:45:35
-version: 1.17
+updated: 2021-06-13 10:23:00
+version: 1.18
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are a few constructors that can be used to created these objects which can be used for many properties of objects in three.js. One major property of interest is the position property of a mash, or anything that is based off of the Object3d class. The position property is an instance of vector3 and that instance can be used to set the position of the and object like a mesh, camera, group, or a whole scene actually.
@@ -17,9 +17,9 @@ This post is then about the [Vector3](https://threejs.org/docs/index.html#api/ma
 
 Vector3 instances are also used when creating geometry that will be used in a mesh, and there are also many properties in various objects that expect an instance of Vector3. There are also a whole bunch of useful methods that can be used for typical tasks such as finding the distance between two points in space, or to copy the values of one vector instance to another. While I am looking into the vector3 class I might also touch base one some other Class instances of interest such as the [Euler class](/2021/04/28/threejs-euler/) which is like Vecor3 only it deals with angles rather than a position.
 
-## 1 - What to know
+## 1 - The THREE.Vector3 class and What to know first
 
-This is an advanced post on three.js in which I am writing about the Vector3 constructor, this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or javaScipt in general. Vector3 instances are used in the process of making custom geometry, I will not be getting into that in depth, or many of the other use cases for Vector three. This post will focus on what there is to know about the constructor.
+This is a post on three.js in which I am writing about the Vector3 constructor, and the various properries but mainly methods of the class that there are to work with. So then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or javaScipt in general, and I exspect for you to have at least a little background on those topics. 
 
 ### 1.1 - Check out arrow helpers also
 
