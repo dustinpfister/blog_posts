@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-13 10:45:29
-version: 1.25
+updated: 2021-06-14 09:22:33
+version: 1.26
 ---
 
-In [Vector space](https://en.wikipedia.org/wiki/Vector_space) you have one or more objects that can be called Vectors. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
+In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to repersent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
 
-Although an instance of Vector3 can very much be used to set a position of something it can also very much be used to set the direction of something also. This is where things might be a little confusing because when it comes to setting the orientation of something based off of Object3d there is the rotation property. This rotation property is not an instance of Vector3, but an Instance of the [Euler class](/2021/04/28/threejs-euler/). This Euler class is similar to that of Vector3, but the values given are in radians, and is then a more appropriate way of setting orientation of an object by rotating on the x, y, and z axia by given angles in the from of radian values. However there is also the concept of a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) that would be in the form of a normalized instance of Vector3 oddly enough. So then Vector3 can be used to set position, but it can also be used as a way to set orientation in the from of a direction using values between 0 and 1 for each axis.
+Although an instance of Vector3 can very much be used to set a position of something it can also very much be used to set the direction of something also. This is where things might be a little confusing because when it comes to setting the orientation of something based off of Object3d there is the rotation property. This rotation property is not an instance of Vector3, but an Instance of the [Euler class](/2021/04/28/threejs-euler/). This Euler class is similar to that of Vector3, but the values given are in radians, and is then a more appropriate way of setting orientation of an object by rotating on the x, y, and z axis by given angles in the from of radian values. However there is also the concept of a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) that would be in the form of a normalized instance of Vector3 oddly enough. So then Vector3 can be used to set position, but it can also be used as a way to set orientation in the from of a direction using values between 0 and 1 for each axis.
 
 This post is then about the [Vector3](https://threejs.org/docs/index.html#api/math/Vector3) constructor that is a useful class for various things in a three.js project. A 3d Vector3 Instance consists of an x, y, and z value which makes it useful for plotting a single point in 3d space, but these values can also be in the range of numbers between 0 and 1 which can then be raised by a multiplier, and in some ways can be translated to angles and directions that have to do with the rotation of an object rather than its position. There are all kinds of use cases that will come up here and there for Vector3 such as finding [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) via the length method of the Vector3 instance, which is the distance from the vector to the origin for example.
 
@@ -21,7 +21,7 @@ Vector3 instances are also used when creating geometry that will be used in a me
 
 ## 1 - The THREE.Vector3 class and What to know first
 
-This is a post on three.js in which I am writing about the Vector3 constructor, and the various properries but mainly methods of the class that there are to work with. So then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or javaScipt in general, and I exspect for you to have at least a little background on those topics. 
+This is a post on three.js in which I am writing about the Vector3 constructor, and the various properties but mainly methods of the class that there are to work with. So then this is not a simple [getting started post](/2018/04/04/threejs-getting-started/) on three.js, or javaScipt in general, and I expect for you to have at least a little background on those topics. 
 
 ### 1.1 - Check out arrow helpers also
 
@@ -102,7 +102,7 @@ console.log(vec.x, vec.y, vec.z); // 10 12 3
 
 ## 4 - Object3d and vector3
 
-A very important base class in three.js is [Object3D](https://threejs.org/docs/index.html#api/core/Object3D). Many constructors in three.js such as Camera, Mesh, ect inherit from Object3d. The reason why I bring this up is becuase there are a few properties in this base class the expect an instance of Vector3. Manly Object3D.position, and Object3D.scale.
+A very important base class in three.js is [Object3D](https://threejs.org/docs/index.html#api/core/Object3D). Many constructors in three.js such as Camera, Mesh, ect inherit from Object3d. The reason why I bring this up is because there are a few properties in this base class the expect an instance of Vector3. Manly Object3D.position, and Object3D.scale.
 
 ```js
     var obj = new THREE.Object3D();
