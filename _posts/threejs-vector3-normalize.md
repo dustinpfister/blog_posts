@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2021-06-14 13:15:15
-version: 1.9
+updated: 2021-06-14 13:19:26
+version: 1.10
 ---
 
 The [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. A Vector with a euclidean distance of one is often referred to as a unit vector, and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
@@ -21,7 +21,7 @@ This is a post on using the Vector3 normalize method, and other related features
 
 ## 2 - Basic Vector3 normalize example
 
-In this basic example I am creating an instance of THREE.Vector3 that is not normalized, and then just calling the normalized method of the Vector3 instance to get a normalized vector.
+In this basic example I am creating an instance of THREE.Vector3 that is not normalized, and then just calling the normalized method of the Vector3 instance to get a normalized vector. The value of the Vector before normalizing it was -20, 0, 0, and the value after normalizing it is -1, 0, 0. So in other words the direction of the Vector is preserved but the length of the vector is reduced to a magnitude of 1. Once the vector is normalized I cal call a method like multiply scalar off of the normalized vector to set any desired magnitude, or distance if you prefer while preserving the direction of the Vector.
 
 ```js
 (function () {
