@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-14 09:45:56
-version: 1.30
+updated: 2021-06-14 09:47:48
+version: 1.31
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -89,11 +89,11 @@ To create a single instance of Vector3 I just need to call the constructor and p
 
 There are only 3 public properties of a Vector3 instance that are of interest which are of course is the x , y, and z properties of the Vector3 object that is returned when calling the constructor. To my knowledge there are only four properties in total, the fourth being the isVector3 property which should always be true. Every thing else of interest in a Vector3 instance is a method, such as the length method that will give the current Euclidean distance, or distance from the origin.
 
-## 3 - Setting the values of Vector3
+## 3 - Setting the values of a Vector3 instance
 
 Setting the values of a Vector3 instance can be done by just setting the values directly, that is the I can just set a desired number value to say the x property of the instance. However there is also the set prototype method of the class that can be called off of an instance of vector3 and then values can be passed by way of the arguments of the set method.
 
-### 3.1 - Basic example of Vector3.set
+### 3.1 - Basic example of the Vector3.set method
 
 One of the many use case examples of the set method is to just use it as a way to change the position of a Mesh object, or any object based off of the Object3d class such as a Camera. The position property of anything based off of the Object3d class is an instance of the Vector3 class, and as such has the set method in the prototype as a way to go about setting the values for that instance.
 
@@ -137,7 +137,7 @@ One of the many use case examples of the set method is to just use it as a way t
     ());
 ```
 
-### 3.2 - Set objects in a circle example
+### 3.2 - Set objects in a circle e around the center of a group example of Vector3.set
 
 ```js
 (function () {
@@ -191,7 +191,7 @@ One of the many use case examples of the set method is to just use it as a way t
     ());
 ```
 
-### 3.3 - Setting objects onto the surface of a sphere example
+### 3.3 - Setting objects onto the surface of a sphere example of Vector3.set
 
 ```js
 (function () {
