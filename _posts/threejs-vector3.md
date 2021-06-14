@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-14 09:29:33
-version: 1.27
+updated: 2021-06-14 09:37:09
+version: 1.28
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -91,13 +91,46 @@ There are only 3 public properties of a Vector3 instance that are of interest wh
 
 ## 3 - Setting the values of Vector3
 
-Setting the values of a Vector3 instance can be done by just setting the values directly, there is also the set method.
+Setting the values of a Vector3 instance can be done by just setting the values directly, that is the I can just set a desired number value to say the x property of the instance. However there is also the set prototype method of the class that can be called off of an instance of vector3 and then values can be passed by way of the arguments of the set method.
 
 ```js
-var vec = new THREE.Vector3();
-v.set(7,12,3);
-v.x += 3;
-console.log(vec.x, vec.y, vec.z); // 10 12 3
+(function () {
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+ 
+    // creating a mesh called cube and adding it to a scene
+    // by default it will be located at 0,0,0
+    var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(cube);
+ 
+    // creating a mesh called cube2 and adding it to the scene
+    var cube2 = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    // USING THE SET METHOD OF THE Vector3 INSTANCE
+    // AT THE POSITON PROPERTY OF MESH OBJECT cube2
+    // TO SET THE POSTION OF cube2
+    cube2.position.set(2, 0, 0);
+    scene.add(cube2);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+ 
+    // USING THE SET METHOD TO SET THE POSITION OF THE CAMERA
+    camera.position.set(3, 3, 3);
+ 
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
 ```
 
 ## 4 - Object3d and vector3
