@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-14 09:37:09
-version: 1.28
+updated: 2021-06-14 09:40:20
+version: 1.29
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -93,6 +93,8 @@ There are only 3 public properties of a Vector3 instance that are of interest wh
 
 Setting the values of a Vector3 instance can be done by just setting the values directly, that is the I can just set a desired number value to say the x property of the instance. However there is also the set prototype method of the class that can be called off of an instance of vector3 and then values can be passed by way of the arguments of the set method.
 
+### 3.1 - Basic example of Vector3.set
+
 ```js
 (function () {
  
@@ -129,6 +131,131 @@ Setting the values of a Vector3 instance can be done by just setting the values 
     document.getElementById('demo').appendChild(renderer.domElement);
     renderer.render(scene, camera);
  
+}
+    ());
+```
+
+### 3.2 - Set objects in a circle example
+
+```js
+(function () {
+ 
+    // simple create cube helper
+    var createCube = function(){
+        var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+        return cube;
+    };
+ 
+    // CREATE AND RETURN A GROUP OF CUBES
+    // WHERE EACH CUBE IS POSITIONED IN A
+    // CIRCLE AROUND THE CENTER OF THE GROUP
+    var createCubeCircle = function(){
+        var i = 0,
+        x, z, radian, radius = 3,
+        len = 10,
+        cube,
+        group = new THREE.Group();
+        while(i < len){
+            cube = createCube();
+            radian = Math.PI * 2 / len * i;
+            x = Math.cos(radian) * radius;
+            z = Math.sin(radian) * radius;
+            cube.position.set(x, 0, z);
+            group.add(cube);
+            i += 1;
+        }
+        return group;
+    };
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+ 
+    var cubeCircle = createCubeCircle();
+    scene.add(cubeCircle);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+### 3.3 - Setting objects onto the surface of a sphere example
+
+```js
+(function () {
+ 
+    // simple create cube helper
+    var createCube = function(){
+        var cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+        return cube;
+    };
+ 
+    // set on sphere helper
+    var setOnSphereFromPos = function(mesh, x, y, z, alt){
+         var dir = new THREE.Vector3(x, y, z).normalize();
+         var pos = new THREE.Vector3();
+         pos.x = dir.x * alt;
+         pos.y = dir.y * alt;
+         pos.z = dir.z * alt;
+         mesh.position.copy(pos);
+    };
+ 
+    var setOnSphere = function(mesh, lat, long, alt){
+        var latBias = Math.abs(lat - 0.5) / 0.5;
+        var radian = Math.PI * 2 * long,
+        x = Math.cos(radian) * (alt - alt * latBias),
+        z = Math.sin(radian) * (alt - alt * latBias),
+        y = alt * latBias * (lat > 0.5 ? -1 : 1);
+        setOnSphereFromPos(cube, x, y, z, alt);
+    };
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(9, 9));
+ 
+    var sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(1.5, 30, 30),
+        new THREE.MeshNormalMaterial({wireframe:true}));
+    scene.add(sphere);
+ 
+    var cube = createCube();
+    scene.add(cube);
+ 
+    //setOnSphereFromPos(cube, 5, 0, 0, 2);
+    setOnSphere(cube, 0.1, 0.3, 2);
+ 
+    cube.lookAt(0, 0, 0);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var lat = 0.1;
+    var loop = function(){
+        requestAnimationFrame(loop);
+        setOnSphere(cube, lat, 0, 2);
+        lat += 0.1;
+        lat %= 1;
+        cube.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+    };
+    loop();
 }
     ());
 ```
