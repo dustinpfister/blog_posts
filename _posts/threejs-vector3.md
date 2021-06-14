@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-14 09:50:51
-version: 1.32
+updated: 2021-06-14 09:52:41
+version: 1.33
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -194,6 +194,8 @@ In this example I will once again be using the set method to set the position of
 ```
 
 ### 3.3 - Setting objects onto the surface of a sphere example of Vector3.set
+
+Now for a more advanced example of the Vector3 set method that might help one to gain a better understanding of how although a vector can be used for position, it can also be used as a way to store direction.
 
 ```js
 (function () {
