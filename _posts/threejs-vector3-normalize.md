@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2021-06-14 13:12:34
-version: 1.8
+updated: 2021-06-14 13:15:15
+version: 1.9
 ---
 
 The [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. A Vector with a euclidean distance of one is often referred to as a unit vector, and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
@@ -17,7 +17,7 @@ Vectors are often described as being a unit of direction, and magnitude, the dir
 
 ## 1 - Normalizing Vectors and what to know before hand
 
-This is a post on using the Vector3 normalize method, and other related features in the javaScript library know as threejs.
+This is a post on using the Vector3 normalize method, and other related features in the javaScript library know as threejs. There are a great number of things that you should be aware of before continuing to read this. For one thing this is not any kind of getting started type post on threejs let alone javaScript in general. However in this section I will be going over a few key details that you might want to read up on more in detail in order to gain a better understanding of what the Vector3 normalize method is all about.
 
 ## 2 - Basic Vector3 normalize example
 
