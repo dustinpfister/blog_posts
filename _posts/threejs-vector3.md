@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-14 09:22:33
-version: 1.26
+updated: 2021-06-14 09:29:33
+version: 1.27
 ---
 
-In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to repersent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
+In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
 
 Although an instance of Vector3 can very much be used to set a position of something it can also very much be used to set the direction of something also. This is where things might be a little confusing because when it comes to setting the orientation of something based off of Object3d there is the rotation property. This rotation property is not an instance of Vector3, but an Instance of the [Euler class](/2021/04/28/threejs-euler/). This Euler class is similar to that of Vector3, but the values given are in radians, and is then a more appropriate way of setting orientation of an object by rotating on the x, y, and z axis by given angles in the from of radian values. However there is also the concept of a [unit vector](https://en.wikipedia.org/wiki/Unit_vector) that would be in the form of a normalized instance of Vector3 oddly enough. So then Vector3 can be used to set position, but it can also be used as a way to set orientation in the from of a direction using values between 0 and 1 for each axis.
 
@@ -31,9 +31,9 @@ There is a built in helper class in threejs called the [THEE.ArrowHelper](/2018/
 
 Three.js is a project where the version number matters, when I first wrote this post I was using [r91](https://github.com/mrdoob/three.js/tree/r91) of threejs, and the last time I got around to doing a little editing of this post I was using threejs r127. However some of the code examples here where still made when I was using a much older version of threejs, so if the code examples in this post or [any three.js post](/categories/three-js/) of mine no longer work that might be a reason why. When I edit I generally make an effort to keep the newer examples to the top of the page, and leave the older examples towards the bottom for the sake of historical reasons, and for the off chance that one might be using an older version of threejs for one reason or another.
 
-## 2 - Basic example of Vector3
+## 2 - Basic example of a THREE.Vector3 class instance
 
-To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector.
+To create a single instance of Vector3 I just need to call the constructor and pass three arguments that are the x, y, and z values of the vector. Doing so will set the starting values for the x, y, and z properties of the Vector3 instance that is returned by the constructor. I can then use this instance of Vector3 to set the position of a mesh object by calling the Vector3 copy method of a Vector3 instance stored as a position property of anything that is based off of the Object3d class such as a Mesh Object. Another option for doing so would be to use the set method which would allow for me to set the value of a Vector3 instance with values from another instance of Vector3, or by nay means of producing a desired numerical value such as the result of a javaScript expression.
 
 ```js
 (function () {
