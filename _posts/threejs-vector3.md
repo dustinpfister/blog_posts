@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 175
-updated: 2021-06-14 09:47:48
-version: 1.31
+updated: 2021-06-14 09:50:51
+version: 1.32
 ---
 
 In [Vector space](https://en.wikipedia.org/wiki/Vector_space) there are these thing called Vectors, these vectors can be used to represent position, but they are usually described as having magnitude and direction. In [three.js](https://threejs.org/) there are many constructors of interest that have to do with many properties of objects, as well as base classes that are at the core of all kinds of objects one example of this world be the Object3d class. One major property of interest in the Object3d class is the position property of the Object3d class. The position property is an instance of Vector3, and that instance can be used to set the position of anything that is based off of Object3d like a Mesh, Camera, Group, or a whole Scene object actually for that matter.
@@ -138,6 +138,8 @@ One of the many use case examples of the set method is to just use it as a way t
 ```
 
 ### 3.2 - Set objects in a circle e around the center of a group example of Vector3.set
+
+In this example I will once again be using the set method to set the position of objects, this time it is a collection of mesh objects that are children of a group.
 
 ```js
 (function () {
