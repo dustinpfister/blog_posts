@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2021-06-14 13:19:26
-version: 1.10
+updated: 2021-06-14 13:21:13
+version: 1.11
 ---
 
 The [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. A Vector with a euclidean distance of one is often referred to as a unit vector, and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
@@ -56,7 +56,9 @@ In this basic example I am creating an instance of THREE.Vector3 that is not nor
     ());
 ```
 
-## 3 - Some more on the concept of length
+## 3 - Some more on the concept of vector length
+
+So then the normalize method will set the length of any vector to a length of 1, and then from there the length can easily be adjused to any desired length.
 
 ```js
 (function () {
