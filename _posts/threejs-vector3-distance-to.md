@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2021-06-15 13:12:00
-version: 1.7
+updated: 2021-06-15 13:13:11
+version: 1.8
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the Vector3 class there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -17,7 +17,7 @@ This post will not just be about the distance to method of course though, I will
 
 ## 1 - The Vector3 distance to method and what to knwo first
 
-This is a post on the distance to method of the Vector3 class in the client side javaScript library known as three.js. The subject here then is on one specific method of one specific class in a single javaScript library, so then this is nit a getting started post with threejs let along client side javaScript in general. I will not be getting into every little detail about the library and language here, but I usual write a section like this for every post on threejs where I outline a few things you might want to read up more on before continuing to read the rest of this post.
+This is a post on the distance to method of the Vector3 class in the client side javaScript library known as three.js. The subject here then is on one specific method of one specific class in a single javaScript library, so then this is not a [getting started post with threejs](/2018/04/04/threejs-getting-started/) let along client side javaScript in general. I will not be getting into every little detail about the library and language here, but I usual write a section like this for every post on threejs where I outline a few things you might want to read up more on before continuing to read the rest of this post.
 
 ### 1.1 - Read up more on the Vector3 class in general
 
