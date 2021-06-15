@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 888
-updated: 2021-06-14 16:12:34
-version: 1.26
+updated: 2021-06-15 11:51:53
+version: 1.27
 ---
 
 The Vector3 class in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) has many prototype methods one of which is the [Vector3 normalize](https://threejs.org/docs/#api/en/math/Vector3.normalize) method. Calling the normalize method of a Vector3 instance will preserve the direction of the vector, but it will reduce the euclidean distance of the vector to a length of one. A Vector with a [euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) of one is often referred to as a [unit vector](https://en.wikipedia.org/wiki/Unit_vector), and what is nice about this kind of vector is that it can quickly be scaled up by just simply multiplying the values of the normalized vector by a desired magnitude that is any value other than one to result in any vector that is along a given line that is the direction of the vector.
@@ -224,27 +224,41 @@ One way to make this kind of method would be to make use of the apply Euler meth
         return cube;
     };
  
-    var vectorFromAngles = function(a, b, c, len, start){
-        len = len = undefined ? 1 : len;
-        var e = new THREE.Euler(
-            THREE.MathUtils.degToRad(a),
-            THREE.MathUtils.degToRad(b), 
-            THREE.MathUtils.degToRad(c));
-        var v = start || new THREE.Vector3(0, 1, 0);
-        v.applyEuler(e).normalize();
-        return v.multiplyScalar(len);
+    // set on sphere helper
+    var setOnSphereFromPos = function(mesh, x, y, z, alt){
+         var dir = new THREE.Vector3(x, y, z).normalize();
+         var pos = new THREE.Vector3();
+         pos.x = dir.x * alt;
+         pos.y = dir.y * alt;
+         pos.z = dir.z * alt;
+         mesh.position.copy(pos);
+    };
+ 
+    var setOnSphere = function(mesh, lat, long, alt){
+        var latBias = Math.abs(lat - 0.5) / 0.5;
+        var radian = Math.PI * 2 * long,
+        x = Math.cos(radian) * (alt - alt * latBias),
+        z = Math.sin(radian) * (alt - alt * latBias),
+        y = alt * latBias * (lat > 0.5 ? -1 : 1);
+        setOnSphereFromPos(cube, x, y, z, alt);
     };
  
     // scene
     var scene = new THREE.Scene();
     scene.add(new THREE.GridHelper(9, 9));
  
+    var sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(1.5, 30, 30),
+        new THREE.MeshNormalMaterial({wireframe:true}));
+    scene.add(sphere);
+ 
     var cube = createCube();
     scene.add(cube);
  
-    var v = vectorFromAngles(90, 0, 0, 1);
-    console.log(v);
-    cube.position.copy(v);
+    //setOnSphereFromPos(cube, 5, 0, 0, 2);
+    setOnSphere(cube, 0.1, 0.3, 2);
+ 
+    cube.lookAt(0, 0, 0);
  
     // CAMERA
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
@@ -254,10 +268,10 @@ One way to make this kind of method would be to make use of the apply Euler meth
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
-    var lt = new Date(),
-    a = 0,
-    b = 0,
-    c = 90,
+    var latPos = 0.1,
+    longPos = 0,
+    latDir = 1,
+    lt = new Date(),
     fps = 30;
     var loop = function(){
         var now = new Date(),
@@ -266,10 +280,23 @@ One way to make this kind of method would be to make use of the apply Euler meth
         requestAnimationFrame(loop);
  
         if(secs > 1 / fps){
-            b += 90 * secs;
-            b %= 360;
-            var v = vectorFromAngles(a, b, c, 1.5);
-            cube.position.copy(v);
+            // call set on sphere for cube
+            setOnSphere(cube, latPos, longPos, 2);
+ 
+            latPos += 0.25 * secs * latDir;
+            if(latPos >= 1){
+                latPos = 1;
+                latDir = -1;
+                longPos += 1 / 30;
+            }
+            if(latPos <= 0){
+                latPos = 0;
+                latDir = 1;
+                longPos += 1 / 30;
+            }
+            longPos %= 1;
+ 
+            cube.lookAt(0, 0, 0);
  
             lt = now;
             renderer.render(scene, camera);
