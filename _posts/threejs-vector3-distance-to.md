@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2021-06-15 13:35:56
-version: 1.15
+updated: 2021-06-15 13:43:59
+version: 1.16
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the Vector3 class there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -76,7 +76,10 @@ This might not be the most interesting example in the worked when it comes to th
 
 ## 3 - Move an object to a point, and adjust the rate by distance example
 
-So now that I have a basic example out of the way it is time to start looking into a few use case examples of the distance to method. In this example I am changing the rate at which one point is moving to another point based on the distance to that point.
+So now that I have a basic example out of the way it is time to start looking into a few use case examples of the distance to method. In this example I am changing the rate at which one point is moving to another point based on the distance to that point. 
+
+There are all kinds of examples that could be made like this, but I have to start somewhere. The general idea with this one was to just move one mesh object directly towards another, and do so by passing the object, then a vector, and then a value between 0 and 1 which is the percent of the difference between the two points to move the object. So with that said I have this move object by difference method that does not use the distance to method actually, it just has to do with getting the difference between two vectors, and then move one object by a percent of that difference. I then have another helper function that makes use of my move obj by diff method, and it is this other helper method that is a kind of move object by distance difference helper.
+
 
 ```js
 (function () {
