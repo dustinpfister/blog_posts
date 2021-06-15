@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2021-06-15 13:30:01
-version: 1.13
+updated: 2021-06-15 13:32:17
+version: 1.14
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the Vector3 class there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -30,6 +30,8 @@ Another Major class to work with in threejs is the [obejct3d class](/2018/04/23/
 ## 2 - Basic Vector3 distance to example
 
 So for now it might be a good idea to just start out with a basic example of the distance to method using the position properties of some Mesh objects which are of course instances of the Vector3 class. In this example I just have a single create cube helper method that will create and return a mesh object that uses the box geometry and the mesh normal material. I am then calling this create cube method twice and adding two cubes to the scene, both of which are located at the same default position at the center of the scene.
+
+I then just have a little extra javaScript code that will check the distance between the position of cube1, and that of cube2. In the event that the distance between the two cubes is less than 2, and in this case it is as the distance is 0, then the position of cube2 will be set to a specific location.
 
 ```js
 (function () {
