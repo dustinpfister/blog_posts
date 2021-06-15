@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2021-06-15 13:25:36
-version: 1.11
+updated: 2021-06-15 13:27:24
+version: 1.12
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the Vector3 class there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -72,6 +72,8 @@ So for now it might be a good idea to just start out with a basic example of the
 ```
 
 ## 3 - Move an object to a point, and adjust the rate by distance example
+
+So now that I have a basic example out of the way it is time to start looking into a few use case examples of the distance to method. In this example I am changing the rate at which one point is moving to another point based on the distance to that point.
 
 ```js
 (function () {
