@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 889
-updated: 2021-06-15 13:13:11
-version: 1.8
+updated: 2021-06-15 13:19:22
+version: 1.9
 ---
 
 When it comes to points or Vectors if you prefer in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the question of how to get the distance between two points in space. In the Vector3 class there is the [distance to method](https://threejs.org/docs/#api/en/math/Vector3.distanceTo) that can be used as a built in way to go about getting the distance between two points in vector space. So in todays post I will be looking into some simple examples of using this methods in threejs projects.
@@ -26,3 +26,143 @@ The distance to method is just one method of interest in the vector3 class to wo
 ### 1.2 - Know the basics of Object3d, and the position property specifically
 
 Another Major class to work with in threejs is the [obejct3d class](/2018/04/23/threejs-object3d/), and when it comes to working with the Vector3 class it is mainly the position property of anything based off of object3d that is of interest. One major use case example of the distance to method is to use it as a way to get the distance between two mesh objects. So then to do so I would want to call the distance to method off of the Vector3 instance of the position property of the Mesh, and then pass the position property of the other mesh as the argument for the method. There is a lot to be aware of when it comes to working with Mesh objects, but what there is to know about Object3d applies to Mesh objects, as well as all kinds of other objects that are based off of object3d.
+
+
+## 2 - Basic Vector3 distance to example
+
+```js
+(function () {
+ 
+    // simple create cube helper
+    var createCube = function () {
+        var cube = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshNormalMaterial());
+        return cube;
+    };
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(7, 7));
+ 
+    // cubes
+    var cube1 = createCube();
+    scene.add(cube1);
+    var cube2 = createCube();
+    cube2.position.set(0, 0, 0);
+    scene.add(cube2);
+ 
+    // USING Vector3.distanceTo TO ADJUST THE POSITION OF CUBE2
+    if (cube2.position.distanceTo(cube1.position) < 2) {
+        cube2.position.set(2, 0, 0)
+    }
+ 
+    // camera, render
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 10, 8);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+## 3 - Move an object to a point, and adjust the rate by distance example
+
+```js
+(function () {
+ 
+    // simple create cube helper
+    var createCube = function () {
+        var cube = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshNormalMaterial());
+        return cube;
+    };
+ 
+    // move cube by difference and percent
+    var moveObjByDiff = function (obj, pos, per) {
+        per = per === undefined ? 1 : per;
+        per = per > 1 ? per % 1 : per;
+        var diff = obj.position.clone().sub(pos);
+        obj.position.sub(diff.multiplyScalar(per));
+    };
+ 
+    var moveObjByDistDiff = function (obj, pos, maxDist, maxPer) {
+        maxDist = maxDist === undefined ? 5 : maxDist;
+        maxPer = maxPer === undefined ? 0.25 : maxPer;
+        var d = obj.position.distanceTo(pos),
+        per = maxPer;
+        if (d <= maxDist) {
+            per = d / maxDist * maxPer;
+        }
+        moveObjByDiff(obj, pos, per);
+    };
+ 
+    var minDistCheck = function (obj, pos, minDist) {
+        minDist = minDist === undefined ? 0.125 : minDist;
+        var d = obj.position.distanceTo(pos);
+        if (d < minDist) {
+            return true;
+        }
+        return false;
+    };
+ 
+    var newRandomStartPos = function (maxLength) {
+        maxLength = maxLength === undefined ? 10 : maxLength;
+        return new THREE.Vector3().random().subScalar(0.5).normalize().multiplyScalar(maxLength);
+    };
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(7, 7));
+ 
+    // cubes
+    var cube1 = createCube();
+    cube1.position.set(0.001, 0, 0);
+    scene.add(cube1);
+    var cube2 = createCube();
+    cube2.position.copy(newRandomStartPos());
+    scene.add(cube2);
+ 
+    //moveObjByDiff(cube2, cube1.position, 1);
+ 
+    // camera, render
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(8, 10, 8);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    var update = function () {
+        // move
+        moveObjByDistDiff(cube2, cube1.position, 2, 0.125);
+        // check distance
+        if (minDistCheck(cube2, cube1.position, 0.25)) {
+            // if below min dist set new pos
+ 
+            cube2.position.copy(newRandomStartPos());
+        }
+    };
+ 
+    var lt = new Date(),
+    fps = 30;
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            update();
+            lt = now;
+            renderer.render(scene, camera);
+        }
+    };
+    loop();
+ 
+}
+    ());
+```
