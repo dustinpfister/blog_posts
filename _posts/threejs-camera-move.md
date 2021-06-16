@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 582
-updated: 2021-04-27 09:54:23
-version: 1.21
+updated: 2021-06-16 15:57:56
+version: 1.22
 ---
 
 Every now and then I like to play around with [threejs](https://threejs.org/) a little, it is a fun project to work with and life is short after all. One thing that is fun is working out expressions for handing the movement of a [camera](/2018/04/06/threejs-camera/) in a scene such as the [perspective camera](/2018/04/07/threejs-camera-perspective/) which is the one I typically use in most projects thus far. 
@@ -75,7 +75,7 @@ far = 1000,
 camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
 ```
 
-### 3.3 The rest of the example
+### 3.3 - The rest of the example
 
 So then now I just need to work out the rest of the example when it comes to a scene, renderer, a mesh to look at, and a main app loop that makes use of the move camera method.
 
