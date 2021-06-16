@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2021-06-16 13:02:22
-version: 1.4
+updated: 2021-06-16 13:04:30
+version: 1.5
 ---
 
 When it comes to setting boundaries for objects in a threejs project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range.
@@ -51,3 +51,7 @@ So in this example I am using the Vector3 clamp method to just make it so that a
 }
     ());
 ```
+
+## 3 - Conclusion
+
+I did not get around to every little detail when it comes to setting boundaries for Vector3 values. I think I did more or less cover what there is to work with when it comes to clamping values at least, but I did not get into solutions that have to do with wrapping values.
