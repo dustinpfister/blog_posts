@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2021-06-16 15:08:17
-version: 1.24
+updated: 2021-06-16 15:11:58
+version: 1.25
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the Vector3 class prototype when it comes to clamping values rather that wrapping them.
@@ -95,6 +95,8 @@ There is clamping vectors into a box like area with the clamp method, but anothe
 }
     ());
 ```
+
+The subject of clamping a vector by length goes hand in hand with many other related topics such as what a length of a vector is, and also what a normalized vector with a length of 1 is. Getting into this subject might be a little off topic, but the basic idea is that a length of 1 is a radius of 1 from the origin. So by clamping the length of a vector from 0.5 to 1 will make it so that the distance from the origin to the vector will always be between those values.
 
 ## 4 - Conclusion
 
