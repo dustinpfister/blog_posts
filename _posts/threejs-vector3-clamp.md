@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2021-06-16 15:00:46
-version: 1.22
+updated: 2021-06-16 15:03:56
+version: 1.23
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the Vector3 class prototype when it comes to clamping values rather that wrapping them.
@@ -65,6 +65,36 @@ So in this example I am using the Vector3 clamp method to just make it so that a
 ## 3 - Clamping Vectors by length rather than a box area with Vector3.clampLength
 
 There is clamping vectors into a box like area with the clamp method, but another option is the clamp length method that is more of a sphere like area. This method is somewhat similar to the clamp method only in place of Vector3 instances for setting the min and max values for the range, there is just setting the min and max values with a length values in the from of just javaScript numbers. Another way of thinking about this is an inner and outer radius in terms of two spheres that are both centered over the same origin.
+
+```js
+(function () {
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(5, 5));
+ 
+    // creating a mesh
+    var mesh = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+ 
+    mesh.position.set(0, 5, -5);
+    mesh.position.clampLength(0.5, 1);
+    console.log(mesh.position);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
 
 ## 4 - Conclusion
 
