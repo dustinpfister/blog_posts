@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2021-06-16 13:29:46
-version: 1.14
+updated: 2021-06-16 13:30:50
+version: 1.15
 ---
 
 When it comes to setting boundaries for Vectors in a [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range. However there is the idea of having it so that a number out of range is clamped to a value that is closest to what is in range, and then there is the idea of warping the value back around from the opposite side of the range. In todays post I will be focusing on what there is to work with in the Vector3 class prototype when it comes to clamping values rather that wrapping them.
@@ -22,6 +22,10 @@ This is a post on using the Vector3 clamp methods to clamp a vector between a mi
 ### 1.1 - Look into the Vector3 class in general
 
 In this post I am just going over a few methods in the [Vector 3 class](/2018/04/15/threejs-vector3/) that has to do with creating and working with one or more Vectors in threejs when it comes to setting bounds for them. However there is a great deal more to learn about the class and Vectors in general.
+
+### 1.2 - Version numbers matter with threejs
+
+When I wrote this post I was using threejs r127 when it comes to testing out source code examples.
 
 ## 2 - Basic example of the THREE.Vector3 clamp method.
 
