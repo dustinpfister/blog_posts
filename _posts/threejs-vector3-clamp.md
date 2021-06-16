@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 890
-updated: 2021-06-16 13:00:51
-version: 1.3
+updated: 2021-06-16 13:02:22
+version: 1.4
 ---
 
 When it comes to setting boundaries for objects in a threejs project there is often clamping the values of wrapping the values. That is that there is a situation in which there is a min value, a max value, and having a way to make sure that a value is always inside this range.
@@ -18,6 +18,8 @@ When it comes to setting boundaries for objects in a threejs project there is of
 This is a post on using the Vector3 clamp method to clamp a vector between a min and max range.
 
 ## 2 - Basic example of the THREE.Vector3 clamp method.
+
+So in this example I am using the Vector3 clamp method to just make it so that any value that I set for the position of a cube ends up getting clamped within a min and max Vector range.
 
 ```js
 (function () {
