@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 15:22:57
-version: 1.20
+updated: 2021-06-17 15:24:06
+version: 1.21
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -17,7 +17,7 @@ The thing to keep in mind here is that this is a Vector3 prototype method, so it
 
 ## 1 - The Vector3 class Apply to axis method and what to knwo first
 
-This is a post on a prototype method of the Vector3 class in the javaScript library called threejs. So then I am writing about something that is very specific when it comes to client side web programing, and also requires at least a little background with javaScript and the basics of working with the three.js library in a project. If you feel that the content here might be a little to advanced for now there is taking a step back and starting out with a getting started type post on the subject of threejs. If you have some experience with threejs but still feel stuck with this there are maybe a few more things you should read up on more before looking at these examples, I will take a moment to go over these things here in this section.
+This is a post on a prototype method of the Vector3 class in the javaScript library called threejs. So then I am writing about something that is very specific when it comes to client side web programing, and also requires at least a little background with javaScript and the basics of working with the three.js library in a project. If you feel that the content here might be a little to advanced for now there is taking a step back and starting out with a [getting started type post on the subject of threejs](/2018/04/04/threejs-getting-started/). If you have some experience with threejs but still feel stuck with this there are maybe a few more things you should read up on more before looking at these examples, I will take a moment to go over these things here in this section.
 
 ### 1.1 - Read up more on the Vector3 class in general
 
