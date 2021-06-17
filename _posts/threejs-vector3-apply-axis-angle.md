@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 15:17:36
-version: 1.17
+updated: 2021-06-17 15:20:12
+version: 1.18
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -76,7 +76,7 @@ The end result of this is then a situation with a vector that is positioned at 1
 
 ## 3 - Animation loop example of apply to axis
 
-So now that I have the basic example out of the way I think I should make at least one more demo of this methods that will involve an animation loop method, and an update method.
+So now that I have the basic example out of the way I think I should make at least one more demo of this methods that will involve an animation loop method, and an update method. In this example I am doing more or less the same thing as in the basic example only now I am just adding in a loop method that makes use of request animation frame to create a loop method. In this loop method I am calling an update function, that will use a values in seconds as the argument to update the state of something in this case the position property of a mesh using, you guessed it the apply axis angle Vector3 method.
 
 ```js
 (function () {
