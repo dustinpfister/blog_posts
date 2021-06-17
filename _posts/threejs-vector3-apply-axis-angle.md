@@ -5,13 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 14:45:22
-version: 1.4
+updated: 2021-06-17 14:46:30
+version: 1.5
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
 
-The thing to keep in mind here is that this is a Vector3 prototype method, so it has to do with changing the value of a vector, and not the state of a Euler class instance. Vectors can be used to represent direction, and there is some over lap between Vectors and Euler angles, bit it is still a good idea to be aware of what the limitations are here.
+The thing to keep in mind here is that this is a Vector3 prototype method, so it has to do with changing the value of a vector, and not the state of a Euler class instance. Vectors can be used to represent direction, and there is some over lap between Vectors and Euler angles, bit it is still a good idea to be aware of what the limitations are here. There will be situations now and then where I will want to do something like what the apply to axis method does, but by mutating the state of a Euler class instance.
 
 <!-- more -->
 
