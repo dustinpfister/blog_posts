@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 14:49:35
-version: 1.7
+updated: 2021-06-17 14:51:27
+version: 1.8
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -115,3 +115,4 @@ So like many of my posts on threejs I like to start off with a basic example of 
 
 ## 4 - Conclusion
 
+I am not sure if I will be using this method that often in future projects, not because I do not thing that it brings something of value, but because there are just many other ways to get a similar effect, and some of them apply to aspects of an object other than the position property.
