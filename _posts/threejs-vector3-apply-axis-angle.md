@@ -5,10 +5,105 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 14:38:23
-version: 1.1
+updated: 2021-06-17 14:40:41
+version: 1.2
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle).
 
 <!-- more -->
+
+## 2 - basic example of the apply to axis method
+
+```js
+(function () {
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(6, 6));
+ 
+    // mesh
+    var mesh = new THREE.Mesh(
+            new THREE.ConeGeometry(0.5, 1, 30, 30),
+            new THREE.MeshNormalMaterial());
+ 
+    mesh.geometry.rotateX(Math.PI * 0.5);
+    mesh.position.set(1, 0, 1);
+    //mesh.lookAt(0, 3, 0);
+    scene.add(mesh);
+ 
+    var v = new THREE.Vector3(0, 1, 0);
+    mesh.position.applyAxisAngle(v, Math.PI / 180 * 180);
+ 
+    console.log(mesh.position.clone().round()); // {x: -1, y: 0, z: -1}
+ 
+    // camera, render
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+ 
+}
+    ());
+```
+
+## 3 - Animation loop example of apply to axis
+
+```js
+(function () {
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(6, 6));
+ 
+    // mesh
+    var mesh = new THREE.Mesh(
+            new THREE.ConeGeometry(0.5, 1, 30, 30),
+            new THREE.MeshNormalMaterial());
+    mesh.geometry.rotateX(Math.PI * 0.5);
+    mesh.position.set(1, 0, 1);
+    scene.add(mesh);
+ 
+    // camera, render
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // LOOP
+    var degree = 0,
+    v = new THREE.Vector3(0, 1, 0),
+    lt = new Date(),
+    fps = 30;
+    // update method
+    var update = function (secs) {
+        v.x += 0.25 * secs;
+        v.x %= 1;
+        degree = 45 * secs;
+        mesh.position.applyAxisAngle(v, Math.PI / 180 * degree);
+        mesh.lookAt(0, 0, 0);
+    };
+    // loop method
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs > 1 / fps) {
+            update(secs);
+            renderer.render(scene, camera);
+            lt = now;
+        }
+    };
+    loop();
+ 
+}
+    ());
+```
+
+## 4 - Conclusion
+
