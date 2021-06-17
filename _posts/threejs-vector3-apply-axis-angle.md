@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 15:11:59
-version: 1.15
+updated: 2021-06-17 15:15:33
+version: 1.16
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -33,7 +33,9 @@ When I wrote this post I was testing one the source code examples in r127 of thr
 
 ## 2 - Basic example of the Vector3.applyAxisAngle method
 
-So like many of my posts on threejs I like to start off with a basic example of the method just for the sake of gaining the basic idea of what this method can be used for. Here I have a mesh object that makes use of the cone geometry constructor, and the Mesh normal material. I am using the set method of the Vector3 class instance of the position property of the mesh to set the position to something other than that of 0,0,0.
+So like many of my posts on threejs I like to start off with a basic example of the method just for the sake of gaining the basic idea of what this method can be used for. Here I have a mesh object that makes use of the cone geometry constructor, and the Mesh normal material. I am using the set method of the Vector3 class instance of the position property of the mesh to set the position to something other than that of 0,0,0. 
+
+After I have my mesh object added to the scene, and positioned, I am using the apply axis angle method using a vector with a direction that is going straight up on the y axis, and with a vector unit length of 1, but I am sure any length count be used. In addition to the vector that will serve as the axis, I can also pass an angle, and for now I am just pulling a full 180 for this example.
 
 ```js
 (function () {
@@ -49,7 +51,7 @@ So like many of my posts on threejs I like to start off with a basic example of 
  
     mesh.geometry.rotateX(Math.PI * 0.5);
     mesh.position.set(1, 0, 1);
-    //mesh.lookAt(0, 3, 0);
+    mesh.lookAt(0, 0, 0);
     scene.add(mesh);
  
     var v = new THREE.Vector3(0, 1, 0);
