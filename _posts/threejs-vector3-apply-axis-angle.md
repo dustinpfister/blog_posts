@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 15:05:37
-version: 1.13
+updated: 2021-06-17 15:09:47
+version: 1.14
 ---
 
 this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
@@ -22,6 +22,14 @@ This is a post on a prototype method of the Vector3 class in the javaScript libr
 ### 1.1 - Read up more on the Vector3 class in general
 
 In this post the focal point is just one little method in the Vector3 class prototype, there are many others that you should become familiar with at one point or another. There are also some basic things you should be aware of at this point such as the fact that the position property of the Object3d class is an instance of the Vector3 class, and that the object3d class is a base class for a whole lot of object in threejs such as Mesh objects, and Cameras.
+
+### 1.2 - There is also the Euler class
+
+The Vector3 class is used for, well, vectors in what might often be classed Vector space. There is some overlap between position, and rotation, but when it comes to the rotation property of an Object3d class instance that is an instance of the Euler class.
+
+### 1.3 - Version Numbers matter
+
+When I wrote this post I was testing one the source code examples in r127 of threejs. Always be mindful of the version of threejs you are using, and the version that the author of a source code examples was suing when it comes to threejs examples on the open web. This library is still moving very fast compare to many other projects, and code braking changes happen often.
 
 ## 2 - Basic example of the Vector3.applyAxisAngle method
 
