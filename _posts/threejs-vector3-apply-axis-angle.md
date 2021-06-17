@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 891
-updated: 2021-06-17 15:20:12
-version: 1.18
+updated: 2021-06-17 15:21:54
+version: 1.19
 ---
 
-this week I have been taking a deeper look into what there is to work with when it comes to the [Vector3 class](/2018/04/15/threejs-vector3/) in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
+this week I have been taking a deeper look into what there is to work with when it comes to the Vector3 class in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene), and today I thought I would work out a few demos with the [apply to axis angle method](https://threejs.org/docs/#api/en/math/Vector3.applyAxisAngle). This is a prototype method of the Vector3 class, which will mutate the value of the Vector in place, and as the name suggests is has to do with rotating the vector along an axis that is defines with another vector, and the second argument is then angle to apply with this given direction.
 
 The thing to keep in mind here is that this is a Vector3 prototype method, so it has to do with changing the value of a vector, and not the state of a Euler class instance. Vectors can be used to represent direction, and there is some over lap between Vectors and Euler angles, bit it is still a good idea to be aware of what the limitations are here. There will be situations now and then where I will want to do something like what the apply to axis method does, but by mutating the state of a Euler class instance.
 
@@ -21,7 +21,7 @@ This is a post on a prototype method of the Vector3 class in the javaScript libr
 
 ### 1.1 - Read up more on the Vector3 class in general
 
-In this post the focal point is just one little method in the Vector3 class prototype, there are many others that you should become familiar with at one point or another. There are also some basic things you should be aware of at this point such as the fact that the position property of the Object3d class is an instance of the Vector3 class, and that the object3d class is a base class for a whole lot of object in threejs such as Mesh objects, and Cameras.
+In this post the focal point is just one little method in the Vector3 class prototype, there are many others that you should become familiar with at one point or another. There are also some basic things you should be aware of at this point such as the fact that the position property of the Object3d class is an instance of the Vector3 class, and that the object3d class is a base class for a whole lot of object in threejs such as Mesh objects, and Cameras. So it would make sense to read up more on the [Vector3 class](/2018/04/15/threejs-vector3/) in general, and not just stop with this post when doing so of course.
 
 ### 1.2 - There is also the Euler class
 
