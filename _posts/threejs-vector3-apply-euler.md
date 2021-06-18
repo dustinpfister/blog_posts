@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2021-06-18 10:27:34
-version: 1.29
+updated: 2021-06-18 10:29:34
+version: 1.30
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -80,7 +80,7 @@ Next I want to create a new Instance of the THREE.Vector3 class and here is wher
     ());
 ```
 
-Now there is doing something with that Vector3 class instance to say set the position of a cube mesh object. When it comes to this the position property of a mesh object is also an instance of Vector3, and as such I can use the copy method of the position property of the mesh to copy the values of this stand alone vector3 to the position property.
+Now there is doing something with that Vector3 class instance to say set the position of a cube mesh object. When it comes to this the position property of a mesh object is also an instance of Vector3, and as such I can use the copy method of the position property of the mesh to copy the values of this stand alone vector3 to the position property. The result then is that the position of the cube is set to the position of the vector to which I have applied the EUler instance to and I have expected results. The cube is now 45 degrees from the starting position of the vector, and it would seem that the Vector still has the same length that I have set for it.
 
 ## 3 - Animation example
 
