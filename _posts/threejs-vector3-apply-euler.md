@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2021-06-18 10:13:48
-version: 1.22
+updated: 2021-06-18 10:14:36
+version: 1.23
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -37,7 +37,7 @@ When I wrote this post I was using r127 of threejs. I have made a habit of makin
 
 So then lets start out with a basic example of this apply user Vector3 method to gain a scene as to how it works. Here I have an example where I have a create cube helper method that will create and return a Mesh object that uses the Box geometry, and the Mesh normal material. The intention is that I will be creating one or more cubes with this method and using Euler and Vector3 class instances along with the apply Euler Vector3 prototype method as a way to set the position of this cube in a scene.
 
-When positioning the cube I create an Instance of the Euler class that I will be using as the argument value for the apply Euler method. For this example I am using the THREE.MathUtils.getToRad convenience method to convert a degree value to a radian value that is used with the Euler class. For now I am creating a Euler class instance where I have a 45 degree angle for the x value of the EUler class, and I am just leaving the other values at 0.
+When positioning the cube I create an Instance of the Euler class that I will be using as the argument value for the apply Euler method. For this example I am using the [THREE.MathUtils.getToRad](https://threejs.org/docs/#api/en/math/MathUtils.degToRad) convenience method to convert a degree value to a radian value that is used with the Euler class. For now I am creating a Euler class instance where I have a 45 degree angle for the x value of the EUler class, and I am just leaving the other values at 0.
 
 ```js
 (function () {
