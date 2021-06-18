@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2021-06-18 10:19:36
-version: 1.26
+updated: 2021-06-18 10:22:40
+version: 1.27
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -61,10 +61,10 @@ Next I want to create a new Instance of the THREE.Vector3 class and here is wher
     scene.add(cube);
     // USING THE APPLY EULER Vector3 METHOD
     var e = new THREE.Euler(
-        THREE.MathUtils.degToRad(45),
-        THREE.MathUtils.degToRad(0), 
+        THREE.MathUtils.degToRad(0),
+        THREE.MathUtils.degToRad(45), 
         THREE.MathUtils.degToRad(0));
-    var v = new THREE.Vector3(1, 0, 0).applyEuler(e).normalize().multiplyScalar(3);
+    var v = new THREE.Vector3(2, 0, 0).applyEuler(e);
     cube.position.copy(v);
  
     // camera, render
