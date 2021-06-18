@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2021-06-18 10:29:34
-version: 1.30
+updated: 2021-06-18 10:38:21
+version: 1.31
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -91,20 +91,22 @@ So now that I have a basic example of this worked out, I often like to make at l
 (function () {
  
     // simple create cube helper
-    var createCube = function(){
+    var createCube = function () {
         var cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial());
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshNormalMaterial());
         return cube;
     };
  
-    var vectorFromAngles = function(a, b, c, len){
-        len = len = undefined ? 1 : len;
+    // vector fro angles helper
+    var vectorFromAngles = function (a, b, c, len, startVec) {
+        len = len === undefined ? 1 : len;
+        startVec = startVec === undefined ? new THREE.Vector3(1, 0, 0) : startVec;
         var e = new THREE.Euler(
-            THREE.MathUtils.degToRad(a),
-            THREE.MathUtils.degToRad(b), 
-            THREE.MathUtils.degToRad(c));
-        var v = new THREE.Vector3(0, 1, 0).applyEuler(e).normalize();
+                THREE.MathUtils.degToRad(a),
+                THREE.MathUtils.degToRad(b),
+                THREE.MathUtils.degToRad(c));
+        var v = startVec.applyEuler(e).normalize();
         return v.multiplyScalar(len);
     };
  
@@ -114,12 +116,11 @@ So now that I have a basic example of this worked out, I often like to make at l
  
     var cube = createCube();
     scene.add(cube);
- 
+    // USING MY VECTOR FROM ANGLES METHOD
     var v = vectorFromAngles(90, 0, 0, 1);
-    console.log(v);
     cube.position.copy(v);
  
-    // CAMERA
+    // camera, render
     var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
     camera.position.set(5, 5, 5);
     camera.lookAt(0, 0, 0);
@@ -127,23 +128,21 @@ So now that I have a basic example of this worked out, I often like to make at l
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
+    // loop
     var lt = new Date(),
     a = 0,
     b = 0,
-    c = 90,
+    c = 0,
     fps = 30;
-    var loop = function(){
+    var loop = function () {
         var now = new Date(),
-        secs = ( now - lt ) / 1000;
- 
+        secs = (now - lt) / 1000;
         requestAnimationFrame(loop);
- 
-        if(secs > 1 / fps){
+        if (secs > 1 / fps) {
             b += 90 * secs;
             b %= 360;
             var v = vectorFromAngles(a, b, c, 1.5);
             cube.position.copy(v);
- 
             lt = now;
             renderer.render(scene, camera);
         }
