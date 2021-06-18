@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2021-06-18 10:18:06
-version: 1.25
+updated: 2021-06-18 10:19:36
+version: 1.26
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -39,7 +39,7 @@ So then lets start out with a basic example of this apply user Vector3 method to
 
 When positioning the cube I create an Instance of the Euler class that I will be using as the argument value for the apply Euler method. For this example I am using the [THREE.MathUtils.getToRad](https://threejs.org/docs/#api/en/math/MathUtils.degToRad) convenience method to convert a degree value to a radian value that is used with the Euler class. For now I am creating a Euler class instance where I have a 45 degree angle for the x value of the Euler class, and I am just leaving the other values at 0.
 
-Next I want to create a new Instance of the THREE.Vector3 class and here is where things get a little tricky. I want to make sure that the length of the Vector3 instance is not zero. The default values for a Vector3 are 0,0,0 and if that is the case applying any Euler value to the vector will not change anything when it comes to the direction of the vector because everything is 0.
+Next I want to create a new Instance of the THREE.Vector3 class and here is where things get a little tricky. I want to make sure that the length of the Vector3 instance is not zero. The default values for a Vector3 are 0,0,0 and if that is the case applying any Euler value to the vector will not change anything when it comes to the direction of the vector because everything is 0. So for now I am just setting the starting position of the vector at some kind of starting direction such as any positive number on the x axis.
 
 ```js
 (function () {
