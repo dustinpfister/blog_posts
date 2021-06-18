@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 892
-updated: 2021-06-18 09:38:54
-version: 1.5
+updated: 2021-06-18 09:42:37
+version: 1.6
 ---
 
 When it comes to moving and rotating objects around in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are two general classed that come to mind [THREE.Vector3](https://threejs.org/docs/#api/en/math/Vector3), and [THREE.Euler](https://threejs.org/docs/#api/en/math/Euler). The Vector3 class has to do with creating an object that represents a Vector in Vector space, and as such the Vector3 class is great for working with a set of numbers that have to do with a specific position in space. 
@@ -19,7 +19,11 @@ So in this post I will be looking at the Vector3.applyEuler method and how it ca
 
 ## 1 - Applying a Euler angle to a Vector and what to know first
 
-This is a post on the Apply Euler method in the Vector3 class and any additional subjects that might come up when it comes to using this method. This is not a getting started type post on threejs, or javaScript in general so I assume that you are beyind the basic hello world type project when it comes to using threejs. However on top of that there are a few things that you should have fairly solid at this point, so in this section I will be quickly going over what those things are.
+This is a post on the Apply Euler method in the Vector3 class and any additional subjects that might come up when it comes to using this method. This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), or javaScript in general so I assume that you are beyond the basic hello world type project when it comes to using threejs. However on top of that there are a few things that you should have fairly solid at this point, so in this section I will be quickly going over what those things are.
+
+### 1.1 - There is a great deal more to be aware of when it comes to the eEctor3 class
+
+It might be a good idea to take a second look at the Vector3 class in general and look over what there is to work with when it comes to the various prototype methods beyond that of the apply Euler method.
 
 ## 2 - Basic Vector3.applyEuler example
 
