@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 463
-updated: 2021-06-19 07:05:30
-version: 1.21
+updated: 2021-06-19 07:08:13
+version: 1.22
 ---
 
-When [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) version r104 was introduced a few light probes feature was added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another asset of interest in the repository that are being used with this new three.js feature. So I played around with this in three.js, and as such I should take a moment to wrote a quick post on light probes in three.js.
+When [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) version r104 was introduced a few light probes feature where added to the core of the library. As of this writing there is not much in terms of documentation at the three.js website, but there is an [official example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_lightprobe.html) in the github repository as well as another assets of interest in the repository that are being used with this new three.js feature. 
+
+So I played around with the light probe in three.js, and as such I should take a moment to write a quick post on the subject of light probes.
 
 <!-- more -->
 
