@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-06-20 11:04:38
-version: 1.29
+updated: 2021-06-20 11:06:37
+version: 1.30
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -41,7 +41,7 @@ First off lets start with a very basic example of the standard material, by crea
 
 For this example though I am not going to do anything to advanced when it comes to the emissive property and other related properties just a solid color. So I create the Mesh object with the THREE.Mesh constructor, and then pass the geometry that I want as the first argument, followed by the instance of the standard material created with the THREE.MeshStandardMaterial constructor. I then add the mesh object to the scene with the add method of the scene object.
 
-I will then want to add at least one of not more light sources to the scene. For this example I am going with the Point light which I create with the THREE.PointLight constructor. I could position this point light by itself and add it directly to the scene, but I often like to make it a child of another object in the scene such as another mesh object, or even a child of the camera.
+I will then want to add at least one of not more light sources to the scene. For this example I am going with the Point light which I create with the THREE.PointLight constructor. I could position this point light by itself and add it directly to the scene, but I often like to make it a child of another object in the scene such as another mesh object, or even a child of the camera. For this example I made it a child of a mesh object where I am using the sphere geometry for it along with the basic material. This way I can see where the point light is located in the scene.
 
 ```js
 // creating a box with the standard material
