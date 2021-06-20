@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-06-20 10:39:14
-version: 1.22
+updated: 2021-06-20 10:46:41
+version: 1.23
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -23,7 +23,13 @@ This is a post on the standard material in three.js that is used along with a ge
 
 The standard material is still just one of many options with the various [mesh materials](/2018/04/30/threejs-materials/) to work with in threejs. The standard material is a good option when it comes to creating a final state of a project, however there are a number of other options that work well as place holders when it comes to focusing on other aspects of a project that have to do with the state of a geometry, or how a scene should be updated over time. There is the Mesh Normal Material that is great for seeing what the the current state of the normal property of a geometry is. Another good starting option is the [depth material](/2021/05/04/threejs-depth-material/) that will render the faces of a geometry based on the position of the geometry to a camera and the near and far settings of the camera.
 
-### 1.2 - Version Numbers matter with three.js
+### 1.2 - Know the options when it comes to light sources
+
+### 1.3 - Be mindful of the differences with the color property compared to the baisc material
+
+One of the major reasons why I would use the standard material is because I want to do something involving one or more light sources. When it comes to the Basic Material I just need to worry about the color property when it comes to setting a solid color for the mesh. I then will maybe just use a color map with the basic material as a way to go about adding some texture. I can do the same with the standard material it is just that now I would want to set a solid color for the mesh using the emissve property as any color that I set with the color property will only show up when a light source of some kind is present.
+
+### 1.3 - Version Numbers matter with three.js
 
 When I wrote this post I was using r127 of three.js which was a later version of threejs in early 2021. I do not think much has changed with the standard material in some time now, but code breaking changes are made every now and then with many other aspects of the library.
 
