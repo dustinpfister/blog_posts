@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-06-20 10:27:02
-version: 1.19
+updated: 2021-06-20 10:32:26
+version: 1.20
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to [mesh materials](/2018/04/30/threejs-materials/) in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -19,7 +19,11 @@ There are some additional materials that might be worth mentioning as contenders
 
 This is a post on the standard material in three.js that is used along with a geometry to skin a Mesh object that can then be added to a scene. There is a great deal that you should be aware of before getting into the depth of what there is to know about when it comes to materials specifically, so in other words this is not a [getting started post on three.js](/2018/04/04/threejs-getting-started/) let alone javaScript in general. So I assume that you have worked out at least a few basic examples of three.js, and are not just looking into what the options are when it comes to skinning a mesh object. I will not be going over all the little basics that you should know at this point, but I will be going over a few things that you might want to read up more on in this section.
 
-### 1.1 - Version Numbers matter with three.js
+### 1.1 - There are many other basic options with materials
+
+The standard material is a great option when it comes to creating a final state of a project, however there are a number of other options that work well as place holders when it comes to focusing on other aspects of a project that have to do with the state of a geometry, or how a scene should be updated over time. There is the Mesh Normal Material that is great for seeing what the the current state of the normal property of a geometry is. Another good starting option is the depth material that will render the faces of a geometry based on the position of the geometry to a camera and the near and far settings of the camera.
+
+### 1.2 - Version Numbers matter with three.js
 
 When I wrote this post I was using r127 of three.js.
 
