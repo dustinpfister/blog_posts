@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-06-20 11:21:31
-version: 1.33
+updated: 2021-06-20 11:27:40
+version: 1.34
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -252,3 +252,13 @@ Another options when it comes to something like this is to use some ambient ligh
 
 More often than not the standard material is my default go to material that I use with just about every project in which I start playing around with light. There is a great deal more to write about when it comes to the various kind of maps to work with when it comes to using this material. When it comes to getting more into the details of this material I might come around to edit this post, or write some new ones as I get around to it. For now there is my main post on [mesh materials](/2018/04/30/threejs-materials/) in general in which I briefly go over most of the materials that are built into three.js.
 
+I do get around to editing my posts on threejs now and then, so at some point I would like to expand this post with additional examples that make use of more of the features there are to work with when it comes to the standard material. One feature I would like to look into more is the metalness property.
+
+
+```js
+var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshStandardMaterial({ color: 'red', metalness: 1}));
+```
+
+There is also a kind of map that allows for me to set want areas of a face that will be effected more so than others when it comes to this feature. There are a number of other kinds of maps that I should work out examples for when it comes to this materials, the most pressing of which might be the environment map.
