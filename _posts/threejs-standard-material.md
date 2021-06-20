@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 854
-updated: 2021-06-20 10:52:56
-version: 1.25
+updated: 2021-06-20 10:56:35
+version: 1.26
 ---
 
 A long time ago I wrote a post on the [basic material](/2018/05/05/threejs-basic-material/) in [three js](https://threejs.org/), but oddly enough I never got around to writing a post on the [standard material](https://threejs.org/docs/index.html#api/en/materials/MeshStandardMaterial) which is on of several options with materials that make use of light sources. When it comes to mesh materials in threejs the basic material is a nice starting point, and in some examples and projects in which I am not doing anything with light it might even get the job done just fine. However when it comes to working with everything that three.js has to offer when it comes to light sources, and the various kinds of texture maps there are to work with, the standard material is maybe one of the best all round options.
@@ -37,9 +37,7 @@ When I wrote this post I was using r127 of three.js which was a later version of
 
 ## 2 - Basic example of the standard material
 
-First off lets start with a very basic example of the standard material, by creating a cube using the Box Geometry constructor for the geometry to use for the mesh. Next I will create an instance of the standard material for the mesh that will use a solid color of red. However this will not work out as you might expect when it comes to using the basic material, as if you just use the standard material itself without a light source you will not see anything.
-
-There are ways of using the standard material without a light source by making use of the emissve property, and better yet an emissve map. However when it comes to using the standard material with the color property I am going to want to have a light source. When it comes to light sources there are many options, but I usually like to go with a point light.
+First off lets start with a very basic example of the standard material, by creating a cube using the [Box Geometry constructor](/2021/04/26/threejs-box-geometry/) for the geometry to use for the mesh. Next I will create an instance of the standard material for the mesh that will use a solid color of red. However this will not work out as you might expect when it comes to using the basic material, as when I just use the standard material itself without a light source I will not see anything. The reason why is becuase a light source is needed in order to see the color, and if I want to have a color that will always show up no mater what I will want to use the emissive property.
 
 ```js
 // creating a box with the standard material
