@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 17:04:09
-version: 1.14
+updated: 2021-06-21 17:06:55
+version: 1.15
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -70,6 +70,8 @@ loader.load(
 In this example I just passed a string to a single image as the first argument, and I also passed just a single call back that will fire when the loading of the file is done. So then there is the question of what to do when it comes to loading not just one file, but a few files. Also what if there is a problem loading one or more files? With that said there should be a way to set a callback that will fire when something goes wrong. So with that said I think I should get around to making at least a few more examples of this texture loader, and many get around to even writing about some alternatives to using the texture loader.
 
 ## 3 - Load more than one image to use as a texture
+
+So then there is the topic of how to go about [loading more that one texture in threejs](https://stackoverflow.com/questions/35015251/how-do-i-load-multiple-textures-with-the-new-three-textureloader) as the texture loader by itself will just load one image at a time. Well I am sure that there are all kinds of ways to go about doing this, here I have an example that I worked out real fat that makes use of the Promise all method, along with the array map prototype method to all the texture loader more than one time for an array of urls.
 
 ```js
 var loadTexture = function (url) {
