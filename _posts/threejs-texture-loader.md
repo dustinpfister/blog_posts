@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 16:11:15
-version: 1.6
+updated: 2021-06-21 16:11:55
+version: 1.7
 ---
 
-There are still a great number of features that I have not got around to writing a post about when it comes to using threejs, many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
+There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
 
 When it comes to my various threejs examples that I make for these posts I often like to use canvas elements are a way to create quick simple textures with javaScript code. However I am sure there will be times when it comes to starting to work on an actually project with threejs that I will want to use external image files rather than some kind of solution that involves a little javaScript code.
 
