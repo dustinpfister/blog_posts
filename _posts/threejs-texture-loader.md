@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 17:32:41
-version: 1.25
+updated: 2021-06-21 17:35:09
+version: 1.26
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -29,7 +29,7 @@ In these examples I am using an absolute path to a file that I am hosting locall
 
 ### 1.3 - Canvas elements can also be used to create textures
 
-I think I should also mention here that it is possible to use canvas elements as a way to create textures that can then be used for the maps of materials.
+I think I should also mention here that it is possible to use [canvas elements as a way to create textures](/2018/04/17/threejs-canvas-texture) that can then be used for the maps of materials. That is creating an image with the 2d drawing context of a canvas element, and then create a texture with the THREE.CanvasTexture constructor or even just the THREE.Texture constructor actually. This is the main way that I like to make textures with javaScript code rather than an external image file.
 
 ### 1.4 - Version Numbers matter
 
