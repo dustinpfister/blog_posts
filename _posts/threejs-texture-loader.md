@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 15:56:49
-version: 1.1
+updated: 2021-06-21 15:58:58
+version: 1.2
 ---
 
-There are still a great number of features that I have not got around to writing a post about when it comes to using threejs, many of them are basic things that I should have wrote about a long time ago. One of which is just using the texture loader to load external image assets to be used a as textures for the various maps of a material.
+There are still a great number of features that I have not got around to writing a post about when it comes to using threejs, many of them are basic things that I should have wrote about a long time ago. One of which is just using the texture loader to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
 
 <!-- more -->
 
