@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 17:18:57
-version: 1.20
+updated: 2021-06-21 17:21:32
+version: 1.21
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -143,7 +143,7 @@ loadTextureCollection(urlArray)
 });
 ```
 
-If all goes well the end result will be an array of textures that will be available in the next then block of the promise returned by the load texture collection helper.
+If all goes well the end result will be an array of textures that will be available in the next then function call of the promise returned by the load texture collection helper. However I think it is always a good idea to have something in place that will fire in the event that sometime goes wrong loading the files. For this example I just create a single cube that makes use of the normal material, rater than two cubes that use each of the textures with the basic material.
 
 ## 4 - Conclusion
 
