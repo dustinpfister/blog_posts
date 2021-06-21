@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 17:30:52
-version: 1.24
+updated: 2021-06-21 17:32:41
+version: 1.25
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -27,7 +27,11 @@ If you prefer to use some other javaScript library for scripting http requests s
 
 In these examples I am using an absolute path to a file that I am hosting locally with the system that I am using. I will not be getting into the specifics about the differences between absolute and relative paths here as that is a bit off topic. However if you do not know what I am taking about then you should [read up more on the topic of absolute and relative paths](http://www.differencebetween.net/technology/difference-between-absolute-and-relative-path/) as it is something that you should get solid sooner or later.
 
-### 1.3 - Version Numbers matter
+### 1.3 - Canvas elements can also be used to create textures
+
+I think I should also mention here that it is possible to use canvas elements as a way to create textures that can then be used for the maps of materials.
+
+### 1.4 - Version Numbers matter
 
 When I wrote this post and the examples for this post I was using r127 of threejs. I have got into the habit of making sure I always make note of the version of threejs that I am using since there are always code breaking changes being made to the library.
 
