@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 17:13:59
-version: 1.18
+updated: 2021-06-21 17:17:20
+version: 1.19
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -75,7 +75,7 @@ So then there is the topic of how to go about [loading more that one texture in 
 
 The promise all is a prototype method of the native Promise object that should be there ti work with in all modern browsers, the array that is passed can be a collection of promise objects, and the returned promise object of the Promise all method will only resolve when all the promise objects in the array resolve. So when it comes to using this promise all method I often like to have a method that will return a promise object, and then just call that method in another function that will call it for each item in an array. 
 
-For this example I pass an array of urls to my load texture collection helper, 
+For this example I pass an array of urls to my load texture collection helper, inside the body of this helper that is given the array of urls I call the promise all method and pass the array of urls as the first argument, but I call the map method off of the array of urls, and call by load texture helper for each url. I then pass each url to the load texture method which wil return a promise object for each url using the texture loader for each image.
 
 ```js
 var loadTexture = function (url) {
