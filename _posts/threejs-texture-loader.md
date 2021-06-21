@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 16:01:17
-version: 1.3
+updated: 2021-06-21 16:06:25
+version: 1.4
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using threejs, many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -14,6 +14,14 @@ There are still a great number of features that I have not got around to writing
 When it comes to my various threejs examples that I make for these posts I often like to use canvas elements are a way to create quick simple textures with javaScript code. However I am sure there will be times when it comes to starting to work on an actually project with threejs that I will want to use external image files rather than some kind of solution that involves a little javaScript code.
 
 <!-- more -->
+
+## 1 - The texture loader in threejs and what to know first
+
+This is a post on the texture loader in threejs which is one of several built in loaders in the library. In addition to the texture loader there is an image loader that will just load an image, but not create an instance of THREE.texture for you, and also a generic file loader. 
+
+### 1.1 - There are many other ways to load files, and the THREE.Texture constructor can be used directly.
+
+If you prefer to use some other javaScript library for scripting http requests such as axios, or you want to use some browser built in feature such as the fetch api, or the tired yet true XMLHttpRequest then that can be done as an alternative to the texture loader. The only thing that I would have to do is just pass a reference to the image file to the THREE.texture constructor.
 
 ## 2 - Basic texture loader example
 
