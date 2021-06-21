@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 16:06:25
-version: 1.4
+updated: 2021-06-21 16:09:13
+version: 1.5
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using threejs, many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -17,7 +17,7 @@ When it comes to my various threejs examples that I make for these posts I often
 
 ## 1 - The texture loader in threejs and what to know first
 
-This is a post on the texture loader in threejs which is one of several built in loaders in the library. In addition to the texture loader there is an image loader that will just load an image, but not create an instance of THREE.texture for you, and also a generic file loader. 
+This is a post on the texture loader in threejs which is one of several built in loaders in the library. In addition to the texture loader there is an image loader that will just load an image, but not create an instance of THREE.texture for you, and also a generic file loader. However for this post I will be mainly write about a few quick, simple examples using just the Texture loader alone. In this section I will be going over a few things you should know about before continuing to read this beyond the fact that you should know at least a little when it comes to the basics of using threejs, and know at least a little about javaScript in general.
 
 ### 1.1 - There are many other ways to load files, and the THREE.Texture constructor can be used directly.
 
