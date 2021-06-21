@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 16:13:37
-version: 1.8
+updated: 2021-06-21 16:16:54
+version: 1.9
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -56,3 +56,7 @@ loader.load(
     }
 );
 ```
+
+## 3 - Conclusion
+
+That will be it for now on the texture loader at least for today, there is a lot more to write about when it comes to what to do with a texture after it is loader rather than just how to go about loading a texture. In this post I wanted to just stick to using an external image for a color map of a cube, but I did not get into the various other kinds of maps there are to work with in the basic material, as well as the many other materials that will work with light sources. However I guess getting into all of that would be a matter for another post.
