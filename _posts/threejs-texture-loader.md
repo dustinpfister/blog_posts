@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 16:16:54
-version: 1.9
+updated: 2021-06-21 16:19:50
+version: 1.10
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -24,6 +24,8 @@ This is a post on the texture loader in threejs which is one of several built in
 If you prefer to use some other javaScript library for scripting http requests such as axios, or you want to use some browser built in feature such as the [fetch api](/2018/03/27/js-fetch/), or the tired yet true [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) then that can be done as an alternative to the texture loader. The only thing that I would have to do is just pass a reference to the image file to the THREE.texture constructor.
 
 ## 2 - Basic texture loader example
+
+I often like to start out my post with a basic, simple hello world type example of a threejs feature. So in the example I will be loading just a single image that will be used to create a single texture. This single texture will then be used to create just a basic color map for an instance of the THREE.BasicMatreial. I will then be just creating and adding a cube to a scene object that will use this material.
 
 ```js
 // creating a scene
