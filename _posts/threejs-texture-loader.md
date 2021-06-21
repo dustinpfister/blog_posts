@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 893
-updated: 2021-06-21 16:31:56
-version: 1.13
+updated: 2021-06-21 17:04:09
+version: 1.14
 ---
 
 There are still a great number of features that I have not got around to writing a post about when it comes to using [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), many of them are basic things that I should have wrote about a long time ago. One of which is just using the [texture loader](https://threejs.org/docs/#api/en/loaders/TextureLoader) to load external image assets to be used a as textures for the various maps of a material. There are a number of loaders built into threejs itself and the texture loader is one of them, there are also a number of official loaders in the examples folder that have to do with loading all kinds of external file formats used by various 3d model editing programs such as blender such as the dae file loader.
@@ -69,7 +69,74 @@ loader.load(
 
 In this example I just passed a string to a single image as the first argument, and I also passed just a single call back that will fire when the loading of the file is done. So then there is the question of what to do when it comes to loading not just one file, but a few files. Also what if there is a problem loading one or more files? With that said there should be a way to set a callback that will fire when something goes wrong. So with that said I think I should get around to making at least a few more examples of this texture loader, and many get around to even writing about some alternatives to using the texture loader.
 
+## 3 - Load more than one image to use as a texture
 
-## 3 - Conclusion
+```js
+var loadTexture = function (url) {
+    var loader = new THREE.TextureLoader();
+    return new Promise(function (resolve, reject) {
+        var onDone = function (texture) {
+            resolve(texture);
+        };
+        var onError = function (err) {
+            reject(err)
+        };
+        loader.load(url, onDone, function () {}, onError);
+    });
+};
+ 
+var loadTextureCollection = function (urlArray) {
+    return Promise.all(urlArray.map(function (url) {
+            return loadTexture(url);
+        }));
+};
+ 
+var createTextureCube = function (texture) {
+    return new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshBasicMaterial({
+            map: texture
+        }));
+};
+ 
+// creating a scene
+var scene = new THREE.Scene();
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+ 
+var urlArray = [
+    '/img/smile-face/smile_face_128_128.png',
+    '/img/smile-face/smile_face_32_32.png'
+];
+ 
+loadTextureCollection(urlArray)
+// then if all images load
+.then(function (textures) {
+    var box = createTextureCube(textures[1]);
+    box.position.set(1, 0, 0);
+    scene.add(box);
+    var box = createTextureCube(textures[0]);
+    box.position.set(-1, 0, 0);
+    scene.add(box);
+    renderer.render(scene, camera);
+ 
+})
+// if there is a problem
+.catch(function () {
+    var box = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshNormalMaterial());
+    scene.add(box);
+    renderer.render(scene, camera);
+});
+```
+
+## 4 - Conclusion
 
 That will be it for now on the texture loader at least for today, there is a lot more to write about when it comes to what to do with a texture after it is loader rather than just how to go about loading a texture. In this post I wanted to just stick to using an external image for a color map of a cube, but I did not get into the various other kinds of maps there are to work with in the basic material, as well as the many other materials that will work with light sources. However I guess getting into all of that would be a matter for another post.
