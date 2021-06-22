@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-06-22 11:36:14
-version: 1.26
+updated: 2021-06-22 11:40:13
+version: 1.27
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -23,7 +23,11 @@ This is an post on [three.js](https://threejs.org/) and even then this is just a
 
 The scene object is a main object that will contain all of the objects that compose the objects of a threejs project. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object. The typical render that I often go with these days as of r127 is the [Web Gl renderer](/2018/11/24/threejs-webglrenderer/), as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs inclining the ones I was using when I first wrote this post there was also the 2d canvas renderer which is not removed from the core of threejs. It is still possible to use [some alternative renderer's](https://github.com/mrdoob/three.js/tree/r127/examples/js/renderers) which can be found in the examples folder of the threejs git hub repository.
 
-### 1.2 - Version Numbers matter with three.js
+### 1.2 - In order to use a renderer with a scene you will also need a camera
+
+In order to use the render function of a renderer I will need to pass the scene object to it, but I will also need to pass a camera to use also. There is a lot to cover when it comes to what the options are with cameras, but I typically like to just go with the perspective camera. The camera object can or can not be added to the scene object, but often I will add it to the scene anyway. if I add some kind of child object to the camera that I want to effect the scene such as a light source then I will have to add the camera t the scene of else those children will not be in the scene naturally.
+
+### 1.3 - Version Numbers matter with three.js
 
 When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r127. I have made an effort of making sure I mentioning what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
 
