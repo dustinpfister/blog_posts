@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2021-06-22 14:05:13
-version: 1.24
+updated: 2021-06-22 14:07:36
+version: 1.25
 ---
 
 There are a lot of texture maps that can be used with the various materials in[threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the basic material, or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will every get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps). Emissive maps are kind of cool because they allow for a kind of glow effect for a material that will always be in effect regardless of what the situation might be with lighting.
@@ -31,7 +31,7 @@ There are a number of options when it comes to [materials](/2018/04/30/threejs-m
 
 ### 1.3 - Color maps, and lighting.
 
-In order to really know what emissive maps are about you are going to want to play around with lighting, and also the color property and color maps that are effected by lighting.
+In order to really know what emissive maps are about you are going to want to play around with lighting, and also the color property and color maps that are effected by lighting. When it comes to what the options are with lighting there are again a range of options just like that of many other kinds of objects in threejs. For the most part thought I like to go with ambient light and point lights as a way to set an over all base about of light for all surfaces, and to also make use of something  where distance an direction have some effect on surfaces.
 
 ### 1.4 - Version numbers matter
 
