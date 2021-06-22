@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-06-22 11:27:22
-version: 1.24
+updated: 2021-06-22 11:32:45
+version: 1.25
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -19,7 +19,11 @@ There is a great deal of other things to cover when it comes to a scene though, 
 
 This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point an three.js. If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out if you are still fairly new to JavaScript in general. So then I assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into the basics of these topics here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
 
-### 1.1 - Version Numbers matter with three.js
+### 1.1 - In order to view a scene you will want to known how to set up a renderer
+
+The scene object is a main object that will contain all of the objects that compose the objects of a threejs project. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object. The typical render that I often go with these days as of r127 is the Web Gl renderer, as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs inclining the ones I was using when I first wote this post there was also the 2d canvas renderer which is not removed from the core of threejs. It is still possible to use some of these alternative renderer's which can be found in the examples folder of the threehs git hub repository.
+
+### 1.2 - Version Numbers matter with three.js
 
 When I first wrote this post I was using three.js r91, and the last time I edited this post and did some testing and editing of the source code examples I was using r127. I have made an effort of making sure I mentioning what version of threejs I am using when making these posts as threejs is a pretty fast moving project, and code breaking changes happen often.
 
