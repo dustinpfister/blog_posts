@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2021-06-22 13:44:21
-version: 1.14
+updated: 2021-06-22 13:46:35
+version: 1.15
 ---
 
 There are a lot of texture maps that can be used with the various materials in[threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the basic material, or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will every get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps). Emissive maps are kind of cool because they allow for a kind of glow effect for a material that will always be in effect regardless of what the situation might be with lighting.
@@ -23,7 +23,7 @@ There is a great deal that one should be aware of before getting into emissive m
 
 ### 1.1 - The texture loader and canvas textures.
 
-The emissive map is a kind of texture map for a material, and in order to use any of these texture maps you will need, well, a texture. A texture can be loaded in with something like the three.js built in texture loader, or if you have another means to load image files they can be passed as an argument to the THREE.Texture constructor. When it comes to creating a texture with a little javaScript code one way to go about doing so would be to make use of canvas elements, and the 2d drawing context as a way to create textures that way.
+The emissive map is a kind of texture map for a material, and in order to use any of these texture maps you will need, well, a texture. A texture can be loaded in with something like the three.js built in [texture loader](/2021/06/21/threejs-texture-loader/), or if you have another means to load image files they can be passed as an argument to the THREE.Texture constructor. When it comes to creating a texture with a little javaScript code one way to go about doing so would be to make use of [canvas elements](/2018/04/17/threejs-canvas-texture/), and the 2d drawing context as a way to create textures that way.
 
 ### 1.2 - Read up more on materials to know your options
 
