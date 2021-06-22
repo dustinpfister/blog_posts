@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-06-22 11:17:23
-version: 1.22
+updated: 2021-06-22 11:24:53
+version: 1.23
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -17,7 +17,7 @@ There is a great deal of other things to cover when it comes to a scene though, 
 
 ## 1 - What to know
 
-This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point an three.js. If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) also that may help a little.
+This is an post on [three.js](https://threejs.org/) and even then this is just a general post that covers just one little constructor known as [THREE.Scene](https://threejs.org/docs/index.html#api/scenes/Scene). If you are new to three.js you might want to start with [my getting started post on three.js](/2018/04/04/threejs-getting-started/) as a starting point an three.js. If you are new to javaScript in general I have wrote a few [getting started type posts with javaScript](/2018/11/27/js-getting-started/) that might be worth checking out if you are still fairly new to JavaScript in general. So then I assume that you have at least some basic working knowledge of the basics of threejs and JavaScript, so I will not be getting into the basics of these topics here. However in this section I will quickly cover a few things that you might want to read up more on when it comes to getting a more solid understanding of the scene objects, and some other related topics that you show know in order to do something with a scene object.
 
 ### 1.1 - Version Numbers matter with three.js
 
