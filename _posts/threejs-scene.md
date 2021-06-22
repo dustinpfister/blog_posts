@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 182
-updated: 2021-06-22 11:32:45
-version: 1.25
+updated: 2021-06-22 11:36:14
+version: 1.26
 ---
 
 A [Scene](https://threejs.org/docs/index.html#api/scenes/Scene) object in [three.js](https://threejs.org/) is an instance of the THREE.Scene constructor that can be used to place everything that makes up an environment in a three.js project. It can contain cameras, lights, and of course mesh objects composed of a geometry and material, along with many other types of various objects such as arrow helpers. The scene object can then be passed to a render function along with a camera to render a view of the scene from the perspective of the given camera.
@@ -21,7 +21,7 @@ This is an post on [three.js](https://threejs.org/) and even then this is just a
 
 ### 1.1 - In order to view a scene you will want to known how to set up a renderer
 
-The scene object is a main object that will contain all of the objects that compose the objects of a threejs project. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object. The typical render that I often go with these days as of r127 is the Web Gl renderer, as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs inclining the ones I was using when I first wote this post there was also the 2d canvas renderer which is not removed from the core of threejs. It is still possible to use some of these alternative renderer's which can be found in the examples folder of the threehs git hub repository.
+The scene object is a main object that will contain all of the objects that compose the objects of a threejs project. However in order to view the state of one of these scene objects it is called for to use some kind of renderer as a way to view the current state of the scene object. The typical render that I often go with these days as of r127 is the [Web Gl renderer](/2018/11/24/threejs-webglrenderer/), as browser support for web gl is now pretty good compared to the way things where a few years ago. In older versions of threejs inclining the ones I was using when I first wrote this post there was also the 2d canvas renderer which is not removed from the core of threejs. It is still possible to use [some alternative renderer's](https://github.com/mrdoob/three.js/tree/r127/examples/js/renderers) which can be found in the examples folder of the threejs git hub repository.
 
 ### 1.2 - Version Numbers matter with three.js
 
