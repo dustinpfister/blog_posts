@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2021-06-22 10:52:36
-version: 1.23
+updated: 2021-06-22 10:53:40
+version: 1.24
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -21,15 +21,11 @@ This post will serve as a general overview of the mesh materials in general in t
 
 This is not my [getting started post on three.js](/2018/04/04/threejs-getting-started/), if you are new to three.js you might choose to start with a post in which the basic of the library are covered. This is a post on three.js in which I assume you have basic knowledge of how to make a three.js project, and now only seek to have a deeper understanding of materials to work with when it comes to creating mesh objects.
 
-### 1.1 - Version number matters with three.js
-
-Three.js is a project in which the version number matters a whole lot. Older posts on three.js often contain examples that will break on newer revisions and vise versa. In most of these posts I have been sticking to [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91)
-
-### 1.2 - The Material base Class
+### 1.1 - The Material base Class
 
 All materials inherit from the [Material base class](https://threejs.org/docs/index.html#api/materials/Material). This base class contains a lot of properties some of which are superseded by prosperities in a certain material. I will not be getting into the Base class in detail here, as I still need to write more demos with many of the properties. Also This post is going to be pretty lengthly to begin with anyway. However I think I should at least cover some of the most important properties to be aware of in the base material class that I have dealt with thus far.
 
-### 1.3 - The Material.side property
+### 1.2 - The Material.side property
 
 When dealing with a material that will be used on a mesh in which faces will be viewed from both sides, the side property of the material base class may be of interest.
 
@@ -41,7 +37,7 @@ var planeMaterial = new THREE.MeshBasicMaterial({
 ```
 As you might guess this will make it so the material is used on both sides of the faces used in a mesh. By default it is the THREE.FrontSide constant, there is also a THREE.BackSide constant as well.
 
-### 1.4 - Material.transparent, and Material.opacity
+### 1.3 - Material.transparent, and Material.opacity
 
 These two properties have to do with the opacity of the material. The transparent property expects a boolean value, which will turn transparency on or off depending on the value. If it is set true, and you do not see any opacity effect it could be because the default value for material.opacity is 1 which means fully opaque. Set the opacity property to a value between 0 and 1 to set the opacity of the material of transparency is enabled.
 
@@ -53,6 +49,10 @@ var planeMaterial = new THREE.MeshBasicMaterial({
     opacity: .4
 });
 ```
+
+### 1.4 - Version number matters with three.js
+
+Three.js is a project in which the version number matters a whole lot. Older posts on three.js often contain examples that will break on newer revisions and vise versa. In most of these posts I have been sticking to [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91)
 
 ## 2 - Mesh Materials
 
