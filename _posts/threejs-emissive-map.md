@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2021-06-22 13:32:02
-version: 1.7
+updated: 2021-06-22 13:33:44
+version: 1.8
 ---
 
 There are a lot of texture maps that can be used with the various materials in[threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the basic material, or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will every get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others and one of these map options is an emissive map.
@@ -21,7 +21,11 @@ However there is not just thinking in terms of simple solid colors for objects, 
 
 There is a great deal that one should be aware of before getting into emissive maps in threejs. Of course it should go without saying that you should know at least a thing or two about the very basics of staring a threejs project, and how to work with client side javaScript in general. So I will not be getting into every little detail about what should be known before hand, but I can take a moment to mention at least a few things that you might want to read up on first.
 
-### 1.1 - Version numbers matter
+### 1.1 - Read up more on materials to know your options
+
+There are a number of options when it comes to materials that support the emissive map feature, for these examples I will be sticking mainly to the standard material.
+
+### 1.2 - Version numbers matter
 
 When I wrote this post for the first time I was using r127 of threejs.
 
