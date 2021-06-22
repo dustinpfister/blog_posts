@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 894
-updated: 2021-06-22 14:02:41
-version: 1.22
+updated: 2021-06-22 14:03:38
+version: 1.23
 ---
 
 There are a lot of texture maps that can be used with the various materials in[threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene), such as using a basic color map with the basic material, or an alpha map to adjust transparency of a material based on the state of a texture. I am not sure if I will every get around to writing posts on every kind of map there is to be aware of in threejs, but there are some that really stand out for me more than others and one of these map options is an [emissive map](https://stackoverflow.com/questions/23717512/three-js-emissive-material-maps). Emissive maps are kind of cool because they allow for a kind of glow effect for a material that will always be in effect regardless of what the situation might be with lighting.
@@ -31,7 +31,7 @@ There are a number of options when it comes to [materials](/2018/04/30/threejs-m
 
 ### 1.3 - Version numbers matter
 
-When I wrote this post for the first time I was using r127 of threejs.
+When I wrote this post for the first time I was using r127 of threejs which was a late version of threejs that was released in early 2021.
 
 ## 2 - Basic emissive map example
 
