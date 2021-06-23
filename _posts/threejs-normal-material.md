@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2021-06-23 13:37:23
-version: 1.6
+updated: 2021-06-23 13:44:11
+version: 1.7
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial). The normal material will render colors to the faces of a geometry by way of the state of the normal attribute of the buffer geometry. The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light as the normal material is used for that, but it is also needed for a material such as the normal material.
@@ -16,7 +16,7 @@ The normal material can be used as a way to find out if there are problems with 
 
 ## 1 - The normal material and what you should know first
 
-In this post I am going over a few javaScript source code examples that make use of the normal material in the library known as threejs. So I trust that you have at least some knowledge of how to get up and running with the very basic of threejs when it comes to linking to the library and creating a scene object and so forth.
+In this post I am going over a few javaScript source code examples that make use of the normal material in the library known as threejs. So I trust that you have at least some knowledge of how to get up and running with the very basic of threejs when it comes to linking to the library and creating a scene object and so forth. I will not be getting into the very basics of threejs let alone JavaScript in general here, but I will be quickly going over some things that you show read up more on if you have not done so before hand at this point.
 
 ## 2 - Basic example using the normal material
 
