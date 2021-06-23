@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2021-06-23 14:44:51
-version: 1.24
+updated: 2021-06-23 14:55:29
+version: 1.25
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial). The normal material will render colors to the faces of a geometry by way of the state of the normal attribute of the buffer geometry. The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light as the normal material is used for that, but it is also needed for a material such as the normal material.
@@ -63,7 +63,36 @@ renderer.render(scene, camera);
 
 Now that I have a scene object, and a mesh added to the scene with a geometry and a material I can now just create a camera and a renderer.
 
-## 3 - Conclusion
+## 3 - Mutating the normal attribute to see how that changes the appearance
+
+```js
+// scene
+var scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
+ 
+var geo = new THREE.BoxGeometry(1, 1, 1),
+normal = geo.getAttribute('normal');
+ 
+normal.array[0] = -1;
+normal.array[1] = -1;
+normal.array[2] = -1;
+ 
+var box = new THREE.Mesh(
+        geo,
+        new THREE.MeshNormalMaterial());
+scene.add(box);
+ 
+// camera and renderer
+var camera = new THREE.PerspectiveCamera(60, 320 / 240, 0.1, 1000);
+camera.position.set(1.25, 0.85, 0.75);
+camera.lookAt(0, -0.125, 0);
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(640, 480);
+document.getElementById('demo').appendChild(renderer.domElement);
+renderer.render(scene, camera);
+```
+
+## 4 - Conclusion
 
 The normal material is often by default go to material when I am working out things that do not have to do with materials and textures and lighting just yet. The normal material is often a set up from using the basic material with just a solid color and not much of anything else as just results in a blob of color in the canvas rather than something that looks like a solid shape. The mesh normal material is one way to show that there are sides to an object, however there are some additional options when it comes to a simple place holder material such as the depth material, or using the basic material just adding a simple place holder texture to it.
 
