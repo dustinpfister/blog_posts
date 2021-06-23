@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 895
-updated: 2021-06-23 13:58:40
-version: 1.12
+updated: 2021-06-23 14:03:42
+version: 1.13
 ---
 
 One of the materials that I might use as a kind of place holder material in [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) would be the [normal material](https://threejs.org/docs/#api/en/materials/MeshNormalMaterial). The normal material will render colors to the faces of a geometry by way of the state of the normal attribute of the buffer geometry. The normal attribute is an array of values that corresponds with the position attribute that is used to set what the direction is of each vertex rather than the position. The normal attribute is a must have attribute when it comes to using any material that has to do with light as the normal material is used for that, but it is also needed for a material such as the normal material.
@@ -26,7 +26,7 @@ When I first wrote this post I was using r127 of threejs.
 
 In this section I am going to be writing about a hello world of mesh normal material examples. So in a way this is just a very basic getting started example of threejs in general actually as I do still like to start out my threejs posts with very basic examples before getting into anything that might be a bot more advanced.
 
-I start out the source code example by creating a scene object, and then after that I will want to create a mesh object and add that mesh object to the scene. When creating a mesh object I am going to want to pass a geometry as the girst argument, and then a material as the second argument. There is getting into creating a custom geometry, but when doing so I will need to create the normal attribute manually. So for this basic example I will be using one of the built in geometry constructors such as the THREE.BoxGeometry constructor, this will have the normal attribute set up to begin with.
+I start out the source code example by creating a scene object, and then after that I will want to create a mesh object and add that mesh object to the scene. When creating a mesh object I am going to want to pass a geometry as the first argument, and then a material as the second argument. There is getting into creating a custom geometry, but when doing so I will need to create the normal attribute manually. So for this basic example I will be using one of the built in geometry constructors such as the THREE.BoxGeometry constructor, this will have the normal attribute set up to begin with. After I have my geometry and pass it as the first argument to the mesh constructor, I then just need a material to use with the geometry of the mesh object, and for this I am of course using the Normal Material. For this example I am just calling the THREE.MeshNormalMaterial constructor by itself without passing any options to it.
 
 ```js
 // scene
