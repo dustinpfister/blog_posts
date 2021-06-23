@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2021-06-22 10:53:40
-version: 1.24
+updated: 2021-06-23 14:44:50
+version: 1.25
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -132,7 +132,7 @@ the main thing to understand here is when just setting a solid color, the color 
 
 ### 2.4 - Mesh Normal Material
 
-The [normal material](https://threejs.org/docs/index.html#api/materials/MeshNormalMaterial) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_(geometry)). Coloring of the shape is based on the direction of the shapes normals.
+The [normal material](/2021/06/23/threejs-normal-material/) has to do with [vector normals](https://en.wikipedia.org/wiki/Normal_%28geometry%29) that exist in the [normal attribute of a buffer geometry instance](/2021/06/08/threejs-buffer-geometry-attributes-normals/) that is used with the mesh object. Coloring of the shape is based on the direction of the vector normals then, but the material does not take into account anything that is going on with light in a scene unlike other materials that make use of the normal attribute of the geometry.
 
 ```js
 var cube = new THREE.Mesh(
