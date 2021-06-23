@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2021-06-23 15:06:44
-version: 1.27
+updated: 2021-06-23 15:15:24
+version: 1.28
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
@@ -25,7 +25,11 @@ This is not my [getting started post on three.js](/2018/04/04/threejs-getting-st
 
 All materials inherit from the [Material base class](https://threejs.org/docs/index.html#api/materials/Material). This base class contains a lot of properties some of which are superseded by prosperities in a certain material. I will not be getting into the Base class in detail here, as I still need to write more demos with many of the properties. Also This post is going to be pretty lengthly to begin with anyway. However I think I should at least cover some of the most important properties to be aware of in the base material class that I have dealt with thus far.
 
-### 1.2 - The Material.side property
+### 1.2 - The color, and emissive properties of materials
+
+Many materials have a way to set a solid color property for the material, but how this works will change a little from one material to another. For example the basic material will not do anything with light, so when a solid color is set for the basic material that will just be the solid color for all the faces of the geometry used in the mesh. So then one might assume that will be the case in all other materials, but that is not true. The color property in the standard material is more or less the same thing, but it works in conjunction with what is going on when it comes to light in a scene. So if I set a solid color for an instance of a standard material, but do not add light to a scene, then I will not see anything. So when it comes to the standard materials there is another property that comes into play called the emissive property. It is this emissive property that I use to set a color that will always show up not matter what when it comes to what might be going on with light.
+
+### 1.3 - The Material.side property
 
 When dealing with a material that will be used on a mesh in which faces will be viewed from both sides, the side property of the material base class may be of interest.
 
@@ -37,7 +41,7 @@ var planeMaterial = new THREE.MeshBasicMaterial({
 ```
 As you might guess this will make it so the material is used on both sides of the faces used in a mesh. By default it is the THREE.FrontSide constant, there is also a THREE.BackSide constant as well.
 
-### 1.3 - Material.transparent, and Material.opacity
+### 1.4 - Material.transparent, and Material.opacity
 
 These two properties have to do with the opacity of the material. The transparent property expects a boolean value, which will turn transparency on or off depending on the value. If it is set true, and you do not see any opacity effect it could be because the default value for material.opacity is 1 which means fully opaque. Set the opacity property to a value between 0 and 1 to set the opacity of the material of transparency is enabled.
 
@@ -50,7 +54,7 @@ var planeMaterial = new THREE.MeshBasicMaterial({
 });
 ```
 
-### 1.4 - Version number matters with three.js
+### 1.5 - Version number matters with three.js
 
 Three.js is a project in which the version number matters a whole lot. Older posts on three.js often contain examples that will break on newer revisions and vise versa. In most of these posts I have been sticking to [three.js 0.91.0 (r91)](https://github.com/mrdoob/three.js/tree/r91)
 
