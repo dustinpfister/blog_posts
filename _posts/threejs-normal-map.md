@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-24 14:28:08
-version: 1.6
+updated: 2021-06-24 14:30:24
+version: 1.7
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -171,3 +171,5 @@ loop();
 ## 4 - Conclusion
 
 So far I can not say that I am using normal maps that often, in fact thus far I am not using them at all. However if I really truly get into 3d modeling at some point I am sure that I might want to create these kinds of maps now and then to adjust things a little when it comes to lighting.
+
+For now as of this writing at last I am still sticking to simple color maps, and also I like to play around with emissive maps. Those two kinds of maps just seem to be what comes first naturally when it comes to learning about all the various texture maps that there are to work with materials. Also in just about any project I am typically going to always want to use those two in most cases.
