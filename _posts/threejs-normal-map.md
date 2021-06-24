@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-24 15:00:45
-version: 1.17
+updated: 2021-06-24 15:06:16
+version: 1.18
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -97,6 +97,8 @@ renderer.render(scene, camera);
 ## 3 - Animation loop example
 
 In order to gain a better sense of what kind of effect the normal map has to the surface of a mesh I am going to want to make some kind of animation loop, and change some values over time. I could change things like the position of the point light that I am using, or rotate the cube. However I am thinking that it is the texture that I am using for the normal map that should be changing over time to see what the effect is when I change rgb values used when drawing to the canvas.
+
+So for this example I started out with my basic example, but I made some changes so that I can call the draw method over and over again in a loop rather than just once, and being done with it. So my create canvas texture helper function now returns an object that contains the texture as a property of the object, and also references to the canvas element, and the 2d drawing context.
 
 ```js
 var createCanvasTexture = function (draw) {
