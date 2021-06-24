@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-24 14:39:12
-version: 1.11
+updated: 2021-06-24 14:40:54
+version: 1.12
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -83,6 +83,8 @@ renderer.render(scene, camera);
 ```
 
 ## 3 - Animation loop example
+
+In order to gain a better sense of what kind of effect the normal map has to the surface of a mesh I am going to want to make some kind of animation loop, and change some values over time.
 
 ```js
 var createCanvasTexture = function (draw) {
