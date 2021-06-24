@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-24 14:37:52
-version: 1.10
+updated: 2021-06-24 14:39:12
+version: 1.11
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -27,7 +27,7 @@ When I wrote this post I was using r127 of threejs.
 
 In order to make even a basic getting started type example of the use of a normal map, I am first going to need a texture. So then I am going to want to either load an external image file with something like the texture loader, or create a texture with javaScriot code alone using something like canvas elements. When it comes to writing examples for these kinds of threejs features I like to stick to pure javaScript solutions so I will be using a canvas element to create the texture that I will be using for the normal map. So at the top of the source code of this example I have a create canvas texture helper that will create a canvas element, draw to it with a given draw function, and then return a texture using the THREE.CanvasTexture constructor.
 
-I then have a create normal map helper that will create and return a texture that I want by calling my create canvas texture helper and passing the draw function to use. The next helper function that I worked out just creates and returns a Mesh object that uses the box geometry constructor for the geometry, and the standard materials for a material which of course supports normal maps.
+I then have a create normal map helper that will create and return a texture that I want by calling my create canvas texture helper and passing the draw function to use. The next helper function that I worked out just creates and returns a Mesh object that uses the box geometry constructor for the geometry, and the standard materials for a material which of course supports normal maps. When creating the instance of the standard material in this helper I of course call my create normal map helper and just set the resulting texture as the value for the normal map property of the material.
 
 ```js
 var createCanvasTexture = function (draw) {
