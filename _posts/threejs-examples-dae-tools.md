@@ -5,11 +5,13 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-25 13:02:27
-version: 1.17
+updated: 2021-06-25 13:06:41
+version: 1.18
 ---
 
 I have been getting into loading dae files as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
+
+So a more advanced kind of model might be something where I am at least creating custom geometry, complete with hvs and textures with a program like blender. However maybe still creating animation that same old way that I have done so thus far by writing some javaScript code rather than getting into animation clips. In order to get started making these kinds of models I will want to chose some kind of container format, such as the default format when exporting from blender which is dae.
 
 
 <!-- more -->
