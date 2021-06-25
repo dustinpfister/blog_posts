@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-25 13:25:30
-version: 1.25
+updated: 2021-06-25 13:28:29
+version: 1.26
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -25,7 +25,7 @@ So then this is a more advanced post on the subject of threejs rather than any k
 
 ## 1.1 - A program like blender will need to be used to create or edit dae files
 
-On top of using more than one external javaScript file not including my own code I will also want to have at least one if not more dea files to load, that also have additional textures to load.
+On top of using more than one external javaScript file not including my own code I will also want to have at least one if not more dea files to load, that also have additional textures to load. I am not going to be getting into the basic of blender here, also I am still fairly new to using blender anyway. At the time of this writing I learned enough to create a basic project in blender, and how to add textures and custom uvs to a mesh object. So you will want to get to that point at least when it comes to looking into additional resources on the web that have to do with learning blender.
 
 ## 1.2 - These source code examples require threejs, and ColladaLoader.js
 
