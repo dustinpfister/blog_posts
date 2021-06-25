@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-25 16:56:28
-version: 1.29
+updated: 2021-06-25 17:04:37
+version: 1.30
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -39,7 +39,7 @@ When I wrote this post i was mainly using r127 of threejs and the state of the C
 
 First off I should go over the source code of my dae tools module that I was using at the time of this writing. The first thing that I would like to get solid is a public method that can be used to load a single dae file, and do so in a way that will work well with all typical use case examples. So for this I have a load one method that serves as an abstraction for what I currently see as a best use case example of the Collada loader.
 
-One problem that I ran into right away when it came to writing an abstraction for the Collada Loader had to do with [a problem that comes up when it comes to having textures that need to be loaded on top of the dae file by itself](https://discourse.threejs.org/t/how-to-wait-for-a-loaders-textures-to-all-be-loaded-too/25304). The on done call back of the Collada loader will fire when the dae file is loaded, but before all the additional textures are loaded. This might not present a problem when it comes to a project in which the model will be used in an animation loop, it will just result in there not being any textures for the model until they are loaded. However in a use case example in which I just call the render method once, that will of course be a problem.
+One problem that I ran into right away when it came to writing an abstraction for the Collada Loader had to do with [a problem that comes up when it comes to having textures that need to be loaded on top of the dae file by itself](https://discourse.threejs.org/t/how-to-wait-for-a-loaders-textures-to-all-be-loaded-too/25304). The on done call back of the Collada loader will fire when the dae file is loaded, but before all the additional textures are loaded. This might not present a problem when it comes to a project in which the model will be used in an animation loop, it will just result in there not being any textures for the model until they are loaded. However in a use case example in which I just call the render method once, that will of course be a problem. So to resolve this I need to make use of the on load property of an instance of a [THREE.LoadingManager](https://threejs.org/docs/#api/en/loaders/managers/LoadingManager) and pass that instance as a argument to the Collada Loader constructor.
 
 ```js
 (function (api) {
@@ -186,6 +186,8 @@ The first thing that I am going to want to test out is that the load one method 
 When this example runs the end result is what I want to happen, the model shows up with the textures on the surfaces of the model. When I do not use an instance of THREE.LoadingManager as a way to set an on load callback, and just use the dae loader alone, this is not the result that I have. So it would seem that I have the most important part of this sort of thing down, but there might still be a little more room for improvement when it comes to having a progress meter maybe for one thing.
 
 ## 4 - Load all method demo
+
+For now I am also going to want at least one additional demo of the load all public method. This method is what I will typically be using in most projects sense I will typically be working with more than one dae file asset. With this load all method I pass an instance of the dae objects instance create with the DAE.create method like before, however things are a little different with the additional options. In the options object that I pass I can set a base urls, followed by an array of relative url paths to each file that I want to load.
 
 ```js
 (function () {
