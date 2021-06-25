@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-25 13:33:09
-version: 1.27
+updated: 2021-06-25 16:50:45
+version: 1.28
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -45,43 +45,75 @@ One problem that I ran into right away when it came to writing an abstraction fo
 (function (api) {
  
     // create aa daeObjects state object
-    api.create = function () {
+    api.create = function (opt) {
+        opt = opt || {};
         var state = {
-           results: []
+           results: [],
+           onItemProgress : opt.onItemProgress || function(){},
+           onFileLoad : opt.onFileLoad || function(){},
+           onLoad : opt.onLoad || function(){}
         };
         return state;
     };
  
     // load one dae file
-    api.loadOne = function(daeObjects, url, onDone){
+    api.loadOne = function(daeObjects, url, onFileLoad){
         // I will want a manager for this
         var manager = new THREE.LoadingManager();
         // the collada loader instance
         var loader = new THREE.ColladaLoader(manager);
-        onDone = onDone || function(){};
+        // result value to pass to onFileLoad
+        var resultValue = {};
+        onFileLoad = onFileLoad || function(){};
         // return a promise
         return new Promise(function(resolve, reject){
             // call on done, and resolve the promise only when the dae file AND all textures load
+            var len = daeObjects.results.length;
             manager.onLoad = function(){
-                var len = daeObjects.results.length;
-                onDone(daeObjects[len -1 ], daeObjects.results, daeObjects);
+                onFileLoad(resultValue, daeObjects.results, daeObjects);
                 resolve(daeObjects);
             };
             // load the dae file and any textures
             loader.load(url,
                 // done
                 function (result) {
+                    resultValue = result;
                     daeObjects.results.push(result);
                 },
                 // progress
                 function(xhr){
-                  
+                  //console.log(xhr);
                 },
                 // error
                 function(e){
                     reject(e);
                 }
              );
+        });
+    };
+ 
+    // load a collection of dea files
+    api.loadAll = function(daeObjects, opt){
+        opt = opt || {};
+        opt.baseUrl = opt.baseUrl === undefined ? '/' : opt.baseUrl;
+        opt.relUrls = opt.relUrls === undefined ? [] : opt.relUrls;
+        opt.origin = opt.origin === undefined ? document.location.origin : opt.origin;
+        // resolve urls
+        var url_obj_base = new URL(opt.baseUrl, document.location.origin);
+        var urls = opt.relUrls.map(function(relUrl){
+            var url_obj_file = new URL(relUrl, url_obj_base.href + '/');
+            return url_obj_file.href;
+        });
+        // create and return Promise.all of load one method called for each file
+        var n = 0,
+        d = urls.length;
+        return Promise.all(urls.map(function(url, i){
+            return api.loadOne(daeObjects, url, daeObjects.onFileLoad).then(function(){
+                n += 1;
+                daeObjects.onItemProgress(n / d, n , d);
+            });
+        })).then(function(){
+            daeObjects.onLoad(daeObjects, daeObjects.results);
         });
     };
  
@@ -153,6 +185,68 @@ The first thing that I am going to want to test out is that the load one method 
 
 When this example runs the end result is what I want to happen, the model shows up with the textures on the surfaces of the model. When I do not use an instance of THREE.LoadingManager as a way to set an on load callback, and just use the dae loader alone, this is not the result that I have. So it would seem that I have the most important part of this sort of thing down, but there might still be a little more room for improvement when it comes to having a progress meter maybe for one thing.
 
-## 4 - Conclusion
+## 4 - Load all method demo
+
+```js
+(function () {
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(20, 20));
+    scene.background = new THREE.Color('cyan');
+ 
+    // point light
+    var pl = new THREE.PointLight(0xffffff);
+    pl.position.set(2, 5, 3);
+    scene.add(pl);
+ 
+    // camera
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(-15, 15, -15);
+    camera.add(pl);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
+    // render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
+    // can set an on onProgress, and onLoad callbacks 
+    // when creating daeObjects state object
+    var i = 0;
+    var daeObjects = DAE.create({
+        onItemProgress: function(per, n, d){
+            console.log('progress: ' + per.toFixed(2) + ' ( ' + n + '/' + d + ' )');
+        },
+        onFileLoad: function(result, allResults, daeObjects){
+            console.log('fileLoad');
+        },
+        onLoad: function(daeObjects, results){
+            results.forEach(function(result, i){
+                var group = DAE.createGroup(daeObjects, result);
+                group.position.z = 3 - 6 * i;
+                scene.add(group);
+            });
+            renderer.render(scene, camera);
+        }
+    });
+ 
+    // load all should work like this
+    // when doing so the onLoad method
+    // will be called after any additional 
+    // callbacks used here
+    DAE.loadAll(daeObjects, {
+        baseUrl: '/dae',
+        relUrls: [
+            'rpi4/rpi4_start_box.dae',
+            'obj/obj.dae'
+        ]
+    });
+ 
+}
+    ());
+```
+
+## 5 - Conclusion
 
 This dae tools module might prove to be just one of many additional works in progress when it comes to what I have together those far with respect to additional modules where I am working on top of threejs and the additional assets in the github repo. There are some additional features and changes that I might want to make with this module, but still only so much. In time I might get around to editing this post when I have a more up to date version of the dae tools module, and some additional use case examples, but for now this is all I have to write about.
