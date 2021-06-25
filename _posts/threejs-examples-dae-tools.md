@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-25 11:50:36
-version: 1.2
+updated: 2021-06-25 11:52:57
+version: 1.3
 ---
 
-I have been getting into loading dae files as a way to go about getting started using external files in threejs rather than just creating groups of mesh objects by way of javaScript code anyway with the built in geometry and material constructors. 
+I have been getting into loading dae files as a way to go about getting started using external files in threejs rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. 
 
 
 <!-- more -->
