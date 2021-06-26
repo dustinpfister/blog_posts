@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-26 11:22:21
-version: 1.35
+updated: 2021-06-26 11:24:29
+version: 1.36
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -144,7 +144,7 @@ So then there is the load one method that I worked out which will be one of the 
     (this['DAE'] = {}));
 ```
 
-I will want to have a module that is more than just an abstraction of the dae loader and the built in loader manager class in the core of threejs. So far I have one additional public method beyond that load one method and the create method and that is the create group method. This is what I can call to create an [instance of THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) with only the mesh objects of a dea result and not any additional objects that might be in the file such as a camera or a point light.
+I will want to have a module that is more than just an abstraction of the dae loader and the built in loader manager class in the core of threejs. So far I have one additional public method beyond that load one method and the create method and that is the create group method. This is what I can call to create an [instance of THREE.Group](/2018/05/16/threejs-grouping-mesh-objects/) with only the mesh objects of a dea result and not any additional objects that might be in the file such as a [camera](/2018/04/07/threejs-camera-perspective/) or a [point light](/2019/06/02/threejs-point-light/).
 
 ## 3 - Loading a single dae file with my dae tools module and ColladaLoader.js
 
