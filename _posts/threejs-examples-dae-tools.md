@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 897
-updated: 2021-06-26 11:01:23
-version: 1.31
+updated: 2021-06-26 11:07:16
+version: 1.32
 ---
 
 I have been getting into loading [dae files](https://en.wikipedia.org/wiki/COLLADA) as a way to go about getting started using external files in [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) rather than just creating groups of mesh objects by way of javaScript code alone. In other words the way that I have been creating models for threejs up to this point was with the built in geometry and material constructors to create groups of mesh objects, and then having methods that mutate the position, rotation, and scale properties of these mesh objects. I do still like those kinds of models and I also thing that it is a good starting point at least when it comes to creating objects to work with in a scene, however I would like to start working on some kind of stepping stone from that to a more professional kind of model.
@@ -25,7 +25,9 @@ So then this is a more advanced post on the subject of threejs rather than any k
 
 ### 1.1 - Source code for my dae tools module, test demos, and more is at my test threejs github repo
 
-The full source code of the dae tools module as well as all the test demos I am writing about here can be found at my test threejs github repository. In addition to that I also have the dae files that I am loading as well as much more that is all threejs related.
+The [full source code of the dae tools module](https://github.com/dustinpfister/test_threejs/tree/master/views/js/utils/dae_tools) can be fround at my test threejs github reposatiry. When I first wrote this post I as writing about v0.2.0 of this dae tools module, if I work on the module more there might be later versions.
+
+In addition to the source code of the dae tools module the test threejs repo also [holds all the test demos of dae tools module](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-examples-dae-tools) that I am writing about here. In addition to that I also have the [dae files](https://github.com/dustinpfister/test_threejs/tree/master/views/dae) that I am loading, as well as much more that is all threejs related in the repo that I keep working on a little just about every day.
 
 ### 1.2 - A program like blender will need to be used to create or edit dae files
 
