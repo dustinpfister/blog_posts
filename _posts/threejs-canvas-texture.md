@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-27 12:34:02
-version: 1.39
+updated: 2021-06-27 12:36:04
+version: 1.40
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -67,7 +67,7 @@ In Any case you now have both a canvas, a drawing context for that canvas, and a
 
 ### 1.3 - Know your options when it comes to materials and maps
 
-It is impotent to note that the properties of materials will differ from one to another, the basic material does not do anything with light but other materials do. For example in the standard material I would want to use the emissive property of the material to define a texture that will always emit light even if there is not light source.
+It is impotent to note that the properties of materials will differ from one to another, the [basic material](/2018/05/05/threejs-basic-material/) does not do anything with light but other materials do. For example in the [standard material](/2021/04/27/threejs-standard-material/) I would want to use the emissive property of the material to define a texture that will always emit light even if there is not light source.
 
 ### 1.4 - Using the texture with a Material
 
