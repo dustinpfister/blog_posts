@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-27 12:46:48
-version: 1.43
+updated: 2021-06-27 13:21:39
+version: 1.44
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -115,15 +115,12 @@ I started out with a helper method that just returns a texture that is ready to 
 var createCanvasTexture = function () {
     var canvas = document.createElement('canvas'),
     ctx = canvas.getContext('2d');
-    canvas.width = 16;
-    canvas.height = 16;
-    ctx.fillStyle = '#000000';
+    canvas.width = 32;
+    canvas.height = 32;
     ctx.lineWidth = 1;
-    ctx.fillRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
     ctx.strokeStyle = '#ff0000';
-    ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
-    var texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
+    ctx.strokeRect(2.5, 2.5, canvas.width - 4, canvas.height - 4);
+    var texture = new THREE.CanvasTexture(canvas);
     return texture;
 };
 ```
@@ -152,19 +149,20 @@ So now to make use of my create cube, and thus create canvas texture helpers.
 ```js
 // Scene
 var scene = new THREE.Scene();
-
+scene.add( new THREE.GridHelper(10, 10) );
+ 
 // Camera
 var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
 camera.position.set(1, 1, 1);
 camera.lookAt(0, 0, 0);
-
+ 
 // add cube to scene that makes use
 // of the canvas texture
 scene.add(createCube());
-
+ 
 // RENDER
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
@@ -181,7 +179,7 @@ Things are starting to get a little cluttered so for this example I will create 
 
 ```js
 var can3 = {};
-
+ 
 can3.draw = function (ctx, canvas) {
     ctx.fillStyle = '#000000';
     ctx.lineWidth = 1;
@@ -223,8 +221,8 @@ var scene = new THREE.Scene();
  
 // Camera
 var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
-camera.position.set(4, 4, 4);
-camera.lookAt(0, 0, 0);
+camera.position.set(2, 2, 2);
+camera.lookAt(0, 0, 1);
  
 // create texture with default draw method
 var texture = can3.createCanvasTexture();
@@ -246,7 +244,7 @@ scene.add(cube);
  
 // RENDER
 var renderer = new THREE.WebGLRenderer();
-renderer.setSize(320, 240);
+renderer.setSize(640, 480);
 document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
@@ -258,6 +256,54 @@ So because the source is a canvas you might be wondering if it is possible to re
 Something like this:
 
 ```js
+(function () {
+ 
+    // CANVAS
+    var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d');
+ 
+    canvas.width = 16;
+    canvas.height = 16;
+ 
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#ff00ff';
+    ctx.strokeRect(0, 0, canvas.width, canvas.height);
+ 
+    // TEXTURE
+    var texture = new THREE.CanvasTexture(canvas);
+    texture.magFilter = THREE.NearestFilter;
+ 
+    // Basic MATERIAL using TEXTURE
+    var material = new THREE.MeshBasicMaterial({
+            map: texture
+        });
+ 
+    // SCENE
+    var scene = new THREE.Scene();
+    fogColor = new THREE.Color(0xffffff);
+ 
+    scene.background = fogColor;
+    scene.fog = new THREE.Fog(fogColor, 0.0025, 20);
+    scene.fog = new THREE.FogExp2(fogColor, 0.1);
+ 
+    // CAMERA
+    var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
+    camera.position.set(1, 1, 1);
+    camera.lookAt(0, 0, 0);
+ 
+    // GEOMETRY
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+ 
+    // MESH using THE MATERIAL
+    var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+ 
+    // Render
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+ 
     // Loop
     var frame = 0,
     maxFrame = 500,
@@ -278,7 +324,6 @@ Something like this:
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.strokeRect(x, y, w, h);
  
-        controls.update();
         texture.needsUpdate = true;
         renderer.render(scene, camera);
  
@@ -288,6 +333,8 @@ Something like this:
     };
  
     loop();
+}
+    ());
 ```
 
 It should go without saying that this will use more overhead compared to a static texture, so I would not go wild with it just yet, but it is pretty cool that I can do this.
