@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-27 13:21:39
-version: 1.44
+updated: 2021-06-27 13:26:47
+version: 1.45
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -25,7 +25,11 @@ The main three.js constructor of interest with this is the [CanvasTexture](https
 
 In this post I will be going over a lot of source code examples that have to do with using canvas elements as a way to create textures to be used to skin one more more mesh objects in the javaScript library known as threejs. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. However in this section I will be going over the basics of using canvas to create a texture before getting into some more advanced examples involving the basic material, standard material and so forth. I will also be going over a few other things that you should be up to speed with at this point before continuing.
 
-### 1.1 - Start With just a quick canvas element and drawing to the 2d context
+### 1.1 - The source code examples here and much more can be found at my test threejs github repo
+
+The [source code examples in this post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-canvas-texture) can be found in my test threejs repo, along with all the other examples of all the other posts I have wrote on threejs.
+
+### 1.2 - Start With just a quick canvas element and drawing to the 2d context
 
 I order to use a canvas as a texture I will of course need a reference to a canvas element, and one way to create one would be to use the document.createElement method in client side javaScript. The dom element does not have to be appended to the HTML, we just need to have one to give to the Texture constructor to create a texture object. 
 The width and height values should be a base 2 number such as 8, 16, 32 and so forth else you might get webGl errors in the console. Aside from that concern so far it seems like you can just create and draw to a simple plane old canvas element like normal using the [2d drawing context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). The resulting image created with the drawing context and javaScript code can then be used as a texture from things like the map property of a material.
@@ -46,7 +50,7 @@ So say you just want to start out with something very simple, just use the canva
 
 So I created a canvas, set the size of it to something that is a base 2 number, and drawn something to it. Great now I have the easy part out of the way, I am now ready to use it to passed it as an argument to a threejs constructor that will return a texture that I can the use in a material that I can then use with a mesh.
 
-### 1.2 - Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
+### 1.3 - Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
 
 Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needsUpdate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that use use as the first argument.
 
@@ -63,11 +67,11 @@ texture.needsUpdate = true;
 
 In Any case you now have both a canvas, a drawing context for that canvas, and a texture made from that canvas that can now be used in a Material that can make use of that texture. Regardless of what constructor you use the needUpdate boolean is of interest as even if it is set to true by default, you will want to set it true again each time you want the texture updated, more on that later.
 
-### 1.3 - Know your options when it comes to materials and maps
+### 1.4 - Know your options when it comes to materials and maps
 
 It is impotent to note that the properties of materials will differ from one to another, the [basic material](/2018/05/05/threejs-basic-material/) does not do anything with light but other materials do. For example in the [standard material](/2021/04/27/threejs-standard-material/) I would want to use the [emissive map](/2021/06/22/threejs-emissive-map/) property of the material to define a texture that will always be visible even if there is no light source in the scene.
 
-### 1.4 - Using the texture with a Material
+### 1.5 - Using the texture with a Material
 
 I will not get into this in depth, as this matter can quickly become a whole new post when it comes to using a texture with a Material. However a quick example involving the basic material is in order for sure to say the least when it comes to using a texture with a material. For this example I am just setting the texture that is created with a canvas element to the map property of a basic material. This is how to go about making just a simple color map.
 
@@ -92,11 +96,11 @@ There are other properties that make use of a texture, I will not get into detai
 
 So now that we have the basics when it comes to making a material with a texture that is created using a canvas element we can now use the material with a mesh. So lets start looking at some full examples of this in action.
 
-### 1.5 - There is also loading external images, and dae files with textures
+### 1.6 - There is also loading external images, and dae files with textures
 
 Using canvas elements might be fun, but I am more of the mind set that I should just use static image files to skin objects these days. When doing so there is the [built in texture loader in threejs](/2021/06/21/threejs-texture-loader/) that is one way to go about loading an external image, and create a texture with that image. However if you have a preferred way to go about loading one or more images in a client side javaScript project another option would be to use the THREE.Texture constructor directly. However there is also yet even another option that I think is the best so far when it comes to starting to create external assets with a program like blender and that is to [have dae files with external textures](/2021/06/25/threejs-examples-dae-tools/) that also need to be loaded with them.
 
-### 1.6 - Version numbers matter with threejs
+### 1.7 - Version numbers matter with threejs
 
 When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r127. I do then make an effor to come around and edit my threejs posts now and then to fix anything that might brake in later versions of threejs. The library still moves pretty fast in terms of development compared to other projects where progress is kind of slow, so always be mindful of the version of threejs that is being used and how old content on the web might be.
 
