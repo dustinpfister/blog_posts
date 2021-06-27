@@ -5,13 +5,13 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-04-29 16:00:37
-version: 1.31
+updated: 2021-06-27 12:16:00
+version: 1.32
 ---
 
-So far I have not written any posts on textures with my [three.js](https://threejs.org/) collection of posts, so I thought that I should put and end to that today. In three.js I have a scene, and in that scene I place things like cameras, and other objects like a Mesh that is composed of a Geometry, and a Material. It is with these Materials for the most part that textures come into play. 
+There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
 
-When it comes to the various kinds of maps there are to work with in a material I need a texture to use with the map, and one way to go about creating a texture is with a canvas element. So canvas elements are a nice way to get started wit textures in three.js that involves just additional javaScript code rather than loading extremal binary image files. Maybe in the long run that is just what will need to happen if we are taking about a lot of textures, but if it is just a few, and I keep them low res, a canvas might still work okay. So then with just a little javaScript code I can start playing around with various types of maps in three.js such as a basic color map, emissive maps, alpha maps, and many more.
+So canvas elements are a nice way to get started wit textures in three.js that involves just additional javaScript code rather than loading extremal binary image files. Maybe in the long run that is just what will need to happen if we are taking about a lot of textures, but if it is just a few, and I keep them low res, a canvas might still work okay. So then with just a little javaScript code I can start playing around with various types of maps in three.js such as a basic color map, emissive maps, alpha maps, and many more.
 
 When we look at Materials in depth they are composed of many properties, some of which are part of the base Material class, and others are part of the specific Material such as the Basic Material, or Lambert Material. Properties such as map, and emissiveMap that expect a Texture, which is an image that can be used to define how the surface is going to look. With the basic material it is just a basic color map for the most part that is of interest, while with the Lambert material there are some additional maps that have to do with light.
 
