@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 09:33:59
-version: 1.53
+updated: 2021-06-28 09:36:52
+version: 1.54
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -150,7 +150,7 @@ I then just use the box geometry constructor for the geometry of the mesh, and r
 
 ### 2.2 - The rest of the full threejs example that involves a canvas texture
 
-With my simple helper functions all set and done I will now just need to create and set up the usual suspects when it comes to any other threejs project. In order words I will want to have a scene object, camera, and renderer to make use of these helper functions.
+With my simple helper functions all set and done I will now just need to create and set up the usual suspects when it comes to any other threejs project. In order words I will want to have a scene object, camera, and renderer to make use of these helper functions. So I create my scene object with the THREE.Scene constructor, and I also like to add a grind helper to the scene with many of my examples these days also. Next I just want to set up an instance of the usual perspective camera, be sure to position it alway from where I am going to place a mesh object, and have the camera look at the location of the mesh object.
 
 ```js
 // Scene
@@ -173,7 +173,6 @@ document.getElementById('demo').appendChild(renderer.domElement);
 renderer.render(scene, camera);
 ```
 
-Notice that I set the needs update property of the texture to true. As I mentioned earlier this does not need to be set true if I where to use the CanvasTexture constructor, if I am just doing something like this in which I am not redrawing the canvas this only needs to be set true once.
 
 ## 3 - Create canvas helper with a custom draw method
 
