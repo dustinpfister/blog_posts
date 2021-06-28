@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 898
-updated: 2021-06-28 14:06:39
-version: 1.4
+updated: 2021-06-28 14:14:43
+version: 1.5
 ---
 
 Coming from a Windows environment to Linux one thing that I would often like to do in Windows is keep an eye on what is going on with process activity. In fact I would say that these days that is one of the major reasons why I am becoming more of a Linux user rather than a Windows user, because I am getting tired of things running in the background slamming my system none stop. In windows there are all kinds of background processes like windows telemetry that eat up way to much overhead, and interfere with me using my computer without issue. So far that seems to not be a problem with Linux, but still I like to have ways to keep an eye on things just to make sure nothing weird is going on.
@@ -22,6 +22,8 @@ To get started with top the most basic way would be to just ender top in a new b
 ```
 $ top
 ```
+
+By default it would seem that the processes are sorted by cpu usage rather than memory, or anything other then that. However right off the bat it would seem that this is yet another tool that can help me to know what is going on with my computer.
 
 ## 2 - Set the delay time
 
