@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 09:23:38
-version: 1.50
+updated: 2021-06-28 09:26:49
+version: 1.51
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -131,9 +131,9 @@ var createCanvasTexture = function () {
 
 Now that I have a simple method that does everything that I want for this basic canvas texture example I will now just want some additional code that makes use of this method such as some kind of create mesh type object. I will then just need some additional code that has to do with all the other usual suspects when it comes to a basic threejs example.
 
-### 2.1 - create a cube helper
+### 2.1 - Create a cube helper
 
-I then have another helper that makes use of the create canvas texture helper by calling it and using the resulting texture that is returned for the map property of the basic material that is used for a mesh. I then just use the box geometry constructor for the geometry of the mesh, and return the mesh.
+I then have another helper that makes use of the create canvas texture helper by calling it and using the resulting texture that is returned for the map property of the basic material that is used for a mesh. The map property is how to go about making just a simple color map, and with the basic material it is more or less only this map that is of interest when it comes to adding some texture to a mesh. There might be some exceptions to that actually, but the basic material is not like other more advance materials that respond to light sources. 
 
 ```js
 // create a cube the makes use of a canvas texture
@@ -146,7 +146,7 @@ var createCube = function () {
 };
 ```
 
-So when putting together a scene I just need to call this method, and then I have a mesh that is all set to be added to a scene.
+I then just use the box geometry constructor for the geometry of the mesh, and return the mesh. So when putting together a scene I just need to call this method, and then I have a mesh that is all set to be added to a scene.
 
 ### 2.2 - The rest of the full threejs example that involves a canvas texture
 
