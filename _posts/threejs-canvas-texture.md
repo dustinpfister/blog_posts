@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 09:48:54
-version: 1.57
+updated: 2021-06-28 15:06:09
+version: 1.58
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -186,37 +186,48 @@ In this section I will be writing about an example that makes use of a slightly 
 Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavs.js and place all these custom helpers and methods there.
 
 ```js
-var can3 = {};
+(function(api){
  
-can3.draw = function (ctx, canvas) {
-    ctx.fillStyle = '#000000';
-    ctx.lineWidth = 1;
-    ctx.fillRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
-    ctx.strokeStyle = '#ff0000';
-    ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
-}
+    api.draw = function (ctx, canvas) {
+        ctx.fillStyle = '#000000';
+        ctx.lineWidth = 1;
+        ctx.fillRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+        ctx.strokeStyle = '#00ff00';
+        ctx.strokeRect(0.5, 0.5, canvas.width - 1, canvas.height - 1);
+    };
  
-// create and return a canvas texture
-can3.createCanvasTexture = function (draw) {
-    draw = draw || can3.draw;
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
-    canvas.width = 16;
-    canvas.height = 16;
-    draw(ctx, canvas);
-    var texture = new THREE.Texture(canvas);
-    texture.needsUpdate = true;
-    return texture;
-};
+    // create and return a canvas texture
+    api.createCanvasTexture = function (state, drawFunc) {
+        drawFunc = drawFunc || canvasMod.draw;
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = 16;
+        canvas.height = 16;
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        var canvasObj = {
+            texture: texture,
+            canvas: canvas,
+            ctx: ctx,
+            state: state,
+            draw: function(){
+                drawFunc.call(state, ctx, canvas, state);
+            }
+        };
+        canvasObj.draw();
+        return canvasObj;
+    };
  
-// create a cube the makes use of a canvas texture
-can3.createCube = function (texture) {
-    return new THREE.Mesh(
-        new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            map: texture
-        }));
-};
+    // create a cube the makes use of a canvas texture
+    api.createCube = function (texture) {
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                map: texture
+            }));
+    };
+ 
+}( this['canvasMod'] = {} ));
 ```
 
 ### 3.2 - The rest of the example
@@ -226,6 +237,7 @@ So now to use my canvas.js module in an example. Here I just made two cubes for 
 ```js
 // Scene
 var scene = new THREE.Scene();
+scene.add( new THREE.GridHelper(10, 10) );
  
 // Camera
 var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
@@ -233,20 +245,29 @@ camera.position.set(2, 2, 2);
 camera.lookAt(0, 0, 1);
  
 // create texture with default draw method
-var texture = can3.createCanvasTexture();
-var cube = can3.createCube(texture);
+var canvasObj = canvasMod.createCanvasTexture();
+ 
+var cube = canvasMod.createCube(canvasObj.texture);
 scene.add(cube);
  
-// create texture with custom draw method
-texture = can3.createCanvasTexture(function (ctx, canvas) {
-        ctx.fillStyle = 'red';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = 'black';
-        ctx.beginPath();
-        ctx.arc(canvas.width / 2 + 0.5, canvas.height / 2 + 0.5, canvas.width / 2 - 2, 0, Math.PI * 2);
-        ctx.fill();
-    });
-cube = can3.createCube(texture);
+// create texture with custom draw method that makes use of a state object
+var draw = function (ctx, canvas, state) {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'black';
+    ctx.beginPath();
+    var hw = canvas.width / 2,
+    sx = hw,
+    sy = canvas.height / 2,
+    radius = hw - hw * state.rPer;
+    ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+    ctx.fill();
+};
+var state = {
+   rPer: 0.1
+};
+var canvasObj = canvasMod.createCanvasTexture(state, draw);
+cube = canvasMod.createCube(canvasObj.texture);
 cube.position.set(0, 0, 2)
 scene.add(cube);
  
@@ -261,85 +282,103 @@ renderer.render(scene, camera);
 
 So because the source is a canvas you might be wondering if it is possible to redraw the canvas and update the texture, making an animated texture. The answer is yes, all you need to do is redraw the contents of the canvas, and set the needsUpdate property of the texture to true before calling the render method of your renderer.
 
-Something like this:
+```js
+(function(api){
+    // create and return a canvasObj with texture
+    api.createCanvasObject = function (state, drawFunc) {
+        drawFunc = drawFunc || canvasMod.draw;
+        var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d');
+        canvas.width = 16;
+        canvas.height = 16;
+        var texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        var canvasObj = {
+            texture: texture,
+            canvas: canvas,
+            ctx: ctx,
+            state: state,
+            draw: function(){
+                drawFunc.call(state, ctx, canvas, state);
+                // making sure I am setting this to true each time
+                texture.needsUpdate = true;
+            }
+        };
+        canvasObj.draw();
+        return canvasObj;
+    };
+ 
+    // create a cube the makes use of a canvas texture
+    api.createCube = function (canvasObj) {
+        return new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshBasicMaterial({
+                map: canvasObj.texture
+            }));
+    };
+ 
+}( this['canvasMod'] = {} ));
+```
+
 
 ```js
 (function () {
- 
-    // CANVAS
-    var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d');
- 
-    canvas.width = 16;
-    canvas.height = 16;
- 
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = '#ff00ff';
-    ctx.strokeRect(0, 0, canvas.width, canvas.height);
- 
-    // TEXTURE
-    var texture = new THREE.CanvasTexture(canvas);
-    texture.magFilter = THREE.NearestFilter;
- 
-    // Basic MATERIAL using TEXTURE
-    var material = new THREE.MeshBasicMaterial({
-            map: texture
-        });
- 
+    // state object
+    var state = {
+       frame: 0,
+       maxFrame: 90,
+       fps: 30,
+       lt: new Date()
+    };
+    // draw function
+    var draw = function(ctx, canvas, state){
+        var per = state.frame / state.maxFrame,
+        bias = Math.abs(0.5 - per) / 0.5,
+        x = canvas.width / 2 * bias;
+        y = canvas.height / 2 * bias;
+        w = canvas.width - canvas.width * bias;
+        h = canvas.height - canvas.height * bias;
+        ctx.lineWidth = 3;
+        ctx.fillStyle = '#000000';
+        ctx.strokeStyle = '#ff00ff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeRect(x, y, w, h);
+    };
+    // create canvas obj
+    var canvasObj = canvasMod.createCanvasObject(state, draw);
+    // filter
+    canvasObj.texture.magFilter = THREE.NearestFilter;
     // SCENE
     var scene = new THREE.Scene();
     fogColor = new THREE.Color(0xffffff);
- 
     scene.background = fogColor;
     scene.fog = new THREE.Fog(fogColor, 0.0025, 20);
     scene.fog = new THREE.FogExp2(fogColor, 0.1);
- 
     // CAMERA
     var camera = new THREE.PerspectiveCamera(75, 320 / 240, .025, 20);
     camera.position.set(1, 1, 1);
     camera.lookAt(0, 0, 0);
- 
-    // GEOMETRY
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
- 
-    // MESH using THE MATERIAL
-    var mesh = new THREE.Mesh(geometry, material);
+    // using create cube method
+    var mesh = canvasMod.createCube(canvasObj);
     scene.add(mesh);
- 
     // Render
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(640, 480);
     document.getElementById('demo').appendChild(renderer.domElement);
  
     // Loop
-    var frame = 0,
-    maxFrame = 500,
-    loop = function () {
- 
-        var per = frame / maxFrame,
-        bias = Math.abs(.5 - per) / .5,
-        x = canvas.width / 2 * bias;
-        y = canvas.height / 2 * bias;
-        w = canvas.width - canvas.width * bias;
-        h = canvas.height - canvas.height * bias;
- 
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - state.lt) / 1000;
         requestAnimationFrame(loop);
- 
-        ctx.lineWidth = 3;
-        ctx.fillStyle = '#000000';
-        ctx.strokeStyle = '#ff00ff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeRect(x, y, w, h);
- 
-        texture.needsUpdate = true;
-        renderer.render(scene, camera);
- 
-        frame += 1;
-        frame = frame % maxFrame;
- 
+        if(secs > 1 / state.fps){
+            canvasObj.draw();
+            renderer.render(scene, camera);
+            state.frame += state.fps * secs;
+            state.frame = state.frame % state.maxFrame;
+            state.lt = now;
+        }
     };
- 
     loop();
 }
     ());
