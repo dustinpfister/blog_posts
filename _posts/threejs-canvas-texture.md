@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 15:16:26
-version: 1.61
+updated: 2021-06-28 15:18:19
+version: 1.62
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -183,7 +183,7 @@ In this section I will be writing about an example that makes use of a slightly 
 
 ### 3.1 - A Canvas.js module
 
-Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavs.js and place all these custom helpers and methods there.
+Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavsmod.js, and place all these custom helpers and methods there.
 
 ```js
 (function(api){
@@ -326,7 +326,7 @@ So now I have a slightly updated versions of the canvas module, this time the on
 
 ### 4.2 - The main JavaScript file
 
-I now just need a little more code to make use of the canvas module, for this I have a state object for the animation, and a custom draw function that I will be used to draw to the canvas over and over agian in a loop.
+I now just need a little more code to make use of the canvas module, for this I have a state object for the animation, and a custom draw function that I will be used to draw to the canvas over and over again in a loop.
 
 ```js
 (function () {
