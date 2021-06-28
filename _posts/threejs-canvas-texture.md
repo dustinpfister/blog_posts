@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 09:19:12
-version: 1.49
+updated: 2021-06-28 09:23:38
+version: 1.50
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -112,9 +112,7 @@ In this example I will just be rendering the box once, and be done with it just 
 
 ### 2.1 - A create canvas texture helper method
 
-I started out with a helper method that just returns a texture that is created with the THREE.CanvasTexture constructor that I can then go an use with a material. This way i am doing everything in the body of just one function when it comes to the whole process of creating an returning the texture with a canvas element. This involves creating the canvas element, setting the side of the element, and drawing to the canvas. In later sections of this post i will be getting into more advanced forms of this method when it comes to making an actual module of some kind.
-
-In this helper I create a canvas element, get the drawing context, and draw to it. In then used to THREE.Texture constructor to create the texture by just passing the canvas element as the first argument when calling it. I then set the needs update flag to true, and return the texture.
+I started out with a helper method that just returns a texture that is created with the THREE.CanvasTexture constructor that I can then go an use with a material. This way I am doing everything in the body of just one function when it comes to the whole process of creating an returning the texture with a canvas element. This involves creating the canvas element, setting the side of the element, and drawing to the canvas. In later sections of this post I will be getting into more advanced forms of this method when it comes to making an actual module of some kind.
 
 ```js
 // create and return a canvas texture
@@ -130,6 +128,8 @@ var createCanvasTexture = function () {
     return texture;
 };
 ```
+
+Now that I have a simple method that does everything that I want for this basic canvas texture example I will now just want some additional code that makes use of this method such as some kind of create mesh type object. I will then just need some additional code that has to do with all the other usual suspects when it comes to a basic threejs example.
 
 ### 2.1 - create a cube helper
 
