@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 898
-updated: 2021-06-28 14:25:51
-version: 1.8
+updated: 2021-06-28 14:28:27
+version: 1.9
 ---
 
 Coming from a Windows environment to Linux one thing that I would often like to do in Windows is keep an eye on what is going on with process activity. In fact I would say that these days that is one of the major reasons why I am becoming more of a Linux user rather than a Windows user, because I am getting tired of things running in the background slamming my system none stop. In windows there are all kinds of background processes like windows telemetry that eat up way to much overhead, and interfere with me using my computer without issue. So far that seems to not be a problem with Linux, but still I like to have ways to keep an eye on things just to make sure nothing weird is going on.
@@ -34,6 +34,8 @@ $ top -d 0.5
 ```
 
 ## 3 - Set a number of times and exit
+
+Another option is the n option that can be used to set a number of times to refresh before exiting. So I can set the delay to 0.1 which would be about 100 ms, and then set the -n option to 30 which would result in the top program exiting after 30 refresh instances in about 3 seconds.
 
 ```
 $ top -d 0.1 -n 30
