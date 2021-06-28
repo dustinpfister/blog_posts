@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 524
-updated: 2021-06-28 14:21:50
-version: 1.20
+updated: 2021-06-28 14:22:26
+version: 1.21
 ---
 
 So today I am taking a look at the [Linux ps](https://www.tecmint.com/ps-command-examples-for-linux-process-monitoring/) command. This command can be used to get a snapshot of all the processes running on Linux at the moment that the command is called. Helpful information about each process running in a selection is included in the output including a process id that can be used with other commands such as the kill command to halt a process.
@@ -109,5 +109,5 @@ Not a practical example at least in its current state, but depending on what it 
 
 So the Linux ps command is the basic tool to use when it comes to checking out what is going on with processes. There are a number of other options that might be worth checking out one of which would be the [top command](/2021/06/28/linux-top/). 
 
-There are also a number of task manager like applications that can be used to have a graphical front end for must desktop environments, many of which will come with a given desktop environment as such a program is often a standard application of a desktop environment. One such optin that I have come to link thus far is [gkrellm](http://gkrellm.srcbox.net/), this allows for me to keep track of cpu usage, memory, disk, and network activity, and do so in a graphical front end which is nice.
+There are also a number of task manager like applications that can be used to have a graphical front end for must desktop environments, many of which will come with a given desktop environment as such a program is often a standard application of a desktop environment. One such option that I have come to link thus far is [gkrellm](http://gkrellm.srcbox.net/), this allows for me to keep track of CPU usage, memory, disk, and network activity, and do so in a graphical front end which is nice.
 
