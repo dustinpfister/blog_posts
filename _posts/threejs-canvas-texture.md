@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 09:04:24
-version: 1.47
+updated: 2021-06-28 09:06:21
+version: 1.48
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -108,7 +108,7 @@ When I first wrote this post I was using threejs version r91, and the last time 
 
 So now that I have all the basics that should be solid before hand I can now move on to starting out with a basic example of using canvas elements to create a texture. In this demo I will set up a scene object, add a camera, and a renderer just like any other basic threejs code example. On top of that I will also want to add at least one mesh object and set it away from a the position of the camera. For now the Mesh object will make use of the box geometry constructor that I often used for these kinds of examples, and I will also be using the basic material as for now I am thinking I will just use a canvas element to create a simple color map.
 
-In this example I will just be rendering the box once and be done with it just so show that you can use a canvas to make a static texture, more on animation later.
+In this example I will just be rendering the box once, and be done with it just to show that you can use a canvas to make a static texture. This is a basic example after all, so I will be getting to more advanced examples that have to do with animation later on in this post.
 
 ### 2.1 - A create canvas texture helper method
 
