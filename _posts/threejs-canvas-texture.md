@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-28 09:26:49
-version: 1.51
+updated: 2021-06-28 09:30:43
+version: 1.52
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, I need a texture to use with the map. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.texture constructor to create a texture object from an image. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element and the THREE.CanvasTexture constructor. 
@@ -146,7 +146,7 @@ var createCube = function () {
 };
 ```
 
-I then just use the box geometry constructor for the geometry of the mesh, and return the mesh. So when putting together a scene I just need to call this method, and then I have a mesh that is all set to be added to a scene.
+I then just use the box geometry constructor for the geometry of the mesh, and return the mesh object. So then with this method object the resulting texture will be on all the faces of the geometry, rather than making a different texture for each of the sides of the cube.
 
 ### 2.2 - The rest of the full threejs example that involves a canvas texture
 
