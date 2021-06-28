@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 898
-updated: 2021-06-28 14:14:43
-version: 1.5
+updated: 2021-06-28 14:18:28
+version: 1.6
 ---
 
 Coming from a Windows environment to Linux one thing that I would often like to do in Windows is keep an eye on what is going on with process activity. In fact I would say that these days that is one of the major reasons why I am becoming more of a Linux user rather than a Windows user, because I am getting tired of things running in the background slamming my system none stop. In windows there are all kinds of background processes like windows telemetry that eat up way to much overhead, and interfere with me using my computer without issue. So far that seems to not be a problem with Linux, but still I like to have ways to keep an eye on things just to make sure nothing weird is going on.
@@ -36,3 +36,8 @@ $ top -d 0.5
 ```
 $ top -d 0.1 -n 30
 ```
+
+## 4 - Other Linux tools that are worth checking out
+
+The Linux top command is a great basic tool for keeping tack of what is going on with Linux processes. Also what is nice about the command as so far it would seem that it is often comes with Linux just like the ps command. However I can not say that the Linux top or ps commands are what I am used to when it comes to the task manager in windows. So with that said there is another tool that I have found can often be easily installed in all Linux systems that I have worked with so far and that is [gkrellm](http://gkrellm.srcbox.net/).
+
