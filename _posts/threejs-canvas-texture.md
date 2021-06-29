@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-29 09:35:06
-version: 1.73
+updated: 2021-06-29 09:38:35
+version: 1.74
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element, the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor. It is also possible to use the plain old THREE.Texture constructor also by just setting the needs update property of the texture to true.
@@ -48,20 +48,22 @@ There is of course a great deal more to the 2d drawing context, and the various 
 
 ### 1.3 - Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
 
-Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needsUpdate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that use use as the first argument.
+Although The base Texture class can be used to create a texture that uses a canvas, there is a constructor for this purpose called THREE.CanvasTexture. The only difference is that it would appear that the needs udate boolean of the texture is set to true by default. In any case you just pass the reference to the canvas \(not it's drawing context\) to the constructor that is used as the first argument.
 
-So then this:
+So then simply put something like this:
+
 ```js
 var texture = new THREE.CanvasTexture(canvas);
 ```
 
-Seems to have the same effect as doing this:.
+Seems to have the same effect as doing this:
+
 ```js
 var texture = new THREE.Texture(canvas);
 texture.needsUpdate = true;
 ```
 
-In Any case you now have both a canvas, a drawing context for that canvas, and a texture made from that canvas that can now be used in a Material that can make use of that texture. Regardless of what constructor you use the needUpdate boolean is of interest as even if it is set to true by default, you will want to set it true again each time you want the texture updated, more on that later.
+In any case you now have both a canvas, a drawing context for that canvas, and a texture made from that canvas that can now be used in a material that can make use of that texture. Regardless of what constructor you use the needs update boolean is of interest as even if it is set to true by default, you will want to set it true again each time you want the texture updated. I will be getting into this more in detail in the section that has to do with having an animated canvas texture.
 
 ### 1.4 - Know your options when it comes to materials and maps
 
