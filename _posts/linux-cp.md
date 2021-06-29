@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 899
-updated: 2021-06-29 12:08:53
-version: 1.4
+updated: 2021-06-29 12:11:06
+version: 1.5
 ---
 
 The [Linux cp](https://man7.org/linux/man-pages/man1/cp.1.html) command can be used to copy files from one folder to another, and for the most part it is just a question of setting the source path as the first options, and the target name as the second option. However there are a number of things that might come up when copying files in the command line, or when creating a bash script to automate some work. For example one might also need to copy a whole bunch of files in a folder recursively, or create a folder in the event that it is not there to begin with. So it would make sense to look into what the options are with the cp command, and also become aware of other useful options in other commands that can be used such as the mkdir command with the -p option.
@@ -32,7 +32,9 @@ $ echo -n "foobar" > foo.txt
 $ mkdir -p './copy' && cp foo.txt "./copy/foo_copy.txt"
 ```
 
-## 3 - Copy files recursivly
+## 3 - Copy files recursively
+
+To copy a whole folder recursively I will just need to use the -r option of the Linux cp command.
 
 ```
 mkdir -p "./text/foo"
