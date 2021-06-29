@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 899
-updated: 2021-06-29 12:14:26
-version: 1.6
+updated: 2021-06-29 12:17:19
+version: 1.7
 ---
 
 The [Linux cp](https://man7.org/linux/man-pages/man1/cp.1.html) command can be used to copy files from one folder to another, and for the most part it is just a question of setting the source path as the first options, and the target name as the second option. However there are a number of things that might come up when copying files in the command line, or when creating a bash script to automate some work. For example one might also need to copy a whole bunch of files in a folder recursively, or create a folder in the event that it is not there to begin with. So it would make sense to look into what the options are with the cp command, and also become aware of other useful options in other commands that can be used such as the mkdir command with the -p option.
@@ -17,6 +17,8 @@ The [Linux cp](https://man7.org/linux/man-pages/man1/cp.1.html) command can be u
 ## 1 - Basic example of the Linux cp command
 
 In order to use the Linux cp command to copy one or more source files I am going to need, well one or more source files. For a quick way to go about creating some source content for the sake of just testing out the Linux cp command I am going to make use of the [Linux echo](/2019/08/15/linux-echo/) command, and [bash redirection](/2020/10/02/linux-redirection/). The echo command is a way to go about creating some standard output from the command line, and redirection is a way to go about saving that standard output to a file. I then have my source file that I can then copy using the Linux cp command.
+
+So then now that I have my source file if I just want to make a single copy of a file I can just call the cp command, and then give the path to the source file as the first argument, followed by the path that I want for the copy of the file.
 
 ```
 $ echo -n "foobar" > foo.txt
