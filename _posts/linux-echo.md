@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 523
-updated: 2021-03-11 16:36:39
-version: 1.19
+updated: 2021-06-29 12:25:32
+version: 1.20
 ---
 
 So this will be a quick post on using the [Linux echo](https://en.wikipedia.org/wiki/Echo_%28command%29) command and node.js when it comes to creating shell scripts with javaScript rather than the usual Bourne Shell. The echo command just simply prints something to the standard output, in some cases now and then I find myself using it. For example just simply piping in some kind of simple test input to a CLI tools standard input would be one reason why I would go about using the echo command. The test output that echo creates can be used as a place holder of sorts for input from something else that would prove to be a real use case scenario.
@@ -66,7 +66,7 @@ There are other options of course, for example if I had a text file that I wante
 
 ### 1.5 - Redirection example
 
-Redirection is another feature of bash that I think I should cover here while I am at it. With that said the Linux echo command combined with redirection can be used as a way to create text files from the command line.
+[Linux Bash Redirection](/2020/10/02/linux-redirection/) is another feature of bash that I think I should cover here while I am at it. With that said the Linux echo command combined with redirection can be used as a way to create text files from the command line.
 
 ```
 $ echo "Hello World" > ~/hello.txt
