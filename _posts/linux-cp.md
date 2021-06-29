@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 899
-updated: 2021-06-29 12:22:45
-version: 1.9
+updated: 2021-06-29 12:29:58
+version: 1.10
 ---
 
 The [Linux cp](https://man7.org/linux/man-pages/man1/cp.1.html) command can be used to copy files from one folder to another, and for the most part it is just a question of setting the source path as the first options, and the target name as the second option. However there are a number of things that might come up when copying files in the command line, or when creating a bash script to automate some work. For example one might also need to copy a whole bunch of files in a folder recursively, or create a folder in the event that it is not there to begin with. So it would make sense to look into what the options are with the cp command, and also become aware of other useful options in other commands that can be used such as the mkdir command with the -p option.
@@ -27,7 +27,9 @@ $ cp foo.txt "./foo_copy.txt"
 
 ## 2 - Use mkdir -p to create a target folder if it is not there to begin with
 
-In some case I might want to [create a nested target folder in the event that it is not there to begin with](https://stackoverflow.com/questions/1529946/linux-copy-and-create-destination-dir-if-it-does-not-exist) when copying some files. It would seem that there is no such option to do so with the cp command. However in just about every Linux system there should be the mkdir command also which can be used with the -p option.
+In some case I might want to [create a nested target folder in the event that it is not there to begin with](https://stackoverflow.com/questions/1529946/linux-copy-and-create-destination-dir-if-it-does-not-exist) when copying some files. It would seem that there is no such option to do so with the cp command. However in just about every Linux system there should be the mkdir command also which can be used with the -p option. This -p option of the mkdir command is a way to create all folders for a path in the event that they are not there, else do noting.
+
+So if I want to copy a file into a folder called copy that may or may not be there to begin with I can first use mkdir - p to make sure the folder is there, and then I can copy the file without running into any kind of error.
 
 ```
 $ echo -n "foobar" > foo.txt
