@@ -5,11 +5,11 @@ tags: [linux]
 layout: post
 categories: linux
 id: 899
-updated: 2021-06-29 11:56:31
-version: 1.0
+updated: 2021-06-29 12:00:51
+version: 1.1
 ---
 
-In Linux the cp command can be used to copy files from one folder to another, and for the most part it is just a quextion of setting the source path as the first options, and the target name as the second option. However there are a number of things that might come up when copying files in the command line, or when cretaing a bash script to automate some work. For example one might also need to copy a whole bunch of files in a folder recursivly, or create a folder in the event that it is not there to begin with. So it would make sense to look into what the options are with the cp command, and also become aware of other useful options in other commands that can be used such as the mkdir command with the -p option.
+The [Linux cp](https://man7.org/linux/man-pages/man1/cp.1.html) command can be used to copy files from one folder to another, and for the most part it is just a question of setting the source path as the first options, and the target name as the second option. However there are a number of things that might come up when copying files in the command line, or when creating a bash script to automate some work. For example one might also need to copy a whole bunch of files in a folder recursively, or create a folder in the event that it is not there to begin with. So it would make sense to look into what the options are with the cp command, and also become aware of other useful options in other commands that can be used such as the mkdir command with the -p option.
 
 <!-- more -->
 
