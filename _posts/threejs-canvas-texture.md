@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-29 09:30:39
-version: 1.72
+updated: 2021-06-29 09:35:06
+version: 1.73
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element, the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor. It is also possible to use the plain old THREE.Texture constructor also by just setting the needs update property of the texture to true.
@@ -44,7 +44,7 @@ The width and height values should be a base 2 number such as 8, 16, 32 and so f
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
 ```
 
-So I created a canvas, set the size of it to something that is a base 2 number, and drawn something to it. Great now I have the easy part out of the way, I am now ready to use it to passed it as an argument to a threejs constructor that will return a texture that I can the use in a material that I can then use with a mesh.
+There is of course a great deal more to the 2d drawing context, and the various other client side javaScript features for creating textures with canvas. I have wrote a post on [getting started with canvas](/2017/05/17/canvas-getting-started/) that might be worth checking out if you are totally new to canvas elements. I also have a number of [canvas example posts](/2020/03/23/canvas-example/) where I get into all kinds of various simple, and also not so simple projects when it comes to creating interesting things with canvas.
 
 ### 1.3 - Creating a texture with canvas using THREE.CanvasTexture or just THREE.Texture
 
