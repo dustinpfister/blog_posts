@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 899
-updated: 2021-06-29 12:20:05
-version: 1.8
+updated: 2021-06-29 12:22:45
+version: 1.9
 ---
 
 The [Linux cp](https://man7.org/linux/man-pages/man1/cp.1.html) command can be used to copy files from one folder to another, and for the most part it is just a question of setting the source path as the first options, and the target name as the second option. However there are a number of things that might come up when copying files in the command line, or when creating a bash script to automate some work. For example one might also need to copy a whole bunch of files in a folder recursively, or create a folder in the event that it is not there to begin with. So it would make sense to look into what the options are with the cp command, and also become aware of other useful options in other commands that can be used such as the mkdir command with the -p option.
@@ -50,4 +50,4 @@ cp -r "text" "text_copy"
 
 That will be it for now when it comes to the Linux cp command, that covers at least the basics of copying files in the command line in Linux to say the least. There may be some more advanced things that will come up once in a while though that might have to do with things like file access permissions, filtering, and other things that I might want to do when it comes to writing bash scripts.
 
-
+Although I do Like to write bash scripts now and then part of me understand that there is the potential to make scripts that are more cross platform by copying files within nodejs, or python rather than working with Linux commands. So I might get around to expanding this post a little now and then as needed if I get around to making some more examples for this sort of think when it comes to coping files in general in Linux.
