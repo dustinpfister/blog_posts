@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-29 09:38:35
-version: 1.74
+updated: 2021-06-29 09:43:29
+version: 1.75
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element, the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor. It is also possible to use the plain old THREE.Texture constructor also by just setting the needs update property of the texture to true.
@@ -179,7 +179,7 @@ When this basic example is up and running the result is a cube with a texture cr
 
 ## 3 - Create canvas helper with a custom draw method
 
-In this section I will be writing about an example that makes use of a slightly more advanced revision of the create canvas helper that I made for the first basic example for this post. This method accepts a custom draw method that can be used to draw something else for the texture that is created.
+In this section I will be writing about an example that makes use of a slightly more advanced revision of the create canvas helper that I made for the first basic example for this post. This method accepts a custom draw method that can be used to draw something else for the texture that is created. The draw method given is also called within a draw method that is part of a kind of canvas object that is returned by the helper function also. So now the helper does not return a texture, but an object that has a texture as one of the properties. Doing something like this strokes me as a necessary step when it comes to making some kind of canvas module built on top of threejs and native javaScript as when it comes to getting into updating the content of the canvas I am going to want references to the canvas element, and drawing context at the ready.
 
 ### 3.1 - A Canvas.js module
 
