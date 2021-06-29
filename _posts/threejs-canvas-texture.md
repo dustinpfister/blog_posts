@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-29 09:43:29
-version: 1.75
+updated: 2021-06-29 09:46:20
+version: 1.76
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element, the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor. It is also possible to use the plain old THREE.Texture constructor also by just setting the needs update property of the texture to true.
@@ -183,7 +183,7 @@ In this section I will be writing about an example that makes use of a slightly 
 
 ### 3.1 - A Canvas.js module
 
-Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavsmod.js, and place all these custom helpers and methods there.
+Things are starting to get a little cluttered so for this example I will create an external jaavScript file called canavsmod.js, and place all these custom helpers and methods there. The main public method of interest with this module is the method that I will be using to create and return my custom canvas object, the other methods as of this writing have to do with creating and returning a mesh object that uses the texture, and having one or more default draw methods ready work with.
 
 ```js
 (function(api){
