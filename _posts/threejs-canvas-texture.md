@@ -5,8 +5,8 @@ tags: [js,canvas,three.js,animation]
 layout: post
 categories: three.js
 id: 177
-updated: 2021-06-29 09:13:46
-version: 1.67
+updated: 2021-06-29 09:17:42
+version: 1.68
 ---
 
 There are many situations in which I will want to have a texture to work with when it comes to making some kind of project with [three.js](https://threejs.org/), as there are a number of ways to add textures to a material. That is that when it comes to the various kinds of maps there are to work with in a material, such as color maps, alpha maps, [emissive maps](/2021/06/22/threejs-emissive-map/), and so forth. One way to add a texture to a material would be to use the built in texture loader in the core of the threejs library, if I have some other preferred way to go about loading external images I can also use the THREE.Texture constructor directly to create a texture object from an Image object. However there is also the question of how to go about generating textures using a little javaScript code, and one way to go about creating a texture this way would be with a canvas element, the 2d drawing context of such a canvas element, and the [THREE.CanvasTexture](https://threejs.org/docs/#api/en/textures/CanvasTexture) constructor. It is also possible to use the plain old THREE.Texture constructor also by just setting the needs update property of the texture to true.
@@ -19,7 +19,7 @@ There is a whole lot of ground to cover when it comes to getting into this sort 
 
 ## 1 - Getting started with threejs and canvas for textures
 
-In this post I will be going over a lot of source code examples that have to do with using canvas elements as a way to create textures to be used to skin one more more mesh objects in the javaScript library known as threejs. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or javaScript in general. However in this section I will be going over the basics of using canvas to create a texture before getting into some more advanced examples involving the basic material, standard material and so forth. I will also be going over a few other things that you should be up to speed with at this point before continuing.
+In this post I will be going over a lot of source code examples that have to do with using the javaScript library know as threejs, along with various client side javaScript features such as canvas elements. This is then not any [kind of getting started type post with threejs](/2018/04/04/threejs-getting-started/), or javaScript in general for that matter. So I assume that you have at least some background when it comes to threejs, and also working in a client side javaScript environment in general. However in this section I will be going over a few things that you should be up to speed with at this point before continuing to read the rest of this post.
 
 ### 1.1 - The source code examples here and much more can be found at my test threejs github repo
 
