@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-30 15:21:06
-version: 1.19
+updated: 2021-06-30 15:23:58
+version: 1.20
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -21,7 +21,7 @@ This is not a [getting started type post on threejs](/2018/04/04/threejs-getting
 
 ### 1.1 - The source code here can be found on github
 
-The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repo.
+The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repository. If for some reason you want to make a pull request with one or the source code examples here that would be the place to do it. There is also the comments section of this blog post that can also be used as a way to bring something to my attention with this content.
 
 ### 1.2 - Look into the texture loader, or canvas texture constructor to create textures
 
