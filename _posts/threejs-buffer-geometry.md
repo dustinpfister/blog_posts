@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2021-06-30 14:40:37
-version: 1.34
+updated: 2021-06-30 14:43:57
+version: 1.35
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -29,7 +29,11 @@ The source code for these examples can be found in my test [threejs github repo]
 
 In order to make use of a geometry I will need a [Mesh object](/2018/05/04/threejs-mesh/) and pass the geometry to the mesh object as the first argument, and a material as the second argument. After that I will want to make the mesh object a child of a [Scene object](/2018/05/03/threejs-scene/), which I can then pass to a renderer with a camera such as the [perspective camera](/2018/04/07/threejs-camera-perspective/). All of these objects that is a Mesh object, scene object, and a camera are all based on a base class called [Object3d](/2018/04/23/threejs-object3d).
 
-### 1.3 - Version Numbers matter with threejs.
+### 1.3 - Know a thing or two about materials also
+
+In order to do anything interesting with a geometry in threejs I am going to want to make the geometry part of a Mesh object, or in some cased a Line object. When creating a Mesh object I will want to of course pass the geometry to the mesh constructor, but I will also want to pass a material alone with it to.
+
+### 1.4 - Version Numbers matter with threejs.
 
 When I first wrote this post I was using r127 of threejs, and the code here may very well break on older or newer version of threejs. I do try to do my best to keep my threejs content up to date, but at times it might be a while between edits.
 
