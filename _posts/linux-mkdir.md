@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 900
-updated: 2021-06-30 11:43:25
-version: 1.3
+updated: 2021-06-30 11:56:46
+version: 1.4
 ---
 
 In Linux there is the command [mkdir](https://linux.die.net/man/1/mkdir) that can be used to make a directory, or folder if you prefer in the command line. However there are also a few more options to write about when it comes to this command alone such as the [mkdir -p command](https://unix.stackexchange.com/questions/84191/how-to-create-nested-directory-in-a-single-command) that can be used to create nested folders as needed if they are not there. There is also the midir -m option that will allow for me to set what the file access permissions are for the folder. Speaking of permissions there are also maybe a few more things to write about when it comes to other commands that will typically be used in conjunction with mkdir such as [chmod](/2020/11/13/linux-chmod/) as a way to set permissions of folders without the -m option, and contents of files, as well as the [ls command](/2020/10/14/linux-ls/) to list folders, permissions of folders and the contents of such folders.
@@ -25,6 +25,8 @@ $ rm -d "foo"
 ```
 
 ## 2 - The mkdir -p command
+
+One major option of the mkdir command is the -p option that stands for parent. The deal with this is that when I attempt to create a folder that is all ready there, this will result in an error. Also if I want to create not just one folder but a path of folders some of which may or may not be there this too will not work without the -p option.
 
 ```
 
