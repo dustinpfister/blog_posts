@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2021-06-29 16:25:37
-version: 1.28
+updated: 2021-06-30 14:12:11
+version: 1.29
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -298,7 +298,69 @@ Now it is time to see how a custom geometry works with a situation involving a l
     ());
 ```
 
-## 6 - Conclusion
+## 6 - Rotation and translation of buffer geometry
+
+When I add a geometry to a Mesh object the resulting Mesh object is based off of Object3d and as such it has a position and rotation property that can be used as a way to translate and rotate the mesh object as a whole. However I think that it is important to point out that this is the way to go about moving a geometry around once the translation and rotation of a geometry is in the initial fixed state that I want. If that is not the case I will want to adjust that using the translate and rotation methods of the Buffer geometry class instance, and not that of the containing mesh object.
+
+
+```js
+(function () {
+    // SCENE
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+ 
+    // geometry
+    var geometry = new THREE.BufferGeometry();
+    var vertices = new Float32Array([
+                0, 0, 0, // triangle 1
+                1, 0, 0,
+                1, 1, 0
+            ]);
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+    // TRANSLATE AND ROTATE
+    geometry.rotateZ(Math.PI / 180 * 135);
+    geometry.translate(0.75, 0, 0);
+ 
+    // mesh
+    var custom = new THREE.Mesh(
+            geometry,
+            new THREE.MeshBasicMaterial({
+                color: 'red',
+                side: THREE.DoubleSide
+            }));
+    scene.add(custom);
+    // render, camera, and loop
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.5, 1000);
+    camera.position.set(1, 2, 4);
+    camera.lookAt(0, 0, 0);
+    var frame = 0,
+    maxFrame = 200,
+    fps_target = 24,
+    lt = new Date();
+    var loop = function () {
+        var now = new Date(),
+        secs = (now - lt) / 1000;
+        requestAnimationFrame(loop);
+        if (secs >= 1 / fps_target) {
+            var per = frame / maxFrame,
+            bias = Math.abs(.5 - per) / .5,
+            r = -Math.PI * 2 * per;
+            custom.rotation.set(0, Math.PI * 2 * per, 0);
+            renderer.render(scene, camera);
+            frame += 1;
+            frame %= maxFrame;
+            lt = now;
+        }
+    };
+    loop();
+}
+    ());
+```
+
+## 7 - Conclusion
 
 I have a lot of work cut out for me when it comes to working on editing a lot of my old three.js content. A lot of my examples made use of the old geometry constructor, so They will need to be updated to work with the buffered geometry constructor if I want them to still work with late versions of three.js. The only other options would be to just make quick edits that mention what version of three.js I was using when I made they example which might prove to be a good temporarily fix when it comes to editing.
 
