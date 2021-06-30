@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 851
-updated: 2021-06-30 14:34:03
-version: 1.31
+updated: 2021-06-30 14:36:13
+version: 1.32
 ---
 
 As of revision 125 of [threejs](https://threejs.org/) the [Geometry Constructor](/2018/04/14/threejs-geometry/) has been removed which will result in code breaking changes for a whole Internet of threejs examples. So this week when it comes to my threejs content I have been editing old posts, and writing some new ones, and I have noticed that I have not wrote a post on the buffer geometry constructor just yet. I have wrote one on the old Geometry Constructor that I preferred to use in many of my examples, but now that the constructor is no more I am going to need to learn how to just use the Buffer Geometry Constructor when it comes to making my own geometries.
@@ -23,7 +23,7 @@ This is a post on the buffer geometry constructor in three.js which was one of t
 
 ### 1.1 - The source code of these examples is on my guthub
 
-The source code for these examples can be found in my test [threejs github repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry).
+The source code for these examples can be found in my test [threejs github repo](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-buffer-geometry). The latest state of the source code can always be found there if I just happen to be working on some new examples, as well as making some changes to the ones that I have all ready made. If you want to make a pull request for whatever the reason that would also of course be the place to do so.
 
 ### 1.2 - The Scene Object, Mesh Objects, Cameras, and Object3d in general
 
