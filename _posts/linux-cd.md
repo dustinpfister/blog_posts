@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 800
-updated: 2021-02-12 12:18:42
-version: 1.14
+updated: 2021-06-30 13:14:04
+version: 1.15
 ---
 
 The [linux cd](https://www.tecmint.com/cd-command-in-linux/) command is what is used to change the current working directory when working in a terminal. The cd command is one of several bash built in commands that are actually part of bash itself, and because bash is a major part of just about every Linux os, as well as posix system in general, it is one of many commands that should be present on just about any posix or unix like system that uses bash as the default shell.
@@ -64,7 +64,7 @@ One might think that there is not much to write about when it comes to the cd co
 
 ### 2.1 - Folders with spaces in the name
 
-One thing that I had to learn that comes up once in a while is how to go about changing to a folder that has spaces in the name. This can prove to be a problem because without knowing how it will result in passing more than one positional argument to cd. This can easily be fixed though by using quotes.
+One thing that I had to learn that comes up once in a while is how to go about changing to a folder that has spaces in the name. This can prove to be a problem because without knowing how it will result in passing more than one positional argument to cd. This can easily be fixed though by using quotes when setting the string value of the path to change to.
 
 ```
 $ mkdir "./foo folder/"
