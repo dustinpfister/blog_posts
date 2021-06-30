@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 896
-updated: 2021-06-24 15:06:16
-version: 1.18
+updated: 2021-06-30 15:21:06
+version: 1.19
 ---
 
 In [threejs](https://threejs.org/docs/#manual/en/introduction/Creating-a-scene) there is the normal attribute of a geometry which will come into play when it comes to figuring out how light should effect a surface. However it todays post I will be writing about a special kind of texture that can be added to some materials in threejs that can also be used to adjust lighting called a [normal map](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial.normalMap).
@@ -19,19 +19,23 @@ A normal map is just one of many options to work with when it comes to the vario
 
 This is not a [getting started type post on threejs](/2018/04/04/threejs-getting-started/), I assume that you have at least some background working with threejs, javaScript, and client side web development in general. So I will not be getting into every little detail about the very basics of what you should know at this point. However in this section I will be quickly going over some things that you might want to read up more on if you need to.
 
-### 1.1 - Look into the texture loader, or canvas texture constructor to create textures
+### 1.1 - The source code here can be found on github
+
+The source code for these [examples can be found in the for post](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-normal-map) folder of my test threejs repo.
+
+### 1.2 - Look into the texture loader, or canvas texture constructor to create textures
 
 In order to do anything with a normal map, or any kind of texture map for that matter I am going to want a texture to use for the map. One way to go about getting a texture to work with would be to use the [threejs built in texture loader](/2021/06/21/threejs-texture-loader/), and another way would be to load images by some other means and then use the texture constructor to create a texture object to be used in a material. However there are ways to go about creating textures with just javaScript code alone without having to bother with external images, and one way would be to use [canvas elements, and the THREE.Canvas Texture](/2018/04/17/threejs-canvas-texture/) constructor.
 
-### 1.2 - There are many other options for texture maps
+### 1.3 - There are many other options for texture maps
 
 In this post I am looking into normal maps, but there are many other kinds of maps that you should also be aware of. If you are first starting out with this sort of thing I might be better to start out with the usual simple color map, or maybe a [emissive map](/2021/06/22/threejs-emissive-map/) when it comes to working with a material that will react to one or more light sources.
 
-### 1.3 - Know your options with materials
+### 1.4 - Know your options with materials
 
 The normal map is a kind of map that effects lighting, so it does not make sense to use a normal map when it comes to using a material such as the basic material, the normal material, or any kind of material that does not support normal maps. In the source code examples here I am sticking to using just the [standard material](/2021/04/27/threejs-standard-material/) which is one options that supports the normal map feature, there are some other options to be aware of so be sure to [read up more on materials in general](/2018/04/30/threejs-materials/) if you have not done so.
 
-### 1.4 - Me mindful of the version numbers used with three.js
+### 1.5 - Me mindful of the version numbers used with three.js
 
 When I wrote this post I was using r127 of threejs which was a later version of threejs in early 2021. As time goes by yet even more code breaking changes might be made to the library that will cause the source code examples here to no longer work.
 
