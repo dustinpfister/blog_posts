@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 900
-updated: 2021-06-30 12:58:51
-version: 1.10
+updated: 2021-06-30 13:06:58
+version: 1.11
 ---
 
 In Linux there is the command [mkdir](https://linux.die.net/man/1/mkdir) that can be used to make a directory, or folder if you prefer in the command line. However there are also a few more options to write about when it comes to this command alone such as the [mkdir -p command](https://unix.stackexchange.com/questions/84191/how-to-create-nested-directory-in-a-single-command) that can be used to create nested folders as needed if they are not there. There is also the midir -m option that will allow for me to set what the file access permissions are for the folder. Speaking of permissions there are also maybe a few more things to write about when it comes to other commands that will typically be used in conjunction with mkdir such as [chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) as a way to set permissions of folders without the -m option, and contents of files, as well as the [ls command](/2020/10/14/linux-ls/) to list folders, permissions of folders and the contents of such folders.
@@ -64,4 +64,6 @@ $ rm -rd "bar"
 
 ## 4 - Conclusion
 
-The Linux mkdir command is then how to go about creating a new folder in a command line interface, and it is then also a way to go about creating one or more folders in [bash scripts](/2020/11/27/linux-bash-script/) also. The command is typically not used by itself though the ls command with the -l and -d options can eb used to list folders,the chmod command can be used to set permissions for any folders that have been created before hand, and the rm command is hot to go about deleting them.
+The Linux mkdir command is then how to go about creating a new folder in a command line interface, and it is then also a way to go about creating one or more folders in [bash scripts](/2020/11/27/linux-bash-script/) also. The command is typically not used by itself though the ls command with the -l and -d options can eb used to list folders,the chmod command can be used to set permissions for any folders that have been created before hand, and the rm command is hot to go about deleting them. 
+
+I think that I managed to cover all the basics to be aware of when it comes to making folders in a Linux system, but I am sure that I will want to expand this post a little at some point in the future. It might be nice to create some more advanced examples that have to do with bash scripts when it comes to filtering and only creating folders as needed when some kind of condition resolves as true. There might also be some additional talking points when it comes to writing some automation scrips that involve creating folders in a way that might be a little more portable by doing so within a programing environment like pytho9n or nodejs.
