@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 900
-updated: 2021-06-30 12:04:15
-version: 1.7
+updated: 2021-06-30 12:04:48
+version: 1.8
 ---
 
 In Linux there is the command [mkdir](https://linux.die.net/man/1/mkdir) that can be used to make a directory, or folder if you prefer in the command line. However there are also a few more options to write about when it comes to this command alone such as the [mkdir -p command](https://unix.stackexchange.com/questions/84191/how-to-create-nested-directory-in-a-single-command) that can be used to create nested folders as needed if they are not there. There is also the midir -m option that will allow for me to set what the file access permissions are for the folder. Speaking of permissions there are also maybe a few more things to write about when it comes to other commands that will typically be used in conjunction with mkdir such as [chmod](https://man7.org/linux/man-pages/man1/chmod.1.html) as a way to set permissions of folders without the -m option, and contents of files, as well as the [ls command](/2020/10/14/linux-ls/) to list folders, permissions of folders and the contents of such folders.
@@ -46,7 +46,7 @@ So then the mkdir -p command saves me the trouble of creating a folder, then usi
 
 ## 3 - Setting the permissions for the new folders with mkdir -m
 
-Yet another option of interest would be the -m option of the mkdir command. This command allows for me to set what the file access permissions would be without having to bother with the chmod command. I will not be getting into the details of what file access permisiins are in detail here as I have all ready done so in my post on the [Linux chmod](/2020/11/13/linux-chmod/) command. However I will say that the default permissions of the mkdir command seem to be 755, if for example I want to set the permissions to 777 which would be full permissions, then one way to do so would be to use this -m option of the command to overred that default permission setting.
+Yet another option of interest would be the -m option of the mkdir command. This command allows for me to set what the file access permissions would be without having to bother with the chmod command. I will not be getting into the details of what file access permissions are in detail here as I have all ready done so in my post on the [Linux chmod](/2020/11/13/linux-chmod/) command. However I will say that the default permissions of the mkdir command seem to be 755, if for example I want to set the permissions to 777 which would be full permissions, then one way to do so would be to use this -m option of the command to overred that default permission setting.
 
 ```
 $ mkdir -p "foo"
