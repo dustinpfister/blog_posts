@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 10:49:09
-version: 1.4
+updated: 2021-07-01 10:51:18
+version: 1.5
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing hoe date and time is displayed in the panel in Raspberry pi OS for example.
@@ -21,6 +21,7 @@ When it comes to getting started with the date command, doing so is simple enoug
 $ date
 ```
 
+There are then two general things that come to mind after this, one of which is how to format the output to something other than the default, and the other is how to do something with a date and time other than the current time.
 
 ## 2 - Setting the format of the output
 
