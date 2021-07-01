@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 15:57:33
-version: 1.20
+updated: 2021-07-01 16:06:13
+version: 1.21
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -115,6 +115,8 @@ There are two ways of fixing this one is to just make it so both sides are alway
 
 ### 3.1 - Setting Three.DoubleSide for the side property of the material
 
+One way to address this problem is to just make it so that both side of a face will be rendered rater than just the front side of the face. However one major draw back of this is that it will eat up more overhead of course, so it really is best to just know how to set what side of a face is the front side.
+
 ```js
 var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
     side: THREE.DoubleSide
@@ -122,7 +124,7 @@ var mesh = new THREE.Mesh(geometry, new THREE.MeshNormalMaterial({
 scene.add(mesh);
 ```
 
-This is also just a useful property to be aware of for use with certain Models anyway, for example if I have a plain and I want a material rendered on both sides.
+This is also just a useful property to be aware of for use with certain Models anyway, for example if I have a plane and I want a material rendered on both sides.
 
 ### 3.2 - Just getting the vertex index order right for the Face3 instances
 
