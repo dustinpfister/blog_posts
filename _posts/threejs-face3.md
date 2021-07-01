@@ -5,13 +5,13 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 15:24:53
-version: 1.14
+updated: 2021-07-01 15:26:54
+version: 1.15
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
 
-When using any kind of built in geometry, instances of Face3 are created automatically, or at least they where, and still are of you are using an older version of threejs still. However whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3 when using the old Geometry Constructor.
+When using any kind of built in geometry, instances of Face3 are created automatically, or at least they where, and still are if you are using an older version of threejs. So whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3 when using the old Geometry Constructor.
 
 <!-- more -->
 
@@ -190,5 +190,5 @@ The value that I give to material index should be the index value of the materia
 
 ## 5 - Conclusion
 
-The Face3 constructor is something that I might not need to bother with anymore, at least when it comes to using newer versions of threejs. There are only so many things that I might need to do when it comes to working with a geometry, or a mesh, and one of which is to set the material index values to use with each face of an object. The way to do that might have been to set the material index of face3 instances, but now with newer versions of threejs there is no Geometry of Face3 constructor, at least nt in the core of the library. So a modern way of doing that must be followed.
+The Face3 constructor is something that I might not need to bother with anymore, at least when it comes to using newer versions of threejs. There are only so many things that I might need to do when it comes to working with a geometry, or a mesh, and one of which is to set the material index values to use with each face of an object. The way to do that might have been to set the material index of face3 instances, but now with newer versions of threejs there is no Geometry of Face3 constructor, at least not in the core of the library. So a modern way of doing that must be followed.
 
