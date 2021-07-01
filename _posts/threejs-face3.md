@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 16:06:13
-version: 1.21
+updated: 2021-07-01 16:07:40
+version: 1.22
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -128,7 +128,7 @@ This is also just a useful property to be aware of for use with certain Models a
 
 ### 3.2 - Just getting the vertex index order right for the Face3 instances
 
-The other way is to just get the index values right in which case the default THREE.FrontSide is not a problem when rendering.
+The other way is to just get the index values right in which case the default THREE.FrontSide is not a problem when rendering. So it is a good idea to just figure out what the proper order is for the index values to given the the Face3 constructor.
 
 Consider the following:
 
