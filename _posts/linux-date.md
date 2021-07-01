@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 12:35:19
-version: 1.22
+updated: 2021-07-01 12:37:36
+version: 1.23
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing the date and time is displayed in the panel in Raspberry pi OS for example.
@@ -75,7 +75,7 @@ Thu Jul 01 2021 11:36:38 GMT-0400 (Eastern Daylight Time)
 
 ## 5.2 - Getting date info with Python and the datetime standard library
 
-When it comes to python there is the [date time standard library](/2021/01/21/python-standard-library-datetime/) that is the usual goto library when it comes to working with dates. Like the Date Class in javaScript this date time library is built into python itself, so I do not need to bother with any kinds of additional external asset also. In order to send something to the standard output in python I can use the print built in function to do so, which is great as it gives me a good deal of control like that of the process stdout write method in node.
+When it comes to python there is the [date time standard library](/2021/01/21/python-standard-library-datetime/) that is the usual goto library when it comes to working with dates. Like the Date Class in javaScript this date time library is built into python itself, so I do not need to bother with any kinds of additional external asset also. In order to send something to the standard output in python I can use the print [built in function](/2020/12/15/python-built-in-functions/) to do so, which is great as it gives me a good deal of control like that of the process stdout write method in node.
 
 ```python
 import datetime as date
