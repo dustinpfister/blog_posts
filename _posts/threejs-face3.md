@@ -5,11 +5,11 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-04-21 12:59:35
-version: 1.13
+updated: 2021-07-01 15:24:53
+version: 1.14
 ---
 
-The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the Buffered Geometry constructor.
+The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
 
 When using any kind of built in geometry, instances of Face3 are created automatically, or at least they where, and still are of you are using an older version of threejs still. However whenever making a custom geometry from code, or trying to figure out some problems that may exist with how faces are being rendered it is necessary to understand a few things about Face3 when using the old Geometry Constructor.
 
@@ -31,7 +31,7 @@ Face3 is just one of several constructors of interest when making a custom geome
 
 ## 2 - Basic Example of Face3
 
-For a basic demo of face3 I put together an example where I am just making a single triangle from an array of just three vertices. The [Geometry constructor](/2018/04/14/threejs-geometry/) is used to create an instance of geometry, once I have that I will want to populate the instance of geometry with vertices by adding an array of [Vector3](/2018/04/15/threejs-vector3/) instances. Vector3 of course is another constructor that is used in three.js to create a point in space.
+For a basic demo of face3 I put together an example where I am just making a single triangle from an array of just three vertices. The Geometry constructor is used to create an instance of geometry, once I have that I will want to populate the instance of geometry with vertices by adding an array of [Vector3](/2018/04/15/threejs-vector3/) instances. Vector3 of course is another constructor that is used in three.js to create a point in space.
 
 Once I have an array of vertices I will want a way to define faces that exist between them, this is where Face3 comes into play. The first three arguments given to Face3 are the index values in the vertices array that I want to make a triangular face with. The order of the index values does matter as it is used to determine the orientation of the face when it comes to rendering a texture to the face, more on that later.
 
