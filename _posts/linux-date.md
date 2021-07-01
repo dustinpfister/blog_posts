@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 10:59:10
-version: 1.8
+updated: 2021-07-01 11:02:49
+version: 1.9
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing hoe date and time is displayed in the panel in Raspberry pi OS for example.
@@ -39,4 +39,8 @@ I can also use a date time stamp that is something other than the current system
 $ date -d "1983-04-06 10:05:00" "+%A"
 # Wednesday
 ```
+
+## 4 - Conclusion
+
+So the Linux date command is one way to go about working with dates in a Linux system or any posix system that has this date command. However the date command is not the end all solution for working with dates in Linux, there is making use of the javaScript Date class if nodejs is installed, and the date time standard library in the event that python is there to work with. In additional there are other commands to be aware of when it comes to setting the system time in a Linux system.
 
