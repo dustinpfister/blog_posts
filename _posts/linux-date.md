@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 12:33:25
-version: 1.21
+updated: 2021-07-01 12:35:19
+version: 1.22
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing the date and time is displayed in the panel in Raspberry pi OS for example.
@@ -61,7 +61,7 @@ There is using the date command to work with dates in Linux, which works just fi
 
 ## 5.1 - Getting date info with javaScript using Nodejs and the Date Class
 
-If nodejs is installed on the system then javaScript would be one programing language that can be used to work with dates. When working out a little javaScript code there is the native [javaScript Date](/2019/02/14/js-javascript-date/) constructor that can be used to create a date object. The to string method of the date object is one way to go about creating a string value of the date object that can then be sent to the standard output. In node there is the console log method that is one way to go about sending some data to the standard output, but there is also the process.write method that might prove to be a slightly more professional way to do so as I have more control over the output when it comes to line breaks.
+If nodejs is installed on the system then javaScript would be one programing language that can be used to work with dates. When working out a little javaScript code there is the native [javaScript Date](/2019/02/14/js-javascript-date/) constructor that can be used to create a date object. The to string method of the date object is one way to go about creating a string value of the date object that can then be sent to the standard output. In node there is the console log method that is one way to go about sending some data to the standard output, but there is also the [process stdout write](/2021/03/18/nodejs-process-stdout/) method that might prove to be a slightly more professional way to do so as I have more control over the output when it comes to line breaks.
 
 ```js
 let d = new Date();
@@ -75,7 +75,7 @@ Thu Jul 01 2021 11:36:38 GMT-0400 (Eastern Daylight Time)
 
 ## 5.2 - Getting date info with Python and the datetime standard library
 
-When it comes to python there is the [date time standard library](/2021/01/21/python-standard-library-datetime/) that is the usual goto library when it comes to working with dates. Like the Date Class in javaScript this date time library is built into python itself, so I do not need to bother with any kinds of additional external asset also. In order to send something to the standard output in python I can use the print built in function to do so, which is great as it gives me a good deal of control like that of the process write method in node.
+When it comes to python there is the [date time standard library](/2021/01/21/python-standard-library-datetime/) that is the usual goto library when it comes to working with dates. Like the Date Class in javaScript this date time library is built into python itself, so I do not need to bother with any kinds of additional external asset also. In order to send something to the standard output in python I can use the print built in function to do so, which is great as it gives me a good deal of control like that of the process stdout write method in node.
 
 ```python
 import datetime as date
