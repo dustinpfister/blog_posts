@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 16:07:40
-version: 1.22
+updated: 2021-07-01 16:08:55
+version: 1.23
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -133,21 +133,49 @@ The other way is to just get the index values right in which case the default TH
 Consider the following:
 
 ```js
-    geometry.vertices.push(
+(function () {
+    // scene
+    var scene = new THREE.Scene();
  
+    // GEOMETRY
+    var geometry = new THREE.Geometry();
+    // create an array of vertices by way of
+    // and array of vector3 instances
+    geometry.vertices.push(
         new THREE.Vector3(0, 0, 0),
         new THREE.Vector3(1, 0, 0),
         new THREE.Vector3(1, 1, 0),
- 
         new THREE.Vector3(0, 0, 0),
         new THREE.Vector3(-1, 0, 0),
         new THREE.Vector3(-1, -1, 0));
- 
     // FACE3
     geometry.faces.push(
+        new THREE.Face3(0, 1, 2),  // THIS IS FACING ONE WAY
+        new THREE.Face3(5, 4, 3)); // THIS IS FACING THE OTHER WAY
+    // compute Normals
+    geometry.computeVertexNormals();
+    geometry.computeFaceNormals();
+    geometry.normalize(); // normalize the geometry
  
-        new THREE.Face3(0, 1, 2),
-        new THREE.Face3(5, 4, 3));
+    // MESH with GEOMETRY, and Normal MATERIAL
+    var mesh = new THREE.Mesh(
+            // geometry as first argument
+            geometry,
+            // then Material
+            new THREE.MeshNormalMaterial());
+    scene.add(mesh);
+    scene.add(new THREE.FaceNormalsHelper(mesh, 2, 0x00ff00, 1));
+    scene.add(new THREE.VertexNormalsHelper(mesh, 2, 0xff0000, 1));
+    // renderer, camera
+    var camera = new THREE.PerspectiveCamera(50, 4 / 3, .5, 1000);
+    camera.position.set(0, 0, 2);
+    camera.lookAt(0, 0, 0);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 Notice that with the first instance of Face3 I am starting with index 0 then counting up, while with the other instance I am staring with the last index and counting backwards. This results in the Front side of both faces being on opposite sides relative to each other.
