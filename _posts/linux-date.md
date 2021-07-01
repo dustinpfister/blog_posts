@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 11:47:36
-version: 1.13
+updated: 2021-07-01 12:00:30
+version: 1.14
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing the date and time is displayed in the panel in Raspberry pi OS for example.
@@ -49,6 +49,8 @@ On some systems it might be possible to set the system time by using the -s opti
 sudo date -s "Thu Jul  1 11:00:00 UTC 2021"
 #Thu 01 Jul 2021 07:00:00 AM EDT
 ```
+
+This might not work on all systems though, for example on my raspberry pi it would seem that it does not work. However there is also no need for the most part because as long as I have an Internet connection setting of the system time will happen automatically.
 
 ## 5 - Conclusion
 
