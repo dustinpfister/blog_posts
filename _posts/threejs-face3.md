@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 15:36:42
-version: 1.18
+updated: 2021-07-01 15:38:22
+version: 1.19
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -29,7 +29,7 @@ This is an advanced post on three.js which is a javaScript library that is used 
 
 ### 1.1 - The source code examples here are on github
 
-The source code examples here are [in my test threejs github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-face3) repository.
+The source code examples here are [in my test threejs github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-face3) repository. When it comes to making a pull request that would be where to do so, there is also the comments of this post that can also be used as a way to bring something up.
 
 ### 1.2 - Version numbers Matter
 
