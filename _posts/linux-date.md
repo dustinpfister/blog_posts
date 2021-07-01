@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 12:39:36
-version: 1.24
+updated: 2021-07-01 12:40:27
+version: 1.25
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing the date and time is displayed in the panel in Raspberry pi OS for example.
@@ -84,6 +84,8 @@ import datetime as date
 d = date.datetime.now()
 print(d)
 ```
+
+Just like with node I omly need to pass the source code file to the python binary.
 
 ```
 $ python3 python_date.py
