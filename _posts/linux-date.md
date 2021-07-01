@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 11:08:31
-version: 1.10
+updated: 2021-07-01 11:10:21
+version: 1.11
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing hoe date and time is displayed in the panel in Raspberry pi OS for example.
@@ -33,11 +33,10 @@ $ date "+ The Date is: %m/%d/%Y, and the time is %I:%M %p"
 
 ## 3 - Setting the time of the date to something other than the current time
 
-I can also use a date time stamp that is something other than the current system tie by just making use of the -d option. When using the -d option I just need to pass a string value that contains the data for the date, and time of day for that date that I want to use when it comes to formating the ending output for that specific moment it time.
+I can also use a date time stamp that is something other than the current system tie by just making use of the -d option. When using the -d option I just need to pass a string value that contains the data for the date, and time of day for that date that I want to use when it comes to formating the ending output for that specific moment it time. For example if I want to know what day of the week a given date was I can do something like this:
 
 ```
 $ date -d "1993-04-06 10:05:00" "+%A"
-# Wednesday
 ```
 
 ## 4 - Conclusion
