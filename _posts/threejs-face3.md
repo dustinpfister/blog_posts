@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 16:09:55
-version: 1.24
+updated: 2021-07-01 16:11:37
+version: 1.25
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -182,7 +182,7 @@ Notice that with the first instance of Face3 I am starting with index 0 then cou
 
 ## 4 - The Material index property
 
-If in case you did not know, it is possible to give an array of materials to the mesh constructor, rather than just one. In this case there should be some way to set which material should be used for which insistence of face3. For this there is the material index property of face3.
+If in case you did not know, it is possible to give an array of materials to the mesh constructor, rather than just one. In this case there should be some way to set which material should be used for which insistence of face3. For this there is the material index property of a face3 instance. So the process of having control over this is to just loop over the array of face3 objects, and set the desired material index value for each face.
 
 Say for example I want to have a cube with three different materials that will each be used for three of the six sides of the cube. To pull that off I might do something like this:
 
