@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 12:37:36
-version: 1.23
+updated: 2021-07-01 12:39:36
+version: 1.24
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing the date and time is displayed in the panel in Raspberry pi OS for example.
@@ -67,6 +67,8 @@ If nodejs is installed on the system then javaScript would be one programing lan
 let d = new Date();
 process.stdout.write(d.toString() + '\n');
 ```
+
+Once I have a javaScript file to call I can just call node, and then use the javaScript file name that contains the code to get the date info in the standard output.
 
 ```
 $ node node_date.js
