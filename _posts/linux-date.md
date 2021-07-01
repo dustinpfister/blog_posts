@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 10:55:02
-version: 1.6
+updated: 2021-07-01 10:58:13
+version: 1.7
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing hoe date and time is displayed in the panel in Raspberry pi OS for example.
@@ -24,6 +24,8 @@ $ date
 There are then two general things that come to mind after this, one of which is how to format the output to something other than the default, and the other is how to do something with a date and time other than the current time. So lets take a look at some additional examples that involve getting into doing that with the date command.
 
 ## 2 - Setting the format of the output
+
+In order to set the format of the output to something other than the default I just need to use a string value that begins with a plus sign. After the plus sign I can then make the string value more or less anything that I want, and I can use a bunch of special values that will result in the injection of a desired value of the date time stamp.
 
 ```
 $ date "+ The Date is: %m/%d/%Y, and the time is %I:%M %p"
