@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 901
-updated: 2021-07-01 12:12:05
-version: 1.17
+updated: 2021-07-01 12:27:09
+version: 1.18
 ---
 
 This is a post on another basic command that I would like to write about real quick called the [Linux date](https://man7.org/linux/man-pages/man1/date.1.html) command. As one might suspect this is a command where a string value of the current date and time is spit out into the standard output, however there is also how to go about formatting that output. When it comes to formating the output the same standard is used when it comes to customizing the date and time is displayed in the panel in Raspberry pi OS for example.
@@ -60,6 +60,8 @@ This might not work on all systems though, for example on my raspberry pi it wou
 There is using the date command to work with dates in Linux, which works just fine when we are talking about Linux systems, and most posix systems that have the date command that will work in more or less the same way. So then the date command should be fairly safe to use in bash scripts because it is a fairly common command that should be there to work with in most posix systems. However in some cases I might want to write scripts that work with time, and will do so in a wider range of platforms beyond that of just Linux. To do this there is also using a programing language such as javaScript, or python, and using the binaries that can be installed on Linux, but also not so posix friendly systems like Windows.
 
 ## 5.1 - Getting date info with javaScript using Nodejs and the Date Class
+
+If nodejs is installed on the system then javaScript would be one programing language that can be used to work with dates. When working out a little javaScript code there is the native javaScript date constructor that can be used to create a date object. The to string method of the date object is one way to go about creating a string value of the date object that can then be sent to the standard output. In node there is the console log method that is one way to go about sending some data to the standard output, but there is also the process.write method that might prove to be a slightly more professional way to do so as I have more control over the output when it comes to line breaks.
 
 ```js
 let d = new Date();
