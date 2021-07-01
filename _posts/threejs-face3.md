@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 185
-updated: 2021-07-01 15:29:23
-version: 1.16
+updated: 2021-07-01 15:32:48
+version: 1.17
 ---
 
 The [Face3 constructor has been removed](https://github.com/mrdoob/three.js/pull/21161) in [three.js](https://threejs.org/) as of [revision 126](https://github.com/mrdoob/three.js/releases/tag/r126). Before that change the Face3 Constructor was used to define a Face when making a custom geometry with the [Geometry Constructor](/2018/04/14/threejs-geometry/) which has also been removed as of revision 125. It might still be possible to get the old geometry constructor working on new versions of threejs, but it would be best to make custom geometries with the [Buffered Geometry](/2021/04/22/threejs-buffer-geometry/) constructor when it comes to making use of late versions of threejs.
@@ -25,9 +25,11 @@ Still I might leave this post up for the sake of historical reasons, if you are 
 
 ## 1 - What to know before you continue reading
 
-This is an advanced post on three.js which is a javaScript library that is used to work with things in 3d space. If you are new to three.js you might want to start with my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern, in this post I am using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build).
+This is an advanced post on three.js which is a javaScript library that is used to work with things in 3d space. If you are new to three.js you might want to start with my [getting started post on three.js](/2018/04/04/threejs-getting-started/) first. Face3 is just one of several constructors of interest when making a custom geometry. Other constructors of interest are [Vector3](/2018/04/15/threejs-vector3/), and of course [Geometry](/2018/04/14/threejs-geometry/).
 
-Face3 is just one of several constructors of interest when making a custom geometry. Other constructors of interest are [Vector3](/2018/04/15/threejs-vector3/), and of course [Geometry](/2018/04/14/threejs-geometry/).
+### 1.1 - Version numbers Matter
+
+As of this writing three.js is a project that is still being developed fairly fast, so version numbers are of great concern. In this post I was using [three.js 0.91.0 aka r91](https://github.com/mrdoob/three.js/tree/r91/build) when I first make the source code examples, and the last version that I tested them on was r111.
 
 ## 2 - Basic Example of Face3
 
