@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 902
-updated: 2021-07-02 10:37:47
-version: 1.13
+updated: 2021-07-02 10:41:22
+version: 1.14
 ---
 
 The [Linux awk](https://en.wikipedia.org/wiki/AWK) command is another command like that of grep as it would seem that it is mainly used for text pattern matching tasks. However it would also seem that awk is more or less a full programing language also, although I can not say that this is a language that is widely uses these days. The pattern matching and replacement tasks that are typically done with awk can also be done with other Linux commands such as [grep](/2020/09/14/linux-grep/), and also such tasks and much more can be done with more modern scripting languages such as nodejs, and python. Still I thought that I would take a moment to come up with a few hello world type examples of awk, and write a quick post on this subject, as well as maybe a few more examples that have to do with pattern matching, and working with text in general in a Linux system.
@@ -49,3 +49,5 @@ $ echo -en "abc hhh\n123 fgh\nxdf\nzxy 456" | awk 'match($0,/[0-9]+/) {print sub
 ## 4 - Conclusion
 
 I am not sure if I really want to get into learning awk in detail when it comes to every little function, and feature of the language though. Although it is true that awk is there to work with in just about any Linux system, typically I can install and work with a more modern scripting language such as javaScript, or Python, and the kind of tasks that I would typically do with awk can of course be done with those languages.
+
+One question that comes to mind is of awk is to text processing and python is to data science? If so maybe getting into learning a thing or two more about awk is not such a bad thing if I really want to get into text processing type work. However even if that is the case this is still the kind of thing that I can do in other languages that are far more popular, and prove to be better environments for many things other than just text pattern matching type tasks.
