@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-07-02 12:32:24
-version: 1.28
+updated: 2021-07-02 12:39:21
+version: 1.29
 ---
 
 In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, so it would be best these days to look into my [post on the Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at this time.
@@ -49,11 +49,16 @@ If by chance you are using an older version of threejs that has this method, the
 var bufferGeometry = new THREE.BufferGeometry().fromGeometry(geometry);
 ```
 
+### 1.4 - There is also THREE.Face3, and THREE.Vector3
+
+So with new versions of threejs r126+ actually the [THREE.Face3 constructor](/2018/05/11/threejs-face3/) is no more also. In the buffer geometry class of new versions of threejs the features of face3 and now more or less part of what is now know as the groups array. So if you are using a new version of threejs there is no need to read up more on the Face3 constrictor, but you might want to learn what groups are if you intend to make your own geometry constructors.
+There is another constructor that I am using in many of these examples and that is the [THREE.Vector3](https://threejs.org/docs/index.html#api/math/Vector3)  constructor which would seem to have survived the chopping block. Which is not surprising that is still a useful class when it comes to creating and working with vectors in threejs.
+
 ## 2 - Basic three.js Geometry example.
 
-The basic process is to first create an instance of Geometry by calling the constructor, and saving the instance of Geometry to a variable. Once you have your instance of Geometry you can now start adding some vertices to it, these are just points in space that are created using the [Vector3](https://threejs.org/docs/index.html#api/math/Vector3) constructor. 
+The basic process is to first create an instance of Geometry by calling the constructor, and saving the instance of Geometry to a variable. Once you have your instance of Geometry you can now start adding some vertices to it, these are just points in space that are created using the Vector3 constructor. 
 
-After You have an array of vertices to work with you can start adding faces if it is a geometry that will be used with a Material that makes use of faces. This will be an array of [Face3](/2018/05/11/threejs-face3/) instances that expect three arguments that are the index values of the vertices in which a face is to be drawn between 3 points. An easy way to do this is to think of it like connect the dots, each vertex has an index value to it, and you are just drawing triangles between them. However the order of the index values is important, so if you are running into issues that might be a reason why.
+After You have an array of vertices to work with you can start adding faces if it is a geometry that will be used with a Material that makes use of faces. This will be an array of Face3 instances that expect three arguments that are the index values of the vertices in which a face is to be drawn between 3 points. An easy way to do this is to think of it like connect the dots, each vertex has an index value to it, and you are just drawing triangles between them. However the order of the index values is important, so if you are running into issues that might be a reason why.
 
 Once you have your vertices, and faces you might want to call computeVertexNormals, and normalize the geometry. More on that later.
 
