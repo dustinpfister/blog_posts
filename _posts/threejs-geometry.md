@@ -5,39 +5,39 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-07-02 12:17:57
-version: 1.24
+updated: 2021-07-02 12:25:21
+version: 1.25
 ---
 
-In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, so it would be best these days to look into my [post on the Buffer Geometry constrcor](/2021/04/22/threejs-buffer-geometry/) at this time.
+In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, so it would be best these days to look into my [post on the Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at this time.
 
 <!-- more -->
 
-There are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry. If you are using an older version of threejs, or you can some how get the old Geometry constructor working on a later version of threejs then maybe some of these examples of the old geometry constrcuor can still prove to be helpfule.
-
-So then the examples here as of this writing will break in late versions of threejs. It might be possible to get the old Geometry constructor working on a later version of threejs at some point in the future by making use of a file in the examples folder of the threejs github repository. The same has happed in the past with other features that where removed from the core of threejs, however at this time it might be best to just not use the Geometry constructor, and just learn how to use the Buffered Geometry constructor alone.
+So then the examples here as of this writing will break in late versions of threejs. It might be possible to get the old Geometry constructor working on a later version of threejs at some point in the future by making use of a file in the examples folder of the threejs github repository. The same has happened in the past with other features that where removed from the core of threejs, however at this time it might be best to just not use the Geometry constructor, and just learn how to use the Buffered Geometry constructor alone.
 
 For now I will be leaving this post up, however as of this writing the content here should only apply to situations in which one might still be using older versions of threejs where the code here will still not break. In late versions it will of course not work as it will result in calling undefined. I have been keeping an eye out for a javaScript file in the examples folder that will work for helping to get legacy code up and running fast, but for now it seems that there is no working official option for doing so.
 
+There are many built in geometry constructors that can be used to quickly make many simple, common, solid shapes like cubes, and spheres. However when getting into making an actual three.js project rather than just yet another simple rotating cube demo, there is going to be a need to have a way to make custom geometry. If you are using an older version of threejs, or you can some how get the old Geometry constructor working on a later version of threejs then maybe some of these examples of the old geometry constructor can still prove to be helpful.
+
+
+
 ## 1 - What to know before hand with three geometry
 
-I assume that you know a thing or two about javaScript, also it would be a good idea to [learn the basics](/2018/04/04/threejs-getting-started/) of three.js first if you have not. This is a post on the three.js Geometry constructor that is an easy, but maybe not so efficient way of creating geometry that can be used in a Mesh that can be viewed, and worked with in a scene in three.js, or at least is was.
+I assume that you know a thing or two about javaScript, also it would be a good idea to [learn the basics](/2018/04/04/threejs-getting-started/) of three.js first if you have not done so before hand. This is a post on the three.js Geometry constructor that is an easy, but maybe not so efficient way of creating geometry that can be used in a Mesh that can be viewed, and worked with in a scene in three.js, or at least is was.
 
 ### 1.1 - THE GEOMETRY CONSTRUCTOR IS NO MORE as of threejs revision 125+
 
 When it comes to using new versions of threejs that are of revision 125 or higher the Geometry constructor is no longer part of the core of threejs by itself. From now on it would make more sense to just directly work with buffered  geometry as the only alternatives would be to use older versions of threejs, or get the Geometry constructor to work again by making use of some additional external file.
 
-## 2 - Geometry vs BufferGeometry
+### 1.2 - Geometry vs BufferGeometry
 
 In three.js there is BufferGeometry, and then regular Geometry constructors. The reason for this is that the regular Geometry constructor is easier to work with as the vertices, faces, and so forth are stored directly. However this comes at a performance loss.
 
 Still if you are new to making custom geometry it would make sense to start with the regular Geometry first, then progress into the more advanced BufferGeometry to know how to make your projects run faster.
 
-## 3 - BuferGeomeetry from Geometry
+### 1.3 - BuferGeomeetry from Geometry
 
 Now that the Geometry Constructor has been deprecated this might not be a topic of interest when it comes to updating older code that made use of the Geometry Constructor. Having a quick, duck tape like solution for this might be nice for starters, but ultimately the best way to do so would be to just use the buffered Geometry constructor. Never the less I will be covering this here when it comes to any and all future edits of this post for what it is worth.
-
-### 3.1 - The BufferGeomorty.fromGeomoty method
 
 As of r125+ it would seem that this method has been removed from the core of threejs. As such in late versions of threejs this is no longer an effective way of converting an old Geometry constructor instance into a buffed geometry instance as it will result in calling undefined.
 
@@ -46,7 +46,6 @@ If by chance you are using an older version of threejs that has this method, the
 ```js
 var bufferGeometry = new THREE.BufferGeometry().fromGeometry(geometry);
 ```
-
 
 ## 4 - Basic three.js Geometry example.
 
