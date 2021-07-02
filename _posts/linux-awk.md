@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 902
-updated: 2021-07-02 10:35:37
-version: 1.12
+updated: 2021-07-02 10:37:47
+version: 1.13
 ---
 
 The [Linux awk](https://en.wikipedia.org/wiki/AWK) command is another command like that of grep as it would seem that it is mainly used for text pattern matching tasks. However it would also seem that awk is more or less a full programing language also, although I can not say that this is a language that is widely uses these days. The pattern matching and replacement tasks that are typically done with awk can also be done with other Linux commands such as [grep](/2020/09/14/linux-grep/), and also such tasks and much more can be done with more modern scripting languages such as nodejs, and python. Still I thought that I would take a moment to come up with a few hello world type examples of awk, and write a quick post on this subject, as well as maybe a few more examples that have to do with pattern matching, and working with text in general in a Linux system.
@@ -22,6 +22,8 @@ $ echo -en "text output \nsample text \n" | awk '{print $1}'
 text
 sample
 ```
+
+So one way to use awk is to just call the command, and just use a single print command with \$1 which is a special variable that will be the first field for each line of text.
 
 ## 2 - Match static pattern
 
