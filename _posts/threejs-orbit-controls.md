@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2021-07-02 13:17:15
-version: 1.19
+updated: 2021-07-02 13:21:03
+version: 1.20
 ---
 
-It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch. It would involve some event handlers, and the use of a few [Object3D](https://threejs.org/docs/#api/core/Object3D) methods like lookAt, and position.set. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
+It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some event handlers that woud be used to set the position and rotation of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods maybe. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
 
-The Orbit Controls solution that can be found in the three.js examples folder in the github repo of the project can be used to quickly set up a solution for panning, zooming, and changing the orientation of a camera with the mouse, keyboard, and touch events.
+The Orbit Controls solution that can be found in the three.js examples folder in the github repo of the project can be used to quickly set up a solution for panning, zooming, and changing the orientation of a camera with the mouse, keyboard, and touch events. So then these source code examples will need threejs, as well as OrbitControls.js on top of the additional code that I am going over in this post.
 
 <!-- more -->
 
