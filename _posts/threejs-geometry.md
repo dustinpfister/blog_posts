@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-07-02 12:39:21
-version: 1.29
+updated: 2021-07-02 12:57:15
+version: 1.30
 ---
 
 In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, so it would be best these days to look into my [post on the Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at this time.
@@ -30,6 +30,10 @@ I assume that you know a thing or two about javaScript, also it would be a good 
 When it comes to using new versions of threejs that are of revision 125 or higher the Geometry constructor is no longer part of the core of threejs by itself. From now on it would make more sense to just directly work with buffered  geometry as the only alternatives would be to use older versions of threejs, or get the Geometry constructor to work again by making use of some additional external file. 
 
 So yes version numbers matter big time when it comes to working with threejs, and with that said when I first wrote this post I was using threejs r91, and the last version of threejs that I bothered to do a little editing with the source code was r111 of threejs.
+
+### 1.2 - The source code examples here are on guthub
+
+The source code examples here are [up on my test threejs github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-geometry) repository.
 
 ### 1.2 - Geometry vs BufferGeometry
 
