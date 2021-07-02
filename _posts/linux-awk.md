@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 902
-updated: 2021-07-02 10:41:22
-version: 1.14
+updated: 2021-07-02 10:45:04
+version: 1.15
 ---
 
 The [Linux awk](https://en.wikipedia.org/wiki/AWK) command is another command like that of grep as it would seem that it is mainly used for text pattern matching tasks. However it would also seem that awk is more or less a full programing language also, although I can not say that this is a language that is widely uses these days. The pattern matching and replacement tasks that are typically done with awk can also be done with other Linux commands such as [grep](/2020/09/14/linux-grep/), and also such tasks and much more can be done with more modern scripting languages such as nodejs, and python. Still I thought that I would take a moment to come up with a few hello world type examples of awk, and write a quick post on this subject, as well as maybe a few more examples that have to do with pattern matching, and working with text in general in a Linux system.
@@ -45,6 +45,8 @@ $ echo -en "abc hhh\n123 fgh\nxdf\nzxy 456" | awk 'match($0,/[0-9]+/) {print sub
 123
 456
 ```
+
+So now things are starting to get a little involved, but this is still a fairly simple one liner type program. There is still a bit more that I might like to do beyond this though, for example this will work with what I want it to do, but only with the first match per line. What if I want to do something for all patten matches for all lines? Well of course there is a way to go about doing that with awk, this is a full scripting language after all, but now I am going to want to maybe get into something that involves arrays, and other advanced features of the language.
 
 ## 4 - Conclusion
 
