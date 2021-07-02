@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2021-07-02 13:13:54
-version: 1.17
+updated: 2021-07-02 13:15:50
+version: 1.18
 ---
 
 It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch. It would involve some event handlers, and the use of a few [Object3D](https://threejs.org/docs/#api/core/Object3D) methods like lookAt, and position.set. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
@@ -19,11 +19,15 @@ The Orbit Controls solution that can be found in the three.js examples folder in
 
 This is an advanced post on one of the many useful time saving features fount in the three.js examples folder in the [three.js github repository](https://github.com/mrdoob/three.js/tree/r125). If you are looking for my take on [getting started with three.js](/2018/04/04/threejs-getting-started/) type post I have written that before. In this post I assume you have a basic working knowledge of javaScript, and three.js and are wondering if there is some kind of official solution for quickly adding some orbit controls to a three.js project, in which case you are at the right place.
 
-### 1.1 - Where to get the file for orbit controls
+### 1.1 - Te source come examples here are on github
+
+The source code examples here that make use of threejs, and OrbitControls.js can be found in my [test threejs repository](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-orbit-controls).
+
+### 1.2 - Where to get the file for orbit controls
 
 In order to quickly add Orbit controls you need to add a \*.js file that is in the three.js repository that can be found [here](https://github.com/mrdoob/three.js/blob/r125/examples/js/controls/OrbitControls.js). You will want to add this file to your project in a way so that it will append three.js, and add a constructor called [THREE.OrbitControls](https://threejs.org/docs/#examples/controls/OrbitControls).
 
-### 1.2 - Version Numbers Matter, and code breaking changes
+### 1.3 - Version Numbers Matter, and code breaking changes
 
 Yes version numbers matter when working with three.js. When I first wrote this post I was working with r91, and as of this writing when I took a moment to edit this post last I was using r127. Sense then some code breaking changes have happened so be aware of what version of threejs you are using. The main change that I have noticed sense r91 is that it is now required to give a dom element reference as the second argument when calling the main orbit controls constructor function. I will still keep the old r91 examples in this post just for the hell of it as many of the features still seem to work more or less the same way when the few required changes are made.
 
