@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 174
-updated: 2021-07-02 12:26:20
-version: 1.26
+updated: 2021-07-02 12:29:57
+version: 1.27
 ---
 
 In [three.js](https://threejs.org/) there are ways of importing geometry from an external source that was created with a 3d modeling program like blender. However what if I want to make a geometry by way of some javaScript code, rather than external json data? This is where the [Geometry constructor](https://threejsfundamentals.org/threejs/lessons/threejs-custom-geometry.html) comes into play, or at least it did before version r125 of threejs. With that said, when I first wrote this post back in 2018 I was using threejs version r91 which had two constructor options for creating a custom geometry. One was the [Buffered Geometry](https://threejs.org/docs/index.html#api/core/BufferGeometry) constructor, and the other was the Geometry constructor. This post is on the plain Geometry constructor that is now deprecated as r125+ of threejs, so it would be best these days to look into my [post on the Buffer Geometry constructor](/2021/04/22/threejs-buffer-geometry/) at this time.
@@ -23,7 +23,7 @@ There are many built in geometry constructors that can be used to quickly make m
 
 ## 1 - What to know before hand with three geometry
 
-I assume that you know a thing or two about javaScript, also it would be a good idea to [learn the basics](/2018/04/04/threejs-getting-started/) of three.js first if you have not done so before hand. This is a post on the three.js Geometry constructor that is an easy, but maybe not so efficient way of creating geometry that can be used in a Mesh that can be viewed, and worked with in a scene in three.js, or at least is was.
+I assume that you know a thing or two about javaScript, also it would be a good idea to [learn the basics](/2018/04/04/threejs-getting-started/) of three.js first if you have not done so before hand. I also assume that you understand that version numbers matter when working with a javaScript library and that the code examples in this post will only work with older versions of threejs that are before that is r125. In any case thought I often start out my posts on threejs with a section like this in which I outline some things that you should know about before hand.
 
 ### 1.1 - THE GEOMETRY CONSTRUCTOR IS NO MORE as of threejs revision 125+
 
