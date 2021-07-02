@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 173
-updated: 2021-07-02 13:26:18
-version: 1.22
+updated: 2021-07-02 13:28:05
+version: 1.23
 ---
 
-It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some event handlers that woud be used to set the position and rotation of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods maybe. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
+It would not be to hard to implement some camera controls for a [three.js](https://threejs.org/) project from scratch, it would just involve some event handlers that would be used to set the position and rotation of the camera using some [Object3D](https://threejs.org/docs/#api/core/Object3D) class methods maybe. However there is some additional resources in the three.js project repository itself that can be used to quickly set this up in a flash which can be found in the examples folder of the repository. In this post I will be covering how to quickly set up some orbit controls for the camera, so you do not have to keep changing hard coded values, or spend a great deal of time working on your own solution to just look around a scene.
 
 The Orbit Controls solution that can be found in the three.js examples folder in the github repo of the project can be used to quickly set up a solution for panning, zooming, and changing the orientation of a camera with the mouse, keyboard, and touch events. So then these source code examples will need threejs, as well as OrbitControls.js on top of the additional code that I am going over in this post.
 
