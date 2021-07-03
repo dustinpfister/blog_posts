@@ -5,15 +5,15 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 181
-updated: 2021-06-23 15:15:24
-version: 1.28
+updated: 2021-07-03 09:45:42
+version: 1.29
 ---
 
 In [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) there are a few materials to choose from to help skin a mesh object that all share the same [Material base class](https://threejs.org/docs/index.html#api/en/materials/Material). There are also additional materials for rendering lines, points, shadows, and sprites that stand out from the various materials that are used to change the look of solid mesh objects.
 
-There are materials that will respond to a light source, and then there are materials that will not. When it comes to materials that respond to light some will preform a little better than others, but will result in a different look compared to others that are a little more resource heavy. When it comes to mesh materials that will not respond to a light source there are materials like the basic mesh material that are a good choice when it comes to just having a simple color map for the mesh. There are a few other materials that render textures based on the state of the normal property of the geometry used, or based on the depth in terms of a distance from the camera.
+There are materials that will respond to a light source, and then there are materials that will not. When it comes to materials that respond to light some will preform a little better than others, but will result in a different look compared to others that are a little more resource heavy. When it comes to mesh materials that will not respond to a light source there are materials like the basic mesh material that is a good choice when it comes to just having a simple color map for the mesh. There are a few other materials that render textures based on the state of the normal property of the geometry used, or based on the depth in terms of a distance from the camera.
 
-This post will serve as a general overview of the mesh materials in general in three.js. I will give a very basic overview of the base Material class, and get into some of the differences between materials used with a Mesh. I will of course not be getting into every key little detail with each of them, some of these will deserve a full post explaining them in further detail.
+This post will serve as a general overview of the mesh materials in general in three.js then as a starting point for learning what the options are with this. I will give a very basic overview of the base Material class, and get into some of the differences between materials used with a Mesh, as well as the other kinds of materials. I will of course not be getting into every key little detail with each of them, some of these will deserve a full post explaining them in further detail, and I will link to those posts from here as I write them.
 
 <!-- more -->
 
