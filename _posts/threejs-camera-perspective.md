@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-05-04 14:34:06
-version: 1.10
+updated: 2021-07-03 14:09:11
+version: 1.11
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -30,35 +30,30 @@ In this section I will be going over just the perspective camera class for the m
 Here Is a very basic copy and past threejs example of the threejs perspective camera. I am just creating an instance of the perspective camera with the constructor. When doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances.
 
 ```js
-
-// Camera
-var fieldOfView = 40,
-aspectRatio = 16 / 9,
-near = 0.1,
-far = 1000,
-camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+(function () {
+    // CAMERA
+    var fieldOfView = 40,
+    aspectRatio = 4 / 3,
+    near = 0.1,
+    far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    camera.position.set(2, 2, 2); // position camera
+    camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
  
-// SCENE
-var scene = new THREE.Scene();
- 
-// RENDER
-var renderer = new THREE.WebGLRenderer();
-document.getElementById('demo').appendChild(renderer.domElement);
-renderer.setSize(320, 180);
- 
-// MESH
-scene.add(new THREE.Mesh(
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    // mesh
+    scene.add(new THREE.Mesh(
         new THREE.BoxGeometry(1, 1, 1),
-        new THREE.MeshBasicMaterial({
-            color: 0xff0000,
-            wireframe: true
-        })));
- 
-// position things
-camera.position.set(2, 2, 2);
-camera.lookAt(0, 0, 0);
-// draw the scene
-renderer.render(scene, camera);
+        new THREE.MeshNormalMaterial()));
+    // renderer
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    renderer.render(scene, camera);
+}
+    ());
 ```
 
 Once I have a camera instance I can pass that to the render method that I am using along with a scene to view the scene with that camera. I should make sure that the camera is positioned, and rotated in a way in which I am looking at something in the scene. One way is to use the position property, and look at methods of the camera instance.
@@ -101,19 +96,58 @@ A full list of the properties that correspond with the arguments that you give t
 If you change a property you will need to call updateProjectionMatrix in order to re generate the pyramid geometry. like so:
 
 ```js
-    camera.fov = Math.floor(25 + 50 * bias);
-    camera.updateProjectionMatrix();
+(function () {
+    // CAMERA
+    var fieldOfView = 40,
+    aspectRatio = 4 / 3,
+    near = 0.1,
+    far = 1000,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+    camera.position.set(2, 2, 2); // position camera
+    camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    // mesh
+    scene.add(new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial()));
+    // renderer
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+ 
+    // loop
+    var state = {
+        per: 0,
+        bias: 0,
+        frame: 0,
+        maxFrame: 600,
+        fps: 30,
+        lt: new Date()
+    };
+    var loop = function(){
+        var now = new Date(),
+        secs = (now - state.lt) / 1000;
+        state.per = state.frame / state.maxFrame;
+        state.bias = 1 - Math.abs(state.per - 0.5) / 0.5;
+        requestAnimationFrame(loop);
+        if(secs > 1 / state.fps){
+            camera.fov = Math.floor(25 + 75 * state.bias);
+            camera.updateProjectionMatrix();
+            state.frame += state.fps * secs;
+            state.frame %= state.maxFrame;
+            renderer.render(scene, camera);
+            state.lt = new Date();
+        }
+    };
+    loop();
+ 
+}
+    ());
 ```
 
-## 4 - Camera Constructor
-
-Perspective Camera inherits from the Camera constructor, as such the perspective Camera shares certain properties, and methods with all other cameras in three.js. I will not be getting into this class in depth with this post, but for now it is important to know that this class adds some properties and methods that are uniform across all cameras used in three.js, including a method that can be used to clone a camera.
-
-## 5 - Object3D constructor
-
-The Camera class in turn also inherits from Object3D, this class is what helps to make Objects including a camera easy to work with in three.js. Like the Camera Class I will not get into detail as it is a little off topic, and it deserves a post of it's own. However if you are interested in learning how to move the camera, or change it's orientation this is the Class of interest for that.
-
-## 6 - An Example of Perspective Camera use
+## 4 - An Example of Perspective Camera use
 
 So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values.
 
@@ -218,6 +252,14 @@ So for a threejs example of the perspective camera I threw together this full co
 }
     ());
 ```
+
+## 5 - Camera Constructor
+
+Perspective Camera inherits from the Camera constructor, as such the perspective Camera shares certain properties, and methods with all other cameras in three.js. I will not be getting into this class in depth with this post, but for now it is important to know that this class adds some properties and methods that are uniform across all cameras used in three.js, including a method that can be used to clone a camera.
+
+## 6 - Object3D constructor
+
+The Camera class in turn also inherits from Object3D, this class is what helps to make Objects including a camera easy to work with in three.js. Like the Camera Class I will not get into detail as it is a little off topic, and it deserves a post of it's own. However if you are interested in learning how to move the camera, or change it's orientation this is the Class of interest for that.
 
 ## 7 - Conclusion
 
