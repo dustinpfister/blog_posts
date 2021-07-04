@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 11:21:33
-version: 1.35
+updated: 2021-07-04 11:27:26
+version: 1.36
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -99,11 +99,7 @@ This is for course the far distance of the view pyramid. It is also the distance
 
 ## 3 - Changing the pyramid of vision during runtime with the updateProjectionMatrix method
 
-With most projects typically I will be setting some values for the camera just once, and then change values that are part of the Object3D class for instance if I want to move the position, and orientation of the camera.
-
-Still If you want to change any of the properties that are used to create the geometry of the view pyramid, you may thing that there is some kind of method that needs to be called to reconfigure that when you change a value, and you are right. The method you want to call is updateProjectionMatrix.
-
-If you do not call this method, any change that is made to values like camera.fov, or camera.aspect will not take effect.
+With most projects typically I will be setting some values for the camera just once, and then change values that are part of the Object3D class for instance if I want to move the position, and orientation of the camera. Still if I want to change any of the properties that are used to create the geometry of the view pyramid, I might need to make use of a method that needs to be called after I change those values in order to update the projection matrix. The method to do this is then called the update projection matrix method which will need to be called when changing values like field of view, aspect, near, and far. If this method is not called then any changes made to these values will not take effect.
 
 A full list of the properties that correspond with the arguments that you give to the constructor are:
 
@@ -112,7 +108,7 @@ A full list of the properties that correspond with the arguments that you give t
 * camera.near
 * camera.far
 
-If you change a property you will need to call updateProjectionMatrix in order to re generate the pyramid geometry. like so:
+However if I make a change to a value that has to do with the position, rotation, or any kind of Object3d level class property such as the name of the camera for example, then there is no need to call the update projection matrix method. Changes to those kinds of values will always have the same result as with any other object in threejs such as a Mesh, or Group.
 
 ```js
 (function () {
