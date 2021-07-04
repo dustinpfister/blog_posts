@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2021-04-27 15:44:05
-version: 1.10
+updated: 2021-07-04 18:01:38
+version: 1.11
 ---
 
-I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. You can count on at least a few posts on Materials which I have been working with today. The [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial) is one of many options for skinning a mesh with a texture, and in this post I will be getting into this one a little to get a better sense of what it is all about.
+I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. So it should go without saying that I am going to end up writing a few posts on Materials such as the standard material, and features of materials such as emissive maps. So then today I am going to be writing about a Mesh material known as the [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh, and in this post I will be getting into this one a little to get a better sense of what it is all about compared to the many other options.
 
 If you are just getting started with three.js you might be familiar with at least the Basic Material, and that you use a Material with a Geometry to make a Mesh. However you might now be interested in working with lights, and having a material that will respond to a light source, if so the Lambert Material may be of interest. The main material that i would use more often than not would be the [standard material](/2021/04/27/threejs-standard-material/), but Lambert might prove to use a little less overhead then that material by loosing accuracy when it comes to lighting. So lets take a look at this material, and maybe some additional things surrounding it.
 
