@@ -5,11 +5,11 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:35:17
-version: 1.22
+updated: 2021-07-04 10:39:37
+version: 1.23
 ---
 
-One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
+One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
 
 When creating an instance of a perspective camera it is a good idea to be aware of the values that are passed when calling the THREE.PerspectiveCamera constructor for the fist time that have to do with the creating of what might be called a [viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum. The values that are passed have to do with field of view, aspect ration, and the near and far render distance. It is also called for to know how to go about changing these values after creating an instance of the camera as it is not just a question of setting new values to a property of interest. 
 
@@ -27,7 +27,7 @@ The source code examples for this post, as well as my many other posts can be fo
 
 ### 1.2 - There is also looking into the base Camera Class and what the other options are with cameras
 
-there is also looking into the base camera class in threejs, as well as what the other options are with cameras. For the most part though I have to say that I almost always just use the perspective camera in just about every source code example, and project. Still there are some other options, and one option that I might want to use once in a while would be the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
+there is also looking into the [base camera class](/2018/04/06/threejs-camera/) in threejs, as well as what the other options are with cameras. For the most part though I have to say that I almost always just use the perspective camera in just about every source code example, and project. Still there are some other options, and one option that I might want to use once in a while would be the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
 
 ### 1.3 - Read up more on the Object3d base class
 
@@ -38,13 +38,9 @@ It might be a good idea to read up more on the [object3d class](/2018/04/23/thre
 When I first wrote this post I was using threejs version r91, and the last time I cam around to do some editing and make sure the source code examples are working I was using r127. There have been an awful lot of changes that have happened to threejs between the two version numbers, which have resulted in an awful lot of code breaking changes. it is also safe to assume that this trend will continue moving forward, so I got into the habit of always making sure that I mention what the version numbers are when I wrote a post as well as when I edited the post last.
 
 
-## 2 - The perspective camera constructor and basic threejs perspective camera example
-
-The main method of interest in this blog post is the three.js [perspective camera constructor](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). This constructor also inherits from [Camera](https://threejs.org/docs/index.html#api/cameras/Camera) that contains properties and methods for all cameras in threejs. The Camera constructor also in turn inherits from [Object3D](https://threejs.org/docs/index.html#api/core/Object3D) so a camera can be positioned and rotated in a scene in the same way as other objects that inherent from object32 such as a mesh.
+## 2 - Basic example of the perspective camera constructor
 
 In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on those other classes I mentioned. It is still a good idea to have a strong foundational understanding of all of the constructors I have mentioned though.
-
-### 2.1 - a very basic copy and past example of the constructor and a basic scene
 
 Here Is a very basic copy and past threejs example of the threejs perspective camera. I am just creating an instance of the perspective camera with the constructor. When doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances.
 
