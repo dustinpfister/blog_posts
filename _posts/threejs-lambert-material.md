@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2021-07-04 18:06:49
-version: 1.13
+updated: 2021-07-04 18:11:41
+version: 1.14
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. So it should go without saying that I am going to end up writing a few posts on Materials such as the standard material, and features of materials such as emissive maps. So then today I am going to be writing about a Mesh material known as the [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh, and in this post I will be getting into this one a little to get a better sense of what it is all about compared to the many other options.
@@ -17,13 +17,13 @@ If you are just getting started with three.js you might be familiar with at leas
 
 ## 1 - What to know
 
-I assume you have at least a basic working knowledge of three.js, and are now interested in learning more about the material options used in three.js. If you have no background with threejs at all then I have my take on the subject of [getting started](/2018/04/04/threejs-getting-started/) on three.js. Also it should go without saying that you should have at least some background working with javaScript by itself, and many other things that have to do with client side javaScript development. In this case I might not get into everything that you should knwo before hand in the section, but I will be touching base on some things briefly here.
+I assume you have at least a basic working knowledge of three.js, and are now interested in learning more about the material options used in three.js. If you have no background with threejs at all then I have my take on the subject of [getting started](/2018/04/04/threejs-getting-started/) on three.js. Also it should go without saying that you should have at least some background working with javaScript by itself, and many other things that have to do with client side javaScript development. In this case I might not get into everything that you should know before hand in the section, but I will be touching base on some things briefly here.
 
-### 1.2 - Why the name Lambert?
+### 1.1 - Why the name Lambert?
 
 It is named after [Johann Heinrich Lambert](https://en.wikipedia.org/wiki/Johann_Heinrich_Lambert), the man who first introduced the concept used in this material in his book [Photometria](https://en.wikipedia.org/wiki/Photometria).
 
-### 1.3 - Why use the Lambert Material?
+### 1.2 - Why use the Lambert Material?
 
 There are materials in three.js that do not respond to a light source, and then there are materials that do respond to lights, the Lamber Material is one of several options that do respond to a light source.
 
@@ -31,7 +31,7 @@ From what I have gathered this is one of the faster solutions for having a refle
 
 I often like to develop on systems like a raspberry pi that only has so much resources to work with when it comes to memory and CPU overhead. So I tend to try to keep my models very low poly, and also make use of materials such as the Lambert material to make better use of what I have to work with on platforms such as this. However overall it might still be better to go with the standard material in some cases.
 
-### 1.4 - The Lambert Material needs a light source
+### 1.3 - The Lambert Material needs a light source
 
 First off the Lambert material needs a light source. If you use the material without any light source shining on it, and you have a black background, you may end up staring at a black screen. So before we get into the material, lets just take a moment to touch base a lights just for a moment.
 
@@ -52,6 +52,10 @@ scene.add(spotLight);
 ```
 
 I could get into spot lights more, but this post is on the Lambert Material, so that will have to wait for another day.
+
+### 1.4 - Version numbers matter
+
+When I first wrote this post I was using threejs version r91, and the last time I came around to do a little editing I was using r127. Always be mindful of what the version of threejs is that is being used in examples on the open web, threejs moves very fast with development, more so than many other projects. So code breaking changes come into play all the time, as such I have got into habit of mentioning what version I was using when I first wrote a post, and also when I edited the post last.
 
 ## 2 - Basic Lambert Material Example
 
