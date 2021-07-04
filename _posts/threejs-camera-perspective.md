@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 11:27:26
-version: 1.36
+updated: 2021-07-04 11:51:55
+version: 1.37
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -162,7 +162,75 @@ However if I make a change to a value that has to do with the position, rotation
     ());
 ```
 
-## 4 - Perspective Camera and mutation of View, Position, and rotation values.
+## 4 - Mutation of near and far values and the depth material
+
+The near and far values are used to set the the range in terms of how close is to close, and how far is to far when it comes to rendering something in a scene. There is also the depth material that can be used with a mesh as a way to gain a better sense of what is going on with these values. So in this example I am using the depth material to skin a mesh, and also mutating the near and far values of the camera over time.
+
+```js
+(function () {
+    // a scene is needed to place objects in
+    var scene = new THREE.Scene();
+    scene.add( new THREE.GridHelper(10, 10) );
+    // so here I am setting the values of the perspective camera
+    var fieldOfView = 45,
+    aspectRatio = 4 / 3,
+    near = 1,
+    far = 15,
+    camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, near, far);
+ 
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(640, 480);
+    document.getElementById('demo').appendChild(renderer.domElement);
+    // initialize method
+    var init = function () {
+        // add a cube to the scene
+        var cube = new THREE.Mesh(
+                new THREE.BoxGeometry(1, 1, 1),
+                new THREE.MeshDepthMaterial({}));
+        cube.position.set(0, 0.5, 0);
+        scene.add(cube);
+        // camera pos
+        camera.position.set(2, 2, 2);
+        camera.lookAt(0, 0.5, 0);
+    };
+    // update method
+    var update = function (per, bias, secs) {
+        // update aspect and fov
+        camera.near = 0.1 + 3 * bias;
+        camera.far = 15 - 13 * bias;
+        camera.updateProjectionMatrix();
+    };
+    // loop
+    var per = 0,
+    bias = 0,
+    now = new Date(),
+    secs = 0,
+    lt = now,
+    frame = 0,
+    frameMax = 90,
+    fps = 30;
+    var loop = function () {
+        now = new Date();
+        secs = (now - lt) / 1000;
+        per = frame / frameMax;
+        bias = 1 - Math.abs(0.5 - per) / 0.5;
+        requestAnimationFrame(loop);
+        if(secs > 1 / fps){
+            update(per, bias, secs);
+            renderer.render(scene, camera);
+            frame += fps * secs;
+            frame %= frameMax;
+            lt = now;
+        }
+    };
+    // call init, and start loop
+    init();
+    loop();
+}
+    ());
+```
+
+## 5 - Perspective Camera and mutation of View, Position, and rotation values.
 
 So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
 
@@ -250,15 +318,15 @@ So for a threejs example of the perspective camera I threw together this full co
     ());
 ```
 
-## 5 - Camera Constructor
+## 6 - Camera Constructor
 
 Perspective Camera inherits from the Camera constructor, as such the perspective Camera shares certain properties, and methods with all other cameras in three.js. I will not be getting into this class in depth with this post, but for now it is important to know that this class adds some properties and methods that are uniform across all cameras used in three.js, including a method that can be used to clone a camera.
 
-## 6 - Object3D constructor
+## 7 - Object3D constructor
 
 The Camera class in turn also inherits from Object3D, this class is what helps to make Objects including a camera easy to work with in three.js. Like the Camera Class I will not get into detail as it is a little off topic, and it deserves a post of it's own. However if you are interested in learning how to move the camera, or change it's orientation this is the Class of interest for that.
 
-## 7 - Conclusion
+## 8 - Conclusion
 
 The perspective camera is my default go to camera for just about every three.js code example, and project that I have made thus far with threejs and a little additional javaScript code. I can not say that this is a subject that I want to get to deep into, because there is so much more to be aware of when it comes to using three.js and cameras are just one little part of the library as a whole. So I would not go nuts with really getting into cameras, as there are so many other topics that might be of greater importance first. Such as getting into blender to create external assets in the form of dae files, or some other container format, and loading them into a project as a way to create custom geometry. There is then so much more when it comes to materials, textures, and the various kinds of maps of materials that can make use of textures. The list goes on and on, so that is why I generally just like to go with the perspective camera and move on, because there is a great deal more to move on to in order to become professional with threejs.
 
