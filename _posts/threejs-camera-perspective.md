@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:05:37
-version: 1.16
+updated: 2021-07-04 10:12:12
+version: 1.17
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -20,6 +20,10 @@ There are also things like knowing how to position a camera, and set the orienta
 ## 1 - What to know before hand
 
 This is not an introduction to three.js, or any additional skills that are required first in order to start working with something like three.js such as javaScript, and web programing in general. I assume that you have working knowledge of javaScript, and have started working with some basic three.js examples. however if you feel that you could stand to gain a deeper understanding of perspective cameras in three.js this post might be of interest.
+
+### 1.1 - Read up more on the Object3d base class
+
+It might be a good idea to read up more on the [object3d class](/2018/04/23/threejs-object3d/) that is a base class of a Camera, and many other objects in threejs. In this post I will be going over some examples that make use of the position, and rotation properties of a Perspective Camera object which are properties that are inherited by the Object3d class. There is also the nature of the values of these position and rotation properties where they are instances of the Vector3, and Euler classes, which are also worth checking out in detail at one point or another.
 
 ## 2 - The perspective camera constructor and basic threejs perspective camera example
 
