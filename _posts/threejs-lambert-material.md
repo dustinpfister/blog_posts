@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2021-07-04 18:04:13
-version: 1.12
+updated: 2021-07-04 18:06:49
+version: 1.13
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. So it should go without saying that I am going to end up writing a few posts on Materials such as the standard material, and features of materials such as emissive maps. So then today I am going to be writing about a Mesh material known as the [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh, and in this post I will be getting into this one a little to get a better sense of what it is all about compared to the many other options.
@@ -17,9 +17,9 @@ If you are just getting started with three.js you might be familiar with at leas
 
 ## 1 - What to know
 
-I assume you have at least a basic working knowledge of three.js, and are now interested in learning more about the material options used in three.js, if not I have a [getting started post](/2018/04/04/threejs-getting-started/) on three.js. Also it should go without saying that you should have at least some background working with javaScript by itself, and many other things that have to do with client side javaScript development.
+I assume you have at least a basic working knowledge of three.js, and are now interested in learning more about the material options used in three.js. If you have no background with threejs at all then I have my take on the subject of [getting started](/2018/04/04/threejs-getting-started/) on three.js. Also it should go without saying that you should have at least some background working with javaScript by itself, and many other things that have to do with client side javaScript development. In this case I might not get into everything that you should knwo before hand in the section, but I will be touching base on some things briefly here.
 
-### 1.22 - Why the name Lambert?
+### 1.2 - Why the name Lambert?
 
 It is named after [Johann Heinrich Lambert](https://en.wikipedia.org/wiki/Johann_Heinrich_Lambert), the man who first introduced the concept used in this material in his book [Photometria](https://en.wikipedia.org/wiki/Photometria).
 
