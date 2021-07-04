@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:58:25
-version: 1.29
+updated: 2021-07-04 11:07:22
+version: 1.30
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -79,11 +79,11 @@ Once I have a camera instance I can pass that to the render method that I am usi
 
 ### 2.2 - Understanding Viewing frustum.
 
-A [Viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum) cam be thought of as a pyramid of vision that exists in front of a camera. Any object that lays inside of the pyramid will be rendered. This pyramid can be defined by an [field of view](https://en.wikipedia.org/wiki/Field_of_view) in terms of an angle in y direction. As well as additional values that define the aspect ratio of this view, as well as values that define where the top of the pyramid begins, and ends (view distance).
+A [Viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum) cam be thought of as a pyramid of vision that exists in front of a camera. Any object that lays inside of the pyramid will be rendered, while anything outside of it will not which will help to reduce overhead in very complex scenes that may contain a great number of mesh objects. This pyramid can be defined by a [field of view](https://en.wikipedia.org/wiki/Field_of_view) in terms of an angle in y direction. As well as additional values that define the aspect ratio of this view, as well as values that define where the top of the pyramid begins, and ends, in other words view distance, or range of you prefer.
 
 #### 2.3 - Field of view
 
-The first argument that is given to the three.js perspective camera constructor is the field of view. The value expected should be a Number representing an angle in degrees not radians.
+The first argument that is given to the three.js perspective camera constructor is the field of view. The value expected should be a Number representing an angle in degrees not radians. I am not always so sure what the best value might be for this, the general way of dealing with it has been to just play around with different static values until I get something that looks okay. However looking at all [kinds of various examples on this on the open web](https://stackoverflow.com/questions/57959190/three-js-update-the-fov-value-of-a-perspective-camera-and-keep-the-same-camera-d) I am sure there are ways of coming up with or finding some kind of system that will work well for setting this value as well as the aspect ratio value.
 
 #### 2.4 - Aspect ratio
 
