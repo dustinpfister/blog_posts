@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:39:37
-version: 1.23
+updated: 2021-07-04 10:43:13
+version: 1.24
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -40,9 +40,9 @@ When I first wrote this post I was using threejs version r91, and the last time 
 
 ## 2 - Basic example of the perspective camera constructor
 
-In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on those other classes I mentioned. It is still a good idea to have a strong foundational understanding of all of the constructors I have mentioned though.
+In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. It is still a good idea to have a strong foundational understanding of all of the constructors I have mentioned though, so I will see about linking to other posts as needed with this.
 
-Here Is a very basic copy and past threejs example of the threejs perspective camera. I am just creating an instance of the perspective camera with the constructor. When doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances.
+So then here Is a very basic copy and past threejs example of the threejs perspective camera where I am just creating a camera, as well as a Scene Object, a Mesh object with a Geometry and a Material, and a renderer. I am just creating an instance of the perspective camera with the constructor. When doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances.
 
 ```js
 (function () {
