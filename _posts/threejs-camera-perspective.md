@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 11:16:47
-version: 1.33
+updated: 2021-07-04 11:20:32
+version: 1.34
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -168,7 +168,7 @@ If you change a property you will need to call updateProjectionMatrix in order t
 
 ## 4 - An Example of Perspective Camera use
 
-So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values.
+So for a threejs example of the perspective camera I threw together this full copy and past style example. When up and running there is a cube, and a plain added to a scene, and the perspective camera is used to look at it. In addition there is a loop in which I am changing the aspect ratio and field of view of the camera, via the cameras properties for these values. When doing so I of course need to call the update projection matrix method of the camera, or else the changes to values that have to do with the view will not take effect. In this example I am also making use of the position property and the look at at methods of the camera to change the position of the camera over time, and also make sure that the camera is always looking at the center of the scene.
 
 ```js
 (function () {
