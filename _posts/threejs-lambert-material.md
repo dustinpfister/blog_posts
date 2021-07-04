@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 170
-updated: 2021-07-04 18:15:37
-version: 1.15
+updated: 2021-07-04 18:18:25
+version: 1.16
 ---
 
 I have been toying around with [three.js](https://threejs.org/) these days, and may continue doing so until I have a solid collection of posts on it. So it should go without saying that I am going to end up writing a few [posts on Materials](/2018/04/30/threejs-materials/) such as the standard material, and features of materials such as [emissive maps](/2021/06/22/threejs-emissive-map/). So then today I am going to be writing about a Mesh material known as the [Lambert material](https://threejs.org/docs/index.html#api/materials/MeshLambertMaterial), which is one of many options for skinning a mesh, and in this post I will be getting into this one a little to get a better sense of what it is all about compared to the many other options.
@@ -59,7 +59,7 @@ When I first wrote this post I was using threejs version r91, and the last time 
 
 ## 2 - Basic Lambert Material Example
 
-For a simple example I put together a scene containing a cube, and plane both of which use the Lambert material. In order to see anything though I also added a spotLight, and positioned it away from the cube, and plane.
+For a simple example I put together a scene containing a cube, and plane both of which use the Lambert material. In order to see anything though I also added a spotLight, and positioned it away from the cube, and plane. This is because when it comes to just using the color property that will set a solid color for the material, but I will only see anything if there is a light source shining on it. There is getting into other properties such as the emissive property, and also using an ambient light source but for now maybe I will save that for another section later.
 
 ```js
 (function () {
