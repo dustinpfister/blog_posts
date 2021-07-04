@@ -5,19 +5,17 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:02:02
-version: 1.15
+updated: 2021-07-04 10:05:37
+version: 1.16
 ---
 
-One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
+One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
 
-When creating an instance of a perspective camera it is a good idea to be aware of the values that are passed when calling the THREE.PerspectiveCamera constructor for the fist time. The values that are passed have to do with field of view, aspect ration, and the near and far render distance. It is also called for to know how to go about changing these values after creating an instance of the camera as it is not just a question of setting new values to a property of interest. 
+When creating an instance of a perspective camera it is a good idea to be aware of the values that are passed when calling the THREE.PerspectiveCamera constructor for the fist time that have to do with the creating of what might be called a [viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum. The values that are passed have to do with field of view, aspect ration, and the near and far render distance. It is also called for to know how to go about changing these values after creating an instance of the camera as it is not just a question of setting new values to a property of interest. 
 
-There are also things like knowing how to position a camera, and set the orientation of a camera, much of that has to do with the Object3d class of which the perspective camera is based off of. The Object3d class is a major class in threejs that is not just the base class for cameras, but also Mesh objects, Groups, and event a whole Scene object. So maybe getting into the object3d class in detail would be a bit off topic, but I should cover at least some basic with that, and maybe many other related topics in this post.
+There are also things like knowing how to position a camera, and set the orientation of a camera, much of that has to do with the [Object3D Class](https://threejs.org/docs/index.html#api/core/Object3D) class of which the perspective camera is based off of. The Object3d class is a major class in threejs that is not just the base class for cameras, but also Mesh objects, Groups, and event a whole Scene object. So maybe getting into the object3d class in detail would be a bit off topic, but I should cover at least some basic with that, and maybe many other related topics in this post.
 
 <!-- more -->
-
-In this post I will be covering some basic demos that have to do with a perspective camera, [viewing frustum](https://en.wikipedia.org/wiki/Viewing_frustum), the base [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera). I will also be touching base on some additional things that are inherited from the [Object3D Class](https://threejs.org/docs/index.html#api/core/Object3D) that is used for all objects that might be part of a scene including, but not limited to a camera.
 
 ## 1 - What to know before hand
 
