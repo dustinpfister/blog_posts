@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:49:46
-version: 1.26
+updated: 2021-07-04 10:53:33
+version: 1.27
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -40,7 +40,9 @@ When I first wrote this post I was using threejs version r91, and the last time 
 
 ## 2 - Basic example of the perspective camera constructor
 
-In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. It is still a good idea to have a strong foundational understanding of all of the typical constructors that are used to even create a simple starting example such as the one in this section, so I will see about linking to other posts as needed with this. So then here is a very basic copy and past threejs example of the threejs perspective camera where I am just creating a Camera, as well as a [Scene Object](/2018/05/03/threejs-scene/), a [Mesh object](/2018/05/04/threejs-mesh/) with a [Geometry](/2021/04/22/threejs-buffer-geometry/) and a [Material](/2018/04/30/threejs-materials/), and a [renderer](/2018/11/24/threejs-webglrenderer/). I am just creating an instance of the perspective camera with the constructor. When doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances.
+In this section I will be going over just the perspective camera class for the most part, but will also be touching base slightly on many other topics on threejs while I am at it. It is still a good idea to have a strong foundational understanding of all of the typical constructors that are used to even create a simple starting example such as the one in this section, so I will see about linking to other posts as needed with this. So then here is a very basic copy and past threejs example of the threejs perspective camera where I am just creating a Camera, as well as a [Scene Object](/2018/05/03/threejs-scene/), a [Mesh object](/2018/05/04/threejs-mesh/) with a [Geometry](/2021/04/22/threejs-buffer-geometry/) and a [Material](/2018/04/30/threejs-materials/), and a [renderer](/2018/11/24/threejs-webglrenderer/). 
+
+I am just creating an instance of the perspective camera with the constructor, and when doing so I need to pass arguments for field of view, aspect ratio, as well as near and far render distances. These are all values that have to do with a camera in general, or the perspective camera and as such they differ from other values that might be from a base class other than then base camera class, such as Object3d. As such when it comes to changing this arguments at run time doing so is not so straight forward compared to other values and often a special update method must be used to update the values at run time, more on that later as this is just a basic example where I will not be getting into any kind of animation or mutation of values in a loop here. 
 
 ```js
 (function () {
