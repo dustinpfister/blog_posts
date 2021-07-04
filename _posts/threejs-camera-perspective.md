@@ -5,13 +5,13 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-03 14:45:56
-version: 1.13
+updated: 2021-07-04 08:43:41
+version: 1.14
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js, but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
 
-When creating an instance of a perspective camera it is a good idea to gain at least some understanding of the values that are passed when calling the THREE.PerspectiveCamera constructor for the fist time. It is also called for to know how to go about changing those values after creating an instance of the camera as it is not just a question of setting new values to a property of interest. There are also things like knowing how to position a camera and also set the orientation of a camera, but much of that has to do with the Object3d class of which the perspective camera is based off of.
+When creating an instance of a perspective camera it is a good idea to be aware of the values that are passed when calling the THREE.PerspectiveCamera constructor for the fist time. The values that are passed have to do with field of view, aspect ration, and the near and far render distance. It is also called for to know how to go about changing these values after creating an instance of the camera as it is not just a question of setting new values to a property of interest. There are also things like knowing how to position a camera and also set the orientation of a camera, but much of that has to do with the Object3d class of which the perspective camera is based off of.
 
 <!-- more -->
 
