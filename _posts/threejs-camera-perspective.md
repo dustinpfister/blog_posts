@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 11:11:30
-version: 1.32
+updated: 2021-07-04 11:16:47
+version: 1.33
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -264,4 +264,5 @@ The Camera class in turn also inherits from Object3D, this class is what helps t
 
 ## 7 - Conclusion
 
-The perspective camera is my default go to cameras for just about every three.js code example and project that I have made thus far. I can not say that this is a subject that I want to get to deep into, because there is so much more to be aware of when it comes to using three.js and cameras are just one little part of the library as a whole.
+The perspective camera is my default go to camera for just about every three.js code example, and project that I have made thus far with threejs and a little additional javaScript code. I can not say that this is a subject that I want to get to deep into, because there is so much more to be aware of when it comes to using three.js and cameras are just one little part of the library as a whole. So I would not go nuts with really getting into cameras, as there are so many other topics that might be of greater importance first. Such as getting into blender to create external assets in the form of dae files, or some other container format, and loading them into a project as a way to create custom geometry. There is then so much more when it comes to materials, textures, and the various kinds of maps of materials that can make use of textures. The list goes on and on, so that is why I generally just like to go with the perspective camera and move on, because there is a great deal more to move on to in order to become professional with threejs.
+
