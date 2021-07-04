@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 12:13:43
-version: 1.38
+updated: 2021-07-04 12:15:15
+version: 1.39
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other types of cameras to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -231,6 +231,8 @@ The near and far values are used to set the the range in terms of how close is t
 ```
 
 ## 5 - The camera helper
+
+There is also making use of a camera helper as a way to gain a good idea as to what is going on with the current state of the view pyramid of a perspective camera.
 
 ```js
 (function () {
