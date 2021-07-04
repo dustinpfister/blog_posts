@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 169
-updated: 2021-07-04 10:31:36
-version: 1.21
+updated: 2021-07-04 10:35:17
+version: 1.22
 ---
 
 One of the most important things to understand when making a [three.js](https://threejs.org/) project, is at least the basics of working with a [perspective camera](https://threejs.org/docs/index.html#api/cameras/PerspectiveCamera). There are other [types of cameras](/2018/04/06/threejs-camera/) to work with in three.js that are all based off the core [Camera Class](https://threejs.org/docs/index.html#api/cameras/Camera), but a perspective camera is the most common one that mimics the way the human eye sees the world, so it is the typical choice for most projects.
@@ -23,13 +23,17 @@ This is not an [introduction to three.js](/2018/04/04/threejs-getting-started/),
 
 ### 1.1 - The source code examples in this post and many more are on my github account
 
-The source code examples for this post, as well as my many other posts can be found in [my test threejs repository on guthub](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-perspective). If for some reason you want to make a pull request that would be where to do it, there is also the comments section of this blog post that can be used to bring something up
+The source code examples for this post, as well as my many other posts can be found in [my test threejs repository on github](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-perspective). If for some reason you want to make a pull request that would be where to do it, there is also the comments section of this blog post that can be used to bring something up
 
-### 1.2 - Read up more on the Object3d base class
+### 1.2 - There is also looking into the base Camera Class and what the other options are with cameras
+
+there is also looking into the base camera class in threejs, as well as what the other options are with cameras. For the most part though I have to say that I almost always just use the perspective camera in just about every source code example, and project. Still there are some other options, and one option that I might want to use once in a while would be the [orthographic camera](/2018/05/17/threejs-camera-orthographic/).
+
+### 1.3 - Read up more on the Object3d base class
 
 It might be a good idea to read up more on the [object3d class](/2018/04/23/threejs-object3d/) that is a base class of a Camera, and many other objects in threejs. In this post I will be going over some examples that make use of the position, and rotation properties of a Perspective Camera object which are properties that are inherited by the Object3d class. There is also the nature of the values of these position and rotation properties where they are instances of the [Vector3](/2018/04/15/threejs-vector3/), and [Euler](/2021/04/28/threejs-euler/) classes, which are also worth checking out in detail at one point or another.
 
-### 1.3 - Version Numbers Matter
+### 1.4 - Version Numbers Matter
 
 When I first wrote this post I was using threejs version r91, and the last time I cam around to do some editing and make sure the source code examples are working I was using r127. There have been an awful lot of changes that have happened to threejs between the two version numbers, which have resulted in an awful lot of code breaking changes. it is also safe to assume that this trend will continue moving forward, so I got into the habit of always making sure that I mention what the version numbers are when I wrote a post as well as when I edited the post last.
 
