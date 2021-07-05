@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 903
-updated: 2021-07-05 16:29:01
-version: 1.18
+updated: 2021-07-05 16:32:13
+version: 1.19
 ---
 
 The [Linux rm](https://linux.die.net/man/1/rm) command is how to go about deleting files from the command line. The basic use case of the command is simple enough I just need to call the command and pass the path to the file that I want to delete as the first and only argument. However things might get a little complicated when it comes to things like, deleting folders, deleting files recursively, or running into problems with things that have to do with files access permissions. 
@@ -64,4 +64,6 @@ ls: cannot access 'foo': No such file or directory
 
 ## 4 - Conclusion
 
-So then the rm command is how to go about deleting files, folders, and all the contents of a folder including the folder. In most cases I can use just the rm command by itself in order to delete what I want to delete, but in some cases I might run into problems with file access permissions. If I have the authority to do so I can use a command like [chmod](/2020/11/13/linux-chmod/) along with sudo to change the permissions of a file, and then delete it.
+So then the rm command is how to go about deleting files, folders, and all the contents of a folder including the folder. In most cases I can use just the rm command by itself in order to delete what I want to delete, but in some cases I might run into problems with file access permissions. If I have the authority to do so I can use a command like [chmod](/2020/11/13/linux-chmod/) along with sudo to change the permissions of a file, and then delete it. 
+
+There is then getting into writing all kinds of bash scripts than can be used to loop over the contents of a folder and only delete files that meet some kind of condition. In the event that I get some more time to come around an delete this post I might expand this post with a few of those kinds of examples.
