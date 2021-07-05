@@ -5,11 +5,13 @@ tags: [linux]
 layout: post
 categories: linux
 id: 903
-updated: 2021-07-05 16:25:52
-version: 1.17
+updated: 2021-07-05 16:29:01
+version: 1.18
 ---
 
-The [Linux rm](https://linux.die.net/man/1/rm) command is how to go about deleting files from the command line. The basic use case of the command is simple enough I just need to call the command and pass the path to the file that I want to delete as the first and only argument. However things might get a little complicated when it comes to things like, deleting folders, deleting files recursively, or running into problems with things that have to do with files access permissions. So in this post I will be going over a few simple example of the Linux rm command, and also write about some other closely related topics when it comes to creating files also.
+The [Linux rm](https://linux.die.net/man/1/rm) command is how to go about deleting files from the command line. The basic use case of the command is simple enough I just need to call the command and pass the path to the file that I want to delete as the first and only argument. However things might get a little complicated when it comes to things like, deleting folders, deleting files recursively, or running into problems with things that have to do with files access permissions. 
+
+So in this post I will be going over a few simple example of the Linux rm command, and also write about some other closely related topics when it comes to creating files and folders also because I have to have something to delete before I can delete it after all. So in the process of covering the Linux rm command I will end up touching base on at least a few other commands and bash features.
 
 <!-- more -->
 
