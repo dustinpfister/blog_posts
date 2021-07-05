@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 723
-updated: 2020-11-13 12:44:31
-version: 1.7
+updated: 2021-07-05 16:02:33
+version: 1.8
 ---
 
 The [Linux ls](https://www.thegeekdiary.com/basic-ls-command-examples-in-linux/) command is one of the first basic commands that a Linux user should be aware of when it comes to working in the command line. There is just knowing how to change the current working path, know what the current working path is, and also listing what is in a given path. So when it comes to listing what is in a given folder that is where the Linux ls command will come into play.
@@ -34,6 +34,16 @@ hello world
 ```
 
 So now we have the basic idea of the Linux ls command worked out. I have a folder with just a single file in it called hello.txt and when I use the Linux ls command I get that file listed in the standard output. However what about hidden files? Also is it not true that there is this thing called file access permissions? What about creating a list of files and then piping that to another command? Well with that all said maybe it is called for to look at least a few more examples of Linux ls.
+
+### 1.1 - Listing folders only
+
+To list folders only with the ls command I will need to use the -d option, however on top of that it seems that I also need to given something for a path.
+
+```
+$ mkdir foo
+$ ls -d */
+$ rm -d foo
+```
 
 ## 2 - Show Hidden files
 
