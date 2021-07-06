@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:47:45
-version: 1.16
+updated: 2021-07-06 12:48:58
+version: 1.17
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -98,7 +98,7 @@ It might be called for now and then to just call the Linux pwd command now and t
 
 ### 4.1 - is home file
 
-In this example I am making a bash script that will return 0 in the event that the current working path is contained in the home folder, and 1 if it is not. I am doing this my piping the output of the Linux pwd command into the standard output of grep, and then using that to check if the path starts off with home or not.
+In this example I am making a bash script that will return 0 in the event that the current working path is contained in the home folder, and 1 if it is not. I am doing this my piping the output of the Linux pwd command into the standard output of the [Linux grep command](/2020/09/14/linux-grep/), and then using that to check if the path starts off with home or not.
 
 ```
 pwd | grep -q "^/home"; echo $?
