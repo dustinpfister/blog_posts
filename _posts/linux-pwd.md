@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:21:49
-version: 1.5
+updated: 2021-07-06 12:26:11
+version: 1.6
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -28,6 +28,8 @@ $ pwd
 ```
 
 ## 2 - More on the cd command
+
+I have wrote a post on the Linux cd command in which I get into this topic in detail also, however I think I should also write a quick section on the cd command when writing about the pwd command. This is because I can not say that the pwd command is something that I ever just use on its own, it is always use in conjunction with other commands. With that said the first and foremost command that comes to mind with pwd is the cd command because there is not just knowing the current working path but also knowing how to change it.
 
 ### 2.1 - To the home folder of the current user
 
