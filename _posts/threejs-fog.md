@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-07-06 10:46:46
-version: 1.29
+updated: 2021-07-06 10:47:55
+version: 1.30
 ---
 
 Adding fog to a Scene in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is a fairly easy, and straight forward process, so this should be a quick post for today. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog when creating it with the [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog), or [THREE.FogExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructors.
@@ -27,7 +27,7 @@ The source code examples that I am writing about here can be found on my [test t
 
 ### 1.2 - Read up more on the scene object in general at some point
 
-There are a few more things to be aware of when it comes to the scene object beyond just that of the fog, and background properties. For example the scene object is one of many objects in threejs that is based off of the object3d class.
+There are a few more things to be aware of when it comes to the [scene object](/2018/05/03/threejs-scene/) beyond just that of the fog, and background properties. For example the scene object is one of many objects in threejs that is based off of the object3d class.
 
 ### 1.3 - Be mindful of what material you are using when adding fog
 
