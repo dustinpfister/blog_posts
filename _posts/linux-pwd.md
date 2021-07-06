@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:26:11
-version: 1.6
+updated: 2021-07-06 12:29:00
+version: 1.7
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -32,6 +32,8 @@ $ pwd
 I have wrote a post on the Linux cd command in which I get into this topic in detail also, however I think I should also write a quick section on the cd command when writing about the pwd command. This is because I can not say that the pwd command is something that I ever just use on its own, it is always use in conjunction with other commands. With that said the first and foremost command that comes to mind with pwd is the cd command because there is not just knowing the current working path but also knowing how to change it.
 
 ### 2.1 - To the home folder of the current user
+
+So then there is knowing how to change the current working path to the home folder of the current user. Speaking of the current user the who am i command can be used to find out who the current user is. So in this example I am calling who am i to know the name of the current user, and then using the cd command with \~ to change to the home path for the current user. I am then using the pwd command to log the current working path ans sure enough it is the home folder for the current user.
 
 ```
 $ whoami
