@@ -5,14 +5,98 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:01:09
-version: 1.2
+updated: 2021-07-06 12:18:41
+version: 1.3
 ---
 
-In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all redy wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
+In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
 
 The pwd command is fairly simple, there is not a great deal to wrote about the command itself, but there might be a bit more to write about when it comes to all kinds of little things that might surround the use of the pwd command. So in order to keep this post from being to thin I think I am going to have to write a little bit about how to get the current working path in some various programing languages also, and any other various topics that might come up. One important thing that comes to mind is knowing the difference between absolute and relative paths when changing the current working path, and other little details such as how to change to a folder that has spaces in it which I remember was a brief time sucker when I was first leaning a thing or two about bash.
 
 
 <!-- more -->
+
+## 1 - Linux pwd basic example
+
+
+```
+$ cd /usr/bin
+$ pwd
+/usr/bin
+```
+
+## 2 - More on the cd command
+
+### 2.1 - To the home folder of the curent user
+
+```
+$ whoami
+pi
+$ cd ~
+$ pwd
+/home/pi
+```
+
+### 2.2 - Back one from the current path or relative path
+
+```
+$ whoami
+pi
+$ cd ~
+$ pwd
+/home/pi
+$ cd ..
+$ pwd
+/home
+```
+
+
+### 2.3 - to root or absolute path
+
+```
+$ cd /
+$ pwd
+/
+```
+
+### 2.4 - folder with spaces
+
+```
+$ cd ~
+$ mkdir "folder with space"
+$ cd "folder with space"
+$ pwd
+/
+$ cd ..
+$ rm -d "folder with space"
+```
+
+## 3 - Environment variables
+
+```
+$ cd /usr/bin
+$ echo $PWD
+```
+
+## 4 - Bash scripts
+
+### 4.1 - is home file
+
+```
+pwd | grep -q "^/home"; echo $?
+```
+
+## 5 - javascript example using node
+
+### 5.1 - Using process cwd method
+
+```js
+console.log( process.cwd() );
+```
+
+```
+$ node pwd-node.js
+```
+
+## 6 - Conclusion
 
