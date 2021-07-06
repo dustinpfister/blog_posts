@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:50:20
-version: 1.18
+updated: 2021-07-06 12:52:09
+version: 1.19
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -94,7 +94,7 @@ $ echo $PWD
 
 ## 4 - Bash scripts
 
-It might be called for now and then to just call the Linux pwd command now and then when working in a command line interface just to known what the current working path is. However the command will also come in handy when it comes to working out things that have to do with piping the output of the pwd command to another command, and also in the process of creating bash scripts.
+It might be called for now and then to just call the Linux pwd command now and then when working in a command line interface just to known what the current working path is. However the command will also come in handy when it comes to working out things that have to do with [piping the output](/2020/10/09/linux-pipe/) of the pwd command to another command, and also in the process of creating [bash scripts](/2020/11/27/linux-bash-script/).
 
 ### 4.1 - is home file
 
