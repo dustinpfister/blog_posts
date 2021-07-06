@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:35:16
-version: 1.10
+updated: 2021-07-06 12:38:10
+version: 1.11
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -70,6 +70,8 @@ $ pwd
 ```
 
 ### 2.4 - folder with spaces
+
+One thing that I got stuck on once was how to change the current working path to a folder that contains spaces. The trick here is to just think more in terms of a string value as a single argument, rather than something that can be interpreted as more than one argument. So the folder name just needs to be contained in a set of quotation marks.
 
 ```
 $ cd ~
