@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:54:51
-version: 1.20
+updated: 2021-07-06 12:56:20
+version: 1.21
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -106,9 +106,11 @@ pwd | grep -q "^/home"; echo $?
 
 ## 5 - JavaScript example using node
 
-So then there is using the Linux pwd command, and also the $PWD environment variable as ways to go about getting the current working path. However there is also learning how to go about doing so in various programing environments, and to do so in a way in which the task can be preformed in just about any operating system, not just Linux, or POSIX systems in which Linux pwd will always be there to work with.
+So then there is using the Linux pwd command, and also the $PWD environment variable as ways to go about getting the current working path. However there is also learning how to go about doing so in various programing environments, and to do so in a way in which the task can be preformed in just about any operating system, not just Linux, or POSIX systems in which Linux pwd will always be there to work with. So then in this section I will be going over how to go about using sever side javaScript as a way to get the current working path.
 
 ### 5.1 - Using process cwd method
+
+The way to go about getting the current working path in node would be to use the process cwd method of the process global.
 
 ```js
 console.log( process.cwd() );
