@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:39:30
-version: 1.12
+updated: 2021-07-06 12:40:54
+version: 1.13
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -85,7 +85,7 @@ $ rm -d "folder with space"
 
 ## 3 - Environment variables
 
-The pwd command is one way to go about getting the current working path, but another is to make use of the environment variable that should contain the same value.
+The pwd command is one way to go about getting the current working path, but another is to make use of the environment variable that should contain the same value. In this example I am using the Linux echo command to echo back the current value of the $PWD environment variable that should be the same value that is returned by the Linux pwd command.
 
 ```
 $ cd /usr/bin
