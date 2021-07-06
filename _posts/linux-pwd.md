@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:29:00
-version: 1.7
+updated: 2021-07-06 12:31:14
+version: 1.8
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -44,6 +44,8 @@ $ pwd
 ```
 
 ### 2.2 - Back one from the current path or relative path
+
+What if I am at a current location and I just want to go to a location that is one folder down from where I am now? The way to do that would be to use cd .. to go down one level.
 
 ```
 $ whoami
