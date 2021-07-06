@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 13:01:06
-version: 1.23
+updated: 2021-07-06 13:02:51
+version: 1.24
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -122,4 +122,5 @@ $ node pwd-node.js
 
 ## 6 - Conclusion
 
-That will be it for now then on the Linux pwd command, until I get around to coming back to do at least a little more editing an expansion on this post at some time in the future. The Linux pwd command is one of many commands that come to might that might compose a set of basic commands that one should learn right away when getting started with bash.
+That will be it for now then on the Linux pwd command, until I get around to coming back to do at least a little more editing an expansion on this post at some time in the future. The Linux pwd command is one of many commands that come to might that might compose a set of basic commands that one should learn right away when getting started with bash. It is a fairly basic command that can be used to jut know the current file system location that one is at, but when it comes to how pwd can be used in conjunction with other commands, and how the current working director can be accessed in other ways it does get a little involved.
+
