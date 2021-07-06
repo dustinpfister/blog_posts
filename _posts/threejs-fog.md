@@ -5,8 +5,8 @@ tags: [js,canvas,three.js]
 layout: post
 categories: three.js
 id: 176
-updated: 2021-07-06 08:49:52
-version: 1.27
+updated: 2021-07-06 10:38:01
+version: 1.28
 ---
 
 Adding fog to a Scene in [three.js](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) is a fairly easy, and straight forward process, so this should be a quick post for today. However there are still a few basic things that a developer should be aware of when it comes to adding fog, such as the fact that one can not just use any material, and that typically the background color of a scene should be same color used for the color of the fog when creating it with the [THREE.Fog](https://threejs.org/docs/#api/en/scenes/Fog), or [THREE.FogExp2](https://threejs.org/docs/#api/en/scenes/FogExp2) constructors.
@@ -17,11 +17,11 @@ So in this post I will be going over a basic example of fog in a three.js projec
 
 <!-- more -->
 
-## 1 - What to know before hand
+## 1 - Threejs fog and What to know before hand
 
-This is a post on how to go about adding fog to a three.js project. You should have some knowledge of three.js, and javaScript development in general in order to get any benefit from this post. I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js. 
+This is a post on how to go about adding fog to a scene object in a three.js project. You should have some knowledge of three.js, and javaScript development in general in order to get any benefit from this post. I have written a post on how to [get started with three.js](/2018/04/04/threejs-getting-started/) if you are completely new on how to work with three.js that might be a decent starting point when it comes to the very basics of threejs that I will not be getting into detail here in this post. In this section I will be going over some things that you might want to read up on more that are closely related to the topic of fog in threejs though, and any other things that you should be aware of before continuing reading this post.
 
-### 1.1 - The source code examples here can be found on guthub
+### 1.1 - The source code examples here can be found on github
 
 The source code examples that I am writing about here can be found on my [test threejs](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-fog) repository, along with many other examples for all my other posts. So if you see something wrong with one of the source code examples here that is where a pull request can be made. There is also the comments section of this blog post that can be used to bring something up that might need to be changed, or added.
 
