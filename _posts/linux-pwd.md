@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 904
-updated: 2021-07-06 12:18:41
-version: 1.3
+updated: 2021-07-06 12:21:23
+version: 1.4
 ---
 
 In [Linux the pwd command](https://man7.org/linux/man-pages/man1/pwd.1.html) can be used as one way to find out what the current working directly is in a command line interface. There are also a number of other ways to go about knowing this such as taking a look at the current state of a corresponding environment variable, or making use of a feature in a programing environment to do so. There is no just knowing what the current working directory is, but also how to go about changing what that directly is, with that said I have all ready wrote a quick post on the Linux cd command, however I think I should also wrte about that here also. 
@@ -17,6 +17,8 @@ The pwd command is fairly simple, there is not a great deal to wrote about the c
 <!-- more -->
 
 ## 1 - Linux pwd basic example
+
+So first of maybe it would be best to start oit with just a basic example of the pwd command where I am just using the Linux cd command to change to a certain path, and then just call pwd to confirm that the current path is the path that I have changed to.
 
 
 ```
