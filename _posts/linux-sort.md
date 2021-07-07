@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 819
-updated: 2021-03-09 13:09:04
-version: 1.17
+updated: 2021-07-07 14:04:00
+version: 1.18
 ---
 
 The [Linux sort](https://man7.org/linux/man-pages/man1/sort.1.html) command is a way to go about sorting lines of text by some kind of index value that is in each line. For example say I am using the Linux ps command to get a long list for each process running on a system, and I want that list sorted by how much memory each process is using, the Linux sort command can help me with that kind of task.
@@ -25,7 +25,7 @@ So then if you have a basic working knowledge of echo and piping the focus here 
 
 ### 1.1 - Just using sort by itself
 
-If I want to i can just use the Linux sort command by itself without any options. doing so will work just fine actually if it just so happens that it is the first field of each line that I want to sort by. With the Linux echo command I can create some standard output that is just a bunch of lines of numbers each of which end with a line feed by using the -e option and the /\n syntax to create the line feeds. If I then pipe this standard output to the Linux sort command the result will be those lines of numbers sorted by the value of each number.
+If I want to I can just use the Linux sort command by itself without any options. Doing so will work just fine actually if it just so happens that it is the first field of each line that I want to sort by. With the [Linux echo](/2019/08/15/linux-echo/) command I can create some standard output that is just a bunch of lines of numbers each of which end with a line feed by using the -e option and the /\n syntax to create the line feeds. If I then pipe this standard output to the Linux sort command the result will be those lines of numbers sorted by the value of each number.
 
 ```
 $ echo -e "2 \n7 \n8 \n3 \n5 \n9 \n1 \n6 \n0 \n4" | sort
