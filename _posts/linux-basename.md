@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 905
-updated: 2021-07-07 13:45:05
-version: 1.13
+updated: 2021-07-07 13:49:27
+version: 1.14
 ---
 
 When working out a bash script I might want to get just the base name of a path to a file or folder, one way to do so might be to use the [linux cut](/2020/11/19/linux-cut/) command, but there is also the [linux basename](https://www.geeksforgeeks.org/basename-command-in-linux-with-examples/) command that can be used for this task. The command works by passing a single argument to the command that should be a string value of a path to a file, the result that will be spit out to the standard output will then just be the base name of the path. So then this is a fairly basic command, but when it comes to writing bash scripts, or using it in conjunction with other scripts things might get a little confusing. So I thought I would write a quick post on this command, and also a few other commands that might end up being used in conjunction with it. Also there is making mentioning of some alternatives to using the basename command such as the linux cut command, and tools that there are to work with in programing environments such as the [path module in nodejs](/2017/12/27/nodejs-paths/).
@@ -31,11 +31,23 @@ So that is all fine and good, but when it comes to some kind of real use case ex
 
 ## 2 - Piping a url to the basename command with xargs
 
+### 2.1 - A Basic xargs example using echo
+
 So now when it comes to getting into using the basename command with other commands this is a good time to write about another very useful command [called xargs](/2020/09/26/linux-xargs/). Most of the time I can pipe something into a command from the standard output of another command, but it would seem that I can not do that with the basename command.
 
 ```
 $ echo /foo/bar/baz.txt | xargs basename
 baz.txt
+```
+
+### 2.1 - Echo with the -e option, piping and the -a all option with basename
+
+In this example I am once again using the Linux echo command to simulate a collection of paths in the from of some text where a line feed is used as a separator between each path. When it comes to piping this to the basename command I can use the -a option of the basename command as a way to get what would be a typically desired result in this kind of situation.
+
+```
+$ echo -e "/foo/bar\n/foo/baz" | xargs basename -a
+bar
+baz
 ```
 
 ## 3 - Using the find command with exec option
