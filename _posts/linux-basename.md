@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 905
-updated: 2021-07-07 13:53:32
-version: 1.16
+updated: 2021-07-07 13:57:40
+version: 1.17
 ---
 
 When working out a bash script I might want to get just the base name of a path to a file or folder, one way to do so might be to use the [linux cut](/2020/11/19/linux-cut/) command, but there is also the [linux basename](https://www.geeksforgeeks.org/basename-command-in-linux-with-examples/) command that can be used for this task. The command works by passing a single argument to the command that should be a string value of a path to a file, the result that will be spit out to the standard output will then just be the base name of the path. So then this is a fairly basic command, but when it comes to writing bash scripts, or using it in conjunction with other scripts things might get a little confusing. So I thought I would write a quick post on this command, and also a few other commands that might end up being used in conjunction with it. Also there is making mentioning of some alternatives to using the basename command such as the linux cut command, and tools that there are to work with in programing environments such as the [path module in nodejs](/2017/12/27/nodejs-paths/).
@@ -54,13 +54,23 @@ baz
 
 ## 3 - Using the find command with exec option
 
-Another command that I might want to use with base name is the Linux find command that I can use to look for files that fit a given pattern. When it comes to using the find command there is an exec option that allows for me to define a command to run for each file path found that fits the pattern. This can then be used as a way to get just the base name of each file found.
+Another command that I might want to use with base name is the [Linux find](/2020/09/23/linux-find/) command that I can use to look for files that fit a given pattern. 
+
+### 3.1 - Linux find exec options and basename
+
+When it comes to using the find command there is an exec option that allows for me to define a command to run for each file path found that fits the pattern. This can then be used as a way to get just the base name of each file found.
 
 ```
 $ find /usr/lib/nodejs -name "*.js" -exec basename {} ';'
 ```
 
 Although something like this might work to just get the base name for a file, I might still also want to have the full path at the ready also. See I might want just the base name to make some kind of comparison, but once I have that done I might want to do something with the full path to the file also. So it might be called for at some point to get into writing a few more examples that have to do with writing a bash script or two.
+
+### 3.2 - Linux find and using xargs with basename and the -a option
+
+```
+$ find /usr/lib/nodejs/npmlog -name "*.js" | xargs basename -a
+```
 
 ## 4 - Conclusion
 
