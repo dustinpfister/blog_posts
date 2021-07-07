@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 122
-updated: 2020-01-31 16:21:37
-version: 1.17
+updated: 2021-07-07 13:15:23
+version: 1.18
 ---
 
 Working with paths in node.js is something that comes up all the time when it comes to file system related tasks. When doing so there is a desire for a nice module to help with joining paths together, and help with problems that have to do with the differences of how paths are handled in windows and linux systems. There are also many other concerns surround paths such as the difference between relative and absolute paths. 
@@ -52,7 +52,7 @@ If you are still new to node and working with paths, it is a good idea for now t
 
 ### 2.2 - Getting the base name of a path
 
-Another task that is quickly solved with the path module is getting the base name of a path. This is helpful for getting a filename from the end of a path.
+Another task that is quickly solved with the path module is getting the base name of a path. This is helpful for getting a filename from the end of a path rather than the name of the folder that contains the file name. In Linux systems this works just like the [Linux basename command ](/2021/07/07/linux-basename/) that works more or less the same way when it comes to writing bash scripts.
 
 ```js
 let fileName = path.basename('./foo/man/chew.js');
