@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 906
-updated: 2021-07-08 11:08:38
-version: 1.5
+updated: 2021-07-08 11:09:39
+version: 1.6
 ---
 
 Todays post will be on the [Linux uname](https://linux.die.net/man/1/uname) command which can be used to gain some information about the client system that I am dealing with when working in a Linux of bash system that has the uname command.
@@ -25,6 +25,8 @@ Linux
 ```
 
 ## 2 - The all option
+
+The all option will give me a string that will be all the information of the system that I can get by way of the uname command.
 
 ```
 $ uname -a
