@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 906
-updated: 2021-07-08 11:05:39
-version: 1.3
+updated: 2021-07-08 11:07:47
+version: 1.4
 ---
 
 Todays post will be on the [Linux uname](https://linux.die.net/man/1/uname) command which can be used to gain some information about the client system that I am dealing with when working in a Linux of bash system that has the uname command.
@@ -16,6 +16,8 @@ When writing some kind of client system in which I can find out at least some de
 <!-- more -->
 
 ## 1 - Basic example of Linux uname command
+
+To start off with there is just typing the uname command into the command line of a bash window to see what the default result is. When I do so I get the name of the kernel name of the operating system. When I wrote this post I was using Raspberry PI OS which is of course a Linux based system.
 
 ```
 $ uname
