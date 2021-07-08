@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 906
-updated: 2021-07-08 11:09:39
-version: 1.6
+updated: 2021-07-08 11:10:31
+version: 1.7
 ---
 
 Todays post will be on the [Linux uname](https://linux.die.net/man/1/uname) command which can be used to gain some information about the client system that I am dealing with when working in a Linux of bash system that has the uname command.
@@ -34,6 +34,8 @@ Linux raspberrypi 5.10.17-v7l+ #1421 SMP Thu May 27 14:00:13 BST 2021 armv7l GNU
 ```
 
 ## 3 - Other options
+
+There is then a whole bunch of other options, but these will just give string values that are parts of what I can get with the all option.
 
 ```
 $ uname -s
