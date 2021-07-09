@@ -5,8 +5,8 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2021-07-09 14:15:56
-version: 1.11
+updated: 2021-07-09 14:20:03
+version: 1.12
 ---
 
 When setting up a [Rasbian Linux OS, now known as Raspberry PI OS](https://en.wikipedia.org/wiki/Raspberry_Pi_OS) lite install I might just want to set up a server, or do something from the command line only. As such I might not always want, or even need any kind of desktop environment when it comes to this kind of striped now command line only image of the OS. 
@@ -45,9 +45,9 @@ $ sudo apt-get install x11-xserver-utils
 ```
 
 
-## 6 - install blackbox, and xterm
+## 6 - install blackbox, xterm, and lightDM
 
-Now to install a desktop environment, in this post I will be going over blackbox, but if you want to use a different desktop the setup, and additional packages to install might be different.
+Now to install a desktop environment, in this post I will be going over blackbox, but if you want to use a different desktop the setup, and additional packages to install might be different. I like blackbox because it is a very clean, minimum environment that I have been using once and a while for years off an on. However it would seem that it is not supported any more, so feel free to look into what the many other options are beyond just that of black box.
 
 ```
 $ sudo apt-get install blackbox
