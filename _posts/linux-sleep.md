@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 907
-updated: 2021-07-09 13:48:39
-version: 1.7
+updated: 2021-07-09 13:53:33
+version: 1.8
 ---
 
 The [Linux sleep](https://linux.die.net/man/3/sleep) command can be used as a way to go about [setting a delay between the execution](https://linuxhint.com/sleep_command_linux/) of commands. This might prove to be useful when writing a [bash script](/2020/11/27/linux-bash-script/) and I want to set a delay for each each time a loop is in effect as I can call it over and over again in the body of a while loop for example. So in this post I will be going over a few quick examples that involve using it in the command line, and also a few basic bash script examples where this kind of command will typically be used most of the time.
@@ -31,7 +31,7 @@ So then that is more or less all there is to the Linux sleep command, however ac
 
 ### 1.2 - Another example using the Linux echo command
 
-In this example I am using the sleep command in conjunction with one additional command called the [Linux echo](/2019/08/15/linux-echo/) command.
+In this example I am using the sleep command in conjunction with one additional command called the [Linux echo](/2019/08/15/linux-echo/) command. The echo command is just a way to echo some text given as an argument to the standard output, so I call the echo command with a message, then end it with a semi colon which is a way to go about having more than one command on a single line. After that I can then call the sleep command, followed by another semi color, and then the echo command again. The end result is then the first message, followed by a delay, and then the final message as one might expect.
 
 ```
 $ echo "waiting a few seconds";sleep 5;echo "done"
