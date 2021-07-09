@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 906
-updated: 2021-07-09 12:37:57
-version: 1.12
+updated: 2021-07-09 12:39:28
+version: 1.13
 ---
 
 Todays post will be on the [Linux uname](https://linux.die.net/man/1/uname) command which can be used to gain some information about the client system that I am dealing with when working in a Linux of bash system that has the uname command.
@@ -61,4 +61,4 @@ GNU/Linux
 
 ## 4 - Conclusion
 
-That will be it for now when it comes to the uname command in Linux, in time I might expand this post more with additional examples that do the same thing. I do not think that there is much more to write about when it comes to the uname command alone, but there sure is more to write about when it comes to getting more detail information about a Linux system beyond just that of what is given by way of the uname command. One thing that comes to mind as a starting point is to stick to using some kind of built in module of a programing environment like that of python, or JavaScript by way of nodejs.
+That will be it for now when it comes to the uname command in Linux, in time I might expand this post more with additional examples that do the same thing. I do not think that there is much more to write about when it comes to the uname command alone, but there sure is more to write about when it comes to getting more detail information about a Linux system beyond just that of what is given by way of the uname command. One thing that comes to mind as a starting point is to stick to using some kind of built in module of a programing environment like that of python, or JavaScript by way of nodejs. For example in [nodejs there is the os module](/2019/11/19/nodejs-os/) that would be a good staring point to find out of the client system is a Linux system to begin with when it comes to javaScript.
