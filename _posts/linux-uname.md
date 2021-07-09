@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 906
-updated: 2021-07-09 12:20:16
-version: 1.9
+updated: 2021-07-09 12:22:53
+version: 1.10
 ---
 
 Todays post will be on the [Linux uname](https://linux.die.net/man/1/uname) command which can be used to gain some information about the client system that I am dealing with when working in a Linux of bash system that has the uname command.
@@ -32,6 +32,8 @@ The all option will give me a string that will be all the information of the sys
 $ uname -a
 Linux raspberrypi 5.10.17-v7l+ #1421 SMP Thu May 27 14:00:13 BST 2021 armv7l GNU/Linux
 ```
+
+So then when I called this I was doing so on Raspbbery PI OS, which is a Linux based system, so of course the kernel name is Linux. Just the kernel name alone can be ascertained with the -s option, but I will be getting more into those details in the nest section.
 
 ## 3 - Other options
 
