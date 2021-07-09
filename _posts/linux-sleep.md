@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 907
-updated: 2021-07-09 14:38:15
-version: 1.16
+updated: 2021-07-09 14:42:48
+version: 1.17
 ---
 
 The [Linux sleep](https://linux.die.net/man/3/sleep) command can be used as a way to go about [setting a delay between the execution](https://linuxhint.com/sleep_command_linux/) of commands. This might prove to be useful when writing a [bash script](/2020/11/27/linux-bash-script/) and I want to set a delay for each each time a loop is in effect as I can call it over and over again in the body of a while loop for example. So in this post I will be going over a few quick examples that involve using it in the command line, and also a few basic bash script examples where this kind of command will typically be used most of the time.
@@ -45,7 +45,7 @@ So now there is getting into a few bash script examples that make use of the sle
 
 ### 2.1 - Basic loop example of Linux Sleep
 
-When creating a [while loop](/2020/11/12/linux-bash-script-while-loop-examples/) it might be nice to use the sleep command to set a delay for each time something is done in the body of a loop.
+When creating a [while loop](/2020/11/12/linux-bash-script-while-loop-examples/) it might be nice to use the sleep command to set a delay for each time something is done in the body of a loop. For this example I will once again just be using the Linux echo command in the body of a loop, but now I will be using a form of [bash parameter expansion](/2020/12/04/linux-bash-script-parameter-expansion/) to step a shell variable.
 
 ```
 #!/bin/bash
