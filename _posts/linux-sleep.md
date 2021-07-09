@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 907
-updated: 2021-07-09 14:07:42
-version: 1.12
+updated: 2021-07-09 14:32:19
+version: 1.13
 ---
 
 The [Linux sleep](https://linux.die.net/man/3/sleep) command can be used as a way to go about [setting a delay between the execution](https://linuxhint.com/sleep_command_linux/) of commands. This might prove to be useful when writing a [bash script](/2020/11/27/linux-bash-script/) and I want to set a delay for each each time a loop is in effect as I can call it over and over again in the body of a while loop for example. So in this post I will be going over a few quick examples that involve using it in the command line, and also a few basic bash script examples where this kind of command will typically be used most of the time.
@@ -76,4 +76,7 @@ done
 ```
 
 ## 3 - Conclusion
+
+That will be it for now at least when it comes to the Linux sleep command. It is a fairly simple command by itself so there really is not that much more to write about with this one. If I get around to doing some more editing and expansion of this post it would have to have a lot more to do with bash script examples, and any and all topics that branch off from the Linux sleep command.
+
 
