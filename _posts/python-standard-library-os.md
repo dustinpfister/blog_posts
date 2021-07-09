@@ -5,8 +5,8 @@ tags: [python]
 categories: python
 layout: post
 id: 776
-updated: 2021-07-09 12:46:41
-version: 1.23
+updated: 2021-07-09 12:49:50
+version: 1.24
 ---
 
 The [os standard library](https://docs.python.org/3/library/os.html) in python is a library that contains some operating system dependent functionality. There are a few other libraries that come to mind that can also be used as a way to make use of operating system dependent features. For example the subprocess library can be used to call a command on the host operating system, but before doing so it helps to know what operating system you are working with first. So the os standard library is a good staring point when it comes to checking out what kind of system my code might be running on top of.
@@ -37,7 +37,7 @@ print(os.getcwd()) # '/'
 
 One basic feature of the os library should of course be a feature to help get an idea of what operating system I might be dealing with to begin with. For this there is the name property, this might not be the best way to go about getting a detailed idea of what kind of system there is to work with, but it sure is a good starting point at least. The main problem with the name property is that there are only three possible values for the name property which are posix, nt, and java. This might not give all the information that one might need, but generally there are only two kinds of systems that people use which are a late version of Windows \( all of which are NT based these days as the old 9.x platforms are long dead \) or some kind of posix system usually Apple Darwin AKA Mac OS, or in some cases some kind of Linux system such as Raspberry PI OS, Fedora, ect.
 
-If more detailed information is needed such as the version of the system there is also the os.uname method.
+If more detailed information is needed such as the version of the system, or a more specific name of the OS, there is also the os.uname method. This would seem to work more or less the same way as the [Linux uname](/2021/07/08/linux-uname/) command when is one way to go about getting detailed info of a Linux system, and I assume most other posix systems.
 
 ```python
 import os
