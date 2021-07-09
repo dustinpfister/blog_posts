@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 906
-updated: 2021-07-09 12:53:30
-version: 1.14
+updated: 2021-07-09 12:55:47
+version: 1.15
 ---
 
 Todays post will be on the [Linux uname](https://linux.die.net/man/1/uname) command which can be used to gain some information about the client system that I am dealing with when working in a Linux of bash system that has the uname command.
@@ -37,7 +37,7 @@ So then when I called this I was doing so on Raspbbery PI OS, which is a Linux b
 
 ## 3 - Other options
 
-There is then a whole bunch of other options, but these will just give string values that are parts of what I can get with the all option.
+There is then a whole bunch of other options, but these will just give string values that are parts of what I can get with the all option. Some of the most impotent though might include the -s option that will just return the name of the kernel, which on all Linux systems should return Linux, and the -r option that gives me a release version number of the kernel.
 
 ```
 $ uname -s
