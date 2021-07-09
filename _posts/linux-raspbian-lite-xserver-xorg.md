@@ -5,11 +5,15 @@ tags: [linux,js]
 layout: post
 categories: linux
 id: 637
-updated: 2020-10-04 08:34:22
-version: 1.10
+updated: 2021-07-09 14:15:56
+version: 1.11
 ---
 
-When setting up a [Rasbian Linux OS](https://en.wikipedia.org/wiki/Raspbian) lite install I might just want to set up a server, or do something from the command line only. However often I might want at least some kind of desktop environment if I am still going to have th raspberry pi hooked up to a monitor and not go fully headless. So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
+When setting up a [Rasbian Linux OS, now known as Raspberry PI OS](https://en.wikipedia.org/wiki/Raspberry_Pi_OS) lite install I might just want to set up a server, or do something from the command line only. As such I might not always want, or even need any kind of desktop environment when it comes to this kind of striped now command line only image of the OS. 
+
+However often I might want at least some kind of desktop environment if I am still going to have the raspberry pi hooked up to a monitor and not go fully headless. When it comes to that, it might still be best to go with a desktop image rater than the lite version as doing so will make life a little easier. However in some cases I might want to experiment with some desktop environment other than the default [LXDE](https://en.wikipedia.org/wiki/LXDE) based environment that comes with the desktop version, and not have any additional blot that I do not want on the image.
+
+So In this post I will be going over installing the [x window system](https://en.wikipedia.org/wiki/X_Window_System#Limitations_and_criticism), and setting up a very simple desktop for X called blackbox in Rasbian lite.
 
 <!-- more -->
 
