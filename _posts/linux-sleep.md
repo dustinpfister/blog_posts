@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 907
-updated: 2021-07-09 14:05:52
-version: 1.11
+updated: 2021-07-09 14:07:42
+version: 1.12
 ---
 
 The [Linux sleep](https://linux.die.net/man/3/sleep) command can be used as a way to go about [setting a delay between the execution](https://linuxhint.com/sleep_command_linux/) of commands. This might prove to be useful when writing a [bash script](/2020/11/27/linux-bash-script/) and I want to set a delay for each each time a loop is in effect as I can call it over and over again in the body of a while loop for example. So in this post I will be going over a few quick examples that involve using it in the command line, and also a few basic bash script examples where this kind of command will typically be used most of the time.
@@ -60,7 +60,7 @@ done
 
 ### 2.2 - An example using nodejs to call some javaScript
 
-In this example I am using the node command to run a little javaScrpt code, and delay the call of the next call of node each time.
+In this example I am using the node command to run a little javaScrpt code, and delay the call of the next call of node each time. One option of the node command is to evaluate a string of javaScript code rather than a file, so I can do something that involves using bash to create an update a value that I use to create a javaScript string.
 
 ```
 #!/bin/bash
