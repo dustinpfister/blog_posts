@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-05-05 16:29:12
-version: 1.16
+updated: 2021-07-10 11:37:47
+version: 1.17
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -15,17 +15,54 @@ In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018
 
 ## 1 - The Orthographic Camera and what to know first
 
-This is a post on the Orthographic Camera in the javaScript library known as three.js, it is not a getting started post on ether three.js, or javaScript in general. I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looking into all the other little details about three.js here and there.
+This is a post on the Orthographic Camera in the javaScript library known as three.js, it is [not a getting started post on ether three.js](/2018/04/04/threejs-getting-started/), or javaScript in general. I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looking into all the other little details about three.js here and there.
 
 ### 1.1 - Version numbers matter in three.js
 
 When I first wrote this post back in May of 2018 I as using revision r91 of three.js, and as of this writing I was using r127 of three.js last time I came around to doing a little editing with this post. With that said I have got into the habit of briefly mentioning what versions I was using when first writing this, and also when I took a moment to review how the code example work with late versions of three.js.
 
-## 2 - A Orthographic Camera example involving a fun little code stack module
+## 2 - A basic example of the Orthographic Camera
+
+```js
+(function () {
+    // CAMERA
+    var left = -3.2,
+    right = 3.2,
+    top = 2.4,
+    bottom = -2.4,
+    near = 0.01,
+    far = 100,
+    camera = new THREE.OrthographicCamera(
+            left,
+            right,
+            top,
+            bottom,
+            near,
+            far);
+    camera.position.set(2, 2, 2); // position camera
+    camera.lookAt(0, 0, 0);       // have camera look at 0,0,0
+ 
+    // scene
+    var scene = new THREE.Scene();
+    scene.add(new THREE.GridHelper(10, 10));
+    // mesh
+    scene.add(new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 1),
+        new THREE.MeshNormalMaterial()));
+    // renderer
+    var renderer = new THREE.WebGLRenderer();
+    document.getElementById('demo').appendChild(renderer.domElement);
+    renderer.setSize(640, 480);
+    renderer.render(scene, camera);
+}
+    ());
+```
+
+## 3 - A Orthographic Camera example involving a fun little code stack module
 
 In this example I am just using the Orthographic Camera alone to look at a random cube stack module instance thing that I made for this post alone. This cube stack thing resembles a small city scape or something to that effect, but it is really just to have something that is composed mainly of a bunch of cubes that are all the same uniform size.
 
-### 2.1 - The Cube Stack Model
+### 3.1 - The Cube Stack Model
 
 So In order to appreciate the differences between the orthographic, and perspective cameras in three.js I will first need some kind of scene that will help express that well. So that being said I made a model that I think will help make a scene that can do that very well.
 
@@ -108,7 +145,7 @@ scene.add(stack.group);
 
 I could have it be a lot more that what it is but for the purpose of the subject of this post by doing this it will just add a group that contains a bunch of Mesh Object instances positioned in a way that might resemble a city. The reason why this is of interest comes when switching between the kinds of cameras used to view something like this.
 
-### 2.2 - The main.js file for the basic orthographic camera example
+### 3.2 - The main.js file for the basic orthographic camera example
 
 Now for the main javaScript file in which I am making use of this cube stack module, and creating an instance of the camera. When creating an instance of the orthographic camera the arguments are a little different from that of the perspective camera. The first argument is not a fire of view value but a Camera frustum left plane, followed by right, top, and bottom Camera frustum values. Then after these frustum values there is the near and far values when it comes to the drawing range of the camera. I will then want to save an instance of the camera object that is returned by the new THREE.OrthographicCamera constructor just like with any other camera.
 
@@ -189,11 +226,11 @@ After that I can use set method of the Vector3 instance of the position property
 
 I then created and added to the scene an instance of this cube stack model that I made. Arther that is set and done I set up and append to the html an instance of a WebGl renderer. I am then going to want to have a main animation loop in which I will be changing the position of the camera and make it so that the camera will orbit around this cube stack module.
 
-## 3 - The Three.js Orthographic Camera Example compared to the perspective camera
+## 4 - The Three.js Orthographic Camera Example compared to the perspective camera
 
 Now that I have the model I can use it in a demo. I will want to make a demo that will show the difference between the two most common camera types by comparing what is rendered using an orthographic camera to that of a perspective camera. To do this I will want to use more than one camera in my demo.
 
-### 3.1 - An Array of cameras
+### 4.1 - An Array of cameras
 
 In order to get a good sense of the difference between the orthographic camera compared to the typical perspective camera, I will want an array of cameras. One will be an instance of THREE.PerspectiveCamera that is what I often use in most projects, while the other will be THREE.OrthographicCamera.
 
@@ -222,9 +259,9 @@ cameras.forEach(function(camera){
 });
 ```
 
-Any code that I will want to apply to all cameras I will of course put in the forEach loop, such as setting the position,a dn zoom level of the cameras.
+Any code that I will want to apply to all cameras I will of course put in the forEach loop, such as setting the position, and zoom level of the cameras.
 
-## 3.2 - The example in full
+## 4.2 - The example in full
 
 So the example will look like this then:
 
@@ -319,7 +356,7 @@ So the example will look like this then:
 
 When all goes well this will result in a rotating scene that looks like a bunch of buildings. The example will switch between camera 0 \(perspective\), and camera 1 \(orthographic\). If you take the time to reproduce this you will notice that it is easier to tell what the size is of things.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 I just about all three.js projects I am typicality going to want to go with the perspective camera actually when it comes to features of three.js that I am actually using. Still if I am going to use a camera other that the perspective camera I would say that the orthographic camera is at the top if the list.
 
