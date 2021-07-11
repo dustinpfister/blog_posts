@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-07-11 10:26:24
-version: 1.24
+updated: 2021-07-11 10:32:17
+version: 1.25
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -15,7 +15,7 @@ In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018
 
 ## 1 - The Orthographic Camera and what to know first
 
-This is a post on the Orthographic Camera in the javaScript library known as three.js, it is [not a getting started post on ether three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/). I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looking into all the other little details about three.js here and there when it comes to things like the options when it comes to cameras.
+This is a post on the Orthographic Camera in the javaScript library known as three.js, it is [not a getting started post on ether three.js](/2018/04/04/threejs-getting-started/), or [javaScript in general](/2018/11/27/js-getting-started/). I trust that you have took the time to work out at lest a few basic examples with three.js, and you are now just looking into all the other little details about three.js here and there when it comes to things like the options when it comes to cameras. So I will not be getting into all kinds of various little details about threejs and JavaScript in general here of course. However in this section I will be going over some points you should be aware of before continuing to read this post.
 
 ### 1.1 - The source code in this post is on github
 
