@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:25:03
-version: 1.6
+updated: 2021-07-12 15:25:56
+version: 1.7
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -20,6 +20,8 @@ The array every method is then one of many built in array prototype methods that
 In this section I will be going over a few quick simple examples of the array every method.
 
 ### 1.1 - Just a test all for number type example
+
+In this example I am using the array every method to check if a given array contains only numbers or not.
 
 ```js
 let arr = [1, 2, 3, 4]
