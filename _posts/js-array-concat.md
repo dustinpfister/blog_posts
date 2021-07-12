@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2021-07-12 17:09:44
-version: 1.18
+updated: 2021-07-12 17:12:12
+version: 1.19
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including [Arrays](/2018/12/10/js-array/) and how such an operation should be handled. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values by themselves actually. Simply put the Array.concat method is one way to go about adding two or more arrays together into a single array. 
@@ -161,7 +161,7 @@ For more on this topic you might want to check out my post in which I get into t
 
 ## 7 - Add arrays of numbers together
 
-What if I want to add two arrays of numbers together, but add values rather than just apped values to the end of a new array?
+What if I want to add two arrays of numbers together, but add values rather than just append values to the end of a new array? So in order words I want to create a new array, but I want to add the corresponding values that have the same element index in eah of them. Then there is also create a final sum of all the numbers in the form of a number rather than an array.
 
 ```js
 let addArrays = (arr1, arr2) => {
