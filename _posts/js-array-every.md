@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:45:41
-version: 1.16
+updated: 2021-07-12 15:51:13
+version: 1.17
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -113,7 +113,7 @@ console.log(testAll(arr2, isNum, true)); // true
 console.log(testAll(arr2, isNum, false)); // true
 ```
 
-By default it will work just like the every method, but I can set a boolean to false and have it work like the some method.
+By default it will work just like the every method, but I can set a boolean to false and have it work like the some method. In any case I can break out of the while loop in the event that just one element is false when in every mode, of if just one element is true in some mode. There are many little changes that I could make to this method here and there, but the basic idea of what I had in mid is there. In any case I can not say that I make methods like this often in real projects, it is often best to just use the native methods I have found. Also when it comes to using a user space module on top of native javaScript there are all ready all kinds of professionally maintained utility libraries that have methods like this. In lodash there is a [lodash every](/2019/08/01/lodash_every/) and [lodash some](/2019/03/32/lodash_some/) method for example.
 
 ## 4 - Conclusion
 
