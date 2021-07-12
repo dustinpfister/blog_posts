@@ -5,8 +5,8 @@ tags: [js,three.js]
 layout: post
 categories: three.js
 id: 189
-updated: 2021-07-11 10:32:17
-version: 1.25
+updated: 2021-07-12 11:01:19
+version: 1.26
 ---
 
 In [three.js](https://threejs.org/) there are [a few cameras to work with](/2018/04/06/threejs-camera/), typically in most cases I would use the [perspective camera](/2018/04/07/threejs-camera-perspective/), however there is also the [orthographic camera](https://threejs.org/docs/#api/en/cameras/OrthographicCamera) as well that can come in handy in some situations. With that said in this post I will be writing about the orthographic camera, and how it compares to the perspective camera, and why you might want to use it with certain projects.
@@ -21,7 +21,11 @@ This is a post on the Orthographic Camera in the javaScript library known as thr
 
 The [source code examples](https://github.com/dustinpfister/test_threejs/tree/master/views/forpost/threejs-camera-orthographic) in this post can be found on my test threejs repository. So if you would like to make a pull request, or just pull down this source code along with the source code for all my other blog posts on threejs that would be worth checking gout.
 
-### 1.2 - Version numbers matter in three.js
+### 1.2 - Might be a good idea to look into other camera options
+
+In most situations the Orthographic Camera may not be the best choice for a project, most of the time I would go with the [Perspective camera](/2018/04/07/threejs-camera-perspective/).
+
+### 1.3 - Version numbers matter in three.js
 
 When I first wrote this post back in May of 2018 I as using revision r91 of three.js, and as of this writing I was using r127 of three.js last time I came around to doing a little editing with this post. With that said I have got into the habit of briefly mentioning what versions I was using when first writing this, and also when I took a moment to review how the code example work with late versions of three.js.
 
