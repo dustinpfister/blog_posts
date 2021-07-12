@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-12 16:37:34
-version: 1.56
+updated: 2021-07-12 16:40:23
+version: 1.57
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -234,7 +234,7 @@ Array.prototype.forEach.call(nodeList, function(div){
 });
 ```
 
-There is also Function.apply, and Function.bind to be aware of as well I have [written a post](/2017/09/21/js-call-apply-and-bind/) in which I get into this in further detail as well.
+These function prototype methods will come up often as they are a way to break a prototype methods away from its class and get the method to work with any kind of object given that it is formated in a way that will allow it to work with a prototype method. There are a whole lot of other reasons why I would want to use one of these function prototype methods, but getting into it in detail here might prove to be a little off topic from arrays in general.
 
 ## 6 - Looping over an Array
 
