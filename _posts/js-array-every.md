@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:39:23
-version: 1.14
+updated: 2021-07-12 15:43:00
+version: 1.15
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -65,6 +65,8 @@ console.log( onePlusNums(['1','foo', true]) ); // false
 ```
 
 ## 3 - An Array tester method that can be used in an every or some mode
+
+So then there is the question of why to bother with these native array prototype methods when it is not so hard to do the same when it comes to just looping over the contents of an array with a while loop. Well for one thing it can take some time to create a method that will do the same thing, or with custom functionally. For the most part it makes sense to just use what is there to work with in javaScript alone and move on rather than making my own methods, or utility module.
 
 ```js
 let testAll = (array, tester, every) => {
