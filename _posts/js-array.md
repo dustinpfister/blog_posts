@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-12 16:27:28
-version: 1.54
+updated: 2021-07-12 16:35:23
+version: 1.55
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -176,7 +176,7 @@ arr.getAnswer = function () {
 console.log(arr.getAnswer()); // 42
 ```
 
-I am not saying doing so is a best practice it is just that in javaScript Arrays are a kind of object, and also plain old objects in general can also be thought of as an array of sorts as well. The core deference is that when working with an Array I am working with an object where the key values are indexed numbers rather than property names.
+I am not saying doing so is a best practice or not, it is just that in javaScript Arrays are a kind of object and as such they can be used like that of nay other object. Also plain old objects in general can be thought of as an array of sorts also, in fact they can be formated like arrays and with a little function prototype trickery can  be used with array prototype methods. The core deference is that when working with an Array I am working with an object where the key values are indexed numbers rather than property names.
 
 ## 5 - Array like objects
 
