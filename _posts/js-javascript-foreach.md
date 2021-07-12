@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-07-12 16:21:53
-version: 1.64
+updated: 2021-07-12 16:24:39
+version: 1.65
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -223,7 +223,7 @@ There is of course also the array slice method that can also be used to get a ne
 
 ### 3.4 - nested loops and the return keyword
 
-There is also of course using the return keyword in the body of a function that will be used to return something, and the fact that when using the array forEach method I am working inside the body of a function. So when doing something that involves nesting loops, or even just using one loop I can not just use the return keyword in the body of a methid that is passed to array for each.
+There is also of course using the [return keyword](/2019/03/01/js-javascript-return/) in the body of a function that will be used to return something, and the fact that when using the array forEach method I am working inside the body of a function. So when doing something that involves nesting loops, or even just using one loop I can not just use the return keyword in the body of a method that is passed to array for each.
 
 However with while loops I can place that return keyword anywhere in a single while loop, or even one or more nested while loops, and the return keyword will break out of the whole situation with looping and given me what it is that I wanted returned.
 
