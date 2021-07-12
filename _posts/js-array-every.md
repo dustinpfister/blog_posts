@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:28:13
-version: 1.8
+updated: 2021-07-12 15:30:14
+version: 1.9
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -21,7 +21,7 @@ In this section I will be going over a few quick simple examples of the array ev
 
 ### 1.1 - Just a test all for number type example
 
-In this example I am using the array every method to check if a given array contains only numbers or not.
+In this example I am using the array every method to check if a given array contains only numbers or not by making use of the typeof operator when working out the expression for the function that I pass to the array every method.
 
 ```js
 let arr = [1, 2, 3, 4]
@@ -33,7 +33,7 @@ let b = arr.every((el) => {
 console.log(b); // true
 ```
 
-### 1.2 - is all number helper
+### 1.2 - Making an is all number helper
 
 So then the array every method can be used to create methods that will preform a test on all elements in an array and return true of all the elements in that array pass the given test. So I can create a method like all numbs and have it so that I just pass an array, and the all nums helper will return true of all elements in the array are numbers.
 
@@ -42,7 +42,6 @@ let allNums = (arr) => {
     return arr.every((el) => {
         return typeof el === 'number';
     });
-
 };
  
 console.log( allNums([1,2,3]) ); // true
