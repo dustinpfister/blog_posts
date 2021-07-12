@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:43:00
-version: 1.15
+updated: 2021-07-12 15:45:41
+version: 1.16
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -68,6 +68,8 @@ console.log( onePlusNums(['1','foo', true]) ); // false
 
 So then there is the question of why to bother with these native array prototype methods when it is not so hard to do the same when it comes to just looping over the contents of an array with a while loop. Well for one thing it can take some time to create a method that will do the same thing, or with custom functionally. For the most part it makes sense to just use what is there to work with in javaScript alone and move on rather than making my own methods, or utility module.
 
+Still if the aim is to make my own utility module, then there is making some kind of test method that will work like the every method, or some method also maybe. So with that said I took a moment to work out something like this real fast.
+
 ```js
 let testAll = (array, tester, every) => {
     let pass = false,
@@ -110,6 +112,8 @@ let arr2 = [1, 2, 3];
 console.log(testAll(arr2, isNum, true)); // true
 console.log(testAll(arr2, isNum, false)); // true
 ```
+
+By default it will work just like the every method, but I can set a boolean to false and have it work like the some method.
 
 ## 4 - Conclusion
 
