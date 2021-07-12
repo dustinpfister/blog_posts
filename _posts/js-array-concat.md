@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2021-07-12 16:53:47
-version: 1.17
+updated: 2021-07-12 17:09:44
+version: 1.18
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including [Arrays](/2018/12/10/js-array/) and how such an operation should be handled. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values by themselves actually. Simply put the Array.concat method is one way to go about adding two or more arrays together into a single array. 
@@ -159,6 +159,35 @@ console.log(a[0], c[0]);
 
 For more on this topic you might want to check out my post in which I get into the process of [copying arrays](/2020/09/03/js-array-copy/) in detail.
 
-## 7 - Conclusion
+## 7 - Add arrays of numbers together
+
+What if I want to add two arrays of numbers together, but add values rather than just apped values to the end of a new array?
+
+```js
+let addArrays = (arr1, arr2) => {
+    let arr = [],
+    bigger = arr1.length > arr2.length ? arr1 : arr2,
+    smaller = arr1.length < arr2.length ? arr1 : arr2;
+    return bigger.map((n1, i) => {
+        var n2 = smaller[i];
+        if (typeof n2 === 'number') {
+            return n1 + n2;
+        }
+        return n1;
+    });
+};
+let a1 = [1, 2, 3, 4],
+a2 = [5, 6, 7],
+a3 = addArrays(a1, a2);
+// create an array with the values added
+console.log(a3); // [6, 8, 10, 4]
+// create a sum
+let a4 = a3.reduce((acc, n) => {
+        return acc + n;
+    });
+console.log(a4); // 28
+```
+
+## 8 - Conclusion
 
 So the array concat method is the main goto method when it comes to creating a new array that is the product of two or more additional arrays. There is always more than one way of solving the same problem thous, not that any of the other methods of adding two or more arrays outline here are better choices or not though. It is generally a good idea to look into more than one way to go about doing something though, even if I end up just going with what it typical though.
