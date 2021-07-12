@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:35:45
-version: 1.13
+updated: 2021-07-12 15:39:23
+version: 1.14
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -48,8 +48,9 @@ console.log( allNums([1,2,3]) ); // true
 console.log( allNums(['1','foo', true]) ); // false
 ```
 
-
 ## 2 - The array some method
+
+Another method that is like the array every method is the array some method. This works just like the array every method and many other methods like it in that I can give if a function as an argument that will be called for each element in the array. However when using this array some method the result will be returned true in the every that just one element will resolve as true with the given method.
 
 ```js
 let onePlusNums = (arr) => {
