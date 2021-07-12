@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2021-07-12 16:49:21
-version: 1.15
+updated: 2021-07-12 16:50:34
+version: 1.16
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including [Arrays](/2018/12/10/js-array/) and how such an operation should be handled. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values by themselves actually. Simply put the Array.concat method is one way to go about adding two or more arrays together into a single array. 
@@ -114,7 +114,7 @@ Apply, call and bind are worth writing more about, but I will not be getting int
 
 ## 6 - Arrays of objects and copying by reference
 
-When working with two arrays of objects it is a good idea to keep in mind that the Array.concat method, and many other ways of concatanating arrays will result in a new array, but the new array will be a shallow copy. A shallow copy, or clone if you prefer, is a new array, but any nested objects in the array as elements might still be references to the same objects in memory.
+When working with two arrays of objects it is a good idea to keep in mind that the Array.concat method, and many other ways of concatenating arrays will result in a new array, but the new array will be a shallow copy. A shallow copy, or clone if you prefer, is a new array, but any nested objects in the array as elements might still be references to the same objects in memory.
 
 ```js
 var a = [{x:0, y: 42},{x:50, y: 30},{x:75, y: 7}];
@@ -138,7 +138,7 @@ console.log(a[0], c[0]);
 // { x: 99, y: 99 } { x: 99, y: 99 }
 ```
 
-In many cases this might be what I want to happen actualy, but in other cases I might want new objects in the resuting array. One way to do so would be to map over the array, and create a new object for each.
+In many cases this might be what I want to happen actually, but in other cases I might want new objects in the resulting array. One way to do so would be to map over the array, and create a new object for each.
 
 ```js
 var a = [{x:0, y: 42},{x:50, y: 30},{x:75, y: 7}];
