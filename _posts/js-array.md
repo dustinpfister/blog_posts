@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2020-07-25 10:11:41
-version: 1.53
+updated: 2021-07-12 16:27:28
+version: 1.54
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -59,7 +59,7 @@ var arr = [1,2,3,4];
 console.log(arr[1]); // 2
 ```
 
-### 2.3 - Creating an array by calling a method that will retrun one like String.split
+### 2.3 - Creating an array by calling a method that will return one like String.split
 
 Another way of creating an array, or end up with one rather, would be to call a method that would return one as a product. In some cases I would like to not create and array from scratch by rather create one from some kind of data source such as a string. In the string prototype object there is the string split method that can be used to split a string into a bunch of substrings where each substring is and element in a resulting array.
 
@@ -122,7 +122,7 @@ console.log(a); // [1,2,3,4,5,6]
 
 ### 3.4 - Array.concat, and Array.slice
 
-So there are a number of useful Array prototype methods that can be used. Array.concat can be used to add together two ore more arrays into a single array. In addition there is also the Array.slice method that can come in handy when I want to get an array segment from an existing array from a given starting and ending index.
+So there are a number of useful Array prototype methods that can be used such as the [Array.concat](/2020/07/13/js-array-concat/) method that can be used to add together two ore more arrays into a single array. In addition there is also the [Array.slice](/2018/12/08/js-array-slice/) method that can come in handy when I want to get an array segment from an existing array from a given starting and ending index.
 
 ```js
 var a = [1, 2, 3, 7, 8, 9];
