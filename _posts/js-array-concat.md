@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2021-07-12 16:42:27
-version: 1.13
+updated: 2021-07-12 16:45:45
+version: 1.14
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including [Arrays](/2018/12/10/js-array/) and how such an operation should be handled. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values by themselves actually. Simply put the Array.concat method is one way to go about adding two or more arrays together into a single array. 
 
-There are then also ways of going about doing the same thing, such as converting an array to a string and then back again using something like the string split method. There are also a number of things to look out for when concatenating arrays together when it comes to the values in the arrays. For example when it comes to having to arrays of objects the resulting array will be a new array, but the objects in the arrays will still reference the same objects in memory. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
+There are then also ways of going about doing the same thing, such as converting an array to a string and then back again using something like the [array join](/2020/03/09/js-array-join/), and then [string split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) methods. There are also a number of things to look out for when concatenating arrays together when it comes to the values in the arrays. For example when it comes to having to arrays of objects the resulting array will be a new array, but the objects in the arrays will still reference the same objects in memory. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
 
 <!-- more -->
 
