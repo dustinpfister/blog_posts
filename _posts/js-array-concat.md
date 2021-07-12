@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 681
-updated: 2021-07-12 16:50:34
-version: 1.16
+updated: 2021-07-12 16:53:47
+version: 1.17
 ---
 
 So there is adding two strings or numbers together with the addition operator in javaScript, but then there is adding two or more objects together including [Arrays](/2018/12/10/js-array/) and how such an operation should be handled. In the array prototype object there is the [array concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method that can be used to create a new array that is the concatenation of two or more arrays, or values by themselves actually. Simply put the Array.concat method is one way to go about adding two or more arrays together into a single array. 
 
-There are then also ways of going about doing the same thing, such as converting an array to a string and then back again using something like the [array join](/2020/03/09/js-array-join/), and then [string split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) methods. There are also methods in popular utility libraries, such as the [concat method in lodash](/2018/08/02/lodash_concat/) and well as join and split methods.
+There are then also ways of going about doing the same thing, such as converting an array to a string and then back again using something like the [array join](/2020/03/09/js-array-join/), and then [string split](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) methods. There are also methods in popular utility libraries, such as the [concat method in lodash](/2018/08/02/lodash_concat/) and well as join and split methods. Another thing that comes to mind is what is really intended by adding two arrays together, typically that would be just creating a new array with the elements of one or more arrays, but in some cased one might want a [sum of one or more arrays of numbers](/2018/11/15/lodash_sum/).
 
 There are also a number of things to look out for when concatenating arrays together when it comes to the values in the arrays. For example when it comes to having to arrays of objects the resulting array will be a new array, but the objects in the arrays will still reference the same objects in memory. So lets look at some examples of array concatenation with the array concat method, as well as other ways to go about getting a similar effect.
 
