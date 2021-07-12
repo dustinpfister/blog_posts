@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:16:03
-version: 1.3
+updated: 2021-07-12 15:21:59
+version: 1.4
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
+
+The array every method is then one of many built in array prototype methods that involve looping over the contents of an array to preform some kind of action like that of the [array map](/2020/06/16/js-array-map) method, or the [array filter](/2020/10/03/js-array-filter) method. Some might say that this method is a little redundant as there are methods like array for each method, or better yet a while loop, that can be used to easily accomplish the same task. However there are some things about it that help to make quicker work or creating a boolen value, and to do so in a standard way when it comes to the function that is given that will be called for each element.
 
 <!-- more -->
 
