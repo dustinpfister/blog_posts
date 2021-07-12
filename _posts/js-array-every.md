@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:34:16
-version: 1.12
+updated: 2021-07-12 15:35:45
+version: 1.13
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -17,11 +17,11 @@ The array every method is then one of many built in array prototype methods that
 
 ## 1 - Some basic Array every method examples
 
-In this section I will be going over a few quick simple examples of the array every method.
+In this section I will be going over a few quick simple examples of the array every method, just for the sake of getting the basic idea of what the array every method is all about. So then these will just be the typical hello world style examples for people that are still fairly new to javaScript.
 
 ### 1.1 - Just a test all for number type example
 
-In this example I am using the array every method to check if a given array contains only numbers or not. This is done by making use of the [typeof operator](/2019/02/15/js-javascript-typeof/) when working out the expression for the function that I pass to the array every method. In the body of this method the first argument will be a value of a current element in the array that is being tested, which is the norm for many array prorotype methods such as this.
+In this example I am using the array every method to check if a given array contains only numbers or not. This is done by making use of the [typeof operator](/2019/02/15/js-javascript-typeof/) when working out the expression for the function that I pass to the array every method. In the body of this method the first argument will be a value of a current element in the array that is being tested, which is the norm for many array prototype methods such as this.
 
 ```js
 let arr = [1, 2, 3, 4]
