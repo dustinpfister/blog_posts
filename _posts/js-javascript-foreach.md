@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2020-10-25 08:57:18
-version: 1.60
+updated: 2021-07-12 16:06:12
+version: 1.61
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -145,6 +145,20 @@ var test = function (el) {
  
 console.log(a.some(test)); // true
 console.log(b.some(test)); // false
+```
+
+### 2.6 - The Array every method to find out if all elements in an array meet a given condition
+
+On top of the array some method there is also the array every method that can also be used to create a boolen value from the array that it is called off of with a method that will be used for each element in the array. Unlike the array some method this will only result in a true boolen value of all of the elements in the array meet the given condition that will be called for each element in the array.
+
+```js
+let arr = [1, 2, 3, 4]
+ 
+let b = arr.every((el) => {
+        return typeof el === 'number';
+    });
+ 
+console.log(b); // true
 ```
 
 ## 3 - While loops as a javaScript for each or for some solution.
