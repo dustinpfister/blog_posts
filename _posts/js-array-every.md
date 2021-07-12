@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 15:59:20
-version: 1.20
+updated: 2021-07-12 16:10:43
+version: 1.21
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -119,5 +119,7 @@ By default it will work just like the every method, but I can set a boolean to f
 
 This week I think I will write a few new posts on native javaScript features that I have not got around to writing about yet such as anything that I have not wrote about in the array prototype. There are a lot of things that I am familiar with all ready that I would just like to write about more on, but there are also new features that I have not done the best job of getting up to speed with that I would like to look into more.
 
-There is also maybe taking a moment to edit and expand older posts too while I am at it such as [my post on the array for each method, as well as the general concept of the for each method and alternatives](/2019/02/16/js-javascript-foreach/).
+There is also maybe taking a moment to edit and expand older posts too while I am at it such as [my post on the array for each method, as well as the general concept of the for each method and alternatives](/2019/02/16/js-javascript-foreach/). Many of these array prototype methods are just ways of doing things that are not so hard to do with just a while loop, but they are common tasks, and having these methods at the ready can help keep me from repeating code over and over again for these things when they come up.
+
+
 
