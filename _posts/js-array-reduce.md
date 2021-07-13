@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-07-13 14:14:47
-version: 1.13
+updated: 2021-07-13 14:18:00
+version: 1.14
 ---
 
 This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little, and native JavaScript in general a bit, and have found that I have not yet wrote a post on the native [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method. I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
@@ -190,4 +190,4 @@ console.log(sumObjects(objs, 'money')); // 5.6
 
 ## 5 - Conclusion
 
-So then the array reduce method is great for many little situations in which I might want to create a single simple value from an array of values.
+So then the array reduce method is great for many little situations in which I might want to create a single simple value from an array of values. However there is a great number of other array prototype methods that also come into play, such as the [array for each method](/2019/02/16/js-javascript-foreach/) that is just a more generic way of just looping over all the elements of an array.
