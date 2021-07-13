@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 242
-updated: 2020-07-07 18:51:58
-version: 1.7
+updated: 2021-07-13 13:39:39
+version: 1.8
 ---
 
-For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method in core javaScript itself. 
+For todays post on [lodash](https://lodash.com/) I thought I should write a post on the [\_.reduce](https://lodash.com/docs/4.17.10#reduce) collection method, and also of course the corresponding [Array.reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method in core javaScript itself. Speaking of the native array reduce method I have now wrote a [post on the native array reduce method](/2021/07/13/js-array-reduce/) also, but I will be touching base on that method on this post also. 
 
 The Array.reduce method works just fine, however if you are using lodash in a project the \_.reduce method is a little more robust, as it is one of the many lodash collection methods that will work on arrays and many object collections in general and it also has some baked in shorthands for cretin common use case examples of it also. In any case the two solutions work very similar, and this post should help gain some insight as to why reduce is useful in some situations that call for it.
 
