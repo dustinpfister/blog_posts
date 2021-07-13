@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-07-13 12:31:25
-version: 1.46
+updated: 2021-07-13 12:34:34
+version: 1.47
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -17,7 +17,7 @@ The nice thing about innerHtml is that it is very easy to use, but there are som
 
 ## 1 - Basic innerHTML basic examples
 
-The innerHTML property of an element is one way to go about changing the inner html content of an element. There are other ways that are considered more professional by many developers because of several factors that I will get to later in this post. However the nice thing about innerHTML is that it is fairly easy to use, as I can just use a string representation of the innerHTML that I want to inject. This string value can then be set to the value of the innerHTML property of the element that I want to inject html for and in most cases it will work just fine.
+The innerHTML property of an element is one way to go about changing the inner html content of an element in client side javaScript. There are other ways that are considered more professional by many developers because of several factors that I will get to later in this post. However the nice thing about innerHTML is that it is fairly easy to use, as I can just use a string representation of the innerHTML that I want to inject. This string value can then be set to the value of the innerHTML property of the element that I want to inject html for and in most cases it will work just fine.
 
 In addition to this the innerHTML property can also be used as a quick way to go about removing html content from and element also by just simply setting the value of innerHTML to an empty string.
 
@@ -207,3 +207,4 @@ el.appendChild(p);
 So using innerHTNL as a way to inject content is nice because it makes the process fairly easy as the content can just be created by generating a string representation of html markup. However it is no replacement for the more professional alternatives that involve creating an new element object with the createElement method and then appending that with an element method like the append child method of a hard coded element in the html. I do generally prefer to work with a tree of objects and then find ways to create a string from that tree of objects, when, and if I even need to do so to begin with.
 
 Although innerHTML and html in general is a great way to go about creating a user interface, it might not be the best choice for all projects. There are many other ways of creating an interface in a web browser and not all of them are subject to page re-flow, there is of course [canvas elements](/2017/05/17/canvas-getting-started/) and [svg](/2019/02/11/js-javascript-svg/) that are there to work with as well. Some times it might be called for to work within some whole other context other than that of html elements, such as some kind of additional drawing context that can be used through and html element such as a canvas element, or some additional nodes that are not part of the html standard which would be the case with svg.
+
