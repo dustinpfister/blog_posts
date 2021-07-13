@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-07-13 10:13:24
-version: 1.40
+updated: 2021-07-13 10:15:06
+version: 1.41
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -166,7 +166,7 @@ The issue of security concerns with innerHTML often comes up in various discussi
 
 ### 4.1 - An onclick event in the string.
 
-Here I am creating an html string that contains an input tag with on on click event that will call the alert method when the element is clicked.
+Here I am creating an html string that contains an input tag with on on click event that will call the alert method when the element is clicked. This might nit be the most comprehensive example of what the concern is surrounding the use of inner html, but I have to start somewhere when it comes to this one.
 
 ```html
 <html>
