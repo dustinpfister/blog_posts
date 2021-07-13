@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-07-13 10:15:06
-version: 1.41
+updated: 2021-07-13 10:17:44
+version: 1.42
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -183,7 +183,7 @@ el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad t
 </html>
 ```
 
-Maybe it is hard to see why this is a concern with this example at the moment because the source of the text that will be used with inner html is a string literal. However what if the source is in stead from user input, it could allow for me to create and inject any kind of html and javaScript code that I would want. If this is something that I am just doing on my own computer then that is of course not such a big deal, because of course I can play around with whatever I want on a page by way of the javaScript console. However what if the situation was such that I was submitting text by way of some kind of comment system that end up being transmitted to a server, and then in turn ends up getting injecting into the html of everyone who visits a a site that uses such a system. Also what if the javaScript that end sup getting inject does a bit more that just alter the string "bad times"?
+Maybe it is hard to see why this is a concern with this example at the moment because the source of the text that will be used with inner html is a string literal. However what if the source is in stead from user input, it could allow for me to create and inject any kind of html and javaScript code that I would want. If this is something that I am just doing on my own computer then that is of course not such a big deal, because of course I can play around with whatever I want on a page by way of the javaScript console. However what if the situation was such that I was submitting text by way of some kind of comment system that end up being transmitted to a server, and then in turn ends up getting injecting into the html of everyone who visits a a site that uses such a system. Also what if the javaScript that end sup getting inject does a bit more that just alter the string "bad times"? With that said in order to really get an idea as to what the situation is with inner html it might be best to create some kind of simple full stack application with intentional poor server side sanitation.
 
 ## 5 - Now for the innerHTML alternatives
 
