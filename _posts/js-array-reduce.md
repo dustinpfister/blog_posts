@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-07-13 14:05:24
-version: 1.10
+updated: 2021-07-13 14:09:18
+version: 1.11
 ---
 
 This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little, and native JavaScript in general a bit, and have found that I have not yet wrote a post on the native [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method. I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
@@ -129,6 +129,8 @@ console.log(b); // 50
 ```
 
 ## 3 - The reducer function
+
+There is then taking a closer look at the reducer function that is given when it comes to the full scope of arguments to work with in each call of the render function. The set of arguments will differ a little from other functions that are given to other array prototype methods like array for each and array map. Often the first argument is the current value of the current element, but with array reduce the first argument is the current value of the accumulator value. After that it is then the current element value, followed by the element index, and then a reference to the source array that array reduce is called off of.
 
 ```js
 let reducer = (acc, el, index, array) => {
