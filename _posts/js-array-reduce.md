@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-07-13 13:52:45
-version: 1.6
+updated: 2021-07-13 13:57:09
+version: 1.7
 ---
 
 This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little, and native JavaScript in general a bit, and have found that I have not yet wrote a post on the native [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method. I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
@@ -69,11 +69,110 @@ let n = objs.reduce(reducer, 0);
 console.log(n);
 ```
 
-## 2 - Setting the start value for acc
+## 2 - Setting the start value for the accumulator
+
+### 2.2 - Setting an accumulator start value and not
+
+```js
+let objs = [
+    { clicks: 15},
+    { clicks: 10},
+    { clicks: 25}
+];
+ 
+// one way is to do type checking
+let a = objs.reduce(function (acc, rec) {
+    acc = typeof acc === 'object' ? acc.clicks : acc;
+    return acc + rec.clicks;
+});
+ 
+// the other way is to set a custom starting value for acc
+let b = objs.reduce(function (acc, rec) {
+    return acc + rec.clicks;
+}, 0);
+ 
+console.log(a); // 50
+console.log(b); // 50
+```
+
+### 2.1 - index values
+
+```js
+let objs = [{
+        clicks: 15
+    }, {
+        clicks: 10
+    }, {
+        clicks: 25
+    }
+];
+ 
+let a = objs.reduce(function (acc, rec, index) {
+        acc = typeof acc === 'object' ? acc.clicks : acc;
+        console.log(index); // 1 2
+        return acc + rec.clicks;
+    });
+ 
+let b = objs.reduce(function (acc, rec, index) {
+        console.log(index); // 0 1 2
+        return acc + rec.clicks;
+    }, 0);
+ 
+console.log(a); // 50
+console.log(b); // 50
+```
 
 ## 3 - The reducer function
 
+```js
+let reducer = (acc, el, index, array) => {
+    console.log(acc, el, index, array);
+    return acc + el;
+};
+ 
+let arr = [7, 8, 9, 10]
+ 
+let n = arr.reduce(reducer, 0);
+//0 7 0 [ 7, 8, 9, 10 ]
+//7 8 1 [ 7, 8, 9, 10 ]
+//15 9 2 [ 7, 8, 9, 10 ]
+//24 10 3 [ 7, 8, 9, 10 ]
+```
+
 ## 4 - Some use case examples
+
+### 4.1 - create a mean
+
+```js
+let getArthMean = (nums) => {
+    return nums.reduce((acc, n) => {
+        return acc + n;
+    }, 0) / nums.length;
+};
+let nums = [10, 5, 7, 10, 10, 8];
+console.log(getArthMean(nums).toFixed(2)); // '8.33'
+```
+
+### 4.2 - Add up array of object props helper
+
+```js
+let sumObjects = (objs, prop) => {
+    prop = prop === undefined ? 'clicks' : prop;
+    return objs.reduce(function (acc, rec) {
+        acc = typeof acc === 'object' ? acc[prop] : acc;
+        return acc + rec[prop];
+    });
+};
+ 
+let objs = [
+    { clicks: 15, money: 0.75 },
+    { clicks: 10, money: 1.50 },
+    { clicks: 25, money: 3.35 }
+];
+ 
+console.log(sumObjects(objs));          // 24
+console.log(sumObjects(objs, 'money')); // 5.6
+```
 
 ## 5 - Conclusion
 
