@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-07-13 09:39:33
-version: 1.35
+updated: 2021-07-13 09:58:51
+version: 1.36
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -164,10 +164,19 @@ console.log(el.innerHTML.length); // 110
 
 The issue of security concerns with innerHTML often comes up in. The thing about innerHTML is that when script tags are used in the html string, the code in the string will run. As such this can potentially result in code injection attacks compared to the use of an alternative like createTextNode, or innerText.
 
-```js
+```html
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
 var el = document.getElementById('out');
- 
 el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
+        </script>
+    </body>
+</html>
 ```
 
 ## 5 - Now for the innerHTML alternatives
