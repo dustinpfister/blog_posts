@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-07-13 14:00:38
-version: 1.8
+updated: 2021-07-13 14:01:51
+version: 1.9
 ---
 
 This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little, and native JavaScript in general a bit, and have found that I have not yet wrote a post on the native [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method. I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
@@ -74,6 +74,8 @@ console.log(n);
 In this section I will be foucs on the toping of setting a start value for the accumulator value or not. Be default if not starting value is given for the accumulator the first element in the array will be used for such a value,  as such the starting element index for the reducer will not be the first element, but the second one. As such this can case some problems if one does not knwo how to adjust for it. Typically type checking is used in the body of the reducer, or another way is to just set a starting value and then all the elements will be called with the reducer function.
 
 ### 2.2 - Setting an accumulator start value and not
+
+In this example I worked out two simple examples of the array reduce method that do the same thing in two slightly different ways.
 
 ```js
 let objs = [
