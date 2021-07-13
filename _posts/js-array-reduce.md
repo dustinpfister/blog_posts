@@ -5,10 +5,67 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-07-13 13:39:39
-version: 1.2
+updated: 2021-07-13 13:45:30
+version: 1.3
 ---
 
 This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little, and native JavaScript in general a bit, and have found that I have not yet wrote a post on the native [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method. I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
 
 <!-- more -->
+
+
+## 1 - The basics of array reduce in javaScript
+
+### 1.1 - Simple sum example
+
+```js
+let nums = [10, 5, 5, 4];
+let sum = nums.reduce(function (acc, n) {
+        return acc + n;
+    });
+console.log(sum); // 24
+```
+
+### 1.2 - An array of strings
+
+```js
+let strs = ['foo', 'man', 'chew'];
+ 
+// so reduce can be used to join an array of strings
+let reducer = (acc, str, i, arr) => {
+    let term = i === arr.length - 1 ? '' : '-';
+    return acc + str + term;
+};
+let s = strs.reduce(reducer, '');
+console.log( s ); // 'foo-man-chew'
+ 
+// however there is the array join method that can be used
+console.log( strs.join('-') ); // 'foo-man-chew'
+```
+
+### 1.3 - An array of objects
+
+```js
+let objs = [
+    { a: 5},
+    { a: 2},
+    { a: 3}
+];
+ 
+let reducer = (acc, n) => {
+    return acc + n.a;
+};
+ 
+let n = objs.reduce(reducer, 0);
+ 
+console.log(n);
+```
+
+## 2 - Setting the start value for acc
+
+## 3 - The reducer function
+
+## 4 - Some use case examples
+
+## 5 - Conclusion
+
