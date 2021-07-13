@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-07-13 13:45:30
-version: 1.3
+updated: 2021-07-13 13:47:31
+version: 1.4
 ---
 
 This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little, and native JavaScript in general a bit, and have found that I have not yet wrote a post on the native [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method. I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
@@ -16,7 +16,11 @@ This week I am expanding on [javaScript arrays](/2018/12/10/js-array/) a little,
 
 ## 1 - The basics of array reduce in javaScript
 
+So to start off with in this section I will be going over some very simple examples of the array reduce method.
+
 ### 1.1 - Simple sum example
+
+One typical use case of the array reduce method is to create some kind of sum with an array of numbers.
 
 ```js
 let nums = [10, 5, 5, 4];
