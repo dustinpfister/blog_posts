@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-07-13 09:30:31
-version: 1.34
+updated: 2021-07-13 09:39:33
+version: 1.35
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -160,7 +160,7 @@ console.log(el.innerHTML.length); // 110
 </html>
 ```
 
-## 3 - Security concerns with innerHTML
+## 4 - Security concerns with innerHTML
 
 The issue of security concerns with innerHTML often comes up in. The thing about innerHTML is that when script tags are used in the html string, the code in the string will run. As such this can potentially result in code injection attacks compared to the use of an alternative like createTextNode, or innerText.
 
@@ -170,11 +170,11 @@ var el = document.getElementById('out');
 el.innerHTML = "<input type=\"button\" value=\"click it\" onclick='alert(\"bad times\")'>";
 ```
 
-## 4 - Now for the innerHTML alternatives
+## 5 - Now for the innerHTML alternatives
 
 In this section I will be covering alternatives to innerHTML, which for the most part is the create element method. However the create element method is never typically just used by itself, but in combination with a whole bunch of other html element methods and objects, the full breath of which will take time to get used to. This is of course one reason why so many developers like to just use innerHTML as it is fairly easy to use to just create elements, but it does have its draw backs, and as such innerHTML is not at all a replacement for the alternative way of creating elements with javaScript.
 
-### 4.1 - document.createElement, document.createTextNode, and el.appendChild
+### 5.1 - document.createElement, document.createTextNode, and el.appendChild
 
 If you are not familiar with document.createElement, then you should play around with that one a little at some point sooner or later. The createElement method as the name suggests is what can be used in client side javaScript to create an element with javaScript. The method can be used with additional methods like document.createTextNode, and el.appendChild to do the same thing as innerHTML.
 
@@ -187,7 +187,7 @@ p.appendChild(document.createTextNode('foo'));
 el.appendChild(p);
 ```
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So using innerHTNL as a way to inject content is nice because it makes the process fairly easy as the content can just be created by generating a string representation of html markup. However it is no replacement for the more professional alternatives that involve create an new element object with the createElement method and then appending that with an element method like appendChild.
 
