@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 14:57:17
-version: 1.12
+updated: 2021-07-14 14:58:34
+version: 1.13
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -87,7 +87,7 @@ console.log(wc); // 4
 
 ### 3.2 - default arguments
 
-One thing that I have seen when looking at source code examples is the use of the string split method as a way to make an array of values from string that will then be used as default values for a function.
+One thing that I have seen when looking at source code examples is the use of the string split method as a way to make an array of values from string that will then be used as default values for a function. This might not be the most compelling use case example of the string split method, but I thought I would just add this in as just on eof these use case examples of string split.
 
 ```js
 var foo = function (a, b, c, d) {
