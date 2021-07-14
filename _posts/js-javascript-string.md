@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 364
-updated: 2021-02-04 12:23:09
-version: 1.27
+updated: 2021-07-14 15:24:02
+version: 1.28
 ---
 
 A [javaScript String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) is one of the primitive values that there are to work with when working in a javaScript programming environment. A [string](https://en.wikipedia.org/wiki/String_%28computer_science%29) is a collection of characters that compose text, and as such can serve a number of purposes beyond just simply displaying human readable text.
@@ -39,7 +39,7 @@ This can be thought of as a string literal when the value of the string exists i
 
 ### 1.2 - Making a javaScript string with backticks
 
-There are also backticks that can be used as well as another form of string literal that allows for embedded jvaScript. These can be used in the same way as quotes, but expressions, values, and function calls the return a value and be embedded into the string literal. When it comes to regular string literals doing the same would involve more than one string literal with addition operators to concatanate a string value togeather.
+There are also backticks that can be used as well as another form of string literal that allows for embedded jvaScript. These can be used in the same way as quotes, but expressions, values, and function calls the return a value and be embedded into the string literal. When it comes to regular string literals doing the same would involve more than one string literal with addition operators to concatenate a string value together.
 
 ```js
 let getN = () => {
@@ -66,7 +66,7 @@ console.log(n); // 9
 
 ### 1.4 - From an Array
 
-One way to create a string from an array is ti use the Array.join method. This is one of the many Array prototype methods that can be used to join all elements together and return a string when dealing with an array of strings.
+One way to create a string from an array is to use the [Array join](/2020/03/09/js-array-join/) method that will create and return a string from an array of substrings, or any values for that matter. This is one of the many Array prototype methods that can be used to join all elements together and return a string when dealing with an array of strings.
 
 ```js
 let arr = ['f', 'o', 'o', 'b', 'a', 'r'],
@@ -74,7 +74,7 @@ str = arr.join('');
 console.log(str); // 'foobar'
 ```
 
-In addition to the Array.join method there is also the String.split method that can do the revers of this spiting a string into an array of strings.
+In addition to the Array join method there is also the [String Split](/2021/07/14/js-string-split/) method that can do the revers of this spiting a string into an array of strings.
 
 ### 1.5 - Creating a javaScript string from an object
 
