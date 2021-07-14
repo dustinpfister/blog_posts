@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 15:51:32
-version: 1.28
+updated: 2021-07-14 16:06:22
+version: 1.29
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -89,6 +89,30 @@ var createDateArray = function (dateString) {
  
 console.log( createDateArray('05/25/2021') );
 console.log( createDateArray('02.13.2020') );
+```
+
+### 3.2 - line breaks
+
+Another good example of this would be a method that will create and return an array of lines a line break pattern is used as a way to create a separator. The kind of pattern to look for will change a little depending on the operating system used, but there are ways of looking for both.
+ 
+```js
+var createLinesArray = function (text) {
+    return text.split(/\n|\r\n/);
+};
+ 
+// Linux / Mac
+ 
+var text1 = 'This is a line\n' +
+'and then this is anoter. \n' +
+'The end.';
+console.log(createLinesArray(text1));
+// [ 'This is a line', 'and then this is anoter. ', 'The end.' ]
+ 
+var text2 = 'In Windows\r\n' +
+'There is another pattern,\r\n' +
+'used.';
+console.log(createLinesArray(text2));
+// [ 'In Windows', 'There is another pattern,', 'used.' ]
 ```
 
 ## 4 - Use case examples of String Split
