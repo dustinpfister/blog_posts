@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 15:40:57
-version: 1.25
+updated: 2021-07-14 15:43:20
+version: 1.26
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -74,11 +74,26 @@ var nums = '1,2,3,4'.split(',').map((str)=>{ return Math.pow(2, parseInt(str))})
 console.log(nums); // 2-4-8-16
 ```
 
-## 3 - Use case examples of String Split
+## 3 - Regular expressions and spslit split
+
+### 3.1 - Creating an array from one or more date string formats
+
+One thing that might come up is how to go about creating an array fo values from a date string that might have more than one kind of separator between the parts of the date.
+
+```js
+var createDateArray = function (dateString) {
+    return dateString.split(/[.,\/ -]/)
+};
+ 
+console.log( createDateArray('05/25/2021') );
+console.log( createDateArray('02.13.2020') );
+```
+
+## 4 - Use case examples of String Split
 
 I have covered a whole bunch of simple examples of the string split method. However thus far I have not got into any actual use case examples that are simple examples of how this method will prove to be useful in certain situations. With that said there is a whole world of examples in which the string split method might prove to be useful, however in this section I will just be going over a few basic use case examples.
 
-### 3.1 - create an array of words
+### 4.1 - create an array of words
 
 One use case that might come up often is to create a method that will be used to create an array of words from a string of text. Making this kind of method might not always just simply involve using the string split method with a space as the separator. Additional tasks might also need to be preformed on the source text, or the resulting array, such as making sure the string is lowercase, and removing any unwanted characters. So then I might want to also use the to lower case method, and maybe also the [string replace method](/2019/04/08/js-string-replace/) with a regular expression that will help remove charterers that I do not want in the substrings.
 
@@ -98,7 +113,7 @@ console.log(arr);
 console.log(wc); // 11
 ```
 
-### 3.2 - default arguments
+### 4.2 - default arguments
 
 One thing that I have seen when looking at source code examples is the use of the string split method as a way to make an array of values from string that will then be used as default values for a function. This might not be the most compelling use case example of the string split method, but I thought I would just add this in as just on eof these use case examples of string split.
 
@@ -119,6 +134,6 @@ console.log( foo() ); // 66
 console.log(foo(3, 2, 1, 1)); // 10
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 So then the string split method is one of many useful prototype methods that can be called off of an [instance of a string](/2019/01/25/js-javascript-string/) in javaScript. The string split method by itself is not all that hard to work with, but things can get a little involved when it comes to using the string split method with every else there is to work with in order to preform some kind of task. With that said there are all kinds of examples that might involve spiting a string into an array, doing something with that array with the array prototype methods, and then join it back into a string. I may have cover a few of these such examples here, but I might get around to expanding this post with a few more such examples if and when I get around to doing so.
