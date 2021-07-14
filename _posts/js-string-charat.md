@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2021-07-14 15:09:32
-version: 1.16
+updated: 2021-07-14 15:10:07
+version: 1.17
 ---
 
-In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string, there is also just using the bracket syntax as a way to get a single char also though. I can not say that I use the charAt method often as the same effect can be achieved using the bracket syntax, the same way that one would get an element in an array, or any public named key value in any javaScript object for that matter not just the wrapper object of a string primative. So the bracket syntax strikes be as a better way to go about getting a single char in a string, as it is more versatile.
+In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string, there is also just using the bracket syntax as a way to get a single char also though. I can not say that I use the charAt method often as the same effect can be achieved using the bracket syntax, the same way that one would get an element in an array, or any public named key value in any javaScript object for that matter not just the wrapper object of a string primitive. So the bracket syntax strikes be as a better way to go about getting a single char in a string, as it is more versatile.
 
 There is also the [char code at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt) method that is also in the javaScript string prototype object that does more or less the same thing as charAt only with one important difference. The charCodeAt method will give a number value that is a UTF-16 code unit for the char rather than a string of the single char.
 
