@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 13:59:38
-version: 1.6
+updated: 2021-07-14 14:02:28
+version: 1.7
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -31,6 +31,14 @@ console.log(arr[0]); // 'foo'
 ```
 
 ### 1.2 - Using a space
+
+I do not have to use commas only of course when it comes to a static value that will be used as a separator. In may situations I will want to create an array of words where a space is what will be between each word. The string split can then also be used to create this kind of array also, however there may also be additional steps I might want to take with this sort of thing, more on that later when I get into use case examples.
+
+```js
+var str = 'These are some words';
+var arr = str.split(' ');
+console.log(arr); // [ 'These', 'are', 'some', 'words' ]
+```
 
 ### 1.3 - Using an Empty String
 
