@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 14:02:28
-version: 1.7
+updated: 2021-07-14 14:06:20
+version: 1.8
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -42,8 +42,61 @@ console.log(arr); // [ 'These', 'are', 'some', 'words' ]
 
 ### 1.3 - Using an Empty String
 
+```js
+var str = '123456';
+var arr = str.split('');
+console.log(arr); // [1,2,3,4,5,6]
+```
+
 ### 1.4 - Using a regular expression
+
+```js
+var str = 'This is some text 123 more text 7 also numbers 1 in here';
+var arr = str.split(/\d+/);
+console.log(arr);
+// [ 'This is some text ', ' more text ', ' also numbers ', ' in here' ]
+```
 
 ## 2 - The String Split method and the array join method
 
+```js
+var nums = '1,2,3,4'.split(',').map((str)=>{ return Math.pow(2, parseInt(str))}).join('-');
+console.log(nums); // 2-4-8-16
+```
+
 ## 3 - Use case examples of String Split
+
+
+### 2.1 - default arguments
+
+```js
+var foo = function (a, b, c, d) {
+    var defaults = '2,4,5,10'.split(','),
+    i = 0,
+    len = foo.length,
+    ar = arguments;
+    while (i < len) {
+        ar[i] = ar[i] === undefined ? defaults[i] : ar[i];
+        i += 1;
+    }
+    return Math.pow(ar[0], ar[1]) + ar[2] * ar[3];
+};
+ 
+console.log( foo() ); // 66
+console.log(foo(3, 2, 1, 1)); // 10
+```
+
+### 2.2 - create an array of words
+
+```js
+var tokens = function (string) {
+    return string.toLowerCase().split(' ');
+};
+ 
+var text = 'This is some text',
+arr = tokens(text),
+wc = arr.length;
+ 
+console.log(arr); // [ 'this', 'is', 'some', 'text' ]
+console.log(wc); // 4
+```
