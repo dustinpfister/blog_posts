@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 15:14:56
-version: 1.18
+updated: 2021-07-14 15:17:37
+version: 1.19
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -51,6 +51,8 @@ console.log(arr); // [1,2,3,4,5,6]
 ```
 
 ### 1.4 - Using a regular expression
+
+So far I have just covered simple example of the string split method that involve the use of a static string value to be used as a way to define what should be used to find what will be used to separator the substrings in the array. However what if what I want to split a string by is not a fixed static value like a comma or a space, but some kind of patter> For these kinds if situations a regular expression can be used as a way to create a separator that is a kind of pattern rather than a fixed static value.
 
 ```js
 var str = 'This is some text 123 more text 7 also numbers 1 in here';
