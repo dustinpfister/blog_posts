@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 15:45:43
-version: 1.27
+updated: 2021-07-14 15:51:32
+version: 1.28
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -80,7 +80,7 @@ I have covered a simple example of using a regular expression rather than just a
 
 ### 3.1 - Creating an array from one or more date string formats
 
-One thing that might come up is how to go about creating an array fo values from a date string that might have more than one kind of separator between the parts of the date.
+One thing that might come up is how to go about creating an [array of values from a date string that might have more than one kind of separator between the parts of the date](https://stackoverflow.com/questions/3559883/javascript-split-regex-question). For this kind of situation I can one again use a regular expression I will just want to use what square brackets to create a kind of [group or range of characters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges) to look for.
 
 ```js
 var createDateArray = function (dateString) {
