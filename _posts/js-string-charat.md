@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 676
-updated: 2020-11-24 08:48:14
-version: 1.15
+updated: 2021-07-14 15:09:32
+version: 1.16
 ---
 
 In javaScript there is the [charAt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt) string prototype method that can be used as a way to get a single character in a javaScrit string, there is also just using the bracket syntax as a way to get a single char also though. I can not say that I use the charAt method often as the same effect can be achieved using the bracket syntax, the same way that one would get an element in an array, or any public named key value in any javaScript object for that matter not just the wrapper object of a string primative. So the bracket syntax strikes be as a better way to go about getting a single char in a string, as it is more versatile.
@@ -140,7 +140,7 @@ if (m) {
 
 ## 5 - Using String.split, Array.splice, and Array.join
 
-There is using the string methods to get a range of chars from a string rather than just a single char with charAT, but then there is using the array method splice also. One way that the array method splice can be used is by first converting the string into an array with the split string prototype method. Once I have an array of chars rather than a string I can then use the array splice method to return a new array from that array that is just a given set of chars from a given starting index value and a number of chars. I can then use the array join method to join the new array back into a string.
+There is using the string methods to get a range of chars from a string rather than just a single char with charAT, but then there is using the array method splice also. One way that the array method splice can be used is by first converting the string into an array with the [split string prototype method](/2021/07/14/js-string-split/). Once I have an array of chars rather than a string I can then use the array splice method to return a new array from that array that is just a given set of chars from a given starting index value and a number of chars. I can then use the array join method to join the new array back into a string.
 
 ```js
 var str = 'This might be the best site on javaScript';
