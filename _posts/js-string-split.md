@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 15:09:33
-version: 1.16
+updated: 2021-07-14 15:13:20
+version: 1.17
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -59,6 +59,8 @@ console.log(arr);
 
 ## 2 - The String Split method and the array join method
 
+The [array join](/2020/03/09/js-array-join/) method is something that I should also bring up when it comes to the string split method while I am at it. The reason why I say that is that what the string split method does is create an array of substrings from a string, so then there should be an array method that will create a string from an array of substrings. When it comes to this there is the array join method that can be used to do so.
+
 ```js
 var nums = '1,2,3,4'.split(',').map((str)=>{ return Math.pow(2, parseInt(str))}).join('-');
 console.log(nums); // 2-4-8-16
@@ -66,7 +68,7 @@ console.log(nums); // 2-4-8-16
 
 ## 3 - Use case examples of String Split
 
-I have covred a whole bunch of simple examples of the string split method. However thus far I have not got into any actual use case examples that are simple examples of how this method will prove to be useful in certain situations. With that said there is a whole world of examples in which the string split method might prove to be useful, however in this section I will just be going over a few basic use case examples.
+I have covered a whole bunch of simple examples of the string split method. However thus far I have not got into any actual use case examples that are simple examples of how this method will prove to be useful in certain situations. With that said there is a whole world of examples in which the string split method might prove to be useful, however in this section I will just be going over a few basic use case examples.
 
 ### 3.1 - create an array of words
 
