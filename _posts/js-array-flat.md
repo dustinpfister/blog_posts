@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 14:51:02
-version: 1.9
+updated: 2021-07-15 14:52:32
+version: 1.10
 ---
 
-If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [fill Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.fill, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
+If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [flat Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.flat, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
 
 <!-- more -->
 
@@ -50,6 +50,8 @@ console.log(flat);
 ```
 
 ### 2.2 - Reduce concat example with recursion
+
+So far so good when it comes to making an alteriave to the array flat method.
 
 ```js
 var flatten = function (arr) {
@@ -108,7 +110,7 @@ console.log(flatten(grid, 2));
 // [ 1, 2, 3, 4, 5, 6, 7 ]
 ```
 
-## 3 - Polling filling Array.fill
+## 3 - Polling filling Array.flat
 
 ```js
 // polly fill for old versions of node
