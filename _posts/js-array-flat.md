@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 14:36:54
-version: 1.6
+updated: 2021-07-15 14:38:23
+version: 1.7
 ---
 
 If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [fill Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.fill, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
@@ -33,7 +33,7 @@ For the most part I should be able to just use the array flat method and move on
 
 ### 2.1 - Basic reduce concat example
 
-Many the alternative methods that I see on the web make use of the array reduce and array concat methods. The array reduce method will work on browsers as old as Internet explorer 9, and the array concat method goes back even farther than that. These days I can not say that I would every need or want to go back father than that, so in most cases a method that make use of those array methods should work just fine.
+Many the alternative methods that I see on the web make use of the [array reduce](/2021/07/13/js-array-reduce/) and [array concat](/2020/07/13/js-array-concat/) methods. The array reduce method will work on browsers as old as Internet explorer 9, and the array concat method goes back even farther than that. These days I can not say that I would every need or want to go back father than that, so in most cases a method that make use of those array methods should work just fine.
 
 ```js
 var flatten = function (arr) {
