@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 14:52:32
-version: 1.10
+updated: 2021-07-15 14:55:37
+version: 1.11
 ---
 
 If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [flat Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.flat, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
@@ -51,7 +51,7 @@ console.log(flat);
 
 ### 2.2 - Reduce concat example with recursion
 
-So far so good when it comes to making an alteriave to the array flat method.
+So far so good when it comes to making an alternative to the array flat method. However I will often want to flatten an array more than one level at some times. By default the array flat method has a depth of 1, but I can set the depth higher than that when it comes to having more than one level of nested arrays. So in this example I have made a slightly more advanced example of the basic array fill alternative that I started out with that will call the flatten method itself inside the body of the reducer function.
 
 ```js
 var flatten = function (arr) {
