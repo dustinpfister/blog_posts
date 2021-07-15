@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 14:30:12
-version: 1.3
+updated: 2021-07-15 14:33:36
+version: 1.4
 ---
 
 If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [fill Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.fill, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
@@ -28,6 +28,8 @@ console.log(flat);
 A depth argument can be given to the array flat method, and by default the depth is 1.
 
 ## 2 - Vanilla javaScript alternatives
+
+For the most part I should be able to just use the array flat method and move on with my life when it comes to this sort of thing. However if I am using an old version of node that does not support this method, then I might need some kind of alternative. Also when it comes to coding purly for the sake of learbning, making a method like this might not be a waste of time because it can prove to be a good exercise of writing a recurse method when it comes to creating a depth feature for the method.
 
 ### 2.1 - Basic reduce concat example
 
