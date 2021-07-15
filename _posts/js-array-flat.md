@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 15:15:46
-version: 1.20
+updated: 2021-07-15 15:22:36
+version: 1.21
 ---
 
 If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [flat Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.flat, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
@@ -16,7 +16,11 @@ If I want to flatten an array of arrays into a single array of values, and I am 
 
 ## 1 - basic example
 
-To start off with this the first thing is to just start playing around with some basic examples of the array flat method where I am just flattening down a single array of arrays just one level.
+To start off with this the first thing is to just start playing around with some basic examples of the array flat method 
+
+### 1.1 - basic nums array example
+
+Here I am just flattening down a single array of arrays just one level.
 
 ```js
 let nums = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
@@ -26,6 +30,15 @@ console.log(flat);
 ```
 
 A depth argument can be given to the array flat method, that will set the number of nested levels to go with it comes to flattening an array. By default the depth is 1, and a depth of 0 can be set which would result in no change of the array.
+
+### 1.2 - The array flat method returns a new array, it will not mutate in place
+
+```
+let arr = [ 1,[2,3] ];
+let flat = arr.flat();
+console.log( arr ); // [ 1, [2, 3] ]
+console.log( flat); // [ 1, 2, 3 ]
+```
 
 ## 2 - Vanilla javaScript alternatives
 
@@ -114,7 +127,7 @@ console.log(flatten(grid, 2));
 
 ## 3 - Polling filling Array.flat
 
-In some cases I might want to polly fill the array flat method, for this I came up with a quick solution that is just a slightly revised revision of the stand alone alternative that I made. When it comes to making a polly fill I just need to assign my own method to the name of the method in the prototype object of the Array Object. In these kinds of methods the [this keyword](/2017/04/14/js-this-keyword/) will refer to the instance of the array that the method is called off of. Also the method should correctly reproduce the behaviors of the native method when it comes to things like mutating the source array in place or not. The native array flat method will mutate in place, so a polly fill method should do the same.
+In some cases I might want to polly fill the array flat method, for this I came up with a quick solution that is just a slightly revised revision of the stand alone alternative that I made. When it comes to making a polly fill I just need to assign my own method to the name of the method in the prototype object of the Array Object. In these kinds of methods the [this keyword](/2017/04/14/js-this-keyword/) will refer to the instance of the array that the method is called off of. Also the method should correctly reproduce the behaviors of the native method when it comes to things like mutating the source array in place or not. The native array flat does not seem to mutate in place, so a polly fill method should do the same.
 
 ```js
 // polly fill for old versions of node
