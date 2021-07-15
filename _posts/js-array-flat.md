@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 15:05:07
-version: 1.16
+updated: 2021-07-15 15:08:13
+version: 1.17
 ---
 
 If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [flat Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.flat, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
@@ -114,7 +114,7 @@ console.log(flatten(grid, 2));
 
 ## 3 - Polling filling Array.flat
 
-In some cases I might want to polly fill the array flat method.
+In some cases I might want to polly fill the array flat method, for this I came up with a quick solution that is just a slightly revised revision of the stand alone alternative that I made. When it comes to making a polly fill I just need to assign my own method to the name of the method in the prototype object of the Array Object. In these kinds of methods the this keyword will refer to the instance of the array that the method is called off of.
 
 ```js
 // polly fill for old versions of node
