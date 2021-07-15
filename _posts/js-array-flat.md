@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 911
-updated: 2021-07-15 14:58:34
-version: 1.13
+updated: 2021-07-15 14:59:53
+version: 1.14
 ---
 
 If I want to flatten an array of arrays into a single array of values, and I am working in a modern javaScript environment, then I can use the [flat Array prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) to do so. If for some reason I am using an old version of node that does not support Array.flat, or if I need better backward support then there are a wide rand of options when it comes to creating or finding alternatives to the array flat method also.
@@ -150,4 +150,6 @@ console.log(nums.flat(2));
 ```
 
 ## 4 - Conclusion
+
+That will be it for now when it comes to the array flat method and alternatives to the native method in javaScript.
 
