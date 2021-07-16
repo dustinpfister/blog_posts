@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 912
-updated: 2021-07-16 14:50:13
-version: 1.10
+updated: 2021-07-16 14:52:42
+version: 1.11
 ---
 
 It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post, so today I thought I would put something together real fast that I might put some more time into if I think it is something that is worth more time. The aim here is to not do anything fancy, just get together some javaScript code that will serve as a basic starting point for a simple idle game type project. This is not the first time I have made such a project, but maybe this time I will finally break old habits and continue working on this as a separate stand alone project rather than just a little javaScript code.
 
-The main feature that I have in mine here is to just have a module that will create an instance of a kind of standard mine object. Each mine object will contain properties that defile what ores there are to obtain at the mine, and also the current state of a ship that will move back and forth from the mine.
+The main feature that I have in mine here is to just have a module that will create an instance of a kind of standard mine object. Each mine object will contain properties that defile what ores there are to obtain at the mine, and also the current state of a ship that will move back and forth from the mine. So the mine module is then use to create one of these mine objects, and update the state of the object when it comes to the position of the ship, the rate at which resources are mined, and create to a main home object. Speaking of the main home object I will also want at least that kind of module also that will be used to create and update that also.
 
 <!-- more -->
 
