@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 912
-updated: 2021-07-16 14:52:42
-version: 1.11
+updated: 2021-07-16 14:54:19
+version: 1.12
 ---
 
 It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post, so today I thought I would put something together real fast that I might put some more time into if I think it is something that is worth more time. The aim here is to not do anything fancy, just get together some javaScript code that will serve as a basic starting point for a simple idle game type project. This is not the first time I have made such a project, but maybe this time I will finally break old habits and continue working on this as a separate stand alone project rather than just a little javaScript code.
@@ -184,4 +184,4 @@ I will want to have some kind of main game state object, for this I have a modul
 
 ## 3 - Conclusion
 
-That will be it for now when it comes to this javaScript example, at least until I get around to editing this post and when I do so maybe I will put a little more time into the source code also while I am at it. I can not say that I get around to doing that with all of these posts, but some are more deserve of more time and energy than others.
+That will be it for now when it comes to this javaScript example, at least until I get around to editing this post and when I do so maybe I will put a little more time into the source code also while I am at it. I can not say that I get around to doing that with all of these posts, but some are more deserve of more time and energy than others. This one might be different if I do manage to break the cycle of starting projects like this but never really finishing them. There are a lot more things that I would like to get done with this one, but still only so many, I would like to keep this one fairly simple.
