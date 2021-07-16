@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 912
-updated: 2021-07-16 14:36:57
-version: 1.3
+updated: 2021-07-16 14:39:16
+version: 1.4
 ---
 
-It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post, so today I thought I would put something together real fast that I might put some more time into if I think it is something that is worth more time.
+It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post, so today I thought I would put something together real fast that I might put some more time into if I think it is something that is worth more time. The aim here is to not do anything fancy, just get together some javaScript code that will serve as a basic starting point for a simple idle game type project. This is not the first time I have made such a project, but maybe this time I will finally break old habits and continue working on this as a separate stand alone project rather than just a little javaScript code.
 
 <!-- more -->
 
