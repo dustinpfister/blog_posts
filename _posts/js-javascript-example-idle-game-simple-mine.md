@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 912
-updated: 2021-07-16 14:45:31
-version: 1.8
+updated: 2021-07-16 14:48:08
+version: 1.9
 ---
 
 It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post, so today I thought I would put something together real fast that I might put some more time into if I think it is something that is worth more time. The aim here is to not do anything fancy, just get together some javaScript code that will serve as a basic starting point for a simple idle game type project. This is not the first time I have made such a project, but maybe this time I will finally break old habits and continue working on this as a separate stand alone project rather than just a little javaScript code.
@@ -138,7 +138,7 @@ First off I have my mine module that I will be using to create an object that wi
 
 ## 2 - The home object module
 
-I will want to have some kind of main game state object, for this I have a module that will create and return that object.
+I will want to have some kind of main game state object, for this I have a module that will create and return that object. So then this module has a main create method that I will use in the main javaScript file to create a new main home object with the create method of this module. When I do so I can pass some data that will serve as a way to set up what all the ores are for the game.
 
 ```js
 (function (api) {
