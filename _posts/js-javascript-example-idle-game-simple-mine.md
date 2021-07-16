@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 912
-updated: 2021-07-16 14:29:56
-version: 1.2
+updated: 2021-07-16 14:36:57
+version: 1.3
 ---
 
-It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post.
+It has been a while sense the last time I made a simple [javaScript project examples](/2021/04/02/js-javascript-example/) type post, so today I thought I would put something together real fast that I might put some more time into if I think it is something that is worth more time.
 
 <!-- more -->
 
