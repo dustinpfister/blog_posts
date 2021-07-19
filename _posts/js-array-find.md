@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 15:15:05
-version: 1.18
+updated: 2021-07-19 15:17:08
+version: 1.19
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -152,6 +152,8 @@ console.log( findMaxMinProp(objs, 'y', 'max') ); // 4
 ```
 
 ### 2.4 - The array sort method to change the order of the whole array where the first element is the best match
+
+I covered the array filter method as a way to go about creating a new array that is a collection of elements that meet the condition given rather than just the first match like the array find method does.
 
 ```js
 var sorter = function (a, b) {
