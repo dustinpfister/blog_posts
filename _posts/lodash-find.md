@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2021-07-19 15:56:24
-version: 1.51
+updated: 2021-07-19 15:59:18
+version: 1.52
 ---
 
 So the [lodash find](https://lodash.com/docs/4.17.5#find) collection method can be used to find a single item in a collection or in other words an array or object in general when using the [lodash utility library](https://lodash.com/) with a javaScript project. There is also the native Array.find method these days, but that is just an array prototype method, and as such it can not just be used to find an object key in general with any object unless that object is an array or array like object.
@@ -240,7 +240,7 @@ console.log( _.find(collection, method , 6) ); // 'b'
 
 ## 7 - Finding an Object in an Array, a basic usage example of \_.find
 
-So \_.find will help with returning an element in an array, rather than it's index. So if you have an array of objects and you want to find a single object in the array by a certain key value pare \_.find is the right tools for the job.
+So \_.find will help with returning an element in an array, rather than it's index. So if you have an array of objects and you want to find a single object in the array by a certain key value pare \_.find is the right tools for the job. In this example I have an array of objects where each object has a name property that contains a string that is a name of a person. I can pass an object that contains the name I want to find, and the returned full result is the full object in the array with all the additional info for that name.
 
 ```js
 var db_array = [
