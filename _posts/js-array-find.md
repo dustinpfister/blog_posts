@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 14:56:33
-version: 1.14
+updated: 2021-07-19 14:57:34
+version: 1.15
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -121,7 +121,7 @@ console.log(b); // 5
 
 ### 2.3 - Find the biggest and smallest numbers with Math min and max methods combined Function.apply
 
-The max and min methods of the Math object can be used as a way to go about finding the largest, or smallest number in an array when using with the apply function prototype method.
+The max and min methods of the Math object can be used as a way to go about finding the largest, or smallest number in an array when using with the [apply function prototype method](/2017/09/21/js-call-apply-and-bind/).
 
 ```js
 // and array of numbers
