@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 11:34:11
-version: 1.4
+updated: 2021-07-19 12:28:09
+version: 1.5
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -16,6 +16,8 @@ There is also not just the question of using the native array find method or the
 <!-- more -->
 
 ## 1 - Basic examples of the array find method
+
+To start out with there is just playing around with a few basic examples of the array find method. So in this section I will just be doing just that with some basic examples that just involve finding the first value in an array from left to right with the array find method. The focus here will just be on the array find method for the most part, and keeping the examples fairly simple. Alter in this post I will be getting into some alternatives array methods and features in javaScript that might prove to also be useful ways to go about finding something in an array.
 
 ### 1.1 - Simple array fo numbers example
 
