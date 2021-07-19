@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 11:24:53
-version: 1.2
+updated: 2021-07-19 11:31:39
+version: 1.3
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -15,3 +15,133 @@ There is also not just the question of using the native array find method or the
 
 <!-- more -->
 
+## 1 - Basic examples of the array find method
+
+### 1.1 - Simple array fo numbers example
+
+```js
+// and array of numbers
+var a = [1, 2, 3, 4, 5, 6, 7];
+ 
+var b = a.find(function (n) {
+        return n > 2;
+    });
+console.log(b); // 3
+```
+
+### 1.2 - The arguments used in the call back function
+
+```js
+// and array of numbers
+var a = [1, 2, 3, 4, 0, 0, -4, -2, 0, 2, 4, 6, 8];
+ 
+var result = {
+    source: null,
+    el: []
+};
+var b = a.find(function (n, i, arr) {
+        result.source = arr;
+        if (i >= 5) {
+            result.el.push({
+                index: i,
+                n: n
+            });
+            return n > 2;
+        }
+        return false;
+    });
+console.log(result);
+/*
+{
+    source: [1, 2, 3, 4, 0, 0, -4, -2, 0, 2, 4, 6, 8],
+    el: [
+        { index: 5, n: 0},
+        { index: 6, n: -4},
+        { index: 7, n: -2},
+        { index: 8, n: 0},
+        { index: 9, n: 2},
+        { index: 10, n: 4}
+    ]
+}
+ 
+*/
+console.log(b); // 4
+```
+
+## 2 - Some alternative methods, and javaScript features, that can be used to help find something
+
+### 2.1 - The array filter method
+
+```js
+// and array of numbers
+var a = [1, 2, 3, 4, 5, 6, 7];
+ 
+var cb = function (n) {
+    return n > 2 && n < 6;
+};
+// find will just give the first result moving from left to right
+var b = a.find(cb);
+console.log(b); // 3
+ 
+// so filter can be used also
+var c = a.filter(cb);
+// the first index will hen be the same result
+console.log(c[0]); // 3
+// however I can also get the full collection of elements that meet
+// the conditions of the expresion used in the callback
+console.log(c); // [3, 4, 5]
+```
+
+### 2.2 - using array reverse to change the direction from which to find something
+
+```js
+var cb = function (n) {
+    return n > 2 && n < 6;
+};
+ 
+// and array of numbers
+var a = [1, 2, 3, 4, 5, 6, 7];
+ 
+// the array reverse method would be one way
+var b = a.reverse().find(cb);
+console.log(b); // 5
+```
+
+### 2.3 - Find the biggest and smallest numbers with Math min and max methods combined Function.apply
+
+```js
+// and array of numbers
+var a = [3, 3, 0, 12, 0, -7, 37, 2];
+ 
+var max = Math.max.apply(null, a),
+min = Math.min.apply(null, a);
+ 
+console.log(max); // 37
+console.log(min); // -7
+```
+
+### 2.4 - The array sort method to change the order of the whole array where the first element is the best match
+
+```js
+var sorter = function (a, b) {
+    if (a > b) {
+        return -1
+    }
+    if (a < b) {
+        return 1;
+    }
+    return 0;
+};
+ 
+// and array of numbers
+var a = [3, 3, 0, 12, 0, -7, 37, 2];
+ 
+// if I want to find the greatest number
+var b = a.sort(sorter);
+console.log(b[0]); // 37
+// sort will also mutate the array in place and make each elements
+// be in order based on the conditions in the sorter function
+console.log(a); // [ 37, 12, 3, 3, 2, 0, 0, -7 ]
+```
+
+## 3 - Conclusion
