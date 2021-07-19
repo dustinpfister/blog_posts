@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2021-07-19 11:24:53
-version: 1.49
+updated: 2021-07-19 15:53:47
+version: 1.50
 ---
 
 So the [lodash find](https://lodash.com/docs/4.17.5#find) collection method can be used to find a single item in a collection or in other words an array or object in general when using the [lodash utility library](https://lodash.com/) with a javaScript project. There is also the native Array.find method these days, but that is just an array prototype method, and as such it can not just be used to find an object key in general with any object unless that object is an array or array like object.
@@ -70,7 +70,7 @@ console.log(n); // 42
 
 ### 2.3 - Lodash \_.find will work with Arrays, Array like Objects and plain old objects in general as well.
 
-However \_.find is a collection method, not an Array method. So in addition to working just fine with Arrays \_.find works with plan old objects as well, even if they are not array like.
+However \_.find is a collection method, not an Array prototype method like that of the native arry find method. So in addition to working just fine with Arrays \_.find works with plan old objects as well, even if they are not array like. So if I pass an object with named public keys, I can then pass a function to return a value that meets a condition and it will return the value. For example say I just want to know the first number in an object that can be done with the lodash find method.
 
 ```js
 var n = _.find({
