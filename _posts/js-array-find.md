@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 11:31:39
-version: 1.3
+updated: 2021-07-19 11:34:11
+version: 1.4
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -145,3 +145,6 @@ console.log(a); // [ 37, 12, 3, 3, 2, 0, 0, -7 ]
 ```
 
 ## 3 - Conclusion
+
+The array fine method is then one way to go about finding one element in an array that will match a given condition in the from of an expression in a call back function. However there are many other methods and features that can also be used to get the first element, as well as all the elements that meet a condition. There are also ways of going about creating a whole new array from a source array, creating values that will be used as a kind of score, and then sorting the new array by that score or index value.
+
