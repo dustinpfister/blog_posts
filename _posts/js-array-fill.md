@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2020-08-28 08:06:03
-version: 1.10
+updated: 2021-07-19 16:20:20
+version: 1.11
 ---
 
-These days there is not a native [array fill prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill), and unless you care a great deal about backward compatibility the native array fill method works just fine. Unless you do want to use a pony fill method of area fill because you want to make sure what you are making will work on a wider range of platforms then you might want to use something else. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index. So lets look at some examples of filling an array with data.
+These days there is now a native [array fill method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) in the core [javaScript array](/2018/12/10/js-array/) prototype object. Unless you care a great deal about backward compatibility the native array fill method works just fine, else one may have to use a Polly fill method of some kind or another in order to get the method to work on a wider range of platforms. When it comes to using lodash there is the [lodash fill](/2017/09/26/lodash_fill/) method that works more or less the same way. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index, so lets look at some examples of filling an array with data in javascript and not just some simple examples of the native array fill method.
 
 <!-- more -->
 
