@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 12:38:24
-version: 1.11
+updated: 2021-07-19 12:40:45
+version: 1.12
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -102,7 +102,9 @@ console.log(c[0]); // 3
 console.log(c); // [3, 4, 5]
 ```
 
-### 2.2 - using array reverse to change the direction from which to find something
+### 2.2 - Using array reverse to change the direction from which to find something
+
+Say I want to use the array find method as it will work just fine, but I just want to reverse the order in which the array find method works. For this the array reverse method can reverse the order of all the elements, and then it will get the first element that will meet the condition from what was the end of the array before hand.
 
 ```js
 var cb = function (n) {
