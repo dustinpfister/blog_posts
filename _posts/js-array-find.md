@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 913
-updated: 2021-07-19 14:59:33
-version: 1.16
+updated: 2021-07-19 15:12:18
+version: 1.17
 ---
 
 A long time ago I wrote a post on the [lodash find](/2017/09/14/lodash-find/) method that is a way to go about finding a single element in an array. Lodash might still not be a dead library just yet, but I have to say that for the most part I am just making use of native javaScript features to do much of what can be done with lodash. One such method that might come to mind is the [native array find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) method of the array prototype I native javaScript. In many respects this is just like the lodash fine method. There may be some talking points as to why the native array find method might not be a drop in replacement for the loadash fine method with respect to all use case scenarios. However there are many other native javaScript features that can be used to even over come those other situations in which the lodash fine method will work where the native array find method will not.
@@ -121,17 +121,32 @@ console.log(b); // 5
 
 ### 2.3 - Find the biggest and smallest numbers with Math min and max methods combined Function.apply
 
-The max and min methods of the Math object can be used as a way to go about finding the largest, or smallest number in an array when using with the [apply function prototype method](/2017/09/21/js-call-apply-and-bind/). To do this I just need to pas something like null as the value for the value of this when calling the apply method off of the Math.max, or Math.min method, and then the array as the second argument for the apply method.
+The [Math.max and Math.min methods](/2020/01/22/js-math-max-min/) of the Math object can be used as a way to go about finding the largest, or smallest number in an array when using with the [apply function prototype method](/2017/09/21/js-call-apply-and-bind/). To do this I just need to pas something like null as the value for the value of this when calling the apply method off of the Math.max, or Math.min method, and then the array as the second argument for the apply method.
 
 ```js
 // and array of numbers
 var a = [3, 3, 0, 12, 0, -7, 37, 2];
- 
 var max = Math.max.apply(null, a),
 min = Math.min.apply(null, a);
- 
 console.log(max); // 37
 console.log(min); // -7
+ 
+// an array of objects
+var objs = [
+    {x: 0, y: 1},
+    {x: 23, y: 3},
+    {x: -3, y: 2},
+    {x: 7, y: 4}
+];
+var findMaxMinProp = function(objs, prop, maxMin){
+    return Math[maxMin].apply( null, objs.map(function (obj) {
+        return obj[prop];
+    }));
+};
+console.log( findMaxMinProp(objs, 'x', 'min') ); // -3
+console.log( findMaxMinProp(objs, 'x', 'max') ); // 23
+console.log( findMaxMinProp(objs, 'y', 'min') ); // 1
+console.log( findMaxMinProp(objs, 'y', 'max') ); // 4
 ```
 
 ### 2.4 - The array sort method to change the order of the whole array where the first element is the best match
