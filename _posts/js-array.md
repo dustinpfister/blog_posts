@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-12 16:40:23
-version: 1.57
+updated: 2021-07-19 16:03:52
+version: 1.58
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -271,7 +271,7 @@ arr.forEach(function (n, i) {
 
 ## 7 - Filtering an Array
 
-One of the most important tasks to preform with arrays is to filter them. One of the many Array prototype methods is Array.filter than can help with filtering tasks. The Array.filter method creates a new array rather than mutating the Array that it is call off of making Array.filter a functional programming friendly method.
+One of the most important tasks to preform with arrays is to filter them to create a new array that is a kind of sub collection of elements. One of the many Array prototype methods is [Array.filter](/2020/10/03/js-array-filter/) than can help with filtering tasks. The Array.filter method creates a new array rather than mutating the Array that it is call off of making Array.filter a functional programming friendly method.
 
 ## 7.1 - Using Array.filter
 
