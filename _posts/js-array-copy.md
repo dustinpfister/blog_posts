@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-04-13 11:15:28
-version: 1.15
+updated: 2021-07-19 16:15:03
+version: 1.16
 ---
 
-So now and then a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
+So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
 
 So to copy an array one of several tricks for doing so will need to be used to do so that will result in a while new array being created that will contain the same values. However talking about values, if the values themselves are nested objects then they do might needed to be coped also if a full copy of the state of the array is desired. So in this post I will be taking a look at a few ways to copy an array in javaScript with both old and new ways of doing so when it comes to what there is to work with in late javaScript specs.
 
