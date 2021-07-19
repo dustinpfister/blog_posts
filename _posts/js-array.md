@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-19 16:08:43
-version: 1.59
+updated: 2021-07-19 16:12:06
+version: 1.60
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -310,11 +310,15 @@ In lodash there is the [\_.map](/2018/02/02/lodash_map/) method that works the s
 
 There is the [array find](/2021/07/19/js-array-find) method that can be used to find a single element in an array that meets a condition of some kind given with a function.
 
-## 10 - Multidimensional Arrays
+## 10 - Sorting an array
+
+The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place.
+
+## 11 - Multidimensional Arrays
 
 There are two general ways of making Multidimensional Arrays in javaScript as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array.
 
-### 10.1 - Arrays of Arrays
+### 11.1 - Arrays of Arrays
 
 One way to go about having a multidimensional array in javaScript is to have an Array of Arrays.
 
@@ -329,7 +333,7 @@ var grid = [
 console.log( grid[1][1] ); // 5
 ```
 
-### 10.2 - Plain old linear Array, but with style.
+### 11.2 - Plain old linear Array, but with style.
 
 So I do not have to have an array of arrays, but just a simple plain old linear array. So this can be thought of as a kind of virtual multidimensional array, because it is just a linear collection of elements. When doing this an expression can be used as a way to get the proper index.
 
@@ -379,10 +383,10 @@ var g = createGrid(4, 3);
 console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
 ```
 
-## 11 - Array length and count
+## 12 - Array length and count
 
 Another subject of arrays is what is often referred to as the [length of an array](/2018/12/14/js-array-length/) to which I will not be getting into in detail here as I have all ready went off the deep end when it comes to that topic. The length of an array is just a property of an array object that contains a number that is the current max element size of an array, but with that said yes the length can change. The length of an array is often confused with other values of an array, such as the number of actual public numbed keys, or elements that there are in the array. So it is worth looking into playing around with a few quick code examples to have a better understating of what the deal is with array length, and that this is not always reflective as to how many elements are in the array, depending on how you go about counting elements.
 
-## 12 - Conclusion
+## 13 - Conclusion
 
 There is a great deal more to write about when it comes to javaScript Arrays. I did not even scratch the surface when it comes to every little thing to know about with Arrays in javaScript. For example there is more to write about when it comes to typed arrays, and how they differ from the regular typical arrays that are used in javaScript. in lodash there is a lengthly collection of methods that can be used to help with common programming tasks surrounding arrays, as well as with objects in general to discus as well. Hopefully this post did a decent job of covering some of the basics and then some though.
