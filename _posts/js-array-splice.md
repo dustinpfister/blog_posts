@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 914
-updated: 2021-07-20 13:01:58
-version: 1.12
+updated: 2021-07-20 13:03:39
+version: 1.13
 ---
 
 When it comes to writing about javaScript by itself I have not got around o writing a post on the [array splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method yet when it comes to [working with arrays in javaScript](/2018/12/10/js-array/). Writing about this array splice method is something that I should have got out of the way a long time ago, but better late than never. 
@@ -66,6 +66,8 @@ console.log(a);
 ```
 
 ### 1.4 - Remove zero elements and just inject
+
+When it comes to injecting elements I have the option to set the number of elements that I want to inject as 0. This way I can use the array splice method as a way to just inject elements at an index location without removing anything at all.
 
 ```js
 var a = [1, 2, 4, 5];
