@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 914
-updated: 2021-07-20 12:58:01
-version: 1.10
+updated: 2021-07-20 13:00:24
+version: 1.11
 ---
 
 When it comes to writing about javaScript by itself I have not got around o writing a post on the [array splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method yet when it comes to [working with arrays in javaScript](/2018/12/10/js-array/). Writing about this array splice method is something that I should have got out of the way a long time ago, but better late than never. 
@@ -44,6 +44,8 @@ console.log(a); // [1, 5]
 ### 1.3 - remove and inject
 
 Another thing about the array splice method is that it can not just be used to remove elements, and get a range of elements from an array while doing so. It can also be used as a way to go about injecting elements into an array at the given index location. When doing so I can just give oe more more elements to inject at the index location in the from of additional arguments.
+
+If I given an array as the element to inject at the index location then the result will be that array at the location. In some situations this is what I would want, but if I want the children to be injected doing so is a little involved. One way to go about doing so would be to make use of the function apply prototype method, and then using the array concat method as a way to create an array of arguments to give to the apply function prototype method.
 
 ```js
 var a = [1, 2, 4, 5];
