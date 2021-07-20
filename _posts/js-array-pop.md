@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 660
-updated: 2020-08-03 13:23:17
-version: 1.11
+updated: 2021-07-20 13:18:15
+version: 1.12
 ---
 
-When first starting out with javaScript it is only natural to go through a phase where a developer needs to become more familiar with how to go about working with arrays in javaScript. There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place, as well as not doing so when it comes to working with a source array. There are many methods of interest when it comes to just simply geting one or more elements from an array in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
+When first starting out with javaScript it is only natural to go through a phase where a developer needs to become more familiar with how to go about working with [arrays in javaScript](/2018/12/10/js-array/). There is just simply knowing how to create them for starters, but then there is getting elements from them in a why in which the arrays are mutated in place, as well as not doing so when it comes to working with a source array. There are many methods of interest when it comes to just simply geting one or more elements from an array in javaScript, but maybe one of the first methods one will become aware of is the [js array pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop) method. 
 
 The js array pop prototype method will remove and return the last element in an array. This method works okay for what it is intended to be used for, however it might not always be the best choice. For example what if it is the first element that is to be removed and returned, and also what about injecting elements while one is at it? So this post will center on the use of the js array pop method, but also other ways of getting one or more elements from an array such as shift, splice, and just the use of the bracket syntax with an index number.
 
