@@ -5,13 +5,13 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-07-20 12:43:19
-version: 1.24
+updated: 2021-07-20 13:18:16
+version: 1.25
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. 
 
-This nature of the array slice method that involves not mutating an array in place makes it consistent with the concept of pure functions, and functional programing in when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
+This nature of the array slice method that involves not mutating [an array](/2018/12/10/js-array/) in place makes it consistent with the concept of pure functions, and functional programing in when working with an array of primitives. So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
 
 <!-- more -->
 
