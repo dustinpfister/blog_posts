@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 914
-updated: 2021-07-20 12:48:12
-version: 1.6
+updated: 2021-07-20 12:50:58
+version: 1.7
 ---
 
 When it comes to writing about javaScript by itself I have not got around o writing a post on the [array splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method yet, which is something that I should have got out of the way a long time ago. The array splice method is often confused with the [array slice](/2018/12/08/js-array-slice/) method, that is some what similar, but they work in very different ways. The array slice method will return a new array from a source array from a given starting and ending index value without mutating the source array from which it is called. The splice method will remove one or more elements from a starting index, and it can also be used to inject elements at that index location while I am at it. Unlike the slice method the splice method will mutate the array in place, but one thing that is similar might be the return value of the splice method as that will be a new array of the elements that are in a given index range.
@@ -29,6 +29,8 @@ console.log(a); // [1, 5]
 ```
 
 ### 1.2 - The return value
+
+Another thing to check out is what the return value of the array splice method is. Just like the array slice method the return value is a new array that is a collection of elements from a starting index to another location in the array. The difference is that with the array slice method an end index value is given rather than a number of elements, and with array slice the source array is not changed.
 
 ```js
 var a = [1, 2, 4, 5];
