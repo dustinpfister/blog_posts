@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 12:07:24
-version: 1.74
+updated: 2021-07-20 12:55:44
+version: 1.75
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -133,7 +133,7 @@ console.log(a); // [1,2,3,4,5,6,7,8,9]
 
 ### 3.5 - The Array.splice method can be used to remove no elements, and inject ones at an index location
 
-The array splice method is typically used as a way to remove elements from an array. However while removing elements it is also possible to use the method to add some elements in at an index location also. In addition to this option to add elements to the array it is also possible to give a value of zero for the number of element to remove at an index location. So then the array splice method can be used to just add elements to an array and do so at any index location.
+The [array splice method](/2021/07/20/js-array-splice/) is typically used as a way to remove elements from an array. However while removing elements it is also possible to use the method to add some elements in at an index location also. In addition to this option to add elements to the array it is also possible to give a value of zero for the number of element to remove at an index location. So then the array splice method can be used to just add elements to an array and do so at any index location.
 
 ```js
 var a = [1, 2, 4, 5];
