@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 12:02:29
-version: 1.73
+updated: 2021-07-20 12:07:24
+version: 1.74
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -337,7 +337,7 @@ console.log(b); // 3
 
 ## 10 - Sorting an array
 
-The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place. there are also many usful user space methods that have been made fo this sort of thing, for examples when it comes to using lodash there is also the [lodash sort by method](/2018/07/06/lodash_sortby) that can be used in that framework if that is part of an application. In this section though I will be mainly just going over the user of the array sort method in native javaScript.
+The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place. there are also many useful user space methods that have been made fo this sort of thing, for examples when it comes to using lodash there is also the [lodash sort by method](/2018/07/06/lodash_sortby) that can be used in that framework if that is part of an application. In this section though I will be mainly just going over the user of the array sort method in native javaScript.
 
 ## 10.1 - Basic array sort example
 
@@ -436,6 +436,18 @@ console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
 ## 12 - Array length and count
 
 Another subject of arrays is what is often referred to as the [length of an array](/2018/12/14/js-array-length/) to which I will not be getting into in detail here as I have all ready went off the deep end when it comes to that topic. The length of an array is just a property of an array object that contains a number that is the current max element size of an array, but with that said yes the length can change. The length of an array is often confused with other values of an array, such as the number of actual public numbed keys, or elements that there are in the array. So it is worth looking into playing around with a few quick code examples to have a better understating of what the deal is with array length, and that this is not always reflective as to how many elements are in the array, depending on how you go about counting elements.
+
+## 12.1 - Basic array length example
+
+First off there is just knowing what the length property is about when it comes to a typical basic situation at least. If I have an array that I create with the array bracket syntax then the length of that array is 1 as one might expect.
+
+```js
+let a = ['foo'];
+// array length is one relative
+console.log(a.length); // 1
+// but index values are zero relative
+console.log(a[0]); // 'foo'
+```
 
 ## 13 - Conclusion
 
