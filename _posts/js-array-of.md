@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 665
-updated: 2020-09-25 13:56:19
-version: 1.15
+updated: 2021-07-20 13:18:14
+version: 1.16
 ---
 
-So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method that can be used to create an array of elements from arguments that are passed when calling the array of method. 
+So in late specs of javaScript there is a native [Array.of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/of) static method in the [array object](/2018/12/10/js-array/) that can be used to create an array of elements from arguments that are passed when calling the array of method. 
 
 It would seem that this method was introduced as a way to provide something that is missing when using the [Array constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Array) directly with one argument. That is calling the main Array constructor method with the [new keyword](/2019/02/08/js-javascript-new/) as a way to create a new instance of an array, rather than using the bracket syntax to do so. When using the Array constructor with new there is using just one optional argument that is a number rather than some other value when doing so this sets a starting length of the array, but not the first value of the array. 
 
