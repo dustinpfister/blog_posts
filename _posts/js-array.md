@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 11:38:07
-version: 1.64
+updated: 2021-07-20 11:39:42
+version: 1.65
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -253,7 +253,7 @@ When working with arrays often one way or another a developer must loop over all
 
 ### 6.1 - Using a while loop
 
-When using a loop as a means to loop over the elements in a javaScript array I tend to prefer to use a while loop, because I have the option to loop over an array like this:.
+When using a loop as a means to loop over the elements in a javaScript array I tend to prefer to use a while loop. One reason why I like while loops is because I have the option to loop over an array backwards by setting an index value to the length of the array, and then subtract from that index.
 
 ```js
 var arr = [1, 2, 3, 4],
