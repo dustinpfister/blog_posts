@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 597
-updated: 2021-04-13 11:44:06
-version: 1.20
+updated: 2021-07-20 13:18:13
+version: 1.21
 ---
 
-If I want to create an array from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
+If I want to [create an array](/2018/12/10/js-array/) from something other than an array, such as a string, or an object of a constructor other than that of Array there are a number of ways of doing so. For example when it comes to having a string of a bunch of numbers with each number separated by a comma I can use the String.split prototype method to create an array of substrings where each substring is one of the numbers. However in this post I am mainly going to be writing about the [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) static method that will work okay with array like objects, however it will not always work out so great in other situations sometimes. 
 
 The array from method might work okay with array like objects, but even then it might not always work out the way I want it to deeding on what I am trying to do. For example when it comes to [making a copy of an array](/2020/09/03/js-array-copy/), the array from method might work okay when it comes to making a shallow copy of an array, but not a deep one.
 
