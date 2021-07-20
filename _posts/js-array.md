@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 11:55:26
-version: 1.72
+updated: 2021-07-20 12:02:29
+version: 1.73
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -344,10 +344,24 @@ The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way
 Here is a basic example of using the sort array prototype method on an array or primitives. When it comes to using the array sort method this way I do not even have to give a sort function as the default functionally will work well when it comes to that. One thing to point out right away with this is that the array sort method will mutate the order if index values in place. So if I do not want that to happen I will need to make a copy of the array first. If I do not want the numbers to be in the order of smallest to largest I can use the array reverse method, or get into making a custom sort method.
 
 ```js
-var arr = [7,4,2,5,8,6,3,1];
+// basic example that will mutate in place
+let arr = [7, 4, 2, 5, 8, 6, 3, 1];
 arr.sort();
 console.log(arr);
 // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+ 
+// to not mutate in place a copy of the source array
+// must be made first, it will then be the copy that 
+// is mutated by array sort
+arr = [4, 0, 1, 1, 5, 8, 3, 4, 6];
+let b = arr.map((n)=>{ return n}).sort();
+console.log(arr); // [ 4, 0, 1, 1, 5, 8, 3, 4, 6 ]
+console.log(b) // [ 0, 1, 1, 3, 4, 4, 5, 6, 8 ]
+ 
+// the array reverse method is one way to reverse the order
+arr = [4, 9, 8, 2, 3, 6, 5];
+arr.sort().reverse();
+console.log(arr); //[ 9, 8, 6, 5, 4, 3, 2 ]
 ```
 
 ## 11 - Multidimensional Arrays
