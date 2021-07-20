@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2021-04-04 11:36:30
-version: 1.20
+updated: 2021-07-20 13:18:16
+version: 1.21
 ---
 
-In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort an array in place rather than creating and returning a new sorted array. This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method. 
+In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the array prototype object. This method can be used to sort [an array](/2018/12/10/js-array/) in place rather than creating and returning a new sorted array. This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method. 
 
 One option outside of native javaScript by itself might be the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) collection method. This method is like array sort, but will work out of the box with object collections in general beyond that of arrays. In addition it will not mutate the object in place like array sort does, but create and return a new array.
 
