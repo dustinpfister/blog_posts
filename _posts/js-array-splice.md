@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 914
-updated: 2021-07-20 13:08:47
-version: 1.15
+updated: 2021-07-20 13:11:12
+version: 1.16
 ---
 
 When it comes to writing about javaScript by itself I have not got around o writing a post on the [array splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method yet when it comes to [working with arrays in javaScript](/2018/12/10/js-array/). Writing about this array splice method is something that I should have got out of the way a long time ago, but better late than never. 
@@ -80,4 +80,4 @@ console.log(a); // [1, 2, 3, 4, 5]
 
 ## 2 - Conclusion
 
-That will be it for now when it comes to working with the array splice method. There is a great deal more to write about when it comes to working with arrays in javaScript, but the array splice method is a big part of it because much of what is done involves injecting and removing arrays. When it comes to removing elements the array splice method might not be the end all solution for this sort of thing. In lodash there is the lodash remove method that is a user space solution for removing elements from an array. There is also not removing elements from an array, but creating a new array with the elements that I want such as with using the array filter method. Another thing to keep in mind is if I want to remove and inject elements from an array as needed, or create a fixed pool of elements and just reuse the same elements over an over again, such is the case when it comes to the concept of an object pool for example.
+That will be it for now when it comes to working with the array splice method. There is a great deal more to write about when it comes to working with arrays in javaScript, but the array splice method is a big part of it because much of what is done involves injecting and removing arrays. When it comes to removing elements the array splice method might not be the end all solution for this sort of thing. In lodash there is the [lodash remove](/2017/09/19/lodash_remove/) method that is a user space solution for removing elements from an array. There is also not removing elements from an array, but creating a new array with the elements that I want such as with using the [array filter](/2020/10/03/js-array-filter/) method. Another thing to keep in mind is if I want to remove and inject elements from an array as needed, or create a fixed pool of elements and just reuse the same elements over an over again, such is the case when it comes to the [concept of an object pool](/2020/07/20/canvas-example-object-pool/) for example.
