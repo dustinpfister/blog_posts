@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 11:32:18
-version: 1.62
+updated: 2021-07-20 11:35:20
+version: 1.63
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -109,7 +109,7 @@ console.log(a); // [1,2,3,4,5,6,7,8,9]
 
 ### 3.3 - Use Array.unshift to add an element to and end of an Array
 
-The unshift method works just like the push method but it can be used to add one or more elements to the beginning of an Array at index 0, rather than at the end of an array.
+The unshift method works just like the push method but it can be used to add one or more elements to the beginning of an Array at index 0, rather than at the end of an array. So then that is push to add an element at the end, and unshift to add an element to the begging of the array at the left most position. Also just like that is the push method it is possible to add more than one element at a time, but just making use of more than one argument when calling the method.
 
 ```js
 var a = [4,5,6];
