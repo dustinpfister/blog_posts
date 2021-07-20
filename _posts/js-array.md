@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-19 16:12:06
-version: 1.60
+updated: 2021-07-20 11:27:44
+version: 1.61
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -74,7 +74,6 @@ console.log(b[3]); // 'split'
 ## 3 - Pushing, shifting, and adding elements to an array
 
 Once an Array is created it is important to know how to add elements to it. There are a number of ways to do so, with array prototype methods, as well as just directly writing index values. The most common way to go about adding elements to an array in javaScript may be the Array.push method, but there are a number of other ways to do so as well that a javaScript developer should be aware of.
-
 ### 3.1 - Just adding, or overwriting by index
 
 One of the most simple ways to go about adding elements to an Array is to just use the square bracket notation to set the element value of a desired index. To do this just use square brackets after the variable name with the desired index value passed via the brackets. This can be used as a way to both set, and query a certain index value of the array.
@@ -132,6 +131,18 @@ a = a.slice(0, 3).concat([4, 5, 6], a.slice(3, 6));
 console.log(a); // [1,2,3,4,5,6,7,8,9]
 ```
 
+### 3.5 - The Array.splice method can be used to remove no elements, and inject ones at an index location
+
+The array splice method is typically used as a way to remove elements from an array.
+
+```js
+var a = [1, 2, 4, 5];
+// first augment is an array index location
+// second argument is the number of elements I want
+// to remove, and the third argument is what I want to inject
+a.splice(2, 0, 3);
+console.log(a); // [1, 2, 3, 4, 5]
+```
 
 ## 4 - Arrays are Objects
 
