@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 11:46:26
-version: 1.68
+updated: 2021-07-20 11:49:21
+version: 1.69
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -337,7 +337,16 @@ console.log(b); // 3
 
 ## 10 - Sorting an array
 
-The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place.
+The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place. there are also many usful user space methods that have been made fo this sort of thing, for examples when it comes to using lodash there is also the [lodash sort by method](/2018/07/06/lodash_sortby) that can be used in that framework if that is part of an application.
+
+## 10.1 - Basic array sorrt example
+
+```js
+var arr = [7,4,2,5,8,6,3,1];
+arr.sort();
+console.log(arr);
+// [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+```
 
 ## 11 - Multidimensional Arrays
 
