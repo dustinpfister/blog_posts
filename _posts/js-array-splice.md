@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 914
-updated: 2021-07-20 12:52:38
-version: 1.8
+updated: 2021-07-20 12:54:30
+version: 1.9
 ---
 
 When it comes to writing about javaScript by itself I have not got around o writing a post on the [array splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) method yet when it comes to [working with arrays in javaScript](/2018/12/10/js-array/). Writing about this array splice method is something that I should have got out of the way a long time ago, but better late than never. 
@@ -71,3 +71,7 @@ var a = [1, 2, 4, 5];
 a.splice(2, 0, 3);
 console.log(a); // [1, 2, 3, 4, 5]
 ```
+
+## 2 - Conclusion
+
+That will be it for now when it comes to working with the array splice method. There is a great deal more to write about when it comes to working with arrays in javaScript, but the array splice method is a big part of it because much of what is done involves injecting and removing arrays.
