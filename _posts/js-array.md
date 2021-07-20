@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-07-20 11:39:42
-version: 1.65
+updated: 2021-07-20 11:42:40
+version: 1.66
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property. There are many [posts on the Internet that have to do with getting started with javaScript arrays](https://www.javascripttutorial.net/javascript-array/), and also posts that get into all kinds of detail about arrays. However I thought I would take a moment to get together my own content on arrays when it comes to javaScript as there are all kinds of little things to get to in my own little way about them for what it is worth.
@@ -319,7 +319,21 @@ In lodash there is the [\_.map](/2018/02/02/lodash_map/) method that works the s
 
 ## 9  - finding something in an array
 
+When it comes to working with an array there will come a time where I will want to find something in the array. This can have more that one meaning, but will often mean finding a single element in the array.
+
+### 9.1 - The array find method
+
 There is the [array find](/2021/07/19/js-array-find) method that can be used to find a single element in an array that meets a condition of some kind given with a function.
+
+```js
+// and array of numbers
+var a = [1, 2, 3, 4, 5, 6, 7];
+ 
+var b = a.find(function (n) {
+        return n > 2;
+    });
+console.log(b); // 3
+```
 
 ## 10 - Sorting an array
 
