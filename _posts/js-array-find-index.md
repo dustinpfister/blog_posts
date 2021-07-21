@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:27:57
-version: 1.9
+updated: 2021-07-21 12:28:42
+version: 1.10
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -34,7 +34,7 @@ console.log(index); // 2
 console.log(a[index]); // 42
 ```
 
-### 1.1 - array of objects
+### 1.2 - array of objects
 
 In this example I am now dealing with an array of objects, however the basic idea is still the same. I just call the find index method off of the array, and pass a test function. In the body of the test function I am then just accessing a standard property of each objects that should be there, and comparing it to a desired value.
 
