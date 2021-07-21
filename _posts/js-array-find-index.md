@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 13:07:50
-version: 1.22
+updated: 2021-07-21 13:09:05
+version: 1.23
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -107,6 +107,8 @@ I now have an array of objects with index values where the first object is the b
 Now that I have the basics of the find index array method out of the way, and also touched base on some examples that have to do with using other methods a s a way to create and sort an array of elements index values, maybe now I should write about some use case examples of all of this. There are all kinds of projects that will end up involving finding one object index value, or an array of index values, in some kind of collection. So in this section I will be going over at least a few examples of using the array find index method, or by one way or another getting one or more index values.
 
 ### 3.1 - Create some kind of find by prop valye helper function
+
+When creating a module of some kind I might want to have some kind of public method that can be used to find an single object in a collection that has a given value, for a given object property name.
 
 ```js
 var findByPropValue = function(objs, propName, propValue, getIndex){
