@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:28:42
-version: 1.10
+updated: 2021-07-21 12:32:05
+version: 1.11
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -55,6 +55,8 @@ console.log(people[firstA]); // { name: 'Gary', grade: 'A' }
 ```
 
 ## 2 - Some alternative ways of finding index values
+
+The array find index method works okay, but it will not work great in all situations. If I am looking for just one element, and only one element, then maybe the array find index method will work okay. However often I might not just want one index value, but a collection of index values where the first index value is the best match, the second index value is the first runner up, and so forth. So then in this section I will be going over some additional javaScript examples that are also ways of going about finding an index value, but more than one value, and sorting those values.
 
 ### 2.1 - Using array.map, and array.sort
 
