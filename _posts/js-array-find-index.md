@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:38:10
-version: 1.13
+updated: 2021-07-21 12:40:00
+version: 1.14
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -100,3 +100,4 @@ console.log(people[index]);
 
 ## 3 - Conclusion
 
+So then the find index array prototype method will work okay if we are taking about finding just one element in an array. However in situations in which there may be more than one candidate for a search query of some kind then the method will fall short.
