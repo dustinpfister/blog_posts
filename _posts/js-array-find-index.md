@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:18:33
-version: 1.5
+updated: 2021-07-21 12:21:14
+version: 1.6
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -17,6 +17,8 @@ Although the find index, and find methods might work okay in many situations the
 
 
 ## 1 - Basic array find index method examples
+
+In this section I will be starting out with just a few basic examples of the array find index method. The goal here is to just overview the very basics of suing this array find the index value of the first element from left to right. The basic process is simple enough I first just need to call the find index method off of the instance of the array, then I need to pass a test function as the first and only argument to the array find index method.
 
 ### 1.1 - get the furst number example
 
