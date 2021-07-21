@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 13:01:32
-version: 1.20
+updated: 2021-07-21 13:05:36
+version: 1.21
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -102,7 +102,9 @@ console.log(people[index]);
 
 I now have an array of objects with index values where the first object is the best student for this kind of query. The student selected then is not the student with the best over all grade, but the result of an okay grade with a subject bonus added to a weight value because of an active interest in the subject of science. The next runners up though do still have high grades.
 
-## 3 - Some use case exmaples
+## 3 - Some use case examples
+
+Now that I have the basics of the find index array method out of the way, and also touched base on some examples that have to do with using other methods a s a way to create and sort an array of elements index values, maybe now I should write about some use case examples of all of this.
 
 ### 3.1 - Create some kind of find by prop valye helper function
 
