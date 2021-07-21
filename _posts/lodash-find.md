@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2021-07-19 16:01:21
-version: 1.53
+updated: 2021-07-21 12:15:16
+version: 1.54
 ---
 
 So the [lodash find](https://lodash.com/docs/4.17.5#find) collection method can be used to find a single item in a collection or in other words an array or object in general when using the [lodash utility library](https://lodash.com/) with a javaScript project. There is also the native Array.find method these days, but that is just an array prototype method, and as such it can not just be used to find an object key in general with any object unless that object is an array or array like object.
@@ -27,7 +27,7 @@ Still it is not to hard to just find something in an array with just plain old j
 
 So there seems to be a lot of debate these days when it comes to lodash even being relevant or necessary when it comes to writing modern javaScript. It is true that a lot of the functionality in lodash is now baked into core javaScript itself. So there are many methods in lodash that are not really needed any more, if a developer is only concerned about supporting modern evergreen browsers as least.
 
-However there are some methods that are not a part of core javaScript at all, and there are many methods where there is a native counterpart, but it works just a little differently, brings some more features, is a little more robust and so forth. That being said the lodash \_.find method is one of those methods and in this section I will be pointing out some of the deferences between \_.find and the [native Array.find method](/2021/07/19/js-array-find/) which is one of the many [array methods](/2018/12/10/js-array/) to work with in javaScript by itself.
+However there are some methods that are not a part of core javaScript at all, and there are many methods where there is a native counterpart, but it works just a little differently, brings some more features, is a little more robust and so forth. That being said the lodash \_.find method is one of those methods and in this section I will be pointing out some of the deferences between \_.find and the [native Array.find method](/2021/07/19/js-array-find/) which is one of the many [array methods](/2018/12/10/js-array/) to work with in javaScript by itself. There is also a native [array find index method](/2021/07/21/js-array-find-index/) that works just like the native array find method only it will return a index rather than a value.
 
 ### 2.1 - Native Array.find overview
 
