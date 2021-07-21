@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:50:24
-version: 1.19
+updated: 2021-07-21 13:01:32
+version: 1.20
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -102,6 +102,30 @@ console.log(people[index]);
 
 I now have an array of objects with index values where the first object is the best student for this kind of query. The student selected then is not the student with the best over all grade, but the result of an okay grade with a subject bonus added to a weight value because of an active interest in the subject of science. The next runners up though do still have high grades.
 
-## 3 - Conclusion
+## 3 - Some use case exmaples
+
+### 3.1 - Create some kind of find by prop valye helper function
+
+```js
+var findByPropValue = function(objs, propName, propValue, getIndex){
+    var method = getIndex ? 'findIndex': 'find';
+    return objs[method](function(obj){
+        return obj[propName] === propValue;
+    });
+};
+var people = [
+    {id: '1', name: 'John', grade: 'F'},
+    {id: '2', name: 'Beth', grade: 'C'},
+    {id: '3', name: 'Phil', grade: 'C'},
+    {id: '4', name: 'Gary', grade: 'A'},
+    {id: '5', name: 'Emme', grade: 'A'}
+];
+console.log( findByPropValue(people, 'id', '3', false) );
+// { id: '3', name: 'Phil', grade: 'C' }
+console.log( findByPropValue(people, 'id', '3', true) );
+// 2
+```
+
+## 4 - Conclusion
 
 So then the find index array prototype method will work okay if we are taking about finding just one element in an array. However in situations in which there may be more than one candidate for a search query of some kind then the method will fall short.
