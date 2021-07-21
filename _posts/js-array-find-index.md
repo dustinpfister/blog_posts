@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 13:13:03
-version: 1.25
+updated: 2021-07-21 13:32:07
+version: 1.26
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -128,6 +128,58 @@ console.log( findByPropValue(people, 'id', '3', false) );
 // { id: '3', name: 'Phil', grade: 'C' }
 console.log( findByPropValue(people, 'id', '3', true) );
 // 2
+```
+
+### 3.2 - Process dead units example
+
+When it comes to making all kinds of games there is often a situation in which there needs to be a process to go about purging dead units from a collection of some kind. Often there may be a system that involves creating and removing objects as needed, but often I think the best way is to have some kind of system for creating a fixed pool of objects that are reused over and over again.
+
+```js
+// find dead unit index values
+var findDeadUnitIndexValues = function(pool){
+    return pool.map(function(obj, index){
+        return {
+            index: index,
+            hp: obj.hp
+        }
+    }).filter(function(obj){
+        return obj.hp <= 0;
+    });
+};
+// process dead units
+var processDeadUnits = function(pool, state){
+    var indexObjects = findDeadUnitIndexValues(pool);
+    indexObjects.forEach(function(obj){
+        var unit = pool[obj.index]
+        state.money += unit.money;
+        unit.active = false;
+        unit.x = -32;
+        unit.y = -32;
+        unit.money =  0;
+    });
+};
+// a pool
+var pool = [
+  { x: 42, y: 12, hp: 0, hpMax: 10, active: true, money: 1},
+  { x: 10, y: 89, hp: 3, hpMax: 10, active: true, money: 1},
+  { x: 30, y: 90, hp: 7, hpMax: 10, active: true, money: 1},
+  { x: 37, y: 10, hp: 10, hpMax: 10, active: true, money: 1},
+  { x: 15, y: 45, hp: 0, hpMax: 10, active: true, money: 1}
+];
+console.log(findDeadUnitIndexValues(pool));
+// [ { index: 0, hp: 0 }, { index: 4, hp: 0 } ]
+var state = {money: 0};
+processDeadUnits(pool, state);
+console.log(state);
+// { money: 2 }
+console.log(pool);
+/*
+[ { x: -32, y: -32, hp: 0, hpMax: 10, active: false, money: 0 },
+  { x: 10, y: 89, hp: 3, hpMax: 10, active: true, money: 1 },
+  { x: 30, y: 90, hp: 7, hpMax: 10, active: true, money: 1 },
+  { x: 37, y: 10, hp: 10, hpMax: 10, active: true, money: 1 },
+  { x: -32, y: -32, hp: 0, hpMax: 10, active: false, money: 0 } ]
+*/
 ```
 
 ## 4 - Conclusion
