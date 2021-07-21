@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:22:55
-version: 1.7
+updated: 2021-07-21 12:25:43
+version: 1.8
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -21,6 +21,8 @@ Although the find index, and find methods might work okay in many situations the
 In this section I will be starting out with just a few basic examples of the array find index method. The goal here is to just overview the very basics of suing this array find the index value of the first element from left to right. The basic process is simple enough I first just need to call the find index method off of the instance of the array, then I need to pass a test function as the first and only argument to the array find index method. In the body of this test method I need to define some javaScript code that will create a true or false value that will be the return value of the function. In the event that the return value is true then that will be the element index value is what will be returned by the array find index method.
 
 ### 1.1 - get the first number example
+
+In this example I am using the javaScript type of operator to check the type of each element, in the event that the type is a number than the returned index value will be that element. So then this is a way to get the first index value in the array that is a number rather than any other kind of type.
 
 ```js
 var a = [null, 'foo', 42, 'bar', false, 11];
