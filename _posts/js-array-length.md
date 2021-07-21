@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2020-07-22 07:22:30
-version: 1.64
+updated: 2021-07-21 13:59:56
+version: 1.65
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -320,7 +320,7 @@ This presents some issues of concern when it comes to arrays with a length prope
 
 ### 6.3 - Get Array count with Array.filter
 
-So another way to get the actual count of an array would be to still use a method like Object.keys, but filter the results of that method. The Array.filter method could be used as a way to create an array of Object keys that are numbered keys equal to or grater than that of zero. The length of that array could then be used as a way to determine the count or an array.
+So another way to get the actual count of an array would be to still use a method like Object.keys, but filter the results of that method. The [Array filter method](/2020/10/03/js-array-filter/) could be used as a way to create an array of Object keys that are numbered keys equal to or grater than that of zero. The length of that array could then be used as a way to determine the count or an array.
 
 ```js
 let count = (arr) => {
@@ -377,7 +377,7 @@ The length of an array generally refers to the number of elements, or the highes
 
 ## 8 - The delete operator and Array length
 
-So in javaScript there is the delete operator which can be used to delete object properties. Once might thing that using it might effect array length, but it does not. It would seem that it is no different from just setting an array element to undefined. So then it does not behave as one might expect when it comes to using the delete keyword to remove elements from an array.
+So in javaScript there is the [delete operator](/2019/02/20/js-javascript-delete/) which can be used to delete object properties. Once might thing that using it might effect array length, but it does not. It would seem that it is no different from just setting an array element to undefined. So then it does not behave as one might expect when it comes to using the delete keyword to remove elements from an array.
 
 ```js
 // delete
