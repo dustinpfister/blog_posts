@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:35:34
-version: 1.12
+updated: 2021-07-21 12:38:10
+version: 1.13
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -59,6 +59,8 @@ console.log(people[firstA]); // { name: 'Gary', grade: 'A' }
 The array find index method works okay, but it will not work great in all situations. If I am looking for just one element, and only one element, then maybe the array find index method will work okay. However often I might not just want one index value, but a collection of index values where the first index value is the best match, the second index value is the first runner up, and so forth. So then in this section I will be going over some additional javaScript examples that are also ways of going about finding an index value, but more than one value, and sorting those values. Than means making use of other javaScript features to create some kind of weight value for all elements, and then using the native [array sort](/2019/12/02/js-array-sort/) method to sort this array of values that contains weight values, along with an index value.
 
 ### 2.1 - Using array.map, and array.sort
+
+In this example I once again have an array of objects where each object contains properties for a student at a school. This time though I have some additional properties such as the grade number rather than just a letter grade, and a string that is the subject that the student seems to show the most interest in over all others.
 
 ```js
 var people = [
