@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:49:11
-version: 1.18
+updated: 2021-07-21 12:50:24
+version: 1.19
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -62,7 +62,7 @@ The array find index method works okay, but it will not work great in all situat
 
 In this example I once again have an array of objects where each object contains properties for a student at a school. This time though I have some additional properties such as the grade number rather than just a letter grade, and a string that is the subject that the student seems to show the most interest in over all others. So then say you would like to find a student that would be the best fit for work that has to do with a specific subject such as science. There is just going by the grades and that alone, but there is also taking into account if someone shows interest in science or not regardless of poor or great grades over all.
 
-So then in this example I am using the array map method to create an array of objects from the source array of student objects. The array map method will create and return a new array, so node of this will change the state of the source array. Each object in this weight objects array will contain a weight value, and an index value for the student objects array. I am then using the array sort method as a way to change the order of these weight objects so the the weight object with the highest weight value is the first element. 
+So then in this example I am using the [array map method](/2020/06/16/js-array-map/) to create an array of objects from the source array of student objects. The array map method will create and return a new array, so node of this will change the state of the source array. Each object in this weight objects array will contain a weight value, and an index value for the student objects array. I am then using the array sort method as a way to change the order of these weight objects so the the weight object with the highest weight value is the first element. 
 
 ```js
 var people = [
