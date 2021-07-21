@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 37
-updated: 2021-07-21 12:15:16
-version: 1.54
+updated: 2021-07-21 12:16:27
+version: 1.55
 ---
 
 So the [lodash find](https://lodash.com/docs/4.17.5#find) collection method can be used to find a single item in a collection or in other words an array or object in general when using the [lodash utility library](https://lodash.com/) with a javaScript project. There is also the native Array.find method these days, but that is just an array prototype method, and as such it can not just be used to find an object key in general with any object unless that object is an array or array like object.
@@ -45,7 +45,7 @@ var n = arr.find(function(el){
 console.log(n); // 1
 ```
 
-In this example I just have a simple array of primitives. I which to just find the first element in the array that is a number. I just need to use the typeof operator when making an expression that will return true when an element is found that is a number. In more complex situations involving arrays of objects for example the function that I pass might be a bot more complex, but you get the basic idea.
+In this example I just have a simple array of primitives. I which to just find the first element in the array that is a number. I just need to use the [typeof operator](/2019/02/15/js-javascript-typeof/) when making an expression that will return true when an element is found that is a number. In more complex situations involving arrays of objects for example the function that I pass might be a bot more complex, but you get the basic idea.
 
 ### 2.2 - Array.find with Array like objects
 
