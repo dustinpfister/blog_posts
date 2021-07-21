@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:15:16
-version: 1.4
+updated: 2021-07-21 12:18:33
+version: 1.5
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -18,9 +18,75 @@ Although the find index, and find methods might work okay in many situations the
 
 ## 1 - Basic array find index method examples
 
+### 1.1 - get the furst number example
+
+```js
+var a = [null, 'foo', 42, 'bar', false, 11];
+// find index of first number from left
+var index = a.findIndex(function (el) {
+        return typeof el === 'number';
+    });
+console.log(index); // 2
+console.log(a[index]); // 42
+```
+
+### 1.1 - array of objects
+
+```js
+var people = [
+    {name: 'John', grade: 'F'},
+    {name: 'Beth', grade: 'C'},
+    {name: 'Phil', grade: 'C'},
+    {name: 'Gary', grade: 'A'},
+    {name: 'Emme', grade: 'A'}
+];
+// get first A grade object
+var firstA = people.findIndex(function (el) {
+        return el.grade === 'A';
+    });
+console.log(firstA); // 3
+console.log(people[firstA]); // { name: 'Gary', grade: 'A' }
+```
+
 ## 2 - Some alternative ways of finding index values
 
 ### 2.1 - Using array.map, and array.sort
 
 ```js
+var people = [
+    {name: 'John', grade: 'F', gradeNumber: 58, bestSub: 'pe'},
+    {name: 'Beth', grade: 'C', gradeNumber: 72, bestSub: 'pe'},
+    {name: 'Phil', grade: 'B', gradeNumber: 83, bestSub: 'science'},
+    {name: 'Gary', grade: 'A', gradeNumber: 90, bestSub: 'art'},
+    {name: 'Emme', grade: 'A', gradeNumber: 95, bestSub: 'social'}
+];
+// create weight objects
+var weightObjects = people.map(function(obj, i){
+    var weight = obj.gradeNumber;
+    // 1.2x to weight if best subject is science
+    if(obj.bestSub === 'science' || obj.bestSub === 'math'){
+        weight = Math.floor(weight * 1.2);
+    }
+    return {
+        weight: weight,
+        index: i
+    };
+});
+// sort weight objects array by weight
+weightObjects.sort(function(a, b){
+    if(a.weight > b.weight){
+        return -1;
+    }
+    if(a.weight < b.weight){
+        return 1;
+    }
+    return 0;
+});
+var index = weightObjects[0].index;
+console.log(index); // 2
+console.log(people[index]);
+// { name: 'Phil', grade: 'B', gradeNumber: 83, bestSub: 'science' }
 ```
+
+## 3 - Conclusion
+
