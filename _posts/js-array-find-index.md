@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 13:11:19
-version: 1.24
+updated: 2021-07-21 13:13:03
+version: 1.25
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -108,7 +108,7 @@ Now that I have the basics of the find index array method out of the way, and al
 
 ### 3.1 - Create some kind of find by prop value helper function
 
-When creating a module of some kind I might want to have some kind of public method that can be used to find an single object in a collection that has a given value, for a given object property name. In threejs for example there are methods for getting a reference to an object by an id value, and then there is another one to get a reference by name. There is then having a more generic tool that is something like that than can be use to get a reference to an object, or the index value for that object, for any property and value for that property.
+When creating a module of some kind I might want to have some kind of public method that can be used to find an single object in a collection that has a given value, for a given object property name. In [threejs for example](/2021/05/12/threejs-object3d-get-by-name/) there are methods for getting a reference to an object by an id value, and then there is another one to get a reference by name string. There is then having a more generic tool that is something like that than can be use to get a reference to an object, or the index value for that object, for any property and value for that property.
 
 ```js
 var findByPropValue = function(objs, propName, propValue, getIndex){
