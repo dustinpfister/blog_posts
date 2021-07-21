@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 915
-updated: 2021-07-21 12:46:46
-version: 1.17
+updated: 2021-07-21 12:49:11
+version: 1.18
 ---
 
 When it comes to finding the index value of one element in an [array in javaScript](/2018/12/10/js-array/) there is the [array find index method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that will work okay for this sort of thing. This find index array prototype method works more or less the same way as the [array find method](/2021/07/19/js-array-find/) only it will return an index value, rather than the value of the element. Whe it comes to user space options such as in the lodash library there are also methods like the [lodash find](/2017/09/14/lodash-find/) method that is a fairly robust way of finding something in an array, or an object in general actually.
@@ -100,7 +100,7 @@ console.log(people[index]);
 // { name: 'Phil', grade: 'B', gradeNumber: 83, bestSub: 'science' }
 ```
 
-I now have an array of objects with index values where the first object is the best student for this kind of query.
+I now have an array of objects with index values where the first object is the best student for this kind of query. The student selected then is not the student with the best over all grade, but the result of an okay grade with a subject bonus added to a weight value because of an active interest in the subject of science. The next runners up though do still have high grades.
 
 ## 3 - Conclusion
 
