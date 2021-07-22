@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2021-07-22 14:53:29
-version: 1.13
+updated: 2021-07-22 15:00:34
+version: 1.14
 ---
 
 In javaScript there is a standard way for creating a method for an object that will return what the string value for an object should be. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the [value of method](/2020/03/06/js-value-of/) that is a way to set what the number primitive value for an object should be. The toString method will be used in a javaScript expression where an object value needs to be converted to a string when using the object with a string value and the addition operator for example. As you would guess the value of method is more or less the same thing, but the primitive value returned by that function should be a number values rather than that of a string.
@@ -44,6 +44,25 @@ var pt = {
  
 console.log( String(pt) );
 // (40, 5)
+```
+
+### 1.2 - The prototype object
+
+When making a new class I will often want to add a toString method to the prototype object to define what the string value should be for the object.
+
+```js
+var Foo = function (a, b) {
+    this.a = a;
+    this.b = b;
+    this.c = this.a + this.b;
+};
+ 
+Foo.prototype.toString = function () {
+    return this.a + ' + ' + this.b + ' = ' + this.c;
+};
+ 
+var a = new Foo(1, 1);
+console.log( a + '' ); // '1 + 1 = 2'
 ```
 
 ## 2 - to string and value of
