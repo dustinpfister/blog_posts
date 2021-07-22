@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 682
-updated: 2021-07-22 14:52:39
-version: 1.12
+updated: 2021-07-22 14:53:29
+version: 1.13
 ---
 
 In javaScript there is a standard way for creating a method for an object that will return what the string value for an object should be. This standard way of defining what a string primitive is for an object is the [to string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) method. In addition to the to string method there is also the [value of method](/2020/03/06/js-value-of/) that is a way to set what the number primitive value for an object should be. The toString method will be used in a javaScript expression where an object value needs to be converted to a string when using the object with a string value and the addition operator for example. As you would guess the value of method is more or less the same thing, but the primitive value returned by that function should be a number values rather than that of a string.
@@ -18,6 +18,8 @@ So then the toString method along with the value of methods of an object are sta
 ## 1 - A basic to string method example
 
 A to string method can be added to any object as an actual property of the object itself, also know as an own property of an object, or by way of the prototype chain. When using something like the main Sting method to convert an object to a string, the to string method will be used to create a primitive string value of the object. In the event that that there is no to string method as an own property than the proto type object for the class of the object will be used, if there is no to string method there then any and all base classes will be looked at all the way down to the Object class.
+
+### 1.1 - As own property example of to string
 
 So say I have an object that contains properties for an x, and y axis values. In other words it is a simple point object that contains the contains of a single point in a grid. If I pass this Object to the main Sting function it will convert the object to a string, but because I did not define a toString method for it as an own property, and I created the object with the plain old object literal syntax, the string value is created with the default to string method of the main object prototype. The main to string method in the object prototype will not give the results that I would prefer, as I would like to have a string representation of that point when I do something like passing the object to the main String method.
 
