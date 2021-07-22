@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-07-22 10:46:24
-version: 1.7
+updated: 2021-07-22 10:49:46
+version: 1.8
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -49,7 +49,7 @@ console.log( a.toString() );
 
 ### 1.3 - Using array map first to work with an Array of Objects
 
-One way to address the problem that I run into with the to string method is to just use a method like array map to create a custom array or privative values first.
+One way to address the problem that I run into with the to string method is to just use a method like [array map](/2020/06/16/js-array-map/) to create a custom array or privative values first. I can then just call the to string method of off the instance of the new array that is created from array map.
 
 ```js
 var a = [
@@ -67,6 +67,8 @@ console.log( b.toString() );
 ```
 
 ### 1.4 - Creating a custom to string method
+
+Another option would be to create a custom to string method. When doing this it is possible to monkey patch the array prototype with a custom array prototype, but generally that would not be a good idea, as it would effect this functionally everywhere in a page. However one thing that can be done is to create an own property of a single array instance without mutating the state of the prototype object of the Array class.
 
 ```js
 var a = [
