@@ -5,11 +5,132 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-07-22 10:26:05
-version: 1.1
+updated: 2021-07-22 10:34:18
+version: 1.2
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
 
 <!-- more -->
+
+## 1 - Basic examples of the array to string method
+
+### 1.1 - An Array of primitives
+
+```js
+var a = [1, 2, 3, 4];
+// there is calling to string directory
+console.log(a.toString()); // '1,2,3,4'
+// the to string method will be called when an
+// operation is preformed that will result in a need
+// to covert to an array a string
+console.log(a + ''); // '1,2,3,4'
+```
+
+### 1.2 - An Array of Objects
+
+```js
+var a = [
+    {x: 42, y: 12},
+    {x: 0, y: 0},
+    {x: 12, y: 35}
+];
+console.log( a.toString() );
+// [object Object],[object Object],[object Object]
+```
+
+### 1.3 - Using array map first to work with an Array of Objects
+
+```js
+var a = [
+    {x: 42, y: 12},
+    {x: 0, y: 0},
+    {x: 12, y: 35}
+];
+// creating a new array b from a
+var b = a.map(function(obj){
+    return '{x:'+ obj.x + ',y:' + obj.y + '}';
+});
+// and then calling toString off of b
+console.log( b.toString() );
+// {x:42,y:12},{x:0,y:0},{x:12,y:35}
+```
+
+### 1.4 - Creating a custom to string method
+
+```js
+var a = [
+    {x: 42, y: 12},
+    {x: 0, y: 0},
+    {x: 12, y: 35}
+];
+// creating a custom toString method for the array
+a.toString = function(){
+    return this.map(function(obj){
+        return '{x:'+ obj.x + ',y:' + obj.y + '}';
+    }).join(',');
+};
+// calling toString will now work the way I want it to
+console.log( a.toString() );
+// {x:42,y:12},{x:0,y:0},{x:12,y:35}
+```
+
+### 1.5 - Creating a Class
+
+```js
+// a constructor function to create a class of an object
+var Stack = function (a) {
+    this.a = a || [];
+};
+// the to string method is used to define what a string value should be for
+// this class of an object
+Stack.prototype.toString = function () {
+    return this.a.map(function (el) {
+        // if el is a number
+        if (typeof el === 'number') {
+            return String(el);
+        }
+        // if object
+        if (typeof el === 'object' && el != null) {
+            return Object.keys(el).map(function (key) {
+                return key + ':' + el[key];
+            }).join(',');
+        }
+        // string null for null
+        if (el === null) {
+            return 'null';
+        }
+        // string of undefined for undefined
+        if (el === undefined) {
+            return 'undefined';
+        }
+        // default to just calling whatever the toString method is
+        return el.toString();
+    }).join(',');
+};
+// value of is used to define what a number value should be for this
+// class of object
+Stack.prototype.valueOf = function () {
+    return this.a.reduce(function (acc, el) {
+        if (typeof el === 'number') {
+            return acc += el;
+        }
+        if (typeof el === 'object' && el != null) {
+            return acc += Object.values(el).reduce(function (acc, el) {
+                return typeof el === 'number' ? acc += el : acc;
+                acc;
+            }, 0);
+        }
+        return acc;
+    }, 0);
+};
+ 
+var s = new Stack([null, undefined, 1, [1, 1], {x: 3}]);
+console.log(s.toString());
+//null,undefined,1,0:1,1:1,x:3
+console.log(s.valueOf());
+// 6
+```
+
+## 2 - Conclusion
 
