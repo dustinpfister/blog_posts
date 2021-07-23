@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-23 12:12:52
-version: 1.22
+updated: 2021-07-23 12:14:03
+version: 1.23
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -123,7 +123,7 @@ console.log(r); // 1.5707963267948966
 
 ### 2.2 - Get angle from normalized position and inverse using Math.atan2, Math.cos, and Math.sin
 
-So then when it comes to getting an angle from one position to another the go to function in the Math object would be the [Math.atan2](/2019/03/19/js-math-atan2/) method.
+So then when it comes to getting an angle from one position to another the go to function in the Math object would be the [Math.atan2](/2019/03/19/js-math-atan2/) method. When it comes to making an inverse of a funciton like this I would likely want to use Math.cos, and Math.sin.
 
 ```js
 // get d when normalized x, and y are known
