@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2021-07-23 13:50:16
-version: 1.22
+updated: 2021-07-23 13:51:43
+version: 1.23
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the [array](/2018/12/10/js-array/) prototype object, that can be used to sort the elements in place.  This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method, such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) method in lodash. This method is like array sort, but will work out of the box with object collections in general beyond that of arrays. In addition it will not mutate the object in place like array sort does, but create and return a new array.
 
-However in this post I will be sticking to plain old native javaScript by itself, and looking into just working with what there is to work with in the array prototype, and with other native javaScript features without bothering with a user space library of some kind.
+However in this post I will be sticking to plain old native javaScript by itself, and looking into just working with what there is to work with in the array prototype, and with other native javaScript features without bothering with a user space library of some kind. When it comes to the problem of the array sort method mutating the array in place I can just make use of one of the many options for copying an array to make a shallow or deep clone of a source array first if I do not want to mutate the array in place.
 
 <!-- more -->
 
