@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2021-07-23 13:24:04
-version: 1.34
+updated: 2021-07-23 13:25:12
+version: 1.35
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript that might take longer to get solid. Functions can be used as a way to create reusable segments of code, but there are many different ways of just doing that to begin with. Functions are also used for compartmentalizing massive amounts of code into a kind of module or package, and functions can also be used as a way to create a main application loop.
@@ -194,7 +194,7 @@ There is also the fact than making a loop this way is still resulting in having 
 
 ## 7 - Inverse functions
 
-ANother topics that might come up with functions is the topic of inverse functions. An inverse function, or anti function, is a kind of function that is the inversion of another function.  These kinds of functions will come all the time, often I have a way to go about getting a unknown value say x, with a known y value, other times I have y actually and now I actually need a way to get x with y. for example say I have a function that will return a position given a distance and angle, and inversion of that function would be a function that gives a distance and angle for a given position. So then in this section I think I should go over at least a few quick examples of this kind of function.
+Another topic that might come up with functions is the topic of [inverse functions](/2021/07/23/js-function-inverse/). An inverse function, or anti function, is a kind of function that is the inversion of another function.  These kinds of functions will come all the time, often I have a way to go about getting a unknown value say x, with a known y value, other times I have y actually and now I actually need a way to get x with y. for example say I have a function that will return a position given a distance and angle, and inversion of that function would be a function that gives a distance and angle for a given position. So then in this section I think I should go over at least a few quick examples of this kind of function.
 
 ### 7.1 - basic inverse functions example
 
