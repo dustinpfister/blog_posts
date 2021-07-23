@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2021-07-23 13:28:24
-version: 1.36
+updated: 2021-07-23 13:35:40
+version: 1.37
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript that might take longer to get solid. Functions can be used as a way to create reusable segments of code, but there are many different ways of just doing that to begin with. Functions are also used for compartmentalizing massive amounts of code into a kind of module or package, and functions can also be used as a way to create a main application loop.
@@ -171,7 +171,7 @@ console.log(pt.distance.call(pt2, 0, 0).toFixed(2)); // 14.14
 
 Functions can be used to create a product with some independent and Dependant variables, that is I pass some arguments to it and it returns a result based just on those arguments. However not all functions in javaScript are those kinds of functions there are functions that act on an object that I pass it as an argument in place, and then do not return anything, or the result is just another reference to the same object that I just passed it. Functions can also be used for a number of other kinds of things such as just having a way to wrap everything up into a local variable scope, or creating main application loops by calling the function inside the body of the function itself. So with that said lets look at a few examples of making a loop of sorts with a function rather than that of a while loop or something to that effect.
 
-### 6.1 - Basic function loop with setTiemout
+### 6.1 - Basic function loop with setTimeout
 
 One basic way to go about making an application loop with a javaScript function would be to use the [setTiemout method](/2018/12/06/js-settimeout/) inside the body of a function and call the function itself with it in a delayed way. So in other words I create a function and call setTiemout inside the body of the function, I pass setTiemout a reference to the function in which I am calling setTiemout as the first argument, and then a millisecond value as the second argument. The setTiemout method will then return a number that I can pass to clearTiemout if I want to cancel the delayed action of calling the inner loop again.
 
