@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-23 11:52:27
-version: 1.13
+updated: 2021-07-23 11:54:18
+version: 1.14
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -19,7 +19,7 @@ Some times I might be working with something that is [not monotonic](https://en.
 
 ## 1 - Some basic examples of inverse functions
 
-In this section I will be going over just a few simple examples of what an inverse of a function is. This are just a few basic hello world type examples.
+In this section I will be going over just a few simple examples of what an inverse of a function is. That is just start8ng out with a few very few basic hello world type examples of inverse functions before getting into some real would examples that come up now and then.
 
 ### 1.1 - Multiply and divide example
 
