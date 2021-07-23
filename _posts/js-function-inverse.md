@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-23 12:41:54
-version: 1.25
+updated: 2021-07-23 12:47:51
+version: 1.26
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -104,7 +104,7 @@ So in this section I will be going over a few functions that have to do with get
 
 ### 2.1 - Radians and Degrees
 
-One basic set of functions that comes to mind right away is to have some simple functions that will convert a radian value to a degree, and also the inverse of that.
+One basic set of functions that comes to mind right away is to have some simple functions that will convert a radian value to a degree, and also the inverse of that. Most of us think in terms of angles as degrees in the form of a number in the range of 0 to 360, but many of the Math functions in javaScript, and else ware will take a radian value as an argument. So it is called for to have functions that will convert a degree value to a radian value, and vis versa.
 
 ```js
 var getDegree = function (radian) {
