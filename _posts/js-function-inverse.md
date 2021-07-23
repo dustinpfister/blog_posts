@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-23 12:39:14
-version: 1.24
+updated: 2021-07-23 12:41:54
+version: 1.25
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -151,7 +151,7 @@ console.log(pos);
 
 ### 2.3 - Distance and angle
 
-Now lets say that I want a function that will give me a position from an origin given a distance and angle, and the inverse of such a function.
+Now lets say that I want a function that will give me a position from an origin given a distance and angle, and the inverse of such a function. For this I will want a get position function that will again make use of Math.cos, and Math.sin to get the position with a given known distance and angle. I can then create the inverse of this kind of get position function by making use of a distance formula, and the get d function that I worked out in an above example in this section that uses the Math.atn2 method.
 
 ```js
 // get radian, get degree, and a distance function
