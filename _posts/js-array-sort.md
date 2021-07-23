@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 574
-updated: 2021-07-23 13:55:01
-version: 1.24
+updated: 2021-07-23 14:26:41
+version: 1.25
 ---
 
 In native javaScript there is the [array sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method in the [array](/2018/12/10/js-array/) prototype object, that can be used to sort the elements in place.  This fact that the array sort mutates an array in place might be one reason why you might want to use an alternative user space method to the array sort method, such as the [lodash \_.sortBy](/2018/07/06/lodash_sortby/) method in lodash. This method is like array sort, but will work out of the box with object collections in general beyond that of arrays. In addition it will not mutate the object in place like array sort does, but create and return a new array.
@@ -170,7 +170,60 @@ console.log(byFresh);
 //   { wordCount: 1800, time: 1000, comentCount: 0 } ]
 ```
 
-## 3 - Conclusion
+## 3 - create an array of weight objects
+
+There is the issue of not wanting to mutate a source array in place, and there is also working out a standard way to go about souring a collection of something. One thing that comes to mind is to come up with a standard way of sorting a collection of objects, but sorting a new array of objects created from the source array with something like the [array map](/2020/06/16/js-array-map/) method. This array of objects would just be a an object for each element in the source array that contains an index value for the element in the source array, and a weight value for that element. It is then this array of weight objects that is then sorted and not the original source array, and the same sort method can be used for each one.
+
+```js
+var posts = [
+   { wc: 1800, bl: 0, date: '2017-10-02'},
+   { wc: 1017, bl: 5, date: '2021-03-17'},
+   { wc: 1350, bl: 3, date: '2020-08-30'}
+];
+ 
+// create weight objects array
+var weightObjects = posts.map(function(post, index){
+    var wcScore = 1000 * ( post.wc >= 1800 ? 1 : post.wc / 1800 ),
+    blScore = 1000 * ( post.bl >= 5 ? 1 : post.bl / 5 );
+    return {
+        weight: wcScore + blScore,
+        index: index
+    };
+});
+console.log(weightObjects);
+/*
+[
+  { weight: 1000, index: 0 },
+  { weight: 1565, index: 1 },
+  { weight: 1350, index: 2 }
+]
+*/
+ 
+// sort the weight objects by the weight property
+weightObjects.sort(function(a, b){
+    if(a.weight > b.weight){
+        return -1;
+    }
+    if(a.weight < b.weight){
+        return 1;
+    }
+    return 0;
+});
+ 
+console.log(weightObjects);
+/*
+[
+  { weight: 1565, index: 1 },
+  { weight: 1350, index: 2 },
+  { weight: 1000, index: 0 }
+]
+*/
+ 
+// use the index prop, or attach objects references to get the best post
+console.log( posts[weightObjects[0].index] );
+```
+
+## 4 - Conclusion
 
 So the array sort prototype method will work okay when one knows how to get around its shortcomings. The main draw back is that it will mutate the array in place, but aside from that it will work okay just fine. There are ways of getting around the mutation in place thing anyway. For example often I might want to do something with array map before sorting, and that will of course return a new array.
 
