@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-23 12:07:25
-version: 1.18
+updated: 2021-07-23 12:08:30
+version: 1.19
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -99,6 +99,8 @@ console.log(y); // 4
 Now that I got the basics of inverse functions out of the way lets get into some real examples that actually come up now and then when working on projects. When making games, or any kind of project that has to do with working with objects in space there is running into all kinds of problems that have to do with angles and distances. 
 
 For example say I have two display objects in a grid, and I would like to get the angle and distance from one object to another when the positions of both objects are known. A solution to this problem might involve the use of Math.atan2, and a distance function to get the desired values. So then there is the idea of also being able to create a function that is the inverse of this kind of function, say I have an angle and distance and I want to get a set of deltas based off of that angle and distance.
+
+So in this section I will be going over a few functions that have to do with getting angles and distances, and the inverse of such functions.
 
 ### 2.1 - Radians and Degrees
 
