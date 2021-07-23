@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2020-10-08 14:15:50
-version: 1.33
+updated: 2021-07-23 13:24:04
+version: 1.34
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript that might take longer to get solid. Functions can be used as a way to create reusable segments of code, but there are many different ways of just doing that to begin with. Functions are also used for compartmentalizing massive amounts of code into a kind of module or package, and functions can also be used as a way to create a main application loop.
@@ -46,7 +46,7 @@ console.log(func(1, 2)); // 3
 
 Functions do not always have to be used to return something though, often a function is just used as a way to keep things encapsulated from everything else. However getting back to the topic at hand here, it is import to know that arguments can of course be added to functions by simply just having a few argument names for them. There is a lot more to write about when it comes to arguments such as the arguments object, and also the nature of the this keyword, as well as the variable scope chain as well as the prototype chain, but for now this is just the basic section.
 
-### 1.3 - local variables AKA Dependant variables
+### 1.3 - local variables, and Dependant variables
 
 The use of the var keyword, or any of the more modern alternatives inside the body of a function will result in the variable having a scope that is local to the body of the function. So the value can only be accessed inside that function and now outside of it. In old specs of javaScript there was only function level variable scope, however in newer specs the scope of variables can be block level by using let or const to declare them rather than the tired yet true var.
 
@@ -66,7 +66,7 @@ try {
 }
 ```
 
-## 2 - Constructor function
+## 2 - A Constructor function
 
 So another thing about functions is using them to create what is often called a [constructor function](/2019/02/27/js-javascript-constructor/), or just simply a constructor for short. Of you have been using javaScript for at least a little while thus far chances are you have used one or two all ready. One example of a built in constructor function would be the Date constructor. This Date constructor is called with the new keyword to create an instance of a date object. Once there is a date object there is a whole bunch of methods that can be called off of that data object such as the get full year method that will return the full year of that date object instance.
 
@@ -192,6 +192,31 @@ So then this is the basic idea of what an app loop is with javaScript functions.
 
 There is also the fact than making a loop this way is still resulting in having code run in a single event loop, so use of this alone is not an example of what might often be referred to as _true-threading_ However getting into that would be way off topic when it comes to just this general overview of what can be done with javaScript functions.
 
-## 7 - Conclusion
+## 7 - Inverse functions
+
+ANother topics that might come up with functions is the topic of inverse functions. An inverse function, or anti function, is a kind of function that is the inversion of another function.  These kinds of functions will come all the time, often I have a way to go about getting a unknown value say x, with a known y value, other times I have y actually and now I actually need a way to get x with y. for example say I have a function that will return a position given a distance and angle, and inversion of that function would be a function that gives a distance and angle for a given position. So then in this section I think I should go over at least a few quick examples of this kind of function.
+
+### 7.1 - basic inverse functions example
+
+```js
+// get x function with div
+var getX = function (y) {
+    return y * 5;
+};
+
+var getY = function (x) {
+    return x / 5;
+};
+
+// getting x when I know y
+var x = getX(12);
+console.log(x); // 60
+// when I feed x to my getY function
+// I should get the original value I gave to getX
+var y = getY(x, 5);
+console.log(y); // 12
+```
+
+## 8 - Conclusion
 
 I have not even begone to scratch the surface when it comes to what can be done with javaScript functions in this post. The next step forward is to just get into creating projects with functions, and all the other little elements of the javaScript language.
