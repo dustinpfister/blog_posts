@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 919
-updated: 2021-07-27 18:44:30
-version: 1.10
+updated: 2021-07-27 18:49:57
+version: 1.11
 ---
 
 When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the [domain of a function](https://en.wikipedia.org/wiki/Domain_of_a_function) in javaScript. 
@@ -94,3 +94,7 @@ console.log( domain.map(Math.sin) );
   -0.7071067811865477 ]
 */
 ```
+
+## 2 - Conclusion
+
+The domain of a function is something that I want to run threw when it comes to testing a function that I wrote to make sure
