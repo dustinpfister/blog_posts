@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 919
-updated: 2021-07-27 19:35:27
-version: 1.15
+updated: 2021-07-27 19:36:23
+version: 1.16
 ---
 
 When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the [domain of a function](https://en.wikipedia.org/wiki/Domain_of_a_function) in javaScript. 
@@ -21,7 +21,7 @@ In this section I will just be going over a few simple examples of function doma
 
 ### 1.1 - Creating a function domain
 
-Lets say I just have a very simple function that will just take the numbers 0 there 10 as the first and only argument. On top of that the numbers that are expected are whole numbers so that means that the full function domain can just be a small array of numbers. So for this example it is possible to have a create domain function that will create an array of all possible values for the function. I can then use the array map method and call the function for each value in the domain array to get all possible return values for the domain also while I am at it.
+Lets say I just have a very simple function that will just take the numbers 0 there 10 as the first and only argument. On top of that the numbers that are expected are whole numbers so that means that the full function domain can just be a small array of numbers. So for this example it is possible to have a create domain function that will create an array of all possible values for the function. I can then use the [array map](/2020/06/16/js-array-map/) method and call the function for each value in the domain array to get all possible return values for the domain also while I am at it.
 
 ```js
 // create a domain for a function
