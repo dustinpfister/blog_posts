@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 919
-updated: 2021-07-27 18:28:42
-version: 1.5
+updated: 2021-07-27 18:34:18
+version: 1.6
 ---
 
-When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the domain of a function in javaScript.
+When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the [domain of a function](https://en.wikipedia.org/wiki/Domain_of_a_function) in javaScript. A function domain as it some times might be called is the full range of arguments that are possible for a given function. So say I have a function that accepts a single argument that represents a singe side of a six sided die, in that case the range for the one argument would be the numbers 1 threw 6.
 
 <!-- more -->
 
