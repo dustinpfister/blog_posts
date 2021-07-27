@@ -5,10 +5,36 @@ tags: [js]
 layout: post
 categories: js
 id: 918
-updated: 2021-07-27 12:06:58
-version: 1.1
+updated: 2021-07-27 12:08:39
+version: 1.2
 ---
 
 I have been learning more about writing [functions in javascript](/2019/12/26/js-function/) as of late, not so much when it comes to what the options are when it comes to functions themselves in javaScript, but different styles of functions that have more to do with math in general. That is that I have a fairly solid grasp on what a function expression is compared to a function declaration, and why arrow functions are not a drop in replacement for all kinds of functions in source code. I also know a thing or two about the function prototype object and how to use methods in the function prototype like call or apply to get a function of one prototype to work with an object of another prototype. However this post is not on any of that, it is on the topic of what a [monotonic function](https://en.wikipedia.org/wiki/Monotonic_function) is compared to other kinds of functions that are not monotonic.
 
 <!-- more -->
+
+
+## 1 - Some basic monotonic function examples
+
+### 1.1 - A function using Math.pow
+
+```js
+var pow = function (x) {
+    return Math.pow(2, x);
+};
+var x = 0,
+len = 5,
+results = [];
+while (x < len) {
+    results.push({
+        x: x,
+        y: pow(x)
+    });
+    x += 1;
+}
+console.log(JSON.stringify(results));
+//[{"x":0,"y":1},{"x":1,"y":2},{"x":2,"y":4},{"x":3,"y":8},{"x":4,"y":16}]
+```
+
+## 2 - Conclusion
+
