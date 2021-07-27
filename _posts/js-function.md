@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2021-07-23 13:35:40
-version: 1.37
+updated: 2021-07-27 19:42:12
+version: 1.38
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript that might take longer to get solid. Functions can be used as a way to create reusable segments of code, but there are many different ways of just doing that to begin with. Functions are also used for compartmentalizing massive amounts of code into a kind of module or package, and functions can also be used as a way to create a main application loop.
@@ -196,7 +196,7 @@ There is also the fact than making a loop this way is still resulting in having 
 
 Another topic that might come up with functions is the topic of [inverse functions](/2021/07/23/js-function-inverse/). An inverse function, or anti function, is a kind of function that is the inversion of another function.  These kinds of functions will come all the time, often I have a way to go about getting a unknown value say x, with a known y value, other times I have y actually and now I actually need a way to get x with y. for example say I have a function that will return a position given a distance and angle, and inversion of that function would be a function that gives a distance and angle for a given position. So then in this section I think I should go over at least a few quick examples of this kind of function.
 
-### 7.1 - basic inverse functions example
+### 7.1 - Basic inverse functions example
 
 For a basic example of an inverse function say I have a function that will just return a value that can be called x, by multiplying an argument called y by 5. In that case the inverse of such a function would be a function that will divide x by 5 to get y.
 
@@ -219,6 +219,40 @@ var y = getY(x, 5);
 console.log(y); // 12
 ```
 
-## 8 - Conclusion
+## 8 - The domain of a function
+
+The [domain of a function](/2021/07/27/js-function-domain/) is often describe as the full range of possible argument values for a function.
+
+```js
+// create a domain for a function
+var createDomain = function(sx, ex, step){
+    var x = sx,
+    domain = [];
+    while(x < ex){
+        domain.push(x);
+        x += step;
+    }
+    return domain;
+};
+// the function that I am creating a domain for.
+var func1 = function(x){
+   x = x < 0 ? 0: x;
+   x = x > 10 ? 10 : x;
+   return Math.round(x) / 10;
+};
+ 
+// creating an array for arguments values that I
+// will act as a domain
+var domain = createDomain(0, 11, 1);
+console.log(domain);
+// [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+ 
+// I can now use array map with the function func1 
+// to create an array or return values for the domain
+console.log( domain.map(func1) );
+// [ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ]
+```
+
+## 9 - Conclusion
 
 I have not even begone to scratch the surface when it comes to what can be done with javaScript functions in this post. The next step forward is to just get into creating projects with functions, and all the other little elements of the javaScript language.
