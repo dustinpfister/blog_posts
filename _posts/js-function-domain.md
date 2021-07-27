@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 919
-updated: 2021-07-27 18:25:39
-version: 1.3
+updated: 2021-07-27 18:27:40
+version: 1.4
 ---
 
 When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the domain of a function in javaScript.
@@ -48,6 +48,8 @@ console.log( domain.map(func1) );
 ```
 
 ### 1.2 - Example using Math.sin
+
+The full scope of the function domain for the Math.sin method might be to high to create an array for, because in a way it is any number between negative and positive infinity for the range of javaScript numbers.
 
 ```js
 // create a domain for a Math.sin
