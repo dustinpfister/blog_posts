@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 919
-updated: 2021-07-27 18:27:40
-version: 1.4
+updated: 2021-07-27 18:28:42
+version: 1.5
 ---
 
 When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the domain of a function in javaScript.
@@ -28,15 +28,15 @@ var createDomain = function(sx, ex, step){
     }
     return domain;
 };
-// the function that I am cretaing a domain for.
+// the function that I am creating a domain for.
 var func1 = function(x){
    x = x < 0 ? 0: x;
    x = x > 10 ? 10 : x;
    return x / 10;
 };
  
-// cretaing an array for argumnets values that I
-// will act as a domian
+// creating an array for arguments values that I
+// will act as a domain
 var domain = createDomain(0, 11, 1);
 console.log(domain);
 // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
