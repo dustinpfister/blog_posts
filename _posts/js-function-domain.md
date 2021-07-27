@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 919
-updated: 2021-07-27 18:24:24
-version: 1.2
+updated: 2021-07-27 18:25:39
+version: 1.3
 ---
 
 When getting into writing [functions in javaScript](/2019/12/26/js-function/) there are the things that have to do with how functions work in javaScript, but then there are all kinds of things that have to do with functions in general. That is things that do not just apply to functions in javaScript, but any language for that matter. With that said todays post is on the subject of the domain of a function in javaScript.
@@ -45,4 +45,44 @@ console.log(domain);
 // to create an array or return values for the domain
 console.log( domain.map(func1) );
 // [ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ]
+```
+
+### 1.2 - Example using Math.sin
+
+```js
+// create a domain for a Math.sin
+var createDomain = function(totalDivs){
+    var div = 0,
+    domain = [];
+    while(div < totalDivs){
+        domain.push( Math.PI * 2 / totalDivs * div );
+        div += 1;
+    }
+    return domain;
+};
+ 
+// eight directions
+var domain = createDomain(8);
+console.log(domain);
+/*
+[ 0,
+  0.7853981633974483,
+  1.5707963267948966,
+  2.356194490192345,
+  3.141592653589793,
+  3.9269908169872414,
+  4.71238898038469,
+  5.497787143782138 ]
+*/
+console.log( domain.map(Math.sin) );
+/*
+[ 0,
+  0.7071067811865475,
+  1,
+  0.7071067811865476,
+  1.2246467991473532e-16,
+  -0.7071067811865475,
+  -1,
+  -0.7071067811865477 ]
+*/
 ```
