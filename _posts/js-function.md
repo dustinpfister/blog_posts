@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 585
-updated: 2021-07-27 19:42:12
-version: 1.38
+updated: 2021-07-27 19:45:34
+version: 1.39
 ---
 
 In [javaScript functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) are a central part of much of the code that a javaScript developer will be studying and writing. The basics of functions in javaScript are something that can be quickly picked up in a flash, however there are many other aspects of functions in javaScript that might take longer to get solid. Functions can be used as a way to create reusable segments of code, but there are many different ways of just doing that to begin with. Functions are also used for compartmentalizing massive amounts of code into a kind of module or package, and functions can also be used as a way to create a main application loop.
@@ -221,7 +221,7 @@ console.log(y); // 12
 
 ## 8 - The domain of a function
 
-The [domain of a function](/2021/07/27/js-function-domain/) is often describe as the full range of possible argument values for a function.
+The [domain of a function](/2021/07/27/js-function-domain/) is often describe as the full range of possible argument values for a function. If the range of possible values is small enough, and there is just one argument some times it is possible to test out the full range. Other times it is just a small range of values that can be tested, or a stepping value will need to be used when the range is to extreme for practical testing purposes.
 
 ```js
 // create a domain for a function
