@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 918
-updated: 2021-07-27 13:30:00
-version: 1.5
+updated: 2021-07-27 13:34:20
+version: 1.6
 ---
 
 I have been learning more about writing [functions in javascript](/2019/12/26/js-function/) as of late, not so much when it comes to what the options are when it comes to functions themselves in javaScript, but different styles of functions that have more to do with math in general. That is that I have a fairly solid grasp on what a function expression is compared to a function declaration, and why arrow functions are not a drop in replacement for all kinds of functions in source code. I also know a thing or two about the function prototype object and how to use methods in the function prototype like call or apply to get a function of one prototype to work with an object of another prototype. However this post is not on any of that, it is on the topic of what a [monotonic function](https://en.wikipedia.org/wiki/Monotonic_function) is compared to other kinds of functions that are not monotonic.
@@ -45,7 +45,7 @@ There is playing around with the other domains though, when it comes to having a
 
 ### 1.2 - Using a function that makes use of two or more arguments to create a monotonic function
 
-Say I have a function that can be used in a monotonic way, but only if the domain of arguments that are used are restricted in such as way that the return values will only go up for values of x.
+Say I have a function that can be used in a monotonic way, but only if the domain of arguments that are used are restricted in such as way that the return values will only go up for values of x that go up from zero forward. One way to go about making sure that this will be the case is to create a monotonic function that will define what the arguments will be for the other function that makes use of more than on argument that will be called in the monotonic function. In other words I create what my monotonic function will be that will just take an x value, and the domain of x goes from 0 upward. In the body of this monotonic function I create arguments based off of the given x value. There is going this like using the modulo operator, as well as flooring values that are the results of division.
 
 ```js
 // a function that uses three arguments, that can be used
