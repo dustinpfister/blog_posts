@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 918
-updated: 2021-07-27 12:31:30
-version: 1.4
+updated: 2021-07-27 13:30:00
+version: 1.5
 ---
 
 I have been learning more about writing [functions in javascript](/2019/12/26/js-function/) as of late, not so much when it comes to what the options are when it comes to functions themselves in javaScript, but different styles of functions that have more to do with math in general. That is that I have a fairly solid grasp on what a function expression is compared to a function declaration, and why arrow functions are not a drop in replacement for all kinds of functions in source code. I also know a thing or two about the function prototype object and how to use methods in the function prototype like call or apply to get a function of one prototype to work with an object of another prototype. However this post is not on any of that, it is on the topic of what a [monotonic function](https://en.wikipedia.org/wiki/Monotonic_function) is compared to other kinds of functions that are not monotonic.
@@ -42,6 +42,42 @@ console.log(JSON.stringify(results));
 ```
 
 There is playing around with the other domains though, when it comes to having a higher range with larger numbers there is no problem, as the values will still just go up even higher. There is also no problem when it comes to pulling negative numbers into the domain also as the starting point will just be a value below that of 1. I might only run into problems when it comes to having a base argument for this pow function which might result in the same value for two different sets of arguments, but then it would only be possible for a different base, not a different value for x.
+
+### 1.2 - Using a function that makes use of two or more arguments to create a monotonic function
+
+Say I have a function that can be used in a monotonic way, but only if the domain of arguments that are used are restricted in such as way that the return values will only go up for values of x.
+
+```js
+// a function that uses three arguments, that can be used
+// in a monotonic way, or not, depending on the argument domain
+var threeArguments = function (x, min, max) {
+    return min + (max - min) * (1 - (1 / (1 + x)));
+};
+// monotonic function that makes use of the three arguments function
+// and uses it in a way that is strictly increasing, by making sure that
+// proper values are used for the min and max arguments that will result in the
+// return value only going up for all values of x 
+var monotonic = function (x) {
+    var a = x % 4,
+    b = Math.floor(x / 4) * 5,
+    c = b + 5;
+    return threeArguments(a, b, c);
+};
+ 
+var x = 0,
+len = 12,
+results = [];
+while (x < len) {
+    results.push({
+        x: x,
+        y: parseFloat(monotonic(x).toFixed(2))
+    });
+    x += 1;
+}
+console.log(results.map((obj) => {
+        return obj.y
+    }));
+```
 
 ## 2 - Conclusion
 
