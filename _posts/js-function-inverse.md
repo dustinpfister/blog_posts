@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-28 17:47:03
-version: 1.30
+updated: 2021-07-28 17:48:23
+version: 1.31
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add that will change the curve sort of speak as well as adding other additional features that might be needed when making such a system. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -195,7 +195,7 @@ console.log(da);
 
 So then when making an experience point system one major feature is to know how much xp point is needed for a given level, so there is having a function where I pass a level number, and what is returned is the amount of xp points needed for that level. However often I might also need a function that is, you guessed it an inverse of that function. So I will also want an function where I pass an xp value as an argument, and then the return value is a level number.
 
-What I have here then are two sets of functions that are the get xp, and get level functions of my first experience point system module. I have found that when making any kind of game that calls for the use of such a module I often do need to have both methods when it comes to working out additional code that composes the rest of an experience point system as well as various other aspectes of the game as a whole outside of the module.
+What I have here then are two sets of functions that are the get xp, and get level functions of my first experience point system module. I have found that when making any kind of game that calls for the use of such a module I often do need to have both methods when it comes to working out additional code that composes the rest of an experience point system as well as various other aspects of the game as a whole outside of the module.
 
 ```js
 // get exp to the given level with given current_level and xp
