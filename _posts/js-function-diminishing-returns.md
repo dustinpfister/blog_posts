@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 920
-updated: 2021-07-28 19:37:06
-version: 1.13
+updated: 2021-07-28 19:38:43
+version: 1.14
 ---
 
 This week I have been expanding on the topic of [functions in javaScript](/2019/12/26/js-function/), and many various topics that might come up when making a game. One thing that I have run into now and then is the topic of making some kind of [diminishing returns function](https://stackoverflow.com/questions/2813621/how-do-you-create-a-formula-that-has-diminishing-returns) that is involved in creating attribute values when creating some kind of upgrade system. Often a game might involve some kind of skill point, token, or value that will go up as a player advances in the game. Often this value will start out at zero, and each time the player levels up, or preforms some kind of task they end up getting certain amounts more of this value. The amount of this skill points or whatver they may be called can then be invested in one or more upgrades, and there is no limit as to how many that can invest in any one upgrade. However there is a catch when it comes to putting all skill points into a single upgrade and that is that they will never truly reach the max possible value that can be obtained, the reason why is because of, you guessed it, diminishing returns.
@@ -61,6 +61,8 @@ console.log(dimReturn2(10000, 500)); // 0.9523809523809523
 So now that I got the basic out of the way, it is now called for to take a look at some quick use case examples of this kind of function.
 
 ### 2.1 - Setting an attack value for an attribute
+
+This is an example in which I am using a diminishing returns value to create another value that I might use to set some kind of value for an object such as an attack property.
 
 ```js
 var dimReturn = function (n) {
