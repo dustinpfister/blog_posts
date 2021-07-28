@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-23 12:47:51
-version: 1.26
+updated: 2021-07-28 12:37:28
+version: 1.27
 ---
 
-I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
+I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add that will change the curve sort of speak as well as adding other additional features that might be needed when making such a system. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
 
 Simply put when I am making an experience point system I like to have two methods that give me an unknown value when I have a known value. As you might expect I like to have a method that will return a level number when an experience point number is given, and another function that will give an experience point number when a level number is given. So in other words I want a kind of get level function, and an _inverse_ of this get level function that would be called something like get exp. Some times when trying to make this set of functions I get stuck, and I start to think that I might be wasting time trying to do the impossible because I am trying to create an inverse function, for a function that can not be inverted. 
 
@@ -191,6 +191,8 @@ console.log(da);
 // { dist: 9, degree: 20 }
 ```
 
-## 3 - Conclusion
+## 3 - Simple expernce point system
+
+## 4 - Conclusion
 
 The subject of inverse functions is something that I am going to want to come back to now and then. I all ready have a lot drafted out when it comes to editing and expanding this post, and maybe even writing a few more posts on this topic and topics that branch off from this topic. There is not just writing about inverse functions but also the kinds of functions that are hard or impossible to invert also.
