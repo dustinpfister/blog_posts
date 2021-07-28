@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 920
-updated: 2021-07-28 19:32:48
-version: 1.10
+updated: 2021-07-28 19:34:04
+version: 1.11
 ---
 
 This week I have been expanding on the topic of [functions in javaScript](/2019/12/26/js-function/), and many various topics that might come up when making a game. One thing that I have run into now and then is the topic of making some kind of [diminishing returns function](https://stackoverflow.com/questions/2813621/how-do-you-create-a-formula-that-has-diminishing-returns) that is involved in creating attribute values when creating some kind of upgrade system. Often a game might involve some kind of skill point, token, or value that will go up as a player advances in the game. Often this value will start out at zero, and each time the player levels up, or preforms some kind of task they end up getting certain amounts more of this value. The amount of this skill points or whatver they may be called can then be invested in one or more upgrades, and there is no limit as to how many that can invest in any one upgrade. However there is a catch when it comes to putting all skill points into a single upgrade and that is that they will never truly reach the max possible value that can be obtained, the reason why is because of, you guessed it, diminishing returns.
@@ -36,7 +36,7 @@ console.log(dimReturn(50));  // 0.9803921568627451
 console.log(dimReturn(500)); // 0.998003992015968
 ```
 
-This is more or less the basic idea of what I would want. However I would not stop here, as I would likely want to adjust things at least a little when it comes to getting this kind of value to be used in a larger expression in an additional expression that uses this. That is that when I give a value of 500 I get a value that is very close to 1 all ready, this might not be a big problem if the skill points come slowly in the game, otherwise it is a problem as it allows for a player to advanced to fast maybe.
+This is more or less the basic idea of what I would want. However I would not stop here, as I would likely want to adjust things at least a little when it comes to getting this kind of value to be used in a larger expression in an additional expression that uses this. That is that when I give a value of 500 I get a value that is very close to 1 all ready, this might not be a big problem if the skill points come slowly in the game, otherwise it is a problem as it allows for a player to advanced to fast maybe. So maybe there is a need for some additional basic examples on this, that have at least one additional argument that will effect the rate at which the return value approaches 1.
 
 ### 1.2 - More or less the same expression but have another value that will effect the rate
 
