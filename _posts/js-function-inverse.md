@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-28 12:37:28
-version: 1.27
+updated: 2021-07-28 12:40:50
+version: 1.28
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add that will change the curve sort of speak as well as adding other additional features that might be needed when making such a system. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -191,7 +191,46 @@ console.log(da);
 // { dist: 9, degree: 20 }
 ```
 
-## 3 - Simple expernce point system
+## 3 - Simple experience point system functions
+
+So then when making an experience point system one major feature is to know how much xp point is needed for a given level, so there is having a function where I pass a level number, and what is returned is the amount of xp points needed for that level. However often I might also need a function that is, you guessed it an inverse of that function. So I will also want an function where I pass an xp value as an argument, and then the return value is a level number.
+
+```js
+// get exp to the given level with given current_level and xp
+var getXP = function (level, deltaNext) {
+    return ((Math.pow(level, 2) - level) * deltaNext) / 2;
+};
+// set level with given xp
+var getLevel = function (xp, deltaNext) {
+    return (1 + Math.sqrt(1 + 8 * xp / deltaNext)) / 2;
+};
+
+var level = 1,
+results = [],
+cap = 10;
+while (level <= cap) {
+    var xp = getXP(level, 100);
+    results.push({
+        level: level,
+        getXPResult: xp,
+        getLevelResult: getLevel(xp, 100)
+    });
+    level += 1;
+}
+console.log(results);
+/*
+[ { level: 1, getXPResult: 0, getLevelResult: 1 },
+  { level: 2, getXPResult: 100, getLevelResult: 2 },
+  { level: 3, getXPResult: 300, getLevelResult: 3 },
+  { level: 4, getXPResult: 600, getLevelResult: 4 },
+  { level: 5, getXPResult: 1000, getLevelResult: 5 },
+  { level: 6, getXPResult: 1500, getLevelResult: 6 },
+  { level: 7, getXPResult: 2100, getLevelResult: 7 },
+  { level: 8, getXPResult: 2800, getLevelResult: 8 },
+  { level: 9, getXPResult: 3600, getLevelResult: 9 },
+  { level: 10, getXPResult: 4500, getLevelResult: 10 } ]
+*/
+```
 
 ## 4 - Conclusion
 
