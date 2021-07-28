@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 920
-updated: 2021-07-28 19:24:43
-version: 1.7
+updated: 2021-07-28 19:29:16
+version: 1.8
 ---
 
 This week I have been expanding on the topic of [functions in javaScript](/2019/12/26/js-function/), and many various topics that might come up when making a game. One thing that I have run into now and then is the topic of making some kind of [diminishing returns function](https://stackoverflow.com/questions/2813621/how-do-you-create-a-formula-that-has-diminishing-returns) that is involved in creating attribute values when creating some kind of upgrade system. Often a game might involve some kind of skill point, token, or value that will go up as a player advances in the game. Often this value will start out at zero, and each time the player levels up, or preforms some kind of task they end up getting certain amounts more of this value. The amount of this skill points or whatver they may be called can then be invested in one or more upgrades, and there is no limit as to how many that can invest in any one upgrade. However there is a catch when it comes to putting all skill points into a single upgrade and that is that they will never truly reach the max possible value that can be obtained, the reason why is because of, you guessed it, diminishing returns.
@@ -21,6 +21,8 @@ In this section I will be just going over some very simple diminishing returns f
 There are making full featured like functions where I can pass a min, and max value, along with an additional argument that is the current skill point amount. However those kinds of functions stroke me more so as additional functions that have expressions that would involve calling a diminishing return function actually. The core of the idea here I think is to have a function that returns a value in the range of a fraction between the values of 0 and 1. That is that the function would have at least one argument that is the value of the skill points invested in an upgrade, and as that value goes up the return value will approach, but never truly reach 1. Failing that it should at least require a very large number to get to one to say the least.
 
 ### 1.1 - Just divide 1 over n + 1 and subtract that from 1
+
+So right away there is just thinking in terms of fractions, where I just divide 1 b the given skill point value, or for this example say the skill point value is an argument called n. When diving 1 over n, as n approaches positive infinity, the return value will approach but never truly reach zero. This is similar to what I want, but I want to approach 1, which is no big deal as I can just subtract this return value from 1 to get what I want. There is then just maybe adding 1 to n in a group to address an issue when a value of 0 is given for n.
 
 ```js
 var dimReturn = function (n) {
