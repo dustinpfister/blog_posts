@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 922
-updated: 2021-07-31 11:24:15
-version: 1.10
+updated: 2021-07-31 11:26:51
+version: 1.11
 ---
 
 This wraps up this week on writing more about authoring [functions in javaScript](/2019/12/26/js-function/), much of which had to do with writing functions in general actually rather than specifics of why they are written in javaScript alone. In one post I touched base on the topic of [function domain](/2021/07/27/js-function-domain/) which is a term for the full range of possibles when it comes to the range of arguments that can be passed to a function. Another post that I wrote recently was on the topic of [monotonic functions](/2021/07/26/js-function-monotonic/) which are functions that have to do with increasing return values as an argument approaches positive infinity. That is that a function is increasing monotonic if the return value stays the same or goes up as a x argument approaches positive infinity. There are a number of other terms with monotonic functions thorough that have to do with decreasing values also though.
@@ -16,7 +16,9 @@ However there is one general type of monotonic function that stands out for me a
 <!-- more -->
 
 
-## 1 -
+## 1 - The basics of monotonic functions
+
+Say I have a get y function that will return a y value and takes one argument that is called x, and in the body of this function I am just multiplying the given x value by 5.
 
 ```js
 var getY = function(x){
