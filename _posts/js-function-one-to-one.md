@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 922
-updated: 2021-07-31 11:49:46
-version: 1.17
+updated: 2021-07-31 11:51:59
+version: 1.18
 ---
 
 This wraps up this week on writing more about authoring [functions in javaScript](/2019/12/26/js-function/), much of which had to do with writing functions in general actually rather than specifics of why they are written in javaScript alone. In one post I touched base on the topic of [function domain](/2021/07/27/js-function-domain/) which is a term for the full range of possibles when it comes to the range of arguments that can be passed to a function. Another post that I wrote recently was on the topic of [monotonic functions](/2021/07/26/js-function-monotonic/) which are functions that have to do with increasing return values as an argument approaches positive infinity. That is that a function is increasing monotonic if the return value stays the same or goes up as a x argument approaches positive infinity. There are a number of other terms with monotonic functions thorough that have to do with decreasing values also though.
@@ -98,4 +98,4 @@ console.log(results);
 
 ## 4 - Conclusion
 
-So writing a one to one function is the first step in making an experience point system.
+So writing a one to one function is the first step in making an experience point system, but there is a bot more to it than just having a one to one function. Generally I would want a function where that will take an argument that represents level that will return a xp point value to get to that level.
