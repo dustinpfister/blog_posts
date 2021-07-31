@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 922
-updated: 2021-07-31 11:30:18
-version: 1.14
+updated: 2021-07-31 11:48:05
+version: 1.15
 ---
 
 This wraps up this week on writing more about authoring [functions in javaScript](/2019/12/26/js-function/), much of which had to do with writing functions in general actually rather than specifics of why they are written in javaScript alone. In one post I touched base on the topic of [function domain](/2021/07/27/js-function-domain/) which is a term for the full range of possibles when it comes to the range of arguments that can be passed to a function. Another post that I wrote recently was on the topic of [monotonic functions](/2021/07/26/js-function-monotonic/) which are functions that have to do with increasing return values as an argument approaches positive infinity. That is that a function is increasing monotonic if the return value stays the same or goes up as a x argument approaches positive infinity. There are a number of other terms with monotonic functions thorough that have to do with decreasing values also though.
@@ -35,6 +35,8 @@ console.log(coDomain);
 ```
 
 ## 2 - Creating an inverse of a one to one function
+
+What is great about one to one functions is that it should be possible at least in most cases to create an inverse of the function. For example lets take my basic one to one example where I am just multiplying x by 5, creating an inverse of that would just involve dividing y by 5. So then I can create a get y function along with my get x function.
 
 ```js
 // get y if x is known
