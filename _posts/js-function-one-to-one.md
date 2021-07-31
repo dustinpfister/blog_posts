@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 922
-updated: 2021-07-31 10:40:03
-version: 1.3
+updated: 2021-07-31 11:11:14
+version: 1.4
 ---
 
-This wraps up this week on writing more about writing [functions in javaScript](/2019/12/26/js-function/), much of which had to do with writing functions in general actually. One post that I wrote recently was on the topic of [monotonic functions](/2021/07/26/js-function-monotonic/), however there is one general type of monotonic function that stands out for me and that is a strictly increasing monotonic function, which can be thought of as an example of a [one to one function](https://www.varsitytutors.com/hotmath/hotmath_help/topics/one-to-one-functions). 
+This wraps up this week on writing more about writing [functions in javaScript](/2019/12/26/js-function/), much of which had to do with writing functions in general actually. In one post I touched base on the topic of function domain which is a term for the full range of possibles when it comes to the range of arguments that can be passed to a function. Another post that I wrote recently was on the topic of [monotonic functions](/2021/07/26/js-function-monotonic/). However there is one general type of monotonic function that stands out for me and that is a strictly increasing monotonic function, which can be thought of as an example of a [one to one function](https://www.varsitytutors.com/hotmath/hotmath_help/topics/one-to-one-functions). 
 
 <!-- more -->
 
