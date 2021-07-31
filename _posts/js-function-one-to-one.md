@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 922
-updated: 2021-07-31 11:20:11
-version: 1.8
+updated: 2021-07-31 11:21:39
+version: 1.9
 ---
 
 This wraps up this week on writing more about authoring [functions in javaScript](/2019/12/26/js-function/), much of which had to do with writing functions in general actually rather than specifics of why they are written in javaScript alone. In one post I touched base on the topic of [function domain](/2021/07/27/js-function-domain/) which is a term for the full range of possibles when it comes to the range of arguments that can be passed to a function. Another post that I wrote recently was on the topic of [monotonic functions](/2021/07/26/js-function-monotonic/) which are functions that have to do with increasing return values as an argument approaches positive infinity. That is that a function is increasing monotonic if the return value stays the same or goes up as a x argument approaches positive infinity. There are a number of other terms with monotonic functions thorough that have to do with decreasing values also though.
 
-However there is one general type of monotonic function that stands out for me and that is a strictly increasing monotonic function, which can be thought of as an example of a [one to one function](https://www.varsitytutors.com/hotmath/hotmath_help/topics/one-to-one-functions). So it would seem that the term monotonic refers to several kinds of functions some of which can be many to one style functions, however some such as strictly increasing monotonic functions are very much one to one.
+However there is one general type of monotonic function that stands out for me and that is a strictly increasing monotonic function, which can be thought of as an example of a [one to one function](https://www.varsitytutors.com/hotmath/hotmath_help/topics/one-to-one-functions) which stands out from other kinds of montoic functions some of which can be [many to one](/2021/07/29/js-function-many-to-one/). So it would seem that the term monotonic refers to several kinds of functions some of which can be many to one style functions, however some such as strictly increasing monotonic functions are very much one to one.
 
 <!-- more -->
 
