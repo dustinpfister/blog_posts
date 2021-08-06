@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-08-06 11:41:37
-version: 1.58
+updated: 2021-08-06 11:43:02
+version: 1.59
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -106,9 +106,11 @@ This is a test module that can be used to run a collection of tests on a method 
 
 This is a simple trade simulator module that I might use as a starting point for a more advanced version that could be used in a game. The general idea here is that the player has a way to buy items as a certain rate, and then sell them at another rate later on. Depending if the rate goes up or down they will stand to gain or lose money. I have come across this kind of feature in games here and there in the past and I think it is a nice feature to have in certain types of games, so I made a simple starting point for this kind of feature.
 
-### 1.24 - [utils module](/2021/08/06/js-javascript-example-utils/)
+### 1.23 - [utils module](/2021/08/06/js-javascript-example-utils/)
 
-### 1.23 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
+This is a javaScript example of a general utility module, that is an example, not the example. The nature of this kind of module will differ from one project to another, but I created an example of a file that has the usual suspects that I have in such a module.
+
+### 1.24 - [Zig Zag Arc](/2020/08/10/js-javascript-example-zig-zag-arc/)
 
 Another basic example that makes use of some methods I work out in my percent module example. This is a canvas example that makes use of functions in my percent module that result in zig zag like movement across the canvas. This is then just one of many applications of the percent modules that I had in mind.
 
