@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-06 11:25:53
-version: 1.4
+updated: 2021-08-06 11:33:50
+version: 1.5
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -99,3 +99,6 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
+## 2 - Conclusion
+
+This is not the end all solution for this kind of module of course, in practice this kind of module will change from one project to another. Also the idea here is to just have a temporary dumping ground for methods that should ultimately be placed in a module that is not so generic. For example that canvas methods in this utils module might end up in a whole other module that has to do with creating and working with one or more canvas elements, and not much of anything else. This distance, and bounding box methods might end up being static methods in a module that is some kind of display object pool module maybe. However often I still end up with a few odd ball methods that I just do not know where to go with, so I place them in a module like this.
