@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-06 11:21:54
-version: 1.3
+updated: 2021-08-06 11:25:53
+version: 1.4
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -15,11 +15,15 @@ When I start a new project I often want to have a generic dumping ground for usu
 
 ## 1 - The utils module
 
+### 1.1 - Start of the module and noop
+
 ```js
 var utils = {};
 // no operation ref
 utils.noop = function(){};
 ```
+
+### 1.2 - A distance formula
 
 ```js
 // distance
@@ -27,6 +31,8 @@ utils.distance = function (x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 };
 ```
+
+### 1.3 - Bounding box
 
 ```js
 // bounding box
@@ -39,12 +45,16 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 };
 ```
 
+### 1.4 - Mathematical Modulo
+
 ```js
 // mathematical modulo
 utils.mod = function (x, m) {
     return (x % m + m) % m;
 };
 ```
+
+### 1.5 - create a create canvas element method
 
 ```js
 // create a canvas element
@@ -68,8 +78,10 @@ utils.createCanvas = function(opt){
 };
 ```
 
+### 1.6 - Get a canvas relative position method
+
 ```js
-// get a canvas relative position that is ajusted for scale
+// get a canvas relative position that is adjusted for scale
 utils.getCanvasRelative = function (e) {
     var canvas = e.target,
     bx = canvas.getBoundingClientRect(),
@@ -78,7 +90,7 @@ utils.getCanvasRelative = function (e) {
         y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
-    // ajust for native canvas matrix size
+    // adjust for native canvas matrix size
     pos.x = Math.floor((pos.x / canvas.scrollWidth) * canvas.width);
     pos.y = Math.floor((pos.y / canvas.scrollHeight) * canvas.height);
     // prevent default
