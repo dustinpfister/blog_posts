@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-06 11:35:17
-version: 1.6
+updated: 2021-08-06 11:40:02
+version: 1.7
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -15,7 +15,7 @@ When I start a new project I often want to have a generic dumping ground for usu
 
 ## 1 - The utils module
 
-In this section I will then be going over a few usual suspect methods that I end up with in a generic utility module.
+In this section I will then be going over a few usual suspect methods that I end up with in a generic utility module. It is important to stress that this is an example, and not the example, as the nature of this kind of module will differ fro one project to then next. For example in my [canvas example on a beach invasion type game prototype](/2020/04/24/canvas-example-game-beach/) I have the xp system as a stand alone method in the utils module of that example. This is one example of something that might start out in a module such as this, but should really maybe be in its own stand alone module actually.
 
 ### 1.1 - Start of the module and noop
 
