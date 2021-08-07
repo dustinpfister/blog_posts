@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-07 15:26:09
-version: 1.21
+updated: 2021-08-07 15:27:37
+version: 1.22
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -116,6 +116,8 @@ utils.getCanvasRelative = function (e) {
 ```
 
 ### 1.7 - Create a canvas pointer handler
+
+This is a method that will create and return a single handler that will work with a range of events given a single event object.
 
 ```js
 // create and return a canvas pointer event handler
