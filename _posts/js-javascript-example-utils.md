@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-06 11:44:43
-version: 1.8
+updated: 2021-08-07 12:24:57
+version: 1.9
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -18,6 +18,8 @@ When I start a new project I often want to have a generic dumping ground for usu
 In this section I will then be going over a few usual suspect methods that I end up with in a generic utility module. It is important to stress that this is an example, and not the example, as the nature of this kind of module will differ fro one project to then next. For example in my [canvas example on a beach invasion type game prototype](/2020/04/24/canvas-example-game-beach/) I have the xp system as a stand alone method in the utils module of that example. This is one example of something that might start out in a module such as this, but should really maybe be in its own stand alone [experience point system module](/2020/04/27/js-javascript-example-exp-system/) actually.
 
 ### 1.1 - Start of the module and noop
+
+When I make this kind of module often it is just one massive collection of public methods, so the [module pattern](/2019/03/12/js-javascript-module/) of just a simple object literal works more often than not.
 
 ```js
 var utils = {};
