@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-07 15:24:16
-version: 1.20
+updated: 2021-08-07 15:26:09
+version: 1.21
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -158,6 +158,134 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 };
 ```
 
-## 2 - Conclusion
+## 2 - Demos of the utils module
+
+### 2.1 - distance example
+
+```html
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+// using the utils.createCanvas method to create a canvasObj
+// with a canvas, and ctx ref
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx,
+circle = {
+  x: 160,
+  y: 120,
+  r: 64,
+  colorIndex: 1,
+  colors: ['red', 'green', 'blue']
+};
+// draw method
+var draw = function(){
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    ctx.fillStyle = circle.colors[circle.colorIndex];
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
+    ctx.fill();
+};
+// attaching an event
+canvas.addEventListener('click', function(e){
+   // using the utils.getCanvasRelative method to get the position of the click
+   var pos = utils.getCanvasRelative(e);
+   // using utils.distance to get the distance between the click position and the center if the circle
+   var d = utils.distance(circle.x, circle.y, pos.x, pos.y);
+   // if distance is less than or equal to circle radius step color index
+   if(d <= circle.r){
+      circle.colorIndex -= 1;
+      // using utils.mod to wrap color index value
+      circle.colorIndex = utils.mod(circle.colorIndex, circle.colors.length);
+   }
+   draw();
+});
+draw();
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - pointer events example
+
+```html
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+var state = {
+    pointerDown: false,
+    canvasObj: utils.createCanvas(),
+    circle: {
+        x: 160,
+        y: 120,
+        r: 64,
+        active: false,
+        colorIndex: 1,
+        colors: ['yellow', 'green', 'blue']
+    }
+};
+/*
+var canvas = state.canvasObj.canvas,
+ctx = state.canvasObj.ctx,
+circle = state.circle;
+*/
+
+// draw method
+var draw = function(){
+    var ctx = state.canvasObj.ctx,
+    canvas = state.canvasObj.canvas,
+    circle = state.circle;
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    ctx.fillStyle = circle.colors[circle.colorIndex];
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
+    ctx.fill();
+};
+var events = {
+    pointerStart: function(e, pos, state){
+       var d = utils.distance(state.circle.x, state.circle.y, pos.x, pos.y);
+       state.pointerDown = true;
+       // if distance is less than or equal to circle radius step color index
+       if(d <= state.circle.r){
+           state.circle.active = true;
+        }
+        draw();
+    },
+    pointerMove: function(e, pos, state){
+        if(state.pointerDown && state.circle.active === true){
+            state.circle.x = pos.x;
+            state.circle.y = pos.y;
+        }
+        draw();
+    },
+    pointerEnd: function(e, pos, state){
+        state.pointerDown = false;
+        state.circle.active = false;
+    }
+}
+utils.canvasPointerEvents(state.canvasObj.canvas, state, events);
+draw();
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
 
 This is not the end all solution for this kind of module of course, in practice this kind of module will change from one project to another. Also the idea here is to just have a temporary dumping ground for methods that should ultimately be placed in a module that is not so generic. For example that canvas methods in this utils module might end up in a whole other module that has to do with creating and working with one or more canvas elements, and not much of anything else. This distance, and bounding box methods might end up being static methods in a module that is some kind of display object pool module maybe. However often I still end up with a few odd ball methods that I just do not know where to go with, so I place them in a module like this.
