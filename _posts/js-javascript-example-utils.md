@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-07 12:34:49
-version: 1.11
+updated: 2021-08-07 12:36:31
+version: 1.12
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -21,7 +21,7 @@ In this section I will then be going over a few usual suspect methods that I end
 
 When I make this kind of module often it is just one massive collection of public methods, so the [module pattern](/2019/03/12/js-javascript-module/) of just a simple object literal works more often than not. In some cases I might switch to a pattern that involves an [IIFE](/2020/02/04/js-iife/) or some other kind of option when it comes to this sort of thing, but that is often what I reserve for other kinds of specific modules that will contain at least a few private helper functions and objects that I do not need or want to make public.
 
-One method that I might have in a utils module is just a simple noop function, or no operation function.
+One method that I might have in a utils module is just a simple noop function, or no operation function. This is just a function that does nothing actually, which may seem odd, but never the less it is something that I often used when it comes to setting a default value for a call back option for example.
 
 ```js
 var utils = {};
