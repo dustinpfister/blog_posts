@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-07 12:38:21
-version: 1.13
+updated: 2021-08-07 12:40:15
+version: 1.14
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -40,7 +40,9 @@ utils.distance = function (x1, y1, x2, y2) {
 };
 ```
 
-### 1.3 - Bounding box
+### 1.3 - Bounding box collision detection
+
+The distance formula can be used as a kind of collision detection, but only for a circle like area rather than a box like area. So another useful method to have in a generic utility module is a bounding box collision detection module.
 
 ```js
 // bounding box
