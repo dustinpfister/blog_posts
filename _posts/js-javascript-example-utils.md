@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 10:34:55
-version: 1.33
+updated: 2021-08-09 10:44:50
+version: 1.34
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -199,7 +199,53 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
 </html>
 ```
 
-### 2.2 - distance method example
+### 2.2 - Get canvas relative demo
+
+```js
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+// using the utils.createCanvas method
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx,
+circle = {
+  x: 160,
+  y: 120,
+  r: 16
+};
+// draw method
+var draw = function(){
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    ctx.fillStyle = 'red';
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2);
+    ctx.fill();
+};
+// attaching an event
+canvas.addEventListener('click', function(e){
+   // using the utils.getCanvasRelative method to get the position of the click
+   var pos = utils.getCanvasRelative(e);
+   // setting the position of the circle to the position of the click
+   circle.x = pos.x;
+   circle.y = pos.y;
+   draw();
+});
+draw();
+        </script>
+    </body>
+</html>
+```
+
+### 2.3 - distance method example
 
 The distance method is a usual suspect method that I will want to have in some kind of module if not a general utilities module such as this. The method just comes into play with all kinds of things, for example it can be used as a way to go about implanting a from of collision detection. In this demo of the module I will be using the distance method to do just this. Here in this example I am using the distance method as a way to go about fining out if a canvas relative pointer position is withing, or outside of the radius of a given circle.
 
@@ -255,7 +301,7 @@ draw();
 </html>
 ```
 
-### 2.3 - Pointer events example
+### 2.4 - Pointer events example
 
 On top of the create canvas method of the utils module there are also a number of other methods that I have that are closely related to using canvas elements. I covered some example that make use of the create canvas element, as well as the get canvas relative method. However I have also found that it is nice to have a few more methods that have to do with creating a kind of standard when it comes to handling pointer events.
 
