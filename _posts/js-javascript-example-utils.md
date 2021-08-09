@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 10:30:09
-version: 1.32
+updated: 2021-08-09 10:34:55
+version: 1.33
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -168,7 +168,7 @@ In this section I have some quick demos of this utility module just for the sake
 
 ### 2.1 - Using the create canvas method
 
-Many of my projects will involve the use of one or more canvas elements. ALthough it may be best to go with some kind of canvas library when it comes to doing things from the ground up I am going to want to have something that will serve as at least some kind of crude starting point for what might eventuality be some kind of canvas module.
+Many of my projects will involve the use of one or more canvas elements. ALthough it may be best to go with some kind of canvas library when it comes to doing things from the ground up I am going to want to have something that will serve as at least some kind of crude starting point for what might eventuality be some kind of canvas module. When it comes to a serious protect the process of creating a canvas element is not always so simple, often I might want to create a canvas element that I will be drawing to and will need to be appended to the hard coded html. however in some cases I might want to use a canvas element to create a sprite sheet that was created by way of some javaScript code, and I want to use the canvas element as an image source to which I will then draw from to another canvas element, in that case I would want to not append such an canvas element to the hard coded html. However when it comes to just creating a simple game prototype of one kind or another I may not ever get to the point where I need to worry about these things. So A simple create canvas method that just created ans appends a single canvas element with everything set up just the way that I like it will work just fine.
 
 ```html
 <html>
