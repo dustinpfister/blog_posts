@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2020-07-17 12:36:27
-version: 1.27
+updated: 2021-08-09 16:28:23
+version: 1.28
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
@@ -58,7 +58,7 @@ There is not much need for other ways to get the body element. The document body
 
 ### 2.1 - Using getElementById
 
-Although it is kind of weird to do so because there should only be one body element per document, and id can be set for the body element and then the getElementById method can be used as a way to get a reference to body.
+Although it is kind of weird to do so because there should only be one body element per document, an id can still be set for the body element. So then the [getElementById method](/2018/12/27/js-document-getelementbyid/) can be used as a way to get a reference to body just like with any other element to which an id can be set.
 
 ```html
 <html>
@@ -76,7 +76,7 @@ document.body.appendChild(p);
 </html>
 ```
 
-This method of gaining references to elements has been around for a real long time so it is one of the most reliable methods of gaining references to elements in client side javaScript.
+This method of gaining references to elements has been around for a real long time so it is one of the most reliable methods of gaining references to elements in client side javaScript. Although it is kind of silly to use it to gain a reference to the body element.
 
 ### 2.2 - Using getElementsByTagName to get the document body element with javaScript
 
