@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 11:23:24
-version: 1.39
+updated: 2021-08-09 11:25:03
+version: 1.40
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -251,7 +251,7 @@ draw();
 
 In all kinds of various projects I will want to make use of bounding box collision detection. Say I have two box areas on of which represents a shot from a gun, and the other represents some kind of enemy unit. If the shot object is fired from a player controlled unit I will want to know if the shot has hit an enemy unit or not, one way to fin out would be to use bounding box. In this example I am not going to do anything that advanced, but this is a simple example where I am using the bounding box method to set the color of box objects that over lap to a certain color.
 
-For this example I have a create box helper function that will create and return an object that contains properties like x, y, width , and height. these are the properties that I need to find out if two areas over lap or not when calling this bounding box method.
+For this example I have a create box helper function that will create and return an object that contains properties like x, y, width , and height. these are the properties that I need to find out if two areas over lap or not when calling this bounding box method. I then also have a get overlapping helper method that will use the [array reduce](/2021/07/13/js-array-reduce/) method to return an array of objects from an array of objects that overlay a given object.
 
 ```html
 <html>
