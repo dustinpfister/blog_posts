@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 10:06:11
-version: 1.28
+updated: 2021-08-09 10:10:43
+version: 1.29
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -222,7 +222,9 @@ draw();
 </html>
 ```
 
-### 2.2 - pointer events example
+### 2.2 - Pointer events example
+
+On top of the create canvas method of the utils module there are also a number of other methods that I have that are closely related to using canvas elements. I covered some example that make use of the create canvas element, as well as the get canvas relative method. However I have also found that it is nice to have a few more methods that have to do with creating a kind of standard when it comes to handling pointer events.
 
 ```html
 <html>
