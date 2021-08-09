@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 10:44:50
-version: 1.34
+updated: 2021-08-09 10:48:26
+version: 1.35
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -200,6 +200,8 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
 ```
 
 ### 2.2 - Get canvas relative demo
+
+Canvas elements are great not just for the sake of drawing to it by way of a little javaScript code that just runs but dos not do anything with user input. What is really cool about canvas is that it is not just a means of drawing to the screen, it is also a means by which a user can interact with a screen. In this example I ma making use of the get canvas relative method of the utils module to get a canvas rather than window relative pointer position. I am then just using that position to set the position of a circle.
 
 ```js
 <html>
