@@ -5,13 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 107
-updated: 2021-08-09 16:09:37
-version: 1.17
+updated: 2021-08-09 16:14:51
+version: 1.18
 ---
 
-These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there to work with in the javaScript and noejs world. There is much that is helpful, or just interesting. In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js). There are many other similar projects with similar names, but in this post I am working with this older project that has to do with a collection of objects that are often called particles.
+These days I have been playing around with all kinds of javaScript projects just to get a better feel of all that there is out there to work with in the javaScript and nodejs world. There is much that is helpful when it comes to making quick work of something like parsing mark down to html for example, however there are many projects that are just interesting for one reason or another. 
 
-Particles js is a fun little toy to play with for a short while if you are looking for something along those lines. I can not think of any piratical use for particles.js really it is just a fun artful thing to do with javaScript just for the sake of fun, which is the main reason why I got into javaScript to begin with. It is also not so hard to make ones own particles.js module also, but in this post I will be focusing mostly on using this module.
+In my travels of researching what to write about I have come across something called [particles.js](https://github.com/VincentGarreau/particles.js) on github which is also available via [npmjs also](https://www.npmjs.com/package/particles.js) like many such projects. There are many other similar projects with similar names, but in this post I am working with this older project that has to do with a collection of objects that are often called particles.
+
+Particles js is a fun little toy to play with for a short while if you are looking for something along those lines. I can not think of any piratical use for particles.js really it is just a fun artful thing to do with javaScript just for the sake of fun, which is the main reason why I got into javaScript to begin with. It is also not so hard to make ones own particles.js module also, and when it comes that that I have my canvas example post on an [object pool example](/2020/07/20/canvas-example-object-pool/) that is something similar to this module. However in this post I will be focusing mostly on using this particles module.
 
 <!-- more -->
 
