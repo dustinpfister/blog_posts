@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 10:48:26
-version: 1.35
+updated: 2021-08-09 11:14:50
+version: 1.36
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -241,6 +241,81 @@ canvas.addEventListener('click', function(e){
    circle.y = pos.y;
    draw();
 });
+draw();
+        </script>
+    </body>
+</html>
+```
+
+### 2.3 - Bounding box collision detection demo
+
+In all kinds of various projects I will want to make use of bounding box collision detection.
+
+```html
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <div id="canvas-app"></div>
+        <script src="../lib/utils.js"></script>
+        <script>
+ 
+var createBox = function(x, y, w, h){
+    var box = {
+        x: x === undefined ? 0: x,
+        y: y === undefined ? 0: y,
+        w: w === undefined ? 32: w,
+        h: h === undefined ? 32: h,
+        color: 'lime'
+    };
+    return box;
+};
+ 
+var getOverlaping = function(boxArr, a){
+    return boxArr.reduce(function(acc, b){
+        if(a === b){
+            return acc;
+        }
+        if(utils.boundingBox(a.x, a.y, a.w, a.h, b.x, b.y, b.w, b.h)){
+            acc.push(b);
+        }
+        return acc;
+    }, []);
+};
+ 
+// using the utils.createCanvas method
+var canvasObj = utils.createCanvas(),
+canvas = canvasObj.canvas,
+ctx = canvasObj.ctx,
+boxArr = [];
+ 
+boxArr.push(createBox(12, 17));
+boxArr.push(createBox(22, 35));
+boxArr.push(createBox(147, 85));
+boxArr.push(createBox(87, 105));
+ 
+// set color of overlapping box objects to red
+boxArr.forEach(function(a){
+    getOverlaping(boxArr, a).forEach(function(b){
+        b.color = 'red'
+    })
+});
+ 
+// draw method
+var draw = function(){
+    // solid black background
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+    // the circle
+    boxArr.forEach(function(box){
+        ctx.fillStyle = box.color;
+        ctx.beginPath();
+        ctx.rect(box.x, box.y, box.w, box.h);
+        ctx.fill();
+        ctx.stroke();
+    });
+};
 draw();
         </script>
     </body>
