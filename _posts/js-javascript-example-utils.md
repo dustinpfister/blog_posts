@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 11:14:50
-version: 1.36
+updated: 2021-08-09 11:17:20
+version: 1.37
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -249,7 +249,7 @@ draw();
 
 ### 2.3 - Bounding box collision detection demo
 
-In all kinds of various projects I will want to make use of bounding box collision detection.
+In all kinds of various projects I will want to make use of bounding box collision detection. Say I have two box areas on of which represents a shot from a gun, and the other represents some kind of enemy unit. If the shot object is fired from a player controlled unit I will want to know if the shot has hit an enemy unit or not, one way to fin out would be to use bounding box.
 
 ```html
 <html>
