@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 10:00:15
-version: 1.27
+updated: 2021-08-09 10:06:11
+version: 1.28
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -166,7 +166,9 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 In this section I have some quick demos of this utility module just for the sake of having some use case examples of the methods in the module. These demos are just some quick code examples that I put together for the sake of this post alone, that make use of this rendition of a generic utility module. For some real project examples that make use of a utility module such as this you might want to check out my [canvas examples](/2020/03/23/canvas-example/). Many of my canvas examples will feature a module like the one I am using in this post, but what is it it will very from one project to the next.
 
-### 2.1 - distance example
+### 2.1 - distance method example
+
+The distance method is a usual suspect method that I will want to have in some kind of module if not a general utilities module such as this. The method just comes into play with all kinds of things, for example it can be used as a way to go about implanting a from of collision detection. In this demo of the module I will be using the distance method to do just this.
 
 ```html
 <html>
