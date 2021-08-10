@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2021-08-10 10:26:41
-version: 1.30
+updated: 2021-08-10 10:34:27
+version: 1.31
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
@@ -254,4 +254,7 @@ createCanvas(); // appends to body
 
 ## 6 - Conclusion
 
-So the document body property is a great way to just quickly reference the body element of an html document when doing something with client side javaScrpt. There are other ways of getting the body element of course but because there is, or at least should be only one body element in an html document for the most part the document body property works fine in getting a reference to that element.
+So the document body property is a great way to just quickly reference the body element of an html document when doing something with client side javaScrpt. There are other ways of getting the body element of course, but because there is, or at least should be only one body element in an html document for the most part the document body property works fine in getting a reference to that element. 
+
+There is a lot more to be aware of when it comes to the document object, I have covered much of that here in this post, but there are still some aspects of the object that a client side javaScript developer should be aware of.
+
