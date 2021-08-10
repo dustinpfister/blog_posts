@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2021-08-10 10:22:40
-version: 1.29
+updated: 2021-08-10 10:26:41
+version: 1.30
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
@@ -91,7 +91,7 @@ This tired yet true way to go about getting a reference to the body element will
 
 ### 2.3 - The document.querySelector
 
-Another option for getting a reference to the body tag, or the first instance of any tag for that matter, would be to use [document.querySelector](/2020/06/23/js-document-queryselector/). This is a newer option compared to older methods like the get element by id method, however at this point it is still well supported in modern browsers.
+Another option for getting a reference to the body tag, or the first instance of any tag for that matter, would be to use [document.querySelector](/2020/06/23/js-document-queryselector/). This is a newer option compared to older methods like the get element by id method, however at this point it is still well supported in modern browsers. To use it I just call the method off of the document object just like with the other options, and pass a string that is the name of the tag that I want in this case body. The result of calling the query selector method is a single reference to the first instance of a tag, in this case this is not a problem as there should always be just one body tag. However when it comes to other tags to which there may be more than one instance of a tag I can also select elements by id with this method. There is also the query selector all method that will work just like query selector, only it will return an HTML Collection rather than a single element reference.
 
 ```html
 <html>
