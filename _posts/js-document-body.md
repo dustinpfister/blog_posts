@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2021-08-10 10:58:50
-version: 1.36
+updated: 2021-08-10 11:02:03
+version: 1.37
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
@@ -254,7 +254,7 @@ createCanvas(); // appends to body
 
 ## 6 - Attaching events and the body tag
 
-Another good thing to look into when it comes to the topic of the body tag and javaScript would be to experiment a little with [event attachment](/2019/01/16/js-event-listeners).
+Another good thing to look into when it comes to the topic of the body tag and javaScript would be to experiment a little with [event attachment](/2019/01/16/js-event-listeners). The body tag may not be the base most point at which to attach and event handler, as it is also possible to attach handlers to document, and window objects. However this is something that should be explored further at one point or another, and maybe the body tag is a good place to start with this sort of thing. So then in this section I will be going over a few quick examples of event attachment and the body tag, as well as some additional topics that might pop up while I am at it.
 
 ### 6.1 - Basic event attachment to body with an on click event
 
