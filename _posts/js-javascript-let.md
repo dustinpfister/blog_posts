@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 374
-updated: 2021-08-10 15:57:23
-version: 1.17
+updated: 2021-08-10 16:00:29
+version: 1.18
 ---
 
 When it comes to writing modern javaScript code the [let keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) is available for declaring [block level](https://en.wikipedia.org/wiki/Scope_%28computer_science%29#Block_scope), rather than [function level](https://en.wikipedia.org/wiki/Scope_%28computer_science%29#Function_scope) scoped variables. When it comes to getting into variable scope that might be a topic for another post, but I will be touching base with that here as it is called for when it comes to any post that has to do with the let keyword compared to traditional option known as [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var).
 
 When it comes to a node.js environment where I have control over the version of node.js is used, and can use a modern version that supports let there are not any concerns when it comes to the question of code breaking on older platforms. At least when it comes to me using my own code in may own environments where I know that will never be the case. That issue is of greater concern when it comes to front end development where there is less control over the environment in which the javaScript code runs when thinking about older browsers. Still as time goes by this will become less of an issue, and block level scope for me is a welcome addition to javaScript, so in this post I will be writing about some concerns when it comes to the use of let in a javaScript project.
 
-So the time will come when there will be basically no point at all of using the var keyword anymore for the same reasons why it no longer makes sense to go out of ones way to make sure that there code will not break in Internet explorer 5. It is all about looking at the browser vendor and version data of a sites analytics, and when I do so it looks like most people are using modern evergreen browsers these days. So if it has not happened for you yet it is only a matter of time until it is just a question of using let, const, or both. If you do want to just use only one, like the good old days of var only, then the choice is clear, the choice is let, so lets get into why that is.
+So the time will come when there will be basically no point at all of using the var keyword anymore for the same reasons why it no longer makes sense to go out of ones way to make sure that their code will not break in Internet explorer 5. It is all about looking at the browser vendor and version data of a sites analytics, and when I do so it looks like most people are using modern evergreen browsers these days. So if it has not happened for you yet it is only a matter of time until it is just a question of using let, const, or both. If you do want to just use only one, like the good old days of var only, then the choice is clear, the choice is let, so lets get into why that is.
 
 <!-- more -->
 
@@ -99,3 +99,5 @@ It may be ugly, but for the most part the same desired effect is achieved.
 ## 5 - Conclusion
 
 The use of javaScript let is a nice addition when it comes to later javaScript specs. Although browser support is decent with javaScript let these days depending on how far I want to push backward compatibility back, I still find myself shying away from using in when writing client side code at least. When it comes to an environment in which I have control however there is less reservations about using late javaScript features such as the let keyword, and arrow functions.
+
+Leaning a thing or two about variable scope is something that a developer should become areas of when first getting started with javaScript. If you are still fairly new to javaScript you might want to check out my [main getting started with javaScript post](/2018/11/27/js-getting-started/).
