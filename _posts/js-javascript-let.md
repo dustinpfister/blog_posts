@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 374
-updated: 2021-08-10 15:55:56
-version: 1.16
+updated: 2021-08-10 15:57:23
+version: 1.17
 ---
 
-When it comes to writing modern javaScript code the [let keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) is available for declaring [block level](https://en.wikipedia.org/wiki/Scope_(computer_science)#Block_scope), rather than [function level](https://en.wikipedia.org/wiki/Scope_(computer_science)#Function_scope) scoped variables. When it comes to getting into variable scope that might be a topic for another post, but I will be touching base with that here as it is called for when it comes to any post that has to do with the let keyword compared to traditional option known as [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var).
+When it comes to writing modern javaScript code the [let keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) is available for declaring [block level](https://en.wikipedia.org/wiki/Scope_%28computer_science%29#Block_scope), rather than [function level](https://en.wikipedia.org/wiki/Scope_%28computer_science%29#Function_scope) scoped variables. When it comes to getting into variable scope that might be a topic for another post, but I will be touching base with that here as it is called for when it comes to any post that has to do with the let keyword compared to traditional option known as [var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var).
 
 When it comes to a node.js environment where I have control over the version of node.js is used, and can use a modern version that supports let there are not any concerns when it comes to the question of code breaking on older platforms. At least when it comes to me using my own code in may own environments where I know that will never be the case. That issue is of greater concern when it comes to front end development where there is less control over the environment in which the javaScript code runs when thinking about older browsers. Still as time goes by this will become less of an issue, and block level scope for me is a welcome addition to javaScript, so in this post I will be writing about some concerns when it comes to the use of let in a javaScript project.
 
