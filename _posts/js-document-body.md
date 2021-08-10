@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2021-08-09 16:28:23
-version: 1.28
+updated: 2021-08-10 10:22:40
+version: 1.29
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
@@ -89,7 +89,27 @@ console.log(body);
 
 This tired yet true way to go about getting a reference to the body element will return an html collection rather than a reference to the body element. It will always do this for a tag even if there is just one of theme such is the case with body.
 
-### 2.3 - by the document children property
+### 2.3 - The document.querySelector
+
+Another option for getting a reference to the body tag, or the first instance of any tag for that matter, would be to use [document.querySelector](/2020/06/23/js-document-queryselector/). This is a newer option compared to older methods like the get element by id method, however at this point it is still well supported in modern browsers.
+
+```html
+<html>
+    <head>
+        <title>js body</title>
+    </head>
+    <body id="the-body">
+        <script>
+var body = document.querySelector('body'),
+p = document.createElement('p');
+p.innerText = 'hello world';
+document.body.appendChild(p);
+        </script>
+    </body>
+</html>
+```
+
+### 2.4 - The document children property
 
 So if you are looking for a totally over complicated solution for something that is really simple look no further get a load of this one. like I said in the beginning of this post there are many ways to go about getting a reference to an element in client side javaScript. For the most part I figured just to throw this example together just for the sake of having yet another examples of how to get the js body element.
 
