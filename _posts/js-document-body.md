@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2021-08-10 10:36:27
-version: 1.32
+updated: 2021-08-10 10:37:39
+version: 1.33
 ---
 
 The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
@@ -256,5 +256,5 @@ createCanvas(); // appends to body
 
 So the document body property is a great way to just quickly reference the body element of an html document when doing something with client side javaScrpt. There are other ways of getting the body element of course, but because there is, or at least should be only one body element in an html document for the most part the document body property works fine in getting a reference to that element. 
 
-There is a lot more to be aware of when it comes to the document object, I have covered much of that here in this post, but there are still some aspects of the object that a client side javaScript developer should be aware of. For example there is the location object of the document object that contains important information about the location of the current document in terms of its location on the web, or on a local host. The document location object can also be used to preform a client side redirection also which might come in handy some times.
+There is a lot more to be aware of when it comes to the document object, I have covered much of that here in this post, but there are still some aspects of the object that a client side javaScript developer should be aware of. For example there is the [location object of the document object](/2019/01/26/js-document-location/) that contains important information about the location of the current document in terms of its location on the web, or on a local host. The document location object can also be used to preform a client side redirection also which might come in handy some times.
 
