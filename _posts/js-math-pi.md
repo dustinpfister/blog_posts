@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2021-08-11 11:08:52
-version: 1.23
+updated: 2021-08-11 11:12:03
+version: 1.24
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. 
@@ -94,7 +94,9 @@ console.log( degreeToRadian(90) ); 1.5707963267948966
 
 ## 3 - Getting a point along the circumference of a circle
 
-One use case example of using radians and therefore having a method that uses Math Pi to convert degrees to radians would be to have a method that can be used to get a point along the circumference of a circle. The method here makes use of the Math.cos, and Math.sin methods booth of which take a radian as the first argument. So if I want to use degrees then I will want to have a method that converts for degrees to radians. So then the method that I covered earlier would come into play with this example then.
+One use case example of using radians and therefore having a method that uses Math PI to convert degrees to radians would be to have a method that can be used to get a point along the circumference of a circle. I have wrote a [pretty lengthly post on the canvas arc method](/2019/03/05/canvas-arc/) in which I get into the use of these methods as well as the built in canvas methods for drawing a circle.
+
+The method here makes use of the Math.cos, and Math.sin methods booth of which take a radian as the first argument. So if I want to use degrees then I will want to have a method that converts for degrees to radians. So then the method that I covered earlier would come into play with this example then.
 
 ```js
 var degreeToRadian = function (deg) {
