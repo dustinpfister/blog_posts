@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2021-08-11 10:52:24
-version: 1.17
+updated: 2021-08-11 10:53:38
+version: 1.18
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. 
@@ -50,6 +50,8 @@ console.log(a); // 0.7853981633974483
 ```
 
 ### 1.3 - Get PI if circumference and diameter are known
+
+Another interesting expression is that PI can be ascertained by dividing circumference over that of the diameter of a circle.
 
 ```js
 var c = 12;
