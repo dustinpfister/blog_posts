@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2021-08-11 10:48:43
-version: 1.16
+updated: 2021-08-11 10:52:24
+version: 1.17
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. 
@@ -38,7 +38,7 @@ I can not say the use of this expression comes up much in many of the projects t
 
 ### 1.2 - Get the area of a circle
 
-Another typical expression that might come up would be to get the area of a circle. For this I just need to multiply Math.PI by Math.pow\(r, 2\) where r is the radius of the circle.
+Another typical expression that might come up would be to get the [area of a circle](https://en.wikipedia.org/wiki/Area_of_a_circle). For this I just need to multiply Math.PI by Math.pow\(r, 2\) where r is the radius of the circle.
 
 ```js
 var pi = Math.PI,
