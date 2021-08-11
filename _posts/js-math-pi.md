@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2021-08-11 11:03:24
-version: 1.20
+updated: 2021-08-11 11:05:43
+version: 1.21
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. 
@@ -51,7 +51,7 @@ console.log(a); // 0.7853981633974483
 
 ### 1.3 - Get radius if circumference is known
 
-There is then the question of how to go about getting the radius of a circle if the circumference of the circle is known.
+There is then the question of how to go about getting the radius of a circle if the circumference of the circle is known. For this task there is the expression of dividing the circumference over the result of 2 \* Math.PI. One way to do this would be to make use of the grouping operator for the part where I multiply 2 by that of Math.PI becuase of how oreder of operations works in javaScript.
 
 ```js
 var pi = Math.PI,
