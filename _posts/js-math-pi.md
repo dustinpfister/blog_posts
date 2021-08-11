@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2021-08-11 10:37:57
-version: 1.14
+updated: 2021-08-11 10:45:53
+version: 1.15
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. 
@@ -21,7 +21,7 @@ Many of the other Math methods in javaScript accept [radians](https://en.wikiped
 
 In this section I will be going over some simple examples of the Math.PI constant in javaScript. This will include a whole bunch of examples that are usual suspect expressions using PI to find things like the circumference of a circle when the radius is known, and so forth.
 
-### 1 - A Basic 2PIr AKA circumference example of Math.PI
+### 1.1 - A Basic 2PIr AKA circumference example of Math.PI
 
 One simple expression that you are most likely to be familiar with thus far is an expression to find the circumference of a circle when you know the radius of the circle. The radius of a circle as you should know is half the diameter of a circle, so by multiplying Math PI times 2 and then multiply again by the radius of a circle, you will get the circumference.
 
@@ -35,6 +35,30 @@ console.log(c); // 3.141592653589793
 ```
 
 I can not say the use of this expression comes up much in many of the projects that I have worked on thus far. However I do end up working the angles a lot, so lets look at some additional examples of the Math PI constant when working with methods that take radians as an argument.
+
+### 1.2 - Get the area of a circle
+
+Another typical expression that might come up would be to get the area of a circle. For this I just need to multiply Math.PI by Math.pow\(r, 2\) where r is the radius of the circle.
+
+```js
+var pi = Math.PI,
+r = 0.5,
+// area
+a = Math.PI * Math.pow(r, 2);
+console.log(pi); // 3.141592653589793
+console.log(a); // 0.7853981633974483
+```
+
+### 1.3 - Get PI if circumference and diameter are known
+
+```js
+var c = 12;
+var d = 3.819718634205488;
+// get PI if c and d are known
+console.log( c / d ); // 3.141592653589793
+console.log( Math.PI ); // 3.141592653589793
+console.log( 2 * Math.PI * (3.819718634205488 / 2) );
+```
 
 ## 2 - radians and Math.PI
 
