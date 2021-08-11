@@ -5,8 +5,8 @@ tags: [js, canvas]
 layout: post
 categories: canvas
 id: 396
-updated: 2020-07-28 07:59:54
-version: 1.78
+updated: 2021-08-11 11:13:27
+version: 1.79
 ---
 
 When making a [canvas project](/2020/07/22/canvas/) with the html 5 canvas element and javaScript there is a [built in canvas arc method](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/arc) in the 2d drawing context that can be used to draw [arcs and circles](https://mathbitsnotebook.com/Geometry/Circles/CRArcLengthRadian.html). Being able to draw circles and arcs is one of several basic shapes that a javaScript developer should be able to draw when working something out with a canvas project, and the canvas arc 2d drawing context method is the standard typical solution for doing so.
@@ -29,7 +29,7 @@ In order to use the canvas arc method it is important to have at least some back
 
 The arguments that canvas arc takes for the start and stop angles should be in [radians](https://en.wikipedia.org/wiki/Radian) and not [degrees](https://en.wikipedia.org/wiki/Degree_(angle). The concept of a radian is thinking of angles in terms of the value of pi times two rather than 360 degrees. If you prefer to think in degrees you will still want to know how to convert from degrees to radians as well as the inversion of that.
 
-To convert a degree value to a radian value to be used with the canvas arc method just divide the degree value by 180 and then multiply that value by Math.PI to get the equivalent value in radians. Degrees can be obtained by dividing  180 by Math.PI and then multiplying that by the radian value. In any case it is just knowing what the relationship is to Math.PI.
+To convert a degree value to a radian value to be used with the canvas arc method just divide the degree value by 180 and then multiply that value by [Math.PI](/2020/06/05/js-math-pi/) to get the equivalent value in radians. Degrees can be obtained by dividing  180 by Math.PI and then multiplying that by the radian value. In any case it is just knowing what the relationship is to Math.PI.
 
 ```js
 var rad = Math.PI / 4,
