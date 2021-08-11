@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 663
-updated: 2021-08-11 10:35:55
-version: 1.13
+updated: 2021-08-11 10:37:57
+version: 1.14
 ---
 
 The [Math PI](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI) constant in javaScript contains a constant value of [PI](https://en.wikipedia.org/wiki/Pi). The value of PI is a constant ratio where if the diameter of a circle is equal to one then the circumference of that circle is equal to PI. 
@@ -18,6 +18,8 @@ Many of the other Math methods in javaScript accept [radians](https://en.wikiped
 <!-- more -->
 
 ## 1 - Some basic examples of Math.PI
+
+In this section I will be going over some simple examples of the Math.PI constant in javaScript. This will include a whole bunch of examples that are usual suspect expressions using PI to find things like the circumference of a circle when the radius is known, and so forth.
 
 ### 1 - A Basic 2PIr AKA circumference example of Math.PI
 
