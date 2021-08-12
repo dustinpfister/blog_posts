@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:31:02
-version: 1.26
+updated: 2021-08-12 11:35:44
+version: 1.27
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -17,7 +17,7 @@ So then in this post I will be going over some basic examples of the Math.pow me
 
 ## 1 - Math pow basic example
 
-So here I have a very basic example of the Math.pow method where I am just using the array map method to make each element a power of 2 using a number in the array as an exponent. When using the Math.pow method the first argument is the base, and the second argument is the exponent value. So if I want an array of powers of two I pass two as the first argument, and then pass in the value for each number in the array as the exponent value which is the second argument.
+So here I have a very basic example of the Math.pow method where I am just using the [array map method](/2020/06/16/js-array-map/) to make each element a power of 2 using a number in the array as an exponent. When using the Math.pow method the first argument is the base, and the second argument is the exponent value. So if I want an array of powers of two I pass two as the first argument, and then pass in the value for each number in the array as the exponent value which is the second argument.
 
 ```js
 
