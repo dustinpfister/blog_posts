@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:10:34
-version: 1.24
+updated: 2021-08-12 11:13:07
+version: 1.25
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -168,6 +168,8 @@ If I wanted to make a more comprehensive project centered around this I would wa
 ## 4 - Creating an experience point system
 
 Another major example of the Math.pow method and methods that are used to invert such a method would be to use Math.pow in one or more expressions that have to to with an experience point system. When [making an experience point system](/2020/04/27/js-javascript-example-exp-system/) I have found that I usually will need to [functions that are inversions](/2021/07/23/js-function-inverse/) of each other. That is one function where I pass an argument that is an exp value, and the return value is level, and another method where the argument that I pass is level and the return value is exp.
+
+I might go so far is to create a full experience point system module of one kind or another, but some times I might just use a simple system that is a collection of these two methods. Here I have one such example of this kind of module that has the two getXP, and getLevel methods. I also have methods in a form where it is an object that is returned with all the usual properties that I would want to have.
 
 ```js
 var utils = {};
