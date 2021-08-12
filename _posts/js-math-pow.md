@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 12:01:46
-version: 1.34
+updated: 2021-08-12 12:02:50
+version: 1.35
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -229,4 +229,5 @@ I decided to make this example part of my collection of usual suspect type metho
 
 ## 5 - Conclusion
 
-So that Math.pow method has many uses including finding out the limits of 2d images which is pretty cool. What else is there that can be done with the Math.pow method? Well I fairly sure that I have not even starched the surface. As I find even more examples to write about, I will get around to expanding this post even more.
+So that Math.pow method has many uses including finding out the limits of 2d images which is pretty cool. What else is there that can be done with the Math.pow method? Well I am fairly sure that I have not even starched the surface when it comes to this. However as I find even more examples to write about, I will get around to expanding this post even more when I do from time to time.
+
