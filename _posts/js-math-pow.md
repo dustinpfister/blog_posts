@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:43:54
-version: 1.30
+updated: 2021-08-12 11:47:04
+version: 1.31
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -48,7 +48,7 @@ This is something that comes up now and then when working with powers in project
 
 ## 3 - limits of 2d images
 
-Now for an interesting example of the math pow method that has to do with the total possible number of image combinations in an image matrix with a fixed width, height and color depth. This is something of interest to me that I seem to keep coming back to now and then, because I find it so interesting. That is that there is a limit to what is possible in a 2d image, sure we are talking about very large numbers, even with very low resolution and color depth, but still it is not infinite.
+Now for an interesting example of the math pow method that has to do with the total possible number of image combinations in an image matrix with a fixed width, height and color depth. This is something of interest to me that I seem to keep coming back to now and then, because I find it so interesting. In fact I have made a [canvas example that is on this topic of a limit to what is possible in a 2d image](/2019/12/11/canvas-example-image-limits/). Sure we are talking about very large numbers, even with very low resolution and color depth, but still it is not infinite.
 
 When I think of the most basic form of an image I think of an image that is just one by one in pixel resolution, with a color depth of only two indexed colors. When it comes to that kind of image there are only two possible images one with a pixel that is of the first indexed color, and other which is the other indexed color. As the color depth increases on its way to true color, and as the resolution approaches infinity, the total number of possible images approaches, but never truly reaches infinity. So there is always a limit to the number of possible images, it is just that things can quickly get into a situation in which we are taking about crazy large finite numbers.
 
