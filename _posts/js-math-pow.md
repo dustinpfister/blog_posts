@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:39:11
-version: 1.28
+updated: 2021-08-12 11:41:25
+version: 1.29
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -33,7 +33,7 @@ So then that is the basic idea of what the Math.pow method is all about. However
 
 ## 2 - Get the exp of a number if you know the base
 
-So lets say that I have this number. I know that the number is a power of a base, and I have the base, but I want to know the exponent. The Math.log method can be used to find that exponent, but dividing the log of that number by the log of the base.
+So lets say that I have this number, and I know that the number is a power of a base. Lets say that I also known the base, but I want to know the exponent. The [Math.log method](/2018/12/26/js-math-log/) can be used to find that exponent, but dividing the log of that number by the log of the base.
 
 ```js
 var getExp = function (n, b) {
