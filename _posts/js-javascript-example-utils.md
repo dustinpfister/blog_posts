@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-12 11:22:51
-version: 1.41
+updated: 2021-08-12 11:25:51
+version: 1.42
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -164,7 +164,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 ### 1.9 - Having a basic EXP System
 
-Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system.
+Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system. It might be best to start to work out some kind of [full module for an experience point system](/2020/04/27/js-javascript-example-exp-system/), however the same could be used for many of the canvas methods that I have in this module also.
 
 ```js
 // Basic experience point system methods
