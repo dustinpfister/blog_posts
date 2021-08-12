@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 10:57:59
-version: 1.19
+updated: 2021-08-12 11:00:03
+version: 1.20
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -165,6 +165,57 @@ This seem to work as expected, but this is just scratching the surface of what c
 
 If I wanted to make a more comprehensive project centered around this I would want to use the math pow method of some kind of big integer library that uses strings to store numbers. There is also now the big init type in javaScript itself actually, but as of this writing it is not well supported.
 
-## 4 - Conclusion
+## 4 - Creating an expernce point system
+
+```js
+var utils = {};
+utils.XP = (function () {
+    // default values
+    var default_deltaNext = 50,
+    defualt_cap = 100;
+    // get level with given xp
+    var getLevel = function (xp, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return (1 + Math.sqrt(1 + 8 * xp / deltaNext)) / 2;
+    };
+    // get exp to the given level with given current_level and xp
+    var getXP = function (level, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return ((Math.pow(level, 2) - level) * deltaNext) / 2;
+    };
+    // parse a levelObj by XP
+    var parseByXP = function (xp, cap, deltaNext) {
+        //cap = cap === undefined ? default_cap : cap;
+        var l = getLevel(xp);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
+        forNext = getXP(level + 1);
+        return {
+            level: level,
+            levelFrac: l,
+            per: l % 1,
+            xp: xp,
+            forNext: l === cap ? Infinity : forNext,
+            toNext: l === cap ? Infinity : forNext - xp
+        };
+    };
+    return {
+        // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
+        parseByLevel: function (l, cap, deltaNext) {
+            return parseByXP(getXP(l, deltaNext), cap);
+        },
+        // can just directly use parseByXP for utils.XP.parseByXP
+        parseByXP: parseByXP
+    };
+}
+    ());
+// seems to work okay
+var a = utils.XP.parseByLevel(80, 100, 75);
+var b = utils.XP.parseByXP(a.xp, 100, 75);
+console.log(a); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }
+console.log(b); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }
+```
+
+## 5 - Conclusion
 
 So that Math.pow method has many uses including finding out the limits of 2d images which is pretty cool. What else is there that can be done with the Math.pow method? Well I fairly sure that I have not even starched the surface. As I find even more examples to write about, I will get around to expanding this post even more.
