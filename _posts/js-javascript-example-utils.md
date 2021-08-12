@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-09 11:25:03
-version: 1.40
+updated: 2021-08-12 11:22:51
+version: 1.41
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -160,6 +160,54 @@ utils.canvasPointerEvents = function (canvas, state, events) {
     canvas.addEventListener('touchmove', handler, options);
     canvas.addEventListener('touchend', handler, options);
 };
+```
+
+### 1.9 - Having a basic EXP System
+
+Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system.
+
+```js
+// Basic experience point system methods
+utils.XP = (function () {
+    // default values
+    var default_deltaNext = 50,
+    defualt_cap = 100;
+    // get level with given xp
+    var getLevel = function (xp, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return (1 + Math.sqrt(1 + 8 * xp / deltaNext)) / 2;
+    };
+    // get exp to the given level with given current_level and xp
+    var getXP = function (level, deltaNext) {
+        deltaNext = deltaNext === undefined ? default_deltaNext : deltaNext;
+        return ((Math.pow(level, 2) - level) * deltaNext) / 2;
+    };
+    // parse a levelObj by XP
+    var parseByXP = function (xp, cap, deltaNext) {
+        //cap = cap === undefined ? default_cap : cap;
+        var l = getLevel(xp);
+        l = l > cap ? cap : l;
+        var level = Math.floor(l),
+        forNext = getXP(level + 1);
+        return {
+            level: level,
+            levelFrac: l,
+            per: l % 1,
+            xp: xp,
+            forNext: l === cap ? Infinity : forNext,
+            toNext: l === cap ? Infinity : forNext - xp
+        };
+    };
+    return {
+        // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
+        parseByLevel: function (l, cap, deltaNext) {
+            return parseByXP(getXP(l, deltaNext), cap);
+        },
+        // can just directly use parseByXP for utils.XP.parseByXP
+        parseByXP: parseByXP
+    };
+}
+    ());
 ```
 
 ## 2 - Demos of the utils module
