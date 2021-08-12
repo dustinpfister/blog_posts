@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:35:44
-version: 1.27
+updated: 2021-08-12 11:39:11
+version: 1.28
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -28,6 +28,8 @@ nums = nums.map((n) => Math.pow(2, n));
 console.log(nums.join(','));
 // 1,2,4,8,16
 ```
+
+So then that is the basic idea of what the Math.pow method is all about. However there is a great deal more to be aware of when it comes to what this method is used for. Also there are many other methods, expressions, and topics that come into pay when it comes to using the Math.pow method to create some kind of actual project. So now that I have the basic example out of the way lets continue on to the good stuff.
 
 ## 2 - Get the exp of a number if you know the base
 
