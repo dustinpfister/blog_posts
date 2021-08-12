@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:00:03
-version: 1.20
+updated: 2021-08-12 11:03:49
+version: 1.21
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -165,7 +165,9 @@ This seem to work as expected, but this is just scratching the surface of what c
 
 If I wanted to make a more comprehensive project centered around this I would want to use the math pow method of some kind of big integer library that uses strings to store numbers. There is also now the big init type in javaScript itself actually, but as of this writing it is not well supported.
 
-## 4 - Creating an expernce point system
+## 4 - Creating an experience point system
+
+Another major example of the Math.pow method and methods that are used to invert such a method would be to use Math.pow in one or more expressions that have to to with an experience point system.
 
 ```js
 var utils = {};
