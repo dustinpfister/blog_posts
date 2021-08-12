@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 10:56:36
-version: 1.18
+updated: 2021-08-12 10:57:59
+version: 1.19
 ---
 
-The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module.
+The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
 
 So then in this post I will be going over some basic examples of the Math.pow method of course, but from there I will also be getting into some other examples that I find myself using all the time in various projects. That is some usual suspects of sorts when it comes to the use of the Math.pow method in expressions and pure functions. However the focal point here will be the Math pow method and a few other things of interest the revolve around the method as I see it.
 
