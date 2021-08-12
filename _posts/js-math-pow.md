@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:53:17
-version: 1.32
+updated: 2021-08-12 11:57:30
+version: 1.33
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -73,7 +73,7 @@ Using the math pow method I can just use the color depth as the base and the tot
 
 ### 3.2 - index from an image string methods
 
-One major feature of this kind of project is to have methods that will create a workable number value from a string of image index data. This is another area where the Math.pow method will come into play alond with fidnding out the total number of possible images.
+One major feature of this kind of project is to have methods that will create a workable number value from a string of image index data. This is another area where the Math.pow method will come into play along with finding out the total number of possible images.
 
 ```js
 // Basic indexFromString using parseInt that will work for a colorDepth
@@ -94,7 +94,8 @@ var indexFromString2 = function (string, colorDepth) {
 
 ### 3.3 - Create and image string from an index
 
-I will need to work out a way to express image data as a string of color index values for each pixel. This can be done with the to string method of a number as long as I do not mind keeping the color depth below that of 36. For this set of examples I will only want to keep the color depth at 2, or not that much higher anyway because of the limits of javaScript numbers. 
+I will need to work out a way to express image data as a string of color index values for each pixel. This can be done with the to string method of a number as long as I do not mind keeping the color depth below that of 36. For this set of examples I will only want to keep the color depth at 2, or not that much higher anyway because of the limits of javaScript numbers.
+
 ```js
 // create a image String from an index value of a color depth and size
 var IMGStringFromIndex = function (index, colorDepth, size) {
@@ -116,7 +117,7 @@ var IMGStringFromIndex = function (index, colorDepth, size) {
 };
 ```
 
-This method will then create and return and image string for a given image index value, color depth, and pixel size. This will work just fine for what I want to do with these methods, things can get into very large numbers very fast after all.
+This method will then create and return and image string for a given image index value, color depth, and pixel size. This will work just fine for what I want to do with these methods, things can get into very large numbers very fast though. So when it comes to making this into some kind of real project I would want to make use of [Big Integers in a native from](/2019/09/06/js-bigint/), or by making use of [some kind of big number library](/2017/05/29/nodejs-big-integer/) that might be a better move.
 
 ### 3.4 - Chunk and image string into an array of arrays
 
