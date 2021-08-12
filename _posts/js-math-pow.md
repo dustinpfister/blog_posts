@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:47:04
-version: 1.31
+updated: 2021-08-12 11:53:17
+version: 1.32
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -72,6 +72,8 @@ var pastSafe = function (w, h, colorDepth) {
 Using the math pow method I can just use the color depth as the base and the total number of pixels in the image as the exponent and the result will be the total number of images that is possible in the matrix. When it comes to getting into this sort of thing you will want to keep the resolutions and color depths very low as it is very easy to start getting into very large numbers.
 
 ### 3.2 - index from an image string methods
+
+One major feature of this kind of project is to have methods that will create a workable number value from a string of image index data. This is another area where the Math.pow method will come into play alond with fidnding out the total number of possible images.
 
 ```js
 // Basic indexFromString using parseInt that will work for a colorDepth
