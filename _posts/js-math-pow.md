@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 578
-updated: 2021-08-12 11:13:07
-version: 1.25
+updated: 2021-08-12 11:31:02
+version: 1.26
 ---
 
 The [Math pow](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/pow) method is what can be used in javaScript to create a number that is a power from a base and an exponent, also know as [Exponentiation](https://en.wikipedia.org/wiki/Exponentiation). The use of this will come up often when working out expressions for things like curves, finding the distance between two points, working out a formula for leveling up a character in a game, and much more. There are many other Math methods that are often used in conjunction with Math.pow, such as Math.sqrt to create all kinds of useful expressions that are often used in creating pure functions that make up a useful module for kind of general task or another.
@@ -219,6 +219,8 @@ var b = utils.XP.parseByXP(a.xp, 100, 75);
 console.log(a); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }
 console.log(b); // { level: 10, levelFrac: 10, xp: 2250, forNext: 2750, toNext: 500 }
 ```
+
+I decided to make this example part of my collection of usual suspect type methods for my [general utilities module](/2021/08/06/js-javascript-example-utils/).
 
 ## 5 - Conclusion
 
