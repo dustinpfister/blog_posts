@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-13 14:45:13
-version: 1.18
+updated: 2021-08-13 14:46:31
+version: 1.19
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points.
@@ -104,7 +104,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 Even If I do not work on this project any more one good thing that came out of this is coming up with a nice basic grid module. This is a module that I can use to create a base object for a grid, to which I can then use in my plant grid module that I will be getting to in a later section in this post. For now this module just has three public methods one of which is a create method that will just create and return a grid object. another public method is to get a cell in the gird given a canvas relative pixel location, and I have another to select or deselect an orb.
 
-When it comes to working out the nature of the grid object I went with a design where I have just an array of objects for each cell. I can then use the bounding box utility method as one way to go about finding out if a cell was clicked or not.
+When it comes to working out the nature of the grid object I went with a design where I have just an array of objects for each cell. I can then use the bounding box utility method as one way to go about finding out if a cell was clicked or not. There may be better ways to go about dosing that kind of task when it comes to making a get cell method for this sort of thing, but I did not want to get caught up in every little detail about making this module.
 
 ```js
 (function (api) {
