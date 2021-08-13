@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-08-13 11:08:07
-version: 1.61
+updated: 2021-08-13 11:09:39
+version: 1.62
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -40,7 +40,7 @@ This is my first attempt at making a module, reusable experience point system th
 
 ### 1.6 - [Fizz buzz](/2020/06/26/js-javascript-example-fizzbuzz)
 
-Often I need to make the same thing over an over again at least a few times before I even begin to get a clear idea as to how it is that I want to design a system. When I first start working out a prototype for an idea on something I often get a basic work proof of that idea, but often there is a great deal wrong with it. So I then make a new system where I end up making the whole thing all over again, but now a slightly better system that does not have all the problems of the first prototype. This process then often repeats at least a few times until I get something that is fairly solid, or at least good enough. This fixxbuzz javaScript example is then an exercise of this sort of thing on a micro scale with a very simple idea, rather than a complex module, or full feature application of some kind.
+Often I need to make the same thing over an over again at least a few times before I even begin to get a clear idea as to how it is that I want to design a system. When I first start working out a prototype for an idea on something I often get a basic work proof of that idea, but often there is a great deal wrong with it. So I then make a new system where I end up making the whole thing all over again, but now a slightly better system that does not have all the problems of the first prototype. This process then often repeats at least a few times until I get something that is fairly solid, or at least good enough. This fizzbuzz javaScript example is then an exercise of this sort of thing on a micro scale with a very simple idea, rather than a complex module, or full feature application of some kind.
 
 ### 1.7 - [Grid Game Unit Movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/)
 
@@ -51,6 +51,8 @@ In this example I have a grid and I am working out some basic logic when it come
 This is a starting point for a simple idle game idea that is just another basic mine type theme. The general idea is that it will have some kind of space theme, and involve ships going back and form from planets back to a home base of sorts. This seems to me a common theme when it comes to these kinds of games as I see a lot of them on the open web.
 
 ### 1.9 -  [wild plant grid idle game](/2021/08/13/js-javascript-example-idle-game-wild-plant-grid/)
+
+This is another idle game prototype that I might work on more at one point or another. The idea was to just have a grid of cells in which plants grow.
 
 ### 1.10 - [A log once method](/2021/03/29/js-javascript-example-log-once/)
 
