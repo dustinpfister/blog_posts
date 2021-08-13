@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-13 11:54:22
-version: 1.7
+updated: 2021-08-13 11:56:02
+version: 1.8
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects.
@@ -247,7 +247,9 @@ Here I have the main module of interest when it comes to this game, where I am c
     (this['gridPlantsMod'] = {}))
 ```
 
-## 4 - game
+## 4 - The game module
+
+It is a usual practice of mine to have a main game state object module. However when it comes to this game so far there is not much to write about with this module just yet.
 
 ```js
 (function (api) {
