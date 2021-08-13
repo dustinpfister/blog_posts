@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-13 11:52:46
-version: 1.6
+updated: 2021-08-13 11:54:22
+version: 1.7
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects.
@@ -176,6 +176,8 @@ Even If I do not work on this project any more one good thing that came out of t
 ```
 
 ## 3 - The grid-plants module
+
+Here I have the main module of interest when it comes to this game, where I am creating a grid with the grid module, but then creating some custom objects for each cell, and adding additional features that are specific to this game.
 
 ```js
 (function (api) {
