@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-08-06 11:43:02
-version: 1.59
+updated: 2021-08-13 11:06:37
+version: 1.60
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -49,6 +49,8 @@ In this example I have a grid and I am working out some basic logic when it come
 ### 1.8 - [idle game of a simple mine theme](/2021/07/16/js-javascript-example-idle-game-simple-mine/)
 
 This is a starting point for a simple idle game idea that is just another basic mine type theme. The general idea is that it will have some kind of space theme, and involve ships going back and form from planets back to a home base of sorts. This seems to me a common theme when it comes to these kinds of games as I see a lot of them on the open web.
+
+### 1.8 -  [wild plant grid idle game](/2021/08/13/js-javascript-example-idle-game-wild-plant-grid/)
 
 ### 1.9 - [A log once method](/2021/03/29/js-javascript-example-log-once/)
 
