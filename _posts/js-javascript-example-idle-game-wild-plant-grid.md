@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-13 11:48:41
-version: 1.4
+updated: 2021-08-13 11:50:49
+version: 1.5
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects.
@@ -14,6 +14,8 @@ This week I have been working on two projects that are additional game prototype
 <!-- more -->
 
 ## 1 - The utils module
+
+First off here is the utils module that I have for this javaScript example. In other words this is the general utility module that I have made for this game that will differ a little from one project to a next when I make this kind of project.
 
 ```js
 var utils = {};
@@ -282,7 +284,7 @@ draw.grid = function (grid, ctx, canvas) {
 };
 ```
 
-## 6 - main
+## 6 - main JavaScript file
 
 ```js
 var sm = {
