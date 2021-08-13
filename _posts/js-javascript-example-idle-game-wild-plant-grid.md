@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-13 11:56:54
-version: 1.9
+updated: 2021-08-13 11:57:52
+version: 1.10
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects.
@@ -292,7 +292,9 @@ draw.grid = function (grid, ctx, canvas) {
 };
 ```
 
-## 6 - main JavaScript file
+## 6 - The main JavaScript file
+
+I then have a main javaScrit file where I have what is the beginnings of a state machine, and the main app loop.
 
 ```js
 var sm = {
