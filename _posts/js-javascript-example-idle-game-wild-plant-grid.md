@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-20 07:50:19
-version: 1.22
+updated: 2021-08-20 07:51:41
+version: 1.23
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points. These points can then be used to make improvements to the state of the grid.
@@ -183,7 +183,7 @@ When it comes to working out the nature of the grid object I went with a design 
 
 ## 3 - The grid-plants module
 
-Here I have the main module of interest when it comes to this game, where I am creating a grid with the grid module, but then creating some custom objects for each cell, and adding additional features that are specific to this game. So then at the top of the module I have a hard  coded object that is the beginnings of a hard coded plant database.
+Here I have the main module of interest when it comes to this game, where I am creating a grid with the grid module, but then creating some custom objects for each cell, and adding additional features that are specific to this game. So then at the top of the module I have a hard  coded object that is the beginnings of a hard coded plant database. I then have a public create method to create a plant grid object, and also a main update method of this module that I will be calling to update the state of this grid.
 
 ```js
 (function (api) {
