@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-13 14:46:31
-version: 1.19
+updated: 2021-08-20 07:46:07
+version: 1.20
 ---
 
-This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points.
+This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points. These points can then be used to make improvements to the state of the grid.
+
+So then this is yet another game prototype idea that I will add to the stack of my simple [JavaScript example](/2021/04/02/js-javascript-example/) projects. 
 
 <!-- more -->
 
