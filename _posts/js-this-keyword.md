@@ -5,8 +5,8 @@ tags: [js,blog,corejs]
 layout: post
 categories: js
 id: 13
-updated: 2020-07-17 13:01:12
-version: 1.9
+updated: 2021-08-21 09:00:53
+version: 1.10
 ---
 
 Every javaScript developer that runs a blog ends up writing at least one post on the [this keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), it is just something that all of us get to sooner or later. So I thought I should get this one out of the way quick, so I can get to writing about more obscure and uncovered aspects of the JavaScript language and what can be done with the this keyword, or lack of it when working out some javaScript code. There is all ready a great [many posts on this subject of the this keyword](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8), and in many respects this is just yet another post on the same things that are well covered elsewhere. 
@@ -37,7 +37,7 @@ this; // the global object
 
 ### 3 - Using js this Inside a function.
 
-This is where things can get a little confusing, as the this keyword can change depending on a lot of factors. I will cover as many of them as I am aware of here.
+This is where things can get a little confusing, as the this keyword can change depending on a lot of factors. I will cover as many of them as I am aware of here. The this keyword can refer to a whole lot of different things inside the body of a function depending on what kind of function it is, and if a function prototype method is being used.
 
 ### 3.1 - An es5 (non strict mode) IIFE and js this
 
