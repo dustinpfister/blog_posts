@@ -5,13 +5,15 @@ tags: [js,blog,corejs]
 layout: post
 categories: js
 id: 13
-updated: 2021-08-21 09:00:53
-version: 1.10
+updated: 2021-08-22 09:10:08
+version: 1.11
 ---
 
-Every javaScript developer that runs a blog ends up writing at least one post on the [this keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), it is just something that all of us get to sooner or later. So I thought I should get this one out of the way quick, so I can get to writing about more obscure and uncovered aspects of the JavaScript language and what can be done with the this keyword, or lack of it when working out some javaScript code. There is all ready a great [many posts on this subject of the this keyword](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8), and in many respects this is just yet another post on the same things that are well covered elsewhere. 
+Every javaScript developer that runs a blog ends up writing at least one post on the [this keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this). The operator that is the this keyword it is just something that all of us get to sooner or later it would seem, so I thought I should get this one out of the way quick, so I can get to writing about more obscure and uncovered aspects of the JavaScript language. 
 
-Still if I am going to make yet another one, I should take the time to try to do it right. There is a lot to cover when it comes to the this keyword and all the possible values it can be depending on the situation. A lot of developers hate the this keyword because of its dynamic nature, even going so far as to avoid using it all together by taking a more functional approach to things rather than developing classes.
+There is all ready a great [many posts on this subject of the this keyword](https://medium.com/better-programming/understanding-the-this-keyword-in-javascript-cb76d4c7c5e8), and in many respects this is just yet another post on the same things that are well covered elsewhere. Still if I am going to make yet another one, I should take the time to try to do it right. Also there is a lot to cover when it comes to the this keyword and all the possible values it can be depending on the situation, so maybe this is one of those topics where although there are a great number of posts on the subject there are few whole manage to to the topic justice. 
+
+A lot of developers hate the this keyword because of its dynamic nature, even going so far as to avoid using it all together by taking a more [functional approach](/2020/06/18/js-function-pure/) to things rather than developing classes.
 
 <!-- more -->
 
