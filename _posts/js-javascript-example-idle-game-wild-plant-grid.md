@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-20 07:51:41
-version: 1.23
+updated: 2021-08-23 16:15:03
+version: 1.24
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points. These points can then be used to make improvements to the state of the grid.
@@ -110,7 +110,6 @@ When it comes to working out the nature of the grid object I went with a design 
 
 ```js
 (function (api) {
- 
     api.create = function (opt) {
         opt = opt || {};
         var grid = {
@@ -128,14 +127,14 @@ When it comes to working out the nature of the grid object I went with a design 
         while (i < len) {
             cell = {
                 i: i, // store index for this cell
-                X: i % grid.w, // grid index pos values as uppercase X, and Y
-                Y: Math.floor(i / grid.w),
+                cellX: i % grid.w, // grid index pos values as uppercase X, and Y
+                cellY: Math.floor(i / grid.w),
                 data: {}
                 // user data object
             };
             // cell pixel pos values as lowercase x, and y
-            cell.x = grid.xOffset + cell.X * grid.cellSize;
-            cell.y = grid.yOffset + cell.Y * grid.cellSize;
+            cell.x = grid.xOffset + cell.cellX * grid.cellSize;
+            cell.y = grid.yOffset + cell.cellY * grid.cellSize;
             grid.cells.push(cell);
             i += 1;
         }
@@ -143,15 +142,11 @@ When it comes to working out the nature of the grid object I went with a design 
     };
     // get a cell by the given pixel position
     api.getCellByPixlePos = function (grid, x, y) {
-        var i = 0,
-        cell,
-        len = grid.w * grid.h;
-        while (i < len) {
-            cell = grid.cells[i];
-            if (utils.boundingBox(cell.x, cell.y, grid.cellSize, grid.cellSize, x, y, 1, 1)) {
-                return cell;
-            }
-            i += 1;
+        var cellX = Math.floor( (x - grid.xOffset) / grid.cellSize ),
+        cellY = Math.floor( (y - grid.yOffset) / grid.cellSize ),
+        cell;
+        if(cellX >= 0 && cellY >= 0 && cellX < grid.w && cellY < grid.h){
+            return grid.cells[cellY * grid.w + cellX];
         }
         return null;
     };
@@ -176,7 +171,6 @@ When it comes to working out the nature of the grid object I went with a design 
             }
         }
     };
- 
 }
     (this['gridMod'] = {}))
 ```
