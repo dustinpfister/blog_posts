@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-08-23 16:15:03
-version: 1.24
+updated: 2021-08-23 16:16:43
+version: 1.25
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points. These points can then be used to make improvements to the state of the grid.
@@ -104,9 +104,9 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 ## 2 - The grid module
 
-Even If I do not work on this project any more one good thing that came out of this is coming up with a nice basic grid module. This is a module that I can use to create a base object for a grid, to which I can then use in my plant grid module that I will be getting to in a later section in this post. For now this module just has three public methods one of which is a create method that will just create and return a grid object. another public method is to get a cell in the gird given a canvas relative pixel location, and I have another to select or deselect an orb.
+Even If I do not work on this project any more one good thing that came out of this is coming up with a nice basic grid module. This is a module that I can use to create a base object for a grid, to which I can then use in my plant grid module that I will be getting to in a later section in this post. For now this module just has three public methods one of which is a create method that will just create and return a grid object. Another public method is to get a cell in the gird given a canvas relative pixel location, and I have another to select or deselect an orb.
 
-When it comes to working out the nature of the grid object I went with a design where I have just an array of objects for each cell. I can then use the bounding box utility method as one way to go about finding out if a cell was clicked or not. There may be better ways to go about dosing that kind of task when it comes to making a get cell method for this sort of thing, but I did not want to get caught up in every little detail about making this module.
+When it comes to working out the nature of the grid object I went with a design where I have just an array of objects for each cell. I thought of using bounding box as a way to find what cell was clicked, but decided to instead go with expressions rather than looping.
 
 ```js
 (function (api) {
