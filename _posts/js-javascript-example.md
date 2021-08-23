@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-08-23 15:14:26
-version: 1.63
+updated: 2021-08-23 16:21:50
+version: 1.64
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -47,6 +47,8 @@ Often I need to make the same thing over an over again at least a few times befo
 In this example I have a grid and I am working out some basic logic when it comes to moving those units around in the grid. There is a bit to it actually when it comes to making a system for this sort of thing from the ground up. However what is also great about it is that it is not so hard to get something working, and once I have a basic system for the kinds of games that I have in mind I can use it to not just make one game but a few taking this system with me to each new project. However as of this writing this one is still a work in progress that I have not put as much time into as I would have liked to. I do have a lot of other things going on that get in the way of me working much of this stuff out.
 
 ### 1.8 - [Grid Module](/2021/08/20/js-javascript-example-grid-module/)
+
+In this post I am just going over the source code of a basic grid module.
 
 ### 1.9 - [idle game of a simple mine theme](/2021/07/16/js-javascript-example-idle-game-simple-mine/)
 
