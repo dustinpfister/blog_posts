@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-23 16:09:09
-version: 1.1
+updated: 2021-08-23 16:22:57
+version: 1.2
 ---
 
-I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one. In this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module.
+I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, nit having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module.
 
 
 <!-- more -->
