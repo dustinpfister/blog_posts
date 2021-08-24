@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:48:13
-version: 1.16
+updated: 2021-08-24 11:51:46
+version: 1.17
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -103,6 +103,8 @@ So then the start of my grid module is the beginnings of an IIFE, and the create
 ```
 
 ## 2 - The utils module for this over all example
+
+I often have a general utility module when it comes to making an over all javaScript project of some kind. This module serves as just a general dumping ground for methods that I might use in one or more additional modules, and I can not think of any other place to put them. The state of this kind of module will differ a little from one project to the next, but I have wrote a [post in which I am going over a version of this kind of module that has many of the usual suspect methods](/2021/08/06/js-javascript-example-utils/).
 
 ```js
 var utils = {};
