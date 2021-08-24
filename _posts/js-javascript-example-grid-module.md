@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:22:24
-version: 1.8
+updated: 2021-08-24 11:38:25
+version: 1.9
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -17,7 +17,13 @@ There are many basic features that a grid module should have, such as a public m
 
 ## 1 - The grid module
 
-So then the first thing I would like to get to is the current state of the grid module that I have made for this post. The main basic method of interest is the create method of this grid module that will create and return a new grid object. So right off the bat there is the question of how to go about structuring a grid object as there are so many different ways of going about doing that sort of thing in javaScript. For example many javaScript developers might like to create a grid as an array of arrays, however others present company included like to use a linear array and use expressions to get and set values of cells. This alone can prove to end up being a situation that can get a developer stuck on something that is trivial, however I often think it is basic to just make a decision and move forward when it comes to things like this. Also I can alter on make additional create methods that can be used to create my standard grid object from other kinds of gird object formats if I end up in a situation in which I need to.
+So then the first thing I would like to get to is the current state of the grid module that I have made for this post.  When it comes to making a choice as to what kind of pattern I should go with when it comes to making a javaScriot mode I went with an IIFE.
+
+### 1.1 - The create method
+
+The main basic method of interest is the create method of this grid module that will create and return a new grid object. So right off the bat there is the question of how to go about structuring a grid object as there are so many different ways of going about doing that sort of thing in javaScript. For example many javaScript developers might like to create a grid as an array of arrays, however others present company included like to use a linear array and use expressions to get and set values of cells. This alone can prove to end up being a situation that can get a developer stuck on something that is trivial, however I often think it is basic to just make a decision and move forward when it comes to things like this. Also I can alter on make additional create methods that can be used to create my standard grid object from other kinds of gird object formats if I end up in a situation in which I need to.
+
+So then the start of my grid module is the beginnings of an IIFE, and the create method.
 
 ```js
 (function (api) {
@@ -51,6 +57,9 @@ So then the first thing I would like to get to is the current state of the grid 
         }
         return grid;
     };
+```
+
+```js
     // get a cell by the given pixel position
     api.getCellByPixlePos = function (grid, x, y) {
         var cellX = Math.floor( (x - grid.xOffset) / grid.cellSize ),
