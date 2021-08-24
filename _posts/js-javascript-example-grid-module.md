@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:40:24
-version: 1.11
+updated: 2021-08-24 11:42:30
+version: 1.12
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -59,6 +59,8 @@ So then the start of my grid module is the beginnings of an IIFE, and the create
     };
 ```
 
+### 1.2 - The get cell by pixel position method
+
 ```js
     // get a cell by the given pixel position
     api.getCellByPixlePos = function (grid, x, y) {
@@ -70,6 +72,11 @@ So then the start of my grid module is the beginnings of an IIFE, and the create
         }
         return null;
     };
+```
+
+### 1.3 - selected check method
+
+```js
     // selected cell check
     api.selectedCheck = function (grid, x, y, onSelect, onUnselect) {
         var cell = api.getCellByPixlePos(grid, x, y);
@@ -95,7 +102,7 @@ So then the start of my grid module is the beginnings of an IIFE, and the create
     (this['gridMod'] = {}))
 ```
 
-## 2 - utils
+## 2 - The utils module for this over all example
 
 ```js
 var utils = {};
