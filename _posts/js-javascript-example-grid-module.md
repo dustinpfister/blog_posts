@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:46:40
-version: 1.15
+updated: 2021-08-24 11:48:13
+version: 1.16
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -184,9 +184,9 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 };
 ```
 
-## 3 - The draw lob for the example
+## 3 - The draw file for the example
 
-I have just a few draw methods that I will be using for this example.
+I have just a few draw methods that I will be using for this example. For now I just want a method to draw a simple solid background, and of course a method to draw the current state of the grid.
 
 ```js
 var draw = {};
@@ -277,3 +277,4 @@ loop();
 ## 5 - Conclusion
 
 That will be it for now when it comes to this grid module, however this might prove to be one of my many javaScript posts in which I will be coming back to do some editing now and then. There are a lot of other features that I would want to add to this kind of module, but the features will differ a little from one project to the next.
+
