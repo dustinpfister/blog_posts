@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:38:25
-version: 1.9
+updated: 2021-08-24 11:39:12
+version: 1.10
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -17,7 +17,7 @@ There are many basic features that a grid module should have, such as a public m
 
 ## 1 - The grid module
 
-So then the first thing I would like to get to is the current state of the grid module that I have made for this post.  When it comes to making a choice as to what kind of pattern I should go with when it comes to making a javaScriot mode I went with an IIFE.
+So then the first thing I would like to get to is the current state of the grid module that I have made for this post.  When it comes to making a choice as to what kind of pattern I should go with when it comes to making a javaScriot mode I went with an [IIFE](/2020/02/04/js-iife/).
 
 ### 1.1 - The create method
 
