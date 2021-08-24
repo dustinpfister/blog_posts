@@ -5,17 +5,19 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:12:05
-version: 1.3
+updated: 2021-08-24 11:13:13
+version: 1.4
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
-There are many basic features that a grid module should have, such as a public method that can be used to get a cell by way of a canvas pixle position for example. There are also more advanced features such as path detection that maybe should be a part of a grid module, or maybe a part of an optional module that can be used on top of a grid module. In any case for this example I am going to just be sticking with the very basics of this sort of thing. However do not let that fool you, even when it comes to the very basics of a grid module there is still a fare about of ground to cover.
+There are many basic features that a grid module should have, such as a public method that can be used to get a cell by way of a canvas pixel position for example. There are also more advanced features such as path detection that maybe should be a part of a grid module, or maybe a part of an optional module that can be used on top of a grid module. In any case for this example I am going to just be sticking with the very basics of this sort of thing. However do not let that fool you, even when it comes to the very basics of a grid module there is still a fare about of ground to cover.
 
 
 <!-- more -->
 
 ## 1 - The grid module
+
+So then the first thing I would like to get to is the current state of the grid module that I have made for this post.
 
 ```js
 (function (api) {
