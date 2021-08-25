@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 08:52:57
-version: 1.20
+updated: 2021-08-25 08:54:16
+version: 1.21
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -62,7 +62,7 @@ console.log(copy.x, source.x); // 40 32
 
 ```
 
-Although this might work okay for this kind of example, other times I have an object with nested objects in it. There is also the question of the object prototype chain, circular references, references to native objects like window and, and laying when it comes to merging down a collection of objects. So now that we understand the very basic idea of copying and referencing with objects in javaScript lets move on to some more advanced related topics here.
+Although this might work okay for this kind of example, other times I have an object with nested objects in it. There is also the question of the object prototype chain, circular references, references to native objects like window, layering when it comes to merging down a collection of objects. So now that we understand the very basic idea of copying and referencing with objects in javaScript lets move on to some more advanced related topics when it come to copying objects.
 
 ## 2 - copying nested objects by references, and basic deep cloning
 
