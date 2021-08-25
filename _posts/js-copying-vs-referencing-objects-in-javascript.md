@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 08:42:08
-version: 1.17
+updated: 2021-08-25 08:43:12
+version: 1.18
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -39,7 +39,7 @@ pt.x = 0;
 console.log(obj.x); // 0;
 ```
 
-In many cases this is actually what I want, but some times I want to work with a copy of an object so that I do not mutate the original source object, a typical task in [functional programing](/2020/06/18/js-function-pure/). As such I need some kind of way to make a copy (or clone) of an object where it is not a reference but a whole new independent copy of that object with the same set of values. 
+In many cases this is actually what I want, but some times I want to work with a copy of an object so that I do not mutate the original source object, a typical task in [functional programing](/2020/06/18/js-function-pure/). As such I need some kind of way to make a copy \( or clone if you prefer \) of an object where it is not a reference to the same object, but a whole new independent copy of that object with the same set of values.
 
 ### 1.1 - Basic js copy object example
 
