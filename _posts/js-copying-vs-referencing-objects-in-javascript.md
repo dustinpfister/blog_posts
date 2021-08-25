@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 09:06:13
-version: 1.25
+updated: 2021-08-25 09:14:19
+version: 1.26
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -23,7 +23,7 @@ In this section I will be going over some very basic JavaScript examples on the 
 
 These examples are very simple though, and as such I am not going to be covering everything that there is to know about when it comes to making copies of objects in javaScript when it comes to things like the prototype chain, and circular references. This is of course just a sort of basic section of this post where I am just writing about a very simple watered down form of things for the sake of outlining the theme of the post. If you think you have a basic understanding of how referencing and copying of values works in javaScript you might want to move on to some of the more advanced sections later in this content.
 
-### 1.2 - Basic js reference example
+### 1.1 - Basic js reference example
 
 By default whenever I have a situation in which I have an object assigned to a variable it is a reference to that object that is stored in that variable. When I use the assignment operator to create another variable and assign that reference to an object as its value, it is not a copy of that object it is just yet another reference to the same object in memory. This is what is meant by copying by reference rather than value.
 
@@ -41,7 +41,7 @@ console.log(obj.x); // 0;
 
 In many cases this is actually what I want, but some times I want to work with a copy of an object so that I do not mutate the original source object, a typical task in [functional programing](/2020/06/18/js-function-pure/). As such I need some kind of way to make a copy \( or clone if you prefer \) of an object where it is not a reference to the same object, but a whole new independent copy of that object with the same set of values.
 
-### 1.1 - Basic js copy object example using Object.keys and Array.forEach
+### 1.2 - Basic js copy object example using Object.keys and Array.forEach
 
 Sometimes just a simple shallow clone of the object will work just fine, which is the case with this very simple object example. The reason why is because it does not have any nested objects, or references to other objects outside of it. The example here then involves just a single source object that has a x and y named keys, and the values for these keys are numbers, which are a kind of primitive value. When I pass the source object to the [Object.keys method](/2018/12/15/js-object-keys/), what is returned is an array of public key names for the object. Because the returned value of the Object.keys method is an array, I can then use an array prototype method such as the [array.forEach method](/2019/02/16/js-javascript-foreach/) to loop over the key names. So then I could just create a new object, and then use the key names of the source object to create new key named for the new copy of the source object, and also use the key names to get the values from the source object in the body of the function that I pass to the array.forEach method.
 
@@ -63,6 +63,35 @@ console.log(copy.x, source.x); // 40 32
 ```
 
 Although this might work okay for this kind of example, other times I have an object with nested objects in it. There is also the question of the object prototype chain, circular references, references to native objects like window, layering when it comes to merging down a collection of objects. So now that we understand the very basic idea of copying and referencing with objects in javaScript lets move on to some more advanced related topics when it come to copying objects.
+
+### 1.3 - Copying objects, and the for in method of doing it.
+
+Another common way to go about copying an object is to use a for in loop. This is the way that one would have to go about doing this sort of thing way back before many of the more modern options there are to work with in core javaScript. So if for some weird reason you need to get things to work in really old platforms doing something like this might be called for.
+
+```js
+// and example object to copy
+var ref = {
+    x: 32,
+    y: 50
+};
+ 
+// a simple forInClone shallow cone method
+var forInClone = function (obj) {
+    var n = {},
+    prop;
+    for (prop in obj) {
+        n[prop] = obj[prop];
+    }
+    return n;
+},
+ 
+// works
+pt = forInClone(ref);
+pt.x = 0;
+console.log(ref.x); // 32
+```
+
+This will work okay, as long as I don't need a deep cone of the object in which case it will not work okay, as it just copy's the keys of the object to a new object. Never the less many clone methods work just like this in some fashion, and it is often called a shallow clone of an object. When it comes to the basics of copying by reference and value solutions like this are easy to understand, but things get a little hard to follow when it comes to getting into deep cloning.
 
 ## 2 - Copying nested objects by references, and basic Deep Cloning of an object
 
@@ -104,43 +133,6 @@ console.log(copy.pos.x, source.pos.x); // 0 0
 ```
 
 So in order to resolve this I must find a way to deep clone, rather than shallow clone the source object and its nested pos object. One way to do this is the same way as before it is just that now I need to do so recursively. There are also a number of other ways to go about doing this sort of thing, but the end result is the same. I want to not just copy a single root object, but a root object and one, more than one, or all of the objects children.
-
-## 3 - Copying objects, and the for in method of doing it.
-
-One common way to go about copying an object is to use a for in loop.
-
-```js
-// and example object to copy
-var ref = {
-    x: 32,
-    y: 50
-},
- 
-// a simple forInClone shallow cone method
-forInClone = function (obj) {
- 
-    var n = {},
-    prop;
- 
-    for (prop in obj) {
- 
-        n[prop] = obj[prop];
- 
-    }
- 
-    return n;
- 
-},
- 
-// works
-pt = forInClone(ref);
- 
-pt.x = 0;
- 
-console.log(ref.x); // 32
-```
-
-This will work okay, as long as I don't need a deep cone of the object in which case it will not work okay, as it just copy's the keys of the object to a new object. Never the less many clone methods work just like this in some fashion, and it is often called a shallow clone of an object.
 
 ## 4 - Deep Cloning with a for in loop
 
