@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 09:20:14
-version: 1.29
+updated: 2021-08-25 09:21:19
+version: 1.30
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -174,6 +174,14 @@ console.log(pt.delta.x); // 0
 
 This will work okay, but one problem that comes to mind right off that bat is what happens when I feed this method an object with a circular reference in it. That will of course result in an infinite loop, so I need to be careful when it comes to making and using these kinds of methods.
 
+### 2.3 - deep copy with JSON
+
+This one is pretty simple, as long as I am always dealing with a client that has JSON which is most browsers in use these days.
+
+```js
+var copy = JSON.parse(JSON.stringify(obj));
+````
+
 ## 3 - Deep Cloning Objects with circular references in them with a for in loop
 
 It is possible to make a reference to an object within the same object which is common occurrence in javaScript. When making a clone of an object should these references be with the new object, or the old one? Although there might be exceptions, I can only think that most of the time I would want those reference to be pointing to the new object I am making.
@@ -264,14 +272,6 @@ var fullCopy = _.cloneDeep(obj); // full deep copy
 
 Using something like lodash to clone might be the best option still these days. I know that there are some nice features in EX2015+ for cloning built into the browser itself these days, but I am the kind of person that worries about my code breaking when someone visits my project with an older browser. It's still nice to have a method in something that will work on modern browsers, and also that older platform that most people still use.
 
-## 6 - Cloning with JSON.parse, and JSON.stringify
-
-This one is pretty simple, as long as I am always dealing with a client that has JSON which is most browsers in use these days.
-
-```js
-var copy = JSON.parse(JSON.stringify(obj));
-````
-
-## 7 - Conclusion
+## 6 - Conclusion
 
 Cloning of objects can become somewhat intense, but there are many solutions, and just a few concepts that needs to be remembered. All solutions involve shallow cloning, and or deep cloning. There is also the matter of having the prototype chain merged down or not, but that often just involves making a new instance of the class that is being used.
