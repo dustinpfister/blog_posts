@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 09:23:46
-version: 1.31
+updated: 2021-08-25 09:25:57
+version: 1.32
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -184,7 +184,7 @@ var copy = JSON.parse(JSON.stringify(obj));
 
 ## 3 - Deep Cloning Objects with circular references in them with a for in loop
 
-It is possible to make a reference to an object within the same object which is common occurrence in javaScript. When making a clone of an object should these references be with the new object, or the old one? Although there might be exceptions, I can only think that most of the time I would want those reference to be pointing to the new object I am making.
+It is possible to make a reference to an object within the same object which is common occurrence in javaScript actually. As such this brings up an important point when it comes to these kinds of references when making a copy of a source object that contains them. When making a clone of an object should these references be with the new object, or the old one? Although there might be exceptions, I can only think that most of the time I would want those reference to be pointing to the new object I am making.
 
 So to fix my clone method I am making here, I would just want to test if a key value is a reference to the object, and if so make the reference.
 
