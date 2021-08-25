@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 09:25:57
-version: 1.32
+updated: 2021-08-25 09:28:49
+version: 1.33
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -198,42 +198,28 @@ var ref = {
         y: 5
     }
 };
- 
 ref.ref = ref; // oh boy, look out!
  
 var forInCloneDeep = function (obj) {
- 
     var n = {},
     prop;
- 
     for (prop in obj) {
- 
         // if a primitive just copy
         n[prop] = obj[prop];
- 
         // if an object clone that too.
         if(typeof obj[prop] === 'object'){
- 
            // is this a reference to the object itself?
            if(obj[prop] === obj){
- 
                 // then make the reference, but to the new object
                 // and don't even try to clone it.
                 n[prop] = n;
- 
             }else{
- 
                 // we should be able to do this safe
                 n[prop] = forInCloneDeep(obj[prop]);
- 
             }
- 
         }
- 
     }
- 
     return n;
- 
 };
 ```
 
