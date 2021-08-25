@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 09:14:19
-version: 1.26
+updated: 2021-08-25 09:18:04
+version: 1.27
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -134,9 +134,9 @@ console.log(copy.pos.x, source.pos.x); // 0 0
 
 So in order to resolve this I must find a way to deep clone, rather than shallow clone the source object and its nested pos object. One way to do this is the same way as before it is just that now I need to do so recursively. There are also a number of other ways to go about doing this sort of thing, but the end result is the same. I want to not just copy a single root object, but a root object and one, more than one, or all of the objects children.
 
-## 4 - Deep Cloning with a for in loop
+### 2.2 - Deep Cloning with a for in loop
 
-So when I am in a situation when I need to not just have a shallow copy of an object, but a full copy of the object, and all objects in it, I need some kind of deep clone method.
+So when I am in a situation when I need to not just have a shallow copy of an object, but a full copy of the object, and all objects in it, I need some kind of deep clone method. In this example I am using a solution that involves using the for in loop, but in order to copy not just the root object but the children also I will need to call the function recursively.
 
 ```js
 // and example object to copy
@@ -147,38 +147,27 @@ var ref = {
         x : -1,
         y: 5
     }
-},
+};
  
 // a deep clone method using for in
-forInCloneDeep = function (obj) {
- 
+var forInCloneDeep = function (obj) {
     var n = {},
     prop;
- 
     for (prop in obj) {
- 
         // if a primitive just copy
         n[prop] = obj[prop];
- 
         // if an object clone that too.
         if(typeof obj[prop] === 'object'){
- 
             n[prop] = forInCloneDeep(obj[prop]);
- 
         }
- 
     }
- 
     return n;
- 
 },
  
 // works
 pt = forInCloneDeep(ref);
- 
 pt.delta.x = 0;
 pt.delta.y = 0;
- 
 console.log(ref.delta.x); // -1
 console.log(pt.delta.x); // 0
 ```
