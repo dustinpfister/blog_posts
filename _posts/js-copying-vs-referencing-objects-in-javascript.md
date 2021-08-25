@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 08:57:54
-version: 1.22
+updated: 2021-08-25 09:00:51
+version: 1.23
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -70,9 +70,9 @@ So now that we have the very basics of copying by referencing, and copying by va
 
 ### 2.1 - Basic nested object example where I am cloning just the first object, but referencing the first nested object.
 
-So when it comes to having an object within an object the basic way of cloning an object or shallow cloning will still work okay with primitive values of the object that is being clone just as before. However it will not work with any nested object as that is an example of just repeating what we where doing in the first place. 
+So when it comes to having an object within an object the basic way of cloning an object or shallow cloning will still work okay with primitive values of the object that is being clone just as before. However it will not work with any nested object as that is an example of just repeating what we where doing in the first place. In other words I am still creating a new object, but that is just it, one object and not any additional nested objects.
 
-In other words I am still creating a new object, but that is just it, one object and not any additional nested objects.
+So once more say I have a source object that contains data about a point in 2d space like in the basic section, only this time the x and y properties are in a nested object. In addition there is an additional top level property of the source object now that is a heading property of the source object.
 
 ```js
 // start out with an object with
