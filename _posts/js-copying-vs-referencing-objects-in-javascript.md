@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 08:50:45
-version: 1.19
+updated: 2021-08-25 08:52:57
+version: 1.20
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -43,7 +43,7 @@ In many cases this is actually what I want, but some times I want to work with a
 
 ### 1.1 - Basic js copy object example using Object.keys and Array.forEach
 
-Sometimes just a simple shallow clone of the object will work just fine, which is the case with this very simple object example. The reason why is because it does not have any nested objects, or references to other objects outside of it. The example here then involves just a single source object that has a x and y named keys, and the values for these keys are numbers, which are a kind of primitive value. When I pass the source object to the Object.keys method, what is returned is an array of public key names for the object. Because the returned value of the Object.keys method is an array, I can then use an array prototype method such as the array.forEach method to loop over the key names. So then I could just create a new object, and then use the key names of the source object to create new key named for the ney copy of the source object, and also use the key names to get the values from the source object in the body of the function that I pass to the array.forEach method.
+Sometimes just a simple shallow clone of the object will work just fine, which is the case with this very simple object example. The reason why is because it does not have any nested objects, or references to other objects outside of it. The example here then involves just a single source object that has a x and y named keys, and the values for these keys are numbers, which are a kind of primitive value. When I pass the source object to the [Object.keys method](/2018/12/15/js-object-keys/), what is returned is an array of public key names for the object. Because the returned value of the Object.keys method is an array, I can then use an array prototype method such as the [array.forEach method](/2019/02/16/js-javascript-foreach/) to loop over the key names. So then I could just create a new object, and then use the key names of the source object to create new key named for the new copy of the source object, and also use the key names to get the values from the source object in the body of the function that I pass to the array.forEach method.
 
 ```js
 // start out with a simple object
