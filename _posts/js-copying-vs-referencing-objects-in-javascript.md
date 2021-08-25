@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 09:21:19
-version: 1.30
+updated: 2021-08-25 09:23:46
+version: 1.31
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -239,7 +239,7 @@ var forInCloneDeep = function (obj) {
 
 ## 4 - Object.assign
 
-I never really got into ES2015+, Still I guess it is time to get current. As such If I am in a situation in which I do not care much about backward compatibility there is of course [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
+When it comes to es2015+ spec JavaScript a static Object method of interest is the Object.assign method. These days it is fairly safe to just go ahead and use methods like [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), as I do not think there are a lot of people visiting my websites with browsers that do not support this method.
 
 ```js
 let ref = {
