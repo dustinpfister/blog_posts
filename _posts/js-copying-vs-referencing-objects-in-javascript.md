@@ -1,12 +1,12 @@
 ---
 title: Copying by Value, and Reference in javaScript.
 date: 2017-11-13 11:35:00
-tags: [js,blog,corejs,lodash]
+tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 08:35:25
-version: 1.15
+updated: 2021-08-25 08:39:52
+version: 1.16
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -19,11 +19,9 @@ So in this post I will be touching base on the topic of copying by value, and co
 
 ## 1 - Copying by value, and copying by reference basics in javaScript
 
-In this section I will be going over two very basic examples of copying objects in javaScript. One example involves creating two references to the same object, and the other is one that has to do with creating a whole new independent copy or clone of an object. 
+In this section I will be going over some very basic JavaScript examples on the topic of copying by value, and copying by reference. Inducing examples that involve creating two references to the same object, and another that is one that has to do with creating a whole new independent copy or clone of an object from a source object. When doing so there is making just a shallow copy of an object, and also what is often called a deep copy or clone of an object.
 
-These examples are very simple though, and as such I am not going to be covering everything that is no know about when it comes to making copies of objects in javaScript when it comes to things like the prototype chain, and circular references.
-
-However this is of course just a sort of basic section of this post where I am just writing about a very simple warted down form of things for the sake of outline the theme of the post here. If you think you have a basic understanding of how referencing and copying of objects works in javaScript you might want to move on to some of the more advanced sections in this post.
+These examples are very simple though, and as such I am not going to be covering everything that there is to know about when it comes to making copies of objects in javaScript when it comes to things like the prototype chain, and circular references. This is of course just a sort of basic section of this post where I am just writing about a very simple watered down form of things for the sake of outlining the theme of the post. If you think you have a basic understanding of how referencing and copying of values works in javaScript you might want to move on to some of the more advanced sections later in this content.
 
 ### 1.2 - Basic js reference example
 
