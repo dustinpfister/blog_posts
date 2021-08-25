@@ -5,8 +5,8 @@ tags: [js,corejs,lodash]
 layout: post
 categories: js
 id: 89
-updated: 2021-08-25 08:54:16
-version: 1.21
+updated: 2021-08-25 08:57:54
+version: 1.22
 ---
 
 I have been cranking out [posts on lodash](/categories/lodash/) as of late, and have come to make a [post on the \_.cloneDeep](/2017/11/13/lodash_clonedeep/) method in lodash which can be used to deep clone objects in javaScript if I am using [lodash](https://lodash.com/) in a project. However I think it is called for to write a post on a subject that has to do with objects in general with javaScript regardless if lodash is used or not when it comes to the subject of referencing vs copying objects in javaScript. 
@@ -64,9 +64,9 @@ console.log(copy.x, source.x); // 40 32
 
 Although this might work okay for this kind of example, other times I have an object with nested objects in it. There is also the question of the object prototype chain, circular references, references to native objects like window, layering when it comes to merging down a collection of objects. So now that we understand the very basic idea of copying and referencing with objects in javaScript lets move on to some more advanced related topics when it come to copying objects.
 
-## 2 - copying nested objects by references, and basic deep cloning
+## 2 - Copying nested objects by references, and basic Deep Cloning of an object
 
-So now that we have the very basics of coping by referencing, and copying b value understood lets take things just one step further and working with a few examples that have to do with introducing just one nested object. In this section I am still just working with plain old objects, and not doing anything to weird with the prototype chain, or any other advanced topic when it comes to this subject.
+So now that we have the very basics of copying by referencing, and copying by value understood lets take things just one step further and working with a few examples that have to do with introducing just one nested object at lest. In this section I am still just working with plain old objects, and not doing anything to weird with the prototype chain, or any other advanced topic when it comes to this subject. So the next step forward is just taking one more step beyond what I covered in the basic section. If I have an object where each key is a primitive I can just loop over the top level own properties of that object, and move on. However if one or more of those properties are an object, then I might want to copy that object also.
 
 ### 2.1 - Basic nested object example where I am cloning just the first object, but referencing the first nested object.
 
