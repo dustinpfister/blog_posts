@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2020-07-18 10:26:03
-version: 1.13
+updated: 2021-08-26 19:14:39
+version: 1.14
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3. So there is not really a need to depend on some kind of polyfill method, or a user space alternative like [lodash index of method](/2019/06/26/lodash_indexof) that might very well just reference this native method anyway.
@@ -107,6 +107,55 @@ console.log(ex);
 
 So then something like this can also be used as a crude yet effective more advanced replacement for just using the string index of method.
 
-## 5 - Conclusion
+## 5 - using exec of the regular expression prototype
+
+Another option for getting index value of a pattern, as well as ending indexes and everything else that I might want could involve the use of the exec method of the regular expression prototype.
+
+```js
+var getIndexValues = function (str, regex) {
+    var patt = new RegExp(regex), // creating a new regEx Object from the given one
+    match, // to hold a current match result
+    matchArray = []; // the array of matches
+    if (patt.global) {
+        while (match = patt.exec(str)) {
+            matchArray.push({
+                text: match[0],
+                index: match.index,
+                endIndex: match.index + match[0].length
+            });
+        }
+    } else {
+        match = patt.exec(str);
+        if (match) {
+            matchArray.push(match);
+        }
+    }
+    return matchArray;
+};
+
+var str = 'If a=400, a2=10, and b=a*a2 then b=4000',
+patt = /\S+=\d+/g;
+
+var matches = getIndexValues(str, patt);
+console.log(matches);
+/*
+[{
+        text: 'a=400',
+        index: 3,
+        endIndex: 8
+    }, {
+        text: 'a2=10',
+        index: 10,
+        endIndex: 15
+    }, {
+        text: 'b=4000',
+        index: 33,
+        endIndex: 39
+    }
+]
+*/
+```
+
+## 6 - Conclusion
 
 So the index of string method is a crude tired yet true way of getting the first index value of a sub string in a string that the method is called off of. There are other ways of doing the same thing such as with the string match method, but the index of method has been around for a long time, and will still work when just working with fixed string values as patterns to search for where I only care about the first match from left to right if any.
