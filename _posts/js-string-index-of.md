@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 679
-updated: 2021-08-26 19:14:39
-version: 1.14
+updated: 2021-08-26 19:18:31
+version: 1.15
 ---
 
 The javaScript [string index of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) method was introduced to javaScript a real long time ago. It is one of these javaScript prototype methods that is very safe to use because it was around almost since the beginning as the method works even in versions of Internet explorer as old as version 3. So there is not really a need to depend on some kind of polyfill method, or a user space alternative like [lodash index of method](/2019/06/26/lodash_indexof) that might very well just reference this native method anyway.
@@ -109,7 +109,7 @@ So then something like this can also be used as a crude yet effective more advan
 
 ## 5 - using exec of the regular expression prototype
 
-Another option for getting index value of a pattern, as well as ending indexes and everything else that I might want could involve the use of the exec method of the regular expression prototype.
+Another option for getting index value of a pattern, as well as ending indexes and everything else that I might want could involve the use of the exec method of the regular expression prototype. This is a way more advanced option compared to just using the index of method, but a solution that involve the use of this method just might be what is called for for certain projects that warrant the use of it. Some times I might want to have an array of objects that will give be the start and end index values for all instances certain pattern in a source string.
 
 ```js
 var getIndexValues = function (str, regex) {
