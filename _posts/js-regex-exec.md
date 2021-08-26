@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 678
-updated: 2020-11-29 09:59:33
-version: 1.15
+updated: 2021-08-26 19:14:38
+version: 1.16
 ---
 
 The [exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec) of the [RegExp class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) in javaScript is what I have come to find is useful for getting an array of index values for each instance of a pattern that can be found in a string. There might be a number of other ways to go about doing this, however the use of exec might be the best way to go about doing so rather than working out a solution with the string match method.
@@ -41,7 +41,7 @@ Anyway now that we have a basic example of exec out of the way we can get into s
 
 So there is getting some basic info of the first match of a pattern in a string. However what if I want an array of objects for each instance of a pattern match in a string? The exec method can be used to make a method that can do just that, and in this section I will be going over a basic starting point for this kind of method. In addition I will also go over a few more examples of this kind of method that will start to be a little more refined.
 
-### 2.1 - A first working examaple of a get all index values method
+### 2.1 - A first working example of a get all index values method
 
 So say I have a pattern with a global flag set, and a string that has two or more instances of that pattern. What I want is an array of objects that each have an index property for the starting index value for each instance of the pattern in the given string. The exec method can be used in conjunction with a loop such as a while loop to keep looping, calling exec each time until a null value is returned. Each time a pattern is found the result can be pushed to an array, building this array of results for each match.
 
