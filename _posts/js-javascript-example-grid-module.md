@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-24 11:54:23
-version: 1.18
+updated: 2021-08-26 19:35:47
+version: 1.19
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -61,7 +61,7 @@ So then the start of my grid module is the beginnings of an IIFE, and the create
 
 ### 1.2 - The get cell by pixel position method
 
-A must have method for a grid module is a method where I pass a canvas relative pixel position, and what is returned is a cell that is at that position.
+A must have method for a grid module is a method where I pass a canvas relative pixel position, and what is returned is a cell that is at that position. There are a number of ways to go about making this kind of method, one way might be to loop over all of the cells and using bounding box collision detection. However It might be better to use some examples that just involves some quick expressions.
 
 ```js
     // get a cell by the given pixel position
