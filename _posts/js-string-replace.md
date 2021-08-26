@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2021-08-26 18:55:02
-version: 1.23
+updated: 2021-08-26 18:58:29
+version: 1.24
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -154,6 +154,8 @@ The string replace method works great, but there are some alternatives to using 
 In this section I will be going over some alternatives to using the string replace method. many of these examples might involve other prototype methods in native javaScript, and not just in the string prototype. may frameworks might have methods like the ones I am working with here, but in this section I am going to just be making vanilla javaScripot solutions that do nit require some kind of library.
 
 ### 5.1 - A Basic replace method using String.split, Array.map, and Array.join
+
+One way to go about avoiding the use of the string replace method would be to make use of methods like [String.split](/2021/07/14/js-string-split/), along with [array map](/2020/06/16/js-array-map/), and [array join](/2020/03/09/js-array-join/).
 
 ```js
 var replace = function (source, sep, what, replace) {
