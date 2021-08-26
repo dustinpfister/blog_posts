@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-26 19:46:51
-version: 1.23
+updated: 2021-08-26 19:47:44
+version: 1.24
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -214,7 +214,7 @@ draw.grid = function (grid, ctx, canvas) {
 
 I then also have a main javaScript file that will make used of my grid module, as well as all the other JavaScript files that I have covered in this post. In this file I have what is the beginnings of a state machine, but this this example I will only need one state objects so I am not going to do anything to advanced when it comes to that sort of thing here. Still when it comes to making a full project of some kind a state machine is an important part of a project that might prove to be a little involved. I have mad a [canvas example in which I am getting more into the topic of state machines](/2020/01/28/canvas-example-state-machine/), and I have a lot of other examples of this sort of thing. Like that of a grid module a state machine is another examples of something that I find myself recreating from the ground up a lot.
 
-In the main.js file of an example I will often have a main app loop, that will make use of the [request animation frame](/2018/03/13/js-request-animation-frame/) method as a way to have such a loop.
+In the main.js file of an example I will often have a main app loop, that will make use of the [request animation frame](/2018/03/13/js-request-animation-frame/) method as a way to have such a loop. There are a few other options when it comes to amking a main app loop, but when working with canvas request animation frame might be the best option.
 
 ```js
 var sm = {
