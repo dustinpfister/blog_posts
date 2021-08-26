@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-26 19:38:18
-version: 1.20
+updated: 2021-08-26 19:40:44
+version: 1.21
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -212,7 +212,7 @@ draw.grid = function (grid, ctx, canvas) {
 
 ## 4 - The main JavaScript file of this example
 
-I then also have a main javaScript file that will make used of my grid module, as well as all the other JavaScript files that I have covered in this post.
+I then also have a main javaScript file that will make used of my grid module, as well as all the other JavaScript files that I have covered in this post. In this file I have what is the beginnings of a state machine, but this this example I will only need one state objects so I am not going to do anything to advanced when it comes to that sort of thing here.
 
 ```js
 var sm = {
