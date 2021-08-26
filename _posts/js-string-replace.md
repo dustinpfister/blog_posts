@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2021-08-26 18:53:29
-version: 1.22
+updated: 2021-08-26 18:55:02
+version: 1.23
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -153,7 +153,7 @@ The string replace method works great, but there are some alternatives to using 
 
 In this section I will be going over some alternatives to using the string replace method. many of these examples might involve other prototype methods in native javaScript, and not just in the string prototype. may frameworks might have methods like the ones I am working with here, but in this section I am going to just be making vanilla javaScripot solutions that do nit require some kind of library.
 
-### 5.1 - basic replace method using String.split, Array.map, and Array.join
+### 5.1 - A Basic replace method using String.split, Array.map, and Array.join
 
 ```js
 var replace = function (source, sep, what, replace) {
@@ -169,6 +169,74 @@ var a = 'foo,bar,bar,foo,bar';
 var b = replace(a, ',', 'foo', 'bar');
 console.log(b);
 // bar,bar,bar,bar,bar
+```
+
+### 5.2 - A more advanced example of the String.split, Array.map, and Array.join method
+
+```js
+var replace = (function () {
+    // create replacement method for an element
+    var createReplacement = function (el, i, arr, opt) {
+        // if replace is a string, or number
+        if (typeof opt.replace === 'string' || typeof opt.replace === 'number') {
+            return opt.replace;
+        }
+        if (typeof opt.replace === 'function') {
+            return opt.replace.call(opt, el, i, arr, opt);
+        }
+        // fail at replacing el, and just return el
+        return el;
+    };
+    // the returned function to the replace var
+    return function (opt) {
+        opt = opt || {};
+        opt.source = opt.source || '';
+        opt.sourceSep = opt.sourceSep === undefined ? ',' : opt.sourceSep;
+        opt.resultSep = opt.resultSep === undefined ? ',' : opt.resultSep;
+        opt.what = opt.what || '';
+        opt.replace = opt.replace || '';
+        return opt.source.split(opt.sourceSep).map(function (el, i, arr) {
+            if (typeof opt.what === 'string') {
+                if (el === opt.what) {
+                    return createReplacement(el, i, arr, opt);
+                }
+            }
+            if (typeof opt.what === 'function') {
+                if (opt.what.call(opt, el, i, arr, opt)) {
+                    return createReplacement(el, i, arr, opt);
+                }
+            }
+            return el;
+        }).join(opt.resultSep);
+    };
+}
+    ());
+ 
+// use example 1
+var a = 'foo,bar,bar,foo,bar';
+var b = replace({
+        source: a,
+        what: 'foo',
+        resultSep: ''
+    });
+console.log(b);
+// barbarbar
+ 
+// use example 2 with function
+var c = 'foo,1,2,3,bar';
+var d = replace({
+        source: c,
+        what: function (el) {
+            return String(parseFloat(el)) != 'NaN';
+        },
+        replace: function (el) {
+            var n = parseFloat(el);
+            return Math.pow(2, n);
+        },
+        resultSep: '-'
+    });
+console.log(d);
+// foo-2-4-8-bar
 ```
 
 ## 6 - Conclusion
