@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-26 19:40:44
-version: 1.21
+updated: 2021-08-26 19:43:54
+version: 1.22
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -212,7 +212,7 @@ draw.grid = function (grid, ctx, canvas) {
 
 ## 4 - The main JavaScript file of this example
 
-I then also have a main javaScript file that will make used of my grid module, as well as all the other JavaScript files that I have covered in this post. In this file I have what is the beginnings of a state machine, but this this example I will only need one state objects so I am not going to do anything to advanced when it comes to that sort of thing here.
+I then also have a main javaScript file that will make used of my grid module, as well as all the other JavaScript files that I have covered in this post. In this file I have what is the beginnings of a state machine, but this this example I will only need one state objects so I am not going to do anything to advanced when it comes to that sort of thing here. Still when it comes to making a full project of some kind a state machine is an important part of a project that might prove to be a little involved. I have mad a [canvas example in which I am getting more into the topic of state machines](/2020/01/28/canvas-example-state-machine/), and I have a lot of other examples of this sort of thing. Like that of a grid module a state machine is another examples of something that I find myself recreating from the ground up a lot.
 
 ```js
 var sm = {
