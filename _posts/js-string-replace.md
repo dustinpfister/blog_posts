@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 413
-updated: 2020-07-18 10:05:28
-version: 1.20
+updated: 2021-08-26 18:49:02
+version: 1.21
 ---
 
 The [String Replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in the String prototype object of core javaScript comes in handy when it comes to most text search and replace tasks involving regular expressions. I just call the method off of the string, pass a regular expression as the first argument, and then a string, or method to generate a string as the second argument. The result is all instances of the pattern in the string being replaced with what I give as the second argument.
@@ -147,7 +147,27 @@ console.log(ex);
 
 There is the issue of having the word replace in the body of a method that does not actually replace anything, as nothing is returned in the method, and any value that is return dis just disregard. So it might not be the best option in terms of code readability. Still I have come to find that this is a nice concise solution at least when it comes to getting an array of offset values for a pattern.
 
-## 5 - Conclusion
+## 5 - Alternatives to string replace method
+
+### 5.1 - basic replace method using String.split, Array.map, and Array.join
+
+```js
+var replace = function (source, sep, what, replace) {
+    return source.split(sep).map(function (el) {
+        if (el === what) {
+            return replace;
+        }
+        return el;
+    }).join(sep);
+};
+ 
+var a = 'foo,bar,bar,foo,bar';
+var b = replace(a, ',', 'foo', 'bar');
+console.log(b);
+// bar,bar,bar,bar,bar
+```
+
+## 6 - Conclusion
 
 So the string replace method is what I would use right off the bat then it comes to replacing one pattern of something with another using regular expressions and javaScript code. The string replace method is of course not the only method of interest in the string prototype object when it comes to working with regular expressions ans text. There is also the [string match](/2019/04/06/js-string-match/) method that is useful when it comes to just checking for matches and where they are in terms of index values in a source string without replacing anything. Although the same can be done with replace as I have covered here by just pushing the values given by a method passed to the replace method, and just disregarding any value that is returned by string replace.
 
