@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2020-07-18 12:07:29
-version: 1.28
+updated: 2021-08-26 19:28:36
+version: 1.29
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This [returned value](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values) can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -196,7 +196,7 @@ loop();
 
 The basic idea here is a pattern that I see in a lot of projects, what is returned can just be function without anything else attached to it, or it could be just a plain old object that might have some methods, but why not both?
 
-### 3.3 - Framed closure example that uses javaScrit return keyword
+### 3.3 - Framed closure example that uses javaScript return keyword
 
 Now that we understand the basics lets look at another example of closures and the javaScript return keyword that is not so basic. With this example I have a function that returns a function but also some additional static methods that are attached to the function that is returned. It also accepts a function as a property of an options argument that is passed to it when it is called.
 
@@ -278,7 +278,7 @@ console.log(foo(5,5)); // 5
 console.log(foo(5,6)); // 11
 ```
 
-In functions where a while or for loop are being used the return keyword can also be used as an alternative to the break keyword. There would be no need to use break unless it is nested looping with the use of labels and you just want to break a cerin loop in a nest of loops. However if returned is used at any level in a nest of loops that will stop the looping at all levels, the value will be returned and that will stop everything.
+In functions where a while or for loop are being used the return keyword can also be used as an alternative to the break keyword. There would be no need to use break unless it is nested looping with the use of labels and you just want to break a certain loop in a nest of loops. However if returned is used at any level in a nest of loops that will stop the looping at all levels, the value will be returned and that will stop everything.
 
 ## 5 - calling methods off of what is returned
 
