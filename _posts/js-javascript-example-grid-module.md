@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 925
-updated: 2021-08-26 19:35:47
-version: 1.19
+updated: 2021-08-26 19:38:18
+version: 1.20
 ---
 
 I made a canvas example a while back on how to go about making a grid, but that post was more so on drawing one, not having something that is a state object, and methods that act on that state object. So then in this [JavaScript example](/2021/04/02/js-javascript-example/) post today I thought I would go about writing about a simple javaScript grid module. 
@@ -282,5 +282,5 @@ loop();
 
 ## 5 - Conclusion
 
-That will be it for now when it comes to this grid module, however this might prove to be one of my many javaScript posts in which I will be coming back to do some editing now and then. There are a lot of other features that I would want to add to this kind of module, but the features will differ a little from one project to the next.
+That will be it for now when it comes to this grid module, however this might prove to be one of my many javaScript posts in which I will be coming back to do some editing now and then. There are a lot of other features that I would want to add to this kind of module, but the features will differ a little from one project to the next. Still this is the kind of thing that I have grown tied to making all over again each time I start a new vanilla javaScript project that calls for a module such as this. So it would be good to get a solid module for this sort of thing together and be done with this once and for all.
 
