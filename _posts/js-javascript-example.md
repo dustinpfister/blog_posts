@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-08-27 16:28:29
-version: 1.65
+updated: 2021-08-27 16:33:10
+version: 1.66
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -31,6 +31,8 @@ There are many games that follow a kind of system where a period of time goes by
 This is a simple game prototype idea that came to mind that I put together in a single day. It is a game where a bunch of display objects will spawn in one area of a canvas, and then move to another display object in the canvas that are of two kinds of types. One type of display object is will represent an egg, while the other will represent a bomb. When the player clicks and holds down on the canvas the player character object will begin eating whatever is thrown at it, eggs will result in a gain of score, while a bomb will result in game over.
 
 ### 1.4 - [A canvas module](/2021/08/27/js-javascript-example-canvas-module/)
+
+I make a lot of projects that make use of canvas elements, in fact I have [another post like this one that is a post linking to all of the various canvas project prototype examples](/2020/03/23/canvas-example/) that I have made thus far. Well at least most of them anyway. Anyway one thing that I have got tired of when it comes to making a whole bunch of vanilla javaScript canvas projects was wasting time making what is essentially the same code over and over again when it comes to some basic features that I would like to have when working with canvas elements. SO in this example I worked out a basic canvas module that contains many features that I would want to have in such a module such as layering, and drawing an array of points to the canvas.
 
 ### 1.5 - [A Draw points canvas method](/2021/04/01/js-javascript-example-draw-points/)
 
