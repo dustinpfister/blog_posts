@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 15:18:38
-version: 1.1
+updated: 2021-08-27 15:45:09
+version: 1.2
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
+
+There are at least a few basic features that a canvas module should have and one of them is to create and return not just one canvas element, but a collection of canvas elements. So the main create method of the canvas module should have an array of canvas elements as one of the properties. There should also be some additional features that have to do with attaching pointer event handers to at least one of the container of the canvas elements, or one of the canvas elements. There are a whole bunch of other features that might be a good idea also, for example one of my older JavaScript examples posts was on a draw points method, which I think should be adding into this kind of module.
 
 
 <!-- more -->
