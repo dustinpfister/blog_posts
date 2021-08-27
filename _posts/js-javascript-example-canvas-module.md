@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 16:11:57
-version: 1.8
+updated: 2021-08-27 16:14:17
+version: 1.9
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -386,3 +386,7 @@ var loop = function () {
 };
 loop();
 ```
+
+## 4 - Conclusion
+
+The current state of the canvas module seems to work okay thus far, but there are a few more features that I would like to add. However I think most of this functionality should be added in the form of optional plug ins rather than making the module itself more bloated.
