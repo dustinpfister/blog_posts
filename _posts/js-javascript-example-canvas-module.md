@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 16:25:09
-version: 1.13
+updated: 2021-08-27 17:46:42
+version: 1.14
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -23,19 +23,25 @@ In this section I will be going over the source code of the canvas module that I
 ```js
 (function (api) {
  
-    // draw methods to use with canvasMod.draw
+    var FEATURES = {};
  
-    var drawMethods = {};
+/********* ********** *********
+ Draw Methods
+********** ********** *********/
+ 
+    var drawMethods = FEATURES.drawMethods = {};
  
     // clear a layer
     drawMethods.clear = function(stack, ctx, canvas, layerObj){
         ctx.clearRect(-1, -1, canvas.width + 1, canvas.height + 1);
     };
+ 
     // draw a background
     drawMethods.background = function (stack, ctx, canvas, layerObj, background) {
         ctx.fillStyle = background || stack.background || 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
+ 
     // draw a points collection
     drawMethods.points = function (stack, ctx, canvas, layerObj, points, cx, cy, opt) {
         opt = opt || {};
@@ -89,9 +95,11 @@ In this section I will be going over the source code of the canvas module that I
         ctx.restore();
     };
  
-    // Points methods
+/********* ********** *********
+ Points Methods
+********** ********** *********/
  
-    var pointsMethods = {};
+    var pointsMethods = FEATURES.pointsMethods = {};
  
     // create a box
     pointsMethods.box = function(sx, sy, w, h){
@@ -104,7 +112,9 @@ In this section I will be going over the source code of the canvas module that I
         return points;
     };
  
-    // HELPERS
+/********* ********** *********
+ HELPERS
+********** ********** *********/
  
     // get a canvas relative position that is adjusted for scale
     var getCanvasRelative = function (e) {
@@ -184,7 +194,9 @@ In this section I will be going over the source code of the canvas module that I
         return layer;
     };
  
-    // PUBLIC API
+/********* ********** *********
+ PUBLIC API
+********** ********** *********/
  
     // create a stack of layers as an 'Array Like' Object
     api.createLayerStack = function (opt) {
@@ -225,13 +237,23 @@ In this section I will be going over the source code of the canvas module that I
         if (arguments.length > 3) {
             addArgu = Array.prototype.slice.call(arguments, 3, arguments.length);
         }
-        drawMethods[key].apply(stack, coreArgu.concat(addArgu));
+        FEATURES.drawMethods[key].apply(stack, coreArgu.concat(addArgu));
     };
     // create points
     api.createPoints = function (stack, key) {
         var coreArgu = Array.prototype.slice.call(arguments, 2, arguments.length);
         var points = pointsMethods[key].apply(stack, coreArgu);
         return points;
+    };
+    // load additional FEATURES
+    api.load = function(plugObj){
+         Object.keys(plugObj).forEach(function(featuresKey){
+             var featureArray = plugObj[featuresKey];
+             featureArray.forEach(function(feature){
+                 FEATURES[featuresKey][feature.name] = feature.method;
+             })   
+         });
+         console.log(FEATURES);
     };
 }
     (this['canvasMod'] = {}));
@@ -289,7 +311,7 @@ I have some css together that should be used with the canvas module. When I crea
 }
 ```
 
-## 3 - A basic box example of the canvas module
+## 3 - A box demo of the canvas module
 
 Now to work out at least one if not a few basic examples of this canvas module just for the sake of making sure the project works the way that it should. For this example the goal was to just make a quick project that just makes use of the built in box method in the create points object. I wanted to still test out all the basic features of the module though so even though this is a basic example, it is still the beginnings of something that is not so basic. Many of my canvas project prototype examples make use of a state machine, in fact I have one [canvas example where a state machine that was the focus of the example](/2020/01/28/canvas-example-state-machine/).
 
@@ -387,7 +409,83 @@ var loop = function () {
 loop();
 ```
 
-## 4 - Conclusion
+## 4 - Testing out the plug in system with a circle create points method
+
+### 4.1 - points-circle.js method
+
+```js
+canvasMod.load({
+    // points methods to add
+    pointsMethods : [
+        // a circle method
+        {
+            name: 'circle',
+            method: function(cx, cy, radius, pointCount){
+                pointCount = pointCount === undefined ? 100 : pointCount;
+                var points = [[]];
+                var i = 0, x, y, radian;
+                while(i < pointCount){
+                    radian = Math.PI * 2 / pointCount * i;
+                    x = cx + Math.cos(radian) * radius;
+                    y = cy + Math.sin(radian) * radius;
+                    points[0].push(x, y);
+                    i += 1;
+                }
+                return points;
+            }
+        },
+        // an oval method
+        {
+            name: 'oval',
+            method: function(cx, cy, radius1, radius2, pointCount){
+                pointCount = pointCount === undefined ? 100 : pointCount;
+                var points = [[]];
+                var i = 0, x, y, radian;
+                while(i < pointCount){
+                    radian = Math.PI * 2 / pointCount * i;
+                    x = cx + Math.cos(radian) * radius1;
+                    y = cy + Math.sin(radian) * radius2;
+                    points[0].push(x, y);
+                    i += 1;
+                }
+                return points;
+            }
+        }
+    ],
+    drawMethods: [
+        {
+            name: 'print',
+            method: function(stack, ctx, canvas, layerObj, text, x, y, opt){
+                opt = opt || {};
+                opt.fontSize = opt.fontSize || 10;
+                ctx.fillStyle = opt.fillStyle || 'black';
+                ctx.textBaseline = 'top';
+                ctx.font = opt.fontSize + 'px arial';
+                ctx.fillText(text, x, y);
+            }
+        }
+    ]
+});
+```
+
+### 4.2 - The main.js file for this points circle demo
+
+```js
+var sm = {};
+// testing out oval
+sm.points = canvasMod.createPoints(sm.layers, 'oval', 0, 0, 150, 75, 20)
+sm.stack = canvasMod.createLayerStack({
+    container: '#canvas-app',
+    state: sm
+});
+canvasMod.draw(sm.stack, 'background', 0, 'red');
+canvasMod.draw(sm.stack, 'clear', 1);
+canvasMod.draw(sm.stack, 'points', 1, sm.points, 160, 120);
+// custom draw method works
+canvasMod.draw(sm.stack, 'print', 1, 'hello world', 5, 5, {fillStyle: 'white', fontSize: 20 });
+```
+
+## 5 - Conclusion
 
 The current state of the canvas module seems to work okay thus far, but there are a few more features that I would like to add. However I think most of this functionality should be added in the form of optional plug ins rather than making the module itself more bloated. In my [canvas example posts](/2020/03/23/canvas-example/) I have one [example that is just drawing stars with a canvas element](/2020/02/12/canvas-example-star/) and a little javaScript code, I think I would like to have that to work with as a draw points method but I do not think I want to hard code it into the canvas module itself. There is also another [canvas example where I worked out a standard for making sprite sheets without loading external images](/2021/01/29/canvas-example-animation-pixmaps/) that is another project that I might want to work into this also.
 
