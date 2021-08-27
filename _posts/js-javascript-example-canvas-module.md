@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 17:51:27
-version: 1.15
+updated: 2021-08-27 17:56:05
+version: 1.16
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -415,6 +415,8 @@ I am going to want to have at least one additional demo in which I am testing ou
 
 ### 4.1 - points-circle.js method
 
+Here I have the points circle javaScript file of this demo in which I am extending the features of the canvas module by adding a circle and over method for creating an array of points. In addition to this I also have added a single new draw method that can be sued to draw text to a layer of a stack.
+
 ```js
 canvasMod.load({
     // points methods to add
@@ -471,6 +473,8 @@ canvasMod.load({
 ```
 
 ### 4.2 - The main.js file for this points circle demo
+
+When I test this out everything seems to work the way it should. So then I can create all kinds of additional files that I might reuse from one project to the next with this. Also when it comes to just about any kind of project there will need to be at least a few custom draw methods for various kinds of things. So then I can use the canvas modules load methods as a way to add these draw methods in.
 
 ```js
 var sm = {};
