@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 15:58:06
-version: 1.3
+updated: 2021-08-27 16:05:00
+version: 1.4
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -17,6 +17,8 @@ There are at least a few basic features that a canvas module should have and one
 <!-- more -->
 
 ## 1 - The canvas module
+
+In this section I will be going over the source code of the canvas module that I have together for this post, and also what I might use in one or more additional projects in the future.
 
 ```js
 (function (api) {
