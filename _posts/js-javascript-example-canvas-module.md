@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 17:46:42
-version: 1.14
+updated: 2021-08-27 17:51:27
+version: 1.15
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -410,6 +410,8 @@ loop();
 ```
 
 ## 4 - Testing out the plug in system with a circle create points method
+
+I am going to want to have at least one additional demo in which I am testing out the load method of this canvas module. When it comes to using this module in any kind of project I am going to want to define some custom draw methods, and also some methods that will create an array of points also. In this example I am adding a circle create points method, along with an additional oval create points method. When creating a plug in object for the canvas module I can define more than one new method when it comes to points methods, as well as draw methods, so I just wanted to quickly make sure that this feature is working as it should with this demo basically.
 
 ### 4.1 - points-circle.js method
 
