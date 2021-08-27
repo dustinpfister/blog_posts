@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2021-08-27 16:38:43
-version: 1.24
+updated: 2021-08-27 16:41:11
+version: 1.25
 ---
 
 In javaScript [global variables](https://en.wikipedia.org/wiki/Global_variable) are variables that can be accessed from anywhere within a body of javaScript code, and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScript this is typically the window object. However that can not be the case when it comes to getting into web workers on the front end, but that is a matter for a whole other post.
 
-I hear many developers saying that the practice of creating globals is something that should be minimized, if not completely avoided all together if possible. One reason why is because of the possibility of writing over something else that is in use by setting something to the same variable name. Still with simple projects at least I find myself using them just for the sake of getting something together quickly. I often will wrap everything into [a closure](/2019/02/22/js-javascript-closure/) though when things start to get more advanced, or of it is time to create a single package for deployment rather than more readable source code.
+I hear many developers saying that the practice of creating globals is something that should be minimized, if not completely avoided all together if possible. One reason why is because of the possibility of writing over something else that is in use by setting something to the same variable name. Still with simple projects at least I find myself using them just for the sake of getting something together quickly. I often will wrap everything into [a closure](/2019/02/22/js-javascript-closure/) though when things start to get more advanced, or if it is time to create a single package for deployment rather than more readable source code.
 
-In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative which would be local function level, and now block level scoped variables in ecma2015+ spec javaScript when it comes to the use of let and const over the tired yet true var keywords when declaring variables.
+In this post I will be writing about some things to be aware of when dealing with global variables, as well as the alternative which would be local function level, and now block level scoped variables in ecma2015+ spec javaScript. When it comes to the [use of let](/2019/02/09/js-javascript-let/) and const over the tired yet true var keywords when declaring variables we are now no longer limited to function only variable scope.
 
 <!-- more -->
 
