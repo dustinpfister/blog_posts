@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 369
-updated: 2020-07-18 16:52:00
-version: 1.22
+updated: 2021-08-27 16:36:34
+version: 1.23
 ---
 
-In javaScript global variables are variables that can be accessed from anywhere within a body of javaScript code, and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScript this is typically the window object. 
+In javaScript [global variables](https://en.wikipedia.org/wiki/Global_variable) are variables that can be accessed from anywhere within a body of javaScript code, and are therefor at the global name space. In most environments global variables are also part of what is often called the [global object](https://developer.mozilla.org/en-US/docs/Glossary/Global_object), in client side javaScript this is typically the window object. However that can not be the case when it comes to getting into web workers on the front end, but that is a matter for a whole other post.
 
 I hear many developers saying that the practice of creating globals is something that should be minimized, if not completely avoided all together if possible. One reason why is because of the possibility of writing over something else that is in use by setting something to the same variable name. Still with simple projects at least I find myself using them just for the sake of getting something together quickly, I often will wrap everything into a closure though when things start to get more advanced, or of it is time to create a single package for deployment rather than more readable source code.
 
