@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 10:43:04
-version: 1.30
+updated: 2021-08-28 10:46:49
+version: 1.31
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -345,6 +345,8 @@ I have some css together that should be used with the canvas module. When I crea
 ## 3 - A box demo of the canvas module
 
 Now to work out at least one if not a few basic examples of this canvas module just for the sake of making sure the project works the way that it should. For this example the goal was to just make a quick project that just makes use of the built in box method in the create points object. I wanted to still test out all the basic features of the module though so even though this is a basic example, it is still the beginnings of something that is not so basic. Many of my canvas project prototype examples make use of a state machine, in fact I have one [canvas example where a state machine that was the focus of the example](/2020/01/28/canvas-example-state-machine/).
+
+Anyway for this demo I worked out just a single update game method that takes the place of what would otherwise be a full game module. In this update game module I am nit really updating the state of a game but I am created the state of a collection of points that I will then be using with the built in draw points method.
 
 ```js
 // helpers
