@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 10:35:16
-version: 1.27
+updated: 2021-08-28 10:37:22
+version: 1.28
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -219,7 +219,7 @@ So now that I have my build in FEATURES object with draw methods, and points met
 
 Another main pubic method of interest is the main draw method of the module, which I use by calling the draw method and pass a stack of layers, along with the name of the draw method I want to use, and the layer index I want to draw to. As I covered before there are a few built in methods to start off with, but often I will want to add at least a few custom methods when it comes to making an actual demo or project with this module.
 
-There is then the public draw points method that is like the draw method only it is used to create a collection of points using one of the create points methods, rather than drawing to the canvas.
+There is then the public draw points method that is like the draw method only it is used to create a collection of points using one of the create points methods, rather than drawing to the canvas. I also have the load method that can be used as a way to extend the built in draw and create points methods with optional additional files that add features that I might not want or need for all projects.
 
 ```js
  
