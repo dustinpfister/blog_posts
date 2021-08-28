@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-27 17:56:05
-version: 1.16
+updated: 2021-08-28 08:40:06
+version: 1.17
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -18,7 +18,9 @@ There are at least a few basic features that a canvas module should have and one
 
 ## 1 - The canvas module
 
-In this section I will be going over the source code of the canvas module that I have together for this post, and also what I might use in one or more additional projects in the future. Like many of my vanilla javaScript projects I went with a [module design](/2019/03/12/js-javascript-module/) that packs all of the code in a single [IIFE](/2020/02/04/js-iife/).
+In this section I will be going over the source code of the canvas module itself before moving on to some additional code examples that make use of the module. Like many of my vanilla javaScript projects I went with a [module design](/2019/03/12/js-javascript-module/) that packs all of the code in a single [IIFE](/2020/02/04/js-iife/), this might not always be the best option in all situations but for now it is still how I make my modules.
+
+The canvas module is designed in a way in which I have a single private object called FEATURES inside the body of the IIFE. This FEATURES object contains a number of built in features for creating an array of points, and drawing to a canvas layer in a stack of layers created with the main create layer stack method of this module. Also as mentioned with the create canvas layers method there are a number of public methods, for creating an array of points, and loading additional features. So on top of the built in features there is also a load method of the canvas module that can be used to add on top of the built in features.
 
 ```js
 (function (api) {
