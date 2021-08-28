@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 10:26:56
-version: 1.24
+updated: 2021-08-28 10:28:39
+version: 1.25
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -215,7 +215,7 @@ I have a number of helper methods that will be used in the create stack public m
 
 ### 1.4 - The public API
 
-So now that I have my build in FEATURES object with draw methods, and points methods as well as some helper functions I will now want to get to the public methods that will be used outside of this module. The main method of interest when it comes to using this canvas module is to start out by calling the create layer stack method. When I call this method what is returned is an array like object with a length property and each numbed key in the object is a reference to a layer object, created with the create layer helper method.
+So now that I have my build in FEATURES object with draw methods, and points methods as well as some helper functions I will now want to get to the public methods that will be used outside of this module. The main method of interest when it comes to using this canvas module is to start out by calling the create layer stack method. When I call this method what is returned is an [array like object](/2017/05/12/js-arrays-are-objects/) with a length property and each numbed key in the object is a reference to a layer object, created with the create layer helper method.
 
 ```js
  
