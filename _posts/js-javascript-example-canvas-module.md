@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 10:37:22
-version: 1.28
+updated: 2021-08-28 10:40:35
+version: 1.29
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -104,7 +104,7 @@ At the top of the module I create the FEATURES object as just a single object wi
 
 ### 1.2 - The Built in points method
 
-On top of the draw methods object of the FEATURES object I also have a points methods object that can be used to create a collection of points to be used with the points draw methods that I covered above in this section.
+On top of the draw methods object of the FEATURES object I also have a points methods object that can be used to create a collection of points to be used with the points draw methods that I covered above in this section. One built in method to start off with is a box method that will create one of my points collections that is just a simple basic box. When it comes to this method alone I might all ready want to add a few features, and even pull it out of here into an external file actually. In many projects I might not need to use this kind of method as I would draw box areas by another means. However never the less I needed to start out with something at least.
 
 ```js
 /********* ********** *********
