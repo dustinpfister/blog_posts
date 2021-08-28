@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2020-07-19 15:37:22
-version: 1.24
+updated: 2021-08-28 10:58:08
+version: 1.25
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -416,3 +416,5 @@ So when this canvas example is up and running it will result in a bunch of point
 ## 7 - Conclusion
 
 So the Math.min and Math.max methods re nice little methods for getting the lowest and highest value of two or more numbers. They have to be given via arguments when calling it, but apply can be sued as a way to just go ahead and use an array of numbers. There are all kinds of other values that come to mind that can then be obtained when you have both the lowest and highest numbers such as a range, or a mean.
+
+The math object in core javaScript has a whole lot more to offer of course that is also worth looking into more at some point or another. There are methods like the [math atan2 method](/2019/03/19/js-math-atan2/) that will come up now and then when it comes to code examples that have to do with various things in trigonometry for example.
