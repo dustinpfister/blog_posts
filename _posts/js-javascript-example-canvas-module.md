@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 10:10:33
-version: 1.18
+updated: 2021-08-28 10:12:33
+version: 1.19
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -24,7 +24,7 @@ The canvas module is designed in a way in which I have a single private object c
 
 ### 1.1 - The beginning of the module, and built in draw methods
 
-At the top of the module I create the FEATURES object as just a single object with the object literal syntax. I when then be appending additional objects to the FEATURES object in the module itself for draw methods and, and methods for creating a collection of points.
+At the top of the module I create the FEATURES object as just a single object with the object literal syntax. I will then be appending additional objects to the FEATURES object in the module itself for draw methods and, and methods for creating a collection of points. The first such object is the draw methods object which will contain the built in draw methods that I can use with the public draw methods of this module that I will be getting to later in this section when it comes to getting into the public methods.
 
 ```js
 (function (api) {
