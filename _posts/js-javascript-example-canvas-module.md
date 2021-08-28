@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 08:40:06
-version: 1.17
+updated: 2021-08-28 10:10:33
+version: 1.18
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -21,6 +21,10 @@ There are at least a few basic features that a canvas module should have and one
 In this section I will be going over the source code of the canvas module itself before moving on to some additional code examples that make use of the module. Like many of my vanilla javaScript projects I went with a [module design](/2019/03/12/js-javascript-module/) that packs all of the code in a single [IIFE](/2020/02/04/js-iife/), this might not always be the best option in all situations but for now it is still how I make my modules.
 
 The canvas module is designed in a way in which I have a single private object called FEATURES inside the body of the IIFE. This FEATURES object contains a number of built in features for creating an array of points, and drawing to a canvas layer in a stack of layers created with the main create layer stack method of this module. Also as mentioned with the create canvas layers method there are a number of public methods, for creating an array of points, and loading additional features. So on top of the built in features there is also a load method of the canvas module that can be used to add on top of the built in features.
+
+### 1.1 - The beginning of the module, and built in draw methods
+
+At the top of the module I create the FEATURES object as just a single object with the object literal syntax. I when then be appending additional objects to the FEATURES object in the module itself for draw methods and, and methods for creating a collection of points.
 
 ```js
 (function (api) {
@@ -96,7 +100,11 @@ The canvas module is designed in a way in which I have a single private object c
         });
         ctx.restore();
     };
- 
+```
+
+### 1.2 - built in points method
+
+```js
 /********* ********** *********
  Points Methods
 ********** ********** *********/
@@ -113,7 +121,11 @@ The canvas module is designed in a way in which I have a single private object c
         ]];
         return points;
     };
- 
+```
+
+### 1.3 - Helper functions
+
+```js
 /********* ********** *********
  HELPERS
 ********** ********** *********/
@@ -195,6 +207,11 @@ The canvas module is designed in a way in which I have a single private object c
         }
         return layer;
     };
+```
+
+### 1.4 - The public API
+
+```js
  
 /********* ********** *********
  PUBLIC API
