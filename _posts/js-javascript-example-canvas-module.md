@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 926
-updated: 2021-08-28 10:40:35
-version: 1.29
+updated: 2021-08-28 10:43:04
+version: 1.30
 ---
 
 Many of my projects that I make involve working with canvas elements, and I also like to make vanilla javaScript projects where most if not all of the code is my own. Still I would like to stop making everything all over again each time I start a new project, so in todays [JavaScript example](/2021/04/02/js-javascript-example/) post I will be going over a kind of canvas module that so far works okay for what I want to use such a module for.
@@ -128,6 +128,8 @@ On top of the draw methods object of the FEATURES object I also have a points me
 ### 1.3 - Helper functions
 
 I have a number of helper methods that will be used in the create stack public method for now, but if I keep working on this I am sure the collection of helper functions will expand as is usually the case. A number of these methods are often methods that are found in one of my many general utility type libraries for my various canvas projects. However I often use that kind of module as a dumping ground for methods that do not have a more appropriate place to live. Sense I am making a full canvas library now I am placing many of these methods here, and as a result will have a more minimal utility library for demos and projects when and if I need to use one.
+
+So many of the helper functions thus far have to do with attaching events to a canvas element, however I have one additional helper that is used to create just a single layer object. This method is used in my create layer stack public method to create a stack of layer objects each of which contains a single canvas element, along with additional properties.
 
 ```js
 /********* ********** *********
