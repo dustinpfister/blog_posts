@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-12 11:29:06
-version: 1.43
+updated: 2021-08-29 13:53:01
+version: 1.44
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -208,6 +208,140 @@ utils.XP = (function () {
     };
 }
     ());
+```
+
+### 1.10 - Create state machine objects
+
+In my canvas example on what I am just calling an Orb Module I am working out a lot of logic that has to do with these objects called orbs that are composed of a certain number of elements. I will not be getting into detail about he module here of course if you want to read more on it check out the post I wrote on it. However in the project folder of the orbs module I am starting to make a full game prototype that makes use of the module called orb match. As such when it comes to the utils library I am using in that game prototype I have started a bunch of methods that can be used to create and extend a basic state machine.
+
+```js
+// create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
+utils.smCreateMin = function(opt){
+    opt = opt || {};
+    // return a base sm object
+    var sm = {
+        currentState: opt.currentState || '',
+        states: opt.states || {},
+        events: opt.events || {}
+    };
+    return sm;
+};
+// create the main sm object
+utils.smCreateMain = function(opt){
+    opt = opt || {};
+    // create base sm object
+    var sm = utils.smCreateMin(opt);
+    // values that can be set by options
+    sm.ver = opt.ver || '';
+    sm.game = opt.game || {};
+    sm.fps = sm.fps === undefined ? 30 : opt.fps;
+    sm.canvasObj = opt.canvasObj || utils.createCanvas({
+        width: 640,
+        height: 480,
+        container: document.getElementById('canvas-app')
+    });
+    sm.debugMode = opt.debugMode || false;
+    // value that should not be set by options
+    sm.secs = 0;
+    sm.stopLoop = false;
+    sm.lt = new Date();
+    // events
+    sm.events = {
+        pointerStart: function (e, pos, sm) {
+            var handler = sm.states[sm.currentState].events.pointerStart;
+            if(handler){
+                handler.call(sm, e, pos, sm);
+            }
+        },
+        pointerMove: function (e, pos, sm) {
+            var handler = sm.states[sm.currentState].events.pointerMove;
+            if(handler){
+                handler.call(sm, e, pos, sm);
+            }
+        },
+        pointerEnd: function (e, pos, sm) {
+            var handler = sm.states[sm.currentState].events.pointerEnd;
+            if(handler){
+                handler.call(sm, e, pos, sm);
+            }
+        }
+    };
+    utils.canvasPointerEvents(sm.canvasObj.canvas, sm, sm.events);
+    // main loop
+    sm.loop = function () {
+        var now = new Date();
+        sm.secs = (now - sm.lt) / 1000,
+        state = sm.states[sm.currentState];
+        if (sm.secs >= 1 / sm.fps) {
+            // update
+            var update = state.update;
+            if(update){
+                update.call(sm, sm, sm.secs);
+            }
+            // draw
+            var ctx = sm.canvasObj.ctx,
+            canvas = sm.canvasObj.canvas;
+            var drawHook = state.draw;
+            if(drawHook){
+                drawHook.call(sm, sm, ctx, canvas);
+            }
+            sm.lt = now;
+        }
+        // if sm.stopLoop === false, then keep looping
+        if(!sm.stopLoop){
+            requestAnimationFrame(sm.loop);
+        }
+    };
+    // stop loop on any page error
+    window.addEventListener('error', function(e) {
+        if(sm.debugMode){
+            sm.stopLoop = true;
+            console.log('error: ' + e.message);
+            console.log(e);
+            console.log('loop stoped');
+        }
+    });
+    return sm;
+};
+```
+
+```js
+// push a new state object
+utils.smPushState = function(sm, opt){
+    var state = {
+        name: opt.name || 'state_' + Object.keys(sm.states).length
+    };
+    state.buttons = opt.buttons || {};
+    state.start = opt.start || function(){};
+    state.end = opt.end || function(){};
+    state.update = opt.update || function(){};
+    state.draw = opt.draw || function(){};
+    state.events = opt.events || {};
+    sm.states[state.name] = state;
+    return state;
+
+};
+```
+
+
+```js
+// set the current state
+utils.smSetState = function(sm, newState){
+    // get a ref to the old state
+    var oldState = sm.states[sm.currentState];
+    // call the on end hook for the old state if it has one
+    var endHook = oldState.end;
+    if(endHook){
+        endHook.call(sm, sm);
+    }
+    // change to the new state, and call the start hook it it has one
+    sm.currentState = newState;
+    var newState = sm.states[sm.currentState];
+    var startHook = newState.start;
+    if(startHook){
+        startHook.call(sm, sm);
+    }
+};
 ```
 
 ## 2 - Demos of the utils module
