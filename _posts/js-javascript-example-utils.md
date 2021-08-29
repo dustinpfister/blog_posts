@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-29 14:00:38
-version: 1.46
+updated: 2021-08-29 14:03:46
+version: 1.47
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -307,7 +307,7 @@ utils.smCreateMain = function(opt){
 };
 ```
 
-### 1.10 - Push a new state object to a state machine object
+### 1.11 - Push a new state object to a state machine object
 
 I then have a utils method that I can use as a standard way to go about pushing state objects to a state machine object create with one of the create methods. For now this method is just used as a way to fill in blanks, but there may be a need to set up a few other things if I put more time into this.
 
@@ -329,6 +329,9 @@ utils.smPushState = function(sm, opt){
 };
 ```
 
+### 1.12 - Set the current state
+
+I have a method that I can use to set the current state object to use in the states object of a sm object. By using this method rather than just setting the current state string value, and end and start hook methods will be called.
 
 ```js
 // set the current state
