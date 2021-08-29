@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-29 14:13:37
-version: 1.48
+updated: 2021-08-29 14:17:20
+version: 1.49
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -33,7 +33,7 @@ utils.noop = function(){};
 
 ### 1.2 - A distance formula
 
-Another usual suspect that I might have in a module like this is a distance formula. In many of the projects that I make his is just a basic must have tool.
+Another usual suspect that I might have in a module like this is a distance formula. In many of the projects that I make this is just a basic must have tool. For example say I have to circle objects and I want to know if they have hot each other, or say that I have this singe pixel position and I want to know if it is in the radius of a circle or not. When working out game logic I am often working out all kinds of expressions where distance between two objects is a factor that will set an attack value when dealing damage to which a distance formula will come into play. Yet another use case would be making a grid module, and selecting all cells in the grid that are within a given radius. The list goes on and one with this one, so I should have it at the ready somewhere.
 
 ```js
 // distance
