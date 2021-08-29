@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-29 13:53:01
-version: 1.44
+updated: 2021-08-29 13:57:43
+version: 1.45
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might utility end up in some other module that has to do with something more specific such as working with angles, or creating and working with canvas elements, however when first starting out I just need a place to put them. So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one o my [javascript example](/2021/04/02/js-javascript-example/) type posts.
@@ -213,6 +213,8 @@ utils.XP = (function () {
 ### 1.10 - Create state machine objects
 
 In my canvas example on what I am just calling an Orb Module I am working out a lot of logic that has to do with these objects called orbs that are composed of a certain number of elements. I will not be getting into detail about he module here of course if you want to read more on it check out the post I wrote on it. However in the project folder of the orbs module I am starting to make a full game prototype that makes use of the module called orb match. As such when it comes to the utils library I am using in that game prototype I have started a bunch of methods that can be used to create and extend a basic state machine.
+
+When it comes to using these methods the first thing I would wan to to is create a state machine object, for this I have two methods actually. One of which can be used to create a main state machine object that would be used in a main javaScript file. This main state machine object contains the main app loop, and has a number of other features that are appropriate for such a main state machine object. The other method can be used to create and return a far more minimal form of this kind of state machine object. This more minimal from of state machine object is what I have been using in various game logic modules as a way to go about creating sub states within a state.
 
 ```js
 // create a minamal sm object ( For setting up a nested sm object, and the base of a main sm object )
