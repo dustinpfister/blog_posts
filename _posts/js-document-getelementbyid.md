@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-30 17:26:11
-version: 1.35
+updated: 2021-08-30 17:30:51
+version: 1.36
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -81,6 +81,8 @@ foo.innerHTML = 'bar';
   </body>
 </html>
 ```
+
+Although this can be done it is [not generally a good idea](https://stackoverflow.com/questions/25325221/why-dont-we-just-use-element-ids-as-identifiers-in-javascript) to use it as a way to go about getting a reference to an element. The window property can be over written, for example I can create a variable name foo and assign something to it other than a reference to the div element. However if I use the get element by id method, or another other method to get a reference to the div, that will always return a reference to the div.
 
 ## 2 - The document.getElementsByClassName method
 
