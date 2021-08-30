@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2021-08-30 17:15:59
-version: 1.15
+updated: 2021-08-30 17:18:19
+version: 1.16
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -129,6 +129,8 @@ Another option for getting at element references is the [get elements by tag nam
 ```
 
 ## 4 - Get an element from a window relative point position
+
+The document get element from point method can be used to get the top most element at a given window relative position. To use this method I just need to call the document.elementFromPoint method and pass the position that I want to check for an element. In the event that there is an element there, it will be returned.
 
 ```html
 <html>
