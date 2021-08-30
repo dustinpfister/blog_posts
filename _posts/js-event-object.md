@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 11:28:34
-version: 1.15
+updated: 2021-08-30 11:50:41
+version: 1.16
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -48,7 +48,9 @@ el.onclick = function(e){
 </html>
 ```
 
-### 1.2 -
+### 1.2 - Using the add event listener method
+
+Many javaScript examples on the open web use element properties like the on click property as a way to set a single event hander for an element. However it is often better to go with the add event listener method to attach events as that method will allow for attaching more than one handler to an element. To use it I just need to get a reference to a node that I want to attach to and then call the add event listener method off of that node or element. I then pass a string that is the kind of event that I want to attach for, and then pass the call back function as a second argument.
 
 ```html
 <html>
