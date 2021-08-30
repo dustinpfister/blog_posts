@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 11:50:41
-version: 1.16
+updated: 2021-08-30 11:54:52
+version: 1.17
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -71,11 +71,9 @@ el.addEventListener('click', function(e){
 </html>
 ```
 
-### 1.3 -
+### 1.3 - Mouse down event and target property
 
-
-
-So say I have a div element style a little style set with some in line CSS rules. I can attach and event to it in a script tag by getting a reference to that div element, and attaching an event hander with the addEventLisneter method by calling the method off of a reference to that div element. When doing so I pass an event type as the first argument such as the mouse down type that will fire each time a mouse button is clicked over the div element. I then pass a callback as the second argument that is my callback function, and in the body of that callback function I have an event object to work with via the first argument of that callback. I can the use the target property as another way to reference that div element, and because it is a mouse event there are also properties like clienX, and clientY that will give me the window position of where the mouse event happened. I can then do something with this such as set the innerText of the div element to a string that contains some of these values.
+The click event works great, but in some cases I might want to attach for when a mouse button is pressed down, but not up yet. So when it comes to this there is the mouse down event that will fire just when the mouse button is pressed down. With that said there are also mouse up, and mouse move events that will fire when the mouse button is released and when the mouse is moved.
 
 ```html
 <html>
