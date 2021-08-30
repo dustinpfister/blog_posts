@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2020-11-11 10:10:05
-version: 1.14
+updated: 2021-08-30 17:15:59
+version: 1.15
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -128,7 +128,32 @@ Another option for getting at element references is the [get elements by tag nam
 </html>
 ```
 
-## 4 - Conclusion
+## 4 - Get an element from a window relative point position
+
+```html
+<html>
+    <head>
+        <title>Demo</title>
+        <style>
+div{
+    position: absolute;
+    background: gray;
+}
+        </style>
+    </head>
+    <body>
+        <div style="left:0px;top:0px;width:100%;height:100%;">
+            <div style="left:32px;top:50px;width:50px;height:50px;background:red;">
+        <div>
+        <script>
+var div = document.elementFromPoint(35, 52);
+div.style.background = 'lime';
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So the document query selector method is one way to go about getting a single element in an HTML document. In addition there is also the query selector all method that can be used to get a collection of elements. One down side is that these methods have not been around as long as other options that there are to work with in client side javaScript, but if your sites browser stats show that it is safe to just go ahead and use them, maybe code will not break for that many visitors.
 
