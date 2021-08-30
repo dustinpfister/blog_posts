@@ -5,19 +5,19 @@ tags: [js]
 layout: post
 categories: js
 id: 350
-updated: 2020-08-13 13:36:18
-version: 1.23
+updated: 2021-08-30 16:10:56
+version: 1.24
 ---
 
 In some situations the [Math.log](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log) method will need to be used to resolve certain problems that call for the use of such a method. This Math.log method of the main javaScript Math object will return the [Natural_logarithm](https://en.wikipedia.org/wiki/Natural_logarithm) of the number that is given to it as the first argument. 
 
-It is possible that you have all ready come across the method when it comes to taking advantage of the many copy and paste javaScript solutions that exist on stack overflow and random sites such as this that make use of it. However for whatever the reason maybe you wish to know more about it, and at least a few examples of its use so lets take a deeper look at Math.log today.
+It is possible that you have all ready come across the method when it comes to taking advantage of the many copy and paste javaScript solutions that exist on stack overflow and random sites such as this. However for whatever the reason maybe you wish to know more about it, and at least a few examples of its use so lets take a deeper look at Math.log today.
 
 <!-- more -->
 
 ## 1 - The natural logarithm
 
-So in javaScript the Math.log method with return an exponent that when used with the Mathematical constant E  as a base in a Math.pow method call should result in that number, or at least something near it because of floating-point rounding. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm).
+So in javaScript the Math.log method will return an exponent that when used with the Mathematical constant E as a base in a Math.pow method call should result in that number, or at least something near it because of floating-point rounding. This is known as a [natural logarithm](https://en.wikipedia.org/wiki/Natural_logarithm). So say I have a value like 1000, and I pass that value to Math.log, the result will be something like 9.90..., which I could then sore in a variable called p. I can then take this p value and pass it to Math.log, using Math.E as the base, and the returned value of that would be close to the original value of 1000.
 
 ```js
 
