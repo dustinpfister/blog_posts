@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-30 16:28:44
-version: 1.30
+updated: 2021-08-30 16:58:00
+version: 1.31
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -161,7 +161,34 @@ document.addEventListener('click', function(e){
 </html>
 ```
 
-## 6 - Conclusion
+## 6 - The document get element from point method
+
+There is yet another method in the document object that can be used to get a reference to an element, and that would be the [document get element from point](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint) method. As the name suggests this method can be used to get a reference to an element by way of a 2d position relative to the upper left corder of the browser window.
+
+```html
+<html>
+    <head>
+        <title>Demo</title>
+        <style>
+div{
+    position: absolute;
+    background: gray;
+}
+        </style>
+    </head>
+    <body>
+        <div style="left:0px;top:0px;width:100%;height:100%;">
+            <div style="left:32px;top:50px;width:50px;height:50px;background:red;">
+        <div>
+        <script>
+var div = document.elementFromPoint(35, 52);
+div.style.background = 'lime';
+        </script>
+    </body>
+</html>
+```
+
+## 7 - Conclusion
 
 There are many other ways to go about getting references to elements in client side javaScript. In some cases you might all ready have a reference to work with in some object that you might not even be aware of actually. For example in the body of an event handler there is the target and currentTarget properties of events objects that are references to the element where an event was dispatched, and the current element in the event of event bubbling. So if you are working something out in an event hander and want a reference to an element of interest for the event, changes are you all ready have a reference just take a closer look at the event object.
 
