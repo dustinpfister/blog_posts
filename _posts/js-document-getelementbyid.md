@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-04-14 14:10:43
-version: 1.29
+updated: 2021-08-30 16:28:44
+version: 1.30
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -110,7 +110,7 @@ Just like document.getElementBy id this is a tired yet true method that will wor
 
 ## 4 - Document.querySelector, and Document.querySelectorAll
 
-If you are familiar with jQuery then you will like [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) then as a way to gain references to elements in javaScript by a range of different query strings. There is also [document.quesySlectroAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) that can be used to get an html collection rather than a single element. This allows for a wide range of possibilities for gaining accesses to dom elements, by Id, class, tag name, and more. 
+If you are familiar with jQuery then you will like [document.querySelector](/2020/06/23/js-document-queryselector/) then as a way to gain references to an element in javaScript by a range of different query strings. There is also [document.quesySlectroAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) that can be used to get an html collection rather than a single element. This allows for a wide range of possibilities for gaining accesses to dom elements, by Id, class, tag name, and more. 
 
 For example if I want to get all elements that are of a given class like the document.getElementsByClassName method for that I can call document.querySelectorAll and pass a string that begins with a dot which means I want to select by class name, and then the name of the class.
 
@@ -137,7 +137,7 @@ console.log(foos[1].innerText); // two
 
 ## 5 - Get a reference to an element by way of a global click handler
 
-All if the methods that I have covered so far are ways to go about getting a reference to an element by way of an id, class name, or tag name right away when a line of javaScript code is executed. However when it comes to event handlers there is a way to get a refernce to the element from which the event happed by way of the event target property.
+All of the methods that I have covered so far are ways to go about getting a reference to an element by way of an id, class name, or tag name right away when a line of javaScript code is executed. However when it comes to event handlers there is a way to get a reference to the element from which the event happed by way of the event target property of an [event object](/2020/07/23/js-event-object/).
 
 ```html
 <html>
