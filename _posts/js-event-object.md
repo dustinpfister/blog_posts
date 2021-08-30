@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:41:40
-version: 1.30
+updated: 2021-08-30 12:46:33
+version: 1.31
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -274,6 +274,10 @@ get('one').addEventListener('mousedown',divClick);
 So then there is getting a reference to an event object by attaching an event handler to an element, and then doing something that will result in that event being dispatched such as clicking on the element if it is a click, or mouse down event for example. However what if I want to simulate this with javaScript code? There are a [number of examples on the open web that will still work](https://stackoverflow.com/a/16509592), however many of them might make use of features that are being deprecated.
 
 The way that I have found to do so as of this writing is to use the [Event Constructor](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event), and make any additional changes to the event object that need to happen. I then just need to get a reference to the element to which I want to emit and event, and call the dispatch event method of that element, passing the cerated event object as the first and only argument.
+
+### 4.1 - Basic mouse event simulation example
+
+Often I might want to have some kind of method where I call it, and pass an x, and y position as arguments. The result of doing so will then be a simulated click event are the given window relative position. So then in the body of such a method I could use the document element from point method to get a reference to any element that may have been click at that location. I then just need to create an event object with the Event Constructor and make any needed changes to that object. After that I just call the dispatch event off of the reference to the element and pass the event object.
 
 ```html
 <html>
