@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:17:15
-version: 1.20
+updated: 2021-08-30 12:19:34
+version: 1.21
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -183,6 +183,8 @@ Say I have a collection of divs where each div is nested inside of each other an
 So there is this thing going on that is called event bubbling, and you might be asking yourself is there a way to shop this from happening? the answer is yes and the method of interest with that in the vent object is the [stopPropagation method](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
 
 ### 3.1 - The current target property of an event object
+
+The current target property of an event object is the current target for the current call of an event handler, rather than the target element where the event has started.
 
 ```html
 <html>
