@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 11:09:26
-version: 1.10
+updated: 2021-08-30 11:13:01
+version: 1.11
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -14,6 +14,10 @@ This post will be on the ins and outs of [event objects](https://developer.mozil
 <!-- more -->
 
 ## 1 - Some Basic event object examples in client side javaScript
+
+When I add an event listener to an element with the addEventListner method, or one of the many element properties such as the on click property, I have to give a callback method that will fire each time that event happens. In this callback method the first argument will be a reference to an event object. This event objects has many useful properties and methods that can the be used in the body of this callback function. 
+
+Two major aspects of this kind of object that I use all the time is the target property, and the [preventDefault method](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault), so maybe a good starting point would make use of those two properties and methods. When it comes to mouse events there is also the client x and client y properties also that can be used to get a window relative position of the event.
 
 ### 1.1 -
 
@@ -63,7 +67,7 @@ el.addEventListener('click', function(e){
 
 ### 1.3 -
 
-When I add an event listener to an element with the addEventListner method I have to give a callback method that will fire each time that event happens. In this callback method the first argument will be a reference to an event object. This event objects has many useful properties and methods that can the be used in the body of this callback function. Two major aspects of this kind of object that I use all the time is the target property, and the [preventDefault method](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault), so maybe a good starting point would make use of those two.
+
 
 So say I have a div element style a little style set with some in line CSS rules. I can attach and event to it in a script tag by getting a reference to that div element, and attaching an event hander with the addEventLisneter method by calling the method off of a reference to that div element. When doing so I pass an event type as the first argument such as the mouse down type that will fire each time a mouse button is clicked over the div element. I then pass a callback as the second argument that is my callback function, and in the body of that callback function I have an event object to work with via the first argument of that callback. I can the use the target property as another way to reference that div element, and because it is a mouse event there are also properties like clienX, and clientY that will give me the window position of where the mouse event happened. I can then do something with this such as set the innerText of the div element to a string that contains some of these values.
 
