@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 917
-updated: 2021-07-28 17:48:23
-version: 1.31
+updated: 2021-08-30 16:19:57
+version: 1.32
 ---
 
 I have made an [experience point system](/2020/04/27/js-javascript-example-exp-system/), It works okay, but it lacks some additional features that I would like to add that will change the curve sort of speak as well as adding other additional features that might be needed when making such a system. So as of late I have been making a few new systems, but I have found that I should maybe take a step back and work on some more [basic functions](/2019/12/26/js-function/) before progressing on to making one or more experience point systems. I say that because I think I need to work out some things when it comes to [inverse functions](https://en.wikipedia.org/wiki/Inverse_function) which is a subject that seems to come up when getting into making an experience point system, at least speaking from my experience with making experience point systems thus far, not pun intended. 
@@ -76,7 +76,7 @@ console.log(y); // 42
 
 ### 1.3 - Math pow and Math log
 
-One more basic example now that involve using Math.pow, and what I would say is the inverse called Math.log.
+One more basic example now that involve using [Math.pow](/2019/12/10/js-math-pow/), and what I would say is the inverse called [Math.log](/2018/12/26/js-math-log/).
 
 ```js
 // get x when I know y and base
