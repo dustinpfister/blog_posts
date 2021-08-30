@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 11:18:04
-version: 1.12
+updated: 2021-08-30 11:22:22
+version: 1.13
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -21,7 +21,9 @@ Two major aspects of this kind of object that I use all the time is the target p
 
 So in this basic getting type section I will be going over just a few simple getting started type examples of event attachment, and working with event objects in the event handlers that will be used.
 
-### 1.1 -
+### 1.1 - The onclick property of an element
+
+The first step when it comes to working with event objects is to have a way to end up with one. One typical way to get one to work with would be to just set a function to the on click property of an element such as a div element. When doing so the first argument for this function will be a reference to the event object that will be available in the event that the div element is clicked.
 
 ```html
 <html>
@@ -36,7 +38,7 @@ var el = document.getElementById('out');
 // attach for the onclick event
 el.onclick = function(e){
    // using the event object to get a reference to the target element,
-   // in this case the div again, and useing the e.clientX, and e.clientY
+   // in this case the div again, and using the e.clientX, and e.clientY
    // properties of the event object to get the position of the click 
    // relative to the window
    e.target.innerText = e.clientX + ',' + e.clientY;
