@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:23:21
-version: 1.23
+updated: 2021-08-30 12:26:24
+version: 1.24
 ---
 
-This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
+This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
+
+I forget about things like prevent default now and then, so maybe writing a lengthly post about that and the event object in general will help me to remember better. There is also a great deal to cover when it comes to these events objects, such as the fact that the properties and methods will differ a little from kind of event to another. There are also some advanced topics that come up when it comes to working with these objects, such as creating them with javaScript code and using them to simulate an event by way of a script.
 
 <!-- more -->
 
