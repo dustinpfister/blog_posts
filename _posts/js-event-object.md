@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:27:55
-version: 1.25
+updated: 2021-08-30 12:30:36
+version: 1.26
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -133,6 +133,8 @@ draw(div, state);
 ```
 
 When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This method will stop any kind of default browser behavior for the event such as text highlighting. This can come in handy when making some kind of game that involve user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
+
+There is a great deal more to write about when it comes to setting up some kind of system like this. For example there is the question of having touch and keyboard events be a way to also mutate the values of the state object for example. When it comes to doing so I need to know how to work with many various aspects of event objects. For example in touch events I can not just use the client x and client y properties like in mouse events because of the nature of multi touch.
 
 ## 2 - The target property in depth
 
