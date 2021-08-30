@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-30 16:58:00
-version: 1.31
+updated: 2021-08-30 17:00:17
+version: 1.32
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -163,7 +163,7 @@ document.addEventListener('click', function(e){
 
 ## 6 - The document get element from point method
 
-There is yet another method in the document object that can be used to get a reference to an element, and that would be the [document get element from point](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint) method. As the name suggests this method can be used to get a reference to an element by way of a 2d position relative to the upper left corder of the browser window.
+There is yet another method in the document object that can be used to get a reference to an element, and that would be the [document get element from point](https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint) method. As the name suggests this method can be used to get a reference to an element by way of a 2d position relative to the upper left corder of the browser window. In the event that there are two elements on top of each other than it is the top most element that is returned by this method. In the event that I want to get all elements that over lay each other in the from of a collection of element then I will need to work other another solution for that.
 
 ```html
 <html>
