@@ -5,13 +5,15 @@ tags: [canvas]
 layout: post
 categories: canvas
 id: 644
-updated: 2021-02-28 14:52:40
-version: 1.24
+updated: 2021-08-30 13:04:07
+version: 1.25
 ---
 
-Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_%28video_game%29) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs, The object is to catch these bombs rather than avoid them actually with a player controlled bucket that moves from one side to another. If one of the bombs is missed then all the bombs on the screen blow up, and you loose a bucket. You keep playing until you loose all you buckets and like many of these classic games the object is all about just getting a hight score.
+Time for yet another one of my [canvas example](/2020/03/23/canvas-example/) posts, this time I thought I would make a canvas example that is a clone of the [classic video game called kaboom](https://en.wikipedia.org/wiki/Kaboom!_%28video_game%29) that was ported to systems like the Atari 2600. This is a game that involves a character at the top of the screen called the mad bomber that moves back and forth across the the screen dropping bombs. The object of the game then is to catch these bombs rather than avoid them with a player controlled bucket that moves from one side to another. If one of the bombs is missed then all the bombs on the screen blow up, and you loose a bucket. You keep playing until you loose all you buckets and like many of these classic games the object is all about just getting a hight score and that is about it.
 
-The nice thing about cloning some of these other games is that doing so if often fairly simple in a modern javaScript environment. In addition even with very simple games such as this there is much room for originality, nit just when it comes t skinning the game, but the logic also. For example there is working out how many levels there should be until the player hits the max level, how many points a bomb is worth, and many other little details such as the rate aw which bombs are dropped. So it can be fun, and interesting to clone a game like this, and play around with all the little details.
+The nice thing about cloning some of these other games is that doing so if often fairly simple in a modern javaScript environment. Back in the 1970s it was way hard to make games like these, but now I can often slap a working prototype of many of these games together in a single day often. In addition even with very simple games such as this there is much room for originality, not just when it comes to skinning the game, but the logic also. For example there is working out how many levels there should be until the player hits the max level, how many points a bomb is worth, and many other little details such as the rate at which bombs are dropped. 
+
+So it can be fun, and interesting to clone a game like this, and play around with all the little details.
 
 <!-- more -->
 
