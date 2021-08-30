@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:09:07
-version: 1.19
+updated: 2021-08-30 12:17:15
+version: 1.20
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -182,29 +182,17 @@ Say I have a collection of divs where each div is nested inside of each other an
 
 So there is this thing going on that is called event bubbling, and you might be asking yourself is there a way to shop this from happening? the answer is yes and the method of interest with that in the vent object is the [stopPropagation method](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
 
+### 3.1 - The current target property of an event object
+
 ```html
 <html>
     <head>
         <title>Event Object</title>
         <style>
-div{
-  position:relative;
-  background-color:black;
-  outline:1px solid #ffffff;
-  cursor:hand
-}
-#one{
-  width:280px;
-  height:200px;
-}
-#two{
-  width:120px;
-  height:100px;
-}
-#three{
-  width:60px;
-  height:50px;
-}
+div{position:relative;background-color:black;outline:1px solid #ffffff;cursor:hand}
+#one{width:280px;height:200px;}
+#two{width:120px;height:100px;}
+#three{width:60px;height:50px;}
         </style>
     </head>
     <body>
@@ -215,8 +203,49 @@ div{
             </div>
         </div>
         <script>
+// div click handler
 var divClick = function(e){
-  var div = e.currentTarget,
+  var div = e.currentTarget, // selecting a div by e.currentTarget
+  c = div.style.backgroundColor;
+  e.stopPropagation(); // I will want to stop propagation for this
+  div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
+};
+var get = function(id){
+    return document.getElementById(id);
+};
+// because I am using current target I will want to attach for all divs
+get('one').addEventListener('mousedown',divClick);
+get('two').addEventListener('mousedown',divClick);
+get('three').addEventListener('mousedown',divClick);
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - the target property of an event object
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+div{position:relative;background-color:black;outline:1px solid #ffffff;cursor:hand}
+#one{width:280px;height:200px;}
+#two{width:120px;height:100px;}
+#three{width:60px;height:50px;}
+        </style>
+    </head>
+    <body>
+        <div id="one">
+            <div id="two">
+                <div id="three">
+                </div>
+            </div>
+        </div>
+        <script>
+// div click handler
+var divClick = function(e){
+  var div = e.target, // selecting a div by e.target
   c = div.style.backgroundColor;
   e.stopPropagation();
   div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
@@ -225,8 +254,6 @@ var get = function(id){
     return document.getElementById(id);
 };
 get('one').addEventListener('mousedown',divClick);
-get('two').addEventListener('mousedown',divClick);
-get('three').addEventListener('mousedown',divClick);
         </script>
     </body>
 </html>
