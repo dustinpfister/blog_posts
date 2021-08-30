@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:06:59
-version: 1.18
+updated: 2021-08-30 12:09:07
+version: 1.19
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -174,7 +174,7 @@ container.addEventListener('mousedown',divClick);
 </html>
 ```
 
-## 3 - Netsed elements, the current target property, and the stop propagation method
+## 3 - Nested elements, the current target property, and the stop propagation method
 
 So there is the target property and then there is the [current target](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget) property of an event object. The target property will be the element where the event happened, and the current target property will be the element where the current event hander is firing. A good way to know the difference would be to play around with something that has to do with a nested collection of elements.
 
@@ -232,7 +232,38 @@ get('three').addEventListener('mousedown',divClick);
 </html>
 ```
 
+## 4 - Simulating events by creating an event object, and calling the dispatch event method
 
-## 4 - Conclusion
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
+        <script>
+var el = document.getElementById('out');
+el.onclick = function(e){
+    e.target.innerText = e.clientX + ',' + e.clientY;
+};
+// simulate a click method
+var simClick = function(x, y){
+    var el = document.elementFromPoint(x,y);
+    var ev = new Event('click');
+    // setting clientX and clientY props
+    ev.clientX = x;
+    ev.clientY = y;
+    console.log(ev);
+    // dispatching the event
+    el.dispatchEvent(ev);
+};
+// simulating a click
+simClick(35, 21);
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
