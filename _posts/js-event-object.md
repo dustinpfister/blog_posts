@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 11:22:22
-version: 1.13
+updated: 2021-08-30 11:23:50
+version: 1.14
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the target property that is a reference to the element where the event happened, and the prevent default method that will stop default browser behavior for certain types of events like mouse and touch events. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -15,13 +15,13 @@ This post will be on the ins and outs of [event objects](https://developer.mozil
 
 ## 1 - Some Basic event object examples in client side javaScript
 
-When I add an event listener to an element with the addEventListner method, or one of the many element properties such as the on click property, I have to give a callback method that will fire each time that event happens. In this callback method the first argument will be a reference to an event object. This event objects has many useful properties and methods that can the be used in the body of this callback function. 
+When I add [an event listener](/2019/01/16/js-event-listeners/) to an element with the addEventListner method, or one of the many element properties such as the on click property, I have to give a callback method that will fire each time that event happens. In this callback method the first argument will be a reference to an event object. This event objects has many useful properties and methods that can the be used in the body of this callback function. 
 
 Two major aspects of this kind of object that I use all the time is the target property, and the [preventDefault method](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault), so maybe a good starting point would make use of those two properties and methods. When it comes to mouse events there is also the client x and client y properties also that can be used to get a window relative position of the event. 
 
 So in this basic getting type section I will be going over just a few simple getting started type examples of event attachment, and working with event objects in the event handlers that will be used.
 
-### 1.1 - The onclick property of an element
+### 1.1 - The on click property of an element
 
 The first step when it comes to working with event objects is to have a way to end up with one. One typical way to get one to work with would be to just set a function to the on click property of an element such as a div element. When doing so the first argument for this function will be a reference to the event object that will be available in the event that the div element is clicked.
 
