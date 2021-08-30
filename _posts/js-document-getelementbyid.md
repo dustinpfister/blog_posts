@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-30 17:10:55
-version: 1.34
+updated: 2021-08-30 17:26:11
+version: 1.35
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -63,6 +63,24 @@ get('foo').innerHTML = 'bar';
 ```
 
 If document.getElementById is only used once or twice there is no need, but at some point it might be a good move to do something like this. The other option is to find other ways of going about getting and working with html collections rather than just a single element. The document.getElementById method is just one tool in the toolbox after all, so maybe a better option would be to drop the use of the method all together, and get at your html code by some other means.
+
+### 1.2 - The global variable being define by id bug thing
+
+There is actually a thing where by just setting an id attribute for an element, that results in a global variable being defined that is a reference to that element. So that means that I can just use the name of the id, as a reference to the element actually.
+
+```html
+<html>
+  <head>
+    <title>Demo</title>
+  </head>
+  <body>
+    <div id="foo"><p>bar</p></div>
+    <script>
+foo.innerHTML = 'bar';
+    </script>
+  </body>
+</html>
+```
 
 ## 2 - The document.getElementsByClassName method
 
