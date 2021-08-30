@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 11:54:52
-version: 1.17
+updated: 2021-08-30 12:06:59
+version: 1.18
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events, and the get bounding client rect method that can be used to get a element rather than window relative point position just to name two methods to work with in an event object. I forget about things like prevent default now and then too, so maybe writing a lengthly post about that and the event object in general will help me to remember better.
@@ -83,19 +83,52 @@ The click event works great, but in some cases I might want to attach for when a
     <body>
         <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
         <script>
-document.getElementById('out').addEventListener('mousedown', function(e){
+// ref to div
+var div = document.getElementById('out');
+// draw
+var draw = function(el, state){
+   el.innerText = 'down: ' + state.down + '; pos: ( ' + state.pos.x + ', ' + state.pos.y +' );';
+};
+// state object
+var state = {
+   down: false,
+   pos: {
+       x: -1,
+       y: -1
+   }
+};
+// handlers
+state.events = {};
+state.events.pointerDown = function(e){
    e.preventDefault();
-   e.target.innerText = e.target.id + 
-   ', ' + e.type +
-   ', ' + e.clientX + 
-   ', ' + e.clientY;
-});
+   state.down = true;
+   draw(e.target, state);
+};
+state.events.pointerMove = function(e){
+   e.preventDefault();
+   if(state.down){
+       state.pos.x = e.clientX;
+       state.pos.y = e.clientY;
+       draw(e.target, state);
+   }
+};
+state.events.pointerUp = function(e){
+   e.preventDefault();
+   state.down = false;
+   draw(e.target, state);
+};
+// attaching handlers
+div.addEventListener('mousedown', state.events.pointerDown);
+div.addEventListener('mousemove', state.events.pointerMove);
+div.addEventListener('mouseup', state.events.pointerUp);
+// draw for first time
+draw(div, state);
         </script>
     </body>
 </html>
 ```
 
-When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This methods will stop any kind of default browser behavior for the event such as text highlighting. this can come in handy when making some kind of game that involve user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
+When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This method will stop any kind of default browser behavior for the event such as text highlighting. This can come in handy when making some kind of game that involve user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
 
 ## 2 - The target property in depth
 
