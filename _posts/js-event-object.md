@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:36:22
-version: 1.28
+updated: 2021-08-30 12:38:02
+version: 1.29
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -230,7 +230,7 @@ get('three').addEventListener('mousedown',divClick);
 </html>
 ```
 
-### 3.2 - the target property of an event object
+### 3.2 - The target property of an event object
 
 The target property of an event object is a reference to the element to which an event has started. So when it comes to using this property I will only need to attach a single handler to the root element, and call stop propagation.
 
@@ -271,7 +271,7 @@ get('one').addEventListener('mousedown',divClick);
 
 ## 4 - Simulating events by creating an event object, and calling the dispatch event method
 
-So then there is getting a reference to an event object by attaching an event handler to an element, and then doing something that will result in that event being dispatched such as clicking on the element if it is a click, or mouse down event for example. However what if I want to simulate this with javaScript code?
+So then there is getting a reference to an event object by attaching an event handler to an element, and then doing something that will result in that event being dispatched such as clicking on the element if it is a click, or mouse down event for example. However what if I want to simulate this with javaScript code? There are a number of examples on the open web that will still work, however many of them might make use of features that are being deprecated.
 
 ```html
 <html>
