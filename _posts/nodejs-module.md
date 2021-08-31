@@ -5,11 +5,11 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 673
-updated: 2021-08-31 11:11:36
-version: 1.10
+updated: 2021-08-31 12:46:49
+version: 1.11
 ---
 
-The [module object in nodejs](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_module_exports) is what I often use when creating modules in nodejs. The module exports property of the module object is what I use to return a main function that will be called when using the module elsewhere. In addition the main function that I exports with the module export propriety can have additional properties attached to it which in many respects makes it a better option to the exports global that can also be used to set public methods and properties for a module that I might be making for a nodejs project.
+The [module object in nodejs](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_module_exports) is what I often use when [creating modules](/2019/03/12/js-javascript-module/) in nodejs. The module exports property of the module object is what I use to return a main function that will be called when using the module elsewhere. In addition the main function that I exports with the module export propriety can have additional properties attached to it which in many respects makes it a better option to the exports global that can also be used to set public methods and properties for a module that I might be making for a nodejs project.
 
 <!-- more -->
 
