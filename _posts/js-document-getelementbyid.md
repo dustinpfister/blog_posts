@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-31 10:08:18
-version: 1.41
+updated: 2021-08-31 10:12:52
+version: 1.42
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -234,7 +234,7 @@ el.appendChild(p);
 
 ### 7.2 - The document.title property
 
-Another one of these kinds of [properties is the document title property](/2018/12/28/js-document-title/).
+Another one of these kinds of [properties is the document title property](/2018/12/28/js-document-title/). This of course is the element that will contain the text that is found in the tab of the page in the browser. Like body this is also the kind of element to which there should be one one of them, so of course there is a reference to it in the document object.
 
 ```html
 <html>
