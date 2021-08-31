@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-31 10:01:59
-version: 1.38
+updated: 2021-08-31 10:04:21
+version: 1.39
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -213,6 +213,8 @@ div.style.background = 'lime';
 In the document object there are a number of properties that are references to various elements in a page. Often these are references to elements and nodes to which there should only be one instance of anyway, such as the body, head, and title elements. So the concept of getting a reference to one of these elements by way of an id attribute is kind of silly sense there will always, or at least should always be just one of them.
 
 ### 7.1 - The document.body property
+
+Everything that is a display element should ultimately be a child of the body element. There is only one of these elements in a page, and the only parent of this element should be the html element. So there is a document.body property that is a reference to this single element.
 
 ```html
 <html>
