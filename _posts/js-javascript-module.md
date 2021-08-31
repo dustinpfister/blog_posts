@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 11:29:01
-version: 1.32
+updated: 2021-08-31 11:34:26
+version: 1.33
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -200,6 +200,8 @@ I have [wrote a post on the subject of modules in node](/2020/06/30/nodejs-modul
 ### 5.1 - The path module
 
 A very useful module to start out with in nodejs might be the [path module](/2017/12/27/nodejs-paths). This module is packed with useful method that help with resolving absolute paths to resources on a local file system. It will not load those resources as that is the job of another built in module, however if I want to parse an absolute path to a file with a base path and a relative path from the base path this module is what I would want to use.
+
+In nodejs there is also the [process object that will contain the cwd method](/2021/03/17/nodejs-process-cwd/) which will return the current working directly. There are also a number of [special global variables](/2018/02/10/nodejs-globals/) such as the \_\_dirname variable that is the path to the current file. So in this example I am loading in the path module, and using the path join method to get an absolute path relative to the cwd, as well as the same path as the file.
 
 ```js
 // loading in the path module
