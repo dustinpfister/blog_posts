@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-31 15:16:05
-version: 1.50
+updated: 2021-08-31 15:58:54
+version: 1.51
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -74,50 +74,66 @@ When it comes to working with objects I will often want a way to go about deep c
 
 ```js
 // a deep clone method that should work in most situations
-utils.deepClone = (function(){
+utils.deepClone = (function () {
     // forInstance methods supporting Date, Array, and Object
     var forInstance = {
-        Date: function(val, key){
+        Date: function (val, key) {
             return new Date(val.getTime());
         },
-        Array: function(val, key){
+        Array: function (val, key) {
             // deep clone the object, and return as array
             var obj = utils.deepClone(val);
             obj.length = Object.keys(obj).length;
             return Array.from(obj);
         },
-        Object: function(val, key){
+        Object: function (val, key) {
             return utils.deepClone(val);
         }
     };
+    // default forRecursive
+    var forRecursive = function (cloneObj, sourceObj, sourceKey) {
+        return cloneObj;
+    };
+    // default method for unsupported types
+    var forUnsupported = function (cloneObj, sourceObj, sourceKey) {
+        // not supported? Just ref the object,
+        // and hope for the best then
+        return sourceObj[sourceKey];
+    };
     // return deep clone method
-    return function(obj){
-        var clone = {}, forIMethod; // clone is a new object
-        for(var i in obj) {
+    return function (obj, opt) {
+        var clone = {},
+        conName,
+        forIMethod; // clone is a new object
+        opt = opt || {};
+        opt.forInstance = opt.forInstance || {};
+        opt.forRecursive = opt.forRecursive || forRecursive;
+        opt.forUnsupported = opt.forUnsupported || forUnsupported;
+        for (var i in obj) {
             // if the type is object and not null
-            if( typeof(obj[i]) == "object" && obj[i] != null){
+            if (typeof(obj[i]) == "object" && obj[i] != null) {
                 // recursive check
-                if(obj[i] === obj){
-                    clone[i] = clone;
-                }else{
+                if (obj[i] === obj) {
+                    clone[i] = opt.forRecursive(clone, obj, i);
+                } else {
                     // if the constructor is supported, clone it
-                    forIMethod = forInstance[obj[i].constructor.name];
-                    if(forIMethod){
-                        clone[i] = forIMethod(obj[i], i); 
-                    }else{
-                        // not supported? Just ref the object,
-                        // and hope for the best then
-                        clone[i] = obj[i];
+                    conName = obj[i].constructor.name;
+                    forIMethod = opt.forInstance[conName] || forInstance[conName];
+                    if (forIMethod) {
+                        clone[i] = forIMethod(obj[i], i);
+                    } else {
+                        clone[i] = opt.forUnsupported(clone, obj, i);
                     }
                 }
-            }else{
+            } else {
                 // should be a primitive so just assign
                 clone[i] = obj[i];
             }
         }
         return clone;
     };
-}());
+}
+    ());
 ```
 
 ### 1.6 - Create a create canvas element method
