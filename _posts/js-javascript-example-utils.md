@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-08-31 15:58:54
-version: 1.51
+updated: 2021-08-31 16:00:18
+version: 1.52
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -710,6 +710,47 @@ var events = {
 }
 utils.canvasPointerEvents(state.canvasObj.canvas, state, events);
 draw();
+        </script>
+    </body>
+</html>
+```
+
+### 2.5 - deep clone an object demo
+
+The deep clone method seems to work pkay when I play around with it a little.
+
+```html
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <p>Hello</p>
+        <script src="../lib/utils.js"></script>
+        <script>
+ 
+var a = {
+  pos: {x: 5, y: 3},
+  lt: new Date(1000),
+  nums: [1,2,3,4]
+};
+a.cir = a;
+ 
+var b = utils.deepClone(a);
+ 
+// mutating a
+a.pos.x = 0;
+a.lt = null;
+a.nums[0] = null;
+ 
+// mutating a does not effect b
+console.log(a.pos.x, b.pos.x);     // 0 5
+console.log(a.nums, b.nums);       // [null, 2, 3, 4] [1, 2, 3, 4]
+console.log(a.lt, b.lt.getTime()); // null, 1000
+ 
+// circular ref now refers to new object
+console.log(b.cir === a.cir); // false
+console.log(b.cir === b.cir); // true
         </script>
     </body>
 </html>
