@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2020-08-28 09:48:22
-version: 1.27
+updated: 2021-08-31 11:18:35
+version: 1.28
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -193,6 +193,71 @@ pointMod.print(b);
 // (10, 35)
 ```
 
-## 5 - Conclusion
+## 5 - Using and making modules in nodejs
+
+### 5.1 - The path module
+
+```js
+// loading in the path module
+let path = require('path');
+console.log(process.cwd()); // current working dir
+console.log(__dirname);     // dir that this file is in
+// using the path join method
+console.log( path.join(process.cwd(), 'lib/foo.js') );
+console.log( path.join(__dirname, 'lib/foo.js') );
+```
+
+### 5.2 - The fs module
+
+```js
+let fs = require('fs'),
+path = require('path');
+// using path and js modules
+let uri = path.join(__dirname, 'fs.js');
+fs.readFile(uri, 'utf8', (e, txt) => {
+    if (e) {
+        console.warn(e.messgae);
+    } else {
+        console.log(txt);
+    }
+});
+```
+
+## 5.3 - Making modules in nodejs
+
+```js
+// private helper method
+let parseAxis = (a) => {
+    return a === undefined || typeof a != 'number' || String(a) === 'NaN' ? 0 : a;
+};
+ 
+// a Main public method
+let Point = (x, y) => {
+    return {
+        x: parseAxis(x),
+        y: parseAxis(y)
+    };
+};
+ 
+// an additional static public method
+Point.distance = (pt1, pt2) => {
+    return Math.sqrt(Math.pow(pt1.x - pt2.x, 2) + Math.pow(pt1.y - pt2.y, 2));
+};
+ 
+module.exports = Point;
+```
+
+```js
+let path = require('path');
+let point = require(path.join(__dirname, './points.js'));
+ 
+let a = point(45, 15),
+b = point(0, 0),
+d = Math.floor(point.distance(a, b));
+ 
+console.log(d); // 47
+```
+
+## 6 - Conclusion
 
 So this post just scratched the surface when it comes to writing javaScript modules in a client side javaScript environment that will work in a wide range of clients in a tired yet true way. I have my way that I like to write modules when it comes to things like canvas examples where I am writing the code from the ground up, and I want the project to work via the file protocol. However do not thing of this as the end all post on javaScript module design, there are many other ways to go about writing them of course that I did not get to here, and the way I would writing them can change dramatically depending on the environment, how far back I want to go with browser support, and what kind of libraries or frameworks I might be using.
