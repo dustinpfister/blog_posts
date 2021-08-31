@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-30 17:30:51
-version: 1.36
+updated: 2021-08-31 09:59:46
+version: 1.37
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -208,7 +208,42 @@ div.style.background = 'lime';
 </html>
 ```
 
-## 7 - Conclusion
+## 7 - Properties of the document object that are references to nodes and elements
+
+### 7.1 - The document.body property
+
+```html
+<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+        <script>
+var el = document.body;
+var p = document.createElement('p');
+p.innerText = 'Hello World';
+el.appendChild(p);
+        </script>
+    </body>
+</html>
+```
+
+### 7.2 - The document.title property
+
+```html
+<html>
+  <head>
+    <title>foo</title>
+  </head>
+  <body>
+    <script>
+      document.title = 'bar';
+    </script>
+  </body>
+</html>
+```
+
+## 8 - Conclusion
 
 There are many other ways to go about getting references to elements in client side javaScript. In some cases you might all ready have a reference to work with in some object that you might not even be aware of actually. For example in the body of an [event handler](/2019/01/16/js-event-listeners/) there is the target and currentTarget properties of events objects that are references to the element where an event was dispatched, and the current element in the event of event bubbling. So if you are working something out in an event hander and want a reference to an element of interest for the event, changes are you all ready have a reference just take a closer look at the event object.
 
