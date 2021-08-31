@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 12:10:54
-version: 1.37
+updated: 2021-08-31 12:19:42
+version: 1.38
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -234,7 +234,7 @@ fs.readFile(uri, 'utf8', (e, txt) => {
 
 ## 5.3 - Making modules in nodejs
 
-Now that I have covered the basics of how to go about loading modules in nodejs there is now the question of how to go about loading a custom made module.
+Now that I have covered the basics of how to go about loading modules in nodejs there is now the question of how to go about loading a custom made module, and how to go about making such a module to begin with. When it comes to making a module I will want to use the exports property of the module object as a way to export what it is that I want to be pubic for the module. When it comes to loading this module the process is mire or less the same as that of the built in modules it is just that now I need to pass a uri to the module when calling require rather than just a name of a built in module.
 
 ```js
 // private helper method
