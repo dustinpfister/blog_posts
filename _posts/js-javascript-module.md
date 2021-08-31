@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 11:34:26
-version: 1.33
+updated: 2021-08-31 11:37:18
+version: 1.34
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -212,6 +212,8 @@ console.log(__dirname);     // dir that this file is in
 console.log( path.join(process.cwd(), 'lib/foo.js') );
 console.log( path.join(__dirname, 'lib/foo.js') );
 ```
+
+This module and the use of the join method will come up in additional examples in this section, so I wanted to get this one out of the way first. When it comes to getting the path to a module that I have sored relative to another script in the same folder it is a good idea to use the \_\_dirname global with a relative path to the module and call the path join method to create an absolute path to the module. More on this when I get to the example where I am making my own nodjes module.
 
 ### 5.2 - The fs module
 
