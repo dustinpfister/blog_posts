@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 12:32:08
-version: 1.40
+updated: 2021-08-31 12:36:30
+version: 1.41
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -275,9 +275,15 @@ Thus far I have wrote about a bunch of simple hello world type examples of modul
 
 ### 6.1 - [A general utilities module](/2021/08/06/js-javascript-example-utils/)
 
-### 6.2 - [making a module that will work in nodejs or a browser](/2021/04/14/js-javascript-example-nodejs-browser-share-code-module)
+In this post I am writing about a form of a kind of module that I often custom make for each project that I start.
+
+### 6.2 - [Making a module that will work in nodejs or a browser](/2021/04/14/js-javascript-example-nodejs-browser-share-code-module)
+
+Because nodejs is JavaScript that raises the question as to the idea of making modules that will work both in a browser as well as a nodejs environment. Of course making these kinds of modules is possible, and in this post I go over a basic example of this kind of module. However just because something can be done that alone does not mean it is a good idea. Making modules this way might make sense for certain projects, but others should very much remain sever side, or they are just to browser centric and thus it does nit make sense for that reason.
 
 ### 6.3 - [A canvas module](/2021/08/27/js-javascript-example-canvas-module/)
+
+In this post I am going over the source code of a canvas module that I have started.
 
 ## 7 - Conclusion
 
