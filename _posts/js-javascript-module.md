@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 12:09:19
-version: 1.36
+updated: 2021-08-31 12:10:54
+version: 1.37
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -217,7 +217,7 @@ This module and the use of the join method will come up in additional examples i
 
 ### 5.2 - The fs module
 
-Another built in module to start looking into right away would be the [file system module](/2018/02/08/nodejs-filesystem/). The path module is what I want to use in order to create an absolute path to something. However in order to read, write, or create that something I will need the file system module. In this example I am loading in the file system module, and the path module which I will both use to read and print out the source code of the file itself just for the sake of having somehting to read.
+Another built in module to start looking into right away would be the [file system module](/2018/02/08/nodejs-filesystem/). The path module is what I want to use in order to create an absolute path to something. However in order to read, write, or create that something I will need the file system module. In this example I am loading in the file system module, and the path module which I will both use to read and print out the source code of the file itself just for the sake of having something to read.
 ```js
 let fs = require('fs'),
 path = require('path');
@@ -233,6 +233,8 @@ fs.readFile(uri, 'utf8', (e, txt) => {
 ```
 
 ## 5.3 - Making modules in nodejs
+
+Now that I have covered the basics of how to go about loading modules in nodejs there is now the question of how to go about loading a custom made module.
 
 ```js
 // private helper method
