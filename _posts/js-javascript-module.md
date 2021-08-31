@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 12:29:50
-version: 1.39
+updated: 2021-08-31 12:32:08
+version: 1.40
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -270,6 +270,8 @@ console.log(d); // 47
 ```
 
 ## 6 - Module examples
+
+Thus far I have wrote about a bunch of simple hello world type examples of modules, but I have not got into any kind of real examples. So then in this section I will not be getting into depth about the source code of various modules that I have made over the years, but I will write about a few of them, and link to additional posts in which I get into the source code in detail.
 
 ### 6.1 - [A general utilities module](/2021/08/06/js-javascript-example-utils/)
 
