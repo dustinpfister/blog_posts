@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 12:36:30
-version: 1.41
+updated: 2021-08-31 12:41:55
+version: 1.42
 ---
 
 When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
@@ -275,7 +275,7 @@ Thus far I have wrote about a bunch of simple hello world type examples of modul
 
 ### 6.1 - [A general utilities module](/2021/08/06/js-javascript-example-utils/)
 
-In this post I am writing about a form of a kind of module that I often custom make for each project that I start.
+In this post I am writing about a form of a kind of module that I often custom make for each project that I start. That is that when I start a project I often end up with some methods that I do not know where to go with, so I just dump them in some kind of general utility module. In other words it is a kind of custom made lodash library of sorts, backed with stand alone methods that I am actually using in a specific project.
 
 ### 6.2 - [Making a module that will work in nodejs or a browser](/2021/04/14/js-javascript-example-nodejs-browser-share-code-module)
 
@@ -283,7 +283,7 @@ Because nodejs is JavaScript that raises the question as to the idea of making m
 
 ### 6.3 - [A canvas module](/2021/08/27/js-javascript-example-canvas-module/)
 
-In this post I am going over the source code of a canvas module that I have started.
+In this post I am going over the source code of a canvas module that I have started. The module has at least some of the basic features that I think should a module should have such a layering and having methods that helper with creating and displaying an a collection of 2d points. However at the time of this writing it was still a fairly new module that I have started and many features that such a module should have may still be missing.
 
 ## 7 - Conclusion
 
