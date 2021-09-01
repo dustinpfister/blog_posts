@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-09-01 10:20:37
-version: 1.44
+updated: 2021-09-01 10:23:58
+version: 1.45
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -269,7 +269,7 @@ console.log(node.nodeName); // 'head'
 
 ### 7.4 - To get the html element there is document.documentElement
 
-When it comes to getting the main html element, there is not a document html property, but there is a document element property of the document object.
+When it comes to getting the [main html element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html), there is not a document html property, but there is a [document element property](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement) of the document object. The html element is also often referred to as the root element, as it is the root most element when it comes to html, and there is not really anything below that, at least as far as html elements are concerned anyway.
 
 ```html
 <html>
