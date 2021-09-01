@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 15:17:25
-version: 1.20
+updated: 2021-09-01 15:19:27
+version: 1.21
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -141,6 +141,8 @@ However there are a number of ways of making some things private, without divert
 ### 4.1 - Basic IIFE example for a single method
 
 I place of just having a [function expression](/2019/01/27/js-function-expression/) as the value to be assigned to a key of an object literal I have have a self executing function expression or IIFE and it will then be the return value of this IIFE that will be the value for the pubic key of the object literal. It is then the return value that will be a function expression, and this inner function expression will then have access to private stuff in the body of the IIFE that can not be access form outside of the IIFE.
+
+One example of this would be a log once method in which I can have a private count variable inside the body of an IIFE, and then an inner function expression that is returned that looks at this private count variable to see of it should log a given message or not
 
 ```js
 var utils = {};
