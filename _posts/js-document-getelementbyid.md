@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 351
-updated: 2021-08-31 10:12:52
-version: 1.42
+updated: 2021-09-01 10:18:11
+version: 1.43
 ---
 
 With front end javaScript it is important to know how to create one or more references to HTML elements such as divs, canvas elements, and so forth. That is because much of front end javaScript development has to do with interacting with element objects that represent an element in an HTML document, such as creating and appending more elements them, attaching events, and working with element specific methods that have to do with the nature of the type of element. So creating a reference to an HTML element is what is typically needed as a first step before anything else can be done with such an element reference, to do that you need to have something unique about the element, and a way to use that to get a reference to it.
@@ -246,6 +246,39 @@ Another one of these kinds of [properties is the document title property](/2018/
       document.title = 'bar';
     </script>
   </body>
+</html>
+```
+
+### 7.3 - get the head element via document.head
+
+```html
+<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+        <script>
+var node = document.head;
+console.log(node.nodeName); // 'head'
+        </script>
+    </body>
+</html>
+```
+
+### 7.4 - To get the html element there is document.documentElement
+
+```html
+<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+        <script>
+var node = document.documentElement;
+console.log(node.children[0].nodeName); // 'HEAD'
+console.log(node.children[1].nodeName); // 'BODY'
+        </script>
+    </body>
 </html>
 ```
 
