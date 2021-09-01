@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 15:15:00
-version: 1.19
+updated: 2021-09-01 15:17:25
+version: 1.20
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
 
-However if you are new to javaScript module design, you have to start somewhere, and maybe a good starting point would be to just start playing around with plain old [object literals](https://www.dyn-web.com/tutorials/object-literal/) as a [javaScript module pattern](https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html) in client side javaScript. This might not be the best way to go about making modules in javaScript, but it sure is a good first step in the right direction if you are not sure where to start. Also in some cases the pattern will still work okay in some situations in which I am making a client side module in which it is okay to make everything public. Also I can still wrap things up into [an IIFE](/2020/02/04/js-iife/) when it comes to making a single property value for a public key of the main object literal that will compose such a module.
+However if you are new to javaScript module design, you have to start somewhere, and maybe a good starting point would be to just start playing around with plain old [object literals](https://www.dyn-web.com/tutorials/object-literal/) as a [javaScript module pattern](https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html) in client side javaScript. This might not be the best way to go about making modules in javaScript, but it sure is a good first step in the right direction if you are not sure where to start. Also in some cases the pattern will still work okay in some situations in which I am making a client side module in which it is okay to make everything public. Also I can still wrap things up into [an IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) when it comes to making a single property value for a public key of the main object literal that will compose such a module.
 
 <!-- more -->
 
@@ -136,11 +136,11 @@ console.log(d.toFixed(2)); // '19.21'
 
 Some may argue that the main reason why not to use the object literal pattern is because everything will be public. As a result if one is in a situation in which there will be many private helper functions, and built in defaults that should not be public, one just has to make all of these things public. As such the result will be a polluted public API, with many methods, objects, and other features that should be private from the end user of the module. 
 
-However there are a number of ways of making some things private, without diverting from the pattern that much. For example I can use an IIFE when defining what a method should be for a public key of the object literal. Another option would be having a block of code that is an IIFE, and I pass the object literal as an argument to that IIFE, inside the body of the IIFE I can then have a whole bunch of private stuff.
+However there are a number of ways of making some things private, without diverting from the pattern that much. For example I can [use an IIFE](/2020/02/04/js-iife/) when defining what a method should be for a public key of the object literal. Another option would be having a block of code that is an IIFE, and I pass the object literal as an argument to that IIFE, inside the body of the IIFE I can then have a whole bunch of private stuff.
 
 ### 4.1 - Basic IIFE example for a single method
 
-I place of just having a function expression as the value to be assigned to a key of an object literal I have have a self executing function expression or IIFE and it will then be the return value of this IIFE that will be the value for the pubic key of the object literal. It is then the return value that will be a function expression, and this inner function expression will then have access to private stuff in the body of the IIFE that can not be access form outside of the IIFE.
+I place of just having a [function expression](/2019/01/27/js-function-expression/) as the value to be assigned to a key of an object literal I have have a self executing function expression or IIFE and it will then be the return value of this IIFE that will be the value for the pubic key of the object literal. It is then the return value that will be a function expression, and this inner function expression will then have access to private stuff in the body of the IIFE that can not be access form outside of the IIFE.
 
 ```js
 var utils = {};
