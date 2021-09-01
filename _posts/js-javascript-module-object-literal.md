@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 15:25:40
-version: 1.24
+updated: 2021-09-01 15:27:18
+version: 1.25
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -54,7 +54,7 @@ console.log(point.x, point.y);
 // 5 10
 ```
 
-So now I have the same code, working more or less the same way, but in an object literal module form. 
+So now I have the same code, working more or less the same way, but in an object literal module form. This is then one way to go about taking all these things that would otherwise be polluting the global name space just be a single global.
 
 ## 2 - Making a module more in line with functional programing using the object literal module pattern
 
