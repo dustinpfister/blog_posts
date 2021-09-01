@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 15:36:17
-version: 1.29
+updated: 2021-09-01 15:39:48
+version: 1.30
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -137,6 +137,8 @@ console.log(d.toFixed(2)); // '19.21'
 Some may argue that the main reason why not to use the object literal pattern is because everything will be public. As a result if one is in a situation in which there will be many private helper functions, and built in defaults that should not be public, one just has to make all of these things public. As such the result will be a polluted public API, with many methods, objects, and other features that should be private from the end user of the module. 
 
 However there are a number of ways of making some things private, without diverting from the pattern that much. For example I can [use an IIFE](/2020/02/04/js-iife/) when defining what a method should be for a public key of the object literal. Another option would be having a block of code that is an IIFE, and I pass the object literal as an argument to that IIFE, inside the body of the IIFE I can then have a whole bunch of private stuff.
+
+It might be said that once you start doing this sort of thing it is not longer an object literal pattern, but now some other kind of pattern. In any case it is either still the object literal pattern, or a new kind of pattern that is just a little more advanced. that main point I would like to make in this section is if you are not sure of you want to go with the object literal pattern it is not that hard to break free from it and start to do something else as needed without changing things that much. When done in certain ways it will not even result in cod breaking changes.
 
 ### 4.1 - Basic IIFE example for a single method
 
