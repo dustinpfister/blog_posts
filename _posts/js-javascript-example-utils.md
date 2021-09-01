@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-09-01 16:10:20
-version: 1.53
+updated: 2021-09-01 16:13:44
+version: 1.54
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -791,6 +791,47 @@ console.log(a.lt, b.lt.getTime()); // null, 1000
 // circular ref now refers to new object
 console.log(b.cir === a.cir); // false
 console.log(b.cir === b.cir); // true
+        </script>
+    </body>
+</html>
+```
+
+### 2.6 - logging demo
+
+In this demo I am just testing out my logging methods, and they seem to work just fine. When debugging some code the log for method will come in handy a whole lot of times as I just want something to be logged for a given condition. For example say I have some weird bug where an hp value for a display object goes out of range some times.
+
+```html
+<html>
+    <head>
+        <title>javaScript example utils</title>
+    </head>
+    <body>
+        <script src="../lib/utils.js"></script>
+        <script>
+ 
+// utils.log
+utils.log('hello world');
+ 
+// basic utils.logOnce example
+var i = 15;
+while(i--){
+    utils.logOnce('hello ' + i);
+}
+// hello 14
+ 
+var pool = [
+    {hp: 10, hpMax: 10},
+    {hp: -3, hpMax: 10},
+    {hp: 7, hpMax: 10},
+    {hp: 15, hpMax: 10},
+];
+ 
+pool.forEach(function(obj){
+    utils.logFor(obj, obj.hp < 0 || obj.hp > obj.hpMax );
+});
+// {hp: -3, hpMax: 10}
+// {hp: 15, hpMax: 10}
+ 
         </script>
     </body>
 </html>
