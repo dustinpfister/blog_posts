@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 15:29:19
-version: 1.26
+updated: 2021-09-01 15:31:46
+version: 1.27
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -178,7 +178,7 @@ hello 11
 
 ### 4.2 - Passing the object literal as an argument to an IIFE, and appending to it
 
-Another option is to have the object literal be a value that is passed to an IIFE as an argument for the IIFE. I can then append to the object literal with just what it is that I want to be pubic, while keeping everything else private.
+Another option is to have the object literal be a value that is passed to an IIFE as an argument for the IIFE. I can then append to the object literal with just what it is that I want to be pubic, while keeping everything else private. For example say I want to have some methods that can be used to create and work with a box object, but I only want to make a few methods public, and keep certain other things private. I can write an IIFE, pass a reference to the object literal module as an argument for this IIFE, and just append the public box methods.
 
 ```js
 var utils = {};
