@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2020-08-28 12:43:59
-version: 1.14
+updated: 2021-09-01 10:36:27
+version: 1.15
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
 
-However if you are new to javaScript module design, you have to start somewhere, and maybe a good starting point would be to just start playing around with [object literals](https://www.dyn-web.com/tutorials/object-literal/) as a [javaScript module pattern](https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html) in client side javaScript. This might not be the best way to go about making modules in javaScript, but it sure is a good first step in the right direction if you are not sure where to start.
+However if you are new to javaScript module design, you have to start somewhere, and maybe a good starting point would be to just start playing around with plain old [object literals](https://www.dyn-web.com/tutorials/object-literal/) as a [javaScript module pattern](https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s02.html) in client side javaScript. This might not be the best way to go about making modules in javaScript, but it sure is a good first step in the right direction if you are not sure where to start. Also in some cases the pattern will still work okay in some situations in which I am making a client side module in which it is okay to make everything public. Also I can still wrap things up into [an IIFE](/2020/02/04/js-iife/) when it comes to making a single property value for a public key of the main object literal that will compose such a module.
 
 <!-- more -->
 
