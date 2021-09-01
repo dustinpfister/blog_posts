@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 10:36:27
-version: 1.15
+updated: 2021-09-01 15:02:54
+version: 1.16
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -132,7 +132,94 @@ d = pointMod.distance(a, b);
 console.log(d.toFixed(2)); // '19.21'
 ```
 
-## 4 - breaking the object literal pattern
+## 4 - Using An IIFE for object properties
+
+### 4.1 - Basic IIFE example for a single method
+
+```js
+var utils = {};
+ 
+utils.logOnce = (function () {
+    var count = 0;
+    return function (mess, maxCount, resetCount) {
+        maxCount = maxCount === undefined ? 1 : maxCount;
+        resetCount = resetCount === undefined ? false : resetCount;
+        if (resetCount) {
+            count = 0;
+        }
+        if (count < maxCount) {
+            console.log(mess);
+            count += 1;
+        }
+    };
+}
+    ());
+ 
+var i = 0;
+while (i < 15) {
+    utils.logOnce('hello ' + i, 1, i >= 9 && i <= 11);
+    i += 1;
+}
+/*
+hello 0
+hello 9
+hello 10
+hello 11
+*/
+```
+
+### 4.2 - Passing the object literal as an argument to an IIFE, and appending to it
+
+```js
+var utils = {};
+ 
+// bounding box
+utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+    return !(
+        y1 + h1 < y2 ||
+        y1 > y2 + h2 ||
+        x1 + w1 < x2 ||
+        x1 > x2 + w2);
+};
+ 
+// append box methods
+(function (api) {
+    // private create helper
+    var createDefaultDataObject = function () {
+        return {
+            hp: {
+                current: 10,
+                max: 10
+            }
+        };
+    };
+    // create
+    api.boxCreate = function (opt) {
+        opt = opt || {};
+        var box = {
+            x: opt.x === undefined ? 0 : opt.x,
+            y: opt.y === undefined ? 0 : opt.y,
+            w: opt.w === undefined ? 32 : opt.w,
+            h: opt.h === undefined ? 32 : opt.h,
+            data: opt.data || createDefaultDataObject()
+        };
+        return box;
+    };
+    // overlap check
+    api.boxOverlap = function (bx1, bx2) {
+        return utils.boundingBox(bx1.x, bx1.y, bx1.w, bx1.h, bx2.x, bx2.y, bx2.w, bx2.h);
+    };
+}(utils));
+ 
+// working good
+var a = utils.boxCreate();
+var b = utils.boxCreate({x: 5});
+console.log(utils.boxOverlap(a, b)); // true
+b.y = 64;
+console.log(utils.boxOverlap(a, b)); // false
+```
+
+## 5 - Breaking the object literal pattern
 
 As a module continues to grow I might want to break the object literal pattern at some point. One reason why might be because I just want to have a main function that I call off of the main global of the module. If so it is not to hard to transition into that if I follow the object literal pattern a certain way where I am appending to the object. In that case I just need to make the object literal a function in place of just a plain old object, and preserve the properties of the old object pattern.
 
@@ -228,6 +315,6 @@ console.log(a);
 
 This kind of module pattern is often what I end up with when I keep working on a module for a while and keep anding things on. Sooner or later I want to write at least a few private internal helper methods that I do not need or what to be part of the public API. making use of an IIFE or some other module patter is just what ends up needed to happen often sooner or later. Still I would say that an object literal is a good starting point, and as things move forward it is not always to hard to transition into something else as log as I keep things structured in a certain way.
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So that is it for now when it comes to the object literal module pattern. The pattern is a great starting point when it comes to starting out with a module, but I do not have to work so much about having to start all over if I want to transition into another pattern. There is of course a whole lot more to write about when it comes to modules and javaScript of course. This post was meant to just be a starting point of sorts when it comes to making them in a client side javaScript environment. In a nodejs environment a whole other  pattern needs to be observed when it comes to making modules in that environment, and also there are many other pattens and more modern ways of making modules in a client side environment.
