@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 697
-updated: 2021-09-01 15:31:46
-version: 1.27
+updated: 2021-09-01 15:35:08
+version: 1.28
 ---
 
 So there are many patterns and standards when it comes to [javaScript modules](/2019/03/12/js-javascript-module/) these days. Just when it comes to making them the tired yet true way in a es5 spec javaScript kind of way things can quickly spiral down in to a major rabbit hole when it comes to the various patterns, and standards with old school style javaScript. Then there is of course the new ways to go about making [javaScript modules in modern javaScript specs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) when it comes to using import and export.
@@ -327,4 +327,8 @@ This kind of module pattern is often what I end up with when I keep working on a
 
 ## 6 - Conclusion
 
-So that is it for now when it comes to the object literal module pattern. The pattern is a great starting point when it comes to starting out with a module, but I do not have to work so much about having to start all over if I want to transition into another pattern. There is of course a whole lot more to write about when it comes to modules and javaScript of course. This post was meant to just be a starting point of sorts when it comes to making them in a client side javaScript environment. In a nodejs environment a whole other  pattern needs to be observed when it comes to making modules in that environment, and also there are many other pattens and more modern ways of making modules in a client side environment.
+So that is it for now when it comes to the object literal module pattern. The pattern is a great starting point when it comes to starting out with a module, but I do not have to work so much about having to start all over if I want to transition into another pattern. There is of course a whole lot more to write about when it comes to modules and javaScript of course. This post was meant to just be a starting point of sorts when it comes to making them in a client side javaScript environment. 
+
+One major project that I have made when it comes to the [object literal pattern is my general utilizes module](/2021/08/06/js-javascript-example-utils/) that I have made, and continue to expand now and then.
+
+In a nodejs environment a whole other pattern needs to be observed when it comes to making modules in that environment, and also there are many other pattens and more modern ways of making modules in a client side environment.
