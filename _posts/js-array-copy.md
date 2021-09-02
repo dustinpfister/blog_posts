@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:34:21
-version: 1.27
+updated: 2021-09-02 11:38:08
+version: 1.28
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -150,7 +150,7 @@ console.log(b);
 
 ## 2 - Nested Objects
 
-Now that I have covered how to make a shallow copy of an array in javaScript lets get into some examples that involve not just copying an array, but the nested objects of the array also.
+Now that I have covered how to make a shallow copy of an array in javaScript lets get into some examples that involve not just copying an array, but the nested objects of the array also. There are a whole lot of ways to go about doing this sort of thing with vanilla javaScript, some of which a fairly simple such as using the [JSON stringify and parse methods](/2020/02/28/js-json-parse/). However that kind of solution can have some drawbacks when it comes to parsing custom classes.
 
 ### 2.1 - The problem with using slice or any shallow clone method with nested objects in arrays
 
