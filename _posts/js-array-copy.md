@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:26:00
-version: 1.25
+updated: 2021-09-02 11:32:25
+version: 1.26
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -65,7 +65,7 @@ One way to create a [shallow clone or copy of an array would be to use the array
 
 ```js
 var a = [1, 2, 3, 4],
-b = a.slice(0, a.length);
+b = a.slice();
 a[0] = 'a';
 console.log(a.join());
 // 'a,2,3,4'
@@ -100,7 +100,7 @@ console.log(b);
 
 ### 1.5 - Object.assign
 
-The Object.assign method will come up a lot in discussions, it to is anther optiosn for makig a shallow clone of an array.
+The Object.assign method will come up a lot in discussions, it to is anther option for making a shallow clone of an array. The name should give it away, assign, it is just like using the assignment operator with things. The thing about it though is that I can give not just one source array, but start off with a new array as the first argument, then the source array. This will result in the values of the source array being, you guessed it assigned to the new array that I passed as the first argument. So then the end result is yet another shallow clone, at least when used by itself this way.
 
 ```js
 // Object.assign  will work fine if making a shallow clone
