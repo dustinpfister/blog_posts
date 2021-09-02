@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:45:01
-version: 1.29
+updated: 2021-09-02 11:47:09
+version: 1.30
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -154,7 +154,7 @@ Now that I have covered how to make a shallow copy of an array in javaScript let
 
 ### 2.1 - The problem with using slice or any shallow clone method with nested objects in arrays
 
-The problem with using the array slice method, or any shallow clone method with an array of objects is that doing so will create a new array rather than just a reference to the same array, but it will not do anything with additional references that are elements of the array.
+I covered this before hand in the previous section when it comes to using a method like slice. The problem with using the array slice method, or any shallow clone method with an array of objects is that doing so will create a new array rather than just a reference to the same array, but it will not do anything with additional references that are elements of the array.
 
 So if I have an array of objects rather than just a simple array of numbers, and I use something like array slice to copy the array. It will create a new array, but it will still be the same references to the same objects when it comes to the arrays contents.
 
@@ -180,7 +180,7 @@ a[0].i = 42;
 console.log(b[0]); // 42
 ```
 
-This is where it becomes necessary to do something that can be called deep cloning of an object or array. In these situations I often do not just want to copy the array itself, but also make copies of any and all nested objects in the array that are part of the arrays contents.
+This is where it becomes necessary to do something that can be called deep cloning of an object or array. In these situations I often do not just want to copy the array itself, but also make copies of any and all nested objects in the array that are part of the arrays contents. It might be possible to create such a solution using array slice, just not by itself.
 
 ### 2.2 - Using map to create a new array, and objects
 
