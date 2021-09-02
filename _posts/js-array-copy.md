@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:19:21
-version: 1.23
+updated: 2021-09-02 11:20:55
+version: 1.24
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -57,7 +57,7 @@ console.log(b.join());
 // '1,2,3,4'
 ```
 
-This crude yet effective way of copying an array will work just fine with arrays with primitive values. However maybe it would still be a good idea to look into some additional options for marking a shallow copy of an array.
+This crude yet effective way of copying an array will work just fine with arrays with primitive values, but it will just be the same problem when it comes to nested arrays. However maybe it would still be a good idea to look into some additional options for marking a shallow copy of an array, before moving on to that sort of thing.
 
 ### 1.3 - Using the array slice method
 
