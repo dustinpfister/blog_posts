@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-09-01 16:13:44
-version: 1.54
+updated: 2021-09-02 12:03:44
+version: 1.55
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -206,7 +206,7 @@ Using a method such as this is no replacement for a full blown canvas module of 
 
 ### 1.8 - Get a canvas relative position method
 
-Another method that I might have in a general utilities module would be a method that I can use to adjust pointer positions.
+Another method that I might have in a general utilities module would be a method that I can use to adjust pointer positions so that they are relative to a canvas element rather than that of the browser window.
 
 ```js
 // get a canvas relative position that is adjusted for scale
