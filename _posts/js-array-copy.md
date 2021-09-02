@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:10:48
-version: 1.20
+updated: 2021-09-02 11:13:50
+version: 1.21
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -17,7 +17,7 @@ So to copy an array one of several tricks for doing so will need to be used to d
 
 ## 1 - js array copy basics and shallow copying of arrays
 
-In this section I will be touching base on the problem that many new javaScript developers might run into when trying to copy an array for the first time. In addition I will be going over a few solutions that will work okay as long as we are talking about an array of primitive values like numbers, and strings. Things can get a little involved when it comes to copying an array of nested objects, so that I will be getting to in a later section.
+In this section I will be touching base on the problem that many new javaScript developers might run into when trying to copy an array for the first time. In addition I will be going over a few solutions that will work okay as long as we are talking about an array of primitive values like numbers, and strings. Things can get a little involved when it comes to copying an array of nested objects, also known as deep cloning, so that I will be getting to in a later section. This section will just focus on a few ways to go about created a shallow clone of an array, which is a kind of copy of an array where it is just a new array, but if one or more of the elements of the array are still objects of any kind those will still be the same references to the objects in the source array that was copied.
 
 ### 1.1 - The Problem with using assignment
 
