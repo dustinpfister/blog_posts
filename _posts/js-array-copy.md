@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 12:02:16
-version: 1.32
+updated: 2021-09-02 12:40:41
+version: 1.33
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -279,7 +279,54 @@ console.log(b[1]);
 */
 ```
 
-## 4 - Conclusion
+## 4 - use a Traverse method
+
+```js
+utils = {};
+ 
+utils.traverse = function (obj, forKey, level) {
+    level = level || 1;
+    for (var i in obj) {
+        // call forKey for every key found
+        forKey.call(obj[i], obj[i], i, typeof obj[i], level, obj);
+        // call utils.traverse recursively if type is object and not null
+        if (typeof obj[i] === 'object' && obj[i] != null) {
+            nextLevel = level + 1;
+            utils.traverse(obj[i], forKey, nextLevel);
+        }
+    }
+    return null;
+};
+ 
+// basic example
+var arr = [1, 2, 3];
+utils.traverse(arr, function (val, key, type, level, arr) {
+    console.log(level, key, val, type);
+});
+/*
+0 1
+1 2,
+2 3
+ */
+ 
+// nested loop example
+var arr = [{
+        x: 1,
+        y: 2
+    }, 3, 4];
+utils.traverse(arr, function (val, key, type, level, arr) {
+    console.log(level, key, val, type);
+});
+/*
+1 '0' {x: 1,y: 2} 'object' 
+2 'x' 1 'number' 
+2 'y' 2 'number' 
+1 '1' 3 'number' 
+1 '2' 4 'number'
+*/
+```
+
+## 5 - Conclusion
 
 So this was just a quick post on how to go about copying an array in javaScript. However because arrays are a kind of object some of these methods can be used to copy, or clone objects in general. I have wrote posts a while back on the [lodash clone](/2017/10/02/lodash_clone) and [lodash clone deep](/2017/11/13/lodash_clonedeep/) methods, as well as cloning in general that might be worth checkout out when it comes to reading more about cloning arrays and objects in general for that matter.
 
