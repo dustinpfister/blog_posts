@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:58:19
-version: 1.31
+updated: 2021-09-02 12:02:16
+version: 1.32
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -283,4 +283,6 @@ console.log(b[1]);
 
 So this was just a quick post on how to go about copying an array in javaScript. However because arrays are a kind of object some of these methods can be used to copy, or clone objects in general. I have wrote posts a while back on the [lodash clone](/2017/10/02/lodash_clone) and [lodash clone deep](/2017/11/13/lodash_clonedeep/) methods, as well as cloning in general that might be worth checkout out when it comes to reading more about cloning arrays and objects in general for that matter.
 
-Also when it comes to my [vanilla javaScript utility library](/2021/08/06/js-javascript-example-utils/) that I have been putting together over time I have a deep clone method that will work with arrays, and many objects in general. I made it so that the method has many little features that I though of that might be needed when making a method like this.
+Also when it comes to my [vanilla javaScript utility library](/2021/08/06/js-javascript-example-utils/) that I have been putting together over time I have a deep clone method that will work with arrays, and many objects in general. I made it so that the method has many little features that I though of that might be needed when making a method like this. This is a project that I seem to keep working on a little almost every day when it comes to adding my own vanilla javaScript solutions that I make or find for doing various kinds of general programing tasks such as but certainly not limited to the process of copying arrays.
+
+
