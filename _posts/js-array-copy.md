@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:17:40
-version: 1.22
+updated: 2021-09-02 11:19:21
+version: 1.23
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -40,7 +40,7 @@ So then a salutation to this would be finding a way to preform what is often cal
 
 ### 1.2 - Just create a new array and add the elements from the source array
 
-Just get it done any way possible and move on right? Sure thing with that said one way to go about copying an array is to just create a new array, and just loop over the contents of the source array and add each of the source array elements into the new array. One way of doing it would be to start off by just create a new array with the Array constructor, or the array literal bracket syntax. Then loop over the source array, and set each index in the new array to the corresponding index value in the source array that is to be copied.
+Just get it done any way possible and move on right? Sure thing with that said one way to go about copying an array is to just create a new array, and just loop over the contents of the source array and add each of the source array elements into the new array. One way of doing it would be to start off by just create a new array with the Array constructor, or the array literal bracket syntax. Then loop over the source array, such as with a while loop, or the [array for each method](/2019/02/16/js-javascript-foreach/), and set each index in the new array to the corresponding index value in the source array that is to be copied.
 
 ```js
 var a = [1, 2, 3, 4],
