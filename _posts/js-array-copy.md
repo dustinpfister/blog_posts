@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:32:25
-version: 1.26
+updated: 2021-09-02 11:34:21
+version: 1.27
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -125,7 +125,7 @@ console.log(b);
 
 ### 1.6 - The Spread syntax
 
-A new javaScript feature in late javaScript specs is the spread operator syntax. This is yet another way to make a shallow copy of an array.
+A new javaScript feature in late javaScript specs is the [spread operator syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax). This is yet another way to make a shallow copy of an array it would seem. I can not say that I use it that often as of yet, but that might be mainly because I am the kind of devloper that likes to stick with more tired yet true ways of doing things generally.
 
 ```js
 // Spread syntax (...)  will work fine if making a shallow clone
