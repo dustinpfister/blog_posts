@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 12:59:50
-version: 1.35
+updated: 2021-09-02 13:02:41
+version: 1.36
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -282,6 +282,10 @@ console.log(b[1]);
 ## 4 - Use a Traverse method
 
 In some use case situations I may be in a situation in which I might not want to fully deep clone an array, or shallow clone an array also. Say for example I have an array that contains references to elements along with additional properties that are plain old JavaScript objects, when making some kind of client side javaScript project. Typically I may want to deep clone the regular objects in the array, but assign the same elements in the new array. That is that I want to not deep clone, or shallow clone, but preform this other kind of closing that is somewhere between the labels. In these kinds of situations I might want some kind of method that will help me in the process of lopping over all nested public keys, which might often be referred to as a traversing method.
+
+### 4.1 - Starting out with a basic traverse method
+
+To start off with I quickly put together a method that can be used to traverse public keys of an object. There are a number of ways to go about making this kind of method, but they will typically include using something like a for in loop, and calling the method itself in  the body of the method for object properties that are a nested object.
 
 ```js
 utils = {};
