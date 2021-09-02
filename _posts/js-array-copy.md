@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-08-31 16:04:29
-version: 1.18
+updated: 2021-09-02 10:59:28
+version: 1.19
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually in javaScript because just simply assigning an object to another variable will just create a new reference to the same array or object.
@@ -152,9 +152,9 @@ console.log(b);
 
 Now that I have covered how to make a shallow copy of an array in javaScript lets get into some examples that involve not just copying an array, but the nested objects of the array also.
 
-### 2.1 The problem with using slice or any shallow clone method with nested objects in arrays
+### 2.1 - The problem with using slice or any shallow clone method with nested objects in arrays
 
-THe problem with using the array slice method, or any shallow clone method with an aray of objects is that doing so will create a new array rather than just a reference to the same array, but it will not do anything with additional references that are elements of the array.
+THe problem with using the array slice method, or any shallow clone method with an array of objects is that doing so will create a new array rather than just a reference to the same array, but it will not do anything with additional references that are elements of the array.
 
 So if I have an array of objects rather than just a simple array of numbers, and I use something like array slice to copy the array. It will create a new array, but it will still be the same references to the same objects when it comes to the arrays contents.
 
@@ -283,4 +283,4 @@ console.log(b[1]);
 
 So this was just a quick post on how to go about copying an array in javaScript. However because arrays are a kind of object some of these methods can be used to copy, or clone objects in general. I have wrote posts a while back on the [lodash clone](/2017/10/02/lodash_clone) and [lodash clone deep](/2017/11/13/lodash_clonedeep/) methods, as well as cloning in general that might be worth checkout out when it comes to reading more about cloning arrays and objects in general for that matter.
 
-Also when it comes to my [vanilla javaScript utilty library](/2021/08/06/js-javascript-example-utils/) that I have been putting together over time I have a deep clone method that will work with arrays, and many objects in general. I made it so that the method has many little features that I though of that might be needed when making a method like this.
+Also when it comes to my [vanilla javaScript utility library](/2021/08/06/js-javascript-example-utils/) that I have been putting together over time I have a deep clone method that will work with arrays, and many objects in general. I made it so that the method has many little features that I though of that might be needed when making a method like this.
