@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 700
-updated: 2021-09-02 11:20:55
-version: 1.24
+updated: 2021-09-02 11:26:00
+version: 1.25
 ---
 
 So now and then, when working with [arrays](/2018/12/10/js-array/), a javaScript developer might find themselves in a situation in which they will want to [copy and array](https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/). If you are new to javaScript you might have just simply assigned an array from one variable to another variable and assumed that that would do the tick, as that is the case with numbers and strings after all. However that will of course not work with arrays, and objects in general actually, because just simply assigning an object to another variable will just create a new reference to the same array or object in memory. This is because arrays, and other types of objects, are copied by reference rather than value compared to primitive types.
@@ -61,7 +61,7 @@ This crude yet effective way of copying an array will work just fine with arrays
 
 ### 1.3 - Using the array slice method
 
-One way to create a [shallow clone or copy of an array would be to use the array slice method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) which will return a new array, with elements between a starting and ending index. If I give the value of zero for the first argument to array slice, and the length of the array as the second argument that should return a new array with all the values from the original source array.
+One way to create a [shallow clone or copy of an array would be to use the array slice method](/2018/12/08/js-array-slice/). The array slice method should not be confused with the [array spice method](/2021/07/20/js-array-splice/) which will mutate a source array in place. unlike the array splice method the array slice method will return a new array, with elements between a starting and ending index that are given as arguments when calling array slice. I could give the value of zero for the first argument to array slice, and the length of the array as the second argument, or better yet no arguments at all as the default with no arguments will be a shallow clone of the array, that is a new array with all the values from the original source array.
 
 ```js
 var a = [1, 2, 3, 4],
