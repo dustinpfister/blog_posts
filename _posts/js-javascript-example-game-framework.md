@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 927
-updated: 2021-09-03 15:08:06
-version: 1.24
+updated: 2021-09-03 15:19:34
+version: 1.25
 ---
 
 This week I made another major [JavaScript example](/2021/04/02/js-javascript-example/) this time it is a current standard game framework. This project is actually me using a whole bunch of different projects that I have made over time to create one massive central project of a javaScript example. The thing about this here is that I am getting tired of writing the same code over and over again each time I start a new project, which is often going to be the case when it comes to making the project a vanilla javaScript project. After all that term means I am writing all the code from the ground up rather than using some popular framework. So if I am getting tired of writing everything all over again each time I start a new project, but I do not want to use someone else framework, then I guess I just have to make my own.
@@ -21,6 +21,8 @@ As of this writing this game frame work has all the basic features that I would 
 First off when  it comes to making any kind of major project like this I am going to want to have a main utility library. This is a place where I will park and and all methods that I might want to use across one or more modules in the over all project, and I can not thing of nay better place to park them. I have [wrote another javaScript example post on a general from of this kind of utility module](/2021/08/06/js-javascript-example-utils/), but I use a custom cut form of it for any given project.
 
 For this game framework thus far I have made one important additional that I will likely add to my general from of this kind of utilizes lib, which is a basic http client. For this I quickly put together something that works okay thus far that just makes use of [XMLHttpRequest to preform http requests](/2018/03/28/js-xmlhttprequest/). One of the features that I want to have in this game framework is an external assets loader of some kind, so this is a much have method.
+
+So far I just have some of the usual suspect methods when it comes to game development. With that said there is a bounding box methods, as well as a distance method. I also often end up needing a mathematical modulo method when working out game logic also.
 
 ```js
 var utils = {};
@@ -281,11 +283,13 @@ var poolMod = (function () {
 
 ## 3 - The canvas lib and plug-ins
 
-I am going to want to have a canvas module as part of this game framework as that is just a major part of making any kind of html and javaScript game these days. The module should have at least a few basic features that such a module should have, and the first thing that comes to mind for this sort of thing is to have layers actually. Last week I started another javaScript example that is just this more or less which is of course my first canvas module javaScript example.
+I am going to want to have a canvas module as part of this game framework as that is just a major part of making any kind of html and javaScript game these days. The module should have at least a few basic features that such a module should have, and the first thing that comes to mind for this sort of thing is to have layers actually. Last week I started another javaScript example that is just this more or less which is of course my first [canvas module javaScript example](/2021/08/27/js-javascript-example-canvas-module). So I started with what I had for that post, and just started making a few changes here and there, and added some plug ins for it.
 
 ### 3.1 - The canvas lib
 
-Here is the canvas lib source code as it currently stands as of this writing.
+Here is the canvas lib source code as it currently stands as of this writing. In the body of the core source code of this module I have a few built in draw methods. One f which is to create a current layer, another is to draw a background. I also have built in draw methods for printing some text to a layer, as well as a collection of points created with one of the points methods built into this module or added by way of a plug in.
+
+Speaking of points there are also just one built in points method which will create and return a box in the from of a collection of points. After that it is just a bunch of helper functions for the public methods of this module, one of which is for creating the main stack of layers that is used with this modules other public methods. On top of course having a pubic method for creating a stack of layers there is also the main draw and create points methods as well as a load method which is what I use ti extend the features of this module.
 
 ```js
 (function (api) {
@@ -542,7 +546,7 @@ Here is the canvas lib source code as it currently stands as of this writing.
 
 ### 3.2 - The buttons canvas plug-in
 
-I made a buttons plug in for this canvas module when I started a buttons feature for this game framework.
+I made a buttons plug in for this canvas module when I started a buttons feature for this game framework. This canvas plug in will add two draw methods then, one of which will draw a single button object, the other will draw all buttons for the current state.
 
 ```js
 canvasMod.load({
