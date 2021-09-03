@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 927
-updated: 2021-09-03 14:09:58
-version: 1.8
+updated: 2021-09-03 14:17:56
+version: 1.9
 ---
 
 This week I made another major [JavaScript example](/2021/04/02/js-javascript-example/) this time it is a current standard game framework. This project is actually me using a whole bunch of different projects that I have made over time to create one massive central project of a javaScript example. The thing about this here is that I am getting tired of writing the same code over and over again each time I start a new project, which is often going to be the case when it comes to making the project a vanilla javaScript project. After all that term means I am writing all the code from the ground up rather than using some popular framework. So if I am getting tired of writing everything all over again each time I start a new project, but I do not want to use someone else framework, then I guess I just have to make my own.
@@ -16,7 +16,7 @@ This week I made another major [JavaScript example](/2021/04/02/js-javascript-ex
 
 ## 1 - The utils lib
 
-First off when  it comes to making any kind of major project like this I am going to want to have a main utility library. This is a place where I will park and and all methods that I might want to use across one or more modules in the over all project, and I can not thing of nay better place to park them. I have wrote another javaScript example post on a general from of this kind of module, bit I also use a custom cut from of it for any given project.
+First off when  it comes to making any kind of major project like this I am going to want to have a main utility library. This is a place where I will park and and all methods that I might want to use across one or more modules in the over all project, and I can not thing of nay better place to park them. I have [wrote another javaScript example post on a general from of this kind of utility module](/2021/08/06/js-javascript-example-utils/), but I use a custom cut form of it for any given project.
 
 For this game framework thus far I have made one important additional that I will likely add to my general from of this kind of utilizes lib, which is a basic http client. For this I quickly put together something that works okay thus far that just makes use of XMLHttpRequest to preform http requests. One of the features that I want to have in this game framework is an external assets loader of some kind, so this is a much have method.
 
