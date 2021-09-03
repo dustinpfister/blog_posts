@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 927
-updated: 2021-09-03 14:34:27
-version: 1.13
+updated: 2021-09-03 14:36:57
+version: 1.14
 ---
 
 This week I made another major [JavaScript example](/2021/04/02/js-javascript-example/) this time it is a current standard game framework. This project is actually me using a whole bunch of different projects that I have made over time to create one massive central project of a javaScript example. The thing about this here is that I am getting tired of writing the same code over and over again each time I start a new project, which is often going to be the case when it comes to making the project a vanilla javaScript project. After all that term means I am writing all the code from the ground up rather than using some popular framework. So if I am getting tired of writing everything all over again each time I start a new project, but I do not want to use someone else framework, then I guess I just have to make my own.
@@ -1037,6 +1037,8 @@ sm.loop();
 ```
 
 ### 5.1 - Demo of the loader
+
+I am going to want to start making games that make use of external image assets so I will want to have a assets loader in the game framework. As of this writing there is such an assets loader in the framework, and in order to use it I just need to add a loader object to the options object that I pass to the create main state machine object method of the game frame work.
 
 ```js
 // create an sm object
