@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 927
-updated: 2021-09-03 14:28:56
-version: 1.12
+updated: 2021-09-03 14:34:27
+version: 1.13
 ---
 
 This week I made another major [JavaScript example](/2021/04/02/js-javascript-example/) this time it is a current standard game framework. This project is actually me using a whole bunch of different projects that I have made over time to create one massive central project of a javaScript example. The thing about this here is that I am getting tired of writing the same code over and over again each time I start a new project, which is often going to be the case when it comes to making the project a vanilla javaScript project. After all that term means I am writing all the code from the ground up rather than using some popular framework. So if I am getting tired of writing everything all over again each time I start a new project, but I do not want to use someone else framework, then I guess I just have to make my own.
@@ -975,6 +975,10 @@ sm.loop();
 ```
 
 ### 5.1 - Demo of Menus
+
+When I added buttons as a feature of the game framework I wanted to set start a demo to make sure that they are working the way that they should be. There is a bit more that I might want to add when it comes to this feature at some point but for now this is the basic demo of the buttons feature.
+
+the basic idea of buttons is to just have the option of having a collection of button objects when creating a state object. When I create a button object I have the option to add an on click method that will be the logic that is to fire when one of these buttons are click by the user with the mouse or a touch screen. For now in this example i am just using these buttons to change the current state object.
 
 ```js
 // create an sm object
