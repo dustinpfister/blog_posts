@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 927
-updated: 2021-09-03 14:36:57
-version: 1.14
+updated: 2021-09-03 14:39:59
+version: 1.15
 ---
 
 This week I made another major [JavaScript example](/2021/04/02/js-javascript-example/) this time it is a current standard game framework. This project is actually me using a whole bunch of different projects that I have made over time to create one massive central project of a javaScript example. The thing about this here is that I am getting tired of writing the same code over and over again each time I start a new project, which is often going to be the case when it comes to making the project a vanilla javaScript project. After all that term means I am writing all the code from the ground up rather than using some popular framework. So if I am getting tired of writing everything all over again each time I start a new project, but I do not want to use someone else framework, then I guess I just have to make my own.
@@ -1091,5 +1091,5 @@ sm.loop();
 
 ## 6 - Conclusion
 
-So far this framework seems to be working okay, at least when it comes to the silly demos that I have made for it thus far. There may be a few more features and changes that I will want to make for this thing of course, however I do not want to go to nuts with this thing just yet.
+So far this framework seems to be working okay, at least when it comes to the silly demos that I have made for it thus far. There may be a few more features and changes that I will want to make for this thing of course, however I do not want to go to nuts with this thing just yet. The core set of features that I would want to have in a game framework are there such as a state machine, basic canvas, and object pool modules. In order to really know what should be added on top of what I have all ready I am going to want to make more demos, and actual projects. However for the most part I am thing that what I will want to do is just further refine the features that are all ready in place.
 
