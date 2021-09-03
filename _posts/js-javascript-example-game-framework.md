@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 927
-updated: 2021-09-03 14:18:55
-version: 1.10
+updated: 2021-09-03 14:26:44
+version: 1.11
 ---
 
 This week I made another major [JavaScript example](/2021/04/02/js-javascript-example/) this time it is a current standard game framework. This project is actually me using a whole bunch of different projects that I have made over time to create one massive central project of a javaScript example. The thing about this here is that I am getting tired of writing the same code over and over again each time I start a new project, which is often going to be the case when it comes to making the project a vanilla javaScript project. After all that term means I am writing all the code from the ground up rather than using some popular framework. So if I am getting tired of writing everything all over again each time I start a new project, but I do not want to use someone else framework, then I guess I just have to make my own.
@@ -277,7 +277,11 @@ var poolMod = (function () {
 
 ## 3 - The canvas lib and plug-ins
 
+I am going to want to have a canvas module as part of this game framework as that is just a major part of making any kind of html and javaScript game these days. The module should have at least a few basic features that such a module should have, and the first thing that comes to mind for this sort of thing is to have layers actually. Last week I started another javaScript example that is just this more or less which is of course my first canvas module javaScript example.
+
 ### 3.1 - The canvas lib
+
+Here is the canvas lib source code as it currently stands as of this writing.
 
 ```js
 (function (api) {
@@ -534,6 +538,8 @@ var poolMod = (function () {
 
 ### 3.2 - The buttons canvas plug-in
 
+I made a buttons plug in for this canvas module when I started a buttons feature for this game framework.
+
 ```js
 canvasMod.load({
     drawMethods : [
@@ -566,6 +572,8 @@ canvasMod.load({
 
 ### 3.3 - The mod-pool canvas plug-in
 
+When I added the object pool to the over all project I also wanted to add a basic draw method for a pool of objects.
+
 ```js
 canvasMod.load({
     drawMethods : [
@@ -591,6 +599,8 @@ canvasMod.load({
 ```
 
 ### 3.4 - The points-circle plug-in
+
+This points circle plug in is yet another plug in that I added just for the hell of it. I may make some of these features built into the canvas module itself at some point maybe.
 
 ```js
 canvasMod.load({
@@ -626,6 +636,8 @@ canvasMod.load({
 ```
 
 ## 4 - The game frame lib
+
+Now for the current state of the main game frame module that is what I will be using in demo files to create a main state machine object, and add state objects to it.
 
 ```js
 (function (api) {
@@ -858,6 +870,8 @@ canvasMod.load({
 ```
 
 ## 5 - Demos thus far
+
+So then Now that I have my game framework together I will want to make at least a few quick demos of this framework to make sure that it is working just the way that I would like to to with the features that I have added thus far.
 
 ### 5.1 - Basic hello world demo
 
