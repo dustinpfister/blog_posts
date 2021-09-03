@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-09-03 14:14:43
-version: 1.67
+updated: 2021-09-03 14:16:12
+version: 1.68
 ---
 
 Some may say that a good way to learn javaScript, or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -47,6 +47,8 @@ This is my first attempt at making a module, reusable experience point system th
 Often I need to make the same thing over an over again at least a few times before I even begin to get a clear idea as to how it is that I want to design a system. When I first start working out a prototype for an idea on something I often get a basic work proof of that idea, but often there is a great deal wrong with it. So I then make a new system where I end up making the whole thing all over again, but now a slightly better system that does not have all the problems of the first prototype. This process then often repeats at least a few times until I get something that is fairly solid, or at least good enough. This fizzbuzz javaScript example is then an exercise of this sort of thing on a micro scale with a very simple idea, rather than a complex module, or full feature application of some kind.
 
 ### 1.8 - [A game framework example](/2021/09/03/js-javascript-example-game-framework/)
+
+This JavaScript example is more of a major javaScript project actually as the aim here is to make a basic game framework. I just wanted to have a few features for this thing, but even then there is a lot to it as even a basic game framework is often not so basic.
 
 ### 1.9 - [Grid Game Unit Movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/)
 
