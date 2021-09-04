@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-09-04 11:16:17
-version: 1.30
+updated: 2021-09-04 11:19:47
+version: 1.31
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -25,7 +25,9 @@ The basic process will switch up a little here and there though depending on the
 
 ### 1.1 - Basic hello world example getting some plain text
 
-First off I have a simple example that will be used to just get plain text. When it comes to just getting some text there is nothing special that needs to be done. Just create a new instance of a request object, open the request, create a handler, and call send.
+First off I have a simple example that will be used to just get plain text, and inject that text into a simple text area element. When it comes to just getting some text there is nothing special that needs to be done in terms of response types, and parsing the result, typically at least anyway when it comes to just a basic hello world style example. So then for this I just create a new instance of a request object, open the request, create a handler, and call send.
+
+When it comes to setting the handler I will often want to use the on ready state method to do so. It is in here that I want to check to make sure that the ready state is 4, and that the status of the request is 200.
 
 ```html
 <html>
