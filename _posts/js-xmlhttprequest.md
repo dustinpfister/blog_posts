@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-09-04 11:12:52
-version: 1.29
+updated: 2021-09-04 11:16:17
+version: 1.30
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -232,5 +232,5 @@ Of course you could do what I just did, and throw together your own solution, bu
 
 ## 5 - Conclusion
 
-The XMLhttprequest method might be the best solution for scripting http if you care about trying to get your code to work on a wide range of browsers, as it is the tired yet way of doing so. For the most part I would not loose sleep over it thought if I where to choose to go with something more modern, at least when it comes to looking at what is going on with browser vender's and versions with this site at least.
+The XMLhttprequest method might be the best solution for scripting http if you care about trying to get your code to work on a wide range of browsers, as it is the tired yet way of doing so. For the most part I would not loose sleep over it thought if I where to choose to go with something more modern, at least when it comes to looking at what is going on with browser vender's and versions with this site at least. Still I often seem to prefer to do things in a way that might very well be a bit dated, but still work okay. I hate to waste to much time getting caught up in all kids of habit holes when it comes to how to go about scripting http, it strokes me as something that is a distraction from things that are of real value. So it makes sense to just go with something that works, and move on when it comes to this sort of thing.
 
