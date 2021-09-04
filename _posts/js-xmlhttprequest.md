@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-09-04 11:06:08
-version: 1.27
+updated: 2021-09-04 11:10:08
+version: 1.28
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -105,7 +105,9 @@ When [downloading images using XMLHttprequest](https://stackoverflow.com/questio
 
 So I have covered a few basic examples of working directly with the XMKHttpRequest method, however often I will still want to use some kind of http client library, or make my own from the ground up, that has a lot of typically use case examples precoded and ready to use.For example when it comes to working with XMLHttpRequest directly I have to remember things like setting the response type to blob rather than the default text setting when I want to use it to get an image, and on top of that the response is a blob, not an image element. However when it comes to making my own http client I can create a public method that is a kind of load image method that will make a request with the property settings, and parse and return an image element as the response in an on done callback or resolved promise.
 
-In this section I will be going over the source code of a basic http client method that I first worked out when [making a basic game framework javaScript example](/2021/09/03/js-javascript-example-game-framework/). In that example I wanted to have an asset loader that will be used in a built in load state, so I needed some kind of basic http client for it. At the time of this writing I was just interested in loading images, so I have two methods one of which the aim is just a simple http method that can be used to preform request in general, and the other for images.
+In this section I will be going over the source code of a basic http client method that I first worked out when [making a basic game framework javaScript example](/2021/09/03/js-javascript-example-game-framework/). The methods in question are part of a general utilileis lib that I often end up with when making any kind of major project. The state of this utils lib with change a little from one project to another, but I [wrote a post in which the aim is to have a general from of this kind of utilities library](/2021/08/06/js-javascript-example-utils/) with all the typically methods that I might want to have at the ready. 
+
+Any way in my game framework javaScript example I wanted to have an asset loader that will be used in a built in load state, so I needed some kind of basic http client for it. At the time of this writing I was just interested in loading images, so I have two methods one of which the aim is just a simple http method that can be used to preform request in general, and the other for images.
 
 ### 2.1 - A utils module that mainly just my http methods
 
