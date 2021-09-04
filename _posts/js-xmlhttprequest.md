@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-09-04 10:52:00
-version: 1.24
+updated: 2021-09-04 10:54:24
+version: 1.25
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -109,7 +109,7 @@ In this section I will be going over the source code of a basic http client meth
 
 ### 2.1 - A utils module that mainly just my http methods
 
-here is then the state of the http method of my utils lib in the game framework at the time of this writing at least.
+Here is then the state of the http method of my utils lib in the game framework at the time of this writing at least. The main http method will take a single object as an argument, that should contain at least a url to the resurface that I want to get, or that path that I want to post to, with a body of course in that case. I have not extensively tested this yet, but so fra it works fine for what I want to use if for in my game framework.
 
 ```js
 var utils = {};
