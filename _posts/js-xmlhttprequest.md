@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-09-04 11:10:08
-version: 1.28
+updated: 2021-09-04 11:12:52
+version: 1.29
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -111,7 +111,7 @@ Any way in my game framework javaScript example I wanted to have an asset loader
 
 ### 2.1 - A utils module that mainly just my http methods
 
-Here is then the state of the http method of my utils lib in the game framework at the time of this writing at least. The main http method will take a single object as an argument, that should contain at least a url to the resurface that I want to get, or that path that I want to post to, with a body of course in that case. I have not extensively tested this yet, but so fra it works fine for what I want to use if for in my game framework.
+Here is then the state of the http method of my utils lib in the game framework at the time of this writing at least. The main http method will take a single object as an argument, that should contain at least a url to the resurface that I want to get, or that path that I want to post to, with a body of course in that case. I have not extensively tested this yet, but so far it works fine for what I want to use if for in my game framework.
 
 ```js
 var utils = {};
@@ -172,7 +172,7 @@ utils.httpPNG = function(opt){
 
 ### 2.1 - Basic example of my utils.http method
 
-Now for a basic example of this to get started with. In this example I will just be using the http method of the utils lib to get the html of my website and inject it into a text area element.
+Now for a basic example of this to get started with. In this example I will just be using the http method of the utils lib to get the html of my website and inject it into a text area element. So I just call the utils http method and pass an object that contains a url to the home page of this website, The default method is GET all ready but in some cases I might do that anyway for the sake of making this explicit in the code, after that there is setting an on done callback. In the body of the on done callback method I am setting the result of the request as the value property if a text area element.
 
 ```js
 <html>
