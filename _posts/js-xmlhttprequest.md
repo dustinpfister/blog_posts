@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-04-05 14:54:13
-version: 1.20
+updated: 2021-09-04 10:42:01
+version: 1.21
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -103,158 +103,87 @@ When [downloading images using XMLHttprequest](https://stackoverflow.com/questio
 
 ## 2 - Using XMLHttprequest to make my own method for scripting http
 
-When it comes to making my own http client at the hart of it I will still need to use some kind of browser built in feature to make the requests. When it comes to this there are only so many options, even in modern browsers, but more often than not I will go with XMLHTTPREquest. In this section  I am going over the source code of a quick crude http client using XMLHTTPrequest as a way to make the requests.
-
-I often prefer to make some kind of easy to use method that can be used with just one or two arguments, but can also be given additional things to work with via an options object, just like that of the popular solutions like axios.
-
-So I might end up with something like this.
+### 2.1 - A utils module that mainly just my http methods
 
 ```js
-var http = function (argu, done, fail) {
+var utils = {};
  
+// no operation ref
+utils.noop = function () {};
+ 
+/********* ********** ********** *********/
+//  HTTP
+ /********* ********** ********** *********/
+ 
+// very simple http client
+utils.http = function(opt){
+    var opt = opt || {};
+    // default options
+    opt.url = opt.url || '';
+    opt.method = opt.method || 'GET';
+    opt.async = opt.async === undefined ? true: opt.async;
+    opt.body = opt.body === undefined ? null: opt.body;
+    opt.onDone = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
+    opt.responseType = opt.responseType || '';  // set to 'blob' for png
+    // create and set up xhr
     var xhr = new XMLHttpRequest();
- 
-    // if first argument is a string, assume it is a url for a get request
-    if (typeof argu === 'string') {
- 
-        argu = {
-            url: argu
-        }
- 
-    }
- 
-    // use given argu object or default to an empty object
-    argu = argu || {};
- 
-    // default method is GET, payload is null, and URL is location.href
-    argu.method = argu.method || 'GET';
-    argu.playload = argu.payload === undefined ? null : argu.payload;
-    argu.url = argu.url || location.href;
- 
-    // default done and fail callbacks
-    argu.done = done || argu.done || function (res) { console.log(res);};
-    argu.fail = fail || argu.fail || function () {};
- 
-    // given, or default beforeSend method
-    argu.beforeSend = argu.beforeSend || function (xhr, next) {
- 
-        // if POST request, assume JSON
-        if (argu.method.toUpperCase() === 'POST') {
- 
-            xhr.setRequestHeader('Content-type', 'application/json');
- 
-            // custom send that uses JSON
-            argu.send = function (xhr,argu) {
- 
-                xhr.send(JSON.stringify(argu.payload));
- 
-            };
- 
-        }
- 
-        next();
-    };
- 
-    // given or default send method
-    argu.send = argu.send || function (xhr,argu) {
- 
-        // just send
-        xhr.send(argu.payload);
- 
-    };
- 
-    // open the request
-    xhr.open(argu.method, argu.url, true);
- 
-    // setup on ready state method to call done or fail methods
+    xhr.responseType = opt.responseType;
+    xhr.open(opt.method, opt.url, opt.async);
     xhr.onreadystatechange = function () {
- 
-        if (this.readyState === 4) {
- 
-            if (this.status === 200) {
- 
-                argu.done.call(this, this.response);
- 
-            } else {
- 
-                argu.fail.call(this);
- 
+        if (xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr.status < 400){
+                opt.onDone.call(xhr, xhr.response, xhr);
+            }else{
+                opt.onError.call(xhr, xhr);
             }
- 
         }
- 
     };
+    // send
+    xhr.send(opt.body);
+};
  
-    // call before send, and send request
-    argu.beforeSend(xhr, function () {
- 
-        argu.send(xhr,argu);
- 
+// load just a png file, this calls utils.http with proper settings, and the response is an Image
+utils.httpPNG = function(opt){
+    opt = opt || {};
+    opt.onDone = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
+    utils.http({
+        url: opt.url,
+        responseType: 'blob',
+        onDone : function(res, xhr){
+            var imageURL = window.URL.createObjectURL(res);
+            var image = new Image();
+            image.src = imageURL;
+            opt.onDone.call(xhr, image, xhr);
+        },
+        onError: opt.onError
     });
- 
 };
 ```
 
-So then I can use it by just giving a single string, and a callback in a very tired yet true fashion like this:
+### 2.1 - Basic example of my utils.http method
 
 ```js
-// the method in action
-http('https://openlibrary.org/api/books?bibkeys=ISBN:9780743487733;format=json', function() {
- 
-  console.log(this.response);
- 
-});
-```
-
-Or the same request can be made by giving an object like this.
-
-```js
-http({
- 
-   url: 'https://openlibrary.org/api/books?bibkeys=ISBN:9780743487733;format=json',
-   done : function(){
-     console.log(this.response);
-   }
- 
-});
-```
-
-If I want to do something advanced with post requests or something involving custom headers, I can always give a custom beforeSend, and if necessary send method.
-
-```js
-http(
-
-    // argu object with custom beforeSend
-    {
-        url: '/body',
-        method: 'POST',
-        payload: 'foo',
-        beforeSend: function (xhr, next) {
- 
-            xhr.setRequestHeader('Content-type', 'text/plain');
-            next();
- 
-        },
-        send: function (xhr, argu) {
- 
-            console.log('okay sending now.');
-            xhr.send(argu.payload);
-        }
-    },
- 
-    // done call back
-    function (res) {
- 
-        console.log(res);
- 
-        //g('app_out').value += '**********\n'
-        //g('app_out').value += res + '\n\n';
- 
+<html>
+    <head>
+        <title>XMLHttpRequest example</title>
+    </head>
+    <body>
+        <textarea id="out" cols="100" rows="25"></textarea>
+        <script src="./utils.js"></script>
+        <script>
+utils.http({
+    url: 'https://dustinpfister.github.io/',
+    method: 'GET',
+    onDone: function(res, xhr){
+        document.getElementById('out').value = res;
     }
-);
+});
+        </script>
+    </body>
+</html>
 ```
-
-This should be the goal when making any kind of project like this. If I am making a simple get request I should only have to give a url, and a callback. However if I do need to do something more advanced with custom content types, and payloads I can do that without hacking over the source code.
 
 ## 3 - Using an XMLHTTPRequest pollyfill
 
