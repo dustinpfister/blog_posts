@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2021-09-05 16:23:13
-version: 1.22
+updated: 2021-09-05 16:26:36
+version: 1.23
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -85,6 +85,8 @@ var loop = function () {
  
 setInterval(loop, 250);
 ```
+
+In the state object I create an instance of the game object, and I also create a new Date object instance that I set to an lt property. Inside the loop function that I will be using with set interval I find out what the current time is, and then I find out what the elapsed amount of time is from the last update using the state lt property. I can then just divided the amount of elapsed time in milliseconds seconds by one thousand to the a number of seconds which I then pass to my update method with the instance of the game object.
 
 ## 4 - Basic state machine example
 
