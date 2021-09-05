@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2021-09-05 16:17:07
-version: 1.21
+updated: 2021-09-05 16:23:13
+version: 1.22
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -51,7 +51,9 @@ setTimeout(function () {
 
 ## 3 - Using date objects
 
-There is using setInterval to get a function to call over and over again, and then there is creating a state object that will be updated each time that function is called. So in this example I will be going over a very basic game module, and a state object that contains an instance of that module, and using date objects as a way to update the state of a variable by way of the number of seconds that has passed sense the last update.
+There is using setInterval to get a function to call over and over again, and then there is creating a state object that will be updated each time that the loop function is called. So in this example I will be going over a very basic game module, and a state object that contains an instance of that module, and using date objects as a way to update the state of a variable by way of the number of seconds that has passed sense the last update.
+
+So I have a game module object that contains a create method that I can use to create a new game object instance. I will be using this method to create an store an instance of my game object for a main state object. For now this came state does not sore anything ti interesting just some properties that have to do with a current count of money, and how much money the player gets per second, as well as a max seconds value. After the create method I also have an update method that will cap and seconds value that it is given when it is called in the main app loop function. The update loop then just adds an amount of money to the money prop by the money per seconds value and the resulting seconds value.
 
 ```js
 var gameMod = {
