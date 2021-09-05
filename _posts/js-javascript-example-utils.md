@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-09-02 12:05:42
-version: 1.56
+updated: 2021-09-05 16:37:26
+version: 1.57
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -68,7 +68,64 @@ utils.mod = function (x, m) {
 };
 ```
 
-### 1.5 - Logging methods
+### 1.5 - Http methods
+
+```js
+/********* ********** ********** *********/
+//  HTTP
+ /********* ********** ********** *********/
+ 
+// very simple http client
+utils.http = function(opt){
+    var opt = opt || {};
+    // default options
+    opt.url = opt.url || '';
+    opt.method = opt.method || 'GET';
+    opt.async = opt.async === undefined ? true: opt.async;
+    opt.body = opt.body === undefined ? null: opt.body;
+    opt.onDone = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
+    opt.responseType = opt.responseType || '';  // set to 'blob' for png
+    // create and set up xhr
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = opt.responseType;
+    xhr.open(opt.method, opt.url, opt.async);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if(xhr.status >= 200 && xhr.status < 400){
+                opt.onDone.call(xhr, xhr.response, xhr);
+            }else{
+                opt.onError.call(xhr, xhr);
+            }
+        }
+    };
+    // send
+    xhr.send(opt.body);
+};
+ 
+// load just a png file, this calls utils.http with proper settings, and the response is an Image
+utils.httpPNG = function(opt){
+    opt = opt || {};
+    opt.onDone = opt.onDone || utils.noop;
+    opt.onError = opt.onError || utils.noop;
+    utils.http({
+        url: opt.url,
+        responseType: 'blob',
+        onDone : function(res, xhr){
+            var imageURL = window.URL.createObjectURL(res);
+            var image = new Image();
+            image.src = imageURL;
+            // need to do an unload for this
+            image.addEventListener('load', function(){
+                opt.onDone.call(xhr, image, xhr);
+            });
+        },
+        onError: opt.onError
+    });
+};
+```
+
+### 1.6 - Logging methods
 
 There is just using the console log method as a way to see what is going on with some code at a given point. However using that method alone is a bit lacking, I often would like to have a log method that will just log once in a loop. Also another helpful method would be a method that will log just once for a given expression. Also I think it is a good idea to at least wrap the console log in a custom log method, that way I can just comment out just one line to stop logging, or redefine what logging is in just one place.
 
@@ -108,7 +165,7 @@ utils.logOnce = (function () {
     ());
 ```
 
-### 1.6 - A deep clone method
+### 1.7 - A deep clone method
 
 When it comes to working with objects I will often want a way to go about deep cloning objects. This can often prove to be a not so easy task when it comes to making a vanilla javaScript solution. Also often user space library methods might not always work great when working with custom made constructor functions. There are many deep clone methods on the open web, but often I do not see every little detail covered when making this sort of metho9d, such as checking for recursive references, and how to go about dealing with them.
 
@@ -176,7 +233,26 @@ utils.deepClone = (function () {
     ());
 ```
 
-### 1.7 - Create a create canvas element method
+### 1.7 - traverse an object
+
+```js
+// traverse an object
+utils.traverse = function (obj, forKey, level) {
+    level = level || 1;
+    for (var i in obj) {
+        // call forKey for every key found
+        forKey.call(obj[i], obj[i], i, typeof obj[i], level, obj);
+        // call utils.traverse recursively if type is object and not null
+        if (typeof obj[i] === 'object' && obj[i] != null) {
+            nextLevel = level + 1;
+            utils.traverse(obj[i], forKey, nextLevel);
+        }
+    }
+    return null;
+};
+```
+
+### 1.8 - Create a create canvas element method
 
 I often like to make canvas projects so it is a good idea to have a method that will create and return a new canvas element with all the options set up just the way that I like it. There are many little details when it comes to canvas elements such as making it so that a context menu will not show up when the canvas is right clicked, adjusting the translation of the matrix and so forth.
 
@@ -204,7 +280,7 @@ utils.createCanvas = function(opt){
 
 Using a method such as this is no replacement for a full blown canvas module of some kind though of course. There are many other little details surrounding canvas elements such as the topic of layering, and not always appending a canvas to a container that come to mind. Still this is a step in the right direction compared to starting over from the ground up each time I start a new project.
 
-### 1.8 - Get a canvas relative position method
+### 1.9 - Get a canvas relative position method
 
 Another method that I might have in a general utilities module would be a method that I can use to adjust pointer positions so that they are relative to a canvas element rather than that of the browser window. This is a kind of method that I find myself refining a little now and then, so I have [wrote a post in which I get into this topic of getting a canvas relative pointer position in greater detail](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
@@ -225,7 +301,7 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
-### 1.9 - Create a canvas pointer handler
+### 1.10 - Create a canvas pointer handler
 
 This is a method that will create and return a single handler that will work with a range of events given a single event object.
 
@@ -252,7 +328,7 @@ utils.canvasPointerEventHandler = function (state, events) {
 };
 ```
 
-### 1.10 - Attach pointer handlers for a canvas element
+### 1.11 - Attach pointer handlers for a canvas element
 
 I then have a method that I can call from the source code of a project just once, and given it a canvas element, state object, and an object of events for pointer methods. It will then use the create pointer hander method once to create a uniform handler with methods given in the events object that will act on the given state object. It will then attach the handler for all relevant pointer events for the given canvas element.
 
@@ -272,7 +348,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 };
 ```
 
-### 1.11 - Having a basic EXP System
+### 1.12 - Having a basic EXP System
 
 Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system. It might be best to start to work out some kind of [full module for an experience point system](/2020/04/27/js-javascript-example-exp-system/), however the same could be used for many of the canvas methods that I have in this module also. This xp object contains two methods that I first worked out for my [beach canvas example](/2020/04/24/canvas-example-gam-beach/) game prototype, and further refined in my post on the [math pow method](/2019/12/10/js-math-pow/).
 
@@ -320,7 +396,7 @@ utils.XP = (function () {
     ());
 ```
 
-### 1.12 - Create state machine objects
+### 1.13 - Create state machine objects
 
 In my canvas example on what I am just calling an Orb Module I am working out a lot of logic that has to do with these objects called orbs that are composed of a certain number of elements. I will not be getting into detail about he module here of course if you want to read more on it check out the post I wrote on it. However in the project folder of the orbs module I am starting to make a full game prototype that makes use of the module called orb match. As such when it comes to the utils library I am using in that game prototype I have started a bunch of methods that can be used to create and extend a basic state machine.
 
@@ -417,7 +493,7 @@ utils.smCreateMain = function(opt){
 };
 ```
 
-### 1.13 - Push a new state object to a state machine object
+### 1.14 - Push a new state object to a state machine object
 
 I then have a utils method that I can use as a standard way to go about pushing state objects to a state machine object create with one of the create methods. For now this method is just used as a way to fill in blanks, but there may be a need to set up a few other things if I put more time into this.
 
@@ -439,7 +515,7 @@ utils.smPushState = function(sm, opt){
 };
 ```
 
-### 1.14 - Set the current state
+### 1.15 - Set the current state
 
 I have a method that I can use to set the current state object to use in the states object of a sm object. By using this method rather than just setting the current state string value, and end and start hook methods will be called.
 
