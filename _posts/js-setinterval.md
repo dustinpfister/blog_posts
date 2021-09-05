@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2021-09-05 16:03:46
-version: 1.17
+updated: 2021-09-05 16:07:13
+version: 1.18
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -154,4 +154,4 @@ In my examples to far I am not doing anything that involves updating a canvas, o
 
 That is all for this post at least, but I would not stop there when it comes to reading more about setInterval, as well as the other options for creating an app loop. There is looking into what there is to watch on [you tube when it comes to setInterval](https://www.youtube.com/watch?v=CqDqHiamRHA&t=265s), but maybe the best option is to just start learning by doing. Come up with some of your own projects that make used of an app loop, and get to work making some of your own examples of setInterval.
 
-When it comes to additional example that I have made that make use of an app loop I have mad a whole lot of [canvas examples projects](/2020/03/23/canvas-example/) that might be worth checking out when it comes to this sort of thing.
+When it comes to additional example that I have made that make use of an app loop I have mad a whole lot of [canvas examples projects](/2020/03/23/canvas-example/) that might be worth checking out when it comes to this sort of thing. Many of the canvas examples projects that I have made for each post involve an app loop, although I am using request animation frame rater than set interval. Also an app loop is a major part of making a state machine, or some kind of game framework. When it comes to [game frameworks I have one project that I have started](/2021/09/03/js-javascript-example-game-framework/) thus far which I am putting together something like that.
