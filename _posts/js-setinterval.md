@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 162
-updated: 2020-09-01 12:12:06
-version: 1.16
+updated: 2021-09-05 16:03:46
+version: 1.17
 ---
 
 Many javaScript projects will require some kind of main application loop that will execute over an over again. There are many ways to go about doing this, one of which is the [setInteval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) method. It is not always the best option for doing so, but depending on the nature of the project sometimes it might be what is called for to get an app loop up and running.
@@ -146,10 +146,12 @@ setInterval(loop, 1000);
 
 A more advanced example might include some kind of state object constructor with all kinds of methods that can be used for any given state, but you should get the basic idea. Often I do not use setInetravl in projects such as this in favor of another option that may be a better choice when it comes to not just updating a module, but also rendering in addition to that.
 
-## 5 setInterval vs requestAnimationFrame
+## 5 - setInterval vs requestAnimationFrame
 
 In my examples to far I am not doing anything that involves updating a canvas, or DOM element in a client side environment. If that was the case I would opt to use requestAnimationFrame as it is a far better alternative to setInterval or setTimeout. 
 
 ## 6 - Conclusion
 
-That is all for this post at least, but I would not stop there when it comes to reading more about setInterval, as well as the other options for creating an app loop. There is looking into what there is to watch on [youtube when it comes to setInterval](https://www.youtube.com/watch?v=CqDqHiamRHA&t=265s), but maybe the best option is to just start learning by doing. Come up with some of your own projects that make used of an app loop, and get to work making some of your own examples of setInterval.
+That is all for this post at least, but I would not stop there when it comes to reading more about setInterval, as well as the other options for creating an app loop. There is looking into what there is to watch on [you tube when it comes to setInterval](https://www.youtube.com/watch?v=CqDqHiamRHA&t=265s), but maybe the best option is to just start learning by doing. Come up with some of your own projects that make used of an app loop, and get to work making some of your own examples of setInterval.
+
+When it comes to additional example that I have made that make use of an app loop I have mad a whole lot of [canvas examples projects](/2020/03/23/canvas-example/) that might be worth checking out when it comes to this sort of thing.
