@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-09-05 16:40:35
-version: 1.59
+updated: 2021-09-05 16:42:21
+version: 1.60
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -236,6 +236,8 @@ utils.deepClone = (function () {
 ```
 
 ### 1.7 - traverse an object
+
+On top of deep cloning another useful object method to have is something that can be used to traverse over the full depth of an object. This kind of method is often referred to as a traverse method as it will go over every nested key value pair of an object calling a function for each set.
 
 ```js
 // traverse an object
