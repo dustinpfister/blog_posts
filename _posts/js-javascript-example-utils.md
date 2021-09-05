@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-09-05 16:37:26
-version: 1.57
+updated: 2021-09-05 16:39:44
+version: 1.58
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -69,6 +69,8 @@ utils.mod = function (x, m) {
 ```
 
 ### 1.5 - Http methods
+
+A useful tool to have ready is a decent http client as scripting http requests is something that just happens a great deal when working things out with client side javaScript. There is working with the fetch api or the  xml http request method directly, but when doing that I have found that there are some things that I should pull into some kind of abstraction so I do not have to repeat the code each time.
 
 ```js
 /********* ********** ********** *********/
