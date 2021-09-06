@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:24:36
-version: 1.37
+updated: 2021-09-06 15:26:43
+version: 1.38
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -102,7 +102,7 @@ In this section I will be going over at least a few use case example of the arra
 
 ### 4.1 - Format a number example
 
-One use case example that I made for this post was a format money example.
+One use case example that I made for this post was a format money example. There are a lot of ways of going about doing this sort of thing, and it would be a good idea to [look into a few other examples of how to go about doing this](https://stackoverflow.com/questions/5731193/how-to-format-numbers) other that the example I made for this post.
 
 ```js
 let formatCentValue = function (centValue) {
