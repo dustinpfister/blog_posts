@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:22:28
-version: 1.36
+updated: 2021-09-06 15:24:36
+version: 1.37
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -98,7 +98,7 @@ console.log(p[0].x); // 0
 
 ## 4 - Some use case examples of array slice
 
-In this section I will be going over at least a few use case example of the array slice method that might help to show how this method can be useful in some situations.
+In this section I will be going over at least a few use case example of the array slice method that might help to show how this method can be useful in some situations. Many of these examples might make use of the array slice method as part of the process of doing so, but there are a lot of other tools in the tool box when it comes to working with native javaScript. On top of using the array slice method I will also take the time to cover some other prototype methods and native javaScript features when going over these examples of the array slice method.
 
 ### 4.1 - Format a number example
 
