@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:29:34
-version: 1.39
+updated: 2021-09-06 15:31:26
+version: 1.40
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -142,7 +142,7 @@ console.log( format_money(1000.34444) ); '$1,000'
 
 ANother good example might be some kind of random color method example that makes use of the array slice method as part of the process of doing so. However there are a [number of other examples of how to go about making a random color method](https://stackoverflow.com/questions/1484506/random-color-generator), many of which might not need the use of array slice, and might prove to be more concise. Never the less for the sake of just having some array slice method examples I have went with a method that make used of that of course.
 
-Here I am using the Math random method to get a random number between 0 and 1, and I then use the to string method of the returned number to get a hex string of that value. After that I call the split method of the resulting string to get an array of random hex values, and then you guessed it used the array slice method to get the last six random hex letters.
+Here I am using the Math random method to get a random number between 0 and 1, and I then use the to string method of the returned number to get a hex string of that value. After that I call the split method of the resulting string to get an array of random hex values, and then you guessed it used the array slice method to get the last six random hex letters. I then just use the array join method to set these six random hex letters in an array back to a string and concatenated it with the number symbol to get a valid hex color string.
 
 ```js
 var randomColor = function () {
