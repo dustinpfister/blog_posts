@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:31:26
-version: 1.40
+updated: 2021-09-06 15:40:30
+version: 1.41
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -98,9 +98,33 @@ console.log(p[0].x); // 0
 
 ## 4 - Some use case examples of array slice
 
-In this section I will be going over at least a few use case example of the array slice method that might help to show how this method can be useful in some situations. Many of these examples might make use of the array slice method as part of the process of doing so, but there are a lot of other tools in the tool box when it comes to working with native javaScript. On top of using the array slice method I will also take the time to cover some other prototype methods and native javaScript features when going over these examples of the array slice method.
+In this section I will be going over at least a few [use case example of the array slice method](https://www.javascripttutorial.net/javascript-array-slice/) that might help to show how this method can be useful in some situations. Many of these examples might make use of the array slice method as part of the process of doing so, but there are a lot of other tools in the tool box when it comes to working with native javaScript. On top of using the array slice method I will also take the time to cover some other prototype methods and native javaScript features when going over these examples of the array slice method.
 
-### 4.1 - Format a number example
+### 4.1 - Convert an array like object to an array
+
+Often I might end up with something that is an array like object, in other words it is an object that is formated like an array, but it is not an array. The format of an array like object is that it has numbed key named for values, and a length property that reflects the number of these numbered keys, however the prototype of the object is something other than the of the array prototype.
+
+```js
+var objToArray = function(obj) {
+    return Array.prototype.slice.call(obj);
+};
+ 
+var obj = {
+    0: 'a',
+    1: 'b',
+    length: 2
+};
+ 
+// so it would seem to work
+var a = objToArray(obj);
+console.log(a); //[ 'a', 'b' ]
+ 
+// but there are also options like Array.from
+console.log( Array.from(obj) );
+//[ 'a', 'b' ] 
+```
+
+### 4.2 - Format a number example
 
 One use case example that I made for this post was a format money example. There are a lot of ways of going about doing this sort of thing, and it would be a good idea to [look into a few other examples of how to go about doing this](https://stackoverflow.com/questions/5731193/how-to-format-numbers) other that the example I made for this post.
 
@@ -138,7 +162,7 @@ var format_money = function(number){
 console.log( format_money(1000.34444) ); '$1,000'
 ```
 
-### 4.2 - Random color example
+### 4.3 - Random color example
 
 ANother good example might be some kind of random color method example that makes use of the array slice method as part of the process of doing so. However there are a [number of other examples of how to go about making a random color method](https://stackoverflow.com/questions/1484506/random-color-generator), many of which might not need the use of array slice, and might prove to be more concise. Never the less for the sake of just having some array slice method examples I have went with a method that make used of that of course.
 
