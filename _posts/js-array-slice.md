@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:49:20
-version: 1.45
+updated: 2021-09-06 15:50:18
+version: 1.46
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -184,5 +184,5 @@ So the array slice prototype method is a way to get a section of an array, witho
 
 When it comes to a nodejs environment there is the [buffer slice](/2021/03/19/nodejs-buffer-slice/) method that works just like the array slice method only with nodejs data buffers rather than arrays. There is also the idea of doing something similar to what the array slice method is doing in all kinds of collections such as with strings, typed arrays, html collections, and all kinds of similar objects that there are to work with in various environments.
 
-I am sure that I will come up with more use case examples of the array slice method when I get some time to work on editing this ppst a little more.
+I am sure that I will come up with more use case examples of the array slice method when I get some time to work on editing this ppst a little more. However for now I think this will be it, I am sure that I did an okay job covering the basic idea of what array slice is all about to say the least.
 
