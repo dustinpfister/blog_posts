@@ -5,15 +5,15 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 13:44:04
-version: 1.31
+updated: 2021-09-06 14:09:52
+version: 1.32
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
 
 This nature of the array slice method that involves not mutating [an array](/2018/12/10/js-array/) in place makes it more consistent with the concept of [pure functions](/2020/06/18/js-function-pure/), and functional programing when working with an array in JavaScript. Although I would not go so far as to say the array slice method is a pure function , the main reason why being that the array slice method is still very much an array prototype method.  So then the state of the result that is returned can differ with the same arguments depending on the state of the array off of which the array slice method is called. Still there is the nature of not mutating an array in place, that is a nice feature that is a step in that kind of a direction at least.
 
-So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics.
+So for todays post on javaScript I will be covering some simple examples of Array.slice, as well as some related topics. At the end of the post I might also be able to get into at least one or more use case examples also while I am at it.
 
 <!-- more -->
 
