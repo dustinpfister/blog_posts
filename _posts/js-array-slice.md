@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 14:09:52
-version: 1.32
+updated: 2021-09-06 15:03:42
+version: 1.33
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -96,7 +96,28 @@ console.log(points[0].x); // 0
 console.log(p[0].x); // 0
 ```
 
-## 4 - Conclusion
+## 4 - some use case examples of array slice
+
+### 4.1 - Format a number example
+
+```js
+let formatCentValue = function (centValue) {
+    var centsArray = String(centValue).split('').slice(-2);
+    var dollars = String(Math.floor(centValue / 100)).split('');
+    var i = dollars.length - 3;
+    if (i > 0) {
+        while (i > 0) {
+            dollars.splice(i, 0, ',');
+            i -= 3;
+        }
+    }
+    return dollars.join('') + '.' + centsArray.join('');
+};
+ 
+console.log(formatCentValue(100000025)); // 1,000,000.25
+```
+
+## 5 - Conclusion
 
 So the array slice prototype method is a way to get a section of an array, without mutating the source array. [This is not to be confused with the array splice](https://www.freecodecamp.org/news/lets-clear-up-the-confusion-around-the-slice-splice-split-methods-in-javascript-8ba3266c29ae/) method that can be use to do the same, only it will mutate the array in place. The array splice method is work checking out though for sure it is still a useful method and and just for the sake of getting a range of elements fro a source array, it can also be used to inject elements into an array also while one is at it.
 
