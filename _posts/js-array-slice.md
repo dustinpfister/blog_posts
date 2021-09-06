@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:03:42
-version: 1.33
+updated: 2021-09-06 15:11:23
+version: 1.34
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -96,7 +96,9 @@ console.log(points[0].x); // 0
 console.log(p[0].x); // 0
 ```
 
-## 4 - some use case examples of array slice
+## 4 - Some use case examples of array slice
+
+In this section I will be going over at least a few use case example of the array slice method that might help to show how this method can be useful in some situations.
 
 ### 4.1 - Format a number example
 
@@ -115,6 +117,21 @@ let formatCentValue = function (centValue) {
 };
  
 console.log(formatCentValue(100000025)); // 1,000,000.25
+```
+
+```js
+var format_money = function(number){
+    var formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        // These options are needed to round to whole numbers if that's what you want.
+        minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+    });
+    return formatter.format(number); /* $2,500.00 */
+};
+ 
+console.log( format_money(1000.34444) ); '$1,000'
 ```
 
 ## 5 - Conclusion
