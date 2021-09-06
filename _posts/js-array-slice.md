@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:11:23
-version: 1.34
+updated: 2021-09-06 15:15:02
+version: 1.35
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -102,6 +102,8 @@ In this section I will be going over at least a few use case example of the arra
 
 ### 4.1 - Format a number example
 
+One use case example that I made for this post was a format money example.
+
 ```js
 let formatCentValue = function (centValue) {
     var centsArray = String(centValue).split('').slice(-2);
@@ -118,6 +120,8 @@ let formatCentValue = function (centValue) {
  
 console.log(formatCentValue(100000025)); // 1,000,000.25
 ```
+
+However making some kind of solution like this might prove to be more complex than needed. In most cases I want to format a number becuase it is a money value. Or for one reason or another I want to do something to format the number in a way that helps to make it more readable. In modern specs of javaScipt there is the number format method in the international object than can be used to make quick work of these sorts of things.
 
 ```js
 var format_money = function(number){
