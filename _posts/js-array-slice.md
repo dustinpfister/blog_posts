@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:40:30
-version: 1.41
+updated: 2021-09-06 15:44:10
+version: 1.42
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -102,7 +102,7 @@ In this section I will be going over at least a few [use case example of the arr
 
 ### 4.1 - Convert an array like object to an array
 
-Often I might end up with something that is an array like object, in other words it is an object that is formated like an array, but it is not an array. The format of an array like object is that it has numbed key named for values, and a length property that reflects the number of these numbered keys, however the prototype of the object is something other than the of the array prototype.
+Often I might end up with something that is an array like object, in other words it is an object that is formated like an array, but it is not an array. The format of an array like object is that it has numbed key named for values, and a length property that reflects the number of these numbered keys, however the prototype of the object is something other than the of the array prototype. One way to go about converting one of these array like objects would be to have a helper method that uses the array slice method with call to force the method to work with an array like object, and because the properties of the object are like that of the array it should work
 
 ```js
 var objToArray = function(obj) {
@@ -123,6 +123,8 @@ console.log(a); //[ 'a', 'b' ]
 console.log( Array.from(obj) );
 //[ 'a', 'b' ] 
 ```
+
+However there are a lot of other ways to go about doing this sort of thing with an array like object. One of the many ways to do so would be to just use the Array.from method to convert and array like object to a regular array.
 
 ### 4.2 - Format a number example
 
