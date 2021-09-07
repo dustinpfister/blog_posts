@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:37:33
-version: 1.38
+updated: 2021-09-07 09:45:47
+version: 1.39
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -19,11 +19,28 @@ A boolean is a value that only has two possible values true, or false, and as su
 
 This is not a getting started post on javaScript, in this post I am writing just about booleans and how they are used with programming tasks with javaScript. If you are new to javaScript you might want to start with my [getting started post on javaScript](/2018/11/27/js-getting-started/). Still the examples here are fairly simple, it is just that if you have zero experience this might still prove to be a bit to advanced.
 
-However if you are someone that has at least a little experience thus far, and would like to read up more on the use of booleans in javaScript, and a few code examples making use of boolean values, then this might prove to be a good read. In this section I am going over just a few very basic examples of how to go about creating a boolen value. This section might prove to be to trivial if you have a fare amount of experience thus far, so you may want to skip ahead to the bottom of the post for the more advanced examples.
+However if you are someone that has at least a little experience thus far, and would like to read up more on the use of booleans in javaScript, and a few code examples making use of boolean values, then this might prove to be a good read. In this section I am going over just a few very basic examples of how to go about creating a boolean value. This section might prove to be to trivial if you have a fare amount of experience thus far, so you may want to skip ahead to the bottom of the post for the more advanced examples.
 
-### 1.1 - A Boolean literal
+### 1.1 - Basic logging example
 
-For the most part if I want to set a boolean value I just set it using a boolean literal. When it comes to creating a boolean value by way of a literal then the true and false boolean literal keywords can be used do do just this. 
+For the most part if I want to set a boolean value I just set it using a boolean literal. When it comes to creating a boolean value by way of a literal then the true and false boolean literal keywords can be used do do just this. In this example I am setting the value of a logging variable to a boolean value of true that will be using in a logging function that will only log a given message of the logging variable is true.
+
+```js
+// logging boolean
+var logging = true;
+// log function that will only log if logging is true
+var log = function (mess) {
+    if (logging) {
+        console.log(mess);
+    }
+};
+// only foo will log
+log('foo');
+logging = false;
+log('bar');
+```
+
+### 1.2 - A Boolean literal
 
 For this example I have a boolean called firstRun that is set to true for starters, I then also have a loop that will fire once every second by way of using [setTimeout](/2018/12/06/js-settimeout/) to delay the next call of the method. The first time that the loop fires, a 'first run' message will log to the console, and the firstRun boolean will set back to false. Because I am using the firstRun boolean in an if statement, the 'first run' message will only fire once.
 
