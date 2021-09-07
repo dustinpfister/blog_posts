@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:19:45
-version: 1.35
+updated: 2021-09-07 09:25:41
+version: 1.36
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
@@ -126,6 +126,8 @@ As I have mentioned in the section of expressions numbers as well as many other 
 There is also the simple fact that booleans to have there limitation after all it is a type where there are only two possible values. So if there are ways that I can just use numbers in place of booleans, this does not just allow for the same functionality by just using the numbers 0 and 1 for false and true, it also allows for additional values of course. So not only does the use of numbers allow for the same functionally, it also allows for additional possibles while we are at it.
 
 ### 4.1 - while loop example of using numbers
+
+One simple numbers for booleans replacement example might be the while loop trick with an index value that starts at a non zero value, but will reach zero at some point. For example I can set the index value for an element in an array to the length of the array, and then subtract from i in the while loop area that is used to evaluate if the loop should keep looping or not. This way as long as the index value is above zero the loop will continue, but it will reach zero at some point, and when it does that will evaluate to false, and the loop will stop.
 
 ```js
 // zero and NaN are false
