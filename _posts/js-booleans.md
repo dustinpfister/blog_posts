@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 10:01:26
-version: 1.43
+updated: 2021-09-07 10:03:40
+version: 1.44
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -172,4 +172,4 @@ while (i--) {
 
 ## 5 - Conclusion
 
-So hopefully this post helped you with some of the basics of boolean values in javaScript. There is much more to learn when it comes to the use of Boolean values though, the bulk of which is only gained by experience I would say. Just keep working on projects, learning by doing is by far the best way to learn.
+So hopefully this post helped you with some of the basics of boolean values in javaScript. There is much more to learn when it comes to the use of Boolean values though, the bulk of which is only gained by experience I would say. Just keep working on projects that will call for the use of booleans to one extent or another. Reading content like this is a always a great way to go about learning javaSscript, but it is still no replacement for the process of learning by doing.
