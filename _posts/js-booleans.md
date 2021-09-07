@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:51:42
-version: 1.41
+updated: 2021-09-07 09:54:00
+version: 1.42
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -110,7 +110,7 @@ Never the less when it comes to writing a post on boolean variables I suppose it
 
 ### 3.1 - Using the Boolean Object as a constructor
 
-When using the Boolean Object as a constructor it returns an object, and not a boolean. However the valueOf method can be used to get the boolean value of the Object.
+When using the Boolean Object as a constructor it returns an object, and not a boolean. As such because the value returned is an object rather than a boolean value this might result in some problems when it comes to creating a boolean this way. When it comes to having one of these boolean objects the value of method of the object can be called to get the actually boolean primitive value of the boolean object that is returned.
 
 ```js
 var b = typeof new Boolean(false); // 'object'
