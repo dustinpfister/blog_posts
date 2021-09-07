@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:48:53
-version: 1.40
+updated: 2021-09-07 09:51:42
+version: 1.41
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -104,11 +104,13 @@ This is yet another tick I see used often as a way to convert something to a boo
 
 ## 3 - The Boolean Object
 
-In javaScript there is the Boolean global object that can be used as a constructor with the new keyword, or not. When used with the new keyword it will return an object and not a primitive Boolean value. The primitive value of the object can be retrieved with the valueOf method, but I can not think of much of any reason to create a Boolean variable this way. Never the less when it comes to writing a post on boolean variables I suppose it is called for to cover this topic, as it is something that might pop up now and then here and there when reading various code examples.
+In javaScript there is the Boolean global object that can be used as a constructor with the new keyword, or not. When used with the new keyword it will return an object and not a primitive Boolean value. The primitive value of the object can be retrieved with the valueOf method, but I can not think of much of any reason to create a Boolean variable this way. Speaking of the [value of method that is another topic that you might want to check out in detail](/2020/03/06/js-value-of/) at some point sooner or later as it is a way to set what the primitive value of an object should be.
+
+Never the less when it comes to writing a post on boolean variables I suppose it is called for to cover this topic, as it is something that might pop up now and then here and there when reading various code examples.
 
 ### 3.1 - Using the Boolean Object as a constructor
 
-When using the Boolean Object as a constructor it returns an object, and not a boolen. However the valueOf method can be used to get the boolean value of the Object.
+When using the Boolean Object as a constructor it returns an object, and not a boolean. However the valueOf method can be used to get the boolean value of the Object.
 
 ```js
 var b = typeof new Boolean(false); // 'object'
