@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:33:01
-version: 1.37
+updated: 2021-09-07 09:37:33
+version: 1.38
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -17,9 +17,9 @@ A boolean is a value that only has two possible values true, or false, and as su
 
 ## 1 - js booleans, what to know before hand, and basic examples
 
-This is not a getting started post on javaScript, in this post I am writing just about booleans and how they are used with programming tasks with javaScript. If you are new to javaScript you might want to start with my [getting started post on javaScript](/2018/11/27/js-getting-started/). 
+This is not a getting started post on javaScript, in this post I am writing just about booleans and how they are used with programming tasks with javaScript. If you are new to javaScript you might want to start with my [getting started post on javaScript](/2018/11/27/js-getting-started/). Still the examples here are fairly simple, it is just that if you have zero experience this might still prove to be a bit to advanced.
 
-Also if you are not so new to javaScript but are still not sure that you are ware of every little tip and tick surrounding boolean values in javaScript this post might still be of value to you.
+However if you are someone that has at least a little experience thus far, and would like to read up more on the use of booleans in javaScript, and a few code examples making use of boolean values, then this might prove to be a good read. In this section I am going over just a few very basic examples of how to go about creating a boolen value. This section might prove to be to trivial if you have a fare amount of experience thus far, so you may want to skip ahead to the bottom of the post for the more advanced examples.
 
 ### 1.1 - A Boolean literal
 
