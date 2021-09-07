@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:25:41
-version: 1.36
+updated: 2021-09-07 09:33:01
+version: 1.37
 ---
 
-In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
+In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
 
-A boolean is a value that only has two possible values true, or false, and as such numbers, and other values can often be used as a replacement for boolean values, although doing so will eat up more memory, and often a boolean is just the appropriate choice for simple true and false values. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans and how to work with them is a javaScript programing environment.
+A boolean is a value that only has two possible values true, or false, and as such numbers, and other values can often be used as a replacement for boolean values. Although doing so will eat up more memory, and often a boolean is just the appropriate choice for simple true and false values when it comes to code readability. There are some tricks that I have picked up here and there when it comes to booleans, so I will be sure to write about everything that I know about in this post when it comes to Booleans and how to work with them is a javaScript programing environment. And also while I am at it I will be branching off into some other closely related topics when it comes to javaScript programing in general as usual.
 
 <!-- more -->
 
