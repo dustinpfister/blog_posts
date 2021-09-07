@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-07 12:52:33
-version: 1.14
+updated: 2021-09-07 12:55:25
+version: 1.15
 ---
 
-In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are many ways to go about getting started with javaScript, some of which require the installation of software that might not all ready be installed on the computer however, but this often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two a bout javaScript.
+In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
 
 So then with the javaScript console with chrome at least there is no need to even look into editors, and javaScript related plug-ins for such editors. There is no need to install nodejs first, and any additional package managers beyond that of the default npm package manager when it comes to getting started with javaScript that way. There is no need for any expensive software or hardware, or even to take classes when starring out with javaScript because there is so much great content for free on the open Internet way beyond the content of this post, that should go without saying naturally.
 
