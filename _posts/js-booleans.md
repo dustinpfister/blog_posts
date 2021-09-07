@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:54:00
-version: 1.42
+updated: 2021-09-07 10:01:26
+version: 1.43
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -117,7 +117,7 @@ var b = typeof new Boolean(false); // 'object'
 var c = typeof new Boolean(false).valueOf(); // 'boolean'
 ```
 
-Making booleans this way is not such a great idea. It makes doing so far more complicated than it needs to be, and can lean to unexpected results if you are not aware of the fact that an object evaluates to true.
+Making booleans this way is not such a great idea. It makes doing so far more complicated than it needs to be, and can lead to unexpected results if you are not aware of the fact that an object evaluates to true.
 
 ```js
 var foo = new Boolean(false),
@@ -130,13 +130,13 @@ console.log(n); // 1
 
 ### 3.2 - Using the Boolean Object as a method
 
-When omitting the new keyword a boolean primitive value will be returned rather than an object, making it a way to convert to a boolean.
+When omitting the new keyword a boolean primitive value will be returned rather than an object, making it a way to convert to a boolean. This use of the Boolean method is a little more practical when it comes to converting values to a boolean type. However there are also a number of other ways to go about converting to boolean when it comes to working out expressions as a way to do so..
 
 ```js
 var a = Boolean(null); // false
 ```
 
-I do not use this as well, because the !! operator works just fine to get such a task done. Still the Boolean Object is something to be aware of as it is often used in examples.
+So then I can not say that I use the Boolean method this way that often also because the !! operator works just fine to get such a task done. Still the Boolean Object is something to be aware of as it is often used in examples.
 
 ## 4 - Using Numbers in place of booleans
 
