@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2020-11-12 10:06:17
-version: 1.13
+updated: 2021-09-07 12:52:33
+version: 1.14
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are many ways to go about getting started with javaScript, some of which require the installation of software that might not all ready be installed on the computer however, but this often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two a bout javaScript.
@@ -21,7 +21,7 @@ So then if you are reading this in a modern web browser such as chrome 86 or hig
 
 In this post I am using the [chrome devtools](https://developers.google.com/web/tools/chrome-devtools/) javaScript console in [google chrome](https://en.wikipedia.org/wiki/Google_Chrome) 86.x. It might still be possible to use the javaScript console as a way to get started with javaScript coding in other browsers, but for the sake of the content of this post I was using chrome when I wrote this.
 
-To open the javaScript console at any web page use Control + Shift + J and the javaScript console should appear. By default the console tab should be selected, if not for whatever reason select the console tab. There is a lot to cover when it comes to the devtools in chrome when it comes to the other tabs of interest, but in this post I will just be covering some basics with the javaScript console.
+To open the javaScript console at any web page use Control + Shift + J and the javaScript console should appear. By default the console tab should be selected, if not for whatever reason select the console tab. There is a lot to cover when it comes to the dev tools in chrome when it comes to the other tabs of interest, but in this post I will just be covering some basics with the javaScript console.
 In this section I will be going over just some very basics when it comes to starting to play around with javaScript this way. This will include some basic expressions, variables, and functions.
 
 ### 1.1 - First line of javaScript as a simple addition expression
