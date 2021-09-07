@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 09:14:28
-version: 1.33
+updated: 2021-09-07 09:15:29
+version: 1.34
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean). To create a boolean there is the boolean literal, and the Boolean object. In addition booleans are often what is returned when using a method such as isArray and can happen as a result of an evaluation of an expression as well. 
@@ -121,7 +121,7 @@ I do not use this as well, because the !! operator works just fine to get such a
 
 ## 4 - Using Numbers in place of booleans
 
-As I have mentioned in the section of expressions numbers as well as many other types in javaScript can be converted to a boolean value. The value of the boolean value will change from one type to another as well as with the value of the type. For example an empty string value will evaluate to false, however any non empty string value will evaluate to true. However in this section I think I will be focusing more so on using numbers in place of boolean values. Just for a quick overview any number other than that of zero or NaN will evaluate to true. So then the value of zero can be used as a way to end a loop, or fail some kind of test for something where all other number values do not.
+As I have mentioned in the section of expressions numbers as well as many other types in javaScript can be converted to a boolean value. The value of the boolean value will change from one type to another as well as with the value of the type. For example an empty string value will evaluate to false, however any non empty string value will evaluate to true. However in this section I think I will be focusing more so on using numbers in place of boolean values. Just for a quick overview any number other than that of zero or [NaN](/2017/09/23/js-nan/) will evaluate to true. So then the value of zero can be used as a way to end a loop, or fail some kind of test for something where all other number values do not.
 
 ### 4.1 - while loop example of using numbers
 
