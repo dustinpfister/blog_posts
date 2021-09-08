@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2019-07-20 12:11:59
-version: 1.7
+updated: 2021-09-08 14:56:42
+version: 1.8
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like express, and hapi just to name a few. I might prefer to use express when I make such projects, but still on occasion I find myself writing at least a few simple demos using just the [node http module](https://nodejs.org/api/http.html) by itself without any additional framework on top of nodejs.
@@ -170,4 +170,6 @@ req.end();
 
 ## 5 - Conclusion
 
-So the built in nodejs http module can be used to make http requests from node, as well as set up a server that can respond to requests from a client system. When it comes to checking out a package that might make things a litter easier there is the [node request](/2017/05/23/nodejs-request) npm package that might be of interest though. Also when it comes to setting up a web server it might still be best to go with a framework such as express.
+So the built in nodejs http module can be used to make http requests from node, as well as set up a server that can respond to requests from a client system. When it comes to checking out a package that might make things a litter easier there is the [node request](/2017/05/23/nodejs-request) npm package that might be of interest, although there are many other user space solutions for this sort of thing. 
+
+Also when it comes to setting up a web server it might still be best to go with a framework such as express. When it comes to express I have a [getting started type post on the express framework](/2018/05/21/express-getting-started/), as well as many other related posts on responding to incoming http requests from a client system using express.
