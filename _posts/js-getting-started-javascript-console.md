@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-08 12:46:33
-version: 1.28
+updated: 2021-09-08 13:11:09
+version: 1.29
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
@@ -60,7 +60,9 @@ So now that we have something basic covered lets get into something that actuall
 
 ### 2.1 - Concatenate all the paragraph elements in the page
 
-There are many ways to go about getting references to one or more html elements in the page. In this example I am using the [query selector all method](/2020/06/23/js-document-queryselector/) to get all paragraph elements in the page. This method returns an HTMLCollection class instance rather than a plain old javaScript array, so in order to do anything with a javaScript array method I need to do some magic with the function call method.
+There are many ways to go about getting references to one or more html elements in the page. In this example I am using the [query selector all method](/2020/06/23/js-document-queryselector/) to get all paragraph elements in the page by passing a string of the tag name for a paragraph element. So then then this method allows for getting one or more elements by way of a tag name, however it can also be used to select tags by way of class names, and id tags also. 
+
+The query selector all method returns an HTML Collection class instance rather than a plain old javaScript array, this kind of collection is formated like an array, but it is not of the same prototype. As such I can not directly use certain array prototype methods on such a collection. So in order to do anything with a javaScript array method with an html collection I need to do some magic with the [function call method](/2017/09/21/js-call-apply-and-bind/).
 
 ```js
 > document.body.innerHTML = [].map.call(document.querySelectorAll('p'), (el) => {
@@ -139,6 +141,6 @@ After that there is calling the sm.toggleAutoClick to start auto clicking upgrad
 
 So the javaScript console is a great way to get started with the javaScript programing language, but there are many other ways to get started with JavaScript as well. There is hand coding an html file and having some javaScript code in a script tag that can then be used via the file protocol in the web browser as well that can still work okay for some simple examples. There is also getting into nodejs and finding all kinds of ways to serve javaScript to the browser via the http protocol, which in time might be the best way to go about developing actually as that will help to address all kinds of problems that will pop up when working by way of the file protocol.
 
-When it comes to  writing an html file that is stored on you computed local file system with embedded JavaScript, and opening it up in the browser with crtl+o rather than setting up a web sever, I have wrote a blog post on [getting started with the file protocol](/2020/09/21/js-getting-started-file-protocol/). When it comes to hosting a root folder as a website there is doing so with nodejs, and when it comes to this I have a simple script for [getting started making a basic static sever using just node itself](/2017/12/04/nodejs-simple-static-server-file/).
+When it comes to  writing an html file that is stored on you computed local file system with embedded JavaScript, and opening it up in the browser with crtl + o rather than setting up a web sever, I have wrote a blog post on [getting started with the file protocol](/2020/09/21/js-getting-started-file-protocol/). When it comes to hosting a root folder as a website there is doing so with nodejs, and when it comes to this I have a simple script for [getting started making a basic static sever using just node itself](/2017/12/04/nodejs-simple-static-server-file/).
 
 What is great about javaScript is that it can be used right away in the browser right now, but can also be used to write client systems, back end code, and even Command line tools. These days javaScript is really hot, and given the nature of the web will likely remain so for a long time, making javaScript one of the best choices for a first language.
