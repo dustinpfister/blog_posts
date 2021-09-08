@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-08 12:27:27
-version: 1.21
+updated: 2021-09-08 12:29:12
+version: 1.22
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
@@ -60,7 +60,7 @@ So now that we have something basic covered lets get into something that actuall
 
 ### 2.1 - Concatenate all the paragraph elements in the page
 
-There are many ways to go about getting references to one or more html elements in the page. In this example I am using the query selector all method to get all paragraph elements in the page. This method returns an HTMLCollection class instance rather than a plain old javaScript array, so in order to do anything with a javaScript array method I need to do some magic with the function call method.
+There are many ways to go about getting references to one or more html elements in the page. In this example I am using the [query selector all method](/2020/06/23/js-document-queryselector/) to get all paragraph elements in the page. This method returns an HTMLCollection class instance rather than a plain old javaScript array, so in order to do anything with a javaScript array method I need to do some magic with the function call method.
 
 ```js
 > document.body.innerHTML = [].map.call(document.querySelectorAll('p'), (el) => {
