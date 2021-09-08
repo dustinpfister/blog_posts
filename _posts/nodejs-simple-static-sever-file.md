@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2019-09-08 16:24:26
-version: 1.8
+updated: 2021-09-08 14:14:21
+version: 1.9
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported framework such as express to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -29,7 +29,164 @@ And the script will serve static files that I have in a public folder localed at
 
 If you do not might adding express to a project folders static this can be done very quickly with the [express static](/2018/05/24/express-static/) method. By doing so it will not be a native javaScript only solution for this, but express is a great project for getting going with a serious back end project. Still this post is about working out a native javaScript solution for this so on with that.
 
-## 2 - Sever.js file solution one
+## 2 - New static sever solution example that uses promises
+
+I first wrote this post back in December of 2017, the old script still works okay, but as of this writing I have made at least one new revision of this sever file.
+
+```js
+/*
+ *  server.js
+ *
+ *   This just provides a simple static server for the project.
+ *
+ *   ex: $ node server ./ 8080
+ *
+ */
+ 
+let http = require('http'),
+fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+lstat = promisify(fs.lstat),
+readFile = promisify(fs.readFile),
+readdir = promisify(fs.readdir);
+ 
+// the root folder to serve
+let root = process.argv[2] || path.join(__dirname, '../..');
+ 
+// set port with argument or hard coded default
+let port = process.argv[3] || 8080; // port 8888 for now
+ 
+// create path info object
+let createPathInfoObject = (url) => {
+    // remove any extra / ( /foo/bar/  to /foo/bar )
+    let urlArr = url.split('');
+    if(urlArr[urlArr.length - 1] === '/'){
+        urlArr.pop();
+        url = urlArr.join('');
+    }  
+    // starting state
+    let pInfo = {
+        url : url,
+        uri : path.join(root, url),
+        encoding: 'utf-8',
+        mime: 'text/plain',
+        ext: '',
+        contents: [],
+        html: ''
+    };
+    //return pInfo;
+    return lstat(pInfo.uri)
+    .then((stat)=>{
+        pInfo.stat = stat;
+        if(pInfo.stat.isFile()){
+            pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+            pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+            pInfo.mime = pInfo.ext === '.html' ? 'text/html' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.css' ? 'text/css' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.js' ? 'text/javascript' : pInfo.mime;
+             // images
+            pInfo.mime = pInfo.ext === '.png' ? 'image/png' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.ico' ? 'image/x-icon' : pInfo.mime;
+            // binary encoding if...
+            pInfo.encoding = pInfo.ext === '.png' || pInfo.ext === '.ico' ? 'binary' : pInfo.encoding;
+            return pInfo;
+        }
+        if(pInfo.stat.isDirectory()){
+            pInfo.ext = '';
+            pInfo.mime = 'text/plain';
+            pInfo.encoding = 'utf-8';
+        }
+        return createDirInfo(pInfo);
+    });
+};
+ 
+// create an html index of a folder
+let createHTML = (pInfo) => {
+    var html = '<html><head><title>Index of - ' + pInfo.url + '</title>'+
+    '<style>body{padding:20px;background:#afafaf;font-family:arial;}div{display: inline-block;padding:10px;}</style>' +
+    '</head><body>';
+    html += '<h3>Contents of : ' + pInfo.url + '</h3>'
+    pInfo.contents.forEach((itemName)=>{
+        let itemURL = pInfo.url + '/' + itemName;
+        html += '<div> <a href=\"' + itemURL + '\" >' +  itemName + '</a> </div>'
+    });
+    html += '</body></html>';
+    return html;
+};
+ 
+// create dir info for a pInfo object
+let createDirInfo = (pInfo) => {
+    // first check for an index.html
+    let uriIndex = path.join( pInfo.uri, 'index.html' );
+    return readFile(uriIndex)
+    // if all goes file we have an indrex file call createPathInfoObject with new uri
+    .then((file)=>{
+        pInfo.uri = uriIndex;
+        pInfo.ext = '.html';
+        pInfo.mime = 'text/html';
+        return pInfo;
+    })
+    // else we do not get contents
+    .catch(()=>{
+        return readdir(pInfo.uri);
+    }).then((contents)=>{
+        if(contents && pInfo.ext === ''){
+            pInfo.contents = contents;
+            pInfo.mime = 'text/html';
+            pInfo.html = createHTML(pInfo);
+        }
+        return pInfo;
+    });
+};
+ 
+// create server object
+let server = http.createServer(function (req, res) {
+    // create path info object for req.url
+    createPathInfoObject(req.url)
+    // if we have a pinfo object without any problems
+    .then((pInfo)=>{
+        // send content
+        res.writeHead(200, {
+            'Content-Type': pInfo.mime
+        });
+        // if we have html send that
+        if(pInfo.html != ''){
+            res.write(pInfo.html, pInfo.encoding);
+            res.end();
+        }else{
+            // else we are sending a file
+            readFile(pInfo.uri, pInfo.encoding).then((file)=>{
+                res.write(file, pInfo.encoding);
+                res.end();
+            }).catch((e)=>{
+                // send content
+                res.writeHead(200, {
+                    'Content-Type': 'text/plain'
+                });
+                res.write(e.message, 'utf8');
+                res.end();
+            });
+        }
+    }).catch((e)=>{
+        // send content
+        res.writeHead(200, {
+            'Content-Type': 'text/plain'
+        });
+        res.write(e.message, 'utf8');
+        res.end();
+    });
+});
+ 
+// start server
+server.listen(port, function () {
+    console.log('hosting a public folder at: ');
+    console.log('path: ' + root);
+    console.log('port: ' + port);
+});
+```
+
+## 3 - Old static sever solution
 
 So here is a basic node static file server file that I worked out. Here I just placed this code in a file called server1.js in the root path of the project folder. In the project folder I also have a public folder and in there I have a index html file at the root of the project folder.
 
@@ -116,6 +273,6 @@ server.listen(port, function () {
 
 So of course this solution just handles GET requests which works fine in most situations. In the event that a path is given such as '/' then '/index.html' is assumed. In addition in the event of any kind of error the request is just ended, and I do not serve any kind of 404 page.
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 Writing these kinds of files now and then is fun. Of course it is not battle tested, but it seems to work fine for me in most cases when it just comes to playing with some kind of javaScript project that needs to be severed up over http.
