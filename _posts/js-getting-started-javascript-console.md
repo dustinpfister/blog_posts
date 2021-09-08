@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-08 13:11:09
-version: 1.29
+updated: 2021-09-08 13:13:22
+version: 1.30
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
@@ -62,7 +62,7 @@ So now that we have something basic covered lets get into something that actuall
 
 There are many ways to go about getting references to one or more html elements in the page. In this example I am using the [query selector all method](/2020/06/23/js-document-queryselector/) to get all paragraph elements in the page by passing a string of the tag name for a paragraph element. So then then this method allows for getting one or more elements by way of a tag name, however it can also be used to select tags by way of class names, and id tags also. 
 
-The query selector all method returns an HTML Collection class instance rather than a plain old javaScript array, this kind of collection is formated like an array, but it is not of the same prototype. As such I can not directly use certain array prototype methods on such a collection. So in order to do anything with a javaScript array method with an html collection I need to do some magic with the [function call method](/2017/09/21/js-call-apply-and-bind/).
+The query selector all method returns an HTML Collection class instance rather than a plain old javaScript array, this kind of collection is formated like an array, but it is not of the same prototype. As such I can not directly use certain array prototype methods on such a collection. So in order to do anything with a javaScript array method with an html collection I need to do some magic with the [function call method](/2017/09/21/js-call-apply-and-bind/). The function call method is one way to go about getting a prototype method of one prototype to work with another if by chance it is formated the same way in terms of its properties.
 
 ```js
 > document.body.innerHTML = [].map.call(document.querySelectorAll('p'), (el) => {
