@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-08 12:19:49
-version: 1.19
+updated: 2021-09-08 12:23:44
+version: 1.20
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
@@ -130,6 +130,8 @@ This is an example of a basic tool kit that can be used with the game [swarm sim
  
 }(this['sm'] = {}));
 ```
+
+After that there is calling the sm.toggleAutoClick to start auto clicking upgrades for the game with default settings. The method can then be called again to stop the process of auto clicking. There are a whole lot of auto clicker programs that can also be used to do something like this, however with this kind of code there is the potential to make the code something morn than just a simple auto clicker. I did not take the time to do so, but there is the idea of working on this a little longer to make something that will fully automate the process of playing the game.
 
 ## 3 - Conclusion
 
