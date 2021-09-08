@@ -2,10 +2,16 @@
 
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 
-### new post for 9/10/2021 - nodejs-simple-http-request-get-post-system
+### () new post for 9/10/2021 - nodejs-simple-http-request-get-post-system
 * start a new nodejs-simple-http-request-get-post-system
 
-### edit: nodejs-simple-static-server-file
+### () edit: nodejs-simple-static-server-file
 * edit post with new file example used in js-javascript-example-game-framework node folder
 * create a github repo for this post
 * link to the github repo from the post
+
+## js: ( /yyyy/mm/dd/js-* )
+
+## () edit js-getting-started-javascript-console
+* edit the post to 1,800 + words
+* (done) add a new example for the s2 do something in a page section
