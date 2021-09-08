@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2021-09-08 14:37:27
-version: 1.16
+updated: 2021-09-08 14:41:17
+version: 1.17
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over the http rather than file protocol in a web browser. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in [http module in node itself](/2018/02/06/nodejs-http/). It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported [framework such as express](/2018/05/21/express-getting-started/) to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -193,7 +193,9 @@ server.listen(port, function () {
 
 ## 3 - Old static sever solution
 
-So here is a basic node static file server file that I worked out. Here I just placed this code in a file called server1.js in the root path of the project folder. In the project folder I also have a public folder and in there I have a index html file at the root of the project folder.
+So here is a basic node static file server file that I worked out in the old form of the file when I first wrote this post back in 2017. Here I just placed this code in a file called server.js in the root path of the project folder. In the project folder I also have a public folder and in there I have a index html file at the root of the project folder. 
+
+By default if I do not give any arguments when calling the file, the script will assume that there is a public folder in the current working folder when the script is called with node. In many cases I might want to give an absolute path to the public folder as the first argument. I can also set a port for the script to listen on as the second argument, if not it will default to 8080.
 
 I use the file system module of nodejs to check the stats of a file that is being requested. If the file is there then it will be sent to the client, if the file is not there then a 500 status will result and the request will be ended. If the file is there the file system module read file method will be used to read and send the contents of the file.
 
