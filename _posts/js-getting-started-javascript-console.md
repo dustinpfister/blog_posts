@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-08 12:16:33
-version: 1.18
+updated: 2021-09-08 12:19:49
+version: 1.19
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
@@ -71,6 +71,8 @@ There are many ways to go about getting references to one or more html elements 
 The end result of pasting this into the JavaScript console is having just the paragraph elements of the page with an hr element after each paragraph. This kind of copy and paste javaScript code example can be useful for various news sites that have a load of crap that loads bogging down my system. The result is then just the text that I want to read, and nothing else at all. Also because I am replacing all the content in the page this will result in errors happening when any preexisting scripts try to inject additional content, or do anything allowing with dom manipulation as the elements they are tiring to append to are no longer there.
 
 ### 2.2 - Swarm simulator auto clicker
+
+This is an example of a basic tool kit that can be used with the game [swarm simulator that can be found here](https://www.swarmsim.com/#/). The example is what can be done when it comes to making a little javaScript code that works with the design of a certain web page, in this case it is a game called swarm sim. Once you have gone to the game site open up the javaScript console, and paste the following code into the javaScript console.
 
 ```js
 (function(api){
