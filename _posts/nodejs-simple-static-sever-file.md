@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2021-09-08 14:19:08
-version: 1.10
+updated: 2021-09-08 14:23:00
+version: 1.11
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported framework such as express to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -16,7 +16,7 @@ When working with many node projects I often run into a situation in which I nee
 
 ## 1 - Node Static Basics
 
-So the general idea of a node static server is that I have some plain old static files in a public folder and I just want to server them up over the http protocol on my local computer. Maybe what I am working on will be deployed to a site elsewhere at a latter time, and for whatever the reason I just need to serve it up on my computer via something other than the file protocol.
+So the general idea of a node static server is that I have some plain old static files in a public folder and I just want to serve them up over the http protocol on my local computer. Maybe what I am working on will be deployed to a site elsewhere at a latter time, or maybe I am just running into some problems that will pop up when doing everything over the file protocol. Whatever the case may be in some situations I might find myself in a situation in which I need to host a folder on the local file system of a computer and it will just need to respond to get requests and that is it.
 
 So I just need a script that I can call from node like this.
 
@@ -24,7 +24,8 @@ So I just need a script that I can call from node like this.
 $ node sever
 ```
 
-And the script will serve static files that I have in a public folder localed at the current working path where I have the script. I could also install the script globally, but for now I just want to make a script that is closely tiles to the project folder.
+And the script will serve static files that I have in a public folder localed at the current working path where I have the script, or a hard coded default public folder location. I could also install the script globally, but for now I just want to make a script that is closely tied to the project folder.
+
 ## 1.1 - Using express static if you do not might using express
 
 If you do not might adding express to a project folders static this can be done very quickly with the [express static](/2018/05/24/express-static/) method. By doing so it will not be a native javaScript only solution for this, but express is a great project for getting going with a serious back end project. Still this post is about working out a native javaScript solution for this so on with that.
