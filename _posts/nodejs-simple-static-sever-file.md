@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2021-09-08 14:29:35
-version: 1.13
+updated: 2021-09-08 14:31:38
+version: 1.14
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over http:// rather than file://. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in http module in node itself. It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported framework such as express to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -32,7 +32,7 @@ If you do not mind adding express to a projects list of dependencies, of it is i
 
 ## 2 - New static sever solution example that uses promises
 
-I first wrote this post back in December of 2017, the old script still works okay, but as of this writing I have made at least one new revision of this simple static sever file. The main goal was to just have a more fine grain form of file where I break things down a little more with various helper methods rather than having a file where there are a lot of nested calls of file system methods. So then in this from of the file I am now using promises, making use of the promsiify method of the built in util module to make sure that the use of a file system method will return a promise on older versions of node where that is not the standard.
+I first wrote this post back in December of 2017, the old script still works okay, but as of this writing I have made at least one new revision of this simple static sever file. The main goal was to just have a more fine grain form of file where I break things down a little more with various helper methods rather than having a file where there are a lot of nested calls of file system methods. So then in this from of the file I am now using promises, making use of the [promsiify method of the built in util module](/2019/06/22/nodejs-util-promisify/) to make sure that the use of a file system method will return a promise on older versions of node where that is not the standard.
 
 ```js
 /*
