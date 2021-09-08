@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 510
-updated: 2021-09-08 12:34:10
-version: 1.24
+updated: 2021-09-08 12:36:38
+version: 1.25
 ---
 
 In just about any web browser there is a [javaScript console](https://developers.google.com/web/tools/chrome-devtools/console/javascript) to work with for debugging, but also to test out a little javaScript code often if the console supports doing so. There are [many ways to go about getting started with javaScript](/2018/11/27/js-getting-started/), some of which require the installation of software that might not all ready be installed on the computer however, but this is often not the case when it comes to monkeying around in the javaScript console of a web browser. You see this console can be used as a way of getting started with javaScript, without installing any additional software beyond the web browser that you all ready have installed on your computer. So because of this the javaScript console might be a good starting point as anyone that has a browser like chrome installed can open the javaScript console, and start learning a thing or two about javaScript coding.
@@ -137,6 +137,6 @@ After that there is calling the sm.toggleAutoClick to start auto clicking upgrad
 
 ## 3 - Conclusion
 
-So the javaScript console is a great way to get started with the javaScript programing language, but there are many other ways to get started with JavaScript as well. There is hand coding an html file and having some javaScript code in a script tag that can then be used via the file protocol in the web browser as well that can still work okay for some simple examples. There is also getting into nodejs and finding all kinds of ways to serve javaScript to the browser via the http protocol.
+So the javaScript console is a great way to get started with the javaScript programing language, but there are many other ways to get started with JavaScript as well. There is hand coding an html file and having some javaScript code in a script tag that can then be used via the file protocol in the web browser as well that can still work okay for some simple examples. There is also getting into nodejs and finding all kinds of ways to serve javaScript to the browser via the http protocol, which in time might be the best way to go about developing actually as that will help to address all kinds of problems that will pop up when working by way of the file protocol.
 
 What is great about javaScript is that it can be used right away in the browser right now, but can also be used to write client systems, back end code, and even Command line tools. These days javaScript is really hot, and given the nature of the web will likely remain so for a long time, making javaScript one of the best choices for a first language.
