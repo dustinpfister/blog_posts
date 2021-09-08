@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 108
-updated: 2021-09-08 14:41:17
-version: 1.17
+updated: 2021-09-08 14:45:39
+version: 1.18
 ---
 
 When working with many node projects I often run into a situation in which I need to just set up a simple static web sever, often purely for the sake of serving a path over the http rather than file protocol in a web browser. There are many npm packages such as [node-static](https://www.npmjs.com/package/node-static) that can be used to pull this off, but I often find myself just working out a simple solution using the built in [http module in node itself](/2018/02/06/nodejs-http/). It can be a bit time consuming to do this though, and when it comes to starting a more serious production app it might be better to use a well supported [framework such as express](/2018/05/21/express-getting-started/) to make quick work of this and much more. However in this post I will be using just plain old native javaScript in node.js to create a simple node static file server.
@@ -282,4 +282,7 @@ So of course this solution just handles GET requests which works fine in most si
 
 ## 4 - Conclusion
 
-Writing these kinds of files now and then is fun. Of course it is not battle tested, but it seems to work fine for me in most cases when it just comes to playing with some kind of javaScript project that needs to be severed up over http.
+Writing these kinds of files now and then is fun, and every now and then I come around to make a more robust version of this sort of file. Of course nether of these static sever script files are battle tested, but it seems to work fine for me in most cases when it just comes to playing with some kind of javaScript project that needs to be severed up over http. That is where I often use this kind of file, so it makes sense to have a post on this topic, and a github repo to hold the source code. I hate wasting time coming up with new solutions for problems that can be fixed more or less permanently. So whenever I want to use this kind of script I can just copy what I have work out here.
+
+
+
