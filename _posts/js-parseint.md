@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:21:52
-version: 1.35
+updated: 2021-09-09 09:24:49
+version: 1.36
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -99,7 +99,7 @@ So then this is one of the little things about parseInt that a javaScript develo
 
 ## 3 - The deal with max safe integer
 
-There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexpected results as well with parseInt.
+There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexpected results as well with parseInt. I Covered the basic idea of what m[ax safe integer is on my post that has to do with JavaScript numbers in general](/2019/01/24/js-javascript-number/) that gets into this in detail.
 
 ```js
 let n = Number.MAX_SAFE_INTEGER;
