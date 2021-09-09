@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:18:11
-version: 1.32
+updated: 2021-09-09 09:19:25
+version: 1.33
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -40,7 +40,7 @@ console.log( parseInt('42.9876') ); // 42
 
 ### 1.3 - using a radix value for the second argument
 
-The parseInt method in native core javaScript works by just passing a string of a number as the first argument, and an optional [radix](https://en.wiktionary.org/wiki/radix) as the second argument. The default as one might expect is base 10 which is the radix system that many people are familiar with.
+The parseInt method in native core javaScript works by just passing a string of a number as the first argument, and an optional [radix](https://en.wiktionary.org/wiki/radix) as the second argument. The default as one might expect is base 10 which is the radix system that many people are familiar with. The radix value applies to the given string value not the resulting return value, the return value will always be base 10.
 
 ```js
 var str = '101';
