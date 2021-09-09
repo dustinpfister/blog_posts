@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 13:20:18
-version: 1.42
+updated: 2021-09-09 13:28:21
+version: 1.43
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -168,6 +168,16 @@ let obj = {
 console.log( Number(obj) );  // 42
 console.log( obj.valueOf() ); // 42
 console.log( obj * 1 ); // 42
+```
+
+### 3.4 - The parseFloat method
+
+There is also the parseFloat function that will parse a string value into a number with the fraction part of the number. There is doing that, and then preforming any additional things that I want to do when it comes to rounding or cutting the decimal.
+
+```js
+let str = '42.1234';
+ 
+console.log( parseFloat(str) ); // 42.1234
 ```
 
 ## 4 - Conclusion
