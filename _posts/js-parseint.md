@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:09:34
-version: 1.28
+updated: 2021-09-09 09:12:21
+version: 1.29
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -23,7 +23,7 @@ Before I get into other ways to go about creating a integer value from a string 
 
 ### 1.2 - A basic example of parseInt
 
-A very basic example of parseInt might involve just passing a string of a number as the first argument when calling the parseInt function. The returned result will be a number rather than a string and if all goes well the value of the number will be the same of that of the string value. When called parseInt will attempt to parse what is passed to it as a number that will be an integer value, so I do not need to bother with rounding the result. So if for example I pass the string value of 42 the result will be a number with the value of 42 rather than a string of that number, also if I give a string value like 42.125 the result will again be f2
+A very basic example of parseInt might involve just passing a string of a number as the first argument when calling the parseInt function. The returned result will be a number rather than a string and if all goes well the value of the number will be the same of that of the string value. When called parseInt will attempt to parse what is passed to it as a number that will be an integer value, so I do not need to bother with rounding the result, more on rounding a little later So if for example I pass the string value of 42 the result will be a number with the value of 42 rather than a string of that number, also if I give a string value like 42.125 the result will again be f2
 
 ```js
 console.log( parseInt('42') ); // 42
@@ -31,7 +31,7 @@ console.log( parseInt('42') ); // 42
 
 ### 1.1 - parseInt will just cut a fraction from a number
 
-There is the question of how parseInt will treat a fraction of a number. With that said it would seem that parseInt will just cut the fraction part. If this is a problem then this would then be a reason why one would prefer to use one of the options for rounding numbers in place of using parseInt. In addition there is also the parseFloat method also that will not do that of course.
+There is the question of how parseInt will treat a fraction of a number, when it comes to the subject of rounding, or just cutting the fraction part of a number. With that said it would seem that parseInt will just cut the fraction part from the number value. If this is a problem then this would then be a reason why one would prefer to use one of the options for rounding numbers in place of using parseInt. Such as using the parseFloat method and then the Math.ceil, Math.round, or Math.floor methods.
 
 ```js
 console.log( parseInt('42.1234') ); // 42
