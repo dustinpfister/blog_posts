@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:12:21
-version: 1.29
+updated: 2021-09-09 09:13:17
+version: 1.30
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -31,7 +31,7 @@ console.log( parseInt('42') ); // 42
 
 ### 1.1 - parseInt will just cut a fraction from a number
 
-There is the question of how parseInt will treat a fraction of a number, when it comes to the subject of rounding, or just cutting the fraction part of a number. With that said it would seem that parseInt will just cut the fraction part from the number value. If this is a problem then this would then be a reason why one would prefer to use one of the options for rounding numbers in place of using parseInt. Such as using the parseFloat method and then the Math.ceil, Math.round, or Math.floor methods.
+There is the question of how parseInt will treat a fraction of a number, when it comes to the subject of rounding, or just cutting the fraction part of a number. With that said it would seem that parseInt will just cut the fraction part from the number value. If this is a problem then this would then be a reason why one would prefer to use one of the options for rounding numbers in place of using parseInt. Such as using the parseFloat method and then the [Math.ceil, Math.round, or Math.floor methods](/2020/06/15/js-math-round/).
 
 ```js
 console.log( parseInt('42.1234') ); // 42
