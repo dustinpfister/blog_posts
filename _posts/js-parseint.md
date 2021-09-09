@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 13:08:38
-version: 1.40
+updated: 2021-09-09 13:18:12
+version: 1.41
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -151,6 +151,23 @@ var parseToInt = function (a) {
 var n = parseToInt('7');
 console.log(typeof n); // number
 console.log(n); // 7
+```
+
+### 3.3 - The valueOf method of an Object
+
+When it comes to making any kind of object by way of creating a constructor function, or just a plain object literal I can define what a valueOf method should be for this kind of object.
+
+```js
+let obj = {
+    str: '42.1234',
+    valueOf: function () {
+        return Math.floor( Number(this.str) );
+    }
+};
+ 
+console.log( Number(obj) );  // 42
+console.log( obj.valueOf() ); // 42
+console.log( obj * 1 ); // 42
 ```
 
 ## 4 - Conclusion
