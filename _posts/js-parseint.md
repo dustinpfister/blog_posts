@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:24:49
-version: 1.36
+updated: 2021-09-09 12:53:58
+version: 1.37
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -147,4 +147,7 @@ console.log(n); // 7
 
 ## 6 - Conclusion
 
-So the javaScript parseInt method is one of several methods that can be used to parse a value to a number, there are also many other little ticks that can be used to parse a value to a number also. There is the question of not just parsing to a number, but parsing to an integer rather than a float. The parseInt method can be just that method to do so, but I still find myself using the built in Math object rounding methods combined with other methods to insure a number rather than a string.
+So the javaScript parseInt method is one of several methods that can be used to parse a value to a number, there are also many other little ticks that can be used to parse a value to a number also. There is still the question of not just parsing to a number, but parsing to an integer rather than a float, and for that the parseInt method works just fine in most cases. 
+
+The parseInt method can be used to get an int value, but I still find myself using the Number function along with the built in Math object rounding methods combined with other methods to insure a number rather than a string. In many cases this just allows for a better degree of control of the outcome of a number. For example I get to chose what method I will use to round a number rather than just having the fraction value cut off. I can get the same effect by using the Math.floor method if I want, but in some cases I might want to use one of the other rounding methods.
+
