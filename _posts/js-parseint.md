@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:20:45
-version: 1.34
+updated: 2021-09-09 09:21:52
+version: 1.35
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -62,7 +62,7 @@ console.log( parseInt(str, 16) ); // 163
 
 ### 1.5 - a starting char that is not used for number values can result in NaN
 
-Be mindful of any characters that are not used at all for number values of any radix. If a char that is not part of a number is at then end of a string then the parseInt method will just ignore it, and work with any valid chars from the start of the string up to that index in the string. However if a string begins with a char that is not used even with the property radix for the rest of the values that will result in NaN. The parseInt method will not preform any kind of pattern matching for you, you will need to do that before hand when it comes to extracting the desired input value for the parseInt function.
+Be mindful of any characters that are not used at all for number values of any radix. If a char that is not part of a number is at then end of a string then the parseInt method will just ignore it, and work with any valid chars from the start of the string up to that index in the string. However if a string begins with a char that is not used even with the property radix for the rest of the values that will result in NaN. The parseInt method will not preform any [kind of text pattern matching](/2019/03/20/js-regex/) for you, you will need to do that before hand when it comes to extracting the desired input value for the parseInt function.
 
 ```js
 // if a non number char is at the end of a string it will just
