@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:15:42
-version: 1.31
+updated: 2021-09-09 09:18:11
+version: 1.32
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -52,7 +52,7 @@ console.log( parseInt(str, 16) ); // 257
 
 ### 1.4 - Wrong radix can result in NaN
 
-There are a few reason why one might end up [with a NaN value](/2017/09/23/js-nan/) when using parseInt. One such reason why NaN might be the result is when it comes to strings that contain letters that are to be used with a certain radix, NaN can result if the proper radix is not given.
+There are a few reason why one might end up [with a NaN value](/2017/09/23/js-nan/) when using parseInt. One such reason why NaN might be the result is when it comes to strings that contain letters that are to be used with a certain radix, NaN can result if the proper radix is not given. For example say I have a string that contains a number but the radix is not 10, but 16, in other words a hex number. If I just pass the hex string to parseInt the result will be NaN because the default radix of 10 is what was used. If I pass the hex string as the first argument, and then set the proper radix of 16 as the second argument, then the desired number value will be returned.
 
 ```js
 var str = 'a3';
