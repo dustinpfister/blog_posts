@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2020-09-10 10:37:29
-version: 1.24
+updated: 2021-09-09 09:01:16
+version: 1.25
 ---
 
-The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) is one of several ways to [convert a string to a number as an integer](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
+The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
 
-So when using the javaScript parseInt method to produce an integer it is really just a float still technically, but for all practical purposes when it comes to the product in a mathematical sense it is an integer. The parseInt method is often the first go to solution with this, and for the most part it will work just fine. However there are other was to parse a value to an integer, or float in javaScript as well, and there are subtle little edge cases that might come up in certain situations. So lets take a look at paserInt and also the options that come to mind when it comes to parsing values to integers in javaScript.
+So when using the javaScript parseInt method to produce an integer it is really just a float still technically, but for all practical purposes when it comes to the product in a mathematical sense it is an integer. The parseInt method is often the first go to solution with this, and for the most part it will work just fine. However there are other was to parse a value to an integer, or float in javaScript as well, and there are subtle little edge cases that might come up in certain situations. Some of the other options to consider are the parseFloat method that will do more or less the same as parseInt only the return value will be a float, and there is also using the Number function to convert a string to a number also. So lets take a look at paserInt and also the options that come to mind when it comes to parsing values to integers in javaScript.
 
 <!-- more -->
 
