@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 12:53:58
-version: 1.37
+updated: 2021-09-09 13:03:56
+version: 1.38
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -60,7 +60,7 @@ console.log( parseInt(str) ); // NaN
 console.log( parseInt(str, 16) ); // 163
 ```
 
-### 1.5 - a starting char that is not used for number values can result in NaN
+### 1.5 - A starting char that is not used for number values can result in NaN
 
 Be mindful of any characters that are not used at all for number values of any radix. If a char that is not part of a number is at then end of a string then the parseInt method will just ignore it, and work with any valid chars from the start of the string up to that index in the string. However if a string begins with a char that is not used even with the property radix for the rest of the values that will result in NaN. The parseInt method will not preform any [kind of text pattern matching](/2019/03/20/js-regex/) for you, you will need to do that before hand when it comes to extracting the desired input value for the parseInt function.
 
@@ -77,7 +77,9 @@ console.log( parseInt(str, 16) ); // NaN
 
 ```
 
-## 2 - parseInt converts to String first
+## 2 - Some things to look out for when using parseInt
+
+### 2.1 - parseInt converts to String first
 
 The parseInt method might not always return expected results in some situations. One such situation is how parseInt will work when given a string of a javaScript number that makes use of notation with the letter e in it. For example the parseInt method converts to a string first and if it is a number then goes off into notation, then the letter e char will not be recognized as a number and will parse an int based on what comes before it.
 
@@ -97,7 +99,7 @@ console.log( parseInt('12e45') ); // 12
 
 So then this is one of the little things about parseInt that a javaScript developer should be ware of when making use of it when working with numbers that will go off into notation.
 
-## 3 - The deal with max safe integer
+### 2.2 - The deal with max safe integer
 
 There is also the nature of the max safe integer, when adding anything to that and going beyond the max safe int that too can result in unexpected results as well with parseInt. I Covered the basic idea of what m[ax safe integer is on my post that has to do with JavaScript numbers in general](/2019/01/24/js-javascript-number/) that gets into this in detail.
 
@@ -109,7 +111,11 @@ console.log(parseInt(n + 100)); // 9007199254741092
 
 If you need to work with very large numbers, and retain precision not only should you forget about using parseInt, you should forget about using javaScript numbers all together. There are libraries, and also some native stuff in the works to allow for a whole other way of preforming high precision math. However getting into that in detail would be off topic here.
 
-## 4 - parseInt and Number
+## 3 - Alternatives to the parseInt method
+
+The parseInt function will work just fine in most cases, however thus far I can not say that I use it often. I am not saying that using the parseInt method is bad practice it is just that there are alternatives that also work well. Also in some cases the alternatives will work better in some of those cases where the parseInt method will fall short, such as with using numbers that go into notation. Also I often like having a higher degree of control when it comes to how to handle the fraction part of a source string or number.
+
+### 3.1 - The Number function
 
 The [Number function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) can be used to convert a string to a number also. It is a way to explicitly declare the the value that is given to the number function is th be parsed as a number. However it will not parse to an integer, at least not my itself, so it would have to be used in conjunction with an additional method such as the Math.round method.
 
@@ -131,7 +137,7 @@ console.log( Number(str2) ); // NaN
 console.log( parseInt(str2) ); // 42
 ```
 
-## 5 - Multiply by a string of the number 1 and round to parse to an integer
+### 3.2 - Multiply by a string of the number 1 and round to parse to an integer
 
 ANother trick that comes to mind is multiply a value by a string of the number one, and then using something like Math.floor, or any other such method to round the result of that. The reason why this works is because of the typeless nature of javaScript. This sort of thing would not work with addition because that is used for both addition and string concatenation. So when it comes to using addition that would help to convert numbers to strings, and I see similar tricks to this being used as a way to parse numbers to strings. However when it comes to an operator such as multiplication that is something that is only a math operation, so the result is a number rather than a string.
 
@@ -145,7 +151,7 @@ console.log(typeof n); // number
 console.log(n); // 7
 ```
 
-## 6 - Conclusion
+## 4 - Conclusion
 
 So the javaScript parseInt method is one of several methods that can be used to parse a value to a number, there are also many other little ticks that can be used to parse a value to a number also. There is still the question of not just parsing to a number, but parsing to an integer rather than a float, and for that the parseInt method works just fine in most cases. 
 
