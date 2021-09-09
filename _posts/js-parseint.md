@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 13:04:58
-version: 1.39
+updated: 2021-09-09 13:08:38
+version: 1.40
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -79,7 +79,7 @@ console.log( parseInt(str, 16) ); // NaN
 
 ## 2 - Some things to look out for when using parseInt
 
-Now that I have covered the basics of the parseInt method maybe now it is called for to take a deeper look at some of the things to be aware of when using the parseInt method.
+Now that I have covered the basics of the parseInt method maybe now it is called for to take a deeper look at some of the things to be aware of when using the parseInt method. Although the parseInt method will work just fine in most cases, if a source string goes into notation that will result in NaN. Another thing to be mindful with parseInt, as well as javaScript numbers in general is what the deal is with max safe integer. So in this section I will be going over some weird things that might pop up when using parseInt, after this I can get to some alternatives to the parseInt method.
 
 ### 2.1 - parseInt converts to String first
 
