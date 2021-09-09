@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 449
-updated: 2021-09-09 09:01:16
-version: 1.25
+updated: 2021-09-09 09:03:17
+version: 1.26
 ---
 
 The [parseInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function is one of several ways to [convert a string to a number](https://www.geeksforgeeks.org/javascript-parseint-with-examples/) in javaScript. The parseInt method does convert a string or number to an [integer](https://en.wikipedia.org/wiki/Integer), but technically it is still a float as all numbers in [javaScript are double precision floating point numbers](https://en.wikipedia.org/wiki/IEEE_754).
@@ -17,8 +17,9 @@ So when using the javaScript parseInt method to produce an integer it is really 
 
 ## 1 - parseInt basic examples
 
-Before I get into other ways to go about creating a integer value from a string in javaScript other then parseInt it would be a good idea to first cover the basics of parseInt, and how it works with a range of various examples of string values that might potential be passed to parseInt in a project. So for starters lets just take a look at some basic examples of using parseInt.
+I assume that you have at least some background when it comes to the subject of [getting started with javaScript](/2018/11/27/js-getting-started/).
 
+Before I get into other ways to go about creating a integer value from a string in javaScript other then parseInt it would be a good idea to first cover the basics of parseInt, and how it works with a range of various examples of string values that might potential be passed to parseInt in a project. So for starters lets just take a look at some basic examples of using just the parseInt function only.
 
 ### 1.2 - A basic example of parseInt
 
