@@ -8,6 +8,10 @@
 * start a new nodejs-simple-http-request-get-post-system repo folder
 * base nodejs-simple-http-request-get-post-system based off of
 
+### () -edit: nodejs-querystring
+* edit post to 500+ words
+* have 5+ internal links
+
 ### () - edit: nodejs-http
 * edit nodejs-http to 1000+ words
 * link to nodejs-simple-static-server-file in the conclusion of the post
@@ -22,7 +26,11 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-## () - edit js-parseint
+## ( ) - edit js-custom-event
+* edit js-custom-event to 1,000+ words
+* have 5+ internal links for the post
+
+## ( done 09/09/2021 ) - edit js-parseint
 * edit js-parseint to 1,800+ words
 * have 5+ internal links for the post
 
