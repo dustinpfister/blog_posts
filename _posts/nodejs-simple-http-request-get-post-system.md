@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:39:44
-version: 1.29
+updated: 2021-09-10 18:42:04
+version: 1.30
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -17,7 +17,7 @@ A few years back I made a [simple nodejs script that is a basic drop in script t
 
 What I am writing about here is a script that I can run with nodejs by itself without any additional user space packages to set up a simple static sever, and also respond to post requests. This is then not any kind of [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/) so if you are still fairly new with it you might find this post a but to advanced.
 
-In the script I am sticking to built in node modules such as the http module, the file system module, and the path module just to name a few.
+In the script I am sticking to built in node modules such as the [http module](/2018/02/06/nodejs-http/), the [file system module](/2018/02/08/nodejs-filesystem/), and the [path module](/2017/12/27/nodejs-paths/) just to name a few.
 
 ### 1.1 - I was using nodejs 10.x when I made this
 
