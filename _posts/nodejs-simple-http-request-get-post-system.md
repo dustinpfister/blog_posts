@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:47:36
-version: 1.32
+updated: 2021-09-10 18:50:21
+version: 1.33
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -33,7 +33,7 @@ Here in this section I will be going over the source code of the main server scr
 
 The main feature of interest here though compared to the simple static sever script example is that this script will not use the method property of a request object to call a special methods for a certain kind of request. Not just get requests but post requests as well now also. I could add additional support fr the other kinds of requests but I wanted to keep this projects simple, and all in just on file.
 
-There is however the question of how I go about costuming how to go about processing get requests from one project to the next where I might make use of this script. With that said I have a system set up for this where the script will look for an index JavaScript file that should be located in a middleware folder off of the root folder set for the script.
+There is however the question of how I go about costuming how to go about processing get requests from one project to the next where I might make use of this script. With that said I have a system set up for this where the script will look for an index JavaScript file that should be located in a middleware folder off of the root folder set for the script. If none is found then the script will just use a built in middleware function that does not do anything, and the script is then just a far to complex static sever.
 
 ```js
 /*
