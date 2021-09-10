@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:27:39
-version: 1.24
+updated: 2021-09-10 18:30:13
+version: 1.25
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -456,7 +456,7 @@ utils.httpPNG = function(opt){
 
 ### 3.3 - The client main JavaScript file
 
-I then have a main javaScript file that will compose most of the javascript code that will be the client system for this demo. For this I just have some methods that help with making the proper requests that will work with the middleware file that I made for the demo.
+I then have a main javaScript file that will compose most of the JavaScript code that will be the client system for this demo. For this I just have some methods that help with making the proper requests that will work with the middle ware file that I made for the demo. I did not care to get to involve with this demo so for now there are just two helper method one to make a post request, and another to make a get request for the map json file. Each time the page loads I just make a plain old get request for the json file, and draw the state of the map. On top of that I am also adding some events for a button in the html that can be used to set the type index of one of the cells.
 
 ```js
 var state = {
