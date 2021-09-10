@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:52:38
-version: 1.21
+updated: 2021-09-10 13:54:18
+version: 1.22
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -574,7 +574,7 @@ Here then is the source code of the main index html file for the root name space
 </html>
 ```
 
-When I start the main server file, the script finds and uses the middle ware file that I made and starts listening on the host and port number that I set for it. By default this means that I can go to a web browser on the completer that I start the script on and go to localhost:8080 to view the main index that can be used to view and edit the map.js file.
+When I start the main server file, the script finds and uses the middle ware file that I made and starts listening on the host and port number that I set for it. By default this means that I can go to a web browser on the completer that I start the script on and go to localhost:8080 to view the main index that can be used to view and edit the map.js file. In the event that I want to view the index from another computer on the same network I will need to find out what the local ip address is for the system that I started the script on and replace localhost with that ip address.
 
 ## 4 - Conclusion
 
