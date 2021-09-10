@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:31:33
-version: 1.14
+updated: 2021-09-10 13:35:15
+version: 1.15
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -290,6 +290,8 @@ server.listen(port, host, () => {
 So then now that I have the sever script together it is time to test it out with some additional source code to make use of the script. So with that said I will want to have at least one demo project.
 
 ### 3.1 - The middleware
+
+Here I have the middleware file for th demo project that should be at the \/middleware\/index.js file off from the root project folder. This file is what I will be using to handle including post requests for the specific demo that is making use of the simple sever script. The way that this is done is by designing by client system to send body objects that contain custom data that will then in rurn be used in this middle ware file to append results to standard response object.
 
 ```js
 let http = require('http'),
