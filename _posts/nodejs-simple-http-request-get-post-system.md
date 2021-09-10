@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:41:04
-version: 1.18
+updated: 2021-09-10 13:43:12
+version: 1.19
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -545,6 +545,33 @@ document.getElementById('input_set_typeindex').addEventListener('click', functio
         }
     });
 });
+```
+
+### 3.4 - The main index.html file at root
+
+Here then is the source code of the client system for the demo.
+
+```html
+<html>
+    <head>
+        <title>Simple http request get post system</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <div class="banner" >
+            <h1 class="banner_text" >Simple http request get post system</h1>
+        </div>
+        <div class="content">
+           <div id="map_disp">Content</div>
+           <br>
+           Type Index: <input id="input_typeindex" size="2" type="text" value="0"><br>
+           pos: <input id="input_x" type="text" size="2" value="0">, <input id="input_y" size="2" type="text" value="0"><br>
+           <input id="input_set_typeindex" value="set type index" type="button">
+        </div>
+        <script src="/js/utils.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>
 ```
 
 ## 4 - Conclusion
