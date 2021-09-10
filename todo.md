@@ -4,11 +4,13 @@
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
 
-### () new post #928 for 9/10/2021 - nodejs-simple-http-request-get-post-system
-* start a new nodejs-simple-http-request-get-post-system repo folder
-* base nodejs-simple-http-request-get-post-system based off of
+### () - new post #929 for 09/17/2021 - nodejs-
 
-### () -edit: nodejs-querystring
+### ( done 09/10/2021 ) - new post #928 for 09/10/2021 - nodejs-simple-http-request-get-post-system
+* (done) start a new nodejs-simple-http-request-get-post-system repo folder
+* (done) base nodejs-simple-http-request-get-post-system based off of
+
+### () - edit: nodejs-querystring
 * edit post to 500+ words
 * have 5+ internal links
 
