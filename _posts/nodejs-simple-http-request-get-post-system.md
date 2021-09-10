@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:43:12
-version: 1.19
+updated: 2021-09-10 13:50:13
+version: 1.20
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -549,7 +549,7 @@ document.getElementById('input_set_typeindex').addEventListener('click', functio
 
 ### 3.4 - The main index.html file at root
 
-Here then is the source code of the client system for the demo.
+Here then is the source code of the main index html file for the root name space of the client system for the demo. Here I am linking to the utils.js file, and well as the main.js file that I coved above. In addition I have just a little but of hard coded html that will serve as the very basic user interface to just mutate the state of this map json file.
 
 ```html
 <html>
