@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:35:15
-version: 1.15
+updated: 2021-09-10 13:38:05
+version: 1.16
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -291,7 +291,9 @@ So then now that I have the sever script together it is time to test it out with
 
 ### 3.1 - The middleware
 
-Here I have the middleware file for th demo project that should be at the \/middleware\/index.js file off from the root project folder. This file is what I will be using to handle including post requests for the specific demo that is making use of the simple sever script. The way that this is done is by designing by client system to send body objects that contain custom data that will then in rurn be used in this middle ware file to append results to standard response object.
+Here I have the middleware file for th demo project that should be at the \/middleware\/index.js file off from the root project folder. This file is what I will be using to handle including post requests for the specific demo that is making use of the simple sever script. The way that this is done is by designing by client system to send body objects that contain custom data that will then in return be used in this middle ware file to append results to standard response object.
+
+In this demo the idea is to just create and or mutate a json file in the public folder that contains map data for a simple grid. So the first thing that the script should do is to check if the map json file is there to begin with, in the event that it is not create a new map json file for the public folder. In the event that the map file is there, or after the new map file is created, preform an action on the map based on data from the body object, and then write the new state of the map object to the public folder.
 
 ```js
 let http = require('http'),
