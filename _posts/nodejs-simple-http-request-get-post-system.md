@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:40:17
-version: 1.17
+updated: 2021-09-10 13:41:04
+version: 1.18
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -454,7 +454,9 @@ utils.httpPNG = function(opt){
 };
 ```
 
-### 3.3 - The client main javascript file
+### 3.3 - The client main JavaScript file
+
+I then have a main javaScript file that compose the client system for this demo.
 
 ```js
 var state = {
