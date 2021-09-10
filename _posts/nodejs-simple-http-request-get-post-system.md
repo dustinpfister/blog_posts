@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:42:04
-version: 1.30
+updated: 2021-09-10 18:45:35
+version: 1.31
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -30,6 +30,8 @@ I am going over all the relevant source code in this post, but the full source c
 ## 2 - The server script
 
 Here in this section I will be going over the source code of the main server script that will be called with node directly, or indirectly with some additional script that has some hard coded defaults with the arguments. The script sets up a server using the http create sever method of the built in http module in nodejs. I then have a number of helper functions that will help with the process of handing incoming get requests for static files location sin a public folder than can be set with one of the several arguments that can be passed when calling the script.
+
+The main feature of interest here though compared to the simple static sever script example is that this script will not use the method property of a request object to call a special methods for a certain kind of request. Not just get requests but post requests as well now also. I could add additional support fr the other kinds of requests but I wanted to keep this projects simple, and all in just on file.
 
 ```js
 /*
