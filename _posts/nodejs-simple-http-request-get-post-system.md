@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:12:34
-version: 1.6
+updated: 2021-09-10 13:14:15
+version: 1.7
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -531,4 +531,5 @@ document.getElementById('input_set_typeindex').addEventListener('click', functio
 
 This turned out to be yet another interesting project where I just wanted to create a simple script that can be used to quickly set up a static sever, but can also be used to respond to post requests. 
 
-I made the demo project in the from of the middle ware file and the various files that compose the public folder just for the sake of having something to test out that this system is working okay at least. However I can not say that it composes any kind of real project when it comes to having some kind of real project based off of this. However so far I would say that the question of making a real project with this might just involve making a far more advanced middle ware file, or perhaps a collection of files to compose the back end system.
+I made the demo project in the from of the middle ware file and the various files that compose the public folder just for the sake of having something to test out that this system is working okay at least. However I can not say that it composes any kind of real project when it comes to having some kind of real project based off of this. However so far I would say that the question of making a real project with this might just involve making a far more advanced middle ware file, or perhaps a collection of files to compose the back end system. There is developing some kind of crude yet effective authentication system, and doing much more then it comes to public and private assets that will be read and edited for a project.
+
