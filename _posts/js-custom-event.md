@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-10 19:09:07
-version: 1.10
+updated: 2021-09-10 19:14:06
+version: 1.11
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -17,7 +17,11 @@ However in this post I will be sticking to the custom way of how to go about mak
 
 <!-- more -->
 
-## 1 - Custom Event constructor basic example
+## 1 - What to know before getting into making custom events
+
+This is a bit more of an advanced post compared to the basics of getting started with events. When it comes to that I have wrote a post on [event listeners](/2019/01/16/js-event-listeners/), and other post on [event objects](/2020/07/23/js-event-object/). I also assume that you have at least some background when it comes to the very basics of html and javaScript. If you are still fairly new to javaScript you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-started/) in general.
+
+## 2 - Custom Event constructor basic example
 
 In this section I will be touching base on just a basic example of the [CustomEvent constructor](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). The process just involves creating an event with the custom event constructor, and then passing that object to the dispatch event method of a DOM element reference. Once the dispatch event method is called any event handlers that are attached for that custom event will fire.
 
