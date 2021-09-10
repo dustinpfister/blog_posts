@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 13:19:10
-version: 1.10
+updated: 2021-09-10 13:25:47
+version: 1.11
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -17,7 +17,13 @@ A few years back I made a [simple nodejs script that is a basic drop in script t
 
 What I am writing about here is a script that I can run with nodejs by itself without any additional user space packages to set up a simple static sever, and also respond to post requests. This is then not any kind of [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/) so if you are still fairly new with it you might find this post a but to advanced.
 
-### 1.1 - The source code for this can be found at my github
+In the script I am sticking to built in node modules such as the http module, the file system module, and the path module just to name a few.
+
+### 1.1 - I was using nodejs 10.x when I made this
+
+When I made this script I was using nodejs 10.x which as of this writing is no longer supported. I do get around to editing my posts on nodejs once in a while, and with that said maybe next time I will be using a later version of nodejs. The thin about it though is that I like to make code examples that will still work okay on older versions of nodejs even if they are no longer supported. Often people will install a version of node that is supplied from a public repository in a Linux system, and sadly often these versions are out dated. Still I am currently thinking that I need to raise the bar to as least 12.x at some point soon.
+
+### 1.2 - The source code for this can be found at my github
 
 I am going over all the relevant source code in this post, but the full source code can be found at my [Git hub repository on this script](https://github.com/dustinpfister/nodejs-simple-http-request-get-post-system).
 
