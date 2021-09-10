@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:50:21
-version: 1.33
+updated: 2021-09-10 18:52:05
+version: 1.34
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -17,7 +17,7 @@ A few years back I made a [simple nodejs script that is a basic drop in script t
 
 What I am writing about here is a script that I can run with nodejs by itself without any additional user space packages to set up a simple static sever, and also respond to post requests. This is then not any kind of [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/) so if you are still fairly new with it you might find this post a but to advanced.
 
-In the script I am sticking to built in node modules such as the [http module](/2018/02/06/nodejs-http/), the [file system module](/2018/02/08/nodejs-filesystem/), and the [path module](/2017/12/27/nodejs-paths/) just to name a few.
+In the script I am sticking to built in node modules such as the [http module](/2018/02/06/nodejs-http/), the [file system module](/2018/02/08/nodejs-filesystem/), and the [path module](/2017/12/27/nodejs-paths/) just to name a few. I will not be getting into detail about how to go about suing these modules I have wrote posts on them all ready, and there are many other great resources on the open web that cover how to use these.
 
 ### 1.1 - I was using nodejs 10.x when I made this
 
@@ -33,7 +33,7 @@ Here in this section I will be going over the source code of the main server scr
 
 The main feature of interest here though compared to the simple static sever script example is that this script will not use the method property of a request object to call a special methods for a certain kind of request. Not just get requests but post requests as well now also. I could add additional support fr the other kinds of requests but I wanted to keep this projects simple, and all in just on file.
 
-There is however the question of how I go about costuming how to go about processing get requests from one project to the next where I might make use of this script. With that said I have a system set up for this where the script will look for an index JavaScript file that should be located in a middleware folder off of the root folder set for the script. If none is found then the script will just use a built in middleware function that does not do anything, and the script is then just a far to complex static sever.
+There is however the question of how I go about costuming how to go about processing get requests from one project to the next where I might make use of this script. With that said I have a system set up for this where the script will look for an index JavaScript file that should be located in a middleware folder off of the root folder set for the script. If none is found then the script will just use a built in middleware function that does not do anything, and the script is then just a far to complex static sever. More on this middlewre file later in this post when I get to some source code that is a demo of the script.
 
 ```js
 /*
