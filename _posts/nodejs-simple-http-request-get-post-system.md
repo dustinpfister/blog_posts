@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:33:01
-version: 1.26
+updated: 2021-09-10 18:35:00
+version: 1.27
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -287,7 +287,9 @@ server.listen(port, host, () => {
 
 ## 3 - The Demo Project
 
-So then now that I have the sever script together it is time to test it out with some additional source code to make use of the script. So with that said I will want to have at least one demo project.
+So then now that I have the sever script together it is time to test it out with some additional source code to make use of the script. So with that said I will want to have at least one demo project just for the sake of testing this thing out and to make sure it is working as expected.
+
+So the first and only demo that I made for this script is a very simple system where I am just mutating the values of a json file in the public folder.
 
 ### 3.1 - The middleware
 
@@ -389,6 +391,8 @@ module.exports = (req, res, next) => {
 ### 3.2 - The utils.js file for the client system
 
 When it comes to putting my client system together I want to have a general utilities library that will contains methods that I will be using in my client system. For this demo I have such a library that just contains a crude yet effective http client that I will be using to make the post requests to the server. I often have a secretive file like this where I park various methods that I will be using in one or more additional files across a system. I wrote a[post in which I cover many of the usual suspect type methods](/2021/08/06/js-javascript-example-utils/) that might end up in this kind of library.
+
+
 ```js
 var utils = {};
  
