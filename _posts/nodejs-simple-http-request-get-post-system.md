@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 12:24:54
-version: 1.4
+updated: 2021-09-10 12:27:43
+version: 1.5
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -526,3 +526,7 @@ document.getElementById('input_set_typeindex').addEventListener('click', functio
     });
 });
 ```
+
+## 4 - Concluson
+
+This turned out to be yet another interesting project where I just wanted to create a simple script that can be used to quickly set up a static sever, but can also be used to respond to post requests.
