@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 928
-updated: 2021-09-10 18:52:05
-version: 1.34
+updated: 2021-09-10 18:55:41
+version: 1.35
 ---
 
 A few years back I made a [simple nodejs script that is a basic drop in script that can be used to start a simple static sever](/2017/12/04/nodejs-simple-static-server-file/). I come back to the post now and then, and when I do I often edit the source code and the content a little. Anyway it is the kind of script that might not be a good choice to use in production, but when it comes to a simple pet project where I just want to host a public folder over the http protocol it seems to work okay thus far. Anyway the thought occurred that it would be nice to have another similar vanilla javaScript type solution for setting up this kind of script for a project only this time make it a script that is a slightly more advanced and will respond to post requests.
@@ -26,6 +26,10 @@ When I made this script I was using nodejs 10.x which as of this writing is no l
 ### 1.2 - The source code for this can be found at my github
 
 I am going over all the relevant source code in this post, but the full source code can be found at my [Git hub repository on this script](https://github.com/dustinpfister/nodejs-simple-http-request-get-post-system). So if you see something that you think should change, or for whatever the reason you want to make a pull request that would be the place to do so. Also the repos might hold a later version of the script then what I am writing about here, and also it might be the best way to go about setting up what I have worked out here by just cloning it down, and then running the server.
+
+### 1.3 - Vanilla JavaScript projects are fun, but express is a great framework for this kinds of projects too.
+
+The intention here is not to make areal serious full stack project, but just a simple script that I could use for some projects where what I am really working on is the client system. When it comes to making a serious back end system I do nt think that I would want to do everything from the ground up. With that said it really is a good idea to just go with a popular framework, such as express and well supported middleware projects for it.
 
 ## 2 - The server script
 
