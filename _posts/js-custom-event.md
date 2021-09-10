@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-10 19:19:50
-version: 1.12
+updated: 2021-09-10 19:21:16
+version: 1.13
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -42,7 +42,7 @@ So lets start out with just some basic html like this and attach to an external 
 </html>
 ```
 
-In the basic.js file that I am linking to in the html I am creating a custom event object with the Custom Event constructor, attaching a handler to the body element of the htl document for it, and then dispatching the event for the body element like so.
+In the basic.js file that I am linking to in the html I am creating a custom event object with the Custom Event constructor, attaching a handler to the body element of the html document for it, and then dispatching the event for the body element like so.
 
 ```js
 var myEvent = new CustomEvent(
