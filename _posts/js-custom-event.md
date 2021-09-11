@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:49:22
-version: 1.35
+updated: 2021-09-11 11:51:55
+version: 1.36
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -204,7 +204,7 @@ I will then want to attach at least one event listener for this hit event, and t
 
 ### 2.3 - Sever side javaScript demo
 
-I can then do more or less the same thing in nodejs with the same module.
+I can then do more or less the same thing in nodejs with the same module. The main difference is just how I go about importing the module into the script. Sense this is a nodejs script now I have to use require as a way to being it in because there are no script tags in thus kind of javaScript environment. The other node worthing difference is that when it comes to creating my listener I can not use text area elements as a way to display what is going on. So in this demo I am just using the console log method to spit things out to the standard output.
 
 ```js
 let path = require('path'),
