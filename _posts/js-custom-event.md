@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:04:20
-version: 1.19
+updated: 2021-09-11 11:06:44
+version: 1.20
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -75,6 +75,8 @@ This might not be the best example of why creating my own events is a good idea,
 ## 2 - Making a core javaScript event system that will work in the browser as well as in nodejs
 
 So I covered the basics of how to work with built in client side javaScript features when it comes to making custom events that are tired closely to html elements, and thus client side javaScript only. However what if I want to use some kind of system that is not tied closely to client side, or sever side javaScript, but core javScript. As such such a system should be able to be used quickly when making client side javaScrit as well as sever side javaScript solutions.
+
+In this section then I will be going over the source code of a module that will work in a browser, but I can also use in a nodejs script also. This helps to make my code more portable between a sever, and a client system which can have many benefits for a wide range of reasons.
 
 ### 2.1 - The event system module
 
