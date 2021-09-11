@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:20:36
-version: 1.25
+updated: 2021-09-11 11:22:20
+version: 1.26
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -82,9 +82,9 @@ In this section then I will be going over the source code of a module that will 
 
 Here I have the event system mode that I world out for this. Te module follows a pattern that I found out about a while back that is one way to go about making these kinds of modules that will work in a client as well as a sever. I wrote a post on this topic with one of my javaScript examples series posts which was the one where I am [writing about this kind of module pattern](/2021/04/14/js-javascript-example-nodejs-browser-share-code-module/) involving the use of an [IIFE](/2020/02/04/js-iife/), and feature testing for nodejs features when creating the value to append to inside the body of the IIFE.
 
-So then as I see it thus far this kind of user event module will need to have at least three public methods. 
+So then as I see it thus far this kind of user event module will need to have at least three public methods. One method will be used to set up and event for an object, another will be used to add a listener for the event of an object, and the final one will be used to dispatch the event.
 
-One method will be used to create what it is that an event is, and add it to an object. When it comes to this method alone there is a lot to cover when it comes to the various details such as if this kind of property should be attached to the own properties of an object, of if it should be a part of an objects prototype. However for now I do not want to get to far off topic when it comes to this so for now I am thinking that this add event method will just create an event for a single object, so I pass that as one argument with an additional object that contains properties that define what the event is. This includes a method that will fire each time the event is dispatched as well as the key name of the event. The result of calling this method will just set up and event for object. To use the event I need to add at least one listener for the event, and then dispatch the event elsewhere in my code.
+So First off lets get to the public method that will be used to create what the event is, and add it to an object. When it comes to this method alone there is a lot to cover when it comes to the various details such as if this kind of property should be attached to the own properties of an object, of if it should be a part of an objects prototype. However for now I do not want to get to far off topic when it comes to this so for now I am thinking that this add event method will just create an event for a single object, so I pass that as one argument with an additional object that contains properties that define what the event is. This includes a method that will fire each time the event is dispatched as well as the key name of the event. The result of calling this method will just set up and event for object. To use the event I need to add at least one listener for the event, and then dispatch the event elsewhere in my code.
 
 ```js
 (function (api) {
