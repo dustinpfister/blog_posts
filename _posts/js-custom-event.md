@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:28:07
-version: 1.29
+updated: 2021-09-11 11:33:43
+version: 1.30
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -87,6 +87,8 @@ So then as I see it thus far this kind of user event module will need to have at
 So First off lets get to the public method that will be used to create what the event is, and add it to an object. When it comes to this method alone there is a lot to cover when it comes to the various details such as if this kind of property should be attached to the own properties of an object, of if it should be a part of an objects prototype. However for now I do not want to get to far off topic when it comes to this so for now I am thinking that this add event method will just create an event for a single object, so I pass that as one argument with an additional object that contains properties that define what the event is. This includes a method that will fire each time the event is dispatched as well as the key name of the event. The result of calling this method will just set up and event for object. To use the event I need to add at least one listener for the event, and then dispatch the event elsewhere in my code. When defining what the for dispatch method is for an event the return value should be whatever it is that I want for an event object, and the arguments passed to this for dispatch methods are a reference to the object, and the options that where passed when the event was dispatched.
 
 Next I have a add listener method that is what I will be using to define one of more event handlers, or listeners of you prefer that will be called each time an event is dispatched. Inside the body of this pubic method I am getting a reference to the listeners array that should be there after calling the add event method for the object. Once I have a reference to the listeners array it is just a matter of pushing the given callback function to this array of listeners.
+
+The third public method that comes to mind is the method that I will call in my code that will be used to dispatch a given event. When calling this method I given an object with an event set up, and with at least one listener attached as the first argument. Then an event key as the second argument followed by an options object for the event. The method then just gets a reference to the listeners array, and then loops over the array and calls each event listener. When doing so it calls the for dispatch function for the event to create and pass alone the event object for the callback function of the attached listener.
 
 ```js
 (function (api) {
