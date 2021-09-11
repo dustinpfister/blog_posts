@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:06:44
-version: 1.20
+updated: 2021-09-11 11:11:20
+version: 1.21
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -79,6 +79,8 @@ So I covered the basics of how to work with built in client side javaScript feat
 In this section then I will be going over the source code of a module that will work in a browser, but I can also use in a nodejs script also. This helps to make my code more portable between a sever, and a client system which can have many benefits for a wide range of reasons.
 
 ### 2.1 - The event system module
+
+Here I have the event system mode that I world out for this. Te module follows a pattern that I found out aboit a while back that is one way to go about making these kinds of modules that will work in a client as well as a sever. I wrote a post on this topic with one of my javaScript examples series posts which was the one where I am writing about this kind of module pattern involving the use of an IIFE, and feature testing for nodejs features when creating the value to append to inside the body of the IIFE.
 
 ```js
 (function (api) {
