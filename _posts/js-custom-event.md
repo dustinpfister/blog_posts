@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:23:47
-version: 1.27
+updated: 2021-09-11 11:25:40
+version: 1.28
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -84,7 +84,7 @@ Here I have the event system mode that I world out for this. Te module follows a
 
 So then as I see it thus far this kind of user event module will need to have at least three public methods. One method will be used to set up and event for an object, another will be used to add a listener for the event of an object, and the final one will be used to dispatch the event.
 
-So First off lets get to the public method that will be used to create what the event is, and add it to an object. When it comes to this method alone there is a lot to cover when it comes to the various details such as if this kind of property should be attached to the own properties of an object, of if it should be a part of an objects prototype. However for now I do not want to get to far off topic when it comes to this so for now I am thinking that this add event method will just create an event for a single object, so I pass that as one argument with an additional object that contains properties that define what the event is. This includes a method that will fire each time the event is dispatched as well as the key name of the event. The result of calling this method will just set up and event for object. To use the event I need to add at least one listener for the event, and then dispatch the event elsewhere in my code.
+So First off lets get to the public method that will be used to create what the event is, and add it to an object. When it comes to this method alone there is a lot to cover when it comes to the various details such as if this kind of property should be attached to the own properties of an object, of if it should be a part of an objects prototype. However for now I do not want to get to far off topic when it comes to this so for now I am thinking that this add event method will just create an event for a single object, so I pass that as one argument with an additional object that contains properties that define what the event is. This includes a method that will fire each time the event is dispatched as well as the key name of the event. The result of calling this method will just set up and event for object. To use the event I need to add at least one listener for the event, and then dispatch the event elsewhere in my code. When defining what the for dispatch method is for an event the return value should be whatever it is that I want for an event object, and the arguments passed to this for dispatch methods are a reference to the object, and the options that where passed when the event was dispatched.
 
 Next I have a add listener method that is what I will be using to define one of more event handlers, or listeners of you prefer that will be called each time an event is dispatched.
 
