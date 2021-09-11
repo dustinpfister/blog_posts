@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:33:43
-version: 1.30
+updated: 2021-09-11 11:40:56
+version: 1.31
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -141,6 +141,8 @@ The third public method that comes to mind is the method that I will call in my 
 
 ### 2.2 - Client side javaScript demo
 
+So then here is a very simple client side javaScript example of the event module.
+
 ```html
 <html>
     <head>
@@ -197,6 +199,8 @@ eventMod.dispatch(player, 'hit', {
 ```
 
 ### 2.3 - Sever side javaScript demo
+
+I can then do more ot less the same thing in nodejs with the same module.
 
 ```js
 let path = require('path'),
