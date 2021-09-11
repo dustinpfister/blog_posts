@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 08:23:38
-version: 1.15
+updated: 2021-09-11 09:42:13
+version: 1.16
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
 
-There are a number of other ways of creating custom events when it comes to using a framework like phaser and threejs. There are also ways of doing this in a nodejs environment when it comes to the [events module](https://nodejs.org/api/events.html) which would be the node built in way of how to go about making user define events in a sever side javaScript environment. 
+There are a number of other ways of creating custom events when it comes to using a framework like phaser and threejs, often such frameworks have ways of creating user defined events for various kinds of things that happen in such frameworks. There are also ways of doing this in a nodejs environment when it comes to the [events module](https://nodejs.org/api/events.html) which would be the node built in way of how to go about making user define events in a sever side javaScript environment. 
 
-However in this post I will be sticking to the custom way of how to go about making custom events in just plain old vanilla client side javaScript in the browser.
+However in this post I will be sticking to the custom way of how to go about making custom events in just plain old vanilla client side javaScript in a web browser. The basic process is similar to what needs to happen when simulating a built in event such as a click event on a div element for example. Make sure there is an event handler attached to the element in question for the event, create an event object for the event, and then call the dispatch event method of the element and pass the event object to that method.
 
 <!-- more -->
 
