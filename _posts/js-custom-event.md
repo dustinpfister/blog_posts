@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-10 19:21:16
-version: 1.13
+updated: 2021-09-11 08:19:37
+version: 1.14
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -19,15 +19,17 @@ However in this post I will be sticking to the custom way of how to go about mak
 
 ## 1 - What to know before getting into making custom events
 
-This is a bit more of an advanced post compared to the basics of getting started with events. When it comes to that I have wrote a post on [event listeners](/2019/01/16/js-event-listeners/), and other post on [event objects](/2020/07/23/js-event-object/). I also assume that you have at least some background when it comes to the very basics of html and javaScript. If you are still fairly new to javaScript you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-started/) in general.
+This is a bit more of an advanced post compared to the basics of getting started with events. When it comes to the very basics of events in client side javaScript I have wrote a post on [event listeners](/2019/01/16/js-event-listeners/), and other post on [event objects](/2020/07/23/js-event-object/). It might be a good idea to get a solid grasp on how to work with built in events first before getting into learning how to go about defining custom events.
+
+I also assume that you have at least some background when it comes to the very basics of html and javaScript. If you are still fairly new to javaScript you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-started/) in general.
 
 ### 1.1 - The source code for this post, and many others is on my test vjs github repository
 
-The souce code for the examples in this post can be found in the [test vjs Github repository found here](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-custom-event). I do get around to editing this content once in a while, but it would be best to make a pull request there, or leave a comment this post if there is something you think needs to change here. I have a whole lot of other posts that I need to edit also, and the squeaky wheel gets the greasing.
+The source code for the examples in this post can be found in the [test vjs Github repository found here](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-custom-event). I do get around to editing this content once in a while, but it would be best to make a pull request there, or leave a comment this post if there is something you think needs to change here. I have a whole lot of other posts that I need to edit also, and the squeaky wheel gets the greasing.
 
 ## 2 - Custom Event constructor basic example
 
-In this section I will be touching base on just a basic example of the [CustomEvent constructor](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent). The process just involves creating an event with the custom event constructor, and then passing that object to the dispatch event method of a DOM element reference. Once the dispatch event method is called any event handlers that are attached for that custom event will fire.
+In this section I will be touching base on just a basic example of the [CustomEvent constructor](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent), that can be used to create a custom user defined event object. The process just involves creating an event with the custom event constructor, and then passing that object to the dispatch event method of a DOM element reference. Once the dispatch event method is called any event handlers that are attached for that custom event will fire.
 
 So lets start out with just some basic html like this and attach to an external javaScript file.
 
