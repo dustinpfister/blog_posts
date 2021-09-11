@@ -30,19 +30,22 @@
 
 ## ( ) - edit js-javascript-getter
 * edit post to 1,000+ words
-* edit post 10 1,800+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
+## () edit js-iife
 * have 5+ internal links for the post
 
 ## () edit js-javascript-example-nodejs-browser-share-code-module
 * link to post on js-custom-event as an example of this pattern.
 * edit post to 1,000+ words
-* edit post 10 1,800+ words
+* edit post to 1,800+ words
 * have 5+ internal links for the post
 
 ## ( ) - edit js-custom-event
-* edit post to 1,000+ words
-* edit post 10 1,800+ words
-* have 5+ internal links for the post
+* (done) edit post to 1,000+ words
+* edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 
 ## ( done 09/09/2021 ) - edit js-parseint
 * (done) edit js-parseint to 1,800+ words
