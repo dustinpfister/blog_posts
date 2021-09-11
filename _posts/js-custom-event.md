@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:48:27
-version: 1.34
+updated: 2021-09-11 11:49:22
+version: 1.35
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -199,6 +199,8 @@ eventMod.dispatch(player, 'hit', {
     </body>
 </html>
 ```
+
+I will then want to attach at least one event listener for this hit event, and then dispatch the event.
 
 ### 2.3 - Sever side javaScript demo
 
