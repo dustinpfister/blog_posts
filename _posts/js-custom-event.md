@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 10:57:37
-version: 1.17
+updated: 2021-09-11 11:01:07
+version: 1.18
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -72,7 +72,159 @@ document.body.dispatchEvent(myEvent)
 
 This might not be the best example of why creating my own events is a good idea, but you get the basic idea of the process. Just call the Custom event constructor with the new keyword just like any other constructor function in javaScript. When doing so pass the name of the custom event as the first argument, followed by and object. This object should have at least a detail property that contains data about the nature of the event.
 
-## 2 - Conclusion
+## 2 - Making a core javaScript event system that will work in the browser as well as in nodejs
+
+### 2.1 - The event system module
+
+```js
+(function (api) {
+ 
+    // add an event for an object
+    api.addEvent = function (obj, opt) {
+        opt = opt || {};
+        // user Event Object
+        var userEvent = {};
+        // MUST GIVE AN EVENT KEY
+        userEvent.eventKey = opt.eventKey;
+        // need a forDispatch method that will be called for each dispatch of an event
+        userEvent.forDispatch = opt.forDispatch || function (obj, dispatchOpt) {};
+        // need an array of listeners
+        userEvent.listeners = [];
+        // attach to the objects own properties
+        obj.ue = obj.ue || {};
+        obj.ue[userEvent.eventKey] = userEvent;
+        return obj;
+    };
+ 
+    // attach a listener for the object that will fire
+    // when the event happens
+    api.addListener = function (obj, eventKey, callBack) {
+        // get listeners for the eventKey
+        var listeners = obj.ue[eventKey].listeners;
+        // if we have listeners push the callback
+        if (listeners) {
+            listeners.push(callBack);
+        }
+        return obj;
+    };
+ 
+    // dispatch an event for the given object, passing the event key, and options
+    api.dispatch = function (obj, eventKey, dispatchOpt) {
+        var eventObj = obj.ue[eventKey];
+        // loop listeners array
+        eventObj.listeners.forEach(function (cb) {
+            // call the listener
+            cb.call(eventObj, eventObj.forDispatch.call(eventObj, obj, dispatchOpt));
+        });
+        return obj;
+    };
+ 
+    // this module should work well in nodejs, or client javaScript
+}
+    (typeof module === 'undefined' ? this['eventMod'] = {}
+        : module.exports));
+```
+
+### 2.2 - Client side javaScript demo
+
+```html
+<html>
+    <head>
+        <title>custom event in client side javaScript</title>
+    </head>
+    <body>
+        <textarea id="game-console" rows="20" cols="80"></textarea>
+        <script src="./event-system.js"></script>
+        <script>
+ 
+var player = {
+    hp: 10
+};
+ 
+// CREATE AND ADD A 'HIT' EVENT FOR THE PLAYER OBJECT
+let eventObj = {
+    eventKey: 'hit',
+    forDispatch: function (obj, dispatchOpt) {
+        obj.hp -= dispatchOpt.damage;
+        obj.hp = obj.hp < 0 ? 0 : obj.hp;
+        // return an event object that will be in the listener
+        return {
+            target: obj, // ref to the object
+            damage: dispatchOpt.damage,
+            dead: obj.hp === 0
+        };
+    }
+};
+eventMod.addEvent(player, eventObj);
+ 
+// ATTACH A LISTNEER FOR THE 'HIT' EVENT
+eventMod.addListener(player, 'hit', function (e) {
+    var el = document.querySelector('#game-console');
+    if(!e.dead){
+        el.value += 'The player was hit, taking ' + e.damage + ' damage.\n';
+    }else{
+        el.value += 'The player was hit, and has died from taking ' + e.damage + ' damage\n';
+    }
+});
+ 
+// DISPATCH THE EVENT
+eventMod.dispatch(player, 'hit', {
+    damage: 3
+});
+// false 7
+eventMod.dispatch(player, 'hit', {
+    damage: 7
+});
+// true 0
+ 
+        </script>
+    </body>
+</html>
+```
+
+### 2.3 - Sever side javaScript demo
+
+```js
+let path = require('path'),
+eventMod = require(path.join(__dirname, 'event-system.js'));
+ 
+var player = {
+    hp: 10
+};
+ 
+// CREATE AND ADD A 'HIT' EVENT FOR THE PLAYER OBJECT
+let eventObj = {
+    eventKey: 'hit',
+    forDispatch: function (obj, dispatchOpt) {
+        obj.hp -= dispatchOpt.damage;
+        obj.hp = obj.hp < 0 ? 0 : obj.hp;
+        // return an event object that will be in the listener
+        return {
+            target: obj, // ref to the object
+            damage: dispatchOpt.damage,
+            dead: obj.hp === 0
+        };
+    }
+};
+eventMod.addEvent(player, eventObj);
+ 
+// ATTACH A LISTNEER FOR THE 'HIT' EVENT
+eventMod.addListener(player, 'hit', function (e) {
+    console.log(e.dead, e.target.hp);
+});
+ 
+// DISPATCH THE EVENT
+eventMod.dispatch(player, 'hit', {
+    damage: 3
+});
+// false 7
+eventMod.dispatch(player, 'hit', {
+    damage: 7
+});
+// true 0
+```
+
+## 3 - Conclusion
 
 So now and then it become necessary to create my own events for things when it comes to working out a module for something. For example say I am making a game module and I want to provide a way to have an event that will fire each time and enemy is killed, or when the game is over. In the code that composes my state machine I can then attach event handlers for these to define some code that will run each time that at enemy is killed, or when a game is over that should not be parked in the main game module.
 
