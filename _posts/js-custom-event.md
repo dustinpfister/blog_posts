@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 08:19:37
-version: 1.14
+updated: 2021-09-11 08:23:38
+version: 1.15
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -19,7 +19,7 @@ However in this post I will be sticking to the custom way of how to go about mak
 
 ## 1 - What to know before getting into making custom events
 
-This is a bit more of an advanced post compared to the basics of getting started with events. When it comes to the very basics of events in client side javaScript I have wrote a post on [event listeners](/2019/01/16/js-event-listeners/), and other post on [event objects](/2020/07/23/js-event-object/). It might be a good idea to get a solid grasp on how to work with built in events first before getting into learning how to go about defining custom events.
+This is a bit more of an advanced post compared to the basics of getting started with events. When it comes to the very basics of events in client side javaScript I have wrote a post on [event listeners](/2019/01/16/js-event-listeners/), and other post on [event objects](/2020/07/23/js-event-object/). It might be a good idea to get a solid grasp on how to work with built in events first before getting into learning how to go about defining custom events. In my post on event objects I have an example that involves how to go about simulating events by following a process that is not so simulate from what it is that I am writing about here actually.
 
 I also assume that you have at least some background when it comes to the very basics of html and javaScript. If you are still fairly new to javaScript you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-started/) in general.
 
