@@ -42,9 +42,9 @@
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( ) - edit js-custom-event
+## ( done 09/11/2021 ) - edit js-custom-event
 * (done) edit post to 1,000+ words
-* edit post to 1,800+ words
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ## ( done 09/09/2021 ) - edit js-parseint
