@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:45:07
-version: 1.33
+updated: 2021-09-11 11:48:27
+version: 1.34
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -143,7 +143,7 @@ The third public method that comes to mind is the method that I will call in my 
 
 So then here is a very simple client side javaScript example of the event module. For this demo of the events module above I am just creating a very simple player object that just has an hp property thus far. The basic idea I have here is to just create a hit event that will be called within later game logic each time the player is hit by some kind of enemy attack.
 
-After I create the player object then I will want to call the add even pubic method of the event module passing the player object as the first argument along with an additional object that will define what the event is.
+After I create the player object then I will want to call the add even pubic method of the event module passing the player object as the first argument along with an additional object that will define what the event is. When doing so I set the event key property of this event info object to hit, and define  what the for dispatch method should be for this hit event. Each time the hit event is dispatched in the game code I will pass an options object that should contain a damage value. So in the body of the for dispatch method I use this damage value to deduct from the hp value of the player object. I then return an event object that contains a reference to the player object, along with a damage value, and a boolean that will be ture if the player is dead.
 
 ```html
 <html>
