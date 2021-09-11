@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 498
-updated: 2021-09-11 11:54:57
-version: 1.37
+updated: 2021-09-11 11:59:59
+version: 1.38
 ---
 
 In client side javaScript there is the [custom event](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) constructor that can be used to create my own events that can be attached to html elements. I then in my own code define the conditions that will be used to trigger these kinds of custom events by calling the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of the element that I attached a handler for the custom event.
@@ -245,6 +245,8 @@ eventMod.dispatch(player, 'hit', {
 });
 // true 0
 ```
+
+So then I can use the same system on client side systems as a way to create user events, but then I can also use it in web worker as well as nodejs scripts. So Then it is possible to create some kind of game module that should work well in a browser window, a worker instance, or I can also run the game in a nodejs script. In some cases I might want to have a game state object run in a sever side environment, for examples if it is some kine of network game I would want the game to update on a sever, not a client system. That is unless I want to run the game module in a web worked as a way to off set some work to the clients rather than the sever. SO making modules like this helps to make my code more portable.
 
 ## 3 - Conclusion
 
