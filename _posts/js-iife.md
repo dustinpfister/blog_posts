@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 605
-updated: 2021-09-13 15:18:48
-version: 1.32
+updated: 2021-09-13 15:25:04
+version: 1.33
 ---
 
 A [JS IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) or [Immediately Invoked Function Expression](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) is a way to make a javaScript [function expression](/2019/01/27/js-function-expression/) that self invokes right away when it is defined, rather than at a later point in time. Thus the name Immediately Invoked refers to the fact that it is defined and then invoked, it is also some times called a self executed function expression.
@@ -17,7 +17,7 @@ Inside the body of an IIFE the return keyword can then be used as a way to go ab
 
 The IIFE can also just be used as a way to not go about polluting the [global name space](/2019/01/31/js-javascript-global/), as everything that is defined within the body of an IIFE with var, let, or const will be local to the function rather than the top level or global object. Builds of projects are often made where all the front end code of a project is wrapped up into an IIFE. This helps to keep all the variables of a project from writing over anything else that might be global in a page.
 
-These kinds of functions in javaScript are often used in module design, as private methods and other values can be in the body of the function, and a public set of methods and properties can be a product that is returned by the IIFE and stored in a single global variable, or attached to a single global object. So it goes without saying that a javaScript IIFE is something that any javaScript developer should become familiar with by paying around with a few code examples that make use of one. In this post I will be going over a few basic examples of an IIFE in javaScript, and maybe even touch base on some real examples also.
+These kinds of functions in javaScript are often [used in module design](/2019/03/12/js-javascript-module/), as private methods and other values can be in the body of the function, and a public set of methods and properties can be a product that is returned by the IIFE and stored in a single global variable, or attached to a single global object. So it goes without saying that a javaScript IIFE is something that any javaScript developer should become familiar with by paying around with a few code examples that make use of one. In this post I will be going over a few basic examples of an IIFE in javaScript, and maybe even touch base on some real examples also.
 
 <!-- more -->
 
@@ -91,7 +91,8 @@ var global = {
 
 ### 1.4 - Something can be returned by the IIFE
 
-Just like any other function in javaScript something can be returned by the IIFE. This can just be a primitive value such as a number, but it can also be an object. 
+Just like any other function in javaScript [something can be returned](/2019/03/01/js-javascript-return/) by the IIFE. This can just be a primitive value such as a number, but it can also be an object. When it comes to returning an object this is where things can get interesting and this object can be a function, an object with functions as properties or both actually. When calling one of these functions from the outside of an IIFE that function will have access to the private values inside of it. So then this allows be to define private helper methods that I might not want to be part of a public API for example.
+
 ```js
 var n = (function () {
     var result = [],
