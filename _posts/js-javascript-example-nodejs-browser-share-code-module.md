@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 14:52:58
-version: 1.16
+updated: 2021-09-13 14:57:10
+version: 1.17
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -21,6 +21,8 @@ One of the cool things about nodejs is that I can use the programing language of
 First off I just need to write a [IIFE](/2020/02/04/js-iife) or Immediately Invoked Function Expression that is a kind of self executing function. The only thing that is special about this IIFE is the value that I will be passing to it in the form of an argument when calling it. The value will be the result of an expression that makes use of the conditional expression to test for the presence of the module global in node. In the event that the module is there then the value of module.exports will be what is passed to the IIFE. In the event that module is not there I will be creating a new property for the value of this, which in client side javaScript at the top level should be the window object.
 
 For this module I will have just a few pure functions that just make use of core javaScript itself which will work nice for this kind of module. When it comes to any kind of function where a client side or server side only feature is used that is where things will end up getting a little complicated. For example if I need to make some kind of module that will make http requests the XMLHttprequest method might be there to work with in client side javaScript, but in nodejs it is not. No worries about hat for now though as this will just be a simple example that has just a few typical methods I use in various projects that stick to using just core javaScript features.
+
+The methods are just properties like the result of Math.PI multiplied by two, a no operation methods, a mathematical modulo method, and a distance formula. The nature of the methods and properties that are the results of expressions are not what is important here though. What is important is that all of this is the result of using just plain old core javaScript by itself, and appending to an object that can be one of two different things depending on the environment in which it is used.
 
 ```js
 (function (api) {
