@@ -31,18 +31,22 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-## ( ) - edit js-javascript-getter
-* edit post to 1,000+ words
+## ( ) - edit js-javascript-try
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## () edit js-iife
+## ( ) - edit js-javascript-getter
+* edit post to 1,000+ words
+* edit post to 1,800+ words
 * have 5+ internal links for the post
 
 ## () edit js-javascript-example-nodejs-browser-share-code-module
 * (done) link to post on js-custom-event as an example of this pattern.
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
+* (done) have 5+ internal links for the post
+
+## ( done 09/13/2021 ) edit js-iife
 * (done) have 5+ internal links for the post
 
 ## ( done 09/11/2021 ) - edit js-custom-event
