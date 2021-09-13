@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 15:10:07
-version: 1.22
+updated: 2021-09-13 15:12:14
+version: 1.23
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -96,7 +96,7 @@ Still when it comes to some kind of module that has to do with the creating and 
 
 ## 2 - A custom user events example of the pattern
 
-I got around to editing my [post on custom events](/2019/07/03/js-custom-event/) and how to make them in a client side javaScript environment when it comes to using the custom event method. While I was at it I thought I should expand the post with an additional example that is a module that makes use of this kind of pattern.
+I got around to editing my [post on custom events](/2019/07/03/js-custom-event/) and how to make them in a client side javaScript environment when it comes to using the custom event method. While I was at it I thought I should expand the post with an additional example that is a module that makes use of this kind of pattern to make some kind of custom user event module.
 
 ```js
 (function (api) {
