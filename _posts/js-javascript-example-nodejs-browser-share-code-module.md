@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 15:05:41
-version: 1.20
+updated: 2021-09-13 15:07:41
+version: 1.21
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -90,7 +90,9 @@ container.innerText = utils.distance(37, 20, 10, 0);
 </html>
 ```
 
-So then this kind of pattern will work for most of the kinds of modules that I make, but not all of them. There is a point where a script that I have in mind is just going to need to be very much node only, and the same can still be said of many of the modules that I make that are very much client side only when it comes to something that has to do a lot with canvas elements for example. Still when it comes to some kind of module that has to do with the creating and mutating of a simple object state, a parser, or something to that effect this kind of module pattern seems to work just fine.
+So then this kind of pattern will work for most of the kinds of modules that I make, but not all of them. There is a point where a script that I have in mind is just going to need to be very much node only, and the same can still be said of many of the modules that I make that are very much client side only when it comes to something that has to do a lot with canvas elements for example. 
+
+Still when it comes to some kind of module that has to do with the creating and mutating of a simple object state, a parser, or something to that effect this kind of module pattern seems to work just fine. It might be a good idea to think in terms of making some kind of core module that creates and updates a state object, but refrain from combining code that has to do with rendering that state.
 
 ## 2 - A custom user events example of the pattern
 
