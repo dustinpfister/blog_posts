@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 13:43:12
-version: 1.14
+updated: 2021-09-13 14:50:00
+version: 1.15
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -18,7 +18,7 @@ One of the cool things about nodejs is that I can use the programing language of
 
 ## 1 - The module that will work in node and a browser
 
-First off I just need to write a [IIFE](/2020/02/04/js-iife) or Immediately Invoked Function Expression that is a kind of self executing function. The only thing that is special about this IIFE is the value that I will be passing to it when calling it. The value will be the result of an expression that makes use of the conditional expression to test for the presence of the module global in node.
+First off I just need to write a [IIFE](/2020/02/04/js-iife) or Immediately Invoked Function Expression that is a kind of self executing function. The only thing that is special about this IIFE is the value that I will be passing to it in the form of an argument when calling it. The value will be the result of an expression that makes use of the conditional expression to test for the presence of the module global in node. In the event that the module is there then the value of module.exports will be what is passed to the IIFE. In the event that module is not there I will be creating a new property for the value of this, which in client side javaScript at the top level should be the window object.
 
 For this module I will have just a few pure functions that just make use of core javaScript itself which will work nice for this kind of module. When it comes to any kind of function where a client side or server side only feature is used that is where things will end up getting a little complicated.
 
