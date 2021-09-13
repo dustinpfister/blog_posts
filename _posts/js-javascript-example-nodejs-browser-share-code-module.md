@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 15:57:54
-version: 1.27
+updated: 2021-09-13 16:01:15
+version: 1.28
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -21,7 +21,7 @@ This is a post on a module pattern that will result in module reusable code that
 
 ## - The source code examples here are up on my github account
 
-I have the [source code of these examples](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-nodejs-browser-share-code-module) as well as many others located in my test vjs github repository.
+I have the [source code of these examples](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-nodejs-browser-share-code-module) as well as many others located in my test vjs github repository. If you want to make a pull request for the source code examples here that would be the place to do it, you can also make a comment at the bottom of this post to bring something to my attention. This test vjs repository also holds all the other source code examples that I have for my series of vanilla javaScript posts beyond just this one.
 
 ## 1 - The module that will work in node and a browser
 
