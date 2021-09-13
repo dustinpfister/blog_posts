@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-04-15 13:20:40
-version: 1.10
+updated: 2021-09-13 13:34:58
+version: 1.11
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple module design pattern for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment.
@@ -46,7 +46,7 @@ For this module I will have just a few pure functions that just make use of core
 
 So if all works as expected with this I should be able to use these methods in a client side or sever side javaScript environment. To know for sure I would need to work out some quick examples that will make use of this, so lets take a look at a few examples.
 
-## 2 - Using the module in a node script
+### 1.1 - Using the module in a node script
 
 So now to test out if this module works in a node script, to do so I just need to require the script in like always. I can then call one of the public methods of the module from the script that makes use of it. So then the module is working as expected in node, but what about a browser example.
 
@@ -58,7 +58,7 @@ console.log( Math.floor(utils.distance(0,0,45,45)) ); // 63
 ```
 
 
-## 3 - Using the module in client side javaScript
+### 1.2 - Using the module in client side javaScript
 
 So now to see if this utils module will still work as expected when using it in a client side javaScript environment. With that said when I open up the following in my browser it seems to work just fine also.
 
@@ -80,7 +80,60 @@ container.innerText = utils.distance(37, 20, 10, 0);
 
 So then this kind of pattern will work for most of the kinds of modules that I make, but not all of them. There is a point where a script that I have in mind is just going to need to be very much node only, and the same can still be said of many of the modules that I make that are very much client side only when it comes to something that has to do a lot with canvas elements for example. Still when it comes to some kind of module that has to do with the creating and mutating of a simple object state, a parser, or something to that effect this kind of module pattern seems to work just fine.
 
-## 4 - Conclusion
+## 2 - A custom user events example of the pattern
+
+I got around to editing my post on custom events and how to make them in a client side javaScript environment when it comes to using the custom event method.
+
+```js
+(function (api) {
+ 
+    // add an event for an object
+    api.addEvent = function (obj, opt) {
+        opt = opt || {};
+        // user Event Object
+        var userEvent = {};
+        // MUST GIVE AN EVENT KEY
+        userEvent.eventKey = opt.eventKey;
+        // need a forDispatch method that will be called for each dispatch of an event
+        userEvent.forDispatch = opt.forDispatch || function (obj, dispatchOpt) {};
+        // need an array of listeners
+        userEvent.listeners = [];
+        // attach to the objects own properties
+        obj.ue = obj.ue || {};
+        obj.ue[userEvent.eventKey] = userEvent;
+        return obj;
+    };
+ 
+    // attach a listener for the object that will fire
+    // when the event happens
+    api.addListener = function (obj, eventKey, callBack) {
+        // get listeners for the eventKey
+        var listeners = obj.ue[eventKey].listeners;
+        // if we have listeners push the callback
+        if (listeners) {
+            listeners.push(callBack);
+        }
+        return obj;
+    };
+ 
+    // dispatch an event for the given object, passing the event key, and options
+    api.dispatch = function (obj, eventKey, dispatchOpt) {
+        var eventObj = obj.ue[eventKey];
+        // loop listeners array
+        eventObj.listeners.forEach(function (cb) {
+            // call the listener
+            cb.call(eventObj, eventObj.forDispatch.call(eventObj, obj, dispatchOpt));
+        });
+        return obj;
+    };
+ 
+    // this module should work well in nodejs, or client javaScript
+}
+    (typeof module === 'undefined' ? this['eventMod'] = {}
+        : module.exports));
+```
+
+## 3 - Conclusion
 
 That is it for this kind of javaScript module pattern, at least as far as this post is concerned at least. There is getting more into the subject of module design in javaScript in general which is in itself a pretty large topic. Working out something like this is just one of many kinds of other patterns that might work out better in some situations.
 
