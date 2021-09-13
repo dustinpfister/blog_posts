@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-13 15:40:05
-version: 1.10
+updated: 2021-09-13 15:44:30
+version: 1.11
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -145,10 +145,11 @@ server.listen(port);
 
 ## 4 - http request for making server side requests
 
-There are many npm packages for this that may help to make requests easier, or add helpful features, but it is not to hard to just make requests from node.js with the built in http module by using the [http request method](https://nodejs.org/docs/latest-v8.x/api/http.html#http_http_request_options_callback).
+There are many npm packages for this that may help to make requests easier, or add helpful features, but it is not to hard to just make requests from node.js with the built in http module by using the [http request method](https://nodejs.org/docs/latest-v8.x/api/http.html#http_http_request_options_callback). I wrote a full post on this [nodejs built in http request method](/2019/07/22/nodejs-http-request/) also, but I will be covering a basic example of it at least here.
 
 
 This basic example will make a get request for www.google.com
+
 ```js
 let http = require('http'),
  
