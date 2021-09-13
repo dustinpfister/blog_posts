@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 14:57:10
-version: 1.17
+updated: 2021-09-13 15:01:40
+version: 1.18
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -50,7 +50,9 @@ So if all works as expected with this I should be able to use these methods in a
 
 ### 1.1 - Using the module in a node script
 
-So now to test out if this module works in a node script, to do so I just need to require the script in like always. I can then call one of the public methods of the module from the script that makes use of it. So then the module is working as expected in node, but what about a browser example.
+So now to test out if this module works in a node script, to do so I just need to require the script in like always. The way that I typically do this is to require the path module, and then join the value of the dirname global with the path to the utils.js file that I coved above fro the script that is using it. This way I end up with an absolute path to the script, which will always be the location of the utils script regardless of where I call this example with nodejs.
+
+ I can then call one of the public methods of the module from the script that makes use of it. 
 
 ```js
 let path = require('path');
@@ -58,6 +60,8 @@ utils = require( path.join(__dirname, 'lib/utils.js' ));
  
 console.log( Math.floor(utils.distance(0,0,45,45)) ); // 63
 ```
+
+So then the module is working as expected in node, but what about a browser example.
 
 
 ### 1.2 - Using the module in client side javaScript
