@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 13:40:41
-version: 1.13
+updated: 2021-09-13 13:43:12
+version: 1.14
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
 
-One of the cool things about nodejs is that I can use the programing language of the open web to create scripts that will run in my operating system environment. However it would be nice to make modules for nodejs that will also work in a browser environment also without hacking over the code a little first. Thankfully the process of doing so is not so hard, and can be done with just a few basic core javaScript features.
+One of the cool things about nodejs is that I can use the programing language of the open web to create scripts that will run in my operating system environment. However it would be nice to make modules for nodejs that will also work in a browser environment also without hacking over the code a little first. This sort of thing might not be a good idea for all situations might you, but with something like a parser, or a library that I want to use as part of a game mode that might run in the browser or a node environment this sort of thing can prove to be useful. Thankfully the process of doing so is not so hard, and can be done with just a few basic core javaScript features.
 
 <!-- more -->
 
