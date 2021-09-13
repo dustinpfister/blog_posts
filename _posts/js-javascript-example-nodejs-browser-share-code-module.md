@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 16:01:15
-version: 1.28
+updated: 2021-09-13 16:04:27
+version: 1.29
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -155,6 +155,8 @@ There is a built in node way of doing this sort of thing, and in the post that I
     (typeof module === 'undefined' ? this['eventMod'] = {}
         : module.exports));
 ```
+
+This kind of module seems to work okay, at least with the few test scripts that I put together for it. However I have not done anything to major with this, or anything else that I have made based off of this so I might stop writing about it for now until I have more to say about it. There are many frameworks that have this kind of system built into it, but I just wanted to quickly thrash together my one system for making user defined events.
 
 ## 3 - Conclusion
 
