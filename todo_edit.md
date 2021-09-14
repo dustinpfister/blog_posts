@@ -4,15 +4,6 @@
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
 
-### () - new post #929 for 09/17/2021 - nodejs-simple-build-tool
-* start a new nodejs-simple-build-tool repo folder
-* just base the project off of what was started for the canvas-examples repo
-* write the post for the tool
-
-### ( done 09/10/2021 ) - new post #928 for 09/10/2021 - nodejs-simple-http-request-get-post-system
-* (done) start a new nodejs-simple-http-request-get-post-system repo folder
-* (done) base nodejs-simple-http-request-get-post-system based off of
-
 ### () - edit: nodejs-querystring
 * edit post to 500+ words
 * have 5+ internal links
@@ -31,22 +22,32 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-## ( ) - edit js-javascript-try
+## ( ) - edit js-path-find
+* edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( ) - edit js-object-keys
+## ( ) - edit js-math-random
+* edit post to 1,000+ words
+* edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( done 09/14/2021 ) - edit js-javascript-getter
-* (done) edit post to 1,000+ words
-* (done) edit post to 1,800+ words
-* (done) have 5+ internal links for the post
+## ( ) - edit js-javascript-try
+* edit post to 1,800+ words
+* have 5+ internal links for the post
 
 ## () edit js-javascript-example-nodejs-browser-share-code-module
 * (done) link to post on js-custom-event as an example of this pattern.
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
+* (done) have 5+ internal links for the post
+
+## ( done 09/14/2021 ) - edit js-object-keys
+* have 5+ internal links for the post
+
+## ( done 09/14/2021 ) - edit js-javascript-getter
+* (done) edit post to 1,000+ words
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ## ( done 09/13/2021 ) edit js-iife
