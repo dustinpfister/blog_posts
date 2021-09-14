@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2021-09-14 12:55:48
-version: 1.36
+updated: 2021-09-14 14:12:01
+version: 1.37
 ---
 
-In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys such as how to get an array of public key names from a given object, how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knowing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) method.
+In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function, Date object, or plain old Object. 
 
-So then in this post I will be writing about the basics of javaScript object keys, and also maybe some of the not so basic things to know about with object keys in general when working on a project. This includes the Object.keys static Object method, which this post will mainly be about. However there are some related topics that I should at least touch base on there also such as [object prototype methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) like [Object.getOwnPropertyNames](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames) that I will be getting to when it comes to getting both public and hidden key names of an object.
+There are a few things to know about object keys such as how to get an array of public key names from a given object, and how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knowing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) static method.
+
+So then in this post I will be writing about the basics of javaScript object keys, and also maybe some of the not so basic things to know about with object keys in general when working on a project. This includes the Object.keys static Object method, which this post will mainly be about. However there are some related topics that I should at least touch base on also with other [object methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) like [Object.getOwnPropertyNames](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames) that I will be getting to when it comes to getting both public and hidden key names of an object.
 
 <!-- more -->
 
