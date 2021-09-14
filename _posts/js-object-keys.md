@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2020-10-29 13:27:01
-version: 1.35
+updated: 2021-09-14 12:55:48
+version: 1.36
 ---
 
-In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys such as how to get an array of public key names from a given object, how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knwoing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) method.
+In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function or Date object. There are a few things to know about object keys such as how to get an array of public key names from a given object, how to create and get hidden key names. In addition there is also how to work with inherited keys when it comes to the nature of the prototype object of a class of objects. Still when it comes to taking one thing at a time, there is just knowing how to get a list of pubic key names for an object itself, and not any additional keys that are hidden, or inherited. With that said one way to go about getting just that basic public key list would be the [Object.keys](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) method.
 
 So then in this post I will be writing about the basics of javaScript object keys, and also maybe some of the not so basic things to know about with object keys in general when working on a project. This includes the Object.keys static Object method, which this post will mainly be about. However there are some related topics that I should at least touch base on there also such as [object prototype methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) like [Object.getOwnPropertyNames](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames) that I will be getting to when it comes to getting both public and hidden key names of an object.
 
@@ -61,7 +61,7 @@ So you get the basic idea, but lets look at a few more use cases examples just t
 
 ### 2.2 - Using array prototype methods with objects that have named keys
 
-So then because the Object keys methods returns an array, then any array prototype method such as array forEach can be used with any plain old javaScript in general. So for example say I have an object with named keys, I can pass that object to the object keys method and then call the array foreach method off of the resulting array that is returned. Inside the body of the function that I pass to the foreach method as an argument I can access the key names for each public key, as well as the index value for each key name in the array. When it comes to getting the value for each key in the object I can use the key name with the bracket syntax with the original object.
+So then because the Object keys methods returns an array, then any array prototype method such as array forEach can be used with any plain old javaScript in general. So for example say I have an object with named keys, I can pass that object to the object keys method and then call the array for each method off of the resulting array that is returned. Inside the body of the function that I pass to the for each method as an argument I can access the key names for each public key, as well as the index value for each key name in the array. When it comes to getting the value for each key in the object I can use the key name with the bracket syntax with the original object.
 
 ```js
 let obj = {
@@ -80,7 +80,7 @@ c 2 3 c
 */
 ```
 
-The array foreach method might not be the best example of this, however you get the general idea. Other array prototype methods can of course also be used with the resulting array such as array map, and array filter just to name a few. So lets look at some more advanced use case examples of the Object keys method in action to get a better feel of this method.
+The array for each method might not be the best example of this, however you get the general idea. Other array prototype methods can of course also be used with the resulting array such as array map, and array filter just to name a few. So lets look at some more advanced use case examples of the Object keys method in action to get a better feel of this method.
 
 ### 2.3 - Creating an array of arrays from and array of objects
 
