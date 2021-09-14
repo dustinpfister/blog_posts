@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2021-09-14 14:18:08
-version: 1.39
+updated: 2021-09-14 14:20:31
+version: 1.40
 ---
 
 In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function, Date object, or plain old Object. 
@@ -86,7 +86,7 @@ The array for each method might not be the best example of this, however you get
 
 ### 2.3 - Creating an array of arrays from and array of objects
 
-Say you have an array of weird objects where values that you want are encoded into the key names. What you want to do is create an array of arrays where each nested array contains a value that is encoded in the key names of the objects that are in the array of objects. One way to go about doing that would be to use the Object keys method in conjunction with array map, and the string split method maybe.
+Say you have an array of weird objects where values that you want are encoded into the key names. What you want to do is create an [array of arrays](/2020/03/31/js-array-multidimensional/) where each nested array contains a value that is encoded in the key names of the objects that are in the array of objects. One way to go about doing that would be to use the Object keys method in conjunction with array map, and the string split method maybe.
 
 ```js
 let points = [{x47: 0, y32: 0 }, {x13: 0, y7: 0 }, {x0: 0, y50: 0 } ];
@@ -101,7 +101,7 @@ console.log(arr);
 // [ [ '47', '32' ], [ '13', '7' ], [ '0', '50' ] ]
 ```
 
-So it goes without saying that is is useful to be aware of the Object keys method as well as methods like the array map method and the string split method when it comes to working out solutions for weird things like this that might come up now and then when working with javaScript code. I will nit be getting into array map, string split, and regular expressions that are ysed in this example of the Object keys method here. However those topics sure are worth reading up on if you have not done so before hand.
+So it goes without saying that is is useful to be aware of the Object keys method as well as methods like the array map method and the string split method when it comes to working out solutions for weird things like this that might come up now and then when working with javaScript code. I will nit be getting into array map, string split, and regular expressions that are used in this example of the Object keys method here. However those topics sure are worth reading up on if you have not done so before hand.
 
 ### 2.3 - using a polyfill for object keys
 
