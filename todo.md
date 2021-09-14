@@ -35,10 +35,13 @@
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( ) - edit js-javascript-getter
-* edit post to 1,000+ words
-* edit post to 1,800+ words
+## ( ) - edit js-object-keys
 * have 5+ internal links for the post
+
+## ( ) - edit js-javascript-getter
+* (done) edit post to 1,000+ words
+* edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 
 ## () edit js-javascript-example-nodejs-browser-share-code-module
 * (done) link to post on js-custom-event as an example of this pattern.
