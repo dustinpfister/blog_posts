@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 12:36:04
-version: 1.31
+updated: 2021-09-14 12:37:45
+version: 1.32
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -73,6 +73,8 @@ console.log(obj.foo);
 So by using javaScript getters in combination with javaScript setters it is possible to [create reactive objects](https://www.monterail.com/blog/2016/how-to-build-a-reactive-engine-in-javascript-part-1-observable-objects). These are objects where a method will fire each time a property chances by way of any kind of assignment each time, or doing something interesting each time an object property is accessed. This method that will fire each time the property is set can be used to do things like render a view for the object or something to that effect. In this section then I will be going over a few examples of making this kind of object using just vanilla javaScript code.
 
 ### 2.1 - Basic make a object property reactive example
+
+There is starting out by making a simple method that will just make one property of an object reactive. This is more or less the starting point of making this kind of system as getters and setters need to be set up on a per property basis.
 
 ```js
 // a make reactive property of an object
