@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:00:08
-version: 1.14
+updated: 2021-09-14 11:01:27
+version: 1.15
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -15,9 +15,9 @@ However this is not so much a post on vuejs but core javaScript itself, with tha
 
 In ECMA-262 R5 spec javaScript forward getters and setters where introduced as a way to have control over how properties are actually rendered to a result each time the property is accessed, or set by way of some kind of assignment. Each time a property is set with the assignment operator in the form of an equals sign, a setter function can be defined for the object. This setter function will be called and it is the return value of this setter that will end up being the final value assigned to the object. In the body of this setter function other things can be done, such as triggering the update of a view. On top of setters there are also getters, which are more or less the same thing as setters only they will fire each time a property is accessed.
 
-One why of thinking about getters and setters is that they can be thought of as event handlers of sorts where each time a property of a object is accessed the getter function is called, and the value that is returned by the getter is what will be used for the value of that property. In addition setters can be used as a way to define some additional logic that will fire each time the value of a property is set with an assignment operator.
+One way of thinking about getters and setters is that they can be thought of as event handlers of sorts where each time a property of a object is accessed the getter function is called, and the value that is returned by the getter is what will be used for the value of that property.
 
-Son in this post I will be writing a bot about javaScript getters, but I suppose I will also have to touch base on setters and other related topics like the Object.definePropery method.
+So in this post I will be writing a bit about javaScript getters, but I suppose I will also have to touch base on setters, and other related topics like the Object.definePropery method.
 
 <!-- more -->
 
