@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 12:47:57
-version: 1.35
+updated: 2021-09-14 12:50:58
+version: 1.36
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -105,17 +105,16 @@ I am then testing this out by creating a simple data object that just has a coun
 
 ### 2.2 - Make a full object reactive example
 
-Now that I have a decent helper method for making a property reactive the process of making a full object reactive would juts involve calling that helper for each key that I want to make reactive.
+Now that I have a decent helper method for making a property reactive the process of making a full object reactive would just involve calling that helper for each key that I want to make reactive.
 
 ```js
 // draw
-var draw_default = function (obj, key) {
-    var val = obj[key];
+var draw = function (obj, key, val) {
     console.log(key, val);
 };
 // a make reactive property of an object
 var makePropertyReactive = function (obj, key, draw) {
-    draw = draw || draw_default;
+    draw = draw || console.log;
     var val = obj[key];
     Object.defineProperty(obj, key, {
         get: function () {
@@ -123,15 +122,15 @@ var makePropertyReactive = function (obj, key, draw) {
         },
         set: function (newVal) {
             val = newVal;
-            draw(obj, key); // call the draw method
+            draw(obj, key, val); // log
         }
     });
     return obj;
 };
 // make a full object reactive
-var makeObjectReative = function (obj) {
+var makeObjectReative = function (obj, draw) {
     Object.keys(obj).forEach(function (key) {
-        makePropertyReactive(obj, key);
+        makePropertyReactive(obj, key, draw);
     });
     return obj;
 };
@@ -140,7 +139,7 @@ var data = {
     count: 0,
     name: 'Dustin'
 };
-makeObjectReative(data);
+makeObjectReative(data, draw);
  
 data.count += 1;
 data.name = 'Stin'
