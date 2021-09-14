@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:05:27
-version: 1.17
+updated: 2021-09-14 11:08:10
+version: 1.18
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -27,7 +27,11 @@ The subject of getters and setters might be though of as an advanced topic on ja
 
 When it comes to the basics of getters and setters I will be starting out with just a few basic examples of them in this section of course. There are two ways of defining a javaScript getter that I am aware of, one way is to make use of the get syntax, an the other is to do so by using the Object define property method.
 
-### 1.1 - Basic javaScript getter example
+### 1.1 - The soucre code examples here are on github
+
+The source code examples here as well as with all my other vanilla javaScript examples are in my [test vjs repository on github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-getter).
+
+### 1.2 - Basic javaScript getter example
 
 One way to define a JavaScript getter is to use the get syntax when making a new object.
 
@@ -43,7 +47,7 @@ console.log(obj.foo);
 // '(foo)'
 ```
 
-### 1.2 - The define property method
+### 1.3 - The define property method
 
 The other way to go about creating a javaScript getter is to make use of the define property Object static method. The way one goes about using this method is by calling it, and then passing an object to which a property is to be defined. The next argument is a property key for the given object followed by another object that can be used to set a number of properties for the property that is to be defined. One of the possible things to define for the property is of course a getter.
 
