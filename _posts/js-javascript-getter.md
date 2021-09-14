@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 12:55:47
-version: 1.38
+updated: 2021-09-14 13:00:26
+version: 1.39
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -144,6 +144,8 @@ makeObjectReative(data, draw);
 data.count += 1;
 data.name = 'Stin'
 ```
+
+For this example I now only made a full object reactive I also now have a custom draw method. This custom draw method again just sued the console log method as a crude yet effective view, but never the less this is where I can do whatever needs to be done each time the data object changes.
 
 ### 2.3 - Reactive object example using defineProperty
 
