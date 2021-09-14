@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 12:37:45
-version: 1.32
+updated: 2021-09-14 12:39:10
+version: 1.33
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -102,6 +102,8 @@ data.count += 1;
 ```
 
 ### 2.2 - Make a full object reactive example
+
+Now that I have a decent helper method for making a property reactive the process of making a full object reactive would juts involve calling that helper for each key that I want to make reactive.
 
 ```js
 // draw
