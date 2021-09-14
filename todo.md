@@ -38,9 +38,9 @@
 ## ( ) - edit js-object-keys
 * have 5+ internal links for the post
 
-## ( ) - edit js-javascript-getter
+## ( done 09/14/2021 ) - edit js-javascript-getter
 * (done) edit post to 1,000+ words
-* edit post to 1,800+ words
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ## () edit js-javascript-example-nodejs-browser-share-code-module
