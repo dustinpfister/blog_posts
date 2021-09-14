@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:34:19
-version: 1.25
+updated: 2021-09-14 11:35:11
+version: 1.26
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -74,7 +74,7 @@ So by using javaScript getters in combination with javaScript setters it is poss
 
 ### 2.1 - Basic reactive object example
 
-For this example I will be starting out with something that is not yet that advanced.
+For this example I will be starting out with something that is not yet that advanced when it comes to making some kind of view and model binding type system.
 
 ```js
 var createReactive = function (obj, onSet) {
