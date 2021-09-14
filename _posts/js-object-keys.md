@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 349
-updated: 2021-09-14 14:14:06
-version: 1.38
+updated: 2021-09-14 14:18:08
+version: 1.39
 ---
 
 In javaScript Object keys are the property names of an object that correspond with a value that can be a primitive, or another nested object of one kind or another such as a function, Date object, or plain old Object. 
@@ -63,7 +63,7 @@ So you get the basic idea, but lets look at a few more use cases examples just t
 
 ### 2.2 - Using array prototype methods with objects that have named keys
 
-So then because the Object keys methods returns an array, then any array prototype method such as array forEach can be used with any plain old javaScript in general. So for example say I have an object with named keys, I can pass that object to the object keys method and then call the array for each method off of the resulting array that is returned. Inside the body of the function that I pass to the for each method as an argument I can access the key names for each public key, as well as the index value for each key name in the array. When it comes to getting the value for each key in the object I can use the key name with the bracket syntax with the original object.
+So then because the Object keys methods returns an array, then any array prototype method such as array forEach can be used with any plain old javaScript in general. So for example say I have an object with named keys, I can pass that object to the object keys method and then call the [array for each method](/2019/02/16/js-javascript-foreach/) off of the resulting array that is returned. Inside the body of the function that I pass to the for each method as an argument I can access the key names for each public key, as well as the index value for each key name in the array. When it comes to getting the value for each key in the object I can use the key name with the bracket syntax with the original object.
 
 ```js
 let obj = {
@@ -82,7 +82,7 @@ c 2 3 c
 */
 ```
 
-The array for each method might not be the best example of this, however you get the general idea. Other array prototype methods can of course also be used with the resulting array such as array map, and array filter just to name a few. So lets look at some more advanced use case examples of the Object keys method in action to get a better feel of this method.
+The array for each method might not be the best example of this, however you get the general idea. Other array prototype methods can of course also be used with the resulting array such as [array map](/2020/06/16/js-array-map/), and [array filter](/2020/10/03/js-array-filter/) just to name a few. So lets look at some more advanced use case examples of the Object keys method in action to get a better feel of this method.
 
 ### 2.3 - Creating an array of arrays from and array of objects
 
