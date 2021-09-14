@@ -1,12 +1,12 @@
 ---
-title: javaScript getters, setters, and reactive objects
+title:  Getters, Setters, and reactive objects in javaScript
 date: 2020-10-07 15:05:00
 tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 10:37:09
-version: 1.11
+updated: 2021-09-14 10:54:28
+version: 1.12
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -19,7 +19,7 @@ Son in this post I will be writing a bot about javaScript getters, but I suppose
 
 <!-- more -->
 
-## 1 - JavaScript getters
+## 1 - What to know first, and the basics of JavaScript getters
 
 In this section I will be starting out with just a few basic examples of javaScript getters. There are two ways of defining a javaScript getter that I am aware of. One way is to make use of the get syntax, an the other is to do so by using the Object define property method.
 
@@ -56,15 +56,13 @@ Object.defineProperty(obj, 'foo', {
  
 console.log(obj.foo);
 // 'foobar'
-
 ```
 
-## 2 - creating a reactive object With getters and setters
+## 2 - Creating a reactive object With getters and setters
 
 So by using javaScript getters in combination with javaScript setters it is possible to create reactive objects. These are objects where a method will fire each time a property chances by way of any kind of assignment each time. This method that will fire each time the property is set can be used to do things like render a view for the object or something to that effect.
 
 ```js
-
 var createReactive = function (obj, onSet) {
     obj = obj || {};
     onSet = onSet || function () {};
