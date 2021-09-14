@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 12:23:34
-version: 1.30
+updated: 2021-09-14 12:36:04
+version: 1.31
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -72,7 +72,34 @@ console.log(obj.foo);
 
 So by using javaScript getters in combination with javaScript setters it is possible to [create reactive objects](https://www.monterail.com/blog/2016/how-to-build-a-reactive-engine-in-javascript-part-1-observable-objects). These are objects where a method will fire each time a property chances by way of any kind of assignment each time, or doing something interesting each time an object property is accessed. This method that will fire each time the property is set can be used to do things like render a view for the object or something to that effect. In this section then I will be going over a few examples of making this kind of object using just vanilla javaScript code.
 
-### 2.1 - Make a full object reactive example
+### 2.1 - Basic make a object property reactive example
+
+```js
+// a make reactive property of an object
+var makePropertyReactive = function (obj, key, draw) {
+    draw = draw || console.log;
+    var val = obj[key];
+    Object.defineProperty(obj, key, {
+        get: function () {
+            return val; // Simply return the cached value
+        },
+        set: function (newVal) {
+            val = newVal;
+            draw(key, val); // log
+        }
+    });
+    return obj;
+};
+ 
+var data = {
+    count: 0
+};
+makePropertyReactive(data, 'count');
+ 
+data.count += 1;
+```
+
+### 2.2 - Make a full object reactive example
 
 ```js
 // draw
@@ -113,7 +140,7 @@ data.count += 1;
 data.name = 'Stin'
 ```
 
-### 2.2 - Reactive object example using defineProperty
+### 2.3 - Reactive object example using defineProperty
 
 For this example I will be starting out with something that is not yet that advanced when it comes to making some kind of view and model binding type system. In this example I am using the define property object static method to create a hidden locals property for the object. This locals property will contain an object which is where I will actually store values that are set to the object using the assignment operator.
 
