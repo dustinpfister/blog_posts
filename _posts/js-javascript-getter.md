@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:25:46
-version: 1.23
+updated: 2021-09-14 11:28:06
+version: 1.24
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -51,7 +51,7 @@ Although this way of defining a getter might work okay I have come to prefer usi
 
 ### 1.3 - The define property method
 
-The other way to go about creating a javaScript getter is to make use of the define property Object static method. The way one goes about using this method is by calling it, and then passing an object to which a property is to be defined. The next argument is a property key for the given object followed by another object that can be used to set a number of properties for the property that is to be defined. One of the possible things to define for the property is of course a getter.
+The other way to go about creating a javaScript getter is to make use of the define property Object static method. The way one goes about using this method is by calling it, and then passing an object to which a property is to be defined. The next argument is a property key for the given object followed by another object that can be used to set a number of features for the property that is to be defined. One of the possible things to define for the property is of course a getter. However this can also be used to define setters, as well as many other features for the property such as if the property will show up in a loop or not.
 
 ```js
 var obj = {
