@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:10:21
-version: 1.19
+updated: 2021-09-14 11:12:51
+version: 1.20
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -46,6 +46,8 @@ var obj = {
 console.log(obj.foo);
 // '(foo)'
 ```
+
+Although this way of defining a getter might work okay I have come to prefer using the define property method of doing so. One reason why is that I can stick to a syntax that is more in line with now I am familiar with defining objects properties. However the real reason why is because there are additional features of the define property method that allow for me to make properties of an object that are private.
 
 ### 1.3 - The define property method
 
