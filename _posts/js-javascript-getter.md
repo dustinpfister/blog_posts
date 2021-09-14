@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:16:44
-version: 1.21
+updated: 2021-09-14 11:23:10
+version: 1.22
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -109,4 +109,7 @@ So this kind of trick is often used in many frameworks as a way to keep develope
 
 ## 3 - Conclusion
 
-So [javaScript getters and setters](https://www.jackfranklin.co.uk/blog/es5-getters-setters/) can come into play in some situations in which they might be called for. However that is just it when they are called for, getters and setters should not be over used at every twist and turn. I have to admit that it tends to make code more complex, and if the use of them is not really justified then the use of getters and setters is juts making something more complicated then it needs to be.
+So [javaScript getters and setters](https://www.jackfranklin.co.uk/blog/es5-getters-setters/) can come into play in some situations in which they might be called for. However that is just it when they are called for, getters and setters should not be over used at every twist and turn. I have to admit that it tends to make code more complex, and if the use of them is not really justified then the use of getters and setters is just making something more complicated then it needs to be.
+
+There is more to write about when it comes to the define property Object static method. Yet another interesting feature that has been added to the Object in the from of a static method is the [Object.freeze method](/2020/05/08/js-javascript-object-freeze-seal-and-define-property/). However I tend to prefer using the define property method in place of it as that define property method has the ability to make it so a property of an object is not writable.
+
