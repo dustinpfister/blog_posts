@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 11:04:24
-version: 1.16
+updated: 2021-09-14 11:05:27
+version: 1.17
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -23,7 +23,7 @@ So in this post I will be writing a bit about javaScript getters, but I suppose 
 
 ## 1 - What to know first, and the basics of JavaScript getters
 
-The subject of getters and setters might be though of as an advanced topic on javaScript like that of closures and the function call prototype method. So if you are still fairly new to javaScript it might still be a good idea to get more solid with the very basics when it comes to getting started with javaScript.
+The subject of getters and setters might be though of as an advanced topic on javaScript like that of closures and the function call prototype method. So if you are still fairly new to javaScript it might still be a good idea to get more solid with the very basics when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/).
 
 When it comes to the basics of getters and setters I will be starting out with just a few basic examples of them in this section of course. There are two ways of defining a javaScript getter that I am aware of, one way is to make use of the get syntax, an the other is to do so by using the Object define property method.
 
