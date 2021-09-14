@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2021-09-14 13:04:55
-version: 1.41
+updated: 2021-09-14 13:06:25
+version: 1.42
 ---
 
 In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create [reactive objects](https://vuejs.org/v2/guide/reactivity.html), by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). When I make a change to a property of the data object that will trigger an update to the view that uses that data object. So then there is this binding between state and view where a change to the state object of a system will automatically update a view that renders that state.
@@ -192,4 +192,4 @@ So [javaScript getters and setters](https://www.jackfranklin.co.uk/blog/es5-gett
 
 There is more to write about when it comes to the define property Object static method. Yet another interesting feature that has been added to the Object in the from of a static method is the [Object.freeze method](/2020/05/08/js-javascript-object-freeze-seal-and-define-property/). However I tend to prefer using the define property method in place of it as that define property method has the ability to make it so a property of an object is not writable.
 
-I do get around to editing my content now and then and with that said this is yet another post that I might want to put a little more time into at some point in the future. I can not say I have any plans to make my own relative object based framework of any kind in the near or distance future. WHen it comes to such frameworks I have to say that I really like to just use vuejs when it comes to that sort of thing. So with that said there is not much reason to bother, apart from making a very simple such module purely for the sake of this post.
+I do get around to editing my content now and then and with that said this is yet another post that I might want to put a little more time into at some point in the future. I can not say I have any plans to make my own relative object based framework of any kind in the near or distance future. WHen it comes to such frameworks I have to say that I really like to just use vuejs when it comes to that sort of thing. So with that said there is not much reason to bother, apart from making a very simple such module purely for the sake of this post. I might have to start that at least next time I come around to editing this post.
