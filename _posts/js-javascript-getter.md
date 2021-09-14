@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 718
-updated: 2020-10-07 16:51:03
-version: 1.8
+updated: 2021-09-14 10:31:32
+version: 1.9
 ---
 
-In vuejs it is possible to create reactive objects, by default this is the case with the data object of a vuejs instance. However it might be a good idea to dive deep down into how this works, and the key behind it is the Object.definePropery method and the use of javaScript getters and setters.
+In [vuejs](/2019/05/05/vuejs-getting-started/) it is possible to create reactive objects, by default this is the case with the [data object of a vuejs instance](/2019/05/18/vuejs-data/). However it might be a good idea to dive deep down into how this works, and the key behind it is the [Object.definePropery](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) method and the use of javaScript [getters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) and [setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set).
 
 In ECMA-262 R5 spec javaScript forward getters and setters where introduced as a way to have control over how properties are actually rendered to a result each time the property is accessed, or set by way of some kind of assignment. One why of thinking about it is that they can be thought of as event handlers of sorts where each time a property of a object is accessed the getter function is called, and the value that is returned by the getter is what will be used for the value of that property. In addition setters can be used as a way to define some additional logic that will fire each time the value of a property is set with an assignment operator.
 
-Son in this post I will be writing a bot about javaScript getters, but I suppose I will also have to touch base on setters and other related topics like the [Object.definePropery](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) method.
+Son in this post I will be writing a bot about javaScript getters, but I suppose I will also have to touch base on setters and other related topics like the Object.definePropery method.
 
 <!-- more -->
 
@@ -23,7 +23,7 @@ In this section I will be starting out with just a few basic examples of javaScr
 
 ### 1.1 - Basic javaScript getter example
 
-One way to define a JavaScript getter is to use the [get syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get) when making a new object.
+One way to define a JavaScript getter is to use the get syntax when making a new object.
 
 ```js
 var obj = {
