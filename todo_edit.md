@@ -4,15 +4,23 @@
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
 
-### () - edit: nodejs-querystring
+### (   ) - edit: nodejs-ways-to-parse-cli-options
 * edit post to 500+ words
+* edit post to 1,000+ words
+* edit post to 1,800+ words
 * have 5+ internal links
 
-### () - edit: nodejs-http
-* (done) edit nodejs-http to 1000+ words
+### (   ) - edit: nodejs-querystring
+* edit post to 500+ words
+* edit post to 1,000+ words
 * edit post to 1,800+ words
-* link to nodejs-simple-static-server-file in the conclusion of the post
 * have 5+ internal links
+
+### ( done 09/15/2021 ) - edit: nodejs-http
+* (done) edit nodejs-http to 1000+ words
+* (done) edit post to 1,800+ words
+* (done) link to nodejs-simple-static-server-file in the conclusion of the post
+* (done) have 5+ internal links
 
 ### ( done 09/08/2021 ) edit: nodejs-simple-static-server-file
 * (done) edit post with new file example used in nodejs-simple-static-sever-file node folder
