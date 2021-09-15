@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 12:08:28
-version: 1.24
+updated: 2021-09-15 12:10:12
+version: 1.25
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -75,7 +75,7 @@ server.listen(port);
 
 Now that I have got many of the basics when it comes to getting started setting up a basic web server with just nodejs and a little vanilla javaScript I think that now it is time to get into some script examples that are different ways of responding to get requests. There are a few different kinds of http requests of course such as POST, HEAD, and DELETE requests. However the main two of interest when getting started with this kind of thing would be GET, and POST requests. POST requests are for allowing the client system to send some data to a server, and GET requests as the name implies are just for allowing a client to download some data from a server. This data can be a static file of some kind on the severs file system, or it can be some kind of generated content.
 
-### 2.1 - 
+### 2.1 - A simple script that responds to GET request by looking at the url property of a request object.
 
 ```js
 let http = require('http'),
@@ -102,7 +102,7 @@ server.on('listening', () => {
 server.listen(port, host);
 ```
 
-### 2.2 - 
+### 2.2 - Getting into something involving an array of paths objects
 
 ```js
 let http = require('http'),
