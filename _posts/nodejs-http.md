@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 13:02:31
-version: 1.28
+updated: 2021-09-15 13:05:08
+version: 1.29
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -105,6 +105,8 @@ server.on('listening', () => {
 // listen
 server.listen(port, host);
 ```
+
+This might not be the post practical example of how to go about responding to post requests, but I have to start somewhere with this. When it comes to making some kind of real example I would want to have a better way of breaking things down by path, and also even go so far as have more than one way to respond based not just on the url requested, but also the kind of http request.
 
 ### 2.2 - Getting into something involving an array of paths objects
 
