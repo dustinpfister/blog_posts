@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 11:32:15
-version: 1.22
+updated: 2021-09-15 12:04:30
+version: 1.23
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -72,6 +72,8 @@ server.listen(port);
 ```
 
 ## 2 - Responding to GET requests
+
+Now that I have got many of the basics when it comes to getting started setting up a basic web server with just nodejs and a little vanilla javaScript I think that now it is time to get into some script examples that are different ways of responding to get requests.
 
 ### 2.1 - 
 
