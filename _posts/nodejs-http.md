@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 11:06:50
-version: 1.20
+updated: 2021-09-15 11:13:54
+version: 1.21
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -44,19 +44,16 @@ When it [comes to port numbers](https://en.wikipedia.org/wiki/List_of_TCP_and_UD
 
 ```js
 let http = require('http');
- 
 let server = http.createServer();
- 
-// what to do on listening event
-server.on('listening', () => {
+server.listen(0, () => {
     let address = server.address();
     console.log('listening on random port: ' + address.port);
 });
- 
-server.listen(0);
 ```
 
-### 1.3 - attaching events
+### 1.3 - attaching events to a server object
+
+Thus far I have created basic http server examples just using the callback methods given as a argument when calling the the create server method, and the listen prototype method of the Server class. However when it comes to starting to make a more complex script I think it is a good idea to start attaching handlers by way of the on method of a sever object. When it comes to setting up what to do for an incoming request there is the request event that can be used in place of the callback given when calling the create server method. When it comes to a callback given to the listen method of the server object in place of that I can attach and event hander for the listening event.
 
 ```js
 let http = require('http'),
