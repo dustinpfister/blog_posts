@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 13:07:13
-version: 1.30
+updated: 2021-09-15 13:11:04
+version: 1.31
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -111,6 +111,8 @@ This might not be the post practical example of how to go about responding to po
 ### 2.2 - Getting into something involving an array of paths objects
 
 As a project grows more complex I am going to want to come up with some kind of system to break things down. When it comes to working on a real project often I would go with some kind of server side framework such as express. However when it comes to just working with built in features of nodejs I would have to come up with my own system for basic routing.
+
+So then in this example I am creating a kind of standard for making one or more paths objects. This path object will contain a pattern such as a string or regular expression that will be used with the url property of a request object to see if the path object applies to the request or not. In the event that it does apply then a GET method of the paths object will be used for the GET request of it is indeed a GET request. When it comes to supporting the additional kinds of requests then it is just a matter of adding anything response function, or middle ware function if you prefer to one of these paths objects.
 
 ```js
 let http = require('http'),
