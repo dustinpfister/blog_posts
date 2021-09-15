@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 09:42:57
-version: 1.17
+updated: 2021-09-15 09:43:50
+version: 1.18
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -41,7 +41,7 @@ server.listen(port);
 
 ### 1.2 - listen on OS assigned random port example
 
-When it [comes to port numbers](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports) the port number 0 is reserved for the task of requesting a port from the operating system. If I want to get a port number this way I can pass 0 as the port number when calling the listen method of the sever object. Inside the body of an event handler for the listening event I can then call the address method of the server object to get an object that will contain the port given, along with many other relevant properties.
+When it [comes to port numbers](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports) the [port number 0 is reserved for the task of requesting a port from the operating system](https://stackoverflow.com/questions/9901043/how-does-node-js-choose-random-ports). If I want to get a port number this way I can pass 0 as the port number when calling the listen method of the sever object. Inside the body of an event handler for the listening event I can then call the address method of the server object to get an object that will contain the port given, along with many other relevant properties.
 
 ```js
 let http = require('http');
