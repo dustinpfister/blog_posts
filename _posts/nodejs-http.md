@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 13:16:21
-version: 1.33
+updated: 2021-09-15 13:19:27
+version: 1.34
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -17,7 +17,7 @@ I might prefer to use express when I make such projects, but still on occasion I
 
 ## - What to know before getting into the http module
 
-This is nit any kind of [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/), let alone [javaScript in general](/2018/11/27/js-getting-started/).
+This is not any kind of [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/), let alone [javaScript in general](/2018/11/27/js-getting-started/). Also in these various nodejs source code examples I am making use of many features of nodejs beyond just that of the http module, such as the [file system module](/2018/02/08/nodejs-filesystem/), [paths](/2017/12/27/nodejs-paths/), and the [process object](/2018/02/11/nodejs-process/) just to name a few.
 
 ## 1 - Basic examples of the built in node http module in action.
 
