@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 09:43:50
-version: 1.18
+updated: 2021-09-15 10:53:36
+version: 1.19
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -19,27 +19,26 @@ I might prefer to use express when I make such projects, but still on occasion I
 
 In this section I will be going over a few basic examples when it comes to just getting started with the http module. Most of these basic examples involve creating a simple sever that will respond to incoming http requests from a web browser. However even when it comes to just seeing a simple hello world type text message in a web browser window there is a far amount of things to cover. For example there is the question of how to go about getting a port number to listen on, and how to attach events to a sever object created with the create sever method of the http module.
 
-### 1.1 - http module create server hello world example
+### 1.1 - The listen method hello world example
 
 For a basic hello world example I made a new instance of a server object, by calling the http.createServer method of the http module. I can then use the on method of the returned sever object to add a on 'request' event with the server object to respond to any incoming request with 'hello world' by way of res.end method. Finally the server is started my calling server.listen, and giving a port to listen on.
 
 ```js
+// require in the http module
 let http = require('http'),
- 
-server = http.createServer(),
- 
-port = process.env.PORT || process.env[2] || 8080;
- 
-server.on('request', function (req, res) {
- 
-    res.end('hello world');
- 
+// need a port number
+port = process.env.PORT || process.env[2] || 8080,
+// create a server
+server = http.createServer((req, res) => {
+        res.end('hello world');
+    });
+// listen on the port
+server.listen(port, () => {
+    console.log('server is up on http://localhost:' + port);
 });
- 
-server.listen(port);
 ```
 
-### 1.2 - listen on OS assigned random port example
+### 1.2 - The listen method and getting an OS assigned random port number
 
 When it [comes to port numbers](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports) the [port number 0 is reserved for the task of requesting a port from the operating system](https://stackoverflow.com/questions/9901043/how-does-node-js-choose-random-ports). If I want to get a port number this way I can pass 0 as the port number when calling the listen method of the sever object. Inside the body of an event handler for the listening event I can then call the address method of the server object to get an object that will contain the port given, along with many other relevant properties.
 
