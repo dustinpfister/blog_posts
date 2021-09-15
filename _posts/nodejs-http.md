@@ -71,7 +71,105 @@ server.on('listening', () => {
 server.listen(port);
 ```
 
-## 2 - Responding to get requests with streams
+## 2 - Responding to GET requests
+
+### 2.1 - 
+
+```js
+let http = require('http'),
+server = http.createServer(),
+port = 8080,
+host = 'localhost';
+// on request
+server.on('request', (req, res) => {
+    if (req.url === '/') {
+        console.log('request for root path');
+        res.write('<a href="/foo">foo path</a><br><a href="/bar">bar path</a><br>');
+        res.end();
+    } else {
+        res.write('this is non-root path ' + req.url);
+        res.end();
+    }
+});
+// on listening
+server.on('listening', () => {
+    let add = server.address();
+    console.log('static server up on http://' + add.address + ':' + add.port);
+}); ;
+// listen
+server.listen(port, host);
+```
+
+### 2.2 - 
+
+```js
+let http = require('http'),
+server = http.createServer(),
+port = 8080,
+host = 'localhost';
+ 
+// path objects
+let pathObjects = [];
+pathObjects.push({
+    pattern: '/',
+    GET: function (req, res, next) {
+        res.mess = 'this is root';
+        next();
+    }
+});
+ 
+// get a path object by the given pattern
+let getPathObj = (pattern) => {
+    let i = 0,
+    len = pathObjects.length;
+    while (i < len) {
+        var pathObj = pathObjects[i];
+        if (typeof pathObj.pattern === 'string') {
+            if (pathObj.pattern === pattern) {
+                return pathObj;
+            }
+        }
+        i += 1;
+    }
+    return null;
+};
+ 
+let sendMess = (req, res, mess) => {
+    res.write(mess);
+    res.end();
+};
+ 
+let sendMessObj = (req, res) => {
+    sendMess(req, res, res.mess);
+};
+ 
+// on request
+server.on('request', (req, res) => {
+    res.mess = 'unkown path';
+    let pathObj = getPathObj(req.url);
+    if (pathObj) {
+        let forMethod = pathObj[req.method];
+        if (forMethod) {
+            forMethod(req, res, () => {
+                sendMessObj(req, res)
+            });
+        } else {
+            sendMess(req, res, 'unsuppored http method: ' + req.method);
+        }
+    } else {
+        sendMess(req, res, 'no path object for: ' + req.url);
+    }
+});
+// on listening
+server.on('listening', () => {
+    let add = server.address();
+    console.log('static server up on http://' + add.address + ':' + add.port);
+}); ;
+// listen
+server.listen(port, host);
+```
+
+### 2.3 - Responding to get requests with streams
 
 Some times I find myself in a situation in which I need to do something with streams. This is often the case with post requests as the incoming body can be large and needs to be processed on a per chunk basis. However the same can be said of outgoing data as well when it comes to get requests. The response object of a request is a kind of stream so the write method of the request object can be used to send data on a per chunk basis.
 

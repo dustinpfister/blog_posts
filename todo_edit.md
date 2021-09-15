@@ -9,7 +9,8 @@
 * have 5+ internal links
 
 ### () - edit: nodejs-http
-* edit nodejs-http to 1000+ words
+* (done) edit nodejs-http to 1000+ words
+* edit post to 1,800+ words
 * link to nodejs-simple-static-server-file in the conclusion of the post
 * have 5+ internal links
 
