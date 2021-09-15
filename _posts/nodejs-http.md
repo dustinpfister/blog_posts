@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-13 15:47:13
-version: 1.12
+updated: 2021-09-15 09:33:03
+version: 1.13
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -15,9 +15,11 @@ I might prefer to use express when I make such projects, but still on occasion I
 
 <!-- more -->
 
-## 1 - A basic example of the built in node http module in action.
+## 1 - Basic examples of the built in node http module in action.
 
-For a basic hello world example I made a new instance of a server object, by calling http.createServer, and then used the 'request' event with the server object to respond to any incoming request with 'hello world' by way of res.end. Finally the server is started my calling server.listen, and giving a port to listen on.
+### 1.1 - http module create server hello world example
+
+For a basic hello world example I made a new instance of a server object, by calling the http.createServer method of the http module. I can then use the on method of the returned sever object to add a on 'request' event with the server object to respond to any incoming request with 'hello world' by way of res.end method. Finally the server is started my calling server.listen, and giving a port to listen on.
 
 ```js
 let http = require('http'),
@@ -35,7 +37,7 @@ server.on('request', function (req, res) {
 server.listen(port);
 ```
 
-## 2 - A not so basic example
+## 2 - Responding to get requests
 
 Some times I find myself in a situation in which I need to do something with streams. This often the case with post requests as the incoming body can be large and needs to be processed on a per chunk basis. However the same can be said of outgoing data as well when it comes to get requests. The response object of a request is a kind of stream so the write method of the request object can be used to send data on a per chunk basis.
 
