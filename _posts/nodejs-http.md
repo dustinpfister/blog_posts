@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 13:00:41
-version: 1.27
+updated: 2021-09-15 13:02:31
+version: 1.28
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -78,6 +78,8 @@ Now that I have got many of the basics when it comes to getting started setting 
 ### 2.1 - A simple script that responds to GET request by looking at the url property of a request object.
 
 An impotent part of responding to get requests and requests in general is to look at the url property of the request object. When going a callback to the create server method or attaching an event handler for the request event, there will be two objects to work with as arguments for this function that is used for a callback or event handler. The first argument is the request object, and the second argument is the response object. It is in this response object that we have a url property that is the requested url when the request was made from the browser.
+
+The url property of the request object can be used as one way to change what the content is for a given get request. For a very simple examples of this say I have a request event handler that will look to see if the request url is the root url, if so send something that is a crude yet functional index. All other requests can then be handled in anything way.
 
 ```js
 let http = require('http'),
