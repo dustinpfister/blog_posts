@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 11:13:54
-version: 1.21
+updated: 2021-09-15 11:32:15
+version: 1.22
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -71,53 +71,57 @@ server.on('listening', () => {
 server.listen(port);
 ```
 
-## 2 - Responding to get requests
+## 2 - Responding to get requests with streams
 
-Some times I find myself in a situation in which I need to do something with streams. This often the case with post requests as the incoming body can be large and needs to be processed on a per chunk basis. However the same can be said of outgoing data as well when it comes to get requests. The response object of a request is a kind of stream so the write method of the request object can be used to send data on a per chunk basis.
+Some times I find myself in a situation in which I need to do something with streams. This is often the case with post requests as the incoming body can be large and needs to be processed on a per chunk basis. However the same can be said of outgoing data as well when it comes to get requests. The response object of a request is a kind of stream so the write method of the request object can be used to send data on a per chunk basis.
+
+This example is then a simple static server that will send an index.html file at a given public folder location that defauts to the current work folder when the script was called.
 
 ```js
 let http = require('http'),
-fs = require('fs');
- 
-let server = http.createServer();
- 
+path = require('path'),
+fs = require('fs'),
+server = http.createServer(),
+// port, host, public dir
+port = 8080,
+host = 'localhost',
+dir_public = process.argv[0] || process.cwd();
 // on request
 server.on('request', (req, res) => {
- 
     if (req.url === '/' && req.method === 'GET') {
- 
-        let reader = fs.createReadStream('./public/index.html', {
+        let uri_index = path.join(__dirname, 'index.html');
+        let reader = fs.createReadStream(uri_index, {
                 highWaterMark: 128
             });
- 
         res.setHeader('Content-Type', 'text/html');
- 
         reader.on('data', (data) => {
             console.log('sent chunk: ')
             res.write(data);
         });
- 
+        reader.on('error', (e) => {
+            console.log(e.message)
+            res.write(e.message);
+            res.end();
+        });
         reader.on('end', () => {
             console.log('done');
             res.end();
         });
- 
     } else {
         res.end();
- 
     }
- 
 });
- 
-server.on('clientError', (err, socket) => {
-    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
-});
- 
-server.listen(8080, 'localhost', 200, () => {
+// on listening
+server.on('listening', () => {
     let add = server.address();
     console.log('static server up on http://' + add.address + ':' + add.port);
 });
- 
+// on client error
+server.on('clientError', (err, socket) => {
+    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
+// listen
+server.listen(port, host, 200);
 ```
 
 ## 3 - Processing a post request
