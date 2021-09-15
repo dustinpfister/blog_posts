@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 09:38:12
-version: 1.14
+updated: 2021-09-15 09:39:11
+version: 1.15
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -16,6 +16,8 @@ I might prefer to use express when I make such projects, but still on occasion I
 <!-- more -->
 
 ## 1 - Basic examples of the built in node http module in action.
+
+In this section I will be going over a few basic examples when it comes to just getting started with the http module.
 
 ### 1.1 - http module create server hello world example
 
