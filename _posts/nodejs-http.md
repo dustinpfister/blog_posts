@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 146
-updated: 2021-09-15 10:53:36
-version: 1.19
+updated: 2021-09-15 11:06:50
+version: 1.20
 ---
 
 There are many frameworks that help to make the process of making a node.js powered full stack web application a quick process compared to working with just the core node.js modules. Frameworks like [express](/2018/05/21/express-getting-started/), and [hapi](/2017/09/28/hapi-getting-started/) just to name a few. 
@@ -54,6 +54,24 @@ server.on('listening', () => {
 });
  
 server.listen(0);
+```
+
+### 1.3 - attaching events
+
+```js
+let http = require('http'),
+port = process.env.PORT || process.env[2] || 8080,
+server = http.createServer();
+// on request event
+server.on('request', (req, res) => {
+    res.end('hello world');
+});
+// on listening event
+server.on('listening', () => {
+    let address = server.address();
+    console.log('server is up on http://localhost:' + address.port);
+});
+server.listen(port);
 ```
 
 ## 2 - Responding to get requests
