@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 11:54:05
-version: 1.30
+updated: 2021-09-16 11:56:15
+version: 1.31
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -19,7 +19,7 @@ So then with that said in this post I will be outlining some things to know abou
 
 ## - Try catch and What to know first
 
-This is a post on one keyword of interest in the javaScript programing language that is the try keyword, as well as the additional catch and finally keywords. These keywords can be used together to form something called a try catch block that is one of many ways to help address various kind of errors that might happen when running a little javScript code.
+This is a post on one keyword of interest in the javaScript programing language that is the try keyword, as well as the additional catch and finally keywords. These keywords can be used together to form something called a try catch block that is one of many ways to help address various kind of errors that might happen when running a little javScript code. So then this is a bit more of an advanced topic for someone that might still be a little new to jaavScript, but it is still something that one will need to learn a thing or two about sooner or later, and many of the examples here are fairly simple. Still I assume you have at least some backgro8nd when it comes to the vary basics of getting started with both client side and server side javaScript with nodejs.
 
 ### - The source code examples here are up on my gihub account
 
