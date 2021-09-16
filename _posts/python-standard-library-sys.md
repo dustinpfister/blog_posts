@@ -5,13 +5,13 @@ tags: [python]
 categories: python
 layout: post
 id: 777
-updated: 2021-01-20 14:14:25
-version: 1.18
+updated: 2021-09-16 14:42:24
+version: 1.19
 ---
 
 The [sys library](https://docs.python.org/3.7/library/sys.html) in python seems to come up a lot in code examples, so it would make sense to write a post on this library. This library has a lot of operating system level features to work with, but it is not really a replacement for the os library that also comes up a lot in examples.
 
-One major feature is that this library can be used as a way to get any positional arguments that might have been passed to the script when it was called in the form of a list. This is one of the first things I like to learn how to do when it comes to learning a new programing language, at least when it comes to a language and environment that can be used to create scripts that can be called in a command line interface. When making such scripts there should be a way to access and positional arguments that may have been passed when the script was called. In nodejs there is the process.argv array, in bash scripts there are special parameters than can be used, and in python the way to do so is with, you guessed in the sys standard libraries argv list.
+One major feature is that this library can be used as a way to get any positional arguments that might have been passed to the script when it was called in the form of a list. This is one of the first things I like to learn how to do when it comes to learning a new programing language, at least when it comes to a language and environment that can be used to create scripts that can be called in a command line interface. When making such scripts there should be a way to access and positional arguments that may have been passed when the script was called. In nodejs there is the [process.argv array in the process global](/2018/02/11/nodejs-process/), in [bash scripts there are special parameters](/2020/12/10/linux-bash-script-parameters-positional/) than can be used, and in python the way to do so is with, you guessed in the sys standard libraries argv list.
 
 However there are a number of other features in the sys library that are also worth looking into with a few quick code examples. I will not be going over every little detail here, however I will of course be covering the most striking features that are worth writing about in detail of course, so lets go over them.
 
