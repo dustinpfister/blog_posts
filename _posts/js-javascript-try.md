@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 12:35:26
-version: 1.36
+updated: 2021-09-16 12:36:14
+version: 1.37
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -141,6 +141,8 @@ In this section I will be going over the topic of using Promises and the try cat
 There is also not just logging the result of an error when making a project there is taking the time to do something more when it comes to actually handing the error and preforming some kind of action that might help to address the situation. For example say that the reason why an error has happen is because a configuration files was not found, one way to address that would be to write a new one with hard coded settings and then try again.
 
 ### 4.1 - A read-json node script example
+
+So then here I have a simple nodejs script that will try to read a json file that may or may not be there.
 
 ```js
 const fs = require('fs'),
