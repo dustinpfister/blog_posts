@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 11:58:06
-version: 1.32
+updated: 2021-09-16 12:27:00
+version: 1.33
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -134,6 +134,58 @@ console.log(checkValue('foo')); // 0
 
 In addition to being able to make use of Properties in an Error object there is also of course throwing custom user defined Errors. This allows be to define what the message is, so of course I can then use that message as a way to create custom ways of going about defining what to do for these custom Errors. If the Errors objects that I am dealing with are not user defined, then it is just a matter of knowing what Errors I am dealing with and what properties values there are that can happen. With that I can do the same thing as I did in this example.
 
-## 4 - Conclusion
+## 4 - Promises and error handling with try catch as well as other features.
+
+### 4.1 - A read-json node script example
+
+```js
+const fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+readFile = promisify(fs.readFile);
+ 
+let uri_json = process.argv[2] || path.join(__dirname, 'conf.json');
+ 
+readFile(uri_json, 'utf8')
+.then((JSON_text) => {
+    try {
+        return JSON.parse(JSON_text);
+    } catch (e) {
+        return Promise.reject(e);
+    }
+})
+.then((obj) => {
+    console.log('JSON FIle parsed succesfly');
+    console.log(obj);
+})
+.catch((e) => {
+ 
+    // what to do if the file is not found
+    if (e.code === 'ENOENT') {
+        console.log('The JSON file at ' + uri_json + ' was not found');
+    }
+ 
+    if(e.name === 'SyntaxError') {
+        console.log('looks like we have a syntax error');
+        console.log('a good reason for this is that the JSON file is no good');
+    }
+ 
+});
+```
+
+```
+{
+    "n": 42
+}
+```
+
+```
+{
+    // commnets are not suppotred in JSON sorry
+    "n": 42
+}
+```
+
+## 5 - Conclusion
 
 So the basics of try catch statements are not so hard to get up to speed with. The typical use case situation is that you do something that might case an error in the try block, and then use the catch block to do what needs to happen in the event of an error. There is just the question if there is any weird situations about try catch that might come up now and then, and as I become aware of more things about that I will of course expand this post as needed.
