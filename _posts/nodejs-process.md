@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:42:23
-version: 1.12
+updated: 2021-09-16 14:45:01
+version: 1.13
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -124,5 +124,5 @@ okay, goodbye
 
 The process global contains many more useful methods, and values so it is called for to expand on the process object more in the future as I work on more demos. However I think that I did mention to cover all of the basic features that I use most often thus far to say the least when it comes to getting to positional parameter values, environment variables, and other useful information that is needed when making some kind of script.
 
-When it comes to writing [bash scripts there is learning how to work with positional parameters](/2020/12/10/linux-bash-script-parameters-positional/) in that kind of high level scripting language.
+When it comes to writing [bash scripts there is learning how to work with positional parameters](/2020/12/10/linux-bash-script-parameters-positional/) in that kind of high level scripting language. Another popular high level language outside of that of javaScript would be python, and with that language there is the [sys standard library](/2021/01/07/python-standard-library-sys/) that can also be used to get positional arguments when it comes to other programing languages other than that of javaScript.
 
