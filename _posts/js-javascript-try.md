@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 11:43:25
-version: 1.27
+updated: 2021-09-16 11:45:46
+version: 1.28
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -19,7 +19,9 @@ So then with that said in this post I will be outlining some things to know abou
 
 ## - Try catch and What to know first
 
-### - 
+### - The source code examples here are up on my gihub account
+
+This post is just one of many posts on the various source code examples that I have in my test vjs repository that I continue to work on a little more every now and then. With that said the [source code examples that I am writing about here](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-try) can be found in the repository.
 
 ## 1 - The javaScript try basic example
 
