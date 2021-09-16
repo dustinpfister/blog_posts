@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:06:37
-version: 1.6
+updated: 2021-09-16 14:10:27
+version: 1.7
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -20,7 +20,7 @@ In addition it can also be used to set some event handlers to give control over 
 
 ## 1 - [The process.cwd method](/2021/03/17/nodejs-process-cwd/)
 
-The process.cwd method is what can be used to get the current working directory.
+The process.cwd method is what can be used to get the current working directory from within the the body of a script. The current working directory will not always be the same as the directory where the script is located. So another realted topic to that of the process cwd method is the \_\_dirname global.
 
 ## 2 - [process.exit](/2019/08/13/nodejs-process-exit/)
 
