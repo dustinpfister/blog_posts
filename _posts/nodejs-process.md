@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:10:27
-version: 1.7
+updated: 2021-09-16 14:14:13
+version: 1.8
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -20,7 +20,7 @@ In addition it can also be used to set some event handlers to give control over 
 
 ## 1 - [The process.cwd method](/2021/03/17/nodejs-process-cwd/)
 
-The process.cwd method is what can be used to get the current working directory from within the the body of a script. The current working directory will not always be the same as the directory where the script is located. So another realted topic to that of the process cwd method is the \_\_dirname global.
+The process.cwd method is what can be used to get the current working directory from within the the body of a script. The current working directory will not always be the same as the directory where the script is located. So another related topic to that of the process cwd method is the \_\_dirname global.
 
 ## 2 - [process.exit](/2019/08/13/nodejs-process-exit/)
 
@@ -28,7 +28,7 @@ The process exit method can be used to end the current script with a given exit 
 
 ## 3 - [process.stdin](/2019/07/09/nodejs-process-stdin/)
 
-The stdin property of the process global is a steram that can be used to work with standard input.
+The stdin property of the process global is a stream that can be used to work with standard input.
 
 ## 4 - [process.stdout](/2021/03/18/nodejs-process-stdout/)
 
@@ -117,4 +117,5 @@ okay, goodbye
 
 ## 8 - Conclusion
 
-The process global contains many more useful methods, and values I will expand on process more in the future as I work on more demos.
+The process global contains many more useful methods, and values so it is called for to expand on the process object more in the future as I work on more demos. However I think that I did mention to cover all of the basic features that I use most often thus far to say the least.
+
