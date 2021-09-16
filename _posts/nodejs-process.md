@@ -1,12 +1,12 @@
 ---
-title: The node.js process global what to know
+title: The node.js process global for positional arguments environment variables and much more
 date: 2018-02-11 21:00:00
 tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:14:13
-version: 1.8
+updated: 2021-09-16 14:15:14
+version: 1.9
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
