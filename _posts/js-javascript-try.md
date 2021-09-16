@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 12:29:39
-version: 1.34
+updated: 2021-09-16 12:32:38
+version: 1.35
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -135,6 +135,8 @@ console.log(checkValue('foo')); // 0
 In addition to being able to make use of Properties in an Error object there is also of course throwing custom user defined Errors. This allows be to define what the message is, so of course I can then use that message as a way to create custom ways of going about defining what to do for these custom Errors. If the Errors objects that I am dealing with are not user defined, then it is just a matter of knowing what Errors I am dealing with and what properties values there are that can happen. With that I can do the same thing as I did in this example.
 
 ## 4 - Promises and error handling with try catch as well as other features.
+
+In this section I will be going over the topic of using Promises and the try catch statement. When doing this there are a number of other things to be aware of when it comes to handing errors. For example there is using Promise prototype methods such as the Promise.reject method to reject something and continue the flow to the next catch method call in the Promise chain.
 
 ### 4.1 - A read-json node script example
 
