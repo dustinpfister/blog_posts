@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 13:51:39
-version: 1.39
+updated: 2021-09-16 13:55:55
+version: 1.40
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -144,7 +144,7 @@ There is also not just logging the result of an error when making a project ther
 
 So then here I have a simple nodejs script that will try to read a json file that may or may not be there. By default the script will look for a json file called conf.json at the same folder as that of the script. However I can set a different file location by making use of the first and only [positional argument by way of the process object](/2018/02/11/nodejs-process/) for this script.
 
-This script then makes use of the promisify method of the nodejs built in util module to make sure that the read file, file system method will return a promise. I then call the resulting read file method to read the json file at the given location that might be a location in which the file might not be there. In the event that json file is not there, the next catch function call will fire rather than a then function call. In the body of a catch function call I am then looking at the code and name properties of the error object in the catch call. For this script I am just logging different messages, however in a slightly more advanced revision of this script I could do something more for specific conditions.
+This script then makes use of the [promisify method of the nodejs built in util module](/2019/06/22/nodejs-util-promisify/) to make sure that the read file, file system method will return a promise. I then call the resulting read file method to read the json file at the given location that might be a location in which the file might not be there. In the event that json file is not there, the next catch function call will fire rather than a then function call. In the body of a catch function call I am then looking at the code and name properties of the error object in the catch call. For this script I am just logging different messages, however in a slightly more advanced revision of this script I could do something more for specific conditions.
 
 ```js
 const fs = require('fs'),
