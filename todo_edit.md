@@ -4,6 +4,17 @@
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
 
+### (   ) - edit: nodejs-util-promisify
+* edit post to 500+ words
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links
+
+### (   ) - edit: nodejs-process
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links
+
 ### (   ) - edit: nodejs-ways-to-parse-cli-options
 * edit post to 500+ words
 * edit post to 1,000+ words
