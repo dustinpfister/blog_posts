@@ -1,12 +1,12 @@
 ---
-title: javaScript try
+title: The javaScript try statement and other Error handing related topics
 date: 2019-03-02 11:44:00
 tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 11:36:33
-version: 1.26
+updated: 2021-09-16 11:43:25
+version: 1.27
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -17,7 +17,11 @@ So then with that said in this post I will be outlining some things to know abou
 
 <!-- more -->
 
-## 1 - javaScript try basic example
+## - Try catch and What to know first
+
+### - 
+
+## 1 - The javaScript try basic example
 
 For a basic example of a try catch block I have a sting that represents an invalid [JSON string](/2020/02/28/js-json-parse/) that should do nicely for a basic example. In a real example this JSON might be pulled from a file that might end up being malformed for one reason or another, but for the sake of this simple example it is just a string literal. 
 
