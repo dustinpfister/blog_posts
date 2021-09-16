@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 11:35:26
-version: 1.25
+updated: 2021-09-16 11:36:33
+version: 1.26
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -94,7 +94,7 @@ console.log(valJSON('{\"n\":\"foo\"')); // 'baz'
 
 The catch block of a try catch statement will have a reference to the error object or catch id of the error that occurred in the try block. This can be used to set custom error handling conditions for specific errors.
 
-For example say I have a method that will check a value that is given, and will throw an error if the value is not a Number type at all, is a Number but has a value of NaN, or is a value that is out of a set range. This is a situation in which there is more than one thing that can go wrong, and say that I want to handle the out of range error differently from the others. In such situations a property of the Error Object such as the message, or Error code can be used as a way to preform a different way of resolving the Error.
+For example say I have a method that will check a value that is given, and will throw an error if the value is not a Number type at all, is a Number but has a [value of NaN](/2017/09/23/js-nan/), or is a value that is out of a set range. This is a situation in which there is more than one thing that can go wrong, and say that I want to handle the out of range error differently from the others. In such situations a property of the Error Object such as the message, or Error code can be used as a way to preform a different way of resolving the Error.
 
 ```js
 var checkValue = function (n) {
