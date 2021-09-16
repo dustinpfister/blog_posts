@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 11:29:28
-version: 1.23
+updated: 2021-09-16 11:33:40
+version: 1.24
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -72,7 +72,7 @@ I can not say I ever get into situations in which I need to define a javaScript 
 
 ### 2.2 - Using return with a try catch
 
-When using the return keyword in the body of a try catch block, any return statement used in the finally block will supersede any additional return statements that may exist in the try, or catch blocks. 
+When using the [return keyword](/2019/03/01/) in the body of a try catch block, any return statement used in the finally block will supersede any additional return statements that may exist in the try, or catch blocks. 
 
 ```js
 var valJSON = function (str) {
