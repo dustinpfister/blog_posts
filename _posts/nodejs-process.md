@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:15:14
-version: 1.9
+updated: 2021-09-16 14:26:20
+version: 1.10
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -22,13 +22,18 @@ In addition it can also be used to set some event handlers to give control over 
 
 The process.cwd method is what can be used to get the current working directory from within the the body of a script. The current working directory will not always be the same as the directory where the script is located. So another related topic to that of the process cwd method is the \_\_dirname global.
 
+```js
+console.log('dir_cwd : ', process.cwd());
+console.log('dir_script : ', __dirname);
+```
+
 ## 2 - [process.exit](/2019/08/13/nodejs-process-exit/)
 
-The process exit method can be used to end the current script with a given exit code.
+The process exit method can be used to end the current script with a given exit code. An exit code of zero means that the script just finished, and no kind of error has happened at all. Any other value other than zero indicated that some kind of error happened when the script is called.
 
 ## 3 - [process.stdin](/2019/07/09/nodejs-process-stdin/)
 
-The stdin property of the process global is a stream that can be used to work with standard input.
+The stdin property of the process global is a stream that can be used to work with standard input. This is how one would go about piping some data into a node js script that is the output of another script, or some whole other script completely actually. In fact the usual reason why I would want to bother doing something with this is so that I can use a nodejs script with some whole other command other than that of nodejs actually. The reason why is because when it comes to using another script that is written in javaScript there are generally better ways of doing that. However getting into what those options are may call for a whole other post.
 
 ## 4 - [process.stdout](/2021/03/18/nodejs-process-stdout/)
 
