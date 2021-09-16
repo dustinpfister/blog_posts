@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:26:20
-version: 1.10
+updated: 2021-09-16 14:29:05
+version: 1.11
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -37,7 +37,7 @@ The stdin property of the process global is a stream that can be used to work wi
 
 ## 4 - [process.stdout](/2021/03/18/nodejs-process-stdout/)
 
-The process.stdout stream is a way to go about directly working with standard output.
+The process.stdout stream is a way to go about directly working with standard output. The write method of this stream can be used as a replacement for the console log method only it will not automatically append a line break after each call. So this allows one to have control over what kind of line break to append to the output, or to append no line break at all actually if that is what is called for.
 
 ## 5 - process.argv
 
