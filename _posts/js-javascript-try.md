@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 12:27:00
-version: 1.33
+updated: 2021-09-16 12:29:39
+version: 1.34
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -155,7 +155,7 @@ readFile(uri_json, 'utf8')
     }
 })
 .then((obj) => {
-    console.log('JSON FIle parsed succesfly');
+    console.log('JSON FIle parsed successfully');
     console.log(obj);
 })
 .catch((e) => {
@@ -181,7 +181,7 @@ readFile(uri_json, 'utf8')
 
 ```
 {
-    // commnets are not suppotred in JSON sorry
+    // comments are not supported in JSON sorry
     "n": 42
 }
 ```
