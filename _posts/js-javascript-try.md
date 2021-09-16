@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 394
-updated: 2021-09-16 12:36:14
-version: 1.37
+updated: 2021-09-16 13:45:55
+version: 1.38
 ---
 
 The [try catch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) in javaScript is one way to go about preforming [error handling](https://rollbar.com/guides/javascript-exception-handling/) when developing some javaScript code. The use of a try catch involves placing one or more statements of javaScript code in a try block that might cause an Error in some situations. In the event that an error does happen some additional javaScript in a catch block that follows the try block will be called, and an error object will be present in this catch block to help with the process of handling the error.
@@ -142,7 +142,7 @@ There is also not just logging the result of an error when making a project ther
 
 ### 4.1 - A read-json node script example
 
-So then here I have a simple nodejs script that will try to read a json file that may or may not be there.
+So then here I have a simple nodejs script that will try to read a json file that may or may not be there. By default the script will look for a json file called conf.json at the same folder as that of the script. However I can set a different file location by making use of the first and only [positional argument by way of the process object](/2018/02/11/nodejs-process/) for this script.
 
 ```js
 const fs = require('fs'),
