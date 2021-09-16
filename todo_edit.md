@@ -43,7 +43,7 @@
 
 ## ( ) - edit js-javascript-try
 * edit post to 1,800+ words
-* have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ## () edit js-javascript-example-nodejs-browser-share-code-module
 * (done) link to post on js-custom-event as an example of this pattern.
