@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:54:43
-version: 1.12
+updated: 2021-09-17 09:58:59
+version: 1.13
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -38,7 +38,7 @@ $ npm install
 
 ## 2 - The build-tool.js library
 
-So there is started out by going over the main library of interest when it comes to this build tool thus far then maybe writ a thing or two about supporting files beyond that of the single dependency of this tool.
+So there is starting out by going over the main library of interest when it comes to this build tool thus far then maybe writ a thing or two about supporting files beyond that of the single dependency of this tool. The basic process that I have in mind here is that there should be a build-conf.json file located at a root folder of a project folder. This build-conf.json file is where I can then set what the root path is as far as the buid tool is concerted, and then all kinds of other relevant paths that are relative to that set root path. This json file will also contain an array of relative paths to each source code file that is to be combined into the various forms of files javaScript files in the dist folder. So then there is having a kind of read conf public method that is used to load this file and create an options object that can then be used with additional methods to create a dist object, and to write that dist object to a dist folder.
 
 ```js
 const UglifyJS = require("uglify-js"),
