@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:37:09
-version: 1.7
+updated: 2021-09-17 09:43:30
+version: 1.8
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -126,6 +126,8 @@ module.exports = api;
 ```
 
 ## 3 - The mkdirp.js library
+
+When it comes to making the dist folder I will need a way to make sure that the dist folder is created in the event that it is not there. In late versions of nodejs there may now be a native way of doing an mkdirp kind of creating of a path. However often whenI make these kinds of projects I like to push legacy support back more or less as far as I can. Even then going this sort of thing might not really be called for anymore as a recursive option is available for the native mkdir file system method for versions of node as old as 10.x.
 
 ```js
 const fs = require('fs'),
