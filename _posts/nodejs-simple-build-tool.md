@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:45:59
-version: 1.9
+updated: 2021-09-17 09:48:02
+version: 1.10
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -186,6 +186,8 @@ module.exports = mkdirp;
 
 
 ## 4 - The index.js file at root
+
+I then have a main index javaScript file at the root of the project folder. As one might expect this is the file that should be called when it comes to using the build tool as a command line tool, rather than that of a support library for another script.
 
 ```js
 const path = require('path'),
