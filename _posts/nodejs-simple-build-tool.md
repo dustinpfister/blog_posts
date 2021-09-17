@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:35:11
-version: 1.6
+updated: 2021-09-17 09:37:09
+version: 1.7
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -37,6 +37,8 @@ $ npm install
 ```
 
 ## 2 - The build-tool.js library
+
+So there is started out by going over the main library of interest when it comes to this build tool thus far then maybe writ a thing or two about supporting files beyond that of the single dependency of this tool.
 
 ```js
 const UglifyJS = require("uglify-js"),
