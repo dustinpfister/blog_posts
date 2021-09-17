@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:50:14
-version: 1.11
+updated: 2021-09-17 09:54:43
+version: 1.12
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -222,5 +222,8 @@ buildTool.createSource(opt)
 ## 5 - Conclusion
 
 That is it for now when it comes to this simple build tool, that is until I come around to edit and expand this post a bit more at some point in the future. Thus far the tool is all ready working for what I want and need this sort of thing for, and the rest of the work to do has more to do with further refining the features in place rather than adding additional features.
+
+One major project that I might use this with is this [game framework that I have been working on lately](https://github.com/dustinpfister/game-framework-clucker). As of this writing I have not yet added some kind of build script to create a dist folder for the project folder, however that is the plan when it comes to this sort of thing. When I use this project with that I will likely make a copy of the source code in the node folder of that repository, and when I do so it is possible that I will add some additional features as needed. I then might add some of those future features that may or may not happen to the state of this project. However I would like to not go nuts with features with this one, as it is a node simple series project.
+
 
 
