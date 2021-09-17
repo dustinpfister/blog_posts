@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 16:45:52
-version: 1.22
+updated: 2021-09-17 16:53:24
+version: 1.23
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -277,7 +277,97 @@ buildTool.build(uri_build_conf)
 });
 ```
 
-## 5 - Conclusion
+## 5 - A demo folder
+
+### 5.1 the build-conf.json file
+
+```json
+{
+  "fileName": "test_script",
+  "dir_root": "./",
+  "dir_target": "./dist",
+  "topString": "",
+  "bottomString": "",
+  "sourceFiles": [
+     "./src/game.js", "./src/main.js"
+  ],
+  "top": "(function(){\n\n",
+  "bottom": "\n}());"
+}
+```
+
+### 5.2 - The /src/game.js and /src/main.js files
+
+```js
+var gameMod = (function () {
+    // public API
+    var api = {};
+    // a pubic API method
+    api.create = function () {
+        return { count: 1 };
+    };
+    api.update = function(game){
+        game.count += 1;
+    };
+    // return the public api
+    return api;
+}
+    ())
+```
+
+
+```js
+// create game state
+var game = gameMod.create();
+// main app loop
+var loop = function(){
+    setTimeout(loop, 1000);
+    gameMod.update(game);
+    console.log(game.count);
+};
+loop();
+```
+
+### 5.3 - The output
+
+```js
+(function(){
+ 
+var gameMod = (function () {
+    // public API
+    var api = {};
+    // a pubic API method
+    api.create = function () {
+        return { count: 1 };
+    };
+    api.update = function(game){
+        game.count += 1;
+    };
+    // return the public api
+    return api;
+}
+    ())
+// create game state
+var game = gameMod.create();
+// main app loop
+var loop = function(){
+    setTimeout(loop, 1000);
+    gameMod.update(game);
+    console.log(game.count);
+};
+loop();
+ 
+}());
+```
+
+```js
+(function(){
+
+var gameMod=function(){var o={create:function(){return{count:1}},update:function(o){o.count+=1}};return o}(),game=gameMod.create(),loop=function(){setTimeout(loop,1e3),gameMod.update(game),console.log(game.count)};loop();
+}());
+```
+
+## 6 - Conclusion
 
 That is it for now when it comes to this simple build tool, that is until I come around to edit and expand this post a bit more at some point in the future. Thus far the tool is all ready working for what I want and need this sort of thing for, and the rest of the work to do has more to do with further refining the features in place rather than adding additional features.
 
