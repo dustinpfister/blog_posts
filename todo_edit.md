@@ -27,6 +27,12 @@
 * edit post to 1,800+ words
 * have 5+ internal links
 
+### (   ) - edit: nodejs-jsmin
+* edit post to 500+ words
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links
+
 ### ( done 09/15/2021 ) - edit: nodejs-http
 * (done) edit nodejs-http to 1000+ words
 * (done) edit post to 1,800+ words
