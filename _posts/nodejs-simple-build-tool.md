@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:28:13
-version: 1.4
+updated: 2021-09-17 09:30:21
+version: 1.5
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -24,6 +24,14 @@ A few years back I wrote a post on a user space package for this sort of thing c
 ## 1.1 - The full source code that I am writing about here is on my github
 
 The full and up to date source code of [this build tool can be found on my github account](https://github.com/dustinpfister/nodejs-simple-build-tool). I do get around to editing my content on this site now and then, but I have a whole lot of other posts that need to be edited outside of this one. Still the source code there might in some cases be a little better refined compared to what I am writing about here. Also it might be the best way to make use of this rather than copying and pasting source code from this post.
+
+One way to quickly get this up and running then would be to do something like this
+
+```
+$ git clone --depth 1 https://github.com/dustinpfister/nodejs-simple-build-tool
+$ cd nodejs-simple-build-tool
+$ npm install
+```
 
 ## 2 - The build-tool.js library
 
