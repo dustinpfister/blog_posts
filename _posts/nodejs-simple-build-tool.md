@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 10:11:46
-version: 1.18
+updated: 2021-09-17 10:14:16
+version: 1.19
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -35,6 +35,8 @@ $ git clone --depth 1 https://github.com/dustinpfister/nodejs-simple-build-tool
 $ cd nodejs-simple-build-tool
 $ npm install
 ```
+
+At which point I can then call the main index file with node to build the demo project folder, or use the build-tool.js file in another script. If I want to make this part of a larger project I will just need to make sure that I make uglify.js part of the dependencies in the package.json file.
 
 ## 2 - The build-tool.js library
 
