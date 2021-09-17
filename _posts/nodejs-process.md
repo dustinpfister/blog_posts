@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-16 14:45:01
-version: 1.13
+updated: 2021-09-17 14:29:50
+version: 1.14
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -54,7 +54,7 @@ $ node ecco hello
 hello
 ```
 
-If I am doing something that involves a lot of arguments I will want to use some kind of option parser such as [nopt](/2017/05/05/nodejs-nopt/).
+If I am doing something that involves a lot of arguments I will want to use some kind of option parser such as [nopt](/2017/05/05/nodejs-nopt/). One one of many other user space options that help with parsing any and all given options when a script is called with node.
 
 ## 6 - process.env
 
