@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:30:21
-version: 1.5
+updated: 2021-09-17 09:35:11
+version: 1.6
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -20,6 +20,9 @@ A few years back I wrote a post on a user space package for this sort of thing c
 <!-- more -->
 
 ## 1 - Making a build tool in nodejs, and what to know first
+
+This is a post on making a simple nodejs build tool that will create a development and minified form of finished javaScript library from a collection of smaller jaavScript source code files. The goal is to keep things simple here by not going to nuts with features and just making something that will just work for what is most important for this kind of project. However there are still a lot of things to know before hand when it comes to making even a simple nodejs project. If you are still fairly new to nodejs and javaScript I have posts on [getting started with nodejs](/2017/04/05/nodejs-helloworld/), as well as a few on [javaScript in general](/2018/11/27/js-getting-started/).
+
 
 ## 1.1 - The full source code that I am writing about here is on my github
 
