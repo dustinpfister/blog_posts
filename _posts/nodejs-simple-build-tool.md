@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 16:55:30
-version: 1.25
+updated: 2021-09-17 16:58:53
+version: 1.26
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -283,6 +283,8 @@ Now to go over a quick demo folder for the sake of just testing out if this work
 
 ### 5.1 the build-conf.json file
 
+Here then is the build-conf.json file thatI made for this demo.
+
 ```json
 {
   "fileName": "test_script",
@@ -299,6 +301,8 @@ Now to go over a quick demo folder for the sake of just testing out if this work
 ```
 
 ### 5.2 - The /src/game.js and /src/main.js files
+
+The game.js and main.js source code files are then as follows.
 
 ```js
 var gameMod = (function () {
@@ -332,6 +336,11 @@ loop();
 
 ### 5.3 - The output
 
+When I then run the index.js file in root and give the location of the build-conf.json file as the first and only argument then result is then a dist folder with the following output files.
+
+
+test_script.js
+
 ```js
 (function(){
  
@@ -362,12 +371,16 @@ loop();
 }());
 ```
 
+test_script.min.js
+
 ```js
 (function(){
 
 var gameMod=function(){var o={create:function(){return{count:1}},update:function(o){o.count+=1}};return o}(),game=gameMod.create(),loop=function(){setTimeout(loop,1e3),gameMod.update(game),console.log(game.count)};loop();
 }());
 ```
+
+So thenso far so good it would seem that this built tool is working more or less as expected.
 
 ## 6 - Conclusion
 
