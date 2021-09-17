@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 151
-updated: 2021-09-17 14:29:50
-version: 1.14
+updated: 2021-09-17 14:32:22
+version: 1.15
 ---
 
 The [process global](https://nodejs.org/dist/latest-v8.x/docs/api/process.html) in [node.js](https://nodejs.org/en/) is helpful for getting information on, and control over, the current process of a script. When making node.js applications chances are you are going to use at least some of it's properties to grab at environment variables, and positional arguments given from the command line when a script is called with node in the command line. 
@@ -68,31 +68,20 @@ When I deploy to heroku the server will use the port specified in the PORT envir
 
 ## 7 - Message, and disconnect events
 
-With the process global there are a bunch of events that can be used to help give control over the process including [Inter-process communication](https://en.wikipedia.org/wiki/Inter-process_communication#Approaches) I am new to this but I was able to put together a working demo pretty quickly when it comes to sending a simple message to a child-process.
-
-This requires starting another module from within a module using the fork method of the [child_process](/2018/02/04/nodejs-child-process/), or [cluster](/2018/01/18/nodejs-cluster/) modules.
+With the process global there are a bunch of events that can be used to help give control over the process including [Inter-process communication](https://en.wikipedia.org/wiki/Inter-process_communication#Approaches) I am new to this but I was able to put together a working demo pretty quickly when it comes to sending a simple message to a child-process by way of this standard. This requires starting another module from within a module using the fork method of the [child_process](/2018/02/04/nodejs-child-process/), or [cluster](/2018/01/18/nodejs-cluster/) modules.
 
 I have a child.js file that makes use of the message, and disconnect events like this:
 
 ```js
 process.on('message', function (n) {
- 
     if (n === 42) {
- 
         console.log('yes that is the answer');
- 
     } else {
- 
         console.log('nope');
- 
     }
- 
 });
- 
 process.on('disconnect', function (a, b) {
- 
     console.log('okay, goodbye');
- 
 });
 ```
 
