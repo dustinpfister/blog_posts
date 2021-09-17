@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 10:09:02
-version: 1.16
+updated: 2021-09-17 10:09:50
+version: 1.17
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -38,7 +38,7 @@ $ npm install
 
 ## 2 - The build-tool.js library
 
-So there is starting out by going over the main library of interest when it comes to this build tool thus far then maybe writ a thing or two about supporting files beyond that of the single dependency of this tool. The basic process that I have in mind here is that there should be a build-conf.json file located at a root folder of a project folder. This build-conf.json file is where I can then set what the root path is as far as the buid tool is concerted, and then all kinds of other relevant paths that are relative to that set root path. This json file will also contain an array of relative paths to each source code file that is to be combined into the various forms of files javaScript files in the dist folder. So then there is having a kind of read conf public method that is used to load this file and create an options object that can then be used with additional methods to create a dist object, and to write that dist object to a dist folder.
+So there is starting out by going over the main library of interest when it comes to this build tool thus far then maybe writ a thing or two about supporting files beyond that of the single dependency of this tool. The basic process that I have in mind here is that there should be a build-conf.json file located at a root folder of a project folder. This build-conf.json file is where I can then set what the root path is as far as the build tool is concerted, and then all kinds of other relevant paths that are relative to that set root path. This json file will also contain an array of relative paths to each source code file that is to be combined into the various forms of files javaScript files in the dist folder. So then there is having a kind of read conf public method that is used to load this file and create an options object that can then be used with additional methods to create a dist object, and to write that dist object to a dist folder.
 
 The create source public method is a way to go about creating the first raw state of the source code to create files with. What this method needs to do is to just use the root path, and array of source code paths to read each source code file, and concatenate each of them into a single javaScript string. This is achieved by making use of the [promise all method](/2019/06/24/js-promise-all/), and the [array map](/2020/06/16/js-array-map/) prototype method, along with array join. The promise all method will return a promise that will only resolve once all the values that are given in an array will resolve or reject that are promises. So I give the promise all method the result of calling the array map method off of the array of relative paths creating a readFile promise for each path. The end result is then an array fo strings where each string is the javaScript text of each javaScript file. The last step then is to just simply join this array of strings together into a single string.
 
