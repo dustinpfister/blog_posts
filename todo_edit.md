@@ -10,11 +10,6 @@
 * edit post to 1,800+ words
 * have 5+ internal links
 
-### (   ) - edit: nodejs-process
-* edit post to 1,000+ words
-* edit post to 1,800+ words
-* have 5+ internal links
-
 ### (   ) - edit: nodejs-ways-to-parse-cli-options
 * edit post to 500+ words
 * edit post to 1,000+ words
@@ -30,7 +25,6 @@
 ### (   ) - edit: nodejs-mkdirp
 * link to new post nodejs-simple-build-tool
 * update vanilla js solution to what was worked out for nodejs-simple-build-tool
-* edit post to 500+ words
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links
@@ -41,6 +35,11 @@
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links
+
+### (   ) - edit: nodejs-process
+* (done) edit post to 1,000+ words
+* edit post to 1,800+ words
+* (done) have 5+ internal links
 
 ### ( done 09/15/2021 ) - edit: nodejs-http
 * (done) edit nodejs-http to 1000+ words
