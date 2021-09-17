@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 10:14:16
-version: 1.19
+updated: 2021-09-17 16:41:53
+version: 1.20
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -59,7 +59,44 @@ const api = {};
  
 // read a build-conf.json file to produce an opt object for buildTool.createSource
 api.readConf = (uri) => {
- 
+    let opt = {};
+    return readFile(uri, 'utf8')
+    .then((text) => {
+        let conf = {};
+        // try to parse JSON
+        try{
+            conf = JSON.parse(text);
+        }catch(e){}
+        // set up opt with what is in JSON or hard coded default
+        // RESOLVE opt.dir_root TO AN ABSOLUTE PATH from the location of the conf.json file
+        opt.dir_root = path.resolve( path.join( path.dirname(uri), conf.dir_root)) || process.cwd();
+        // RESOLVE opt.dir_target TO AN ABSOLUTE PATH from opt.dir_root
+        opt.dir_target = path.resolve( path.join( opt.dir_root, conf.dir_target || './dist') );
+        opt.fileName = conf.fileName || 'file';
+        opt.version = conf.version === undefined ? '' : conf.version;
+        opt.sourceFiles = conf.sourceFiles || [];
+        // top and bottom strings
+        opt.top = conf.top || '';
+        opt.bottom = conf.bottom || '';
+        return readFile( path.join(opt.dir_root, 'package.json') );
+    })
+    .then((packageText)=>{
+        let pkg = {};
+        // try to parse JSON
+        try{
+            pkg = JSON.parse(packageText);
+        }catch(e){}
+        opt.version = pkg.version || opt.version;
+        opt.author = pkg.author || '';
+        // append version folder to dir_target
+        if(opt.version){
+            opt.dir_target = path.join(opt.dir_target, opt.version);
+        }
+        return opt;
+    }).
+    catch((e) => {
+        return opt;
+    });
 };
  
 // return a promise that will resolve to an object with code and error properties
@@ -94,11 +131,14 @@ api.createDistObj = (opt) => {
     opt = opt || {};
     // the starting dist object
     let dist = {
+        fileName : opt.fileName || 'file',
         dir_root: opt.dir_root || process.cwd(),
         // dist.dir_target should be a realtive path from opt.dir_root
-        dir_target: path.join(opt.dir_root, opt.dir_target || 'dist'),
+        dir_target: opt.dir_target, //path.join(opt.dir_root, opt.dir_target || 'dist'),
         sourceCode : opt.sourceCode || '',
         minCode : '',
+        top: opt.top || '',
+        bottom: opt.bottom || '',
         error: null
     };
  
@@ -115,16 +155,40 @@ api.createDistObj = (opt) => {
  
 // write th given dist object to the dist.dir_target path
 api.writeDist = (dist) => {
-    let dir_target = path.join( dist.dir_target, '0.0.0' );
+    let dir_target = path.join( dist.dir_target );
     // first make sure the target folder is there
     return mkdirp.promise(dir_target)
     // write the dev version
     .then(() => {
-        return writeFile( path.join( dir_target, 'file.js' ), dist.sourceCode, 'utf8' );
+        let text = dist.top + dist.sourceCode + dist.bottom;
+        return writeFile( path.join( dir_target, dist.fileName + '.js' ), text, 'utf8' );
     })
     // write the min version
     .then(()=>{
-        return writeFile( path.join( dir_target, 'file.min.js' ), dist.minCode, 'utf8' );
+        let text = dist.top + dist.minCode + dist.bottom;
+        return writeFile( path.join( dir_target, dist.fileName + '.min.js' ), text, 'utf8' );
+    }).
+    then(()=>{
+        return dist;
+    });
+};
+ 
+// build by passing a uri to conf
+api.build = function(uri_build_conf){
+    let opt = {};
+    // start by reading the json file
+    return api.readConf(uri_build_conf)
+    // append build-conf.json values to opt and create source
+    .then((conf)=>{
+        opt = Object.assign(opt, conf);
+        return api.createSource(opt);
+    })
+    // append opt.sourceCode and create dist options by calling createDist
+    // then write dist
+    .then((source)=>{
+        opt.sourceCode = source.code;
+        let dist = api.createDistObj(opt);
+        return api.writeDist(dist);
     });
 };
  
@@ -198,27 +262,13 @@ I then have a main index javaScript file at the root of the project folder. As o
 ```js
 const path = require('path'),
 buildTool = require( path.join(__dirname, 'lib/build-tool.js') );
- 
-let opt = {
-    fileName: "test_script",
-    dir_root: path.join(__dirname, 'demo'),
-    dir_target: 'dist',
-    sourceFiles: [
-     "./src/file1.js", "./src/file2.js", "./src/file3.js"
-    ],
-    version: '0.0.0'
-};
- 
-// create source
-buildTool.createSource(opt)
-// what to do with source object
-.then((source)=>{
-   opt.sourceCode = source.code;
-   let dist = buildTool.createDistObj(opt);
-   return buildTool.writeDist(dist);
-})
-.then((obj) => {
-    console.log(obj);
+// the uri of the file
+let uri_build_conf = process.argv[2] ||  path.join(process.cwd(), 'build-conf.json');
+// build
+buildTool.build(uri_build_conf)
+.then((dist) => {
+    console.log('dist folder created : ');
+    console.log('path: ' + dist.dir_target);
 })
 .catch((e) => {
     console.log(e);
