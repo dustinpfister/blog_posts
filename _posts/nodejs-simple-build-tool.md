@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 09:48:02
-version: 1.10
+updated: 2021-09-17 09:50:14
+version: 1.11
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -220,4 +220,7 @@ buildTool.createSource(opt)
 ```
 
 ## 5 - Conclusion
+
+That is it for now when it comes to this simple build tool, that is until I come around to edit and expand this post a bit more at some point in the future. Thus far the tool is all ready working for what I want and need this sort of thing for, and the rest of the work to do has more to do with further refining the features in place rather than adding additional features.
+
 
