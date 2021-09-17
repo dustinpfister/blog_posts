@@ -27,7 +27,16 @@
 * edit post to 1,800+ words
 * have 5+ internal links
 
+### (   ) - edit: nodejs-mkdirp
+* link to new post nodejs-simple-build-tool
+* update vanilla js solution to what was worked out for nodejs-simple-build-tool
+* edit post to 500+ words
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links
+
 ### (   ) - edit: nodejs-jsmin
+* link to new post nodejs-simple-build-tool
 * edit post to 500+ words
 * edit post to 1,000+ words
 * edit post to 1,800+ words
