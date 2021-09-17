@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 16:44:04
-version: 1.21
+updated: 2021-09-17 16:45:52
+version: 1.22
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -194,6 +194,8 @@ api.build = function(uri_build_conf){
  
 module.exports = api;
 ```
+
+However when it comes to just calling one method to do everything and be done with it that would be the one at the very bottom. I have a buildTool.build method to which I can pass the uri to the build-conf.json file that I want to use, and if all goes well that should be the end of it when it comes to creating a build.
 
 ## 3 - The mkdirp.js library
 
