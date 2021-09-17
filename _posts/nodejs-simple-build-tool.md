@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 16:41:53
-version: 1.20
+updated: 2021-09-17 16:44:04
+version: 1.21
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -44,7 +44,7 @@ So there is starting out by going over the main library of interest when it come
 
 The create source public method is a way to go about creating the first raw state of the source code to create files with. What this method needs to do is to just use the root path, and array of source code paths to read each source code file, and concatenate each of them into a single javaScript string. This is achieved by making use of the [promise all method](/2019/06/24/js-promise-all/), and the [array map](/2020/06/16/js-array-map/) prototype method, along with array join. The promise all method will return a promise that will only resolve once all the values that are given in an array will resolve or reject that are promises. So I give the promise all method the result of calling the array map method off of the array of relative paths creating a readFile promise for each path. The end result is then an array fo strings where each string is the javaScript text of each javaScript file. The last step then is to just simply join this array of strings together into a single string.
 
-Once I have a source code string I can then create an options object that can be used to create a dist object. This will be the last kind of options object to make that can then be passed to a method that will use off of this to create the dist folder.
+Once I have a source code string I can then create an options object that can be used to create a dist object. This will be the last kind of options object to make that can then be passed to a method that will use off of this to create the dist folder. Speaking of that last method that would be the write dist method that takes this dist objects object and uses that to write both a developer form and minified form of the files in a dist folder relative to the root path.
 
 ```js
 const UglifyJS = require("uglify-js"),
