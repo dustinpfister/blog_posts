@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 929
-updated: 2021-09-17 16:53:24
-version: 1.23
+updated: 2021-09-17 16:54:20
+version: 1.24
 ---
 
 This week I put together a quick simple build tool solution that I might used in one or more of my nodejs projects. There are of course many popular projects that are this kind of tool that I could just use and move on with, but some times I do just like to make my own solutions for things. 
@@ -278,6 +278,8 @@ buildTool.build(uri_build_conf)
 ```
 
 ## 5 - A demo folder
+
+Now to go over a quick demo folder for the sake of just tetsing out if this works or not.
 
 ### 5.1 the build-conf.json file
 
