@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-20 17:40:09
-version: 1.40
+updated: 2021-09-20 17:48:43
+version: 1.41
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -205,3 +205,6 @@ The result is random points, but they are distributed in very different ways. By
 So that is it for now when it comes to random numbers and javaScript using the build in Math random method. In the event that I get some more time, or that I find something more to write about when it comes to the Math.random method, and other things surrounding random numbers in general I will expand this post a bit more as I have a few times all ready.
 
 For now there is maybe reading up more on the various other features of the Math object. It might not be needed to go threw all of them but one of the methods I use often is the [Math atan2](/2019/03/19/js-math-atan2) method which is useful for finding angles between two points for example. There is also getting int using all kinds of formulas that make use of the [math pi](/2020/06/05/js-math-pi/) constant, and also looking into the [natural logarithm](/2018/12/26/js-math-log/) method also.
+
+When it comes to learning a language other then that of javaScript there is the [random standard library in python](/2021/01/22/python-standard-library-random/). That library contains a method just like Math.random, but also a number of other methods for various features that often need to be added by a user space library, or a little additional javaScript code such as with the examples outlined in this post.
+
