@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-20 15:57:18
-version: 1.34
+updated: 2021-09-20 15:57:55
+version: 1.35
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -267,5 +267,5 @@ That is it for this kind of javaScript module pattern, at least as far as this p
 
 It is great that if I want to, I can go about writing my modules like this, so that code will only have to be written once and then it can be used in the front or back end. However just because I can do something does not alone mean that it is a good idea. It might still be best to maintain browser and nodejs variants of the same module, but doing something, especially when it comes to using features that are node or browser only. 
 
-There are many popular frameworks that follow some kind of pattern like this, and that does not keep me from using them. Or at least I would not stop using it as long as there is not some good reason why not to. It should go without saying that if we are talking about some kind of sever side script that contains source code that should not end up being public that is of course a whole other story. However whe  it comes to kind of library that I would want to make portable from both the client side and sever side environments then it is nce to have one file that will work in bother environments.
+There are many popular frameworks that follow some kind of pattern like this, and that does not keep me from using them. Or at least I would not stop using it as long as there is not some good reason why not to. It should go without saying that if we are talking about some kind of sever side script that contains source code that should not end up being public that is of course a whole other story. However when it comes to kind of library that I would want to make portable from both the client side and sever side environments then it is nice to have one file that will work in bother environments.
 
