@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-20 15:48:32
-version: 1.30
+updated: 2021-09-20 15:50:43
+version: 1.31
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -157,6 +157,105 @@ There is a built in node way of doing this sort of thing, and in the post that I
 ```
 
 This kind of module seems to work okay, at least with the few test scripts that I put together for it. However I have not done anything to major with this, or anything else that I have made based off of this so I might stop writing about it for now until I have more to say about it. There are many frameworks that have this kind of system built into it, but I just wanted to quickly thrash together my one system for making user defined events.
+
+### 2.1 - A nodejs demos of the event module
+
+```js
+let path = require('path'),
+eventMod = require(path.join(__dirname, 'event-system.js'));
+ 
+var player = {
+    hp: 10
+};
+ 
+// CREATE AND ADD A 'HIT' EVENT FOR THE PLAYER OBJECT
+let eventObj = {
+    eventKey: 'hit',
+    forDispatch: function (obj, dispatchOpt) {
+        obj.hp -= dispatchOpt.damage;
+        obj.hp = obj.hp < 0 ? 0 : obj.hp;
+        // return an event object that will be in the listener
+        return {
+            target: obj, // ref to the object
+            damage: dispatchOpt.damage,
+            dead: obj.hp === 0
+        };
+    }
+};
+eventMod.addEvent(player, eventObj);
+ 
+// ATTACH A LISTNEER FOR THE 'HIT' EVENT
+eventMod.addListener(player, 'hit', function (e) {
+    console.log(e.dead, e.target.hp);
+});
+
+// DISPATCH THE EVENT
+eventMod.dispatch(player, 'hit', {
+    damage: 3
+});
+// false 7
+eventMod.dispatch(player, 'hit', {
+    damage: 7
+});
+// true 0
+```
+
+### 2.2 - A client side demo
+
+```js
+<html>
+    <head>
+        <title>custom event in client side javaScript</title>
+    </head>
+    <body>
+        <textarea id="game-console" rows="20" cols="80"></textarea>
+        <script src="./event-system.js"></script>
+        <script>
+ 
+var player = {
+    hp: 10
+};
+ 
+// CREATE AND ADD A 'HIT' EVENT FOR THE PLAYER OBJECT
+let eventObj = {
+    eventKey: 'hit',
+    forDispatch: function (obj, dispatchOpt) {
+        obj.hp -= dispatchOpt.damage;
+        obj.hp = obj.hp < 0 ? 0 : obj.hp;
+        // return an event object that will be in the listener
+        return {
+            target: obj, // ref to the object
+            damage: dispatchOpt.damage,
+            dead: obj.hp === 0
+        };
+    }
+};
+eventMod.addEvent(player, eventObj);
+ 
+// ATTACH A LISTNEER FOR THE 'HIT' EVENT
+eventMod.addListener(player, 'hit', function (e) {
+    var el = document.querySelector('#game-console');
+    if(!e.dead){
+        el.value += 'The player was hit, taking ' + e.damage + ' damage.\n';
+    }else{
+        el.value += 'The player was hit, and has died from taking ' + e.damage + ' damage\n';
+    }
+});
+ 
+// DISPATCH THE EVENT
+eventMod.dispatch(player, 'hit', {
+    damage: 3
+});
+// false 7
+eventMod.dispatch(player, 'hit', {
+    damage: 7
+});
+// true 0
+ 
+        </script>
+    </body>
+</html>
+```
 
 ## 3 - Conclusion
 
