@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-20 16:04:24
-version: 1.28
+updated: 2021-09-20 16:31:24
+version: 1.29
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something random. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -70,11 +70,46 @@ console.log( Math.ceil(Math.random() * 6) ); // 1 - 6 (range of 6)
 console.log( Math.floor(Math.random() * 6) ); // 0 - 5 (range of 6)
 ```
 
-## 4 - The Math random method and Distribution
+## 4 - Random Color methods
+
+### 4.1 - array of color options
+
+```js
+var randomColor = function (options) {
+    options = options || ['white', 'black'];
+    return options[Math.floor(options.length * Math.random())];
+};
+console.log(randomColor()) // black or white
+console.log(randomColor(['red', 'lime', 'cyan', 'black', 'white']));
+```
+
+### 4.2 - A nice concise solution
+
+```js
+var randomColor = function () {
+    return '#' + Math.random().toString(16).substr(-6);
+};
+console.log( randomColor() );
+```
+
+### 4.3 - rgb method
+
+```js
+var randomRed = function (rLow, rHigh) {
+    rLow = rLow === undefined ? 0: rLow;
+    rHigh = rHigh === undefined ? 255: rHigh;
+    var r = Math.round(rLow + Math.random() * (rHigh - rLow));
+    return 'rgba(' + r + ', 0, 0, 1)';
+};
+console.log(randomRed()); // full red range
+console.log(randomRed(200, 220)); // 200 - 220
+```
+
+## 5 - The Math random method and Distribution
 
 Now for a word or two on distribution when using the Math round method. Now the math random method will give pseudo random numbers, however it will distribute in a way that is kind of not so random. That is that the numbers will be kind of evenly distributed when using it, unless you do something more to change that. So in this section I will be going over concerns over distribution and the use of the math random method in the javaScript Math object.
 
-### 4.1 - Random Distribution scatter plot example
+### 5.1 - Random Distribution scatter plot example
 
 A good way to understand what is going on with this would be to create something that looks like a [scatter plot](https://en.wikipedia.org/wiki/Scatter_plot) of sorts. If I use the Math random method to generate a bunch of random points by just multiplying width by a Math random call for x, and height by a Math.random call then the points will be random, but in a very evenly distributed kind of way.
 
@@ -149,6 +184,6 @@ drawPoints(points2, ctx, 'green', 150);
 
 The result is random points, but they are distributed in very different ways. By using Math log in conjunction with math random to work out the points that results in a very different distribution of values for the points, many more of the points are concentrated to the lower sides of the area so they are not so evenly distributed.
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So that is it for now when it comes to random numbers and javaScript. In the event that I get some more time, or that I find something more to write about when it comes to the Math.random method, and other things surrounding random numbers in general I will expand this post a bit more.
