@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-20 17:22:14
-version: 1.35
+updated: 2021-09-20 17:23:41
+version: 1.36
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -99,6 +99,8 @@ console.log( randomColor() );
 ```
 
 ### 4.3 - rgb method
+
+Here I have a method where I am using the rgba format for making a web color, however I just want a random range for a fixed color channel.
 
 ```js
 var randomRed = function (rLow, rHigh) {
