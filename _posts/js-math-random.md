@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-20 17:18:52
-version: 1.34
+updated: 2021-09-20 17:22:14
+version: 1.35
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -89,7 +89,7 @@ console.log(randomColor(['red', 'lime', 'cyan', 'black', 'white']));
 
 ### 4.2 - A nice concise solution
 
-This is one of the most concise solutions for a random color generator function that I have found thus far.
+This is one of the most concise solutions for a random color generator function that I have found thus far. This works by passing the value 16 to the [to string](/2020/07/14/js-to-string/) method of the number prototype that results in converting the random number to a hex string. I then just want the last six characters of that hex sting to get a valid random color as a hex string.
 
 ```js
 var randomColor = function () {
