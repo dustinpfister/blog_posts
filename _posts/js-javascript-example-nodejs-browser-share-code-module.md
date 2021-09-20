@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-20 15:52:21
-version: 1.32
+updated: 2021-09-20 15:53:43
+version: 1.33
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -203,6 +203,8 @@ eventMod.dispatch(player, 'hit', {
 ```
 
 ### 2.2 - A client side demo
+
+Here now is more or less the same demo as before but now I am creating a client side demo of the module. This time I am using a text area element as a way to go about logging the output of the results.
 
 ```js
 <html>
