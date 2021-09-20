@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-20 17:10:53
-version: 1.30
+updated: 2021-09-20 17:13:36
+version: 1.31
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something random. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -72,7 +72,7 @@ console.log( Math.floor(Math.random() * 6) ); // 0 - 5 (range of 6)
 
 ## 4 - Random Color methods
 
-Now for some [random color method examples](https://stackoverflow.com/questions/1484506/random-color-generator) that should work okay when it comes to client side javaScript.
+Now for some [random color method examples](https://stackoverflow.com/questions/1484506/random-color-generator) that should work okay when it comes to client side javaScript. These are many ways go do about making this kind of method, and many little features when it comes to having control over various aspects of this kind of process. For example some times I might want to have random shads of just a single color channel. Also I might want to have a random range of colors. Other times I might want to have a static array of options for colors and I just want to have one of those options.
 
 ### 4.1 - array of color options
 
