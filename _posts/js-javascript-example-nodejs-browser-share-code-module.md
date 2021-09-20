@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 845
-updated: 2021-09-13 16:04:27
-version: 1.29
+updated: 2021-09-20 15:48:32
+version: 1.30
 ---
 
 I am continuing to expand my collection of [javaScript example](/2021/04/02/js-javascript-example/) type posts this week, and today I think I will be covering a simple [module design pattern](/2019/03/12/js-javascript-module/) for [sharing code between nodejs and a browser](https://www.geeksforgeeks.org/how-to-share-code-between-node-js-and-the-browser/) environment. There are a number of popular user space projects that make use of this kind of pattern so that a single from of the file will work great in nodejs, or a browser, one great example of this world be the [mark down parser know as marked](/2017/11/19/nodejs-marked/).
@@ -77,9 +77,9 @@ $ node index.js
 
 So then the module is working as expected in node, but what about a browser example.
 
-### 1.2 - Using the module in client side javaScript
+### 1.2 - Using the module in client side javaScript project
 
-So now I am going to want to see if this utils module will still work as expected when using it in a client side javaScript environment. With that said when I open up the following index.html file in the same location as the index.js node script in my browser it seems to work just fine also.
+So now I am going to want to see if this utils module will still work as expected when using it in a client side javaScript environment. The process will be very similar only in place of using require I will need to use a script tag to load it in. I will also need an additional script tag to write a little additional javaScript to make use of one of the method in the utils module. So when I just make those changes with an html file rather than a sever side script, and I open up the html in the browser the end result is more or less the same. I can then use the same library in bother a nodejs and client side javaScript project.
 
 ```html
 <html>
