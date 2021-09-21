@@ -56,14 +56,22 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+
+
 ## ( ) - edit js-path-find
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( ) - edit js-math-random
-* (done) edit post to 1,000+ words
+
+### (   ) - edit: js-javascript-closure
+* start a new section on the create hat method in js-math-random and link to the post
 * edit post to 1,800+ words
+* have 5+ internal links for the post
+
+## ( done 09/20/2021 ) - edit js-math-random
+* (done) edit post to 1,000+ words
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ## ( done 09/20/2021 ) edit js-javascript-example-nodejs-browser-share-code-module
