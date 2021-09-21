@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 12:34:24
-version: 1.60
+updated: 2021-09-21 12:40:21
+version: 1.61
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -20,6 +20,8 @@ With that said there is maybe a bit more that just calling the method then when 
 Many of the examples here are fairly basic, and easy to just copy and paste over into a project. Still I assume that you have at least some background when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/). I will not be going over every little detail that you should be aware of before hand in this post as I want to make the focus on the Math random method, and various other related topics that might come up when it comes to using such a method. However I will be touching base on a few things that you might want to read up more on before continuing to read the rest of this post.
 
 In this section I will also be starting out with some fairly basic examples of the Math.random method these will just be the usual hello world style type examples. However in the process of doing so I will also be going over some of the basics of expressions, and writing functions in the process of doing so.
+
+It should go without saying that for the most part this section is for total beginners of javaScript. I should focus heavily on that kind of crowd here as many who read this are in fact fairly new to javaScript still as this is one of the first things I would want to learn how to do when learning a new language. If you do have a fair about of experience with javaScript then chances are you will want to skip over this section to get to the good stuff near and at the bottom of the post.
 
 ### 1.1 - The examples here can be found on my github
 
@@ -83,6 +85,14 @@ var n = Math.random();
 // of the process global
 process.stdout.write( String(n) + os.EOL )
 ```
+
+So then the next step when it comes to this kind of nodejs example is to save it as something like basic-node.js and call the script from the command line with nodejs.
+
+```
+$ node basic-random
+```
+
+The end result is then yet another way to go about using the Math random method in a project.
 
 ### 1.5 - function die example
 
