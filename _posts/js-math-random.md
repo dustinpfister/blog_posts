@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 11:54:42
-version: 1.52
+updated: 2021-09-21 11:58:14
+version: 1.53
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -84,7 +84,7 @@ process.stdout.write( String(n) + os.EOL )
 
 ### 1.5 - function die example
 
-Okay not I think I should write about making at least one or more functions that make use of the Math random method, starting out with a simple die function example. This function will just take one argument that is the number of sides that a die has, and return a random number between and including 1 and the total number of sides.
+Okay now I think I should write about making at least one or more functions that make use of the Math random method, starting out with a simple die function example. This function will just take one argument that is the number of sides that a die has, and return a random number between and including 1 and the total number of sides.
 
 ```js
 var rollDie = function (sides) {
@@ -99,6 +99,8 @@ console.log( rollDie(20));
 
 ### 1.6 - function roll dice example
 
+How about another function example that builds on top of the die function example that I went over above? With that said how about a roll dice function that will take an array of numbers that defaults to \[6,6\] that is an array sides for a set of dice? Inside the body of this roll dice function the array map method can be used to create an return a new array from the source array that is this array of sides. So the n each element in the new array that is returned is the result of rolling a dice with the sides value in the source array.
+ 
 ```js
 var rollDie = function (sides) {
     sides = sides === undefined ? 6 : sides;
