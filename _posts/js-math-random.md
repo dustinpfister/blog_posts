@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 12:26:09
-version: 1.58
+updated: 2021-09-21 12:33:17
+version: 1.59
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -67,6 +67,8 @@ document.querySelector('#out').value = n;
     </script>
 </body>
 ```
+
+SO then there is the topic of setting up a basic web server as a way to host this kind of index.html file up via the http protocol. That is the proper way to go about doing so actually, however when it comes to something like this it is still possible for it to work okay by just opening it up in a web browser by way of the file protocol.
 
 ### 1.4 - nodejs example of Math.random
 
@@ -322,7 +324,7 @@ var i = 0;
 while (i < 15) {
     var n = hat.pull();
     if (n === false) {
-        hat = createHat();
+        hat.start();
         n = hat.pull();
         console.log('');
         console.log('new hat');
@@ -334,7 +336,7 @@ while (i < 15) {
 }
 ```
 
-Whe I run this script the result is random numbers being lodged out to the console between and including 1 to 10, but no number ever repeats. That is until of course I call the reset method of the hat.
+When I run this script the result is random numbers being lodged out to the console between and including 1 to 10, but no number ever repeats. That is until of course I call the start method of the hat object that is returned with the create hat method.
 
 ## 7 - Conclusion
 
