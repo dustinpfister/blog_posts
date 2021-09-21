@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 10:38:20
-version: 1.43
+updated: 2021-09-21 11:34:05
+version: 1.44
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -27,14 +27,16 @@ Like all my other posts on vanilla javaScript the source code examples here can 
 
 ### 1.2 - A Very basic math.random example
 
-So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. So a basic starting example of the Math.random method might involve just calling the math random method, and then pass the value to the console log method to see the result in the javaScript console.
+So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. With that said I think I should maybe start out with an examples that can be used in the javaScript console of a web browser such as Google chrome. I have wrote a getting started with javaScript type post on this very subject, but the basic idea is to just press ctrl + shift + j in Google chrome and make sure that you have the console tab selected. A line of javaScrit code that is then just calling the Math random method can be called in the console.
 
-```js
-var n = Math.random();
-console.log(n); // random number between 0 and 1
+So just type Math.random\(\) at the \> prompt and press return. The result should then be a random number.
+
+```html
+> Math.random()
+< 0.6060413720315996
 ```
 
-The random number can then be multiplied, and used in all kinds of different expressions to get desired random ranges. So from this post forward it is just working out the expressions that are needed to work with this kind of method.
+The random number can then be multiplied, and used in all kinds of different expressions to get desired random ranges. So from this point forward it is just working out the expressions that are needed to work with this kind of method. Those expressions can then end up being the return values of functions, or be used to create arguments for pure functions.
 
 ## 2 - Range and Math random
 
