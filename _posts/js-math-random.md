@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 11:36:46
-version: 1.46
+updated: 2021-09-21 11:41:56
+version: 1.47
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -25,7 +25,7 @@ In this section I will also be starting out with some fairly basic examples of t
 
 Like all my other posts on vanilla javaScript the source code examples here can be found in [my test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-random). I do get around to editing this post now and then, and that is where I will keep my latest revisions of what I am writing about here. If you see something wrong with one of these examples that would also be where to make a pull request, and there is also the comments section of this post.
 
-### 1.2 - A Very basic math.random example in the google chrome javaScript console
+### 1.2 - A Very basic math.random example in the javaScript console
 
 So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. With that said I think I should maybe start out with an examples that can be used in the javaScript console of a web browser such as Google chrome. I have wrote a [getting started with javaScript type post on this very subject](/2019/07/29/js-getting-started-javascript-console/), but the basic idea is to just press ctrl + shift + j in Google chrome and make sure that you have the console tab selected. A line of javaScrit code that is then just calling the Math random method can be called in the console.
 
@@ -37,6 +37,46 @@ So just type Math.random\(\) at the \> prompt and press return. The result shoul
 ```
 
 The random number can then be multiplied, and used in all kinds of different expressions to get desired random ranges. So from this point forward it is just working out the expressions that are needed to work with this kind of method. Those expressions can then end up being the return values of functions, or be used to create arguments for [pure functions](/2020/06/18/js-function-pure/).
+
+If you have nodejs installed, and if you really want to get into javaScript you should at some point it is also possible to get started with basic javaScript code examples by making use of the -e option when calling nodejs from a bash or cmd command prompt.
+
+
+So then in posix like systems like Linux and MacOs you can do something like this if you have nodejs installed.
+```
+$ node -e "console.log(Math.random())" 
+```
+
+In windows systems the same can be done in the command prompt.
+
+```
+C:\> node -e "console.log(Math.random())" 
+```
+
+
+
+### 1.3 - Client side javaScript example
+
+```html
+<body>
+    <textarea id="out" cols="30" rows="15"></textarea>
+    <script>
+var n = Math.random();
+document.querySelector('#out').value = n;
+    </script>
+</body>
+```
+
+### 1.4 - nodejs example of Math.random
+
+```js
+// the os module
+let os = require('os');
+// random number
+var n = Math.random();
+// using the write method of the stdout stream
+// of the process global
+process.stdout.write( String(n) + os.EOL )
+```
 
 ## 2 - Range and Math random
 
