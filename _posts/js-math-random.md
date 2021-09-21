@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 11:47:30
-version: 1.49
+updated: 2021-09-21 11:49:49
+version: 1.50
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -55,6 +55,8 @@ C:\> node -e "console.log(Math.random())"
 ### 1.3 - Client side javaScript example
 
 So now that I got some basic examples that have to do with using the javaScript console out of the way there is going over a few examples that have to do with creating some kind of file and then option that up in a web browser, or run with nodejs. For this example I will be going over a quick client side javaScript environment example of using the Math.random method.
+
+When it comes to client side javaScript I can use methods like the [document query selector method](/2020/06/23/js-document-queryselector/) to get a reference to an html element. In this example I am going to use a text area element and set the value property of the element to a random number.
 
 ```html
 <body>
