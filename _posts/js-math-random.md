@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 12:12:43
-version: 1.57
+updated: 2021-09-21 12:26:09
+version: 1.58
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -333,6 +333,8 @@ while (i < 15) {
     i += 1;
 }
 ```
+
+Whe I run this script the result is random numbers being lodged out to the console between and including 1 to 10, but no number ever repeats. That is until of course I call the reset method of the hat.
 
 ## 7 - Conclusion
 
