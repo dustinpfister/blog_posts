@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 11:59:52
-version: 1.54
+updated: 2021-09-21 12:00:54
+version: 1.55
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -286,6 +286,8 @@ drawPoints(points2, ctx, 'green', 150);
 The result is random points, but they are distributed in very different ways. By using Math log in conjunction with math random to work out the points that results in a very different distribution of values for the points, many more of the points are concentrated to the lower sides of the area so they are not so evenly distributed.
 
 ## 6 - No replacement
+
+WHen it comes to the subject of random numbers there is the topic of replacement, and not replacement.
 
 ```js
 var createHat = function (sample) {
