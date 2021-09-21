@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 12:33:17
-version: 1.59
+updated: 2021-09-21 12:34:24
+version: 1.60
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -68,7 +68,7 @@ document.querySelector('#out').value = n;
 </body>
 ```
 
-SO then there is the topic of setting up a basic web server as a way to host this kind of index.html file up via the http protocol. That is the proper way to go about doing so actually, however when it comes to something like this it is still possible for it to work okay by just opening it up in a web browser by way of the file protocol.
+So then there is the topic of [setting up a basic web server](/2017/12/04/nodejs-simple-static-server-file/) as a way to host this kind of index.html file up via the http protocol. That is the proper way to go about doing so actually, however when it comes to something like this it is still possible for it to work okay by just opening it up in a web browser by way of the file protocol.
 
 ### 1.4 - nodejs example of Math.random
 
