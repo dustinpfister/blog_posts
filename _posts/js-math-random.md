@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 12:00:54
-version: 1.55
+updated: 2021-09-21 12:04:54
+version: 1.56
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -287,7 +287,7 @@ The result is random points, but they are distributed in very different ways. By
 
 ## 6 - No replacement
 
-WHen it comes to the subject of random numbers there is the topic of replacement, and not replacement.
+When it comes to the subject of random numbers there is the topic of replacement, and not replacement. That is that there is the concept of selecting a number between and including 1 and 10, but then each time a section is made it is possible to select the same number next time. This would be considered random selection with replacement. So then there is the concept of not having replacement then, that is that of the options start out as \[1,2,3,4,5,6,7,8,9,10\] and the first random section is 4, then the current state of the array would now be \[1,2,3,5,6,7,8,9,10\] and then the size of the array would continue to reduce with each call after that.
 
 ```js
 var createHat = function (sample) {
