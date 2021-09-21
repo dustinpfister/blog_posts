@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 11:41:56
-version: 1.47
+updated: 2021-09-21 11:45:15
+version: 1.48
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -52,8 +52,6 @@ In windows systems the same can be done in the command prompt.
 C:\> node -e "console.log(Math.random())" 
 ```
 
-
-
 ### 1.3 - Client side javaScript example
 
 ```html
@@ -76,6 +74,39 @@ var n = Math.random();
 // using the write method of the stdout stream
 // of the process global
 process.stdout.write( String(n) + os.EOL )
+```
+
+### 1.5 - function die example
+
+```js
+var rollDie = function (sides) {
+    sides = sides === undefined ? 6 : sides;
+    return Math.floor(Math.random() * sides) + 1;
+};
+ 
+console.log( rollDie() );
+ 
+console.log( rollDie(20));
+```
+
+### 1.6 - function roll dice example
+
+```js
+var rollDie = function (sides) {
+    sides = sides === undefined ? 6 : sides;
+    return Math.floor(Math.random() * sides) + 1;
+};
+ 
+var rollDice = function (dice) {
+    dice = dice === undefined ? [6, 6] : dice;
+    return dice.map(function (sides) {
+        return rollDie(sides)
+    });
+};
+ 
+console.log(rollDice());
+ 
+console.log(rollDice([6, 6, 6, 6, 20]));
 ```
 
 ## 2 - Range and Math random
@@ -244,7 +275,50 @@ drawPoints(points2, ctx, 'green', 150);
 
 The result is random points, but they are distributed in very different ways. By using Math log in conjunction with math random to work out the points that results in a very different distribution of values for the points, many more of the points are concentrated to the lower sides of the area so they are not so evenly distributed.
 
-## 6 - Conclusion
+## 6 - No replacement
+
+```js
+var createHat = function (sample) {
+    sample = sample || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var inHat;
+    var api = {
+        pull: function () {
+            if (inHat.length > 0) {
+                var index = Math.floor(Math.random() * inHat.length);
+                var result = inHat.splice(index, 1);
+                return result[0];
+            }
+            // nothing in the hat
+            return false;
+        },
+        start: function () {
+            return inHat = sample.map(function (n) {
+                    return n;
+                });
+        }
+    };
+    api.start();
+    return api;
+};
+ 
+var hat = createHat();
+var i = 0;
+while (i < 15) {
+    var n = hat.pull();
+    if (n === false) {
+        hat = createHat();
+        n = hat.pull();
+        console.log('');
+        console.log('new hat');
+        console.log(n)
+    } else {
+        console.log(n);
+    }
+    i += 1;
+}
+```
+
+## 7 - Conclusion
 
 So that is it for now when it comes to random numbers and javaScript using the build in Math random method. In the event that I get some more time, or that I find something more to write about when it comes to the Math.random method, and other things surrounding random numbers in general I will expand this post a bit more as I have a few times all ready.
 
