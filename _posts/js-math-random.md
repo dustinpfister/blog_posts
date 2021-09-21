@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 11:34:05
-version: 1.44
+updated: 2021-09-21 11:35:46
+version: 1.45
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -25,9 +25,9 @@ In this section I will also be starting out with some fairly basic examples of t
 
 Like all my other posts on vanilla javaScript the source code examples here can be found in [my test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-random). I do get around to editing this post now and then, and that is where I will keep my latest revisions of what I am writing about here. If you see something wrong with one of these examples that would also be where to make a pull request, and there is also the comments section of this post.
 
-### 1.2 - A Very basic math.random example
+### 1.2 - A Very basic math.random example in the google chrome javaScript console
 
-So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. With that said I think I should maybe start out with an examples that can be used in the javaScript console of a web browser such as Google chrome. I have wrote a getting started with javaScript type post on this very subject, but the basic idea is to just press ctrl + shift + j in Google chrome and make sure that you have the console tab selected. A line of javaScrit code that is then just calling the Math random method can be called in the console.
+So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. With that said I think I should maybe start out with an examples that can be used in the javaScript console of a web browser such as Google chrome. I have wrote a [getting started with javaScript type post on this very subject](/2019/07/29/js-getting-started-javascript-console/), but the basic idea is to just press ctrl + shift + j in Google chrome and make sure that you have the console tab selected. A line of javaScrit code that is then just calling the Math random method can be called in the console.
 
 So just type Math.random\(\) at the \> prompt and press return. The result should then be a random number.
 
