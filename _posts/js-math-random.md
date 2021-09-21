@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-09-21 10:35:38
-version: 1.42
+updated: 2021-09-21 10:38:20
+version: 1.43
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, you just call it and you get a random number between 0 and 1. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -27,7 +27,7 @@ Like all my other posts on vanilla javaScript the source code examples here can 
 
 ### 1.2 - A Very basic math.random example
 
-So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1. That is all there is to it if that is all that is needed. So a basic starting example of the Math.random method might involve just calling th method, and then logic the value to the javaScript console.
+So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. So a basic starting example of the Math.random method might involve just calling the math random method, and then pass the value to the console log method to see the result in the javaScript console.
 
 ```js
 var n = Math.random();
