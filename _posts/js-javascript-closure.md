@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 09:38:34
-version: 1.30
+updated: 2021-09-22 10:47:10
+version: 1.31
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -195,7 +195,53 @@ trap('nope'); // (nothing)
 trap('nope'); // (nothing)
 ```
 
-## 4 - Conclusion
+## 4 - Random selection without replacement and closures
+
+
+### 4.1 - A create hat method that uses a closure
+
+```js
+var createHat = function (sample) {
+    sample = sample || [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var inHat;
+    var api = {
+        pull: function () {
+            if (inHat.length > 0) {
+                var index = Math.floor(Math.random() * inHat.length);
+                var result = inHat.splice(index, 1);
+                return result[0];
+            }
+            // nothing in the hat
+            return false;
+        },
+        start: function () {
+            return inHat = sample.map(function (n) {
+                    return n;
+                });
+        }
+    };
+    api.start();
+    return api;
+};
+ 
+var hat = createHat();
+var i = 0;
+while (i < 15) {
+    var n = hat.pull();
+    if (n === false) {
+        hat.start();
+        n = hat.pull();
+        console.log('');
+        console.log('new hat');
+        console.log(n)
+    } else {
+        console.log(n);
+    }
+    i += 1;
+}
+```
+
+## 5 - Conclusion
 
 So closures are functions that return a function, and when doing so that inner function has access to the outer functions local variable scope. 
 
