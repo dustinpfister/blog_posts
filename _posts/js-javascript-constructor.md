@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-22 09:36:01
-version: 1.37
+updated: 2021-09-22 11:58:42
+version: 1.38
 ---
 
-In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions with these types of functions such as pure functions, and [constructor functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
+In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. However one kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
 
 A constructor function is a function that when called with return an object that is not just an object, but a certain kind or class of an object. This Class of an object typically has properties and methods that are in the prototype object of this kind of object that are unique to the class of object that it is. There are built in examples of constructors that chances are you have at least some experience with. One such example would be the Date constructor that when used with the new keyword will return a date object. This date object is not just an object, but a class of object that has a whole bunch of methods that can be called off of the date object that is in instance of the date constructor function.
 
