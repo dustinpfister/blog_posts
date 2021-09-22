@@ -69,7 +69,7 @@
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( done 09/20/2021 ) - edit js-math-random
+## ( done 09/21/2021 ) - edit js-math-random
 * (done) edit post to 1,000+ words
 * (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
