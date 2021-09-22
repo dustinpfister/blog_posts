@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 09:31:54
-version: 1.28
+updated: 2021-09-22 09:36:00
+version: 1.29
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
 
-There are all ready many posts on the open web on the subject of closures in javaScript, just about any javaScript developer that writes a blog will likely get around to writing at least one post on them sooner or later. It is just on of those topics like the [this keyword](/2017/04/14/js-this-keyword/), pure functions, and the nature of prototype inheritance when it comes to working with classes. So it was only a matter of time until I wrote this post also, so as such, here it is. 
+There are all ready many posts on the open web on the subject of closures in javaScript, just about any javaScript developer that writes a blog will likely get around to writing at least one post on them sooner or later. It is just on of those topics like the [this keyword](/2017/04/14/js-this-keyword/), [pure functions](/2020/06/18/js-function-pure/), and the nature of prototype inheritance when it comes to working with classes. So it was only a matter of time until I wrote this post also, so as such, here it is. 
 
 SO then today I will be looking into closures in javaScript with some basic, and maybe not so basic examples of them. While doing so I might get around to touching base on some related topics that have to do with pure functions, classes, and other ways of storing a state.
 
