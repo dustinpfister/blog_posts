@@ -1,12 +1,12 @@
 ---
-title: javaScript Constructor Functions
+title: The javaScript Constructor Function and Classes in general
 date: 2019-02-27 14:31:00
 tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-22 11:58:42
-version: 1.38
+updated: 2021-09-22 11:59:24
+version: 1.39
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. However one kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
