@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 11:20:53
-version: 1.40
+updated: 2021-09-22 11:46:34
+version: 1.41
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -16,6 +16,14 @@ There are all ready many posts on the open web on the subject of closures in jav
 So then today I will be looking into closures in javaScript with some basic, and maybe not so basic examples of them. While doing so I might get around to touching base on some related topics that have to do with pure functions, classes, and other ways of storing a state.
 
 <!-- more -->
+
+## What to know first before getting into closures
+
+This is not a post on javaScript for those that are still fairly new to javaScript. So with that said I think it would be good to read up more on functions in general first of you have not done so before hard.
+
+### - The source code examples here are on github
+
+The source code examples that I am writing about here are up on my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-closure). There I also have all of my other collections of source code examples for every other post on this website that has to do with javaScript by itself. I have got into the habit of making sure to link to the location each time I write a new post on javaScript or edit a new one. Not just for your convenience but also for my own each time I come around to edit this. Speaking of editing, yes that would be where you would want to make a pull request of you see something wrong. There is also leaving a comment at the bottom of this post.
 
 ## 1 - javaScript Closure Basics
 
