@@ -67,10 +67,10 @@
 * edit post to 2,400+ words
 * have 5+ internal links for the post
 
-### (   ) - edit: js-javascript-closure
-* start a new section on the create hat method in js-math-random and link to the post
-* edit post to 1,800+ words
-* have 5+ internal links for the post
+### ( done 09/22/2021 ) - edit: js-javascript-closure
+* (done) start a new section on the create hat method in js-math-random and link to the post
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 
 ## ( done 09/21/2021 ) - edit js-math-random
 * (done) edit post to 1,000+ words
