@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 10:47:10
-version: 1.31
+updated: 2021-09-22 10:51:27
+version: 1.32
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -197,6 +197,7 @@ trap('nope'); // (nothing)
 
 ## 4 - Random selection without replacement and closures
 
+In my post on the math random method I worked out a simple example that has to do with random selection without replacement. This is just something that comes up when it comes to the topic of random numbers, as often the situation is random selection with replacement. Often replacement is just fine in many cases, however in other situations I might want to go threw everything, just do so in a random rather than ordered way.
 
 ### 4.1 - A create hat method that uses a closure
 
