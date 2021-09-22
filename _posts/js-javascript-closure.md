@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 11:16:52
-version: 1.39
+updated: 2021-09-22 11:20:53
+version: 1.40
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -250,7 +250,7 @@ So the the result of running this script is random selection of elements in the 
 
 ## 5 - Conclusion
 
-So closures are functions that return a function, and when doing so that inner function has access to the outer functions local variable scope. 
+So closures are functions that return a function, or a collection of functions that can be used to work with an internal state. When doing so that inner function or API has access to the outer functions local variable scope. So then the use of closures is great for having private internal helper functions, objects, constants and so forth, while having a way to present this public API that can be used to work with the project as a whole.
 
 The basic idea of a closure is not so hard to understand, but it can lead to things that might result in hard to debug code of they are used carelessly. One draw back is that a closure can result in this state that is separate from that of what might be passed using just arguments. In other words the use of a closure goes against the rules of the use of pure functions.
 
