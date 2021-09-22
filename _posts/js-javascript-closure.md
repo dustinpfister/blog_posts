@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 11:46:34
-version: 1.41
+updated: 2021-09-22 11:51:29
+version: 1.42
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -19,7 +19,7 @@ So then today I will be looking into closures in javaScript with some basic, and
 
 ## What to know first before getting into closures
 
-This is not a post on javaScript for those that are still fairly new to javaScript. So with that said I think it would be good to read up more on functions in general first of you have not done so before hard.
+This is not a [post on javaScript for those that are still fairly new to javaScript](/2018/11/27/js-getting-started/). So with that said I think it would be good to read up more on functions in general first of you have not done so before hand. For example there is knowing the difference between [function expressions](/2019/01/27/js-function-expression/), [declarations](/2019/04/11/js-function-declaration/) and [arrow functions](/2019/02/17/js-arrow-functions/). Also I am touching base on a whole lot of other topics while I am at it here in this content. I will try to link to other posts that I have written where doing so may be called for.
 
 ### - The source code examples here are on github
 
