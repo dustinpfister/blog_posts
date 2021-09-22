@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2021-09-22 12:28:26
-version: 1.32
+updated: 2021-09-22 12:32:59
+version: 1.33
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method, over that of the [setInterval method](/2018/03/08/js-setinterval/) that is very similar. It might not be the best option in all situations, often it might be better to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) these days in front end javaScript. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for in certain situations in which requestAnimationFrame is not an option such as with web workers.
@@ -23,7 +23,7 @@ I enjoy the process of learning by doing rather than by other means, and I think
 
 It should also go without saying that I assume that you have at least some background with javaScript. If not you are going to want to start out with some kind of [getting started type post first on javaScript](/2018/11/27/js-getting-started/).
 
-### 1.1 - The soucre code exmaples here are on my github
+### 1.1 - The source code examples here are on my github
 
 The [source code examples in this post can be found in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-settimeout) on git hub. All of the source code examples for all my other posts on javaScript in general can also be found there.
 
@@ -62,7 +62,7 @@ var loop = function () {
 loop();
 ```
 
-So in this example I am just stepping an x variable by a static delta value each time the loop function is called by setTimeout which should be roughly every 30 milliseconds. This might be a good starting point when it comes to getting the basic idea of what a main app loop is for a project, but when it comes to making a real project this kind of approach might not be the best way to go about doing so. The amount of time that passes might nto always be 30 milliseconds here, that is the main reason why I say that, on top of other reasons why. However I just wanted to cover a basic example of an app loop here in this section, I will be getting to some more advanced examples of setTimeout later.
+So in this example I am just stepping an x variable by a static delta value each time the loop function is called by setTimeout which should be roughly every 30 milliseconds. This might be a good starting point when it comes to getting the basic idea of what a main app loop is for a project, but when it comes to making a real project this kind of approach might not be the best way to go about doing so. The amount of time that passes might not always be 30 milliseconds here, that is the main reason why I say that, on top of other reasons why. However I just wanted to cover a basic example of an app loop here in this section, I will be getting to some more advanced examples of setTimeout later.
 
 ### 1.4 - clearTimeout
 
@@ -186,3 +186,4 @@ loop();
 ## 4 - Conclusion
 
 So the javaScript settimeout method is one way to delay the calling of a method, and can be used in the body of that method as a way to call it over and over again. So in other words it is a way to create a sort of main app loop, or thread. Using settimeout is by no means the only tool in the toolbox when it comes to setting up this kind of loop. There are several other options such as setinterval, and requestAnimationFrame, but the topic goes beyond that. When using any of these methods in a single event loop that is not the same thing as using them in a collection of event loops when it comes to things like webworker, or the cluster module in nodejs. However all of that is a matter for another post.
+
