@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2021-09-22 12:55:17
-version: 1.36
+updated: 2021-09-22 12:56:24
+version: 1.37
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method, over that of the [setInterval method](/2018/03/08/js-setinterval/) that is very similar. It might not be the best option in all situations, often it might be better to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) these days in front end javaScript. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for in certain situations in which requestAnimationFrame is not an option such as with web workers.
@@ -89,7 +89,7 @@ The timeoutId will keep stepping forward for the object in which setTimout is us
 
 ### 1.5 - A loop using a state object, dates, and an update method
 
-Now it is time for a not so basic, basic example of a loop using set time out. This time I am using the Date class to create a last time date object. Inside the body of the loop method I am creating another date object and creating a time delta from the last time date object stored in a state object. I can create this time delta in the from of a sections value by just subtracting the last time from the current time and then dividing that result by one thousand. I can then check to see if this sections value is higher than a seoncs value that is a desrec frane to tick rate, if so I call an update method, and adjust the
+Now it is time for a not so basic, basic example of a loop using set time out. This time I am using the Date class to create a last time date object. Inside the body of the loop method I am creating another date object and creating a time delta from the last time date object stored in a state object. I can create this time delta in the from of a sections value by just subtracting the last time from the current time and then dividing that result by one thousand. I can then check to see if this sections value is higher than a seconds value that is a desired frame to tick rate, if so I call an update method, and set the lat time date object back to the current time.
 
 ```js
 // update method
