@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2021-09-22 12:23:19
-version: 1.30
+updated: 2021-09-22 12:26:57
+version: 1.31
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method, over that of the [setInterval method](/2018/03/08/js-setinterval/) that is very similar. It might not be the best option in all situations, often it might be better to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) these days in front end javaScript. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for in certain situations in which requestAnimationFrame is not an option such as with web workers.
@@ -23,7 +23,11 @@ I enjoy the process of learning by doing rather than by other means, and I think
 
 It should also go without saying that I assume that you have at least some background with javaScript. If not you are going to want to start out with some kind of [getting started type post first on javaScript](/2018/11/27/js-getting-started/).
 
-### 1.1 - Delay the call of a function with setTimeout
+### 1.1 - The soucre code exmaples here are on my github
+
+The [source code examples in this post can be found in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-settimeout) on git hub. All of the source code examples for all my other posts on javaScript in general can also be found there.
+
+### 1.2 - Delay the call of a function with setTimeout
 
 So to just simply delay the call of a function I just need to pass the function, and the amount of time when calling setTimeout like this.
 
@@ -38,7 +42,7 @@ setTimeout(func,3000);
 
 It is not a sure thing that the function will call in exactly three seconds though. If there is something else going on that will hold things up it can take longer. The reason why is that javaScript is generally regarded as signal threaded programing environment, unless you take advantage of a clever way to get around that somehow. The use of setTimeout still works in the same single event loop just like all the other code that might be going on in that single event loop. The use of setTimeout alone will not create a new Event loop for you, there are ways of doing that though, just not with setTimeout alone.
 
-### 1.2 - A basic loop
+### 1.3 - A basic loop
 
 To put together a basic loop all I need to do is call the setTimeout method in the body of the method that I pass to setTimeout resulting in a kind of [recursion](https://en.wikipedia.org/wiki/Recursion). In many projects it is necessary to define this kind of function to have a situation in which some kind of state is updated on each frame tick.
 
@@ -60,7 +64,7 @@ loop();
 
 So in this example I am just stepping an x variable by a static delta value each time the loop function is called by setTimeout which should be roughly every 30 milliseconds. This might be a good starting point when it comes to getting the basic idea of what a main app loop is for a project, but when it comes to making a real project this kind of approach might not be the best way to go about doing so. The amount of time that passes might nto always be 30 milliseconds here, that is the main reason why I say that, on top of other reasons why. However I just wanted to cover a basic example of an app loop here in this section, I will be getting to some more advanced examples of setTimeout later.
 
-### 1.3 - clearTimeout
+### 1.4 - clearTimeout
 
 If I want to stop setTimeout from continuing there is the clearTiemout method that can be used to do so. To use it I just need to pass the timeoutID returned when calling setTimeout to clearTimeout as the first argument.
 
