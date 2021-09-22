@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 11:51:29
-version: 1.42
+updated: 2021-09-22 11:52:40
+version: 1.43
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -17,15 +17,15 @@ So then today I will be looking into closures in javaScript with some basic, and
 
 <!-- more -->
 
-## What to know first before getting into closures
+## 1 - javaScript Closure Basics and What to know first
 
 This is not a [post on javaScript for those that are still fairly new to javaScript](/2018/11/27/js-getting-started/). So with that said I think it would be good to read up more on functions in general first of you have not done so before hand. For example there is knowing the difference between [function expressions](/2019/01/27/js-function-expression/), [declarations](/2019/04/11/js-function-declaration/) and [arrow functions](/2019/02/17/js-arrow-functions/). Also I am touching base on a whole lot of other topics while I am at it here in this content. I will try to link to other posts that I have written where doing so may be called for.
 
-### - The source code examples here are on github
+### 1.1 - The source code examples here are on github
 
 The source code examples that I am writing about here are up on my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-closure). There I also have all of my other collections of source code examples for every other post on this website that has to do with javaScript by itself. I have got into the habit of making sure to link to the location each time I write a new post on javaScript or edit a new one. Not just for your convenience but also for my own each time I come around to edit this. Speaking of editing, yes that would be where you would want to make a pull request of you see something wrong. There is also leaving a comment at the bottom of this post.
 
-## 1 - javaScript Closure Basics
+### 1.2 - javaScript Closure Basics
 
 One of the simplest definitions of a closure that I have come across in my travels on-line can be summarized like this.
 
@@ -41,7 +41,7 @@ In this section I will be covering a few javaScript examples that involve having
 
 So lets take a look at some basic closure, and closure related javaScript examples then.
 
-### 1.1 - Using globals
+### 1.3 - Using globals
 
 First off here is an example that makes use of global variables to create, store, and work with a single point value. When I first started out with javaScript I was making functions like this.
 
@@ -62,7 +62,7 @@ console.log( movePoint(-5,5) ); // { x: 10, y: 10 }
 
 This will work find for just this simple little example, but there is all ready some draw backs to talk about. First off the x and y values are global values that might conflict with other code on the page. Another draw back that will drive some developers nuts is that I am making use of global variables inside the body of the move point function.
 
-### 1.2 - Using a Class
+### 1.4 - Using a Class
 
 So then another option for this sort of thing would be to make a Point Class. This works by creating what is called a constructor function that will be used with the new keyword to create an instance of the Point class. I can then add a move function to the prototype of the class and then call that method off of the Point instance.
 
@@ -83,7 +83,7 @@ var pt = new Point(15, 5);
 console.log(pt.move(-5, 5)); // Point { x: 10, y: 10 }
 ```
 
-### 1.3 - Using pure functions
+### 1.5 - Using pure functions
 
 Another option is to get into the habit of writing pure functions. The basic idea of pure functions is to not mutate source values of function arguments, always return the same result for the same arguments, and to not use globals inside the body of the function.
 
@@ -106,7 +106,7 @@ console.log(newPointFrom(pt, -5, 5)); // { x: 10, y: 10 }
 console.log(pt); // { x: 15, y: 5 }
 ```
 
-### 1.4 - Basic closure example
+### 1.6 - Basic closure example
 
 So then here is a basic example of a closure where the outer function is one where I pass and x and y argument that I want.The returned result of the outer function is then in turn also a function. When I do so those arguments that I give when calling the outer function become local variables within the scope of that outer function. The inner function that is returned then has parameters of it's own, that are used when calling the inner function that is returned. When passing arguments to the inner function that inner function has access to the values that are closed over into the scope of the outer function.
 
