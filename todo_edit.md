@@ -63,6 +63,9 @@
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
+### (   ) - edit: js-javascript-constructor
+* edit post to 2,400+ words
+* have 5+ internal links for the post
 
 ### (   ) - edit: js-javascript-closure
 * start a new section on the create hat method in js-math-random and link to the post
