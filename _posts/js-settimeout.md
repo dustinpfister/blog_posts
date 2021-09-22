@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 345
-updated: 2021-09-22 12:26:57
-version: 1.31
+updated: 2021-09-22 12:28:26
+version: 1.32
 ---
 
 When creating a [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) project of some kind there will often be a need to implement some kind of main application loop for the project. There are a number of ways to go about doing this, and there is much ground to cover when it comes to this topic, but for this post I will be mainly writing about the [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) method, over that of the [setInterval method](/2018/03/08/js-setinterval/) that is very similar. It might not be the best option in all situations, often it might be better to use [requestAnimationFrame](/2018/03/13/js-request-animation-frame/) these days in front end javaScript. Still settTimeout, or the similar setInterval is a good choice for some projects where it is called for in certain situations in which requestAnimationFrame is not an option such as with web workers.
@@ -29,7 +29,7 @@ The [source code examples in this post can be found in my test vjs repository](h
 
 ### 1.2 - Delay the call of a function with setTimeout
 
-So to just simply delay the call of a function I just need to pass the function, and the amount of time when calling setTimeout like this.
+So not it might be called for to start out with just a really basic example of the set time out method. So to just simply delay the call of a function I just need to pass the function, and the amount of time when calling setTimeout like this.
 
 ```js
 var func = function(){
