@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 389
-updated: 2021-09-22 11:01:49
-version: 1.37
+updated: 2021-09-22 11:03:00
+version: 1.38
 ---
 
 There are a number of subjects that some javaScript developers might considered an aspect of advanced javaScript, one such subject might be the subject of [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures). When it comes to the question of what a closure is to begin with there are many ways to go about defining what a closure is, which right off the bat can lead to some confusion. Some definitions are very simple, yet technically still correct, however they might not help to give the full picture of what a closure is and why they are useful in many situations that will pop up when working on a project. Other more complex definitions are a bit of a mouth full but do a better job doing them justice when it comes to truly understanding them, and what their full potential may be when keeping them in mind as an option. 
@@ -203,7 +203,7 @@ There are a number of ways of going about doing this sort of thing without using
 
 ### 4.1 - A create hat method that uses a closure
 
-Here is the create hat method along with a little additional code that demos the use of the method. This method is not just an examples of closure but also an example of a few other things that will come up when making javaScript solutions for various things. One example of this would be the subject of making a [copy of an array](/2020/09/03/js-array-copy/). When calling the create hat method I can give an array of numbers, this array of numbers is a sample to which the internal pull method will be used to pull a random number from. However the pull method will not pull directly from this given array, but a shallow copy of the array.
+Here is the create hat method along with a little additional code that demos the use of the method. This method is not just an examples of closure but also an example of a few other things that will come up when making javaScript solutions for various things. One example of this would be the subject of making a [copy of an array](/2020/09/03/js-array-copy/). When calling the create hat method I can give an array of numbers, this array of numbers is a sample to which the internal pull method will be used to pull a random number from. However the pull method will not pull directly from this given array, but a shallow copy of the array. This way it is the copy of the sample array that is mutated and the source sample array is not touched. So then at any moment the internal state can be reset to the original state of the source array.
 
 ```js
 var createHat = function (sample) {
