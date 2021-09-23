@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-09-23 15:09:38
-version: 1.38
+updated: 2021-09-23 15:36:23
+version: 1.39
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Another thing might come up where I have a certain pattern in text that needs to be replaced with something else, and I also need to use some data in the pattern to know what to replace it with. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -124,13 +124,28 @@ console.log( text.replace(patt, 'match') );
 // 'thats match that we have some match text'
 ```
 
-## 4 - Use case examples of regular expressions in javaScript
+## 4 - Quantifiers
+
+There are also [Quantifiers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers) that can be used to set a number of letters or expressions to match.
+
+### 4.1 - Matches at least n and at most m occurrences of a preceding item x{n,m}
+
+Often I might want to match something between a certain minimum and max count of occurrences.
+
+```js
+let str = '- This - is a -- test --- -- - -';
+let patt = /-{2,3}/g;
+console.log( str.match(patt) );
+// [ '--', '---', '--' ]
+```
+
+## 5 - Use case examples of regular expressions in javaScript
 
 Learn by example, and lean by doing, that might be the best way to go about getting regular expressions in javaScript solid once and for all. In other words it is best to just start creating and maintaining some projects that make use of regular expressions. Just reading about them alone is just not enough speaking from my experience at least. Although it would be best to come up with your own ideas for projects that ake use of regular expressions, in this section I might touch base on at least a few starting points that come to mind.
 
 Also in this section I might just park a bunch of examples that are common solutions for common problems that can be solved with regular expressions. Such as a pattern that can eb used to match the content between to instances of a kind of pattern for example.
 
-### 4.1 - Matching html tags, and negated character sets
+### 5.1 - Matching html tags, and negated character sets
 
 A task that comes up often for me is to find a way to match html tags in a string and replace them with something else, or remove them completely. For this I have found that a a negated character set is a good way to go about matching anything and everything that might be in the tag except the ending pointy bracket.
 
@@ -144,7 +159,7 @@ console.log(html_nolinks);
 // <p>This is some html with a link in it</p>
 ```
 
-### 4.2 - Match all between two instances of a string
+### 5.2 - Match all between two instances of a string
 
 When it comes to the mark down of my blog posts there is from data at the top of each file that is between two instances of three dashes. If I want to match that I have worked out this pattern.
 
@@ -154,7 +169,7 @@ console.log(text.match(/---[\s|\S]*?---/g)[0]);
 // --- title: foo ---
 ```
 
-### 4.3 - Wrap text method example
+### 5.3 - Wrap text method example
 
 I was working where I needed to wrap text and have [found this solution for wrapping text](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript) that seems to work well. So I made my own method that is based off of it that does not change much. If I want to break the result of it into an array of sub strings then I just need to call the [string split method](/2021/07/14/js-string-split/) off of the resulting string and use a line break as what to split by.
 
@@ -168,7 +183,7 @@ console.log(wrapText('this is some test text', 10).split('\n'));
 // [ 'this is', 'some test', 'text' ]
 ```
 
-## 5 -Conclusion
+## 6 -Conclusion
 
 Of course this post does not do regular expressions justice, as there is way more to write about when it comes to using them in various types of projects that call for them. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep paying around with them in order to get a sound grasp on regex. There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex.
 
