@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2020-10-22 12:55:37
-version: 1.31
+updated: 2021-09-23 14:54:12
+version: 1.32
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -146,6 +146,20 @@ When it comes to the mark down of my blog posts there is from data at the top of
 let text = '--- title: foo --- bla bla beween --- other: stuff ---'
 console.log(text.match(/---[\s|\S]*?---/g)[0]);
 // --- title: foo ---
+```
+
+### 4.3 - Wrap text method example
+
+I was working where I needed to wrap text and have [found this solution for wrapping text](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript) that seems to work well.
+
+```js
+var wrapText = function (str, width) {
+    var patt = new RegExp('(?![^\\n]{1,' + width + ')([^\\n]{1,' + width + '})\\s', 'g');
+    return str.replace(patt, '$1\n');
+};
+ 
+console.log(wrapText('this is some test text', 10).split('\n'));
+// [ 'this is', 'some test', 'text' ]
 ```
 
 ## 5 -Conclusion
