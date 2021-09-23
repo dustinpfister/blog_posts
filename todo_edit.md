@@ -11,6 +11,11 @@
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
+### (   ) - js-regex
+* new section on wrap text example
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
 ### (   ) - js-add-element
 * edit post to 1,800+ words
 * have 5+ internal links for the post
