@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-09-23 14:54:12
-version: 1.32
+updated: 2021-09-23 14:59:04
+version: 1.33
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -143,14 +143,14 @@ console.log(html_nolinks);
 When it comes to the mark down of my blog posts there is from data at the top of each file that is between two instances of three dashes. If I want to match that I have worked out this pattern.
 
 ```js
-let text = '--- title: foo --- bla bla beween --- other: stuff ---'
+let text = '--- title: foo --- bla bla between --- other: stuff ---'
 console.log(text.match(/---[\s|\S]*?---/g)[0]);
 // --- title: foo ---
 ```
 
 ### 4.3 - Wrap text method example
 
-I was working where I needed to wrap text and have [found this solution for wrapping text](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript) that seems to work well.
+I was working where I needed to wrap text and have [found this solution for wrapping text](https://stackoverflow.com/questions/14484787/wrap-text-in-javascript) that seems to work well. So I made my own method that is based off of it that does not change much. If I want to break the result of it into an array of sub strings then I just need to call the [string split method](/2021/07/14/js-string-split/) off of the resulting string and use a line break as what to split by.
 
 ```js
 var wrapText = function (str, width) {
