@@ -3,13 +3,16 @@
 
 ### () - new post #931 for 10/01/2021 - 
 
+<!--###### ########## ########## #######-->
+## Linux ( /yyyy/mm/dd/linux-* )
+<!--###### ########## ########## #######-->
+
+### () - new post #930 for 09/24/2021 - linux-raspberry-pi-os-setup
+* write a new post on how to set up more than one version of node
 
 <!--###### ########## ########## #######-->
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
-
-### () - new post #930 for 09/24/2021 - nodejs-simple
-* start a post that is another index type post for nodejs-simple-* posts
 
 ### ( done 09/17/2021 ) - new post #929 for 09/17/2021 - nodejs-simple-build-tool
 * (done) start a new nodejs-simple-build-tool repo folder
