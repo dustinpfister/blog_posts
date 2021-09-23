@@ -4,7 +4,9 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-
+## ( ) - js-getting-started
+* edit post to 1,800+ words
+* have 5+ internal links for the post
 
 ## ( ) - js-path-find
 * edit post to 1,000+ words
@@ -12,9 +14,9 @@
 * have 5+ internal links for the post
 
 ### (   ) - js-regex
-* new section on wrap text example
+* (done) new section on wrap text example
 * edit post to 1,800+ words
-* have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ### (   ) - js-add-element
 * edit post to 1,800+ words
