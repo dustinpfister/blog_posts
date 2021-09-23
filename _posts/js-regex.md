@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-09-23 15:00:24
-version: 1.34
+updated: 2021-09-23 15:02:49
+version: 1.35
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -18,6 +18,9 @@ There is not just the nature of the regular expressions themselves, but also the
 ## 1 - regex basics
 
 In javaScript a regex, regexp or regular expression is a way to achieve text pattern matching, or search and replace tasks. There are ways of defining the patten to look for, and then there are String prototype methods that make use of these patterns to find one or more matches for that pattern in a given string, as well as replacing any and all matches with something else. In this section I will be going over the very basics of regular expression in javaScript including how to make one and how to use one.
+
+So then I assume that you have at least some background on using javaScript as this is not any kind of [getting started type post on javaScript](/2018/11/27/js-getting-started/) in general.
+
 
 ### 1.1 - Creating a regex pattern
 
