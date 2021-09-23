@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-09-23 15:05:32
-version: 1.36
+updated: 2021-09-23 15:06:06
+version: 1.37
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Regular expressions can be combined with various methods in the RegExp class as well as other classes to get an array of character index values of various patterns that have to do with the nature of the language.
@@ -25,7 +25,7 @@ So then I assume that you have at least some background on using javaScript as t
 
 If you want to you might want to check out my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-regex) where I store the source code examples I am writing about here, as well as for all my other posts on vanilla javaScript.
 
-### 1.1 - Creating a regex pattern
+### 1.2 - Creating a regex pattern
 
 To create a regular expression the [RegExp constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) can be used to create an expression from a string, the other way is to use the regular expression literal syntax. When using the constructor the first argument will be a string of the pattern, and the second argument will contain one or more option flags for the pattern, more on that later. When creating a string representation of the pattern make sure to double up on the backslashes when they are needed, more on backslashes later as well.
 
@@ -46,7 +46,7 @@ console.log('-- dat_20120822.json -- dat_2013.json'.match(pat_datfile)[1]);
 I generally prefer to go with the literal syntax, but a javaScript developer should be familiar with both options.
 
 
-### 1.2 - Using a regular expression
+### 1.3 - Using a regular expression
 
 There is knowing how to create a pattern, and then there is knowing how to use one. For the most part there are two String prototype methods to be aware of then it comes to this [String.match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match), and [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace). 
 
