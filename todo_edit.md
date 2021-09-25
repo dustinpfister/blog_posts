@@ -1,8 +1,19 @@
 # todo list for blog_posts
 
 <!--###### ########## ########## #######-->
+## linux ( /yyyy/mm/dd/linux-* )
+<!--###### ########## ########## #######-->
+
+
+
+
+<!--###### ########## ########## #######-->
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
+
+
+
+
 
 ## ( ) - js-getting-started
 * edit post to 1,800+ words
@@ -74,9 +85,17 @@
 * (done) edit the post to 1,800 + words
 * (done) add a new example for the s2 do something in a page section
 
+
+
+
+
 <!--###### ########## ########## #######-->
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
+
+
+
+
 
 ### (   ) - edit: nodejs-util-promisify
 * edit post to 500+ words
