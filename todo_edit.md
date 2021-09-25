@@ -29,16 +29,16 @@
 * edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-### (   ) - js-add-element
-* edit post to 1,800+ words
-* have 5+ internal links for the post
-
 ### (   ) - js-settimeout
-* edit post to 1,800+ words
+* (done) edit post to 1,800+ words
 * have 5+ internal links for the post
 
 ### (   ) - js-javascript-constructor
 * edit post to 2,400+ words
+* (done) have 5+ internal links for the post
+
+### ( done 09/25/2021 ) - js-add-element
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ### ( done 09/22/2021 ) - js-javascript-closure
