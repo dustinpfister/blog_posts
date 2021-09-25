@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 14:25:02
-version: 1.33
+updated: 2021-09-25 14:30:38
+version: 1.34
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -261,6 +261,8 @@ document.getElementById('add-list').addEventListener('click', addItem);
     </body>
 </html>
 ```
+
+Event though this is a very basic list application using client side javaScript there are a lot of things to be aware of here. For example there is the target property of the event object in add item and delete item the event handlers, and the fact that these handers are attached to the parent elements of the elements that the user will be interacting with. This works because of something called event bubbling that is that something happens such as a click on a child element, and then events bubble up to parent elements. The target property of the event object is the element where the event happened and the current element property of the vent object is the current element where the event handlers are attached.
 
 ## 4 - Conclusion
 
