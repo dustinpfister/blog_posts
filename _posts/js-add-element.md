@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 12:38:43
-version: 1.30
+updated: 2021-09-25 14:20:34
+version: 1.31
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -48,7 +48,7 @@ el.innerHTML += '<p>hello world<\/p>'
 
 In this post I am not going to be going into detail about innerHTML as I have written a post on that all ready. However innerHTML is of course one option for making quick work of this when it comes to simple projects. When it comes to more advanced projects though there are some situations in which an alliterative way of doing this should be used.
 
-So now that we have a very basic idea of what this is all about otu of the way I can now move on to other ways of adding elements to an html document.
+So now that we have a very basic idea of what this is all about out of the way I can now move on to other ways of adding elements to an html document.
 
 ### 1.3 - The createElement, and append child methods for adding elements
 
@@ -210,6 +210,53 @@ var removeAll = function(query, condition){
 removeAll('li', function(el){
     return Boolean(el.dataset.purge);
 });
+        </script>
+    </body>
+</html>
+```
+
+### 3.4 - Remove and add elements
+
+This is very much a post on adding elements to an html document, so in this section I will not just be going over an example that makes use of the remove method, but also append child and the create element methods.
+
+```html
+<html>
+    <head>
+        <title>javaScript Create Element</title>
+        <style>
+li{margin:10px;}
+span{margin:10px;}
+        </style>
+    </head>
+    <body>
+        <div id="add-list">
+            <input id="txt-list" type="text"><input type="button" value="add">
+        </div>
+        <ul id="the-list">
+            <li><input type="button" value="delete"><span>Hello</span></li>
+        </ul>
+        <script>
+var deleteItem = function(e){
+    var li = e.target.parentElement;
+    if(e.target.nodeName === 'INPUT' && e.target.value === 'delete'){
+        li.remove();
+    }
+};
+var addItem = function(e){
+    if(e.target.nodeName === 'INPUT' && e.target.type === 'button' && e.target.value === "add"){
+        var li = document.createElement('li'),
+        button_delete = document.createElement('input'),
+        span = document.createElement('span');
+        button_delete.type = 'button';
+        button_delete.value = 'delete';
+        span.innerText = document.getElementById('txt-list').value;
+        li.appendChild(button_delete);
+        li.appendChild(span);
+        document.getElementById('the-list').appendChild(li);
+    }
+};
+document.getElementById('the-list').addEventListener('click', deleteItem);
+document.getElementById('add-list').addEventListener('click', addItem);
         </script>
     </body>
 </html>
