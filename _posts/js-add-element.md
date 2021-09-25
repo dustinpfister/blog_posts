@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 14:20:34
-version: 1.31
+updated: 2021-09-25 14:22:23
+version: 1.32
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -217,7 +217,7 @@ removeAll('li', function(el){
 
 ### 3.4 - Remove and add elements
 
-This is very much a post on adding elements to an html document, so in this section I will not just be going over an example that makes use of the remove method, but also append child and the create element methods.
+This is very much a post on adding elements to an html document, so in this section I will not just be going over an example that makes use of the remove method, but also append child and the create element methods. The idea here this is to have an unordered list element with a single starting li element. The li element then have some additional nested elements in it one of which is a delete button, and the other is a span that contains some text for the list item.
 
 ```html
 <html>
