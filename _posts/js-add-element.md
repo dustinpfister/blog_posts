@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 11:37:32
-version: 1.20
+updated: 2021-09-25 11:58:36
+version: 1.21
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -23,7 +23,7 @@ Also there is some things to cover when it comes to html node lists as well, and
 
 To add an element in javaScript I first need to gain a reference to a hard coded element in the html to begin with. There are a number of ways to go about doing this such as with document.getElementById which shows up in a lot of javaScript examples, to properties such as document.body. Once I have a reference to a container element I can then use a property like innerHTML or a collection of element object methods to create an add elements. In this section I will be going over the very basic tools for doing adding elements, but will not get into detail with other topics that surround this.
 
-### 1.1 - Uisng innerHTML to add elements
+### 1.1 - Using innerHTML to add elements
 
 The innerHTML property of an element object is one way to go about getting a string value of the innerHTML of an element, but it can also be used to set the innerHTML also with a string value of the desired innerHTML.
 
@@ -46,7 +46,7 @@ In this post I am not going to be going into detail about innerHTML as I have wr
 
 So now that we have a very basic idea of what this is all about otu of the way I can now move on to other ways of adding elements to an html document.
 
-### 1.2 - createElement methods for adding elements
+### 1.2 - The createElement, and append child methods for adding elements
 
 The alternative to using innerhtml as a way to create elements is to use the document.createElement method along with something like appendChild, and createTextNode. This is generally the preferred way to create and add new elements into an html document because it allows for access to element object reference right away. In addition I can set all kinds of properties to the created element before appending it the the html, or I can even not append it at all if I find that I do not want to for whatever the reason.
 
@@ -147,6 +147,32 @@ document.body.appendChild(pre);
 
 An example such as this could be expanded with additional methods to make a simple grid system, but this alone should help with the general idea of why it is that pre elements are useful in some situations.
 
-## 3 - Conclusion
+## 3 - Removing elements
+
+So there is the process of injecting new elements into a container element, however I can not write about adding elements without at least writing a thing or two about removing them also. This section will then be a few examples that have to do with removing elements that are there ti begin with, and also maybe a few exercise that have to do with both adding and removing them also while I am at it. As such in this section I will be going over methods like the remove method of an element object reference, but also many other topics such as event attachment.
+
+### 3.1 - the remove method of an element
+
+```html
+<html>
+    <head>
+        <title>javascript create element</title>
+    </head>
+    <body>
+        <ul id="the-list">
+            <li>Zero</li>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ul>
+        <script>
+var list = document.querySelector('#the-list');
+list.children[2].remove()
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So the two general ways to go about adding elements in front end javaScript is the inner html method, and then the createElements method that is often regarded as the more professional way of going about adding elements. There is also other properties and ways of doing things in front end javaScript that can be thought of as a way of adding nodes in general such as the innerText property. That is not a way of adding elements to some HTML, but it is a way of adding text nodes, and doing so in a way in which any inner content is removed while doing so.
