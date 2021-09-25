@@ -1,15 +1,16 @@
 # todo list for new posts blog_posts
 
 
-### () - new post #931 for 10/01/2021 - 
 
 <!--###### ########## ########## #######-->
 ## Linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
-### () - new post #930 for 09/24/2021 - linux-raspberry-pi-os-nodejs-setup
-* write a new post on how to set up more than one version of node
+### () - new post #931 for 10/01/2021 - linux-raspberry-pi-os-upgrading
 
+
+### ( done 09/24/2021 ) - new post #930 for 09/24/2021 - linux-raspberry-pi-os-nodejs-setup
+* (done) write a new post on how to set up more than one version of node
 
 
 
@@ -25,6 +26,9 @@
 ### ( done 09/10/2021 ) - new post #928 for 09/10/2021 - nodejs-simple-http-request-get-post-system
 * (done) start a new nodejs-simple-http-request-get-post-system repo folder
 * (done) base nodejs-simple-http-request-get-post-system based off of
+
+
+
 
 
 <!--###### ########## ########## #######-->
