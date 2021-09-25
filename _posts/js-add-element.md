@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 12:01:54
-version: 1.23
+updated: 2021-09-25 12:24:08
+version: 1.24
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -170,6 +170,42 @@ One of the first method to check out when it comes to removing elements might be
         <script>
 var list = document.querySelector('#the-list');
 list.children[2].remove()
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - remove all elements the meet a given condition
+
+Some times I might want to remove all elements that will meet a given condition. That is that I might want to use the document query selector all method to get a collection of elements, and then filter that collection by a given condition. I will then want to loop over all the filtered elements and call the remove method for all of them.
+
+```html
+<html>
+    <head>
+        <title>javascript create element</title>
+    </head>
+    <body>
+        <ul id="the-list">
+            <li data-purge="true">Zero</li>
+            <li>One</li>
+            <li data-purge="true">Two</li>
+            <li data-purge="true">Three</li>
+            <li>Four</li>
+        </ul>
+        <script>
+// remove all helper
+var removeAll = function(query, condition){
+    var list = document.querySelectorAll(query);
+    Array.prototype.filter.call(list, function(el){
+        return condition(el);
+    }).forEach(function(el){
+        el.remove();
+    });
+};
+// remove all by purge dataset prop
+removeAll('li', function(el){
+    return Boolean(el.dataset.purge);
+});
         </script>
     </body>
 </html>
