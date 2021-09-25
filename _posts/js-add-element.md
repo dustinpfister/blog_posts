@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 11:58:36
-version: 1.21
+updated: 2021-09-25 12:00:49
+version: 1.22
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -151,7 +151,9 @@ An example such as this could be expanded with additional methods to make a simp
 
 So there is the process of injecting new elements into a container element, however I can not write about adding elements without at least writing a thing or two about removing them also. This section will then be a few examples that have to do with removing elements that are there ti begin with, and also maybe a few exercise that have to do with both adding and removing them also while I am at it. As such in this section I will be going over methods like the remove method of an element object reference, but also many other topics such as event attachment.
 
-### 3.1 - the remove method of an element
+### 3.1 - The remove method of an element
+
+One of the first method to check out when it comes to removing elements might be the [remove method of an element](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove). Using this method is simple enough, once an reference to an element is obtained it is then just a matter of calling the remove element, and that is all there is to it.
 
 ```html
 <html>
