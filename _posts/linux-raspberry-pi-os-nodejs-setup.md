@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 930
-updated: 2021-09-25 08:56:07
-version: 1.20
+updated: 2021-09-25 09:12:52
+version: 1.21
 ---
 
 Today I would like to write about a topic that I have been putting off for too long which is how to go about having more than one binary of [nodejs](/2017/04/05/nodejs-helloworld/) to work with in [Raspberry Pi OS](/2020/03/25/linux-raspbian-lite-getting-started/). When first setting up a clean image of raspberry pi os one of the first things I would like to do is install nodejs, and the typical way of doing so would be to just install whatever version of nodejs there is to work with by way of apt. The problem with doing this though is that the version of nodejs is often very out of date, in fact as of this writing it is a version of nodejs that is no longer supported. Also often I might want to have more than one version of nodejs installed actually, and have a way to switch between them. For example I might want to write a script that I want to work on a wide range of nodejs versions, going as far back as say maybe nodejs 8.x. So then I would want to test out the script on nodejs 8.x, 9.x, 10.x, ..., 16.x as such I would need to have some way to not just have an up to date version of nodejs when it comes to the latest version, I would also want the latest version of each major release going back to whatever point I want to push backward compatibility to.
@@ -87,3 +87,6 @@ Another alternative would be to just make the aliases in the .bashrc file direct
 
 Although this kind of approach of placing two or more binaries in a home folder, and setting up aliases for each binary might work okay, at least as far as I can tell, this might not be the prim an proper way of going about doing this sort of thing in a Linux system. I often do things like this anyway, but the thing about it is that this is not really what the home folder is intended for. having binaries in the home folder and using aliases to call them still strikes me as a quick careless solution for a problem that might work, but there is another solution that may be a little more in line with how a Linux system is structured by having the binaries in the \/usr\/bin folder.
 
+# 5 - Conclusion
+
+Although What I have worked out thus far seems to work okay, at some point in the future I am going to want to edit this post a little. There is working out another section in which I am doing something to set up this kind of situation in which it should be set up by having binaries in the proper location. Also there are some additional things I would like to do when it comes to setting things up when working with a clean raspberry pi os image such as having a simple script that will automate the process of pulling down tar files, decompressing them, rename binary files, and copying them to the bin folder.
