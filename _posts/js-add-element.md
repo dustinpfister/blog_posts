@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 14:22:23
-version: 1.32
+updated: 2021-09-25 14:25:02
+version: 1.33
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -217,7 +217,7 @@ removeAll('li', function(el){
 
 ### 3.4 - Remove and add elements
 
-This is very much a post on adding elements to an html document, so in this section I will not just be going over an example that makes use of the remove method, but also append child and the create element methods. The idea here this is to have an unordered list element with a single starting li element. The li element then have some additional nested elements in it one of which is a delete button, and the other is a span that contains some text for the list item.
+This is very much a post on adding elements to an html document, so in this section I will not just be going over an example that makes use of the remove method, but also append child and the create element methods. The idea here this is to have an unordered list element with a single starting li element. The li element then have some additional nested elements in which one of them is a delete button, and the other is a span that contains some text for the list item. There will then also be some additional html that will contain input buttons that can be used to inject additional list items that are formatted this way. As you might expect the additional html out side of the list wil be used to create and append additional li elements and the delete button will be used to remove a single li element from the list.
 
 ```html
 <html>
