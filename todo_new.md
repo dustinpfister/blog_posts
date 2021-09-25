@@ -6,8 +6,10 @@
 ## Linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
-### () - new post #931 for 10/01/2021 - linux-raspberry-pi-os-upgrading
-
+### () - new post #931 for 10/01/2021 - linux-ln
+* I have a draft folder for the linux-ln command ready
+* make some additional examples
+* write the post
 
 ### ( done 09/24/2021 ) - new post #930 for 09/24/2021 - linux-raspberry-pi-os-nodejs-setup
 * (done) write a new post on how to set up more than one version of node
