@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 12:28:08
-version: 1.26
+updated: 2021-09-25 12:30:58
+version: 1.27
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -177,7 +177,7 @@ list.children[2].remove()
 
 ### 3.2 - remove all elements the meet a given condition
 
-Some times I might want to remove all elements that will meet a given condition. That is that I might want to use the [document query selector all method](/2020/06/23/js-document-queryselector/) to get a collection of elements, and then filter that collection by a given condition. I will then want to loop over all the filtered elements and call the remove method for all of them. One way to go about doing something like this would be to use one of the function prototype methods such as the call method to make the filter array prototype method work with an html collection and return an array of elements to each element that meets a given query, and condition in the form of a method that I given tot he array filter method. I can then use the array for each method to loop over all of the elements in the array that is returned by the array filter method and call the remove method for each of them.
+Some times I might want to remove all elements that will meet a given condition. That is that I might want to use the [document query selector all method](/2020/06/23/js-document-queryselector/) to get a collection of elements, and then filter that collection by a given condition. I will then want to loop over all the filtered elements and call the remove method for all of them. One way to go about doing something like this would be to use one of the [function prototype methods such as the call method](/2017/09/21/js-call-apply-and-bind/) to make the [filter array prototype method](/2020/10/03/js-array-filter/) work with an html collection and return an array of elements to each element that meets a given query, and condition in the form of a method that I given tot he array filter method. I can then use the [array for each method](/2019/02/16/js-javascript-foreach/) to loop over all of the elements in the array that is returned by the array filter method and call the remove method for each of them.
 
 ```html
 <html>
