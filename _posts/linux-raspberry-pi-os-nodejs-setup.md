@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 930
-updated: 2021-09-24 21:10:22
-version: 1.7
+updated: 2021-09-24 21:16:40
+version: 1.8
 ---
 
 Today I would like to write about a topic that I have been putting off for too long which is how to go about having more than one binary of [nodejs](/2017/04/05/nodejs-helloworld/) to work with in [Raspberry Pi OS](/2020/03/25/linux-raspbian-lite-getting-started/). When first setting up a clean image of raspberry pi os one of the first things I would like to do is install nodejs, and the typical way of doing so would be to just install whatever version of nodejs there is to work with by way of apt. The problem with doing this though is that the version of nodejs is often very out of date, in fact as of this writing it is a version of nodejs that is no longer supported. Also often I might want to have more than one version of nodejs installed actually, and have a way to switch between them. For example I might want to write a script that I want to work on a wide range of nodejs versions, going as far back as say maybe nodejs 8.x. So then I would want to test out the script on nodejs 8.x, 9.x, 10.x, ..., 16.x as such I would need to have some way to not just have an up to date version of nodejs when it comes to the latest version, I would also want the latest version of each major release going back to whatever point I want to push backward compatibility to.
@@ -25,7 +25,11 @@ $ arch
 armv7l
 ```
 
-The result is armv7l which means [ARM7](https://en.wikipedia.org/wiki/ARM7) actually even though the original raspberry pi has newer arm11 processor, and the pi4 has ARM Cortex-A72 processor. This is because the result that the arch command gives reflects what is being used by the kernel, and not what the actual physical hardware is. For example when it comes to Intel Linux distributions I can run an i385 kernel image on a 64bit processor, but I can not run a 64 bit OS on a old i386 computer. Anyway on just about all raspberry pis I should get this kind of result for system architecture, and as such that is what I need to look for when it comes to downloading pre compiled binaries from nodejs.org.
+The result is armv7l which means [ARM7](https://en.wikipedia.org/wiki/ARM7) actually even though the original raspberry pi has newer arm11 processor, and the pi4 has ARM Cortex-A72 processor. This is because the result that the arch command gives reflects what is being used by the kernel, and not what the actual physical hardware is. For example when it comes to Intel Linux distributions I can run an i385 kernel image on a 64bit processor, but I can not run a 64 bit OS on a old i386 computer. 
 
-For example I will want to download the last binary for nodejs.8.x I will want [node-v8.17.0-linux-armv7l.tar.gz from https://nodejs.org/dist/latest-v8.x/](https://nodejs.org/dist/latest-v8.x/).
+## Downloading binaries from nodejs.org
+
+Anyway on just about all raspberry pi I should get this kind of result of arm71 for system architecture, and as such that is what I need to look for when it comes to downloading pre compiled binaries from nodejs.org. For example if I want to download the last binary for nodejs.8.x I will want [node-v8.17.0-linux-armv7l.tar.gz from https://nodejs.org/dist/latest-v8.x/](https://nodejs.org/dist/latest-v8.x/). Once I download that fil I will want to use the tar command, or whatever front end to uncompress the file to get a folder. Inside the folder there is a bin path, and in that bin path would be a binary for nodejs v8.17.0 which was the last version of the specific major release of nodejs.
+
+
 
