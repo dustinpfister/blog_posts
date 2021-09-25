@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 930
-updated: 2021-09-24 21:35:04
-version: 1.15
+updated: 2021-09-24 21:37:00
+version: 1.16
 ---
 
 Today I would like to write about a topic that I have been putting off for too long which is how to go about having more than one binary of [nodejs](/2017/04/05/nodejs-helloworld/) to work with in [Raspberry Pi OS](/2020/03/25/linux-raspbian-lite-getting-started/). When first setting up a clean image of raspberry pi os one of the first things I would like to do is install nodejs, and the typical way of doing so would be to just install whatever version of nodejs there is to work with by way of apt. The problem with doing this though is that the version of nodejs is often very out of date, in fact as of this writing it is a version of nodejs that is no longer supported. Also often I might want to have more than one version of nodejs installed actually, and have a way to switch between them. For example I might want to write a script that I want to work on a wide range of nodejs versions, going as far back as say maybe nodejs 8.x. So then I would want to test out the script on nodejs 8.x, 9.x, 10.x, ..., 16.x as such I would need to have some way to not just have an up to date version of nodejs when it comes to the latest version, I would also want the latest version of each major release going back to whatever point I want to push backward compatibility to.
@@ -55,9 +55,11 @@ In the bash command prompt that will be the same as calling:
 /home/pi/node/node-v8.17.0-linux-armv7l/bin/node'
 ```
 
-So to do this I just need to set up an aliases in the .bash\_aliases file or in the .bashrc file directly maybe in some situations in which there is no .bashrc file for the current user. However when it comes to what the situation is with clean image of raspberry pi os things are set up all ready when it comes to a .bashrc file, and that file fill look for a .bash_aliases file so I will be using that.
+So to do this I just need to set up an aliases in the .bash\_aliases file or in the .bashrc file directly maybe in some situations in which there is no .bashrc file for the current user. However when it comes to what the situation is with clean image of raspberry pi os things are set up all ready when it comes to a .bashrc file, and that file fill look for a .bash\_aliases file so I will be using that.
 
 ### The .bash_aliases file
+
+So then I will want to add a few lines to the .bash\_aliases file, or create one to begin with if there is n ot one there.
 
 ```
 # nodejs bins
@@ -67,6 +69,8 @@ alias node16='/home/pi/node/node-v16.9.1-linux-armv7l/bin/node'
 ```
 
 ### The .bashrc file
+
+There should be a .bashrc file, if not I will want to create one and have this in it.
 
 ```
 # Alias definitions.
