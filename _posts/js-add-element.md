@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 12:36:51
-version: 1.29
+updated: 2021-09-25 12:38:43
+version: 1.30
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -21,7 +21,7 @@ Also there is some things to cover when it comes to html node lists as well, and
 
 ## 1 - The very basics of Adding Elements in client side javaScript
 
-To add an element in javaScript I first need to gain a reference to a hard coded element in the html to begin with. There are a number of ways to go about doing this such as with [document.getElementById](/2018/12/27/js-document-getelementbyid/) which shows up in a lot of javaScript examples, to properties such as [document.body](/2019/01/03/js-document-body/). Once I have a reference to a container element I can then use a property like [innerHTML](/2019/01/13/js-innerhtml/) or a collection of element object methods to create an add elements. In this section I will be going over the very basic tools for doing adding elements, but will not get into detail with other topics that surround this.
+To add an element in javaScript I first need to gain a reference to a hard coded element in the html to begin with. There are a number of ways to go about doing this such as with [document.getElementById](/2018/12/27/js-document-getelementbyid/) which shows up in a lot of javaScript examples, to properties such as [document.body](/2019/01/03/js-document-body/). Once I have a reference to a container element I can then use a property like [innerHTML](/2019/01/13/js-innerhtml/) or a collection of element object methods to create an add elements. In this section I will be going over the very basic tools for doing adding elements, but will not get into that much detail with other topics that surround this. I also often use these first sections to mention any other additional things that you might want to know before continuing to read the rest of the post.
 
 ### 1.1 - The source code examples here are on github
 
