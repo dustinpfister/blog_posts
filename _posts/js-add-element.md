@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 391
-updated: 2021-09-25 14:30:38
-version: 1.34
+updated: 2021-09-25 14:33:21
+version: 1.35
 ---
 
 The process of [Adding elements](https://www.tutorialspoint.com/how-to-add-a-new-element-to-html-dom-in-javascript) in javaScript generally refers to creating and appending html elements to a container element in an html document. Also in core javaScript by itself in general, adding elements may refer to creating and appending elements for an Array. However in this post I will be going mainly over ways to go about adding html elements to an html document when it comes to client side javaScript.
@@ -25,7 +25,7 @@ To add an element in javaScript I first need to gain a reference to a hard coded
 
 ### 1.1 - The source code examples here are on github
 
-I have the source code examples that I am writing about here up on my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-add-element).
+I have the source code examples that I am writing about here up on my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-add-element). That is where you would want to make a pull request of you think that one needs to be made, there is also the comments section where something can be brought up with one of the examples here. This is also the repository where I hold my source code examples for all my other posts, and where I am working on examples for the next time I come around to edit and expand this post.
 
 ### 1.2 - Using innerHTML to add elements
 
