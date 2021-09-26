@@ -1,12 +1,12 @@
 ---
-title: Get parent elements with native javaScript
+title: Get the parent element in client side javaScript
 date: 2019-02-21 18:37:00
 tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-26 08:21:39
-version: 1.28
+updated: 2021-09-26 08:28:14
+version: 1.29
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -19,7 +19,9 @@ I might also touch base on some other related topics as well when it comes to a 
 
 ## 1 - First off el.parentElement, and el.parentNode
 
-First off there are the el.parentElement, and el.parentNode properties that come to mind when it comes to the first solution for this sort of thing. First off a reference to the element to which I want to find the parent for, any method for doing so will work find for that such as document.getElementById or document.querySelector. Once that has been obtained the parentElement or parentNode properties of an element of interest will refer to the parent element of that element if it has one.
+First off there are the el.parentElement, and el.parentNode properties that come to mind when it comes to the first solution for this sort of thing. So the basic process is to first get a reference to the element to which I want to find the parent for, any method for doing so will work find for that such as [document.getElementById](/2018/12/27/js-document-getelementbyid/) or [document.querySelector](/2020/06/23/js-document-queryselector/). Once that has been obtained the parentElement or parentNode properties of an element of interest will refer to the parent element of that element if it has one.
+
+So then in this section I will just be getting to some quick simple examples of these options for getting a reference to a parent element or node in general. I also often use this section to go over any additional topics of interest before reading the rest of the post.
 
 ### 1.1 - Get parent element AKA DOM NODE if there is one
 
