@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-26 08:15:54
-version: 1.27
+updated: 2021-09-26 08:21:39
+version: 1.28
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
 
-If you do not care at all about supporting Internet explorer there is a new element method called [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest). This method can be used as a way to get the closest element that matches a given query string. There are pollyfills, but it might still be best to just use the older properties if you just simply want to get the parent element and not much of anything else. However there might be a few other little tips and tricks when it comes to getting a parent element, from a starting element in a dom element tree so I should get around to writing about some of these attentional options beyond just parentEmenet, and parentNode.
+If you do not care at all about supporting Internet explorer, there is a new element method called [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest) which can be used as a way to get the closest element that matches a given query string. It then goes without saying that this method is yet another tool in the toolbox when it comes to this sort of thing, and it is also a little more versatile beyond just getting the parent element of an element. There are pollyfills, but it might still be best to just use the older properties if you just simply want to get the parent element and not much of anything else.
 
-I might also touch base on some other related topics as well when it comes to a chain of elements from document up to a given element as well, that is getting all parent elements of a given node. So in other words I will be making this post all about getting a parent HTML element when it comes to client side javaScript.
+I might also touch base on some other related topics as well when it comes to a chain of elements from document up to a given element as well, that is getting all parent elements of a given node. There is also of course the various options that can be used to get an element reference to begin with also, and the fact that these options are also a way of getting a parent element reference and references in general. So there is a bit of ground to cover when it comes to getting really into what all the options are, however I will be keeping the basic stuff that will work well at the top of this post.
 
 <!-- more -->
 
