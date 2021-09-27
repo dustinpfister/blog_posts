@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 10:19:49
-version: 1.35
+updated: 2021-09-27 10:23:07
+version: 1.36
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -155,7 +155,7 @@ loopParents(logo, function(el, i, child){
 </html>
 ```
 
-This method can then be used in a whole range of different ways depending on what it is that I want to get when it comes to looping down the list of parent elements.
+This method can then be used in a whole range of different ways depending on what it is that I want to get when it comes to looping down the list of parent elements. In this example alone I have two use case examples that are doing to separate things one of which is looping back all the way and logging the results to the console, the other is stopping when the body element is reached. With that said the rest of this section will just be different use case examples of this method, and using it to create additional methods for specific situations.
 
 ### 3.2 - Get an array of all parent nodes
 
