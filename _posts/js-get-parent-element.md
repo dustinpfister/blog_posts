@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 11:42:44
-version: 1.41
+updated: 2021-09-27 11:46:44
+version: 1.42
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -310,4 +310,7 @@ As of this writing there is no css selector that I know of that can be used to g
 
 ## 6 - Conclusion
 
-So getting the parent element of an html element reference is just a matter of choosing an option for doing so. There are two main properties that come to mind one of which will work with just html elements, and the other will work with nodes in general for the most part. There are many other ways of doing so, but for the most part there are just those two properties that can be used to just do so and move on.
+So getting the parent element of an html element reference is just a matter of choosing an option for doing so. There are two main properties that come to mind one of which will work with just html elements, and the other will work with nodes in general for the most part. There are many other ways of doing so, but for the most part there are just those two properties that can be used to just do so and move on. 
+
+In some cases I might want to do something that is a little more advanced and for that it is not so hard to use the fact that these properties return null as a way to get out of a loop where I just keep setting the current value of a node variable to the value of of the previous nodes parent node property. There is then making a simple loop parents method that will take a function to call for each parent method, and then this kind of method can be used in all kinds of different ways to address just about any issue that might come up when it comes to the need to looking into parent elements.
+
