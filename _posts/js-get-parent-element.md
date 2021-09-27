@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 10:12:04
-version: 1.32
+updated: 2021-09-27 10:14:29
+version: 1.33
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -107,6 +107,8 @@ console.log( parent.id ); // 'f1'
 So for now I am not aware of any native browser method that can be used to get all the parent elements of a given element, but it is not to hard to write one. Once way to do so would be to write a method that will take a child element, and a function to call for each parent until a return value of the function is true. So in this section I will be going over the source code of a loop parents method, and a few use case examples of such a method.
 
 ### 3.1 - loop back method
+
+First off here is an example that makes use of a loop back method that I have made that is [based off of an example that I found while doing research for this post](https://stackoverflow.com/questions/6856871/getting-the-parent-div-of-element/6857116#6857116).
 
 ```html
 <html>
@@ -216,7 +218,7 @@ I am sure there are many other ways to go about doing this. There are also all k
 
 ## 3.3 -  Get a parent by node name method
 
-So when it comes to making a quick [vanilla javaScript method](https://stackoverflow.com/questions/6856871/getting-the-parent-div-of-element/6857116#6857116) solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
+So when it comes to making a quick vanilla javaScript method solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
 
 ```html
 <html lang="en-US">
