@@ -11,17 +11,20 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+* proof read full text
+* (done) link to test vjs folder
+* test vjs readme file links to post
+
 ## () - js-array-length ( 28k impressions / 3 months - 9/26/21 )
 * have 5+ internal links for the post
-* proof read
+* proof read full text
 * have section folders in test vjs
 * link to test vjs folder
 * test vjs readme file links to post
 * test vjs links to various other sites on the topic of array length
-
-## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
-* edit post to 1,800+ words
-* have 5+ internal links for the post
 
 ## () - js-array-push ( 9k impressions / 3 months - 9/26/21 )
 * edit post to 1,000+ words
