@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 13:09:34
-version: 1.47
+updated: 2021-09-27 13:10:01
+version: 1.48
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -310,7 +310,7 @@ So when it comes to event handers the target property of the event object will r
 
 ### 4.2 - Attach to parent method example
 
-Now for a more advanced example of this that may help to really show how these properties are helper when it comes to attahing just a single event handler to a parent element.
+Now for a more advanced example of this that may help to really show how these properties are helper when it comes to attaching just a single event handler to a parent element.
 
 ```js
 <html>
