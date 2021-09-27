@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 10:14:29
-version: 1.33
+updated: 2021-09-27 10:18:27
+version: 1.34
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -108,7 +108,7 @@ So for now I am not aware of any native browser method that can be used to get a
 
 ### 3.1 - loop back method
 
-First off here is an example that makes use of a loop back method that I have made that is [based off of an example that I found while doing research for this post](https://stackoverflow.com/questions/6856871/getting-the-parent-div-of-element/6857116#6857116).
+First off here is an example that makes use of a loop back method that I have made that is [based off of an example that I found while doing research for this post](https://stackoverflow.com/questions/6856871/getting-the-parent-div-of-element/6857116#6857116). The method works by taking a child element reference as the first argument, and then it will fire a for parent method for each parent node until the return value of the for parent method is true, or until a null value is reached for a parent node value.
 
 ```html
 <html>
