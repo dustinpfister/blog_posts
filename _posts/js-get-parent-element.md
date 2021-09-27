@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 10:40:43
-version: 1.38
+updated: 2021-09-27 11:37:38
+version: 1.39
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -220,7 +220,7 @@ I can use this loop parents method to create an array of all the parents if I wa
 
 ## 3.3 -  Get a parent by node name method
 
-So when it comes to making a quick vanilla javaScript method solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
+In this example I am not once again using the loop parents method to loop over all the parent nodes from a starting child node. This time I am looking for a parent node that has a given tag name such as a div element. So when I call the loop parents method I am looking at the node name property of each parent node, and in the event that the parent node name is the name I am looking for that parent node will be returned. The default value for the parent is the null value, and this is what will be returned in the event that there is no match for the given tag name.
 
 ```html
 <html lang="en-US">
