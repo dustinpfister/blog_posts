@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-26 08:31:32
-version: 1.30
+updated: 2021-09-27 10:09:41
+version: 1.31
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -102,16 +102,17 @@ console.log( parent.id ); // 'f1'
 </html>
 ```
 
-## 3 - Get all parent elements
+## 3 - Loop back over all parent elements
 
 So for now I am not aware of any native browser method that can be used to get all the parent elements of a given element, but it is not to hard to write one.
 
-The solution I put together for this in a flash just involves looping until the current parentNode equals the document element. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished. I can do whatever it is that I want to do with all the parent nodes, using an array method like filter to get all the ones I want for example.
+### 3.1 - loop back method
 
 ```html
 <html>
     <head>
         <title>parent node example</title>
+        <meta name="google" content="notranslate" />
     </head>
     <body>
         <div id="wrap">
@@ -120,17 +121,85 @@ The solution I put together for this in a flash just involves looping until the 
             </div>
         </div>
         <script>
-var getParents = function (el) {
-    var parents = [],
-    node = el;
-    while (node != document) {
-        parents.push(node.parentNode);
+// loop parents function
+var loopParents = function (el, forParent) {
+    var node = el,i = 0;
+    while (node != null) {
         node = node.parentNode;
+        if(node){
+            if(forParent.call(node, node, i, el)){
+                return false;
+            }
+        }
+        i += 1;
     }
+    return true;
+};
+// getting ref to logo div
+var logo = document.getElementById('logo');
+// looping back all the way
+loopParents(logo, function(el, i, child){
+   console.log(el.nodeName, i, child.id);
+});
+// loop back until body
+loopParents(logo, function(el, i, child){
+   if(el.nodeName === 'BODY'){
+       return true;
+   }
+   console.log(el.nodeName, i, child.id);
+});
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - Get an array of all parent nodes
+
+The solution I put together for this in a flash just involves looping until the current parentNode equals the document element. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished. I can do whatever it is that I want to do with all the parent nodes, using an array method like filter to get all the ones I want for example.
+
+```html
+<html>
+    <head>
+        <title>parent node example</title>
+        <meta name="google" content="notranslate" />
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div id="logo"></div>
+            </div>
+        </div>
+        <script>
+// loop parents function
+var loopParents = function (el, forParent) {
+    var node = el,i = 0;
+    while (node != null) {
+        node = node.parentNode;
+        if(node){
+            if(forParent.call(node, node, i, el)){
+                return false;
+            }
+        }
+        i += 1;
+    }
+    return true;
+};
+// get all parents method
+var getAllParents = function (child) {
+    var parents = [];
+    // loop back until body
+    loopParents(child, function(el, i){
+        if(el){
+            parents.push(el);
+        }else{
+            return true;
+        }
+        return false;
+    });
     return parents;
 }
 var el = document.getElementById('logo');
-getParents(el).forEach(function (el) {
+getAllParents(el).forEach(function (el) {
     console.log(el.nodeName, el.id || '');
 });
 // DIV header
@@ -145,14 +214,15 @@ getParents(el).forEach(function (el) {
 
 I am sure there are many other ways to go about doing this. There are also all kinds of other topics in javaScript that come to mind, one thing that comes to mind right of the bat is event bubbling. That is when an event happens in a child element and then the event fires for each parent element also.
 
-## 4 - Writing a simple vanilla js get by tag method
+## 3.3 -  Get a parent by node name method
 
 So when it comes to making a quick [vanilla javaScript method](https://stackoverflow.com/questions/6856871/getting-the-parent-div-of-element/6857116#6857116) solution for getting parent elements by tag, something can be slapped together fairly quickly using a while loop, and the parent node property. In addition to the parent node property there is also of course the tagName property than can be used as something to compare to as I loop threw the elements.
 
 ```html
-<html>
+<html lang="en-US">
     <head>
         <title>get parent by tag</title>
+        <meta name="google" content="notranslate" />
     </head>
     <body>
         <div id="f1">
@@ -165,16 +235,32 @@ So when it comes to making a quick [vanilla javaScript method](https://stackover
             </div>
         </div>
         <script>
-var getParentByTag = function(child, tagName) {
-  var el = child;
-  tagName = tagName.toLowerCase();
-  while (el && el.parentNode) {
-    el = el.parentNode;
-    if (el.tagName && el.tagName.toLowerCase() == tagName) {
-      return el;
+// loop parents function
+var loopParents = function (el, forParent) {
+    var node = el,i = 0;
+    while (node != null) {
+        node = node.parentNode;
+        if(node){
+            if(forParent.call(node, node, i, el)){
+                return false;
+            }
+        }
+        i += 1;
     }
-  }
-  return null;
+    return true;
+};
+// get parent by tag
+var getParentByTag = function(child, tagName) {
+    var parent = null;
+    // loop back until body
+    loopParents(child, function(el, i){
+        if(el.nodeName === tagName.toUpperCase()){
+            parent = el;
+            return true;
+        }
+        return false;
+    });
+    return parent;
 };
  
 var li = document.getElementById('li3');
@@ -186,7 +272,7 @@ console.log( getParentByTag(li, 'div').id ); // 'b1'
 
 Making a variation of this that looks at the class name property would not be so hard as well, and this could also be developed into a pollyfill for the closest method that I wrote about in a previous section.
 
-## 6 - Parent Elements and Event bubbling
+## 4 - Parent Elements and Event bubbling
 
 So a related topic of interest when it comes to getting parent elements is the subject of [event bubbling](https://en.wikipedia.org/wiki/Event_bubbling). When an element is clicked for example it will fire an on click event that is set for that element, but it will also bubble up to the top most parent element and fire event handlers all the way up unless this is stopped.
 
@@ -214,10 +300,10 @@ document.body.addEventListener('click', onClick);
 
 So when it comes to event handers the target property of the event object will refer to the element where the event happened and the current target property will refer to the element where the event handler is attached.
 
-## 7 - Other possible future ways with querySelector
+## 5 - Other possible future ways with querySelector
 
 As of this writing there is no css selector that I know of that can be used to get a parent element, so there is no way of getting a parent element with querySelector. There is of course chatter about possible future selectors and pseudo classes that might be a way to do so, but so far nothing solid or well supported.
 
-## 8 - Conclusion
+## 6 - Conclusion
 
 So getting the parent element of an html element reference is just a matter of choosing an option for doing so. There are two main properties that come to mind one of which will work with just html elements, and the other will work with nodes in general for the most part. There are many other ways of doing so, but for the most part there are just those two properties that can be used to just do so and move on.
