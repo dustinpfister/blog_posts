@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 13:03:21
-version: 1.45
+updated: 2021-09-27 13:08:16
+version: 1.46
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -280,7 +280,9 @@ Making a variation of this that looks at the class name property would not be so
 
 So a related topic of interest when it comes to getting parent elements is the subject of [event bubbling](https://en.wikipedia.org/wiki/Event_bubbling), when it comes to working with [event handlers](/2019/01/16/js-event-listeners/), and the various properties of the [event objects](/2020/07/23/js-event-object/) that can be worked with inside of such event handlers. When an element is clicked for example it will fire an on click event that is set for that element, but it will also bubble up to the top most parent element and fire event handlers all the way up unless this is stopped. So then it is possible to set an event listener for a parent element, and then if any child element is clicked that event handler will fire. Inside the body of the event handler the target property of the event object should refer to the child element, and the current target property should refer to the parent element. So then in this section I will be going over some code examples that explore this related topic of interest when it comes to getting references to one or more parent elements.
 
-### 4.1 -
+### 4.1 - basic example of getting parent and child references in an event handler
+
+To start this off just take a moment to look at a fairly simple example of what this is all about. Say I attach and event handler to a parent element such as the body element of a page for the click event. Whenever any element in the body of the document is clicked, that will result in the event handler firing. Inside the body of this event hander I can access the event object, and it is the target, and current target properties of this event object that are of interest.
 
 ```html
 <html>
@@ -304,7 +306,7 @@ document.body.addEventListener('click', onClick);
 </html>
 ```
 
-So when it comes to event handers the target property of the event object will refer to the element where the event happened and the current target property will refer to the element where the event handler is attached.
+So when it comes to event handers the target property of the event object will refer to the element where the event happened and the current target property will refer to the element where the event handler is attached. In most cases I would assume then that the current target property of the event object would be the parent, and the target property would be the child.
 
 ### 4.2 - Attach to parent method example
 
