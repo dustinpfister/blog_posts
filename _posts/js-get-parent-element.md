@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 13:13:44
-version: 1.50
+updated: 2021-09-27 13:15:21
+version: 1.51
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -312,7 +312,7 @@ So when it comes to event handers the target property of the event object will r
 
 Now for a more advanced example of this that may help to really show how these properties are helper when it comes to attaching just a single event handler to a parent element. This time I am making a single for parent child method that can take a for child method, a for parent method, and a for only array of string values that can be used to set what child elements to call the for child method for for each client event that happens for a parent element and all children of the parent to which this method is used with.
 
-When calling this for parent child method the first argument is a parent element, or a query string that can be used to get a parent element to attach a main event hander to.
+When calling this for parent child method the first argument is a parent element, or a query string that can be used to get a parent element to attach a main event hander to. The second argument is then an options object that can contain an array of string values that can be used to find out if a for child method should be called or not. With that said this options object can also be used to set what the for child method is, and a for parent method can also be attached that will always fore for each event.
 
 ```js
 <html>
