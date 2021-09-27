@@ -11,16 +11,15 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+## () -  js-event-object
 * edit post to 2,400+ words
-* proof read full text
-* add a new example for the events section
+* write about event example in js-get-parent-element and link to the post
+* have 5+ internal links for the post
 
 ## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
-* (done) edit post to 1,800+ words
-* (done) have 5+ internal links for the post
-* (done) link to test vjs folder
-* (done) test vjs readme file links to post
+* (done) edit post to 2,400+ words
+* proof read full text
+* (done) add a new example for the events section
 
 ## () - js-array-length ( 28k impressions / 3 months - 9/26/21 )
 * have 5+ internal links for the post
@@ -56,6 +55,12 @@
 ### (   ) - js-javascript-constructor
 * edit post to 2,400+ words
 * (done) have 5+ internal links for the post
+
+## ( done 09/27/2021 ) - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
+* (done) link to test vjs folder
+* (done) test vjs readme file links to post
 
 ### ( done 09/25/2021 ) - js-add-element
 * (done) edit post to 1,800+ words
