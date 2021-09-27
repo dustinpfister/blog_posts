@@ -12,9 +12,13 @@
 <!--###### ########## ########## #######-->
 
 ## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
-* (done) edit post to 1,800+ words
-* have 5+ internal links for the post
+* edit post to 2,400+ words
 * proof read full text
+* add a new example for the events section
+
+## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 * (done) link to test vjs folder
 * (done) test vjs readme file links to post
 
