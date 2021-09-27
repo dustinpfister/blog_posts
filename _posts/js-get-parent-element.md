@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 13:15:21
-version: 1.51
+updated: 2021-09-27 13:24:10
+version: 1.52
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -440,6 +440,10 @@ forParentChildren('#wrap_main', {
     </body>
 </html>
 ```
+
+When this example is up and running when I click any child of the main warp div that I attached to that is a div that applies to any of the rules set with the for only array the color of that div will change. When I click a div that is a child that does not apply to any of the roles then the for child method will not fire. Also I made it so that when the canvas element is clicked I draw circles to it.
+
+So maybe I went a little overboard with this example, I then to do that now and then, but I wanted to have at least one examples that helps to really showcase why something like this is helpful when working out certain kinds of system where I want to get references to parent and child elements when some kind of event happens.
 
 ## 5 - Other possible future ways with querySelector
 
