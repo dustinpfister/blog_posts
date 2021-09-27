@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 10:23:07
-version: 1.36
+updated: 2021-09-27 10:33:46
+version: 1.37
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -159,7 +159,7 @@ This method can then be used in a whole range of different ways depending on wha
 
 ### 3.2 - Get an array of all parent nodes
 
-The solution I put together for this in a flash just involves looping until the current parentNode equals the document element. For each loop that the current parent node is not the document just keep pushing the parent node to an array and then return the array once the looping has finished. I can do whatever it is that I want to do with all the parent nodes, using an array method like filter to get all the ones I want for example.
+Now that is have a decent loop parents method I can use this method to create another method that will return an array of all parent elements. This can be done by just creating a new array in the body of a function that will take a single element as an argument that is the child element to loop back from. I then call my loop parents method passing this child argument as the first argument for that method, and in the for parent method I just push the elements into the array. Once done I just return the array that will contain all the parent elements. After that I can use any additional array prototype method to filter, or preform some kind of action for each parent element.
 
 ```html
 <html>
@@ -216,7 +216,7 @@ getAllParents(el).forEach(function (el) {
 </html>
 ```
 
-I am sure there are many other ways to go about doing this. There are also all kinds of other topics in javaScript that come to mind, one thing that comes to mind right of the bat is event bubbling. That is when an event happens in a child element and then the event fires for each parent element also.
+I can use this loop parents method to create an array of all the parents if I want to. However what I really have in mind with this is to have a method where I loop back until I find what I want. Often I might just be looping for one parent element that meets a given condition rather than building an array of elements without any additional conditions other than it just being an element or node in general. So then with that said maybe at least a few more examples of this method are called for.
 
 ## 3.3 -  Get a parent by node name method
 
