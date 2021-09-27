@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 11:50:11
-version: 1.43
+updated: 2021-09-27 13:00:35
+version: 1.44
 ---
 
 This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -280,6 +280,8 @@ Making a variation of this that looks at the class name property would not be so
 
 So a related topic of interest when it comes to getting parent elements is the subject of [event bubbling](https://en.wikipedia.org/wiki/Event_bubbling), when it comes to working with [event handlers](/2019/01/16/js-event-listeners/), and the various properties of the [event objects](/2020/07/23/js-event-object/) that can be worked with inside of such event handlers. When an element is clicked for example it will fire an on click event that is set for that element, but it will also bubble up to the top most parent element and fire event handlers all the way up unless this is stopped.
 
+### 4.1 -
+
 ```html
 <html>
     <head>
@@ -303,6 +305,135 @@ document.body.addEventListener('click', onClick);
 ```
 
 So when it comes to event handers the target property of the event object will refer to the element where the event happened and the current target property will refer to the element where the event handler is attached.
+
+### 4.2 - Attach to parent method example
+
+```js
+<html>
+    <head>
+        <title>Get parent element on event</title>
+        <style>
+#wrap_main{
+  width:640px;height:480px;background:black;
+}
+#wrap_header{
+  height:120px;background:green;
+}
+#wrap_logo{
+  width:120px;height:120px;background:blue;
+}
+#wrap_content{
+  width:360px;height:auto;background:red;
+  margin: 20px;padding:20px;
+}
+.block_div{
+  display:inline-block;width:64px;height:64px;background:cyan;
+  margin:10px;
+}
+canvas{
+  display:inline-block;width:64px;height:64px;background:black;
+  margin:10px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap_main">
+            <div id="wrap_header" class="custom_action">
+                <div id="wrap_logo"></div>
+            </div>
+            <div id="wrap_content">
+                <div class="block_div custom_action"></div>
+                <div class="block_div"></div>
+                <div class="block_div custom_action"></div>
+                <canvas width="64" height="64"></canvas>
+            </div>
+        </div>
+        <script>
+var forParentChildren = function(parent, opt){
+    opt = opt || {};
+    opt.forOnly = opt.forOnly || ['*']
+    opt.forChild = opt.forChild || function(){};
+    opt.forParent = opt.forParent || function(){};
+    // if parent is a string assume it is a query string to get one
+    if(typeof parent === 'string'){
+        parent = document.querySelector(parent);
+    }
+    // the listener
+    var listener = function(e){
+        var callForChild = false,
+        child = e.target,
+        i = opt.forOnly.length;
+        while(i--){
+            // if first char === '*' set true and break
+            if(opt.forOnly[i][0] === '*'){
+                callForChild = true;
+                break;
+            }
+            // if first char === '.' check className prop
+            if(opt.forOnly[i][0] === '.'){
+                var classNames = child.className.split(' '),
+                ci = classNames.length;
+                while(ci--){
+                    if('.' + classNames[ci] === opt.forOnly[i]){
+                        callForChild = true;
+                        break;
+                    }
+                }
+            }
+            // if first char === '#' check id prop
+            if(opt.forOnly[i][0] === '#'){
+                if(opt.forOnly[i] === '#' + child.id){
+                    callForChild = true;
+                    break;
+                }
+            }
+            // check node name
+            if(opt.forOnly[i].toUpperCase() === child.nodeName.toUpperCase()){
+                    callForChild = true;
+                    break;
+            }
+        }
+        // call forChild only if e.target is not e.currentTarget
+        if(child != e.currentTarget && callForChild){
+            opt.forChild.call(e, child, e.currentTarget, e, opt);
+        }
+        // always call forParent for what should be the parent element at e.currentTarget
+        opt.forParent.call(e, e.currentTarget, e.currentTarget.children, e, opt);
+    };
+    parent.addEventListener('click', listener);
+};
+// using the method
+forParentChildren('#wrap_main', {
+   forOnly: ['.custom_action', '#wrap_logo', 'canvas'],
+   forChild: function(child, parent, e, opt){
+        var colors = ['orange', 'white', 'lime'],
+        style = colors[Math.floor(Math.random() * colors.length)];
+       // change color if div
+       if(child.nodeName === 'DIV'){
+           child.style.background = style
+       }
+       if(child.nodeName === 'CANVAS'){
+           var box = child.getBoundingClientRect(),
+           x = e.clientX - box.left,
+           y = e.clientY - box.top,
+           ctx = child.getContext('2d');
+           //child.width = 64;
+           //child.height = 64;
+           ctx.beginPath();
+           ctx.fillStyle = style;
+           ctx.arc(x,y,5,0, Math.PI * 2);
+           ctx.closePath();
+           ctx.fill();
+       }
+   },
+   forParent: function(parent, children, e, opt){
+        //console.log(parent.id)
+   }
+});
+        </script>
+    </body>
+</html>
+```
 
 ## 5 - Other possible future ways with querySelector
 
