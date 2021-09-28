@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 12:16:02
-version: 1.34
+updated: 2021-09-28 12:19:21
+version: 1.35
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -28,6 +28,10 @@ In this post I am using Google chrome 70.x, and am using examples that can be co
 If you want to get started with server side javaScript you will want to get node installed to do so. In this post I will not be getting to nodejs in great detail, but it is one of several ways of going about getting started with javaScript. With that said I have wrote a post on doing [just that](/2017/04/05/nodejs-helloworld/), but I think I should at least touch base on a few examples in this post also. 
 
 It is nice to start out with client side javaScript first though as it is something that can be done right now with just a web browser, rather than installing software beyond that which is often there to work with the begin with. However I would not put off getting into nodejs as it can be used to do server side programing with javaScript, and can also be used to write command line tools, and get things done with all kinds of general programing tasks outside of the browser.
+
+### 1.3 - The source code here, and additional notes can be found on my github account
+
+For every post that has to do with javaScript by itself in client side javaScript as well as some node examples I have a github repository where I am storing all the source code and notes when writing, and editing these posts. This post along with many others is no exception when it comes to this and what I have for this post can be found [here on github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-getting-started).
 
 ## 2 - Using the javaScript console
 
