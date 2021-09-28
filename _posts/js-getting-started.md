@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 11:44:19
-version: 1.27
+updated: 2021-09-28 11:47:52
+version: 1.28
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -160,6 +160,8 @@ win32
 ```
 
 ### 4.2 - Linux file shebang and getting started with writing files
+
+When it comes to running a file from the command line there is just calling the script with the node binary, and then there is also setting a [nodejs shebang at the top of the file](/2017/03/26/linux_shebang/) and making the file executable.
 
 ``` js
 #!/usr/bin/node
