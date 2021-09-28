@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 11:47:52
-version: 1.28
+updated: 2021-09-28 11:51:43
+version: 1.29
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -161,7 +161,7 @@ win32
 
 ### 4.2 - Linux file shebang and getting started with writing files
 
-When it comes to running a file from the command line there is just calling the script with the node binary, and then there is also setting a [nodejs shebang at the top of the file](/2017/03/26/linux_shebang/) and making the file executable.
+When it comes to running a file from the command line there is just calling the script with the node binary, and then there is also setting a [nodejs shebang at the top of the file](/2017/03/26/linux_shebang/) and making the file executable. If yo are using windows, or are okay with always typing node first as a way to start a main script of a project then that will work fine. However when it comes to deploying some times adding a shebang is something that must be done in order for the script to run. It also allows for me to just call the main script of a project directly because the shebang tells bash where the binary is to run the script. So in this section I will be going over the basic of this kind of file that will be called with node, rather than using the -e option or the javaScript console of node.
 
 ``` js
 #!/usr/bin/node
