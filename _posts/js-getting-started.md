@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 09:39:48
-version: 1.21
+updated: 2021-09-28 11:32:59
+version: 1.22
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -125,7 +125,37 @@ Then save the file as something like index.html in a folder on your computer som
 
 So this way of starting to learn javaScript involves making changes to plain static html and javaScript files and then just reloading your web browser to observe the changes. This kind of way of learning javaScript will work okay for most situations except for some things that you might eventually run into in which it will not work, at which point it is time to progress to learning how to set up a simple web sever to host what you are working on over https, even if it is just locally.
 
-## 4 - Conclusion
+## 4 - Getting started with javaScript and nodejs
+
+### 4.1 - The e option of the nodejs binary
+
+In Linux there is opening up a bash terminal window, then typing in the nodejs binary name, and passing the -e option. After that I can pass a string that should be some valid javaScript code. If all goes well the code will run, and any standard output that the script generate will be spit out.
+
+```
+$ node -e "console.log('hello world', 40 + 2);"
+hello world 42
+```
+
+```
+$ node -e "let os=require('os');console.log(os.platform());"
+linux
+```
+
+In windows this can also be used as a way to evaluate a little javaScript code. The main difference is that I do so from the command prompt rather than bash. So then things might be a little different from one example to another, but for the most part using the -e option should work more or less the same.
+
+```
+C:\>node -e "console.log('hello world', 40 + 2);"
+hello world 42
+```
+
+When it comes to using the os module this time the response should be win32 rather than linux.
+
+```
+C:\>node -e "let os=require('os');console.log(os.platform());"
+win32
+```
+
+## 5 - Conclusion
 
 Getting started with javaScript is not so hard, it just takes some time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now. 
 
