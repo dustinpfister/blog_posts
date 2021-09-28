@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 11:34:52
-version: 1.23
+updated: 2021-09-28 11:39:09
+version: 1.24
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -127,7 +127,7 @@ So this way of starting to learn javaScript involves making changes to plain sta
 
 ## 4 - Getting started with javaScript and nodejs
 
-So then I covered hot to get started with a little javaScript in the developer console of a web browser, and also how to get started when it comes to creating an html file and just opening up that html file in the web browser by way of the file protocol.
+So then I covered hot to get started with a little javaScript in the developer console of a web browser, and also how to get started when it comes to creating an html file and just opening up that html file in the web browser by way of the file protocol. Those might be okay ways to go about getting started, but when it comes to starting to work on some kind of real client side javaScript project I am going to want to find a way to host what I am working on locally by way of the http protocol rather than the file protocol. So far we might not have run into any problems when it comes to using the file protocol, but they will come up in some situations. There are then two ways of addressing that loosing up security settings for the web browser, or setting uo a basic http sever to host the static files that I am working on over http.
 
 ### 4.1 - The e option of the nodejs binary
 
