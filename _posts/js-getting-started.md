@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 11:41:43
-version: 1.26
+updated: 2021-09-28 11:44:19
+version: 1.27
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -157,6 +157,56 @@ When it comes to using the os module this time the response should be win32 rath
 ```
 C:\>node -e "let os=require('os');console.log(os.platform());"
 win32
+```
+
+### 4.2 - Linux file shebang and getting started with writing files
+
+``` js
+#!/usr/bin/node
+
+/*
+ *    $ node file-shebang
+ *    10.24.0
+ *
+ *    $ ./file-shebang.js
+ *     bash: ./file-shebang.js: Permission denied
+ *
+ *    $ sudo chmod 777 file-shebang.js
+ *    $ ./file-shebang.js
+ *    10.24.0
+ */
+ 
+console.log(process.version);
+```
+
+### 4.3 - piping in some standard input, and having better control over standard output and standard error 
+
+```js
+#!/usr/bin/node
+ 
+/*
+ * $ echo "[1,2,3]" | node process-stdin-stdout.js
+ * [2,4,8]
+ *
+ */
+ 
+let os = require('os');
+ 
+// on standard input
+process.stdin.on('data', (data) => {
+    let str = data.toString(),
+    sourceArr = [],
+    arr = [];
+    try{
+        sourceArr = JSON.parse(str) 
+    }catch(e){
+        process.stderr.write(e.message);
+    }
+    arr = sourceArr.map((n) => {
+        return Math.pow(2, parseInt(n));
+    });
+    process.stdout.write(JSON.stringify(arr) + os.EOL);
+});
 ```
 
 ## 5 - Conclusion
