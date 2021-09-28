@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 09:29:41
-version: 1.18
+updated: 2021-09-28 09:33:40
+version: 1.19
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
@@ -64,7 +64,7 @@ There are a lot of operators and over twenty different levels of operator preced
 < 30
 ```
 
-Expressions in javaScript are evaluated from left to right, however operators of higher precedence are preformed first. Because multiplication has a higher precedence then addition and subtraction 10 * 3 is preformed first, and then the normal flow from left to right happens.
+Expressions in javaScript are evaluated from left to right, however operators of higher precedence are preformed first. Because multiplication has a higher precedence then addition and subtraction 10 \* 3 is preformed first, and then the normal flow from left to right happens.
 
 If for some reason I want to preform the addition first I can either change the order or use [parentheses](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Grouping)
 
@@ -127,4 +127,6 @@ So this way of starting to learn javaScript involves making changes to plain sta
 
 ## 4 - Conclusion
 
-Getting started with javaScript is not so hard, it just takes time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now. This is a post that I will come back to at some point to revise, and expand. If you are new to javaScript and have anything I think I should add please let me know in the comments.
+Getting started with javaScript is not so hard, it just takes some time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now. 
+
+This is a post that I will come back to at some point to revise, and expand, in fact I have done so several times all ready. There is maybe expanding this post with at least a few basic, and hopefully fun examples of javaScript. When it comes to this I have [wrote a collection of posts that serve as basic, and some not so basic canvas examples](/2020/03/23/canvas-example/).
