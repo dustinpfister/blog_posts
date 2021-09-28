@@ -5,13 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 09:35:46
-version: 1.20
+updated: 2021-09-28 09:39:48
+version: 1.21
 ---
 
-I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
-
-In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
+I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
 
 However when it comes to really getting into javaScript development at some point sooner of later you might want to have at least nodejs installed. That is that it is something that you will want to learn sooner or later when it comes to doing anything and everything that can be done with javaScript outside of that of a web browser.
 
@@ -25,9 +23,11 @@ I will not be covering everything there is to know of course, learning javaScrip
 
 In this post I am using Google chrome 70.x, and am using examples that can be copied and pasted into the javaScript console. The reason why is that I think the javaScript console is a good way to introduce people to javaScript that have no background with it at all. All that is needed is a web browser, and in addition you do not need to set up and account of any kind as well.
 
-### 1.2 - Get node installed if you want to start with server side javaScript or use javaScript for general programing outside of a web browser.
+### 1.2 - Get node installed if you want to use javaScript for general programing outside of a web browser.
 
-If you want to get started with server side javaScript you will want to get node installed to do so. In this post I will not be getting to nodejs, but I have wrote a post on doing [just that](/2017/04/05/nodejs-helloworld/). It is nice to start out with client side javaScript first though as it is something that can be done right now with just a web browser. However I would not put off getting into nodejs as it can be used to do server side programing with javaScript, and can also be used to write command line tools, and get things done with all kinds of general programing tasks outside of the browser.
+If you want to get started with server side javaScript you will want to get node installed to do so. In this post I will not be getting to nodejs in great detail, but it is one of several ways of going about getting started with javaScript. With that said I have wrote a post on doing [just that](/2017/04/05/nodejs-helloworld/), but I think I should at least touch base on a few examples in this post also. 
+
+It is nice to start out with client side javaScript first though as it is something that can be done right now with just a web browser, rather than installing software beyond that which is often there to work with the begin with. However I would not put off getting into nodejs as it can be used to do server side programing with javaScript, and can also be used to write command line tools, and get things done with all kinds of general programing tasks outside of the browser.
 
 ## 2 - Using the javaScript console
 
