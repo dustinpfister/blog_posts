@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 12:07:35
-version: 1.32
+updated: 2021-09-28 12:12:40
+version: 1.33
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -185,7 +185,7 @@ console.log(process.version);
 
 There is then also writing a script where I am doing something with some data that is being passed to the script by way of the standard input. In [Linux or the bash console in general many commands will allow for piping data into the standard input](/2020/10/09/linux-pipe/) which is a great way to go about braking a complex task down into many small steps. When it comes to working with Linux commands there are all kinds of commands to use in such a system that and be piped together in order to get a desired final result. So then there should be a way to create my own scripts using javaScript and node to create programs like this and of course there is. 
 
-The process global can be used as a way to attach some event handers that will respond to data that is being piped into the standard output. 
+The process global can be used as a way to attach an event handler that will respond to data that is being piped into the standard output. There is then just a question of parsing that data, doing something with it, and then spiting output to the standard output, and or the standard error. Just like with all these various Linux commands that can be used with each other like echo, cat, and grep to just name a few.
 
 When it comes to standard out put the console log method is something that we have been using thus far, but there is also using the porcess.stdout.write method in place of console log that will allow for me to have more precise control over the output when it comes to appending an end of line or not. Also there is the process.stderr.write method that can be used to spit things out to the standard error in place of console.warn.
 
