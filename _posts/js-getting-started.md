@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 12:05:59
-version: 1.31
+updated: 2021-09-28 12:07:35
+version: 1.32
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. In this post I will offer some suggestions for getting started with javaScript that you can do right now from your desktop computer, without installing any additional software assuming you have a web browser and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to s web site like js fiddle that I was using for a while now and then.
@@ -183,7 +183,7 @@ console.log(process.version);
 
 ### 4.3 - Piping in some standard input to a script file, and having better control over standard output and standard error 
 
-There is then also writing a script where I am doing something with some data that is being passed to the script by way of the standard input. Many commands will allow for piping data into the standard input which is a great way to go about braking a complex task down into many small steps. When it comes to working with Linux commands there are all kinds of commands to use in such a system that and be piped together in order to get a desired final result. So then there should be a way to create my own scripts using javaScript and node to create programs like this and of course there is. 
+There is then also writing a script where I am doing something with some data that is being passed to the script by way of the standard input. In [Linux or the bash console in general many commands will allow for piping data into the standard input](/2020/10/09/linux-pipe/) which is a great way to go about braking a complex task down into many small steps. When it comes to working with Linux commands there are all kinds of commands to use in such a system that and be piped together in order to get a desired final result. So then there should be a way to create my own scripts using javaScript and node to create programs like this and of course there is. 
 
 The process global can be used as a way to attach some event handers that will respond to data that is being piped into the standard output. 
 
