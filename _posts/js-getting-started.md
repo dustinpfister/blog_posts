@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2021-09-28 09:33:40
-version: 1.19
+updated: 2021-09-28 09:35:46
+version: 1.20
 ---
 
 I have written many posts on [javaScript](https://en.wikipedia.org/wiki/JavaScript) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
@@ -129,4 +129,5 @@ So this way of starting to learn javaScript involves making changes to plain sta
 
 Getting started with javaScript is not so hard, it just takes some time and patience. There is a great deal more to write about when it comes to making an actual project of some kind, but for the sake of keeping this post simple I just covered a few pointers for now. 
 
-This is a post that I will come back to at some point to revise, and expand, in fact I have done so several times all ready. There is maybe expanding this post with at least a few basic, and hopefully fun examples of javaScript. When it comes to this I have [wrote a collection of posts that serve as basic, and some not so basic canvas examples](/2020/03/23/canvas-example/).
+This is a post that I will come back to at some point to revise, and expand, in fact I have done so several times all ready. There is maybe expanding this post with at least a few basic, and hopefully fun examples of javaScript. When it comes to this I have [wrote a collection of posts that serve as basic, and some not so basic canvas examples](/2020/03/23/canvas-example/). I have also started a [similar collection of posts but with javaScript in general](/2021/04/02/js-javascript-example/) rather than that of just canvas elements alone.
+
