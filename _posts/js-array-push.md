@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:40:20
-version: 1.20
+updated: 2021-09-29 13:43:29
+version: 1.21
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -91,7 +91,7 @@ console.log(array.join('-')); // 3-4-5-6-7
 
 ### 3.2 - The concat method will flatten arrays that are given, but only by one level
 
-The concat method will flatten an array of values given to it, but only by one level.
+The concat method will flatten an array of values given to it, but only by one level. What I mean by this is that if I just give primitive values at arguments to array concat they will just be added on as new elements, if I give an array of elements that will result in the same effect. However if I give an array of arrays any and all nested arrays after one level will be arrays rather that primitives. If you are still confused by what I am saying take a look at this code example.
 
 ```js
 var array = [1, 2, 3];
