@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:27:19
-version: 1.18
+updated: 2021-09-29 13:30:30
+version: 1.19
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -74,6 +74,11 @@ console.log(arr.join('-')); // '1-2-4-8-16-32-64'
 ## 3 - Using the array concat method
 
 So there are other ways to go about adding array elements such as just using the array bracket syntax, or doing something with the [array concat method](/2020/07/13/js-array-concat/) as a way to create a new array and then save that to a variable for example. This array concat method is then great when I have two or more arrays and I want to just join them together at some point.
+
+
+### 3.1 - Basic array concat example
+
+So then for a basic example of array concat say I have a simple array of values that are 4, 5, and 6. I then just want to join an additional array of values of 1, 2, and 3 at the beginning of the array, and another array of values at the end of the array. The array concat method can be done to do just this by calling the concat method off of the array that I want to be at the begging of the new array, and then just pass the arrays as arguments.
 
 ```js
 var array = [4,5,6];
