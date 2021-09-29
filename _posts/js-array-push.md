@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:24:24
-version: 1.17
+updated: 2021-09-29 13:27:19
+version: 1.18
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -42,7 +42,7 @@ var b = [1, 2, 3];
 console.log(b.join('-')); // '1-2-3-4-5-6'
 ```
 
-Of course when it comes to concatenating arrays there is the array concat method that might be a more appropriate choice, but I thought I would just point out why the function apply prototype method is useful. If you are not familiar with [apply, as well as call and bind then you should take a moment to read up](/2017/09/21/js-call-apply-and-bind/) on those function prototype methods. The methods allow for me to change what the value of the [this keyword](/2017/04/14/js-this-keyword/) is for prototype methods including array prototype methods like that of array push.
+Of course when it comes to concatenating arrays there is the array concat method that might be a more appropriate choice, more on that method later in  this post, but I thought I would just point out why the function apply prototype method is useful. If you are not familiar with [apply, as well as call and bind then you should take a moment to read up](/2017/09/21/js-call-apply-and-bind/) on those function prototype methods. The methods allow for me to change what the value of the [this keyword](/2017/04/14/js-this-keyword/) is for prototype methods including array prototype methods like that of array push.
 
 ### 1.3 - Returns the length of the array
 
@@ -73,7 +73,7 @@ console.log(arr.join('-')); // '1-2-4-8-16-32-64'
 
 ## 3 - Using the array concat method
 
-So there are other ways to go about adding array elements such as just using the array bracket syntax, or doing something with the array concat method as a way to create a new array and then save that to a variable for example.
+So there are other ways to go about adding array elements such as just using the array bracket syntax, or doing something with the [array concat method](/2020/07/13/js-array-concat/) as a way to create a new array and then save that to a variable for example. This array concat method is then great when I have two or more arrays and I want to just join them together at some point.
 
 ```js
 var array = [4,5,6];
@@ -84,7 +84,6 @@ array = [3].concat(array);
 console.log(array.join('-')); // 3-4-5-6-7
 ```
 
-There are other ways to go about adding elements in place that come to mind such as using the array splice method. That is one way to go about both adding in new elements as well as removing them from any index value in place. There is then also using the array slice method as a way to take a section from a source array without mutating it, the that slice of a source array can be added into another array with concat or splice.
 
 ## 4 - Array splice method can also be used to mutate in place, and inject at any index
 
