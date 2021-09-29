@@ -30,9 +30,9 @@
 * test vjs links to various other sites on the topic of array length
 
 ## () - js-array-push ( 9k impressions / 3 months - 9/26/21 )
-* edit post to 1,000+ words
+* (done) edit post to 1,000+ words
 * edit post to 1,800+ words
-* have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ## ( ) - js-path-find
 * edit post to 1,000+ words
