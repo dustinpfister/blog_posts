@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:21:19
-version: 1.16
+updated: 2021-09-29 13:24:24
+version: 1.17
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -42,7 +42,7 @@ var b = [1, 2, 3];
 console.log(b.join('-')); // '1-2-3-4-5-6'
 ```
 
-Of course when it comes to concatenating arrays there is the array concat method that might be a more appropriate choice, but I thought I would just point out why the function apply prototype method is useful. If you are not familiar with [apply, as well as call and bind then you should take a moment to read up on that](/2017/09/21/js-call-apply-and-bind/).
+Of course when it comes to concatenating arrays there is the array concat method that might be a more appropriate choice, but I thought I would just point out why the function apply prototype method is useful. If you are not familiar with [apply, as well as call and bind then you should take a moment to read up](/2017/09/21/js-call-apply-and-bind/) on those function prototype methods. The methods allow for me to change what the value of the [this keyword](/2017/04/14/js-this-keyword/) is for prototype methods including array prototype methods like that of array push.
 
 ### 1.3 - Returns the length of the array
 
