@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:52:30
-version: 1.25
+updated: 2021-09-29 13:56:31
+version: 1.26
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -143,4 +143,8 @@ console.log(array); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 So the array push method is often what is used to add elements to a new array, but it is not the only way to go about doing so. There is the unshift method that can also be used when it comes to adding new elements to the begging of an array, and then there are a whole bunch of other ways of getting elements in and out of any index value such as with using the array splice method.
 
 There is a great deal more to cover when it comes to working with arrays of course. There is not just the subject of adding elements to an array but also removing them. I have mentioned that the array splice methods can be used to do so by just giving a number for element to remove by a value greater than zero. There are a number of other options though such as the array pop method that will remove and return an element from the end of an array, and the array shift method that will do the same from the beginning of an array. However there is also the array filter method which is yet another great option for removing elements that can remove elements from an array by a given condition.
+
+Also there is not just adding or removing elements from an array, but changing the state, or order of elements in an array. When it comes to creating a new array based off of a source array of values there is of course the [array map](/2020/06/16/js-array-map/) method. When it comes to changing the order of elements the first go to function in vanilla javaScript would be the [array sort](/2019/12/02/js-array-sort/) method.
+
+
 
