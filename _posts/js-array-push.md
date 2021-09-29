@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:16:32
-version: 1.14
+updated: 2021-09-29 13:19:23
+version: 1.15
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -92,7 +92,7 @@ Yet another option for injecting new elements to the end of an array would be th
 
 ### 4.1 - Array splice basic example
 
-So then the basic idea here is to call the array slice method.
+So then the basic idea here is to call the array slice method off of an array that I want to inject elements into. I then given the element index location of the array where I want to inject, and then I give a value of zero for the amount of elements to remove at that location. I can then inject one or more elements at that index by way of one or more additional arguments after that.
 
 ```js
 var array = [1, 3];
