@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:13:54
-version: 1.13
+updated: 2021-09-29 13:16:32
+version: 1.14
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -88,7 +88,11 @@ There are other ways to go about adding elements in place that come to mind such
 
 ## 4 - Array splice method can also be used to mutate in place, and inject at any index
 
+Yet another option for injecting new elements to the end of an array would be the array splice method. This method will mutate an array in place, and is also often used to remove one or more elements at a given element index. However when it comes to removing elements one does have the option of setting zero for the value, on top of that the splice method can also be used to inject new elements as this element index location.
+
 ### 4.1 - Array splice basic example
+
+So then the basic idea here is to call the array slice method.
 
 ```js
 var array = [1, 3];
