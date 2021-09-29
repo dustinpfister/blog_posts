@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:43:29
-version: 1.21
+updated: 2021-09-29 13:47:08
+version: 1.22
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -115,7 +115,7 @@ console.log(array.join('-')); // 1-2-3
 
 ### 4.2 - An insert at method along with push and unshift methods
 
-It is then possible to create an insert at method by using the array splice method along with the apply function prototype method, and the array concat method.
+It is then possible to create an insert at method by using the array splice method along with the apply function prototype method, and the array concat method. This insert at method can take the array I want to insert elements into as the first argument, and then an index as to where to insert at, followed by an array of values to insert there. I can then create a new array and call the splice method off of that new array with the function apply prototype method. Sense I am calling apply off of the splice function I can given the array argument as the value of this for apply and then I need to given an array of arguments. For this I can create an array where the first element will be the index to insert at, followed by the number of elements to remove which is zero. After that I can call the array concat method of this array of arguments and pass the array of values to insert.
 
 ```js
 var array = [4, 5, 6];
