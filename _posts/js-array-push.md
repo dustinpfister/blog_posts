@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 14:04:51
-version: 1.30
+updated: 2021-09-29 14:08:35
+version: 1.31
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, such as just using the object bracket syntax, as well as a range of other methods. 
@@ -144,6 +144,8 @@ unshift(array, [1, 2, 3]);
  
 console.log(array); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
+
+So then the array splice method is often my go to method for mutating arrays as it is fairly versatile. I can do the same as with push and shift, but I can also insert as well as remove at any element index location with it. The main drawback though that it will mutate in place which is one reason why I might chose to do something with the array slice method and concat in place of the array splice method if I do not want to mutate a source array.
 
 ## 5 - Conclusion
 
