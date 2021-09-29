@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 13:47:08
-version: 1.22
+updated: 2021-09-29 13:48:47
+version: 1.23
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -101,7 +101,7 @@ console.log(array); // [ 1, 2, 3, 4, 5, [ 6, 7 ] ]
 
 ## 4 - Array splice method can also be used to mutate in place, and inject at any index
 
-Yet another option for injecting new elements to the end of an array would be the array splice method. This method will mutate an array in place, and is also often used to remove one or more elements at a given element index. However when it comes to removing elements one does have the option of setting zero for the value, on top of that the splice method can also be used to inject new elements as this element index location.
+Yet another option for injecting new elements to the end of an array would be the [array splice method](/2021/07/20/ja-array-splice/). This method will mutate an array in place, and is also often used to remove one or more elements at a given element index. However when it comes to removing elements one does have the option of setting zero for the value, on top of that the splice method can also be used to inject new elements as this element index location.
 
 ### 4.1 - Array splice basic example
 
@@ -140,4 +140,4 @@ console.log(array); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 ## 5 - Conclusion
 
-So the array push method is often what is used to add elements to a new array, but it is not the only way to go about doing so. There is the unshift method that can also be used when it comes to adding new elements to the begging of an array, and then there are a whole bunch of other ways of getting elements in and out of any index value.
+So the array push method is often what is used to add elements to a new array, but it is not the only way to go about doing so. There is the unshift method that can also be used when it comes to adding new elements to the begging of an array, and then there are a whole bunch of other ways of getting elements in and out of any index value such as with using the array splice method.
