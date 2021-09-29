@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 14:01:04
-version: 1.28
+updated: 2021-09-29 14:02:51
+version: 1.29
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, such as just using the object bracket syntax, as well as a range of other methods. 
@@ -62,6 +62,10 @@ arr.pop();
  
 console.log(arr);
 ```
+
+### 1.4 - The source code examples here are up on guthub
+
+The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-push) on github.
 
 ## 2 - The unshift method
 
