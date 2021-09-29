@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-04-15 13:28:15
-version: 1.12
+updated: 2021-09-29 13:13:54
+version: 1.13
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/).
@@ -71,7 +71,7 @@ arr.unshift(1, 2, 3, 4, 8)
 console.log(arr.join('-')); // '1-2-4-8-16-32-64'
 ```
 
-## 3 - Other ways to add array elements
+## 3 - Using the array concat method
 
 So there are other ways to go about adding array elements such as just using the array bracket syntax, or doing something with the array concat method as a way to create a new array and then save that to a variable for example.
 
@@ -86,6 +86,39 @@ console.log(array.join('-')); // 3-4-5-6-7
 
 There are other ways to go about adding elements in place that come to mind such as using the array splice method. That is one way to go about both adding in new elements as well as removing them from any index value in place. There is then also using the array slice method as a way to take a section from a source array without mutating it, the that slice of a source array can be added into another array with concat or splice.
 
-## 4 - Conclusion
+## 4 - Array splice method can also be used to mutate in place, and inject at any index
+
+### 4.1 - Array splice basic example
+
+```js
+var array = [1, 3];
+array.splice(1, 0, 2);
+console.log(array.join('-')); // 1-2-3
+```
+
+### 4.2 - An insert at method along with push and unshift methods
+
+```js
+var array = [4, 5, 6];
+ 
+var insertAt = function (array, index, what) {
+    [].splice.apply(array, [index, 0].concat(what));
+};
+// push
+var push = function (array, what) {
+    insertAt(array, array.length, what);
+};
+// unshift
+var unshift = function (array, what) {
+    insertAt(array, 0, what);
+};
+ 
+push(array, [7, 8, 9]);
+unshift(array, [1, 2, 3]);
+ 
+console.log(array); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+## 5 - Conclusion
 
 So the array push method is often what is used to add elements to a new array, but it is not the only way to go about doing so. There is the unshift method that can also be used when it comes to adding new elements to the begging of an array, and then there are a whole bunch of other ways of getting elements in and out of any index value.
