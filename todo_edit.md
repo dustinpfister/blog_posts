@@ -11,10 +11,29 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-## () -  js-event-object
+
+## () - js-operator-precedence ( 3k impressions / 3 months - Rank #16 - 9/30/21 )
 * edit post to 2,400+ words
-* write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+* readme file for for post folder and link to post
+* link to forpost folder from post
+
+## () - js-math-max-min ( 6k impressions / 3 months - Rank #6 - 9/30/21 )
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+* readme file for for post folder and link to post
+* link to forpost folder from post
+
+## () - js-javascript-foreach ( 7k impressions / 3 months - Rank #5 - 9/30/21 )
+* proof read
+* todo list for for post folder
+* readme file for for post folder and link to post
+* link to forpost folder from post
+* start s6 examples section
+
+## () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
+* have 5+ internal links for the post
+* proof read full text
 
 ## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
 * (done) edit post to 2,400+ words
@@ -29,12 +48,17 @@
 * test vjs readme file links to post
 * test vjs links to various other sites on the topic of array length
 
-## js-async-await
+## () -  js-event-object ( relevant to Clucker.js dev )
+* edit post to 2,400+ words
+* write about event example in js-get-parent-element and link to the post
+* have 5+ internal links for the post
+
+## ( ) - js-path-find ( relevant to Clucker.js dev )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## ( ) - js-path-find
+## js-async-await ( oldest )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
@@ -44,12 +68,12 @@
 * edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-### ( done 09/30/2021 ) - js-settimeout
-* (done) edit post to 1,800+ words
-* (done) have 5+ internal links for the post
-
 ### (   ) - js-javascript-constructor
 * edit post to 2,400+ words
+* (done) have 5+ internal links for the post
+
+### ( done 09/30/2021 ) - js-settimeout
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ## ( done 09/30/3021 ) - js-array-push ( 9k impressions / 3 months - 9/26/21 )
