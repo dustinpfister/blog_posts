@@ -71,6 +71,9 @@
 ### (   ) - js-javascript-constructor
 * edit post to 2,400+ words
 * (done) have 5+ internal links for the post
+* (done) todo list for for post folder
+* (done) readme file for for post folder and link to post
+* link to forpost folder from post
 
 ### ( done 09/30/2021 ) - js-settimeout
 * (done) edit post to 1,800+ words
