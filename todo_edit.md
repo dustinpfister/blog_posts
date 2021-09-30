@@ -11,36 +11,41 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### (  ) - js-javascript-constructor ( just a good topic )
+* Expand readme file to 300+ words
+* continue to expand s2 section on alternatives to constructors
+* start section on recursive constructors
+* proof read
 
-## () - js-operator-precedence ( 3k impressions / 3 months - Rank #16 - 9/30/21 )
+### () - js-operator-precedence ( 3k impressions / 3 months - Rank #16 - 9/30/21 )
 * edit post to 2,400+ words
 * have 5+ internal links for the post
 * readme file for for post folder and link to post
 * link to forpost folder from post
 
-## () - js-math-max-min ( 6k impressions / 3 months - Rank #6 - 9/30/21 )
+### () - js-math-max-min ( 6k impressions / 3 months - Rank #6 - 9/30/21 )
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 * readme file for for post folder and link to post
 * link to forpost folder from post
 
-## () - js-javascript-foreach ( 7k impressions / 3 months - Rank #5 - 9/30/21 )
+### () - js-javascript-foreach ( 7k impressions / 3 months - Rank #5 - 9/30/21 )
 * proof read
 * todo list for for post folder
 * readme file for for post folder and link to post
 * link to forpost folder from post
 * start s6 examples section
 
-## () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
+### () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
 * have 5+ internal links for the post
 * proof read full text
 
-## () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+### () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
 * (done) edit post to 2,400+ words
 * proof read full text
 * (done) add a new example for the events section
 
-## () - js-array-length ( 28k impressions / 3 months - 9/26/21 )
+### () - js-array-length ( 28k impressions / 3 months - 9/26/21 )
 * have 5+ internal links for the post
 * proof read full text
 * have section folders in test vjs
@@ -48,17 +53,17 @@
 * test vjs readme file links to post
 * test vjs links to various other sites on the topic of array length
 
-## () -  js-event-object ( relevant to Clucker.js dev )
+### () -  js-event-object ( relevant to Clucker.js dev )
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
 
-## ( ) - js-path-find ( relevant to Clucker.js dev )
+### ( ) - js-path-find ( relevant to Clucker.js dev )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-## js-async-await ( oldest )
+### js-async-await ( oldest )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
@@ -68,8 +73,8 @@
 * edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-### (   ) - js-javascript-constructor
-* edit post to 2,400+ words
+### ( done 09/30/2021 ) - js-javascript-constructor
+* (done) edit post to 2,400+ words
 * (done) have 5+ internal links for the post
 * (done) todo list for for post folder
 * (done) readme file for for post folder and link to post
@@ -79,16 +84,16 @@
 * (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-## ( done 09/30/3021 ) - js-array-push ( 9k impressions / 3 months - 9/26/21 )
+### ( done 09/30/3021 ) - js-array-push ( 9k impressions / 3 months - 9/26/21 )
 * (done) edit post to 1,000+ words
 * (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-## ( done 09/28/2021 ) - js-getting-started
+### ( done 09/28/2021 ) - js-getting-started
 * (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-## ( done 09/27/2021 ) - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+### ( done 09/27/2021 ) - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
 * (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 * (done) link to test vjs folder
