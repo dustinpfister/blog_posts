@@ -5,11 +5,11 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2021-09-30 11:51:48
-version: 1.22
+updated: 2021-09-30 11:56:48
+version: 1.23
 ---
 
-In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN), but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird [number value](/2019/01/24/js-javascript-number/) in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN), but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
 
 This value has some unique things going on with it aside from the fact that the data type is a Number, yet it is called Not A Number. For one thing it does not equal anything, including itself, which means that special methods must be used to test if a value is NaN or not. On top of that there are problems with the native and user space methods that are used to test for NaN that a javaScript developer needs to look out for. Many of them will return what many will observe as a false positive for certain values other than NaN, such as the undefined value, which in turn further complicating the process of testing for NaN.
 
@@ -110,7 +110,7 @@ The only problem with Number.isNaN is that it does not work on any version of IE
 
 ## 4 - Writing an isNaN method
 
-When going vanilla js style with a project, a method that tests for NaN might need to be part of your micro frame work. Making a method to do this is not so hard, one way is to just return false if any type other than a Number is given, then convert to a String and test against the String 'NaN'. In the off chance that the string 'NaN' is given then it will return false because the type is is a String, and thus will not get to the part where we are converting the string value to a string. So in this section I will be going over some user space examples of testing for NaN, that mainly take this kind of approach.
+When going vanilla js style with a project, a method that tests for NaN might need to be part of a custom micro frame work, or [utilities library of sorts](/2021/08/06/js-javascript-example-utils/). Making a method to do this is not so hard, one way is to just return false if any type other than a Number is given, then convert to a String and test against the String 'NaN'. In the off chance that the string 'NaN' is given then it will return false because the type is is a String, and thus will not get to the part where we are converting the string value to a string. So in this section I will be going over some user space examples of testing for NaN, that mainly take this kind of approach.
 
 ### 4.1 - The example from the basic section
 
