@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-30 09:10:28
-version: 1.42
+updated: 2021-09-30 09:48:37
+version: 1.43
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. However one kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -92,24 +92,112 @@ A constructor or class is not always the best option when it comes to working ou
 
 Constructors can be thought of as a situation in which there is one or more instances of an object that can be though of as a state, and then there are a number of methods that can be used to mutate that state. An alternative to this is to have a collection of pure functions or at least pure like functions that accept this state as one of its arguments.
 
+### 2.1 - create method example
+
 ```js
-var state = {
-    x: 7,
-    y: 15
+var createPointObj = function (x, y) {
+    return {
+        x: x === undefined ? 0 : x,
+        y: y === undefined ? 0 : y
+    };
+};
+var point = createPointObj();
+console.log(point); // { x: 0, y: 0 }
+```
+
+### 2.2 - distance method
+
+```js
+var Points = {};
+ 
+Points.create = function (x, y) {
+    return {
+        x: x === undefined ? 0 : x,
+        y: y === undefined ? 0 : y
+    };
 };
  
-var utils = {};
- 
-utils.distance = function (state, x, y) {
-    return Math.sqrt(Math.pow(state.x - x, 2) + Math.pow(state.y - y, 2));
+Points.distance = function (point, a, b) {
+    var x = 0,
+    y = 0;
+    if (typeof a === 'number') {
+        x = a;
+        y = b === undefined ? 0 : b;
+    }
+    if (typeof a === 'object') {
+        x = a.x;
+        y = a.y;
+    }
+    return Math.sqrt(Math.pow(point.x - x, 2) + Math.pow(point.y - y, 2));
 };
  
-console.log( utils.distance(state,9,15) ); // 2
-console.log( utils.distance(state,7,20) ); // 5
-console.log( utils.distance(state,14,30) ); // 16.55...
+var pt1 = Points.create(45, 20);
+console.log( Points.distance(pt1, 0, 0) );
 ```
 
 The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument. A true pure function is a bit more than just that, but that would be one step in that kind of direction.
+
+### 2.3 - create display object method, and updated distance method
+
+```js
+var utils = {};
+ 
+// create just a point object
+utils.createPoint = function (x, y) {
+    return {
+        x: x === undefined ? 0 : x,
+        y: y === undefined ? 0 : y
+    };
+};
+ 
+// create a display object based off of a point object
+utils.createDisp = function (opt) {
+    opt = opt || {};
+    var disp = utils.createPoint(opt.x, opt.y);
+    disp.w = opt.w === undefined ? 32 : opt.w;
+    disp.h = opt.h === undefined ? 32 : opt.h;
+    return disp;
+};
+ 
+// distance will still work with points and now display objects
+utils.distance = function (obj, a, b) {
+    var x2 = 0,
+    y2 = 0,
+    x1 = obj.x,
+    y1 = obj.y;
+    // if disp object adjust to cx cy
+    if (obj.w != undefined && obj.h != undefined) {
+        x1 += obj.w / 2;
+        y1 += obj.h / 2;
+    }
+    if (typeof a === 'number') {
+        x2 = a;
+        y2 = b === undefined ? 0 : b;
+    }
+    if (typeof a === 'object') {
+        x2 = a.x;
+        y2 = a.y;
+        // if disp object adjust to cx cy
+        if (a.w != undefined && a.h != undefined) {
+            x2 += a.w / 2;
+            y2 += a.h / 2;
+        }
+    }
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+ 
+// points still work fine
+var pt1 = utils.createPoint(10, 15);
+console.log(utils.distance(pt1, utils.createPoint(10, 5))); // 10
+// works with disp objects
+var disp = utils.createDisp({
+        x: 10 - 16 + 10,
+        y: 15 - 16,
+        w: 32,
+        h: 32
+    });
+console.log(utils.distance(pt1, disp)); // 10
+```
 
 ## 3 - Dual use functions
 
