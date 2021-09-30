@@ -5,11 +5,11 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2021-09-30 11:26:55
-version: 1.20
+updated: 2021-09-30 11:48:20
+version: 1.21
 ---
 
-In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN), but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
 
 This value has some unique things going on with it aside from the fact that the data type is a Number, yet it is called Not A Number. For one thing it does not equal anything, including itself, which means that special methods must be used to test if a value is NaN or not. On top of that there are problems with the native and user space methods that are used to test for NaN that a javaScript developer needs to look out for. Many of them will return what many will observe as a false positive for certain values other than NaN, such as the undefined value, which in turn further complicating the process of testing for NaN.
 
@@ -20,6 +20,10 @@ The value will come up now and then often as a result of an expression, when som
 ## 1 - JavaScript NaN basics
 
 In this section I will just be going over some basics with the NaN number value in native core javaScript. So then this section will just focus on how it is possible to end up with a NaN value to begin with, and also certain aspects of the value itself that is a bit odd. I will be keeping this examples fairly basic in this section of course, but I still assume that you have at least some background when  it comes to [getting started with javaScript](/2018/11/27/js-getting-started/). I also often use this section to bring up various things that you might want to know also before continuing to read the rest of the post.
+
+### 1.1 - The source code examples here are on github
+
+The source code examples here can be found on my [Github test vjs](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-nan) repository. All the source code for my various other posts on javaScript in general can also be found there.
 
 ### 1.1 - Some ways to end up with a JavaScript NaN value
 
@@ -110,7 +114,7 @@ When going vanilla js style with a project, a method that tests for NaN might ne
 
 ### 4.1 - The example from the basic section
 
-In the basic section I covered this user space examle right here.
+In the basic section I covered this user space example right here.
 
 ```
 let isValueNaN = (a) => {
@@ -124,7 +128,11 @@ let isValueNaN = (a) => {
 };
 ```
 
+This might work okay when it comes to having a vanilla javaScript is NaN method, but it can be crunched down a little.
+
 ### 4.2 - Crunching it down a little
+
+One step forward might be doing something to not need to additional second if statement.
 
 ```js
 var _isNaN = function(val) {
@@ -140,7 +148,7 @@ var _isNaN = function(val) {
 };
 ```
 
-This seems to behave like that of Number.isNaN, but will work on old browsers. It seems to work okay, but maybe you might prefer to use the method that exists in lodash that makes use of the fact that NaN is the only primitive value that does not equal itself.
+This seems to behave like that of Number.isNaN, but will work on old browsers. It seems to work okay, but maybe you might prefer to use the method that exists in lodash that makes use of the fact that NaN is the only primitive value that does not equal itself. Also there is the idea of just using whatever it is that they are using in lodash as a single stand alone method, or in one way or another find out a simple single expression type solution for this.
 
 ### 4.3 - slick one line example
 
@@ -154,7 +162,7 @@ var _isNaN = function(n) {
 
 So of course this is a Nice slick one liner. On top of that this kind of method makes use of the Nature of NaN not equaling itself. However the check for the number type still needs to be preformed because the string value of 'NaN' will still return true.
 
-## 5 - Monkey patching Number.isNaN
+### 4.4 - Monkey patching Number.isNaN
 
 Monkey Patching is generally frowned upon, but generally only if you are extending built in Objects with non standard methods. In this case monkey patching Number.isNaN support is just making sure that something that should be there is there.
 
@@ -168,4 +176,7 @@ Number.isNaN = Number.isNaN || function(n){
 
 ## 6 - Conclusion
 
-So the javaScript NaN value is often the result of faulty operations such as multiplying a number by a string that can not effectively be converted to a number value. The vakue can often end up being the result of certain function calls and so forth especially when taking values from user input, so parsing of value should be handled well, or testing for NaN should be preformed.
+So the javaScript NaN value is often the result of faulty operations such as multiplying a number by a string that can not effectively be converted to a number value. The value can often end up being the result of certain function calls and so forth especially when taking values from user input, so parsing of value should be handled well, or testing for NaN should be preformed.
+
+Sooner or later I will be getting around to editing and expanding this post a bit more, however I think there is only so much more to cover. I think that in the future the only thing left to do would be to just write a bit more about various code examples that typicality result in NaN values, and additional ways to not just test for NaN but also to prevent it from happening to begin with.
+
