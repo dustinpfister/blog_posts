@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-29 14:08:35
-version: 1.31
+updated: 2021-09-30 07:17:40
+version: 1.32
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, such as just using the object bracket syntax, as well as a range of other methods. 
@@ -17,7 +17,8 @@ So I thought I would write a quick post on this when it comes to the basics of a
 
 ## 1 - The array push method and what to know
 
-So to start off with in this section I will just be going over a few use case examples of the array push method only. While I am at it I also often use this section to mentioning with various things that you should know about before continuing to read the rest of the post.
+So to start off with in this section I will just be going over a few use case examples of the array push method only. While I am at it I also often use this section to mention various things that you should know about before continuing to read the rest of the post. Although the examples are fairly basic for this section and the rest of this post, I still assume that you have at least some background when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/).
+
 ### 1.1 - Basic array push method
 
 So the array push method will add a new element to the end of the array to which it is called off of, and it will also return the length of the new array. So if I just create a new array with say the array bracket syntax, I can then  just call push off of that array instance and pass a new element value that is to be added to the end of the array.
