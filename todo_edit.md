@@ -11,6 +11,9 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### js-javascript-example-utils ( new methods )
+* write about new formatNumber method
+
 ### js-web-storage ( old )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
