@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-30 07:33:21
-version: 1.33
+updated: 2021-09-30 07:35:02
+version: 1.34
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, such as just using the object bracket syntax, as well as a range of other methods. 
@@ -50,7 +50,7 @@ Of course when it comes to concatenating arrays there is the array concat method
 
 ### 1.3 - Returns the length of the array
 
-I did mention this, but I would say that it is worth another sub section in this post, that is the fact that the array push method will return the new length of the array. So this might come in handy when using the length property that is returned as a way to know if it is time to break out of a loop or not.
+I did mention this, but I would say that it is worth another sub section in this post, that is the fact that the array push method will return the new length of the array. So this might come in handy when using the length property that is returned as a way to know if it is time to break out of a loop or not. For example I can create an object in the body of a do while loop, and push this object into an array with the array push method and then use the returned length value to compare to a value at which I would want to stop pushing objects.
 
 ```js
 var arr = [], obj;
