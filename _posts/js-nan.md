@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2021-09-30 11:56:48
-version: 1.23
+updated: 2021-09-30 12:00:52
+version: 1.24
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird [number value](/2019/01/24/js-javascript-number/) in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN), but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
@@ -148,7 +148,7 @@ var _isNaN = function(val) {
 };
 ```
 
-This seems to behave like that of Number.isNaN, but will work on old browsers. It seems to work okay, but maybe you might prefer to use the method that exists in lodash that makes use of the fact that NaN is the only primitive value that does not equal itself. Also there is the idea of just using whatever it is that they are using in lodash as a single stand alone method, or in one way or another find out a simple single expression type solution for this.
+This seems to behave like that of Number.isNaN, but will work on old browsers. It seems to work okay, but maybe you might prefer to use the method that exists in [lodash](/2019/02/15/lodash/) that makes use of the fact that NaN is the only primitive value that does not equal itself. Also there is the idea of just using whatever it is that they are using in lodash as a single stand alone method, or in one way or another find out a simple single expression type solution for this.
 
 ### 4.3 - slick one line example
 
