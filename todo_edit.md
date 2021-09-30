@@ -11,11 +11,31 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### js-web-storage ( old )
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
+### js-getting-started-file-protocol ( old )
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
+### js-async-await ( old )
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
 ### (  ) - js-onvisibilitychange ( no internal links )
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 * todo list
 * readme file and links
+
+### (   ) - js-regex ( more internal links )
+* (done) new section on wrap text example
+* edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 
 ### (  ) - js-javascript-constructor ( just a good topic )
 * Expand readme file to 300+ words
@@ -68,16 +88,6 @@
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
-
-### js-async-await ( oldest )
-* edit post to 1,000+ words
-* edit post to 1,800+ words
-* have 5+ internal links for the post
-
-### (   ) - js-regex
-* (done) new section on wrap text example
-* edit post to 1,800+ words
-* (done) have 5+ internal links for the post
 
 ### ( done 09/30/2021 ) - js-nan ( no internal links )
 * (done) edit post to 1,800+ words
