@@ -29,6 +29,11 @@
 * test vjs readme file links to post
 * test vjs links to various other sites on the topic of array length
 
+## js-async-await
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
 ## ( ) - js-path-find
 * edit post to 1,000+ words
 * edit post to 1,800+ words
@@ -39,9 +44,9 @@
 * edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
-### (   ) - js-settimeout
+### ( done 09/30/2021 ) - js-settimeout
 * (done) edit post to 1,800+ words
-* have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ### (   ) - js-javascript-constructor
 * edit post to 2,400+ words
