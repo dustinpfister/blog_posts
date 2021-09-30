@@ -11,6 +11,12 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### (  ) - js-onvisibilitychange ( no internal links )
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+* todo list
+* readme file and links
+
 ### (  ) - js-javascript-constructor ( just a good topic )
 * Expand readme file to 300+ words
 * continue to expand s2 section on alternatives to constructors
@@ -72,6 +78,12 @@
 * (done) new section on wrap text example
 * edit post to 1,800+ words
 * (done) have 5+ internal links for the post
+
+### ( done 09/30/2021 ) - js-nan ( no internal links )
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
+* (done) todo list
+* (done) readme file and links
 
 ### ( done 09/30/2021 ) - js-javascript-constructor
 * (done) edit post to 2,400+ words
