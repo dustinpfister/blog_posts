@@ -29,11 +29,6 @@
 * test vjs readme file links to post
 * test vjs links to various other sites on the topic of array length
 
-## () - js-array-push ( 9k impressions / 3 months - 9/26/21 )
-* (done) edit post to 1,000+ words
-* edit post to 1,800+ words
-* (done) have 5+ internal links for the post
-
 ## ( ) - js-path-find
 * edit post to 1,000+ words
 * edit post to 1,800+ words
@@ -50,6 +45,11 @@
 
 ### (   ) - js-javascript-constructor
 * edit post to 2,400+ words
+* (done) have 5+ internal links for the post
+
+## ( done 09/30/3021 ) - js-array-push ( 9k impressions / 3 months - 9/26/21 )
+* (done) edit post to 1,000+ words
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ## ( done 09/28/2021 ) - js-getting-started
