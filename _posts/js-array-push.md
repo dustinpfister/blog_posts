@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-30 07:17:40
-version: 1.32
+updated: 2021-09-30 07:33:21
+version: 1.33
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, such as just using the object bracket syntax, as well as a range of other methods. 
@@ -50,19 +50,18 @@ Of course when it comes to concatenating arrays there is the array concat method
 
 ### 1.3 - Returns the length of the array
 
-I did mention this, but I would say that it is worth na sub section in this post, that is the fact that the array push method will return the new length of the array. So this might come in handy when using the length property that is returned as a way o know if it is time to break out of a loop or not.
+I did mention this, but I would say that it is worth another sub section in this post, that is the fact that the array push method will return the new length of the array. So this might come in handy when using the length property that is returned as a way to know if it is time to break out of a loop or not.
 
 ```js
-var arr = [],
-obj;
-while (arr.push({}) < 10) {
-    obj = arr[arr.length - 1];
+var arr = [], obj;
+do {
+    obj = {};
     obj.n = 0;
-}
-arr.pop();
- 
+} while (arr.push(obj) < 10)
 console.log(arr);
+//[{n:0},{n:0},{n:0},{n:0},{n:0},{n:0},{n:0},{n:0},{n:0}]
 ```
+
 
 ### 1.4 - The source code examples here are up on guthub
 
