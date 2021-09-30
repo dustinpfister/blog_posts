@@ -5,21 +5,21 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2020-10-18 12:29:06
-version: 1.19
+updated: 2021-09-30 11:26:55
+version: 1.20
 ---
 
-In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. 
+In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN, but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
 
-This value has some unique things going on with it aside from the fact that the data type is a Number, yet it is called Not A Number. For one thing it does not equal anything, including itself, which means that special methods must be used to test if a value is NaN or not. On top of that there are problems with the native and user space methods that are used to test for NaN that a javaScript developer needs to look out for. Many of them will return what many will observe as a false positive for certain values other than NaN, further complicating the process of testing for NaN.
+This value has some unique things going on with it aside from the fact that the data type is a Number, yet it is called Not A Number. For one thing it does not equal anything, including itself, which means that special methods must be used to test if a value is NaN or not. On top of that there are problems with the native and user space methods that are used to test for NaN that a javaScript developer needs to look out for. Many of them will return what many will observe as a false positive for certain values other than NaN, such as the undefined value, which in turn further complicating the process of testing for NaN.
 
-The value will come up now and then often as a result of an expression when something in that expression ends up being undefined or a sting value that can not parse to a number and thus ends up being NaN. When values such as these are combined with math operators such as Multiplication then the resulting value will be NaN. So there is a need to know how to account for the possibility of JavaScript NaN being a possible value, and how to deal with it when working out some code.
+The value will come up now and then often as a result of an expression, when something in that expression ends up being undefined or a sting value that can not parse to a number, and thus ends up being the NaN value. So the existence of the NaN value is closely tied with the typeless nature of javaScript when it comes to working out expressions involving numbers and strings. When values such as these are combined with math operators such as Multiplication then the resulting value will be NaN. So there is a need to know how to account for the possibility of JavaScript NaN being a possible value, and how to deal with it when working out some code.
 
 <!-- more -->
 
 ## 1 - JavaScript NaN basics
 
-In this section I will just be going over some basics with the NaN number value in native core javaScript. So then this section will just focus on how it is possible to end up with a NaN value to begin with, and also certain aspects of the value itself that is a bit odd.
+In this section I will just be going over some basics with the NaN number value in native core javaScript. So then this section will just focus on how it is possible to end up with a NaN value to begin with, and also certain aspects of the value itself that is a bit odd. I will be keeping this examples fairly basic in this section of course, but I still assume that you have at least some background when  it comes to [getting started with javaScript](/2018/11/27/js-getting-started/). I also often use this section to bring up various things that you might want to know also before continuing to read the rest of the post.
 
 ### 1.1 - Some ways to end up with a JavaScript NaN value
 
