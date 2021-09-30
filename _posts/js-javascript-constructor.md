@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-30 09:07:03
-version: 1.41
+updated: 2021-09-30 09:10:28
+version: 1.42
 ---
 
 In javaScript there are many [types of functions](/2019/12/16/js-function/), and also ways that functions can be used to create different kinds of functions such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. However one kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -29,7 +29,7 @@ In this section I will be going over just a few basic examples of constructor fu
 
 ### 1.1 - The source code examples here are on github
 
-The source code examples in this post can be found on by [Github account in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-constructor).
+The source code examples in this post can be found on by [Github account in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-constructor). Many more source code examples are in that repository that correspond to my various other posts on vanilla javaScript. If you find something wrong with the of the source code examples in this post that would be where to make a pull requests, there is also the comments section at the bottom of this post.
 
 ### 1.2 - Built in constructors
 
