@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 668
-updated: 2021-09-30 07:39:01
-version: 1.35
+updated: 2021-09-30 07:41:49
+version: 1.36
 ---
 
 So in javaScript there is the [array push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) prototype method that is typically what is used as a way to push new elements to the end of a [javaScript array](/2018/12/10/js-array/). There are many other ways of going about adding elements to an array also though, such as just using the object bracket syntax, as well as a range of other methods. 
@@ -21,7 +21,7 @@ So to start off with in this section I will just be going over a few use case ex
 
 ### 1.1 - Basic array push method
 
-So the array push method will add a new element to the end of the array to which it is called off of, and it will also return the length of the new array. So if I just create a new array with say the array bracket syntax, I can then  just call push off of that array instance and pass a new element value that is to be added to the end of the array.
+So the array push method will add a new element to the end of the array to which it is called off of, and it will also return the length of the new array. So if I just create a new array with say the array bracket syntax, I can then just call push off of that array instance and pass a new element value that is to be added to the end of the array.
 
 ```js
 var arr = [16, 32];
@@ -29,6 +29,8 @@ arr.push(64)
  
 console.log(arr.join('-')); // '16-32-64'
 ```
+
+So then there is just pushing one new element at a time, but there is also pushing more than one element, and also looking into what can be done with the return value of array push. So lets look at a few more basic examples before moving on to some alternatives to adding elements to an array in javaScript.
 
 ### 1.2 - Push many at once
 
