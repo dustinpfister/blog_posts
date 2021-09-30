@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-09-05 16:42:21
-version: 1.60
+updated: 2021-09-30 14:45:18
+version: 1.61
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -375,7 +375,7 @@ utils.XP = (function () {
     // parse a levelObj by XP
     var parseByXP = function (xp, cap, deltaNext) {
         //cap = cap === undefined ? default_cap : cap;
-        var l = getLevel(xp);
+        var l = getLevel(xp, deltaNext);
         l = l > cap ? cap : l;
         var level = Math.floor(l),
         forNext = getXP(level + 1);
@@ -391,7 +391,7 @@ utils.XP = (function () {
     return {
         // use getXP method and then pass that to parseXP for utils.XP.parseByLevel
         parseByLevel: function (l, cap, deltaNext) {
-            return parseByXP(getXP(l, deltaNext), cap);
+            return parseByXP(getXP(l, deltaNext), cap, deltaNext);
         },
         // can just directly use parseByXP for utils.XP.parseByXP
         parseByXP: parseByXP
