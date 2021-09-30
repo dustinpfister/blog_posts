@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-30 09:52:36
-version: 1.45
+updated: 2021-09-30 09:58:03
+version: 1.46
 ---
 
 In javaScript there are many [types of functions](/2019/12/26/js-function/), and also ways that functions can be used to create different kinds of functions such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. However one kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -94,6 +94,8 @@ Constructors can be thought of as a situation in which there is one or more inst
 
 ### 2.1 - create method example
 
+First off there is starting out with a method that will create and return a plain old object by itself that contains a certain standard set of own object properties.
+
 ```js
 var createPointObj = function (x, y) {
     return {
@@ -106,6 +108,8 @@ console.log(point); // { x: 0, y: 0 }
 ```
 
 ### 2.2 - distance method
+
+Now that I have a method that will create and return a standard point object, I would now like to have at least one method that will work with one of these point objects. One such method that comes to mind would be a distance method that will allow me to get the distance between two point objects, or a point object and some number primitives.
 
 ```js
 var Points = {};
@@ -137,7 +141,9 @@ console.log( Points.distance(pt1, 0, 0) );
 
 The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument. A true pure function is a bit more than just that, but that would be one step in that kind of direction.
 
-### 2.3 - create display object method, and updated distance method
+### 2.3 - Create display object method, and updated distance method
+
+When it comes to constructors there is the subject of inheritance. To do something like that without making use of object ordinated style constructor functions and the prototype chain I will just have to find some other way. 
 
 ```js
 var utils = {};
