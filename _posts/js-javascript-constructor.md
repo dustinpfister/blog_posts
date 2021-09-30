@@ -1,12 +1,12 @@
 ---
-title: The javaScript Constructor Function and Classes in general
+title: The javaScript Constructor Function, Classes, alternatives and more
 date: 2019-02-27 14:31:00
 tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-30 10:58:48
-version: 1.48
+updated: 2021-09-30 10:59:30
+version: 1.49
 ---
 
 In javaScript there are many [types of functions](/2019/12/26/js-function/) in the sense of how to make one in javaScript, such as arrow functions, function expressions, and declarations. Also there are many ways that functions can be used to create different kinds of functions that are independent of a specific language use as JavaScript, such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. 
