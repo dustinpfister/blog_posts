@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-09-30 09:58:03
-version: 1.46
+updated: 2021-09-30 10:02:06
+version: 1.47
 ---
 
 In javaScript there are many [types of functions](/2019/12/26/js-function/), and also ways that functions can be used to create different kinds of functions such as [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. However one kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). In  this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions.
@@ -94,7 +94,7 @@ Constructors can be thought of as a situation in which there is one or more inst
 
 ### 2.1 - create method example
 
-First off there is starting out with a method that will create and return a plain old object by itself that contains a certain standard set of own object properties.
+First off there is starting out with a method that will create and return a plain old object by itself that contains a certain standard set of own object properties. For the sake of starting out with something fairly simple how about just a create method that will create and return an object with x and p properties, so in other words a simple create point object method.
 
 ```js
 var createPointObj = function (x, y) {
@@ -106,6 +106,8 @@ var createPointObj = function (x, y) {
 var point = createPointObj();
 console.log(point); // { x: 0, y: 0 }
 ```
+
+Simple enough, but now the next step would be to make one or more methods that will work with one of these objects.
 
 ### 2.2 - distance method
 
@@ -143,7 +145,7 @@ The subject of a pure function is something that I should not get into detail he
 
 ### 2.3 - Create display object method, and updated distance method
 
-When it comes to constructors there is the subject of inheritance. To do something like that without making use of object ordinated style constructor functions and the prototype chain I will just have to find some other way. 
+When it comes to constructors there is the subject of inheritance. To do something like that without making use of object ordinated style constructor functions and the prototype chain I will just have to find some other way. I guess one way would be to just start making my methods a little more complex and just test for the existence of certain properties to adjust things as needed.
 
 ```js
 var utils = {};
