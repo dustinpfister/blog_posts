@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 42
-updated: 2021-09-30 11:48:20
-version: 1.21
+updated: 2021-09-30 11:51:48
+version: 1.22
 ---
 
 In [JavaScript NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) is an weird number value in javaScript that means [Not A Number](https://en.wikipedia.org/wiki/NaN), but yet the type of the value is Number. So yes if the [type of operator](/2019/02/15/js-javascript-typeof/) is used with a NaN value that type is indeed number. However that is not the last thing that is a little weird about the NaN value in javaScript.
@@ -23,7 +23,7 @@ In this section I will just be going over some basics with the NaN number value 
 
 ### 1.1 - The source code examples here are on github
 
-The source code examples here can be found on my [Github test vjs](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-nan) repository. All the source code for my various other posts on javaScript in general can also be found there.
+The source code examples here can be found on my [Github test vjs](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-nan) repository. All the source code for my various other posts on javaScript in general can also be found there. If you find something wrong with one of the source code examples here, or if you think there is something of value to add that is one way to go about making a pull request. There is also the comments section at the bottom of this post that might also be a good way to go about bring something up.
 
 ### 1.1 - Some ways to end up with a JavaScript NaN value
 
