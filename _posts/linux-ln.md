@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:37:51
-version: 1.10
+updated: 2021-10-01 11:41:05
+version: 1.11
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -84,7 +84,11 @@ $ rm fooLink
 
 ## 3 - The force option
 
-### 3.1 -
+In some cases I might want to use the force option of the ln command. This is what will need to be used in order to overwrite a link. If I create a link to a file and then try to create the same link over but to a new file that will result in an error. There are then two options I can delete the link and create it again, or I can use, you guessed it the force option.
+
+### 3.1 - Basic force option example
+
+To force the creating of a link I just need to use the -f option along with any additional options I want to set before giving the resource and link paths.
 
 ```
 $ echo "hello world" > foo.txt
