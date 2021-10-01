@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:02:41
-version: 1.1
+updated: 2021-10-01 11:05:47
+version: 1.2
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -14,6 +14,8 @@ In todays post on Linux commands I will be going over a few quick examples of th
 <!-- more -->
 
 ## 1 - Soft or Symbolic links using the Linux ln command
+
+Although the default is hard links actually it might be a good idea to start out with soft links. The main difference between soft links and hard links is that a soft link will just store a location to a file, and not a link to the actual data. So then when a source file is deleted that will in turn effect the soft link as the resource is no longer there. More on this when it comes to getting into hard links but for now lets just start out with this simple kind of link.
 
 ### 1.1 - basic soft link example
 
