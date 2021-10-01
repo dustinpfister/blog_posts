@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:18:00
-version: 1.5
+updated: 2021-10-01 11:21:47
+version: 1.6
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -35,7 +35,9 @@ $ rm foo.txt
 
 So now I have a soft link to to the text file that I made, as such I just want to do something to make sure that it is working. So I used the Linux cat command to read whatever the fooLink points to and spit it out to the standard output of the console. If all goes well it should have the same result as directly using the foo.txt file as what I am given to the cat command, and it would seem that it does because that is the result that I get in the console. AFter that it is just a question of cleaning up the test files that I have made so for that I use the rm command to remove the source file and link to it.
 
-### 1.2 - list
+### 1.2 - list symbolic links
+
+So now that I know how to create a symbolic link there is now the question of how to go about listing and testing for symbolic links. There is a lot to know about the ls command actually. Sure for the most part one just types ls at  a bash prompt and the contents of the current working directly is what ends up being listen. However there is still a create deal to write about when it comes to the various options, and the format of the output.
 
 ```
 #/bin/bash
