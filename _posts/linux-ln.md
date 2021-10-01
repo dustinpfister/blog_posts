@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:29:56
-version: 1.8
+updated: 2021-10-01 11:33:27
+version: 1.9
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -67,19 +67,17 @@ $ rm foo.txt
 
 ## 2 - Hard Links using Linux ln
 
-### 2.1
+Now that I have got soft links out of the way there is now the topic of hard links. Both soft links and hard links do more or less the same thing, but with one very important difference. A soft link is just a link to a path, but not the actual data in the file system.
+
+### 2.1 - Basic hard link example
 
 ```
-#/bin/bash
- 
-echo "hello world" > foo.txt
-ln foo.txt fooLink
-rm foo.txt
-cat fooLink
-#hello world
- 
-# clean up
-rm fooLink
+$ echo "hello world" > foo.txt
+$ ln foo.txt fooLink
+$ rm foo.txt
+$ cat fooLink
+hello world
+$ rm fooLink
 ```
 
 ## 3 - The force option
@@ -87,21 +85,16 @@ rm fooLink
 ### 3.1 -
 
 ```
-#/bin/bash
- 
-echo "hello world" > foo.txt
-echo "hello other World" > foo2.txt
- 
-ln -s foo.txt fooLink
-cat fooLink
-#hello world
-ln -sf foo2.txt fooLink
-cat fooLink
- 
-# clean up
-rm fooLink
-rm foo.txt
-rm foo2.txt
+$ echo "hello world" > foo.txt
+$ echo "hello other World" > foo2.txt
+$ ln -s foo.txt fooLink
+$ cat fooLink
+hello world
+$ ln -sf foo2.txt fooLink
+$ cat fooLink
+$ rm fooLink
+$ rm foo.txt
+$ rm foo2.txt
 ```
 
 ## 4 - Conclusion
