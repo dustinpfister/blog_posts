@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:41:05
-version: 1.11
+updated: 2021-10-01 11:42:29
+version: 1.12
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -105,3 +105,4 @@ $ rm foo2.txt
 
 ## 4 - Conclusion
 
+The Linux ln command is then something that will come in handy now and then when I want to create a link to a resource rather than a redundant copy of it.
