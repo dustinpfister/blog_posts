@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:59:43
-version: 1.16
+updated: 2021-10-01 12:05:25
+version: 1.17
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the [Linux ln command](https://linux.die.net/man/1/ln) that is used to create soft and hard links to files and folders in a Linux system. Say you are in a situation in which you have some kind of actual resource in one location, but you also want to have the same resource in another location in the same file system. One way would be to use the Linux cp command to just make one or more copies of the resource I suppose, however there are some draw backs to this. For one thing I edn up with redundant copes of the same resource. Another draw back is that if I make changes to the original copy of the resource that will not effect the copy. In some cases I guess that is a good thing as that is one of the major reason why to make a copy of something after all, however what if I want to just make a link to the same resource at another location? The way to do so in Linux would be to make a hard or soft link.
@@ -37,9 +37,9 @@ So now I have a soft link to to the text file that I made, as such I just want t
 
 ### 1.2 - list symbolic links
 
-So now that I know how to create a symbolic link there is now the question of how to go about listing and testing for symbolic links. There is a lot to know about the ls command actually. Sure for the most part one just types ls at  a bash prompt and the contents of the current working directly is what ends up being listen. However there is still a create deal to write about when it comes to the various options, and the format of the output.
+So now that I know how to create a symbolic link there is now the question of how to go about listing and testing for symbolic links. There is a lot to know about the [ls command](/2020/10/14/linux-ls/) actually. Sure for the most part one just types ls at a bash prompt and the contents of the current working directly is what ends up being listen. However there is still a create deal to write about when it comes to the various options, and the format of the output.
 
-Other useful topics to get into in detail would be the topic of piping and the grep command.
+Other useful topics to get into in detail would be the topic of [piping](/2020/10/09/linux-pipe/) and the [grep command](/2020/09/14/linux-grep/).
 
 ```
 $ echo "hello world" > foo.txt
@@ -50,9 +50,9 @@ $ rm fooLink
 $ rm foo.txt
 ```
 
-### 1.3 - testing for a soft link
+### 1.3 - Testing for a soft link
 
-When it comes to testing for a soft link there is using the linux test command.
+When it comes to testing for a soft link there is using the Linux test command.
 
 ```
 $ echo "hello world" > foo.txt
