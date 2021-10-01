@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:57:33
-version: 1.15
+updated: 2021-10-01 11:59:43
+version: 1.16
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the [Linux ln command](https://linux.die.net/man/1/ln) that is used to create soft and hard links to files and folders in a Linux system. Say you are in a situation in which you have some kind of actual resource in one location, but you also want to have the same resource in another location in the same file system. One way would be to use the Linux cp command to just make one or more copies of the resource I suppose, however there are some draw backs to this. For one thing I edn up with redundant copes of the same resource. Another draw back is that if I make changes to the original copy of the resource that will not effect the copy. In some cases I guess that is a good thing as that is one of the major reason why to make a copy of something after all, however what if I want to just make a link to the same resource at another location? The way to do so in Linux would be to make a hard or soft link.
@@ -106,3 +106,5 @@ $ rm foo2.txt
 ## 4 - Conclusion
 
 The Linux ln command is then something that will come in handy now and then when I want to create a link to a resource rather than a redundant copy of it. There is not just making links but also testing for them, and finding out if it is a soft or hard link. When it comes to looking in the \/usr\/bin folder many of the binaries there are not binaries but links to binaries that are located in other folders. Some times doing something like this is called for when it comes to having more than one version of the same binary on a system, for example say I have node14 and not16 binaries located in a folder on a system, in such a case there is the question of what version of node should be the \/usr\/bin\/node binary. It count be an actual binary file sure, or it could be a symbolic link to such a binary located elsewhere.
+
+As with many of my posts on Linux thus far I have a [github repository](https://github.com/dustinpfister/demos_linux/tree/master/forpost/linux-ln) in which I park my files that I have made that I am writing about for this post.
