@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 12:08:48
-version: 1.18
+updated: 2021-10-01 12:10:46
+version: 1.19
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the [Linux ln command](https://linux.die.net/man/1/ln) that is used to create soft and hard links to files and folders in a Linux system. Say you are in a situation in which you have some kind of actual resource in one location, but you also want to have the same resource in another location in the same file system. One way would be to use the Linux cp command to just make one or more copies of the resource I suppose, however there are some draw backs to this. For one thing I edn up with redundant copes of the same resource. Another draw back is that if I make changes to the original copy of the resource that will not effect the copy. In some cases I guess that is a good thing as that is one of the major reason why to make a copy of something after all, however what if I want to just make a link to the same resource at another location? The way to do so in Linux would be to make a hard or soft link.
@@ -21,7 +21,7 @@ Although the default is hard links actually it might be a good idea to start out
 
 First off here is a basic example of making a soft link to a text file. I start out by using the [cd command](/2021/02/10/linux-cd/) to change the current working folder to the home folder of the current user as that is one place where it is okay to create temporary files for any user. Anyway the next step might be to create some kind of simple test file to just serve as a resource to create a soft link to, in this case I am using the [Linux echo](/2019/08/15/linux-echo/) command combined with [redirection](/2020/10/02/linux-redirection/) to quickly create such a file from the command line.
 
-Now that I am in a place to create resources and links, and I have something to link to, I can now go ahead and create a link. So now I call the ln command and make sure to pass the -s option to indicated that I want to make a soft link to a file. The next position parameter to give is the path to the resource that I want to link to in this case the foo.txt file that is in the same location as this link I am making. After that I given a name for the symbolic or soft link if you prefer in this case I went with fooLink.
+Now that I am in a place to create resources and links, and I have something to link to, I can now go ahead and create a link. So now I call the ln command and make sure to pass the -s option to indicated that I want to make a soft link to a file. The next [position parameter](/2020/12/10/linux-bash-script-parameters-positional/) to give is the path to the resource that I want to link to in this case the foo.txt file that is in the same location as this link I am making. After that I given a name for the symbolic or soft link if you prefer in this case I went with fooLink.
 
 ```
 $ cd ~
