@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:21:47
-version: 1.6
+updated: 2021-10-01 11:23:46
+version: 1.7
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -39,18 +39,16 @@ So now I have a soft link to to the text file that I made, as such I just want t
 
 So now that I know how to create a symbolic link there is now the question of how to go about listing and testing for symbolic links. There is a lot to know about the ls command actually. Sure for the most part one just types ls at  a bash prompt and the contents of the current working directly is what ends up being listen. However there is still a create deal to write about when it comes to the various options, and the format of the output.
 
+Other useful topics to get into in detail would be the topic of piping and the grep command.
+
 ```
-#/bin/bash
- 
-echo "hello world" > foo.txt
-ln -s foo.txt fooLink
-ls -la | grep "\->"
-# lrwxrwxrwx 1 pi pi    7 Sep 25 10:50 fooLink -> foo.txt
- 
-# clean up
-rm fooLink
-rm foo.txt
- 
+$ echo "hello world" > foo.txt
+$ ln -s foo.txt fooLink
+$ ls -la | grep "\->"
+lrwxrwxrwx 1 pi pi    7 Sep 25 10:50 fooLink -> foo.txt
+$ clean up
+$ rm fooLink
+$ rm foo.txt
 ```
 
 ### 1.3 - test
