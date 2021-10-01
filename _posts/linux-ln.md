@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 11:05:47
-version: 1.2
+updated: 2021-10-01 11:09:41
+version: 1.3
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the Linux ln command that is used to create soft and hard links to files and folders in a Linux system.
@@ -19,17 +19,16 @@ Although the default is hard links actually it might be a good idea to start out
 
 ### 1.1 - basic soft link example
 
+First off here is a basic example of making a soft link to a text file. I start out by using the cd command to change the current working folder to the home folder of the current user as that is one place where it is okay to create temporary files for any user.
+
 ```
-#/bin/bash
- 
-echo "hello world" > foo.txt
-ln -s foo.txt fooLink
-cat fooLink
-#hello world
- 
-# clean up
-rm fooLink
-rm foo.txt
+$ cd ~
+$ echo "hello world" > foo.txt
+$ ln -s foo.txt fooLink
+$ cat fooLink
+hello world
+$ rm fooLink
+$ rm foo.txt
 ```
 
 ### 1.2 - list
