@@ -6,10 +6,29 @@ This is a todo list where editing is prioritized based just purely on how much t
 
 * keep this list just at a top 10 over all for the site as a whole for now
 * per category type decisions things should not be dictated by this list
-* the format for each listing header should be ( done MM/DD/YYYY ) - POST_FILE_NAME ( #RANK - CLICKS - DATE_LIST )
+* the format for each listing header should be POST_FILE_NAME ( #RANK - CLICKS - DATE_LIST )
 * CLICKS should be the number of clicks that the post got over 3 Months sense DATE_LIST in google search console
+* when done with an item in a listing place a ( done MM/DD/YYYY ) at the beginning of the listing
 
-### ( ) - lodash_sum ( #1 - 1,736 clicks - 10/02/2021 )
-* (done) edit post to 1,000+ words
-* (done) edit post to 1,800+ words
-* (done) have 5+ internal links for the post
+### lodash_sum ( #1 - 1,736 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+
+### lodash_range ( #2 - 1,262 clicks - 10/02/2021 )
+
+### nodejs-glob ( #3 - 1,254 clicks - 10/02/2021 )
+
+### lodash_countby ( #4- 1,236 clicks - 10/02/2021 )
+
+### lodash_includes ( #5 - 1,137 clicks - 10/02/2021 )
+
+### lodash_remove ( #6 - 967 clicks - 10/02/2021 )
+
+### lodash_concat ( #7 - 956 clicks - 10/02/2021 )
+
+### lodash_groupby ( #8 - 867 clicks - 10/02/2021 )
+
+### linux-raspbian-lite-xserver-xorg ( #9 - 858 clicks - 10/02/2021 )
+
+### lodash_size ( #10 - 836 clicks - 10/02/2021 )
