@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-10-02 08:04:32
-version: 1.53
+updated: 2021-10-02 08:20:39
+version: 1.54
 ---
 
 This is a post on getting a parent HTML element of a given child element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
@@ -72,7 +72,7 @@ So then these are the two main properties of interest when it comes to getting a
 
 ### 1.3 - These source code examples, and much more are in my test vjs guthub repository
 
-The source code examples in this post can be found in my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-get-parent-element) as is the case with all of my other posts on vanilla javaScript.
+The source code examples in this post can be found in my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-get-parent-element) as is the case with all of my other posts on vanilla javaScript. At the source code folder I might have examples that are a little more up to date compared to what I have here, also that is a good place to make a pull request.
 
 ## 2 - The closest method for getting parent nodes with a query string
 
