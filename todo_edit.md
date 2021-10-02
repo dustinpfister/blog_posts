@@ -1,4 +1,6 @@
-# todo list for blog_posts
+# todo list for editing blog_posts
+
+This is a general todo list for what I want to get done when it comes to editing.
 
 <!--###### ########## ########## #######-->
 ## linux ( /yyyy/mm/dd/linux-* )
