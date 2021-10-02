@@ -69,11 +69,6 @@
 * have 5+ internal links for the post
 * proof read full text
 
-### () - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
-* (done) edit post to 2,400+ words
-* proof read full text
-* (done) add a new example for the events section
-
 ### () - js-array-length ( 28k impressions / 3 months - 9/26/21 )
 * have 5+ internal links for the post
 * proof read full text
@@ -91,6 +86,11 @@
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
+
+### ( done 10/02/2021 ) - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
+* (done) edit post to 2,400+ words
+* (done) proof read
+* (done) add a new example for the events section
 
 ### ( done 09/30/2021 ) - js-nan ( no internal links )
 * (done) edit post to 1,800+ words
