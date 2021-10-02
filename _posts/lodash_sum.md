@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 09:01:41
-version: 1.21
+updated: 2021-10-02 09:08:21
+version: 1.22
 ---
 
-Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. Also in some cases making a sum is not so trivial, thankfully in [lodash](https://lodash.com/) there are some methods that can be used to help make the process of producing a sum speed along a little faster. In this post I will be writing about [\_.sum](https://lodash.com/docs/4.17.11#sum), [\_.sumBy](https://lodash.com/docs/4.17.11#sumBy), [\_.reduce](https://lodash.com/docs/4.17.11#reduce), and vanilla js alternatives when creating a sum.
+Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
+
+Making a native sum method might not be so hard, however if [lodash](https://lodash.com/) is there to work with in a project then that can be called to quickly create a sum for an array of numbers. In this post I will be writing about [\_.sum](https://lodash.com/docs/4.17.11#sum), [\_.sumBy](https://lodash.com/docs/4.17.11#sumBy), [\_.reduce](https://lodash.com/docs/4.17.11#reduce), and vanilla js alternatives when creating a sum from an array of numbers.
 
 <!-- more -->
 
