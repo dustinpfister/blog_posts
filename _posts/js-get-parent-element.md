@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 388
-updated: 2021-09-27 13:24:10
-version: 1.52
+updated: 2021-10-02 08:04:32
+version: 1.53
 ---
 
-This is a post on getting a parent HTML element of a given element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
+This is a post on getting a parent HTML element of a given child element with native client side javaScript. To cut quickly to the chase with this one, when it comes to vanilla javaScript alone, there are two element object properties of concern with this which are [parentElement](https://developer.mozilla.org/en/docs/Web/API/Node/parentElement) and [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode). The two of these more or less do the same thing but with just one little subtle difference. As the name suggests the parent element property will only return html elements, and thus will not return any parent node that is not an html element, however the parent node property will.
 
 If you do not care at all about supporting Internet explorer, there is a new element method called [closest](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest) which can be used as a way to get the closest element that matches a given query string. It then goes without saying that this method is yet another tool in the toolbox when it comes to this sort of thing, and it is also a little more versatile beyond just getting the parent element of an element. There are pollyfills, but it might still be best to just use the older properties if you just simply want to get the parent element and not much of anything else.
 
