@@ -15,12 +15,16 @@ This is a todo list where editing is prioritized based just purely on how much t
 * (done 10/02/2021 ) README for test_lodash/forpost/lodash_sum
 * (done 10/02/2021 ) link to post from README
 * (done 10/02/2021 ) link to forpost folder from post
-* (done 10/02/2021 ) expand to 1,000+ words
 * (done 10/02/2021 ) todo list for test_lodash/forpost/lodash_sum
+* (done 10/02/2021 ) expand to 1,000+ words
 * (done 10/02/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
 ### lodash_range ( #2 - 1,262 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### nodejs-glob ( #3 - 1,254 clicks - 10/02/2021 )
 
