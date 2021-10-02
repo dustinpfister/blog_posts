@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 09:46:20
-version: 1.27
+updated: 2021-10-02 09:50:40
+version: 1.28
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -131,6 +131,7 @@ Now for some plain vanilla JavaScript examples of how to add things up. Lodash i
 Noting wrong with just using a for a while loop that is what they are there for. When using a while loop there is the trick of setting an index value to the length of an array and then subtracting from the index variable that is also evaluated in the while loop. This works because the number zero evaluates to false.
 
 For example I can use that to quickly make a method that will figure an average of an array of numbers like this.
+
 ```js
 // array element length
 let a = [68,90,87,83,98];
@@ -146,6 +147,8 @@ let getAVG = function (a) {
  
 console.log(getAVG(a)); // 85.2
 ```
+
+Working out something with a while loop is fine, but there are a number of other prototype methods, as well as static methods to be aware of when it comes to doing this sort of thing.
 
 ### 3.1 - Using Array.forEach or a loop
 
