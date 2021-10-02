@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 09:08:21
-version: 1.22
+updated: 2021-10-02 09:32:34
+version: 1.23
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -147,7 +147,7 @@ let getAVG = function (a) {
 console.log(getAVG(a)); // 85.2
 ```
 
-### 3.1 - using Array.forEach or a loop
+### 3.1 - Using Array.forEach or a loop
 
 Using a native method like Array.forEach can be useful for quickly adding up some numbers.
 
@@ -162,6 +162,20 @@ a.forEach((n) => {
 });
  
 console.log(sum);  // 10
+```
+
+### 3.2 - The Array reduce method is also a good choice for making sums
+
+Maybe one of the best options when it comes to array prototype methods would be the array reduce method.
+
+```js
+// reduce
+let sumArray = (array) => {
+    return array.reduce((acc, n) => {
+        return acc + n;
+    }, 0);
+};
+console.log(sumArray([1, 2, 3, 4])); // 10
 ```
 
 ## 4 - Conclusion
