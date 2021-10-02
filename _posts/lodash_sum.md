@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 11:23:25
-version: 1.30
+updated: 2021-10-02 11:25:33
+version: 1.31
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -190,6 +190,8 @@ console.log(sumArray([1, 2, 3, 4])); // 10
 Many of the methods in lodash are so called collection methods in the sense that they will work with objects in general, not just arrays. Sadly it would seem that the sum method is not once such method as the expected value that is passed to it needs to be an array. However it is often not so hard to convert say an array like object to an array, or some custom object with named keys to an array. The hard part is just furnishing an array of numbers first, and once that is done that of course can be passed to the lodash sum method, or one of the native options can be used. SO in this section I will be quickly going over some examples of making a sum from various kinds of objects other then that of an array in javaScript.
 
 ### 4.1 - Array like objects and Function.call
+
+If you are not familiar with the [function prototype methods such as apply, bind, and call](/2017/09/21/js-call-apply-and-bind/) then it might be a good idea to take a moment to look into them at this point.
 
 ```
 // and array like Object
