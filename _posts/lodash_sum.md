@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 11:29:42
-version: 1.32
+updated: 2021-10-02 11:31:27
+version: 1.33
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -191,7 +191,7 @@ Many of the methods in lodash are so called collection methods in the sense that
 
 ### 4.1 - Array like objects and Function.call
 
-If you are not familiar with the [function prototype methods such as apply, bind, and call](/2017/09/21/js-call-apply-and-bind/) then it might be a good idea to take a moment to look into them at this point. Often I find myself in a situation in which I am dealing with some kind of array like object. What I mean by that is that I am dealing with an object that is formated like an array, in that it has numbered rather than named keys, and a length property. However it is an array like because it is a plain object, or an object of a prototype other than that of Array. So then I can not just call array prototype methods like reduce off of such objects.
+If you are not familiar with the [function prototype methods such as apply, bind, and call](/2017/09/21/js-call-apply-and-bind/) then it might be a good idea to take a moment to look into them at this point. Often I find myself in a situation in which I am dealing with some kind of array like object. What I mean by that is that I am dealing with an object that is formated like an array, in that it has numbered rather than named keys, and a length property. However it is an array like because it is a plain object, or an object of a prototype other than that of Array. So then I can not just call array prototype methods like reduce off of such objects. However I can call the call function prototype method off of the array reduce prototype method and pass the array like object as the first argument to the call method, after that I can pass arguments as if I am using array reduce.
 
 ```
 // and array like Object
