@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 09:38:51
-version: 1.25
+updated: 2021-10-02 09:40:58
+version: 1.26
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -168,7 +168,7 @@ console.log(sum);  // 10
 
 Maybe one of the best options when it comes to array prototype methods would be the [array reduce method](/2021/07/13/js-array-reduce/). This method might be a little confusing when compared to other array prototype methods like for each at first but once one gets the basics of how to use it, the method comes in handy often such as when making some kind of sum value from an array of values. 
 
-The basic idea of making a sum with array reduce would be to call the array reduce method off of the array to which I want to make a sum from and then pass a reduce function as the first argument, and set a starting value for an accumulator to zero with the second argument for array reduce.
+The basic idea of making a sum with array reduce would be to call the array reduce method off of the array to which I want to make a sum from and then pass a reduce function as the first argument, and set a starting value for an accumulator to zero with the second argument for array reduce. The reduce function will then have an accumulator value for the first argument, and then the value of a current element as the second argument. Inside the body of the reduce function I just need to return the new value for the accumulator value with would be the sum of the accumulator plus the current element assuming that I will always be dealing with an array of numbers anyway.
 
 ```js
 // reduce
