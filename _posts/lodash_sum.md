@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 09:50:40
-version: 1.28
+updated: 2021-10-02 11:19:25
+version: 1.29
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -185,6 +185,93 @@ let sumArray = (array) => {
 console.log(sumArray([1, 2, 3, 4])); // 10
 ```
 
-## 4 - Conclusion
+## 4 - Objects in general and making a sum
+
+### 4.1 - Array like objects and Function.call
+
+```
+// and array like Object
+let obj = {
+    0: 42,
+    1: 10,
+    2: 5,
+    length: 3
+};
+// using array reduce with Function.call
+let sum = Array.prototype.reduce.call(obj, (acc, n) => {
+        return acc + n;
+    }, 0);
+console.log(sum); // 57
+```
+
+### 4.2 - Objects.values
+
+```js
+// and object with named keys rather than and array
+// of array like object
+let obj = {
+    x: 42,
+    y: 10,
+    z: 5
+};
+// object values and reduce
+var sum = Object.values(obj).reduce((acc, n) => {
+    return acc + n;
+}, 0);
+console.log(sum); // 57
+```
+
+### 4.3 - Object.keys
+
+```js
+// and object with named keys rather than and array
+// of array like object
+let obj = {
+    x: 42,
+    y: 10,
+    z: 5
+};
+// object keys and reduce
+var sum = Object.keys(obj).reduce((acc, key) => {
+    var n = obj[key];
+    return acc + n;
+}, 0);
+console.log(sum); // 57
+```
+
+## 5 - Arrays of Arrays
+
+### 5.1 - lodash flatten and sum methods
+
+```js
+let grid = [
+    [0, 1, 3],
+    [0, 0, 5],
+    [1, 0, 0]
+];
+ 
+// using lodash flatten and sum
+let sum = _(grid).flatten().sum();
+console.log(sum); // 10
+ 
+sum = _.sum(_.flatten(grid));
+console.log(sum); // 10
+```
+
+### 5.2 - lodash flatten deep method for more then 2 dimensions
+
+```js
+let grid = [
+    [[0, 2, 3], [0, 0, 0], [0, 0, 0]],
+    [[0, 0, 0], [0, 7, 0], [0, 0, 0]],
+    [[0, 5, 0], [0, 0, 0], [3, 0, 0]]
+];
+ 
+// using lodash flatten deep
+let sum = _(grid).flattenDeep().sum();
+console.log(sum); // 20
+```
+
+## 6 - Conclusion
 
 So in lodash there are some methods that ca be used to quickly produce a sum, as well as other methods that can be used to add up a sum as well although they are not there for that purpose alone. With native javaScript there might not be a native sum method in the array prototype, but it is not to hard to make a sum with javaScript alone as well.
