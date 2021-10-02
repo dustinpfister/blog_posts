@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 11:37:33
-version: 1.35
+updated: 2021-10-02 11:38:32
+version: 1.36
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -249,7 +249,7 @@ console.log(sum); // 57
 
 ## 5 - Arrays of Arrays
 
-Another topic that might come up when it comes to sums is how to go about making a sum of [arrays of arrays, or a multidimensional array](/2020/03/31/js-array-multidimensional/). When it comes to these kinds of arrays they can not just be passed to the lodash sum method. However there are a number of methods that can be used in lodash to help with this kinds of arrays mainly the lodash flatten method.
+Another topic that might come up when it comes to sums is how to go about making a sum of [arrays of arrays, or a multidimensional array](/2020/03/31/js-array-multidimensional/). When it comes to these kinds of arrays they can not just be passed to the lodash sum method. However there are a number of methods that can be used in lodash to help with this kinds of arrays mainly the [lodash flatten methods](/2018/08/12/lodash_flatten/).
 
 ### 5.1 - lodash flatten and sum methods
 
