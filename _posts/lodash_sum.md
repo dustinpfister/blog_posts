@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-10-02 09:35:04
-version: 1.24
+updated: 2021-10-02 09:38:51
+version: 1.25
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -166,7 +166,9 @@ console.log(sum);  // 10
 
 ### 3.2 - The Array reduce method is also a good choice for making sums
 
-Maybe one of the best options when it comes to array prototype methods would be the [array reduce method](/2021/07/13/js-array-reduce/).
+Maybe one of the best options when it comes to array prototype methods would be the [array reduce method](/2021/07/13/js-array-reduce/). This method might be a little confusing when compared to other array prototype methods like for each at first but once one gets the basics of how to use it, the method comes in handy often such as when making some kind of sum value from an array of values. 
+
+The basic idea of making a sum with array reduce would be to call the array reduce method off of the array to which I want to make a sum from and then pass a reduce function as the first argument, and set a starting value for an accumulator to zero with the second argument for array reduce.
 
 ```js
 // reduce
