@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2019-11-07 14:41:09
-version: 1.12
+updated: 2021-10-03 10:11:40
+version: 1.13
 ---
 
-Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be a thin post today, but to help beef things up with the post a little I will cover some vanilla js solutions for this sort of task as well as I often do for my posts on lodash.
+Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
 
 <!-- more -->
 
