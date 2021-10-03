@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:19:08
-version: 1.24
+updated: 2021-10-03 12:22:45
+version: 1.25
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
 
 <!-- more -->
 
-## 1 - what to know first
+## 1 - What to know first
 
 This is a post on the \_.range method in lodash that can be used to quickly create an array that contains a range of numbers. This is also something that is not that hard to do with plain old vanilla js as well, so I will also be looking at some plain old javaScript solutions for creating number ranges. This is not a getting started post with lodash, or [javaScript in general](/2018/11/27/js-getting-started/), so I hope you have at least some background with those topics before continuing.
 
@@ -45,11 +45,11 @@ let nums = _.range(5,10);
 console.log(nums); // [5,6,7,8,9]
 ```
 
-This works by a start and end value, rather than a start value and a count or size of elements from that start location. So that is one little detail where I might want some other kind of method for this sort of thing. However maybe a more important detail is being able to set a step or delta value other than one. This two can be done with the range method, but only in the from of a number value rather tan a function that can be used to create such a value. So the rest of the examples of this section will have to do with this, with just the lodash range method as well as with other lodash methid that there are to work with.
+This works by a start and end value, rather than a start value and a count or size of elements from that start location. So that is one little detail where I might want some other kind of method for this sort of thing. However maybe a more important detail is being able to set a step or delta value other than one. This two can be done with the range method, but only in the from of a number value rather tan a function that can be used to create such a value. So the rest of the examples of this section will have to do with this, with just the lodash range method as well as with other lodash method that there are to work with.
 
-### 2.3 - setting a step value
+### 2.3 - Setting a step value
 
-Also when giving three arguments it is possible to set a step rate.
+So then it is also possible to use three arguments when calling the lodash range method. When three arguments are used the first is the start value, the second is the end value, and the third argument is the step rate. It should go without saying that the default steeping value is one, so when using this it would make sense to use a higher, or lower value. When using a negative number that will result in what one would expect when it comes to counting backwards.
 
 ```js
 let nums = _.range(100,200,20);
