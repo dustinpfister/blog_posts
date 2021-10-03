@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 13:27:03
-version: 1.35
+updated: 2021-10-03 13:29:35
+version: 1.36
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -38,7 +38,7 @@ Most of the time when I need an array like this this is all I need to do. Howeve
 
 ### 2.2 - Start and end values
 
-Tere may come a time now and then where I will want a range that will start at a number other then that of zero. Te good news with this is that this can be done with the lodash range method by using two rather than just one arguments. So then a range between a start and end value can be done by passing the starting number first, and then the ending number.
+There may come a time now and then where I will want a range that will start at a number other then that of zero. Te good news with this is that this can be done with the lodash range method by using two rather than just one arguments. So then a range between a start and end value can be done by passing the starting number first, and then the ending number.
 
 ```js
 let nums = _.range(5,10);
@@ -107,13 +107,13 @@ console.log(myRange(0, 5, (i) => Math.pow(2, i)));
 
 This might not be the best example, but the basic idea is there. Using the lodash map method, or some native counterpart allows for me to define what the expression is to create the numbers. It might prove to be more complex, but what the situation calls for it some times I just have to do something like this. However doing something like this also makes me question why I should bother with lodash, it would seem that there are times where what i really need to do is create some kind of custom utility library with methods that I am actually gong to use.
 
-## 3 - reversing the order of the elements
+## 3 - Reversing the order of the elements
 
 One thing that might come up is the idea of reversing the order of the elements. When it comes to this there is a method for this purpose itself actually as well as other lodash methods for doing this sort of task in general.
 
 ### 3.1 - The lodash range right method
 
-One way to do this would be to use the range right lodash method.
+One way to do this would be to use the range right lodash method which works just like lodash range only it will return a reversed order.
 
 ```js
 let nums = _.rangeRight(0, 10, 1);
