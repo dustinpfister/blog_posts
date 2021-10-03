@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:52:40
-version: 1.30
+updated: 2021-10-03 12:56:49
+version: 1.31
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -165,4 +165,6 @@ console.log(range(-2, 10, 2));
 
 ## 4 - Conclusion
 
-That is it for today, just wanted to do a quick post on a simple topic like this. lodash does have a lot of little methods like this that are not that complex, but do help save me the time of making a solution from scratch, or hunting something down at stack overflow.
+That is it for today, just wanted to do a quick post on a simple topic like this when it comes to the subject of creating an array of numbers that are with a range using lodash and native javaScript. lodash does have a lot of little methods like this that are not that complex, but do help save me the time of making a solution from scratch, or hunting something down at stack overflow. There is also a lot to be said as to the question if lodash is something that we should still even be bothering with when starting a new project also these days. The lodash range method is not one of the best methods to help support a case to continue using lodash, but maybe getting into all of that is a mater for another post.
+
+
