@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 13:32:06
-version: 1.38
+updated: 2021-10-03 13:35:00
+version: 1.39
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -135,7 +135,7 @@ console.log(nums);
 
 ## 4 - Vanilla js range method examples
 
-using lodash is something that seems to be falling out of fashion. I do understand many of the reasons why this is, and many of them are good reasons. So although this is a lodash post in this section I will be going over some range method examples that make use of just core javaScriot by itself.
+Using lodash is something that seems to be falling out of fashion. I do understand many of the reasons why this is, and many of them are good reasons. So although this is a lodash post in this section I will be going over some range method examples that make use of just core javaScript by itself. There are a number of ways to go about making this kind of method, using jus core javaScript features. So hopefully reading over this will help you to get a better idea of what there is to work with when it comes to javaScript alone.
 
 ### 4.1 - Using a while loop
 
