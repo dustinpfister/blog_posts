@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:09:18
-version: 1.22
+updated: 2021-10-03 12:12:19
+version: 1.23
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -23,7 +23,7 @@ I have the source code examples for this post on my [test lodash github reposito
 
 ## 2 - Creating an range of numbers using lodash
 
-So this is very much a post on lodash, at least first and foremost anyway. So in this section I will be going over a few basic examples of the lodash range method. In this section I will also be going over other options when it comes to using lodash in general. Later in this post I will then be getting into some alternatives that involve just using native javaScript alone.
+So this is very much a post on lodash, at least first and foremost anyway. So in this section I will be going over a few basic examples of the lodash range method. In this section I will also be going over other options when it comes to using lodash in general when it comes to other ways to make a range of numbers using lodash. Later in this post I will then be getting into some alternatives that involve just using native javaScript alone.
 
 ### 2.1 - Basic lodash range example
 
@@ -33,6 +33,8 @@ There is not much to write about when it come to using \_.range, just call the m
 let nums = _.range(10);
 console.log(nums); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
+
+Most of the time when I need an array like this this is all I need to do. However there are some additional arguments for the lodash range method. Also there are some limitations with the range method that can still be addressed with other lodash methods. So with that said lets look at a few more basic examples of making a range of numbers with lodash methods.
 
 ### 2.2 - Start and end values
 
