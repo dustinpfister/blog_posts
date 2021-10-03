@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 11:49:37
-version: 1.15
+updated: 2021-10-03 11:52:15
+version: 1.16
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -50,17 +50,50 @@ console.log(nums); //  [ 100, 120, 140, 160, 180 ]
 
 So that is all there is to when when it comes to the lodash range method. However it is true that this is not one of the most compelling methods in lodash that help support a case for its continued use. There are of course a number of ways to get a similar result using other lodash methods, as well as native javaScript so lets look at some other ways to create a range of numbers with javaScript.
 
-### 2.2 - Using \_.map to create an array of sequential numbers
+### 2.4 - Using \_.map to create an array of sequential numbers
 
 So a solution for this could be done with \_.map or the native Array.map as well by creating an array that has a length that is the desired range, and then using the index argument that is given to the callback to set the numbers.
 
 ```js
-let nums = _.map(new Array(10), function(el,i){return i});
- 
-console.log(nums); // [0,1,2,3,4,5,6,7,8,9]
+let nums = _.map(new Array(10), (el, i) => i);
+console.log(nums); // [0,1,2,3
 ```
 
 However if you aim to use the native Array.map it will not call the function for elements that do not have values, so a solution like this will not work with the native Array.map unless the array is filled before hand some how.
+
+### 2.5 - Custom map example
+
+```js
+const myRange = (start, size, step) => {
+    let arr = new Array(size);
+    step = step === undefined ? 1 : step;
+    return _.map(arr, (el, i) => {
+        let d = step;
+        if (typeof step === 'function') {
+            d = step(i, start, size);
+        }
+        return start + i * d;
+    });
+};
+ 
+console.log(myRange(0, 10));
+// [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+ 
+console.log(myRange(5, 15, 5));
+// [ 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75 ]
+ 
+console.log(_.range(5, 15, 5));
+// [5, 10]
+ 
+// I can still get a similar result to _.range if I just
+// adjust the arguments to size, rather than a stop value
+console.log(myRange(5, 2, 5));
+// [5, 10]
+ 
+// custom stepping
+console.log(myRange(0, 5, (i) => Math.pow(2, i)));
+// [ 0, 2, 8, 24, 64 ]
+```
 
 ## 3 - Vanilla js range method
 
