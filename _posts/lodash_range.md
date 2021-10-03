@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:12:19
-version: 1.23
+updated: 2021-10-03 12:19:08
+version: 1.24
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -38,12 +38,14 @@ Most of the time when I need an array like this this is all I need to do. Howeve
 
 ### 2.2 - Start and end values
 
-Also a range between a start and end value can be done by passing the starting number first, and then the ending number.
+Tere may come a time now and then where I will want a range that will start at a number other then that of zero. Te good news with this is that this can be done with the lodash range method by using two rather than just one arguments. So then a range between a start and end value can be done by passing the starting number first, and then the ending number.
 
 ```js
 let nums = _.range(5,10);
 console.log(nums); // [5,6,7,8,9]
 ```
+
+This works by a start and end value, rather than a start value and a count or size of elements from that start location. So that is one little detail where I might want some other kind of method for this sort of thing. However maybe a more important detail is being able to set a step or delta value other than one. This two can be done with the range method, but only in the from of a number value rather tan a function that can be used to create such a value. So the rest of the examples of this section will have to do with this, with just the lodash range method as well as with other lodash methid that there are to work with.
 
 ### 2.3 - setting a step value
 
