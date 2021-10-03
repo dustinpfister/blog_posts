@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 13:30:54
-version: 1.37
+updated: 2021-10-03 13:32:06
+version: 1.38
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -109,7 +109,7 @@ This might not be the best example, but the basic idea is there. Using the lodas
 
 ## 3 - Reversing the order of the elements
 
-One thing that might come up is the idea of reversing the order of the elements. When it comes to this there is a method for this purpose itself actually as well as other lodash methods for doing this sort of task in general.
+One thing that might come up is the idea of reversing the order of the elements. That is doing more or less the same thing my make it so the first element is the last number in the range. When it comes to this there is a method for this purpose itself actually as well as other lodash methods for doing this sort of task in general.
 
 ### 3.1 - The lodash range right method
 
