@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:56:49
-version: 1.31
+updated: 2021-10-03 13:14:17
+version: 1.32
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -107,11 +107,31 @@ console.log(myRange(0, 5, (i) => Math.pow(2, i)));
 
 This might not be the best example, but the basic idea is there. Using the lodash map method, or some native counterpart allows for me to define what the expression is to create the numbers. It might prove to be more complex, but what the situation calls for it some times I just have to do something like this. However doing something like this also makes me question why I should bother with lodash, it would seem that there are times where what i really need to do is create some kind of custom utility library with methods that I am actually gong to use.
 
-## 3 - Vanilla js range method examples
+## 3 -
+
+### 3.1 -
+
+```js
+let nums = _.rangeRight(0, 10, 1);
+console.log(nums);
+//[ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+```
+
+### 3.2 - The lodash reverse method with the regukar ranmge method
+
+The range right method is one of the methods in lodash that is not all that necessary. One reason why is that once can just use the regular lodash range method and just reverse the order of the elements. There is bolth a [lodash reverse method](/2018/10/17/lodash_reverse/), as well as a native array method that can be used to do this.
+
+```js
+let nums = _.reverse(_.range(10));
+console.log(nums);
+//[ 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 ]
+```
+
+## 4 - Vanilla js range method examples
 
 using lodash is something that seems to be falling out of fashion. I do understand many of the reasons why this is, and many of them are good reasons. So although this is a lodash post in this section I will be going over some range method examples that make use of just core javaScriot by itself.
 
-### 3.1 - Using a while loop
+### 4.1 - Using a while loop
 
 Yes it is not to hard at all to make a vanilla js replacement for the lodash \_.range method. For this example I quickly worked out a range method that makes use of a while loop.
 
@@ -143,7 +163,7 @@ console.log( range(8, 16, 2) ); // [ 8, 10, 12, 14, 16, 18, 20, 22 ]
 
 Still making a simple method like this takes a little time, and if it is there in lodash all ready, and lodash is part of the projects stack, then there is no need to bother.
 
-### 3.2 - Using the native array map and fill method
+### 4.2 - Using the native array map and fill method
 
 So then there is also using the native array map method over the lodash map method as yet another way to make a range. One drawback over the native array map method is that it will skip over empty elements. So one way to go about addressing this would be to use the [array fill method](/2020/04/23/js-array-fill/) as a way to just make the elements not empty. Then the array map method will work with the resulting array returned by the array fill method.
 
@@ -163,7 +183,7 @@ console.log(range(10)); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 console.log(range(-2, 10, 2));
 ```
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 That is it for today, just wanted to do a quick post on a simple topic like this when it comes to the subject of creating an array of numbers that are with a range using lodash and native javaScript. lodash does have a lot of little methods like this that are not that complex, but do help save me the time of making a solution from scratch, or hunting something down at stack overflow. There is also a lot to be said as to the question if lodash is something that we should still even be bothering with when starting a new project also these days. The lodash range method is not one of the best methods to help support a case to continue using lodash, but maybe getting into all of that is a mater for another post.
 
