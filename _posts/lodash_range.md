@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:22:45
-version: 1.25
+updated: 2021-10-03 12:24:28
+version: 1.26
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -107,45 +107,31 @@ console.log(myRange(0, 5, (i) => Math.pow(2, i)));
 
 This might not be the best example, but the basic idea is there. Using the lodash map method, or some native counterpart allows for me to define what the expression is to create the numbers. It might prove to be more complex, but what the situation calls for it some times I just have to do something like this. However doing something like this also makes me question why I should bother with lodash, it would seem that there are times where what i really need to do is create some kind of custom utility library with methods that I am actually gong to use.
 
-## 3 - Vanilla js range method
+## 3 - Vanilla js range method using a while loop
 
 Yes it is not to hard at all to make a vanilla js replacement for \_.range
 
 ```js
 var range = function (start, end, step) {
- 
     let arr = [],
     len = 0;
- 
     step = step === undefined ? 1 : step;
- 
     if (arguments.length === 1) {
- 
         len = start;
         start = 0;
         end = start;
- 
     } else {
- 
         start = start === undefined ? 1 : start;
         end = end === undefined ? 1 : end;
         len = end - start;
- 
     }
- 
     var i = 0;
     while (i < len) {
- 
         arr.push(start + i * step);
- 
         i += 1;
- 
     }
- 
     return arr;
- 
 };
- 
 console.log( range(10) ); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 console.log( range(10,15) ); // [ 10, 11, 12, 13, 14 ]
 console.log( range(8, 16, 2) ); // [ 8, 10, 12, 14, 16, 18, 20, 22 ]
