@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:25:41
-version: 1.27
+updated: 2021-10-03 12:49:26
+version: 1.28
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -109,6 +109,8 @@ This might not be the best example, but the basic idea is there. Using the lodas
 
 ## 3 - Vanilla js range method using a while loop
 
+### 3.1 - Using a while loop
+
 Yes it is not to hard at all to make a vanilla js replacement for the lodash \_.range method. For this example I quickly worked out a range method that makes use of a while loop.
 
 ```js
@@ -138,6 +140,26 @@ console.log( range(8, 16, 2) ); // [ 8, 10, 12, 14, 16, 18, 20, 22 ]
 ```
 
 Still making a simple method like this takes a little time, and if it is there in lodash all ready, and lodash is part of the projects stack, then there is no need to bother.
+
+### 3.2 - Using the native array map and fill method
+
+So then there is also using the native array map method over the lodash map method as yet another way to make a range. One drawback over the native array map method is that it will skip over empty elements. So one way to go about addressing this would be to use the array fill method as a way to just make the elements not empty. Then the array map method will work with the resulting array returned by the array fill method.
+
+```js
+var range = function (start, end, step) {
+    var len = start;
+    if (end != undefined) {
+        len = Math.floor(Math.abs(start - end) / step);
+    }
+    step = step === undefined ? 1 : step;
+    return new Array(len).fill(0).map(function (el, i) {
+        return start + i * step;
+    });
+};
+console.log(range(10)); // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+ 
+console.log(range(-2, 10, 2));
+```
 
 ## 4 - Conclusion
 
