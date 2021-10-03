@@ -27,17 +27,48 @@ This is a todo list where editing is prioritized based just purely on how much t
 * have 5+ internal links in the post
 
 ### nodejs-glob ( #3 - 1,254 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### lodash_countby ( #4- 1,236 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### lodash_includes ( #5 - 1,137 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### lodash_remove ( #6 - 967 clicks - 10/02/2021 )
+* expand to 1,800+ words
+* expand to 2,400+ words
 
 ### lodash_concat ( #7 - 956 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### lodash_groupby ( #8 - 867 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### linux-raspbian-lite-xserver-xorg ( #9 - 858 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
 
 ### lodash_size ( #10 - 836 clicks - 10/02/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
+
