@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 295
-updated: 2021-10-03 12:49:26
-version: 1.28
+updated: 2021-10-03 12:50:36
+version: 1.29
 ---
 
 Sometimes when working on a javaScript project there is a need to create a range of numbers in an array, with [lodash](https://lodash.com/) there is the [\_.range](https://lodash.com/docs/4.17.10#range) method than can be used to quickly make a range of numbers. The method is fairly easy to use so this should be be quick when it comes to just using the single lodash method. However there is also the general idea of not using lodash anymore as there are often native javaScript solutions for doing many of these tasks actually. So on top of going over a few quick examples of the lodash rage method I will also be looking into some additional examples that make use of just native javaScript by itself.
@@ -143,7 +143,7 @@ Still making a simple method like this takes a little time, and if it is there i
 
 ### 3.2 - Using the native array map and fill method
 
-So then there is also using the native array map method over the lodash map method as yet another way to make a range. One drawback over the native array map method is that it will skip over empty elements. So one way to go about addressing this would be to use the array fill method as a way to just make the elements not empty. Then the array map method will work with the resulting array returned by the array fill method.
+So then there is also using the native array map method over the lodash map method as yet another way to make a range. One drawback over the native array map method is that it will skip over empty elements. So one way to go about addressing this would be to use the [array fill method](/2020/04/23/js-array-fill/) as a way to just make the elements not empty. Then the array map method will work with the resulting array returned by the array fill method.
 
 ```js
 var range = function (start, end, step) {
