@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 10:27:49
-version: 1.19
+updated: 2021-10-04 10:59:53
+version: 1.20
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -18,7 +18,9 @@ https://www.npmjs.com/package/glob). The npm package glob is a great solution fo
 
 ## 1 - What to know
 
-This is a post on the npm package known as glob that allows for matching files that fit a given glob pattern. Out of the box it might not be a complete file system walker depending on how you would go about defining such a thing. However for more information on file system walkers you might want to check out my [post on ways to walk a file system in nodejs](/2018/07/20/nodejs-ways-to-walk-a-file-system/) to know about some options that are all ready out there before taking the time to make a file system walker. 
+This is a post on the npm package known as glob that allows for matching files that fit a given glob pattern. Out of the box it might not be a complete file system walker depending on how you would go about defining such a thing. However for more information on file system walkers you might want to check out my [post on ways to walk a file system in nodejs](/2018/07/20/nodejs-ways-to-walk-a-file-system/) to know about some options that are all ready out there before taking the time to make a file system walker.
+
+I will be keeping the examples in this section farily simple, however this is still not a [getting started type post on nodejs](/2017/04/05/nodejs-helloworld/), or javaScript in general.
 
 ### 1.1 - Version numbers matter
 
@@ -28,7 +30,7 @@ In this post I am also using version 7.1.3 of glob, so if you run into problems 
 
 The source code examples that I am writing about in this post are up on github in my [test\_glob repository](https://github.com/dustinpfister/test_glob). I have a lot of projects that I am working on that compete with my time on my github account. However never the less if you see something wrong with on or more of the source code examples here that would be where to go about making a pull request.
 
-### 1.1 - What are globs and the \* wildcard
+### 1.3 - What are globs and the \* wildcard
 
 It is a way of making use of a wildcard character \* to represent zero or more characters so that:
 
@@ -48,34 +50,32 @@ $ npm install glob --save
 
 Once the glob npm package is installed it can then be required into a script just like with any other built in nodejs module or user land project that has been installed into a node modules folder of a project. In a test project folder I made a simple basic.js file that will match any javaScript file in the current working path.
 
+### 2.1 - A basic gloab hello world example
+
 ```js
-var glob = require('glob');
+const glob = require('glob');
  
-glob('*.js', function (err, files) {
- 
+glob('*.js', (err, files) => {
     if (err) {
- 
         console.log(err);
- 
     } else {
- 
         // a list of paths to javaScript files in the current working directory
         console.log(files);
- 
     }
- 
 });
 ```
 
 By default glob will search for files that fit the given pattern in the current working directory. When I call this from there it just gives me \[basic.js\] as that is the only javaScript file in my test folder as of this writing, but I can search recursively using the \*\* pattern.
 
-## 3 - The ** wildcard
+### 2.2 - The ** wildcard
 
 The \*\* wildcard can be used to search for what is in the current working directory, and any additional subdirectories so that:
 
 ```js
-var forFiles = function(err,files){ console.log(files);};
-glob('**/*.md', function (err, forFiles);
+const glob = require('glob');
+ 
+let forFiles = (err,files) => console.log(files);
+glob('../**/*.md', forFiles);
 ```
 
 will search for and compile a list a file names for each mark down file found in the current working path and any additional path in the current working folder.
@@ -85,20 +85,18 @@ will search for and compile a list a file names for each mark down file found in
 If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js.
 
 ```js
-var glob = require('glob'),
- 
+const glob = require('glob'),
 // some options
 options = {
- 
-    cwd: 'node_modules'
- 
+    cwd: '../'
 },
- 
 // for Files
-forFiles = function(err,files){ console.log(files);};
- 
+forFiles = (err,files) => console.log(files);
+
 // glob it.
 glob('**/*.md', options, forFiles);
+
+console.log(process.cwd());
 ```
 
 ## 5 - Reading files
@@ -106,46 +104,36 @@ glob('**/*.md', options, forFiles);
 I looks like glob is just for matching files, but when it comes to actually reading the contents of the files and additional solution will need to be used in conjunction with glob. So out of the box it is not really a complete file system walker, but it is a valuable tool to create a walker from the ground up that will have support for glob patterns.
 
 ```js
-let glob = require('glob'),
+const glob = require('glob'),
 fs = require('fs');
  
-let readFiles = function (pat, forFile) {
- 
+const readFiles = function (pat, forFile) {
+    // pattern
     pat = pat || '*.js';
-    forFile = forFile || function (content) {
+    // for file method
+    forFile = forFile || function (content, file) {
+        console.log('');
+        console.log(file);
+        console.log('*****');
         console.log(content);
+        console.log('*****')
     };
- 
-    glob('*.js', function (err, files) {
- 
+    // using glob
+    glob(pat, function (err, files) {
         if (err) {
- 
             console.log(err);
- 
         } else {
- 
             files.forEach(function (file) {
- 
                 fs.readFile(file, function (err, data) {
- 
                     if (err) {
- 
                         console.log(err);
- 
                     } else {
- 
-                        forFile(data.toString());
- 
+                        forFile(data.toString(), file);
                     }
- 
                 });
- 
             });
- 
         }
- 
     });
- 
 };
  
 readFiles();
