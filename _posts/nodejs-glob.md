@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 12:06:21
-version: 1.32
+updated: 2021-10-04 14:04:05
+version: 1.33
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -151,7 +151,7 @@ readFiles();
 
 This might be a bit off topic, but it might be a good idea to quickly go over this when it comes to using the glob package, and paths in general in nodejs, and that is the topic of absolute, and relative paths. Whenever I am working on a nodejs script there are two general kinds of paths that come to mind. one kind of path is getting a path that is relative to a script, and the other is getting one relative to the current working directly. There are then two kinds of ways of getting these kinds of paths, one way is to use a relative path relative to a value such as what is in the \_\_dirname global. This kind of path would involving using .. with such a value to get a path that is relative to whatever the location of the script is in a file system. Another kind of path would be an absolute path from the root of the file system to the location that I want.
 
-So then in this section I will be going over a few examples that involve glob as well as the [paths module](/2017/12/27/nodejs-paths/) and the [nodejs globals](/2018/02/10/nodejs-globals) that is built into nodejs. Also theses examples make use of the \_\_dirname global that is another useful value that you should be aware of if you are not all ready, and features of the process object also.
+So then in this section I will be going over a few examples that involve glob as well as the [paths module](/2017/12/27/nodejs-paths/) and the [nodejs globals](/2018/02/10/nodejs-globals) that is built into nodejs. Also theses examples make use of the \_\_dirname global that is another useful value that you should be aware of if you are not all ready, and features of the [process object](/2018/02/11/nodejs-process/) also.
 
 ### 3.1 - The __dirname global
 
@@ -175,7 +175,7 @@ glob(patt, (err, files) => {
 
 ### 3.2 - The process global to get positional arguments
 
-So then there is also the question of how to make use of [positional arguments](/2020/12/10/linux-bash-script-parameters-positional) to create a path to search with glob.
+So then there is also the question of how to make use of [positional arguments](/2020/12/10/linux-bash-script-parameters-positional) to create a path to search with glob. This is another basic feature when it comes to writing nodejs scripts that I think I should also mention while I am at it. So say I want a script where I can pass a single positional argument from the command line when calling the script with node, or when making a script a global command of one kind or another. For this there is the process argv array that will contains all of the positional parameters when the script was called.
 
 ```js
 const glob = require('glob'),
