@@ -184,7 +184,7 @@ This is a general todo list for what I want to get done when it comes to editing
 
 
 ### (   ) - edit: nodejs-filesystem-read-file ( very low word count)
-* edit post to 500+ words
+* (done) edit post to 500+ words
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links
