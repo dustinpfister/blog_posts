@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:15:48
-version: 1.24
+updated: 2021-10-04 11:20:16
+version: 1.25
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -57,6 +57,8 @@ $ npm install glob --save
 Once the glob npm package is installed it can then be required into a script just like with any other built in nodejs module or user land project that has been installed into a node modules folder of a project. In a test project folder I made a simple basic.js file that will match any javaScript file in the current working path.
 
 ### 2.1 - A basic gloab hello world example
+
+So then now that I have a test folder set up it is noe time to create a basic hello world style example of this module. For this I just require in the glob module as with any other module built in or user space. Once I have the glob module to work with I can then call the main function that is exported by the module and pass a glob pattern as the first argument of the main function. After that for the second argument I can pass a call back function that will be called with the results of the glob pattern call.
 
 ```js
 const glob = require('glob');
