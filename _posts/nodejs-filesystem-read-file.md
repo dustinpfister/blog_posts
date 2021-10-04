@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 657
-updated: 2021-10-04 16:07:56
-version: 1.9
+updated: 2021-10-04 16:09:41
+version: 1.10
 ---
 
 The nodejs [read file file system method](https://nodejs.org/en/knowledge/file-system/how-to-read-files-in-nodejs/) is a method in node build in [file system module](/2018/02/08/nodejs-filesystem/). This method might work just fine when I just want to read a file in full, and not do anything fancy with streaming or reading by way of a buffer. In most cases this method will work fine if I just simple want to read a small file, however it is not a golden hammer for all situations in which I need to read data from the local file system. Never the less it would seem that I never got around to writing a post on this method, so lets get this one out of the way.
@@ -90,3 +90,8 @@ fs.readFile(uri_conf, 'utf8', (err, data) => {
     }
 });
 ```
+
+## 2 - Conclusion
+
+That will be it for now when it comes to the read file method of the file system module in nodejs. For now I just wanted to cover the basics of the method at least, however I do have plans to further expand this post when I get some more time to do so.
+
