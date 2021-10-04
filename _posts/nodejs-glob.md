@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 10:17:24
-version: 1.18
+updated: 2021-10-04 10:27:49
+version: 1.19
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -22,9 +22,13 @@ This is a post on the npm package known as glob that allows for matching files t
 
 ### 1.1 - Version numbers matter
 
-In this post I am also using version 7.1.3 of glob, so if you run into problems check the version number you are using, mainly the major or left most number. This also shoud go without saying when it comes to the version of nodejs that is being used also.
+In this post I am also using version 7.1.3 of glob, so if you run into problems check the version number you are using, mainly the major or left most number. This also should go without saying when it comes to the version of nodejs that is being used also.
 
-### 1.1 - what are globs and the \* wildcard
+### 1.2 - The source code examples here are up on github
+
+The source code examples that I am writing about in this post are up on github in my [test\_glob repository](https://github.com/dustinpfister/test_glob). I have a lot of projects that I am working on that compete with my time on my github account. However never the less if you see something wrong with on or more of the source code examples here that would be where to go about making a pull request.
+
+### 1.1 - What are globs and the \* wildcard
 
 It is a way of making use of a wildcard character \* to represent zero or more characters so that:
 
