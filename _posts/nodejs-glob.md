@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:22:35
-version: 1.26
+updated: 2021-10-04 11:26:05
+version: 1.27
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -149,4 +149,6 @@ readFiles();
 
 ## 6 - conclusion
 
-This is a great node.js solution to get working with glob patterns quickly. I might expand more on this with respect to the many different options that can be given, but for now there is the [readme](https://github.com/isaacs/node-glob/blob/master/README.md) of the project that details more of the options not covered in the content of this post.
+This is a great node.js solution to get working with glob patterns quickly. I might expand more on this with respect to the many different options that can be given, but for now there is the [readme](https://github.com/isaacs/node-glob/blob/master/README.md) of the project that details more of the options not covered in the content of this post. In addition to expanding more so on what the full features of the glob package are there is also writing some more actuality use case examples which is something else that I am planing for in future edits of this post.
+
+
