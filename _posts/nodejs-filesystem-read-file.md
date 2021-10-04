@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 657
-updated: 2021-10-04 16:04:00
-version: 1.7
+updated: 2021-10-04 16:05:15
+version: 1.8
 ---
 
 The nodejs [read file file system method](https://nodejs.org/en/knowledge/file-system/how-to-read-files-in-nodejs/) is a method in node build in [file system module](/2018/02/08/nodejs-filesystem/). This method might work just fine when I just want to read a file in full, and not do anything fancy with streaming or reading by way of a buffer. In most cases this method will work fine if I just simple want to read a small file, however it is not a golden hammer for all situations in which I need to read data from the local file system. Never the less it would seem that I never got around to writing a post on this method, so lets get this one out of the way.
@@ -37,6 +37,8 @@ fs.readFile('./basic.js', (err, data) => {
 If I do not give an encoding when calling the read file method, the result that will be returned is a buffer for the data. This is because the default encoding for the read file method is binary. So then when it comes to reading text files there is the option of giving an encoding value when calling the method, or using the to string method of the buffer instance like I did in this example.
 
 ### 1.3 - Setting the encoding
+
+Often I am working with text files rather than some kind of binary data. Although I can alwoays just call the to string method of a buffer, often I give the utf8 encoding in order to read text files.
 
 ```js
 let fs = require('fs');
