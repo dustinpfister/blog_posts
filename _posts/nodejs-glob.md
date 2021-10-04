@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 12:03:28
-version: 1.31
+updated: 2021-10-04 12:06:21
+version: 1.32
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -163,6 +163,7 @@ path = require('path');
 // list markdown files at root of project folder
 const dir_root = path.join(__dirname, '..'),
 patt = path.join(dir_root, '*.md');
+console.log( 'globing: ' + patt );
 glob(patt, (err, files) => {
     if (err) {
         console.log(err);
@@ -173,6 +174,8 @@ glob(patt, (err, files) => {
 ```
 
 ### 3.2 - The process global to get positional arguments
+
+So then there is also the question of how to make use of [positional arguments](/2020/12/10/linux-bash-script-parameters-positional) to create a path to search with glob.
 
 ```js
 const glob = require('glob'),
