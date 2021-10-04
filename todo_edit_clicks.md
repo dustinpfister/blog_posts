@@ -8,6 +8,7 @@ This is a todo list where editing is prioritized based just purely on how much t
 * per category type decisions things should not be dictated by this list
 * the format for each listing header should be POST_FILE_NAME ( #RANK - CLICKS - DATE_LIST )
 * CLICKS should be the number of clicks that the post got over 3 Months sense DATE_LIST in google search console
+* update this list at least once a month.
 * when done with an item in a listing place a ( done MM/DD/YYYY ) at the beginning of the listing
 
 ### lodash_sum ( #1 - 1,736 clicks - 10/02/2021 )
@@ -21,13 +22,13 @@ This is a todo list where editing is prioritized based just purely on how much t
 * expand to 2,400+ words
 
 ### lodash_range ( #2 - 1,262 clicks - 10/02/2021 )
-* (done 10/03/2021 ) have 5+ internal links in the post
-* (done 10/03/2021 ) expand to 1,000+ words
-* (done 10/03/2021 ) expand to 1,800+ words
+* ( done 10/03/2021 ) have 5+ internal links in the post
+* ( done 10/03/2021 ) expand to 1,000+ words
+* ( done 10/03/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
 ### nodejs-glob ( #3 - 1,254 clicks - 10/02/2021 )
-* expand to 1,000+ words
+* ( done 10/04/2021 ) expand to 1,000+ words
 * expand to 1,800+ words
 * expand to 2,400+ words
 * have 5+ internal links in the post
