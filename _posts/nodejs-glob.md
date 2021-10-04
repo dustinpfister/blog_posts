@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 14:09:00
-version: 1.34
+updated: 2021-10-04 14:16:15
+version: 1.35
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -109,7 +109,7 @@ console.log(process.cwd());
 
 ### 2.4 - Reading files
 
-I looks like glob is just for matching files, but when it comes to actually reading the contents of the files and additional solution will need to be used in conjunction with glob. So out of the box it is not really a complete file system walker, but it is a valuable tool to create a walker from the ground up that will have support for glob patterns.
+I looks like glob is just for matching files, but when it comes to actually [reading the contents of the files](/2020/05/12/nodejs-filesystem-read-file/), and other file system related tasks, an additional solution will need to be used in conjunction with glob. So out of the box it is not really a complete file system walker, depending of course on how you go about defining such a thing, but it is a valuable tool to create a walker from the ground up that will have support for glob patterns.
 
 ```js
 const glob = require('glob'),
