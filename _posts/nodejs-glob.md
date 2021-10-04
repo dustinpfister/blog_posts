@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 14:18:55
-version: 1.36
+updated: 2021-10-04 15:24:08
+version: 1.37
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -194,7 +194,28 @@ glob(patt, (err, files) => {
 });
 ```
 
-## 4 - conclusion
+## 4 - Using promises
+
+It would seem that out of the box with glob there is no support for promises. However in the util module of versions of nodejs that support it there is a nodejs built in method that can be used to promisify a method that just uses old nodejs style callback functions. I often use this with the nodule built in file system module to make it so that those methods will return promises when I use them. However it would seem that this method also works well with the main function returned by the glob package also.
+
+```js
+const globMod = require('glob'),
+promisify = require('util').promisify,
+path = require('path'),
+glob = promisify(globMod);
+// glob now returns a promise
+const dir_root = path.join(__dirname, '..'),
+patt = path.join(dir_root, '*.md');
+glob(patt)
+.then((files)=>{
+    console.log(files);
+})
+.catch((e)=>{
+    console.log(e.message);
+})
+```
+
+## 5 - conclusion
 
 This is a great node.js solution to get working with glob patterns quickly. I might expand more on this with respect to the many different options that can be given, but for now there is the [readme](https://github.com/isaacs/node-glob/blob/master/README.md) of the project that details more of the options not covered in the content of this post. In addition to expanding more so on what the full features of the glob package are there is also writing some more actuality use case examples which is something else that I am planing for in future edits of this post.
 
