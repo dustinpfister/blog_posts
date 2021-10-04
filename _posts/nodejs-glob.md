@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:56:37
-version: 1.29
+updated: 2021-10-04 12:01:56
+version: 1.30
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -90,7 +90,7 @@ will search for and compile a list a file names for each mark down file found in
 
 ### 2.3 - Changing the current working path
 
-If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js. However another option for this sort of thing would be to just do something with the [paths module](/2017/12/27/nodejs-paths/) and the [nodejs globals](/2018/02/10/nodejs-glob/) like the \_\_dirname global, or the process cwd method. Which is what I often do not just when using this module, but in general with nodejs scripts when it comes to creating script and current working directory relative absolui5te paths.
+If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js. However another option for this sort of thing would be to just do something with the paths module like the \_\_dirname global, or the process cwd method. Which is what I often do not just when using this module, but in general with nodejs scripts when it comes to creating script and current working directory relative absolui5te paths.
 
 ```js
 const glob = require('glob'),
@@ -150,6 +150,8 @@ readFiles();
 ## 3 - Absolute paths and the glob module
 
 This might be a bit off topic, but it might be a good idea to quickly go over this when it comes to using the glob package, and paths in general in nodejs, and that is the topic of absolute, and relative paths. Whenever I am working on a nodejs script there are two general kinds of paths that come to mind. one kind of path is getting a path that is relative to a script, and the other is getting one relative to the current working directly. There are then two kinds of ways of getting these kinds of paths, one way is to use a relative path relative to a value such as what is in the \_\_dirname global. This kind of path would involving using .. with such a value to get a path that is relative to whatever the location of the script is in a file system. Another kind of path would be an absolute path from the root of the file system to the location that I want.
+
+So then in this section I will be going over a few examples that involve glob as well as the [paths module](/2017/12/27/nodejs-paths/) and the [nodejs globals](/2018/02/10/nodejs-globals) that is built into nodejs. Also theses examples make use of the \_\_dirname global that is another useful value that you should be aware of if you are not all ready, and features of the process object also.
 
 ### 3.1 - The __dirname global
 
