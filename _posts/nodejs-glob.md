@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:26:05
-version: 1.27
+updated: 2021-10-04 11:31:18
+version: 1.28
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -90,7 +90,7 @@ will search for and compile a list a file names for each mark down file found in
 
 ### 2.3 - Changing the current working path
 
-If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js.
+If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js. However another option for this sort of thing would be to just do something with the [paths module](/2017/12/27/nodejs-paths/) and the [nodejs globals](/2018/02/10/nodejs-glob/) like the \_\_dirname global, or the process cwd method. Which is what I often do not just when using this module, but in general with nodejs scripts when it comes to creating script and current working directory relative absolui5te paths.
 
 ```js
 const glob = require('glob'),
