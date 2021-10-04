@@ -30,7 +30,7 @@ This is a todo list where editing is prioritized based just purely on how much t
 ### nodejs-glob ( #3 - 1,254 clicks - 10/02/2021 )
 * ( done 10/04/2021 ) have 5+ internal links in the post
 * ( done 10/04/2021 ) expand to 1,000+ words
-* expand to 1,800+ words
+* ( done 10/04/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
 ### lodash_countby ( #4- 1,236 clicks - 10/02/2021 )
