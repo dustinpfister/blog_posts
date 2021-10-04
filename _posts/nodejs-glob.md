@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:04:04
-version: 1.21
+updated: 2021-10-04 11:09:37
+version: 1.22
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -32,7 +32,7 @@ The source code examples that I am writing about in this post are up on github i
 
 ### 1.3 - What are globs and the \* wildcard
 
-It is a way of making use of a wildcard character \* to represent zero or more characters so that:
+The major feture of glob patterns is having a way of making use of a wildcard character \* to represent zero or more characters so that:
 
 ```
 *.txt
@@ -40,9 +40,15 @@ It is a way of making use of a wildcard character \* to represent zero or more c
 
 Will match any file with a .txt extension which will match helloworld.txt, and readme.txt, but not index.js in a given directory. This is something that I have been using for years when it comes to filtering files in file system managers, command line interface terminals an so forth. Globs might be less powerful then regEx patterns, but for most use case examples simplified glob patterns are still good enough to get the job done when it comes to pattern matching and paths.
 
-## 2 - Basic usage of glob in nodejs
+## 2 - Basic usage of a glob in nodejs
 
-The name of the package is just simply glob, so it can be added to an node project with the usual syntax like this:
+In this section I will be going over a few basic examples of the npm package known as glob. This is not a built in package, but a user space module that can be installed to a project by way of the default package manager for node called npm. So then there is creatijg a new test prooect folder and then doing an:
+
+```
+$ npm init
+```
+
+In the root name space of the folder. Also there is looking at the github folder that I linked to in the first section of this post. When it comes to starting from the ground up the name of the package is just simply glob, so it can be added to an node project with the usual syntax like this:
 
 ```
 $ npm install glob --save
