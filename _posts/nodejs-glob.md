@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:12:02
-version: 1.23
+updated: 2021-10-04 11:15:48
+version: 1.24
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -71,7 +71,7 @@ glob('*.js', (err, files) => {
 });
 ```
 
-By default glob will search for files that fit the given pattern in the current working directory. When I call this from there it just gives me \[basic.js\] as that is the only javaScript file in my test folder as of this writing, but I can search recursively using the \*\* pattern.
+By default glob will search for files that fit the given pattern in the current working directory. So then when I call this from the folder in which I have it in my github repository it will list all the examples in that folder. When it comes to making some kind of global script that is more or less what I will want to happen. However when it comes to making some kind of actually command line tool I will typically want to make this a positional argument. However for now this will work fine as a basic example.
 
 ### 2.2 - The ** wildcard
 
