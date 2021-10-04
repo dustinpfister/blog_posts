@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:09:37
-version: 1.22
+updated: 2021-10-04 11:12:02
+version: 1.23
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -32,7 +32,7 @@ The source code examples that I am writing about in this post are up on github i
 
 ### 1.3 - What are globs and the \* wildcard
 
-The major feture of glob patterns is having a way of making use of a wildcard character \* to represent zero or more characters so that:
+The major feature of glob patterns is having a way of making use of a wildcard character \* to represent zero or more characters so that:
 
 ```
 *.txt
@@ -42,7 +42,7 @@ Will match any file with a .txt extension which will match helloworld.txt, and r
 
 ## 2 - Basic usage of a glob in nodejs
 
-In this section I will be going over a few basic examples of the npm package known as glob. This is not a built in package, but a user space module that can be installed to a project by way of the default package manager for node called npm. So then there is creatijg a new test prooect folder and then doing an:
+In this section I will be going over a few basic examples of the npm package known as glob. This is not a built in package, but a user space module that can be installed to a project by way of the default package manager for node called npm. So then there is creating a new test project folder and then doing an:
 
 ```
 $ npm init
