@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:20:16
-version: 1.25
+updated: 2021-10-04 11:22:35
+version: 1.26
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -88,7 +88,7 @@ glob('../**/*.md', forFiles);
 
 will search for and compile a list a file names for each mark down file found in the current working path and any additional path in the current working folder.
 
-## 4 - Changing the current working path
+### 2.3 - Changing the current working path
 
 If three arguments are passed to to glob the second can be an options object, and one of the many options that can be changed is the current working directory which by default is what is returned by process.cwd\(\) in node.js.
 
@@ -107,7 +107,7 @@ glob('**/*.md', options, forFiles);
 console.log(process.cwd());
 ```
 
-## 5 - Reading files
+### 2.4 - Reading files
 
 I looks like glob is just for matching files, but when it comes to actually reading the contents of the files and additional solution will need to be used in conjunction with glob. So out of the box it is not really a complete file system walker, but it is a valuable tool to create a walker from the ground up that will have support for glob patterns.
 
