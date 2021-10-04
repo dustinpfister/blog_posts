@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 14:04:05
-version: 1.33
+updated: 2021-10-04 14:09:00
+version: 1.34
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -155,7 +155,7 @@ So then in this section I will be going over a few examples that involve glob as
 
 ### 3.1 - The __dirname global
 
-This example makes use of the dir name global along with the join method to resolve a relative path from the location of the script file to an absolute path that is the root of the project folder.
+This example makes use of the dir name global along with the join method of the nodejs built in path module to resolve a relative path from the location of the script file to an absolute path that is the root of the project folder. The location of this script is just one folder up from the root of the root project folder, so then a relative path from the current script to one parent folder back would get me to the root folder. The dir name global is the folder of the current script, so then joining that with the .. will result in a relative pattern to the root folder of the project. The use of the path join method will result in this being an absolute path of this location.
 
 ```js
 const glob = require('glob'),
