@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 657
-updated: 2021-10-04 16:05:15
-version: 1.8
+updated: 2021-10-04 16:07:56
+version: 1.9
 ---
 
 The nodejs [read file file system method](https://nodejs.org/en/knowledge/file-system/how-to-read-files-in-nodejs/) is a method in node build in [file system module](/2018/02/08/nodejs-filesystem/). This method might work just fine when I just want to read a file in full, and not do anything fancy with streaming or reading by way of a buffer. In most cases this method will work fine if I just simple want to read a small file, however it is not a golden hammer for all situations in which I need to read data from the local file system. Never the less it would seem that I never got around to writing a post on this method, so lets get this one out of the way.
@@ -38,7 +38,7 @@ If I do not give an encoding when calling the read file method, the result that 
 
 ### 1.3 - Setting the encoding
 
-Often I am working with text files rather than some kind of binary data. Although I can alwoays just call the to string method of a buffer, often I give the utf8 encoding in order to read text files.
+Often I am working with text files rather than some kind of binary data. Although I can always just call the to string method of a buffer, often I give the utf8 encoding in order to read text files.
 
 ```js
 let fs = require('fs');
@@ -49,6 +49,8 @@ fs.readFile('./basic.js', 'utf8', (err, data) => {
 ```
 
 ### 1.4 - Error handing
+
+The first argument of the callback function used with the read file method is for any errors that might happen when reading a file. If all goes well the value of this error argument is null when resolves to a false value. However when something does go bad there are a few things that can happen when reading files. The most typical errors though would be not file access permissions, and the file not being there.
 
 ```js
 let fs = require('fs'),
