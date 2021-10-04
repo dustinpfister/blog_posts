@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 101
-updated: 2021-10-04 11:31:18
-version: 1.28
+updated: 2021-10-04 11:56:37
+version: 1.29
 ---
 
 If you have been using computers as long as I have you might have by now come across the use of [glob patterns](https://en.wikipedia.org/wiki/Glob_%28programming%29) as a way to use a \* wildcard to represent any string of characters. Although this kind of pattern may not always be a full replacement for [regular expressions](/2019/03/20/js-regex/), I am pretty comfortable with this method of selecting files that fit a certain pattern this way. So it would be nice to quickly go about doing so in a nodejs programing environment. 
@@ -147,7 +147,45 @@ const readFiles = function (pat, forFile) {
 readFiles();
 ```
 
-## 6 - conclusion
+## 3 - Absolute paths and the glob module
+
+This might be a bit off topic, but it might be a good idea to quickly go over this when it comes to using the glob package, and paths in general in nodejs, and that is the topic of absolute, and relative paths. Whenever I am working on a nodejs script there are two general kinds of paths that come to mind. one kind of path is getting a path that is relative to a script, and the other is getting one relative to the current working directly. There are then two kinds of ways of getting these kinds of paths, one way is to use a relative path relative to a value such as what is in the \_\_dirname global. This kind of path would involving using .. with such a value to get a path that is relative to whatever the location of the script is in a file system. Another kind of path would be an absolute path from the root of the file system to the location that I want.
+
+### 3.1 - The __dirname global
+
+```js
+const glob = require('glob'),
+path = require('path');
+// list markdown files at root of project folder
+const dir_root = path.join(__dirname, '..'),
+patt = path.join(dir_root, '*.md');
+glob(patt, (err, files) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(files);
+    }
+});
+```
+
+### 3.2 - The process global to get positional arguments
+
+```js
+const glob = require('glob'),
+path = require('path');
+// resolve first positional argument or ./*.js
+const patt = path.resolve(process.argv[2] || './*.js');
+console.log( 'globing: ' + patt );
+glob(patt, (err, files) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(files);
+    }
+});
+```
+
+## 4 - conclusion
 
 This is a great node.js solution to get working with glob patterns quickly. I might expand more on this with respect to the many different options that can be given, but for now there is the [readme](https://github.com/isaacs/node-glob/blob/master/README.md) of the project that details more of the options not covered in the content of this post. In addition to expanding more so on what the full features of the glob package are there is also writing some more actuality use case examples which is something else that I am planing for in future edits of this post.
 
