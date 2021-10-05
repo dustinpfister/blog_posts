@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 11:43:30
-version: 1.26
+updated: 2021-10-05 11:48:51
+version: 1.27
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -194,6 +194,8 @@ On top of the count by lodash method there is also a [key by](/2018/10/24/lodash
 
 ### 4.1 - lodash key by
 
+The key by method works more or less the same way as the count by method in the sense that the return value of the function given to the method will be the key value for the new object that is returned. However this time it is not abut racking up a count but just assigning a single value to a key in the object. When dealing with a collection of object like the one covered in the basic section of the post this might not result in a desired result.
+
 ```js
 let arr = [
     { username: 'john', score: 37},
@@ -212,6 +214,8 @@ console.log(keyed);
   pass: { username: 'jake', score: 67 } }
 */
 ```
+
+The lodash keyby method might work okay when it comes to recreating what the public keys are for an object, but it is not a good choice for getting a count of something, or creating groups.
 
 ### 4.2 - lodash group by
 
