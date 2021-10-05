@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 11:57:02
-version: 1.29
+updated: 2021-10-05 12:01:02
+version: 1.30
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -157,7 +157,7 @@ console.log(counts);
 
 ### 3.2 - A vanilla javaScript count by method using Object.keys
 
-In this example I am making a count by method that will work with arrays and objects in general by making use of the [object keys](/2018/12/15/js-object-keys/) static method.
+In this example I am making a count by method that will work with arrays and objects in general by making use of the [object keys](/2018/12/15/js-object-keys/) static method. This Object keys method will create and return an array of public key names for the object that I give it. I can then loop over the array of key names to have a key name as well as a value for each element in the object collection, as this should work fine for both arrays and objects in general. That is that in the event that I pass an array to the object keys method that will give me an array of numbered keys while other objects will given me whatever the key names are.
 
 ```js
 var countBy = (obj, func) => {
