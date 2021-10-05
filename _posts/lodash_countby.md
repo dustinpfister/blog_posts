@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 12:15:41
-version: 1.35
+updated: 2021-10-05 12:17:04
+version: 1.36
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -95,7 +95,7 @@ console.log(obj);
 
 ### 2.2 - game score delta
 
-Now for a quick example of using the lodash count by method to create a score delta value. This will not be a full working game example mind you, just a little code that has to do with adding up what a score should be for an array of dead enemy units. So with that said say I have an object that defines stats for all the unit types in a game. When it comes to having an object pool of enemy units each of those objects should have a type property that can be used to reference this units object. So then the count by lodash method could be used as a way to get a count for each of the units in a dead unit collection, and then it would just be a matter of multiplying a points worth value for each count to add up a delta to add to the score value.
+Now for a quick example of using the lodash count by method to create a score delta value. This will not be a full working game example mind you, just a little code that has to do with adding up what a score should be for an array of dead enemy units. So with that said say I have an object that defines stats for all the unit types in a game. When it comes to having an [object pool](/2020/07/20/canvas-example-object-pool/) of enemy units each of those objects should have a type property that can be used to reference this units object. So then the count by lodash method could be used as a way to get a count for each of the units in a dead unit collection, and then it would just be a matter of multiplying a points worth value for each count to add up a delta to add to the score value.
 
 ```js
 let units = {
@@ -125,7 +125,7 @@ let scoreDelta = Object.keys(typeCounts).reduce((acc, key) => {
 console.log(scoreDelta); // 11
 ```
 
-Although this would work fine I have to admit that when it comes to working on a real game project I would likely just directly loop over the dead units collection and add up the point values that way. However I just wanted to add a quick use case examples like this as a way to just have a use case example that has somehting to do with games.
+Although this would work fine I have to admit that when it comes to working on a real game project I would likely just directly loop over the dead units collection and add up the point values that way. However I just wanted to add a quick use case examples like this as a way to just have a use case example that has something to do with games.
 
 ## 3 - vanilla javaScript alternatives to count by
 
