@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 12:05:15
-version: 1.31
+updated: 2021-10-05 12:08:53
+version: 1.32
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -131,7 +131,7 @@ There is not direct native counterpart for the lodash count by method unlike man
 
 ### 3.1 - Array for each
 
-In this example I am using the [array for each method](/2019/02/16/js-javascript-foreach/) to loop over a source array, and use each element in the source to create and step keys for a count object.
+In this example I am using the [array for each method](/2019/02/16/js-javascript-foreach/) to loop over a source array, and use each element in the source to create and step keys for a count object. This of course will only work for arrays in general though, and I also am writing the expression that will create the key in the for each method also. So if I want to create a little javaScript that will be a true count by method I will want to do a little bit more than just this.
 
 ```js
 let arr = [{
