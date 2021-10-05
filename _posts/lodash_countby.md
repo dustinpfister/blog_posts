@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 10:09:40
-version: 1.12
+updated: 2021-10-05 10:11:08
+version: 1.13
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -21,7 +21,7 @@ When I do so sometimes it looks like native methods are just being wrapped by lo
 
 ## 1 - Basic count by Examples and what to know
 
-In this section I will be starting out with just a few basic examples of the lodash count by method. I will be trying to keep the examples in this section fairly simple, but this is still not a getting started type post with lodash or javaScript in general. So I assume that you have at least some background with javaScript, and how to work with code examples in a client side javaScript or nodejs environment.
+In this section I will be starting out with just a few basic examples of the lodash count by method. I will be trying to keep the examples in this section fairly simple, but this is still not a getting started type post with lodash or [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least some background with javaScript, and how to work with code examples in a client side javaScript or nodejs environment.
 
 ### 1.1 - Giving a function as the second argument
 
