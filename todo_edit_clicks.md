@@ -35,8 +35,8 @@ This is a todo list where editing is prioritized based just purely on how much t
 
 ### lodash_countby ( #4- 1,236 clicks - 10/02/2021 )
 * ( done 10/05/2021 ) have 5+ internal links in the post
-* ( done 10/04/2021 ) expand to 1,000+ words
-* expand to 1,800+ words
+* ( done 10/05/2021 ) expand to 1,000+ words
+* ( done 10/05/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
 ### lodash_includes ( #5 - 1,137 clicks - 10/02/2021 )
