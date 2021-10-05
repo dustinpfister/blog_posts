@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 12:19:54
-version: 1.37
+updated: 2021-10-05 12:22:17
+version: 1.38
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -82,7 +82,7 @@ In this section I will now be going over a few quick use case examples, now that
 
 ### 2.1 - Word counts
 
-If I want to get a count for each and every word in a text source, rather than just over all word count, then the count by method could be used for this.
+If I want to get a count for each and every word in a text source, rather than just over all word count, then the count by method could be used for this. When it comes to creating an array from a string one quick way to go about doing it would be to just one the array split method and give a space as the first and only argument. Although that might work okay for this example, when it comes to a real text source a bot more would need to be done when it comes to creating what is often called a tokenizer.
 
 ```js
 let words = 'chew foo man foo chew foo foo'.split(' ');
