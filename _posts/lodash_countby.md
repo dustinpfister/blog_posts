@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 10:19:00
-version: 1.18
+updated: 2021-10-05 10:21:29
+version: 1.19
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -74,7 +74,7 @@ console.log( _.countBy(words, 'length') );
 
 ### 1.3 - The souce code examples in this post are on github
 
-The souce code examples in this post can be found in my [test lodash github repository](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_countby).
+The source code examples in this post can be found in my [test lodash github repository](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_countby).
 
 ## 2 - Some use case examples
 
@@ -125,7 +125,9 @@ let scoreDelta = Object.keys(typeCounts).reduce((acc, key) => {
 console.log(scoreDelta); // 11
 ```
 
-## 3 - 
+## 3 - vanilla javaScript alternatives to count by
+
+There is not direct native counterpart for the lodash count by method unlike many other methods in lodash. However this is something that is still not all that hard to do with just a little native javaSccript. So in this section I will be going over a few source code examples that produce the same end result as the lodash count by method without using lodash.
 
 ### 3.1 - 
 
