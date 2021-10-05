@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 12:08:53
-version: 1.32
+updated: 2021-10-05 12:11:29
+version: 1.33
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -95,7 +95,7 @@ console.log(obj);
 
 ### 2.2 - game score delta
 
-Now for a quick example of using the lodash count by method to create a score delta value.
+Now for a quick example of using the lodash count by method to create a score delta value. This will not be a full working game example mind you, just a little code that has to do with adding up what a score should be for an array of dead enemy units. So with that said say I have an object that defines stats for all the unit types in a game. When it comes to having an object pool of enemy units each of those objects should have a type property that can be used to reference this units object.
 
 ```js
 let units = {
