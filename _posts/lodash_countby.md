@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 11:41:55
-version: 1.25
+updated: 2021-10-05 11:43:30
+version: 1.26
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -190,7 +190,7 @@ console.log(countBy(arr, function (el) {
 
 ## 4 - The key by and group by lodash methods
 
-On top of the count by lodash method there is also a key by and group by methods in lodash also. In this section the source code examples will be about these other lodash methods, and as such what they share in common with the lodash count by method. Also of course the examples should also show how the key by and group by methods differ from the count by method.
+On top of the count by lodash method there is also a [key by](/2018/10/24/lodash_keyby/) and [group by](/2018/08/02/lodash_groupby/) methods in lodash also. In this section the source code examples will be about these other lodash methods, and as such what they share in common with the lodash count by method. Also of course the examples should also show how the key by and group by methods differ from the count by method.
 
 ### 4.1 - lodash key by
 
