@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 11:48:51
-version: 1.27
+updated: 2021-10-05 11:53:36
+version: 1.28
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -215,9 +215,11 @@ console.log(keyed);
 */
 ```
 
-The lodash keyby method might work okay when it comes to recreating what the public keys are for an object, but it is not a good choice for getting a count of something, or creating groups.
+The lodash keyby method might work okay when it comes to recreating what the public keys are for an object, but it is not a good choice for getting a count of something, or creating groups. However there is a method in lodash that might prove to be a more versatile choice from count by called the lodash group by method.
 
-### 4.2 - lodash group by
+### 4.2 - lodash group by method
+
+The lodash count by method will create an return a new object where head key is a return value of a given function, and the value will be a primitive that is the count of times that key value has happened. However if I want to have an array of values for which that ha shappned rather than a count there is the group by method.
 
 ```js
 let _ = require('lodash');
