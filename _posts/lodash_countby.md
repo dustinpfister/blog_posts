@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 11:16:30
-version: 1.23
+updated: 2021-10-05 11:39:53
+version: 1.24
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -188,6 +188,70 @@ console.log(countBy(arr, function (el) {
     }));
 ```
 
-## 4 - Conclusion
+## 4 - The key by and group by lodash methods
+
+### 4.1 - lodash key by
+
+```js
+let arr = [
+    { username: 'john', score: 37},
+    { username: 'jake', score: 67},
+    { username: 'bill', score: 20}
+];
+
+let func = (rec) => {
+    return rec.score >= 65 ? 'pass' : 'fail';
+};
+
+let keyed = _.keyBy(arr, func);
+console.log(keyed);
+/*
+{ fail: { username: 'bill', score: 20 },
+  pass: { username: 'jake', score: 67 } }
+*/
+```
+
+### 4.2 - lodash group by
+
+```js
+let _ = require('lodash');
+ 
+let arr = [
+    { username: 'john', score: 37},
+    { username: 'jake', score: 67},
+    { username: 'bill', score: 20}
+];
+ 
+let func = (rec) => {
+    return rec.score >= 65 ? 'pass' : 'fail';
+};
+ 
+let keyed = _.groupBy(arr, func);
+console.log(keyed);
+/*
+{ fail: [{ username: 'john', score: 37},{ username: 'bill', score: 20 }],
+  pass: [{ username: 'jake', score: 67 }] }
+*/
+```
+
+### 4.3 - Key by, group by and count by
+
+```js
+let arr = [
+    { username: 'john', score: 37},
+    { username: 'jake', score: 67},
+    { username: 'bill', score: 20}
+];
+ 
+let func = (rec) => {
+    return rec.score >= 65 ? 'pass' : 'fail';
+};
+ 
+console.log( _.keyBy(arr, func) );
+console.log( _.groupBy(arr, func) );
+console.log( _.countBy(arr, func) );
+```
+
+## 5 - Conclusion
 
 This \_.countBy method might come in handy for some situations in which I quickly want to make an object that has keys, and values that are the result of some kind of condition. This makes \_.countBy one of the methods in lodash to be aware of to make quick work of any kind of situation where it would come in handy.
