@@ -237,3 +237,14 @@ This is a general todo list for what I want to get done when it comes to editing
 * (done) create a github repo for this post
 * (done) link to the github repo from the post
 
+
+
+<!--###### ########## ########## #######-->
+## lodash ( /yyyy/mm/dd/lodash* )
+<!--###### ########## ########## #######-->
+
+### (   ) - lodash_keyby ( like count by - see clicks list)
+
+### (   ) - lodash_groupby ( like count by - see clicks list)
+
+### (   ) - lodash_compact ( to long sense last edit )
