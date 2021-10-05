@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 11:53:36
-version: 1.28
+updated: 2021-10-05 11:57:02
+version: 1.29
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -219,7 +219,7 @@ The lodash keyby method might work okay when it comes to recreating what the pub
 
 ### 4.2 - lodash group by method
 
-The lodash count by method will create an return a new object where head key is a return value of a given function, and the value will be a primitive that is the count of times that key value has happened. However if I want to have an array of values for which that ha shappned rather than a count there is the group by method.
+The lodash count by method will create an return a new object where head key is a return value of a given function, and the value will be a primitive that is the count of times that key value has happened. However if I want to have an array of values for which that has happened rather than a count there is the group by method.
 
 ```js
 let _ = require('lodash');
@@ -244,6 +244,8 @@ console.log(keyed);
 
 ### 4.3 - Key by, group by and count by
 
+So now for a quick recap of all the choices when it comes to key by, group by, and count by.
+
 ```js
 let arr = [
     { username: 'john', score: 37},
@@ -259,6 +261,8 @@ console.log( _.keyBy(arr, func) );
 console.log( _.groupBy(arr, func) );
 console.log( _.countBy(arr, func) );
 ```
+
+So then there is what is in common where each of the methods create an new object with keys that are return values of a given function. The difference between them has to do with what the values for these keys should be. The key by method will just simply do that, and the value will be whatever the last value was when going over the collection. The group by object will do the same only it will create arrays of values for these key values of the object, and the count by method will give a number primitive for each key.
 
 ## 5 - Conclusion
 
