@@ -1,12 +1,12 @@
 ---
-title: The lodash _.property method
+title: The lodash property method
 date: 2018-01-31 15:15:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 140
-updated: 2019-11-04 11:51:23
-version: 1.5
+updated: 2021-10-05 10:15:18
+version: 1.6
 ---
 
 The [lodash](https://lodash.com/) [\_.property method](https://lodash.com/docs/4.17.4#property) is one of several methods in lodash that can be used to create a method that is to be used with another lodash method such as [\_.find](/2017/09/14/lodash-find/) or [\_.map](/2018/02/02/lodash_map/). The lodash property method returns a method that when used with a lodash method like \_.map will return a property of an element object in an array. So lets look at some simple quick examples of this method to see what the lodash property method is all about, and also if it is not that big of a deal to not even bother with it.
