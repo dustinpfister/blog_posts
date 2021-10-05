@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-10-05 12:13:43
-version: 1.34
+updated: 2021-10-05 12:15:41
+version: 1.35
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -124,6 +124,8 @@ let scoreDelta = Object.keys(typeCounts).reduce((acc, key) => {
  
 console.log(scoreDelta); // 11
 ```
+
+Although this would work fine I have to admit that when it comes to working on a real game project I would likely just directly loop over the dead units collection and add up the point values that way. However I just wanted to add a quick use case examples like this as a way to just have a use case example that has somehting to do with games.
 
 ## 3 - vanilla javaScript alternatives to count by
 
