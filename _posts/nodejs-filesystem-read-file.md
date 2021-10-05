@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 657
-updated: 2021-10-05 12:42:45
-version: 1.12
+updated: 2021-10-05 12:53:46
+version: 1.13
 ---
 
 The nodejs [read file file system method](https://nodejs.org/en/knowledge/file-system/how-to-read-files-in-nodejs/) is a method in node build in [file system module](/2018/02/08/nodejs-filesystem/). This method might work just fine when I just want to read a file in full, and not do anything fancy with streaming or reading by way of a buffer. In most cases this method will work fine if I just simple want to read a small file, however it is not a golden hammer for all situations in which I need to read data from the local file system. Never the less it would seem that I never got around to writing a post on this method, so lets get this one out of the way.
@@ -91,7 +91,32 @@ fs.readFile(uri_conf, 'utf8', (err, data) => {
 });
 ```
 
-## 2 - Conclusion
+## 2 - return a promise on old version sof node
+
+In late version of nodejs a promise will be returned when using the read file method, however this was not always the case. If for some reason I want to support older version of nodejs I will want to use one or more ways to make a new method that will return a promise that makes use of the read file method. ways to go about doing this sort of thing would include using some kind of feature in core javaScriot, nodejs, or a user space library.
+
+### 2.1 - Using the promisify method of the util module
+
+```js
+let fs = require('fs'),
+promisify = require('util').promisify,
+readFile = promisify(fs.readFile);
+
+let fileName = process.argv[2] || 'util.js';
+
+readFile(fileName, 'utf8')
+.then((data) => {
+    console.log(Buffer.isBuffer(data)); // true
+    console.log(typeof data); // 'object'
+    console.log(data.toString()); // [text of this code]
+})
+.catch((e) => {
+    console.warn(e.message);
+});
+
+```
+
+## 3 - Conclusion
 
 That will be it for now when it comes to the read file method of the file system module in nodejs. For now I just wanted to cover the basics of the method at least, however I do have plans to further expand this post when I get some more time to do so.
 
