@@ -5,8 +5,8 @@ tags: [node.js]
 layout: post
 categories: node.js
 id: 657
-updated: 2021-10-05 12:53:46
-version: 1.13
+updated: 2021-10-05 12:59:13
+version: 1.14
 ---
 
 The nodejs [read file file system method](https://nodejs.org/en/knowledge/file-system/how-to-read-files-in-nodejs/) is a method in node build in [file system module](/2018/02/08/nodejs-filesystem/). This method might work just fine when I just want to read a file in full, and not do anything fancy with streaming or reading by way of a buffer. In most cases this method will work fine if I just simple want to read a small file, however it is not a golden hammer for all situations in which I need to read data from the local file system. Never the less it would seem that I never got around to writing a post on this method, so lets get this one out of the way.
@@ -96,6 +96,8 @@ fs.readFile(uri_conf, 'utf8', (err, data) => {
 In late version of nodejs a promise will be returned when using the read file method, however this was not always the case. If for some reason I want to support older version of nodejs I will want to use one or more ways to make a new method that will return a promise that makes use of the read file method. ways to go about doing this sort of thing would include using some kind of feature in core javaScriot, nodejs, or a user space library.
 
 ### 2.1 - Using the promisify method of the util module
+
+In this example I am using the [promisify method of the nodejs build in util](/2019/06/22/nodejs-util-promisify/) module.
 
 ```js
 let fs = require('fs'),
