@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:27:40
-version: 1.34
+updated: 2021-10-07 17:29:49
+version: 1.35
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -409,7 +409,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 So then here is my grid module based off of what I made for my javaScript example post on a grid module. It is more or less the same as what I worked out for my node example above, but I just made some changes to the source code of my grid module example to create one that has path finding.
 
-This is a little tricky as the grid module that I made that I wanted to use for this example works by having all the cells, or nodes if you prefer in a single array, rather than an array of arrays. There are many user space libraries, as well as built in javaScript features that use this kind of standard for a 2d matrix. However the older path finding module that I made does not use this kind of standard, so I needed to make a chunk method that will convert one standard to another.
+This is a little tricky as the grid module that I made that I wanted to use for this example works by having all the cells, or nodes if you prefer in a single array, rather than an array of arrays. There are many user space libraries, as well as built in javaScript features that use this kind of standard for a 2d matrix. However the older path finding module that I made does not use this kind of standard, so I needed to make a chunk method that will convert one standard to another. In [lodash there is a chunk](/2017/09/13/lodash-chunk/) method that would be useful in these kinds of situations, but for this example I would like to stuck to vanilla javaScript only.
 
 ```js
 (function (api) {
