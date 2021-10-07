@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 15:30:37
-version: 1.23
+updated: 2021-10-07 15:33:55
+version: 1.24
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -27,6 +27,10 @@ This is a post on the subject of path finding in a javaScript environment. This 
 
 On github I have my test vjs repository which is where I park all my source code examples for blog posts such as this on javaScript in general. The source code examples for this post can be found in the [for post folder for this post on path detection](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-path-find) in that repository. I get around to editing my older posts on javaScript now and then and this post is no exception, so the latest state of the examples are there. In the event that something seems wrong with the source code that would also be where to go about making a pull request.
 
+### 1.2 - Might want to come up with some kind of grid module first
+
+Before getting into path finding I will first need some kind of [Grid module](/2021/08/20/js-javascript-example-grid-module). There are a bunch of ways of going about making this kind of module, however just about any gird module will consist of a 2d collection of objects in one form or another.
+
 ## 2 - Vanilla js path find solution example for nodejs
 
 In this section I will be writing about my own js path fining solution that I put together after studying the source code of the PathFinding.js repository at github. I have not battle tested this, but the basic idea seems to work okay so far for what it is worth. 
@@ -35,7 +39,7 @@ The solution makes use of a grid that is created by another dependency that I am
 
 ### 2.1 - Grid module
 
-First off I need some kind of [Grid module](/2021/08/20/js-javascript-example-grid-module/), or at least decide on some kind of standard format for a grid. So then I worked out a module that will have a Class for what a single Node or tile if you prefer in a Grid, and of course a Grid class.
+First off I need some kind of grid module, or at least decide on some kind of standard format for a grid. So then I worked out a module that will have a Class for what a single Node or tile if you prefer in a Grid, and of course a Grid class.
 
 ```js
 // Node Constructor
