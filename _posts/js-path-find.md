@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:36:55
-version: 1.38
+updated: 2021-10-07 17:38:30
+version: 1.39
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -242,7 +242,7 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
 
 ### 2.3 - Helpers
 
-So then I worked out some additional code to help with things like printing the state of a grid to the standard output of the console in a node project.
+So then I worked out some additional code to help with things like printing the state of a grid to the standard output of the console in a node project. In this library I am using my find path module to get an array of node positions for a set path, and then drawing that.
 
 ```js
 let findPath = require('./find-path.js'),
