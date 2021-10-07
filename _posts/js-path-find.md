@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:38:30
-version: 1.39
+updated: 2021-10-07 17:41:46
+version: 1.40
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -282,7 +282,7 @@ exports.setStartEnd = (grid, sx, sy, ex, ey) => {
 
 ### 2.4 - Using the lib
 
-So now that I have my grid library and by path finder worked out I can now work out some examples that make use of it.
+So now that I have my grid library and by path finder worked out I can now work out some examples that make use of it. So then I worked out a few test scripts to see if things work they way that they should more or less with this.
 
 ```js
 let Grid = require('./grid/grid.js').Grid,
@@ -312,6 +312,8 @@ let g = Grid.fromMatrix([
 helpers.setStartEnd(g, 0, 0, 2, 0);
 helpers.print(g);
 ```
+
+When I call this script form the command line I have a path from the start to end location. So it would seem that the module works okay. However I would want to do a fair amount of more testing, and I am not fully happy with how the source code looks. However I think that when it comes to really making this kind of project I will want to make it a little more front end friendly actually.
 
 ## 3 - Client side javaScript and canvas
 
