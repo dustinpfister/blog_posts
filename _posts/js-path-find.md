@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:31:15
-version: 1.36
+updated: 2021-10-07 17:34:53
+version: 1.37
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -39,7 +39,7 @@ The solution makes use of a grid that is created by another dependency that I am
 
 ### 2.1 - Grid module
 
-First off I need some kind of grid module, or at least decide on some kind of standard format for a grid. So then I worked out a module that will have a Class for what a single Node or tile if you prefer in a Grid, and of course a Grid class.
+First off I need some kind of grid module, or at least decide on some kind of standard format for a grid. So then I worked out a module that will have a Class for what a single Node or tile if you prefer in a Grid, and of course a Grid class. I also worked out a number of other useful methods that I will want for this kind of module when it comes to making a path finding method of some kind. For example there is having a method that will return all of the nodes that border a given node which is an impotent first step for this sort of thing.
 
 ```js
 // Node Constructor
