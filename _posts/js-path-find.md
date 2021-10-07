@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:45:08
-version: 1.42
+updated: 2021-10-07 17:46:59
+version: 1.43
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -653,7 +653,7 @@ draw.grid = function (grid, ctx, canvas) {
 
 ### 3.4 - The main javaScript file
 
-Now I just need a little more javaScript code to test out that my grid module with a find path method is working okay.
+Now I just need a little more javaScript code to test out that my grid module with a find path method is working okay. When it comes to my main javaScript file for this canvas example of path detection I started out by creating an main state machine object, that loosely follows one of the many standards that I have made for these sorts of things.
 
 ```js
 var sm = {
