@@ -84,9 +84,9 @@ This is a general todo list for what I want to get done when it comes to editing
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
 
-### ( ) - js-path-find ( relevant to Clucker.js dev )
+### ( done 10/07/2021 ) - js-path-find ( relevant to Clucker.js dev )
 * (done) edit post to 1,000+ words
-* edit post to 1,800+ words
+* (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
 
 ### ( done 10/02/2021 ) - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
