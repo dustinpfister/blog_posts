@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:49:11
-version: 1.44
+updated: 2021-10-07 17:53:27
+version: 1.45
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -736,6 +736,8 @@ var loop = function () {
  
 loop();
 ```
+
+So then when this example is up and running I get a path of grid cells between that start and end cell locations of the grid. For the most path it would seem that the grid module works okay, but there are a few times where a weird path happens. My best guess as to what i could do to fix that would be to just try to get a better weight system that would be used to make choices as to what direction to go in. I could standard to do a little more testing, and I would like to work out some ore canvas examples that make use of this kind of system as a way to help make it a little more battle tested.
 
 ## 4 - Conclusion
 
