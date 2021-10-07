@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:17:13
-version: 1.29
+updated: 2021-10-07 17:18:37
+version: 1.30
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -407,7 +407,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 ### 3.2 - The grid module
 
-So then here is my grid module based off of what I made for my javaScript example post on a grid module. It is more or less the same as what I worked out for my node example above, but I just made some changes to the souycre code of my grid module example to create one that has path finding.
+So then here is my grid module based off of what I made for my javaScript example post on a grid module. It is more or less the same as what I worked out for my node example above, but I just made some changes to the source code of my grid module example to create one that has path finding.
 
 ```js
 (function (api) {
@@ -629,7 +629,22 @@ So then here is my grid module based off of what I made for my javaScript exampl
 
 ### 3.3 - The draw module
 
+So then because This is a canvas project I often have a stand alone file for a few draw methods.
+
 ```js
+var draw = {};
+// draw a background
+draw.background = function (sm, ctx, canvas) {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+// draw the given grid object
+draw.grid = function (grid, ctx, canvas) {
+    grid.cells.forEach(function (cell) {
+        ctx.fillStyle = cell.data.fillStyle || 'white';
+        ctx.fillRect(cell.x, cell.y, grid.cellSize, grid.cellSize);
+    });
+};
 ```
 
 ### 3.4 - The main javaScript file
