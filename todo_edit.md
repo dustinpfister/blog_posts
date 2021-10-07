@@ -87,7 +87,7 @@ This is a general todo list for what I want to get done when it comes to editing
 ### ( ) - js-path-find ( relevant to Clucker.js dev )
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
-* have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ### ( done 10/02/2021 ) - js-get-parent-element ( 40k impressions / 3 months - 9/26/21 )
 * (done) edit post to 2,400+ words
