@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 17:24:59
-version: 1.33
+updated: 2021-10-07 17:27:40
+version: 1.34
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -408,6 +408,8 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 ### 3.2 - The grid module
 
 So then here is my grid module based off of what I made for my javaScript example post on a grid module. It is more or less the same as what I worked out for my node example above, but I just made some changes to the source code of my grid module example to create one that has path finding.
+
+This is a little tricky as the grid module that I made that I wanted to use for this example works by having all the cells, or nodes if you prefer in a single array, rather than an array of arrays. There are many user space libraries, as well as built in javaScript features that use this kind of standard for a 2d matrix. However the older path finding module that I made does not use this kind of standard, so I needed to make a chunk method that will convert one standard to another.
 
 ```js
 (function (api) {
