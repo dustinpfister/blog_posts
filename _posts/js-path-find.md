@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 15:16:45
-version: 1.19
+updated: 2021-10-07 15:22:02
+version: 1.20
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -19,13 +19,17 @@ Still there might be a need to work out a custom solution for path finding for a
 
 <!-- more -->
 
-## 1 - Vanilla js path find solution example for nodejs
+## 1 - Path finding and what to know first
+
+This is a post on the subject of path finding in a javaScript environment. This is nt in any way a kind of getting started typ post on javaScript in general in the browser, or nodejs, so I assume that you have some background when it comes to javaScript programing. Also there is some more that you show be aware of when it comes to some things that might be required before working out things with path finding such as working out some kind of grid or map module to begin with.
+
+## 2 - Vanilla js path find solution example for nodejs
 
 In this section I will be writing about my own js path fining solution that I put together after studying the source code of the PathFinding.js repository at github. I have not battle tested this, but the basic idea seems to work okay so far for what it is worth. 
 
 The solution makes use of a grid that is created by another dependency that I am also going to go over in this section that has to do with creating and working with a Grid. Creating a Grid module is a whole other can of worms when it comes to javaScript projects that require this sort of module, but is also closely related to path finding so the two things need to work out okay with each other. So lets start out with the grid module and then get into the path finding solution for this section.
 
-### 1.1 - Grid module
+### 2.1 - Grid module
 
 First off I need some kind of [Grid module](/2021/08/20/js-javascript-example-grid-module/), or at least decide on some kind of standard format for a grid. So then I worked out a module that will have a Class for what a single Node or tile if you prefer in a Grid, and of course a Grid class.
 
@@ -135,7 +139,7 @@ Grid.prototype.getNeighbors = function (node) {
 };
 ```
 
-### 1.2 - Path finder Module
+### 2.2 - Path finder Module
 
 Here is the actual pathfinder module that I worked out bases very loosely on the [AStarFinder method of pathfinding.js](https://github.com/qiao/PathFinding.js/blob/master/src/finders/AStarFinder.js) with many changes. The basic idea of any path finding method is to start at one node location of a grid, get the neighboring nodes, and then find which node would be the best option to move to next. This process is then repeated until a path to an end node is obtained or it is found that getting there is not possible.
 
@@ -228,7 +232,7 @@ module.exports = function (givenGrid, sx, sy, ex, ey) {
 };
 ```
 
-### 1.3 - Helpers
+### 2.3 - Helpers
 
 So then I worked out some additional code to help with things like printing the state of a grid.
 
@@ -268,7 +272,7 @@ exports.setStartEnd = (grid, sx, sy, ex, ey) => {
 };
 ```
 
-### 1.4 - Using the lib
+### 2.4 - Using the lib
 
 So now that I have my grid library and by path finder worked out I can now work out some examples that make use of it.
 
@@ -301,6 +305,6 @@ helpers.setStartEnd(g, 0, 0, 2, 0);
 helpers.print(g);
 ```
 
-## 2 - Conclusion
+## 3 - Conclusion
 
 So that is it for now at least when it comes to path finding and javaScript in general. There is much more to write about when it comes to this topic though of course. I should in time work out a few canvas examples that make use of path finding, when doing so I am sure I will touch base on this post again and expand this content more.
