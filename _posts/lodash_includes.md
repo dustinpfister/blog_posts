@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-07 17:59:29
-version: 1.21
+updated: 2021-10-07 18:02:18
+version: 1.22
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -22,6 +22,10 @@ Still there is what the lodash includes methods does, and there are all the othe
 This is a post on the \_.includes method in the popular javaScript utility library known as lodash. I assume that you have at least some background in javaScript, and how to work with libraries such as lodash in a client side javaScript and nodejs environment. If not this is not a good starting location for getting started with the [basics of javaScript in general](/2018/11/27/js-getting-started/) let alone lodash.
 
 There are many other options when it comes do doing more or less the same thing with native javaScript by itself and kicking lodash to the curb. I will be touching base on some of these options, and will try to keep things objective without showing favoritism to lodash, or just working with native javaScript by itself.
+
+## 1.1 - Thse soirce code examples are on github
+
+I have a test lodash github repository where is where I have the [source code examples that I am writing about here](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_includes) as well as with all my other posts on lodash.
 
 ## 2 - Example of \_.includes With arrays
 
