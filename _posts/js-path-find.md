@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 528
-updated: 2021-10-07 15:22:02
-version: 1.20
+updated: 2021-10-07 15:23:47
+version: 1.21
 ---
 
 In javaScript [path finding](https://en.wikipedia.org/wiki/Pathfinding) is a subject that will come up when making certain games and projects that require finding a path from one cell position to another in a 2d grid typically. It is a major part of game development when it comes to any style of game that requires such methods, as well as any kind of practical application also. 
@@ -21,7 +21,7 @@ Still there might be a need to work out a custom solution for path finding for a
 
 ## 1 - Path finding and what to know first
 
-This is a post on the subject of path finding in a javaScript environment. This is nt in any way a kind of getting started typ post on javaScript in general in the browser, or nodejs, so I assume that you have some background when it comes to javaScript programing. Also there is some more that you show be aware of when it comes to some things that might be required before working out things with path finding such as working out some kind of grid or map module to begin with.
+This is a post on the subject of path finding in a javaScript environment. This is not in any way a kind of [getting started type post on javaScript in general](/2018/11/27/js-getting-started/) in the browser, or nodejs, so I assume that you have some background when it comes to javaScript programing. Also there is some more that you show be aware of when it comes to some things that might be required before working out things with path finding such as working out some kind of grid or map module to begin with.
 
 ## 2 - Vanilla js path find solution example for nodejs
 
