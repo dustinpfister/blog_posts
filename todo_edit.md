@@ -85,7 +85,7 @@ This is a general todo list for what I want to get done when it comes to editing
 * have 5+ internal links for the post
 
 ### ( ) - js-path-find ( relevant to Clucker.js dev )
-* edit post to 1,000+ words
+* (done) edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
