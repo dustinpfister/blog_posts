@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-08 09:34:31
-version: 1.26
+updated: 2021-10-08 09:39:38
+version: 1.27
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -122,6 +122,8 @@ console.log(arr.some( tester('c') )); // true
 When just comparing a given value to all values in an array that is one thing. However in other cases I might need to do some more complex expression for each element in an array, and when it comes to that the array some method gives me that greater flexibility when it comes to having control over what is used to find if an array includes something.
 
 ### 5.3 - Objects in general
+
+When it comes to using a native array method with an object that is not an array then I just need to convert that object to an array, or use one of the function prototype methods in the event of an array like object. For this example I am using the [Object.values static method which is similar to the Object.keys method](/2018/12/15/js-object-keys/) only it will return an array of values rather than the key names of an object. Then once I have my array of values I can of course use the native array includes or some method as a way to test for the presence of a value in the resulting array.
 
 ```js
 let obj = {
