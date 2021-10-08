@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 11:58:51
-version: 1.7
+updated: 2021-10-08 12:00:25
+version: 1.8
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -32,7 +32,9 @@ $ test 5 -eq 10; echo $?
 1
 ```
 
-### 1.2 - and and or in a line
+### 1.2 - Using and and or in a line
+
+Another option would be to use the and and or control operators.
 
 ```
 MESSTRUE="Yep"
