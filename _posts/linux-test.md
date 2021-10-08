@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 12:05:04
-version: 1.9
+updated: 2021-10-08 12:11:30
+version: 1.10
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -47,6 +47,8 @@ Nope
 
 
 ### 1.3 - if statement
+
+One major part of getting into write bash scripts is to make use of the [if statement](/2020/12/02/linux-bash-script-conditional-statements/) that is another way to go about using the test command.
 
 ```
 $ if [ 1 -eq 1 ];then echo 'yep'; fi;
