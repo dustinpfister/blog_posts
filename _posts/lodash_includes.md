@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-08 09:30:11
-version: 1.24
+updated: 2021-10-08 09:31:51
+version: 1.25
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -23,15 +23,17 @@ This is a post on the \_.includes method in the popular javaScript utility libra
 
 There are many other options when it comes do doing more or less the same thing with native javaScript by itself and kicking lodash to the curb. I will be touching base on some of these options, and will try to keep things objective without showing favoritism to lodash, or just working with native javaScript by itself.
 
-## 1.1 - Thse source code examples are on github
+## 1.1 - The source code examples are on github
 
 I have a test lodash Github repository where is where I have the [source code examples that I am writing about here](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_includes) as well as with all my other posts on lodash.
 
 ## 2 - Examples of \_.includes With arrays
 
-The includes method can be used as a way to find if a value is in an array, as it is a collection method that can be used with any object in general including arrays. In this case I just need to call the lodash includes method and pass an the array as the first argument followed by the value that I want to test if it is included or not.
+The includes method can be used as a way to find if a value is in an array, as it is a collection method that can be used with any object in general including arrays. So then to start off with the lodash includes method in this section I will just be going over a few simple examples of the lodash includes method and arrays in general.
 
 ### 2.1 - basic example of lodash includes and an array
+
+In this case I just need to call the lodash includes method and pass an the array as the first argument followed by the value that I want to test if it is included or not.
 
 ```js
 let arr = ['a','b','c'];
