@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-08 09:31:51
-version: 1.25
+updated: 2021-10-08 09:34:31
+version: 1.26
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -84,6 +84,8 @@ console.log( _.includes(str,'bar') ); // false
 ```
 
 ## 5 - Vanilla javaScript examples that do the same thing as lodash includes
+
+Now that I have covered some examples of the lodash includes method, in this section I will be going over some examples that do the same thing as the lodash includes method but with native javaScript alone.
 
 ### 5.1 - Using the native Array.includes method in vanilla javaScript to do the same thing
 
