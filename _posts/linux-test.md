@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 11:55:23
-version: 1.6
+updated: 2021-10-08 11:58:51
+version: 1.7
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -22,6 +22,8 @@ The test command by itself will not produce any output to the standard output of
 To start out with in this section I will be going over a few simple examples of the Linux test command. Sense the command by itself will not produce any output to the standard output, many of these examples will also involve other bash features that might be worth looking into further also.
 
 ### 1.1 - Using the echo command with test
+
+To start out with the test command it might be best to just work out a few simple examples in the bash console. For this example I am just using the equal to expression with the test command. When doing so the exit status for the test command will be 0, or 1, but to see the output I will need to use a command link the [Linux echo](/2019/08/15/linux-echo/) command.
 
 ```
 $ test 5 -eq 5; echo $?
