@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-08 09:39:38
-version: 1.27
+updated: 2021-10-08 09:41:28
+version: 1.28
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -134,6 +134,8 @@ console.log( Object.values(obj).includes('foo') ); // true
 ```
 
 ### 5.4 - checking strings by way of index of method
+
+When it comes to checking for a simple static sub string value in a string there is just using the [index of method of the string prototype](/2020/07/09/js-string-index-of/).
 
 ```js
 let str = 'bar;foo';
