@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 12:00:25
-version: 1.8
+updated: 2021-10-08 12:05:04
+version: 1.9
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -34,7 +34,7 @@ $ test 5 -eq 10; echo $?
 
 ### 1.2 - Using and and or in a line
 
-Another option would be to use the and and or control operators.
+Another option would be to use the and and or [control operators](https://opensource.com/article/18/11/control-operators-bash-shell). In the above example in which I am just using the Linux echo command I am using a semicolon control operator as a way to end the test command, and start a new command that is to just echo out the exit status of the last command which was the test. In this example I am just using the \|\| and \&\& control operators for the sake of or and and operations.
 
 ```
 MESSTRUE="Yep"
