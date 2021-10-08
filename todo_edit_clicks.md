@@ -43,7 +43,7 @@ This is a todo list where editing is prioritized based just purely on how much t
 * (done 10/08/2021 ) expand to 1,000+ words
 * expand to 1,800+ words
 * expand to 2,400+ words
-* have 5+ internal links in the post
+* (done 10/08/2021 ) have 5+ internal links in the post
 
 ### lodash_remove ( #6 - 967 clicks - 10/02/2021 )
 * expand to 1,800+ words
