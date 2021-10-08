@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 12:12:50
-version: 1.11
+updated: 2021-10-08 12:14:22
+version: 1.12
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -55,6 +55,8 @@ $ if [ 1 -eq 1 ];then echo 'yep'; fi;
 ```
 
 ### 1.4 - redirection
+
+One more way to go about using the test command would be to make use of [redirection](/2020/10/02/linux-redirection/) as a way to write some output to a file.
 
 ```
 $ test 5 -eq 5 && echo "Yep" > foo.txt || echo "Nope" > foo.txt
