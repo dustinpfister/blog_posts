@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 931
-updated: 2021-10-01 12:15:53
-version: 1.20
+updated: 2021-10-08 12:21:42
+version: 1.21
 ---
 
 In todays post on Linux commands I will be going over a few quick examples of the [Linux ln command](https://linux.die.net/man/1/ln) that is used to create soft and hard links to files and folders in a Linux system. Say you are in a situation in which you have some kind of actual resource in one location, but you also want to have the same resource in another location in the same file system. One way would be to use the Linux cp command to just make one or more copies of the resource I suppose, however there are some draw backs to this. For one thing I edn up with redundant copes of the same resource. Another draw back is that if I make changes to the original copy of the resource that will not effect the copy. In some cases I guess that is a good thing as that is one of the major reason why to make a copy of something after all, however what if I want to just make a link to the same resource at another location? The way to do so in Linux would be to make a hard or soft link.
@@ -54,7 +54,7 @@ $ rm foo.txt
 
 ### 1.3 - Testing for a soft link
 
-When it comes to testing for a soft link there is using the Linux test command with the -h option. When calling the test command with the -h option the $? [special parameter](/2020/12/08/linux-bash-script-parameters-special/) will be 0, rather than 1 of the given file path is a symbolic link. The test command alone will not spit out any kind of output so to get some I will need to echo the state of the $? special parameter.
+When it comes to testing for a soft link there is using the [Linux test command](/2021/10/08/linux-test/) with the -h option. When calling the test command with the -h option the $? [special parameter](/2020/12/08/linux-bash-script-parameters-special/) will be 0, rather than 1 of the given file path is a symbolic link. The test command alone will not spit out any kind of output so to get some I will need to echo the state of the $? special parameter.
 
 ```
 $ echo "hello world" > foo.txt
