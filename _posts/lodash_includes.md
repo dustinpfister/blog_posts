@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-08 09:25:49
-version: 1.23
+updated: 2021-10-08 09:30:11
+version: 1.24
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -31,19 +31,14 @@ I have a test lodash Github repository where is where I have the [source code ex
 
 The includes method can be used as a way to find if a value is in an array, as it is a collection method that can be used with any object in general including arrays. In this case I just need to call the lodash includes method and pass an the array as the first argument followed by the value that I want to test if it is included or not.
 
-### 2.1 - Using the native Array.includes method in vanilla javaScript to do the same thing
-
-So in late specs of native javaScript there is now a native equivalent of sorts of the lodash includes method in the array prototype that is the [Array includes prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). It would seem that this method does work more or less the same as lodash includes if you only care about arrays rather than objects in general. Because it is a prototype method it is just a means of calling it off of an array instance and then passing the value that you want to check to see if it is included in the array.
+### 2.1 - basic example of lodash includes and an array
 
 ```js
 let arr = ['a','b','c'];
- 
-console.log( arr.includes(42) ); // false
-console.log( arr.includes('d') ); // false
-console.log( arr.includes('c') ); // true
+console.log( _.includes(arr, 42) ); // false
+console.log( _.includes(arr, 'd') ); // false
+console.log( _.includes(arr, 'c') ); // true
 ```
-
-One issue of concern is that it is a late method, so it will not work in older clients without a polyfill. If you do care a great deal about supporting older clients it is not just a matter of using lodash though also. However getting into that would be off topic.
 
 ### 2.2 - Giving a from index value
 
@@ -88,7 +83,21 @@ console.log( _.includes(str,'bar') ); // false
 
 ## 5 - Vanilla javaScript examples that do the same thing as lodash includes
 
-### 5.1 - The native Array some method
+### 5.1 - Using the native Array.includes method in vanilla javaScript to do the same thing
+
+So in late specs of native javaScript there is now a native equivalent of sorts of the lodash includes method in the array prototype that is the [Array includes prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes). It would seem that this method does work more or less the same as lodash includes if you only care about arrays rather than objects in general. Because it is a prototype method it is just a means of calling it off of an array instance and then passing the value that you want to check to see if it is included in the array.
+
+```js
+let arr = ['a','b','c'];
+ 
+console.log( arr.includes(42) ); // false
+console.log( arr.includes('d') ); // false
+console.log( arr.includes('c') ); // true
+```
+
+One issue of concern is that it is a late method, so it will not work in older clients without a polyfill. If you do care a great deal about supporting older clients it is not just a matter of using lodash though also. However getting into that would be off topic.
+
+### 5.2 - The native Array some method
 
 There is also the native array some method in the native javaScript array prototype that can also be used to see if an array contains a value or not. The includes method is really just a convenience method of sorts when compared to the array some method. The reason why is because the array some method will give a grater degree of control over what the condition is that is used to find out if a value equals another given value or not.
 
@@ -108,6 +117,30 @@ console.log(arr.some( tester('c') )); // true
 
 When just comparing a given value to all values in an array that is one thing. However in other cases I might need to do some more complex expression for each element in an array, and when it comes to that the array some method gives me that greater flexibility when it comes to having control over what is used to find if an array includes something.
 
-## 7 - Conclusion
+### 5.3 - Objects in general
+
+```js
+let obj = {
+    a: 'foo',
+    b: 'bar'
+};
+console.log( Object.values(obj).includes('foo') ); // true
+```
+
+### 5.4 - checking strings by way of index of method
+
+```js
+let str = 'bar;foo';
+console.log( str.indexOf('foo') != -1 ); // true
+```
+
+### 5.5 - checking strings by way of the match method
+
+```js
+let str = 'bar;foo';
+console.log( str.match(/foo/) != null ); // true
+```
+
+## 6 - Conclusion
 
 The includes method in lodash can be used as a quick way to find if a given value is in a collection in general. It is not like there are other ways of doing this in plain old javaScript by itself, but if lodash is part of the stack it is there to help with this sort of thing. If you enjoyed this post you might want to check out my main post on [lodash](/2019/02/15/lodash/) in general.
