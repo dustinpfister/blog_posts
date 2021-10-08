@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 11:15:35
-version: 1.3
+updated: 2021-10-08 11:48:59
+version: 1.4
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -16,3 +16,96 @@ In a previous Linux post on bash scripts I wrote about [special parameters](/202
 The test command by itself will not produce any output to the standard output of the bash console, so often it should be used in conjunction with a command link the Linux echo command with the special parameter that contains the exit status to produce some kind of output.
 
 <!-- more -->
+
+## 1 - Basic examples of Linux test command
+
+### 1.1 - using the echo command with test
+
+```
+$ test 5 -eq 5; echo $?
+0
+$ test 5 -eq 10; echo $?
+1
+```
+
+### 1.2 - and and or in a line
+
+```
+MESSTRUE="Yep"
+MESSFALSE="Nope"
+$ test 100 -gt 99 && echo $MESSTRUE || echo  $MESSFALSE
+Yep
+$ test 80 -gt 99 && echo $MESSTRUE || echo  $MESSFALSE
+Nope
+```
+
+
+### 1.3 - if statement
+
+```
+$ if [ 1 -eq 1 ];then echo 'yep'; fi;
+```
+
+### 1.4 - redirection
+
+```
+$ test 5 -eq 5 && echo "Yep" > foo.txt || echo "Nope" > foo.txt
+$ cat foo.txt
+Yep
+$ rm foo.txt
+```
+
+## 2 - Expressions in detail
+
+### 2.1 - equal to
+
+```
+$ test 5 -eq 5; echo $?
+0
+$ test 5 -eq 10; echo $?
+1
+```
+
+### 2.2 - greater and less than
+
+```
+$ test 7 -gt 5; echo $?
+0
+$ test 5 -gt 5; echo $?
+1
+$ test 5 -ge 5; echo $?
+0
+```
+
+```
+$ test 5 -lt 7; echo $?
+0
+$ test 5 -lt 5; echo $?
+1
+$ test 5 -le 5; echo $?
+0
+```
+
+### 2.3 - folder
+
+```
+$ test -d ~/foo; echo $?
+1
+$ mkdir ~/foo
+$ test -d ~/foo; echo $?
+0
+$ rmdir ~/foo
+```
+
+### 2.4 - symbolic link
+
+```
+$ echo "hello world" > foo.txt
+$ ln -s foo.txt fooLink
+$ test -h foo.txt; echo $?
+1
+$ test -h fooLink; echo $?
+0
+$ rm fooLink
+$ rm foo.txt
+```
