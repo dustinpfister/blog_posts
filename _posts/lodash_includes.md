@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 96
-updated: 2021-10-08 09:41:28
-version: 1.28
+updated: 2021-10-08 09:43:36
+version: 1.29
 ---
 
 Time for yet another [one of my posts](/categories/lodash/) on [lodash](https://lodash.com/), today I will be writing about the [\_.includes](https://lodash.com/docs/4.17.4#includes) method, and why It might be useful in some situations when working on a project where lodash is part of the stack. 
@@ -143,6 +143,8 @@ console.log( str.indexOf('foo') != -1 ); // true
 ```
 
 ### 5.5 - checking strings by way of the match method
+
+Another way to test for the presence of a sub string value in a string would be to use [regular expressions](/2019/03/20/js-regex/), and the [string match method](/2019/04/06/js-string-match/).
 
 ```js
 let str = 'bar;foo';
