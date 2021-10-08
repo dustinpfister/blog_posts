@@ -5,15 +5,15 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 11:52:11
-version: 1.5
+updated: 2021-10-08 11:55:23
+version: 1.6
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
 
 In a previous Linux post on bash scripts I wrote about [special parameters](/2020/12/08/linux-bash-script-parameters/) one of which is the \$\? parameter. This parameter will give the exit status of the last command that was called in the shell. With that said what the test command does is it, well, preforms some kind of test and then will exit with a status code of 0 if all goes well with that test, else it will exit with 1.
 
-The test command by itself will not produce any output to the standard output of the bash console, so often it should be used in conjunction with a command link the Linux echo command with the special parameter that contains the exit status to produce some kind of output.
+The test command by itself will not produce any output to the standard output of the bash console, so often it should be used in conjunction with a other commands and bash features with the special parameter that contains the exit status to produce some kind of output. However often when the test command is used it is when making bash scripts and thus it is just used as a way to make some kind of choice when it comes to doing something or not, as such that is likely why it will not produce any output unless something is done to make it do so.
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ The test command by itself will not produce any output to the standard output of
 
 To start out with in this section I will be going over a few simple examples of the Linux test command. Sense the command by itself will not produce any output to the standard output, many of these examples will also involve other bash features that might be worth looking into further also.
 
-### 1.1 - using the echo command with test
+### 1.1 - Using the echo command with test
 
 ```
 $ test 5 -eq 5; echo $?
