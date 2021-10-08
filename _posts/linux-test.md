@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-08 12:14:22
-version: 1.12
+updated: 2021-10-08 12:21:42
+version: 1.13
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -67,7 +67,11 @@ $ rm foo.txt
 
 ## 2 - Expressions in detail
 
+Now that I have the very basics of the Linux test command out of the way, In this section I will be going over some of the expressions in greater detail.
+
 ### 2.1 - equal to
+
+In the basic section above I have all ready covered the equal two expression.
 
 ```
 $ test 5 -eq 5; echo $?
@@ -77,6 +81,8 @@ $ test 5 -eq 10; echo $?
 ```
 
 ### 2.2 - greater and less than
+
+There are then expressions for greater than, less than, greater than or equal to, and less than or equal to.
 
 ```
 $ test 7 -gt 5; echo $?
@@ -98,6 +104,8 @@ $ test 5 -le 5; echo $?
 
 ### 2.3 - folder
 
+The test command can be used to check if a folder is there or not.
+
 ```
 $ test -d ~/foo; echo $?
 1
@@ -109,6 +117,8 @@ $ rmdir ~/foo
 
 ### 2.4 - symbolic link
 
+The test command can be used to check for [symbolic links](/2021/10/01/linux-ln/).
+
 ```
 $ echo "hello world" > foo.txt
 $ ln -s foo.txt fooLink
@@ -119,3 +129,7 @@ $ test -h fooLink; echo $?
 $ rm fooLink
 $ rm foo.txt
 ```
+
+## 3 - Conclusion
+
+So then the Linux test command can preform certain comparisons, and checks on files, and then exit with a 0, or 1 exit status code. This can then be used as a way to make certain kinds of conditional statements in bash scripts when it comes to preforming certain kinds of actions or not.
