@@ -7,6 +7,8 @@
 <!--###### ########## ########## #######-->
 
 ### (  ) - new post #932 for 10/08/2021 - linux-test
+* (done) start linux-test for post folder
+* write the post to at least 1000+ words
 
 ### ( done 10/01/2021 ) - new post #931 for 10/01/2021 - linux-ln
 * (done) I have a draft folder for the linux-ln command ready
