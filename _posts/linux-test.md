@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:23:26
-version: 1.26
+updated: 2021-10-09 12:27:53
+version: 1.27
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -90,9 +90,32 @@ $ test 5 -eq 5; echo $?
 0
 $ test 5 -eq 10; echo $?
 1
+$ MESS=foo
+$ test "foo" -eq $MESS; echo $?
+bash: test: foo: integer expression expected
+2
+$ test "foo" = $MESS; echo $?
+0
 ```
 
-### 2.2 - Greater and less than expressions
+### 2.2 - Not equals
+
+So then there is testing if two number values equal each other, as well as doing the same for string values. However what about doing so for testing if two values are not equal to each other? When it comes to numbers there is the -ne option for test, and when it comes to string values != is what can be used to do so.
+
+```
+$ test 5 -ne 5; echo $?
+1
+$ test 5 -ne 10; echo $?
+0
+$ MESS=bar
+$ test "foo" -ne $MESS; echo $?
+bash: test: foo: integer expression expected
+2
+$ test "foo" != $MESS; echo $?
+0
+```
+
+### 2.3 - Greater and less than expressions
 
 There are then expressions for greater than, less than, greater than or equal to, and less than or equal to. These are typical expressions to use when working out conditional statements, so this will often be used when writing bash scripts that call for the use of them. However there is also just quickly doing a few simple expressions in the bash console just for the sake of confirming how these work.
 
@@ -118,7 +141,7 @@ $ test 5 -le 5; echo $?
 0
 ```
 
-### 2.3 - testing for a Folder
+### 2.4 - testing for a Folder
 
 The test command can be used to check if a folder is there or not, for this I just need to use the -d option when calling the test command. So then this kind of test can be preformed to test if a folder exists or not, and in the event that it does not the [mkdir command](/2021/06/30/linux-mkdir/) can be used to create it. However when it comes to just making sure that a path of folders exists in the event that it does not, just the mkdir command can be used alone with the -p option. So then this kind of test will typically just be used in bash scripts for the sake of doing something else when testing for the presence of a folder.
 
@@ -131,7 +154,7 @@ $ test -d ~/foo; echo $?
 $ rmdir ~/foo
 ```
 
-### 2.4 - Symbolic links
+### 2.5 - Symbolic links
 
 The test command can be used to check for [symbolic links](/2021/10/01/linux-ln/), also known as a soft link, by making use of the -h option and then a path to a file to check if it is a symbolic link or not. If you are not yet familiar with symbolic links they are a way of creating a file that is a link to another file or folder. There is much more to read about when it comes to this subject as there is a difference between symbolic links, and hard links. Hard links are another kind of link, but they do not point to a path, rather that actual data of the file in the file system, as such they continue to work even if the source file is deleted.
 
