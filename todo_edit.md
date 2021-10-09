@@ -6,8 +6,8 @@ This is a general todo list for what I want to get done when it comes to editing
 ## linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
-
-
+## linux-gcc ( new c example )
+* expand this post with the c example I worked out for linux-test
 
 <!--###### ########## ########## #######-->
 ## js: ( /yyyy/mm/dd/js-* )
