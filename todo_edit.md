@@ -6,27 +6,29 @@ This is a general todo list for what I want to get done when it comes to editing
 ## linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
-## linux-gcc ( new c example )
-* expand this post with the c example I worked out for linux-test
+## (  ) - linux-gcc ( new c example in linux-test )
+* (done) be sure to make mention of the c example in linux-test
+* edit post to 1,800+ words
+* have 5+ internal links for the post
 
 <!--###### ########## ########## #######-->
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-### js-javascript-example-utils ( new methods )
+### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
-### js-web-storage ( old )
+### (  ) - js-web-storage ( old )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-### js-getting-started-file-protocol ( old )
+### (  ) - js-getting-started-file-protocol ( old )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-### js-async-await ( old )
+### (  ) - js-async-await ( old )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
 * have 5+ internal links for the post
