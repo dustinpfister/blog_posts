@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 13:24:22
-version: 1.42
+updated: 2021-10-09 15:12:53
+version: 1.43
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -247,6 +247,59 @@ $ ./test-has-md.js posts; echo $?
 ```
 
 So great now I have a script that will work just like my bash script, but now it is written in javaScript, so then I can run the script in any operating system that I can run node on top of. Whatever language I use the basic idea is the same though, the script, or binary preforms some kind of test, and if all goes will it will exit with a status code of zero, else it will not.
+
+### 3.3 - Creating a binary with c
+
+I have came up with a few simple C language source code files for my post on the [Linux gcc](/2020/11/17/linux-gcc/) command which can be used to compile binaries using C. I have been toying with the idea of writing a few posts on the C language just for the sake of learning at least a little about how to do something with a low level language. So then in this example I am once again creating the same simple test program, only this time it is in C so it can be compiled to its own standard alone binary rather than calling bash, node, or python to run the program.
+
+```c
+#include <stdio.h>
+#include <dirent.h>
+#include <regex.h>        
+ 
+regex_t regex;
+int reti;
+int mdcount = 0;
+ 
+int main(int argc, char *argv[]){
+    DIR *folder;
+    struct dirent *entry;
+    int files = 0;
+    char *dirpath =  ".";
+    // if we have a positional use that
+    if(argc > 1){
+        dirpath = argv[1];
+    }
+    // open folder
+    folder = opendir(dirpath);
+    if(folder == NULL){
+        // return a status of 2 for folder not found
+        return 2;
+    }
+    while( (entry=readdir(folder)) ){
+        files++;
+        reti = regcomp(&regex, "\\.md$", 0);
+        if(reti){
+            // failed to compile a regex
+            return 2;
+        }
+        reti = regexec(&regex, entry->d_name, 0, NULL, 0);
+        if(!reti){
+            mdcount++;
+            //printf("%s\n", entry->d_name);
+        }
+        regfree(&regex);
+    }
+    closedir(folder);
+    // if mdcount is greater than 0 then return exit with code 0
+    //printf("%i\n", mdcount);
+    if(mdcount > 0){
+        return 0;
+    }
+    // else exit with code 1
+    return 1;
+}
+```
 
 ## 4 - Conclusion
 
