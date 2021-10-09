@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:44:02
-version: 1.32
+updated: 2021-10-09 12:51:13
+version: 1.33
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -179,6 +179,8 @@ So then in this section I will be going over some examples of this kind of scrip
 
 So first off there is of course getting into [writing bash scripts](/2020/11/27/linux-bash-scripts/) when it comes to this sort of thing. The basic process of this is to just place bash commands into a file, then make the file executable with the [chmod command](/2020/11/13/linux-chmod/), or call the file with the bash command. Even if I do just run the script with bash rather than calling it directly I still think it is a good idea to place a shebang that will point to the binary that will be used to run this script, in this case it would be the bash command.
 
+So then to make a bash script that will check a folder for markdown files I will want to use the ls command with a positional argument that is the folder to check for markdown files. I will then want to pipe that to grep and use that to get a filtered list of files that are just markdown files. The filtered list of markdown files can then in turn be piped into the Linux wc command with the -l option that will be the number of lines, which would then be the number of markdown files. I can then use a from of parameter expatiation to set this result to a shell variable, and that variable can then be used with the test command, by way of an if statement to test of the result is greater than zero or not. I can also set a status shell variable and default the code to 1, in the event that the count is grater than 0 then I can set the value of the status variable to, you guessed it 0. At the end of the script I then just need to use the Linux exit command and pass the value of the status variable to it.
+
 ```bash
 #!/bin/bash
 MDCOUNT=$(ls $1 | grep ".md$" | wc -l)
@@ -194,6 +196,8 @@ $ ./test-has-md.sh; echo $?
 $ ./test-has-md.sh posts; echo $?
 0
 ```
+
+### 3.2 - 
 
 ## 4 - Conclusion
 
