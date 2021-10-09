@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:37:23
-version: 1.29
+updated: 2021-10-09 12:38:47
+version: 1.30
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -173,7 +173,7 @@ $ rm foo.txt
 
 There is taking into account what the core of the test command is when it comes to its nature. Sure there are a lot of options and features of the command, but the basic idea of what it does is simple enough. What it does is it preforms some kind of test, and if the test is a success it will exit with a code of 0, else if something goes wrong it will exit with a non zero exit status number. This kind of nature can be applied to things outside of just using the test command as a way to go about making my own custom test scripts for various things where it would make sense to create such a test script. These test scripts can be bash scripts, or they can be written in javaScript, python, ect, as long as the nature is the same when it comes to the exit status codes.
 
-So then in this section I will be going over some examples of this kind of script, the nature of which is just making a script that will check if a folder contains 1 or more mark down files. In the event that there are more that one mark down files in the folder the script will exit with a status of 0, in the event that there are no mark down files the exit status will be 1.
+So then in this section I will be going over some examples of this kind of script, the nature of which is just making a script that will check if a folder contains 1 or more mark down files. In the event that there are more that one mark down files in the folder the script will exit with a status of 0, in the event that there are no mark down files the exit status will be 1. Of course there is writing bash scripts, but there is also writing these kinds of scripts in some other high level language in order to make the script more portable.
 
 ### 3.1 - Creating a bash script
 
