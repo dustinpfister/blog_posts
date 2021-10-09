@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:15:50
-version: 1.15
+updated: 2021-10-09 09:18:12
+version: 1.16
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -104,7 +104,7 @@ $ test 5 -le 5; echo $?
 
 ### 2.3 - testing for a Folder
 
-The test command can be used to check if a folder is there or not, for this I just need to use the -d option when calling the test command.
+The test command can be used to check if a folder is there or not, for this I just need to use the -d option when calling the test command. So then this kind of test can be preformed to test if a folder exists or not, and in the event that it does not the mkdir command can be used to create it. However when it comes to just making sure that a path of folders exists in the event that it does not, just the mkdir command can be used alone with the -p option.
 
 ```
 $ test -d ~/foo; echo $?
