@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:52:19
-version: 1.24
+updated: 2021-10-09 12:21:50
+version: 1.25
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -65,6 +65,16 @@ $ test 5 -eq 5 && echo "Yep" > foo.txt || echo "Nope" > foo.txt
 $ cat foo.txt
 Yep
 $ rm foo.txt
+```
+
+### 1.5 - The test command is a bash built in command
+
+The test command is one of many commands that are built into the bash command. One way to confirm this would be to use another useful bash built in command called the [Linux type](/2021/02/11/linux-type/) command.
+
+```
+#!/bin/bash
+type test
+#test is a shell builtin
 ```
 
 ## 2 - Expressions in detail
