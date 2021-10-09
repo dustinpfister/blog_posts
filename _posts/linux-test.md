@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 13:21:22
-version: 1.41
+updated: 2021-10-09 13:24:22
+version: 1.42
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -236,6 +236,8 @@ fs.readdir(process.argv[2] || './', function(e, files){
 });
 ```
 
+Now that I have my script I can use it just like my bash script as I have placed the appropriate shebang for node rather than bash at the top if the source code file.
+
 ```
 $ chmod 777 test-has-md.js
 $ ./test-has-md.js; echo $?
@@ -243,6 +245,8 @@ $ ./test-has-md.js; echo $?
 $ ./test-has-md.js posts; echo $?
 0
 ```
+
+So great now I have a script that will work just like my bash script, but now it is written in javaScript, so then I can run the script in any operating system that I can run node on top of. Whatever language I use the basic idea is the same though, the script, or binary preforms some kind of test, and if all goes will it will exit with a status code of zero, else it will not.
 
 ## 4 - Conclusion
 
