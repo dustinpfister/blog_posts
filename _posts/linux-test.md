@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:40:23
-version: 1.31
+updated: 2021-10-09 12:44:02
+version: 1.32
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -177,7 +177,7 @@ So then in this section I will be going over some examples of this kind of scrip
 
 ### 3.1 - Creating a bash script
 
-So first off there is of course getting into [writing bash scripts](/2020/11/27/linux-bash-scripts/) when it comes to this sort of thing.
+So first off there is of course getting into [writing bash scripts](/2020/11/27/linux-bash-scripts/) when it comes to this sort of thing. The basic process of this is to just place bash commands into a file, then make the file executable with the [chmod command](/2020/11/13/linux-chmod/), or call the file with the bash command. Even if I do just run the script with bash rather than calling it directly I still think it is a good idea to place a shebang that will point to the binary that will be used to run this script, in this case it would be the bash command.
 
 ```bash
 #!/bin/bash
