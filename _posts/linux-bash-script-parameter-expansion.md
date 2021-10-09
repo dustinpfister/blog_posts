@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 755
-updated: 2020-12-10 12:31:20
-version: 1.15
+updated: 2021-10-09 13:08:56
+version: 1.16
 ---
 
 One core feature of Bash that I have been using all the time when writing [bash scripts](/2020/11/27/linux-bash-scripts/) thus far is [Parameter Expansion](https://wiki.bash-hackers.org/syntax/pe). There are several forms of Parameter expansion but they all have to do with how to go about creating values for variables and strings to be used with commands. There is the basic braces expansion that is used as a way to separate a variable name from the rest of a string value, as well as preform something know as variable indirection more on that later.
@@ -17,7 +17,7 @@ There are also several other forms of parameter expansion, each of which might d
 
 ## 1 - Braces and basic Parameter Expansion
 
-To start off with I think the first form of Parameter expansion I should cover is basic braces expansion. This is the process of using the dollar symbol followed by a variable name that is enclosed in braces, or curly brackets if you prefer. Just this kind of paramater expansion alone is maybe not so basic actually as there are several uses for it. However all uses have to do with accessing the values of variables, and all kinds of variables supported in bash including Arrays. So there should be at least a few examples of this kind of paramater expansion to start off with.
+To start off with I think the first form of Parameter expansion I should cover is basic braces expansion. This is the process of using the dollar symbol followed by a variable name that is enclosed in braces, or curly brackets if you prefer. Just this kind of parameter expansion alone is maybe not so basic actually as there are several uses for it. However all uses have to do with accessing the values of variables, and all kinds of variables supported in bash including Arrays. So there should be at least a few examples of this kind of parameter expansion to start off with.
 
 ### 1.1 - Basic Braces example of Parameter Expansion in a bash script
 
@@ -71,7 +71,7 @@ This will come up now and then so it is a good one to keep in mind.
 
 ### 1.3 - Arrays and braces
 
-The braces syntax is what will also need to be used in order to get a certain indexed element in an array, or the array as a whole. In bash there are a few ways to create an array, but in any case onced one has an array the braces form of parameter expansion can be used as a way to get an index value by just intrducing a set of square brackets after the varibel name inside the set of braces.
+The braces syntax is what will also need to be used in order to get a certain indexed element in an array, or the array as a whole. In bash there are a few ways to create an array, but in any case once one has an array the braces form of parameter expansion can be used as a way to get an index value by just introducing a set of square brackets after the variable name inside the set of braces.
 
 The index of the desired element can then be given to get the value of that element, in addition the at symbol can be given in the square brackets as a way to get the array as a whole.
 
@@ -107,7 +107,7 @@ echo "The current user is \"${userName}\""
 
 ### 2.2 - Can use variable when calling commands
 
-When calling a command with the command substitution paramater expansion syntax, variables can be used in place of the name of the command, as well as for other options when calling the command.
+When calling a command with the command substitution parameter expansion syntax, variables can be used in place of the name of the command, as well as for other options when calling the command.
 
 ```
 #!/bin/bash
