@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:27:53
-version: 1.27
+updated: 2021-10-09 12:35:19
+version: 1.28
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -169,7 +169,29 @@ $ rm fooLink
 $ rm foo.txt
 ```
 
-## 3 - Conclusion
+## 3 - Custom test programs and exit status
+
+There is taking into account what the core of the test command is when it comes to its nature. Sure there are a lot of options and features of the command, but the basic idea of what it does is simple enough. What it does is it preforms some kind of test, and if the test is a success it will exit with a code of 0, else if something goes wrong it will exit with a non zero exit status number. This kind of nature can be applied to things outside of just using the test command as a way to go about making my own custom test scripts for various things where it would make sense to create such a test script. These test scripts can be bash scripts, or they can be written in javaScript, python, ect, as long as the nature is the same when it comes to the exit status codes.
+
+### 3.1 - Creating a bash script
+
+```bash
+#!/bin/bash
+MDCOUNT=$(ls $1 | grep ".md$" | wc -l)
+STATUS=1;
+if [ $MDCOUNT -gt 0 ]; then STATUS=0; fi
+exit $STATUS;
+```
+
+```
+$ chmod 777 test-has-md.sh
+$ ./test-has-md.sh; echo $?
+1
+$ ./test-has-md.sh posts; echo $?
+0
+```
+
+## 4 - Conclusion
 
 So then the Linux test command can preform certain comparisons, and checks on files, and then exit with a 0, or 1 exit status code. This can then be used as a way to make certain kinds of conditional statements in bash scripts when it comes to preforming certain kinds of actions or not. There are then ways of writing bash scripts, or scripts in another language such as javaScript and python that can serve as another way to go about making some kind of test also. The trick is to just set th exit status of the script so that it will end with a status code of 0 if the test passes, else set an exit code status of 1.
 
