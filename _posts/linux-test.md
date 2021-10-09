@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:51:13
-version: 1.33
+updated: 2021-10-09 12:57:09
+version: 1.34
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -189,6 +189,8 @@ if [ $MDCOUNT -gt 0 ]; then STATUS=0; fi
 exit $STATUS;
 ```
 
+Now that I have my bash script file I will just need to give it a file name, and make the file executable. Once that is done I can call it from the bash console, and pass a path to a folder to check as the first and only positional parameter. The script will then wok just like the test command in that it will set the exit status code, but not print anything to the standard output by itself. So once again I will need to do something with the echo command to see the exit status code.
+
 ```
 $ chmod 777 test-has-md.sh
 $ ./test-has-md.sh; echo $?
@@ -196,6 +198,8 @@ $ ./test-has-md.sh; echo $?
 $ ./test-has-md.sh posts; echo $?
 0
 ```
+
+So then this bash script seems to work as I would want it to. I just pass a path to a folder, if there are one or more markdown files in that folder I get a 0 status, else 1. Although this script works great, it will only work in environments that have bash to work with. If I want to make a test like this a little more portable I will want to create this kind of test in some other language then.
 
 ### 3.2 - 
 
