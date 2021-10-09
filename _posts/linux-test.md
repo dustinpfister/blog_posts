@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 15:12:53
-version: 1.43
+updated: 2021-10-09 15:16:13
+version: 1.44
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -251,6 +251,8 @@ So great now I have a script that will work just like my bash script, but now it
 ### 3.3 - Creating a binary with c
 
 I have came up with a few simple C language source code files for my post on the [Linux gcc](/2020/11/17/linux-gcc/) command which can be used to compile binaries using C. I have been toying with the idea of writing a few posts on the C language just for the sake of learning at least a little about how to do something with a low level language. So then in this example I am once again creating the same simple test program, only this time it is in C so it can be compiled to its own standard alone binary rather than calling bash, node, or python to run the program.
+
+The basic idea is once again the same though when it comes to any other programing environment, it is all about the status code that the program ends on. So once again I am just looking for mark down files in a given folder, and if the count of files is 1 or higher the program ends with a zero status code, else it ends in a non zero code. Just like with my javaScript example of this I have made it so that a code of 2 will be returned to indicted that something else happened other than there not being any mark down files in the folder.
 
 ```c
 #include <stdio.h>
