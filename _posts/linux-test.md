@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:21:50
-version: 1.25
+updated: 2021-10-09 12:23:26
+version: 1.26
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -69,7 +69,7 @@ $ rm foo.txt
 
 ### 1.5 - The test command is a bash built in command
 
-The test command is one of many commands that are built into the bash command. One way to confirm this would be to use another useful bash built in command called the [Linux type](/2021/02/11/linux-type/) command.
+The test command is one of many commands that are built into the bash command. One way to confirm this would be to use another useful bash built in command called the [Linux type](/2021/02/11/linux-type/) command. This is just one thing that I like to check when looking into the various Linux commands to gain a sense of this is the kind of command that should be there to work with in just about all Linux system or not, and with that said the test command is one of those commands as it is built into bash.
 
 ```
 #!/bin/bash
