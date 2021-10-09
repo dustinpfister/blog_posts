@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:40:11
-version: 1.21
+updated: 2021-10-09 09:41:50
+version: 1.22
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -54,9 +54,9 @@ One major part of getting into writing bash scripts is to make use of the [if st
 $ if [ 1 -eq 1 ];then echo 'yep'; fi;
 ```
 
-### 1.4 - redirection
+### 1.4 - Redirection
 
-One more way to go about using the test command would be to make use of [redirection](/2020/10/02/linux-redirection/) as a way to write some output to a file.
+One more way to go about using the test command would be to make use of [redirection](/2020/10/02/linux-redirection/) as a way to write some output to a file. This is yet another feature of bash that is worth looking into more at some time is it will come up a lot when it comes to bash script examples that have to do with creating files.
 
 ```
 $ test 5 -eq 5 && echo "Yep" > foo.txt || echo "Nope" > foo.txt
