@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:14:09
-version: 1.14
+updated: 2021-10-09 09:15:50
+version: 1.15
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -102,9 +102,9 @@ $ test 5 -le 5; echo $?
 0
 ```
 
-### 2.3 - folder
+### 2.3 - testing for a Folder
 
-The test command can be used to check if a folder is there or not.
+The test command can be used to check if a folder is there or not, for this I just need to use the -d option when calling the test command.
 
 ```
 $ test -d ~/foo; echo $?
@@ -115,7 +115,7 @@ $ test -d ~/foo; echo $?
 $ rmdir ~/foo
 ```
 
-### 2.4 - symbolic link
+### 2.4 - Symbolic links
 
 The test command can be used to check for [symbolic links](/2021/10/01/linux-ln/), also known as a soft link, by making use of the -h option and then a path to a file to check if it is a symbolic link or not. If you are not yet familiar with symbolic links they are a way of creating a file that is a link to another file or folder. There is much more to read about when it comes to this subject as there is a difference between symbolic links, and hard links. Hard links are another kind of link, but they do not point to a path, rather that actual data of the file in the file system, as such they continue to work even if the source file is deleted.
 
