@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:19:54
-version: 1.17
+updated: 2021-10-09 09:23:03
+version: 1.18
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -80,9 +80,11 @@ $ test 5 -eq 10; echo $?
 1
 ```
 
-### 2.2 - greater and less than
+### 2.2 - Greater and less than expressions
 
-There are then expressions for greater than, less than, greater than or equal to, and less than or equal to.
+There are then expressions for greater than, less than, greater than or equal to, and less than or equal to. These are typical expressions to use when working out conditional statements, so this will often be used when writing bash scripts that call for the use of them. However there is also just quickly doing a few simple expressions in the bash console just for the sake of confirming how these work.
+
+Greater than examples in the bash console
 
 ```
 $ test 7 -gt 5; echo $?
@@ -92,6 +94,8 @@ $ test 5 -gt 5; echo $?
 $ test 5 -ge 5; echo $?
 0
 ```
+
+Less than examples in the bash console.
 
 ```
 $ test 5 -lt 7; echo $?
@@ -104,7 +108,7 @@ $ test 5 -le 5; echo $?
 
 ### 2.3 - testing for a Folder
 
-The test command can be used to check if a folder is there or not, for this I just need to use the -d option when calling the test command. So then this kind of test can be preformed to test if a folder exists or not, and in the event that it does not the [mkdir command](/2021/06/30/linux-mkdir/) can be used to create it. However when it comes to just making sure that a path of folders exists in the event that it does not, just the mkdir command can be used alone with the -p option. So then this kind of test will typicall just be used in bash scripts for the sake of doing something else whe testing for the presence of a folder.
+The test command can be used to check if a folder is there or not, for this I just need to use the -d option when calling the test command. So then this kind of test can be preformed to test if a folder exists or not, and in the event that it does not the [mkdir command](/2021/06/30/linux-mkdir/) can be used to create it. However when it comes to just making sure that a path of folders exists in the event that it does not, just the mkdir command can be used alone with the -p option. So then this kind of test will typically just be used in bash scripts for the sake of doing something else when testing for the presence of a folder.
 
 ```
 $ test -d ~/foo; echo $?
