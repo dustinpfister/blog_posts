@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:23:03
-version: 1.18
+updated: 2021-10-09 09:29:34
+version: 1.19
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -71,7 +71,7 @@ Now that I have the very basics of the Linux test command out of the way, In thi
 
 ### 2.1 - equal to
 
-In the basic section above I have all ready covered the equal two expression.
+In the basic section above I have all ready covered the equal two expression. This is a typical expression that will be used often when writing bash scripts, and in programing in general actually. However in that example I was just using the -eq option which is used to check of two numbers equal each other or not. If you are like me and you are used to how this sort of thing working in javaSscript they you should be wondering about how to go about preforming equality in general when it comes to strings, and other types of values.
 
 ```
 $ test 5 -eq 5; echo $?
