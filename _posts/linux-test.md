@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:41:50
-version: 1.22
+updated: 2021-10-09 09:45:48
+version: 1.23
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -46,7 +46,7 @@ Nope
 ```
 
 
-### 1.3 - if statement
+### 1.3 - A test command call as an if statement
 
 One major part of getting into writing bash scripts is to make use of the [if statement](/2020/12/02/linux-bash-script-conditional-statements/) that is another way to go about using the test command. Although it might be best to start write files when it comes to this sort of thing, it is also possible to work with them write away by just typing something like this into the bash console.
 
@@ -136,4 +136,6 @@ $ rm foo.txt
 
 ## 3 - Conclusion
 
-So then the Linux test command can preform certain comparisons, and checks on files, and then exit with a 0, or 1 exit status code. This can then be used as a way to make certain kinds of conditional statements in bash scripts when it comes to preforming certain kinds of actions or not.
+So then the Linux test command can preform certain comparisons, and checks on files, and then exit with a 0, or 1 exit status code. This can then be used as a way to make certain kinds of conditional statements in bash scripts when it comes to preforming certain kinds of actions or not. There are then ways of writing bash scripts, or scripts in another language such as javaScript and python that can serve as another way to go about making some kind of test also. The trick is to just set th exit status of the script so that it will end with a status code of 0 if the test passes, else set an exit code status of 1.
+
+I get around to editing and expanding my content now and then, I have some plans together when it comes to expanding this post. However if there is anything else that comes to mind there is the comments section below here than can be used as one way to bring something up with this.
