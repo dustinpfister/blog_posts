@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:57:45
-version: 1.35
+updated: 2021-10-09 13:01:49
+version: 1.36
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -201,7 +201,48 @@ $ ./test-has-md.sh posts; echo $?
 
 So then this bash script seems to work as I would want it to. I just pass a path to a folder, if there are one or more markdown files in that folder I get a 0 status, else 1. Although this script works great, it will only work in environments that have bash to work with. If I want to make a test like this a little more portable, when it comes to windows mainly, I will want to create this kind of test in some other language then.
 
-### 3.2 - 
+### 3.2 - Writing the same test script in javaScript
+
+So then when it comes to other high level languages outside of that of bash for me what comes to mind first and for most would be javaScript. So then there is seeing about write that same simple test script only [for node](/2017/04/05/nodejs-helloworld/) rater than bash.
+
+```js
+#!/bin/node
+var fs = require('fs');
+ 
+var getMDFiles = function(files){
+    return files.filter(function(fileName){
+        var m = fileName.match(/.md$/);
+        if(m){
+            return true
+        }
+        return false;
+    });
+};
+ 
+var getMDCount = function(files){
+    return getMDFiles(files).length;
+};
+ 
+fs.readdir(process.argv[2] || './', function(e, files){
+    if(e){
+        process.exit(2);
+    }else{
+        if(getMDCount(files) > 0){
+            process.exit(0);
+        }else{
+            process.exit(1);
+        }
+    }
+});
+```
+
+```
+$ chmod 777 test-has-md.js
+$ ./test-has-md.js; echo $?
+1
+$ ./test-has-md.js posts; echo $?
+0
+```
 
 ## 4 - Conclusion
 
