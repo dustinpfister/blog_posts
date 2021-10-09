@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:45:48
-version: 1.23
+updated: 2021-10-09 09:52:19
+version: 1.24
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -19,7 +19,9 @@ The test command by itself will not produce any output to the standard output of
 
 ## 1 - Basic examples of Linux test command
 
-To start out with in this section I will be going over a few simple examples of the Linux test command. Sense the command by itself will not produce any output to the standard output, many of these examples will also involve other bash features that might be worth looking into further also.
+To start out with in this section I will be going over a few simple examples of the Linux test command. Sense the command by itself will not produce any output to the standard output, many of these examples will also involve other bash features that might be worth looking into further also. 
+
+I often mention in these sections of posts that all the source code, in this case in the from of bash scripts can be found in my [demos Linux repository](https://github.com/dustinpfister/demos_linux/tree/master/forpost/linux-test) in Github. That is where you can find the latest revisions of the examples in this post, that in some cases can be a little out of date here. Also that would be a good place to make a pull request with something.
 
 ### 1.1 - Using the echo command with test
 
