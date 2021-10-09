@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 12:38:47
-version: 1.30
+updated: 2021-10-09 12:40:23
+version: 1.31
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -176,6 +176,8 @@ There is taking into account what the core of the test command is when it comes 
 So then in this section I will be going over some examples of this kind of script, the nature of which is just making a script that will check if a folder contains 1 or more mark down files. In the event that there are more that one mark down files in the folder the script will exit with a status of 0, in the event that there are no mark down files the exit status will be 1. Of course there is writing bash scripts, but there is also writing these kinds of scripts in some other high level language in order to make the script more portable.
 
 ### 3.1 - Creating a bash script
+
+So first off there is of course getting into [writing bash scripts](/2020/11/27/linux-bash-scripts/) when it comes to this sort of thing.
 
 ```bash
 #!/bin/bash
