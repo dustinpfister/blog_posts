@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 09:32:20
-version: 1.20
+updated: 2021-10-09 09:40:11
+version: 1.21
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -67,7 +67,7 @@ $ rm foo.txt
 
 ## 2 - Expressions in detail
 
-Now that I have the very basics of the Linux test command out of the way, In this section I will be going over some of the expressions in greater detail.
+Now that I have the very basics of the Linux test command out of the way, In this section I will be going over some of the expressions in greater detail. All the various expressions have to do with preforming some kind of comparison between two values, of checking if a file exists, or something to that effect. Keep in mind that the test command is not typically used by itself, but is used by way of conditional statements when writing bash scripts actually.
 
 ### 2.1 - Testing if two values are Equal to each other
 
