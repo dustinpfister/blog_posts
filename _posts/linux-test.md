@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 15:16:13
-version: 1.44
+updated: 2021-10-09 15:28:45
+version: 1.45
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -302,6 +302,18 @@ int main(int argc, char *argv[]){
     return 1;
 }
 ```
+
+What is really cool about this is that I do not have to bother with a shebang with this one because I will be building a binary using the Linux gcc command. So if I save the above source code as test-has-md.c I can then call gcc in the bash console and pass that file to it as the source code that I want to build into a binary. I can then give the name of the binary that I want to create as the second argument. If all goes well I can not just directly call that binary as this is a low level language that I am using here rather than bash, javaScript, or python that all require a separate binary in order to run.
+
+```
+$ gcc -Wall test-has-md.c test-has-md
+./test-has-md /home; echo $?
+1
+./test-has-md ../posts; echo $?
+0
+```
+
+Aside from that the program seems to work just as well as the others, in fact it is just as fast as bash when I use it sense there is no delay which seems to be the case with node.
 
 ## 4 - Conclusion
 
