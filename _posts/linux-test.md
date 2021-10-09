@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 932
-updated: 2021-10-09 13:20:10
-version: 1.40
+updated: 2021-10-09 13:21:22
+version: 1.41
 ---
 
 I have a lot of pots boiling when it comes to things to learn and research more, one of which is to become more competent when it comes to working with a Linux system. A major part of doing so is to learn a hold lot more about bash, and with that that bash built in commands once of which is the [Linux test](https://linux.die.net/man/1/test) bash built in command.
@@ -203,7 +203,7 @@ So then this bash script seems to work as I would want it to. I just pass a path
 
 ### 3.2 - Writing the same test script in javaScript
 
-So then when it comes to other high level languages outside of that of bash for me what comes to mind first and for most would be javaScript. So then there is seeing about write that same simple test script only [for node](/2017/04/05/nodejs-helloworld/) rater than bash. The end result will be the same by calling the [exit method of the process object](/2019/08/13/nodejs-process-exit/), aside from that I just need to do the same thing as I did in my bash script only now with core javaScript and nodejs features. With that said there is using the read dir method of the [file system module](/2018/02/08/nodejs-filesystem/) to get a list of file names from the first given positional argument that I can access by way of the [process argv array](/2018/02/11/nodejs-process/). I can then use the [array filter](/2020/10/03/js-array-filter/) prototype method in conjunction with the [string match method](/2019/04/06/js-string-match/) to get a filtered list of mark down file names. In place of using the Linux word count command I can just get the length of the resulting array that is returned using array filter and string match methods.
+So then when it comes to other high level languages outside of that of bash for me what comes to mind first and for most would be javaScript. So then there is seeing about write that same simple test script only [for node](/2017/04/05/nodejs-helloworld/) rater than bash. The end result will be the same by calling the [exit method of the process object](/2019/08/13/nodejs-process-exit/), aside from that I just need to do the same thing as I did in my bash script only now with core javaScript and nodejs features. With that said there is using the read dir method of the [file system module](/2018/02/08/nodejs-filesystem/) to get a list of file names from the first given positional argument that I can access by way of the [process argv array](/2018/02/11/nodejs-process/). I can then use the [array filter](/2020/10/03/js-array-filter/) prototype method in conjunction with the [string match method](/2019/04/06/js-string-match/) to get a filtered list of mark down file names. In place of using the Linux word count command I can just get the [length of the resulting array](/2018/12/14/js-array-length/) that is returned using array filter and string match methods.
 
 ```js
 #!/bin/node
