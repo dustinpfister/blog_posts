@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:19:15
-version: 1.33
+updated: 2021-10-10 14:23:39
+version: 1.34
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -19,7 +19,7 @@ These kinds of [async functions still operate in the main event loop](https://st
 
 In this section I will be going over just a few very basic examples that involve the use of promises and the async keyword as a way to create functions, as well as other related topics when it comes to the very basics of this sort of thing. The main thing to keep in mind where is that the use of these async functions are just another way to operate in a single event loop, so if you are thinking that this is something that is far beyond using something [like setTimeout](/2018/12/06/js-settimeout/) that is not really the case actually. The reason why is because that setTiemout and async functions are still working within a single event loop. So if you are thinking that async functions are another kind of web worker, or spawn method call in nodejs, that is not how to think about it. However async functions are another tool along side features like setTimeout, [requestAnimaitonFrame](/2018/03/13/js-request-animation-frame/), and the Promise constructor.
 
-So then in this section I will be sticking to a few simple examples that might hopefully show what async functions are, and also in the process hopefully also what they are not.
+It should go without saying then that this is not a [getting started type post with javaScript](/2018/11/27/js-getting-started/), or [functions in general in javaScript](/2019/12/26/js-function/). However if you have at least some background with the very basics of getting started with javaScipt, in this section I will be sticking to a few simple examples that might hopefully show what async functions are, and also in the process hopefully also what they are not. After that I will be getting to some additional stuff that has to do with really getting into how to go about doing async type tasks with javaScipt that have to do with creating a whole other event loop.
 
 ### 1.1 - The source code here is on github
 
