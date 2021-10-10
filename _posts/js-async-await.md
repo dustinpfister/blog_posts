@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:32:53
-version: 1.37
+updated: 2021-10-10 14:35:36
+version: 1.38
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -323,6 +323,8 @@ onmessage = function(e) {
   postMessage(e.data[0] + 'bar');
 };
 ```
+
+This script when used as the source code file for a web worker will respond to a message from the main event loop by just appending what is passed to it to the string bar, and send that back as a message. Nothing special but this is a basic example of this that I am starting out where here in the section after all. So now that I have a script that I want to use for a web worker I will now want at least one html file, and a little additional javaScript code that will make use of this file.
 
 ```html
 <html>
