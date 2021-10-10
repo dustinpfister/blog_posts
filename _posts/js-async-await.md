@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 13:34:52
-version: 1.28
+updated: 2021-10-10 14:02:28
+version: 1.29
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -113,40 +113,50 @@ bar();
 
 The foo function returns a promise that resolves after a delay. When used inside the body of the func async function that execution of code is paused, and thus the string end is not logged to the console until the delay has completed. So this can be thought of as a cleaner style compared to just using promises.
 
-## 2 - Not a replacement for WebWorker and child_process
 
-An async function still operates in the main javaScript event loop, so it is not a way to go about accomplishing what is often called true threading in javaScript. However there are was of doing that these days with javaScript, just not with async await, at least not by itself anyway.
+### 1.6 - Async functions will still hold up the event loop
 
-In this section I will be writing about the subject of async await and true threading in javaScript.
-
-### 2.1 - Async functions will still hold up the event loop
-
-So an async function that has some code in it that might hold up the event loop will do so just like that of any other function in javaScript. This is because just like any other function in javaScript, we are still dealing with a single event loop. That is unless we take advantage of something that allows for us to create an additional event loop.
+So an async function that has some code in it that might hold up the event loop will do so just like that of any other function in javaScript. This is because just like any other function in javaScript, we are still dealing with a single event loop when it comes to just using a kind of function alone. That is unless we take advantage of something that allows for us to create an additional event loop completely what is going on in an async function can still hold up the rest of a script. However do not just take my word for it run a few simple source code examples to see for yourself.
 
 For example take into account the following:
 
 ```js
 // async function that does something heavy
 let heavyAsync = async function () {
-    var i = Math.pow(10, 9);
+    var i = Math.floor(Math.pow(10, 9.25)),
+    st = new Date();
     while (i--) {}
-    console.log('bar');
+    var secs = (new Date() - st) / 1000;
+    console.log('');
+    console.log('heavy time: ', secs.toFixed(2));
+    console.log('');
 };
 // loop
-let i = 0, st;
+let i = 0,
+lt = new Date();
 let loop = function () {
     setTimeout(loop, 250);
-    st = new Date();
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    lt = now;
     if (i % 10 === 5) {
         heavyAsync();
     }
-    console.log('tick' + i, ' time: ' + (new Date() - st));
+    console.log('tick' + i, ' time: ' + secs.toFixed(2));
     i += 1;
 };
+
 loop();
 ```
 
-In this example when the heavyAsync function is called it still ends up delaying the whole application. This is because I am still just working with a single event loop.
+In this example when the heavyAsync function is called it still ends up delaying the whole application. This is because I am still just working with a single event loop. So then in order to truly get around this limitation I will need to do something more beyond just using async and promises that will help me to spin up more than one event loop to work with, and pass data to and from this other event loop. 
+
+## 2 - The Async and await keywords are then NOT a replacement for WebWorker
+
+An async function still operates in the main javaScript event loop, so it is not a way to go about accomplishing what is often called true threading in javaScript. However there are was of doing that these days with javaScript, just not with async await, at least not by itself anyway.
+
+In this section I will be writing about the subject of async await and true threading in javaScript.
+
 
 ### 2.2 - However in nodejs the child_process module can help avoid that
 
