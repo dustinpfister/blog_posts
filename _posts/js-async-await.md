@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:11:06
-version: 1.31
+updated: 2021-10-10 14:14:10
+version: 1.32
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -154,6 +154,197 @@ In this example when the heavyAsync function is called it still ends up delaying
 ## 2 - The Async and await keywords are then NOT a replacement for WebWorker
 
 An async function still operates in the main javaScript event loop, so it is not a way to go about accomplishing what is often called true threading in javaScript. However there are ways of doing that these days with javaScript, just not with async await, at least not by itself anyway. When it comes to client side javaScript the feature of interest to look into would be web workers, this is a way to go about creating an instance of an object that can be used to, and receive results back from a script that is running in a whole other event loop completely.
+
+### 2.1 - I will need a way to host what I am working on by way of http rather than file
+
+```js
+/*
+ *  server.js
+ *
+ *   This just provides a simple static server for the project.
+ *
+ *   ex: $ node server ./ 8080
+ *
+ */
+ 
+let http = require('http'),
+fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+lstat = promisify(fs.lstat),
+readFile = promisify(fs.readFile),
+readdir = promisify(fs.readdir);
+ 
+// the root folder to serve
+let root = process.argv[2] || path.join(__dirname, './');
+ 
+// set port with argument or hard coded default
+let port = process.argv[3] || 8080; // port 8080 for now
+ 
+// create path info object
+let createPathInfoObject = (url) => {
+    // remove any extra / ( /foo/bar/  to /foo/bar )
+    let urlArr = url.split('');
+    if(urlArr[urlArr.length - 1] === '/'){
+        urlArr.pop();
+        url = urlArr.join('');
+    }  
+    // starting state
+    let pInfo = {
+        url : url,
+        uri : path.join(root, url),
+        encoding: 'utf-8',
+        mime: 'text/plain',
+        ext: '',
+        contents: [],
+        html: ''
+    };
+    //return pInfo;
+    return lstat(pInfo.uri)
+    .then((stat)=>{
+        pInfo.stat = stat;
+        if(pInfo.stat.isFile()){
+            pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+            pInfo.ext = path.extname(pInfo.uri).toLowerCase();
+            pInfo.mime = pInfo.ext === '.html' ? 'text/html' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.css' ? 'text/css' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.js' ? 'text/javascript' : pInfo.mime;
+             // images
+            pInfo.mime = pInfo.ext === '.png' ? 'image/png' : pInfo.mime;
+            pInfo.mime = pInfo.ext === '.ico' ? 'image/x-icon' : pInfo.mime;
+            // binary encoding if...
+            pInfo.encoding = pInfo.ext === '.png' || pInfo.ext === '.ico' ? 'binary' : pInfo.encoding;
+            return pInfo;
+        }
+        if(pInfo.stat.isDirectory()){
+            pInfo.ext = '';
+            pInfo.mime = 'text/plain';
+            pInfo.encoding = 'utf-8';
+        }
+        return createDirInfo(pInfo);
+    });
+};
+ 
+// create an html index of a folder
+let createHTML = (pInfo) => {
+    var html = '<html><head><title>Index of - ' + pInfo.url + '</title>'+
+    '<style>body{padding:20px;background:#afafaf;font-family:arial;}div{display: inline-block;padding:10px;}</style>' +
+    '</head><body>';
+    html += '<h3>Contents of : ' + pInfo.url + '</h3>'
+    pInfo.contents.forEach((itemName)=>{
+        let itemURL = pInfo.url + '/' + itemName;
+        html += '<div> <a href=\"' + itemURL + '\" >' +  itemName + '</a> </div>'
+    });
+    html += '</body></html>';
+    return html;
+};
+ 
+// create dir info for a pInfo object
+let createDirInfo = (pInfo) => {
+    // first check for an index.html
+    let uriIndex = path.join( pInfo.uri, 'index.html' );
+    return readFile(uriIndex)
+    // if all goes file we have an indrex file call createPathInfoObject with new uri
+    .then((file)=>{
+        pInfo.uri = uriIndex;
+        pInfo.ext = '.html';
+        pInfo.mime = 'text/html';
+        return pInfo;
+    })
+    // else we do not get contents
+    .catch(()=>{
+        return readdir(pInfo.uri);
+    }).then((contents)=>{
+        if(contents && pInfo.ext === ''){
+            pInfo.contents = contents;
+            pInfo.mime = 'text/html';
+            pInfo.html = createHTML(pInfo);
+        }
+        return pInfo;
+    });
+};
+ 
+// create server object
+let server = http.createServer(function (req, res) {
+    // create path info object for req.url
+    createPathInfoObject(req.url)
+    // if we have a pinfo object without any problems
+    .then((pInfo)=>{
+        // send content
+        res.writeHead(200, {
+            'Content-Type': pInfo.mime
+        });
+        // if we have html send that
+        if(pInfo.html != ''){
+            res.write(pInfo.html, pInfo.encoding);
+            res.end();
+        }else{
+            // else we are sending a file
+            readFile(pInfo.uri, pInfo.encoding).then((file)=>{
+                res.write(file, pInfo.encoding);
+                res.end();
+            }).catch((e)=>{
+                // send content
+                res.writeHead(200, {
+                    'Content-Type': 'text/plain'
+                });
+                res.write(e.message, 'utf8');
+                res.end();
+            });
+        }
+    }).catch((e)=>{
+        // send content
+        res.writeHead(200, {
+            'Content-Type': 'text/plain'
+        });
+        res.write(e.message, 'utf8');
+        res.end();
+    });
+});
+ 
+// start server
+server.listen(port, function () {
+    console.log('hosting a public folder at: ');
+    console.log('path: ' + root);
+    console.log('port: ' + port);
+});
+```
+
+### 2.2 - A basic example of a web worker
+
+I will want a ww-basic.js file that looks like this:
+
+```js
+onmessage = function(e) {
+  postMessage(e.data[0] + 'bar');
+};
+```
+
+```html
+<html>
+    <head>
+        <title>web worker example</title>
+    </head>
+    <body>
+        <textarea id="out" cols="60" rows="15"></textarea>
+        <script>
+var out = document.getElementById('out'),
+workerBasic;
+// feature test
+if (window.Worker) {
+    workerBasic = new Worker('ww-basic.js');
+    workerBasic.onmessage = function(e) {
+       out.value += e.data + '\n';
+       console.log('Message received from worker');
+    };
+    workerBasic.postMessage(['foo']);
+}else{
+    out.value += 'Web Woker is not supported.\n'
+}
+        </script>
+    </body>
+</html>
+```
 
 ## 3 - In nodejs the child_process module can help to spin up more than one event loop
 
