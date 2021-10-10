@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 12:03:51
-version: 1.24
+updated: 2021-10-10 12:04:48
+version: 1.25
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -42,6 +42,8 @@ console.log(typeof helloWorldAsync()); // 'object'
 ```
 
 ### 1.3 - hello world promise function
+
+So then there is having a similar result to a sync function by just getting into the habit of creating functions that return a promise.
 
 ```js
 var helloWorld = function () {
