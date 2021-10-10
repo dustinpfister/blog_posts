@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:28:11
-version: 1.35
+updated: 2021-10-10 14:30:50
+version: 1.36
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -157,7 +157,7 @@ An async function still operates in the main javaScript event loop, so it is not
 
 ### 2.1 - I will need a way to host what I am working on by way of http rather than file
 
-The thing about getting into web workers is that they are of of many things that will not work when it comes to opening up an html file my way of the file protocol. So then if you are still developing that way this is one of many things that will come up where you have to loosen security settings with your browser, or better yet just find a way to host what you are working on by way of the http protocol by setting up a basic web static web sever. I have wrote another post on a simple script that can be used with node in the from of a single stand alone file, however there is also learning how to do things like this by using a popular framework like express in nodejs.
+The thing about getting into web workers is that they are of of many things that will not work when it comes to opening up an html file [by way of the file protocol](/2020/09/21/js-getting-started-file-protocol/). So then if you are still developing that way this is one of many things that will come up where you have to loosen security settings with your browser, or better yet just find a way to host what you are working on by way of the http protocol by setting up a basic web static web sever. I have [wrote another post on a simple script that can be used with node in the from of a single stand alone file](/2017/12/04/nodejs-simple-static-server-file/), however there is also learning how to do things like this by using a popular framework like express in nodejs.
 
 ```js
 /*
