@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 13:24:50
-version: 1.26
+updated: 2021-10-10 13:30:59
+version: 1.27
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -119,7 +119,7 @@ An async function still operates in the main javaScript event loop, so it is not
 
 In this section I will be writing about the subject of async await and true threading in javaScript.
 
-### 2.1 - Async functions will still hode up the event loop
+### 2.1 - Async functions will still hold up the event loop
 
 So an async function that has some code in it that might hold up the event loop will do so just like that of any other function in javaScript. This is because just like any other function in javaScript, we are still dealing with a single event loop. That is unless we take advantage of something that allows for us to create an additional event loop.
 
@@ -185,3 +185,8 @@ let loop = function () {
 loop();
 ```
 So then this example, unlike the first one that just makes use of async await, does not hold up the main javaScript event loop.
+
+## 3 - Concluson
+
+So then an async function is just a function that will always return a function, and inside the body of the function the await keyword can be used as a way to pause and wait for a result rather than moving on. I can not say that I use these kinds of functions that often actually as there are many ways of having a similar situation with things other than using async functions. There is having functions that return a function, and then there is also just doing things that involve old javaScriot style call back functions.
+
