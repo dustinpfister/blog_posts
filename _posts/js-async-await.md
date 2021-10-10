@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 11:09:06
-version: 1.15
+updated: 2021-10-10 11:19:28
+version: 1.16
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
 
-These kinds of async functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves. So then js async is not a replacement for Webworker in client side javaScript, or something like the cluster module, or child process module in nodejs. If you want to get closer to true threading you would want to look into those options and not just use asnyc functions alone. Still in some situations the async keyword can be useful so lets look at some code examples of this in use.
+These kinds of [async functions still operate in the main event loop](https://stackoverflow.com/questions/46004290/will-async-await-block-a-thread-node-js), so they still can not be used as a way to achieve what is often called true threading with javaScript, at least not by themselves. So then js async is not a replacement for [Webworker in client side javaScript](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers), or something like the [cluster module](/2018/01/18/nodejs-cluster/), or [child process module](/2018/02/04/nodejs-child-process/) in nodejs. If you want to get closer to true threading you would want to look into those options and not just use asnyc functions alone. Still in some situations the async keyword can be useful so lets look at some code examples of this in use.
 
 <!-- more -->
 
