@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:30:50
-version: 1.36
+updated: 2021-10-10 14:32:53
+version: 1.37
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -313,6 +313,8 @@ server.listen(port, function () {
 ```
 
 ### 2.2 - A basic example of a web worker
+
+So now that I have a way to host an html file and some javaScript code by way of the http protocol rather that the file protocol I can now get into working out a simple hello world style web worker example.
 
 I will want a ww-basic.js file that looks like this:
 
