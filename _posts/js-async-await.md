@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 11:36:49
-version: 1.22
+updated: 2021-10-10 12:00:23
+version: 1.23
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -24,6 +24,38 @@ So then in this section I will be sticking to a few simple examples that might h
 ### 1.1 - The source code here is on github
 
 This post like many others is still a kind of work in progress, as such it is only a matter of time until I get around to editing the content here once again, as long as I am able to do so. With that said I have the collection of source code that I am writing about in this post up on my [test vjs Github respiratory](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-async-await), along with all the other source code examples for all my other posts on native javaScript features. So then the latest work that I have done with these examples will be there, that is also where one would want to make a pull request. However there is also the comments section at the end of this post that can also be used to bring something up.
+
+### 1.2 - Hello world async function
+
+```js
+var helloWorld = function () {
+    return 'Hello World';
+};
+var helloWorldAsync =  async function () {
+    return 'Hello World';
+};
+ 
+console.log(typeof helloWorld());      // 'string'
+console.log(typeof helloWorldAsync()); // 'object'
+```
+
+### 1.3 - hello world promise function
+
+```js
+var helloWorld = function () {
+    return 'Hello World';
+};
+var helloWorldPromise = function () {
+    return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            resolve('Hello World');
+        }, 3000)
+    })
+};
+ 
+console.log(typeof helloWorld()); // 'string'
+console.log(typeof helloWorldPromise()); // 'object'
+```
 
 ### 1.2 - Basic example involving the use of promises
 
