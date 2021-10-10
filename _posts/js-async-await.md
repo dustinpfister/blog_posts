@@ -5,21 +5,21 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 09:25:22
-version: 1.14
+updated: 2021-10-10 11:09:06
+version: 1.15
 ---
 
-A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These kinds of functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves.
+A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
 
-So then js async is not a replacement for Webworker in client side javaScript, or something like the cluster module in nodejs. If you want to get closer to true threading you would want to look into those options. Still in some situations the async keyword can be useful so lets look at some code examples of this in use.
+These kinds of async functions still operate in the main event loop, so they still can not be used as a way to achieve true threading with javaScript, at least not by themselves. So then js async is not a replacement for Webworker in client side javaScript, or something like the cluster module, or child process module in nodejs. If you want to get closer to true threading you would want to look into those options and not just use asnyc functions alone. Still in some situations the async keyword can be useful so lets look at some code examples of this in use.
 
 <!-- more -->
 
 ## 1 - js async basics
 
-In this section I will be going over just a few very basic examples that involve the use of promsies and the async keyword as a way to create functions.
+In this section I will be going over just a few very basic examples that involve the use of promises and the async keyword as a way to create functions.
 
-### 1.1 - Basic example involving the use of promsies
+### 1.1 - Basic example involving the use of promises
 
 So here I have a basic example that involves the use of promises and setTimeout.
 
