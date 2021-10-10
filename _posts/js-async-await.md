@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 11:27:23
-version: 1.18
+updated: 2021-10-10 11:29:05
+version: 1.19
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -23,7 +23,7 @@ So then in this section I will be sticking to a few simple examples that might h
 
 ### 1.1 - Basic example involving the use of promises
 
-So here I have a basic example that involves the use of promises and setTimeout.
+So here I have a basic example that involves the use of the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) and setTimeout.
 
 ```js
 let foo = (delay) => {
