@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-10 14:52:26
-version: 1.12
+updated: 2021-10-10 15:04:08
+version: 1.13
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -21,7 +21,11 @@ One nice thing about the file protocol is that you do not have to take the time 
 
 So for starters I thought it would be go to start out with a few very basic starting points when it comes to using the file protocol as a way to get started with javaScript. These will be examples that one can just copy and past from this post into a text editor, save them as a file with the extension .html, and just open them up in a text editor. On ecan then make changes to the html and JavaScript code in there editor, and then switch over to there browser, and reload the page to view there changes. This is how I first started out learning html, and JavaScript. Also often it still is how I make many projects that will still work okay via the file protocol actually.
 
-### 1.1 - Very basic hello world
+### 1.1 - The source code in this post is on github
+
+The source code example here can be found in by [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-getting-started-file-protocol).
+
+### 1.2 - Very basic hello world
 
 Well lets get this one out of the way so we can move on to the more interesting stuff. There are a number of ways to go about creating a hello world html file with a script tag and some javaScript code. One way would be to have a single hard coded display element like a paragraph element, and then get a reference to that element in the script tag. Once a reference to the element is obtained the innerText property of the element reference to the paragraph element is one way to set the text of that element to something like hello world with javaScript code.
 
@@ -42,7 +46,7 @@ p.innerText = 'hello world';
 
 So the whole idea here with getting started with javaScript by way of the file protocol is to write something like this in a text editor and then save it as an html file. Then open a web browser and pres ctrl+o and navigate to the location of the html file stored on your local computer and open it up in the browser.
 
-### 1.2 - Starting out with some events
+### 1.3 - Starting out with some events
 
 Now that we have a hello world out of the way lets move on to something else such as event attachment. There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method.
 
