@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 12:00:23
-version: 1.23
+updated: 2021-10-10 12:03:51
+version: 1.24
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -26,6 +26,8 @@ So then in this section I will be sticking to a few simple examples that might h
 This post like many others is still a kind of work in progress, as such it is only a matter of time until I get around to editing the content here once again, as long as I am able to do so. With that said I have the collection of source code that I am writing about in this post up on my [test vjs Github respiratory](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-async-await), along with all the other source code examples for all my other posts on native javaScript features. So then the latest work that I have done with these examples will be there, that is also where one would want to make a pull request. However there is also the comments section at the end of this post that can also be used to bring something up.
 
 ### 1.2 - Hello world async function
+
+To start off with maybe it would be best to compare what the return values are for a async function compared to say a function expression. When I have a function expression that returns a string, the return value is, well a string no surprise there. However the same will not always be true for an async function as when I call such a function the return value right away is not a string, but an object. That is because an async function will always return a promise, even if the return value is not one the return value will be wrapped in a promise object.
 
 ```js
 var helloWorld = function () {
@@ -57,7 +59,7 @@ console.log(typeof helloWorld()); // 'string'
 console.log(typeof helloWorldPromise()); // 'object'
 ```
 
-### 1.2 - Basic example involving the use of promises
+### 1.4 - Basic example involving the use of promises
 
 So here I have a basic example that involves the use of the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) and setTimeout.
 
@@ -80,7 +82,7 @@ let bar = function () {
 bar();
 ```
 
-### 1.3 - The same example with js async
+### 1.5 - The same example with js async
 
 The async keyword can be used in combination with a function such as an arrow function to declare an async function. Inside the body of the async function the await keyword can be used as a way to pause the execution of the rest of the logic in the function until a function that was called with await is completed. The function that is called with await should be a function that will return a promise or another function created with the async keyword.
 
