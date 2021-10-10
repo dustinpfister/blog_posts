@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 11:32:00
-version: 1.20
+updated: 2021-10-10 11:33:42
+version: 1.21
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -23,9 +23,9 @@ So then in this section I will be sticking to a few simple examples that might h
 
 ### 1.1 - The source code here is on github
 
-This post like many others is still a kind of work in progress, as such it is only a matter of time until I get around to editing this post once again as long as I am able to do so. With that said I have the collection of source code that I am writing about in this post up on my test vjs Github respiratory, along with all the other source code examples for all my other posts on native javaScript features.
+This post like many others is still a kind of work in progress, as such it is only a matter of time until I get around to editing the content here once again, as long as I am able to do so. With that said I have the collection of source code that I am writing about in this post up on my [test vjs Github respiratory](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-async-await), along with all the other source code examples for all my other posts on native javaScript features.
 
-### 1.1 - Basic example involving the use of promises
+### 1.2 - Basic example involving the use of promises
 
 So here I have a basic example that involves the use of the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) and setTimeout.
 
@@ -48,7 +48,7 @@ let bar = function () {
 bar();
 ```
 
-### 1.2 - The same example with js async
+### 1.3 - The same example with js async
 
 The async keyword can be used in combination with a function such as an arrow function to declare an async function. Inside the body of the async function the await keyword can be used as a way to pause the execution of the rest of the logic in the function until a function that was called with await is completed. The function that is called with await should be a function that will return a promise or another function created with the async keyword.
 
