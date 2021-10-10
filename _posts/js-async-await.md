@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 12:04:48
-version: 1.25
+updated: 2021-10-10 13:24:50
+version: 1.26
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -41,9 +41,9 @@ console.log(typeof helloWorld());      // 'string'
 console.log(typeof helloWorldAsync()); // 'object'
 ```
 
-### 1.3 - hello world promise function
+### 1.3 - Hello world promise function
 
-So then there is having a similar result to a sync function by just getting into the habit of creating functions that return a promise.
+So then there is having a similar result to a sync function by just getting into the habit of creating functions that return a promise. One way to go about returning a promise inside the body of a function would be to use the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise).
 
 ```js
 var helloWorld = function () {
@@ -61,9 +61,9 @@ console.log(typeof helloWorld()); // 'string'
 console.log(typeof helloWorldPromise()); // 'object'
 ```
 
-### 1.4 - Basic example involving the use of promises
+### 1.4 - using then off of a promise object
 
-So here I have a basic example that involves the use of the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) and setTimeout.
+The main thing about promise objects is not to just assign the promise object to a variable, but to call the then function off of the promise object and do what needs to be done with the result insdie the body of this then function call.
 
 ```js
 let foo = (delay) => {
