@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:35:36
-version: 1.38
+updated: 2021-10-10 14:39:44
+version: 1.39
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -351,6 +351,8 @@ if (window.Worker) {
     </body>
 </html>
 ```
+
+When I go to this file in the web browser what I end up with is the string foo bar in the text area element. So then that seems to work okay as a basic example of a web worker at least when it comes to just getting started with this sort of thing. However maybe I should get around to making at least one more example of this to help really address what the deal is with this sort of thing and how it can help to really run code that will not bog down the rest of what is going on in the main event loop.
 
 ## 3 - In nodejs the child_process module can help to spin up more than one event loop
 
