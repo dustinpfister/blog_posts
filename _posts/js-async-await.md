@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 11:29:05
-version: 1.19
+updated: 2021-10-10 11:32:00
+version: 1.20
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -20,6 +20,10 @@ These kinds of [async functions still operate in the main event loop](https://st
 In this section I will be going over just a few very basic examples that involve the use of promises and the async keyword as a way to create functions, as well as other related topics when it comes to the very basics of this sort of thing. The main thing to keep in mind where is that the use of these async functions are just another way to operate in a single event loop, so if you are thinking that this is something that is far beyond using something like setTimeout that is not really the case actually. The reason why is because that setTiemout and async functions are still working within a single event loop. So if you are thinking that async functions are another kind of web worker, or spawn method call in nodejs, that is not how to think about it. However async functions are another tool along side features like setTimeout, requestAnimaitonFrame, and the Promise constructor.
 
 So then in this section I will be sticking to a few simple examples that might hopefully show what async functions are, and also in the process hopefully also what they are not.
+
+### 1.1 - The source code here is on github
+
+This post like many others is still a kind of work in progress, as such it is only a matter of time until I get around to editing this post once again as long as I am able to do so. With that said I have the collection of source code that I am writing about in this post up on my test vjs Github respiratory, along with all the other source code examples for all my other posts on native javaScript features.
 
 ### 1.1 - Basic example involving the use of promises
 
