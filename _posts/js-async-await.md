@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:14:10
-version: 1.32
+updated: 2021-10-10 14:19:15
+version: 1.33
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -17,7 +17,7 @@ These kinds of [async functions still operate in the main event loop](https://st
 
 ## 1 - js async basics
 
-In this section I will be going over just a few very basic examples that involve the use of promises and the async keyword as a way to create functions, as well as other related topics when it comes to the very basics of this sort of thing. The main thing to keep in mind where is that the use of these async functions are just another way to operate in a single event loop, so if you are thinking that this is something that is far beyond using something like setTimeout that is not really the case actually. The reason why is because that setTiemout and async functions are still working within a single event loop. So if you are thinking that async functions are another kind of web worker, or spawn method call in nodejs, that is not how to think about it. However async functions are another tool along side features like setTimeout, requestAnimaitonFrame, and the Promise constructor.
+In this section I will be going over just a few very basic examples that involve the use of promises and the async keyword as a way to create functions, as well as other related topics when it comes to the very basics of this sort of thing. The main thing to keep in mind where is that the use of these async functions are just another way to operate in a single event loop, so if you are thinking that this is something that is far beyond using something [like setTimeout](/2018/12/06/js-settimeout/) that is not really the case actually. The reason why is because that setTiemout and async functions are still working within a single event loop. So if you are thinking that async functions are another kind of web worker, or spawn method call in nodejs, that is not how to think about it. However async functions are another tool along side features like setTimeout, [requestAnimaitonFrame](/2018/03/13/js-request-animation-frame/), and the Promise constructor.
 
 So then in this section I will be sticking to a few simple examples that might hopefully show what async functions are, and also in the process hopefully also what they are not.
 
@@ -27,7 +27,7 @@ This post like many others is still a kind of work in progress, as such it is on
 
 ### 1.2 - Hello world async function
 
-To start off with maybe it would be best to compare what the return values are for a async function compared to say a function expression. When I have a function expression that returns a string, the return value is, well a string no surprise there. However the same will not always be true for an async function as when I call such a function the return value right away is not a string, but an object. That is because an async function will always return a promise, even if the return value is not one the return value will be wrapped in a promise object.
+To start off with maybe it would be best to compare what the return values are for a async function compared to say a [function expression](/2019/01/27/js-function-expression/). When I have a function expression that returns a string, the return value is, well a string no surprise there. However the same will not always be true for an async function as when I call such a function the return value right away is not a string, but an object. That is because an async function will always return a promise, even if the return value is not one the return value will be wrapped in a promise object.
 
 ```js
 var helloWorld = function () {
