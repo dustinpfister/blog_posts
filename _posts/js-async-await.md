@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:02:28
-version: 1.29
+updated: 2021-10-10 14:08:31
+version: 1.30
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -158,9 +158,11 @@ An async function still operates in the main javaScript event loop, so it is not
 In this section I will be writing about the subject of async await and true threading in javaScript.
 
 
-### 2.2 - However in nodejs the child_process module can help avoid that
+## 3 - In nodejs the child_process module can help to spin up more than one event loop
 
-In nodejs there is the [child_process](/2018/02/04/nodejs-child-process/) built in module. This can be used to launch an application from the command line, including node itself. When doing so it results in an additional, independent process on the operating system. Thus it is a way to do something involving more than one event loop with javaScript, thus it is a kind of so called true threading that differs from what is typical when it comes to async functions, setTiemout, and so forth by itself.
+In nodejs there is the child_process built in module, and in this module there are methods like the exec method, and the spawn method that can be used to start a whole other process on the operating system on which node is running. This can be used to launch something from the command line such as a script that contains a shebang and made executable with the chmod command in Linux systems, an alias, or a binary, including node itself. 
+
+When doing so it results in an additional, independent process on the operating system. Thus it is a way to do something involving more than one event loop with javaScript, thus it is a kind of so called true threading that differs from what is typical when it comes to async functions, setTiemout, and so forth by itself. There is also the cluster module that is also worth checking out, but what is great about child process is that it can be used to run any kind of executable thing from the command line, not just javaScript.
 
 ```js
 let heavyAsync = async function () {
