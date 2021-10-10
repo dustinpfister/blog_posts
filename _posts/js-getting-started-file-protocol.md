@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-10 14:47:39
-version: 1.10
+updated: 2021-10-10 14:49:55
+version: 1.11
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -118,4 +118,4 @@ render(child, state);
 
 ## 3 - Conclusion
 
-So getting started with javaScript by way of creating assets that one can just open up in a web browser is a great starting point for starting to learn javaScript. Also in many cases it is a way to just keep moving forward with learning as long as one does not run into any problems doing so. However that is just it when it comes to getting started wit javaScript this way, sooner or later you will run into one or more problems when it comes to running javaScript code in a web browser this way. For example in my post on async await I got into writing a few examples that have toi do with using web workers, and when it comes to those they will not work with the file protocol. So in order to get it to work I just have to set up a simple static web server and sever what I am working on by way of the http protocol and view it in the browser that way.
+So getting started with javaScript by way of creating assets that one can just open up in a web browser is a great starting point for starting to learn javaScript. Also in many cases it is a way to just keep moving forward with learning as long as one does not run into any problems doing so. However that is just it when it comes to getting started wit javaScript this way, sooner or later you will run into one or more problems when it comes to running javaScript code in a web browser this way. For example in my [post on async await I got into writing a few examples that have to do with using web workers](/2019/06/25/js-async-await/), and when it comes to those they will not work with the file protocol. So in order to get it to work I just have to [set up a simple static web server](/2017/12/04/nodejs-simple-static-server-file/) and sever what I am working on by way of the http protocol and view it in the browser that way.
