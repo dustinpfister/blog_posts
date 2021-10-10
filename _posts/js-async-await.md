@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 490
-updated: 2021-10-10 14:08:31
-version: 1.30
+updated: 2021-10-10 14:11:06
+version: 1.31
 ---
 
 A [js async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) function can be used as a way to define a special kind of asynchronous function. These async functions can be used in conjunction with the await keyword to help with the process of writing asynchronous code easier in javaScript as of late specs of javaScript as of ECMAScript 2017.
@@ -153,10 +153,7 @@ In this example when the heavyAsync function is called it still ends up delaying
 
 ## 2 - The Async and await keywords are then NOT a replacement for WebWorker
 
-An async function still operates in the main javaScript event loop, so it is not a way to go about accomplishing what is often called true threading in javaScript. However there are was of doing that these days with javaScript, just not with async await, at least not by itself anyway.
-
-In this section I will be writing about the subject of async await and true threading in javaScript.
-
+An async function still operates in the main javaScript event loop, so it is not a way to go about accomplishing what is often called true threading in javaScript. However there are ways of doing that these days with javaScript, just not with async await, at least not by itself anyway. When it comes to client side javaScript the feature of interest to look into would be web workers, this is a way to go about creating an instance of an object that can be used to, and receive results back from a script that is running in a whole other event loop completely.
 
 ## 3 - In nodejs the child_process module can help to spin up more than one event loop
 
