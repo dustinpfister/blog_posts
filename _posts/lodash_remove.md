@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 12:07:27
-version: 1.33
+updated: 2021-10-11 12:12:03
+version: 1.34
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -50,6 +50,10 @@ let b = _.remove(a, (el) => typeof el === 'number');
 console.log(b); // [27, 42]
 console.log(a); // ['foo','man',chew];
 ```
+
+### 1.3 - The source code examples of this post are on Github
+
+I have the source code of the examples in this post up on my [test lodash Github repository](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_remove). In that folder I am also drafting out future edits for this post, and the repository also contains the source code examples for all my [other posts on lodash](/categories/lodash/). I do get around to editing my content now and then so if you see anything that might need to change, or something that should be added there is making a pull request there, or leaving a comment down below on this site.
 
 ## 2 - lodash filter method for removing elements without mutating the source array
 
