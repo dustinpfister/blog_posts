@@ -35,10 +35,6 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
-### (  ) - js-getting-started-file-protocol ( old )
-* edit post to 1,800+ words
-* have 5+ internal links for the post
-
 ### (  ) - js-onvisibilitychange ( no internal links )
 * edit post to 1,800+ words
 * have 5+ internal links for the post
@@ -91,6 +87,10 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/11/2021 ) - js-getting-started-file-protocol ( old )
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 10/10/2021 ) - js-async-await ( old )
 * (done) edit post to 1,000+ words
