@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 12:12:03
-version: 1.34
+updated: 2021-10-11 12:14:19
+version: 1.35
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -20,6 +20,8 @@ There are however other methods of interest, both in lodash and native javaScrip
 ## 1 - lodash remove basic examples and what to know
 
 The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/) that work with arrays, there are some additional options to be aware of such as the [pull](/2020/03/03/lodash_pull), [without](https://lodash.com/docs/4.17.15#without), and [filter](/2018/05/18/lodash_filter/) methods in lodash. The remove method is a method where a function must be passed to define what the condition is for removing and element from an array, and the remove method will also mutate the array in place. The other options in lodash do more or less the same as remove, only a value can be given rather than a function, and some of them will not mutate the source array.
+
+So for starters in this section I will be writing about just a few quick simple examples using the lodash remove method, and I also often take a moment to mention some other things you might want to be aware of in this section before continuing to read the rest of this post.
 
 ### 1.1 - Basic example of the lodash remove method
 
