@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 14:17:01
-version: 1.16
+updated: 2021-10-11 14:37:15
+version: 1.17
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -46,9 +46,11 @@ p.innerText = 'hello world';
 
 So the whole idea here with getting started with javaScript by way of the file protocol is to write something like this in a text editor and then save it as an html file. Then open a web browser and pres ctrl+o and navigate to the location of the html file stored on your local computer and open it up in the browser.
 
-### 1.3 - Starting out with some events
+## 2 - Starting out with some events
 
 Now that we have a hello world out of the way lets move on to something else such as [event attachment](/2019/01/16/js-event-listeners/), and starting to work with [event objects](/2020/07/23/js-event-object/) in the event hander functions. The reason why I am getting into this is because event attachment if a very important step forward when it comes to making a project interactive. There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method.
+
+### 2.1 - Getting started with events
 
 To use this add event listener method I will first want an element reference to attach an event hander to. So then I have added an input element to the html of this example, on top of having a paragraph element that will serve as a crude yet functional display. For this button I am setting an id attribute that I will use as a means to get a reference to it, set the tpe of the input to button rather than the default text type, and set a value of step to it which in this case will be the display name of the button.
 So now that I have my html together I will want to create some variables to store a count, and hold a reference to elements of interest in the page such as what I am using to display output. I just get a reference to the input element, and then call the add event listener method off of that reference. While doing so I pass the string click for the first argument to indicate that I want to attach an event listener for the click event, and then pass the event hander function that I want to fire each time that event happens.
@@ -82,7 +84,36 @@ render();
 
 This subject could quickly branch off into not just one post, but many on just all there is to be aware of when it comes to event attachment in client side javaScript. I do not want to get into detail with that here in this section or this post. The idea here is that if you want to learn client side javaScript you have to start somewhere. Creating html files and working out just some very basic javaScript examples and opening them up in w web browser is a starting point.
 
-## 2 - style api example
+### 2.2 - Event Objects
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div id="parent" style="position:relative;left:50px;top:50px;width:320px;height:240px;background:black;">
+            <div id="child" style="position:absolute;width:32px;height:32px;background:red;"></div>
+        </div>
+        <script>
+var el_div = document.getElementById('parent'),
+el_box = document.getElementById('child');
+el_div.addEventListener('click', function(e){
+    var div = e.target,
+    bx = div.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    if(div.id === 'parent'){
+        el_box.style.left = (x-16) + 'px';
+        el_box.style.top = (y-16) + 'px';
+    }
+});
+        </script>
+    </body>
+</html>
+```
+
+## 3 - style api example
 
 One thing that I started paying around with in the early days was the style API. This is one way to go about changing CSS values with javaScript code. To start using it one just needs to get a reference to an html element by one means or another an dhtne there are a whole bunch of properties off of a style object of the element reference. Each of these can be used as a way to set what the css style is for that element.
 
@@ -123,7 +154,7 @@ render(child, state);
 </html>
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So getting started with javaScript by way of creating assets that one can just open up in a web browser is a great starting point for starting to learn javaScript. Also in many cases it is a way to just keep moving forward with learning as long as one does not run into any problems doing so. However that is just it when it comes to getting started wit javaScript this way, sooner or later you will run into one or more problems when it comes to running javaScript code in a web browser this way. For example in my [post on async await I got into writing a few examples that have to do with using web workers](/2019/06/25/js-async-await/), and when it comes to those they will not work with the file protocol. So in order to get it to work I just have to [set up a simple static web server](/2017/12/04/nodejs-simple-static-server-file/) and sever what I am working on by way of the http protocol and view it in the browser that way.
 
