@@ -11,6 +11,9 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
+
+
+
 <!--###### ########## ########## #######-->
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
@@ -20,6 +23,15 @@ This is a general todo list for what I want to get done when it comes to editing
 
 ### (  ) - js-web-storage ( old )
 * edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
+### (  ) - js-filereader  ( old )
+* edit post to 1,000+ words
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+
+### (  ) - js-math-round  ( old )
 * edit post to 1,800+ words
 * have 5+ internal links for the post
 
@@ -178,11 +190,9 @@ This is a general todo list for what I want to get done when it comes to editing
 
 
 
-
 <!--###### ########## ########## #######-->
 ## nodejs ( /yyyy/mm/dd/nodejs-* )
 <!--###### ########## ########## #######-->
-
 
 ### (   ) - edit: nodejs-filesystem-read-file ( very low word count)
 * (done) edit post to 500+ words
