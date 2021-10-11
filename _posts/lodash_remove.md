@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 13:06:32
-version: 1.39
+updated: 2021-10-11 13:09:03
+version: 1.40
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -230,6 +230,8 @@ console.log(remove(nums, function (n) {
 There are of course many different ways that a function such as this could be written. I like Array.splice because of the great browser support, but if you are not such a nut with that sort of thing another option might involve the use of Array.filter for example.
 
 ### 4.7 - Vanilla javaScript pull method using Array.splice
+
+So there is not just making a vanilla javaScript remove method, but also making a vanilla javaScript pull method. In order to make a method like this that will work just like the pull method I will want to use a native javaScript equivalent to that of the lodash eq method. With that said there is using the [Object.is method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) as a way to make the comparison between two values.
 
 ```js
 // the remove method
