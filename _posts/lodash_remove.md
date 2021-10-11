@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 12:14:19
-version: 1.35
+updated: 2021-10-11 12:17:29
+version: 1.36
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -114,7 +114,7 @@ Still often when I make pet projects that are a game of sorts I do not often use
 
 ## 4 - Vanilla js
 
-In this section I will be going over vanilla js solutions for removing elements from an array. There are many array prototype methods that are of interest when it comes to removing one or more elements from an array, as well as ways of making my own custom remove methods for projects if needed. So in this section we will be kicking lodash to the curb and working with what there is to work with in modren, and even not so modern native jjavaScript specs.
+In this section I will be going over vanilla js solutions for removing elements from an array. There are many array prototype methods that are of interest when it comes to removing one or more elements from an array, as well as ways of making my own custom remove methods for projects if needed. So in this section we will be kicking lodash to the curb and working with what there is to work with in modern, and not so modern native javaScript specs when it comes to removing elements from an array.
 
 ### 4.1 - Using Array.splice to remove a element
 
