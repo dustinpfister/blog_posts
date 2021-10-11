@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 14:10:46
-version: 1.15
+updated: 2021-10-11 14:17:01
+version: 1.16
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -48,9 +48,10 @@ So the whole idea here with getting started with javaScript by way of the file p
 
 ### 1.3 - Starting out with some events
 
-Now that we have a hello world out of the way lets move on to something else such as [event attachment](/2019/01/16/js-event-listeners/), and starting to work with [event objects](/2020/07/23/js-event-object/) in the event hander functions. The reason why I am getting into this is because event attachment if a very important step forward when it comes to making a project interactive.
+Now that we have a hello world out of the way lets move on to something else such as [event attachment](/2019/01/16/js-event-listeners/), and starting to work with [event objects](/2020/07/23/js-event-object/) in the event hander functions. The reason why I am getting into this is because event attachment if a very important step forward when it comes to making a project interactive. There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method.
 
-There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method. To use this method I will first want an element reference to attach an event hander to. So then I have added an input element to the html of this example, on top of having a paragraph element that will serve as a crude yet functional display.
+To use this add event listener method I will first want an element reference to attach an event hander to. So then I have added an input element to the html of this example, on top of having a paragraph element that will serve as a crude yet functional display. For this button I am setting an id attribute that I will use as a means to get a reference to it, set the tpe of the input to button rather than the default text type, and set a value of step to it which in this case will be the display name of the button.
+So now that I have my html together I will want to create some variables to store a count, and hold a reference to elements of interest in the page such as what I am using to display output. I just get a reference to the input element, and then call the add event listener method off of that reference. While doing so I pass the string click for the first argument to indicate that I want to attach an event listener for the click event, and then pass the event hander function that I want to fire each time that event happens.
 
 ```html
 <html>
