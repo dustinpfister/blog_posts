@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 14:42:30
-version: 1.18
+updated: 2021-10-11 14:46:48
+version: 1.19
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -84,7 +84,7 @@ render();
 
 This subject could quickly branch off into not just one post, but many on just all there is to be aware of when it comes to event attachment in client side javaScript. I do not want to get into detail with that here in this section or this post. The idea here is that if you want to learn client side javaScript you have to start somewhere. Creating html files and working out just some very basic javaScript examples and opening them up in w web browser is a starting point.
 
-### 2.2 - Event Objects
+### 2.2 - Event Objects and the click event
 
 Now that I have a basic example of event attachment out of the way it might be a good idea to at least touch base on event objects that there are to work with in these event handers. For example lets take a moment to think about this click event, what is something else of interest that comes to mind when a client event happens other than just simply knowing that an element in the page was clicked? Well one thing would be the position at which the element was clicked right? So then in these event objects that are passed to an event hander there is a clientX, and clientY property that is the position at which a client event has happened. When it comes to touch events there are also arrays that are attached to these event objects that are an array of points for each finger that is on the surface of the touch device also, but for now lets just stick with this simple click event.
 
@@ -114,6 +114,8 @@ el_div.addEventListener('click', function(e){
     </body>
 </html>
 ```
+
+In this example I have a parent div element, and a child div element. When the parent div is clicked the child element will be repositioned to that location in the parent div. Inside the body of the event hander I am using the target property to get a reference to the element that was clicked. The reason why I am dong this is because I am attaching to the parent div, and because of something called event bubbling this handler can fire for the parent or child div. So then in the event that the div that was clicked is the parent div I am using the parent div relative position as a way to set a new position for the child div.
 
 ## 3 - style api example
 
