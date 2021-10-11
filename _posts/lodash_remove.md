@@ -5,11 +5,11 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 08:39:24
-version: 1.27
+updated: 2021-10-11 08:54:30
+version: 1.28
 ---
 
-The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements. 
+The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing. Also there is the question of doing it all all to begin with or not when it comes to the idea of just having a fixed set of elements that are simply reused rather than created and purged such as with [object pools](/2020/07/20/canvas-example-object-pool/).
 
 When it comes to just using native javaScript alone of course there are ways of just going ahead and removing elements from an array. However this is a post on lodash where it is assumed that lodash is part of the stack of a project so with that said there is also the [\_.remove](https://lodash.com/docs/4.17.4#remove) array method in [lodash](https://lodash.com/). 
 
