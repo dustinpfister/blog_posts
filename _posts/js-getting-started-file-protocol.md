@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 15:28:47
-version: 1.22
+updated: 2021-10-11 15:32:25
+version: 1.23
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -91,6 +91,8 @@ p.innerText = a + ' : ' + b + ' : ' + c;
 ```
 
 ### 1.5 - Functions
+
+Functions are another major part of writing javaScript code, and when it comes to working with functions in javaScript there are a few options to work with when it comes to the [kinds of functions in javaScript](/2019/12/26/js-function/). For example there are arrow functions, function expressions, and function declarations. There is also knowing what a constructor function is, as well as everything that revolves around it when it comes to object orientated programing, and so on.
 
 ```html
 <html>
