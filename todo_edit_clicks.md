@@ -46,7 +46,7 @@ This is a todo list where editing is prioritized based just purely on how much t
 * expand to 2,400+ words
 
 ### lodash_remove ( #6 - 967 clicks - 10/02/2021 )
-* expand to 1,800+ words
+* ( done 10/11/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
 ### lodash_concat ( #7 - 956 clicks - 10/02/2021 )
