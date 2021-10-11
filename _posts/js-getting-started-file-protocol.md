@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 14:46:48
-version: 1.19
+updated: 2021-10-11 15:19:24
+version: 1.20
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -45,6 +45,130 @@ p.innerText = 'hello world';
 ```
 
 So the whole idea here with getting started with javaScript by way of the file protocol is to write something like this in a text editor and then save it as an html file. Then open a web browser and pres ctrl+o and navigate to the location of the html file stored on your local computer and open it up in the browser.
+
+### 1.3 - query selector and query selector all methods
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div class="wrap"></div>
+        <div id="foo"></div>
+        <div></div>
+        <script>
+document.querySelector('.wrap').innerText = 'BY CLASS';
+document.querySelector('#foo').innerText = 'BY ID';
+document.querySelectorAll('div')[2].innerText = 'BY TAG';
+        </script>
+    </body>
+</html>
+```
+
+### 1.4 - Learning a thing or two about expressions
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div class="out"></div>
+        <script>
+var p = document.querySelector('.out');
+var a = 5 + 7,    //  12
+b = 5 + 7 * 10,   //  75
+c = (5 + 7) * 10; // 120
+p.innerText = a + ' : ' + b + ' : ' + c;
+        </script>
+    </body>
+</html>
+```
+
+### 1.5 - Functions
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div class="app"></div>
+        <div></div>
+        <script>
+var div = document.querySelector('.app');
+ 
+// a function with a return value
+var add = function(a, b){
+    return a + b;
+};
+ 
+div.innerText = add(1, 1);
+ 
+        </script>
+    </body>
+</html>
+```
+
+### 1.6 - Arrays
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+        <style>
+p{
+  background: rgba(255,0,0,0.2);
+  padding:10px;
+  text-align: center;
+}
+        </style>
+    </head>
+    <body>
+        <div class="app"></div>
+        <div></div>
+        <script>
+var div = document.querySelector('.app');
+ 
+var arr = ['one', 'two', 'three'];
+ 
+arr.forEach(function(str){
+    var el = document.createElement('p');
+    el.innerText = str;
+    div.appendChild(el);
+});
+ 
+        </script>
+    </body>
+</html>
+```
+
+### 1.7 - Basic loop function with setTimeout
+
+```html
+<html>
+    <head>
+        <title>js getting started file protocol</title>
+    </head>
+    <body>
+        <div class="app"></div>
+        <div></div>
+        <script>
+var div = document.querySelector('.app'),
+c = 0,
+ms = 1000 / 8;
+// a function with a return value
+var loop = function(a, b){
+    setTimeout(loop, ms)
+    c += 1;
+    div.innerText = c;
+};
+loop();
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - Starting out with some events
 
