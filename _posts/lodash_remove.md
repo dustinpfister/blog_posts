@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 12:58:10
-version: 1.37
+updated: 2021-10-11 13:04:51
+version: 1.38
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -118,7 +118,7 @@ In this section I will be going over vanilla js solutions for removing elements 
 
 ### 4.1 - Array filter
 
-So there is a native array filter method in the core javaScript array prototype. So when it comes to just using javaScript by itself there is a filter method there all ready to work with. It works basically the same way as the lodash filter method only it is called off of in instance of an array. Just as the lodash filter method it will not mutate the array in place also.
+So there is a native [array filter](/2020/10/03/js-array-filter/) method in the core javaScript array prototype. So when it comes to just using javaScript by itself there is a filter method there all ready to work with. It works basically the same way as the lodash filter method only it is called off of in instance of an array. Just as the lodash filter method it will not mutate the array in place also.
 
 ```js
 let arr = [1, 2, 'foo', 3, 'bar', 4];
@@ -131,7 +131,9 @@ console.log(arr);
 ```
 
 
-### 4.2 - slice
+### 4.2 - The Slice array prototype method
+
+The [array slice](/2018/12/08/js-array-slice/) method will return a new array from a source array at a starting and ending index values in the source. So then this is a way to go about creating a new array rather than mutating an array in place like the lodash remove method does.
 
 ```js
 var a = [1, 'a', 'b', 4, 5, 'c'];
@@ -142,6 +144,8 @@ console.log(b);
 console.log(a);
 // [ 1, 'a', 'b', 4, 5, 'c' ]
 ```
+
+ One draw back of the array slice method then is that by calling the method just once I can only get one element or a few elements that are next to each other. So when it comes to creating a new array of elements that meet or do not meet a given condition I am going to need to do a bit more than just use the array slice method alone.
 
 ### 4.3 - slice concat
 
