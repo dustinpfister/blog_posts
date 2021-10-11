@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-07-20 13:12:24
-version: 1.26
+updated: 2021-10-11 08:39:24
+version: 1.27
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem. The way I would resolve the problem is often by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements. 
@@ -39,7 +39,7 @@ So the method that you pass will return true of false, if what is returned is tr
 
 ## 2 - lodash filter method for removing elements without mutating the source array
 
-So one little problem with the lodash remove method is that it will mutate the array in place. In some situations I might not want to mutate the given source array, so another lodash method that comes to mind when it comes to removing elements from an array is the [lodash filter](/2018/06/18/lodash_filter/) method. This method works more or less the same way as the lodash remove method only with a few differences. One as I mentioned is that it will return a new array, rather than mutating the source array, and the other is that a true boolean value is what is returned to find out what elements are to remain rather than be removed.
+So one little problem with the lodash remove method is that it will mutate the array in place. In some situations I might not want to mutate the given source array, so another lodash method that comes to mind when it comes to removing elements from an array is the [lodash filter](/2018/05/18/lodash_filter/) method. This method works more or less the same way as the lodash remove method only with a few differences. One as I mentioned is that it will return a new array, rather than mutating the source array, and the other is that a true boolean value is what is returned to find out what elements are to remain rather than be removed.
 
 ```js
 let _ = require('lodash');
