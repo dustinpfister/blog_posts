@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 15:40:17
-version: 1.25
+updated: 2021-10-11 15:41:08
+version: 1.26
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -154,7 +154,7 @@ arr.forEach(function(str){
 
 ### 1.7 - Basic loop function with setTimeout
 
-One think that will need to happed sooner or later is to create some kind of main app loop type function. This is again yet another subject that will need a whole other post just to scratch the surface of everything there is to know about when it comes to making these kinds of functions in javaScript. However maybe it would be good to start out with a simple loop example that makes use of the [setTimout method](/2018/12/06/js-settimeout/), rather than requestAnimaitonFrame, at least for now anyway.
+One think that will need to happed sooner or later is to create some kind of main app loop type function. This is again yet another subject that will need a whole other post just to scratch the surface of everything there is to know about when it comes to making these kinds of functions in javaScript. However maybe it would be good to start out with a simple loop example that makes use of the [setTimout method](/2018/12/06/js-settimeout/), rather than [requestAnimaitonFrame](/2018/03/13/js-request-animation-frame/), at least for now anyway.
 
 ```html
 <html>
