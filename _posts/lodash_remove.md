@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 09:12:59
-version: 1.30
+updated: 2021-10-11 11:55:42
+version: 1.31
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -19,7 +19,11 @@ There are however other methods of interest, both in lodash and native javaScrip
 
 ## 1 - lodash remove basic example
 
-The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/). It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there. This method that is passed as the second argument will be given each element as an argument, and this of course can be used to define an expression that will evaluate to true or false. The return keyword can then be used in the body of that method, and if a true value is returned then the element in question will be removed from the array in place.
+The lodash remove method is one of the many [array methods in lodash](/2019/02/14/lodash_array/) that work with arrays, there are some additional options to be aware of such as the pull, without, and filter methods in lodash. 
+
+### 1.1 - Basic example of the lodash remove method
+
+It's pretty easy, just pass the array, and a method where you can define the conditions that will result in removal of the element that you want out of there. This method that is passed as the second argument will be given each element as an argument, and this of course can be used to define an expression that will evaluate to true or false. The return keyword can then be used in the body of that method, and if a true value is returned then the element in question will be removed from the array in place.
 
 ```js
 var arr = ['foo', 27, 'man', 42, 'chew'];
