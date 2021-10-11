@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 709
-updated: 2021-10-11 14:07:15
-version: 1.14
+updated: 2021-10-11 14:10:46
+version: 1.15
 ---
 
 I have wrote a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/), and another [getting started post that is centered on getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) rather than other ways to get going with javaScript. However I have not yet wrote a post on getting started with javaScript, and using the [file protocol](https://en.wikipedia.org/wiki/File_URI_scheme) of a web browser to run files that are stored locally on the personal computer that you are using. This is strange sense that is how I first started way back in the day for me at least so this is something that I should have go to in my writing a long time ago actually. Anyway better late then never so I thought I would take a moment to write a post on getting started with javaScript, and using the file protocol, a text editor, and a web browser as a starting point to learn javaScript.
@@ -50,7 +50,7 @@ So the whole idea here with getting started with javaScript by way of the file p
 
 Now that we have a hello world out of the way lets move on to something else such as [event attachment](/2019/01/16/js-event-listeners/), and starting to work with [event objects](/2020/07/23/js-event-object/) in the event hander functions. The reason why I am getting into this is because event attachment if a very important step forward when it comes to making a project interactive.
 
-There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method.
+There is a number of ways to attach a wide range of various types of events to elements in html. However for this getting started post I thought I would stick to just a basic example that has to do with just the click event and the add event listener method. To use this method I will first want an element reference to attach an event hander to. So then I have added an input element to the html of this example, on top of having a paragraph element that will serve as a crude yet functional display.
 
 ```html
 <html>
