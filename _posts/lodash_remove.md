@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 13:04:51
-version: 1.38
+updated: 2021-10-11 13:06:32
+version: 1.39
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -147,7 +147,9 @@ console.log(a);
 
  One draw back of the array slice method then is that by calling the method just once I can only get one element or a few elements that are next to each other. So when it comes to creating a new array of elements that meet or do not meet a given condition I am going to need to do a bit more than just use the array slice method alone.
 
-### 4.3 - slice concat
+### 4.3 - using the array slice and array concat methods
+
+So then there is not just using array slice by itself, but using it in conjunction with the array concat method as a way to furnish a new array with elements that I want, there by removing elements that I do not want.
 
 ```js
 var a = [1, 'a', 'b', 4, 5, 'c'];
