@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 09:08:13
-version: 1.29
+updated: 2021-10-11 09:12:59
+version: 1.30
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -16,7 +16,6 @@ So when it comes to just using native javaScript alone of course there are ways 
 There are however other methods of interest, both in lodash and native javaScript though such as the filter method that might be a better option as it will do the same only not mutate the array in place. Still lots of developers are transitioning away from lodash, so I will also be looking at some vanilla js alternatives such as array splice, but also other native methods. Also there are some additional related topics that come to mind such as the question of removing elements at all to begin with or not when it comes to the idea of just having a fixed set of elements that are simply reused rather than created and purged, such is the case with an [object pool](/2020/07/20/canvas-example-object-pool/).
 
 <!-- more -->
-
 
 ## 1 - lodash remove basic example
 
