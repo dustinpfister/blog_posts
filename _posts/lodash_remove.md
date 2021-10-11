@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 13:09:03
-version: 1.40
+updated: 2021-10-11 13:13:13
+version: 1.41
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -284,4 +284,7 @@ console.log(b)
 
 ## 5 - Conclusion
 
-So lodash is packed full of helpful little methods like the lodash remove method. It is true that many of the methods in lodash are redundant, but that is not always the case. Sometimes a lodash method does bring a little more to the table compared to a native counterpart. If you enjoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
+So lodash is packed full of helpful little methods like the lodash remove method for removing elements from an array, but there are a few other options that should also be taken into consideration. It is true that many of the methods in lodash are redundant, but that is not always the case. Sometimes a lodash method does bring a little more to the table compared to a native counterpart. 
+Still much of what lodash provides is baked into native javaScript itself, and some of the native features have been around for a while now so it should be generally safe to use many of them.
+
+If you enjoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
