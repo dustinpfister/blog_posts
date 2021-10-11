@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 12:00:11
-version: 1.32
+updated: 2021-10-11 12:07:27
+version: 1.33
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -39,6 +39,17 @@ console.log(arr); // ['foo','man',chew];
 ```
 
 So the method that you pass will return true of false, if what is returned is true the element will be removed.
+
+### 1.2 - The return value of lodash remove
+
+There is always taking note of what a return value of for a function if any, even for methods that mutate in place like the remove method. With that said the remove method is not like other methods that return a new array, so there is no need to set the return value of a new array that is returned t a variable that may have contained the source array like with other methods. However there is still a return value for the lodash remove method it is just that the return value is an array of elements that where removed from the array.
+
+```js
+let a = ['foo', 27, 'man', 42, 'chew'];
+let b = _.remove(a, (el) => typeof el === 'number');
+console.log(b); // [27, 42]
+console.log(a); // ['foo','man',chew];
+```
 
 ## 2 - lodash filter method for removing elements without mutating the source array
 
