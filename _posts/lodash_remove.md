@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 38
-updated: 2021-10-11 12:17:29
-version: 1.36
+updated: 2021-10-11 12:58:10
+version: 1.37
 ---
 
 The process of removing a few elements from an array can sometimes be a little troubling, or at least I remember that it was back when I was first starting out with javaScript. The trouble was mainly with looping over an array from a zero element index value upwards, each time an element is removed it of course changes the length of an array, which of course causes a problem when looping forward threw array index values that way. One way that I would resolve the problem is by looping threw the array backwards, and using an [array prototype](/2018/12/10/js-array/) method like [Array.splice](/2021/07/20/js-array-splice) to purge elements out. For the most part that seems to work okay, but here is a wide range of other ways to go about doing this sort of thing.
@@ -116,7 +116,44 @@ Still often when I make pet projects that are a game of sorts I do not often use
 
 In this section I will be going over vanilla js solutions for removing elements from an array. There are many array prototype methods that are of interest when it comes to removing one or more elements from an array, as well as ways of making my own custom remove methods for projects if needed. So in this section we will be kicking lodash to the curb and working with what there is to work with in modern, and not so modern native javaScript specs when it comes to removing elements from an array.
 
-### 4.1 - Using Array.splice to remove a element
+### 4.1 - Array filter
+
+So there is a native array filter method in the core javaScript array prototype. So when it comes to just using javaScript by itself there is a filter method there all ready to work with. It works basically the same way as the lodash filter method only it is called off of in instance of an array. Just as the lodash filter method it will not mutate the array in place also.
+
+```js
+let arr = [1, 2, 'foo', 3, 'bar', 4];
+ 
+arr = arr.filter((el) => {
+        return typeof el == 'number';
+    });
+ 
+console.log(arr);
+```
+
+
+### 4.2 - slice
+
+```js
+var a = [1, 'a', 'b', 4, 5, 'c'];
+// what is nice about slice is that it does not mutate the source array
+var b = a.slice(1, 3);
+console.log(b);
+// [ 'a', 'b' ]
+console.log(a);
+// [ 1, 'a', 'b', 4, 5, 'c' ]
+```
+
+### 4.3 - slice concat
+
+```js
+var a = [1, 'a', 'b', 4, 5, 'c'];
+// what is nice about slice is that it does not mutate the source array
+var b = a.slice(1, 3).concat(a.slice(5, 6));
+console.log(b);
+// [ 'a', 'b', 'c' ]
+```
+
+### 4.4 - Using Array.splice to remove a element
 
 So one way to remove an element from an Array with native core javaScript is to use the Array.splice prototype method. This is often confused with Array.slice that does the same thing only it returns a new array rather than mangling an existing one. Array.splice might be one of the best options if you are someone that worries a great deal about backward compatibility with older browsers. Unlike other native options like Array.filter, Array.splice is a pre ES5 Array prototype method that will work in browsers as old as IE 5.5.
 
@@ -128,7 +165,8 @@ console.log(arr); // [ 1, 2, 4 ]
 
 The problem with Array.splice by itself at least is that I must know the index of the element that I want to remove. It is not to hard to write a method like the lodash remove method with native javaScript that makes use of Array.splice though. There are a few things to be ware of when doing so though when removing more than one element.
 
-### 4.2 - Array.splice in while loops
+
+### 4.5 - Array.splice in while loops
 
 When removing more than one element with Array.splice in a loop such as a while loop a problem may come up that has to do with the fact that the length of the array changing when one or more elements are removed.
 
@@ -161,21 +199,7 @@ while (i--) {
 console.log(arr); // [3,5]
 ```
 
-### 4.3 - Array filter
-
-So there is a native array filter method in the core javaScript array prototype. So when it comes to just using javaScript by itself there is a filter method there all ready to work with. It works basically the same way as the lodash filter method only it is called off of in instance of an array. Just as the lodash filter method it will not mutate the array in place also.
-
-```js
-let arr = [1, 2, 'foo', 3, 'bar', 4];
- 
-arr = arr.filter((el) => {
-        return typeof el == 'number';
-    });
- 
-console.log(arr);
-```
-
-### 4.4 - Remove method using Array.splice
+### 4.6 - Vanilla javaScript remove method using Array.splice
  
 So making a remove method with Array.splice is not to hard. If you are not familiar with how to write your own higher order functions then it is not a bad idea to make one or two now and then, even if they are kind of basic. A higher order function is just a fancy term that is used to refer to a function that accepts another function as an argument and or returns another function when called. This example is then an exercise of writing something that is the latter of the two, sense I will be returning an Array..
  
@@ -198,6 +222,57 @@ console.log(remove(nums, function (n) {
 ```
 
 There are of course many different ways that a function such as this could be written. I like Array.splice because of the great browser support, but if you are not such a nut with that sort of thing another option might involve the use of Array.filter for example.
+
+### 4.7 - Vanilla javaScript pull method using Array.splice
+
+```js
+// the remove method
+var remove = function (arr, func) {
+    return arr.filter(function (el, i) {
+        if (func.call(arr, el, i, arr)) {
+            arr.splice(i, 1);
+            return true;
+        }
+        return false;
+    });
+};
+ 
+// Object.is polly fill
+if (!Object.is) {
+  Object.defineProperty(Object, "is", {
+    value: function (x, y) {
+      // SameValue algorithm
+      if (x === y) {
+        // return true if x and y are not 0, OR
+        // if x and y are both 0 of the same sign.
+        // This checks for cases 1 and 2 above.
+        return x !== 0 || 1 / x === 1 / y;
+      } else {
+        // return true if both x AND y evaluate to NaN.
+        // The only possibility for a variable to not be strictly equal to itself
+        // is when that variable evaluates to NaN (example: Number.NaN, 0/0, NaN).
+        // This checks for case 3.
+        return x !== x && y !== y;
+      }
+    }
+  });
+}
+ 
+// a pull method using Object.is in place of lodash _.eq
+var pull = function (arr, value) {
+    return remove(arr, function (el) {
+        return Object.is(el, value);
+    });
+};
+ 
+// testing this out
+var a = [1, 'foo', 2, 'bar', 3, 'baz'];
+var b = pull(a, 'foo');
+console.log(a);
+//[ 1, 2, 'bar', 3, 'baz' ]
+console.log(b)
+// [ 'foo' ]
+```
 
 ## 5 - Conclusion
 
