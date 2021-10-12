@@ -22,9 +22,9 @@ This is a general todo list for what I want to get done when it comes to editing
 * write about new formatNumber method
 
 ### (  ) - js-web-storage ( old )
+* (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
-* have 5+ internal links for the post
 
 ### (  ) - js-filereader  ( old )
 * edit post to 1,000+ words
