@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2020-09-22 15:30:56
-version: 1.15
+updated: 2021-10-12 12:00:00
+version: 1.16
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -66,11 +66,118 @@ if(storeText != ''){
 </html>
 ```
 
-## 2 - Save state system from my cross hairs canvas example
+## 2 - feature testing for web storage API.
+
+### 2.1 - A Web Storage library
+
+```js
+(function (ws) {
+ 
+    // private test function
+    var test = function () {
+        console.log('web sorage test: ');
+        if (!localStorage) {
+            console.log('window.localStorage object not found, pass is false');
+            return false;
+        }
+        // save a test object for key ws-test
+        localStorage.setItem('ws-test', JSON.stringify({
+                value: 'foo'
+            }));
+        // try to now get what we just saved
+        var string = localStorage.getItem('ws-test');
+        if (string) {
+            // so we have a string parse to an object
+            try {
+                var result = JSON.parse(string);
+            } catch (e) {
+                console.log('got a dom string, but there was an error parsing JSON some how.');
+                return false;
+            }
+            // so we have an object, is are test value there?
+            var pass = result.value === 'foo';
+            console.log('Got an object and value test pass is: ' + pass);
+            // in any case remove the item
+            localStorage.removeItem('ws-test');
+            // return result of pass boolean if all is well it should be true
+            return pass;
+        }
+        console.log('No result object pass is false');
+        return false;
+    }
+ 
+    // public test function
+    ws.test = function (opt) {
+        opt = opt || {};
+        opt.onDisabled = opt.onDisabled || function () {};
+        // feature test for local storage
+        if (test()) {
+            return true;
+        }
+        opt.onDisabled.call(opt, opt, 'ws-test');
+        return false;
+ 
+    };
+ 
+    // get an item with local storage
+    ws.get = function (key, opt) {
+        opt = opt || {};
+        opt.onDisabled = opt.onDisabled || function () {};
+        // feature test for local storage
+        if (test()) {
+            var mess = localStorage.getItem(key);
+            if (mess) {
+                return mess;
+            } else {
+                return '';
+            }
+        } else {
+            opt.onDisabled.call(opt, opt, key);
+        }
+    };
+ 
+    // set an item with local storage
+    ws.set = function (key, value, opt) {
+        opt = opt || {};
+        opt.onDisabled = opt.onDisabled || function () {};
+        if (test()) {
+            localStorage.setItem(key, value);
+        } else {
+            opt.onDisabled.call(opt, opt, key);
+        }
+    };
+ 
+}
+    (this['ws'] = {}));
+```
+
+### 2.2 - Simple demo of the test method
+
+```html
+<html>
+    <head>
+        <title>web storage</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script src="web-storage.js"></script>
+        <script>
+var out = document.getElementById('out');
+if(ws.test()){
+    out.innerText = 'We are good';
+}else{
+    out.innerText = 'local storage is not working';
+}
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Save state system from my cross hairs canvas example
 
 So now that I have covered a basic example of using the web storage API I thought I would write a section on the code that I worked out for the save state system that I am using in one of my canvas examples.
 
-### 2.1 - striped down game.hs module with save state code
+### 3.1 - striped down game.hs module with save state code
 
 Here is a striped down version of the game module for cross hairs that just contains the code that is used to process a save state string. On top of that there is just a method to create a game object.
 
@@ -194,7 +301,7 @@ var gameMod = (function () {
     ());
 ```
 
-### 2.2 - basic save state tool that can edit damage
+### 3.2 - basic save state tool that can edit damage
 
 Now to create a simple tool that I can use to edit the save state of a game. So far this tool just edits the damage of a save state that should be there to begin with, but in time I might put more work into this one if I keep working on the cross hairs example.
 
@@ -265,6 +372,6 @@ if (game) {
 </html>
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So there are a number of other options when it comes to finding a way to store some data for a user in a web application. Of course there is having a database sever side for example as a way of saving data for a user. However with many of the applications that I have made thus far I do not care to get into that sort of thing f it is the kind of project where I can avoid doing so.
