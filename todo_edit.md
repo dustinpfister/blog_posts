@@ -21,11 +21,6 @@ This is a general todo list for what I want to get done when it comes to editing
 ### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
-### (  ) - js-web-storage ( old )
-* (done) have 5+ internal links for the post
-* (done) edit post to 1,000+ words
-* edit post to 1,800+ words
-
 ### (  ) - js-filereader  ( old )
 * edit post to 1,000+ words
 * edit post to 1,800+ words
@@ -87,6 +82,11 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/12/2021 ) - js-web-storage ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
+* (done) edit post to 1,800+ words
 
 ### ( done 10/11/2021 ) - js-getting-started-file-protocol ( old )
 * (done) edit post to 1,800+ words
