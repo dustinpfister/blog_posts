@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:19:40
-version: 1.23
+updated: 2021-10-12 12:24:06
+version: 1.24
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -157,7 +157,7 @@ So now for this example I am making a [javaScript module](/2019/03/12/js-javascr
 
 ### 2.2 - Simple demo of the test method
 
-I will then want to have at least a few demos if this web api library to make sure things work out as expected. For starters I will want to make sure that the test function is working ot the way that it should.
+I will then want to have at least a few demos if this web api library to make sure things work out as expected. For starters I will want to make sure that the test function is working out the way that it should. So then I made a quick simple demo that tests out the test function.
 
 ```html
 <html>
@@ -178,6 +178,10 @@ if(ws.test()){
     </body>
 </html>
 ```
+
+When I run this example by way of the file protocol by just opening up the html file in the browser the web API works. However what is strange is that event when I disable it it still seems to work anyway. I assume that this might have something to do with using the web API by way of the file protocol, or for some reason when I go to disable local storage doing so just seems to not work for whatever reason.
+
+I guess I could see about doing the same when it comes to disabling by way of the http protocol, but I did nit get around to testing that out last time I edited this post at least. However this is something that I would like to look into more at one point or another.
 
 ## 3 - Save state system from my cross hairs canvas example
 
