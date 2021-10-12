@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:35:54
-version: 1.28
+updated: 2021-10-12 12:47:53
+version: 1.29
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -195,7 +195,7 @@ I guess I could see about doing the same when it comes to disabling by way of th
 
 ## 3 - Save state system from my cross hairs canvas example
 
-So now that I have covered a basic example of using the web storage API I thought I would write a section on the code that I worked out for the save state system that I am using in one of my canvas examples.
+So now that I have covered a basic example of using the web storage API I thought I would write a section on the code that I worked out for the save state system that I am using in one of my [canvas examples](/2020/03/23/canvas-example/). The specif example in question is my [cross hairs game example](/2020/07/29/canvas-example-game-crosshairs/) that I spent a fair about of time working on a while back.
 
 ### 3.1 - striped down game.hs module with save state code
 
