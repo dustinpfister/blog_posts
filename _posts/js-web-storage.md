@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:13:41
-version: 1.21
+updated: 2021-10-12 12:17:57
+version: 1.22
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -156,6 +156,8 @@ So now for this example I am making a [javaScript module](/2019/03/12/js-javascr
 ```
 
 ### 2.2 - Simple demo of the test method
+
+I will then want to have at least a few demos if this web api library to make sure things work out as expected.
 
 ```html
 <html>
