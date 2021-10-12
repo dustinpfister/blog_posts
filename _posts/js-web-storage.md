@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:55:19
-version: 1.32
+updated: 2021-10-12 12:57:47
+version: 1.33
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -199,9 +199,9 @@ So now that I have covered a basic example of using the web storage API I though
 
 There is more to working out some kind of save state system for a game, or some kind of game framework. As there is not just simply saving a state to local storage and being done with it. Do not get me wrong move often than not that will work fine, except for when it will not work fine. There is not just using local storage then, but giving a player more than one option for saving a state to the local file system of there computer. I will not be getting into every little detail here when it comes to those sorts of things, but this is still soe code that is one of my starting points for making this kind of system for a game.
 
-### 3.1 - striped down game.hs module with save state code
+### 3.1 - Striped down game.js module with save state code
 
-Here is a striped down version of the game module for cross hairs that just contains the code that is used to process a save state string. On top of that there is just a method to create a game object.
+Here is a striped down version of the game module for cross hairs that just contains the code that is used to process a save state string. On top of that there is just a method to create a game object. So then I have an object in my game model that contains hard coded default settings, after that I have an array of save string versions that are what the deal is when it comes to the various formates for a game save.
 
 ```js
 var gameMod = (function () {
