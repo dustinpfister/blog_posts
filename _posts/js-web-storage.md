@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:05:53
-version: 1.18
+updated: 2021-10-12 12:08:51
+version: 1.19
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -71,6 +71,8 @@ if(storeText != ''){
 One major thing about the web storage api is that I can not always count on it being there. There is the question of it not even being supported the browser at all of course, however more often than not these days it could be disabled. So then it would make sense to have some code that will check if the local storage api is even there to begin with, and on top of that do a quick test even if it is there to make sure that it is working as expected. This way I can first test out the API, and if it is working proceed with the normal flow of things, else I can try something else, or at least inform the user that they will not be able to save any progress, settings, data or whatever the case may be.
 
 ### 2.1 - A Web Storage library
+
+So now for this example I am making a [javaScript module](/2019/03/12/js-javascript-module/) following the [IIFE pattern](/2020/02/04/js-iife/) for client side javaScript modules.
 
 ```js
 (function (ws) {
