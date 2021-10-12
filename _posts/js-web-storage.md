@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:08:51
-version: 1.19
+updated: 2021-10-12 12:10:22
+version: 1.20
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -72,7 +72,7 @@ One major thing about the web storage api is that I can not always count on it b
 
 ### 2.1 - A Web Storage library
 
-So now for this example I am making a [javaScript module](/2019/03/12/js-javascript-module/) following the [IIFE pattern](/2020/02/04/js-iife/) for client side javaScript modules.
+So now for this example I am making a [javaScript module](/2019/03/12/js-javascript-module/) following the [IIFE pattern](/2020/02/04/js-iife/) for client side javaScript modules. I then have a single global variable called ws to which I am attaching a number of public methods, with just one private method thus far that is a test function.
 
 ```js
 (function (ws) {
