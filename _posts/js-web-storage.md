@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 13:00:15
-version: 1.34
+updated: 2021-10-12 13:03:49
+version: 1.35
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -399,3 +399,6 @@ if (game) {
 ## 4 - Conclusion
 
 So there are a number of other options when it comes to finding a way to store some data for a user in a web application. Of course there is having a database sever side for example as a way of saving data for a user by posting data to it by way of scripting http. However with many of the applications that I have made thus far I do not care to get into that sort of thing if it is the kind of project where I can avoid doing so. With that said when it comes to just some simple game, or application in which there is no sever of web servers to push data back to, then client side storage must be the way to go about doing so.
+
+Another option for saving and loading some data client side would be using the [File Reader Constructor](/2020/03/24/js-filereader/).
+
