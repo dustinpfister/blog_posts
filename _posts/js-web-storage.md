@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:31:09
-version: 1.26
+updated: 2021-10-12 12:32:18
+version: 1.27
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -23,7 +23,7 @@ Still the Web Storage API is a good option for quickly getting the job done, and
 
 Working with the Web Storage API is as easy as working with a plain old javaScript object more or less which makes it one of he reasons why I tend to like using it. The localStoarge global can then be used just like that of any other javaScript Object, whatever you want to save on the client just define it as a property of the localStorage global. 
 
-However there are also setItem and getItem methods that can be used to do get and set properties of the localStoarge global which should be used to do so. Also when saving a value for a local storage api get I will want to always do so in a string format, so there is knowing a thing or two about how to work with the JSON methods. Once a property is set then that value will be there again every page load, site wide, serving the purpose of client side persistence of data on top of other options such as cookie files.
+However there are also setItem and getItem methods that can be used to do get and set properties of the localStoarge global which should be used to do so. Also when saving a value for a local storage api get I will want to always do so in a string format, so there is knowing a thing or two about how to work with the [JSON methods](/2020/02/28/js-json-parse/). Once a property is set then that value will be there again every page load, site wide, serving the purpose of client side persistence of data on top of other options such as cookie files.
 
 ### 1.1 - web storage basic example
 
