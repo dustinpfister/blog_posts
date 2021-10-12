@@ -43,8 +43,8 @@ This is a general todo list for what I want to get done when it comes to editing
 
 ### (   ) - js-regex ( more internal links )
 * (done) new section on wrap text example
-* edit post to 1,800+ words
 * (done) have 5+ internal links for the post
+* edit post to 1,800+ words
 
 ### (  ) - js-javascript-constructor ( just a good topic )
 * Expand readme file to 300+ words
