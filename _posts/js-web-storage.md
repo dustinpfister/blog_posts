@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 526
-updated: 2021-10-12 12:00:00
-version: 1.16
+updated: 2021-10-12 12:02:29
+version: 1.17
 ---
 
 There are a number of ways to store data on the client side, but in this post I will be mainly writing about the [Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API), rather than index db, cookies files, and many other such options for [client side persistence of data](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) in a front end javaScript environment.
@@ -66,7 +66,9 @@ if(storeText != ''){
 </html>
 ```
 
-## 2 - feature testing for web storage API.
+## 2 - Feature testing for web storage API.
+
+One major thing about the web storage api is that I can not always count on it being there. There is the question of it not even being supported the browser at all of course, however more often than not these days it could be disabled.
 
 ### 2.1 - A Web Storage library
 
