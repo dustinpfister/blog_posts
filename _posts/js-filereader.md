@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 11:50:39
-version: 1.19
+updated: 2021-10-13 11:54:39
+version: 1.20
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -21,7 +21,7 @@ Creating and loading files on the users local file system will involve the use o
 
 So for now in this section I will be making a very basic use case example of the FileReader constructor that will just load a json file, and display the values in a div element. The JSON file will just be some very basic object that just contains a few number primitives. In a read project this might be some kind of game state file that will be far more complex, or exist as some kind of binary format outside that of JSON. However for just a basic example this should work just file.
 
-In this section I also often add in some additional details when it comes to anything else you should know about when it comes to continuing to read the rest of this post. For example I assume that you have at least some background with html and javaScript, if not you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-strated/).
+In this section I also often add in some additional details when it comes to anything else you should know about when it comes to continuing to read the rest of this post. For example I assume that you have at least some background with html and javaScript, if not you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-strated/). With that said there are all kinds of little details that I am not going to be getting into detail here such as [what a constructor function is](/2019/02/27/js-javascript-constructor/), and that is the kind of function the File Reader constructor is.
 
 ### 1.1 - The json
 
