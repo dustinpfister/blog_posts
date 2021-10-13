@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:13:53
-version: 1.25
+updated: 2021-10-13 12:17:29
+version: 1.26
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -208,6 +208,8 @@ draw(disp_game, game);
     </body>
 </html>
 ```
+
+So far so good when I have this up and running it seems to work as I would want it to thus far, however there are a lot of ruff edges with this that would need to be addressed before I can call this a done deal project of some kind. There are more features that I would want to add when it comes to validation, as well as making the save state exist in some other kind of string format other than that of plain old JSON. Also there is making a more complex revision of this that will allow for the use of the File Reader constructor as a way to load test into the text area which would also be nice.
 
 ## 3 - Conclusion
 
