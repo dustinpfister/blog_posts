@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:06:05
-version: 1.22
+updated: 2021-10-13 12:07:14
+version: 1.23
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -89,7 +89,7 @@ The file reader constructor is one great option for loading some kind of state i
 
 So then for this section I am going to start out with the source code of a storage.js file that is the beginnings of a module to help with saving one or mode state objects. A full solution as I see it would be far more complex than this, but for the sake of keeping things simple here I will just be seeing about getting started with this text area idea.
 
-Inside the body of an [IIFE](/2020/02/04/js-iife/) I have a private create UI method that will be used to create and append a text area element to a given container element that will default to the body element.
+Inside the body of an [IIFE](/2020/02/04/js-iife/) I have a private create UI method that will be used to create and append a text area element to a given container element that will default to the body element. I then also have a public create method that will create and return a storage object as I am calling it which in turn is what I will need to pass to the other methods in this module mainly the save and load methods.
 
 ```js
 (function (StorageMod) {
