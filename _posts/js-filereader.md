@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 09:44:46
-version: 1.14
+updated: 2021-10-13 11:37:41
+version: 1.15
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -75,7 +75,125 @@ el_files.addEventListener('change', function (e) {
 
 When I have this example opened up in my browser I am able to open the json file and have the values displayed in the browser window as expected. Although this might not be anything that interesting the basic idea is there. I am able to open a file store in the local file system and then use that file in a very basic example of the file reader constructor. In a real example this json file could contain all kinds of state information that would be some kind of save state, and users could easily hack the values to cheat in the game of they wanted to.
 
-## 2 - Conclusion
+## 2 - Starting a Copy and paste type system with text area elements
+
+### 2.1 - A storage.js module
+
+```js
+(function (StorageMod) {
+ 
+    // create the UI
+    var createUI = function (opt, storage) {
+        opt = opt || {};
+        opt.container = opt.container || document.body;
+        if (typeof opt.container === 'string') {
+            opt.container = document.querySelector(opt.container);
+        }
+        var textArea = document.createElement('textarea');
+        textArea.cols = opt.cols || 60;
+        textArea.rows = opt.rows || 15;
+        opt.container.appendChild(textArea);
+        var loadButton = document.createElement('input');
+        loadButton.type = 'button';
+        loadButton.value = 'Load';
+        loadButton.addEventListener('click', function(e){
+            StorageMod.load(storage);
+        });
+        opt.container.appendChild(loadButton);
+        return opt.container;
+    };
+ 
+    StorageMod.create = function (opt) {
+        opt = opt || {};
+        var storage = {};
+        storage.onNoSaveFound = opt.onNoSaveFound || function (storage) {};
+        storage.onLoadState = opt.onLoadState || function (storage, state) {};
+        // create the UI for the given container or body
+        storage.el = createUI(opt, storage);
+        StorageMod.load(storage);
+        return storage;
+    };
+ 
+    // save to the storage
+    StorageMod.save = function (storage, state) {
+        var textArea = storage.el.querySelector('textarea');
+        textArea.value = JSON.stringify(state);
+    };
+ 
+    // load from the storage
+    StorageMod.load = function (storage) {
+        var textArea = storage.el.querySelector('textarea');
+        var state = null;
+        // try to load what should be json
+        try {
+            state = JSON.parse(textArea.value);
+        } catch (e) {
+            // if there is an error loading json call the no save found call back
+            // this method should return a new state
+            state = storage.onNoSaveFound.call(storage, storage);
+        }
+        // save what is loaded, OR CREATED in the event of an error
+        // in any case this should update things like the text area element
+        StorageMod.save(storage, state);
+        // call on load state callback
+        storage.onLoadState(storage, state);
+        return state;
+    };
+ 
+}
+    (this['StorageMod'] = {}));
+```
+
+### 2.2 - Simple demo
+
+```html
+<html>
+    <head>
+        <title> Storage example </title>
+    </head>
+    <body>
+        <div id="ui_storage"></div>
+        <br><br>
+        <h3>Game State:</h3>
+        <div id="disp_game" style="padding:10px;background:gray;"></div>
+        <script src="storage.js"></script>
+        <script>
+// a crude game module
+var gameMod = {};
+gameMod.create = function(){
+    return {
+        money : 100
+    };
+};
+ 
+var draw = function(el, game){
+    el.innerText = 'money: ' + game.money;
+};
+ 
+var disp_game = document.querySelector('#disp_game');
+var game = {};
+ 
+// setting up a storage object
+var storage = StorageMod.create({
+    container: '#ui_storage',
+    cols: 50, rows: 10,
+    onNoSaveFound : function(storage){
+        return gameMod.create();
+    },
+    onLoadState : function(stroage, state){
+        game = state;
+        draw(disp_game, game);
+    }
+});
+ 
+draw(disp_game, game);
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
 
 The file reader constructor is then a great native way to allow the user to select a file to open to use in a web application, as well to save such a file. What is great about this kind of solution is that it allows for users to save and load data in a way that they are familial with. 
 
