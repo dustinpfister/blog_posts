@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:07:14
-version: 1.23
+updated: 2021-10-13 12:09:09
+version: 1.24
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -157,6 +157,8 @@ Inside the body of an [IIFE](/2020/02/04/js-iife/) I have a private create UI me
 ```
 
 ### 2.2 - Simple demo
+
+Now that I have a module together I am going to want to have t least one simple demo to make sure that what I have together is working as it should thus far.
 
 ```html
 <html>
