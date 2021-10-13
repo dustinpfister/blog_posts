@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:09:09
-version: 1.24
+updated: 2021-10-13 12:13:53
+version: 1.25
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -158,7 +158,9 @@ Inside the body of an [IIFE](/2020/02/04/js-iife/) I have a private create UI me
 
 ### 2.2 - Simple demo
 
-Now that I have a module together I am going to want to have t least one simple demo to make sure that what I have together is working as it should thus far.
+Now that I have a module together I am going to want to have at least one simple demo to make sure that what I have together is working as it should thus far. For now I just want to try something out with a very simple game module if it can event be called that, where it just creates and returns a state that contains a money property. This is just so I have something that will serve as  a game Mode that creates and updates a state object, in a real use case example there would be a bot more to this game module of course.
+
+Anyway the main thing about this is that I just want to make sure that I can just mutate the game state in the text area element, and then click the load button of the UI to load the JSON in the text area and make that the game state object.
 
 ```html
 <html>
