@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:21:50
-version: 1.27
+updated: 2021-10-13 12:25:06
+version: 1.28
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -38,7 +38,7 @@ So I will want a json file stored somewhere on the local client system, it does 
 
 In my html I will want an input tag with the type attribute set to file, as well as a div element that will be used to display data once it is loaded. In my script tag I will want to get a reference to the input tag and add a on change event in which I will be using the FileReader constructor by passing a reference to the file object in the event object of the event hander for the on change event.
 
-In this example I am also using a load json method that will always return an object even if an error happens when attempting to parse the json, which might end up being badly formed json, or not even json to begin with.
+In this example I am also using a load json method that will always return an object even if an error happens when attempting to [parse the json](/2020/02/28/js-json-parse/), which might end up being badly formed json, or not even json to begin with.
 
 ```html
 <input type = "file" id = "input_files">
