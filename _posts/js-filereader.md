@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 11:37:41
-version: 1.15
+updated: 2021-10-13 11:41:58
+version: 1.16
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -76,6 +76,8 @@ el_files.addEventListener('change', function (e) {
 When I have this example opened up in my browser I am able to open the json file and have the values displayed in the browser window as expected. Although this might not be anything that interesting the basic idea is there. I am able to open a file store in the local file system and then use that file in a very basic example of the file reader constructor. In a real example this json file could contain all kinds of state information that would be some kind of save state, and users could easily hack the values to cheat in the game of they wanted to.
 
 ## 2 - Starting a Copy and paste type system with text area elements
+
+The file reader constructor is one great option for loading some kind of state into an web application, as well as saving such a state. However I am thinking that a good solution for this sort of thing would provide an array of options for this sort of thing. There is getting into cookie files, and the web storage API, but there is also looking into other options. One that comes to mind is to provide a way for users to copy and paste a string of data that represents a state and then click a load button. With that said this section is a getting started type section on this kind of solution.
 
 ### 2.1 - A storage.js module
 
