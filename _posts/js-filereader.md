@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 11:47:57
-version: 1.18
+updated: 2021-10-13 11:50:39
+version: 1.19
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -25,7 +25,7 @@ In this section I also often add in some additional details when it comes to any
 
 ### 1.1 - The json
 
-So I will want a json file stored anywhere on the local client system. For this example the contents of the json file will look something like this.
+So I will want a json file stored somewhere on the local client system, it does not matter where as long as it is a typical place to store files that contain data for something such as the home folder in Linux systems, or the My Documents folder in Windows. For this example the contents of the json file will just contain and x and y property value that will be used by the simple example that uses the File Reader Constructor.
 
 ```js
 {
