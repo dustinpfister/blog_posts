@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:17:29
-version: 1.26
+updated: 2021-10-13 12:21:50
+version: 1.27
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -79,7 +79,7 @@ When I have this example opened up in my browser I am able to open the json file
 
 ### 1.3 - The source code examples in this post are on github
 
-The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-filereader), along with all my other vanilla javaScript examples that I write posts about.
+The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-filereader), along with all my other vanilla javaScript examples that I write posts about. I still have a lot more planed out for this post when it comes to additional examples, as well as code examples that have to do with alternatives to using File Reader. As such the Github repository may have more up to date source code examples compared to what I have here thus far, this content like many other posts is still very much a work in progress.
 
 ## 2 - Starting a Copy and paste type system with text area elements
 
