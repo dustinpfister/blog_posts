@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 13:10:34
-version: 1.33
+updated: 2021-10-14 13:12:54
+version: 1.34
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -126,7 +126,7 @@ while(i--){
 
 ### 1.6 - Source code examples in this post as well as many others are on github
 
-I have a [repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-round) that contains the source code examples in this post as well as all my other posts on vanilla javaScript.
+I have a [repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-round) that contains the source code examples in this post as well as all my other posts on vanilla javaScript. Just like my many other posts on vanilla javaScript the state of this post is still very much a work in progress. With that aid the latest examples and notes for future edits can be found there. If there is something more that you think should be added, and you are on github that would be where to make a pull request. There is also the comments section in the bottom of this post that can be used as a way to bring something up.
 
 ## 2 - Number tofixed method as one option for precession
 
