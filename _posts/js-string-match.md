@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 15:48:14
-version: 1.39
+updated: 2021-10-14 16:06:32
+version: 1.40
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -153,9 +153,32 @@ There is more than one way of doing this sort of thing of course, and I will be 
 
 ## 3 - Single pattern match and more than one match with the String match method.
 
-When using the String.match method there might be some additional properties attached to the Array that might be returned when it is called depending on the flags set for the regular expression pattern. If the Group flag of the pattern is not set then additional properties for the index in the string in which the pattern was found will be set to the array as well.
+When using the String.match method there might be some additional properties attached to the Array that might be returned when it is called depending on the flags set for the regular expression pattern, and if there is more than one match or not when using a global pattern. So the return value possibles for String.match is a little weird depending on the situation with the pattern that is given as well as the nature of the string that the method is called off of. If there is no match at all the return value is null, if there is one match there is an array with an index and input keys attached, and if there is more than one match when using a global pattern there will be an array of results with the string values for each match, and no properties attached. So then in this section I will be going over the nature of the object that is returned.
 
-This following example should help explain the situation with this. 
+### 3.1 - 
+
+```js
+let str = 'This is some foo text';
+ 
+let a = str.match(/foo/);
+console.log(typeof a, a.constructor.name); 'object' 'array'
+```
+
+### 3.2 -
+
+```js
+let str = 'This foo text is some foo type text';
+ 
+let a = str.match(/foo/);
+console.log(a.index); // 5
+console.log(a.input); // 'This foo text is some foo type text'
+ 
+let b = str.match(/foo/g);
+console.log(b.index); // undefined
+console.log(b.input); // undefined
+```
+
+### 3.3 -
 
 ```js
 // a string with many instances of 'foo'
