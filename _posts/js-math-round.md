@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 14:25:24
-version: 1.41
+updated: 2021-10-14 14:33:17
+version: 1.42
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -180,7 +180,7 @@ console.log( 0 === -0 ); // true
 
 It is not so hard to work out a fix for numbers flowing to positive infinity rather than negative infinity if it is a problem. Addressing the negative zero thing can also be addressed in the process of doing so, and this is then one of the reasons why one might be inclined to make a custom rounding method.
 
-````js
+```js
 var round = function (n) {
     var int = Math.floor(n),
     diff = Math.abs(n - int);
@@ -205,6 +205,7 @@ console.log( round(-0.5) ); // -1
 console.log( Math.round(-0.25) ); // -0
 console.log( round(-0.25) ); // 0
 ```
+
 
 ## 4 - Find or make a user space solution
 
@@ -232,7 +233,7 @@ Looks like I found my copy and past user space solution for rounding rather than
 
 ### 4.1 - Making a custom method for handing all things that come to mind with rounding
 
-So then there is using the custom method that I found for rounding with a precision value, but also working in some more stuff that I would like to have working for me each time I round a number. This will then result in a method that does not just round, but also preforms a number of additional things that have t do with formating a number.
+So then there is using the custom method that I found for rounding with a precision value, but also working in some more stuff that I would like to have working for me each time I round a number. This will then result in a method that does not just round, but also preforms a number of additional things that have to do with formating a number.
 
 ```js
 var round = (function () {
