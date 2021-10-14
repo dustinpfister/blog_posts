@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 09:17:18
-version: 1.21
+updated: 2021-10-14 11:23:47
+version: 1.22
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -93,7 +93,7 @@ while(i--){
 
 ### 1.5 - Point from area example using Math.floor
 
-There is also getting a random point in an array that has a width and height that comes to mind when rounding.
+There is also getting a random point in an area that has a width and height that comes to mind when rounding. For this example I made a quick function that will take a width and height value as the first two arguments, and then values between 0 and one for with and height. The returned result is then an object with x and y values that are placed between the width and hight value multiplied by the percent values, and then rounded using the Math.floor method.
 
 ```js
 // get an point in an area with a width height, and 
