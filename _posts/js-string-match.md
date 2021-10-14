@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 14:59:37
-version: 1.32
+updated: 2021-10-14 15:03:44
+version: 1.33
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -83,13 +83,15 @@ In this example I used the i and g regular expression flags. The i flag is used 
 
 ### 1.5 - The examples here can be found on github
 
-The soucre code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match). Every now and the I get around to editing this post, and with that said the latest notes, and source code examples can be found there.
+The source code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match). Every now and the I get around to editing this post, and with that said the latest notes, and source code examples can be found there.
 
 ## 2 - String.match returns an Array or null
 
 One thing to be aware of when using String.match is that it will return an Array or null depending if one or more matches are found or not. So testing for null may be necessary in many use case examples of String.match. The null value converts to false, and in the event that one or more matches are found a non empty array will be returned that will covert to true. So the null value can be used as a flag of sorts to help define what to do in the event that a match is not found.
 
-For example say you want to write a method that will return the index of the first instance of a pattern match, or negative one if it is not found that could be done like this.
+### 2.1 - Making a method that will work like the index of method
+
+For example say you want to write a method that will return the index of the first instance of a pattern match, or negative one if it is not found just like that of the index of method. For this I would just set the value of the result of a match to a variable and then just use the result as the expression in an if statement. In the event that the value is null that will evaluate to false, and the code in the if statement will not run, at which point I can use the return keyword to return a value of -1. In the event that one or more matches are returned that will result in a non empty array that evaluates to true, and the code inside the if statement will run.
 
 ```js
 let str1 = 'This string has a foobar here',
