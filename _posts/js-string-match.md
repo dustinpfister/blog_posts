@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 16:06:32
-version: 1.40
+updated: 2021-10-14 16:10:23
+version: 1.41
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -155,7 +155,9 @@ There is more than one way of doing this sort of thing of course, and I will be 
 
 When using the String.match method there might be some additional properties attached to the Array that might be returned when it is called depending on the flags set for the regular expression pattern, and if there is more than one match or not when using a global pattern. So the return value possibles for String.match is a little weird depending on the situation with the pattern that is given as well as the nature of the string that the method is called off of. If there is no match at all the return value is null, if there is one match there is an array with an index and input keys attached, and if there is more than one match when using a global pattern there will be an array of results with the string values for each match, and no properties attached. So then in this section I will be going over the nature of the object that is returned.
 
-### 3.1 - 
+### 3.1 - The type and class of the response when there is one or more matches
+
+I have covered what the return value is when there is no match which is of course a null value, but when it comes to what is returned when there is a match the type of the value is an object. When it comes to checking out the constructor name it would seem that it is an array, but it is an array with some additional values attached that I will be getting to.
 
 ```js
 let str = 'This is some foo text';
@@ -164,7 +166,9 @@ let a = str.match(/foo/);
 console.log(typeof a, a.constructor.name); 'object' 'array'
 ```
 
-### 3.2 -
+### 3.2 - For a single match we have some additional properties
+
+If there is one match, and only one match there is an index and input value attached to the array. However if I amusing a global pattern these values become undefined.
 
 ```js
 let str = 'This foo text is some foo type text';
@@ -178,7 +182,9 @@ console.log(b.index); // undefined
 console.log(b.input); // undefined
 ```
 
-### 3.3 -
+### 3.3 - Yet another examples
+
+Here is yet another example of the situation with this.
 
 ```js
 // a string with many instances of 'foo'
