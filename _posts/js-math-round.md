@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 13:12:54
-version: 1.34
+updated: 2021-10-14 13:30:59
+version: 1.35
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -166,10 +166,14 @@ If for some reason this is a problem I guess this might be another thing that ca
 
 ### 3.1 - Negative zero
 
-If a number between and in cluing -0.5 and zero is given this can result in negative zero.
+If a number between and including -0.5 and zero is given this can result in negative zero being the return value. This [can present a problem](https://stackoverflow.com/questions/7223359/are-0-and-0-the-same) with using the [Object.is method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is), or any other method that makes use of Object.is or produced the same kind of comparison often called Same Value Zero such as the [\_.eq method](/2019/12/04/lodash_eq/), and many other methods in lodash.
 
 ```js
 console.log( Math.round(-0.5) ); // -0
+ 
+console.log( Object.is(0, Math.round(-0.5)) ); // false
+console.log( Object.is(0, -0) ); // false
+console.log( 0 === -0 ); // true
 ```
 
 ### 3.1 - fix
