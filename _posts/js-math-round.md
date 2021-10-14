@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 13:01:46
-version: 1.30
+updated: 2021-10-14 13:04:56
+version: 1.31
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -84,7 +84,7 @@ while (i > 5) {
 
 ### 1.4 - Get random array element using Math.floor
 
-The Math.floor method is one of the round methods that I seem to use most of the time. One reason why is because it is a good choice when it comes to making a quick method that has to do with getting a random element in an array. the reason why I say that might have to do with the nature of the Math.random method combined with the zero relative index numbers of arrays.
+The Math.floor method is one of the round methods that I seem to use most of the time. One reason why is because it is a good choice when it comes to making a quick method that has to do with getting a random element in an array. The reason why I say that might have to do with the nature of the Math.random method combined with the zero relative index numbers of arrays. As I mentioned in a previous example the return value of a Math.random call will be between 0, and 1, and can potential also include 0, but not 1. So then if I multiply the random value returned by the Math.random method by the length of an array, and then pass that to the Math.floor method, the end result should always be a random element index that is not outside the length of the array.
 
 ```js
 var getRandomEl = function (arr) {
