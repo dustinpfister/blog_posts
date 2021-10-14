@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 13:45:59
-version: 1.37
+updated: 2021-10-14 14:10:03
+version: 1.38
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -290,7 +290,26 @@ console.log(round(-2.465, 2, Math.round) + 0); // -2.46
 console.log(round(-0.25, 0) + 0); // 0
 ```
 
-## 5 - Conclusion
+## 5 - Rounding with the Internationalization API
+
+Yet another option for rounding would be to use the [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat), main the Number Format method. This can be used to not just round, but also format a string value for the purpose of displaying with respect to the typical formats for money.
+
+```js
+var opt = {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 3,  // default should be 2
+    maximumFractionDigits: 4   // default should be 2
+};
+var formater = new Intl.NumberFormat('en-us', opt);
+ 
+console.log(formater.format(1234.23456));
+//$1,234.2346
+console.log(formater.format(123));
+//$123.000
+```
+
+## 6 - Conclusion
 
 So there are a few built in options for rounding in the Math object, and also certain prototype methods in other built in Objects and classes that help with rounding. However sometimes it makes sense to go with a user space solution for rounding, and formatting a number in general for presentation also. However maybe it can be said that these kinds of situations can be avoided when it comes to the issues with rounding negative numbers and so forth. When it comes to the negative zero situation there is just using the older equality and identity operators that will still return what many might see as an expected result for that kind of situation. However there is knowing what the deal is with it when it comes to what is going on, and why negative zero is not really the same thing as positive zero, so then when that is the case that is where things can be a little involved.
 
