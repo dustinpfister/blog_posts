@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 14:10:03
-version: 1.38
+updated: 2021-10-14 14:13:10
+version: 1.39
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -292,7 +292,7 @@ console.log(round(-0.25, 0) + 0); // 0
 
 ## 5 - Rounding with the Internationalization API
 
-Yet another option for rounding would be to use the [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat), main the Number Format method. This can be used to not just round, but also format a string value for the purpose of displaying with respect to the typical formats for money.
+Yet another option for rounding would be to use the [Internationalization API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat), main the Number Format method. This can be used to not just round, but also format a string value for the purpose of displaying with respect to the typical formats for money. For example if I have a value that is a number value that is an amount of money, when it comes to displaying that I might want to round, but for a precision value two two decimal places not a whole number. On top of that I might also want to have a comma between each three digits of the whole number part of the value also. I could come up with or fine some kind of user space solution for this, however it would seem that there is a native method that can be used for this in the Internationalization API.
 
 ```js
 var opt = {
