@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 15:05:00
-version: 1.34
+updated: 2021-10-14 15:33:49
+version: 1.35
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -94,13 +94,10 @@ One thing to be aware of when using String.match is that it will return an Array
 For example say you want to write a method that will return the index of the first instance of a pattern match, or negative one if it is not found just like that of the index of method. For this I would just set the value of the result of a match to a variable and then just use the result as the expression in an if statement. In the event that the value is null that will evaluate to false, and the code in the if statement will not run, at which point I can use the return keyword to return a value of -1. In the event that one or more matches are returned that will result in a non empty array that evaluates to true, and the code inside the if statement will run. Inside the body of this if statement I can return the index of the match.
 
 ```js
-let str1 = 'This string has a foobar here',
-str2 = 'this string does not have that',
- 
 // getFooIndex method using String.match that will
 // return -1 when null is returned
-getFooIndex = (str) => {
-    let m = str.match(/foo/);
+let getFooIndex = (str, patt) => {
+    let m = str.match(patt);
     // if not null return index
     if (m) {
         return m.index;
@@ -108,12 +105,47 @@ getFooIndex = (str) => {
     // else return -1
     return -1;
 };
+let str1 = 'This string has a foobar here';
  
-console.log(getFooIndex(str1)); // 18
-console.log(getFooIndex(str2)); // -1
+console.log(getFooIndex(str1, /foo/)); // 18
+console.log(getFooIndex(str1, /baz/)); // -1
 ```
 
 So the possibility of null being returned by the String.match method is something to look out for when using it.
+
+### 2.2 - Return an empty array in place of -1, and get all indices with a little help from exec
+
+The above method is just like the index of method, but one draw back is that this method will always just return the first index from left to right and then -1 of nothing is found. However what if I want a method that will return an empty array if no matches are found, an array with just one element for a non global flagged pattern, and an array for all matches in the event that there is a global flag set for the pattern? When trying to find out how to do this with the string match method alone one will run into problems when it comes to trying to get an array of index values rather than values for the pattern. This is just one of the limitations of the string match method, and is therefor a reason to look into the exec method of the Regex class.
+
+```js
+// getFooIndices method using String.match that will
+// return [] when null is returned, else one or more index
+// values in an array for each match if global
+let getFooIndices = (str, patt) => {
+    let m = str.match(patt);
+    // if not null return index
+    if (m) {
+        if (m.index === undefined) {
+            var result,
+            indices = [];
+            // use exec to get all
+            while (result = patt.exec(str)) {
+                indices.push(result.index);
+            }
+            return indices;
+        }
+        // just the one
+        return [m.index];
+    }
+    // none
+    return [];
+};
+ 
+let str1 = 'This foo example string is a string that has more than one foo';
+console.log(getFooIndices(str1, /foo/g)); // [5, 59]
+console.log(getFooIndices(str1, /foo/)); // [5]
+console.log(getFooIndices(str1, /bar/g)); // []
+```
 
 ## 3 - Single pattern match and more than one match with the String match method.
 
