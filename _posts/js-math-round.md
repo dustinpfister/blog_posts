@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 14:13:10
-version: 1.39
+updated: 2021-10-14 14:19:12
+version: 1.40
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -308,6 +308,8 @@ console.log(formater.format(1234.23456));
 console.log(formater.format(123));
 //$123.000
 ```
+
+When using the Intl.NumberFormat constructor the first argument that I need to give is a language code, for me this is 'en-us', after that I give an object with a bunch of options for this method. The main value that I will want to set are the style which I would want to set to 'currency' for money, and again for my language code I would want to use 'USD' for the currency. For the most part I would want to use the default settings for the precision, but if I want to adjust that there is the minimum fractiondDigits and maximum fraction digits properties that I can use for that. The return value for calling the constructor is then not a string, but an object that contains a few options for formating, including one that will return a string.
 
 ## 6 - Conclusion
 
