@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 15:44:09
-version: 1.38
+updated: 2021-10-14 15:48:14
+version: 1.39
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -147,7 +147,9 @@ console.log(getFooIndices(str1, /foo/)); // [5]
 console.log(getFooIndices(str1, /bar/g)); // []
 ```
 
-I can still start with the string match method though, and use the fact that it will return null as a way to find out if I should return an empty array or not. Things just get a little tricky when it comes to what needs to happen when there is more than one match, and to be able to handle things with global and non global patterns. I first need to check if the index property of a match is undefined or not, as I can not just uses exec in a while loop the way I would like to as that would result in an infinite loop with non global patterns. So if there is an indx prop, then I just need to use that to get by array with just one index value. If the index prop is undefined though, that means that there was more than one match, and then I can use the ecec method.
+I can still start with the string match method though, and use the fact that it will return null as a way to find out if I should return an empty array or not. Things just get a little tricky when it comes to what needs to happen when there is more than one match, and to be able to handle things with global and non global patterns. I first need to check if the index property of a match is undefined or not, as I can not just uses exec in a while loop the way I would like to as that would result in an infinite loop with non global patterns. So if there is an index prop, then I just need to use that to get by array with just one index value. If the index prop is undefined though, that means that there was more than one match, and then I can use the exec method.
+
+There is more than one way of doing this sort of thing of course, and I will be getting more into this subject later in this post.
 
 ## 3 - Single pattern match and more than one match with the String match method.
 
@@ -193,37 +195,28 @@ Although it might be better to use a method like RegExp.exec to do so it is poss
 
 ```js
 let createIndexObjects = (str) => {
- 
     let patt = /\d+(\.js|\.html)/,
     arr = [],
     m,
     i = 0;
- 
     // loop while m is true
     do {
- 
         // get match from a substring from the current
         // index
         m = str.substring(i).match(patt);
- 
         // break if null
         if (!m) {
             break;
         }
- 
         // step index by index of match plus the size
         // of the pattern match string
         i += m.index + m[0].length;
- 
         // adjust m.index to reflect index values
         // in original string rather than the substring
         m.index = i - m[0].length;
- 
         // push the match object
         arr.push(m);
- 
     } while (m);
- 
     // return the array
     return arr;
  
