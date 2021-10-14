@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2020-10-05 09:12:11
-version: 1.28
+updated: 2021-10-14 14:49:13
+version: 1.29
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -80,6 +80,10 @@ console.log(m);
 ```
 
 In this example I used the i and g regular expression flags. The i flag is used to set the pattern as case insensitive, and the g flag makes it so that a global search is what is preformed rather than just getting the first instance of a pattern. I also used the digit [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes) as a way to define a regular expression that will not just match a fixed text pattern, but a pattern that will contain a part that is subject to variation in the from of a number, in this case a year after a starting fixed text pattern.
+
+### 1.5 - The examples here can be found on github
+
+The soucre code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match).
 
 ## 2 - String.match returns an Array or null
 
