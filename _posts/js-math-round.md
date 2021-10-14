@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 09:15:37
-version: 1.20
+updated: 2021-10-14 09:17:18
+version: 1.21
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -60,7 +60,7 @@ console.log( randomByteStr() );
 
 ### 1.3 - Get price example using Math.ceil
 
-Using Math.ceil is usful for some situation in which I will always want to round up with any fraction value.
+Using Math.ceil is useful for some situation in which I will always want to round up with any fraction value.
 
 ```js
 var getPrice = function (cost, markup) {
@@ -77,6 +77,8 @@ while (i > 5) {
 
 ### 1.4 - Get random array element using Math.floor
 
+The Math.floor method is one of the round methods that I seem to use most of the time.
+
 ```js
 var getRandomEl = function (arr) {
     var len = arr.length;
@@ -90,6 +92,8 @@ while(i--){
 ```
 
 ### 1.5 - Point from area example using Math.floor
+
+There is also getting a random point in an array that has a width and height that comes to mind when rounding.
 
 ```js
 // get an point in an area with a width height, and 
