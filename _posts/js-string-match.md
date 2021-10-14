@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 14:49:13
-version: 1.29
+updated: 2021-10-14 14:52:58
+version: 1.30
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -21,9 +21,9 @@ So this js string match method is a great method that comes in handy, but it mig
 
 To know how to use the String.Match method to a fair amount of proficiency it is required to have at least some understanding of how to go about working with regular expressions. I will not be getting into regular expressions in depth in this post as I have [written a post on regex in general](/2019/03/20/js-regex/) before hand. This post will focus more so on using regular expressions to match rather than replace text, and primary using the string match prototype methods rather than alternative methods such as the regular expression prototype method exec.
 
-So in this section I will be going over just a few basic examples of the string match method. This should helper to get started with string match to know what it can do, and also what it can not do at least by itself. You might all ready be familiar with the String.index method, and with that said the String match method can be used to do the same thing, but it is a little more advanced. So lets get started with some basic examples of the string match method.
+So in this section I will be going over just a few basic examples of the string match method. This should help to get started with string match to know what it can do, and also what it can not do at least by itself. You might all ready be familiar with the [String index of method](/2020/07/09/js-string-index-of/), and with that said the String match method can be used to do the same thing, but it is a little more advanced. So lets get started with some basic examples of the string match method.
 
-### 1.1 - just getting the first match using a string rather than a regular expression
+### 1.1 - Just getting the first match using a string rather than a regular expression
 
 So the string match method can be used in more or less the same way as the string index method in the sense that a string ca be given as a pattern to look for. However the result that will be returned in the event that a match is found will end up being an object rather than a number value for the index of the match.
 
@@ -67,7 +67,7 @@ console.log(match.index); // undefined
 
 However there is a problem the result is an array of matches for the pattern that contain the text of the pattern match, but not the index values in the source string. This is one of the reasons why one might want to take a look at what there is to work with in the Regular expression prototype, namely the RegExp.exec method. More on that later on in this post when I get to alternatives to the string match method. For now lets look at just some more basic examples of string match.
 
-### 1.4 - yet another basic example
+### 1.4 - Yet another basic example
 
 To get started with string.match the first thing is to work out the pattern that will match what you are looking for in the string. Once that is together you just need to pass that regular expression to the string.match method as the first argument when calling it off of an instance of a string.
 
@@ -83,7 +83,7 @@ In this example I used the i and g regular expression flags. The i flag is used 
 
 ### 1.5 - The examples here can be found on github
 
-The soucre code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match).
+The soucre code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match). Every now and the I get around to editing this post, and with that said the latest notes, and source code examples can be found there.
 
 ## 2 - String.match returns an Array or null
 
