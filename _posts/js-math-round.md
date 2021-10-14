@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 12:52:12
-version: 1.26
+updated: 2021-10-14 12:54:09
+version: 1.27
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -23,9 +23,9 @@ When it comes to starting out with rounding numbers in javaScript there are of c
 
 In this section then I will be going over a few basic example that involve just using the Built in Math methods for rounding numbers. Later in this post I will then be getting into a whole bunch of other native javaScript features that have to do with rounding.
 
-### 1.1 - Basic rounding example
+### 1.1 - Just using the methods for starters
 
-
+Maybe the best way to start out with this is to just call the various methods and pass some number litertals to then just for the sake of confirming that they work as advertised. 
 
 ```js
 var n = 1.005;
