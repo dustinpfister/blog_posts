@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 13:08:03
-version: 1.32
+updated: 2021-10-14 13:10:34
+version: 1.33
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -97,6 +97,8 @@ while(i--){
     console.log( getRandomEl(colors) );
 }
 ```
+
+If I where to replace the call of Math.floor with Math.round, or Math.ceil the result would be the occasion reference to an element outside the range of the array which will result in an [undefined value](/2019/01/30/js-javascript-undefined/).
 
 ### 1.5 - Point from area example using Math.floor
 
