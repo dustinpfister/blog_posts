@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 09:10:55
-version: 1.18
+updated: 2021-10-14 09:13:31
+version: 1.19
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -37,7 +37,7 @@ So one might think that these methods will work just fine for rounding. I can ju
 
 ### 1.2 - get random bit example using Math.round
 
-In this example I am using the Math.round method to return a 0 or 1 based on rounding the result of a random value using the Math.random method.
+In this example I am using the Math.round method to return a 0 or 1 based on rounding the result of a random value using the [Math.random method](/2020/04/21/js-math-random/). The random method will return a number between 0 and 1, and can include 0 but not 1. So then using the Math.random method will work okay in this kind of situation.
 
 ```js
 // random bit method using Math.round
