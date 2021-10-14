@@ -26,10 +26,6 @@ This is a general todo list for what I want to get done when it comes to editing
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
 
-### (  ) - js-math-round  ( old )
-* edit post to 1,800+ words
-* have 5+ internal links for the post
-
 ### (  ) - js-onvisibilitychange ( no internal links )
 * edit post to 1,800+ words
 * have 5+ internal links for the post
@@ -82,6 +78,10 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/14/2021 ) - js-math-round  ( old )
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 10/12/2021 ) - js-web-storage ( old )
 * (done) have 5+ internal links for the post
