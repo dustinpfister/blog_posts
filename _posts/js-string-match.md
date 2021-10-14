@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 14:54:35
-version: 1.31
+updated: 2021-10-14 14:59:37
+version: 1.32
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -43,7 +43,7 @@ The object that is returned will have an index property this is what will contai
 
 ### 1.2 - No Match with String Match
 
-When using the String index of method a value of -1 will be returned when no match for a pattern is obtained. The string match method will return null in the event that there is no instance of the given pattern in the source string.
+When using the String index of method a value of -1 will be returned when no match for a pattern is obtained. The string match method will return [null](/2019/03/11/js-javascript-null/) in the event that there is no instance of the given pattern in the source string. This two just like -1 can be used as a way to know if one or more matches have been found or not.
 
 ```js
 let str = 'foo bar baz bar 42 zoo bar';
