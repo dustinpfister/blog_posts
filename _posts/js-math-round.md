@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 13:41:54
-version: 1.36
+updated: 2021-10-14 13:45:59
+version: 1.37
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -292,4 +292,5 @@ console.log(round(-0.25, 0) + 0); // 0
 
 ## 5 - Conclusion
 
-So there are a few built in options for rounding in the Math object, and also certain prototype methods in other built in Objects and classes that help with rounding. However sometimes it makes sense to go with a user space solution for rounding, and formatting a number in general for presentation.
+So there are a few built in options for rounding in the Math object, and also certain prototype methods in other built in Objects and classes that help with rounding. However sometimes it makes sense to go with a user space solution for rounding, and formatting a number in general for presentation also. However maybe it can be said that these kinds of situations can be avoided when it comes to the issues with rounding negative numbers and so forth. When it comes to the negative zero situation there is just using the older equality and identity operators that will still return what many might see as an expected result for that kind of situation. However there is knowing what the deal is with it when it comes to what is going on, and why negative zero is not really the same thing as positive zero, so then when that is the case that is where things can be a little involved.
+
