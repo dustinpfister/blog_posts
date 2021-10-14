@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 11:25:45
-version: 1.23
+updated: 2021-10-14 11:28:25
+version: 1.24
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -60,7 +60,7 @@ console.log( randomByteStr() );
 
 ### 1.3 - Get price example using Math.ceil
 
-Using Math.ceil is useful for some situation in which I will always want to round up with any fraction value.
+Using Math.ceil is useful for some situations in which I will always want to round up with any fraction value to the next whole number. For this example I made a quick function that will take a cost of something apply a markup to it and then use Math.ceil to round up, rather than down always to the next whole number. After that I just subtract one cent from the value to get a subtest shelf price for some kind of item in a hypothetical store.
 
 ```js
 var getPrice = function (cost, markup) {
