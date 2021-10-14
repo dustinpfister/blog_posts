@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 14:52:58
-version: 1.30
+updated: 2021-10-14 14:54:35
+version: 1.31
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -19,7 +19,7 @@ So this js string match method is a great method that comes in handy, but it mig
 
 ## 1 - String Match Basics
 
-To know how to use the String.Match method to a fair amount of proficiency it is required to have at least some understanding of how to go about working with regular expressions. I will not be getting into regular expressions in depth in this post as I have [written a post on regex in general](/2019/03/20/js-regex/) before hand. This post will focus more so on using regular expressions to match rather than replace text, and primary using the string match prototype methods rather than alternative methods such as the regular expression prototype method exec.
+To know how to use the String.Match method to a fair amount of proficiency it is required to have at least some understanding of how to go about working with regular expressions. I will not be getting into regular expressions in depth in this post as I have [written a post on regex in general](/2019/03/20/js-regex/) before hand. This post will focus more so on using regular expressions to match rather than replace text, and primary using the string match prototype methods rather than alternative methods such as the [regular expression prototype method exec](/2020/07/08/js-regex-exec/).
 
 So in this section I will be going over just a few basic examples of the string match method. This should help to get started with string match to know what it can do, and also what it can not do at least by itself. You might all ready be familiar with the [String index of method](/2020/07/09/js-string-index-of/), and with that said the String match method can be used to do the same thing, but it is a little more advanced. So lets get started with some basic examples of the string match method.
 
