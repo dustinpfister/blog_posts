@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 12:51:04
-version: 1.25
+updated: 2021-10-14 12:52:12
+version: 1.26
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -20,6 +20,8 @@ So in this post I will be taking a look at the Math.round method, but also addit
 ## 1 - The basics of rounding with Math round, Math ceil, and Math floor
 
 When it comes to starting out with rounding numbers in javaScript there are of course the methods to work with in the Math object. These methods include the Math.round, Math.ceil, and Math.floor methods that all do the same thing when it comes to rounding a number but will return different results for the same number depending of course on the value. The typical way of thinking about rounding is that if the fraction part of a number is greater than or equal to one half that round up to the next whole number, else round down, in that case the Method to use is the Math.round method. The Math.ceil method is then the method to use when it comes to always rounding up, and the Math.floor method is what to use to always round down.
+
+In this section then I will be going over a few basic example that involve just using the Built in Math methods for rounding numbers. Later in this post I will then be getting into a whole bunch of other native javaScript features that have to do with rounding.
 
 ### 1.1 - Basic rounding example
 
