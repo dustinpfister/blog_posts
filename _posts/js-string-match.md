@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 15:03:44
-version: 1.33
+updated: 2021-10-14 15:05:00
+version: 1.34
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -91,7 +91,7 @@ One thing to be aware of when using String.match is that it will return an Array
 
 ### 2.1 - Making a method that will work like the index of method
 
-For example say you want to write a method that will return the index of the first instance of a pattern match, or negative one if it is not found just like that of the index of method. For this I would just set the value of the result of a match to a variable and then just use the result as the expression in an if statement. In the event that the value is null that will evaluate to false, and the code in the if statement will not run, at which point I can use the return keyword to return a value of -1. In the event that one or more matches are returned that will result in a non empty array that evaluates to true, and the code inside the if statement will run.
+For example say you want to write a method that will return the index of the first instance of a pattern match, or negative one if it is not found just like that of the index of method. For this I would just set the value of the result of a match to a variable and then just use the result as the expression in an if statement. In the event that the value is null that will evaluate to false, and the code in the if statement will not run, at which point I can use the return keyword to return a value of -1. In the event that one or more matches are returned that will result in a non empty array that evaluates to true, and the code inside the if statement will run. Inside the body of this if statement I can return the index of the match.
 
 ```js
 let str1 = 'This string has a foobar here',
