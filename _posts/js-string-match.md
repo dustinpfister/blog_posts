@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 15:33:49
-version: 1.35
+updated: 2021-10-14 15:36:34
+version: 1.36
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -146,6 +146,8 @@ console.log(getFooIndices(str1, /foo/g)); // [5, 59]
 console.log(getFooIndices(str1, /foo/)); // [5]
 console.log(getFooIndices(str1, /bar/g)); // []
 ```
+
+I can still start with the string match method though, and use the fact that it will return null as a way to find out if I should return an empty array or not.
 
 ## 3 - Single pattern match and more than one match with the String match method.
 
