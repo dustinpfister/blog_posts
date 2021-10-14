@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 666
-updated: 2021-10-14 08:31:30
-version: 1.16
+updated: 2021-10-14 09:09:21
+version: 1.17
 ---
 
 In javaScript there is the Math object and a few of the many methods in this Object have to do with rounding numbers such as [Math ceil](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil), [Math floor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor), and one additional such option for rounding in the Math Object that is the [Math round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round) method. For the most part these methods will work just fine, however there are some situations in which they might fall short for expectations. One situation that comes to mind has to do with precession, which is one of several things that come to mind that might make one want to have a custom user space solution for rounding.
@@ -21,7 +21,7 @@ So in this post I will be taking a look at the Math.round method, but also addit
 
 When it comes to starting out with rounding numbers in javaScript there are of course the methods to work with in the Math object.
 
-### 1.1 - Basic rounding
+### 1.1 - Basic rounding example
 
 So the native methods for rounding are simple enough to use, if you have been working with javaScript for a fair amount of time chances are you are using them all ready. So with that said there is not much to write about them, just choose one that is the best fit, pass in the number you want to round, and the desired result id returned.
 
@@ -35,7 +35,79 @@ console.log( Math.floor(n) ); // 1
 
 So one might think that these methods will work just fine for rounding. I can just use one of these methods to round numbers when and where needed and that is it. Well for the most part maybe, but there are some situations where these built in methods are not working as expected, which will result in me looking for other options. There are other javaScript built in options, but often they are not working as expected all the time also, which causes me to look for or make a user space solution for this actually. So lets look at some more examples of rounding numbers in javaScript to get a better idea as to what the state of affairs is with this one.
 
-### 1.2 - Source code examples in this post as well as many others are on github
+### 1.2 - get random bit example using Math.round
+
+```js
+// random bit method using Math.round
+var randomBit = function () {
+    return Math.round(Math.random());
+};
+// random byte string method
+var randomByteStr = function () {
+    var i = 8,
+    byteArr = [];
+    while (i--) {
+        byteArr.push(randomBit());
+    }
+    return byteArr.join('');
+};
+// demo
+console.log( randomByteStr() );
+
+```
+
+### 1.3 - get price example using Math.ceil
+
+```js
+var getPrice = function (cost, markup) {
+    return Math.ceil(cost * markup) - 0.01;
+};
+var i = 10,
+markup = 1.25;
+while (i > 5) {
+    var cost = 1 + i;
+    console.log(cost, markup, getPrice(cost, markup));
+    i--;
+}
+```
+
+### 1.4 - get random array element using Math.floor
+
+```js
+var getRandomEl = function (arr) {
+    var len = arr.length;
+    return arr[Math.floor(Math.random() * len)];
+};
+var i = 10,
+colors = ['red', 'lime', 'cyan'];
+while(i--){
+    console.log( getRandomEl(colors) );
+}
+```
+
+### 1.5 - Point from area example using Math.floor
+
+```js
+// get an point in an area with a width height, and 
+// values between 0 and 1.
+var getAreaPoint = function (w, h, wPer, hPer) {
+    return {
+        x: Math.floor(w * wPer),
+        y: Math.floor(h * hPer)
+    };
+};
+// random point
+var getRandomAreaPoint = function (w, h) {
+    return getAreaPoint(w, h, Math.random(), Math.random());
+};
+// demo
+var i = 10;
+while(i--){
+    console.log( getRandomAreaPoint(10, 10) );
+};
+```
+
+### 1.6 - Source code examples in this post as well as many others are on github
 
 I have a [repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-round) that contains the source code examples in this post as well as all my other posts on vanilla javaScript.
 
