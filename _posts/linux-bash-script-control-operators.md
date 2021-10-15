@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 933
-updated: 2021-10-15 13:47:55
-version: 1.3
+updated: 2021-10-15 13:50:35
+version: 1.4
 ---
 
 It would seem that I have not got around to writing a post on [control operators in bash](https://opensource.com/article/18/11/control-operators-bash-shell), so today I will be writing a thing or two about this little aspect of [bash scripts](/2020/11/27/linux-bash-script/), and working with in a Command Line Interface in Linux. Control operators are just one of many little details that one will need to learn a thing or two about in order to become more professional with bash, and operating system automation tasks in Linux systems by way of bash scripts. 
@@ -17,7 +17,7 @@ There are three general things to be aware of when it comes to this, one is to e
 
 ## 1 - Basics of Control Operators in Bash
 
-In this section I will be starting out with just a few simple and safe examples that can be used in the command line interface right away just to get an idea of what the deal is with control operators. I assume that you have at least a little experience when it comes to working within the Command Line Interface of a Linux system. If not you might want to start out with some basic commonly used commands such as ehco and test, at lest those are some main commands of interest that I will be using in these examples.
+In this section I will be starting out with just a few simple and safe examples that can be used in the command line interface right away just to get an idea of what the deal is with control operators. I assume that you have at least a little experience when it comes to working within the Command Line Interface of a Linux system. If not you might want to start out with some basic commonly used commands such as [ehco](/2019/08/15/linux-echo/) and [test](/2021/10/08/linux-test/), at lest those are some main commands of interest that I will be using in these examples.
 
 ### 1.1 - Semicolon \(\;\)
 
