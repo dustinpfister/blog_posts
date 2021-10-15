@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 15:41:37
-version: 1.31
+updated: 2021-10-15 15:44:12
+version: 1.32
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -200,7 +200,7 @@ console.log(declar(40)); // NaN
 
 ### 3.2 - Using function prototype methods
 
-One will run into problems with arrow function when it comes to using the [function prototype methods](/2017/09/21/js-call-apply-and-bind/).
+One will run into problems with arrow function when it comes to using the [function prototype methods](/2017/09/21/js-call-apply-and-bind/) such as apply, bind and call. Again this has to do with how the this keyword works wit arrow functions, so typically I will only want to use these methods that are ether function declarations, or functions that behave like them at least.
 
 ```js
 // declarations (and expressions) can
