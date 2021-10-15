@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 11:44:59
-version: 1.18
+updated: 2021-10-15 11:46:53
+version: 1.19
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -16,6 +16,8 @@ So it is important to understand the differences between the different ways of h
 <!-- more -->
 
 ## 1 - Function Declaration basics in javaScript
+
+In this section I will just be going over a few quick examples of making function declarations, just for the sake of getting started. After that I think I will be getting into what the deal is when it comes to comparing function declarations to other options when it comes to writing functions in javaScript.
 
 ### 1.1 - Basic function declaration example
 
