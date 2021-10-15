@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 15:35:21
-version: 1.29
+updated: 2021-10-15 15:39:07
+version: 1.30
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -234,7 +234,7 @@ console.log(d.func(15)); // 65
 
 ### 3.4 - The arguments object
 
-Another loss has to do with the [arguments object](/2019/01/21/js-javascript-arguments-object/) which is a nice feature to have to work with inside the body of a function often
+Another thing that is lost as a result of using arrow functions is the [arguments object](/2019/01/21/js-javascript-arguments-object/) which is a nice feature to have to work with inside the body of a function. This object can be used to find out how many arguments where given when the function was called, and also it can be used as an alternative way to get the values of such arguments. Say that I want to have a function that can take 0 or more arguments and do something with all the values such as some kind of sum function. This can be done with function declarations as well as expressions by way of the arguments object, however such code will not work in an arrow function.
 
 ```js
 // declarations (and expressions) can
