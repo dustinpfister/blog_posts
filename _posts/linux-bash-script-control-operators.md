@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 933
-updated: 2021-10-15 15:21:16
-version: 1.10
+updated: 2021-10-15 15:28:10
+version: 1.11
 ---
 
 It would seem that I have not got around to writing a post on [control operators in bash](https://opensource.com/article/18/11/control-operators-bash-shell), so today I will be writing a thing or two about this little aspect of [bash scripts](/2020/11/27/linux-bash-script/), and working with in a Command Line Interface in Linux. Control operators are just one of many little details that one will need to learn a thing or two about in order to become more professional with bash, and operating system automation tasks in Linux systems by way of bash scripts. 
@@ -49,5 +49,5 @@ test -e ~/foo.txt || test -e ~/.bashrc; echo $?
 
 ## 2 - Conclusion
 
-The use of control operators is then yet another aspect of bash that one should know a thing or two about when it comes to writing bash scripts then. Often there is using the semicolon operator in order to write a string of code in a single like rather than making use of tend of line charterers in a script.
+The use of control operators is then yet another aspect of bash that one should know a thing or two about when it comes to writing bash scripts then. Often there is using the semicolon operator in order to write a string of code in a single line rather than making use of end of line charterers in a script. These operators also go hand in hand with knowing a think or two about exit status codes, with various Linux commands such as test, and also why they are important when it comes to writing scripts. For example there is using the Linux exit command to set what the exit status should be for a bash script, and there is also knowing a thing or two about how to set exit status codes when writing a program in a language such as python, javaScript, and C.
 
