@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 11:52:59
-version: 1.21
+updated: 2021-10-15 11:53:52
+version: 1.22
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -60,7 +60,7 @@ console.log(bx.area()); // 100
 
 ### 1.3 - Writing pure functions as declarations
 
-Another kind of function that is at odds with a constructor would be a pure function. Although a pure function can be written with a wide range of options for creating functions, the job can be done with declarations just fine also.
+Another kind of function that is at odds with a constructor would be a [pure function](/2020/06/18/js-function-pure/). Although a pure function can be written with a wide range of options for creating functions, the job can be done with declarations just fine also.
 
 ```js
 // simple pure function using a declaration
