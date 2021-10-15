@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 11:46:53
-version: 1.19
+updated: 2021-10-15 11:51:13
+version: 1.20
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -38,6 +38,8 @@ However there is more to a function declaration in javaScript than just the lexi
 Sure there are some wried ways of defining them that involve passing a string to the Function constructor or making use of eval, but for the sake of this post  I do not want to get to far off topic from function declarations.
 
 ### 1.2 - A function declaration is a good choice for making a constructor function
+
+When it comes to writing what is called a [constructor function](/2019/02/27/js-javascript-constructor/), a function declaration is a good choice for this kind of function. I will not be getting into detail about this kind of function, as well as many related topics such as the prototype chain, and Object Orientated Programing. However I think A quick hello world style example of a constructor is called for here.
 
 ```js
 // simple constructor function example
@@ -130,7 +132,7 @@ let bar = function () {
 console.log(bar()); // 'foo'
 ```
 
-So function declarations might come off as being a little less versatile compared to expressions, but this feature about them is one reason why I might choose to use them from time to time. When useing expressions I need to take care that I am defining expressions towards the top of the module and make sure that any call s for that function are below them.
+So function declarations might come off as being a little less versatile compared to expressions, but this feature about them is one reason why I might choose to use them from time to time. When using expressions I need to take care that I am defining expressions towards the top of the module and make sure that any call s for that function are below them.
 
 ### 2.3 - High order functions and expressions
 
