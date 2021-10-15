@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 933
-updated: 2021-10-15 15:16:11
-version: 1.9
+updated: 2021-10-15 15:21:16
+version: 1.10
 ---
 
 It would seem that I have not got around to writing a post on [control operators in bash](https://opensource.com/article/18/11/control-operators-bash-shell), so today I will be writing a thing or two about this little aspect of [bash scripts](/2020/11/27/linux-bash-script/), and working with in a Command Line Interface in Linux. Control operators are just one of many little details that one will need to learn a thing or two about in order to become more professional with bash, and operating system automation tasks in Linux systems by way of bash scripts. 
@@ -41,7 +41,7 @@ $ test -e ~/Documents && ls -l
 
 ### 1.3 - Or \(\|\|\)
 
-The \|\| operator is then similar to \&\& only the next command will only fire if the first command DOES NOT END with a 0 exit status code.
+The \|\| operator is then similar to \&\& only the next command will only fire if the first command DOES NOT END with a 0 exit status code. So once again say I test for the presence of a foo.txt file, then use the \|\| operator, and then test again for a bashrc file in the home folder. After that I then use the semicolon and echo the exit status code. If the situation is that I do not have a foo.txt file there, but I do have a bashrc file, that will result in an exit code status of 1, which will then result in the next firing which will exit with a 0 status. So then in other words the final result will only be an exit status of 1 if I not not have ether of the files in the home folder.
 
 ```
 test -e ~/foo.txt || test -e ~/.bashrc; echo $?
@@ -50,3 +50,4 @@ test -e ~/foo.txt || test -e ~/.bashrc; echo $?
 ## 2 - Conclusion
 
 The use of control operators is then yet another aspect of bash that one should know a thing or two about when it comes to writing bash scripts then. Often there is using the semicolon operator in order to write a string of code in a single like rather than making use of tend of line charterers in a script.
+
