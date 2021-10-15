@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 11:53:52
-version: 1.22
+updated: 2021-10-15 11:56:06
+version: 1.23
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -86,6 +86,10 @@ console.log( area(10, 10) ); // 100
 // if not then it is not a pure function
 console.log(randomArea(10, 10, 10, 10)); // (an object with random props each time)
 ```
+
+### 1.4 - All the source code examples here and more or on Github
+
+I think I will also take a moment in this section to mention that all the source code examples in this post, as well as all my other posts on vanilla javaScript can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-function-declaration).
 
 ## 2 - Function declarations compared to Function Expressions
 
