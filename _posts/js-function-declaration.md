@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 11:56:06
-version: 1.23
+updated: 2021-10-15 11:59:19
+version: 1.24
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -142,6 +142,10 @@ So function declarations might come off as being a little less versatile compare
 
 ### 2.3 - High order functions and expressions
 
+Another thing about function expressions as that they are generally regarded as a better choice when it comes to working with high order functions. In other words working with a function that will take a function as an argument. The main reason why this might be may have to do with being able to pass one as an argument for a function call without having to declare it to a variable name first.
+
+So expressions can be used like this:
+
 ```js
 function foobar(bar){
     return 'foo' + bar();
@@ -152,8 +156,10 @@ console.log( foobar(function(){
 }) );
 ```
 
+When it comes to declarations I have to well, declare them first.
+
 ```js
-// of course a function declatation can be
+// of course a function declaration can be
 // given as an argument to another function
 function foo(){
     return 'bar'
