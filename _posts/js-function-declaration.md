@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 12:03:54
-version: 1.27
+updated: 2021-10-15 12:05:56
+version: 1.28
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -176,7 +176,7 @@ console.log( foobar(foo) );
 
 ### 3.1 - The this keyword
 
-The main thing about arrow functions is that they handle the situation with the thins keyword in a whole other way.
+The main thing about arrow functions is that they handle the situation with the [this keyword](/2017/04/14/js-this-keyword/) in a whole other way.
 
 ```js
 // with arrow functions the this
@@ -198,7 +198,7 @@ console.log(declar(40)); // NaN
 
 ### 3.2 - Using function prototype methods
 
-One will run into problems with arrow function when it comes to using the function prototype methods.
+One will run into problems with arrow function when it comes to using the [function prototype methods](/2017/09/21/js-call-apply-and-bind/).
 
 ```js
 // declarations (and expressions) can
