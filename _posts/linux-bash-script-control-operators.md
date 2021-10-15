@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 933
-updated: 2021-10-15 15:08:41
-version: 1.6
+updated: 2021-10-15 15:10:43
+version: 1.7
 ---
 
 It would seem that I have not got around to writing a post on [control operators in bash](https://opensource.com/article/18/11/control-operators-bash-shell), so today I will be writing a thing or two about this little aspect of [bash scripts](/2020/11/27/linux-bash-script/), and working with in a Command Line Interface in Linux. Control operators are just one of many little details that one will need to learn a thing or two about in order to become more professional with bash, and operating system automation tasks in Linux systems by way of bash scripts. 
@@ -32,6 +32,8 @@ $ test -e ~/foo.txt; echo $?
 The test command will check if the file is there or not, if it is it will exit with a status of 0, if not the status will be 1. However the test command alone will not print anything to the standard output of the console. So if I just want to confirm that this is working in the command line in a single line, after test I can place a semicolon, and then use echo to print the value of the \$\? spacial parameter to the standard output of the console.
 
 ### 1.2 - And \(&&\)
+
+Another control operator of interest would be the \&\& operator that will call the next command after the first command, but only if the exit code status of the first command is 0.
 
 ```
 $ test -e ~/Documents && ls -l
