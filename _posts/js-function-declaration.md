@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2020-10-05 09:37:24
-version: 1.17
+updated: 2021-10-15 11:44:59
+version: 1.18
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -16,6 +16,8 @@ So it is important to understand the differences between the different ways of h
 <!-- more -->
 
 ## 1 - Function Declaration basics in javaScript
+
+### 1.1 - Basic function declaration example
 
 To create a function declaration start out by typing the function keyword followed by a name for the function, then opening and closing parentheses that might contain one or more optional parameters for the function followed by opening and closing brackets. This way of defining a function differs slightly from a function expression, and arrow functions, as well as other ways of defining a function such as using the Function constructor. There is of course the slight differences in syntax when it comes to just looking at code, but there are also differences in terms of how they behave at run time. More on that later, but for now lets just look at a basic example of a function declaration when it comes to syntax.
 
@@ -32,6 +34,52 @@ console.log( foo() );
 However there is more to a function declaration in javaScript than just the lexical structure of it, there are differences in the way that they behave as well when compared to other ways of defining functions in javaScript. There are a significant number of ways to go about defining functions in javaScript, but for the most part it is mainly function declarations, function expressions, and arrow functions that are of interest. The reason why I say that is because those are the types of functions that a javaScript developer will run into most of the time when studying code examples in the wild.
 
 Sure there are some wried ways of defining them that involve passing a string to the Function constructor or making use of eval, but for the sake of this post  I do not want to get to far off topic from function declarations.
+
+### 1.2 - A function declaration is a good choice for making a constructor function
+
+```js
+// simple constructor function example
+function Box(x, y, w, h) {
+    this.x = x === undefined ? 0 : x;
+    this.y = y === undefined ? 0 : y;
+    this.w = w === undefined ? 10 : w;
+    this.h = h === undefined ? 10 : h;
+};
+ 
+Box.prototype.area = function () {
+    return this.w * this.h;
+};
+ 
+var bx = new Box();
+console.log(bx.area()); // 100
+```
+
+### 1.3 - Writing pure functions as declarations
+
+```js
+// simple pure function using a declaration
+function area(w, h) {
+    w = w === undefined ? 0 : w;
+    w = w === undefined ? 0 : w;
+    return w * h;
+};
+// an example of a function that is not a pure function
+function randomArea(sx, sy, mw, mh){
+    var w = Math.round(Math.random() * mw),
+    h = Math.round(Math.random() * mh);
+    return {
+        x: sx + Math.floor((mw - w) * Math.random()),
+        y: sy + Math.floor((mh - h) * Math.random()),
+        w: w,
+        h: h
+    };
+};
+// a pure function will always give the same result
+// for the same arguments
+console.log( area(10, 10) ); // 100
+// if not then it is not a pure function
+console.log(randomArea(10, 10, 10, 10)); // (an object with random props each time)
+```
 
 ## 2 - Function declarations compared to Function Expressions
 
@@ -54,7 +102,7 @@ console.log( foo() ); // 'bar'
 
 A function expression does not have to be stored in a variable though, they can be used with the group operator and then called outside of that group operator so that they can be used in an anonymous way. In there words they can be used in a self executing from that is often referred to as an [Immediately Invoked Function Expression](/2020/02/04/js-iife/). For the most part function expressions strike me as being a little more flexible compared to declarations, but they are still not a replacement for them for one significant reason that I will be getting to in the next section.
 
-### 2.1 - Function Declarations can be called anywhere while expressions can not
+### 2.2 - Function Declarations can be called anywhere while expressions can not
 
 One of the major differences between function declarations and expressions is that declarations can be called anywhere within the body of code in which the function declaration is defined. So a function declaration can be placed at the bottom of a javaScript file, and called at above it, attempting to do so with a function expression will typically result calling undefined which will of course throw a nasty error.
 
@@ -82,9 +130,35 @@ console.log(bar()); // 'foo'
 
 So function declarations might come off as being a little less versatile compared to expressions, but this feature about them is one reason why I might choose to use them from time to time. When useing expressions I need to take care that I am defining expressions towards the top of the module and make sure that any call s for that function are below them.
 
+### 2.3 - High order functions and expressions
+
+```js
+function foobar(bar){
+    return 'foo' + bar();
+}
+// expressions do not need to be defined first
+console.log( foobar(function(){
+    return 'baz'
+}) );
+```
+
+```js
+// of course a function declatation can be
+// given as an argument to another function
+function foo(){
+    return 'bar'
+}
+function foobar(bar){
+    return 'foo' + bar();
+}
+console.log( foobar(foo) );
+```
+
 ## 3 - Function declarations compared to Arrow Functions
 
 [Arrow functions](/2019/02/17/js-arrow-functions/) where introduced in es2015+ spec javaScript, these functions work fine in most typical situations that require a function or two, but they can not be used as a full drop in replacement for all functions i javaScript code. The scope of the this keyword is handled differently compared to function declarations so when it comes to anything that involves the use of Function.call or the new operator a function declaration or function expression still needs to be used in place of an arrow function.
+
+### 3.1 - The this keyword
 
 ```js
 // with arrow functions the this
@@ -102,19 +176,26 @@ function declar(a) {
     return this.b + a;
 };
 console.log(declar(40)); // NaN
- 
+```
+
+### 3.2 - Using function prototype methods
+
+```js
 // declarations (and expressions) can
 // be used with Function methods like Function.call
 console.log(declar.call({
         b: 5
     }, 25)); // 30
- 
 // arrow functions can not, the this keyword will
 // still refer to the top level scope here
 console.log(arrow.call({
         b: 5
     }, 25)); // 27
- 
+```
+
+### 3.3 - Constructors
+
+```js
 // declarations can also be used to create constructors
 // while arrow functions can not
 function MyCon(b) {
@@ -123,10 +204,29 @@ function MyCon(b) {
 MyCon.prototype.func = function (a) {
     return this.b + a;
 };
- 
 let d = new MyCon(50);
- 
 console.log(d.func(15)); // 65
+```
+
+### 3.4 - The arguments object
+
+```js
+// declarations (and expressions) can
+// make use of the arguments object which
+// can come in handy
+function add(){
+  return Array.prototype.reduce.call(arguments, function(acc, n){
+      return acc += typeof n === 'number' ? n: 0;
+  }, 0);
+};
+console.log(add(1, 2, 3, 4)); // 10
+ 
+var add2 = () => {
+  return Array.prototype.reduce.call(arguments, function(acc, n){
+      return acc += typeof n === 'number' ? n: 0;
+  }, 0);
+};
+console.log(add2(1, 2, 3, 4)); // 10
 ```
 
 ## 4 - Conclusion
