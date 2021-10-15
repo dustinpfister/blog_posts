@@ -6,8 +6,8 @@
 ## Linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
-### (  ) - new post #933 for 10/15/2021 - linux-bash-script-control-operators
-* start the for post folder
+### ( done 10/15/2021 ) - new post #933 for 10/15/2021 - linux-bash-script-control-operators
+* (done) start the for post folder
 
 ### ( done 10/09/2021 ) - new post #932 for 10/08/2021 - linux-test
 * (done) start linux-test for post folder
