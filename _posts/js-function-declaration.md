@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 414
-updated: 2021-10-15 15:39:07
-version: 1.30
+updated: 2021-10-15 15:41:37
+version: 1.31
 ---
 
 In javaScript there is more than one way to define a function, depending on the nature of the function all the different ways of defining a function will work okay, or not, depending on the situation in which they are used. For example arrow functions will work okay in most cases, however because of how the this keyword is treated with arrow functions it is not a good choice when writing a constructor function. This along with several other concerns that come up would maybe be a good reason to consider other options when it comes to writing functions i n javaScript such as function expressions and function declarations.
@@ -217,7 +217,7 @@ console.log(arrow.call({
 
 ### 3.3 - Constructors
 
-Arrow functions are will not work so create when it comes to making a constructor function.
+Arrow functions will not work so great when it comes to making a constructor function. The reason why is again because of how these functions work with the this keyword. So then this is yet again another reason why one should stick to using the old tired yet true types of functions, unless they are sure that arrow functions will work without issue.
 
 ```js
 // declarations can also be used to create constructors
