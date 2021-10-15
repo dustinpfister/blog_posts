@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 933
-updated: 2021-10-15 15:28:10
-version: 1.11
+updated: 2021-10-15 15:30:11
+version: 1.12
 ---
 
 It would seem that I have not got around to writing a post on [control operators in bash](https://opensource.com/article/18/11/control-operators-bash-shell), so today I will be writing a thing or two about this little aspect of [bash scripts](/2020/11/27/linux-bash-script/), and working with in a Command Line Interface in Linux. Control operators are just one of many little details that one will need to learn a thing or two about in order to become more professional with bash, and operating system automation tasks in Linux systems by way of bash scripts. 
@@ -33,7 +33,7 @@ The test command will check if the file is there or not, if it is it will exit w
 
 ### 1.2 - And \(&&\)
 
-Another control operator of interest would be the \&\& operator that will call the next command after the first command, but only if the exit code status of the first command is 0.
+Another control operator of interest would be the \&\& operator that will call the next command after the first command, but only if the exit code status of the first command is 0. Say I want to write a line of code to put in a bash file that will test for the existence of a Documents folder, and if it is there, and only if it is there list the contents of the folder using the [Linux ls](/2020/10/14/linux-ls/) command.
 
 ```
 $ test -e ~/Documents && ls -l
