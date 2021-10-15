@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 933
-updated: 2021-10-15 15:10:43
-version: 1.7
+updated: 2021-10-15 15:13:09
+version: 1.8
 ---
 
 It would seem that I have not got around to writing a post on [control operators in bash](https://opensource.com/article/18/11/control-operators-bash-shell), so today I will be writing a thing or two about this little aspect of [bash scripts](/2020/11/27/linux-bash-script/), and working with in a Command Line Interface in Linux. Control operators are just one of many little details that one will need to learn a thing or two about in order to become more professional with bash, and operating system automation tasks in Linux systems by way of bash scripts. 
@@ -45,3 +45,6 @@ $ test -e ~/Documents && ls -l
 test -e ~/foo.txt || test -e ~/.bashrc; echo $?
 ```
 
+## 2 - Conclusion
+
+The use of control operators is then yet another aspect of bash that one should know a thing or two about when it comes to writing bash scripts then. Often there is using the semicolon operator in order to write a string of code in a single like rather than making use of tend of line charterers in a script.
