@@ -1,6 +1,15 @@
 # todo list for new posts blog_posts
 
+<!--###### ########## ########## #######-->
+## js ( /yyyy/mm/dd/js-* )
+<!--###### ########## ########## #######-->
 
+### () - new post #933 for 10/23/2021 - js-promise
+* start a new javaScript post on promises in general
+* be sure to link to all js as well as nodejs posts on promises and touch base on the topics
+
+### ( done 09/03/2021 ) - new post #927 for 09/03/2021 - js-javascript-game-framework
+* (done) start a new post on my js-javascript-game-framework proto
 
 <!--###### ########## ########## #######-->
 ## Linux ( /yyyy/mm/dd/linux-* )
@@ -37,12 +46,3 @@
 * (done) base nodejs-simple-http-request-get-post-system based off of
 
 
-
-
-
-<!--###### ########## ########## #######-->
-## js ( /yyyy/mm/dd/js-* )
-<!--###### ########## ########## #######-->
-
-### ( done 09/03/2021 ) - new post #927 for 09/03/2021 - js-javascript-game-framework
-* (done) start a new post on my js-javascript-game-framework proto
