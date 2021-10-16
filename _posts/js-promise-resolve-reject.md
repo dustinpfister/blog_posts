@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 09:38:39
-version: 1.25
+updated: 2021-10-16 11:24:27
+version: 1.26
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -23,7 +23,11 @@ So if you are new to using promises or just want to review how they are use in t
 
 The typical alternative to a promise is using what is often called a [callback function](/2019/03/25/js-javascript-callback/). Callback functions are often functions that will fire at a later point and when they do so there is often a way to check if an error happed or not in the body of the single callback function. One nice thing about promises over callbacks is that the use of promises often results in a promise chain rather than the so called call back hell that happens when callbacks are used in a nested way. This is often regarded as a nicer way to structuring things that is easier to read and debug.
 
-### 1.1 - A very simple promise example using a Promise Constructor
+### 1.1 - The source code examples here and much most can be found on Github
+
+If you are on Github then yes the source code examples in this post are in a [repository on my github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise-resolve-reject) account. In the for post folder there I have notes as to what I am planing out for future edits of this content. Also in that repository I have all the source code examples for [all my other posts on vanilla javaScipt](https://dustinpfister.github.io/tags/js/).
+
+### 1.2 - A very simple promise example using a Promise Constructor
 
 There is starting out with just some very basic examples of The promise constructor, just to get the general idea of what this is about. So for this example I am creating a new Promise object by calling the Promise constructor with the new keyword, the returned object will then be an instance of a promise to which I can call methods like then, and catch off of that will fire if the promise resolved or rejects.
 
@@ -45,7 +49,7 @@ new Promise(function (resolve, reject) {
 
 For this example I am not doing anything that will take a while such as making an http request or something to that effect. This is a very simple getting started type example after all, so for now I am just calling the resolve method inside the body of the function that I am passing to the Promise Constructor and passing a string value for the call of the resolve function. The result is then the next then function of the Promise chain being called, rather than catch.
 
-### 1.2 - A very simple Promise.resolve example
+### 1.3 - A very simple Promise.resolve example
 
 Some times I might want to just start off with a resolve promise object, or there is a situation in which I must pass a promise and only a promise as an argument for a function. I could create one with the Promise Constructor and just resolve it like I did in the about simple example of the Promise Constructor. However there is also a static method of the Promise global for this sort of thing.
 
@@ -57,7 +61,7 @@ Promise.resolve('foo')
 // 'foo'
 ```
 
-### 1.3 - A Very simple Promise.reject example
+### 1.4 - A Very simple Promise.reject example
 
 There is also the Promise reject static method that does the same thing and the Promise resolve method only it is a way to just quickly create a rejected promise rather than a resolve one. So then this will result in the next catch method in the chain being called rather than a then call.
 
@@ -69,7 +73,7 @@ Promise.reject(new Error('No Good'))
 // 'No Good'
 ```
 
-### 1.4 - A helper function that returns a promise
+### 1.5 - A helper function that returns a promise
 
 The thing to keep in mind here with promises is that ultimately a promise object will resolve or reject. There is having something like this where there is a bunch of code that will ultimately resolve or reject when using the promise constructor. However what if you are doing something that expects a resolved or rejected promise object as a response? There should be a way to just create and return a resolved or rejected promise object right? Well yes there should be and there is, this is where the Promise resolve and reject methods come into play.
 
@@ -114,9 +118,9 @@ delayTest()
 });
 ```
 
-## 2 - Using Promise reject or resolve in place of the Promise constructor
+### 1.6 - Using Promise reject or resolve in place of the Promise constructor
 
-Say for some reason I just simply want to start off with a resolve promise object, or for whatever extenuating circumstance I want a resolve promise object right now for a task that will not take much time. I could use the Promise constructor to create a promise and then just call resolve inside the body of the function that I pass the resolve constructor. This might work, but it is not really a professional way to go about doing it. There are a number of methods in the Promise prototype object, and a javaScript developer should be aware of them and what they are used for.
+So then say for some reason I just simply want to start off with a resolve promise object, or for whatever extenuating circumstance I want a resolve promise object right now for a task that will not take much time. I could use the Promise constructor to create a promise and then just call resolve inside the body of the function that I pass the resolve constructor. This might work, but it is not really a professional way to go about doing it. There are a number of methods in the Promise prototype object, and a javaScript developer should be aware of them and what they are used for.
 
 So there is no need to do create a simple Promise with the Promise constructor that just resolves right away as there is the Promise.resolve method that can be use for this purpose.
 
@@ -147,7 +151,7 @@ Promise.resolve({
 
 In addition to the Promise resolve method there is also the Promise reject method that will cause the next catch rather than then call to fire in a Promise chain.
 
-## 3 - nodejs check file example of promise reject use in a promise chain
+## 2 - nodejs check file example of promise reject use in a promise chain
 
 Okay so how about another example in which I am using the Promise reject method in a promise chain. Say I want to write a script that will check if a given path is a directory and if it is fail gracefully, else it will read the contents of the file. I will first want to get the file stats of the path, and then check if the path is a directory. If the path is a director I will want to return a rejected promise that will break the promise chain, and jump to the next catch.
 
@@ -192,7 +196,7 @@ stat(thePath)
 
 This might just be a silly example that will just log the error to the console in the event that the script is called on a directory rather than a file. However in a real example the script might do something more when it comes to that kind of situation. In any case this shows how the Promise reject, and resolve methods can prove to be useful in some situations. An any point in a then call I can use the Promise reject method to skip ahead to the next catch rather than then call.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 The promise resolve and reject methods are there when I want to just simply have an object returned that is a resolved or rejected promise. I find myself using them some times as a way to just go about returning such an object to gain a desired result in a chain or promises. 
 
