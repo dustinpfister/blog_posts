@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 09:36:26
-version: 1.24
+updated: 2021-10-16 09:38:39
+version: 1.25
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -198,6 +198,6 @@ The promise resolve and reject methods are there when I want to just simply have
 
 There are many additional methods in the native Promise prototype that are worth checking out if one is nit familiar with them just yet. One of which is the [Promise.all](/2019/06/24/js-promise-all/) method that strokes me as one of the most important promise prototype methods that a javaScript developer should be aware of when it comes to Promises. 
 
-On top of that there are many other things to be aware of when it comes to promised in specific environments as well as in user space libraries. For example in late versions of nodejs the [file system module](/2018/02/08/nodejs-filesystem/) methods will return a promise, however when it comes to supporting older versions of node you might want to use the [promisify method in the utils module](/2019/06/22/nodejs-util-promisify/).
+On top of that there are many other things to be aware of when it comes to promised in specific environments as well as in user space libraries. For example in late versions of nodejs the [file system module](/2018/02/08/nodejs-filesystem/) methods will return a promise, however when it comes to supporting older versions of node you might want to use the [promisify method in the utils module](/2019/06/22/nodejs-util-promisify/). When it comes to client side javaScript there is the [fetch method](/2018/03/27/js-fetch/) that will return a promise, however the XmlHttpRequest method will not when it comes to scripting http from a browser.
 
 That is it for now, but I often get around to editing my content now and then. If you have any ideas about something that should be added be sure to speak up in the comments section with it.
