@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 15:34:32
-version: 1.33
+updated: 2021-10-16 15:42:14
+version: 1.34
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -248,6 +248,8 @@ let writeConf = exports.writeConf = (uri_conf, state) => {
     return writeFile(uri_conf, jsonText, 'utf8');
 };
 ```
+
+The main method of interest here is the read conf method, where I am staring out by reading a given URI or path if you refer to a file. This path to the file could be very much a file, but it could end up being a folder which would result in a kind of error. The file could very well be there, or it might not be which also could cause an error. It is also possible for other kinds of errors to happen for example a given file could be a file, and it could exist, but the file access permissions could be set in a way in which the script may not have the proper file access permissions to read the file which could also result in a kind of error.
 
 So then I can write a main script that I would use with this above module.
 
