@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 08:47:40
-version: 1.17
+updated: 2021-10-16 08:52:51
+version: 1.18
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -25,17 +25,46 @@ The typical alternative to a promise is using what is often called a [callback f
 
 ### 1.1 - A very simple promise example using a Promise Constructor
 
+There is starting out with just some very basic examples of The promise constructor, just to get the general idea of what this is about. So for this example I am creating a new Promise object by calling the Promise constructor with the new keyword, the returned object will then be an instance of a promise to which I can call methods like then, and catch off of that will fire if the promise resolved or rejects.
+
+
 ```js
+new Promise(function (resolve, reject) {
+    resolve('foo');
+})
+.then(function (str) {
+    console.log(str);
+})
+.catch(function (e) {
+    console.warn(e);
+});
+// 'foo'
 ```
 
 ### 1.2 - A very simple Promise.resolve example
 
 ```js
+Promise.resolve('foo')
+.then(function (str) {
+    console.log(str);
+})
+.catch(function (e) {
+    console.warn(e);
+});
+// 'foo'
 ```
 
 ### 1.3 - A Very simple Promise.reject example
 
 ```js
+Promise.reject(new Error('No Good'))
+.then(function (str) {
+    console.log(str);
+})
+.catch(function (e) {
+    console.warn(e.message);
+});
+// 'No Good'
 ```
 
 ### 1.4 - A helper function that returns a promise
@@ -62,12 +91,10 @@ let delayTest = (delay, theTest) => {
     delay = delay === undefined ? 1000 : delay;
     theTest = theTest === undefined ? defaultTest : theTest;
     return new Promise((resolve, reject) => {
- 
         if (theTest()) {
             resolve('the test passed');
         }
         reject('the test failed');
- 
     });
 };
  
