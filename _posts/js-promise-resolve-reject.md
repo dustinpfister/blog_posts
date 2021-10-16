@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 15:51:42
-version: 1.35
+updated: 2021-10-16 15:56:35
+version: 1.36
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -253,7 +253,7 @@ The main method of interest here is the read conf method, where I am staring out
 
 Also on top off all this when it comes to what can go wrong when it comes to jus simply reading a file, there are additional things that could go wrong after that, for example say all goes well with reading the file, but then it turns out that the json will not parse because it is mail formed. There is also a situation in which all goes fine with everything including parsing, but it turns out that the json that is being read is not the json that I am looking for when it comes to the standards that I have in mind for a specific project. These things should also result in the calling of the read conf method resulting in a rejected promise. The thing about this method that is that if everything does go well then it will result in a resolved promise, with the parsed json object. So when I call this from outside of the module one of two things will happen, the next then block will run, or the next catch blog will, and it is in this catch block that I can preform various kinds of actions for these various kinds of things that can go wrong.
 
-So then I can write a main script that I would use with this above module.
+So then I can write a main script that I would use with this above module. In there I can of course cerate another start method in which I will be calling the read conf method of the module, and if all goes well I can just log some messages about that and end things as a resolved promise. If however one of the errors happen I can use the standard system I have made for error messages to preform specific actions for specific errors.
 
 ```js
 let path = require('path'),
