@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 11:24:27
-version: 1.26
+updated: 2021-10-16 12:56:25
+version: 1.27
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -151,7 +151,155 @@ Promise.resolve({
 
 In addition to the Promise resolve method there is also the Promise reject method that will cause the next catch rather than then call to fire in a Promise chain.
 
-## 2 - nodejs check file example of promise reject use in a promise chain
+## 2 - Error handing and Resolve and Reject
+
+### 2.1 - basic error handling example in nodejs
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+readFile = promisify(fs.readFile);
+ 
+let uri_file = path.resolve(process.argv[2] || process.cwd());
+ 
+// simple read file example that can result in an error
+readFile(uri_file)
+.catch((e) => {
+    console.warn('code: ' + e.code);
+    console.wran('message ' + e.message);
+    console.wran('\n');
+})
+.then((data) => {
+    console.log('all is good, got file data');
+    console.log('buffer length: ' + data.length);
+});
+```
+
+### 2.2 - Doing something to work with various kinds of errors with resolve and reject
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+readFile = promisify(fs.readFile),
+writeFile = promisify(fs.writeFile);
+// hard coded settings for a state object
+let HARD_SETTINGS = {
+    count: 0,
+    delta: 1,
+    appName: 'basic-count'
+};
+// parse a URI for a file
+let parseURI = exports.parseURI = (str) => {
+    return path.resolve(str || process.argv[2] || path.join(process.cwd(), 'conf.json'))
+};
+// just return a new state object
+let newState = exports.newState = () => {
+    return JSON.parse(JSON.stringify(HARD_SETTINGS));
+};
+// read what should be a conf.json file
+let readConf = exports.readConf = (uri_conf) => {
+    uri_conf = parseURI(uri_conf);
+    // start out by reading what should be a file, but it might not be
+    return readFile(uri_conf, 'utf8')
+    // some kind of error happened while reading the file
+    .catch((e) => {
+        // the given file is not a file but a folder
+        if (e.code === 'EISDIR') {
+            return Promise.reject(new Error('DIR: Must Not give a folder for a conf.json file'))
+        }
+        // the given file does not exist
+        if (e.code === 'ENOENT') {
+            return Promise.reject(new Error('NOTFOUND: looks like the given file is not there'))
+        }
+        // if some other Error
+        return Promise.reject('READERR: Other read error:\n code: ' + e.code + '\n mess: ' + e.message);
+    })
+    // then all is good and we have text that should be json, but it might not be
+    .then((data) => {
+        try {
+            return JSON.parse(data);
+        } catch (e) {
+            // if there is an error resolve but with hard coded values
+            return Promise.reject('JSONERR: Error reading the json file');
+        }
+    }).
+    then((obj) => {
+        if (obj.appName === undefined || obj.appName != HARD_SETTINGS.appName) {
+            return Promise.reject('JSONOTHER: Parsed some json just fine, but it looks like it is not for this app.')
+        }
+        // if we make it this far, then we have a resolved promsie for this
+        return Promise.resolve(obj);
+    });
+};
+// write a conf file method
+let writeConf = exports.writeConf = (uri_conf, state) => {
+    uri_conf = parseURI(uri_conf);
+    let jsonText = JSON.stringify(state);
+    return writeFile(uri_conf, jsonText, 'utf8');
+};
+```
+
+So then I can write a main script that I would use with this above module.
+
+```js
+let path = require('path'),
+countApp = require(path.join(__dirname, 'node-get-conf.js'));
+ 
+let uri_conf = countApp.parseURI();
+// start method for this demo app on top of the countApp module
+let start = (uri) => {
+    return countApp.readConf(uri)
+    .then((obj) => {
+        console.log('we have this object to work with: ');
+        console.log(obj);
+        console.log('we are good staring, lets continue here...')
+        return Promise.resolve(obj);
+    })
+    .catch((e) => {
+        let myCode = e.message.split(':')[0];
+        let newState = countApp.newState();
+        // in the event of a DIR error I can create a conf.json there
+        if (myCode === 'DIR') {
+            console.log('myCode error is DIR, updating uri_conf, and reading again...');
+            // update uri_conf to this:
+            uri_conf = path.join(uri, 'conf.json');
+            return countApp.readConf(uri_conf)
+            .catch((e) => {
+                console.log('error trying to read file at updated uri_conf, trying to write one now...');
+                return countApp.writeConf(uri_conf, newState);
+            })
+            .then(() => {
+                return start(uri_conf);
+            })
+        }
+        if (myCode === 'NOTFOUND') {
+            console.log('myCode error is NOTFOUND, so trying to write it.');
+            return countApp.writeConf(uri, newState)
+            .then(() => {
+                return start(uri);
+            })
+        }
+        // if we get here still start, just with a new state that will not get saved
+        return Promise.resolve(newState);
+    });
+};
+start(uri_conf)
+.then((state) => {
+    state.count += state.delta;
+    console.log('new count: ' + state.count);
+    return countApp.writeConf(uri_conf, state)
+})
+.then(() => {
+    console.log('state updated.');
+})
+.catch((e) => {
+    console.warn(e.message);
+});
+```
+
+## 3 - File IO and Promise resolve and reject
 
 Okay so how about another example in which I am using the Promise reject method in a promise chain. Say I want to write a script that will check if a given path is a directory and if it is fail gracefully, else it will read the contents of the file. I will first want to get the file stats of the path, and then check if the path is a directory. If the path is a director I will want to return a rejected promise that will break the promise chain, and jump to the next catch.
 
