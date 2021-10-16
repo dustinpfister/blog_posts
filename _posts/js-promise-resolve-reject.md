@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2020-10-10 16:52:59
-version: 1.16
+updated: 2021-10-16 08:47:40
+version: 1.17
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -17,12 +17,29 @@ So todays post will just be on the Promise.resolve, and promise.reject methods.
 
 <!-- more -->
 
-## 1 - First a Basic Promise example that will resolve or reject
+## 1 - Some basic examples of Promises including Promise.resolve and Promise.reject
 
-So if you are new to using promises or just want to review how they are use in this section I will be going over a basic example that uses the promise constructor. The basic idea of a promise is that it will return an object that represents a task that will resolve or reject over a period of time. The result might not come right away, and also the process of getting a result might fail. So a promise object might resolve to a requested value, and as such things can continue, or it might not at which point some additional action might need to be preformed such as trying again.
+So if you are new to using promises or just want to review how they are use in this section I will be going over some basic examples that use the promise constructor, as well as the Promise.resolve and Promise.reject methods. The basic idea of a promise is that it will return an object that represents a task that will resolve or reject over a period of time. The result might not come right away, and also the process of getting a result might fail. So a promise object might resolve to a requested value, and as such things can continue, or it might not at which point some additional action might need to be preformed such as trying again.
 
-So then a promise is an alternative to using [callback functions](/2019/03/25/js-javascript-callback/). Callback functions are often functions that will fire at a later point and when they do so there is often a way to check if an error happed or not in the body of the single callback function. Once nice thing about promises over callbacks is that the use of promises often results in a promise chain rather than the so called call back hell that happens when callbacks are used in a nested way. This is often regarded as a nicer way to structuring things that is easier to read and debug.
+The typical alternative to a promise is using what is often called a [callback function](/2019/03/25/js-javascript-callback/). Callback functions are often functions that will fire at a later point and when they do so there is often a way to check if an error happed or not in the body of the single callback function. One nice thing about promises over callbacks is that the use of promises often results in a promise chain rather than the so called call back hell that happens when callbacks are used in a nested way. This is often regarded as a nicer way to structuring things that is easier to read and debug.
 
+### 1.1 - A very simple promise example using a Promise Constructor
+
+```js
+```
+
+### 1.2 - A very simple Promise.resolve example
+
+```js
+```
+
+### 1.3 - A Very simple Promise.reject example
+
+```js
+```
+
+### 1.4 - A helper function that returns a promise
+ 
 ```js
 let defaultTest = () => {
     let i = Math.pow(10, 8),
