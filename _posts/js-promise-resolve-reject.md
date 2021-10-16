@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 13:03:43
-version: 1.28
+updated: 2021-10-16 13:09:08
+version: 1.29
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -153,7 +153,7 @@ In addition to the Promise resolve method there is also the Promise reject metho
 
 ## 2 - Error handing and Resolve and Reject
 
-One major part about Promises is to use it as a means of error handing, by way of resolving and rejecting. There is writing some kind of method that will return a promise that will resolve or reject. There is having a single call of the Promise constructor, and then calling the reject method in the method given to the constructor, only if a whole bunch of checks have passed, else there is calling the reject method, and passing a custom error object when doing so.
+One major part about Promises is to use it as a means of error handing, by way of resolving and rejecting. There is writing some kind of method that will return a promise that will resolve or reject. There is having a single call of the Promise constructor, and then calling the reject method in the method given to the constructor, only if a whole bunch of checks have passed, else there is calling the reject method, and passing a [custom error object](https://developer.mozilla.org/en-US/docs/web/javascript/reference/global_objects/error) when doing so. There is also calling off of an method that will return a promise all ready and then starting a promise chain, returning calls for new promise objects by way of Promise.resolve, Promise.reject, or any other method that will return a promise as needs while making checks for various kinds of errors that will happen.
 
 ### 2.1 - basic error handling example in nodejs
 
