@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 15:56:35
-version: 1.36
+updated: 2021-10-16 16:00:04
+version: 1.37
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -310,6 +310,8 @@ start(uri_conf)
     console.warn(e.message);
 });
 ```
+
+There is doing even more for this kind of thing, but you get the picture. There is having all kinds of different errors that can happen from calling a method that reads a file, and then preforms additional actions with that data such as parsing and validation. That is a few things that needs to happen, and for all of them one or more kinds of errors can happen.
 
 ## 3 - File IO and Promise resolve and reject
 
