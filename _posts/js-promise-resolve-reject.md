@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 08:55:47
-version: 1.19
+updated: 2021-10-16 09:00:31
+version: 1.20
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -42,6 +42,8 @@ new Promise(function (resolve, reject) {
 });
 // 'foo'
 ```
+
+For this example I am not doing anything that will take a while such as making an http request or something to that effect. This is a very simple getting started type example after all, so for now I am just calling the resolve method inside the body of the function that I am passing to the Promise Constructor and passing a string value for the call of the resolve function. The result is then the next then function of the Promise chain being called, rather than catch.
 
 ### 1.2 - A very simple Promise.resolve example
 
