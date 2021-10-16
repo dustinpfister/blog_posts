@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 09:00:31
-version: 1.20
+updated: 2021-10-16 09:03:39
+version: 1.21
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -47,13 +47,12 @@ For this example I am not doing anything that will take a while such as making a
 
 ### 1.2 - A very simple Promise.resolve example
 
+Some times I might want to just start off with a resolve promise object, or there is a situation in which I must pass a promise and only a promise as an argument for a function. I could create one with the Promise Constructor and just resolve it like I did in the about simple example of the Promise Constructor. However there is also a static method of the Promise global for this sort of thing.
+
 ```js
 Promise.resolve('foo')
 .then(function (str) {
     console.log(str);
-})
-.catch(function (e) {
-    console.warn(e);
 });
 // 'foo'
 ```
@@ -62,9 +61,6 @@ Promise.resolve('foo')
 
 ```js
 Promise.reject(new Error('No Good'))
-.then(function (str) {
-    console.log(str);
-})
 .catch(function (e) {
     console.warn(e.message);
 });
