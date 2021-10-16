@@ -25,10 +25,6 @@ This is a general todo list for what I want to get done when it comes to editing
 * have 5+ internal links for the post
 * edit post to 1,800+ words
 
-### () - js-promise-resolve-reject (old)
-* have 5+ internal links for the post
-* edit post to 1,800+ words
-
 ### () - js-function-pure (old)
 * have 5+ internal links for the post
 * edit post to 1,800+ words
@@ -90,6 +86,10 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/16/2021 ) - js-promise-resolve-reject (old)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,800+ words
 
 ### ( done 10/15/2021 ) - js-function-declaration (old)
 * (done) edit post to 1,800+ words
