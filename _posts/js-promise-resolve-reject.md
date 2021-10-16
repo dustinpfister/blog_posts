@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 09:03:39
-version: 1.21
+updated: 2021-10-16 09:07:11
+version: 1.22
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -58,6 +58,8 @@ Promise.resolve('foo')
 ```
 
 ### 1.3 - A Very simple Promise.reject example
+
+There is also the Promise reject static method that does the same thing and the Promise resolve method only it is a way to just quickly create a rejected promise rather than a resolve one. So then this will result in the next catch method in the chain being called rather than a then call.
 
 ```js
 Promise.reject(new Error('No Good'))
