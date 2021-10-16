@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 13:13:02
-version: 1.31
+updated: 2021-10-16 13:16:54
+version: 1.32
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -183,6 +183,8 @@ readFile(uri_file)
 ### 2.2 - Doing something to work with various kinds of errors with resolve and reject
 
 There is starting out by just creating a method that will return a promise that will resolve or reject, or calling off such a method that has been made available before hand, and just logging out the results to the standard output or the standard error. However when it comes to making some kind of real project there is actually doing something to address various kinds of errors that might happen.
+
+For this example I have made something that is a module for what could be the start off a full application example actually. Sony for making this one a little involved but that is what is called for in order to really drive home the point as to what errors handing is really about. It is not just logging out to the console that and error has happened, it might be that, but regardless if that happens or not there is also preforming some kind of additional action to address a specific kind of error also.
 
 ```js
 let fs = require('fs'),
