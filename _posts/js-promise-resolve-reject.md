@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 536
-updated: 2021-10-16 08:52:51
-version: 1.18
+updated: 2021-10-16 08:55:47
+version: 1.19
 ---
 
 When working with [promises in javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) there will come a time now and then where I just want to return a resolved promise without having to bother with the promise constructor to do so. In addition there is also doing the same but with a rejected promise, just retuning that inside the body of a promise so that is just directly results in a catch statement being called.
@@ -26,6 +26,8 @@ The typical alternative to a promise is using what is often called a [callback f
 ### 1.1 - A very simple promise example using a Promise Constructor
 
 There is starting out with just some very basic examples of The promise constructor, just to get the general idea of what this is about. So for this example I am creating a new Promise object by calling the Promise constructor with the new keyword, the returned object will then be an instance of a promise to which I can call methods like then, and catch off of that will fire if the promise resolved or rejects.
+
+When creating a Promise by way of the Promise constructor the first argument that I give to the Promise constructor function is a function that will have two arguments resolve and reject. These resolve and reject arguments will then be functions that I will call inside the body of the function that I pass to the function constructor when something happens that should resolve in the promise resolving or rejecting.
 
 
 ```js
