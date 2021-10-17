@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:17:22
-version: 1.36
+updated: 2021-10-17 16:19:03
+version: 1.37
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -364,6 +364,8 @@ module.exports = api;
 ```
 
 ### 4.2 - The index.js file
+
+So I then have a index.js file that will make use of this report module that I have above. I just require in the module, and see about calling the main method that is exported by the module.
 
 ```js
 let path = require('path'),
