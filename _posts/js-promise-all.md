@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 14:05:12
-version: 1.26
+updated: 2021-10-17 14:09:32
+version: 1.27
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -34,14 +34,14 @@ So then something like this:
 ```js
 Promise.all(['Hello', 'world'])
 .then((array) => {
-    console.log('all good');
+    console.log(array.join(' '));
 })
 .catch((e) => {
-    console.log(e.message);
+    console.warn(e.message);
 });
 ```
 
-Will result in the text Hello World being logged to the console.
+Will result in the text Hello World being logged to the console. However this is not in any way a typical use case example of the Promise all method, and I could just pass the array to a [Promise.resolve static method](/2019/09/18/js-promise-resolve-reject/) call to get the same result. I am just bothering with this to make a point.
 
 ### 1.3 - Simple Promise all example with a method that will return a promise
 
