@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:28:53
-version: 1.40
+updated: 2021-10-17 16:43:30
+version: 1.41
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -202,7 +202,64 @@ In this example I am passing an array that is a concatenation of a hard coded ar
 
 this example could be written differently where the hard coded values are added later, but you get the idea. The array can be of mixed values, and in some cases this might be helpful. Say you need to do something where you start off with some hard coded values, and what is loaded will effect those values. The hard coded values can be just packed up along with everything else and passed down along the promise chain.
 
-## 3 - File walker use case example of promise all
+## 3 - Array methods and the Promise all method
+
+### 3.1 - Array map
+
+```js
+let delayed = (ms) => {
+    return new Promise((resolve, reject) => {
+        let st = new Date();
+        setTimeout(() => {
+            resolve(new Date() - st);
+        }, ms || 1000)
+    });
+}
+ 
+// an array of times
+let times = [10, 1500, 100, 75, 33, 150];
+// using array.map to create a new array of promises
+// my calling delayed method for each element in times array
+Promise.all(times.map((ms) => {
+    return delayed(ms);
+}))
+.then((array) => {
+    console.log(array);
+})
+.catch((e) => {
+    console.log(e.message);
+});
+```
+
+### 3.2 - Array filter
+
+```js
+let delayed = (ms) => {
+    return new Promise((resolve, reject) => {
+        let st = new Date();
+        setTimeout(() => {
+            resolve(new Date() - st);
+        }, ms || 1000)
+    });
+}
+ 
+// an array of times
+let times = [10, 1500, 33, 7500, 3000, 150];
+// filtering out times over 1000, and then using map
+Promise.all(times.filter((ms) => {
+    return ms < 1000;
+}).map((ms) => {
+    return delayed(ms);
+}))
+.then((array) => {
+    console.log(array);
+})
+.catch((e) => {
+    console.log(e.message);
+});
+```
+
+## 4 - File walker use case example of promise all
 
 So say I want to walk a file system path for all items in a path, and then filter out all the folders. After that I want to read all of the files in that path. In nodejs I can use the readdir method to read the contents of a dir, and then I can use promise all for each item in the path, getting the stats for each item. That can the be used to filter out all the folders, at which point I can the use promise all again to read all the files then as well.
 
@@ -255,11 +312,11 @@ readdir(dir)
 
 In this example I am also using the util.promisify method as a way to make all the file system module methods that I am using return a promise rather than having to deal with call back hell.
 
-## 4 - Nodejs promise all example that has to do with creating a JSON report for a collection of blog post files.
+## 5 - Nodejs promise all example that has to do with creating a JSON report for a collection of blog post files.
 
 For yet another project example of the Promise all method here is yet another example that runs on top of nodejs, and does not use any npm packages. The goal here is to have some kind of system where I read all the mark down files in a given folder, and create objects for each file found in the given folder. I then write a json file that will contain all of the data that was extracted. For now with this example at least the goal is to just create a collection of objects where each object is just a file name, and also a date, and updated key that is extracted from the top from data of each mark down file.
 
-### 4.1 - The report.js file
+### 5.1 - The report.js file
 
 Here I have the javaScript code that I will be using for this example that creates a json report for a collection of mark down files in a given folder. So then this module will export just one public function that I can then use in some kind of main index script that when called is passed a folder that contains markdown files, and a path to a json file to update, or create in the event that it is not there.
 
@@ -365,7 +422,7 @@ let api = (dir_posts, uri_json) => {
 module.exports = api;
 ```
 
-### 4.2 - The index.js file
+### 5.2 - The index.js file
 
 So I then have a index.js file that will make use of this report module that I have above. I just require in the module, and see about calling the main method that is exported by the module. The result of which is then a json file being crated for each of the demo posts that I have in my test project folder.
 
@@ -384,6 +441,6 @@ report(path.join(__dirname, 'posts'), path.join(__dirname, 'report.json'))
 
 The end result of the report is then just a collection of objects for each markdown file that contain just the file name as well as updated and date keys extracted from the files header data. That is all that I wanted to do for this example at least, but there is taking this and making at least one or two more scripts that will do a bot more than just that such as tabulate things that I might want to know for a massive collection of text files.
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So the [promise all method](https://www.freecodecamp.org/news/promise-all-in-javascript-with-example-6c8c5aea3e32/) can be used as a way to create a promise with an array of promises and other mixed values that will resolve when all of the promises in the array resolve, or contain values that are not a promise. In other words if I am every in a situation in whichI need to do create not just one promise but a whole bunch of them, then the promise all method is what I want to use to get things done.
