@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 14:19:50
-version: 1.30
+updated: 2021-10-17 14:23:00
+version: 1.31
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -47,6 +47,8 @@ Will result in the text Hello World being logged to the console. However this is
 
 ### 1.3 - Simple Promise all example with a method that will return a promise
 
+Although The array that is given to the Promise all method can be an array of anything, often it should contain at least one if not more promise objects. When all the Promise objects in the array resolve, then the next then method in the promise chain will be called.
+
 ```js
 // a delayed function that returns a promise
 let delayed = (ms) => {
@@ -67,6 +69,8 @@ Promise.all([delayed(10), delayed(1500)])
     console.log(e.message);
 });
 ```
+
+When calling this source code example I get an array of numbers where each number is the amount of time it took for each of the called of the delay method to finish.
 
 ### 1.4 - Simple resolve and reject example of Promise all
 
