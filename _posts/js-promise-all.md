@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 13:56:32
-version: 1.23
+updated: 2021-10-17 13:59:53
+version: 1.24
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -19,7 +19,7 @@ So then lets take a look at a few examples of the promise all method in action.
 
 ## 1 - The basics of the Promise.all method
 
-
+In this section I will be starting out with the basics of the Promise.all method, starting out with some very simple examples that should help one to get the core idea of what the Promise.all method is all about. I will also be getting into some other examples that are a little involved but should serve well as some what basic example for a nodejs and client side javaScript environment as there are different things to work with in those two different environments.
 
 ### 1.1 - The source code examples in this post are on github
 
