@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 14:11:35
-version: 1.28
+updated: 2021-10-17 14:18:01
+version: 1.29
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -20,6 +20,8 @@ So then lets take a look at a few examples of the promise all method in action.
 ## 1 - The basics of the Promise.all method
 
 In this section I will be starting out with the basics of the Promise.all method, starting out with some very simple examples that should help one to get the core idea of what the Promise.all method is all about. I will also be getting into some other examples that are a little involved but should serve well as some what basic example for a nodejs and client side javaScript environment as there are different things to work with in those two different environments.
+
+I trust that you have at least some background when it comes to the very [basics of javaScript](/2018/11/27/js-getting-started/) in the client side as well as in [nodejs](/2017/04/05/nodejs-helloworld/). If not you might want to take a step back and come back to promises later, many developers consider promises part of advanced javaScript along with things like closures and the nature of the this keyword. I will be trying to keep these examples fairly basic and easy to follow at least in the first section, but I am not going to cover every little detail that you should know before hand here.
 
 ### 1.1 - The source code examples in this post are on github
 
