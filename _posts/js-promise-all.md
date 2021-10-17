@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:19:03
-version: 1.37
+updated: 2021-10-17 16:25:08
+version: 1.38
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -262,6 +262,8 @@ For yet another project example of the Promise all method here is yet another ex
 ### 4.1 - The report.js file
 
 Here I have the javaScript code that I will be using for this example that creates a json report for a collection of mark down files in a given folder. So then this module will export just one public function that I can then use in some kind of main index script that when called is passed a folder that contains markdown files, and a path to a json file to update, or create in the event that it is not there.
+
+When it comes to the Promise all method alone which is of course the theme of this post then the main method of interest to write about here would be the read all method. This method calls the get uri array method that will return a promise that should resolve to an array of file names for each post, that can then be used to create an array of promise objects each of which are a call of the read file method that will return a promise. When each of these promise resolve the end result will then be an object that contains the filename as well as the text that was read from the mark down file. This array of promise objects is then passed to, you guessed it the promise all method.
 
 ```js
 let util = require('util'),
