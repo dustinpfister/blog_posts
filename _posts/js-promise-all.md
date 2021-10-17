@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 13:59:53
-version: 1.24
+updated: 2021-10-17 14:01:42
+version: 1.25
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -23,7 +23,7 @@ In this section I will be starting out with the basics of the Promise.all method
 
 ### 1.1 - The source code examples in this post are on github
 
-The [source code examples here can be found on github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise-all).
+The [source code examples here can be found on github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise-all) in my test vjs repository. In this repository there is also all the source code examples for all my other [posts on vanilla javaScript](https://dustinpfister.github.io/categories/js/).
 
 ### 1.2 - Simple Promise all hello world example
 
