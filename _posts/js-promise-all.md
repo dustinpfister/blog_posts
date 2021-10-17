@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:27:12
-version: 1.39
+updated: 2021-10-17 16:28:53
+version: 1.40
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -382,7 +382,7 @@ report(path.join(__dirname, 'posts'), path.join(__dirname, 'report.json'))
 });
 ```
 
-The end result of the report is then just a collection of objects for each markdown file that contain just the file name as well as updated and date keys extracted from the files header data.
+The end result of the report is then just a collection of objects for each markdown file that contain just the file name as well as updated and date keys extracted from the files header data. That is all that I wanted to do for this example at least, but there is taking this and making at least one or two more scripts that will do a bot more than just that such as tabulate things that I might want to know for a massive collection of text files.
 
 ## 5 - Conclusion
 
