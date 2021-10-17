@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 13:49:50
-version: 1.22
+updated: 2021-10-17 13:56:32
+version: 1.23
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -19,22 +19,72 @@ So then lets take a look at a few examples of the promise all method in action.
 
 ## 1 - The basics of the Promise.all method
 
-### 1.1 - Simple Promise all hello world example
+
+
+### 1.1 - The source code examples in this post are on github
+
+The [source code examples here can be found on github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise-all).
+
+### 1.2 - Simple Promise all hello world example
 
 ```js
+Promise.all(['Hello', 'world'])
+.then((array) => {
+    console.log('all good');
+})
+.catch((e) => {
+    console.log(e.message);
+});
 ```
 
-### 1.2 - Simple Promise all example with a method that will return a promise
+### 1.3 - Simple Promise all example with a method that will return a promise
 
 ```js
+// a delayed function that returns a promise
+let delayed = (ms) => {
+    return new Promise((resolve, reject) => {
+        let st = new Date();
+        setTimeout(() => {
+            resolve(new Date() - st);
+        }, ms || 1000)
+    });
+}
+// calling the function twice for two elements in an array, and
+// passing that array to the promise all method
+Promise.all([delayed(10), delayed(1500)])
+.then((array) => {
+    console.log(array);
+})
+.catch((e) => {
+    console.log(e.message);
+});
 ```
 
-### 1.3 - Simple resolve and reject example of Promise all
+### 1.4 - Simple resolve and reject example of Promise all
 
 ```js
+let delayed = (ms) => {
+    return new Promise((resolve, reject) => {
+        let st = new Date();
+        setTimeout(() => {
+            let t = new Date() - st;
+            if (t >= 1000) {
+                reject(new Error('process took to long'))
+            }
+            resolve(t);
+        }, ms || 1000)
+    });
+}
+Promise.all([delayed(10), delayed(985)])
+.then((array) => {
+    console.log(array);
+})
+.catch((e) => {
+    console.log(e.message);
+});
 ```
 
-### 1.4 - Promise all nodejs example
+### 1.5 - Promise all nodejs example
 
 Here I have a simple example of Promise all in nodejs 8.x, in this version of nodejs the [util promisify method](/2019/06/22/nodejs-util-promisify/) was introduced that can be used to make methods that just make use of a callback, return a promise. I can then use this as a way to make file system methods return promises, which I can then use in an array. This array can then be passed as the first argument for promise all.
 
@@ -60,7 +110,7 @@ Promise.all([
 If you are using a later version of node, and you do not need to work about pushing backward compatibility back to node 8.x then the code example could be a litter different as some of the later versions of node have files system methods that will return promises anyway. However in any case this simple example of promise all should help give you a basic idea of what the deal is with the promise all method and why it can come in handy now and then.
 
 
-### 1.5 - Promise all client side example
+### 1.6 - Promise all client side example
 
 So if a browser does support Promise all it can also be used in the front end as well. New browser technologies such as fetch return promises, and it is also possible to create custom promises as well with the Promise constructor. However there is just one little concern when it comes to browser support, if you care about supporting any version of IE at all you will need to use something that will bring promise all support to those older platforms.
 
@@ -103,7 +153,6 @@ Promise.all([get('https://dustinpfister.github.io/'), delay(3000)])
   </body>
 </html>
 ```
-
 
 ## 2 - The array passed to Promise all can be a mix of Promises and static values
 
