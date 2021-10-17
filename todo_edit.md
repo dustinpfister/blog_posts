@@ -21,11 +21,11 @@ This is a general todo list for what I want to get done when it comes to editing
 ### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
-### () - js-promise-all (old)
+### (  ) - js-promise-all (old)
 * have 5+ internal links for the post
 * edit post to 1,800+ words
 
-### () - js-function-pure (old)
+### (  ) - js-function-pure (old)
 * have 5+ internal links for the post
 * edit post to 1,800+ words
 
