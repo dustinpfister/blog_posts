@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:15:14
-version: 1.35
+updated: 2021-10-17 16:17:22
+version: 1.36
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -260,6 +260,8 @@ In this example I am also using the util.promisify method as a way to make all t
 For yet another project example of the Promise all method here is yet another example that runs on top of nodejs, and does not use any npm packages. The goal here is to have some kind of system where I read all the mark down files in a given folder, and create objects for each file found in the given folder. I then write a json file that will contain all of the data that was extracted. For now with this example at least the goal is to just create a collection of objects where each object is just a file name, and also a date, and updated key that is extracted from the top from data of each mark down file.
 
 ### 4.1 - The report.js file
+
+Here I have the javaScript code that I will be using for this example that creates a json report for a collection of mark down files in a given folder. So then this module will export just one public function that I can then use in some kind of main index script that when called is passed a folder that contains markdown files, and a path to a json file to update, or create in the event that it is not there.
 
 ```js
 let util = require('util'),
