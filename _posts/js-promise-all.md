@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:43:30
-version: 1.41
+updated: 2021-10-17 16:47:42
+version: 1.42
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -203,6 +203,8 @@ In this example I am passing an array that is a concatenation of a hard coded ar
 this example could be written differently where the hard coded values are added later, but you get the idea. The array can be of mixed values, and in some cases this might be helpful. Say you need to do something where you start off with some hard coded values, and what is loaded will effect those values. The hard coded values can be just packed up along with everything else and passed down along the promise chain.
 
 ## 3 - Array methods and the Promise all method
+
+It is a good idea to know a thing or two about the [array prototype methods](/2018/12/10/js-array/) when working with the Promise all method. Mainly the array map and array filter methods, as these are the methods that I find myself using the most often when working with arrays of data, or objects to which I want to create an array of promises for that I would then pass to the Promise all method. So then in this section I am going to be going over a few quick examples of using the promise all method with certain array prototype methods. The basics covered in this section here will then come up in the actually basic project examples that I will be getting to later in this post.
 
 ### 3.1 - Array map
 
