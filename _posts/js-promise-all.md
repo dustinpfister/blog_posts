@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 14:24:16
-version: 1.32
+updated: 2021-10-17 16:10:56
+version: 1.33
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -255,7 +255,126 @@ readdir(dir)
 
 In this example I am also using the util.promisify method as a way to make all the file system module methods that I am using return a promise rather than having to deal with call back hell.
 
+## 4 - Nodejs promise all example that has to do with creating a JSON report for a collection of blog post files.
 
-## 4 - Conclusion
+
+### 4.1 - The report.js file
+
+```js
+let util = require('util'),
+path = require('path'),
+fs = require('fs'),
+readFile = util.promisify(fs.readFile),
+writeFile = util.promisify(fs.writeFile),
+readdir = util.promisify(fs.readdir);
+ 
+let NEW_REPORT = {
+    posts: []
+};
+ 
+// just get a filtered list of posts for the given dir
+let get_uri_array = (dir_posts) => {
+    return readdir(dir_posts)
+    .then((files) => {
+        return files.filter((fileName) => {
+            return fileName.match(/\.md$/) != null;
+        });
+    })
+};
+ 
+// read all files returning an array of objects with fileName, and md for each post
+// like this: [{fileName: foo.md, md: 'markdown text of foo.md'}]
+let readAll = (dir_posts) => {
+    fileNames = [];
+    return get_uri_array(dir_posts)
+    .then((files) => {
+        fileNames = files;
+        let array = files.map((fileName) => {
+                return readFile(path.join(dir_posts, fileName), 'utf8')
+                .then((md) => {
+                    return {
+                        fileName: fileName,
+                        md: md
+                    };
+                });
+            });
+        return Promise.all(array);
+    });
+};
+ 
+// set dates for the array of post objects
+// deleting any md key for each object in any case
+let setDates = (postObjects) => {
+    let patt = /---[\s|\S]*?---/g;
+    return postObjects.map((postObj) => {
+        let m = postObj.md.match(patt);
+        if (m) {
+            m[0].split('\r\n').forEach((str) => {
+                if (str.match(/^date/)) {
+                    postObj.date = str.replace(/^date:/, '').trim();
+                }
+                if (str.match(/^updated/)) {
+                    postObj.updated = str.replace(/^updated:/, '').trim();
+                }
+            });
+        }
+        // delete md
+        delete postObj.md;
+        return postObj;
+    })
+};
+ 
+// try to get the given json file and if not found
+// write a new one, in any case return an object that
+// is the parsed json, or a default object used for a new report
+let getReport = function (uri_json) {
+    return readFile(uri_json, 'utf8')
+    .catch((e) => {
+        let json = JSON.stringify(NEW_REPORT);
+        console.log('report not found writing new one');
+        return writeFile(uri_json, json, 'utf8')
+        .then(() => {
+            return Promise.resolve(json);
+        })
+    })
+    .then((json) => {
+        return JSON.parse(json);
+    });
+};
+ 
+// export
+let api = (dir_posts, uri_json) => {
+    let report = {};
+    return getReport(uri_json)
+    .then((loadedReport) => {
+        report = loadedReport;
+        return readAll(dir_posts);
+    })
+    .then((objects) => {
+        var posts = setDates(objects);
+        report.posts = posts;
+        return writeFile(uri_json, JSON.stringify(report), 'utf8');
+    })
+};
+ 
+module.exports = api;
+```
+
+### 4.2 - The index.js file
+
+```js
+let path = require('path'),
+report = require(path.join(__dirname, 'report.js'));
+ 
+report(path.join(__dirname, 'posts'), path.join(__dirname, 'report.json'))
+.then((a) => {
+    console.log('report done');
+})
+.catch((e) => {
+    console.warn(e.message);
+});
+```
+
+## 5 - Conclusion
 
 So the [promise all method](https://www.freecodecamp.org/news/promise-all-in-javascript-with-example-6c8c5aea3e32/) can be used as a way to create a promise with an array of promises and other mixed values that will resolve when all of the promises in the array resolve, or contain values that are not a promise. In other words if I am every in a situation in whichI need to do create not just one promise but a whole bunch of them, then the promise all method is what I want to use to get things done.
