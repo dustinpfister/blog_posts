@@ -18,7 +18,10 @@ Of course there are some more things that come to mind other than just simply wr
 * Create simple use case examples that might even be full applications actually if needed.
 * have source source examples in a Github repository and link to that repository in the post
 * have a README file in the repository and link to the post from there
-* Select posts that are all ready preforming okay, or have the potential to preform well by doing some quick trend research
+* posts should have a basics section, then one or more advanced sections, followed by one or more examples sections
+* Select posts that are all ready preforming okay
+* Select posts that have the potential to preform well by doing some quick trend research
+* Select posts just because they are a interesting topic
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
