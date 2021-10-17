@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-10-17 16:48:59
-version: 1.43
+updated: 2021-10-17 16:50:08
+version: 1.44
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise, or in other words it is all ready a value to begin with. So the array that is given to the promise all method can be a mixed collection of values some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -236,6 +236,8 @@ Promise.all(times.map((ms) => {
 ```
 
 ### 3.2 - Array filter
+
+The filter method is then what I want to use to create a new array, where each element in the new array is something that meets a given condition for elements in the source array.
 
 ```js
 let delayed = (ms) => {
