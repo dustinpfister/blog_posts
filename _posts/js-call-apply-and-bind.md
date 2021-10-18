@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2020-10-16 11:09:00
-version: 1.23
+updated: 2021-10-18 09:36:13
+version: 1.24
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -21,7 +21,11 @@ So in this post I will be going  over some examples of the use of call, as well 
 
 ## 1 - Where to get started with JavaScript Call, Apply, and Bind.
 
-Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects call prototype methods. What methods are available depending on the Class of the Object. For example there are Arrays, and in javaScript an Array is a Class of object. So when it comes to an Object that is an instance of an Array there are Array prototype methods such as the array join method that will join all elements of an array into a string.
+Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects call prototype methods. What methods are available depending on the Class of the Object, for example there are Arrays, and in javaScript an Array is a Class of object. So when it comes to an Object that is an instance of an Array there are [Array prototype methods](/2018/12/10/js-array/) such as the array map method that will create a new array from a source array where each element in the new array is the result of some kind of action define by some code in the body of a function that I pass when calling them method.
+
+In this section I will then be going over some basic examples that have to do with functions that contain the this keyword in the body of a function to refer to what is often a class instance of some kind. There is making methods that will work with a built in class, and then there is also making a whole new class from the ground up by getting into writeing constructor functions. This is celled for as it is what I see as a first step before getting into the various function prototype methods such as the function call method.
+
+### 1.x - 
 
 ```js
 var arr = ['foo','man','chew','is','always','in','style'],
@@ -30,6 +34,8 @@ console.log(mess); // foo man chew is always in style
 ```
 
 No confusion there, but with the power of call I can invoke the Array.join method on a plain old object that is not an array.
+
+### 1.x - 
 
 ```js
 var arr = {0:'foo',1:'man',2:'chew',3:'is',4:'always',5:'in',6:'style',length:7},
