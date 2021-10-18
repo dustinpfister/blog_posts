@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:50:02
-version: 1.27
+updated: 2021-10-18 09:52:21
+version: 1.28
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -46,6 +46,8 @@ var b = onlyType(a, 'number');
 console.log(b);
 // [1, 3, 5]
 ```
+
+There is nothing wrong with writing methods like this, in fact many developers prefer this kind of approach for a range of reasons. However this is very much a post on the Function prototype methods, as such it might be a good idea to take a method such as this and do something inside the body of the function that involves the use of the this keyword as a way to get a reference to an array.
 
 ### 1.3 - Only type array method using the this keyword and Function.call
 
