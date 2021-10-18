@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:53:11
-version: 1.29
+updated: 2021-10-18 09:57:33
+version: 1.30
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -51,6 +51,22 @@ There is nothing wrong with writing methods like this, in fact many developers p
 
 ### 1.3 - Only type array method using the this keyword and Function.call
 
+So then I took my stand alone only type method and changed things up so it is now just the type string that I want that is given as an argument, and I am not using the this keyword as a way to refer to what should be an array. However I can not now just call this method just anywhere now, I must have a way to go about setting what the value of the this keyword is. This is where one of the Function prototype methods will come in handy as I can use the call method as a way to go about getting this method to work with an array.
+
+```js
+var onlyType = function (typeStr) {
+    typeStr = typeStr || 'number';
+    var arr = this; // using 'this' keyword to refer to what should be an array
+    return arr.filter(function (el) {
+        return typeof el === typeStr;
+    });
+};
+// demo
+var a = [1, 'two', 3, 'four', 5];
+var b = onlyType.call(a, 'number');
+console.log(b);
+// [1, 3, 5]
+```
 
 ### 1.4 - 
 
