@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 12:53:37
-version: 1.45
+updated: 2021-10-18 13:08:06
+version: 1.46
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -377,6 +377,15 @@ let arr = Array.prototype.map.call(obj, (n) => {
     });
 console.log(arr.constructor.name); // 'Array'
 console.log(arr); // [2,4,8]
+```
+
+### 6.2 - Using the to upper case string prototype method with an array
+
+Many of the examples in this post in which I am using a prototype method with something that is not of that prototype method involves the use of array prototype methods. So in this section I think I will explore this sort of thing more by looking into some string prototype methods. With that said it would seem that some string methods will work well with arrays, one of these would be the to update case method of the string prototype.
+
+```js
+var str = ''.toUpperCase.call(['aa', 'b']);
+console.log(str); // 'AA,B'
 ```
 
 ## 7 - A Function call use case example that involves getting the word count of a page
