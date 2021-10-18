@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 11:36:25
-version: 1.34
+updated: 2021-10-18 11:41:16
+version: 1.35
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -163,6 +163,8 @@ console.log(a);
 
 ### 3.2 - The Array push method and apply
 
+Another array prototype method that works well with apply would be the array push method.
+
 ```js
 var obj = {
     0: 1,
@@ -186,6 +188,10 @@ console.log( obj );
 ```
 
 ### 3.3 - The arguments object and array apply
+
+I often fine myself in situation in which I am using the apply method to call a function that will have a fixed number of standard arguments, alone with one or more additional arguments. In this example I have a state object, and then I have what would be a collection of update methods that can be applied to this state object. Each update method for this state object will have a fixed number of standard arguments, and then one or more additional option arguments.
+
+The [arguments object](/2019/01/21/js-javascript-arguments-object/) is an example of an array like object, that is the kind of object that will often work okay with a method like array apply.
 
 ```js
 var state = {
