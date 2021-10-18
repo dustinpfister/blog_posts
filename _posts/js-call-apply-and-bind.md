@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 12:30:50
-version: 1.40
+updated: 2021-10-18 12:33:38
+version: 1.41
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -251,6 +251,8 @@ console.log( sum.apply(null, nums) ); // 15
 ```
 
 ### 3.6 - Concatenating arrays of arrays with apply
+
+Another example of apply that is worth bring up in this section might be this one involving an [array of arrays](/2020/03/31/js-array-multidimensional/).
 
 ```js
 var arrays = [
