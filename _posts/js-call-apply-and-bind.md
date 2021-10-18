@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:57:33
-version: 1.30
+updated: 2021-10-18 10:02:34
+version: 1.31
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -68,7 +68,9 @@ console.log(b);
 // [1, 3, 5]
 ```
 
-### 1.4 - 
+### 1.4 - Directly calling a prototype method off of a built in class
+
+When it comes to working with arrays there are a whole lot of built in prototype methods to work with. Thus far in this section I went over some examples that make use of the array map method. Another one of these methods would be the array join method that will return a new string from an array of elements where there is a separator string between each element that is given as an argument.
 
 ```js
 var arr = ['foo','man','chew','is','always','in','style'],
@@ -76,9 +78,11 @@ mess = arr.join(' ');
 console.log(mess); // foo man chew is always in style
 ```
 
-No confusion there, but with the power of call I can invoke the Array.join method on a plain old object that is not an array.
+No confusion there, but with the power of call I can invoke the Array.join method on a plain old object that is not an array. So next lets look at an example of that.
 
-### 1.5 - 
+### 1.5 - Getting a built in prototype method to woth with an object that is not of that Class.
+
+The call function prototype method can be used as a way to liberate built in prototype methods from there prototype objects and call the method with any object. If the object that I am using with an array prototype method just happens to be formated in the same way as an array, then it should more often then not work fine.
 
 ```js
 var arr = {0:'foo',1:'man',2:'chew',3:'is',4:'always',5:'in',6:'style',length:7},
