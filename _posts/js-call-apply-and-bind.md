@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 13:08:06
-version: 1.46
+updated: 2021-10-18 13:35:17
+version: 1.47
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -388,7 +388,52 @@ var str = ''.toUpperCase.call(['aa', 'b']);
 console.log(str); // 'AA,B'
 ```
 
-## 7 - A Function call use case example that involves getting the word count of a page
+## 7 - Problems with using Function prototype methods
+
+### 7.1 - Problems with array concat
+
+```js
+// not an array
+let obj = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+ 
+// this will not work as expected
+console.log([].concat.apply(obj, [4, 5, 6]));
+// [ { '0': 1, '1': 2, '2': 3, length: 3 }, 4, 5, 6 ]
+ 
+// Some times I just have to convert to an array
+console.log(Array.from(obj).concat([4, 5, 6]));
+// [ 1, 2, 3, 4, 5, 6 ]
+```
+
+### 7.2 - Problems with date prototype methods
+
+```js
+var d = new Date();
+// no pubic or private keys with date objects!?
+console.log(Object.keys(d)); // []
+console.log(Object.getOwnPropertyNames(d)); // []
+// so how to I even?
+try {
+    var obj = {};
+    console.log(Date.prototype.getFullYear.call(obj));
+} catch (e) {
+    console.log(e.message); // this is not a Date object.
+}
+ 
+// guess I just have to fine other ways, which is what I should do anyway
+ 
+// From Numbers
+console.log(new Date(1234567890123)); // 2009-02-13T23:31:30.123Z
+var y = 2021, m = 1, d = 3;
+console.log(new Date(y, m - 1, d)); // 2021-01-03T05:00:00.000Z
+```
+
+## 8 - A Function call use case example that involves getting the word count of a page
 
 As a content writer I do a little keyword research now and then, and in the process of doing so I check out the content of the competition. If I want to rank well with a given keyword I must of course write content that is at least just as good if not far better than the content that is all ready ranking for a keyword of interest.
 
@@ -404,6 +449,6 @@ There are many things to go by when it comes to garaging the quality of a piece 
 
 The use of Function.call allows for me to use an Array prototype method with an instance of HTMLCollection. I then create an Array of strings of the inner text of each paragraph element in the page, and then of course use that to get a ruff idea of word count.
 
-## 8 - conclusion
+## 9 - conclusion
 
 Yes call, apply, and bind are pretty helpful function prototype methods that every javaScript developer should be aware of. They allow for me to break methods from there prototypes and use those methods with any object. They can also be used to apply a prototype method of a Class to any object, and in some cases it will work.
