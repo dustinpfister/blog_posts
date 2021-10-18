@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 13:35:17
-version: 1.47
+updated: 2021-10-18 13:39:36
+version: 1.48
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -389,6 +389,10 @@ console.log(str); // 'AA,B'
 ```
 
 ## 7 - Problems with using Function prototype methods
+
+There is running into problems now and then when using Function prototype methods to get methods of a prototype to work with some kind of objects or value that is not an instance of that prototype. Often there might be good reasons for this, and as such some times the best solution is to just not use the function prototype methods, but fine a way to create a new instance of the prototype itself, and just use the methods as intended.
+
+In this section I will then be going over at least a few examples of this sort of thing where it is just not possible to use the function prototype methods, or for one reason or another it might just not be a good idea. This is often not a problem though as long as there is some way to go about creating an instance of the class itself using the object or value that I want to use with the method. Some times that is just the way that it needs to happen.
 
 ### 7.1 - Problems with array concat
 
