@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 13:39:36
-version: 1.48
+updated: 2021-10-18 13:44:52
+version: 1.49
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -395,6 +395,10 @@ There is running into problems now and then when using Function prototype method
 In this section I will then be going over at least a few examples of this sort of thing where it is just not possible to use the function prototype methods, or for one reason or another it might just not be a good idea. This is often not a problem though as long as there is some way to go about creating an instance of the class itself using the object or value that I want to use with the method. Some times that is just the way that it needs to happen.
 
 ### 7.1 - Problems with array concat
+
+One array method that I ran into trouble with while editing this post was the array concat method, and trying to use an array like object with it. The returned result is not a new array with the numbers keys of the array like object as elements of the new array, but the array like object being the first element of the new array.
+
+So far it would look as though I just need to convert the array like object into an actual array for this one, which is not so hard as the Array.from method is one method that can make quick work of that. Once I have my array that was created from the array like I can then just call the concat method like normal because it is an actual array that I am working with.
 
 ```js
 // not an array
