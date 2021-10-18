@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 12:26:16
-version: 1.38
+updated: 2021-10-18 12:28:48
+version: 1.39
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -225,6 +225,8 @@ console.log(state);
 
 ### 3.4 - Math min and max methods
 
+One example that I should bring up in this section is the need trick that can be done with the [Math.min, and Math.max methods](/2020/01/22/js-math-max-min/) with apply.
+
 ```js
 var nums = [1, 7, 100, 30, 0, 0, 5];
  
@@ -246,7 +248,7 @@ var nums = [1, 2, 3, 4, 5];
 console.log( sum.apply(null, nums) ); // 15
 ```
 
-### 3.6 - Concating arrays of arrays with apply
+### 3.6 - Concatenating arrays of arrays with apply
 
 ```js
 var arrays = [
