@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 13:49:11
-version: 1.50
+updated: 2021-10-18 13:51:55
+version: 1.51
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -421,6 +421,8 @@ console.log(Array.from(obj).concat([4, 5, 6]));
 There might be one or more ways to go about [getting the function prototype methods to worth with array concat](https://stackoverflow.com/questions/48097695/get-concat-to-work-with-an-array-like-object). However it is not like these methods always have to be used to accomplish what needs to happen. Often there are one or more methods that can be used to create an instance of the class itself such as the Array.from method, if for some reason I run into problems using the constructor of the class that I want to use with an object.
 
 ### 7.2 - Problems with date prototype methods
+
+Another set of prototype methods that I have run into problems with is the Date Class prototype methods. When it comes to looking into what the Date Object equivalent of an array like would be I ran into trouble finding out what that is, as I can not find any public or private keys values for one. So then If I need to do something with one of these methods with an object or value that is not a date object, I am just going to need to create an instance of the Date object with the constructor first.
 
 ```js
 var d = new Date();
