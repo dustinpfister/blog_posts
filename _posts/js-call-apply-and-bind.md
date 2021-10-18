@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 12:28:48
-version: 1.39
+updated: 2021-10-18 12:30:50
+version: 1.40
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -235,6 +235,8 @@ console.log( Math.max.apply(null, nums) ); // 100
 ```
 
 ### 3.5 - A sum method that adds up arguments
+
+For this example I have a simple sum method that uses the [array reduce method](/2021/07/13/js-array-reduce/) with the Function call method to add up all the arguments that are given to it by making use of the arguments object.
 
 ```js
 // a sum methods that adds up all the arguments given
