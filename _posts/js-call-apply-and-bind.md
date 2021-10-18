@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:47:56
-version: 1.26
+updated: 2021-10-18 09:50:02
+version: 1.27
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -31,7 +31,7 @@ The source code examples in this section, alone with the rest of this post, as w
 
 ### 1.2 - Only type array method that is a stand alone method that takes an array as an argument
 
-Say I want to have a method that will return a new array from an array that will only contain elements that are of a given type. One way of doing that would be to quickly put together a method using the [array filter](/2020/10/03/js-array-filter/) method.
+Say I want to have a method that will return a new array from an array that will only contain elements that are of a given type. One way of doing that would be to quickly put together a method using the [array filter](/2020/10/03/js-array-filter/) method. However one question to ask when making a simple method such as this would be how to go about passing in the array value to call the filter method off of. With that there is just making it one of the arguments to pass when calling the method, so with that said maybe one would end up with something like this:
 
 ```js
 var onlyType = function (arr, typeStr) {
