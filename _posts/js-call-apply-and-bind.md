@@ -1,12 +1,12 @@
 ---
-title: Whats the deal with JavaScript Call, Apply, and Bind
+title: JavaScript Call, Apply, and Bind Function prototype methods
 date: 2017-09-21 08:56:00
 tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:52:21
-version: 1.28
+updated: 2021-10-18 09:53:11
+version: 1.29
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
