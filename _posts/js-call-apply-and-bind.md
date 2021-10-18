@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 10:40:14
-version: 1.33
+updated: 2021-10-18 11:36:25
+version: 1.34
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -115,11 +115,11 @@ console.log(mess); // foo man chew is always in style
 
 The main point here is that yes there are methods that are associated with a certain kind of Object that is made with a certain kind of constructor function. However if any object just happens to have values that a method uses, call can be used to invoke a method on any object regardless if it is an instance of the constructor that it is associated with or not. A real simple way of thinking about it, is that Call can be used to free methods from there prototype.
 
-## 2 - Using Function.call
+## 2 - More on using Function.call
 
 So call is a property of the Function prototype, which means it is a method that works with any function, including methods that are part of the prototype of any kind of Object like Date, and Array. Call works by using the call method on any function that I want to use with a certain object in which it might work by passing that object as the first argument. This Object will become the value of the this keyword when it comes to the body of the code that defines the method I am using. Any additional arguments are just the arguments that normally get passed to the method that I am using with call like normal.
 
-### 2.1 - basic call example
+### 2.1 - Basic call example
 
 To help get a basic idea of what is going on when it comes to using call it might be a good idea to work out a simple example that just involves a single method of a plain old object that makes use of the this keyword to refer to the object that it is a part off.
 
@@ -148,13 +148,73 @@ console.log(pt.add.call({
 
 ## 3 - Using Apply
 
-Apply works the same way as call, but you pass an array of arguments. This array of arguments will then be used with the method that apply is called off of where the value given in index zero will be the first argument and so forth.
+Apply works the same way as call, but you pass an array of arguments after passing the value for this rather than additional arguments. This array of arguments will then be used with the method that apply is called off of where the value given in index zero will be the first argument and so forth. This proves to be useful in various situations in which I have an array of values that I would like to use as arguments to a function, on top of setting what the value should be for the this keyword.
+
+### 3.1 - A Basic apply example involving the array slice method
+
+For a basic example of the apply function prototype method I went with this example that has to do with using a string with the [array slice](/2018/12/08/js-array-slice/) method.
 
 ```js
-console.log( [].concat.apply({length:3},['foo','man','chew']) );
-console.log( [].concat.call({length:3},'foo','man','chew') );
+var str = 'Hello Word'
+var a = [].slice.apply(str, [6, 10]);
+console.log(a);
+// [ 'W', 'o', 'r', 'd' ]
+```
+
+### 3.2 - The Array push method and apply
+
+```js
+var obj = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+[].push.apply(obj, ['foo', 'man', 'chew']);
+console.log( obj );
+/*
+{
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 'foo',
+    '4': 'man',
+    '5': 'chew',
+    length: 6
+}
+*/
+```
+
+### 3.3 - The arguments object and array apply
+
+```js
+var state = {
+    count: 0,
+    baseDelta: 1
+};
  
-// both produce ['foo','man','chew'];
+var updateMethods = {
+    optionOne: function (state, count, baseDelta, a) {
+        a = a === undefined ? 0 : a;
+        // referring to state by way of this keyword
+        this.count = count + baseDelta + a;
+    }
+};
+ 
+var updateState = function (state, methodKey) {
+    var coreArgumnets = [state, state.count, state.baseDelta],
+    // additional arguments array from arguments object thanks to splice and apply
+    additionalArgumnets = [].slice.apply(arguments, [2, arguments.length]);
+    var callArgumnets = coreArgumnets.concat(additionalArgumnets);
+    // calling update method with apply
+    updateMethods[methodKey].apply(state, callArgumnets);
+    return state;
+};
+ 
+updateState(state, 'optionOne', 5);
+ 
+console.log(state);
+// { count: 6, baseDelta: 1 }
 ```
 
 ## 4 - Using Function.bind
