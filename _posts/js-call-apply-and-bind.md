@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 11:52:00
-version: 1.36
+updated: 2021-10-18 11:54:29
+version: 1.37
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -163,7 +163,7 @@ console.log(a);
 
 ### 3.2 - The Array push method and apply
 
-Another array prototype method that works well with apply would be the array push method.
+Another array prototype method that works well with apply would be the [array push method](/2020/06/17/js-array-push/) which is one of many options when it comes to adding elements to an array. However it also works well as an option for pushing public keys to an array like object also, when used with a function prototype methods like the apply method.
 
 ```js
 var obj = {
