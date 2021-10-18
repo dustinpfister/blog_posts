@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:45:53
-version: 1.25
+updated: 2021-10-18 09:47:56
+version: 1.26
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -30,6 +30,8 @@ In this section I will then be going over some basic examples that have to do wi
 The source code examples in this section, alone with the rest of this post, as well as all my other posts on vanilla javaScript can be found in [my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-call-apply-and-bind) on Github. This post like many other posts is still a work in progress that I come around to edit every now and then. So that is where I store the current state of the source code examples, as well as any additional notes that have to do with research and planing out future edits. So then that would be a good place to make a pull request if you are on Github, there is also the comments section in this Blog that can be used as a way to bring something up.
 
 ### 1.2 - Only type array method that is a stand alone method that takes an array as an argument
+
+Say I want to have a method that will return a new array from an array that will only contain elements that are of a given type. One way of doing that would be to quickly put together a method using the [array filter](/2020/10/03/js-array-filter/) method.
 
 ```js
 var onlyType = function (arr, typeStr) {
