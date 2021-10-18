@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-10-18 09:36:13
-version: 1.24
+updated: 2021-10-18 09:45:53
+version: 1.25
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript.
@@ -23,9 +23,32 @@ So in this post I will be going  over some examples of the use of call, as well 
 
 Maybe a good place to start is to know that in javaScript you often have a situation in which you are working with one or more objects, and you also have methods that act on those objects call prototype methods. What methods are available depending on the Class of the Object, for example there are Arrays, and in javaScript an Array is a Class of object. So when it comes to an Object that is an instance of an Array there are [Array prototype methods](/2018/12/10/js-array/) such as the array map method that will create a new array from a source array where each element in the new array is the result of some kind of action define by some code in the body of a function that I pass when calling them method.
 
-In this section I will then be going over some basic examples that have to do with functions that contain the this keyword in the body of a function to refer to what is often a class instance of some kind. There is making methods that will work with a built in class, and then there is also making a whole new class from the ground up by getting into writeing constructor functions. This is celled for as it is what I see as a first step before getting into the various function prototype methods such as the function call method.
+In this section I will then be going over some basic examples that have to do with functions that contain the this keyword in the body of a function to refer to what is often a class instance of some kind. There is making methods that will work with a built in class, and then there is also making a whole new class from the ground up by getting into writing constructor functions. This is celled for as it is what I see as a first step before getting into the various function prototype methods such as the function call method.
 
-### 1.x - 
+### 1.1 - The source code examples here are on Github
+
+The source code examples in this section, alone with the rest of this post, as well as all my other posts on vanilla javaScript can be found in [my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-call-apply-and-bind) on Github. This post like many other posts is still a work in progress that I come around to edit every now and then. So that is where I store the current state of the source code examples, as well as any additional notes that have to do with research and planing out future edits. So then that would be a good place to make a pull request if you are on Github, there is also the comments section in this Blog that can be used as a way to bring something up.
+
+### 1.2 - Only type array method that is a stand alone method that takes an array as an argument
+
+```js
+var onlyType = function (arr, typeStr) {
+    typeStr = typeStr || 'number';
+    return arr.filter(function (el) {
+        return typeof el === typeStr;
+    });
+};
+// demo
+var a = [1, 'two', 3, 'four', 5];
+var b = onlyType(a, 'number');
+console.log(b);
+// [1, 3, 5]
+```
+
+### 1.3 - Only type array method using the this keyword and Function.call
+
+
+### 1.4 - 
 
 ```js
 var arr = ['foo','man','chew','is','always','in','style'],
@@ -35,7 +58,7 @@ console.log(mess); // foo man chew is always in style
 
 No confusion there, but with the power of call I can invoke the Array.join method on a plain old object that is not an array.
 
-### 1.x - 
+### 1.5 - 
 
 ```js
 var arr = {0:'foo',1:'man',2:'chew',3:'is',4:'always',5:'in',6:'style',length:7},
