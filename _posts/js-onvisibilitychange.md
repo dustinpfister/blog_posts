@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:37:23
-version: 1.17
+updated: 2021-10-19 11:42:26
+version: 1.18
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -113,6 +113,8 @@ Now that I have the basics of the on visibility change method out of the way it 
 ### 2.1 - App loop example using setTimeout
 
 For this example I am making an app loop example that is a little more advanced compared to what I covered in the basic section of this post. On top of having a main app loop that uses the setTimeout method as a way to call the app loop function over and over again I am also setting up what is a basic state machine object that has more than one state object. The subject of making a state machine is one that I seem to keep revisiting now and then, because I can never seem to get this one just writing when it comes to making my own framework from the ground up. However the general idea is to just break up an application into two ore more states where each state object has at least an update method, but also typical a draw method, and various hooks and data.
+
+When it comes to the main state machine object that I have made for this example I have two states one of which is a hidden state, and the other is a visible state. I am then using the on visibility change event as a way to change the current application state between these two states. When the hidden state is the current state I am updating a crude game state that is just a count variable and drawing into to the title tag. In the event that the visible state is the current state I am updating the count, and I am displaying the info that would be in the title tag in a display element in the page rather than the title element.
 
 ```js
 <html>
