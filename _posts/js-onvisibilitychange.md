@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:18:12
-version: 1.13
+updated: 2021-10-19 11:24:21
+version: 1.14
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -69,6 +69,35 @@ updateTitle();
 ```
 
 When I have this html as a file and open it up in my browser the text of the title tag will read _visible_ when the page is active and visible. In addition each time I switch to another tab and the page content is thus not visible then the value of the title text will change to _hidden_
+
+### 1.3 - The setTiemout method
+
+```js
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+// date
+var lt = new Date(),
+active = true;
+// on visibility change event
+document.addEventListener("visibilitychange", function(){
+    active = document.visibilityState === 'hidden' ? false: true;
+});
+// loop using setTiemout
+var loop = function(a){
+    var now = new Date();
+    setTimeout(loop, 33);
+    document.title = 'ms: ' + (now - lt) + ', active: ' + active;
+    lt = now;
+};
+loop();
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - App loop examples
 
