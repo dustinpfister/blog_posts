@@ -18,6 +18,12 @@ This is a general todo list for what I want to get done when it comes to editing
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### (  ) - js-onvisibilitychange ( no internal links )
+* edit post to 1,800+ words
+* have 5+ internal links for the post
+* todo list
+* readme file and links
+
 ### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -29,12 +35,6 @@ This is a general todo list for what I want to get done when it comes to editing
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
-
-### (  ) - js-onvisibilitychange ( no internal links )
-* edit post to 1,800+ words
-* have 5+ internal links for the post
-* todo list
-* readme file and links
 
 ### (   ) - js-regex ( more internal links )
 * (done) new section on wrap text example

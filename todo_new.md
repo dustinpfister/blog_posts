@@ -4,12 +4,19 @@
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-### () - new post #933 for 10/23/2021 - js-promise
+### () - new post #934 for 10/29/2021 - js-document
+* start draft folder
+* be sure to have a section on the visability change event, and link to the post
+
+### () - new post #933 for 10/22/2021 - js-promise
 * start a new javaScript post on promises in general
 * be sure to link to all js as well as nodejs posts on promises and touch base on the topics
 
 ### ( done 09/03/2021 ) - new post #927 for 09/03/2021 - js-javascript-game-framework
 * (done) start a new post on my js-javascript-game-framework proto
+
+
+
 
 <!--###### ########## ########## #######-->
 ## Linux ( /yyyy/mm/dd/linux-* )
