@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2021-10-19 12:12:57
-version: 1.21
+updated: 2021-10-19 12:20:55
+version: 1.22
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
@@ -17,7 +17,11 @@ In this post I will be taking a moment to play around a little with the [documen
 
 <!-- more -->
 
-## 1 - document.title property a basic example
+## 1 - The basics of the document title property
+
+In this section I will be starting out with just some very basic examples of the document title property. I wil be keeping these examples very basic here, but I assume that you have at least some background when it comes to [getting started with javaScript](/2018/11/27/js-document-title/).
+
+### 1.2 - document.title property a basic example
 
 The document.title property of the document object in client side javaScript can be used to get or set the title text of the title element in an HTML document. Just set the desired string value to the document title property, and that should do it just fine.
 
