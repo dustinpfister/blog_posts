@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2021-10-19 12:23:09
-version: 1.23
+updated: 2021-10-19 12:28:45
+version: 1.24
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
@@ -43,6 +43,29 @@ The document.title property of the document object in client side javaScript can
 ```
 
 That's all there is to it when it comes to just setting the value of the title element with javaScript. However maybe there is more to write about when it comes to other factors to consider when setting a title tag value such as what happens when a tag goes inactive. Maybe a few more examples beyond that are also in order just to touch base on some related topics to the title property and how to go about doing things with it.
+
+### 1.3 - Simple loop example
+
+Here is another basic example of using the document title method where I am using the [set time out method](/2018/12/06/js-settimeout/) to create a very simple app loop.
+
+```html
+<html>
+  <head>
+    <title>Document title loop demo</title>
+  </head>
+  <body>
+    <script>
+var c = 0;
+var loop = function(){
+   setTimeout(loop, 100);
+   c += 1;
+   document.title = c;
+}
+loop();
+    </script>
+  </body>
+</html>
+```
 
 ## 2 - document title update time when a tab is inactive
 
