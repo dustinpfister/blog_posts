@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:09:51
-version: 1.12
+updated: 2021-10-19 11:18:12
+version: 1.13
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -71,6 +71,82 @@ updateTitle();
 When I have this html as a file and open it up in my browser the text of the title tag will read _visible_ when the page is active and visible. In addition each time I switch to another tab and the page content is thus not visible then the value of the title text will change to _hidden_
 
 ## 2 - App loop examples
+
+Now that I have the basics of the on visibility change method out of the way it is time to start to get into one or more advanced topics on visibility change events. In the basics section I had a very simple example that involves creating an application loop using the setTiemout method as a way to do so. In this section I will be taking a look at some more advanced examples of app loops that use a main function that calls over and over again using setTiemout, but I will also be looking into what some other options are for this sort of thing.
+
+### 2.1 - App loop example using setTimeout
+
+```js
+<html>
+    <head>
+        <title>App Loop Demo</title>
+    </head>
+    <body>
+        <div id="disp" style="background:gray;margin:10px;padding:10px;text-align:center;"></div>
+        <script>
+// info text helper
+var infoText = function(sm){
+   return 'fps: ' + sm.fps + ', count: ' + sm.game.count;
+};
+// State Machine (sm) object
+var sm = {
+    fps: 0,
+    secs: 0,
+    lt: new Date(),
+    game: {
+        count: 0
+    },
+    titleDefault: document.title,
+    currentState: 'visible',
+    states: {
+        hidden: {
+            update: function (sm, state, secs) {
+                sm.game.count += 1;
+                // just update title text
+                document.title = infoText(sm);
+            }
+        },
+        visible: {
+            update: function (sm, state, secs) {
+                sm.game.count += 1;
+                // update title text with default text
+                document.title = sm.titleDefault;
+                // update disp div with fps info
+                var disp = document.querySelector('#disp');
+                disp.innerText = infoText(sm);
+            }
+        }
+    }
+};
+// update method
+var update = function (sm) {
+    var now = new Date();
+    sm.secs = (now - sm.lt) / 1000;
+    sm.fps = 1 / sm.secs;
+    // update fps value
+    sm.fps = sm.fps < 1 ? sm.fps.toFixed(2) : Math.floor(sm.fps);
+    sm.lt = now;
+    // call the update method for the current state
+    var state = sm.states[sm.currentState];
+    state.update(sm, state, sm.secs);
+};
+// on visibility change event can be used to switch current states
+document.addEventListener("visibilitychange", function () {
+    sm.currentState = 'visible';
+    if (document.visibilityState === 'hidden') {
+        sm.currentState = 'hidden';
+    }
+});
+// app loop using setTimeout
+var loop = function () {
+    setTimeout(loop, 33);
+    update(sm);
+};
+loop(); // call update for first time
+        </script>
+    </body>
+</html>
+```
 
 ## 3 - Basic game using Visibility State
 
