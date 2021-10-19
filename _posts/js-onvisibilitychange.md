@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:53:34
-version: 1.23
+updated: 2021-10-19 11:57:16
+version: 1.24
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -25,7 +25,7 @@ In this section I will be starting out with some fairly simple examples of the o
 
 ### 1.1 - Source code examples in this post
 
-The source code examples in this post can be found in my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-onvisibilitychange).
+The source code examples in this post can be found in my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-onvisibilitychange). Like my many other posts on vanilla javaScript to which the source code can also be found in the test vjs repository this post and the underlaying source code is still a kind of work in progress. It may be a long time between edits, but sooner or later I will get around to expanding and editing this post again. In the test vjs repository I have the latest source code examples, as well as notes on what I have in mind for future edits of this content. If you are not Github that would be a good place to bring something up, but there is also the comments section of this post also.
 
 ### 1.1 - Visibility Change Event and document title
 
