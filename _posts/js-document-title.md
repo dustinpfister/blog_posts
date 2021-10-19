@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2020-10-16 10:22:47
-version: 1.20
+updated: 2021-10-19 12:12:57
+version: 1.21
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
@@ -98,7 +98,7 @@ There are some tweaks and additional changes that I might make to something like
 
 ## 4 - The visibility Change event
 
-It might also be worth mentioning that the visibility change event can be used as a way to check if a user has switched tabs or not. This can then be used as a way to change what the text of a title tag depending if a user is actually looking at the page or not. This visibility change event can be attached my way of the [add event listener method](/2019/01/16/js-event-listeners/) off of the document object.
+It might also be worth mentioning that the [visibility change event](/2020/10/17/js-onvisibilitychange/) can be used as a way to check if a user has switched tabs or not. This can then be used as a way to change what the text of a title tag should be depending if a user is actually looking at the page or not. This visibility change event can be attached by way of the [add event listener method](/2019/01/16/js-event-listeners/) that is called off of the document object. I then just need to use the string \"visibilitychange\" for the event type, and then pass the function that I want to call each time the event happens. Another useful document propriety to use with this would be the document visibility state property that will contain a string value for the current visibility state of the page.
 
 ```html
 <html>
