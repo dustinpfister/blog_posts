@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2020-10-17 17:04:58
-version: 1.7
+updated: 2021-10-19 08:03:53
+version: 1.8
 ---
 
-The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. This event can be used with other properties of the document object to define logic that is to be applied each time a page becomes hidden or visible.
+The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
 
 On top of the on visibility change event there is also the [visibility state property](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) of the document object that can be used as a way to probe for the status of the page content. Another document property that comes to mind is document title which is a way to set what there title text of a tab is.
 
