@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:57:16
-version: 1.24
+updated: 2021-10-19 11:58:55
+version: 1.25
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -21,7 +21,7 @@ In this post I might not cover every little detail about everything that will co
 
 ## 1 - Basic example of the on visibility change event
 
-In this section I will be starting out with some fairly simple examples of the on visibility state change event, as well as the visibility state property of the document object. Although I will be trying my best to keep thee examples fairly simple I trust that you have at least some experience with [event handers](/2019/01/16/js-event-listeners/), and [client side javaScript in general](/2018/11/27/js-getting-started/).
+In this section I will be starting out with some fairly simple examples of the on visibility state change event, as well as the visibility state property of the document object. Although I will be trying my best to keep thee examples fairly simple I trust that you have at least some experience with [event handers](/2019/01/16/js-event-listeners/), and [client side javaScript in general](/2018/11/27/js-getting-started/). So then if you have at least some background with client side javaScript changes are you should not have much trouble getting the source code examples here working on you end. Many of them seem to work fine by way f the file protocol when it comes to just opening up an html file in a browser.
 
 ### 1.1 - Source code examples in this post
 
