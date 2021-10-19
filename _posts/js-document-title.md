@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 352
-updated: 2021-10-19 12:28:45
-version: 1.24
+updated: 2021-10-19 12:34:31
+version: 1.25
 ---
 
 When working on updating the theme for my site one of the many things I think about are my title tags. For many reasons they are one of the most important tags in an html document, and not just from a search engine perspective. Title tags are useful for informing visitors about what a page is about, or what is currently going on with a page when it comes to a web application. That is because the title tag can be this fixed static thing that is just some text, but it can also be [mutated with some javaScript code](https://stackoverflow.com/questions/413439/how-to-dynamically-change-a-web-pages-title) also to display something that will change. 
@@ -46,7 +46,7 @@ That's all there is to it when it comes to just setting the value of the title e
 
 ### 1.3 - Simple loop example
 
-Here is another basic example of using the document title method where I am using the [set time out method](/2018/12/06/js-settimeout/) to create a very simple app loop.
+Here is another basic example of using the document title method where I am using the [set time out method](/2018/12/06/js-settimeout/) to create a very simple app loop. This way I am not just updating the title text once, but oever and over again in the body of this function that is being called at a rate given as the second argument when calling the set time out method.
 
 ```html
 <html>
@@ -66,6 +66,9 @@ loop();
   </body>
 </html>
 ```
+
+However it would seem that there is a problem, when I click on another tab in the browser the rate at which the text updates seems to slow down to just about one per second. So in the more advanced sections of this post I will be looking into what the deal is with that a bot more.
+
 
 ## 2 - document title update time when a tab is inactive
 
