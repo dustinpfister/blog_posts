@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 08:15:40
-version: 1.10
+updated: 2021-10-19 11:08:21
+version: 1.11
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -21,9 +21,35 @@ In this post I might not cover every little detail about everything that will co
 
 ## 1 - Basic example of the on visibility change event
 
-For starers maybe a good basic example for this kind of event is to just play around with something that is just a single handler that will update the title of the page each time the event fires. Here I have an update title method that will update the text of the title element once when the script loaded for the first time, then each time the on visibility change event fires.
 
-In the body of my update title method I am using the document.title property to set the value of the title text to the current value of the visibility state property of the document object. When this method is called for the first time when the script loads the value should be _visible_ if the page is the current tab in the browser and the window is active. In any case each time this status changes the method will fire again, and the text of the title tag will update to this status.
+### 1.1 - Visibility Change Event and document title
+
+Maybe a good basic example for this kind of event is to just play around with something that is just a single handler that will update the title of the page each time the event fires. Here I have an update method that will update the text of the title element once when the script loaded for the first time, then each time the on visibility change event fires.
+
+```js
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+var active = false;
+var update = function(){
+    active = !active;
+    document.title = active;
+};
+// attach an event hander for the on visibility change event
+document.addEventListener("visibilitychange", update);
+// call update for first time
+update();
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Visibility State
+
+In the body of my update method I am using the document.title property to set the value of the title text to the current value of the visibility state property of the document object. When this method is called for the first time when the script loads the value should be _visible_ if the page is the current tab in the browser and the window is active. In any case each time this status changes the method will fire again, and the text of the title tag will update to this status.
 
 ```html
 <html>
@@ -42,7 +68,7 @@ updateTitle();
 </html>
 ```
 
-When I have this html as a file and open it up in my browser the text of the title tag will read _visible_ when the page is active and visible. In addition each time I switch to another tab and the page content is thus  not visible then the value of the title text will change to _hidden_
+When I have this html as a file and open it up in my browser the text of the title tag will read _visible_ when the page is active and visible. In addition each time I switch to another tab and the page content is thus not visible then the value of the title text will change to _hidden_
 
 ## 2 - visibility state property
 
