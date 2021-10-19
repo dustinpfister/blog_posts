@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:44:11
-version: 1.19
+updated: 2021-10-19 11:47:12
+version: 1.20
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -109,6 +109,8 @@ loop();
 ## 2 - App loop examples
 
 Now that I have the basics of the on visibility change method out of the way it is time to start to get into one or more advanced topics on visibility change events. In the basics section I had a very simple example that involves creating an application loop using the setTiemout method as a way to do so. In this section I will be taking a look at some more advanced examples of app loops that use a main function that calls over and over again using setTiemout, but I will also be looking into what some other options are for this sort of thing.
+
+One thing that I will be getting into in this section is the concept of a state machine. I have made a [canvas example post that is one example of a state machine](/2020/01/28/canvas-example-state-machine/), and I am sure that in time I will be making at least one or more examples of a state machine when I get around to it.
 
 ### 2.1 - App loop example using setTimeout
 
