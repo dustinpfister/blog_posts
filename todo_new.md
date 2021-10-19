@@ -4,11 +4,14 @@
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-### () - new post #934 for 10/29/2021 - js-document
+### () - new post #936 for 11/05/2021 - js-webworker
+* start draft folder
+
+### () - new post #935 for 10/29/2021 - js-document
 * start draft folder
 * be sure to have a section on the visability change event, and link to the post
 
-### () - new post #933 for 10/22/2021 - js-promise
+### () - new post #934 for 10/22/2021 - js-promise
 * start a new javaScript post on promises in general
 * be sure to link to all js as well as nodejs posts on promises and touch base on the topics
 
