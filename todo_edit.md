@@ -18,12 +18,6 @@ This is a general todo list for what I want to get done when it comes to editing
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-### (  ) - js-onvisibilitychange ( no internal links )
-* edit post to 1,800+ words
-* have 5+ internal links for the post
-* todo list
-* readme file and links
-
 ### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -82,6 +76,12 @@ This is a general todo list for what I want to get done when it comes to editing
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/19/2021 ) - js-onvisibilitychange ( no internal links )
+* (done) edit post to 1,800+ words
+* (done) have 5+ internal links for the post
+* (done) todo list
+* (done) readme file and links
 
 ### ( done 10/18/2021 ) - js-call-apply-and-bind (old)
 * (done) have 5+ internal links for the post
