@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 08:11:36
-version: 1.9
+updated: 2021-10-19 08:15:40
+version: 1.10
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
 
 On top of the on visibility change event there is also the [visibility state property](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) of the document object that can be used as a way to probe for the status of the current tab and if it is active or not. Another document property that comes to mind is [document title](/2018/12/28/js-document-title/) which is a way to set what the title text of a tab is as that would be the only way to inform the user of something if the tab is not active.
 
-So if I am every in a situation in which I need to define a little code that will change things each time a user switches tabs, the use of this kind of event is one way to go about doing it. When a tab is not active it is possible to keep doing things in the background, but often things will change and only so much can happen over a period of time. For example methods like setTimeout will get throttled down, and it will not be possibles to file a method over and over again at a speed faster that one call per second. In this post I might not cover every little detail about everything that will come up with this sort of thing, but I will be writing about at least a few things beyond just the on visibility change event.
+So if I am ever in a situation in which I need to define a little code that will change things each time a user switches tabs, the use of this kind of event is one way to go about doing it. When a tab is not active it is possible to keep doing things in the background, but often things will change and only so much can happen over a period of time. For example [methods like setTimeout](/2018/12/06/js-settimeout/) will get throttled down, and it will not be possibles to file a method over and over again at a speed faster than one call per second with such a method regardless of what time value I give. 
+
+In this post I might not cover every little detail about everything that will come up with this sort of thing, but I will be writing about at least a few things beyond just the on visibility change event itself.
 
 <!-- more -->
 
