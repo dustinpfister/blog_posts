@@ -18,6 +18,10 @@ This is a general todo list for what I want to get done when it comes to editing
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### js-document-title (old)
+* have 5+ internal links for the post
+* edit post to 1,100+ words
+
 ### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
