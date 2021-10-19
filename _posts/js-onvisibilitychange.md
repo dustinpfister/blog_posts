@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:51:56
-version: 1.22
+updated: 2021-10-19 11:53:34
+version: 1.23
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -79,7 +79,7 @@ When I have this html as a file and open it up in my browser the text of the tit
 
 Now that I have the general idea of what the on visibility change event, as well as the visibility state property is all about, I think I should cover at least one example that is a basic app loop. There are a wide range of ways of how to go about making this kind of function in a client side javaScript project. However for this example I will just be sticking to the setTimout method as a means to call a function over and over again.
 
-One very important thing to keep in mind with this kind of method is that the rate at which the fucntion will be called will be caped as one thousand milliseconds when a browser tab is not active. This example will just be used to show what the deal is with this in a way that is very simple to reproduce.
+One very important thing to keep in mind with this kind of method is that the rate at which the function will be called will be capped as one thousand milliseconds when a browser tab is not active. This example will just be used to show what the deal is with this in a way that is very simple to reproduce.
 
 ```js
 <html>
