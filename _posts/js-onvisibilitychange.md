@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 724
-updated: 2021-10-19 11:26:25
-version: 1.15
+updated: 2021-10-19 11:31:55
+version: 1.16
 ---
 
 The [on visibility change](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilitychange_event) event of the document object in client side javaScript will fire each time the content of a web page will become visible or hidden. So in other words this event will fire each time the tab of a browser window will become visible or invisible as a user switches from one tab to another. So this is event can prove to be helpful when it comes to switching things up a little each time the user navigates away from a website of mine to another tab in a browser window of theirs. For example I can use less resources when it comes to rendering a view, and use any and all available resources just updating a state.
@@ -21,6 +21,11 @@ In this post I might not cover every little detail about everything that will co
 
 ## 1 - Basic example of the on visibility change event
 
+In this section I will be starting out with some fairly simple examples of the on visibility state change event, as well as the visibility state property of the document object. Although I will be trying my best to keep thee examples fairly simple I trust that you have at least some experience with [event handers](/2019/01/16/js-event-listeners/), and [client side javaScript in general](/2018/11/27/js-getting-started/).
+
+### 1.1 - Source code examples in this post
+
+The source code examples in this post can be found in my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-onvisibilitychange).
 
 ### 1.1 - Visibility Change Event and document title
 
@@ -106,6 +111,8 @@ loop();
 Now that I have the basics of the on visibility change method out of the way it is time to start to get into one or more advanced topics on visibility change events. In the basics section I had a very simple example that involves creating an application loop using the setTiemout method as a way to do so. In this section I will be taking a look at some more advanced examples of app loops that use a main function that calls over and over again using setTiemout, but I will also be looking into what some other options are for this sort of thing.
 
 ### 2.1 - App loop example using setTimeout
+
+For this example I am making an app loop example that is a little more advanced compared to what I covered in the basic section of this post.
 
 ```js
 <html>
