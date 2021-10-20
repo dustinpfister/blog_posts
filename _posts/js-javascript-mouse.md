@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 13:02:34
-version: 1.36
+updated: 2021-10-20 13:09:00
+version: 1.37
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -209,7 +209,7 @@ document.querySelector('.parent').addEventListener('click', function(e){
 
 ### 1.6 - parent and child divs
 
-Now for an example where I am really starting to get into the whole parent and child element with with mouse events. For this example I have a single parent div, and I am creating and injecting a whole bunch of child elements into this parent element.
+Now for an example where I am really starting to get into the whole parent and child element with with mouse events. For this example I have a single parent div, and I am creating and injecting a whole bunch of child elements into this parent element. This time around I am attaching just a single event hander to the parent element, and I am using the target and current target properties of the event object to find out if I am dealing with a child element or not. In the event that I am dealing with a child element that was clicked I am giving just the child a new random position, else if I am clicking the parent element then I set new random positions for all the children of the parent element.
 
 ```html
 <html>
@@ -266,17 +266,10 @@ var randomParentChildren = function(parent){
 };
 // call random parent children helper for the first time
 randomParentChildren(PARENT);
-// click event using e.currentTarget and e.target along with
-// e.clientX, and e.clientY
+// click event using e.currentTarget and e.target
 PARENT.addEventListener('click', function(e){
     var parent = e.currentTarget,
-    child = e.target,
-    bx = parent.getBoundingClientRect(),
-    pos = {
-      x : e.clientX - bx.left,
-      y : e.clientY - bx.top,
-      bx: bx
-    };
+    child = e.target;
     if(child === parent){
         randomParentChildren(parent);
     }else{
