@@ -43,4 +43,7 @@ Of course there are some more things that come to mind other than just simply wr
 ## js-promise-resolve-reject ( interesting topic )
 * get post to the min 3000+ words
 
+## js-javascript-mouse ( interesting topic, at 2000+ words all ready, good keywords ie: javaScript mouse )
+* get post to the min 3000+ words
+
 

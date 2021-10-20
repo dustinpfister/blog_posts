@@ -30,10 +30,6 @@ So something like this for an item
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-### (  ) - js-javascript-mouse ( no links, old)
-* have 5+ internal links for the post
-* edit post to 1,200+ words
-
 ### (  ) - js-javascript-throw (old)
 * have 5+ internal links for the post
 * edit post to 1,200+ words
@@ -100,6 +96,10 @@ So something like this for an item
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/20/2021 ) - js-javascript-mouse ( no links, old)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,800+ words
 
 ### ( done 10/19/2021 ) - js-document-title (old)
 * (done) have 5+ internal links for the post
