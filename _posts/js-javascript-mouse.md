@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 12:00:07
-version: 1.24
+updated: 2021-10-20 12:04:20
+version: 1.25
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -82,7 +82,9 @@ window.addEventListener('click', function(e){
 </html>
 ```
 
-### 1.3 - The mouse down, up, and move events
+### 1.3 - The mouse down, up, move events, and event objects
+
+On top of the click event there are also a number of other mouse events such as the mousedown event that will fire the very moment that a mouse button is clicked, and the mouseup button that will fire once a mouse button is released. This is also the mouse move method that wil fire each time the mouse pointer location changes. On top of the additional events beyond that of just the click event there is also the event object that is passed to a hander that contains all kinds of useful information about the event. Such as the position relative to the window, and references to the elements or nodes in which the event happed.
 
 ```html
 <html>
