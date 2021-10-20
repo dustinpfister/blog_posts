@@ -1,12 +1,12 @@
 ---
-title: JavaScript mouse basics including events and pit falls.
+title: JavaScript mouse topics beyond just the events
 date: 2020-06-25 11:44:00
 tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 11:43:04
-version: 1.17
+updated: 2021-10-20 11:44:22
+version: 1.18
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
