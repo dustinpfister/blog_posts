@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 12:29:50
-version: 1.30
+updated: 2021-10-20 12:31:38
+version: 1.31
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -165,6 +165,8 @@ var buttons = document.querySelectorAll('.c_button');
 ```
 
 ### 1.5 - clicking a div element
+
+For this example I am attaching an event hander to a div element, and using the inner html property as a way to create, and recreate a child div each time the parent div is clicked.
 
 ```html
 <html>
