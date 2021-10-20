@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 12:10:51
-version: 1.27
+updated: 2021-10-20 12:25:00
+version: 1.28
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -141,12 +141,21 @@ So there is attaching a client event to the window object, but there is also att
         <title>javaScript mouse basic example</title>
     </head>
     <body>
-        <input id="in_button" type="button" value="0">
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
         <script>
-var c = 0;
-document.getElementById('in_button').addEventListener('click', function(e){
-    c += 1;
-    e.target.value = c;
+// step a button
+var stepButton = function(e){
+    var button = e.target,
+    count = parseInt(button.dataset.count);
+    e.target.value = 'count: ' + ( button.dataset.count =  count += 1 );
+};
+// for all buttons of class '.c_button'
+var buttons = document.querySelectorAll('.c_button');
+[].forEach.call(buttons, function(button){
+    button.addEventListener('click', stepButton);
 });
         </script>
     </body>
