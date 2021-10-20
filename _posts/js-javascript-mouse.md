@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 11:52:33
-version: 1.20
+updated: 2021-10-20 11:53:38
+version: 1.21
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -31,7 +31,7 @@ Like all my other posts on vanilla javaScript the source code examples in this p
 
 One way to go about getting started with the mouse in client side javaScript would be to set a function to the _onclick_ property of the window object in a script tag. Inside the body of the function I can define some logic that will be called each time any area of the window is clicked.
 
-For this example I am just setting a simple count variable and setting the inner text of a div element that I have gained a reference to by way of the document.getElementById method.
+For this example I am just setting a simple count variable and setting the inner text of a div element that I have gained a reference to by way of the [document.getElementById method](/2018/12/27/js-document-getelementbyid/).
 
 ```html
 <html>
