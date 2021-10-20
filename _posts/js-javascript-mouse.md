@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 14:50:33
-version: 1.40
+updated: 2021-10-20 15:29:47
+version: 1.41
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -289,7 +289,62 @@ document.querySelector('.parent').addEventListener('click', function(e){
 </html>
 ```
 
-### 2.2 - canvas element example
+### 2.2 - Method to get an element relative position for mouse and touch events
+
+Working out how to get an element rather than window relative mouse cursor position is one thing, but often I will want to get such a position for touch events also.
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+.parent{
+  position:absolute;
+  left:50px;
+  top: 50px;
+  padding:50px;
+  width:540px;
+  height:380px;
+  background:gray;
+}
+        </style>
+    </head>
+    <body>
+        <div class="parent" style="background:gray;"><div>
+        <script>
+ 
+// get pos object with values relative to the given event object, 
+// and element that defaults to e.target by default
+var getElementRelative = function (e, elTarget) {
+    var el = elTarget || e.target,
+    bx = el.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    return pos;
+};
+ 
+// pointer move
+var pointerMove = function(e){
+    var parent = e.currentTarget,
+    bx = parent.getBoundingClientRect(),
+    pos = getElementRelative(e, e.target);
+    parent.innerText = pos.x + ', ' + pos.y;
+};
+ 
+var parent = document.querySelector('.parent');
+parent.addEventListener('mousemove', pointerMove);
+parent.addEventListener('touchmove', pointerMove);
+        </script>
+    </body>
+</html>
+```
+
+### 2.3 - Canvas element example with mouse and touch events
+
+One more example now this time I am getting the get element relative method to work well with canvas elements also.
 
 ```html
 <html>
@@ -299,21 +354,33 @@ document.querySelector('.parent').addEventListener('click', function(e){
     <body>
         <canvas id="out" width="320" height="240" style="position:absolute;left:50px;top:50px;"><canvas>
         <script>
-// Gte El relative
-var getElRelative = function (e) {
-    var el = e.target,
-    bx = el.getBoundingClientRect();
-    return {
-        x: e.clientX - bx.left,
-        y: e.clientY - bx.top,
+// canvas
+var canvas = document.getElementById('out'),
+ctx = canvas.getContext('2d');
+// state object
+var state = {
+    down: false,
+    x: 0,
+    y: 0
+};
+// get pos object with values relative to the given event object, 
+// and element that defaults to e.target by default
+var getElementRelative = function (e, elTarget) {
+    var el = elTarget || e.target,
+    bx = el.getBoundingClientRect(),
+    pos = {
+        x: (e.changedTouches ? e.changedTouches[0].clientX : e.clientX) - bx.left,
+        y: (e.changedTouches ? e.changedTouches[0].clientY : e.clientY) - bx.top,
         bx: bx
     };
+    // adjust for native canvas matrix size if a canvas element
+    if(el.nodeName === 'CANVAS'){
+        pos.x = Math.floor((pos.x / el.scrollWidth) * el.width);
+        pos.y = Math.floor((pos.y / el.scrollHeight) * el.height);
+    }
+    return pos;
 };
-var setPos = function (state, e) {
-    var pos = getElRelative(e);
-    state.x = pos.x;
-    state.y = pos.y;
-};
+// render to the canvas
 var render = function (ctx, canvas, state) {
     var text = 'pos: (' + state.x + ',' + state.y + ' ); down: ' + state.down + ';';
     ctx.fillStyle = 'black';
@@ -321,29 +388,37 @@ var render = function (ctx, canvas, state) {
     ctx.fillStyle = 'white';
     ctx.fillText(text, 32, 32);
 };
-// state object
-var state = {
-    down: false,
-    x: null,
-    y: null
+// set position helper
+var setPos = function (state, e) {
+    var pos = getElementRelative(e, e.currentTarget);
+    state.x = pos.x;
+    state.y = pos.y;
 };
 // attach events to canvas
-var canvas = document.getElementById('out'),
-ctx = canvas.getContext('2d');
-canvas.addEventListener('mousedown', function (e) {
-    state.down = true;
-    setPos(state, e);
-    render(ctx, canvas, state);
-});
-canvas.addEventListener('mousemove', function (e) {
-    setPos(state, e);
-    render(ctx, canvas, state);
-});
-canvas.addEventListener('mouseup', function (e) {
-    state.down = false;
-    setPos(state, e);
-    render(ctx, canvas, state);
-});
+var pointer = {
+   start: function (e) {
+        state.down = true;
+        setPos(state, e);
+        render(ctx, canvas, state);
+    },
+    move: function (e) {
+        setPos(state, e);
+        render(ctx, canvas, state);
+    },
+    end: function(e){
+        state.down = false;
+        setPos(state, e);
+        render(ctx, canvas, state);
+    }
+}
+// attaching for both mouse and touch events
+canvas.addEventListener('mousedown', pointer.start);
+canvas.addEventListener('mousemove', pointer.move);
+canvas.addEventListener('mouseup', pointer.end);
+canvas.addEventListener('touchstart', pointer.start);
+canvas.addEventListener('touchmove', pointer.move);
+canvas.addEventListener('touchend', pointer.end);
+// render for first time
 render(ctx, canvas, state);
         </script>
     </body>
