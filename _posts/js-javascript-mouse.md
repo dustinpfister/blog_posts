@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 15:29:47
-version: 1.41
+updated: 2021-10-20 15:33:13
+version: 1.42
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -344,7 +344,7 @@ parent.addEventListener('touchmove', pointerMove);
 
 ### 2.3 - Canvas element example with mouse and touch events
 
-One more example now this time I am getting the get element relative method to work well with canvas elements also.
+One more example now this time I am getting the get element relative method to work well with canvas elements also. This will often require just one little adjustment that has to do with a weird issue when it comes to the scaled size of a canvas relative to the actual native size of the canvas. Aside from that the method seems to work well with canvas elements also when I made just one little revision to the source code of the get element relative method.
 
 ```html
 <html>
