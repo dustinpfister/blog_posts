@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 13:14:54
-version: 1.39
+updated: 2021-10-20 14:50:33
+version: 1.40
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -168,48 +168,7 @@ var buttons = document.querySelectorAll('.c_button');
 </html>
 ```
 
-### 1.5 - clicking a div element
-
-For this example I am attaching an event hander to a div element, and using the [inner html property](/2019/01/13/js-innerhtml/) as a way to create, and recreate a child div each time the parent div is clicked. For this example I am making sure to use the current target property rather than the target property to get a reference to the parent element. The reason why is because the target property might end up referring to the child element that I am creating for the inner html value of the parent element.
-
-```html
-<html>
-    <head>
-        <title>javaScript mouse basic example</title>
-        <style>
-.parent{
-  position:absolute;
-  background:gray;
-  width:640px;
-  height:480px;
-}
-.child{
-  position:relative;
-  top:20px;
-  background: #afafaf;
-  padding:20px;
-}
-        </style>
-    </head>
-    <body>
-        <div class="parent" style="background:gray;"><div>
-        <script>
-document.querySelector('.parent').addEventListener('click', function(e){
-    var parent = e.currentTarget,
-    bx = parent.getBoundingClientRect(),
-    pos = {
-      x : e.clientX - bx.left,
-      y : e.clientY - bx.top,
-      bx: bx
-    };
-    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
-});
-        </script>
-    </body>
-</html>
-```
-
-### 1.6 - parent and child divs
+### 1.5 - parent and child divs
 
 Now for an example where I am really starting to get into the whole parent and child element with with mouse events. For this example I have a single parent div, and I am creating and injecting a whole bunch of child elements into this parent element. This time around I am attaching just a single event hander to the parent element, and I am using the target and current target properties of the event object to find out if I am dealing with a child element or not. In the event that I am dealing with a child element that was clicked I am giving just the child a new random position, else if I am clicking the parent element then I set new random positions for all the children of the parent element.
 
@@ -287,7 +246,50 @@ PARENT.addEventListener('click', function(e){
 
 So one thing that might come up right away is that the position that is obtained from the clientX, and clientY properties might not always be what one might expect. The values are always going to be relative to the start of the browser window rather than an element in that window.
 
-To resolve the issue of the position not being relative to a nested element the get bounding client rect method of the target element of the event object can be used to get the position of the element in the window. These values can then be used to get a position that is relative to the element rather than the whole window.
+To resolve the issue of the position not being relative to a nested element the get bounding client rect method of the target element of the event object can be used to get the position of the element in the window. These values can then be used to get a position that is relative to the element rather than the whole window. So in this section I will be getting into some basic examples, and then maybe some not so basic examples of making a system to get element relative positions from event objects of mouse and pointer event handers.
+
+### 2.1 - Basic get element relative position example
+
+For this example I am attaching an event hander to a div element, and using the [inner html property](/2019/01/13/js-innerhtml/) as a way to create, and recreate a child div each time the parent div is clicked. For this example I am making sure to use the current target property rather than the target property to get a reference to the parent element. The reason why is because the target property might end up referring to the child element that I am creating for the inner html value of the parent element.
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+.parent{
+  position:absolute;
+  background:gray;
+  width:640px;
+  height:480px;
+}
+.child{
+  position:relative;
+  top:20px;
+  background: #afafaf;
+  padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="parent" style="background:gray;"><div>
+        <script>
+document.querySelector('.parent').addEventListener('click', function(e){
+    var parent = e.currentTarget,
+    bx = parent.getBoundingClientRect(),
+    pos = {
+      x : e.clientX - bx.left,
+      y : e.clientY - bx.top,
+      bx: bx
+    };
+    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
+});
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - canvas element example
 
 ```html
 <html>
