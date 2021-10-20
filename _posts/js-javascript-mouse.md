@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2020-10-25 11:11:31
-version: 1.15
+updated: 2021-10-20 11:40:05
+version: 1.16
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -22,6 +22,55 @@ Mouse events alone are not the best way to go about making a truly universal inp
 So for a basic example of javaScript mouse events I quickly put together this example that will just display the current state of a the mouse position, and the state of the left mouse button.
 
 In this example I just have a simple state object as well as some helper methods for setting the position of the state object, as well as rendering the state of the values to an html element. I am then just attaching event handlers to the window object with the add event listener method by calling the add event listener method off of the window object. Each time I call the add event listener method I pass a string value for the desired event type I want to attach for, and then a function that will fire each time the event happens.
+
+### 1.1 - the window on click event
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var c = 0;
+window.onclick = function(e){
+    c += 1;
+    document.getElementById('out').innerText = c;
+};
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Using addEventListener to attach an event to window
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out" style="background:gray;padding:10px;text-align:center;">0<div>
+        <script>
+var c = 0,
+colors = ['red', 'green', 'blue'],
+out = document.getElementById('out');
+// adding an event listener to window for the click event
+window.addEventListener('click', function(e){
+    c += 1;
+    out.innerText = c;
+});
+// adding another one
+window.addEventListener('click', function(e){
+    out.style.background = colors[c % colors.length];
+});
+        </script>
+    </body>
+</html>
+```
+
+### 1.3 - The mouse down, up, and move events
 
 ```html
 <html>
@@ -67,6 +116,144 @@ render(state);
 ```
 
 When this example is up and running in the browser I end up with the current values of the state object being displayed. moving the mouse around will result in the position being updated, and clicking the mouse button will change the value of the down boolean value.
+
+### 1.4 - Input elements and the on click event
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <input id="in_button" type="button" value="0">
+        <script>
+var c = 0;
+document.getElementById('in_button').addEventListener('click', function(e){
+    c += 1;
+    e.target.value = c;
+});
+        </script>
+    </body>
+</html>
+```
+
+### 1.5 - clicking a div element
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+.parent{
+  position:absolute;
+  background:gray;
+  width:640px;
+  height:480px;
+}
+.child{
+  position:relative;
+  top:20px;
+  background: #afafaf;
+  padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="parent" style="background:gray;"><div>
+        <script>
+document.querySelector('.parent').addEventListener('click', function(e){
+    var parent = e.currentTarget,
+    bx = parent.getBoundingClientRect(),
+    pos = {
+      x : e.clientX - bx.left,
+      y : e.clientY - bx.top,
+      bx: bx
+    };
+    parent.innerHTML = '<div class="child">' + pos.x + ', ' + pos.y + '</div>';
+});
+        </script>
+    </body>
+</html>
+```
+
+### 1.6 - parent and child divs
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+div{
+  position:absolute;
+}
+.parent{
+  background:gray;
+}
+.child{
+  top:0px;
+  left:0px;
+  background: #afafaf;
+}
+        </style>
+    </head>
+    <body>
+        <div class="parent" style="background:gray;"><div>
+        <script>
+// some values
+var PARENT = document.querySelector('.parent');
+PARENT_WIDTH = 800,
+PARENT_HEIGHT = 600,
+CHILD_COUNT = 15,
+CHILD_SIZE = 64;
+// set with and height of parent by way of style api
+PARENT.style.width = PARENT_WIDTH + 'px';
+PARENT.style.height = PARENT_HEIGHT + 'px';
+// set up children
+var i = CHILD_COUNT;
+while(i--){
+   var child = document.createElement('div');
+   child.className = 'child';
+   child.id="child_" + ( CHILD_COUNT - i );
+   PARENT.appendChild(child);
+}
+// random child position for the given child helper function
+var randomChildPos = function(child){
+   var x = Math.floor((PARENT_WIDTH - CHILD_SIZE) * Math.random());
+   var y = Math.floor((PARENT_HEIGHT - CHILD_SIZE) * Math.random());
+   child.style.left = x + 'px';
+   child.style.top = y + 'px';
+   child.style.width = CHILD_SIZE + 'px';
+   child.style.height = CHILD_SIZE + 'px';
+};
+// random position for all children helper function
+var randomParentChildren = function(parent){
+    [].forEach.call(parent.children, function(child){
+        randomChildPos(child);
+    });
+};
+// call random parent children helper for the first time
+randomParentChildren(PARENT);
+// click event using e.currentTarget and e.target along with
+// e.clientX, and e.clientY
+PARENT.addEventListener('click', function(e){
+    var parent = e.currentTarget,
+    child = e.target,
+    bx = parent.getBoundingClientRect(),
+    pos = {
+      x : e.clientX - bx.left,
+      y : e.clientY - bx.top,
+      bx: bx
+    };
+    if(child === parent){
+        randomParentChildren(parent);
+    }else{
+        randomChildPos(child);
+    }
+});
+        </script>
+    </body>
+</html>
+```
 
 ## 2 - Get element relative position
 
