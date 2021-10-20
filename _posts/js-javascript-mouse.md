@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 11:55:24
-version: 1.22
+updated: 2021-10-20 11:57:26
+version: 1.23
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -54,6 +54,8 @@ window.onclick = function(e){
 using the on click property of the window object, or any other node such as an element, can be though of as the old, tired yet true way of doing this sort of thing. If for some reason you want to get your code to work on what is now very old web browsers you would want to do something like this.
 
 ### 1.2 - Using addEventListener to attach an event to window
+
+A more modern way of attaching [event listeners](/2019/01/16/js-event-listeners/) to the window object, as well as nodes in general including elements would be to use the add event listener method.
 
 ```html
 <html>
