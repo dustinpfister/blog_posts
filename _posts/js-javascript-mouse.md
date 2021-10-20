@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 12:26:40
-version: 1.29
+updated: 2021-10-20 12:29:50
+version: 1.30
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -135,7 +135,7 @@ When this example is up and running in the browser I end up with the current val
 
 So there is attaching a client event to the window object, but there is also attaching events to various other kinds of elements such as an input element. For this example I am attaching an event handler to an input element that is a button type input element. When it comes to input elements it is often the value property of the input element that is of interest. When it comes to button input elements the value property is the display value of the button. So in this example I am attaching and event hander to an input element that will update the display value of the button each time it is clicked with the value of a count variable.
 
-In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means.
+In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means. One reason why is because I am making my event hander a stand alone function and then passing a reference to that function for more than one call of the add event listener method. Inside the body of an event hander the target property will be a reference to the element where the event has happened. There is also the current target property that is the current element to which the event element is firing, but that is something that I will be getting more into in a later example.
 
 ```html
 <html>
