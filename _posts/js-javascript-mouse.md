@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 12:25:00
-version: 1.28
+updated: 2021-10-20 12:26:40
+version: 1.29
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -134,6 +134,8 @@ When this example is up and running in the browser I end up with the current val
 ### 1.4 - Input elements and the on click event
 
 So there is attaching a client event to the window object, but there is also attaching events to various other kinds of elements such as an input element. For this example I am attaching an event handler to an input element that is a button type input element. When it comes to input elements it is often the value property of the input element that is of interest. When it comes to button input elements the value property is the display value of the button. So in this example I am attaching and event hander to an input element that will update the display value of the button each time it is clicked with the value of a count variable.
+
+In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means.
 
 ```html
 <html>
