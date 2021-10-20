@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 13:12:15
-version: 1.38
+updated: 2021-10-20 13:14:54
+version: 1.39
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -57,7 +57,7 @@ using the on click property of the window object, or any other node such as an e
 
 A more modern way of attaching [event listeners](/2019/01/16/js-event-listeners/) to the window object, as well as nodes in general including elements would be to use the add event listener method. One major improvement with this is that it can be used as a way to attach more than one hander. Although it may not be one of the oldest ways of going about preforming event attachment, at this point it is only fairly old browsers that will result in code breaking changes.
 
-Once again I am just stepping a count variable in the body of one event hander, but in the other event hander I am using the [style API](/2019/02/12/js-javascript-style) as a way to change a CSS value for the div.
+Once again I am just stepping a count variable in the body of one event hander, but in the other event hander I am using the [style API](/2019/02/12/js-javascript-style) as a way to change a CSS value for the div. For this example I am just using the style api to change the background color of a div, but it can also be used to change any css value such as the left and top properties when using an absolute positioned div. 
 
 ```html
 <html>
