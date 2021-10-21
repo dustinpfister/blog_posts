@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 12:01:12
-version: 1.53
+updated: 2021-10-21 12:03:26
+version: 1.54
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -608,6 +608,8 @@ The return value of the button property should be a number with a value from 0 t
 ### 4.2 - Stop the context menu from showing up on a right click
 
 There is one think to be aware of when it comes to the subject of mouse events and right clicking and that is of course the context menu. By default when I right click a web page in a web browser I get a context menu that gives me some options such as viewing the source code of the web page, or saving an image in the page as a file on my local file system. That is all fine and good, but in some cases I might not want that to happen for a web application so there [should be a way to shop the context menu from showing up](https://stackoverflow.com/a/381848/2057445).
+
+The way that I have found to do this is to not just make use of the mouse down and touch start events, but also the [on context menu event](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event).
 
 ```html
 <html>
