@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 11:25:50
-version: 1.52
+updated: 2021-10-21 12:01:12
+version: 1.53
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -578,6 +578,8 @@ setInterval(function(){
 
 ## 4 - Mouse buttons
 
+### 4.1 - Basic mouse buttons example
+
 The [buttons property of the mouse event](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button) object that is passed via events such as the mouse down event will give a number value that can be used as a way to know the button that was clicked on a mouse. 
 
 ```html
@@ -603,6 +605,51 @@ out.addEventListener('mousedown', function(e){
 
 The return value of the button property should be a number with a value from 0 to 4 for up to five buttons on a mouse that where pressed. A value of 0 should mean the main button of the mouse, in other words the typical left click button. A value of 2 on the other had will be a right click actually as a value of 1 will refer to a center click, or scroll wheel click if you prefer. The values of 3 and 4 will refer to the back and forward buttons that are present on many mouses.
 
+### 4.2 - Stop the context menu from showing up on a right click
+
+There is one think to be aware of when it comes to the subject of mouse events and right clicking and that is of course the context menu. By default when I right click a web page in a web browser I get a context menu that gives me some options such as viewing the source code of the web page, or saving an image in the page as a file on my local file system. That is all fine and good, but in some cases I might not want that to happen for a web application so there [should be a way to shop the context menu from showing up](https://stackoverflow.com/a/381848/2057445).
+
+```html
+<html>
+    <head>
+        <title>javascript mouse buttons example</title>
+    </head>
+    <body>
+        <div id="out" style="width:240px;height:240px;background:gray;"><div>
+        <script>
+var out = document.getElementById('out');
+// render to the div
+var render = function (button) {
+    out.innerText = 'button: ' + button;
+};
+// for a pointer down event handler to be used with
+// touchstart and mousedown events.
+// button# 0:left click, 1:center click, 2:right click, -1: touch
+var pointerdown = function(e){
+    console.log(e);
+    if(e.type === 'touchstart'){
+        render(-1);
+    }else{
+        render(e.button);
+    }
+};
+// on context event handler
+var oncontext = function(e){
+    e.preventDefault();
+    if (event.stopPropagation){
+        event.stopPropagation();
+    }
+    event.cancelBubble = true;
+    //render(e.button);
+    return false;
+};
+out.addEventListener('touchstart', pointerdown);
+out.addEventListener('mousedown', pointerdown);
+out.addEventListener('contextmenu', oncontext);
+        </script>
+    </body>
+</html>
+```
 
 ## 5 - Conclusion
 
