@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 11:14:57
-version: 1.49
+updated: 2021-10-21 11:19:23
+version: 1.50
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -474,6 +474,8 @@ render(state);
 So then the pointerType property is a good way to go about finding out if I am dealing with a mouse or a touch event when making an event hander that will be used with the click event.
 
 ### 3.3 - Prevent default and mousedown and touchstart events
+
+The pointerType event is useful when it comes to finding out if I am dealing with a mouse or touch event in a on click event. However some times I need to make some kind of system where I need to attach events for mouse down and touch start events, along with maybe additional events. The [default behavior with this kind of situation](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent) is that the touch start event will fire first, and then a mouse down event will fire. If for some reason I do not want this to happen the prevent default method would seem to work okay to suppress this.
 
 ```html
 <html>
