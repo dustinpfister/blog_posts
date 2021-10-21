@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 15:31:18
-version: 1.58
+updated: 2021-10-21 15:33:12
+version: 1.59
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -664,6 +664,8 @@ out.addEventListener('contextmenu', oncontext);
 When it comes to getting one or more elements from a mouse position there are a range of ways of going about doing so. When it comes to events such as the click event there is just using the target property of th event object. However things might prove to be a little more involved when I just want to get the top most element from a given window relative position, or get not just one element but all elements that might overlap at a given point. So then in this section I thought I would go over a few examples that have to do with getting one or more element references from a given window relative position or point if you prefer.
 
 ### 5.1 - Just using the on click event and the target property of the event object
+
+As I have mentioned in previous examples the target property of an event object is the original element at which an event has happened. So then one way of going about getting an element by way of a window relative position would be to just attach a o client event to the window object and then just look at the target property of the event object.
 
 ```html
 <html>
