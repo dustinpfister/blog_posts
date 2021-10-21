@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 11:03:50
-version: 1.46
+updated: 2021-10-21 11:09:07
+version: 1.47
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -133,42 +133,7 @@ render(state);
 
 When this example is up and running in the browser I end up with the current values of the state object being displayed. moving the mouse around will result in the position being updated, and clicking the mouse button will change the value of the down boolean value.
 
-### 1.4 - Input elements and the on click event
-
-So there is attaching a client event to the window object, but there is also attaching events to various other kinds of elements such as an input element. For this example I am attaching an event handler to an input element that is a button type input element. When it comes to input elements it is often the value property of the input element that is of interest. When it comes to button input elements the value property is the display value of the button. So in this example I am attaching and event hander to an input element that will update the display value of the button each time it is clicked with the value of a count variable.
-
-In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means. One reason why is because I am making my event hander a stand alone function and then passing a reference to that function for more than one call of the add event listener method. Inside the body of an event hander the target property will be a reference to the element where the event has happened. There is also the current target property that is the current element to which the event element is firing, but that is something that I will be getting more into in a later example.
-
-In this example I am also using the [parseInt method](/2019/05/15/js-parseint) as a way to make sure what might be a string value of a number is converted to a number. I am also making use of html data attributes as a way to store a count value for each element.
-
-```html
-<html>
-    <head>
-        <title>js mouse basic example</title>
-    </head>
-    <body>
-        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
-        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
-        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
-        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
-        <script>
-// step a button
-var stepButton = function(e){
-    var button = e.target,
-    count = parseInt(button.dataset.count);
-    e.target.value = 'count: ' + ( button.dataset.count =  count += 1 );
-};
-// for all buttons of class '.c_button'
-var buttons = document.querySelectorAll('.c_button');
-[].forEach.call(buttons, function(button){
-    button.addEventListener('click', stepButton);
-});
-        </script>
-    </body>
-</html>
-```
-
-### 1.5 - parent and child divs
+### 1.4 - parent and child divs
 
 Now for an example where I am really starting to get into the whole parent and child element with with mouse events. For this example I have a single parent div, and I am creating and injecting a whole bunch of child elements into this parent element. This time around I am attaching just a single event hander to the parent element, and I am using the target and current target properties of the event object to find out if I am dealing with a child element or not. In the event that I am dealing with a child element that was clicked I am giving just the child a new random position, else if I am clicking the parent element then I set new random positions for all the children of the parent element.
 
@@ -462,6 +427,144 @@ render(state);
 ```
 
 One major thing about the click event is that on systems that support both a mouse, as well as a touch screen the click event will fire for both a mouse click as well as a touch of the touch screen surface. In many cases in which I use the on click event this is not a problem as that is the kind of behavior that I want. However in some cases this is not what I want to happen, and I want to have separate code that will run just for a mouse click, and just for a touch "click" if I can call it such for a moment. So now that I have a basic example of the on click event out of the way I should now get into at least a few more examples that have to do with the click event and I kind of virtue click event.
+
+### 3.2 - The type and pointerType properties of a click event
+
+```html
+<html>
+    <head>
+        <title>js mouse onclick example</title>
+    </head>
+    <body>
+        <div id="out" style="width:200px;height:200px;background:gray;padding:20px;"><div>
+        <script>
+var out = document.getElementById('out');
+var state = {
+    disp: 'Click or touch here',
+    color: 'gray'
+};
+var render = function (state) {
+    out.innerText = state.disp;
+    out.style.background = state.color;;
+};
+ 
+var handler = function(e){
+    console.log(e.type); // 'click'
+    state.disp = e.pointerType;
+    state.color = 'lime';
+    if(e.pointerType === 'touch'){
+       state.color = 'blue';
+    }
+    state.on = !state.on;
+    render(state);
+};
+ 
+out.addEventListener('click', handler);
+ 
+render(state);
+        </script>
+    </body>
+</html>
+```
+
+### 3.3 - Prevent default and mousedown and touchstart events
+
+```html
+<html>
+    <head>
+        <title>js mouse onclick example</title>
+    </head>
+    <body>
+        <div id="out" style="width:200px;height:200px;background:gray;padding:20px;"><div>
+        <script>
+var out = document.getElementById('out');
+var state = {
+    on: false
+};
+var render = function (state) {
+    out.innerText = 'on: ' + state.on;
+    out.style.background = state.on ? 'green': 'red';
+};
+var handler = function(e){
+    console.log(e.type);
+    // e.preventDefault will suppress an additional mousedown when 
+    e.preventDefault();
+    state.on = !state.on;
+    render(state);
+};
+out.addEventListener('touchstart', handler);
+out.addEventListener('mousedown', handler);
+render(state);
+        </script>
+    </body>
+</html>
+```
+
+### 3.4 - Input elements and the on click event
+
+So there is attaching a client event to the window object, but there is also attaching events to various other kinds of elements such as an input element. For this example I am attaching an event handler to an input element that is a button type input element. When it comes to input elements it is often the value property of the input element that is of interest. When it comes to button input elements the value property is the display value of the button. So in this example I am attaching and event hander to an input element that will update the display value of the button each time it is clicked with the value of a count variable.
+
+In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means. One reason why is because I am making my event hander a stand alone function and then passing a reference to that function for more than one call of the add event listener method. Inside the body of an event hander the target property will be a reference to the element where the event has happened. There is also the current target property that is the current element to which the event element is firing, but that is something that I will be getting more into in a later example.
+
+In this example I am also using the [parseInt method](/2019/05/15/js-parseint) as a way to make sure what might be a string value of a number is converted to a number. I am also making use of html data attributes as a way to store a count value for each element.
+
+```html
+<html>
+    <head>
+        <title>js mouse basic example</title>
+    </head>
+    <body>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <script>
+// step a button
+var stepButton = function(e){
+    var button = e.target,
+    count = parseInt(button.dataset.count);
+    e.target.value = 'count: ' + ( button.dataset.count =  count += 1 );
+};
+// for all buttons of class '.c_button'
+var buttons = document.querySelectorAll('.c_button');
+[].forEach.call(buttons, function(button){
+    button.addEventListener('click', stepButton);
+});
+        </script>
+    </body>
+</html>
+```
+
+### 3.5 - Simulate a on click event
+
+```html
+<html>
+    <head>
+        <title>js mouse onclick example</title>
+    </head>
+    <body>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
+        <script>
+// step button handler
+var stepButton = function(e){
+    var button = e.target,
+    count = parseInt(button.dataset.count);
+    e.target.value = 'count: ' + ( button.dataset.count =  count += 1 );
+};
+// attach handler to input elements
+var buttons = document.querySelectorAll('.c_button');
+[].forEach.call(buttons, function(button){
+    button.addEventListener('click', stepButton);
+});
+// simulate a click for button 1 event 1000ms
+setInterval(function(){
+    buttons[1].click();
+}, 1000);
+        </script>
+    </body>
+</html>
+```
 
 ## 4 - Mouse buttons
 
