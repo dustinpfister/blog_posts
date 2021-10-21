@@ -57,6 +57,9 @@ justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
 * get post to 4000+ words
 
 ## js-promise-resolve-reject ( interesting topic )
+
+justification: Intrinsic Value
+
 * get post to the min 3000+ words
 
 
