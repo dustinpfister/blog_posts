@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 10:16:11
-version: 1.45
+updated: 2021-10-21 11:03:50
+version: 1.46
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -244,7 +244,7 @@ PARENT.addEventListener('click', function(e){
 
 ## 2 - Get element relative position
 
-So one thing that might come up right away is that the position that is obtained from the clientX, and clientY properties might not always be what one might expect. The values are always going to be relative to the start of the browser window rather than an element in that window. So then there is a need to find a way to get a position that is relative to a specifc element, rather than that of the window.
+So one thing that might come up right away is that the position that is obtained from the clientX, and clientY properties might not always be what one might expect. The values are always going to be relative to the start of the browser window rather than an element in that window. So then there is a need to find a way to get a position that is relative to a specific element, rather than that of the window.
 
 One way to go about resolving the issue of the position not being relative to an element rather than the window the get [bounding client rect method](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) of the target element of the event object can be used to get the position of the element in the window. These values can then be used to get a position that is relative to the element rather than the whole window by subtracting values in the object that is returned from the clientX, and clientY values. 
 
@@ -433,7 +433,7 @@ This time I went with attaching the events to a canvas element that is the neste
 
 The [on click event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick) can be thought of as a mouse event in the sense that the name is click rather than touch. However the on [click event is actually an event that will fire for both mouse and touch events](https://stackoverflow.com/questions/37273142/would-onclick-event-work-on-touch-on-touch-screen-devices/37273344). This might not always be a problem if this is of course the behavior that you want when making an interface, however if I am making an interface where I want separate logic to fire for mouse events from that of touch events then it is a problem.
 
-### 3.1 - A Basic on click event example
+### 3.1 - A basic on click event example
 
 ```html
 <html>
@@ -461,7 +461,7 @@ render(state);
 </html>
 ```
 
-Another factor of concern when it comes to using this event is that it will fire after mouse down and mouse up events, as well as touch start and touch end events for that matter. So if I want to have some code that will fore the very moment that something is touched, or when a mouse button is pressed, but yet not released, I can not separate that by using on click. So I generally do not use it, and when I do it is because I do not need to preform something different for pointer down and up events.
+One major thing about the click event is that on systems that support both a mouse, as well as a touch screen the click event will fire for both a mouse click as well as a touch of the touch screen surface. In many cases in which I use the on click event this is not a problem as that is the kind of behavior that I want. However in some cases this is not what I want to happen, and I want to have separate code that will run just for a mouse click, and just for a touch "click" if I can call it such for a moment. So now that I have a basic example of the on click event out of the way I should now get into at least a few more examples that have to do with the click event and I kind of virtue click event.
 
 ## 4 - Mouse buttons
 
