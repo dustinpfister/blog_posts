@@ -56,6 +56,12 @@ justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
 * (done 10/21/2021) get post to the min 3000+ words
 * get post to 4000+ words
 
+## js-operator-precedence ( interesting topic )
+
+justification: Intrinsic Value, Search Console: "javascript order of operations", 
+
+* get post to 3000+ words
+
 ## js-promise-resolve-reject ( interesting topic )
 
 justification: Intrinsic Value
