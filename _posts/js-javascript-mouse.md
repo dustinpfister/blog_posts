@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-20 15:33:13
-version: 1.42
+updated: 2021-10-21 07:57:31
+version: 1.43
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -291,7 +291,7 @@ document.querySelector('.parent').addEventListener('click', function(e){
 
 ### 2.2 - Method to get an element relative position for mouse and touch events
 
-Working out how to get an element rather than window relative mouse cursor position is one thing, but often I will want to get such a position for touch events also.
+Working out how to get an element rather than window relative mouse cursor position is one thing, but often I will want to get such a position for touch events also. So then there is often a need to have some kind of simple helper method that will return an object with adjusted x and y values from a given event object from a mouse or touch event. If the event object is a mouse event I can just use clientX, and clientY, but if the event object is a touch event that makes things a little more involved. One major reason why is the because when it comes to touch devices there is of course muti touch. So With a touch event I have not think more in terms of an array of objects where each object contains a clientX, and clientY value.
 
 ```html
 <html>
