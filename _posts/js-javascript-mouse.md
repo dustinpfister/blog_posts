@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 12:05:23
-version: 1.55
+updated: 2021-10-21 12:11:25
+version: 1.56
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -577,6 +577,12 @@ setInterval(function(){
 ```
 
 ## 4 - Mouse buttons
+
+There are a few things to be aware of when it comes to mouse buttons when working with mouse events, and also taking into account accessibility with touch events still. For example there is often both at least a left and right click mouse button, but often there is also a center click as well as scroll wheel of a mouse. Also there may be a few more buttons on a mouse such as a back and forward button, and even more buttons in some cases.
+
+However there is also the fact that a lot of people that visit a web application might be using the application from a touch screen. So the for example there should also be ways of simulating a right click, or at least giving a way to do the same action as a right click.
+
+There is also the question of the context menu that will pop up on a right click and how to stop that from happening when it comes to working with mouse buttons. With that said in this section I will be going over a few quick examples of working with buttons in client side javaScript.
 
 ### 4.1 - Basic mouse buttons example
 
