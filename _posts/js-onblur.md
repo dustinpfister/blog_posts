@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 358
-updated: 2021-10-21 15:43:48
-version: 1.44
+updated: 2021-10-21 15:46:29
+version: 1.45
 ---
 
 The [on blur](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onblur) event in javaScript is an event that fires when an element no longer has focus, in other words it is the opposite of the [on focus event](/2019/01/05/js-onfocus/). However if you do not know what it means for an element to have focus, then maybe we should back up a bit and start with that before moving on with some code examples on this one.
@@ -25,7 +25,7 @@ I will not be going over [event listeners](/2019/01/16/js-event-listeners/) in g
 
 ### - These examples are on github
 
-The source code examples here can be found on my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-onblur) along with all my other source code examples for my [many other posts on vanilla javaScipt](https://dustinpfister.github.io/categories/js/).
+The source code examples here can be found on my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-onblur) along with all my other source code examples for my [many other posts on vanilla javaScipt](https://dustinpfister.github.io/categories/js/). This post like many others is still a work in progress, so I do get around to editing the content here now and then. This Github repository is then where I have the latest revous of the source code along with any notes about possible future edits of the post if need be.
 
 ### 1.1 - On blur basic example
 
