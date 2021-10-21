@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 15:57:07
-version: 1.63
+updated: 2021-10-21 16:11:39
+version: 1.64
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -763,7 +763,30 @@ setAt(100, 75);
 
 One draw back of this solution as well as with the basic one that I started this section off with is that I can not get more than one element that my be at the same location all the way down to the body element. In that kind of situation I would need to make some kind of solution that involves filtering threw all the elements preforming bounding box collection for each maybe.
 
-## 6 - Conclusion
+## 6 - The mouse wheel
+
+### 6.1 - Basic mouse wheel example
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var y = 0,
+out = document.getElementById('out');
+window.addEventListener('wheel', function(e){
+    y += e.deltaY;
+    out.innerText = y;
+});
+        </script>
+    </body>
+</html>
+```
+
+## 7 - Conclusion
 
 So hopefully this post has helped you gain some basic insight into how to get going with a mouse when making a user interface with javaScript. However there is much more to learn and be aware of when it comes to using mouse events, as well as other events such as touch events, and keyboard events. This post does not outline a fully comprehensive input controller module or project or sorts after all as the focus here is just on things that have to do with working with the mouse.
 
