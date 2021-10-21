@@ -26,12 +26,21 @@ Of course there are some more things that come to mind other than just simply wr
 * have a README file in the repository and link to the post from there
 * posts should have a basics section, then one or more advanced sections, followed by one or more examples sections
 
-### - Selecting posts to go all out with
+### - justification of why I should go all out with a post
 
-* Select posts that are all ready preforming okay
-* Select posts that have the potential to preform well by doing some quick trend research
-* Select posts just because they are a interesting topic
+It will take a great investment of time to create a post that will be at least some three thousand words or more. There is not just the amount of time it will take to write the content, but also preforming research, as well as writing and hacking over source code examples. So then for each item in this todo list I should list at least one or more of the following as a way to outline what the justification is for putting in the time to write and edit posts to this extreme.
 
+#### - Intrinsic Value
+
+There is the [intrinsic value](https://en.wikipedia.org/wiki/Intrinsic_value_%28ethics%29) in terms of ethics rather than finances. what this means that there is, at the very least, a degree of justification to invest time in writing and preforming research to create a long from content piece just for the sake of doing so. Even if the post ends up being a total flop in terms of traffic and money if something is gained in terms of learning something of value then it is not a total loss.
+
+#### - Search Console 
+
+If the post is all ready preforming well in terms or organic search results then that is a good justification for improving the quality of the content to the Nth degree.
+
+#### - Google Trends
+
+If the post is new, or an older post that is not preforming so well, however there is one or more keywords that I have found in Google Trends that is of great interest, then that can count as justification. When making note of this as justification I should take note of what keywords that are of interest with the list item. A good rule of thumb is to compare the keyword of interest to the best preforming keyword in search console.
 
 
 
@@ -40,10 +49,14 @@ Of course there are some more things that come to mind other than just simply wr
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-## js-promise-resolve-reject ( interesting topic )
-* get post to the min 3000+ words
-
 ## js-javascript-mouse ( interesting topic, at 2000+ words all ready, good keywords ie: javaScript mouse )
+
+justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
+
+* (done 10/21/2021) get post to the min 3000+ words
+* get post to 4000+ words
+
+## js-promise-resolve-reject ( interesting topic )
 * get post to the min 3000+ words
 
 
