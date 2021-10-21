@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 07:57:31
-version: 1.43
+updated: 2021-10-21 10:03:31
+version: 1.44
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -244,9 +244,11 @@ PARENT.addEventListener('click', function(e){
 
 ## 2 - Get element relative position
 
-So one thing that might come up right away is that the position that is obtained from the clientX, and clientY properties might not always be what one might expect. The values are always going to be relative to the start of the browser window rather than an element in that window.
+So one thing that might come up right away is that the position that is obtained from the clientX, and clientY properties might not always be what one might expect. The values are always going to be relative to the start of the browser window rather than an element in that window. So then there is a need to find a way to get a position that is relative to a specifc element, rather than that of the window.
 
-To resolve the issue of the position not being relative to a nested element the get bounding client rect method of the target element of the event object can be used to get the position of the element in the window. These values can then be used to get a position that is relative to the element rather than the whole window. So in this section I will be getting into some basic examples, and then maybe some not so basic examples of making a system to get element relative positions from event objects of mouse and pointer event handers.
+One way to go about resolving the issue of the position not being relative to an element rather than the window the get [bounding client rect method](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) of the target element of the event object can be used to get the position of the element in the window. These values can then be used to get a position that is relative to the element rather than the whole window by subtracting values in the object that is returned from the clientX, and clientY values. 
+
+There may be additional ways of going about getting an element relative position, and also a whole bunch of other things that might come up when it comes to all kinds of related tasks that will branch off from this such as making methods that will work not just with mouse events but pointer events in general. So then in this section I will be getting into some basic examples, and then maybe some not so basic examples of making a system to get element relative positions from event objects of mouse and pointer event handers.
 
 ### 2.1 - Basic get element relative position example
 
