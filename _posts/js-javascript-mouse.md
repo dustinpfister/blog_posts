@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 11:11:51
-version: 1.48
+updated: 2021-10-21 11:14:57
+version: 1.49
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -432,6 +432,8 @@ One major thing about the click event is that on systems that support both a mou
 
 ### 3.2 - The type and pointerType properties of a click event
 
+If I want to find out if I am dealing with a mouse click or a touch "click" if it can be called such, one way to do so would be to use the pointerType property of the event object for the click event handler. This should not be confused with the type property of the event object as that is the type of event which in this case is a click event.
+
 ```html
 <html>
     <head>
@@ -468,6 +470,8 @@ render(state);
     </body>
 </html>
 ```
+
+So then the pointerType property is a good way to go about finding out if I am dealing with a mouse or a touch event when making an event hander that will be used with the click event.
 
 ### 3.3 - Prevent default and mousedown and touchstart events
 
