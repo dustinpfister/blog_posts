@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 16:14:29
-version: 1.65
+updated: 2021-10-21 16:16:10
+version: 1.66
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -768,6 +768,8 @@ One draw back of this solution as well as with the basic one that I started this
 On top of that of buttons a mouse often has a scroll wheel also, and with that said yes there is a [wheel event](https://developer.mozilla.org/en-US/docs/Web/API/Element/wheel_event) than can be used to attach some logic that will run each time the mouse wheel moves. So then I have started this section as a place to park at least one if not more examples making use of this event as a way to do something with the mouse wheel.
 
 ### 6.1 - Basic mouse wheel example
+
+Like always I have to start out a section like this with a kind of hello world style example so then here it is. Do make use of this event I just need to use the add event listener method and attach for the wheel event. The inside the body of the event hander there is the deltaY value that can be used to apply as a delta value for a variable.
 
 ```html
 <html>
