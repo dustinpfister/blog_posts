@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 12:11:25
-version: 1.56
+updated: 2021-10-21 15:27:55
+version: 1.57
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -659,7 +659,103 @@ out.addEventListener('contextmenu', oncontext);
 </html>
 ```
 
-## 5 - Conclusion
+## 5 - Get elements by mouse position
+
+### 5.1 - Just using the on click event and the target property of the event object
+
+```html
+<html>
+    <head>
+        <title>javascript mouse example</title>
+        <style>
+div{
+  position:relative;
+}
+.parent{
+  width:640px;height:480px;background:gray;top:20px;
+}
+.child{
+  position:absolute;width:128px;height:128px;background:lime;
+}
+        </style>
+    </head>
+    <body>
+        <div id="disp_node">0,0</div>
+        <div class="parent">
+            <div class="child" style="left:50px;top:20px;"></div>
+            <div class="child" style="left:85px;top:40px;"></div>
+            <div class="child" style="left:235px;top:240px;"></div>
+        <div>
+        <script>
+var colors = ['red', 'lime', 'blue', 'gray'],
+dispNode = document.getElementById('disp_node');
+var cycleColor = function(node){
+    colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+    colorIndex += 1;
+    colorIndex %= colors.length;
+    node.dataset.colorIndex = colorIndex;
+    node.style.background = colors[colorIndex];
+};
+window.addEventListener('click', function(e){
+    var node = e.target;
+    dispNode.innerText = e.clientX + ',' + e.clientY;
+    cycleColor(node);
+});
+        </script>
+    </body>
+</html>
+```
+
+### 5.2 - The Document.elementFromPoint method
+
+```html
+<html>
+    <head>
+        <title>javascript mouse example</title>
+        <style>
+div{
+  position:relative;
+}
+.parent{
+  width:640px;height:480px;background:gray;top:20px;
+}
+.child{
+  position:absolute;width:128px;height:128px;background:lime;
+}
+        </style>
+    </head>
+    <body>
+        <div id="disp_node">0,0</div>
+        <div class="parent">
+            <div class="child" style="left:50px;top:20px;"></div>
+            <div class="child" style="left:85px;top:40px;"></div>
+            <div class="child" style="left:235px;top:240px;"></div>
+        <div>
+        <script>
+var colors = ['red', 'lime', 'blue', 'gray'],
+dispNode = document.getElementById('disp_node');
+var cycleColor = function(node){
+    colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+    colorIndex += 1;
+    colorIndex %= colors.length;
+    node.dataset.colorIndex = colorIndex;
+    node.style.background = colors[colorIndex];
+};
+ 
+var setAt = function(x, y){
+    var node = document.elementFromPoint(x, y);
+    dispNode.innerText = x + ',' + y;
+    cycleColor(node);
+};
+ 
+setAt(100, 75);
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 6 - Conclusion
 
 So hopefully this post has helped you gain some basic insight into how to get going with a mouse when making a user interface with javaScript. However there is much more to learn and be aware of when it comes to using mouse events, as well as other events such as touch events, and keyboard events. This post does not outline a fully comprehensive input controller module or project or sorts after all as the focus here is just on things that have to do with working with the mouse.
 
