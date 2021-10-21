@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 10:03:31
-version: 1.44
+updated: 2021-10-21 10:16:11
+version: 1.45
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -62,7 +62,7 @@ Once again I am just stepping a count variable in the body of one event hander, 
 ```html
 <html>
     <head>
-        <title>javaScript mouse basic example</title>
+        <title>js mouse basic example</title>
     </head>
     <body>
         <div id="out" style="background:gray;padding:10px;text-align:center;">0<div>
@@ -91,7 +91,7 @@ On top of the click event there are also a number of other mouse events such as 
 ```html
 <html>
     <head>
-        <title>JavaScript mouse basic example</title>
+        <title>js mouse basic example</title>
     </head>
     <body>
         <div id="out"><div>
@@ -144,7 +144,7 @@ In this example I am also using the [parseInt method](/2019/05/15/js-parseint) a
 ```html
 <html>
     <head>
-        <title>javaScript mouse basic example</title>
+        <title>js mouse basic example</title>
     </head>
     <body>
         <input class="c_button" data-count="0" type="button" value="count: 0"><br><br>
@@ -175,7 +175,7 @@ Now for an example where I am really starting to get into the whole parent and c
 ```html
 <html>
     <head>
-        <title>javaScript mouse basic example</title>
+        <title>js mouse basic example</title>
         <style>
 div{
   position:absolute;
@@ -431,12 +431,14 @@ This time I went with attaching the events to a canvas element that is the neste
 
 ## 3 - The onclick mouse and touch event
 
-The [on click event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick) can be thought of as a mouse event in the sense that they name is click rather than touch. However the on [click event is actually an event that will fire for both mouse and touch events](https://stackoverflow.com/questions/37273142/would-onclick-event-work-on-touch-on-touch-screen-devices/37273344). This might not always be a problem if this is of course the behavior that you want when making an interface, however if I am making an interface where I want separate logic to fire for mouse events from that of touch events then it is a problem.
+The [on click event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick) can be thought of as a mouse event in the sense that the name is click rather than touch. However the on [click event is actually an event that will fire for both mouse and touch events](https://stackoverflow.com/questions/37273142/would-onclick-event-work-on-touch-on-touch-screen-devices/37273344). This might not always be a problem if this is of course the behavior that you want when making an interface, however if I am making an interface where I want separate logic to fire for mouse events from that of touch events then it is a problem.
+
+### 3.1 - A Basic on click event example
 
 ```html
 <html>
     <head>
-        <title>javascript mouse onclick example</title>
+        <title>js mouse onclick example</title>
     </head>
     <body>
         <div id="out" style="width:240px;height:240px;background:gray;"><div>
