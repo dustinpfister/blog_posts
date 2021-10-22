@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:33:32
-version: 1.26
+updated: 2021-10-22 13:35:41
+version: 1.27
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -82,7 +82,7 @@ new Promise(function(resolve, reject){
 
 ### 1.4 - A nodejs example of the Promise Constructor
 
-Here I have an example of using the [Promise constructor in nodejs](/2019/11/18/nodejs-promise/) with the file system module. For this example I am using the file system module to read file to which the location of which will be supplied by way of the first [positional argument](/2020/12/10/linux-bash-script-parameters-positional/) when calling the script.
+Here I have an example of using the [Promise constructor in nodejs](/2019/11/18/nodejs-promise/) with the file system module. For this example I am using the file system module to read file to which the location of which will be supplied by way of the first [positional argument](/2020/12/10/linux-bash-script-parameters-positional/) when calling the script. Because the path must be given by the user of this script when calling it from the command line with node, that means that there are all kids of errors that can happen. For example the user can just call the script and fail to given a path to a file, another thing that could happen is that a path can be given but it is to a folder rather than a file.
 
 ```js
 // requiring in the file system module
