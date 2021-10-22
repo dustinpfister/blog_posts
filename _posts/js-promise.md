@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:22:04
-version: 1.6
+updated: 2021-10-22 11:28:18
+version: 1.7
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -63,6 +63,8 @@ new Promise((resolve, reject) => {
 In nodejs there is the util module, and in this module there is a [util promisify method](/2019/06/22/nodejs-util-promisify/) that can be used as a way to create a method that will return a promise from a method that uses old nodejs style call back functions. On nodejs built in module that is packed with methods that use this kind of callback function would be the [nodejs file system module](/2018/02/08/nodejs-filesystem/).
 
 ### 2.1 - Basic util promisify example
+
+To get started with this promsify method there is creating a quick simple script that will just read a file and spit put the data of the file to the standard output of the console if all goes well using the [read file method](/2020/05/12/nodejs-filesystem-read-file/) of the file system module that has been passed to the promisify method..
 
 ```js
 // requiring in the file system module
