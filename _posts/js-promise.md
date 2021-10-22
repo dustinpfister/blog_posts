@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:32:27
-version: 1.8
+updated: 2021-10-22 11:35:26
+version: 1.9
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -83,6 +83,8 @@ readFile(process.argv[2], 'utf8')
 
 ### 2.2 - Not using promisify, and just using the fs.promises in late nodejs versions
 
+
+If I do not care at all about supporting old versions of nodejs that do not all ready have native methods that return a promise in the file system module, then there is just doing that. In late versions of nodejs such as 16.x there is now a collection of native methods in the nodejs file system module that will already return a promise. These methods are contained in a promise object of the nodejs file system module.
 
 ```js
 let fs = require('fs');
