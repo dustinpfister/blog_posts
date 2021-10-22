@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:12:06
-version: 1.19
+updated: 2021-10-22 13:15:41
+version: 1.20
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -52,6 +52,8 @@ hw()
 ```
 
 ### 1.2 - Simple example of a callback function
+
+Before promises it was [callback functions](/2019/03/25/js-javascript-callback/) that where used as a way to define some logic that will fire after an amount of time has passed. In many cases these functions will also be given some way of finding out if some kind of error has happened also. I could get into callback functions in detail, but maybe for now I should just go over a quick example of one using the setTiemout method.
 
 ```js
 // very basic callback example using setTimeout
