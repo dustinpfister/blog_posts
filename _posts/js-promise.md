@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 15:50:16
-version: 1.31
+updated: 2021-10-22 15:53:18
+version: 1.32
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -179,9 +179,11 @@ update(get('#json_in'))
 
 ## 2 - Chaining of promises
 
-Working with promises often involves preforming one task that is needed to complete first before proceeding to another task that is going to be started with the results of the first. Some times this will need to be done over and over again for a whole bunch of things each of which can take some time, and also possibly result in one or more errors that would need to be handled.
+Working with promises often involves preforming one task that is needed to complete first before proceeding to another task that is going to be started with the results of the first. Some times this will need to be done over and over again for a whole bunch of things each of which can take some time, and also possibly result in one or more errors that would need to be handled. This can be thought of as a kind of chaining of promises one after another. So then in this section I will be going over a few examples of basic chaining of promises.
 
 ### 2.1 - simple example of a promise chain
+
+This simple example of a promise chain starts off by calling the resolve method of the Promise global. This is a method that will always return a resolved promises object. So then it will result in the next then function being called, which in the body of that I am returning another resolved Promise by way of the Promise.resolve method.
 
 ```js
 Promise.resolve('Hello World, this is')
