@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 16:05:50
-version: 1.35
+updated: 2021-10-22 16:07:37
+version: 1.36
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -366,6 +366,8 @@ fs.promises.readFile(process.argv[2], 'utf8')
 Another thing that I end up having to do now and then is to create a kind of function that will not just return a promise, but will also call itself over and over again, until some kind of condition is meet that will cause it to stop. This seems to happen often enough for me to at least want to start a section on this sort of thing when it comes to functions that are called recursivly and also used and return promises.
 
 ### 4.1 - loop back folder function
+
+For this example I have made a quick function that will read a current given folder, and then as long as it has not reached the root folder, continue to do so by calling the function itself again with revised arguments of course where the folder is the parent folder.
 
 ```js
 let fs = require('fs'),
