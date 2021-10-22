@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:42:57
-version: 1.13
+updated: 2021-10-22 11:45:23
+version: 1.14
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -124,3 +124,9 @@ fs.promises.readFile(process.argv[2], 'utf8')
     console.warn(e.code || '', ' : ', e.message);
 });
 ```
+
+## 3 - Conclusion
+
+SO then there is a lot to cover when it comes to promises in native javaScript, as well as various methods of interest in nodejs, and client side javaScript. If that was not enough there is a whole would of topics that branch off from promises such as old style callback functions, the event loop, and ways to go about having more than one event loop to work with.
+
+
