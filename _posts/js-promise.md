@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:28:57
-version: 1.25
+updated: 2021-10-22 13:33:32
+version: 1.26
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -119,7 +119,7 @@ new Promise((resolve, reject) => {
 
 ### 1.5 - Simple client side example of a Promise
 
-Now for a client side javaScript example of using one or more Promises. There a a whole lot of different things that come to mind when it comes to making a basic client side example, but for this one I thought I would just go with some quick example that involves [parsing some JOSN](/2020/02/28/js-json-parse/).
+Now for a client side javaScript example of using one or more Promises. There a a whole lot of different things that come to mind when it comes to making a basic client side example, but for this one I thought I would just go with some quick example that involves [parsing some JOSN](/2020/02/28/js-json-parse/). One good thing about this is that the act of parsing json is something that can often result in some kind of error, mainly in the event that the string that is given is nit valid josn. So then in this example I made a parseJSON method that returns, you guessed it, a promise. Inside the body of the function that I pass to the Promise constructor I use the try catch statement to try to parse a given string of text, in the event that all goes when doing so the promise will resolve with the parsed object from the text string. In the event that the parsing does not go well that will result in an error, so then in the catch block of the try catch statement that is where I would want to call reject.
 
 ```html
 <html>
