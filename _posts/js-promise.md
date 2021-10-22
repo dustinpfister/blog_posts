@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:39:41
-version: 1.29
+updated: 2021-10-22 15:37:32
+version: 1.30
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -177,11 +177,122 @@ update(get('#json_in'))
 </html>
 ```
 
-## 2 - The nodejs promisify method in the utils module
+## 2 - Chaining of promises
+
+### 2.1 - simple example of a promise chain
+
+```js
+Promise.resolve('Hello World, this is')
+.then((mess) => {
+    return Promise.resolve(mess + ' a Promise Chain');
+})
+.then((mess) => {
+    console.log(mess);
+});
+```
+
+### 2.2 - The order of then and catch matters
+
+```js
+// 'bar' WILL NOT be appended to mess if there is an error
+Promise.reject( new Error('FOOERROR') )
+.then((mess) => {
+    return Promise.resolve(mess + 'bar');
+})
+.catch((e) => {
+    if(e.message === 'FOOERROR'){
+        return Promise.resolve('foo');
+    }
+    return Promise.reject(e);
+})
+.then((mess)=>{
+    console.log(mess); // 'foo'
+});
+ 
+// 'bar' WILL be appended to mess if there is an error
+Promise.reject( new Error('FOOERROR') )
+.catch((e) => {
+    if(e.message === 'FOOERROR'){
+        return Promise.resolve('foo');
+    }
+    return Promise.reject(e);
+})
+.then((mess) => {
+    return Promise.resolve(mess + 'bar');
+})
+.then((mess)=>{
+    console.log(mess); // 'foo'
+});
+```
+
+### 2.3 - nodejs example of a chain using many methods that return a promise
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+stat = promisify(fs.stat),
+readFile = promisify(fs.readFile),
+writeFile = promisify(fs.writeFile);
+
+
+let startPath = process.argv[2] || process.cwd(),
+filePath = '';
+
+// try to get the stat of the given path
+stat(startPath)
+// if error with given path try again with cwd
+.catch((e) => {
+    startPath = process.cwd();
+    console.warn('Error with the given path:');
+    console.warn(e.message); 
+    console.warn('defaulting to cwd at: ' + startPath);
+    return stat(startPath);
+})
+// we should now have a stat object
+.then((statObj) => {
+    // if dir append conf.json
+    if(statObj.isDirectory()){
+        return Promise.resolve( path.join(startPath, 'conf.json') );
+    }
+    // if file just resolve to absolute path if not all ready
+    return Promise.resolve( path.resolve(startPath) );
+})
+// we should not have a final file path to use, try to read it
+.then((fp) => {
+    filePath = fp;
+    return readFile(filePath);
+})
+// error reading the file?
+.catch((e) => {
+    return Promise.resolve('{count:0}');
+})
+// we should have json text
+.then((text) => {
+    try{
+        return JSON.parse(text);
+    }catch(e){
+        return { count:0 }
+    }
+})
+// we should now have an object step count and write
+.then((obj) => {
+    obj.count += 1;
+    return writeFile(filePath, JSON.stringify(obj), 'utf8')
+})
+.then(() => {
+    console.log('updated file at : ' + filePath)
+})
+.catch((e) => {
+    console.warn(e.message);
+});
+```
+
+## 3 - The nodejs promisify method in the utils module
 
 In nodejs there is the util module, and in this module there is a [util promisify method](/2019/06/22/nodejs-util-promisify/) that can be used as a way to create a method that will return a promise from a method that uses old nodejs style call back functions. On nodejs built in module that is packed with methods that use this kind of callback function would be the [nodejs file system module](/2018/02/08/nodejs-filesystem/).
 
-### 2.1 - Basic util promisify example
+### 3.1 - Basic util promisify example
 
 To get started with this promisify method there is creating a quick simple script that will just read a file and spit put the data of the file to the standard output of the console if all goes well using the [read file method](/2020/05/12/nodejs-filesystem-read-file/) of the file system module that has been passed to the promisify method. To making this kind of script I would just need to start by requiring in the file system module, and then the promisify method of the utils module. At that point I can create a read file method by calling the promisify method and passing the read file method of the file system module as the first and only argument for the promisify method. The returned result of doing so is then a read file method that will return a promise when used, at which point I can call that and then start chaining then and catch calls off of the promise object.
 
@@ -200,7 +311,7 @@ readFile(process.argv[2], 'utf8')
 });
 ```
 
-### 2.2 - Not using promisify, and just using the fs.promises in late nodejs versions
+### 3.2 - Not using promisify, and just using the fs.promises in late nodejs versions
 
 
 If I do not care at all about supporting old versions of nodejs that do not all ready have native methods that return a promise in the file system module, then there is just doing that. In late versions of nodejs such as 16.x there is now a collection of native methods in the nodejs file system module that will already return a promise. These methods are contained in a promise object of the nodejs file system module.
@@ -222,7 +333,7 @@ $ node16
 $ node8 
 ```
 
-### 2.3 - Monkey patching fs.promises
+### 3.3 - Monkey patching fs.promises
 
 If at some point I want to support old versions of node again the promise object of the file system could be easily monkey patched. The general idea would be to just feature test for the promises object, and then use the util promisify method to create that method if it is not there to begin with. The process of doing monkey patching is generally frowned upon, except for these kinds of situations in which one is just trying to make sure that something that should be there is in fact there.
 
@@ -242,7 +353,7 @@ fs.promises.readFile(process.argv[2], 'utf8')
 });
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So then there is a lot to cover when it comes to promises in native javaScript, as well as various methods of interest in nodejs, and client side javaScript. If that was not enough there is a whole would of topics that branch off from promises such as old style callback functions, the event loop, and ways to go about having more than one event loop to work with.
 
