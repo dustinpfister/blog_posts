@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 15:55:40
-version: 1.33
+updated: 2021-10-22 15:58:47
+version: 1.34
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -232,6 +232,8 @@ Promise.reject( new Error('FOOERROR') )
 ```
 
 ### 2.3 - nodejs example of a chain using many methods that return a promise
+
+Now for an example that will really do something that will helper to show what some kind of real project might involve with it comes to chaining promises. In this example I am using the util promisify method in nodejs to make it so that the stat, readFile, and writeFiel method of the nodejs built in file system module will return promises. More on this method in a later section and what it is a good idea to use in when  working with nodejs, but for now there is just looking at what is going on with the chain.
 
 ```js
 let fs = require('fs'),
