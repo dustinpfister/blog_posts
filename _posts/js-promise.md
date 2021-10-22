@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:45:23
-version: 1.14
+updated: 2021-10-22 13:02:24
+version: 1.15
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -24,7 +24,7 @@ If you are wondering if the source code examples in this post are stored somewhe
 
 ### 1.1 - A nodejs example of the Promise Constructor
 
-Here I have an example of using the Promise constructor in nodejs.
+Here I have an example of using the [Promise constructor in nodejs](/2019/11/18/nodejs-promise/) with the file system module.
 
 ```js
 // requiring in the file system module
