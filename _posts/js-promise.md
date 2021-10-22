@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:02:24
-version: 1.15
+updated: 2021-10-22 13:06:17
+version: 1.16
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -22,7 +22,59 @@ To start off this post I will be taking a moment to write about some basics of P
 
 If you are wondering if the source code examples in this post are stored somewhere on Github you would be right, [they are in my test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise). In that repository I also have [all the source code examples for all my other posts on vanilla javaScript.](/categories/js/)
 
-### 1.1 - A nodejs example of the Promise Constructor
+### 1.1 - Simple promise example using the Promise Constructor
+
+```js
+// method that returns a promise using the Promise construcor
+let hw = (mess) => {
+    return new Promise((resolve, reject) => {
+        if(typeof mess === 'string' || typeof mess === 'number'){
+            resolve('Hello World ' + mess);
+        }else{
+            let e = new Error('ENASON: mess value is not a string or number.');
+            e.code = 'ENASON';
+            reject(e);
+        }
+    })
+};
+// if all goes well the next then in the chain is called
+hw('this is foo')
+.then(function(mess){
+   console.log(mess);
+});
+// if an error happens the next catch in the chain is called.
+hw()
+.catch(function(e){
+   console.warn(e.code, e.message);
+});
+```
+
+### 1.2 - Simple example of a callback function
+
+```js
+// very basic callback example using setTimeout
+console.log('one moment');
+setTimeout(function(){
+    console.log('delayed');
+}, 3000);
+```
+
+### 1.3 - Simple example of making a Promise with something that uses a callback
+
+```js
+// very basic callback example using setTimeout
+console.log('one moment');
+new Promise(function(resolve, reject){
+    setTimeout(function(){
+        resolve('delayed');
+    }, 3000);
+})
+.then(function(mess){
+    console.log(mess);
+});
+```
+
+### 1.4 - A nodejs example of the Promise Constructor
 
 Here I have an example of using the [Promise constructor in nodejs](/2019/11/18/nodejs-promise/) with the file system module.
 
@@ -59,6 +111,63 @@ new Promise((resolve, reject) => {
 });
 ```
 
+### 1.5 - Simple client side example of a Promise
+
+```html
+<html>
+  <head>
+    <title>javascript promise</title>
+  </head>
+  <body>
+    <div><textarea id="json_in" cols="60" rows="20">{ "foo": 42, "bar": [0, [1, 2], 3] }</textarea><br><br></div>
+    <div id="json_out"></div>
+    <script>
+// parse json helper that returns a promsie
+var parseJSON = function(text){
+    return new Promise(function(resolve, reject){
+        try{
+            resolve(JSON.parse(text));
+        }catch(e){
+            reject(e);
+        }
+    });
+};
+// get method that just wraps document.querySelector
+var get = function(str){
+    return document.querySelector(str);
+};
+// update method that calls parseJSON method
+var update = function(node){
+    var out = get('#json_out');
+    return parseJSON(node.value)
+    .then(function(obj){
+        out.innerText = 'top level keys in above VAILD JSON! : ' + Object.keys(obj);
+        return Promise.resolve('vaild json');
+    })
+    .catch(function(e){
+        out.innerText = e.message;
+        return promise.reject(e);
+    });
+};
+// call update for each key up event for the textarea
+get('#json_in').addEventListener('keyup', function(e){
+    update(e.target)
+    .then(function(){
+        console.log('vail json input!');
+    })
+    .catch(function(){
+        console.log('json not vaild');
+    });
+});
+// call update for first time
+update(get('#json_in'))
+.then(function(){
+   console.log('hard coded demo json is good');
+});
+    </script>
+  </body>
+</html>
+```
 
 ## 2 - The nodejs promisify method in the utils module
 
