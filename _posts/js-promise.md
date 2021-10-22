@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:35:26
-version: 1.9
+updated: 2021-10-22 11:39:00
+version: 1.10
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -104,6 +104,8 @@ $ node8
 ```
 
 ### 2.3 - Monkey patching fs.promises
+
+If at some point I want to support old versions of node again the promise object of the file system could be easily monkey patched. The general idea would be to just feature test for the promises object, and then use the util promisify method to create that method if it is not there to begin with. The process of doing monkey patching is generally frowned upon, except for these kinds of situations in which one is just trying to make sure that something that should be there is in fact there.
 
 ```js
 let fs = require('fs'),
