@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:16:33
-version: 1.5
+updated: 2021-10-22 11:22:04
+version: 1.6
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -60,7 +60,7 @@ new Promise((resolve, reject) => {
 
 ## 2 - The nodejs promisify method in the utils module
 
-In nodejs there is the util module, and in this module there is a promisify method that can be used as a way to create a method that will return a promise from a method that uses old nodejs style call back functions.
+In nodejs there is the util module, and in this module there is a [util promisify method](/2019/06/22/nodejs-util-promisify/) that can be used as a way to create a method that will return a promise from a method that uses old nodejs style call back functions. On nodejs built in module that is packed with methods that use this kind of callback function would be the [nodejs file system module](/2018/02/08/nodejs-filesystem/).
 
 ### 2.1 - Basic util promisify example
 
