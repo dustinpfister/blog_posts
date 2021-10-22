@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:25:44
-version: 1.24
+updated: 2021-10-22 13:28:57
+version: 1.25
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -119,7 +119,7 @@ new Promise((resolve, reject) => {
 
 ### 1.5 - Simple client side example of a Promise
 
-Now for a client side javaScript example of using one or more Promises.
+Now for a client side javaScript example of using one or more Promises. There a a whole lot of different things that come to mind when it comes to making a basic client side example, but for this one I thought I would just go with some quick example that involves [parsing some JOSN](/2020/02/28/js-json-parse/).
 
 ```html
 <html>
