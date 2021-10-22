@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:16:40
-version: 1.21
+updated: 2021-10-22 13:21:34
+version: 1.22
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -64,6 +64,8 @@ setTimeout(function(){
 ```
 
 ### 1.3 - Simple example of making a Promise with something that uses a callback
+
+When it comes to using some kind of method that uses a callback as a way to define some logic that will fire after it is done to create a promise that can be done by just calling the method in the body of a function that is given to the constructor. The only thing that needs to be done different beyond hat is that I just need to call resolve of reject inside the body of the callback function.
 
 ```js
 // very basic callback example using setTimeout
