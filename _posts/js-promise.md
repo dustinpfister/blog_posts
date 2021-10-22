@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 15:58:47
-version: 1.34
+updated: 2021-10-22 16:05:50
+version: 1.35
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -361,7 +361,45 @@ fs.promises.readFile(process.argv[2], 'utf8')
 });
 ```
 
-## 4 - Conclusion
+## 4 - Recursive functions that return a promise
+
+Another thing that I end up having to do now and then is to create a kind of function that will not just return a promise, but will also call itself over and over again, until some kind of condition is meet that will cause it to stop. This seems to happen often enough for me to at least want to start a section on this sort of thing when it comes to functions that are called recursivly and also used and return promises.
+
+### 4.1 - loop back folder function
+
+```js
+let fs = require('fs'),
+path = require('path'),
+promisify = require('util').promisify,
+readdir = promisify(fs.readdir);
+ 
+// loop back method
+let loopBack = (dir_start, forFolder, acc) => {
+    acc = acc || [];
+    forFolder = forFolder || function(files, dir, acc){ acc.push({files: files, dir: dir}) };
+    // if we are at root
+    if(dir_start.toLowerCase() === 'c:\\' || dir_start === '/' ){
+        return readdir(dir_start)
+        .then((files)=>{
+            forFolder(files, dir_start, acc);
+            return Promise.resolve(acc);
+        });
+    }
+    return readdir(dir_start)
+    .then((files)=>{
+        forFolder(files, dir_start, acc);
+        // calling loopBack itself as long as we are not at root
+        return loopBack( path.join(dir_start, '..'), forFolder, acc );
+    });
+};
+ 
+loopBack(process.cwd())
+.then((result) => {
+    console.log(result);
+});
+```
+
+## 5 - Conclusion
 
 So then there is a lot to cover when it comes to promises in native javaScript, as well as various methods of interest in nodejs, and client side javaScript. If that was not enough there is a whole would of topics that branch off from promises such as old style callback functions, the event loop, and ways to go about having more than one event loop to work with.
 
