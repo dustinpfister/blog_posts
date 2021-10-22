@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 15:53:18
-version: 1.32
+updated: 2021-10-22 15:55:40
+version: 1.33
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -196,6 +196,8 @@ Promise.resolve('Hello World, this is')
 ```
 
 ### 2.2 - The order of then and catch matters
+
+When working out a Promise chain it is impotent to make sure that I am aware of the order of the then and catch function calls. For example if I have a catch call that will return a resolved promise in the event of a certain kind of error that is to be used by a then call above it that will result in that process being skipped.
 
 ```js
 // 'bar' WILL NOT be appended to mess if there is an error
