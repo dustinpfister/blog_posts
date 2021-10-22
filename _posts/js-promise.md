@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:21:34
-version: 1.22
+updated: 2021-10-22 13:24:21
+version: 1.23
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -82,7 +82,7 @@ new Promise(function(resolve, reject){
 
 ### 1.4 - A nodejs example of the Promise Constructor
 
-Here I have an example of using the [Promise constructor in nodejs](/2019/11/18/nodejs-promise/) with the file system module.
+Here I have an example of using the [Promise constructor in nodejs](/2019/11/18/nodejs-promise/) with the file system module. For this example I am using the file system module to read file to which the location of which will be supplied by way of the first [positional argument](/2020/12/10/linux-bash-script-parameters-positional/) when calling the script.
 
 ```js
 // requiring in the file system module
@@ -92,7 +92,7 @@ new Promise((resolve, reject) => {
     let uri = process.argv[2];
     // reject if not URI to a file is given
     if(!uri){
-        reject(new Error('ENOURI: no path to file given as first positonal argument.'));
+        reject(new Error('ENOURI: no path to file given as first positional argument.'));
     }else{
         // if we have a given uri try to read it
         fs.readFile(uri, 'utf8', (e, data) => {
