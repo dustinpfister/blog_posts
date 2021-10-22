@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 11:39:00
-version: 1.10
+updated: 2021-10-22 11:40:46
+version: 1.11
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -20,7 +20,7 @@ To start off this post I will be taking a moment to write about some basics of P
 
 ### The source code examples in this post can be found on Github
 
-If you are wondering if the source code examples in this post are stored somewhere on Github you would be right, they are in my test vjs Github repository. In that repository I also have all the source code examples for all my other posts on vanilla javaScript
+If you are wondering if the source code examples in this post are stored somewhere on Github you would be right, [they are in my test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise). In that repository I also have [all the source code examples for all my other posts on vanilla javaScript.](/categories/js/)
 
 ### 1.1 - A nodejs example of the Promise Constructor
 
