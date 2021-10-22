@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 16:07:37
-version: 1.36
+updated: 2021-10-22 16:10:24
+version: 1.37
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -367,7 +367,7 @@ Another thing that I end up having to do now and then is to create a kind of fun
 
 ### 4.1 - loop back folder function
 
-For this example I have made a quick function that will read a current given folder, and then as long as it has not reached the root folder, continue to do so by calling the function itself again with revised arguments of course where the folder is the parent folder.
+For this example I have made a quick function that will read a current given folder, and then as long as it has not reached the root folder, continue to do so by calling the function itself again with revised arguments of course where the folder is the parent folder. For now I just want to have a function that will be used to just add things to an array for each folder moving back to the root folder.
 
 ```js
 let fs = require('fs'),
