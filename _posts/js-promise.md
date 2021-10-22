@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 934
-updated: 2021-10-22 13:08:31
-version: 1.17
+updated: 2021-10-22 13:10:37
+version: 1.18
 ---
 
 I have not yet got around to writing a post that is a general overview of [Promises in javaScript](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261) just a whole lot of posts on various native methods of the Promise Object as well as various libraries and other native javaScript features surrounding the use of Promises. So then in todays post I will be putting and end to this by writing a post that will serve as a way to tie all of this together.
@@ -24,10 +24,10 @@ If you are wondering if the source code examples in this post are stored somewhe
 
 ### 1.1 - Simple promise example using the Promise Constructor
 
-For this basic getting started example with promises I am using the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) with the new keyword as a way to create a new promise object to which I can call then and catch methods off of.
+For this basic getting started example with promises I am using the [Promise Constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise) with the new keyword as a way to create a new promise object to which I can call then and catch methods off of. When calling the constructor I pass a function as the first argument and it is in the body of the function where I will define the conditions that will result in the promise object resolving or rejecting.
 
 ```js
-// method that returns a promise using the Promise construcor
+// method that returns a promise using the Promise constructor
 let hw = (mess) => {
     return new Promise((resolve, reject) => {
         if(typeof mess === 'string' || typeof mess === 'number'){
