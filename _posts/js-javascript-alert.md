@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-23 14:11:21
-version: 1.34
+updated: 2021-10-23 14:15:37
+version: 1.35
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -19,7 +19,7 @@ In this post I will be giving a quick overview of the window.alert method in cli
 
 <!-- more -->
 
-## 1 - javaScript alert for logging
+## 1 - javaScript alert basics
 
 In many basic javaScript examples that aim to help people that are new to javaScript get started, the window.alert method is often used as a way to log the result of something so that the developer can confirm that the little javaScript example is working. So that being said one of these simple javaScript examples might look something like this.
 
@@ -104,7 +104,7 @@ console.log({
 
 ### 3.2 - innerText element property
 
-When it comes to displaying a message in a html document there are many other options to display something aside from javaScript alert. When gaining a reference to an html element in client side javaScript there are properties like innerText that can be used to set to change the inner text node of certain elements that have text nodes such as paragraph elements. 
+When it comes to displaying a message in a html document there are many other options to display something aside from javaScript alert. For example there is using a method the [document.querySelector](/2020/06/23/js-document-queryselector/) or [document.getElementById](/2018/12/27/js-document-getelementbyid/) to get an element reference to an element in the hard coded html. After gaining a reference to an html element in client side javaScript there are properties like innerText that can be used to set to change the inner text node of certain elements that have text nodes such as paragraph elements. 
 
 So lets take a quick look at a simple innerText example for displaying something.
 
