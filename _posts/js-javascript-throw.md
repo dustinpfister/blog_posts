@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 13:44:04
-version: 1.50
+updated: 2021-10-23 13:45:32
+version: 1.51
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -277,7 +277,7 @@ Choosing not to call process.exit at all is what I have decided to do here, as a
 
 ### 5.3 - Client side javaScript example of a global error handler
 
-So not for a client side javaScript example of a global error hander.
+So not for a client side javaScript example of a global error hander. For this kind of error handler I would ant to attach to the window object of the page. When doing so I will want to make sure that I do so first before and situation that might involve a throw statement being called outside of that of a try catch block.
 
 ```html
 <html>
