@@ -11,9 +11,9 @@
 * start draft folder
 * be sure to have a section on the visability change event, and link to the post
 
-### () - new post #934 for 10/22/2021 - js-promise
-* start a new javaScript post on promises in general
-* be sure to link to all js as well as nodejs posts on promises and touch base on the topics
+### ( done 10/23/2021 ) - new post #934 for 10/22/2021 - js-promise
+* (done) start a new javaScript post on promises in general
+* (done) be sure to link to all js as well as nodejs posts on promises and touch base on the topics
 
 ### ( done 09/03/2021 ) - new post #927 for 09/03/2021 - js-javascript-game-framework
 * (done) start a new post on my js-javascript-game-framework proto
