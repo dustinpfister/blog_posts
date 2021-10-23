@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 11:42:32
-version: 1.39
+updated: 2021-10-23 12:49:28
+version: 1.40
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -196,6 +196,73 @@ must give a number between 0 and 9
 */
 ```
 
-## 4 - Conclusion
+## 4 - Using promises and the throw keyword
+
+### 4.1 - basic promise example
+
+```js
+new Promise(function (resolve, reject) {
+    reject(new Error('Calling reject'));
+})
+.catch(function (e) {
+    console.log(e.message); // 'Calling reject'
+});
+ 
+new Promise(function (resolve, reject) {
+    throw new Error('Just using throw, and not calling anything.');
+})
+.catch(function (e) {
+    console.log(e.message); // ''Just using throw, and not calling anything.''
+});
+```
+
+## 5 - Global Error handers and throw
+
+### 5.1 - In nodejs the default of what happens when using throw in
+
+```js
+// loop using setInterval
+let count = 5;
+let t = setInterval(function () {
+        count -= 1;
+        console.log('count: ' + count);
+        if (count === 0) {
+            clearInterval(t);
+        }
+    }, 1000);
+// Throwing an error will cause the script to stop working
+// the console.log below will not print, and on top of it the loop
+// above will not work also
+throw new Error('Throwing an error outside of any try');
+console.log('This will not print');
+```
+
+### 5.2 - Using an event hander in which I DO NOT call process.exit
+
+```js
+
+// setting an new uncaughtException handler to which
+// I AM NOT calling process.exit
+process.on('uncaughtException', (e) => {
+    console.log('An Error has happened: ' + e.message);
+});
+// loop using setInterval
+let count = 5;
+let t = setInterval(function () {
+        count -= 1;
+        console.log('count: ' + count);
+        if (count === 0) {
+            clearInterval(t);
+        }
+    }, 1000);
+// Throwing an error will cause the console.log below to not print
+// but the above loop will continue until it is done.
+throw new Error('Throwing an error outside of any try');
+console.log('This will not print');
+```
+
+## 6 - Conclusion
 
 So the javaScript throw statement is what is used in javaScript to throw a custom user define error. However it is just one thing that comes to mind when it comes to creating and working with user defined errors. There is not just creating error objects after all, but also how to go about handling them. The javaScript try and catch blocks can be used as a way to define some code that will run in the event that a user define error happens. However there is not always just working with the try catch statement directly, as another option is to use some kind of promise library such as [bluebrid](/2017/12/02/nodejs-bluebird/), or even native [Promise objects](/2021/10/22/js-promise/) now that are ways of going about abstracting that away.
+
+
