@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 13:21:09
-version: 1.43
+updated: 2021-10-23 13:23:52
+version: 1.44
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -221,6 +221,8 @@ new Promise(function (resolve, reject) {
 ```
 
 ## 5 - Global Error handers and throw
+
+There is also the question of how to go about creating global error handers for a script in nodejs as well as in client side javaScript. That is to have a way to define some logic that will fire in the event that any kind of error happens in a web page, or in a nodejs script. In this section I will be going over some examples that have to do with creating some kind of final catch all in javaScript then when using the throw keyword.
 
 ### 5.1 - In nodejs the default of what happens when using throw in
 
