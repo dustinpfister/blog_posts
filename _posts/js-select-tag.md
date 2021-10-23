@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2021-10-23 13:59:39
-version: 1.22
+updated: 2021-10-23 14:01:54
+version: 1.23
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -23,7 +23,7 @@ So the basic idea with select tags is to have a single select element, and then 
 
 So when I set an on change event listener to the selection element the value of the selection element will change each time the user selects one of the options in the select element drop down menu. In addition I can define what I want to happen in the body of that event listener when it comes to what needs to happen each time the user changes something with the select tag menu.
 
-So then in this section I will be starting out with some basic examples of the select tag. I will be trying to keep these examples fairly simple, but I still assume that you have at least some background with javaScript. If you are totally new it might be best to start out with some getting started type post on javaScript. In additional to just the very basics it might also be a good idea to read up more on events in terms of event objects, and the various kinds of events that can be attached for when create event listeners.
+So then in this section I will be starting out with some basic examples of the select tag. I will be trying to keep these examples fairly simple, but I still assume that you have at least some background with javaScript. If you are totally new it might be best to start out with some [getting started type post on javaScript](/2018/11/27/js-getting-started/). In additional to just the very basics it might also be a good idea to read up more on events in terms of [event objects](/2020/07/23/js-event-object/), and the various kinds of events that can be attached for when create [event listeners](/2019/01/16/js-event-listeners/).
 
 ### - The source code examples here are on Github
 
