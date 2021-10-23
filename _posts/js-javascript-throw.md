@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 11:32:29
-version: 1.36
+updated: 2021-10-23 11:35:32
+version: 1.37
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -102,7 +102,7 @@ try {
 
 ### 2.3 - High order function example
 
-So then because the throw keyword can be used in the body of a function that will trigger and catch block if the function is being called in a try block that corresponds to the catch block this opens up a lot of possibles when it comes to writing higher order functions.
+So then because the throw keyword can be used in the body of a function that will trigger and catch block if the function is being called in a try block that corresponds to the catch block this opens up a lot of possibles when it comes to writing higher order functions. For example I can make some kind of high order function that works in a similar way to some of the basic features of [Promises when it comes to the whole resolve and reject](/2019/09/18/js-promise-resolve-reject/) aspect of them.
 
 ```js
 // high order function that takes functions as arguments
