@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 11:29:05
-version: 1.34
+updated: 2021-10-23 11:30:44
+version: 1.35
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -63,7 +63,7 @@ So now that we know how to create errors with the javaScript throw statement, ma
 
 ## 2 - javaScript throw and try catch blocks
 
-When an Error is thrown in a [try block then any catch block](/2019//03/02/js-javascript-try/) present with that try statement will of course be executed which can be used to handle the Error. This is something that should be used either directly, or indirectly when causing user define errors with the throe statement. That is unless for one reason or another I want the program as a whole to halt, which would end up being the case if there are no catch stamens that will prevent that from happening.
+When an Error is thrown in a [try block then any catch block](/2019//03/02/js-javascript-try/) present with that try statement will of course be executed which can be used to handle the Error. This is something that should be used either directly, or indirectly when causing user define errors with the throw statement. That is unless for one reason or another I want the program as a whole to halt, which would end up being the case if there are no catch stamens that will prevent that from happening.
 
 ### 2.1 - A Basic try catch example
 
@@ -78,6 +78,8 @@ try {
 ```
 
 ### 2.2 - A Basic try catch example
+
+In this example I am using throw in the body of a function, and then calling that function in the body of a try block. This will result in the catch block firring also.
 
 ```js
 var process = function (str) {
