@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2020-10-20 12:28:39
-version: 1.26
+updated: 2021-10-23 10:58:35
+version: 1.27
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception or error much like the built in errors that will happen. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather that just what happens out of the box with javaScript. 
@@ -59,6 +59,8 @@ So now that we know how to create errors with the javaScript throw statement, ma
 
 When an Error is thrown in a [try block then any catch block](/2019//03/02/js-javascript-try/) present with that try statement will of course be executed which can be used to handle the Error.
 
+### 2.1 - A Basic try catch example
+
 ```js
 var process = function (str) {
     if (str === 'bar') {
@@ -76,7 +78,45 @@ try {
 } catch (e) {
     console.log(e.message); // 'must give bar'
 }
- 
+```
+
+### 2.2 - high order function example
+
+```js
+// high order function that takes functions as arguments
+// and uses a try catch when calling them
+var highOrder = function (func, resolve, reject) {
+    var result = { pass: false, mess: '' };
+    try {
+        result.mess = resolve( func() );
+        result.pass = true;
+    } catch (e) {
+        try {
+            result.mess = reject(e);
+        } catch (e) {
+            result.mess = e.message || 'reject method error with no message';
+        }
+    }
+    return result;
+};
+// resolve and reject methods
+var resolve = function (res) {
+    return res;
+};
+var reject = function (e) {
+    return e.message;
+};
+// error demo
+var result = highOrder(function () {
+        throw new Error('Causing an error in the first function');
+        return 'foo'
+    }, resolve, reject);
+console.log(result); // { pass: false, mess: 'Causing an error in the first function' }
+// no error demo
+var result = highOrder(function () {
+        return 'foo'
+    }, resolve, reject);
+console.log(result); // { pass: true, mess: 'foo' }
 ```
 
 ## 3 - Using throw with an Error constructor
