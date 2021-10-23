@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 13:23:52
-version: 1.44
+updated: 2021-10-23 13:26:43
+version: 1.45
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -226,6 +226,8 @@ There is also the question of how to go about creating global error handers for 
 
 ### 5.1 - In nodejs the default of what happens when using throw in
 
+By default when making a nodejs script if I use the throw keyword in the top level any code after that will not file at all. On top of that the default action of nodejs for this kind of error is to print what happened to the standard error, and then call the process.exit method with a status code of 1.
+
 ```js
 // loop using setInterval
 let count = 5;
@@ -242,6 +244,8 @@ let t = setInterval(function () {
 throw new Error('Throwing an error outside of any try');
 console.log('This will not print');
 ```
+
+So what if I want something else to happen in this kind of situation? Such as setting the exit code to some other kind of code other than 1, of maybe even not call process.exit at all actually?
 
 ### 5.2 - Using an event hander in which I DO NOT call process.exit
 
