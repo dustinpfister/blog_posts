@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 13:30:40
-version: 1.47
+updated: 2021-10-23 13:33:23
+version: 1.48
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -272,6 +272,8 @@ let t = setInterval(function () {
 throw new Error('Throwing an error outside of any try');
 console.log('This will not print');
 ```
+
+Choosing not to call process.exit at all is what I have decided to do here, as a result the console.log at the bottom of the script will still not fire because of the throw statement. However the loop continues until the count of zero is reached, at which point the script then exits.
 
 ## 6 - Conclusion
 
