@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2020-10-21 13:43:43
-version: 1.20
+updated: 2021-10-23 13:53:46
+version: 1.21
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -17,11 +17,15 @@ A select tag or select element consists of a select tag and then a few nested op
 
 <!-- more -->
 
-## 1 - Select tag basic example
+## 1 - Select tag basics
 
 So the basic idea with select tags is to have a single select element, and then a nested option element for each option in the selection element. By default the inner text of the option element will be the value property of the select element, however it is advisable to have a separate display value, and actual value. 
 
 So when I set an on change event listener to the selection element the value of the selection element will change each time the user selects one of the options in the select element drop down menu. In addition I can define what I want to happen in the body of that event listener when it comes to what needs to happen each time the user changes something with the select tag menu.
+
+### - The source code examples here are on Github
+
+I have the source code examples I am using in this post stored in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-select-tag). Which is also where I store all my other source code examples for my various [other posts on vanilla javaScript](/categories/js/).
 
 ### 1.1 - Just display the current select value
 
