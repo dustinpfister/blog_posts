@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 402
-updated: 2021-10-23 12:49:28
-version: 1.40
+updated: 2021-10-23 12:54:28
+version: 1.41
 ---
 
 The [javaScript throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) statement can be used to intentionally throw a user defined exception, or error of you prefer much like the built in errors that will happen now and then. It can be used as a way to stop execution of a javaScript program in the event that some kind of essential condition is not in order, or it can be used with [try catch statements](/2019/03/02/js-javascript-try/), and other means of error handing with custom events rather than just what happens out of the box with javaScript. 
@@ -197,6 +197,8 @@ must give a number between 0 and 9
 ```
 
 ## 4 - Using promises and the throw keyword
+
+When using a Promise there is calling the resolve or reject methods in the body of a function that I pass to the Promise constructor that I call with the new keyword. When I call the reject method I pass an Error object that will be accessible as an argument for the next catch function call in the returned promise object.
 
 ### 4.1 - basic promise example
 
