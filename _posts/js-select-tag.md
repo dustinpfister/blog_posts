@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2021-10-23 14:03:58
-version: 1.24
+updated: 2021-10-23 14:06:58
+version: 1.25
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -27,7 +27,7 @@ So then in this section I will be starting out with some basic examples of the s
 
 ### - The source code examples here are on Github
 
-I have the source code examples I am using in this post stored in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-select-tag). Which is also where I store all my other source code examples for my various [other posts on vanilla javaScript](/categories/js/).
+I have the source code examples I am using in this post stored in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-select-tag). Which is also where I store all my other source code examples for my various [other posts on vanilla javaScript](/categories/js/). I do get around to editing my content from time to time, so in these various folders in the test vjs repository I have notes that might outline future edits, and in some cases they might have more up to date revisions of the source code that have not been publish here just yet as I have not got around to editing just yet. In any case if you see something wrong here that would be a good place to make a pull request for a source code problem, there is also the comments section at the bottom of this post.
 
 ### 1.1 - Just display the current select value
 
