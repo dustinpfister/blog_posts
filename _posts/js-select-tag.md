@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 530
-updated: 2021-10-23 14:01:54
-version: 1.23
+updated: 2021-10-23 14:03:58
+version: 1.24
 ---
 
 When working out some kind of interface for a client side javaScript project [select tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) are often used to give the user a range of options to choose from with additional [option tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) nested in a select tag. In other words the use of select tags along with option tags will result in a drop down menu of sorts, where one option might serve as a default of sorts along with at least one other option.
@@ -31,7 +31,7 @@ I have the source code examples I am using in this post stored in my [test vjs G
 
 ### 1.1 - Just display the current select value
 
-So for starters here is a fairly simple copy and past select tag example. I have a span element the text of which will be set to whatever the value of the select tag is. In then have three option elements for the select tag each of which have some inner text that will be the value for the select tag if the option is the one selected. I then have a simple set disp method that when called will just set the inner text of the disp element to the value of the select element. I then make my set disp method the handler for the on change event for the select element, and also call it once for starters right away to make sure that it is set to the current value of the select element right away before any other option is selected.
+So for starters here is a fairly simple copy and past select tag example. I have a span element the text of which will be set to whatever the value of the select tag is. In then have three option elements for the select tag each of which have some inner text that will be the value for the select tag if the option is the one selected. I then have a simple set disp method that when called will just set the inner text of the disp element to the value of the select element. I then make my set disp method the handler for the [on change event](/2019/01/04/js-onchange/) for the select element, and also call it once for starters right away to make sure that it is set to the current value of the select element right away before any other option is selected.
 
 ```html
 <html>
