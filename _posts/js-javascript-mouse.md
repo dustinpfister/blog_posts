@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-21 16:16:10
-version: 1.66
+updated: 2021-10-24 16:37:39
+version: 1.67
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -790,7 +790,35 @@ window.addEventListener('wheel', function(e){
 </html>
 ```
 
-## 7 - Conclusion
+## 7 - Pointer events to work with mouse and touch events
+
+Another option when it comes to working with a mouse, as well as pointer devices in general actually would be to use pointer events in place of mouse and or touch events only.
+
+### 7.1 - Basic pointer event example using the pointer down event
+
+```js
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out" data-count="0" style="background:gray;width:200px;height:200px;padding:20px;">0<div>
+        <script>
+window.addEventListener('pointerdown', function(e){
+    var node = e.target;
+    if(node.dataset.count){
+        var c = parseInt(node.dataset.count);
+        c+= 1;
+        node.dataset.count = c;
+        node.innerText = c;
+    }
+});
+        </script>
+    </body>
+</html>
+```
+
+## 8 - Conclusion
 
 So hopefully this post has helped you gain some basic insight into how to get going with a mouse when making a user interface with javaScript. However there is much more to learn and be aware of when it comes to using mouse events, as well as other events such as touch events, and keyboard events. This post does not outline a fully comprehensive input controller module or project or sorts after all as the focus here is just on things that have to do with working with the mouse.
 
