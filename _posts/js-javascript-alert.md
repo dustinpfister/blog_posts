@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:05:19
-version: 1.37
+updated: 2021-10-24 15:06:34
+version: 1.38
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -21,7 +21,7 @@ In this post I will be giving a quick overview of the window.alert method in cli
 
 ## 1 - javaScript alert basics
 
-In this section I will be starting out with just a few basic examples of the javaScript alter method. These examples will be fairly basic, however this is still not a kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post.
+In this section I will be starting out with just a few basic examples of the javaScript alter method. These examples will be fairly basic, however this is still not a kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post. So I assume that you have at least some background when it comes to the very first steps of getting started with clinet side javaScript when it comes to using the alter method.
 
 ### 1.1 - basic javaScript alert example
 
