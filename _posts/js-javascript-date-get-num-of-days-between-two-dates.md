@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2021-10-24 16:09:59
-version: 1.25
+updated: 2021-10-24 16:12:05
+version: 1.26
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -18,6 +18,8 @@ Beyond that I might expand this post a little with additional examples that migh
 <!-- more -->
 
 ## 1 - Some solutions for getting number of days between to dates
+
+In this section I will be going over a few examples that can be used to get the number of days between two javaScript dates. I assume that you have at least some background when it comes to getting started with client side javaScript in general as I will nt be going over every little detail that should be know before hand here. There is also looking more into what there is to work with when it comes to the core javaScript date class in general also which would be a good idea to do at some point.
 
 ### - The source code examples here are on Github
 
