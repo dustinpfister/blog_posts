@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-24 17:21:55
-version: 1.73
+updated: 2021-10-24 17:24:59
+version: 1.74
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -846,7 +846,7 @@ out.addEventListener('pointerdown', function(e){
 
 ### 7.3 - On pointer move event and the touch action css property
 
-When it comes to using the pointer move event for the first time you might run into [a problem compared to the touch move event when the pointer device is a touch device](https://stackoverflow.com/questions/48124372/pointermove-event-not-working-with-touch-why-not) rather than a mouse.
+The pointer move event then works just fine when it comes to using a mouse as I get more or less the same effect as I have come to expect from the mouse move event. However when it comes to using the pointer move event for the first time you might run into [a problem compared to the touch move event when the pointer device is a touch device](https://stackoverflow.com/questions/48124372/pointermove-event-not-working-with-touch-why-not) rather than a mouse. One way to address this problem would be to use the [touch action css property](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action) and be sure to set it to none for the node that one is attaching to for the pointer move event.
 
 ```html
 <html>
