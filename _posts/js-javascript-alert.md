@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:29:01
-version: 1.45
+updated: 2021-10-24 15:31:34
+version: 1.46
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -59,7 +59,7 @@ With some javaScript examples it can get annoying to have a whole bunch of alert
 
 ### 2.1 - A loop example with alert and a while loop
 
-One way to go about looping is to create a while loop.
+One way to go about looping is to create a for loop, while, or do while type loop. For this example I went with a while loop and did a trick that involves looping backward with an index number to zero when it comes to the expression that is usd for the while loop to find out if the looping should stop or not.
 
 ```html
 <html>
