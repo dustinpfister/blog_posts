@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2020-11-02 13:40:49
-version: 1.19
+updated: 2021-10-24 16:01:03
+version: 1.20
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
 
-Like most things like this it is important to look at [more than one solution](https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates), so I will be taking a look at two solutions for this sort of thing. One example is very simple, and another is a little more complex. Some times it is called for to use a more complex example for things, but so far it would seem that the simple solution for this does in fact work okay. The reason why is because as far as I can tell both solutions will yield the same result when tested with a few examples.
+Like most things like this it is important to look at [more than one solution](https://stackoverflow.com/questions/2627473/how-to-calculate-the-number-of-days-between-two-dates), so I will be taking a look at two main solutions for this sort of thing, one example is very simple, and another is a little more complex. Some times it is called for to use a more complex solution for something actually, but so far it would seem that the simple solution for this does in fact work okay. The reason why is because as far as I can tell both solutions will yield the same result when tested with a few examples.
+
+Beyond that I might expand this post a little with additional examples that might prove to be relevant to the general topic. However for the most part there might only be so much to write about when it comes to this specific kind of thing when it comes to programing with javaScript.
 
 <!-- more -->
 
@@ -72,9 +74,9 @@ This solution seems to work okay for the give example here, but will result in a
 
 However it does make use of a few tricks that might prove to be of value elsewhere. Namely the trick that is used to get the number of days in a give month. Also if a solution like this where working as expected it might help address some additional issues when it comes to making this kind of solution to the problem at hand. Still lets just go with the simpler solution for now, but maybe throw a few more use case examples at it.
 
-## 3 - Setting tie of dates to midnight
+## 3 - Setting time of dates to midnight
 
-One thing that comes to mind when doing this is if I should set the tie of the date objects to a standard time, and then just take into account what day is was. In some situations this might be all that I care about when making working things out with this. That is that I am just interested in the difference in days between two dates in terms of the year, month, and day. It would nit be to hard to adjust the dates, just have a method that will return a new date object that has the same values when it comes to what I care about preserved but with all values that have to do with time of day set to zero.
+One thing that comes to mind when doing this is if I should set the time of the date objects to a standard time, and then just take into account what day is was. In some situations this might be all that I care about when making working things out with this. That is that I am just interested in the difference in days between two dates in terms of the year, month, and day. It would nit be to hard to adjust the dates, just have a method that will return a new date object that has the same values when it comes to what I care about preserved but with all values that have to do with time of day set to zero.
 
 ```js
 var setTimeMidnight = function (d) {
