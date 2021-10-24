@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:43:41
-version: 1.49
+updated: 2021-10-24 15:46:53
+version: 1.50
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -192,7 +192,7 @@ The prompt method might still come in handy now and then, but for the most part 
 
 ## 4 - Writing a custom once method in place of using javaScript alert
 
-In some situations I might only want something to be logged to be logged, altered, or displayed just once. one way to do so is to use a method that will create and return a method that will only log to the console once, and then that is it.
+In some situations I might only want something to be logged, altered, or displayed just once rather than over and over again in a loop. The javaScript alert method, at least by itself would prove to be a bad choice for this sort of thing. One way to do so is to use a method that will create and return a method that will only log to the console once, and then that is it. So then this would be an example of something that is often referred to as a [closure in javaScript](/2019/02/22/js-javascript-closure/).
 
 ```js
 let createOnce = () => {
