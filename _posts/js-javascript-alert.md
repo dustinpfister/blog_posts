@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:33:19
-version: 1.47
+updated: 2021-10-24 15:41:52
+version: 1.48
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -69,7 +69,7 @@ One way to go about looping is to create a for loop, while, or do while type loo
     <body>
         <script>
 var i = 5,n;
-while(i--){
+while(--i){
     n = Math.pow( 2, i );
     alert( 'i: ' + i + ', n: ' + n);
 }
@@ -77,6 +77,8 @@ while(i--){
     </body>
 </html>
 ```
+
+Anyway when I open this file up in my web browser the value of i will start at 4 and loop back to zero, when zero is reacted the example stops. However for each loop an alert will happen with the string value that I am creating for the value that I am passing gto the alert function. So the alert does not happen once for the first value and then thats it, it would seem that it does pause the flow of things as each value of i, as well as n ends up being alerted.
 
 ### 2.2 - An example using the Array.map method
 
