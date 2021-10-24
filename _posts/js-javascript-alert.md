@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:19:41
-version: 1.43
+updated: 2021-10-24 15:24:58
+version: 1.44
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -56,6 +56,27 @@ The alert method is a property of the window object so there is no real differen
 ## 2 - JavaScript Alert and loops
 
 With some javaScript examples it can get annoying to have a whole bunch of alerts happen one after another. So for the most part using an alert in the body of a loop or any kind of method that is called a whole bunch of times such as with a while loop is not such a good idea. Except for maybe a crude yet effective means of debugging, which is often what this method is used for in various code examples in the open web. The main reason why might have to do with the fact that the alert method will pause the execution of any additional javaScript after the method is called until the alert is clicked. So then the alert method is a way to get a loop to stop for a second. Still there are alternatives a javaScript developer should be aware of that I will be getting to later in this post, for now in this section I will be getting the loop thing out of the way though.
+
+### 2.1 - A loop example with alert and a while loop
+
+One way to go about looping is to create a while loop.
+
+```html
+<html>
+    <head>
+        <title>javascript alert</title>
+    </head>
+    <body>
+        <script>
+var i = 5,n;
+while(i--){
+    n = Math.pow( 2, i );
+    alert( 'i: ' + i + ', n: ' + n);
+}
+        </script>
+    </body>
+</html>
+```
 
 ### 2.2 - An example using the Array.map method
 
