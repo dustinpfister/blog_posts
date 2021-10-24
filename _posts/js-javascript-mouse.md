@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-24 16:40:20
-version: 1.69
+updated: 2021-10-24 16:41:41
+version: 1.70
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -795,6 +795,8 @@ window.addEventListener('wheel', function(e){
 Another option when it comes to working with a mouse, as well as pointer devices in general actually would be to use [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) in place of mouse and or touch events only. these kinds of events are then another way to work with a mouse in client side javaScript, any might also prove to be a good starting point when it comes to the concern that arise when it comes to making web applications that will not just work with a mouse only, which is a big mistake these days to say the least.
 
 ### 7.1 - Basic pointer event example using the pointer down event
+
+For this example I am starring this section off with an example where I am just attaching a pointer down event to the window object.
 
 ```js
 <html>
