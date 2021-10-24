@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-24 16:45:07
-version: 1.71
+updated: 2021-10-24 16:46:37
+version: 1.72
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -819,6 +819,8 @@ window.addEventListener('pointerdown', function(e){
     </body>
 </html>
 ```
+
+So when I open up this example in my browser the count will step when I left client the div, but also when I click any other button also. When it comes to using a touch device to touch a div that two seems to work as expected by causing the count to step forward.
 
 ## 8 - Conclusion
 
