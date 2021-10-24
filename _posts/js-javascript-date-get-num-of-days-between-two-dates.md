@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2021-10-24 16:13:42
-version: 1.27
+updated: 2021-10-24 16:20:27
+version: 1.28
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -19,7 +19,7 @@ Beyond that I might expand this post a little with additional examples that migh
 
 ## 1 - Some solutions for getting number of days between to dates
 
-In this section I will be going over a few examples that can be used to get the number of days between two javaScript dates. I assume that you have at least some background when it comes to [getting started with client side javaScript](/2018/11/27/js-getting-started/) in general as I will not be going over every little detail that should be know before hand here. There is also looking more into what there is to work with when it comes to the core [javaScript date class](/2019/02/14/js-javascript-date/) in general also which would be a good idea to do at some point.
+In this section I will be going over a few examples that can be used to get the number of days between two javaScript dates. I assume that you have at least some background when it comes to [getting started with client side javaScript](/2018/11/27/js-getting-started/) in general, such as with the [file protocol](/2020/09/21/js-getting-started-file-protocol), or the [javaScript console](/2019/07/29/js-getting-started-javascript-console/) as I will not be going over every little detail that should be know before hand here. There is also looking more into what there is to work with when it comes to the core [javaScript date class](/2019/02/14/js-javascript-date/) in general also which would be a good idea to do at some point.
 
 ### - The source code examples here are on Github
 
