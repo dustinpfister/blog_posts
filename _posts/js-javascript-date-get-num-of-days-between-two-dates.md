@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 600
-updated: 2021-10-24 16:01:03
-version: 1.20
+updated: 2021-10-24 16:04:36
+version: 1.21
 ---
 
 This will be a quick post on [getting the number of days](https://www.geeksforgeeks.org/how-to-calculate-the-number-of-days-between-two-dates-in-javascript/) between two [javaScript dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date). This is a task that seems to creep up now and then so I thought I would work out a short post on this one to help remind me that this is not something that is as hard as it might seem.
@@ -17,7 +17,7 @@ Beyond that I might expand this post a little with additional examples that migh
 
 <!-- more -->
 
-## 1 - Getting the number of days between two dates, by just subtracting and dividing
+### 1.1 - Getting the number of days between two dates, by just subtracting and dividing
 
 A simple way to go about getting this done right away would involve just subtracting an older date from a newer date. After doing this I will end up with a number of milliseconds between the two dates. From there it is just a matter of dividing by one thousand to get seconds, and then sixty to get minutes, sixty again to get hours, and then twenty four to get days.
 
@@ -37,7 +37,7 @@ In my testing with this so far it would seem that this does not result in any we
 
 In this example I am refraining from rounding the result when using the getDayDiff1 method. This is something that I think should be left alone when making a method for creating a number of days between to date objects. In the event that there is a slight discrepancy in time, how that would be handled will depend on the code of the application that uses something like this. In general it might be a good idea to use Math.round, rather than Ceil or floor.
 
-## 2 - An overly complex solution that involves looping, getting the number of days in a month, and does not work so great.
+### 1.2 - An overly complex solution that involves looping, getting the number of days in a month, and does not work so great.
 
 In this section I will be going over a more complicated way of doing the same thing when it comes to getting a number of days between two date objects. This solution involves a trick that can be used to get the number of days in a month, by adding one to the month argument, and setting zero as the day of the month, resulting in getting the last day of the current month. From there the get date method can be used to get the number of days in a month. With this it is just a matter of doing so for all months of interest, tabulating the number of days for each month, and then just adding and subtracting days to adjust with what is going on with the day of the month of the two date objects.
 
@@ -74,7 +74,7 @@ This solution seems to work okay for the give example here, but will result in a
 
 However it does make use of a few tricks that might prove to be of value elsewhere. Namely the trick that is used to get the number of days in a give month. Also if a solution like this where working as expected it might help address some additional issues when it comes to making this kind of solution to the problem at hand. Still lets just go with the simpler solution for now, but maybe throw a few more use case examples at it.
 
-## 3 - Setting time of dates to midnight
+## 2 - Setting time of dates to midnight
 
 One thing that comes to mind when doing this is if I should set the time of the date objects to a standard time, and then just take into account what day is was. In some situations this might be all that I care about when making working things out with this. That is that I am just interested in the difference in days between two dates in terms of the year, month, and day. It would nit be to hard to adjust the dates, just have a method that will return a new date object that has the same values when it comes to what I care about preserved but with all values that have to do with time of day set to zero.
 
@@ -113,7 +113,7 @@ console.log( getDayDiff3(d1, d2) ); // 2
 
 So when two dates are compared where they are both the same year, and month, but the first one is on the second of the month, and the other is on the forth, then that is a difference of two days. However that is only true if I do not take into account the time of day. The actually count of days in terms of the actual amount of time that has passed from one date to another can differ slightly when it comes to the time of day, and it might be best to just create new date objects for the dates if it is just the dates that I care about. Rounding can cause problems fro one set of dates to another with this, so it is something to be aware of for sure to say the least.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 Although both solutions result in the same desired value, the solution that involves looping is of course way less efficient that goes without saying. Of course I would prefer to use solutions that do not involve looping at all if doing so if possible generally. 
 
