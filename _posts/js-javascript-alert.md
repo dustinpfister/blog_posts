@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:08:45
-version: 1.39
+updated: 2021-10-24 15:12:49
+version: 1.40
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -21,7 +21,7 @@ In this post I will be giving a quick overview of the window.alert method in cli
 
 ## 1 - javaScript alert basics
 
-In this section I will be starting out with just a few basic examples of the javaScript alter method. These examples will be fairly basic, however this is still not a kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post. So I assume that you have at least some background when it comes to the very first steps of getting started with client side javaScript when it comes to using the alter method.
+In this section I will be starting out with just a few basic examples of the javaScript alter method. These examples will be fairly basic, however this is still not a kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post. So I assume that you have at least some background when it comes to the very first steps of getting started with client side javaScript when it comes to using the alter method. Examples like this will work just fine when it comes to [getting started by way of the file protocol](/2020/09/21/js-getting-started-file-protocol), which in other words means just saving the example as an html file and then opening it up in the web browser by way of control \+ o like any other file on the local file system of a computer. However there are other ways of doing so that might prove to be a better way of going once you get into more advanced topics that will cause problems when developing that way.
 
 ### - The source code examples here can be found on Github
 
