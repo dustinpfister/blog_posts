@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-24 16:46:37
-version: 1.72
+updated: 2021-10-24 17:21:55
+version: 1.73
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -798,7 +798,7 @@ Another option when it comes to working with a mouse, as well as pointer devices
 
 For this example I am starring this section off with an example where I am just attaching a pointer down event to the window object. This is an event that will fire whenever a pointer device will be in what is called active buttons state. This active buttons state is a state in which a mouse button on a mouse was pressed down, or when a touch screen is touched by one or more digits.
 
-```js
+```html
 <html>
     <head>
         <title>javaScript mouse basic example</title>
@@ -821,6 +821,59 @@ window.addEventListener('pointerdown', function(e){
 ```
 
 So when I open up this example in my browser the count will step when I left client the div, but also when I click any other button also. When it comes to using a touch device to touch a div that two seems to work as expected by causing the count to step forward.
+
+### 7.2 - Pointer id and type
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out" style="background:gray;width:200px;height:200px;padding:20px;"></div>
+        <div id="disp"></div>
+        <script>
+var out = document.getElementById('out');
+disp = document.getElementById('disp');
+out.addEventListener('pointerdown', function(e){
+    var node = e.target;
+    disp.innerText = e.pointerId + ' : ' + e.pointerType + ' ( ' + e.clientX + ',' + e.clientY + ')';
+});
+        </script>
+    </body>
+</html>
+```
+
+### 7.3 - On pointer move event and the touch action css property
+
+When it comes to using the pointer move event for the first time you might run into [a problem compared to the touch move event when the pointer device is a touch device](https://stackoverflow.com/questions/48124372/pointermove-event-not-working-with-touch-why-not) rather than a mouse.
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+#out{
+  touch-action: none;
+  position:absolute;left:50px;top:20px;background:gray;width:200px;height:200px;padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var out = document.getElementById('out');
+out.addEventListener('pointermove', function(e){
+    var node = e.target,
+    bx = node.getBoundingClientRect(),
+    x = e.clientX - bx.left,
+    y = e.clientY - bx.top;
+    out.innerText = '( ' + x + ',' + y + ')';
+});
+        </script>
+    </body>
+</html>
+```
 
 ## 8 - Conclusion
 
