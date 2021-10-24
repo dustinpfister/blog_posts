@@ -38,10 +38,6 @@ So something like this for an item
 * have 5+ internal links for the post
 * edit post to 2,000+ words
 
-### (  ) - js-javascript-alert ( no internal links)
-* have 5+ internal links for the post
-* edit post to 1,800+ words
-
 ### (  ) - js-select-tag ( no internal links)
 * have 5+ internal links for the post
 * edit post to 1,200+ words
@@ -104,6 +100,10 @@ So something like this for an item
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/24/2021 ) - js-javascript-alert ( no internal links)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,800+ words
 
 ### ( done 10/23/2021 ) - js-javascript-throw (old)
 * (done) have 5+ internal links for the post
