@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:41:52
-version: 1.48
+updated: 2021-10-24 15:43:41
+version: 1.49
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -82,7 +82,7 @@ Anyway when I open this file up in my web browser the value of i will start at 4
 
 ### 2.2 - An example using the Array.map method
 
-When it comes to working with arrays there are many useful [array prototype methods](/2018/12/10/js-array/) such as the [forEach method](/2019/02/16/js-javascript-foreach/), and the [array map method](/2020/06/16/js-array-map/) just to name a few.
+When it comes to working with arrays there are many useful [array prototype methods](/2018/12/10/js-array/) such as the [forEach method](/2019/02/16/js-javascript-foreach/), and the [array map method](/2020/06/16/js-array-map/) just to name a few. For this example I went with a quick example that makes use of the array map method as a way to create a new array from a source array and assign that to the same variable. Again just like with the while loop example I get each value that I want alerted to me when this happens.
 
 ```html
 <html>
