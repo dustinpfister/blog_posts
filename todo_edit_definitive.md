@@ -54,7 +54,9 @@ If the post is new, or an older post that is not preforming so well, however the
 justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
 
 * (done 10/21/2021) get post to the min 3000+ words
-* get post to 4000+ words
+* (done 10/24/2021) get post to 4000+ words
+* get post to 4500+ words
+* get post to 5000+ words
 
 ## js-operator-precedence ( interesting topic )
 
