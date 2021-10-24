@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 357
-updated: 2021-10-24 15:12:49
-version: 1.40
+updated: 2021-10-24 15:14:21
+version: 1.41
 ---
 
 When first starting out with front end javaScript code examples the [javaScript alert](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert) method is something that often [comes up on the open Internet](https://www.washington.edu/accesscomputing/webd2/student/unit5/module2/lesson1.html) as a way to log or display something. This might be okay for very basic code examples, but will quickly get annoying, and thus it makes sense to look into other ways to go about alerting the user to something.
@@ -25,7 +25,7 @@ In this section I will be starting out with just a few basic examples of the jav
 
 ### - The source code examples here can be found on Github
 
-The source code examples in this post can be found in my [test vjs](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-alert) repository on Github.
+The source code examples in this post can be found in my [test vjs](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-alert) repository on Github. That repository is where I am parking all my other vanilla javaScript source code examples for my many other posts on this category, far beyond just that of the javaScript alert method at this point.
 
 ### 1.1 - basic javaScript alert example
 
