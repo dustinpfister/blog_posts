@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:19:45
-version: 1.37
+updated: 2021-10-25 11:22:30
+version: 1.38
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -121,7 +121,7 @@ try {
 
 ### 2.3 - The read file file system method ans JSON.parse
 
-The nodejs require object is a great tool for loading JOSN, but there is also using the file system module and the various methods in that module such as the read file method.
+The nodejs require object is a great tool for loading JOSN, but there is also using the [file system module](/2018/02/08/nodejs-filesystem/) and the various methods in that module such as the [read file method](/2020/05/12/nodejs-filesystem-read-file/). 
 
 ```js
 let path = require('path'),
