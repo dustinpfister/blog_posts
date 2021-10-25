@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:10:26
-version: 1.22
+updated: 2021-10-25 10:14:10
+version: 1.23
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -133,7 +133,70 @@ read(filePath)
 
 So then here I have a basic example of the JSON parse method where I am reading a JSON file, parsing the JSON file into an object, and updating the state of that object. Once I have an updated state of the object I am then using the JSON.stringify method to create a string from that object, and then write this new state back to the file.
 
-## 3 - Conclusion
+## 3 - Client side javaScript examples of the JSON parse method
+
+### 3.1 - A simple textarea element example
+
+```html
+<html>
+    <head>
+        <title>JSON parse</title>
+    </head>
+    <body>
+        <textarea id="json_in"cols="60" rows="15">
+{
+    "foo": "bar",
+    "n" : 42,
+    "grid" : [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+}
+        </textarea>
+        <div id="json_disp"></disp>
+        <script>
+var json_in = document.querySelector('#json_in'),
+json_disp = document.querySelector('#json_disp');
+// parse a JSON string and return the object
+// of an error object if something goes wrong doing so
+var parse = function(text){
+    try{
+        return JSON.parse(text);
+    }catch(e){
+        return e;
+    }
+};
+// check if the given text is valid json or not by checking 
+// for a 'SyntaxError' object as the constructor when calling parse
+// valid json should be just a plain 'Object'
+var isValid = function(text){
+    var result = parse(text);
+    if(result.constructor.name === 'SyntaxError'){
+        return false;
+    }
+    return true;
+};
+// Check the JSON in the textarea and set the inner text of the display div
+var jsonCheck = function(){
+    if(isValid(json_in.value)){
+        json_disp.innerText = 'Valid JSON';
+    }else{
+       json_disp.innerText = 'JSON Not Valid';
+    }
+};
+// attach and event hander for the 'keyup' event
+json_in.addEventListener('keyup', function(){
+    jsonCheck();
+});
+// call JSON check for the first time
+jsonCheck();
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 So that is it for now when it comes to the JSON parse method. There is way more to write about when it comes to the use of the JSON parse method when it comes to some real code examples maybe. There is also of course the JSON.stringify method that is also worth mentioning when it comes to converting a workable object to a JSNON string for example.
 
