@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:07:46
-version: 1.21
+updated: 2021-10-25 10:10:26
+version: 1.22
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -19,11 +19,13 @@ There are still a few additional things a javaScript developer should be ware of
 
 <!-- more -->
 
-## 1 - json parse basics
+## 1 - JSON parse basics
 
 For starters in this section I will be going over the basics of the JSON.parse method. This will include just using the method on a simple string of JSON, error handling, and other basic example of the JSON parse method that should work okay in most environments that support JSON. 
 
 In addition there is also the reviver method argument that is a way to go about setting a function that can be used to set values for the final object that is returned. This can sometimes lead to more complex examples of the JSON.parse method, but I will still be going over a quick simple example of it here.
+
+It should go without saying that this is not a [total beginner type post on javaScript in general](/2018/11/27/js-getting-started/). I will be keeping the examples fairly simple in this section, but I will not be covering every little detail that you should know at this point thus far.
 
 ### - The source code examples in this post are on Github
 
