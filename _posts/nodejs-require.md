@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 478
-updated: 2019-06-13 15:32:14
-version: 1.6
+updated: 2021-10-25 11:04:12
+version: 1.7
 ---
 
 In nodejs the [require global](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) is something that will end up being used often in projects as a way to make use of built in as well as custom made nodejs modules. There is more to it then just a way to load modules though, it can also be used as a way to load json files and other assets, so lets take a look at some nodejs require examples today.
@@ -48,7 +48,7 @@ console.log( mm.myFunc(5,1) ); // 6
 
 ## 3 - require can also be used to load json
 
-Another thing about the node.js require global is that it can also be used as a way to read and parse external jason data. This is often a quicker option to using the file system module and jSON.parse.
+Another thing about the node.js require global is that it can also be used as a way to read and [parse external JSON](/2020/02/28/js-json-parse/) data. This is often a quicker option to using the file system module and jSON.parse.
 
 ```js
 {
