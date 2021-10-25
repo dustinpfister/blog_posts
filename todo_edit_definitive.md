@@ -49,25 +49,29 @@ If the post is new, or an older post that is not preforming so well, however the
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+
 ## js-javascript-mouse ( interesting topic, at 2000+ words all ready, good keywords ie: javaScript mouse )
-
 justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
-
 * (done 10/21/2021) get post to the min 3000+ words
 * (done 10/24/2021) get post to 4000+ words
 * get post to 4500+ words
 * get post to 5000+ words
 
+
+## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
+justification: Intrinsic Value, Search Console: "innerhtml alternative", 
+* get to at least 2,500+ words for starters
+* get post to the min 3000+ words
+* get to 4000+ words
+
+
 ## js-operator-precedence ( interesting topic )
-
 justification: Intrinsic Value, Search Console: "javascript order of operations", 
-
 * get post to 3000+ words
 
+
 ## js-promise-resolve-reject ( interesting topic )
-
 justification: Intrinsic Value
-
 * get post to the min 3000+ words
 
 
