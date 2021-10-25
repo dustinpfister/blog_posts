@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:04:12
-version: 1.33
+updated: 2021-10-25 11:15:18
+version: 1.34
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -92,7 +92,7 @@ So now that I have the basics out of the way it is now time to work out a simple
 
 ### 2.1 - Using node.js require to parse JSON
 
-In [nodejs require](/2019/06/13/nodejs-require/) is used as a way to go about loading in additional javaScript modules, however it can also be used as a way to parse JSON actually.
+In [nodejs require](/2019/06/13/nodejs-require/) is used as a way to go about loading in additional javaScript modules, however it can also be used as a way to parse JSON actually. The way to go about doing this would involve just passing the path to the JSON file as the first argument just like I would with a user space library in a project folder.
 
 ```js
 let obj = require('./foo.json');
