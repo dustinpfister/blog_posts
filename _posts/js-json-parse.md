@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:20:24
-version: 1.26
+updated: 2021-10-25 10:22:39
+version: 1.27
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -140,6 +140,8 @@ There is covering the very basics of the JSON parse method by itself, and there 
 These examples will then not just involve the JSON parse method but also things like the script tag inside the body of some HTML, as well as various other client side javaScript features such as attaching one or more [event listeners](/2019/01/16/js-event-listeners/) to an event like that of the key up event, as well as working with [event objects](/2020/07/23/js-event-object/) inside the body of the functions used for such handers.
 
 ### 3.1 - A simple textarea element example
+
+For this example I am creating a [text area element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) that will default to some hard coded json. I can then use this text area element to mutate the state of this JSON, and when I do so the inner text of another element will change to inform me that the JSON is valid or not.
 
 ```html
 <html>
