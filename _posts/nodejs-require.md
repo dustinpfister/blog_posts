@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 478
-updated: 2021-10-25 11:04:12
-version: 1.7
+updated: 2021-10-25 11:11:00
+version: 1.8
 ---
 
 In nodejs the [require global](https://nodejs.org/docs/latest-v8.x/api/modules.html#modules_require) is something that will end up being used often in projects as a way to make use of built in as well as custom made nodejs modules. There is more to it then just a way to load modules though, it can also be used as a way to load json files and other assets, so lets take a look at some nodejs require examples today.
@@ -48,7 +48,7 @@ console.log( mm.myFunc(5,1) ); // 6
 
 ## 3 - require can also be used to load json
 
-Another thing about the node.js require global is that it can also be used as a way to read and [parse external JSON](/2020/02/28/js-json-parse/) data. This is often a quicker option to using the file system module and jSON.parse.
+Another thing about the node.js require global is that it can also be used as a way to read and [parse external JSON](/2020/02/28/js-json-parse/) data. This is often a quicker option to using the file system module and JSON.parse, however it can still produce an error in the event that the file contains invalid JSON data.
 
 ```js
 {
@@ -60,3 +60,8 @@ Another thing about the node.js require global is that it can also be used as a 
 let json = require('./foo.json');
 console.log(json.foo); // 'bar'
 ```
+
+## 4 - Conclusion
+
+So the the require method is the main way that I go about making use of additional modules when making some kind of node script. On top of the core functionally that has to do with loading built in and user space javaScript modules, it can also be used as a way to load JOSN files. However require may not always be the best option for making use of some kind of external script, or resource. There is also the file system modules that can also be used to load JSON by reading the plain text first, at which point the JSON.parse method can be used in actually catch block to parse the text. Also if I want to run a script that is written in a language other than javaScript of course I can not do that with require, but I can use the child process module to call the binary that would be used to run such a script and then pass the script as an argument for that binary.
+
