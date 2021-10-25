@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:17:29
-version: 1.35
+updated: 2021-10-25 11:18:29
+version: 1.36
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -88,7 +88,7 @@ the use of this method might come in handy if the JSON code has a bunch of value
 
 ## 2 - Some nodejs examples
 
-So now that I have the basics out of the way it is now time to work out a simple text program that makes use of the JSON.parse method, as well as maybe other features of nodejs when it comes to doing something with JSON in a nodeje environment. There is also getting into client side javaScriot examples, and also a few examples that have to do with full stack development using both nodejs and a little client side javaScript. However in this section I will just be focus on nodejs features alone, and I will also be trying to keep things from getting to advanced at this time.
+So now that I have the basics out of the way it is now time to work out a simple text program that makes use of the JSON.parse method, as well as maybe other features of [nodejs](/2017/04/05/nodejs-helloworld/) when it comes to doing something with JSON in a nodeje environment. There is also getting into client side javaScriot examples, and also a few examples that have to do with full stack development using both nodejs and a little client side javaScript. However in this section I will just be focus on nodejs features alone, and I will also be trying to keep things from getting to advanced at this time.
 
 ### 2.1 - Using node.js require to parse JSON
 
