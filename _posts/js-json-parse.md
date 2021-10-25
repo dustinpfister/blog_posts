@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:37:01
-version: 1.30
+updated: 2021-10-25 10:58:59
+version: 1.31
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -86,9 +86,11 @@ console.log(obj);
 
 the use of this method might come in handy if the JSON code has a bunch of values that need to be used to create new instances of a class or something to that effect.
 
-## 2 - Basic nodejs example
+## 2 - Some nodejs examples
 
-So now that I have the basics out of the way it is now time to work out a simple text program that makes use of the JSON.parse method. There is working otu a client side javaScript example, however in this section I will be going over a quick, basic nodejs example.
+So now that I have the basics out of the way it is now time to work out a simple text program that makes use of the JSON.parse method, as well as maybe other features of nodejs when it comes to doing something with JSON in a nodeje environment. There is also getting into client side javaScriot examples, and also a few examples that have to do with full stack development using both nodejs and a little client side javaScript. However in this section I will just be focus on nodejs features alone, and I will also be trying to keep things from getting to advanced at this time.
+
+### 2.4 - Using promises
 
 This nodejs example will check for a JSON file in the current users home dir, if the file is there or there is not any other kind of error that happens reading the file for some reason, then the JSON.parse method will be used to parse the json string into an object. If there is an error parsing the JSON then the next catch statement will fire, the error code for file not found will not be in the error object so things will just continue to the last catch statement where the error will be logged to the standard error and thats it. This way I will only take action if the file is not there, and not overwrite a malformed json file in the event of a syntax error.
 
