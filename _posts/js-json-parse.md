@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:36:10
-version: 1.45
+updated: 2021-10-25 11:37:29
+version: 1.46
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -121,7 +121,7 @@ try {
 }
 ```
 
-The way to go about accessing any and all positional arguments that where given when the script was called would be to look at the argv array of the [process object](/2018/02/11/nodejs-process/). In this array for first element of index zero will be the nodejs binary, next will then be the name of the script, so it is element index 2 that will be the first positional argument. In the event that there is no given positional the default value will be undefined which will evaluate to false, so I can then use the \|\| operator to go with a hard coded value for the file name.
+The way to go about accessing any and all positional arguments that where given when the script was called would be to look at the argv array of the [process object](/2018/02/11/nodejs-process/). In this array for first element of index zero will be the nodejs binary, next will then be the name of the script, so it is element index 2 that will be the first positional argument. In the event that there is no given positional the default value will be undefined which will evaluate to false, so I can then use the \|\| operator to go with a hard coded value for the file name. In any case the value that is given to the resolve method of the nodejs built in path module to make sure that the end result is resolved to an absolute rather than relative path.
 
 ### 2.3 - The read file file system method ans JSON.parse
 
