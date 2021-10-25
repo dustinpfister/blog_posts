@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:03:01
-version: 1.19
+updated: 2021-10-25 10:06:14
+version: 1.20
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -25,7 +25,7 @@ For starters in this section I will be going over the basics of the JSON.parse m
 
 ### - The source code examples in this post are on Github
 
-The source code examples that I am writing about here on JSON as well as all the source code example for all [my other posts in vanilla javaScript](/categories/js/) can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-json-parse).
+The source code examples that I am writing about here on JSON as well as all the source code example for all [my other posts in vanilla javaScript](/categories/js/) can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-json-parse). I do get around to editing my content on javaScript now and then and this post is not exception, I have a lot planed out all ready for future edits of this post, and the notes and latest source code examples on JSON can be found there. If you are on Github and would like to make a pull request that would be a good place to do so when it comes to the source code, the comments section at the bottom of this post can also be used as a way to bring something up.
 
 ### 1.1 - basic json parse example
 
