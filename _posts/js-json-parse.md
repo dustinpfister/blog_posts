@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:31:28
-version: 1.29
+updated: 2021-10-25 10:37:01
+version: 1.30
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -141,9 +141,9 @@ These examples will then not just involve the JSON parse method but also things 
 
 ### 3.1 - A simple textarea element example
 
-For this example I am creating a [text area element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) that will default to some hard coded json. I can then use this text area element to mutate the state of this JSON, and when I do so the inner text of another element will change to inform me that the JSON is valid or not.
+For this example I am creating a [text area element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) that will default to some hard coded JSON. I can then use this text area element to mutate the state of this JSON, and when I do so the inner text of another element will change to inform me that the JSON is valid or not.
 
-So then for this example I am using the [document.querySelector method](/2020/06/23/js-document-queryselector/) as a way to gain references to the text area element as well as the div element that I will be using to update the inner text of depending on the state of the JSON in the text area element.
+So then for this example I am using the [document.querySelector method](/2020/06/23/js-document-queryselector/) as a way to gain references to the text area element as well as the div element that I will be using to update the inner text of depending on the state of the JSON in the text area element. I then have a parse helper method that will use the JSON.parse method to parse a given text string, in the event that it is valid JSON the resulting object will be returned, else if something goes wrong the error object will be what is returned by the method. With that said I then  also have a is valid helper method that will call the parse method and check the constructor of the returned object to see if it is a Syntax Error or not, in the event that it is the method returns false, else the method will return true. Finally I have a JSON check method that will pass the current value of the text area element as the text to check if it is vailid json or not, in the event that it is the inner text of the display method will give a message that everything is okay, else it will give another message.
 
 ```html
 <html>
