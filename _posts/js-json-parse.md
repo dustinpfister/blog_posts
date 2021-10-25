@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:30:09
-version: 1.42
+updated: 2021-10-25 11:32:15
+version: 1.43
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -120,6 +120,8 @@ try {
     console.warn(e.message);
 }
 ```
+
+The way to go about accessing any and all positional arguments that where given when the script was called would be to look at the argv array of the [process object](/2018/02/11/nodejs-process/).
 
 ### 2.3 - The read file file system method ans JSON.parse
 
