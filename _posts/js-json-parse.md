@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:22:30
-version: 1.38
+updated: 2021-10-25 11:27:10
+version: 1.39
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -103,6 +103,8 @@ console.log(obj.mess);
 
 Of course when it comes to using require as a way to parse and load JSON into a script in nodejs just like with the JSON.parse method an error can happen in the event that the file is not there, or of the file is there but it is not JSON, or a file is there and it is JSON but it is malformed. So just like with the JSON.parse method it is a goo idea to use require in the body of a try block so that I can run some code in the event that there is an error.
 
+There is also having ways to go about setting what the path of the json file is by way of something other that a string literal. That alone will work fine as long as the file is relative to the current working directory, and not the script. In which case even when it comes to using a literal often I might still want to use path methods and certain globals to help get a file relative to the script rather than the current working directory. However for this example alone at least I am making it so that I can use positional arguments to set the location of the JSON file, and only default to a hard coded value in the event that a positional argument is not given.
+
 ```js
 let path = require('path');
 let uri_json = path.resolve(process.argv[2] || 'foo.json');
@@ -121,7 +123,7 @@ try {
 
 ### 2.3 - The read file file system method ans JSON.parse
 
-The nodejs require object is a great tool for loading JOSN, but there is also using the [file system module](/2018/02/08/nodejs-filesystem/) and the various methods in that module such as the [read file method](/2020/05/12/nodejs-filesystem-read-file/). 
+The nodejs require object is a great tool for loading JOSN, but there is also using the [file system module](/2018/02/08/nodejs-filesystem/) and the various methods in that module such as the [read file method](/2020/05/12/nodejs-filesystem-read-file/).
 
 ```js
 let path = require('path'),
