@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 11:15:18
-version: 1.34
+updated: 2021-10-25 11:17:29
+version: 1.35
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -100,6 +100,8 @@ console.log(obj.mess);
 ```
 
 ### 2.2 - positional arguments
+
+Of course when it comes to using require as a way to parse and load JSON into a script in nodejs just like with the JSON.parse method an error can happen in the event that the file is not there, or of the file is there but it is not JSON, or a file is there and it is JSON but it is malformed. So just like with the JSON.parse method it is a goo idea to use require in the body of a try block so that I can run some code in the event that there is an error.
 
 ```js
 let path = require('path');
