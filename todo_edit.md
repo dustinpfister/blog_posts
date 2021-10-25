@@ -30,10 +30,6 @@ So something like this for an item
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-### (  ) - js-json-parse ( old)
-* have 5+ internal links for the post
-* edit post to 1,200+ words
-
 ### (  ) - js-javascript-number ( old)
 * have 5+ internal links for the post
 * edit post to 2,000+ words
@@ -96,6 +92,10 @@ So something like this for an item
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/25/2021 ) - js-json-parse ( old)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,200+ words
 
 ### ( done 10/24/2021 ) - js-javascript-alert ( no internal links)
 * (done) have 5+ internal links for the post
