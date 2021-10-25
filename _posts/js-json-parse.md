@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 619
-updated: 2021-10-25 10:14:10
-version: 1.23
+updated: 2021-10-25 10:16:22
+version: 1.24
 ---
 
 This will be a general post on the [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) method. The JSON.parse method is a native javaScript built in way to parse a JSON string into a workable object, at least on all modern platforms that support this method. The JSON parse method is a is then an inversion of the [JSON stringify](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) method is for turning a workable object into a JSON string.
@@ -134,6 +134,8 @@ read(filePath)
 So then here I have a basic example of the JSON parse method where I am reading a JSON file, parsing the JSON file into an object, and updating the state of that object. Once I have an updated state of the object I am then using the JSON.stringify method to create a string from that object, and then write this new state back to the file.
 
 ## 3 - Client side javaScript examples of the JSON parse method
+
+There is covering the very basics of the JSON parse method by itself, and there is then going over a few quick examples of the JSON parse method in a nodejs environment. However in this section I will now be going over at least one if not more examples of the JSON parse method in a client side javaScript environment.
 
 ### 3.1 - A simple textarea element example
 
