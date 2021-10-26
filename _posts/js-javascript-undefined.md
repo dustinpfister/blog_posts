@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 10:46:04
-version: 1.42
+updated: 2021-10-26 11:01:39
+version: 1.43
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -71,8 +71,14 @@ console.log(sum(2,6)); // 8
 
 ## 2 - Calling javaScript undefined
 
-When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. One reason why thins might happen could be a result of the difference between javaScript declarations and javaScript expressions. If a function is a javaScript expression then it can only be called after it is defined, and assigned to a variable. If it is not defined yet this can result in calling the undefined value which of course results in a kind of error.
-So then there are two general ways to avoid this, if you are going to use expressions just make sure that they are set to the variable that you are calling them off first before calling them. The other way to avoid this is to not use function expressions, but function declarations in place of expressions.
+When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. 
+
+
+### 2.2 - Use of function expressions can result in calling undefined if used carelessly
+
+One reason why one might end up calling undefined could be a result of the difference between javaScript declarations and javaScript expressions. If a function is a javaScript expression then it can only be called after it is defined, and assigned to a variable, object, or called right away such as with an [IIFE](/2020/02/04/js-iife/). If it is not defined yet this can result in calling the undefined value which of course results in a kind of error that might say something like calling undefined, or that the name of the function is not a function.
+
+So then there are two general ways to avoid this, if you are going to use expressions just make sure that they are set to the variable, of object property that you are calling them off first before calling them. The other way to avoid this is to not use function expressions, but function declarations in place of expressions. When using declarations the function can actually be called above the array at which it was defined, which is of course one major talking point when it comes to the differences between function expressions and declarations.
 
 ```js
 // function declaration
