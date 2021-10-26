@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 07:03:35
-version: 1.30
+updated: 2021-10-26 08:39:29
+version: 1.31
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -22,6 +22,10 @@ So chances are if you have been fiddling with javaScript for at least a little w
 ## 1 - javaScript undefined defined
 
 In javaScript undefined is a primitive value, and a global property that represents that value. In this section I will cover some examples that demonstrate some typical situations in which a javaScript developer will run into the undefined primitive. This might be a good staring point before moving on to other topics surrounding the undefined value.
+
+### - The examples in this post are on github
+
+The source code examples on the undefined keyword that are found in this post can also be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-undefined).
 
 ### 1.1 - when a variable is declared, but not assigned anything.
 
