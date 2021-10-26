@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 09:17:12
-version: 1.34
+updated: 2021-10-26 09:21:18
+version: 1.35
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -203,6 +203,8 @@ console.log(undefined === null); // false
 However when the identity operator is used to make a comparison a false value is the result. This is because when the identity value is used type conversion does not occur. The null and undefined values are two different types, so the result is false.
 
 ## 7 - Sparse arrays and the undefined value
+
+I have mentioned that the default value for an object key is the undefined value, which will be the case when it comes to working with an object that has numbered rather than named keys such as an array. You see the thing about arrays in javaScript is that they are really just a certain kind of object, and they cane be sparse in some situations. That is that it is possible to have an array of a certain element length such as ten, and only have one actual public key with a value attached to it, thus the other 9 values will default to undefined. In some situations this can result in some problems, so in this section I am addressing the issue of sparse arrays and the undefined value in javaScript.
 
 ### 7.1 - Basic sparse array example
 
