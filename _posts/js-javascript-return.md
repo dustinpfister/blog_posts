@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2021-10-26 07:39:14
-version: 1.35
+updated: 2021-10-26 07:41:04
+version: 1.36
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This [returned value](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values) can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -19,7 +19,7 @@ In this post I will be exploring some examples that have to do with the return s
 
 ## 1 - The basics of the javaScript return keyword
 
-In this section I will be started out with just a few simple examples of the javaScript return keyword when writing functions in javaScript. I will be doing my best to keep these examples as simple as possible for the sake of new developers, but I still assume that you have at least some experience when it comes to getting started with javaScript at least. It might also be a good idea to check out my main posts on javaScript functions in general when it comes to learning more about functions in javaScript and in general.
+In this section I will be started out with just a few simple examples of the javaScript return keyword when writing functions in javaScript. I will be doing my best to keep these examples as simple as possible for the sake of new developers, but I still assume that you have at least some experience when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/) at least. It might also be a good idea to check out my main posts on javaScript functions in general when it comes to learning more about functions in javaScript and in general.
 
 ### 1.1 - A vary basic example of javaScript return
 
