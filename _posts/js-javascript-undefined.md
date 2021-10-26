@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 10:16:35
-version: 1.37
+updated: 2021-10-26 10:19:44
+version: 1.38
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -208,7 +208,7 @@ I have mentioned that the default value for an object key is the undefined value
 
 ### 7.1 - Basic sparse array example
 
-First off there is starting out with at least one basic example that shows how it is possible to even end up with a sparse array to begin with.
+First off there is starting out with at least one basic example that shows how it is possible to even end up with a sparse array to begin with. One way to end up with one is to just create a new empty array by way of the Array constructor or the bracket syntax. Then use the bracket syntax to set a new element index that is above zero, say at index 9. This would then result in an array with a length of ten, but with only one public key that is set to the numbered key value of 9. Each of the other index values in the array are undefined as no value has been set for the index, thus this would be a kind of sparse array.
 
 ```js
 var a = [];
