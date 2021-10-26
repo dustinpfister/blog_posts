@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 11:13:02
-version: 1.45
+updated: 2021-10-26 11:25:00
+version: 1.46
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -203,6 +203,10 @@ In this above example the value of r can be zero which is the default and will r
 
 The boolean value of undefined is false, alone with a bunch of other values in javaScript. One way to confirm this is to use the not operator twice. The reason why the not operator show be used twice is because the operator converts a value to boolean, but it also negates its value. So the operator can then be used again to convert it back to is true boolean value.
 
+### 6.1 - Using the double not operator with some values including undefined
+
+When the double not operator is used with the undefined value the resulting boolean value is false.
+
 ```js
 console.log(!!undefined); // false
 console.log(!!null); // false
@@ -214,7 +218,7 @@ console.log(!!false); // false
 
 Because the javaScript undefined value is evaluates to false it can be used as a way to feature test if a property is present in an object.
 
-### 6.1 - Comparing undefined to null
+### 6.2 - Comparing undefined to null
 
 So null is another interesting value in javaScript. Just like undefined the null value is also a primitive value. Also they are two primitive values in javaScript that do not have objects wrapped around them such as the case with Strings and Numbers. 
 
