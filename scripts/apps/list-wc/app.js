@@ -37,7 +37,7 @@ let colorBar = (tab) => {
     Object.keys(colorTabs).forEach((color) => {
         total += colorTabs[color];
     });
-    ['lime', 'green', 'orange', 'red'].forEach((color) => {
+    ['lime', 'green', 'yellow', 'orange', 'red'].forEach((color) => {
         let t = colorTabs[color] / total;
         t = String(t) === 'NaN' ? 0 : t;
         let w = Math.floor(t * 640);
@@ -98,8 +98,9 @@ app.get('/', [
             req.data.forEach((post, i) => {
                 let color = 'red';
                 color = post.wc >= 500 ? 'orange' : color;
-                color = post.wc >= 1000 ? 'green' : color;
-                color = post.wc >= 1800 ? 'lime' : color;
+                color = post.wc >= 1000 ? 'yellow' : color;
+                color = post.wc >= 1800 ? 'green' : color;
+                color = post.wc >= 2400 ? 'lime' : color;
 
                 wcTotal += post.wc;
 
