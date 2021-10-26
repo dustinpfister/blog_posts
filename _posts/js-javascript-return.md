@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2021-08-26 19:32:57
-version: 1.30
+updated: 2021-10-26 07:06:10
+version: 1.31
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This [returned value](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values) can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -61,7 +61,7 @@ So then writing functions like this can come in handy, I have a length expressio
 
 ### 1.2 - Be careful when it comes to line breaks in code.
 
-Make sure that nothing weird is going on with line beraks in the source code when it comes to using the return keyword. If the expression is on the next line after the return keyword the javaScript engine might disregard the expression completely on the next line, and the result will be that the default undefined value will be returned. This has to do with the fact that semicolons are optional in javaScript code.
+Make sure that nothing weird is going on with line breaks in the source code when it comes to using the return keyword. If the expression is on the next line after the return keyword the javaScript engine might disregard the expression completely on the next line, and the result will be that the default undefined value will be returned. This has to do with the fact that semicolons are optional in javaScript code.
 
 ```js
 var foo = function (a, b, c) {
