@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2021-10-26 07:34:10
-version: 1.33
+updated: 2021-10-26 07:36:17
+version: 1.34
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This [returned value](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values) can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -39,7 +39,7 @@ So now that we have the basic idea of the javaScript return statement out of the
 
 ### 1.2 - undefined is the default value for return
 
-The default return value of a function is the [undefined value](/2019/01/30/js-javascript-undefined/).
+The default return value of a function is the [undefined value](/2019/01/30/js-javascript-undefined/). This can prove to be useful when it comes to making functions that will return a true or false value as the undefined value will also evaluate to false. However it is still a good idea to return false as a default anyway when making those kinds of functions.
 
 ```js
 // default return value is undefined
