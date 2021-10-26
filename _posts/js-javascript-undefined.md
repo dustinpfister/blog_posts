@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 09:21:18
-version: 1.35
+updated: 2021-10-26 09:23:52
+version: 1.36
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -208,6 +208,8 @@ I have mentioned that the default value for an object key is the undefined value
 
 ### 7.1 - Basic sparse array example
 
+First off there is starting out with at least one basic example that shows how it is possible to even end up with a sparse array to begin with.
+
 ```js
 var a = [];
 a[9] = 42;
@@ -216,6 +218,8 @@ console.log(a[0] === undefined); // true
 ```
 
 ### 7.2 - Array map and sparse arrays
+
+One thing that can cause problem with sparse arrays is how the array map prototype method will work with sparse arrays.
 
 ```js
 var a = [];
@@ -230,6 +234,8 @@ console.log(c); // 1
 ```
 
 ### 7.3 - Using a while loop and making a custom map method
+
+So then there is making a custom array map method using a while loop as one way to go about addressing this issue with sparse arrays and the array map method.
 
 ```js
 var custMap = function (arr, func) {
