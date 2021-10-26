@@ -30,6 +30,33 @@ So something like this for an item
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+<!--
+NO INTERNAL LINKS FOR THESE POSTS
+js-javascript-null
+js-javascript-object-freeze-seal-and-define-property
+js-javascript-form
+js-intl
+js-line-break
+js-window-inner-width-height
+js-javascript-iframe
+js-javascript-scope
+-->
+
+### (   ) - js-call-object ( no internal links )
+* have 5+ internal links for the post
+
+### (   ) - js-nth-root ( no internal links )
+* have 5+ internal links for the post
+
+### (   ) - js-drag-elements-with-dragula ( no internal links )
+* have 5+ internal links for the post
+
+### (   ) - js-document-location ( no internal links )
+* have 5+ internal links for the post
+
+### (   ) - js-eval ( no internal links )
+* have 5+ internal links for the post
+
 ### (  ) - js-javascript-number ( old)
 * have 5+ internal links for the post
 * edit post to 2,000+ words
