@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 393
-updated: 2021-10-26 07:06:10
-version: 1.31
+updated: 2021-10-26 07:31:38
+version: 1.32
 ---
 
 The [javaScipt return statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return) is used in the body of a function to return a product when the function is called. This [returned value](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values) can then be stored into a variable, or additional methods in the prototype of the value that is returned can be called off of it to returned yet another value. In addition the value that is returned can be a function, and this internal function can have access to the variable scope of the other function in which it is contained, a concept known as [closure](/2019/02/22/js-javascript-closure/).
@@ -17,7 +17,10 @@ In this post I will be exploring some examples that have to do with the return s
 
 <!-- more -->
 
-## 1 - A return statement basic example style
+## 1 - The basics of the javaScript return keyword
+
+
+### 1.1 - A vary basic example of javaScript return
 
 For a very simple example of the return statement here I have a function declaration that just simply adds two numbers \(or concatenates a string\) and returns the product of that operation. The value that is returned can then be used in any capacity such as being stored in a variable, have additional methods called off of it depending on the prototype of the value, used in an expression, conditional statement, or in this case just simple be logged out to the console.
 
@@ -34,7 +37,15 @@ So the return statement is necessary when it comes to authoring any kind of func
 
 So now that we have the basic idea of the javaScript return statement out of the way, lets look at a few far more interesting, and possibly useful examples of why the return keyword is a very important part of understanding how to use javaScript effectively when writing code.
 
-### 1.1 - Another example of return with a lengthy expression
+### 1.2 - undefined is the default value for return
+
+```js
+// default return value is undefined
+function noop() {};
+console.log(noop()); // undefined
+```
+
+### 1.3 - Another example of return with a lengthy expression
 
 For a more practical example say you want to have a function that can be used to figure out an estimate on how much ad revenue potential a certain search keyword might have. 
 
@@ -59,7 +70,7 @@ console.log( figMoney(7, 5, 1.4,6.5,0.12) ); // '$1.53'
 
 So then writing functions like this can come in handy, I have a length expression and I do not want to repeat it every time I used it in a body of code. So I pull that expression into a function, and just pass arguments to it each time I call it elsewhere in code. The value that I want is then returned by way of the javaScript return statement.
 
-### 1.2 - Be careful when it comes to line breaks in code.
+### 1.4 - Be careful when it comes to line breaks in code.
 
 Make sure that nothing weird is going on with line breaks in the source code when it comes to using the return keyword. If the expression is on the next line after the return keyword the javaScript engine might disregard the expression completely on the next line, and the result will be that the default undefined value will be returned. This has to do with the fact that semicolons are optional in javaScript code.
 
