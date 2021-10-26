@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 11:09:01
-version: 1.44
+updated: 2021-10-26 11:13:02
+version: 1.45
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -71,7 +71,7 @@ console.log(sum(2,6)); // 8
 
 ## 2 - Calling javaScript undefined
 
-When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. This could happen for a few reasons that I will take a moment to outline here in this section.
+When first starting out with javaScript you might find yourself running into errors that are the result of [calling undefined](http://net-informations.com/js/err/function.htm). This could happen for a few reasons that I will take a moment to outline here in this section.
 
 ### 2.1 - It may just be a simple typo
 
