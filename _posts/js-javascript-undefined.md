@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 11:01:39
-version: 1.43
+updated: 2021-10-26 11:09:01
+version: 1.44
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -71,8 +71,27 @@ console.log(sum(2,6)); // 8
 
 ## 2 - Calling javaScript undefined
 
-When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. 
+When first starting out with javaScript you might find yourself running into errors that are the result of calling undefined. This could happen for a few reasons that I will take a moment to outline here in this section.
 
+### 2.1 - It may just be a simple typo
+
+One reason why a developer might run into this kind of problem might just be because they made a simple mistake when it comes to the name of the function that they are calling. This is one that I find myself still doing now and then also when I am going a little to fast and being careless. You see javaScript is very much a case sensitive language so a function named foo is not the same thing as a function named Foo with an upper case F. So then if function is set to the foo property of an object, and I am calling the Foo property of the object then I am calling undefined, or any other separate value that might be assigned to that separate public key name.
+
+```js
+var obj = {
+    foo: function () {
+        return 'bar';
+    }
+};
+// calling obj.foo
+console.log(obj.foo()); // bar
+// calling obj.Foo with an uppercase F
+try {
+    obj.Foo();
+} catch (e) {
+    console.log(e.message); //obj.Foo is not a function
+}
+```
 
 ### 2.2 - Use of function expressions can result in calling undefined if used carelessly
 
