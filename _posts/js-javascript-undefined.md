@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 10:19:44
-version: 1.38
+updated: 2021-10-26 10:21:31
+version: 1.39
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -219,7 +219,7 @@ console.log(a[0] === undefined); // true
 
 ### 7.2 - Array map and sparse arrays
 
-One thing that can cause problem with sparse arrays is how the [array map prototype method](/2020/06/16/js-array-map/) will work with sparse arrays. One might assume that the function will be called for each element index in the array from index 0 to one less of the length of the array as arrays in javaScript are zero relative. However it would seem that this assumption would be wrong actually. It seems that what is really going on is that the map method will only be called for each numbered public key in the range of the array, and if no key is set for the array, then the funciton will not fire for that index.
+One thing that can cause problem with sparse arrays is how the [array map prototype method](/2020/06/16/js-array-map/) will work with sparse arrays. One might assume that the function will be called for each element index in the array from index 0 to one less of the length of the array as arrays in javaScript are zero relative. However it would seem that this assumption would be wrong actually. It seems that what is really going on is that the map method will only be called for each numbered public key in the range of the array, and if no key is set for the array, then the function will not fire for that index.
 
 ```js
 var a = [];
@@ -235,7 +235,7 @@ console.log(c); // 1
 
 ### 7.3 - Using a while loop and making a custom map method
 
-So then there is making a custom array map method using a while loop as one way to go about addressing this issue with sparse arrays and the array map method.
+So then there is making a custom array map method using a while loop as one way to go about addressing this issue with sparse arrays and the array map method. By setting a variable to a value of zero, and then using the length of the array as a limit to stop looping, I can then call a given function for each index value, rather than each public key like the array map method does.
 
 ```js
 var custMap = function (arr, func) {
