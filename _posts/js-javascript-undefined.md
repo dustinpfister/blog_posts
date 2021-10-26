@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 10:21:31
-version: 1.39
+updated: 2021-10-26 10:41:36
+version: 1.40
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -208,7 +208,7 @@ I have mentioned that the default value for an object key is the undefined value
 
 ### 7.1 - Basic sparse array example
 
-First off there is starting out with at least one basic example that shows how it is possible to even end up with a sparse array to begin with. One way to end up with one is to just create a new empty array by way of the Array constructor or the bracket syntax. Then use the bracket syntax to set a new element index that is above zero, say at index 9. This would then result in an array with a length of ten, but with only one public key that is set to the numbered key value of 9. Each of the other index values in the array are undefined as no value has been set for the index, thus this would be a kind of sparse array.
+First off there is starting out with at least one basic example that shows how it is possible to even end up with a sparse array to begin with. One way to end up with one is to just create a new empty array by way of the Array constructor or the bracket syntax. Then use the bracket syntax to set a new element index that is above zero, say at index 9. This would then result in an [array with a length](/2018/12/14/js-array-length/) of ten, but with only one public key that is set to the numbered key value of 9. Each of the other index values in the array are undefined as no value has been set for the index, thus this would be a kind of sparse array.
 
 ```js
 var a = [];
@@ -217,7 +217,28 @@ console.log(a.length); // 10
 console.log(a[0] === undefined); // true
 ```
 
-### 7.2 - Array map and sparse arrays
+### 7.2 - Creating a sparse array with Array.from
+
+The [array from method](/2020/01/27/js-array-from/) is a static method of the Array Global object in core javaScript that can be used as a way to create a new array from an array like object. An array like object is any object that is formated like an array in terms of the own properties of the object, but the prototype of the object is not Array. For this example I am creating a plain old Object with a prototype of Object by way of the curly bracket syntax, and setting some properties that are formated like an array, but not just any array, a sparse array. So then this object contains a 9 key, and a length key that has a value of 10, but then that is it in terms of public keys. A such every other value in the index range of the resulting array that is returned by Array from will be undefined.
+
+```js
+var a = Array.from({
+    9: 42,
+    length: 10
+});
+console.log(a.length); // 10
+console.log(a[0] === undefined); // true
+```
+
+### 7.3 - Seeing what the public keys are of an array with Object.keys
+
+```js
+var a = [];
+a[9] = 42;
+console.log( Object.keys(a) ); // [ '9' ]
+```
+
+### 7.4 - Array map and sparse arrays
 
 One thing that can cause problem with sparse arrays is how the [array map prototype method](/2020/06/16/js-array-map/) will work with sparse arrays. One might assume that the function will be called for each element index in the array from index 0 to one less of the length of the array as arrays in javaScript are zero relative. However it would seem that this assumption would be wrong actually. It seems that what is really going on is that the map method will only be called for each numbered public key in the range of the array, and if no key is set for the array, then the function will not fire for that index.
 
@@ -233,7 +254,7 @@ console.log(b); // [ <9 empty items>, 84 ]
 console.log(c); // 1
 ```
 
-### 7.3 - Using a while loop and making a custom map method
+### 7.5 - Using a while loop and making a custom map method
 
 So then there is making a custom array map method using a while loop as one way to go about addressing this issue with sparse arrays and the array map method. By setting a variable to a value of zero, and then using the length of the array as a limit to stop looping, I can then call a given function for each index value, rather than each public key like the array map method does.
 
