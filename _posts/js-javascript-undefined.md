@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 08:42:26
-version: 1.32
+updated: 2021-10-26 08:45:02
+version: 1.33
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -21,7 +21,9 @@ So chances are if you have been fiddling with javaScript for at least a little w
 
 ## 1 - javaScript undefined defined
 
-In javaScript undefined is a primitive value, and a global property that represents that value. In this section I will cover some examples that demonstrate some typical situations in which a javaScript developer will run into the undefined primitive. This might be a good staring point before moving on to other topics surrounding the undefined value.
+In javaScript the undefined value is a primitive value, and a global property that represents that value. In this section I will cover some examples that demonstrate some typical situations in which a javaScript developer will run into the undefined primitive. This might be a good staring point before moving on to other topics surrounding the undefined value.
+
+Although I will be keeping these examples relatively simple, I assume that you have at least some experience with javaScript when it comes to the very basics of how to [get started with javaScript](/2018/11/27/js-getting-started/).
 
 ### - The examples in this post are on github
 
