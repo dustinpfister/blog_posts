@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 06:56:43
-version: 1.27
+updated: 2021-10-26 06:58:47
+version: 1.28
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
 
-When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the return keyword. This might be a good thing in some cases as undefined will evaluate to false, so when  it comes to functions that return a boolean value it might not always present a problem. Still it might be a good idea to have the function return false anyway.
+When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the [return keyword](/2019/03/01/js-javascript-return/). This might be a good thing in some cases as undefined will evaluate to false, so when it comes to functions that return a boolean value it might not always present a problem. Still it might be a good idea to have the function return false anyway just for the sake of making things explicit.
 
 There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. This is often used as a way to test for undefined by combining the undefined keyword with an identity operator and a value that is to be tested.
 
