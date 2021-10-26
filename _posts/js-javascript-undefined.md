@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 06:58:47
-version: 1.28
+updated: 2021-10-26 07:01:55
+version: 1.29
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
 
 When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the [return keyword](/2019/03/01/js-javascript-return/). This might be a good thing in some cases as undefined will evaluate to false, so when it comes to functions that return a boolean value it might not always present a problem. Still it might be a good idea to have the function return false anyway just for the sake of making things explicit.
 
-There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions. This is often used as a way to test for undefined by combining the undefined keyword with an identity operator and a value that is to be tested.
+There is also the undefined keyword that can be used to intentionally set a variable to undefined, and can also be used in expressions when it comes to testing for undefined. That is that I often fine myself using the undefined keyword as a way to test for undefined by combining the undefined keyword with an [identity operator](/2019/02/06/js-javascript-equals/) and a value that is to be tested for undefined.
 
 So chances are if you have been fiddling with javaScript for at least a little while, chances are you have come across undefined a few times all ready. However there is much to be aware of when it comes to this value in javaScript. In this post I will be outlining some examples that point out some things that a javaScript developer should be aware of when it comes to undefined in javaScript.
 
