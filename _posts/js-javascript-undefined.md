@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 08:45:02
-version: 1.33
+updated: 2021-10-26 09:17:12
+version: 1.34
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -202,10 +202,64 @@ console.log(undefined === null); // false
 
 However when the identity operator is used to make a comparison a false value is the result. This is because when the identity value is used type conversion does not occur. The null and undefined values are two different types, so the result is false.
 
-## 7 - Undefined is a primitive value in javaScript
+## 7 - Sparse arrays and the undefined value
+
+### 7.1 - Basic sparse array example
+
+```js
+var a = [];
+a[9] = 42;
+console.log(a.length); // 10
+console.log(a[0] === undefined); // true
+```
+
+### 7.2 - Array map and sparse arrays
+
+```js
+var a = [];
+a[9] = 42;
+var c = 0;
+var b = a.map(function (el) {
+        c += 1;
+        return el * 2;
+    });
+console.log(b); // [ <9 empty items>, 84 ]
+console.log(c); // 1
+```
+
+### 7.3 - Using a while loop and making a custom map method
+
+```js
+var custMap = function (arr, func) {
+    var i = 0,
+    newArr = [],
+    len = arr.length;
+    while (i < len) {
+        newArr[i] = func(arr[i], i, arr);
+        i += 1;
+    }
+    return newArr;
+};
+// demo
+var a = [];
+a[9] = 42;
+var c = 0;
+// using this custom map method
+var b = custMap(a, function (el, i, arr) {
+        c += 1;
+        if (el === undefined) {
+            return 0;
+        }
+        return el * 5;
+    });
+console.log(b); // [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 210 ]
+console.log(c); // 10
+```
+
+## 8 - Undefined is a primitive value in javaScript
 
 In javaScript the undefined value is an example of a primitive value. A primitive value if a value that is not an object of any kind like objects, arrays, and functions. Some primitive values have objects that wrap around them, this is the case with Strings and Numbers for example. A String might have prototype methods, and as such it might seem like it is another kind of Object, but it is very much a primitive value. In any case the undefined value in javaScript is one of two primitive values in which this is not the case anyway the other being the null value.
 
-## 8 - Conclusion
+## 9 - Conclusion
 
 The undefined value in javaScript comes up a lot in discussions when learning javaScript for the first time. A common mistake most new javaScript developers make involves errors resulting in calling undefined that can happen because of the nature of function expressions as well as a wide rang of other reasons. There is also the undefined keyword that us often used to test for undefined.
