@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 10:41:36
-version: 1.40
+updated: 2021-10-26 10:43:31
+version: 1.41
 ---
 
 In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
@@ -231,6 +231,8 @@ console.log(a[0] === undefined); // true
 ```
 
 ### 7.3 - Seeing what the public keys are of an array with Object.keys
+
+One way to go about checking out what the deal is with public keys of an array is would be to use a method like the [Object.keys](/2018/12/15/js-object-keys/) method.
 
 ```js
 var a = [];
