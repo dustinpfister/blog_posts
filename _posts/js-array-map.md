@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 667
-updated: 2021-07-20 13:18:14
-version: 1.20
+updated: 2021-10-26 11:43:12
+version: 1.21
 ---
 
 It is a common task in javaScript projects to need to loop over the full contents of [an array](/2018/12/10/js-array/), and create some sort of product for each element in that array. There are methods like the Array for each method that can be used to do this sort of thing, along with other features in javaScript such as just doing such things with loops and the array bracket syntax. However there is an array prototype method that each javaScript developer should be aware of called [array map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
@@ -207,6 +207,57 @@ console.log(b);
 // '10-11-12-13'
 ```
 
-## 7 - Conclusion
+## 7 - Sparse arrays and the array map method
+
+One thing that is of concern when using the native array map method is what happens when the array map method is used with what is called a sparse array. That is an array where one or more of the index key values is not defined therefor the value of the key is [undefined](/2019/01/30/js-javascript-undefined/).
+
+### 7.1 - Using array map with a sparse array
+
+In this example I made a sparse array and then called the array map method off of the sparse array. The result is that the function that I gave to the array map method is only called for the single public key of the array.
+
+```js
+var a = [];
+a[9] = 42;
+var c = 0;
+var b = a.map(function (el) {
+        c += 1;
+        return el * 2;
+    });
+console.log(b); // [ <9 empty items>, 84 ]
+console.log(c); // 1
+```
+
+### 7.2 - Custom array map method
+
+One way to address this would be to not use the array map method but make a custom array map method that will call the given function for each index from zero to the length of the array minus one, rather than calling the function for every public key.
+
+```js
+var custMap = function (arr, func) {
+    var i = 0,
+    newArr = [],
+    len = arr.length;
+    while (i < len) {
+        newArr[i] = func(arr[i], i, arr);
+        i += 1;
+    }
+    return newArr;
+};
+// demo
+var a = [];
+a[9] = 42;
+var c = 0;
+// using this custom map method
+var b = custMap(a, function (el, i, arr) {
+        c += 1;
+        if (el === undefined) {
+            return 0;
+        }
+        return el * 5;
+    });
+console.log(b); // [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 210 ]
+console.log(c); // 10
+```
+
+## 8 - Conclusion
 
 So the array map method is one of several methods in the array prototype that have to do with creating an array from a source array. The array map method is a good choice if you want to created a new array from all elements in the array, but there are of course other options that a javaScript developer should be aware of, namely filter, and reduce, but also many other such as sort.
