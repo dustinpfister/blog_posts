@@ -5,21 +5,25 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2020-10-28 13:39:46
-version: 1.35
+updated: 2021-10-27 11:30:26
+version: 1.36
 ---
 
 In [javaScript Numbers](https://www.javascripttutorial.net/javascript-number/) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
 
 Working with numbers in javaScript might be a little easier compared to other environments as there is only one Number data type, or at least that is the case traditionally. There is also a new [BigInt constructor](/2019/09/06/js-bigint/) also, but that is a matter for another post.
 
-In this post I will be going over some of the basics when it comes to just plain old javaScript numbers. There are quight a few thing to be aware of when working out expressions, and may other little things here and there that one might only become ware of over time. So I will be touching base on at least some of theme here for what it is worth.
+In this post I will be going over some of the basics when it comes to just plain old javaScript numbers. There are a few thing to be aware of when working out expressions, and may other little things here and there that one might only become ware of over time. So I will be touching base on at least some of theme here for what it is worth.
 
 <!-- more -->
 
 ## 1 - The basics of javaScript numbers
 
-In this section I will be going over some of ther very basics of numbers in javaScript. There is creating a number literal that is an actaul literal value in javaScript code. However in real projects number valiues are often obtained by way of some external data, or input of some kind. So there is also storing number values in variables, so they can be worked with elsewhere later. There is also ending up with a number by way of some kind of expression that is also often the case. So there is much to cover even whe it comes to the very basic of numbers in javaScript, so lets get this out of the way so we can move on to the good stuff.
+In this section I will be going over some of the very basics of numbers in javaScript. There is creating a number literal that is an actual literal value in javaScript code. However in real projects number values are often obtained by way of some external data, or input of some kind. So there is also storing number values in variables, so they can be worked with elsewhere later. There is also ending up with a number by way of some kind of expression that is also often the case. So there is much to cover even when it comes to the very basic of numbers in javaScript, so lets get this out of the way so we can move on to the good stuff.
+
+### - javaScript Numbers are only one data type IEEE_754
+
+In javaScript, traditionally at least all Numbers are 64 bit double precision [IEEE_754](https://en.wikipedia.org/wiki/IEEE_754-1985) floating point numbers. If you would like to dive into the subject of IEEE 754 to gain a better understanding of the data type by all means do so, but getting into the depth of that is not necessarily required as long as you are aware that there are some limitations with that data type. There are new standards such as [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), as well as other libraries that can be used to address those limitations. However for the most plain old javaScript Numbers work just fine, and in this post I will be writing mainly about this.
 
 ### 1.1 - Number literals
 
@@ -102,10 +106,6 @@ console.log(d(x, y, z, 0, 0, 0)); // 60.166435825965294
 ```
 
 As you can see from the basic examples numbers can be the result of expressions, what is returned by a method, and can also be used as arguments for a function. In the body of a function numbers can be declared with the var let or const keywords and when doing so will have function or even block level variable scope inside the body of that function when used with those keywords. There are also a number of number class prototype methods such as toFIxed that can be called off of any instance of a number.
-
-## 2 - javaScript Numbers are only one data type IEEE_754
-
-In javaScript, traditionally at least all Numbers are 64 bit double precision [IEEE_754](https://en.wikipedia.org/wiki/IEEE_754-1985) floating point numbers. If you would like to dive into the subject of IEEE 754 to gain a better understanding of the data type by all means do so, but getting into the depth of that is not necessarily required as long as you are aware that there are some limitations with that data type. There are new standards such as [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt), as well as other libraries that can be used to address those limitations. However for the most plain old javaScript Numbers work just fine, and in this post I will be writing mainly about this.
 
 ## 3 - Finding out if something is a javaScript number
 
