@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 10:54:07
-version: 1.48
+updated: 2021-10-27 10:56:34
+version: 1.49
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -52,7 +52,7 @@ However maybe one of the most useful aspects of the document location property i
 
 The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) can be set to the href property of this read only object, and when a new url is assigned to it that will result in a client side redirect to the url that is set to the href property of the location object.
 
-For this example I am using the get elements by tag name method of the document object to get an html collection of all input elements in the page, and then attaching an [event handler](/2019/01/16/js-event-listeners/) to the first input element by way of the add event listener method and the on click pointer event that will work with mouse and touch events.
+For this example I am using the get elements by tag name method of the document object to get an html collection of all input elements in the page, I did it this way just for the sake of switching things up when it comes to how to go about getting an element reference. Anyway once I have an element object reference by one way or the other I then attached an [event handler](/2019/01/16/js-event-listeners/) to the first input element by way of the add event listener method and the on click pointer event that will work with mouse and touch events.
 
 ```html
 <html>
