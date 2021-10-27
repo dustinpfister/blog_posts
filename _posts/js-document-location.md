@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 11:13:54
-version: 1.56
+updated: 2021-10-27 11:15:46
+version: 1.57
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -125,7 +125,7 @@ So the document location property can be used to redirect, but it can also be us
 
 ### 2.1 - Basic reload method example of document location
 
-For this example I just wanted to test out of this reload method works as it should when called in the body of an event hander. So I set up a simple example that will just display a random number once when the page loads, so then the only way to go about getting a new random number would be to reload the page.
+For this example I just wanted to test out of this reload method works as it should when called in the body of an event hander. So I set up a simple example that will just display a random number once when the page loads, so then the only way to go about getting a new random number would be to reload the page. With that said I also placed a button that when clicked will call the reload method of the location object.
 
 ```html
 <html>
