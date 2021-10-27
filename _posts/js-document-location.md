@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 09:57:51
-version: 1.36
+updated: 2021-10-27 09:59:37
+version: 1.37
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -17,7 +17,9 @@ So the location property of the document object will come in handy when making a
 
 <!-- more -->
 
-## 1 - document location and a basic example of the href property to read the current location
+## 1 - Basics of the documet location object
+
+### 1.1 - document location and a basic example of the href property to read the current location
 
 For a basic example of document location here I have a basic html structure, and a single script tag. Inside the script tag I am using the document location href property to display the current href of the document with the help of the innerText property of an element that I am getting a reference to by way of document.getElementById.
 
@@ -40,7 +42,7 @@ So this basic example just displays the current href of the page in the browser 
 
 However maybe one of the most useful aspects of the document location property is that it can be used to preform a client side redirect to a new page. There are a few more methods and properties of a location object in client side javaScript so lets look at some more examples of the document location property.
 
-## 2 - A simple document location redirect example
+### 1.2 - A simple document location redirect example
 
 The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) can be set to the href property of this read only object, and when a new url is assigned to it that will result in a client side redirect to the url that is set to the href property of the location object.
 
@@ -133,7 +135,7 @@ The path name of the location object in document will refer to the path name aft
 console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
 ```
 
-## 7 - Conclusion
+## 8 - Conclusion
 
 So the document location property is very useful when it comes to client side redirects as well as knowing the current protocol and more about the current location of the page. Document location in most modern browsers seems to be the same thing as window location, but that should not always be assumed especially when it comes to older browsers, namely Internet explorer.
 Many other subjects branch off from document location when it comes to things like query strings, ports, protocols and everything else that can often compose a url string. There is also much more to cover when it comes to redirecting traffic also, this might be the typically way to do so when it comes to client side javaScript, however it is not a replacement for sever side solutions for dong so. Hopefully you learned one or two new things reading this, but thank you for stopping by in any case.
