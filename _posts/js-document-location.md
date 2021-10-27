@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 10:48:28
-version: 1.46
+updated: 2021-10-27 10:52:24
+version: 1.47
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -52,6 +52,8 @@ However maybe one of the most useful aspects of the document location property i
 
 The href property of a location object can also be set to a url, and when doing so will result in a redirect to that url. Although the location object of the document location property is read only a [DOMString](https://developer.mozilla.org/en-US/docs/Web/API/DOMString) can be set to the href property of this read only object, and when a new url is assigned to it that will result in a client side redirect to the url that is set to the href property of the location object.
 
+For this example I am using the get elements by tag name method of the document object to get an html collection of all input elements in the page, and then attaching an event handler to the first input element by way of the add event listener method and the on click pointer event that will work with mouse and touch events.
+
 ```html
 <html>
     <head>
@@ -61,7 +63,7 @@ The href property of a location object can also be set to a url, and when doing 
         <input value="to google" type="button">
         <script>
 document.getElementsByTagName('input')[0].addEventListener('click', function(){
-document.location.href = 'https://www.google.com/';
+    document.location.href = 'https://www.google.com/';
 });
         </script>
     </body>
