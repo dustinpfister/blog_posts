@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 10:59:33
-version: 1.50
+updated: 2021-10-27 11:00:53
+version: 1.51
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -74,7 +74,7 @@ The same can also be done with the location href property of the window object a
 
 ### 1.3 - The protocol property of document location
 
-Another useful property of the location object at the document location property is the protocol property. This can be used as a way to find out if the page is being hosted via a protocol like that of file:\/\/ rather than http:\/\/ or https:\/\/. Speaking of which this might be a good time to mention how to go about [getting started with javaScript by way of the file protocol](/2020/09/21/js-getting-started-file-protocol/). If you are new to javaScript you might all ready be developing this way which is by creating static html files with script tags in them, saving them on your location file system, and opening them up in a web browser.
+Another useful property of the location object at the document location property is the protocol property. This can be used as a way to find out if the page is being hosted via a protocol like that of file:\/\/ rather than http:\/\/ or https:\/\/. Speaking of which this might be a good time to mention how to go about [getting started with javaScript by way of the file protocol](/2020/09/21/js-getting-started-file-protocol/). If you are new to javaScript you might all ready be developing this way which is by creating static html files with script tags in them, saving them on your location file system, and opening them up in a web browser. However the file protocol will not work well in all situations, some times I run into problems with the file protocol that are resolved by way of hosting what I am working on my way of http.
 
 In some situations this can be useful if I am developing some kind of project that makes use of a resource that just does not play nice when someone chooses to open it up in the browser rather than hosting it with a web server.
 
