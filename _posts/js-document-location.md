@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 11:06:39
-version: 1.53
+updated: 2021-10-27 11:09:24
+version: 1.54
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -123,7 +123,9 @@ console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
 
 So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object. This could be done in an event handler like in the following example, or by whatever means that would be appropriate when doing so.
 
-```js
+### 2.1 - Basic reload method example of document location
+
+```html
 <html>
     <head>
         <title>document location</title>
@@ -138,6 +140,68 @@ document.getElementById('out').innerHTML = Math.random();
 document.getElementById('button_reload').addEventListener('click', function(){
     location.reload();
 });
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - The reload method works by way of setTiemout also
+
+```html
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+// random display text
+document.getElementById('out').innerHTML = Math.random();
+// using setTiemout
+setTimeout(function(){
+    location.reload();
+}, 3000);
+        </script>
+    </body>
+</html>
+```
+
+### 2.3 - App loop example of the reload method
+
+```html
+<html>
+    <head>
+        <title>document location</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+// state object
+var state={
+    n : Math.random().toFixed(2),
+    lt : new Date(),
+    delay : 10,
+    secs: 0
+};
+// loop
+var loop = function(){
+    var now = new Date(),
+    secsDelta = (now - state.lt) / 1000;
+ 
+    setTimeout(loop, 33);
+ 
+    state.secs += secsDelta;
+    state.secs = state.secs > state.delay ? state.delay: state.secs;
+    if(state.secs === state.delay){
+        location.reload();
+    }
+    state.lt = now;
+    // display text
+    document.getElementById('out').innerHTML = 'n = ' + state.n + ' , ' +
+        'reload in: '+ Math.round(state.secs) + ' / ' + state.delay;
+ 
+};
+loop();
         </script>
     </body>
 </html>
