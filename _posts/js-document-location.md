@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 10:39:16
-version: 1.41
+updated: 2021-10-27 10:42:53
+version: 1.42
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -20,6 +20,10 @@ So the location property of the document object will come in handy when making a
 ## 1 - Basics of the document location object
 
 In this section I will be starting out with a few simple examples of the document location object that have to do with just checking out what the various properties are in terms of useful information, and also things like a simple redirect example. In this basic sections of my posts I like to keep the examples as simple as possible generality, but I still assume that you have at [least some background when it comes to using javaScript](/2018/11/27/js-getting-started/), as well as the various other related skills that are needed in order to do much of anything in client side web development.
+
+### - The source code examples here are on Github
+
+If you are not on Github you should consider signing up and getting into source control at some point, getting into the reasons why would be a bot off topic, but I do like to mentioning that the source code examples in my posts can often be found on Github. This post is not exception as the source code examples on this post about the document location object can be found in my test vjs repository. The test vjs repository also contains the source code examples for my many other posts that I have wrote on javaScript in general thus far.
 
 ### 1.1 - document location and a basic example of the href property to read the current location
 
