@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 10:11:12
-version: 1.38
+updated: 2021-10-27 10:14:59
+version: 1.39
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -120,11 +120,11 @@ So the document location property can be used to redirect, but it can also be us
         <div id="out"></div>
         <input type="button" id="button_reload" value="reload">
         <script>
+// random display text
 document.getElementById('out').innerHTML = Math.random();
-document.getElementById('button_reload')
-.addEventListener('click', function(){
-console.log('yes');
-  location.reload();
+// event handler that will reload the page
+document.getElementById('button_reload').addEventListener('click', function(){
+    location.reload();
 });
         </script>
     </body>
