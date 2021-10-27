@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 11:09:24
-version: 1.54
+updated: 2021-10-27 11:11:52
+version: 1.55
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -121,9 +121,11 @@ console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
 
 ## 2 - Reload a page with javaScript via document.location
 
-So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object. This could be done in an event handler like in the following example, or by whatever means that would be appropriate when doing so.
+So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object that when called will reload the current page, rather than redirect to a new one. So then in this section I ill be going over a few examples that I have made to see how this method works, and if it does so okay in various kinds of environments such as in the body of event handers, and in application loop functions.
 
 ### 2.1 - Basic reload method example of document location
+
+This could be done in an event handler like in the following example, or by whatever means that would be appropriate when doing so.
 
 ```html
 <html>
