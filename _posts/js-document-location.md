@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 11:15:46
-version: 1.57
+updated: 2021-10-27 11:18:41
+version: 1.58
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -148,6 +148,8 @@ document.getElementById('button_reload').addEventListener('click', function(){
 ```
 
 ### 2.2 - The reload method works by way of setTiemout also
+
+I was thinking that this is an example of a kind of method that can end up being abused by developers to create a web page that will keep reloading over an over again. So I was thinking that there might be some kind of browser feature that would nit allow this. It would seem that I was wrong with that assumption at least in the version of chrome that I was using at the time of this writing as the below example that uses [setTimeout](/2018/12/06/js-settimeout/) works with the reload method.
 
 ```html
 <html>
