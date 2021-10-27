@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2021-10-27 11:46:35
-version: 1.43
+updated: 2021-10-27 13:41:40
+version: 1.44
 ---
 
 In [javaScript Numbers](https://www.javascripttutorial.net/javascript-number/) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -117,7 +117,19 @@ As you can see from the basic examples numbers can be the result of expressions,
 
 ## 2 - Finding out if something is a javaScript number
 
+On thing about numbers in any programing language is to know if I am dealing with a number to begin with. There should be some kind of operator or function in a language that will let be know what kind of data type I am using, and with javaScript there is the typeof operator. In this section I will be going over a few examples that have to do with knowing if I am even dealing with a number to begin with.
+
+### 2.1 - Basic typeof exmaple
+
 When I want to find out if a variable or property key value that I am dealing with is a number or not one way to go about doing so is to use the [typeof operator](/2019/02/15/js-javascript-typeof/). To use this operator I just type typeof and then the value that I want to check, or an expression that will evaluate to a type.
+
+```js
+var n = 42;
+console.log(typeof n); // 'number'
+console.log(typeof n === 'number'); // true
+```
+
+### 2.2 - Array filter example to create an array fo only numbers from a source array
 
 In this example I am using the [array filter method](/2020/10/03/js-array-filter/) to filter out all elements except elements that are of the type called number. This works by calling the filter method off of the source array, and then passing a function that will be called for each element in the array. If the return value of the function is true, then the element will be in the new array that will be returned, else it will not. So I am just using the typeof operator with the current element, and seeing if that compares to the 'number' string using the identity operator.
 
