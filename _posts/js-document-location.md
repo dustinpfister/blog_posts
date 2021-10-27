@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 11:18:41
-version: 1.58
+updated: 2021-10-27 11:20:03
+version: 1.59
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -171,6 +171,8 @@ setTimeout(function(){
 ```
 
 ### 2.3 - App loop example of the reload method
+
+So then because this reload method seems to work okay it can be used not just in event handers that are fired by some kind of user action, but also be used in a condition that can happen inside the body of some kind of application loop.
 
 ```html
 <html>
