@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 09:59:37
-version: 1.37
+updated: 2021-10-27 10:11:12
+version: 1.38
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -64,11 +64,7 @@ document.location.href = 'https://www.google.com/';
 
 The same can also be done with the location href property of the window object as well. In fact in most modern browsers there is not any note worth difference between the two, but that might not always be the case when it comes to older browsers. Some developers seem to suggest that the window location property should be used for this, and anything else that has to do with the location object of the page. However this is a post on document location so that is what I use that in this example, in production code though maybe window location would be best.
 
-## 3 - Document location and window location
-
-It would seem that in some browser environments document location and window location are the same thing, however in others they are not. It might be best to actually stick with window location because that might be more consistent across environments, but don't just take my word for it there is a good [thread on stack overflow](https://stackoverflow.com/questions/2430936/whats-the-difference-between-window-location-and-document-location-in-javascrip) on this one that is worth checking out.
-
-## 4 - The protocol property of document location
+### 1.3 - The protocol property of document location
 
 Another useful property of the location object at the document location property is the protocol property. This can be used as a way to find out if the page is being hosted via a protocol like that of file:\/\/ rather than http:\/\/ or https:\/\/. In some situations this can be useful if I am developing some kind of project that makes use of a resource that just does not play nice when someone chooses to open it up in the browser rather than hosting it with a web server.
 
@@ -82,7 +78,36 @@ if (location.protocol == 'file:') {
 
 Much of the remaining values of a location object will depend on the protocol along with other factors. For example if I am looking at an html document via the file: protocol then the location object will not have a host name or port, because the url is just a path to a static resource located on my computer.
 
-## 5 - Reload a page with javaScript via document.location
+### 1.4 - The document location host and hostname properties
+
+In a location object there is a host and hostname properties that can get the domain name if there is one to get depending on the protocol. For example if I create an html document and just open it up in the browser then the protocol is file: and then the values for host and hostname are empty strings. However if I host that file locally with an http server then the protocol will be http: and the host and hostname properties will not return an empty string.
+
+The two properties more or less give the same thing, but with one note worth difference the hostname will also give a post if there is one in the url string.
+
+```js
+if(location.protocol === 'file:'){
+    console.log(location.protocol); // 'file:'
+    console.log(location.host); // ''
+    console.log(location.hostname); // ''
+}else{
+    console.log(location.protocol); // 'http:'
+    console.log(location.host); // localhost:8080
+    console.log(location.hostname); // localhost
+}
+```
+
+So the values of many of these properties of course depending on the state of the url string. If the protocol is the file: protocol the of course I am not going to get a domain name, or port, because the url is just a path to a local asset.
+
+### 1.5 - The path name of a document location
+
+The path name of the location object in document will refer to the path name after the protocol host name and port, and before any additional parts of the url afterwards such as query strings and hash tags to any items in the page
+
+```js
+//  at https://dustinpfister.github.io/2017/09/14/lodash-find/
+console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
+```
+
+## 2 - Reload a page with javaScript via document.location
 
 So the document location property can be used to redirect, but it can also be used to reload the current page via javaScript as well. To do so I just need to call the reload method of the location object. This could be done in an event handler like in the following example, or by whatever means that would be appropriate when doing so.
 
@@ -106,36 +131,11 @@ console.log('yes');
 </html>
 ```
 
-## 6 - The document location host and hostname properties
+## 3 - Document location and window location
 
-In a location object there is a host and hostname properties that can get the domain name if there is one to get depending on the protocol. For example if I create an html document and just open it up in the browser then the protocol is file: and then the values for host and hostname are empty strings. However if I host that file locally with an http server then the protocol will be http: and the host and hostname properties will not return an empty string.
+It would seem that in some browser environments document location and window location are the same thing, however in others they are not. It might be best to actually stick with window location because that might be more consistent across environments, but don't just take my word for it there is a good [thread on stack overflow](https://stackoverflow.com/questions/2430936/whats-the-difference-between-window-location-and-document-location-in-javascrip) on this one that is worth checking out.
 
-The two properties more or less give the same thing, but with one note worth difference the hostname will also give a post if there is one in the url string.
-
-```js
-if(location.protocol === 'file:'){
-    console.log(location.protocol); // 'file:'
-    console.log(location.host); // ''
-    console.log(location.hostname); // ''
-}else{
-    console.log(location.protocol); // 'http:'
-    console.log(location.host); // localhost:8080
-    console.log(location.hostname); // localhost
-}
-```
-
-So the values of many of these properties of course depending on the state of the url string. If the protocol is the file: protocol the of course I am not going to get a domain name, or port, because the url is just a path to a local asset.
-
-## 7 - The path name of a document location
-
-The path name of the location object in document will refer to the path name after the protocol host name and port, and before any additional parts of the url afterwards such as query strings and hash tags to any items in the page
-
-```js
-//  at https://dustinpfister.github.io/2017/09/14/lodash-find/
-console.log(document.location.pathname); // "/2017/09/14/lodash-find/"
-```
-
-## 8 - Conclusion
+## 4 - Conclusion
 
 So the document location property is very useful when it comes to client side redirects as well as knowing the current protocol and more about the current location of the page. Document location in most modern browsers seems to be the same thing as window location, but that should not always be assumed especially when it comes to older browsers, namely Internet explorer.
 Many other subjects branch off from document location when it comes to things like query strings, ports, protocols and everything else that can often compose a url string. There is also much more to cover when it comes to redirecting traffic also, this might be the typically way to do so when it comes to client side javaScript, however it is not a replacement for sever side solutions for dong so. Hopefully you learned one or two new things reading this, but thank you for stopping by in any case.
