@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 363
-updated: 2021-10-27 11:33:22
-version: 1.37
+updated: 2021-10-27 11:35:18
+version: 1.38
 ---
 
 In [javaScript Numbers](https://www.javascripttutorial.net/javascript-number/) are a central part of just about any project. Much of programing has to do with working with magnitudes that are well represented with numbers. For example say I am working out a simple example that has to do with a point in a 2d grid, numbers can be used to represent the x and y position of that point in the grid. Numbers are also used when it comes to representing things like an angle between two points in a grid, and the number of frames that are to pass when a point moves from one location to another, just to mention a few examples where Numbers will come into play. So doing just about anything interesting with javaScript will require at least some basic understanding of how numbers are handled in a javaScript programing environment. 
@@ -19,7 +19,11 @@ In this post I will be going over some of the basics when it comes to just plain
 
 ## 1 - The basics of javaScript numbers
 
-In this section I will be going over some of the very basics of numbers in javaScript. There is creating a number literal that is an actual literal value in javaScript code. However in real projects number values are often obtained by way of some external data, or input of some kind. So there is also storing number values in variables, so they can be worked with elsewhere later. There is also ending up with a number by way of some kind of expression that is also often the case. So there is much to cover even when it comes to the very basic of numbers in javaScript, so lets get this out of the way so we can move on to the good stuff.
+In this section I will be going over some of the very basics of numbers in javaScript. There is creating a number literal that is an actual literal value in javaScript code. However in real projects number values are often obtained by way of some external data, or input of some kind. 
+
+So there is also storing number values in variables, so they can be worked with elsewhere later. There is also ending up with a number by way of some kind of expression that is also often the case. So there is much to cover even when it comes to the very basic of numbers in javaScript, so lets get this out of the way so we can move on to the good stuff.
+
+Although I will be keeping this examples fairly simple I assume that you have at least some background when it comes to the very basics of [getting started with javaScript](/2018/11/27/js-getting-started/).
 
 ### - The source code examples in this post are on Github
 
