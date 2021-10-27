@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-27 10:47:41
-version: 1.45
+updated: 2021-10-27 10:48:28
+version: 1.46
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -27,7 +27,7 @@ If you are not on Github you should consider signing up and getting into source 
 
 ### 1.1 - document location and a basic example of the href property to read the current location
 
-For a basic example of document location here I have a basic html structure, and a single script tag. Inside the script tag I am using the document location href property to display the current href of the document with the help of the innerText property of an element that I am getting a reference to by way of the [document.getElementById method](/2018/12/27/js-document-getelementbyid/) yet another useful method of the document object for getting a reference to an element. There are a lot of other options for getting an element reference in client side javaScript, but getting into that here and now might be a bot off topic.
+For a basic example of document location here I have a basic html structure, and a single script tag. Inside the script tag I am using the document location href property to display the current href of the document with the help of the innerText property of an element that I am getting a reference to by way of the [document.getElementById method](/2018/12/27/js-document-getelementbyid/) yet another useful method of the document object for getting a reference to an element. There are a [lot of other options for getting an element reference](/2020/06/23/js-document-queryselector/) in client side javaScript, but getting into that here and now might be a bot off topic.
 
 ```html
 <html>
