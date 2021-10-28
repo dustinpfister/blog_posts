@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 10:48:03
-version: 1.36
+updated: 2021-10-28 10:49:19
+version: 1.37
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -155,6 +155,8 @@ var Model = (function (api) {
 ```
 
 ### 2.2 - The draw.js file that draws the current state to a canvas element
+
+I have a module that I can use to create and mutate a state object, but now I am going to want to have a module that will draw that model to a canvas element.
 
 ```js
 var draw = (function () {
