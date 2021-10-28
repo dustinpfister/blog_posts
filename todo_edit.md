@@ -44,6 +44,7 @@ js-javascript-scope
 
 ### (   ) - js-onunload (old)
 * have 5+ internal links for the post
+* edit post to 1,000+ words
 
 ### (   ) - js-fetch (old)
 * have 5+ internal links for the post
