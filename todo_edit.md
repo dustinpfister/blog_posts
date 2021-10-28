@@ -42,10 +42,6 @@ js-javascript-iframe
 js-javascript-scope
 -->
 
-### (  ) - js-request-animation-frame (old)
-* have 5+ internal links for the post
-* edit post to 1,100+ words
-
 ### (  ) - js-function-pure (old)
 * have 5+ internal links for the post
 * edit post to 1,800+ words
@@ -117,6 +113,10 @@ js-javascript-scope
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 10/28/2021 ) - js-request-animation-frame (old)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,100+ words
 
 ### ( done 10/27/2021 ) - js-javascript-number ( old )
 * (done) have 5+ internal links for the post
