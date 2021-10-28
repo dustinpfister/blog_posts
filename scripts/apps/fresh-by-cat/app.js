@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 app.set('port', process.env.PORT || process.argv[2] || 8000);
 
-app.set('days_back', process.argv[3] || 1500);
+app.set('days_back', process.argv[3] || 90);
 
 let dir_cli = path.join(__dirname, '../../cli'),
 klawAll = require(path.join(dir_cli, 'klaw-readall', 'index.js')).klawAll;
