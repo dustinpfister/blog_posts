@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 09:11:19
-version: 1.23
+updated: 2021-10-28 09:12:17
+version: 1.24
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -30,7 +30,7 @@ The source code examples in this post as well as all my [other posts on vanilla 
 
 ### 1.1 - Basic request animation frame method example
 
-To start off this section a very basic example of the request animation frame method might be a good idea. So in this example I made an example that is a single stand alone html file with embedded javaScript in a script tag element. In the html I have a hard coned canvas element with the native with and height set by way of the canvas element attributes. Then in the body of the script element I am using the document.getElementById method as a way to get a reference to the canvas element, once I have the canvas element reference I can use the get context method of the canvas element reference to get an instance of the 2d drawing context for the element.
+To start off this section a very basic example of the request animation frame method might be a good idea. So in this example I made an example that is a single stand alone html file with embedded javaScript in a script tag element. In the html I have a hard coned canvas element with the native with and height set by way of the canvas element attributes. Then in the body of the script element I am using the [document.getElementById method](/2018/12/27/js-document-getelementbyid/) as a way to get a reference to the canvas element, once I have the canvas element reference I can use the get context method of the canvas element reference to get an instance of the 2d drawing context for the element.
 
 ```html
 <html>
