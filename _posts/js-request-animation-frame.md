@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 10:36:41
-version: 1.33
+updated: 2021-10-28 10:40:53
+version: 1.34
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -108,89 +108,105 @@ Browser support is pretty good with requestAnimatinFrame, but the other options 
 
 For a basic demo of requestAnimationFrame I put together something that involves the updating of a model, and rendering of that model to a canvas element. For this example I am breaking things down into a few javaScript files, on top of the hard coded html that is used to tie everything together. The main javaScript file contains the app loop that makes use of the request animation frame method, but I then have other files that are used to just create and update a state object, and another that is just one way to go about drawing that state object to the canvas elements 2d drawing context. So then in this section I will be going over the source code of these files, and get into detail with any additional topics that come up when doing so.
 
+### 2.1 - The model.js file that creates and updates the state
+
 ```js
-(function() {
- 
-  // a canvas view
-  var canvas = document.createElement('canvas'),
-    ctx = canvas.getContext('2d'),
-    lt = new Date();
- 
-  canvas.width = 320;
-  canvas.height = 240;
- 
-  document.body.appendChild(canvas);
- 
-  // a model
-  var obj = {
-      x: 0,
-      y: 0,
-      r: 15
-    },
-    frame = 0,
-    maxFrame = 100;
- 
-  var update = function() {
- 
-    var per = frame / maxFrame,
-      bias = 1 - Math.abs(0.5 - per) / 0.5,
-      cx = canvas.width / 2,
-      cy = canvas.height / 2,
-      
-      a = Math.PI * 2 * bias;
- 
-    obj.x = cx + Math.cos(a) * 100 * bias;
-    obj.y = cy + Math.sin(a) * 50;
- 
-    frame += 1;
- 
-    if (frame >= maxFrame) {
- 
-      frame = frame % maxFrame;
- 
-    }
- 
-  };
- 
-  var draw = function() {
- 
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
- 
-    ctx.strokeStyle = '#ffffff';
-    ctx.fillStyle = '#ff0000';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2);
-    ctx.closePath();
-    ctx.stroke();
-    ctx.fill();
- 
-  };
- 
-  var loop = function() {
- 
-    requestAnimationFrame(loop);
- 
-    if (new Date() - lt >= 1000 / 60) {
- 
-      update();
-      draw();
- 
-      lt = new Date();
- 
-    }
- 
-  };
- 
-  loop();
- 
-}());
+// A simple Model example
+var Model = (function (api) {
+    // public api
+    var api = {};
+    // create a new state
+    api.create = function (canvas) {
+        var state = {
+            canvas: canvas,
+            x: 0,
+            y: 0,
+            r: 25,
+            f: 0,
+            frame: 0,
+            maxFrame: 120,
+            fps: 30
+        };
+        return state;
+    };
+    // update the state
+    api.update = function (state, secs) {
+        var per = state.frame / state.maxFrame,
+        bias = 1 - Math.abs(0.5 - per) / 0.5,
+        cx = state.canvas.width / 2,
+        cy = state.canvas.height / 2,
+        a = Math.PI * 2 * bias;
+        // move x and y by a and bias
+        state.x = cx + Math.cos(a) * 100 * bias;
+        state.y = cy + Math.sin(a) * 50;
+        // step frame
+        state.f += state.fps * secs;
+        state.f = state.f % state.maxFrame;
+        state.frame = Math.floor(state.f);
+    };
+    // return the public api
+    return api;
+}
+    ());
 ```
 
-RequestAnimation frame takes only one argument that is the method to call when it is time to update the animation. Often it is used in a recursive fashion like this, and because it only takes one argument something else must be done in order to set a frame rate.
+### 2.2 - The draw.js file that draws the current state to a canvas element
 
-So now it is just a matter of saving the javaScript code in a basic.js file, and then create an index.html file like this.
+```js
+var draw = (function () {
+    // draw background
+    var background = function (state, ctx) {
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0, 0, state.canvas.width, state.canvas.height);
+    };
+    // draw ball
+    var ball = function (state, ctx) {
+        ctx.strokeStyle = '#ffffff';
+        ctx.fillStyle = '#ff0000';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(state.x, state.y, state.r, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+    }
+    // public api is a function
+    var api = function (state, ctx) {
+        background(state, ctx);
+        ball(state, ctx);
+    };
+    // return the public API
+    return api;
+}
+    ());
+```
+
+### 2.3 - The main javaScript file that will create the canvas and use the model and draw modules
+
+```js
+// a canvas element
+var canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d'),
+lt = new Date();
+canvas.width = 320;
+canvas.height = 240;
+document.body.appendChild(canvas);
+// create the state object
+var state = Model.create(canvas);
+// loop method using request animation frame
+var lt = new Date();
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    Model.update(state, secs);
+    draw(state, ctx);
+    lt = now;
+};
+loop();
+```
+
+### 2.4 - The html
 
 ```html
 <html>
@@ -198,12 +214,14 @@ So now it is just a matter of saving the javaScript code in a basic.js file, and
         <title>request animation frame</title>
     </head>
     <body>
-        <script src="basic.js"></script>
+        <script src="model.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>
 ```
 
-When I open the index.html file in my browser I get a looping animation as expected.
+When I open the index.html file in my browser I get a looping animation with a ball moving out from the center of the canvas out to the edge of the canvas and back again as expected.
 
 ## 3 - Conclusion
 
