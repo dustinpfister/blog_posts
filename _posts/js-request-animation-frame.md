@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 11:33:11
-version: 1.46
+updated: 2021-10-28 11:38:41
+version: 1.47
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -106,7 +106,9 @@ Browser support is pretty good with requestAnimatinFrame, but the other options 
 
 ## 2 - Capping a seconds delta value
 
-On thing that has come up that I think I should write about more in an advanced section is making sure to set a cap on a seconds delta value for projects where doing so might be a good idea. This a for the most part only a problem some times when it comes to switching between tabs in a browser, and ending up with a large amount of time between frames. In these kinds of situations I can end up with a large delta value for the seconds value that is used to update the current properties of a model. So in this section I will be going over this in detail.
+On thing that has come up that I think I should write about more in an advanced section is making sure to set a cap on a seconds delta value for projects where doing so might be a good idea. This a for the most part only a problem some times when it comes to switching between tabs in a browser, and ending up with a large amount of time between frames. In these kinds of situations I can end up with a large delta value for the seconds value that is used to update the current properties of a model. In some projects this might nt be a problem, it might even be what I want to happen actually. However in order projects it could present a problem where time is being used to update the state of objects as an object will just end up jumping an extreme distance between frames if i do not set some kind of max seconds delta value.
+
+So in this section I will be going over this capping of a seconds delta value in detail.
 
 ### 2.1 - Basic seconds capping example
 
