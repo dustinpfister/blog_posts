@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 09:28:15
-version: 1.29
+updated: 2021-10-28 09:29:32
+version: 1.30
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -59,7 +59,7 @@ loop();
 </html>
 ```
 
-### 1.2 - Moving something by pixels per second requestAnimationFrame example
+### 1.2 - The Style API and moving something by pixels per second with requestAnimationFrame example
 
 Often I use request animation frame with canvas projects, but it can also be used with any kind of animation effect in web page. This includes the use of things like the [style api](/2019/02/12/js-javascript-style/) that can be used to change css values of elements by way of javaScript code. With that said in this example I will be using the style api as a way to update the state of a div element that has fixed positioning by mutating the left css property with a variable that I am updating in the body of a loop method powered by request animation frame.
 
