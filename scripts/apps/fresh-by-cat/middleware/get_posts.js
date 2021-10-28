@@ -53,6 +53,7 @@ module.exports = (opt) => {
                     cat.posts.push({
                         fn: item.fn,
                         title: item.header.title,
+                        updated: item.header.updated,
                         fresh: fresh,
                         linkCount: item.linkObjects.length,
                         linkCountInternal: item.linkInternalCount,
