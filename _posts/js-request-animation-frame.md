@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 10:53:51
-version: 1.39
+updated: 2021-10-28 10:58:35
+version: 1.40
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -231,7 +231,7 @@ I will then just need a little HTML that will make use of all of these javaScrip
 </html>
 ```
 
-When I open the index.html file in my browser I get a looping animation with a ball moving out from the center of the canvas out to the edge of the canvas and back again as expected.
+When I open the index.html file in my browser I get a looping animation with a ball moving out from the center of the canvas out to the edge of the canvas and back again as expected. There is a great deal that I might add and change here and there, and in time when I come around to editing this post again I might make those changes. However I think for this example at least there is not that much more to do as I just wanted and example that is a very basic project example that is just a simple looping animation, and this is more or less what that is.
 
 ## 3 - Conclusion
 
