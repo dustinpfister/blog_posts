@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 08:17:33
-version: 1.16
+updated: 2021-10-28 08:38:37
+version: 1.17
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -22,7 +22,34 @@ The request animation frame is one of several ways I know of to get a method to 
 
 Never the less in this section I will be going over some details when it comes to requestAnimationFrame.
 
-### 1.1 - Basic requestAnimationFrame example
+### 1.1 - Basic request animation frame method example
+
+```html
+<html>
+    <head>
+        <title>request animation frame</title>
+    </head>
+    <body>
+        <canvas id="the_canvas" width="640" height="480"></canvas>
+        <script>
+var canvas = document.getElementById('the_canvas'),
+ctx = canvas.getContext('2d'),
+x = 0;
+var loop = function(now){
+    requestAnimationFrame(loop);
+    // update x
+    x += 5; x %= canvas.width;
+    // draw to the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(x, 240 - 32, 64, 64);
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Moving something by pixels per second requestAnimationFrame example
 
 Most of the time the basic idea is to call the request animation frame method inside the body of a loop function, and pass a reference to the loop function as the first argument when calling request animation frame. Inside the loop functionI will want to do something that will update the state of an animation, and then render the result.
 
