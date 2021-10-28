@@ -42,6 +42,14 @@ js-javascript-iframe
 js-javascript-scope
 -->
 
+### (  ) - js-request-animation-frame (old)
+* have 5+ internal links for the post
+* edit post to 1,100+ words
+
+### (  ) - js-function-pure (old)
+* have 5+ internal links for the post
+* edit post to 1,800+ words
+
 ### (   ) - js-call-object ( no internal links )
 * have 5+ internal links for the post
 
@@ -57,10 +65,6 @@ js-javascript-scope
 
 ### (  ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
-
-### (  ) - js-function-pure (old)
-* have 5+ internal links for the post
-* edit post to 1,800+ words
 
 ### (  ) - js-filereader  ( old )
 * (done) have 5+ internal links for the post
