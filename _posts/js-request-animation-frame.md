@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 11:22:59
-version: 1.43
+updated: 2021-10-28 11:26:52
+version: 1.44
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -105,6 +105,8 @@ The request animation frame method differs from the other options in that it is 
 Browser support is pretty good with requestAnimatinFrame, but the other options have been around much longer. If you really care about pushing backward compatibility back far that can easily be fixed with a polly fill. In addition requestAnimationFrame can not be used in a web worker environment, as such the other options mentioned are all that can be used in that kind of environment. Also requestAnimationFrame is very much a front end thing only, so if you make full stack applications with node.js you are limited to the other options.
 
 ## 2 - Capping a seconds delta value
+
+On thing that has come up that I think I should write about more in an advanced section is making sure to set a cap on a seconds delta value for projects where doing so might be a good idea. This a for the most part only a problem some times when it comes to switching between tabs in a browser, and ending up with a large amount of time between frames. In these kinds of situations I can edn up with a large delta value for the seconds value that is used to update the current properties of a model. So in this section I will be going over this in detail.
 
 ### 2.1 - Basic seconds capping example
 
