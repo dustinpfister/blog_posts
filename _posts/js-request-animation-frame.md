@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 11:30:19
-version: 1.45
+updated: 2021-10-28 11:33:11
+version: 1.46
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -110,7 +110,7 @@ On thing that has come up that I think I should write about more in an advanced 
 
 ### 2.1 - Basic seconds capping example
 
-So the basic idea with this is to make a request animation frame powered main app loop like always, and do the usual bit where I have a secs value that is a delta amount of time that has passed sense the last frame update in seconds, only setting a cap for what the max of this value should be if any. One way would be to just us a ternary expression to set a cap for secs, so in the event that it goes over it will be set to that cap, else the value below it will be used.
+So the basic idea with this is to make a request animation frame powered main app loop like always, and do the usual bit where I have a secs value that is a delta amount of time that has passed sense the last frame update in seconds, only setting a cap for what the max of this value should be if any. One way would be to just us a [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to set a cap for secs, so in the event that it goes over it will be set to that cap, else the value below it will be used.
 
 ```html
 <html>
