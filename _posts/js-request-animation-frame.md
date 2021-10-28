@@ -5,11 +5,13 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2020-10-30 09:43:57
-version: 1.15
+updated: 2021-10-28 08:17:33
+version: 1.16
 ---
 
-When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some kind of view. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main  app loop with a canvas project, but one such option is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. For the most part this is the one you will want to go with when it comes to anything involving canvas and an app loop. Generally the other options are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
+When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
+
+For the most part the request animation frame method is the one you will want to go with when it comes to anything involving canvas elements and an app loop. Generally the other options such as the [setTimout](/2018/12/06/js-settimeout/) and [setInterval](/2018/03/08/js-setinterval/) methods are only used for other environments outside of the main event loop of a front end project, such as webworker, or doing something with nodejs.
 
 <!-- more -->
 
