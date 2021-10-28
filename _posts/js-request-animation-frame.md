@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 10:49:19
-version: 1.37
+updated: 2021-10-28 10:51:53
+version: 1.38
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -188,6 +188,8 @@ var draw = (function () {
 ```
 
 ### 2.3 - The main javaScript file that will create the canvas and use the model and draw modules
+
+Now for the main javaScript file, here in this file I am creating the canvas element, and setting the native size with some javaScript code, and then appending it to the hard coded html of the example. I then create a state object with the create method of my model module, and after that I have my main app loop that is making use of the request animation frame method.
 
 ```js
 // a canvas element
