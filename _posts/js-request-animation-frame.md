@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 09:47:02
-version: 1.32
+updated: 2021-10-28 10:36:41
+version: 1.33
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -106,7 +106,7 @@ Browser support is pretty good with requestAnimatinFrame, but the other options 
 
 ## 2 - Simple animation loop example of requestAnimationFrame
 
-For a basic demo of requestAnimationFrame I put together something that involves the updating of a model, and rendering of that model to a canvas element. The module if you can call it that is just an object literal with an x, y and r properties that are used for the values of a circle. An update method is used to update the position of this module in an app loop that will be made using request animation frame.
+For a basic demo of requestAnimationFrame I put together something that involves the updating of a model, and rendering of that model to a canvas element. For this example I am breaking things down into a few javaScript files, on top of the hard coded html that is used to tie everything together. The main javaScript file contains the app loop that makes use of the request animation frame method, but I then have other files that are used to just create and update a state object, and another that is just one way to go about drawing that state object to the canvas elements 2d drawing context. So then in this section I will be going over the source code of these files, and get into detail with any additional topics that come up when doing so.
 
 ```js
 (function() {
