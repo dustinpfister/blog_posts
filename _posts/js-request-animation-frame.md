@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 10:44:54
-version: 1.35
+updated: 2021-10-28 10:48:03
+version: 1.36
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -111,6 +111,8 @@ For a basic demo of requestAnimationFrame I put together something that involves
 ### 2.1 - The model.js file that creates and updates the state
 
 The source code for the module is wrapped my in what is called an [IIFE or Immediately Invoked Function Expression](/2020/02/04/js-iife/) this is one way of making a module in client side javaScript by having a way so that I define everything as a single object or function that will be returned to just a single [global variable](/2019/01/31/js-javascript-global/). When it comes to making a final product I can event wrap all the various files into a single IIFE to make it so that there are no global variables at all, but getting into that might be a bit to much off topic for this post.
+
+The first public method of note for this example is the create method which I can use in a main javaScript file to create a state object. I can then pass this state object, along with a seconds delta value, to the other public method that is the update method of this module to update the state object. So then for this example I am still keeping things relatively simple in the sense that I have just two public methods for this model module, one to create a state object, and another to update that state object by a seconds delta value.
 
 ```js
 // A simple Model example
