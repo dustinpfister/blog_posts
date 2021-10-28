@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 11:26:52
-version: 1.44
+updated: 2021-10-28 11:30:19
+version: 1.45
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -106,9 +106,11 @@ Browser support is pretty good with requestAnimatinFrame, but the other options 
 
 ## 2 - Capping a seconds delta value
 
-On thing that has come up that I think I should write about more in an advanced section is making sure to set a cap on a seconds delta value for projects where doing so might be a good idea. This a for the most part only a problem some times when it comes to switching between tabs in a browser, and ending up with a large amount of time between frames. In these kinds of situations I can edn up with a large delta value for the seconds value that is used to update the current properties of a model. So in this section I will be going over this in detail.
+On thing that has come up that I think I should write about more in an advanced section is making sure to set a cap on a seconds delta value for projects where doing so might be a good idea. This a for the most part only a problem some times when it comes to switching between tabs in a browser, and ending up with a large amount of time between frames. In these kinds of situations I can end up with a large delta value for the seconds value that is used to update the current properties of a model. So in this section I will be going over this in detail.
 
 ### 2.1 - Basic seconds capping example
+
+So the basic idea with this is to make a request animation frame powered main app loop like always, and do the usual bit where I have a secs value that is a delta amount of time that has passed sense the last frame update in seconds, only setting a cap for what the max of this value should be if any. One way would be to just us a ternary expression to set a cap for secs, so in the event that it goes over it will be set to that cap, else the value below it will be used.
 
 ```html
 <html>
