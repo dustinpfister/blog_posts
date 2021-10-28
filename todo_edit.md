@@ -42,7 +42,24 @@ js-javascript-iframe
 js-javascript-scope
 -->
 
-### (  ) - js-function-pure (old)
+### (   ) - js-onunload (old)
+* have 5+ internal links for the post
+
+### (   ) - js-fetch (old)
+* have 5+ internal links for the post
+
+### (   ) - js-onchange (old)
+* have 5+ internal links for the post
+
+### (   ) - js-uint8array (old)
+* have 5+ internal links for the post
+
+### (   ) - js-filereader  ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
+* edit post to 1,800+ words
+
+### (   ) - js-function-pure (old)
 * have 5+ internal links for the post
 * edit post to 1,800+ words
 
@@ -59,13 +76,8 @@ js-javascript-scope
 * have 5+ internal links for the post
 * edit post to 1,000 words
 
-### (  ) - js-javascript-example-utils ( new methods )
+### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
-
-### (  ) - js-filereader  ( old )
-* (done) have 5+ internal links for the post
-* (done) edit post to 1,000+ words
-* edit post to 1,800+ words
 
 ### (   ) - js-regex ( more internal links )
 * (done) new section on wrap text example
