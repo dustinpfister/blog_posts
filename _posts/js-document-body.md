@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 354
-updated: 2021-08-10 11:05:21
-version: 1.38
+updated: 2021-10-29 11:52:07
+version: 1.39
 ---
 
-The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the document object in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
+The [document.body property](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) of the [document object](/2021/10/29/js-document/) in client side javaScript is a reference to the [body](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body) element in an html document. So the property is a way to go about getting a reference to the main body element without having to assign and id value or class to it which is silly sense there is always, or at least should be only one body element in an html document.
 
 The body element is where all additional elements will be placed that have to do with the documents layout and structure, of course you should all ready know that if you are getting into javaScript now, if not maybe you should take a step back and review html a little more before continuing. 
 
