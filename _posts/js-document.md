@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 08:46:48
-version: 1.6
+updated: 2021-10-29 08:50:03
+version: 1.7
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -26,7 +26,7 @@ The source code examples in this post can be found in my [test vjs Github](https
 
 ### 1.1 - Get a reference to an element
 
-There are a number of methods in the document object that can be used to get an [element object reference](https://developer.mozilla.org/en-US/docs/Web/API/Element). For example say that I have a div element in my hard coded html that has an id attribute assigned to it. lets say that all I want to do is just append some text to the inner text node of this div element with a little javaScript code in a [script tag](/2019/01/19/js-script-tag/).
+There are a number of methods in the document object that can be used to get an [element object reference](https://developer.mozilla.org/en-US/docs/Web/API/Element). For example say that I have a div element in my hard coded html that has an id attribute assigned to it. lets say that all I want to do is just append some text to the inner text node of this div element with a little javaScript code in a [script tag](/2019/01/19/js-script-tag/). The first thing I would want to do is get an element object reference to the div element, and one way would be to use the [get element by id method](/2018/12/27/js-document-getelementbyid/) of the js document object.
 
 ```html
 <html>
