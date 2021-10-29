@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2021-10-29 12:00:03
-version: 1.18
+updated: 2021-10-29 12:05:48
+version: 1.19
 ---
 
-In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) in the [document object](/2021/10/29/js-document/) in client side javaScript. The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
+In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) in the [document object](/2021/10/29/js-document/) in client side javaScript. The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an NodeList that is a kind of array of elements.
 
 For the most part using this method is safe as of this writing, unless for some reason you want to have support for older browsers that are not used that often any more. There are other options that I find myself still using just for the hell of it, for example if I do just want to get an element by id then I still find myself using [document.getElementById](/2018/12/27/js-document-getelementbyid/) to do so. Still the querySelector method works well at getting at an element not just by id t, but also in an array of different ways other then that of just an id property value of an element.
 
@@ -49,11 +49,11 @@ el.style.background = 'black';
 
 So there are element reference objects, and then there are collections of these such objects. If I do just want an single element reference then maybe the regular query selector method will work just fine. However in most cases I will want to use a method that will give me a collection of elements rather than juts a single element object. With that said on top of the query selector method there is also the query selector all method.
 
-### 1.2 - Query Selector all will return an HTMLCollection
+### 1.2 - Query Selector all will return an NodeList
 
 The query selector all method will not return a single element reference, but an [NodeList collection](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) of element or node references. A NodeList is like an array, but it will not have the same prototype methods.
 
-There are two kinds of NodeLists one type is call and alive NodeList where changes to the dom will automatically update the content of the NodeList. However the kind of NodeList that query selector all returns is a static NodeList.
+There are two kinds of NodeLists one type is call and alive NodeList where changes to the dom will automatically update the content of the NodeList, the other is an HTML collection that is a kind of live collection of elements. However the kind of NodeList that query selector all returns is a static NodeList.
 
 ```html
 <html>
