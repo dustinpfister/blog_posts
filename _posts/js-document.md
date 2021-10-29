@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 09:02:44
-version: 1.11
+updated: 2021-10-29 09:08:12
+version: 1.12
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -42,6 +42,8 @@ el.innerText += 'World';
     </body>
 </html>
 ```
+
+There is a lot more to get into when it comes to the various ways to go about getting a reference to an element in html, including options like the [document body](/2019/01/03/js-document-body/), and [document title](/2018/12/28/js-document-title/) properties just to name a few.
 
 ### 1.2 - Get a collection of elements
 
