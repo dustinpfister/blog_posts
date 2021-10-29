@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 09:15:58
-version: 1.15
+updated: 2021-10-29 09:18:54
+version: 1.16
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -78,7 +78,7 @@ while(i--){
 
 When it comes to [attaching events](/2019/01/16/js-event-listeners/) to the document object there are a number of options when it comes to global events, as well as a number of events that have to do with just the document object that are worth looking into in greater detail.
 
-For this example I am just attaching a client event to the document object, when I do this I the event hander that I attach will fire for any element that I click on in the page. Inside the body of the event hander I have access to an [event object](/2020/07/23/js-event-object/) that will be passed by way of the first argument for the event hander function.
+For this example I am just attaching a client event to the document object, when I do this I the event hander that I attach will fire for any element that I click on in the page. Inside the body of the event hander I have access to an [event object](/2020/07/23/js-event-object/) that will be passed by way of the first argument for the event hander function. This event object contains many useful properties such as the target property that is a reference to the element that was clicked.
 
 ```html
 <html>
@@ -99,7 +99,7 @@ document.addEventListener('click', handler);
 
 ### 1.4 - The Location object
 
-Another major feature of the document object would be the location object that is attached to the [location property of the document object](/2019/01/26/js-document-location/).
+Another major feature of the document object would be the location object that is attached to the [location property of the document object](/2019/01/26/js-document-location/). This object contains the href property that is the url of the current page, the property can also be set to a new url that will cause a redirection to that url. There are also all kinds of properties and methods in the object that can be used to extract useful information and do things like reload the page.
 
 ```html
 <html>
