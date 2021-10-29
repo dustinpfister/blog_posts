@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2021-10-29 11:52:09
-version: 1.17
+updated: 2021-10-29 12:00:03
+version: 1.18
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) in the [document object](/2021/10/29/js-document/) in client side javaScript. The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
@@ -19,7 +19,11 @@ I thing that it is not a good idea to get caught up in this nit puck issues thou
 
 ## 1 - The basics of Document.querySelector, and Document.querySelectorAll
 
-If you are familiar with jQuery then you will like document querySelector as a way to gain references to an element. This allows for a wide range of possibilities for gaining accesses to dom elements. An element reference can be obtained by Id, class, and tag name. In addition there is also the document querySelectorAll method that works more or less the same, but as you would expect returns a collection of elements rather that just a single element.
+If you are familiar with jQuery then you will like document querySelector as a way to gain references to an element. This allows for a wide range of possibilities for gaining accesses to dom elements. An element reference can be obtained by Id, class, and tag name rather than just one of those ways to go about selecting elements such as with the document get element by id method, or the get elements by class name method.
+
+In addition there is also the document querySelectorAll method that works more or less the same as query selector, but as you would expect returns a collection of elements rather that just a single element. The return value of query selector all is a node list rather than an html collection though, but aside from that, and maybe some backward compatibility concerns the method is a good choice for getting a collection of elements.
+
+In this section I will be going over a few quick examples of these methods for starters. I try to always keep these examples as simple as possible, but I still assume that you have at least some background when it comes to [getting started with javaScript in general](/2018/11/27/js-getting-started/).
 
 ### 1.1 - Query selector will return a single element reference
 
