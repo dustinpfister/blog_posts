@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 09:12:54
-version: 1.14
+updated: 2021-10-29 09:15:58
+version: 1.15
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -77,6 +77,8 @@ while(i--){
 ### 1.3 - Attaching Events to the document object
 
 When it comes to [attaching events](/2019/01/16/js-event-listeners/) to the document object there are a number of options when it comes to global events, as well as a number of events that have to do with just the document object that are worth looking into in greater detail.
+
+For this example I am just attaching a client event to the document object, when I do this I the event hander that I attach will fire for any element that I click on in the page. Inside the body of the event hander I have access to an [event object](/2020/07/23/js-event-object/) that will be passed by way of the first argument for the event hander function.
 
 ```html
 <html>
