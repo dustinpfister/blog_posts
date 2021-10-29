@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 07:45:30
-version: 1.1
+updated: 2021-10-29 08:27:03
+version: 1.2
 ---
 
-The javaScript document object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM.
+The javaScript document object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
 
 <!-- more -->
 
