@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:02:54
-version: 1.18
+updated: 2021-10-29 11:13:56
+version: 1.19
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -118,7 +118,11 @@ el.innerText += document.location.href;
 
 ## 2 - Getting Element Object references in detail
 
+Although I have touched base on the subject of getting one or more references to element objects in the basic section of this post, I think that this is a subject that I should do more to cover in detail when it comes to more advanced topics. So in this section I will be exploring the various options for getting one or more elements using the various methods in the document interface.
+
 ### 2.1 - By id and class
+
+In he basic section I have all ready covered the tired yet true document get element by id method, but there is also the question of getting one or more elements by a class name rater than an id.
 
 ```html
 <html>
@@ -151,6 +155,8 @@ while(i--){
 
 ### 2.2 - The query selector, and query selector all methods
 
+In the basic section of this post I used the query selection all method to get a collection of elements by class name.
+
 ```html
 <html>
     <head>
@@ -178,7 +184,11 @@ while(i--){
 
 ## 3 - Create and remove elements
 
+There is getting one or more references to elements that are hard coded into html, but there is also the question of creating additional elements and appending them into the existing html. Also I can not really write about the topic of creating elements without at least going over one or more examples of removing them also.
+
 ### 3.1 - The document create element method
+
+The create element method of the document object is the main method to use to create any html element, such as canvas elements.
 
 ```html
 <html>
@@ -214,6 +224,8 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
 ```
 
 ### 3.2 - Removing elements
+
+There does not seem to be any methods in the document interface that have to do with removing elements. However there are a number of methods thac can be used get one or more references to elements, and there is the remove method of an element object.
 
 ```html
 <html>
