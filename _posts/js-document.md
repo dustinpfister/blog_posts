@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:24:28
-version: 1.22
+updated: 2021-10-29 11:36:20
+version: 1.23
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -157,7 +157,7 @@ I should get more into what the differences is between HTML Collections and Node
 
 ### 2.2 - The query selector, and query selector all methods
 
-In the basic section of this post I used the query selection all method to get a collection of elements by class name.
+In the basic section of this post I used the [query selection all method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) to get a collection of elements by class name. So then once again I want to have a quick example of this method when it comes to getting a collection of elements in the from of a Node List rather than an HTML Collection. There is also the [query selector method](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) that works just like the query selector all method only it will return an element object reference. So then that method can be used as a replacement for the get element by id method as it can be used to just get a single element by id, as well as by class and tag name. The only draw back about these methods is that they will not work on very old browsers, but that becomes less of a problem every day.
 
 ```html
 <html>
@@ -166,19 +166,23 @@ In the basic section of this post I used the query selection all method to get a
     </head>
     <body>
         <div>
-            <h1 id="header-title">The title of this</h1>
-            <h2 class="header-subject">Subject One</h2>
-            <p>I am some text on subject one</p>
-            <h2 class="header-subject">Subject Two</h2>
-            <p>I am some text on subject Two</p>
+           <span class="num">5</span><br>
+           <span class="num">7</span><br>
+           <span class="num">BAR</span><br>
+           <span class="num">3</span><br><br>
         </div>
+        <div id="out"></div>
         <script>
-var nodes = document.querySelectorAll('.header-subject');
-var i = nodes.length;
+var nodes = document.querySelectorAll('.num'),
+out = document.querySelector('#out'),
+i = nodes.length,
+sum = 0;
 while(i--){
-   var d = nodes[i];
-   d.style.background = 'lime';
+   var d = nodes[i],
+   n = parseInt(d.innerText);
+   sum += String(n) === 'NaN' ? 0 : n;
 }
+out.innerText = 'total: ' + sum;
         </script>
     </body>
 </html>
