@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 08:39:53
-version: 1.5
+updated: 2021-10-29 08:46:48
+version: 1.6
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -25,6 +25,8 @@ In this section I will be going over a few quick, simple, copy and paste style e
 The source code examples in this post can be found in my [test vjs Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-document) repository. This repository also contains all the various source code examples for all my [other posts on vanilla javaScript](/categories/js/).
 
 ### 1.1 - Get a reference to an element
+
+There are a number of methods in the document object that can be used to get an [element object reference](https://developer.mozilla.org/en-US/docs/Web/API/Element). For example say that I have a div element in my hard coded html that has an id attribute assigned to it. lets say that all I want to do is just append some text to the inner text node of this div element with a little javaScript code in a [script tag](/2019/01/19/js-script-tag/).
 
 ```html
 <html>
