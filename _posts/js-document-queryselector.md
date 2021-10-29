@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2021-08-30 17:18:19
-version: 1.16
+updated: 2021-10-29 11:52:09
+version: 1.17
 ---
 
-In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
+In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) in the [document object](/2021/10/29/js-document/) in client side javaScript. The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an HTMLCollection that is a kind of array of elements.
 
 For the most part using this method is safe as of this writing, unless for some reason you want to have support for older browsers that are not used that often any more. There are other options that I find myself still using just for the hell of it, for example if I do just want to get an element by id then I still find myself using [document.getElementById](/2018/12/27/js-document-getelementbyid/) to do so. Still the querySelector method works well at getting at an element not just by id t, but also in an array of different ways other then that of just an id property value of an element.
 
