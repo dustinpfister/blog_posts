@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:13:56
-version: 1.19
+updated: 2021-10-29 11:17:09
+version: 1.20
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -118,7 +118,7 @@ el.innerText += document.location.href;
 
 ## 2 - Getting Element Object references in detail
 
-Although I have touched base on the subject of getting one or more references to element objects in the basic section of this post, I think that this is a subject that I should do more to cover in detail when it comes to more advanced topics. So in this section I will be exploring the various options for getting one or more elements using the various methods in the document interface.
+Although I have touched base on the subject of getting one or more references to element objects in the basic section of this post, I think that this is a subject that I should do more to cover in detail when it comes to more advanced topics. There are a lot of options actually for getting references to elements and or nodes in a client side javaScript project, beyond just that of getting them by id and class. Also there is also things like the question of what the difference is between a NodeList and an HTML collection, and all kinds of little details that are near the subject of getting element object references. So in this section I will be exploring the various options for getting one or more elements using the various methods in the document interface.
 
 ### 2.1 - By id and class
 
