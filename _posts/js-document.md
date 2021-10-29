@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:42:29
-version: 1.24
+updated: 2021-10-29 11:45:14
+version: 1.25
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -198,6 +198,8 @@ The [create element method of the document object](https://developer.mozilla.org
 
 The first step would be to get a mount point where I would want to append a canvas element, for this I can use any of the meth9ds that I have covered in the above sections such as the get element by id method. Now that I have something that I can append an element to there is then creating the element with the create element method by just calling the method and passing a string that is the name of the element that I wan to create which in this case is canvas. What is returned by the create element method is then a new element object that is a canvas element, at this point I can start to do things with the element such as setting the native size and getting a reference to the 2d drawing context sense it is a canvas element.
 
+Once I create my new element object, and do anything that I might want to do before appending to the hard coded html, I can then do jst that append it. For this I call the append child method of the container element object reference and pass the new element object that is to be appended to the container element. After that I am just drawing to the canvas element with the 2d context methods.
+
 ```html
 <html>
     <head>
@@ -233,7 +235,7 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
 
 ### 3.2 - Removing elements
 
-There does not seem to be any methods in the document interface that have to do with removing elements. However there are a number of methods thac can be used get one or more references to elements, and there is the remove method of an element object.
+There does not seem to be any methods in the document interface that have to do with removing elements. However there are a number of methods that can be used get one or more references to elements, and there is the remove method of an element object.
 
 ```html
 <html>
@@ -268,6 +270,4 @@ while(i--){
 ## 4 - Conclusion
 
 There is then a lot more to cover when it comes to going beyond the document object even farther, but even just the document object alone is a major part of everything that has to do with client side javaScript. Whenever I want to create and append and element to html by way of a little javaScript I need to use the create element method of the document object, I also need to use various methods and properties of the document object to gain references to elements that may all ready exists before hand also.
-
-
 
