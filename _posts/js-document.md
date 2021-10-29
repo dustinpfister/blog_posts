@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 09:22:21
-version: 1.17
+updated: 2021-10-29 11:02:54
+version: 1.18
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -116,7 +116,136 @@ el.innerText += document.location.href;
 </html>
 ```
 
-## 2 - Conclusion
+## 2 - Getting Element Object references in detail
+
+### 2.1 - By id and class
+
+```html
+<html>
+    <head>
+        <title>javaScript document object example</title>
+    </head>
+    <body>
+        <div>
+            <h1 id="header-title">The title of this</h1>
+            <h2 class="header-subject">Subject One</h2>
+            <p>I am some text on subject one</p>
+            <h2 class="header-subject">Subject Two</h2>
+            <p>I am some text on subject Two</p>
+        </div>
+        <script>
+// getting an element reference by id
+var header = document.getElementById('header-title');
+header.style.color = 'red';
+// getting an HTMLCollection by way of the document.getElementsByClassName method
+var subjectHeaders = document.getElementsByClassName('header-subject');
+var i = subjectHeaders.length;
+while(i--){
+    var h = subjectHeaders[i];
+    h.style.color = 'orange';
+}
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - The query selector, and query selector all methods
+
+```html
+<html>
+    <head>
+        <title>javaScript document object example</title>
+    </head>
+    <body>
+        <div>
+            <h1 id="header-title">The title of this</h1>
+            <h2 class="header-subject">Subject One</h2>
+            <p>I am some text on subject one</p>
+            <h2 class="header-subject">Subject Two</h2>
+            <p>I am some text on subject Two</p>
+        </div>
+        <script>
+var nodes = document.querySelectorAll('.header-subject');
+var i = nodes.length;
+while(i--){
+   var d = nodes[i];
+   d.style.background = 'lime';
+}
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Create and remove elements
+
+### 3.1 - The document create element method
+
+```html
+<html>
+    <head>
+        <title>javaScript document object example</title>
+    </head>
+    <body>
+        <div id="wrap"></div>
+        <script>
+// getting a reference to a container element by id, or document.body
+// if I change the id or remove the element
+var container = document.getElementById('wrap') || document.body;
+// CREATING A CANVAS ELEMENT with the document.createElement method
+var canvas = document.createElement('canvas'),
+// I can now do things with this element all ready such as getting the
+// drawing content, and setting the native image size
+ctx = canvas.getContext('2d');
+canvas.width = 640;
+canvas.height = 480;
+// I will want to append the crated element to a container if I want to see anything
+container.appendChild(canvas);
+// drawing to the canvas
+ctx.fillStyle = '#008f8f';
+ctx.fillRect(0,0, canvas.width, canvas.height);
+ctx.fillStyle = '#ffffff';
+ctx.textBaseline = 'middle';
+ctx.textAlign = 'center';
+ctx.font = '40px arial';
+ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2);
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - Removing elements
+
+```html
+<html>
+    <head>
+        <title>javaScript document object example</title>
+    </head>
+    <body>
+        <ul>
+            <li class="list-item">One</li>
+            <li class="list-item">1</li>
+            <li class="list-item">Two</li>
+            <li class="list-item">2</li>
+            <li class="list-item">Three</li>
+            <li class="list-item">3</li>
+            <li class="list-item">Four</li>
+            <li class="list-item">4</li>
+        </ul>
+        <script>
+var nodes = document.querySelectorAll('.list-item');
+var i = nodes.length;
+while(i--){
+   var d = nodes[i];
+   if( String( parseInt(d.innerText)) != 'NaN'){
+       d.remove();
+   }
+}
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 There is then a lot more to cover when it comes to going beyond the document object even farther, but even just the document object alone is a major part of everything that has to do with client side javaScript. Whenever I want to create and append and element to html by way of a little javaScript I need to use the create element method of the document object, I also need to use various methods and properties of the document object to gain references to elements that may all ready exists before hand also.
 
