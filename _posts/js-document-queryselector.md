@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 670
-updated: 2021-10-29 12:05:48
-version: 1.19
+updated: 2021-10-29 12:13:46
+version: 1.20
 ---
 
 In late specs of client side javaScipt there is now the [document.querySelector](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector) method as well as another method called [document.querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) in the [document object](/2021/10/29/js-document/) in client side javaScript. The query selector method can be used to get a single element by way of an id, class name, or tag name. The query selector all method works in a similar way but can be used to get a collection of elements rather than just one. So these methods are yet another way to go about getting a reference to a single element, or an NodeList that is a kind of array of elements.
@@ -23,7 +23,7 @@ If you are familiar with jQuery then you will like document querySelector as a w
 
 In addition there is also the document querySelectorAll method that works more or less the same as query selector, but as you would expect returns a collection of elements rather that just a single element. The return value of query selector all is a node list rather than an html collection though, but aside from that, and maybe some backward compatibility concerns the method is a good choice for getting a collection of elements.
 
-In this section I will be going over a few quick examples of these methods for starters. I try to always keep these examples as simple as possible, but I still assume that you have at least some background when it comes to [getting started with javaScript in general](/2018/11/27/js-getting-started/).
+In this section I will be going over a few quick examples of these methods for starters. I try to always keep these examples as simple as possible, but I still assume that you have at least some background when it comes to [getting started with javaScript in general](/2018/11/27/js-getting-started/). When I first started out with client side javaScript I was using the [file protocol](/2020/09/21/js-getting-started-file-protocol/) as a way to just open up local files in a web browser, but for many reasons it would be best to set up a [basic static web sever and few what one is working on by way of the http protocol](/2017/12/04/nodejs-simple-static-server-file/). There are other ways of just getting started in a browser though such as using the [javaScript console](/2019/07/29/js-getting-started-javascript-console/).
 
 ### 1.1 - Query selector will return a single element reference
 
