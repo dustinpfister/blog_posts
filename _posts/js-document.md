@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:36:20
-version: 1.23
+updated: 2021-10-29 11:42:29
+version: 1.24
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -190,11 +190,13 @@ out.innerText = 'total: ' + sum;
 
 ## 3 - Create and remove elements
 
-There is getting one or more references to elements that are hard coded into html, but there is also the question of creating additional elements and appending them into the existing html. Also I can not really write about the topic of creating elements without at least going over one or more examples of removing them also.
+There is getting one or more references to elements that are hard coded into html, but there is also the question of creating additional elements and appending them into the existing html. Also I can not really write about the topic of creating elements without at least going over one or more examples of removing them also. ALthiigh there may not be any methods that have to do with removing elements there sure are methods that can be used to select one or more elements that can then be removed by calling the remove method of an element object reference.
 
 ### 3.1 - The document create element method
 
-The create element method of the document object is the main method to use to create any html element, such as canvas elements.
+The [create element method of the document object](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) is the main method to use to create any HTML element, such as canvas elements. With that said in this example I am using the create element to do just the create, and inject a canvas element that I then draw to with the 2d drawing context.
+
+The first step would be to get a mount point where I would want to append a canvas element, for this I can use any of the meth9ds that I have covered in the above sections such as the get element by id method. Now that I have something that I can append an element to there is then creating the element with the create element method by just calling the method and passing a string that is the name of the element that I wan to create which in this case is canvas. What is returned by the create element method is then a new element object that is a canvas element, at this point I can start to do things with the element such as setting the native size and getting a reference to the 2d drawing context sense it is a canvas element.
 
 ```html
 <html>
