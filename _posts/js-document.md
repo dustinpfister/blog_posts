@@ -1,12 +1,12 @@
 ---
-title: Javascript document object
+title: JavaScript document object
 date: 2021-10-29 07:37:00
 tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:45:14
-version: 1.25
+updated: 2021-10-29 11:52:10
+version: 1.26
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
