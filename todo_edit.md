@@ -52,7 +52,7 @@ js-javascript-scope
 ### (   ) - js-onchange (old)
 * have 5+ internal links for the post
 
-### (   ) - js-uint8array (old)
+### (   ) - js-unit8array (old)
 * have 5+ internal links for the post
 
 ### (   ) - js-filereader  ( old )
