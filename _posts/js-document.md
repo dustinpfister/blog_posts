@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 11:21:59
-version: 1.21
+updated: 2021-10-29 11:24:28
+version: 1.22
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -122,7 +122,7 @@ Although I have touched base on the subject of getting one or more references to
 
 ### 2.1 - By id and class
 
-In the basic section I have all ready covered the tired yet true document get element by id method, but there is also the question of getting one or more elements by a class name rater than an id also. Event when it comes to that I also covered the use of the quest selector all method as a way to get a collection of elements that way. However I did not write about the get elements by class name method also in the document interface. This get elements by class name method is another option when it comes to getting a collection of elements by class name, it may be a little mre restricted co pared to the query selector method however there is one note worthy difference. The get elements by class name method will return an HTML collection object rather than a Node list object.
+In the basic section I have all ready covered the tired yet true document get element by id method, but there is also the question of getting one or more elements by a class name rater than an id also. Event when it comes to that I also covered the use of the quest selector all method as a way to get a collection of elements that way. However I did not write about the get elements by class name method also in the document interface. This get elements by class name method is another option when it comes to getting a collection of elements by class name, it may be a little more restricted co pared to the query selector method however there is one note worthy difference. The get elements by class name method will return an HTML collection object rather than a Node list object.
 
 ```html
 <html>
@@ -152,6 +152,8 @@ while(i--){
     </body>
 </html>
 ```
+
+I should get more into what the differences is between HTML Collections and Node lists, but maybe that is a matter for another examples, section or even a whole other post. For now at least there is just being mindful that there is more than one tool in the toolbox when it comes to grabbing at elements, and there is more than one standard when it comes to collections of elements, or nodes in general.
 
 ### 2.2 - The query selector, and query selector all methods
 
