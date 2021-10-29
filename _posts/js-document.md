@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 09:18:54
-version: 1.16
+updated: 2021-10-29 09:22:21
+version: 1.17
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -115,5 +115,10 @@ el.innerText += document.location.href;
     </body>
 </html>
 ```
+
+## 2 - Conclusion
+
+There is then a lot more to cover when it comes to going beyond the document object even farther, but even just the document object alone is a major part of everything that has to do with client side javaScript. Whenever I want to create and append and element to html by way of a little javaScript I need to use the create element method of the document object, I also need to use various methods and properties of the document object to gain references to elements that may all ready exists before hand also.
+
 
 
