@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 935
-updated: 2021-10-29 09:09:40
-version: 1.13
+updated: 2021-10-29 09:12:54
+version: 1.14
 ---
 
 The [javaScript document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the main object of a loaded page, and is a property of the window object which is the global object in client side javaScript. There is a lot of ground to cover with this object that serves as an interface for a whole range of things that have to do with getting, creating, and injecting one or more HTML elements when it comes to working with the Document Object Model or DOM. There are a number of other features in the document object also that are worth looking into at some point such as the location object, and the various events that can be attached for this object.
@@ -47,7 +47,9 @@ There is a lot more to get into when it comes to the various ways to go about ge
 
 ### 1.2 - Get a collection of elements
 
-There is also not just getting a single element object reference but a collection of elements in the form of a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) or an [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection). In this example I am using the [query selector all method of the document object](/2020/06/23/js-document-queryselector/) to get a node list of all the elements in the html that contain a certain class.
+There is also not just getting a single element object reference but a collection of elements in the form of a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) or an [HTMLCollection](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection). These collections are array like objects in the sense that they are formated like arrays, but are of there own prototype and as such the same array methods in the array prototype are not always there to work with. There are reasons why that is, but I should maybe get into those things in a more advanced section in this post.
+
+In this example I am using the [query selector all method of the document object](/2020/06/23/js-document-queryselector/) to get a node list of all the elements in the html that contain a certain class.
 
 ```html
 <html>
