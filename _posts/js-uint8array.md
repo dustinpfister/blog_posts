@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:59:53
-version: 1.35
+updated: 2021-10-30 14:23:54
+version: 1.36
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -256,6 +256,49 @@ console.log(bytes); // Uint8Array [ 143, 8, 0 ]
 let a = createSumBytes('ab', 3).join(''),
 b = createSumBytes('ba', 3).join('');
 console.log(a === b); // true
+```
+
+### 3.4 - Get hash method so far
+
+In order to make it so that I will get a unique value for two different strings that contain the same letters in a different order I am juts going to need to do something that will involve adding in an additional value that is based on the letter index. So with jjst a few additional changes to the above example I have something that is yet event closer to what it is that I hand in mind when it comes to a hash number for a given string value. However I think that I am still going to need to do just a little more testing to be sure that this is working okay.
+
+```js
+let sumCharCodes = (str) => {
+    var n = 0,
+    i = 0,
+    len = str.length;
+    while (i < len) {
+        n += str[i].charCodeAt(0) * (i + 1);
+        i += 1;
+    }
+    return n;
+};
+ 
+let createSumBytes = (str, byteCount) => {
+    let uint8 = new Uint8Array(byteCount === undefined ? 4 : byteCount),
+    sum = sumCharCodes(str),
+    i = 0,
+    a,
+    b,
+    len = uint8.length;
+    while (i < len) {
+        a = Math.floor(sum / Math.pow(128, i)) % 128;
+        //b = str.charCodeAt(i)//0; //Math.floor(a * 2 * i);
+        uint8[i] = a; // + b;
+        i += 1;
+    }
+    return uint8;
+};
+ 
+let getHash = (str, byteCount) => {
+    return [].map.call(createSumBytes(str, byteCount), (n) => {
+        return n.toString(16);
+    }).join('')
+};
+ 
+let a = getHash('ab', 4),
+b = getHash('ba', 4);
+console.log(a === b); // false
 ```
 
 ## 4 - Conclusion
