@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-29 12:27:22
-version: 1.21
+updated: 2021-10-30 13:05:59
+version: 1.22
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -71,7 +71,31 @@ uint8 = Uint8Array.from(arr);
 console.log(uint8); // [0,255,128,64,0,0,0]
 ```
 
-## 2 - The Uint8Array map method
+### 1.4 - The of static method
+
+```js
+uint8 = Uint8Array.of(255, 128, 0, 128, 155);
+console.log(uint8.join(','));
+// 255,128,0,128,155
+```
+
+### 1.5 - The byte and element length
+
+```js
+// uinit8 and byteLength compared to length
+var uint8 = Uint8Array.of(255, 128, 0, 128, 155);
+console.log(uint8.length);     // 5
+console.log(uint8.byteLength); // 5
+ 
+// uint16 and byteLength compared to length
+var uint16 = Uint16Array.of(255, 128, 0, 128, 155);
+console.log(uint16.length);     // 5
+console.log(uint16.byteLength); // 10
+```
+
+### 2 - Instance methods
+
+### 2.1 - The Uint8Array map method
 
 Just like with regular arrays there are a number of array prototype methods to work with off of an instance of a Uint8Array. There might not be a direct equivalent for each method mind you, but many of them are there. Once such method is the map method that works more or less the same way, only it will return a new Uint8Array rather than just a plain old array. Aside from that it can be used more or less the same way.
 
@@ -85,7 +109,136 @@ let invert = byts.map((byt) => {
 console.log(invert);
 ```
 
-## 3 - Conclusion
+### 2.2 - Filter method
+
+```js
+let a = Uint8Array.of(128, 32, 220, 8);
+let b = a.filter((byt) => {
+        return byt >= 128;
+    });
+console.log(b.join('-')); // '128-220'
+```
+
+### 2.3 - Join elements together into a string
+
+```js
+let a = Uint8Array.of(128, 0, 255);
+console.log(a.join()); // '128,220'
+console.log(a.join('-')); // '128-220'
+console.log(a.join('')); // '128220'
+```
+
+## 3 - Some examples on hash code methods, or at least trying to make such methods
+
+### 3.1 - First From string method
+
+```js
+let stepCountsForChar = (counts, ci, ch) => {
+    var n = typeof ch === 'string' ? ch.charCodeAt(0) : ch;
+    var c = counts[ci],
+    d = c + n,
+    e = 0,
+    oc = d / 255;
+ 
+    //console.log('e: ' + e);
+    //console.log('oc: ' + oc);
+    if (d >= 256) {
+        e = d % 255;
+        counts[ci] = 0;
+    } else {
+        counts[ci] = d;
+    }
+    if (e > 0) {
+        ci += 1;
+        ci %= counts.length;
+        stepCountsForChar(counts, ci, e);
+    }
+};
+ 
+let stringToCounts = (str) => {
+    let counts = Uint8Array.of(0, 0, 0, 0, 0, 0);
+    let ch,
+    i = 0;
+    while (ch = str[i]) {
+        stepCountsForChar(counts, 0, ch);
+        i += 1;
+    }
+    return counts;
+};
+ 
+let str = [9, 255].map((n) => {
+    return String.fromCharCode(n);
+}).join('');
+console.log(stringToCounts(str));
+```
+
+### 3.2 - A sum char codes method
+
+```js
+// just sum all the char codes for a string
+let sumCharCodes = (str) => {
+    var n = 0,
+    i = 0,
+    len = str.length;
+    while (i < len) {
+        n += str[i].charCodeAt(0)
+        i += 1;
+    }
+    return n;
+};
+
+// can get a sum for some text
+let sum = sumCharCodes('So then this is some text that can add up to a large number, by just adding up the char codes.');
+console.log(sum); // 8443
+
+// can break it down into some values like this:
+let a = Math.floor(sum / 256),
+b = sum % 256,
+c = a * 256 + b;
+console.log('\nBreak down values:');
+console.log(a); // 32
+console.log(b); // 251
+console.log(c); // 8443
+```
+
+### 3.3 - Sum pow method
+
+```js// just sum all the char codes for a string
+let sumCharCodes = (str) => {
+    var n = 0,
+    i = 0,
+    len = str.length;
+    while (i < len) {
+        n += str[i].charCodeAt(0);
+        i += 1;
+    }
+    return n;
+};
+ 
+let createSumBytes = (str, byteCount) => {
+    let uint8 = new Uint8Array(byteCount === undefined ? 4 : byteCount),
+    sum = sumCharCodes(str),
+    i = 0,
+    len = uint8.length;
+    while (i < len) {
+        uint8[i] = Math.floor(sum / Math.pow(256, i)) % 256;
+        i += 1;
+    }
+    return uint8;
+};
+ 
+// can get a sum for some text
+let bytes = createSumBytes('This seems to work okay', 3);
+console.log(bytes); // Uint8Array [ 143, 8, 0 ]
+ 
+// however this might not work well if I want unique
+// values for each possible string value
+let a = createSumBytes('ab', 3).join(''),
+b = createSumBytes('ba', 3).join('');
+console.log(a === b); // true
+```
+
+## 4 - Conclusion
 
 So Uint8Arrays are a way of having an array of number values that range between 0 and 255 making it an appropriate options when it comes to anything that has to do with raw binary data. So any project that will need to work with data in a raw binary from a type array might be a good choice as it will enforce rules for the elements that are appropriate for this kind of application. There might be some cross browser concerns when it comes to front end development though on cretin platforms, but if you are suing a late version of node then there should be little to no problem just working with theme there of course.
 
