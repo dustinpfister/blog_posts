@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:15:01
-version: 1.25
+updated: 2021-10-30 13:16:56
+version: 1.26
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -100,6 +100,8 @@ console.log(uint16.byteLength); // 10
 ```
 
 ### 2 - Instance methods
+
+Just like with regular [javaScript arrays](/2018/12/10/js-array/) there are a number of instance methods to use with an instance of a typed array such as a Uinit8Array.
 
 ### 2.1 - The Uint8Array map method
 
