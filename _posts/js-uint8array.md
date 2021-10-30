@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:35:38
-version: 1.28
+updated: 2021-10-30 13:37:10
+version: 1.29
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -118,6 +118,8 @@ console.log(invert);
 ```
 
 ### 2.2 - Filter method
+
+Another array method that I like to use all the time would be the [array filter method](/2020/10/03/js-array-filter/), and it would look like there is such a method to work with in tyoed arrays also.
 
 ```js
 let a = Uint8Array.of(128, 32, 220, 8);
