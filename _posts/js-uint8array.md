@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:41:44
-version: 1.30
+updated: 2021-10-30 13:45:57
+version: 1.31
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -141,6 +141,8 @@ console.log(a.join('')); // '128220'
 ```
 
 ## 3 - Some examples on hash code methods, or at least trying to make such methods
+
+For this section I am going to explore using Uint8 arrays as a way to go about creating what will be hash code numbers for some text. Thus far I can not say that any of these examples are source code examples that I would want to use in any kind of final production application, but I was able to get together certain general ideas that I wanted to accomplish for starters at least.
 
 ### 3.1 - First From string method
 
