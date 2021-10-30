@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:48:48
-version: 1.32
+updated: 2021-10-30 13:51:43
+version: 1.33
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -189,6 +189,8 @@ console.log(stringToCounts(str));
 ```
 
 ### 3.2 - A sum char codes method
+
+My first example then ended up just being this weird thing that was not really going anywhere, so I took a step back and starting to think more in terms of what is is that I was trying to do and see about some other way of doing it. I then thought that maybe what I should do for starters is use some kind of method that will just add up all the char code values of a string and then work out what byte values should be for each element in an array based off of that sum.
 
 ```js
 // just sum all the char codes for a string
