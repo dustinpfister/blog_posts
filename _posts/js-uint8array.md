@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:34:44
-version: 1.27
+updated: 2021-10-30 13:35:38
+version: 1.28
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -105,7 +105,7 @@ Just like with regular [javaScript arrays](/2018/12/10/js-array/) there are a nu
 
 ### 2.1 - The Uint8Array map method
 
-One method that I use all the time in the array prototype would be the array map method, and with that said a map method that works more or less the same way can also be used in the type array prototype. Of course the return value of the typed array map method is that it will return a new typed array, rather than a regular javaScript array. However aside from just a few simple differences between the map method of a typed array works more or less the same way as the map method in the array prototype. I just call the ma method off of the typed array, and then pass the function that I want to use that will figure the new integer values for each number value in the new typed array that will be returned.
+One method that I use all the time in the array prototype would be the [array map method](/2020/06/16/js-array-map/), and with that said a map method that works more or less the same way can also be used in the type array prototype. Of course the return value of the typed array map method is that it will return a new typed array, rather than a regular javaScript array. However aside from just a few simple differences between the map method of a typed array works more or less the same way as the map method in the array prototype. I just call the ma method off of the typed array, and then pass the function that I want to use that will figure the new integer values for each number value in the new typed array that will be returned.
 
 ```js
 let byts = Uint8Array.of(128, 32, 220, 8);
