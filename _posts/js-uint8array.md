@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:05:59
-version: 1.22
+updated: 2021-10-30 13:08:05
+version: 1.23
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -72,6 +72,8 @@ console.log(uint8); // [0,255,128,64,0,0,0]
 ```
 
 ### 1.4 - The of static method
+
+The of method is yet another way to go about creating an instance of this kind of typed array, but it is how to go about making one by way of function arguments rather than passing an array.
 
 ```js
 uint8 = Uint8Array.of(255, 128, 0, 128, 155);
