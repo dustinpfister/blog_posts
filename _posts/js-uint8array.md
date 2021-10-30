@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:37:10
-version: 1.29
+updated: 2021-10-30 13:41:44
+version: 1.30
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -130,6 +130,8 @@ console.log(b.join('-')); // '128-220'
 ```
 
 ### 2.3 - Join elements together into a string
+
+A typed array version of the [array join](/2020/03/09/js-array-join/) method is also here to worm with to create a string value from an array of integer values.
 
 ```js
 let a = Uint8Array.of(128, 0, 255);
