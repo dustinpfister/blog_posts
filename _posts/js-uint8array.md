@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:16:56
-version: 1.26
+updated: 2021-10-30 13:34:44
+version: 1.27
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -101,11 +101,11 @@ console.log(uint16.byteLength); // 10
 
 ### 2 - Instance methods
 
-Just like with regular [javaScript arrays](/2018/12/10/js-array/) there are a number of instance methods to use with an instance of a typed array such as a Uinit8Array.
+Just like with regular [javaScript arrays](/2018/12/10/js-array/) there are a number of instance methods to use with an instance of a typed array such as a Uinit8Array. There might not be a direct equivalent for each method mind you, but many of them are there.
 
 ### 2.1 - The Uint8Array map method
 
-Just like with regular arrays there are a number of array prototype methods to work with off of an instance of a Uint8Array. There might not be a direct equivalent for each method mind you, but many of them are there. Once such method is the map method that works more or less the same way, only it will return a new Uint8Array rather than just a plain old array. Aside from that it can be used more or less the same way.
+One method that I use all the time in the array prototype would be the array map method, and with that said a map method that works more or less the same way can also be used in the type array prototype. Of course the return value of the typed array map method is that it will return a new typed array, rather than a regular javaScript array. However aside from just a few simple differences between the map method of a typed array works more or less the same way as the map method in the array prototype. I just call the ma method off of the typed array, and then pass the function that I want to use that will figure the new integer values for each number value in the new typed array that will be returned.
 
 ```js
 let byts = Uint8Array.of(128, 32, 220, 8);
