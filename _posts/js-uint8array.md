@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:51:43
-version: 1.33
+updated: 2021-10-30 13:56:17
+version: 1.34
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -220,6 +220,8 @@ console.log(c); // 8443
 ```
 
 ### 3.3 - Sum pow method
+
+So now that I have a sum method that works well I can not end up creating an array of elements where each byte values is based off of that sum. I then ended up with something that works well, but with one little problem which is that an inverted string will end up with the same return value. However I think I am still getting a better idea of what I want working when it comes to doing something like this. So far I have at least one thing working well which is creating a fixed byte value for a given source string, and depending on the number of bytes and how large a string is, there is always going to be a situation in where there may be more than one value for the same input anyway. Still I think I would want to make a few more examples like this until I have something that will work well for what I would want to use something like this for.
 
 ```js// just sum all the char codes for a string
 let sumCharCodes = (str) => {
