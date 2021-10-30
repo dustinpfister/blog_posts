@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 640
-updated: 2021-10-30 13:13:55
-version: 1.24
+updated: 2021-10-30 13:15:01
+version: 1.25
 ---
 
 In javaScript there are a number of constructors that provide [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), one such constructor is the [Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) constructor. These kinds of constructors create index collections similar to that of a regular javaScript array, only they are a little different when it comes to the values that can be held in them.
@@ -83,7 +83,7 @@ console.log(uint8.join(','));
 
 ### 1.5 - The byte and element length
 
-When it comes to the array length property in regular javaScript arrays there is a lot to look out for such as the fact that regular javaScript arrays a sparse, and that any element can be of any type including another array, or object in general. However these issues are not so much a problem when it comes to types arrays. All the elements are numbers, only numbers, and nothing else but numbers. Also I do not have to worry about a typed array being spare as all the elements will have some kind of default value for each integer value of the array.
+When it comes to the [array length](/2018/12/14/js-array-length/) property in regular javaScript arrays there is a lot to look out for such as the fact that regular javaScript arrays a sparse, and that any element can be of any type including another array, or object in general. However these issues are not so much a problem when it comes to types arrays. All the elements are numbers, only numbers, and nothing else but numbers. Also I do not have to worry about a typed array being spare as all the elements will have some kind of default value for each integer value of the array.
 
 However that is not to say that there are not still things to be mindful about when it comes to the element length, and the byte length of these kinds of arrays. If it is a uinit8 array, then for the most part the element length should be the same as the byte length. Unless of course there is some weird reason why that would not be the case when it comes to uinit8 arrays, however when it comes to other typed arrays such as 16 unit arrays there is a clear reason why I would want to maybe ave some kind of byte length property on top of just the length property.
 
