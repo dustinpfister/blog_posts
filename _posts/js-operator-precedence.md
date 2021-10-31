@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-10-31 08:03:50
-version: 1.75
+updated: 2021-10-31 08:24:45
+version: 1.76
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -172,6 +172,16 @@ console.log( 2 >> ( 1 === 1 ) + 2 ); // 16
 ```
 
 ### 3.12 - Bitwise AND ( Precedence 10 )
+
+The bitwise AND operator will return a bit value of 1 in each bit position for which the corresponding bits of both operands are also a bit value of 1. This is one of many bitwise operators in javaScript that will come up for certain expressions now and then. So then because this operator has lower Precedence of operators like additional it is impotent to keep that in mind when fiddling with an expression that makes use of this.
+
+```js
+// Logical AND Example
+console.log( 10 & 3 ); // 2
+// addition preformed first
+console.log( 10 & 2 + 1 ); // 2
+console.log( ( 10 & 2 ) + 1 ); // 3
+```
 
 ### 3.13 - Bitwise XOR ( Precedence 9 )
 
