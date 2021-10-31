@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2021-10-31 06:36:41
-version: 1.34
+updated: 2021-10-31 06:57:24
+version: 1.35
 ---
 
-The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for attaching events to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
+The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for [attaching events](/2019/01/16/js-event-listeners/) to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
 
 So then there are many other events that come to mind also that are important to the process of user Interface design such as [onblur](/2019/01/08/js-onblur/) and [onfocus](/2019/01/05/js-onfocus/), just to name a few. In addition events like onkeyup can be used to track changes to the value of an input tag as they happen on a per key stroke basis. Still the onchange event might prove to be an important event un the process of making a user interface as it is the event that will fire when a value actually changes in the input tag, rather then it being in the process of changing. 
 
@@ -17,7 +17,7 @@ So then in this post I will be going over some quick examples of the onchange ev
 
 <!-- more -->
 
-## 1 - js onchange event basic example
+### 1.1 - js onchange event basic example
 
 For a simple example of the onchange event hander here is an example that uses the [document.querySelector](/2020/06/23/js-document-queryselector/) method to get references to an input tag, as well as a paragraph tag. When the text of the text input element changes the event fires, and the value of the input element can be used to update the output that is set in the paragraph element.
 
@@ -58,7 +58,7 @@ With that said in this event object I am using the target property of the event 
 
 There are other ways of going about attaching events, although I would go with add event listener for the most part. In addition when making a real interface the onchnage event is just one such event that comes to mind. So lets look at some more examples that make use of other ways of attaching, as well as additional events.
 
-## 2 - The onchange attribute and addEventListener
+### 1.2 - The onchange attribute and addEventListener
 
 For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, , but generally most of the time I prefer the use of addEventListener because I can add more than one handler, and it is generally the way that I prefer to attach events for elements and nodes in general. The one thing that comes to mind about this is that it would result in greater backward support for old browsers. However these days we are talking very out dated platforms that most people are just not using any more, at least that is the case when I look at my stats when it comes to that.
 
@@ -86,7 +86,7 @@ el.addEventListener('change', func2);
 
 
 
-## 3 - On change event example making an Revenue Per Mille calculator
+## 2 - On change event example making an Revenue Per Mille calculator
 
 For a more advanced example of the onchange event, I made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
 
@@ -134,7 +134,7 @@ state.figure();
 
 Here I am using Function.call to use the Array.forEach method as a way to loop over the children property of my controls div. This is necessary if I want to use an Array method like Array.forEach with the children property because it is not an Array but rather an HTMLCollection.
 
-## 4 - onchange event handler example with on focus, on blur, events as well and more
+## 3 - onchange event handler example with on focus, on blur, events as well and more
 
 For this section I wanted to make a quick little project that is more of an actual project rather than a simple little example. Still it is not much of a project, but it is something a bit more advanced that takes into account more than one type of event on top of just the on change event.
 
@@ -264,6 +264,6 @@ So this project was just a simple little project that I made to just show what c
 
 This example might be kind of still and pointless, but taking just a moment to use my imagination of course there are all kinds of things that comes to might that might prove to be more practical, or interesting. An input element is a way of letting a user set some kind of value, what is to be done with that value depends on the nature of the application.
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So the onchange event is useful for setting one or more callbacks for an element that will fire when the value of the element changes. The onchange event can be used in conjunction with a wide range of other events such as on blur, and on focus to define a user interface that can be used to do things like gather information that will be posted back to a server, or update the position of something in a canvas element, or anything else that can be set or changed with an input element.
