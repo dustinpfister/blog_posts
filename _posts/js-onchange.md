@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2021-10-31 06:31:45
-version: 1.33
+updated: 2021-10-31 06:36:41
+version: 1.34
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for attaching events to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -60,7 +60,7 @@ There are other ways of going about attaching events, although I would go with a
 
 ## 2 - The onchange attribute and addEventListener
 
-For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, , but generally most of the time I prefer the use of addEventListener because I can add more than one handler, and it is genearrly the way that I prefer to attach events for elements and nodes in general. The one thing that comes to mind about this is that it would result in greater backward support for old browsers. However these days we are talking very out dated platforms that most people are just not using any more, at least that is the case when I look at my stats when it comes to that.
+For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, , but generally most of the time I prefer the use of addEventListener because I can add more than one handler, and it is generally the way that I prefer to attach events for elements and nodes in general. The one thing that comes to mind about this is that it would result in greater backward support for old browsers. However these days we are talking very out dated platforms that most people are just not using any more, at least that is the case when I look at my stats when it comes to that.
 
 ```js
 var el = document.querySelector('input.pow'),
@@ -86,7 +86,7 @@ el.addEventListener('change', func2);
 
 
 
-## 3 - Setting onchange for many elements
+## 3 - On change event example making an Revenue Per Mille calculator
 
 For a more advanced example of the onchange event, I made a quick little app that can be used to estimate the amount of money that a blog can make if the revenue per mille, and page views counts are known. In this example I am attaching the same event handler for more than one input element.
 
