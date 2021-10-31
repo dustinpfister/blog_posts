@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-10-31 08:01:40
-version: 1.74
+updated: 2021-10-31 08:03:50
+version: 1.75
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -95,7 +95,7 @@ By grouping the 0 and one together the addition operation is now preformed first
 
 ### 3.2 - Function calls, new with arguments, and more ( Precedence 20 )
 
-Grouping hands down does have the highest precedence in javaScript, but right behind it is also function calls. So any additional expression within a function call will be preformed first in most situations unless it is superseded by grouping of course. For this example I am using an arrow function that just returns a number that is passed as an argument, if the number that is passed as an expression then that expression will be evaluated first, so then that results in a similar result to that of grouping.
+Grouping hands down does have the highest precedence in javaScript, but right behind it is the call of a [function in javaScript](/2019/12/26/js-function/). So any additional expression within a function call will be preformed first in most situations unless it is superseded by grouping of course. For this example I am using an [arrow function](/2019/02/17/js-arrow-functions/) that just returns a number that is passed as an argument, if the number that is passed as an expression then that expression will be evaluated first, so then that results in a similar result to that of grouping.
 
 ```js
 // simple echo function
