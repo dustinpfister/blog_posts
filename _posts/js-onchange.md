@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2021-10-31 06:59:12
-version: 1.36
+updated: 2021-10-31 07:01:58
+version: 1.37
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for [attaching events](/2019/01/16/js-event-listeners/) to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -19,7 +19,7 @@ So then in this post I will be going over some quick examples of the onchange ev
 
 ## 1 - Basics of the js on change event
 
-In this section I will be quickly going over just a few basic getting started type examples of the on change event in client side javaScript.
+In this section I will be quickly going over just a few basic getting started type examples of the on change event in client side javaScript. Although I will be keeping these examples fairly simple I assume that you have at least some background when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/) and the additional skills that are needed before hand event to gain something form these basics examples in this section.
 
 ### 1.1 - js onchange event basic example
 
