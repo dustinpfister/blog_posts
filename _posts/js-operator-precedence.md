@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-10-31 07:52:56
-version: 1.72
+updated: 2021-10-31 07:56:43
+version: 1.73
 ---
 
 When writing javaScript expressions knowing the order in which operations are preformed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are preformed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to preforming operations.
@@ -22,6 +22,10 @@ In this post I will be going over many examples of order of operations in JavaSc
 In this section I will be starting out with some basics when it comes to order of operations with javaScript. There is just starting out by fiddling with some basic expressions composed of operators and literal values that might be the best place to start. A very simple starting point might be expressions involving just addition, multiplication, and grouping to help really drive home why it is that understanding order of operations in javaScript is important.
 
 I will be keeping these examples very simple, but this is still not a post on [getting started with javaScript in general](/2018/11/27/js-getting-started/). There are a lot of ways to get started with javaSscript, but often when I am trying to work out some kind of expression I work something out in the [javaScript console of chrome](/2019/07/29/js-getting-started-javascript-console/).
+
+### - Te source code examples on this post can be found on Github
+
+The source code examples in this post can be found on Github at my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-operator-precedence), where I also store all the source code examples for my [many other posts on vanilla javaScript](/categories/js/).
 
 ### 1.1 - Basic expressions involving just addition , multiplication, and grouping
 
