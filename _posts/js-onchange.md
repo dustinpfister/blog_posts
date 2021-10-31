@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 355
-updated: 2021-10-31 07:13:19
-version: 1.38
+updated: 2021-10-31 07:39:52
+version: 1.39
 ---
 
 The [onchange](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event) event is for [attaching events](/2019/01/16/js-event-listeners/) to an input element that will fire when the value of an input element changes. A handler for this kind of event can be attached via the [onchange property](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onchange) of an input element, or via [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) and using the change value for the type argument. This is one of many events that a client side javaScript developer should be aware of when making any kind of user interface that involves the use of html input tags to gather information or change settings for a client system. 
@@ -25,9 +25,35 @@ In this section I will be quickly going over just a few basic getting started ty
 
 The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-onchange) where I also keep all the source code examples for my [many other posts on vanilla javaScript](/categories/js/).
 
-### 1.1 - js onchange event basic example
+### 1.1 - A Basic example of the on change event
 
-For a simple example of the onchange event hander here is an example that uses the [document.querySelector](/2020/06/23/js-document-queryselector/) method to get references to an input tag, as well as a paragraph tag. When the text of the text input element changes the event fires, and the value of the input element can be used to update the output that is set in the paragraph element.
+For a simple example of the onchange event hander here is an example that uses the [document.querySelector](/2020/06/23/js-document-queryselector/) method to get references to an input tag, as well as a paragraph tag that I am using to display results. When the text of the text input element changes the event fires, and the value of the input element can be used to update the output that is set in the paragraph element.
+
+```html
+<html>
+    <head>
+        <title>on change</title>
+    </head>
+    <body>
+        <input id="user_text" type="text">
+        <p id="out"></p>
+        <script>
+        var get = function(str){ return document.querySelector(str); },
+        userOut = get('#out'),
+        userIn = get('#user_text');
+        userIn.addEventListener('change', function(e){
+            userOut.innerText = userIn.value.toUpperCase();
+        });
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Event objects
+
+In the body of the event hander that I pass to the add event listener method I have access to an [event object](/2020/07/23/js-event-object/). The contents of these kinds of objects will change a little from one event to the next, for example in mouse events there are properties that contain info on a mouse button that was clicked, and in touch events there are arrays of pointer objects so that a developer can do things with multi touch.
+
+For this example on the on change event I am just using the target property of the event object to get a reference to the element at which the change event happened.
 
 ```html
 <html>
@@ -66,7 +92,7 @@ With that said in this event object I am using the target property of the event 
 
 There are other ways of going about attaching events, although I would go with add event listener for the most part. In addition when making a real interface the onchnage event is just one such event that comes to mind. So lets look at some more examples that make use of other ways of attaching, as well as additional events.
 
-### 1.2 - The onchange attribute and addEventListener
+### 1.3 - The onchange attribute and addEventListener
 
 For input elements there is an [onchange attribute](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/Attribute/onchange) that can be used to reference a single change event handler for the element. This attribute may not be depreciated, , but generally most of the time I prefer the use of addEventListener because I can add more than one handler, and it is generally the way that I prefer to attach events for elements and nodes in general. The one thing that comes to mind about this is that it would result in greater backward support for old browsers. However these days we are talking very out dated platforms that most people are just not using any more, at least that is the case when I look at my stats when it comes to that.
 
