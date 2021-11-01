@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 13:53:05
-version: 1.19
+updated: 2021-11-01 13:57:32
+version: 1.20
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -97,7 +97,7 @@ fetch('http://localhost:8080/data', {
 
 ### 2.2 - The sever script
 
-Now for the sever side script for this example that will respond to both get requests as well as post requests.
+Now for the sever side script for this example that will respond to both get requests as well as post requests. I have everything here in a single file, and there is actually a lot to cover with it when it comes to the many nodejs request that I am making use of beyond just that of the http module. For example I am using the promisify method of the nodejs built in util module to create file system methods that will return a promise using methods from the file system module.
 
 ```js
 let http = require('http'),
