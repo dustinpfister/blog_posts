@@ -17,6 +17,8 @@ router.use(
 
         forPost: (item, next) => {
 
+            console.log(item.i === undefined ? '': '#' + item.i, 'id: ' + item.header.id, 'title: ' + item.header.title);
+
             let match_full = item.md.match(new RegExp(req.body.keyword, 'gi')),
             result = null;
 
