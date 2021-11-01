@@ -96,7 +96,7 @@ var getAllChangedFiles = (days) => {
 };
 
 
-getHashDateObjects(20)
+getHashDateObjects(30)
 .then((hashObjects) => {
 
     let days = getDayHashObjects(hashObjects);

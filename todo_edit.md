@@ -39,7 +39,6 @@ js-intl
 js-line-break
 js-window-inner-width-height
 js-javascript-iframe
-js-javascript-scope
 -->
 
 ### (   ) - js-onunload (old)
@@ -63,6 +62,9 @@ js-javascript-scope
 ### (   ) - js-function-pure (old)
 * have 5+ internal links for the post
 * edit post to 1,800+ words
+
+### (   ) - js-javascript-scope ( no internal links )
+* have 5+ internal links for the post
 
 ### (   ) - js-call-object ( no internal links )
 * have 5+ internal links for the post
