@@ -45,9 +45,6 @@ js-javascript-iframe
 * have 5+ internal links for the post
 * edit post to 1,000+ words
 
-### (   ) - js-fetch (old)
-* have 5+ internal links for the post
-
 ### (   ) - js-onchange (old)
 * have 5+ internal links for the post
 
@@ -128,6 +125,9 @@ js-javascript-iframe
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 11/01/2021 ) - js-fetch (old)
+* (done) have 5+ internal links for the post
 
 ### ( done 10/28/2021 ) - js-request-animation-frame (old)
 * (done) have 5+ internal links for the post
