@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 13:42:39
-version: 1.17
+updated: 2021-11-01 13:50:06
+version: 1.18
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -56,6 +56,8 @@ So maybe this is not the most compelling example of the js fetch method, but you
 The fetch method just like XMLHttpRequest can of course be used to preform other types of requests other than get requests. There are a few of them to mention, but in general there are GET requests, and POST requests. A Get requests for the most part is to just get a resource at a given URL, while a POST requests is to upstream a body of content to a back end system.
 
 In any case to preform a POST request I can do more or less the same thing as with a GET request, only I need to provide an options object with at least a few properties. In this options object I am going to want to set the method of the requests to POST, and I am also going to want to given a body that is to be uploaded to the server. Often when it comes to these kind of requests it is called for to provide at least a few headers also, such as Content-Type in this case I will be sending json to my sever script. Speaking of a sever script yes I will of course need some kind of back end system to post to. SO in this section I will be going over a simple project example that will contain a sever script that will respond to both get and post requests as well as some html that will preform a post request to this sever script.
+
+This section will then not just involve client side javaScript but also a little code that will be used with nodejs to run a simple web sever. If you are new to nodejs you might want to start out with some kind of [getting started type post with nodejs](/2017/04/05/nodejs-helloworld). Even if you have some experience working with nodejs it would not hurt to look into the [http module](/2018/02/06/nodejs-http/) a bit more when it comes to working with http requests on the sever side of things. ALhough I do like to stick with vanilla javaScript for my various posts on the subject of native browser features like the feth api, it might be best to also look into how to get started with a decent sever side framework with this [sort of thing such as with express](/2019/04/17/express-post/).
 
 ### 2.1 - The index.html file in the public folder
 
