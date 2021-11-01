@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 14:04:17
-version: 1.24
+updated: 2021-11-01 14:06:03
+version: 1.25
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -61,7 +61,7 @@ This section will then not just involve client side javaScript but also a little
 
 ### 2.1 - The index.html file in the public folder
 
-In my project folder for this example I have a public folder and in this public folder I just have a single html file.
+In my project folder for this example I have a public folder and in this public folder I just have a single html file. This html file has a text area that will sever as a place to inject some text that is a response from the sever script. Inside the body of a script tag I get a reference to this text area element, and preform a post request using the fetch api.
 
 ```html
 <html>
