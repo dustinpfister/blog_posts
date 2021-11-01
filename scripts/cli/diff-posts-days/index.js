@@ -95,35 +95,12 @@ var getAllChangedFiles = (days) => {
       }));
 };
 
-
+// what calling this script does
 getHashDateObjects(30)
 .then((hashObjects) => {
-
     let days = getDayHashObjects(hashObjects);
-
-//console.log(hashObjects);
-//console.log(days);
-
-getAllChangedFiles(days)
+    return getAllChangedFiles(days)
+})
 .then((days)=>{
     console.log(days);
 });
-
-/*
-    let a = arr[arr.length - 1],
-    b = arr[arr.length - 2];
-
-//    console.log(a);
-//    console.log(b);
-
-    let gitDiff = spawn('git', ['diff', a.hash, b.hash, '--name-only']);
-    let str = '';
-    gitDiff.stdout.on('data', function (data) {
-        str += data.toString();
-    });
-    gitDiff.on('exit', function () {
-        console.log(str);
-    });
-*/
-
-})
