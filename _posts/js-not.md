@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2021-11-01 15:38:03
-version: 1.24
+updated: 2021-11-01 15:44:26
+version: 1.25
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -20,6 +20,10 @@ So then in many situations the javaScript not operator can come in handy when wr
 This is a post on the js not operator in core javaScript, although I will be keeping the examples in this section fairly simple this is not a [getting started type post when it comes to javaScript](/2018/11/27/js-getting-started/). With that said I trust that you have spent at least some time with javaScript when it comes to taking the first steps with the language.
 
 The js not operator is an exclamation point when it comes to the syntax of the javaScript operator. The operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so any value that is right of the operator will be what is converted to a boolean. In addition logical not as well as bitwise not for that matter has a precedence value of 17, this means that the operation will be preformed before addition, subtraction and any other operators that are below that value.
+
+### - The source code examples here are on Github
+
+I have the source code examples in this post parked in my [test vjs repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-not), this is also where I store all the other source code examples for [my various posts on javaScript by itself](/categories/js/).
 
 ### 1.1 - Basic JS Not Example
 
