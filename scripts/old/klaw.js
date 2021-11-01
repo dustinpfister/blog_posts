@@ -12,7 +12,7 @@ opt_defaults = {
     read: true,
     getText: false,
     // default path to _posts folder
-    dir_posts: path.resolve(__dirname, '../_posts'),
+    dir_posts: path.resolve(__dirname, '../../_posts'),
     // defaults for forFile and forDone callbacks
     forFile: (item, next) => {
         console.log(item.header.title);

@@ -1,4 +1,4 @@
-let klawFiles = require('../../klaw.js').klawFiles,
+let klawFiles = require('../../old/klaw.js').klawFiles,
 argv = process.argv,
 opt_defaults = {
     year: argv[2] || 2019,
