@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 13:50:06
-version: 1.18
+updated: 2021-11-01 13:53:05
+version: 1.19
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -61,6 +61,8 @@ This section will then not just involve client side javaScript but also a little
 
 ### 2.1 - The index.html file in the public folder
 
+In my project folder for this example I have a public folder and in this public folder I just have a single html file.
+
 ```html
 <html>
     <head>
@@ -70,22 +72,23 @@ This section will then not just involve client side javaScript but also a little
         <textarea id = "out" cols="100" rows="15"></textarea>
         <script>
 let out = document.getElementById('out');
-fetch('localhost:8080/data', {
+fetch('http://localhost:8080/data', {
   method: 'POST', // or 'PUT'
   headers: {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-     action: 'search',
-     query: 'foo'
+     action: 'add',
+     a: 5,
+     b: 6
   })
 })
 .then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
+.then((obj) => {
+   out.value += 'action: ' + obj.body.action + ', result: ' + obj.result;
 })
 .catch((error) => {
-  console.error('Error:', error);
+  console.log('Error:', error);
 });
         </script>
     </body>
@@ -93,6 +96,8 @@ fetch('localhost:8080/data', {
 ```
 
 ### 2.2 - The sever script
+
+Now for the sever side script for this example that will respond to both get requests as well as post requests.
 
 ```js
 let http = require('http'),
