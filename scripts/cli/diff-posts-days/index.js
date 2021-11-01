@@ -35,7 +35,21 @@ let getHashDateObjects = (n) => {
     });
 };
 
-getHashDateObjects(10)
+getHashDateObjects(11)
 .then((arr) => {
-    console.log(arr);
+
+    let a = arr[arr.length - 1],
+    b = arr[arr.length - 3];
+
+    console.log(a);
+    console.log(b);
+
+    let gitDiff = spawn('git', ['diff', a.hash, b.hash, '--name-only']);
+    let str = '';
+    gitDiff.stdout.on('data', function (data) {
+        str += data.toString();
+    });
+    gitDiff.on('exit', function () {
+        console.log(str);
+    });
 })
