@@ -11,7 +11,7 @@ let purgeEmpty = (arr) => {
     });
 };
 
-// use git log command to create an array of objects containing commit hash ids, and dates for each commit
+// use git log command to create an array of 'hash objects' containing commit hash ids, and dates for each commit
 // going back a given number of commits that defaults to say 20
 let getHashDateObjects = (n) => {
     n = n === undefined ? 20 : n;
@@ -35,23 +35,7 @@ let getHashDateObjects = (n) => {
     });
 };
 
-/*
-let getFilesChanged = (n) => {
-    n = n === undefined ? 20 : n;
-    return new Promise((resolve, reject) => {
-        let gitLog = spawn('git', ['log', '-n', n, '--name-only']);
-        let str = '';
-        gitLog.stdout.on('data', function (data) {
-            str += data.toString();
-        });
-        gitLog.on('exit', function () {
-            resolve(str);
-        });
-    });
-};
-*/
-
-// get an array of objects that will be used for git diff calls like this:
+// get an array of 'day objects' that will be used for git diff calls like this:
 /*
 [
     { y:2021, m:10, d:31, startHash: '(firstHashForThisDay)', endHash: 'firstHashNotOnThisDay' }
@@ -104,6 +88,13 @@ let getChangedFiles = (dayObj) => {
     });
 };
 
+// call getChangedFiles for a whole collection of day objects
+var getAllChangedFiles = (days) => {
+      return Promise.all(  days.map((dayObj)=>{
+          return getChangedFiles(dayObj);
+      }));
+};
+
 
 getHashDateObjects(20)
 .then((hashObjects) => {
@@ -113,10 +104,9 @@ getHashDateObjects(20)
 //console.log(hashObjects);
 //console.log(days);
 
-getChangedFiles(days[0])
-.then((obj)=>{
-console.log(' result: ');
-console.log(obj);
+getAllChangedFiles(days)
+.then((days)=>{
+    console.log(days);
 });
 
 /*
