@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 14:08:42
-version: 1.26
+updated: 2021-11-01 14:10:34
+version: 1.27
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -22,6 +22,8 @@ In any case the fetch method is still without question a feature in modern brows
 ## 1 - Fetch api basics
 
 In this section I will be going over just one example of the fetch api when it comes to just making a simple get request. When it comes to the various other kinds of requests such as post requests one will need some kind of back end system to post to, so that will be something that I will be getting to in later sections of this post.
+
+Although I do make an effort to keep these examples fairly basic I assume that you have at least some background when it comes to the very basics of [getting started with javaScript](/2018/11/27/js-getting-started/).
 
 ### 1.1 - Simple get request example of fetch
 
