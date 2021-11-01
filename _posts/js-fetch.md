@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 14:06:03
-version: 1.25
+updated: 2021-11-01 14:08:42
+version: 1.26
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -19,7 +19,11 @@ In any case the fetch method is still without question a feature in modern brows
 
 <!-- more -->
 
-## 1 - Simple get request example of fetch
+## 1 - Fetch api basics
+
+In this section I will be going over just one example of the fetch api when it comes to just making a simple get request. When it comes to the various other kinds of requests such as post requests one will need some kind of back end system to post to, so that will be something that I will be getting to in later sections of this post.
+
+### 1.1 - Simple get request example of fetch
 
 For starters I think an example that is just a basic get request would be in order, as that is often the case with these kinds of posts. Say that I want to preform a get request to just get the html text of a given page at a certain location on the open web, for argument sake how about just the text of this very blog post? In that case fetch just needs to be given one argument which is the URL of the resource that I want to fetch. This is a whole world more simple compared to using XMLHttpRequest that often proves to be a bit of a pain by comparison.
 
