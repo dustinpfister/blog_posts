@@ -35,11 +35,29 @@ let getHashDateObjects = (n) => {
     });
 };
 
-getHashDateObjects(11)
+
+let getFilesChanged = (n) => {
+    n = n === undefined ? 20 : n;
+    return new Promise((resolve, reject) => {
+        let gitLog = spawn('git', ['log', '-n', n, '--name-only']);
+        let str = '';
+        gitLog.stdout.on('data', function (data) {
+            str += data.toString();
+        });
+        gitLog.on('exit', function () {
+            resolve(str);
+        });
+    });
+};
+
+getFilesChanged(1)
 .then((arr) => {
 
-    let a = arr[arr.length - 1],
-    b = arr[arr.length - 3];
+console.log(arr);
+
+/*
+    let a = arr[arr.length - 4],
+    b = arr[arr.length - 5];
 
     console.log(a);
     console.log(b);
@@ -50,6 +68,8 @@ getHashDateObjects(11)
         str += data.toString();
     });
     gitDiff.on('exit', function () {
+console.log('yes');
         console.log(str);
     });
+*/
 })
