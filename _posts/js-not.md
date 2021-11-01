@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2021-11-01 15:48:19
-version: 1.26
+updated: 2021-11-01 15:49:46
+version: 1.27
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -27,7 +27,7 @@ I have the source code examples in this post parked in my [test vjs repository o
 
 ### 1.1 - Basic JS Not Example
 
-The operator both converts to boolean and inverts the value that is to the right of the JS Not operator. So for example say I just want a simple function that will return one of two messages depending on the truth value of a single given argument. Where I want to have a message if the value is Not true rather than true, the JS Not operator combined with an if statement and the return keyword can be used to do so.
+The operator both converts to boolean and inverts the value that is to the right of the JS Not operator. So for example say I just want a simple function that will return one of two messages depending on the truth value of a single given argument. Where I want to have a message if the value is Not true rather than true, the JS Not operator combined with an if statement and the [return keyword](/2019/03/01/js-javascript-return/) can be used to do so.
 
 ```js
 var mess = function (happy) {
