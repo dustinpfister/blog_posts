@@ -27,7 +27,7 @@ let getHashDateObjects = (n) => {
                     var a = str.split('/');
                     return {
                         date: new Date(a[1]),
-                        hash: a[0]
+                        hash: a[0].trim()
                     }
                 });
             resolve(arr);
@@ -35,7 +35,7 @@ let getHashDateObjects = (n) => {
     });
 };
 
-getHashDateObjects(50)
+getHashDateObjects(10)
 .then((arr) => {
     console.log(arr);
 })
