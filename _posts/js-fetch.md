@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 14:13:55
-version: 1.29
+updated: 2021-11-01 14:18:34
+version: 1.30
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -27,7 +27,7 @@ Although I do make an effort to keep these examples fairly basic I assume that y
 
 ### - The source code examples in this post are on Github
 
-The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise) in Github.
+The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-fetch) in Github. This repository also contains all the source code examples for my many other [posts on various vanilla javaScript topics](/categories/js/) beyond just that of the fetch API. If you must make a pull request for one of the source code examples you see here that would be where to do it. There is also the comments section at the bottom of this post that can be used to bring something up. I do get around to editing my content now and then but I have a lot of posts boiling so my response might be slow.
 
 ### 1.1 - Simple get request example of fetch
 
