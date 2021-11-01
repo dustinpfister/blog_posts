@@ -50,17 +50,16 @@ let getFilesChanged = (n) => {
     });
 };
 
-getFilesChanged(1)
+getHashDateObjects(2)
 .then((arr) => {
 
 console.log(arr);
 
-/*
-    let a = arr[arr.length - 4],
-    b = arr[arr.length - 5];
+    let a = arr[arr.length - 1],
+    b = arr[arr.length - 2];
 
-    console.log(a);
-    console.log(b);
+//    console.log(a);
+//    console.log(b);
 
     let gitDiff = spawn('git', ['diff', a.hash, b.hash, '--name-only']);
     let str = '';
@@ -68,8 +67,7 @@ console.log(arr);
         str += data.toString();
     });
     gitDiff.on('exit', function () {
-console.log('yes');
         console.log(str);
     });
-*/
+
 })
