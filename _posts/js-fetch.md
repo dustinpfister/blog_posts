@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2021-11-01 14:01:04
-version: 1.22
+updated: 2021-11-01 14:02:00
+version: 1.23
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -97,7 +97,7 @@ fetch('http://localhost:8080/data', {
 
 ### 2.2 - The sever script
 
-Now for the sever side script for this example that will respond to both get requests as well as post requests. I have everything here in a single file, and there is actually a lot to cover with it when it comes to the many nodejs request that I am making use of beyond just that of the http module. For example I am using the [promisify method of the nodejs built in util module](/2019/06/22/nodejs-util-promisify/) to create file system methods that will return a promise using methods from the [file system module](/2018/02/08/nodejs-filesystem/). When it comes to the code that I am using to respond to get requests, including get requests for the index html file that will sever as my client system for this example I based all of that off of the state of the source code for another project that aims to be just a very basic static web site sever example.
+Now for the sever side script for this example that will respond to both get requests as well as post requests. I have everything here in a single file, and there is actually a lot to cover with it when it comes to the many nodejs request that I am making use of beyond just that of the http module. For example I am using the [promisify method of the nodejs built in util module](/2019/06/22/nodejs-util-promisify/) to create file system methods that will return a promise using methods from the [file system module](/2018/02/08/nodejs-filesystem/). When it comes to the code that I am using to respond to get requests, including get requests for the index html file that will sever as my client system for this example I based all of that off of the state of the source code for another project that aims to be just a very [basic static web site sever example](/2017/12/04/nodejs-simple-static-server-file/).
 
 ```js
 let http = require('http'),
