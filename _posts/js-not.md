@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 546
-updated: 2020-11-14 13:53:33
-version: 1.21
+updated: 2021-11-01 15:34:52
+version: 1.22
 ---
 
 The [javaScript not](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_NOT) operator can be used to negate a value and turn the value into a boolean value. In other words whatever the truth value is for a value the js not operator will return the opposite of that value as a boolean type rather than whatever type it might work out to before hand.
@@ -17,7 +17,8 @@ So then in many situations the javaScript not operator can come in handy when wr
 
 ## 1 - JS Not (!) logical not basics
 
-The js not operator is an exclamation point when it comes to the syntax of the javaScript operator. The operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so any value that is right of the operator will be what is converted to a boolean. In addition logical not as well as bitwise not for that matter has a precedence value of 17, this means that the operation will be preformed before addition, subtraction and any other operators that are below that value. 
+The js not operator is an exclamation point when it comes to the syntax of the javaScript operator. The operator has right to left [associativity](/2019/02/02/js-operator-precedence/) so any value that is right of the operator will be what is converted to a boolean. In addition logical not as well as bitwise not for that matter has a precedence value of 17, this means that the operation will be preformed before addition, subtraction and any other operators that are below that value.
+
 ### 1.1 - Basic JS Not Example
 
 The operator both converts to boolean and inverts the value that is to the right of the JS Not operator. So for example say I just want a simple function that will return one of two messages depending on the truth value of a single given argument. Where I want to have a message if the value is Not true rather than true, the JS Not operator combined with an if statement and the return keyword can be used to do so.
@@ -113,7 +114,7 @@ The reason why this works is because calling the js not operator once will conve
 
 ## 3 - Using js not to make a boolean value bay way of !0 or !1
 
-The number zero will work out to a false boolean value, so using the js not operator will result in a true boolean value. The opposite of this will work out to false by using the js not operator with the number one also on top of this. So then the use of the JS Not operator with the numbers 0 and 1 and be used as a way to make a slightly smaller alertaive to that of the true and false literals. 
+The number zero will work out to a false boolean value, so using the js not operator will result in a true boolean value. The opposite of this will work out to false by using the js not operator with the number one also on top of this. So then the use of the JS Not operator with the numbers 0 and 1 and be used as a way to make a slightly smaller alternative to that of the true and false literals. 
 
 ```js
 let bool = !0;
