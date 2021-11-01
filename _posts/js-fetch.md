@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 165
-updated: 2020-11-03 10:53:00
-version: 1.13
+updated: 2021-11-01 12:47:16
+version: 1.14
 ---
 
 In late specs of client side javaScript there is the [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method that is a way of making http requests in browser that is introduced in the [whatwg living standard](https://fetch.spec.whatwg.org/) . It is like the tired yet true [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) method, but may prove to be a little easier to use, and returns a promise out of the box. However one draw back might be browser support for older platforms, depending on the situation with that the fetch method might have to be polyfilled, and is thus not necessary a native replacement for user space http clients like [axios](https://github.com/axios/axios).
@@ -21,7 +21,7 @@ In any case the fetch method is still without question a feature in modern brows
 
 ## 1 - Simple get request example of fetch
 
-For starterts I think an example that is just a basic get request would be in order, as that is often the case with these kinds of posts. Say that I want to prefrom a get request to just get the html text of a given page at a certain location on the open web, for argument sake how about just the text of this very blog post? In that case fetch just needs to be given one argument which is the URL of the resource that I want to fetch. This is a whole world more simple compared to using XMLHttpRequest that often proves to be a bit of a pain by comparison.
+For starters I think an example that is just a basic get request would be in order, as that is often the case with these kinds of posts. Say that I want to preform a get request to just get the html text of a given page at a certain location on the open web, for argument sake how about just the text of this very blog post? In that case fetch just needs to be given one argument which is the URL of the resource that I want to fetch. This is a whole world more simple compared to using XMLHttpRequest that often proves to be a bit of a pain by comparison.
 
 ```html
 <html>
@@ -54,7 +54,7 @@ So maybe this is not the most compelling example of the js fetch method, but you
 ## 2 - Making a Post request with fetch
 
 The ftech method just like XMLHttpRequest can of course be used to preform other types of requests other than GEt requests. There are a few of them to mentioning, but in general there are GET requests, and POST requests. A Get requests for the most part is to just get a resource at a given URL, while a POST requests is to upstream a body of content to a back end system.
-In any case to preform a POST request I can do more or less the same thing as with a GET request, only I need to provide an options object with at least a few properties. In this options object I am going to want to set the method of the requests to POST, and I am also going to want to given a body that is to be uploaded to the server. Often wheh it comes to these kind of requests it is called for to provide at least a few headers also, such as Content-Type.
+In any case to preform a POST request I can do more or less the same thing as with a GET request, only I need to provide an options object with at least a few properties. In this options object I am going to want to set the method of the requests to POST, and I am also going to want to given a body that is to be uploaded to the server. Often when it comes to these kind of requests it is called for to provide at least a few headers also, such as Content-Type.
 
 ```html
 <html>
