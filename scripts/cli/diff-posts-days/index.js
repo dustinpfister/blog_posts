@@ -76,27 +76,48 @@ let getDayHashObjects = function(hashObjects){
         }else{
             y = cy; m = cm; d = cd; 
             // this is the endHash for the current object if we have one
-            obj = acc[acc.length -1];
-            if(obj){
-               obj.endHash = hashObj.hash;
-            }
+            //obj = acc[acc.length -1];
+            //if(obj){
+            //   obj.endHash = hashObj.hash;
+            //}
             // if not same day we need to update y,m,d and push a new object
             acc.push({
                y: y, m: m, d: d, startHash: hashObj.hash, endHash: hashObj.hash
             });
         }
-
         return acc;
     }, []);
 };
 
+// get changed files for a single dayObj
+let getChangedFiles = (dayObj) => {
+    return new Promise((resolve, reject) => {
+        let gitDiff = spawn('git', ['diff', dayObj.startHash, dayObj.endHash, '--name-only']);
+        let str = '';
+        gitDiff.stdout.on('data', function (data) {
+            str += data.toString();
+        });
+        gitDiff.on('exit', function () {
+            dayObj.files = purgeEmpty(str.split(/\n|\r\n/));
+            resolve(dayObj);
+        });
+    });
+};
+
+
 getHashDateObjects(20)
 .then((hashObjects) => {
 
-let days = getDayHashObjects(hashObjects);
+    let days = getDayHashObjects(hashObjects);
 
-console.log(hashObjects);
-console.log(days);
+//console.log(hashObjects);
+//console.log(days);
+
+getChangedFiles(days[0])
+.then((obj)=>{
+console.log(' result: ');
+console.log(obj);
+});
 
 /*
     let a = arr[arr.length - 1],

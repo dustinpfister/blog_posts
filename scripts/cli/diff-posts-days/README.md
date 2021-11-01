@@ -7,8 +7,12 @@ Something like this:
 ```
 [
    {
-       hash: '[gitHashCode]',
-       date: 'Sun Oct 31 06:31:56 2021 -0400',
+       startHash: '[gitHashCode]',
+       endHash: '[gitHashCode]',
+       y: 2021,
+       m: 10,
+       d: 31,
+       date: 'Sun Oct 31 00:00:00 2021 -0400',
        files: ['js-onchange.md', 'js-operator-precedence.md']
    }
 ]
