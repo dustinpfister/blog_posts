@@ -35,7 +35,7 @@ let getHashDateObjects = (n) => {
     });
 };
 
-
+/*
 let getFilesChanged = (n) => {
     n = n === undefined ? 20 : n;
     return new Promise((resolve, reject) => {
@@ -49,12 +49,56 @@ let getFilesChanged = (n) => {
         });
     });
 };
+*/
 
-getHashDateObjects(2)
-.then((arr) => {
+// get an array of objects that will be used for git diff calls like this:
+/*
+[
+    { y:2021, m:10, d:31, startHash: '(firstHashForThisDay)', endHash: 'firstHashNotOnThisDay' }
+]
 
-console.log(arr);
+*/
+let getDayHashObjects = function(hashObjects){
+    var y = '',
+    m = '',
+    d = '';
+    return hashObjects.reverse().reduce((acc, hashObj)=>{
+        let obj,
+        cy = hashObj.date.getFullYear(),
+        cm = hashObj.date.getMonth() + 1,
+        cd = hashObj.date.getDate();
+        // if same day
+        if(cy === y && cm === m && cd === d){
+            obj = acc[acc.length -1];
+            if(obj){
+               obj.endHash = hashObj.hash;
+            }
+        }else{
+            y = cy; m = cm; d = cd; 
+            // this is the endHash for the current object if we have one
+            obj = acc[acc.length -1];
+            if(obj){
+               obj.endHash = hashObj.hash;
+            }
+            // if not same day we need to update y,m,d and push a new object
+            acc.push({
+               y: y, m: m, d: d, startHash: hashObj.hash, endHash: hashObj.hash
+            });
+        }
 
+        return acc;
+    }, []);
+};
+
+getHashDateObjects(20)
+.then((hashObjects) => {
+
+let days = getDayHashObjects(hashObjects);
+
+console.log(hashObjects);
+console.log(days);
+
+/*
     let a = arr[arr.length - 1],
     b = arr[arr.length - 2];
 
@@ -69,5 +113,6 @@ console.log(arr);
     gitDiff.on('exit', function () {
         console.log(str);
     });
+*/
 
 })
