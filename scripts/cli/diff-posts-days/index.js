@@ -11,9 +11,12 @@ let purgeEmpty = (arr) => {
     });
 };
 
-let getHashDateObjects = () => {
+// use git log command to create an array of objects containing commit hash ids, and dates for each commit
+// going back a given number of commits that defaults to say 20
+let getHashDateObjects = (n) => {
+    n = n === undefined ? 20 : n;
     return new Promise((resolve, reject) => {
-        let gitLog = spawn('git', ['log', '-n', '10', '--format=%H/%cD;']);
+        let gitLog = spawn('git', ['log', '-n', n, '--format=%H/%cD;']);
         let str = '';
         gitLog.stdout.on('data', function (data) {
             str += data.toString();
@@ -32,7 +35,7 @@ let getHashDateObjects = () => {
     });
 };
 
-getHashDateObjects()
+getHashDateObjects(50)
 .then((arr) => {
     console.log(arr);
 })
