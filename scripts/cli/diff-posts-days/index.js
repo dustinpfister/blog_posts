@@ -11,19 +11,28 @@ let purgeEmpty = (arr) => {
     });
 };
 
-let gitLog = spawn('git', ['log', '-n', '10', '--format=%H/%cD;']);
-let str = '';
-gitLog.stdout.on('data', function (data) {
-    str += data.toString();
-});
-gitLog.on('exit', function () {
-    var arr = purgeEmpty(str.trim().split(';'));
-    arr = arr.map(function (str) {
-            var a = str.split('/');
-            return {
-                date: new Date(a[1]),
-                hash: a[0]
-            }
+let getHashDateObjects = () => {
+    return new Promise((resolve, reject) => {
+        let gitLog = spawn('git', ['log', '-n', '10', '--format=%H/%cD;']);
+        let str = '';
+        gitLog.stdout.on('data', function (data) {
+            str += data.toString();
         });
+        gitLog.on('exit', function () {
+            var arr = purgeEmpty(str.trim().split(';'));
+            arr = arr.map(function (str) {
+                    var a = str.split('/');
+                    return {
+                        date: new Date(a[1]),
+                        hash: a[0]
+                    }
+                });
+            resolve(arr);
+        });
+    });
+};
+
+getHashDateObjects()
+.then((arr) => {
     console.log(arr);
-});
+})
