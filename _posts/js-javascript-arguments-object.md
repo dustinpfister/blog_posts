@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2021-11-02 11:09:35
-version: 1.31
+updated: 2021-11-02 11:13:02
+version: 1.32
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -24,6 +24,10 @@ So then this post will be on a few quick examples that make use of the arguments
 In this section I will be starting out with some very basic examples of the arguments object in javaScript. There is the length property of this object, along with the values. However there are also maybe a few more basic things about the arguments object, and other related features in javaScript in general that might be worth pointing out before getting to some more complex examples.
 
 I often try my best to keep the examples in these sections very simple, but it will still require at least some expected when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/) at least.
+
+### - These source code examples are on github
+
+The source code examples in this post can be found in my [test vjs repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-arguments-object/).
 
 ### 1.1 - The arguments.length property is the number of arguments given
 
