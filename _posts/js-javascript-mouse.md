@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-02 12:56:54
-version: 1.83
+updated: 2021-11-02 12:59:00
+version: 1.84
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -965,7 +965,9 @@ document.body.click();
 </html>
 ```
 
-### 8.2 -
+### 8.2 - Using the dispacth event method
+
+For this example I am using the dispatch event method rather than just the click method. In order to use the dispatch event method I must have an event object to pass as an argument n for the method. So then I first need to create an event object, an set the properties that I want for the object.
 
 ```html
 <html>
