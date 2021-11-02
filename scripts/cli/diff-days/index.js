@@ -15,13 +15,3 @@ dObj.onlyFiles(process.argv[2] === undefined ? 30 : process.argv[2])
         console.log(day);
     })
 });
-
-/*
-dObj.getHashDateObjects(process.argv[2] === undefined ? 30 : process.argv[2])
-.then((hashObjects) => {
-return dObj.getDayHashObjects(hashObjects);
-})
-.then((days)=>{
-console.log(days);
-});
-*/
