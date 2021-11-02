@@ -4,7 +4,7 @@ os = require('os'),
 dirs = require(path.join(__dirname, '../paths/index.js')).createDirObject(__dirname),
 spawn = require('child_process').spawn;
 
-// purge empty strings from an aray
+// purge empty strings from an array
 let purgeEmpty = (arr) => {
     return arr.filter(function (el) {
         return el != '';
