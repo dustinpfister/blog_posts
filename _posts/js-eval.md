@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2021-11-02 10:53:21
-version: 1.16
+updated: 2021-11-02 11:22:02
+version: 1.17
 ---
 
 In javaScript there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. It is generally something to be avoided for various reasons, and it it really must be used should be used with care. In projects where the string value is passed from user input there is the risk of introducing security problems if the input is not sanitized. In general if you can find a way to do what you want to do with eval by some othre means do that instead.
@@ -19,7 +19,7 @@ The eval function should not be used if it can be avoided, the use of the eval f
 
 ## 1 - Basics of js eval
 
-In this section I will be starting out with just a few basic examples of eval in core javaScript as such these examples should work in just about all javaScript environments. Although I will be keeping these examples fairly simple I assume that you have at least some background with [javaScript when it comes to getting started](/2018/11/27/js-getting-started/).
+In this section I will be starting out with just a few basic examples of eval in core javaScript as such these examples should work in just about all javaScript environments. Although I will be keeping these examples fairly simple I assume that you have at least some background with [javaScript when it comes to getting started](/2018/11/27/js-getting-started/). There is more than one way of getting started of course beyond just the way that you might have started with javaScript. For example I have started by writing files and opening them up in a web browser using the file protocol. However it is also possible to get started in the javaScript console of a web browser, or use nodejs and just write sever side scripts outside of a web browser.
 
 ### - Source is up on github
 
