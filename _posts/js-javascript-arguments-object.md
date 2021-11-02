@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2021-11-02 11:13:02
-version: 1.32
+updated: 2021-11-02 12:03:25
+version: 1.33
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -23,7 +23,7 @@ So then this post will be on a few quick examples that make use of the arguments
 
 In this section I will be starting out with some very basic examples of the arguments object in javaScript. There is the length property of this object, along with the values. However there are also maybe a few more basic things about the arguments object, and other related features in javaScript in general that might be worth pointing out before getting to some more complex examples.
 
-I often try my best to keep the examples in these sections very simple, but it will still require at least some expected when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/) at least.
+I often try my best to keep the examples in these sections very simple, but it will still require at least some expected when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/) at least. There is also a lot more to write about when it comes to other aspects of [functions in javaScript](/2019/12/26/js-function/) beyond just that of the argument object of course.
 
 ### - These source code examples are on github
 
@@ -73,7 +73,7 @@ console.log(sum(5, 10, 7)); // 22
 
 There is more to do with a function such as this such as type checking an so forth, but the basic idea is there. The length property of the arguments object can be used in conjunction with the values of the public keys to do something such as this. However what if I need to know not just the number of arguments that where given, but the set number of parameters that the function has?
 
-### 1.3 - The function length property will give the parameter count of a funciton ( the expected number of arguments )
+### 1.3 - The function length property will give the parameter count of a function ( the expected number of arguments )
 
 What is the deference between an argument and a parameter? SOme might think that they are just two words the mean the same thing. However there is really a difference between the two. Parameters are often what is refer to as the fixed number of expected values when a function is called, and arguments are the set of values that where actually given.
 
