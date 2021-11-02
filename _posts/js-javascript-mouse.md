@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-02 12:30:47
-version: 1.78
+updated: 2021-11-02 12:49:21
+version: 1.79
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -937,7 +937,64 @@ out.addEventListener('pointermove', function(e){
 </html>
 ```
 
-## 8 - Conclusion
+## 8 - Simulation of mouse events
+
+### 8.1 -
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var c = 0;
+window.onclick = function(e){
+    c += 1;
+    document.getElementById('out').innerText = c;
+};
+// the click method of an element object can be used to preform a click
+document.body.click();
+        </script>
+    </body>
+</html>
+```
+
+### 8.2 -
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="out">0<div>
+        <script>
+var simClickFor = function(el, x, y){
+    el = el || document.body;
+    var event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: x === undefined ? 0 : x,
+        clientY: y === undefined ? 0 : y
+    });
+    el.dispatchEvent(event);
+};
+// hander on window
+window.onclick = function(e){
+    document.getElementById('out').innerText = e.clientX + ',' + e.clientY;
+};
+// simulating a click with position
+simClickFor(document.body, 37, 8);
+ 
+        </script>
+    </body>
+</html>
+```
+
+## 9 - Conclusion
 
 So hopefully this post has helped you gain some basic insight into how to get going with a mouse when making a user interface with javaScript. However there is much more to learn and be aware of when it comes to using mouse events, as well as other events such as touch events, and keyboard events. This post does not outline a fully comprehensive input controller module or project or sorts after all as the focus here is just on things that have to do with working with the mouse.
 
