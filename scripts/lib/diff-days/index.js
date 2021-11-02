@@ -15,9 +15,12 @@ let api = {};
 
 // use git log command to create an array of 'hash objects' containing commit hash ids, and dates for each commit
 // going back a given number of commits that defaults to say 20
+// 066e8e5d49d4f7474f8b5e46d41da13282e169e7
 api.getHashDateObjects = (n) => {
     n = n === undefined ? 20 : n;
+    let range = String(n).length === 40 ? [n + '...HEAD'] : ['-n', n];
     return new Promise((resolve, reject) => {
+        //let gitLog = spawn('git', ['log'].concat(range).concat(['--format=%H/%cD;']));
         let gitLog = spawn('git', ['log', '-n', n, '--format=%H/%cD;']);
         let str = '';
         gitLog.stdout.on('data', function (data) {

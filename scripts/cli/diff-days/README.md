@@ -17,3 +17,15 @@ Something like this:
    }
 ]
 ```
+
+## Calling this CLI tool
+
+On Linux systems I have the nodejs shebang at the top of the index.js file so it can be called dirrectly. When doing so the first positional argument can be used to pass a number of commits to go back, or a 40 digit hash code for the commit to start at when it comes to making these reposts for each day.
+
+```
+./index.js 100
+```
+
+```
+./index.js 066e8e5d49d4f7474f8b5e46d41da13282e169e7
+```
