@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-02 12:49:21
-version: 1.79
+updated: 2021-11-02 12:51:17
+version: 1.80
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -938,6 +938,8 @@ out.addEventListener('pointermove', function(e){
 ```
 
 ## 8 - Simulation of mouse events
+
+I will often be in a situation in which I would want to simulate a client event by way of some javaScript code rather than my actually using my mouse. So then in this section I will be going over a few examples that have to do with simulating mouse events using javaScript.
 
 ### 8.1 -
 
