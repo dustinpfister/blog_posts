@@ -41,9 +41,6 @@ js-window-inner-width-height
 js-javascript-iframe
 -->
 
-### (   ) - js-arrow-functions  ( old )
-* have 5+ internal links for the post
-* edit to 1,000+ words
 
 ### (   ) - js-javascript-arguments-object  ( old )
 * have 5+ internal links for the post
@@ -69,10 +66,6 @@ js-javascript-iframe
 
 ### (   ) - js-drag-elements-with-dragula ( no internal links )
 * have 5+ internal links for the post
-
-### (   ) - js-eval ( no internal links )
-* have 5+ internal links for the post
-* edit post to 1,000 words
 
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
@@ -124,6 +117,13 @@ js-javascript-iframe
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
 
+### ( done 11/02/2021 ) - js-eval ( no internal links )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000 words
+
+### ( done 11/02/2021 ) - js-arrow-functions  ( old )
+* (done) have 5+ internal links for the post
+* (done) edit to 1,000+ words
 
 ### ( done 11/01/2021 ) - js-onunload (old)
 * (done) have 5+ internal links for the post
