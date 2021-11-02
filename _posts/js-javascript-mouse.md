@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-02 12:53:55
-version: 1.81
+updated: 2021-11-02 12:55:07
+version: 1.82
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -939,7 +939,7 @@ out.addEventListener('pointermove', function(e){
 
 ## 8 - Simulation of mouse events
 
-I will often be in a situation in which I would want to simulate a client event by way of some javaScript code rather than my actually using my mouse. So then in this section I will be going over a few examples that have to do with simulating mouse events using javaScript. When it comes to element object references there is a click method that can be called that will work well enough in most cases when I just want to simulate a client event at an element, and I do not care about various details. However another way is by creating a custom event object and then passing that event object to the dispatch event method of an element object reference which is a great way to go about simulating all kind of events in general beyond just that of mouse events.
+I will often be in a situation in which I would want to simulate a client event by way of some javaScript code rather than my actually using my mouse. So then in this section I will be going over a few examples that have to do with simulating mouse events using javaScript. When it comes to element object references there is a [click method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click) that can be called that will work well enough in most cases when I just want to simulate a client event at an element, and I do not care about various details. However another way is by creating a custom event object and then passing that event object to the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of an element object reference which is a great way to go about simulating all kind of events in general beyond just that of mouse events.
 
 ### 8.1 -
 
