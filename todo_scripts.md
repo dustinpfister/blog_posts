@@ -2,7 +2,8 @@
 
 This is a todo list for the scripts folder.
 
-## () - 
+## () - diff-days word counts
+* see about making a new method for day-objects.js that will return files, and word count deltas for each file
 
 ## ( done 11/02/2021 ) - new cli tool of diff-days
 * (done) start a new diff-post-days cli script folder

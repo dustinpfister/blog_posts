@@ -86,22 +86,21 @@ var gDiff = (dayObj, optArr) => {
             str += data.toString();
         });
         gitDiff.on('exit', function () {
-            dayObj.files = purgeEmpty(str.split(/\n|\r\n/));
-            resolve(dayObj);
+            //dayObj.files = purgeEmpty(str.split(/\n|\r\n/));
+            resolve(str);
         });
     });
-};
-
-// get changed files for a single dayObj
-api.getChangedFiles = (dayObj) => {
-    return gDiff(dayObj, ['--name-only']);
 };
 
 // call getChangedFiles for a whole collection of day objects
 api.getAllChangedFiles = (days) => {
     return Promise.all(days.map((dayObj) => {
-            return api.getChangedFiles(dayObj);
-        }));
+        return gDiff(dayObj, ['--name-only'])
+        .then((str) => {
+            dayObj.files = purgeEmpty(str.split(/\n|\r\n/));
+            return dayObj;
+        })
+    }));
 };
 
 // Only files report
