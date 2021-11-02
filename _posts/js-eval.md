@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2020-11-15 14:33:05
-version: 1.13
+updated: 2021-11-02 10:45:56
+version: 1.14
 ---
 
 In javaScript there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. It is generally something to be avoided for various reasons, and it it really must be used should be used with care. In projects where the string value is passed from user input there is the risk of introducing security problems if the input is not sanitized. In general if you can find a way to do what you want to do with eval by some othre means do that instead.
@@ -17,7 +17,9 @@ The eval function should not be used if it can be avoided, the use of the eval f
 
 <!-- more -->
 
-## 1 - js eval basic example
+## 1 - Basics of js eval
+
+### 1.1 - js eval basic example
 
 For a basic example of the js eval function I just stared out with a string of a very simple javaScript expression and passed that to the eval function. After doing so the result of that expression is returned to which I then just logged to the console.
 
@@ -31,7 +33,7 @@ console.log(eval(str));
 
 So that is the basic idea of eval, it is just a ay to go about evaluating some javaScript code in a string format. There are other ways of doing just that such as with the Function constructor. However if I am ever in a situation in which i thing I might need to use eval or the function constructor I take a moment to try to find another way of doing so. It is generally agreed that the use of these options for running javaScript code can bring up both security and performance concerns that can often be avoided.
 
-## 2 - js eval can create variables in the scope in which it is used
+### 1.2 - js eval can create variables in the scope in which it is used
 
 When the js eval function is used with a string of javaScript that contains the use of the var keyword to create a variable, and it is not used in strict mode, this can result in a variable being created in the scope in which eval is used.
 
