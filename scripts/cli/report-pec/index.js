@@ -6,26 +6,8 @@ promisify = require('util').promisify,
 fs = require('fs'),
 writeFile = promisify(fs.writeFile);
 
-
-
-// only changed files in general
-//dObj.onlyFiles(process.argv[2] === undefined ? 30 : process.argv[2])
-
-dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
-.then((days) => {
-    // filter files for \_posts
-    return days.map((dayObj) => {
-        dayObj.files = dayObj.files.filter((fileName) => {
-            return !!fileName.match(/^\_posts/)
-        })
-        return dayObj;
-    });
-})
-.then((days)=>{
-
-    let html = '<body><table>\n';
-    html += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thur</th><th>Fir</th><th>Sat</th></tr>\n';
-
+// create rows from days objects
+let createRows = (days) => {
     var rows = [],
     colIndex = 0;
     days.forEach((dayObj) => {
@@ -39,7 +21,13 @@ dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
             colIndex += 1;
         } 
     });
+    return rows;
+};
 
+// create HTML from rows array of arrays
+let createHTML = (rows) => {
+    let html = '<body><table>\n';
+    html += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thur</th><th>Fir</th><th>Sat</th></tr>\n';
     rows.forEach((row)=>{
         var i = 0,
         col,
@@ -56,8 +44,29 @@ dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
         }
         html += '</tr>\n';
     })    
-
     html += '</table></body>\n';
-//    console.log(html)
+    return html;
+};
+
+// only changed files in general
+//dObj.onlyFiles(process.argv[2] === undefined ? 30 : process.argv[2])
+
+dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
+.then((days) => {
+    // filter files for \_posts
+    return days.map((dayObj) => {
+        dayObj.files = dayObj.files.filter((fileName) => {
+            return !!fileName.match(/^\_posts/)
+        })
+        return dayObj;
+    });
+})
+.then((days)=>{
+
+    let rows = createRows(days);
+
+    let html = createHTML(rows);
+
+    // write file
     return writeFile( path.join(dirs.this_script, 'pec.html'), html, 'utf8' );
 });
