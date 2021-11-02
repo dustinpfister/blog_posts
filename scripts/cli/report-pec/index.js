@@ -38,7 +38,9 @@ let createHTML = (rows) => {
         while(i < len){
             col = row[i];
             if(col){
-                html += '<td>' + col.fileCount + '</td>';
+                var dayObj = col.dayObj
+                html += '<td> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>'+
+                '<p>' + col.fileCount + '</p></td>';
             }else{
                 html += '<td></td>';
             }
