@@ -41,15 +41,6 @@ js-window-inner-width-height
 js-javascript-iframe
 -->
 
-
-### (   ) - js-javascript-arguments-object  ( old )
-* have 5+ internal links for the post
-* (done) edit to 2,000+ words
-
-### (   ) - js-function-expression  ( old )
-* have 5+ internal links for the post
-* (done) edit to 1,400+ words
-
 ### (   ) - js-filereader  ( old )
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
@@ -116,6 +107,14 @@ js-javascript-iframe
 * edit post to 2,400+ words
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
+
+### ( done 11/02/2021 ) - js-javascript-arguments-object  ( old )
+* (done) have 5+ internal links for the post
+* (done) edit to 2,000+ words
+
+### ( done 11/02/2021 ) - js-function-expression  ( old )
+* (done) have 5+ internal links for the post
+* (done) edit to 1,400+ words
 
 ### ( done 11/02/2021 ) - js-eval ( no internal links )
 * (done) have 5+ internal links for the post
