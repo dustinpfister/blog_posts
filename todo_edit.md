@@ -44,11 +44,11 @@ js-javascript-iframe
 
 ### (   ) - js-javascript-arguments-object  ( old )
 * have 5+ internal links for the post
-* edit to 2,000+ words
+* (done) edit to 2,000+ words
 
 ### (   ) - js-function-expression  ( old )
 * have 5+ internal links for the post
-* edit to 1,400+ words
+* (done) edit to 1,400+ words
 
 ### (   ) - js-filereader  ( old )
 * (done) have 5+ internal links for the post
