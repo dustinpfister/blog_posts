@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 362
-updated: 2021-11-02 12:04:49
-version: 1.34
+updated: 2021-11-02 12:07:17
+version: 1.35
 ---
 
 When writing a [function in javaScript](/2019/12/26/js-function/), inside the body of that function there is an special local variable that can be used to access any and all arguments that have been passed to the function when it is called. This variable contains a value that I have come to known as the [javaScript arguments object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments).
@@ -95,7 +95,7 @@ console.log(r);
 
 ## 2 - Why it is the javaScript arguments object rather than arguments array
 
-The arguments object is called the arguments object because it is not an instance of an Array. So it is actually just a plain old object, however it can be considered an array like object because of the way that it is formated. This is because although it is not an instance of an Array it is structured like an array, because its key values are numbered and it has a length property that reflects the number of those numbered key values just like an array. So some Array methods can be used with it via something like Function.call or a similar Function prototype method.
+The arguments object is called the arguments object because it is not an instance of an Array. So it is actually just a plain old object, however it can be considered an array like object because of the way that it is formated. This is because although it is not an instance of an Array it is structured like an array, because its key values are numbered and it has a length property that reflects the number of those numbered key values just like an array. So some [Array methods](/2018/12/10/js-array/) can be used with it via something like [Function call method, or a similar Function prototype method](/2017/09/21/js-call-apply-and-bind/).
 
 For example say I want to make a method that just adds up all the numbers that I give it as arguments. I can use the Array.forEach method by way of creating an empty array, and then using the call Function prototype method off of the forEach array prototype method and give the arguments object as the first argument. I can then pass a function to call for each javaScript argument just like usual as if it was an array.
 
