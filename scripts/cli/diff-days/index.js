@@ -1,12 +1,18 @@
 let path = require('path');
 let dObj = require(path.join(__dirname, 'day-objects.js'))
 
-// what calling this script does
+// only changed files in general
+dObj.onlyFiles(process.argv[2] === undefined ? 30 : process.argv[2])
+.then((days)=>{
+    console.log(days);
+});
+
+/*
 dObj.getHashDateObjects(process.argv[2] === undefined ? 30 : process.argv[2])
 .then((hashObjects) => {
-    let days = dObj.getDayHashObjects(hashObjects);
-    return dObj.getAllChangedFiles(days)
+    return dObj.getDayHashObjects(hashObjects);
 })
 .then((days)=>{
     console.log(days);
 });
+*/

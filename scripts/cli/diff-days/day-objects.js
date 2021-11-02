@@ -40,27 +40,29 @@ api.getHashDateObjects = (n) => {
 // get an array of 'day objects' that will be used for git diff calls like this:
 /*
 [
-    { y:2021, m:10, d:31, startHash: '(firstHashForThisDay)', endHash: 'firstHashNotOnThisDay' }
+{ y:2021, m:10, d:31, startHash: '(firstHashForThisDay)', endHash: 'firstHashNotOnThisDay' }
 ]
 
-*/
-api.getDayHashObjects = function(hashObjects){
+ */
+api.getDayHashObjects = function (hashObjects) {
     var y = '',
     m = '',
     d = '';
-    return hashObjects.reverse().reduce((acc, hashObj)=>{
+    return hashObjects.reverse().reduce((acc, hashObj) => {
         let obj,
         cy = hashObj.date.getFullYear(),
         cm = hashObj.date.getMonth() + 1,
         cd = hashObj.date.getDate();
         // if same day
-        if(cy === y && cm === m && cd === d){
-            obj = acc[acc.length -1];
-            if(obj){
-               obj.endHash = hashObj.hash;
+        if (cy === y && cm === m && cd === d) {
+            obj = acc[acc.length - 1];
+            if (obj) {
+                obj.endHash = hashObj.hash;
             }
-        }else{
-            y = cy; m = cm; d = cd; 
+        } else {
+            y = cy;
+            m = cm;
+            d = cd;
             // this is the endHash for the current object if we have one
             //obj = acc[acc.length -1];
             //if(obj){
@@ -68,7 +70,11 @@ api.getDayHashObjects = function(hashObjects){
             //}
             // if not same day we need to update y,m,d and push a new object
             acc.push({
-               y: y, m: m, d: d, startHash: hashObj.hash, endHash: hashObj.hash
+                y: y,
+                m: m,
+                d: d,
+                startHash: hashObj.hash,
+                endHash: hashObj.hash
             });
         }
         return acc;
@@ -92,9 +98,17 @@ api.getChangedFiles = (dayObj) => {
 
 // call getChangedFiles for a whole collection of day objects
 api.getAllChangedFiles = (days) => {
-      return Promise.all(  days.map((dayObj)=>{
-          return api.getChangedFiles(dayObj);
-      }));
+    return Promise.all(days.map((dayObj) => {
+            return api.getChangedFiles(dayObj);
+        }));
+};
+
+// Only files report
+api.onlyFiles = (n) => {
+    return api.getHashDateObjects(n === undefined ? 30 : n)
+    .then((hashObjects) => {
+        return api.getAllChangedFiles(api.getDayHashObjects(hashObjects));
+    });
 };
 
 // export a public api for this module
