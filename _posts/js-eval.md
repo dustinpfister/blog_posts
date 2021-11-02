@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2021-11-02 11:53:39
-version: 1.24
+updated: 2021-11-02 11:56:47
+version: 1.25
 ---
 
 In javaScript there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. It is generally something to be avoided for various reasons, and it it really must be used should be used with care. In projects where the string value is passed from user input there is the risk of introducing security problems if the input is not sanitized. In general if you can find a way to do what you want to do with eval by some othre means do that instead.
@@ -67,7 +67,9 @@ var func = new Function('return ' + str);
 console.log(func()); // 4
 ```
 
-### 2.2 -
+### 2.2 - The e option of the nodejs binray
+
+When it comes to using node there is the e option of the node binary that can be used to run a little javaScript code that is given in the from of a string after the option when calling node from the command line.
 
 ```
 $ node -e "console.log(2 + 2)"
