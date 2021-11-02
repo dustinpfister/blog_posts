@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2021-11-02 11:26:11
-version: 1.19
+updated: 2021-11-02 11:29:42
+version: 1.20
 ---
 
 In javaScript there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. It is generally something to be avoided for various reasons, and it it really must be used should be used with care. In projects where the string value is passed from user input there is the risk of introducing security problems if the input is not sanitized. In general if you can find a way to do what you want to do with eval by some othre means do that instead.
@@ -23,7 +23,7 @@ In this section I will be starting out with just a few basic examples of eval in
 
 ### - Source is up on github
 
-As with all [my other posts on vanilla javaScript](/categories/js/), the source code examples here can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-eval) on Github.
+As with all [my other posts on vanilla javaScript](/categories/js/), the source code examples here can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-eval) on Github. I do get around to editing and expanding my content on subjects such as eval and much more, and this repository would be where to make a pull request of you are on Github. There is also the comments section of this post that can be used as a way to bring something up, I have a lot of other things to do, but I will end up coming around to it sooner or later.
 
 ### 1.1 - js eval basic example
 
