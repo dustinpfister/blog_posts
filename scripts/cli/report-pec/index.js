@@ -17,7 +17,7 @@ let createRows = (days) => {
         rows[colIndex][wd] = {
            fileCount: dayObj.files.length
         };
-        if(d === 6){
+        if(wd === 6){
             colIndex += 1;
         } 
     });
@@ -50,8 +50,8 @@ let createHTML = (rows) => {
 
 // only changed files in general
 //dObj.onlyFiles(process.argv[2] === undefined ? 30 : process.argv[2])
-
-dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
+//dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
+dObj.onlyFiles(process.argv[2] === undefined ? 30 : process.argv[2])
 .then((days) => {
     // filter files for \_posts
     return days.map((dayObj) => {
@@ -64,7 +64,6 @@ dObj.onlyFiles('066e8e5d49d4f7474f8b5e46d41da13282e169e7')
 .then((days)=>{
 
     let rows = createRows(days);
-
     let html = createHTML(rows);
 
     // write file
