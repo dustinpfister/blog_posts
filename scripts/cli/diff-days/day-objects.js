@@ -103,6 +103,18 @@ api.getAllChangedFiles = (days) => {
     }));
 };
 
+/*
+api.getAllChangedFiles = (days) => {
+    return Promise.all(days.map((dayObj) => {
+        return gDiff(dayObj, [''])
+        .then((str) => {
+            dayObj.str = str;
+            return dayObj;
+        })
+    }));
+};
+*/
+
 // Only files report
 api.onlyFiles = (n) => {
     return api.getHashDateObjects(n === undefined ? 30 : n)
