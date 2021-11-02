@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 366
-updated: 2021-11-02 10:59:41
-version: 1.25
+updated: 2021-11-02 11:02:51
+version: 1.26
 ---
 
 There are many ways to go about defining a function in javaScript one such was is by writing [Function expressions](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function), which are also sometimes called function literals. A function expression is a way to define a function as an expression rather than a statement, or declaration which is another traditional way of defining a function. 
@@ -20,6 +20,10 @@ Function Expressions have some advantages over [function statements or declarati
 ## 1 - Basics of function expressions in javaScript
 
 In this section I will be starting out with just a few basic examples of function expressions in javaScript.
+
+### - Source code is up on Github
+
+The source code examples that I am covering in this post can be found in my [test vjsGithub repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-function-expression/). This test vjs repository is also where I park, and work on all the other source code examples for my [many posts on vanilla javaScript in general](/categories/js/).
 
 ### 1.1 - function expressions in javaScript a basic example
 
