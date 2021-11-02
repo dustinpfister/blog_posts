@@ -41,19 +41,9 @@ js-window-inner-width-height
 js-javascript-iframe
 -->
 
-### (   ) - js-onchange (old)
-* have 5+ internal links for the post
-
-### (   ) - js-unit8array (old)
-* have 5+ internal links for the post
-
 ### (   ) - js-filereader  ( old )
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
-* edit post to 1,800+ words
-
-### (   ) - js-function-pure (old)
-* have 5+ internal links for the post
 * edit post to 1,800+ words
 
 ### (   ) - js-javascript-scope ( no internal links )
@@ -122,11 +112,18 @@ js-javascript-iframe
 * write about event example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
 
+
 ### ( done 11/01/2021 ) - js-onunload (old)
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
 
 ### ( done 11/01/2021 ) - js-fetch (old)
+* (done) have 5+ internal links for the post
+
+### ( done 10/31/2021 ) - js-onchange (old)
+* (done) have 5+ internal links for the post
+
+### ( done 10/30/2021 ) - js-unit8array (old)
 * (done) have 5+ internal links for the post
 
 ### ( done 10/28/2021 ) - js-request-animation-frame (old)
@@ -190,6 +187,10 @@ js-javascript-iframe
 ### ( done 10/16/2021 ) - js-promise-resolve-reject (old)
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,800+ words
+
+### ( done 10/15/2021 ) - js-function-pure (old)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,300+ words
 
 ### ( done 10/15/2021 ) - js-function-declaration (old)
 * (done) edit post to 1,800+ words
