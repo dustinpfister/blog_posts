@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 532
-updated: 2021-11-02 11:52:01
-version: 1.23
+updated: 2021-11-02 11:53:39
+version: 1.24
 ---
 
 In javaScript there is the [eval function](https://en.wikipedia.org/wiki/Eval) that can be used to execute a string representation of some javaScript code. It is generally something to be avoided for various reasons, and it it really must be used should be used with care. In projects where the string value is passed from user input there is the risk of introducing security problems if the input is not sanitized. In general if you can find a way to do what you want to do with eval by some othre means do that instead.
@@ -54,7 +54,7 @@ This is one weird thing about the use of eval that a developer should be ware of
 
 ## 2 - Other ways to evaluate a little javaScript
 
-There are a number of other ways to evaluate a little javaScript, often in the form of a string value that needs to be evaluated. In this section I will be going over what some of these options might be.
+There are a number of other ways to evaluate a little javaScript, often in the form of a string value that needs to be evaluated. In this section I will be going over what some of these options might be. Now all of these options will be available in all environments, for example in client side javaScript I might be able to use the Function constructor as a way to evaluate a javaScript string, but I can not use the e option of the nodejs binary in such an environment.
 
 ### 2.1 - The Function Constructor
 
