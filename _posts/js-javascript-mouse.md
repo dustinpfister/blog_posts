@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-10-24 17:29:14
-version: 1.76
+updated: 2021-11-02 12:27:15
+version: 1.77
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -762,6 +762,64 @@ setAt(100, 75);
 ```
 
 One draw back of this solution as well as with the basic one that I started this section off with is that I can not get more than one element that my be at the same location all the way down to the body element. In that kind of situation I would need to make some kind of solution that involves filtering threw all the elements preforming bounding box collection for each maybe.
+
+### 5.3 - Get all elements at a position
+
+There is also a document method that can be used to get all elements at a given window relative position.
+
+```html
+<html>
+    <head>
+        <title>javascript mouse example</title>
+        <style>
+div{
+  position:relative;
+}
+.parent{
+  width:640px;height:480px;background:gray;top:20px;
+}
+.child{
+  position:absolute;width:128px;height:128px;background:lime;
+}
+        </style>
+    </head>
+    <body>
+        <div id="disp_node">0,0</div>
+        <div class="parent">
+            <div class="child" style="left:50px;top:20px;"></div>
+            <div class="child" style="left:85px;top:40px;"></div>
+            <div class="child" style="left:235px;top:240px;"></div>
+        <div>
+        <script>
+var colors = ['red', 'lime', 'blue', 'gray'],
+dispNode = document.getElementById('disp_node');
+var cycleColor = function(node){
+    colorIndex = node.dataset.colorIndex === undefined ? -1 : parseInt(node.dataset.colorIndex);
+    colorIndex += 1;
+    colorIndex %= colors.length;
+    node.dataset.colorIndex = colorIndex;
+    node.style.background = colors[colorIndex];
+};
+ 
+var setAt = function(x, y){
+    var nodeCollection = document.elementsFromPoint(x, y);
+    dispNode.innerText = x + ',' + y;
+    console.log(nodeCollection)
+    nodeCollection.forEach(function(node){
+        console.log(node.nodeName);
+        if(node.nodeName === 'DIV' && node.className === 'child'){
+            console.log(node);
+            cycleColor(node);
+        }
+    });
+};
+ 
+setAt(180, 105);
+ 
+        </script>
+    </body>
+</html>
+```
 
 ## 6 - The mouse wheel
 
