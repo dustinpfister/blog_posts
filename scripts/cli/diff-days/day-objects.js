@@ -63,11 +63,6 @@ api.getDayHashObjects = function (hashObjects) {
             y = cy;
             m = cm;
             d = cd;
-            // this is the endHash for the current object if we have one
-            //obj = acc[acc.length -1];
-            //if(obj){
-            //   obj.endHash = hashObj.hash;
-            //}
             // if not same day we need to update y,m,d and push a new object
             acc.push({
                 y: y,
@@ -81,10 +76,11 @@ api.getDayHashObjects = function (hashObjects) {
     }, []);
 };
 
-// get changed files for a single dayObj
-api.getChangedFiles = (dayObj) => {
+// git diff helper function
+var gDiff = (dayObj, optArr) => {
+    optArr = optArr || ['--name-only'];
     return new Promise((resolve, reject) => {
-        let gitDiff = spawn('git', ['diff', dayObj.startHash, dayObj.endHash, '--name-only']);
+        let gitDiff = spawn('git', ['diff', dayObj.startHash, dayObj.endHash].concat(optArr));
         let str = '';
         gitDiff.stdout.on('data', function (data) {
             str += data.toString();
@@ -94,6 +90,11 @@ api.getChangedFiles = (dayObj) => {
             resolve(dayObj);
         });
     });
+};
+
+// get changed files for a single dayObj
+api.getChangedFiles = (dayObj) => {
+    return gDiff(dayObj, ['--name-only']);
 };
 
 // call getChangedFiles for a whole collection of day objects
