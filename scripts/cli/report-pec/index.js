@@ -28,7 +28,7 @@ let createRows = (days) => {
 
 // create HTML from rows array of arrays
 let createHTML = (rows) => {
-    let html = '<body><table>\n';
+    let html = '<body><table style="width:100%;text-align:center;">\n';
     html += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thur</th><th>Fir</th><th>Sat</th></tr>\n';
     rows.forEach((row)=>{
         var i = 0,
@@ -39,7 +39,8 @@ let createHTML = (rows) => {
             col = row[i];
             if(col){
                 var dayObj = col.dayObj
-                html += '<td> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>'+
+                html += '<td style="background:cyan;padding:5px;"> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>'+
+                '<p>' + dayObj.cats.join(',') + '</p>' +
                 '<p>' + col.fileCount + '</p></td>';
             }else{
                 html += '<td></td>';
