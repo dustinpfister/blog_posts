@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-02 12:27:15
-version: 1.77
+updated: 2021-11-02 12:30:47
+version: 1.78
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
@@ -765,7 +765,7 @@ One draw back of this solution as well as with the basic one that I started this
 
 ### 5.3 - Get all elements at a position
 
-There is also a document method that can be used to get all elements at a given window relative position.
+There is also a document method that can be used to get all elements at a given window relative position. So just like that of the document get element from point method, there is also a document get elements from point method. One cool thing about this method is that it will return a plain old array when it comes to the collection of elements that are found overlapping at the given point. It is then just a matter of looping over the nodes and doing whatever is necessary to filter, or preform some checks to make sure that I am just preforming a desired action with the nodes that I actually want to work with at the given point in the browser window.
 
 ```html
 <html>
