@@ -4,10 +4,13 @@ This is a todo list for the scripts folder.
 
 
 ## () - cli/report-pec
-* start a cli tool that will build Post Edit Count Reports
+* (done) start a cli tool that will build Post Edit Count Reports
 * build files at root
 * creates JSON files
 * creates HTML files
+
+## () - /lib/diff-days - fix weird bug
+* fix weird bug that seems to be the result of calling to many git diffs at once
 
 ## ( done 11/02/2021 ) - /lib/diff-days - commit start point
 * can give a 40 digit hash rather than just a number of commits to go back 

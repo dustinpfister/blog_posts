@@ -83,13 +83,12 @@ api.getDayHashObjects = function (hashObjects) {
 var gDiff = (dayObj, optArr) => {
     optArr = optArr || ['--name-only'];
     return new Promise((resolve, reject) => {
-        let gitDiff = spawn('git', ['diff', dayObj.startHash, dayObj.endHash].concat(optArr));
+        let gitDiff = spawn('git', ['diff', dayObj.startHash + '..' + dayObj.endHash].concat(optArr));
         let str = '';
         gitDiff.stdout.on('data', function (data) {
             str += data.toString();
         });
-        gitDiff.on('exit', function () {
-            //dayObj.files = purgeEmpty(str.split(/\n|\r\n/));
+        gitDiff.on('exit', function (code) {
             resolve(str);
         });
     });
@@ -97,6 +96,28 @@ var gDiff = (dayObj, optArr) => {
 
 // call getChangedFiles for a whole collection of day objects
 api.getAllChangedFiles = (days) => {
+    var i = 0,
+    len = days.length;
+    // fixed weird bug that seems to happen by making to many git diff calls at once
+    // by doing soenthing like this
+    return new Promise((resolve, reject) => {
+        var next = () => {
+            var dayObj = days[i];
+            gDiff(dayObj, ['--name-only'])
+            .then((str) => {
+                dayObj.files = purgeEmpty(str.split(/\n|\r\n/));
+                i += 1;
+                if(i < len){
+                    next();
+                }else{
+                    resolve(days);
+
+                }
+            })
+        }
+        next();
+    });
+/*
     return Promise.all(days.map((dayObj) => {
         return gDiff(dayObj, ['--name-only'])
         .then((str) => {
@@ -104,6 +125,7 @@ api.getAllChangedFiles = (days) => {
             return dayObj;
         })
     }));
+*/
 };
 
 /*
@@ -122,7 +144,8 @@ api.getAllChangedFiles = (days) => {
 api.onlyFiles = (n) => {
     return api.getHashDateObjects(n === undefined ? 30 : n)
     .then((hashObjects) => {
-        return api.getAllChangedFiles(api.getDayHashObjects(hashObjects));
+        let days = api.getDayHashObjects(hashObjects);
+        return api.getAllChangedFiles(days);
     });
 };
 
