@@ -105,7 +105,7 @@ js-javascript-iframe
 
 ### () -  js-event-object ( relevant to Clucker.js dev )
 * edit post to 2,400+ words
-* write about event example in js-get-parent-element and link to the post
+* write about attach-to-parent example in js-get-parent-element and link to the post
 * have 5+ internal links for the post
 
 ### ( done 11/02/2021 ) - js-javascript-arguments-object  ( old )
