@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 406
-updated: 2021-11-03 11:40:22
-version: 1.20
+updated: 2021-11-03 11:42:19
+version: 1.21
 ---
 
 In javaScript a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function) is often used as a way to define some logic that is to execute at some point later on rather than right at the moment. For example when I go to pass a function as an argument for the add [event listener](/2019/01/16/js-event-listeners/) function when in client side javaScript that can be thought of as a callback function. The code in the function will not run at that very moment, but it will when the event happens at which point the callback will fire, and I will have access to an [event object](/2020/07/23/js-event-object/) that contains into about the event. There is then all the various built in functions in nodejs that will take a callback also when it comes to sever side javaScript.
 
 It would also seem that a callback is also used as an umbrella term for any function that is passed as an argument to another function that is used at some point or place inside the body of that outer function that is called. So there might be some overlap here with other terms that might come up such as [higher order functions, and closures](/2019/02/22/js-javaScript-closure/).
 
-JavaScript callbacks are often used with, or as a replacement for other options such as promises. In many javaScript projects, code examples, and so forth I often encounter callbacks now and then so it is important to know a thing or two about them. In addition it is important to be aware of the drawbacks that callbacks often present, and why other options such as promises might prove to be a better option. So i this post I will be taking a quick looks at some callback examples.
+JavaScript callbacks are often used with, or as a replacement for other options such as [promises](/2021/10/22/js-promise/). In many javaScript projects, code examples, and so forth I often encounter callbacks now and then so it is important to know a thing or two about them. In addition it is important to be aware of the drawbacks that callbacks often present, and why other options such as promises might prove to be a better option. So i this post I will be taking a quick looks at some callback examples.
 
 <!-- more -->
 
