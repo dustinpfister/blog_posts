@@ -1,12 +1,12 @@
 ---
-title: Event Objects in client side javaScript
+title: Event Objects in vanilla javaScript
 date: 2020-07-23 12:11:00
 tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:52:33
-version: 1.47
+updated: 2021-11-03 11:57:05
+version: 1.48
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
