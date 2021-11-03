@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:19:46
-version: 1.38
+updated: 2021-11-03 11:25:03
+version: 1.39
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -341,6 +341,8 @@ el.addEventListener('pointerdown', function(e){
 These clientX, and clientY properties are still very much window rather than element relative though. Also there is looking into some issues that might come up when it comes to using a touch device rather than a mouse and so forth. So lets look at a few more examples of these pointer events and the event objects of them
 
 ### 5.2 - Get element relative position with e.target and get bounding client rect method
+
+AAfter event just a hello world there are all ready a few things that need to be address, one of which is the nature of the values that are stored in the clientX, and clientY properties. They are relative to the window, but not the element in which the event happened. So then in this example I am once again using the pointer down event to get a position where the pointer event happened. However this time I am using the target property of the event object to get an element reference to the element in which the event happened. I am then using the get bounding client rect to get a box object that contains margins from th other edged of the element to the edges of the window. I can then use these box vales to adjust the clientX, and clientY values to get an element rather than window relative position.
 
 ```html
 <html>
