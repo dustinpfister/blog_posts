@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:12:25
-version: 1.36
+updated: 2021-11-03 11:15:10
+version: 1.37
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -318,6 +318,8 @@ Do not get me wrong there are situations in which pointer events will fall short
 Still pointer events are great when it comes to writing some code to run for certain pointer in general type events, so in this section I will be going over some examples. Of course I will be looking into what there is to work with when it comes to what there is in the event objects of these events. Also I will be touching base on some other related topics when it comes to some things that need to happen with CSS, and other issues that pop up when getting started with pointer events.
 
 ### 5.1 - Basic pointer down event example
+
+The basic hello world style example of pointer events might make use of the [pointer down event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/pointerdown_event), and maybe the clientX, and clientY properties of the event object to work with in an event such as this.
 
 ```html
 <html>
