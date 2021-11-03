@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:44:27
-version: 1.42
+updated: 2021-11-03 11:46:28
+version: 1.43
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -21,7 +21,7 @@ When I add [an event listener](/2019/01/16/js-event-listeners/) to an element wi
 
 Two major aspects of this kind of object that I use all the time is the target property, and the prevent default method, just to name a few things to work with when it comes to the typical kinds of event objects that I work with in client side javaScript. So maybe a good starting point would make use of those two properties and methods when it comes to some quick basic examples for just getting  started with event objects. When it comes to mouse events there is also the client x and client y properties also that can be used to get a window relative position of the event. 
 
-So in this basic getting type section I will be going over just a few simple getting started type examples of event attachment, and working with event objects in the event handlers that will be used.
+So in this basic getting type section I will be going over just a few simple getting started type examples of event attachment, and working with event objects in the event handlers that will be used. Although I will be keeping these examples very simple, this is still not a getting started with javaScript from an absolute beginner. Even in this basic section i assume that you have at least a little experience when it comes to the first steps of client side javaScript as well as nodejs.
 
 ### 1.1 - The on click property of an element
 
