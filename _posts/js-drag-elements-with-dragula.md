@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2021-11-03 13:22:33
-version: 1.18
+updated: 2021-11-03 13:25:34
+version: 1.19
 ---
 
 There is a [javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -71,7 +71,7 @@ So thats it at a minimum I just need to give it an array of elements that are co
 
 ## 2 - The drag and drop API
 
-There is now the drag and drop api when it comes to built in browser features that can be used to do this sort of thing without an external javaScript library.
+There is now the [drag and drop api](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) when it comes to built in browser features that can be used to do this sort of thing without an external javaScript library. This api works by setting an [draggable attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable) for an element to true, at which point one or more events can be attached for the element that will define what will happen for certain events. One of the most impotent events to attach would be the drag start event, but there are a few others that are important also such as the drop event, and drag enter events.
 
 ### 2.1 - Working example I found
 
