@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:07:38
-version: 1.35
+updated: 2021-11-03 11:12:25
+version: 1.36
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -312,6 +312,10 @@ simClick(35, 21);
 ## 5 - Pointer event objects
 
 In the basic section I started out with some mouse events, and it might be called for to look into these kinds of event objects for the various mouse events in detail. However in this advanced section on event objects I will be taking a look at event objects that have to do with [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) in client side javaScript. These pointer events are the kinds of events that would be a good starting point when it comes to preforming some logic that will need to happen for a pointer event that was caused by a mouse, or some other pointer device such as a touch screen. The reason why is because visitors to a web site might be using a desktop, or mobile device and as such might not have a mouse to touch screen. So using point events are one way to go about thinking in terms of pointers in general rather than specific features that are exclusive to just one kind of pointer device.
+
+Do not get me wrong there are situations in which pointer events will fall short, for example if I want to do something with multi touch I can not do so with pointer events, and would need to look into touch events and how thous event objects are structured. If I want some code to run each time the user moves the scroll wheel of there mouse again this is an area where the pointer events and there event objects will fall short also.
+
+Still pointer events are great when it comes to writing some code to run for certain pointer in general type events, so in this section I will be going over some examples. Of course I will be looking into what there is to work with when it comes to what there is in the event objects of these events. Also I will be touching base on some other related topics when it comes to some things that need to happen with CSS, and other issues that pop up when getting started with pointer events.
 
 ### 5.1 - Basic pointer down event example
 
