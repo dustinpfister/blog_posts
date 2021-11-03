@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 10:44:17
-version: 1.33
+updated: 2021-11-03 11:03:33
+version: 1.34
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -311,6 +311,7 @@ simClick(35, 21);
 
 ## 5 - Pointer event objects
 
+In the basic section I started out with some mouse events, and it might be called for to look into these kinds of event objects for the various mouse events in detail. However in this advanced section on event objects I will be taking a look at event objects that have to do with [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) in client side javaScript.
 
 ### 5.1 - Basic pointer down event example
 
