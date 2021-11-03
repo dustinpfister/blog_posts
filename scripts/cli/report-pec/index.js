@@ -28,13 +28,14 @@ let createRows = (days) => {
             d: d,
             fileCount: dayObj.files.length
         };
-        /*
-        if(wd === 6){
-        colIndex += 1;
-        }
-         */
     });
     return rows;
+};
+
+let namesOnly = function(files){
+    return '<span>' + files.map(function(fileName){
+        return fileName.split('/')[1].split('.md')[0];
+    }).join('<span></span><br>') + '</span><br>';
 };
 
 // create HTML from rows array of arrays
@@ -49,10 +50,12 @@ let createHTML = (rows) => {
         while (i < len) {
             col = row[i];
             if (col) {
-                var dayObj = col.dayObj
-                    html += '<td style="background:cyan;padding:5px;"> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>' +
-                    '<p>' + dayObj.cats.join(',') + '</p>' +
-                    '<p>' + col.fileCount + '</p></td>';
+                var dayObj = col.dayObj;
+                html += '<td style="background:cyan;padding:5px;"> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>' +
+                '<p>cats: ' + dayObj.cats.join(',') + '</p>' +
+                '<p>fileCount: ' + col.fileCount + '</p>'+
+                '<p style="font-size:8pt;">files: ' + namesOnly( dayObj.files ) + '</p>'+
+                '</td>';
             } else {
                 html += '<td></td>';
             }
