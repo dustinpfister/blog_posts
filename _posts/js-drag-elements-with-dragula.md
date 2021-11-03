@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2021-11-03 12:32:22
-version: 1.17
+updated: 2021-11-03 13:22:33
+version: 1.18
 ---
 
 There is a [javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -69,7 +69,108 @@ To set up some areas to drag to and from I just need two container divs, and the
 
 So thats it at a minimum I just need to give it an array of elements that are containers of elements that can be dragged from one location to another.
 
-## 2 - Conclusion
+## 2 - The drag and drop API
+
+There is now the drag and drop api when it comes to built in browser features that can be used to do this sort of thing without an external javaScript library.
+
+### 2.1 - Working example I found
+
+I found this [js fiddle that is a basic working example](https://jsfiddle.net/radonirinamaminiaina/zfnj5rv4/) of the built in drag and drop API.
+
+```html
+<!doctype html>
+<html>
+    <head>
+    <title> Dragula </title>
+    <meta name="google" content="notranslate" />
+    <style>
+#draggable {
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    background: white;
+  }
+
+  .dropzone {
+    width: 200px;
+    height: 20px;
+    background: blueviolet;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+    </style>
+    </head>
+    <body>
+<div class="dropzone">
+    <div id="draggable" draggable="true" ondragstart="event.dataTransfer.setData('text/plain',null)">
+        This div is draggable
+    </div>
+</div>
+<div class="dropzone"></div>
+<div class="dropzone"></div>
+<div class="dropzone"></div>
+        <script>
+
+// https://jsfiddle.net/radonirinamaminiaina/zfnj5rv4/
+
+var dragged;
+
+  /* events fired on the draggable target */
+  document.addEventListener("drag", function( event ) {
+
+  }, false);
+
+  document.addEventListener("dragstart", function( event ) {
+      // store a ref. on the dragged elem
+      dragged = event.target;
+      // make it half transparent
+      event.target.style.opacity = .5;
+  }, false);
+
+  document.addEventListener("dragend", function( event ) {
+      // reset the transparency
+      event.target.style.opacity = "";
+  }, false);
+
+  // events fired on the drop targets 
+  document.addEventListener("dragover", function( event ) {
+      // prevent default to allow drop
+      event.preventDefault();
+  }, false);
+
+  document.addEventListener("dragenter", function( event ) {
+      // highlight potential drop target when the draggable element enters it
+      if ( event.target.className == "dropzone" ) {
+          event.target.style.background = "purple";
+      }
+
+  }, false);
+
+  document.addEventListener("dragleave", function( event ) {
+      // reset background of potential drop target when the draggable element leaves it
+      if ( event.target.className == "dropzone" ) {
+          event.target.style.background = "";
+      }
+
+  }, false);
+
+  document.addEventListener("drop", function( event ) {
+      // prevent default action (open as link for some elements)
+      event.preventDefault();
+      // move dragged elem to the selected drop target
+      if ( event.target.className == "dropzone" ) {
+          event.target.style.background = "";
+          dragged.parentNode.removeChild( dragged );
+          event.target.appendChild( dragged );
+      }
+    
+  }, false);
+        </script>
+    </body>
+</html>
+```
+
+## 3 - Conclusion
 
 There are a lot of options for dragula, I could make some more advanced examples but for now I will just keep this post pretty basic. For the mean time there is the [README](https://github.com/bevacqua/dragula/blob/master/readme.markdown) for the project.
 It would seem that there are also some native options for dragging elements in a front end javaScript environment also these days. In addition there is also working with a canvas element, and having display objects that are clicked and dragged within a canvas element also that is another option that comes to mind when it comes to this sort of thing. If I get some time to do so maybe I will expand this post with additional options for dragging and dropping elements with javaScript, but for now I am going to leave things as they are.
