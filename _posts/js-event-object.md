@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:25:03
-version: 1.39
+updated: 2021-11-03 11:32:15
+version: 1.40
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -342,7 +342,7 @@ These clientX, and clientY properties are still very much window rather than ele
 
 ### 5.2 - Get element relative position with e.target and get bounding client rect method
 
-AAfter event just a hello world there are all ready a few things that need to be address, one of which is the nature of the values that are stored in the clientX, and clientY properties. They are relative to the window, but not the element in which the event happened. So then in this example I am once again using the pointer down event to get a position where the pointer event happened. However this time I am using the target property of the event object to get an element reference to the element in which the event happened. I am then using the get bounding client rect to get a box object that contains margins from th other edged of the element to the edges of the window. I can then use these box vales to adjust the clientX, and clientY values to get an element rather than window relative position.
+AAfter event just a hello world there are all ready a few things that need to be address, one of which is the nature of the values that are stored in the clientX, and clientY properties. They are relative to the window, but not the element in which the event happened. So then in this example I am once again using the pointer down event to get a position where the pointer event happened. However this time I am using the target property of the event object to get an element reference to the element in which the event happened. I am then using the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to get a box object that contains margins from th other edged of the element to the edges of the window. I can then use these box vales to adjust the clientX, and clientY values to get an element rather than window relative position.
 
 ```html
 <html>
@@ -375,6 +375,8 @@ el.addEventListener('pointerdown', function(e){
 ```
 
 ### 5.3 - The pointer move event and CSS touch action
+
+The pointer down event might be a good starting point, but there is also the [pointer move event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/pointermove_event). One thing to be aware of when it comes to this kind of event is to make sure that things are set the way that I want them with the [touch action css property](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action). If not this event might not always work as one might expect it to when it comes to using a touch device at least.
 
 ```html
 <html>
