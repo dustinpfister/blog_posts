@@ -7,7 +7,7 @@ This is a todo list for the scripts folder.
 * (done) start a cli tool that will build Post Edit Count Reports
 * (done) creates HTML file
 * (done) display cats for each day
-* add a dirs.user_folder prop for /lib/dirs
+* (done) add a dirs.user_folder prop for /lib/dirs
 * build files at user folder location
 
 ## ( done 11/03/2021 ) - /cli/report-pec - fix time gap bug

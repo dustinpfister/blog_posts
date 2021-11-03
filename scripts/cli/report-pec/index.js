@@ -6,6 +6,8 @@ promisify = require('util').promisify,
 fs = require('fs'),
 writeFile = promisify(fs.writeFile);
 
+let uri_html = path.join(dirs.user_folder, 'pec.html');
+
 // create rows from days objects
 let createRows = (days) => {
     var rows = [],
@@ -91,13 +93,15 @@ dObj.onlyFiles(process.argv[2] === undefined ? 1000 : process.argv[2])
     });
 })
 .then((days) => {
-
+    // get rows and build html
     let rows = createRows(days);
-
-    console.log(rows);
-
     let html = createHTML(rows);
-
     // write file
-    return writeFile(path.join(dirs.this_script, 'pec.html'), html, 'utf8');
+    return writeFile(uri_html, html, 'utf8');
+})
+.then(() => {
+    console.log('wrote new pec.html file at: ' + uri_html);
+})
+.catch((e) => {
+    console.wran(e.message);
 });
