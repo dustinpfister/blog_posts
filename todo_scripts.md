@@ -16,7 +16,7 @@ This is a todo list for the scripts folder.
 * (done) fix weird bug that seems to be the result of calling to many git diffs at once
 
 ## ( done 11/02/2021 ) - /lib/diff-days - commit start point
-* can give a 40 digit hash rather than just a number of commits to go back 
+* (done) can give a 40 digit hash rather than just a number of commits to go back 
 
 ## ( done 11/02/2021 ) - new cli tool of diff-days
 * (done) start a new diff-post-days cli script folder
