@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 10:42:15
-version: 1.32
+updated: 2021-11-03 10:44:17
+version: 1.33
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -311,22 +311,86 @@ simClick(35, 21);
 
 ## 5 - Pointer event objects
 
-```html
-```
 
 ### 5.1 - Basic pointer down event example
 
 ```html
+<html>
+    <head>
+        <title>Event Object</title>
+    </head>
+    <body>
+        <div id="out" style="width:280px;height:200px;background-color:green;padding:20px;cursor:hand;"></div>
+        <script>
+var el = document.getElementById('out');
+el.addEventListener('pointerdown', function(e){
+   e.target.innerText = e.clientX + ',' + e.clientY;
+});
+        </script>
+    </body>
+</html>
 ```
 
 ### 5.2 - Get element relative position with e.target and get bounding client rect method
 
 ```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#out{
+  touch-action:none;
+  position:relative;left:100px;top:50px;
+  width:280px;height:200px;background-color:green;padding:20px;cursor:hand;
+}
+        </style>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out');
+el.addEventListener('pointerdown', function(e){
+   var bx = e.target.getBoundingClientRect(),
+   x = e.clientX - bx.left,
+   y = e.clientY - bx.top,
+   html = '<span>el relative pos: ( ' + x + ',' + y + ' )</span><br>';
+   html += '<span>window rel pos: ( ' + e.clientX + ',' + e.clientY + ' )</span><br>';
+   html += '<span>box t,l,r,b   :  ' + bx.top + ',' + bx.left + ',' + bx.right + ',' + bx.bottom +'</span><br>';
+   e.target.innerHTML = html;
+});
+        </script>
+    </body>
+</html>
 ```
 
 ### 5.3 - The pointer move event and CSS touch action
 
 ```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#out{
+  touch-action: none;
+  position:relative;left:100px;top:50px;
+  width:280px;height:200px;background-color:green;padding:20px;cursor:hand;
+}
+        </style>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out');
+el.addEventListener('pointermove', function(e){
+   var bx = e.target.getBoundingClientRect(),
+   x = e.clientX - bx.left,
+   y = e.clientY - bx.top,
+   html = '<span>el relative pos: ( ' +x + ',' + y + ' )</span><br>';
+   e.target.innerHTML = html;
+});
+        </script>
+    </body>
+</html>
 ```
 
 ## 6 - Conclusion
