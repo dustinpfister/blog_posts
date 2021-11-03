@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:15:10
-version: 1.37
+updated: 2021-11-03 11:19:46
+version: 1.38
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -319,7 +319,7 @@ Still pointer events are great when it comes to writing some code to run for cer
 
 ### 5.1 - Basic pointer down event example
 
-The basic hello world style example of pointer events might make use of the [pointer down event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/pointerdown_event), and maybe the clientX, and clientY properties of the event object to work with in an event such as this.
+The basic hello world style example of pointer events might make use of the [pointer down event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/pointerdown_event), and maybe the clientX, and clientY properties of the event object to work with in an event such as this. One thing to be aware of from the start is that these point events extend the [Mouse event object](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent), so then just like with mouse events there is a clientX and clientY properties of a pointer event.
 
 ```html
 <html>
@@ -337,6 +337,8 @@ el.addEventListener('pointerdown', function(e){
     </body>
 </html>
 ```
+
+These clientX, and clientY properties are still very much window rather than element relative though. Also there is looking into some issues that might come up when it comes to using a touch device rather than a mouse and so forth. So lets look at a few more examples of these pointer events and the event objects of them
 
 ### 5.2 - Get element relative position with e.target and get bounding client rect method
 
