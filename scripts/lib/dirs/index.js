@@ -1,4 +1,5 @@
-let path = require('path');
+const path = require('path');
+const os = require('os');
 // Should always give a dirname, failing
 // to do so will result in a wrong dir.thisScript prop that
 // will point to paths/index.js
@@ -18,6 +19,7 @@ let createDirObject = (dirname) => {
         lib_folder: path.join(blog_root, 'scripts/lib'),
         app_folder: path.join(blog_root, 'scripts/apps'),
         cli_folder: path.join(blog_root, 'scripts/cli'),
+        user_folder: os.homedir(),
         posts: path.join(blog_root, '_posts')
     };
 };
