@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:51:01
-version: 1.46
+updated: 2021-11-03 11:52:33
+version: 1.47
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -25,7 +25,7 @@ So in this basic getting started type section I will be going over just a few si
 
 ### - The source code examples in this post are on Gihub
 
-The source code examples in this post can be found in my test vjs repository on Gihub along with the source code examples for my many other posts on vanilla javaScript.
+The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-event-object) on Gihub along with the source code examples for my [many other posts on vanilla javaScript](/categories/js/).
 
 
 ### 1.1 - The on click property of an element
