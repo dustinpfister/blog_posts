@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 360
-updated: 2021-04-01 15:21:46
-version: 1.31
+updated: 2021-11-03 11:40:21
+version: 1.32
 ---
 
-In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as [on focus](/2019/01/05/js-onfocus/), [on blur](/2019/01/08/js-onblur/), [on change](/2019/01/04/js-onchange/), and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens.
+In javaScript [event listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventListener) are methods that fire some javaScript code when a given event happens such as the user clicking an element, resizing a window, or leaving a page for another. There are all kinds of addition events that have to do with user input when working with input elements such as [on focus](/2019/01/05/js-onfocus/), [on blur](/2019/01/08/js-onblur/), [on change](/2019/01/04/js-onchange/), and events that have to to with keyboard events, and pointer devices such as a mouse and touch screens. Each of these kinds of events are used with a callback function, and in this callback function one has access to an [event object](/2020/07/23/js-event-object/) that has all kinds of useful data about the event.
 
 Event listeners can be used to create an application that is event driven in place of, or in combination with, some kind of of main update loop that mutates state and renders that state to a view. In many projects events are used at least to some extent as a way to capture user input from mouse clicks, changes to text area or input elements, or any other means in client side javaScript. In this post I will be covering the use of [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) as a way to attach events to elements in client side javaScript. 
 
