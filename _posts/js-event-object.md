@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-08-30 12:46:33
-version: 1.31
+updated: 2021-11-03 10:42:15
+version: 1.32
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -309,6 +309,26 @@ simClick(35, 21);
 </html>
 ```
 
-## 5 - Conclusion
+## 5 - Pointer event objects
+
+```html
+```
+
+### 5.1 - Basic pointer down event example
+
+```html
+```
+
+### 5.2 - Get element relative position with e.target and get bounding client rect method
+
+```html
+```
+
+### 5.3 - The pointer move event and CSS touch action
+
+```html
+```
+
+## 6 - Conclusion
 
 So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
