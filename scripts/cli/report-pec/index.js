@@ -1,7 +1,7 @@
 #!/bin/env node
 let path = require('path'),
-dirs = require( path.join(__dirname, '../../lib/dirs/index.js') )(__dirname),
-dObj = require( path.join(dirs.lib_folder, 'diff-days/index.js') ),
+dirs = require(path.join(__dirname, '../../lib/dirs/index.js'))(__dirname),
+dObj = require(path.join(dirs.lib_folder, 'diff-days/index.js')),
 promisify = require('util').promisify,
 fs = require('fs'),
 writeFile = promisify(fs.writeFile);
@@ -9,19 +9,28 @@ writeFile = promisify(fs.writeFile);
 // create rows from days objects
 let createRows = (days) => {
     var rows = [],
-    colIndex = 0;
+    colIndex = 0,
+    hd = 0;
     days.forEach((dayObj) => {
-        let d = new Date(dayObj.y, dayObj.m - 1, dayObj.d ), // date object for this day
-        wd = d.getDay() // week day 0-6
+        let d = new Date(dayObj.y, dayObj.m - 1, dayObj.d), // date object for this day
+        wd = d.getDay(); // week day 0-6
+        if (wd >= hd) {
+            hd = wd;
+        } else {
+            hd = 0;
+            colIndex += 1;
+        }
         rows[colIndex] = rows[colIndex] === undefined ? [] : rows[colIndex];
         rows[colIndex][wd] = {
-           dayObj : dayObj,
-           d: d,
-           fileCount: dayObj.files.length
+            dayObj: dayObj,
+            d: d,
+            fileCount: dayObj.files.length
         };
+        /*
         if(wd === 6){
-            colIndex += 1;
-        } 
+        colIndex += 1;
+        }
+         */
     });
     return rows;
 };
@@ -30,35 +39,37 @@ let createRows = (days) => {
 let createHTML = (rows) => {
     let html = '<body><table style="width:100%;text-align:center;">\n';
     html += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thur</th><th>Fir</th><th>Sat</th></tr>\n';
-    rows.forEach((row)=>{
+    rows.forEach((row) => {
         var i = 0,
         col,
         len = 7;
         html += '<tr>';
-        while(i < len){
+        while (i < len) {
             col = row[i];
-            if(col){
+            if (col) {
                 var dayObj = col.dayObj
-                html += '<td style="background:cyan;padding:5px;"> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>'+
-                '<p>' + dayObj.cats.join(',') + '</p>' +
-                '<p>' + col.fileCount + '</p></td>';
-            }else{
+                    html += '<td style="background:cyan;padding:5px;"> <h6>' + dayObj.m + '/' + dayObj.d + '/' + dayObj.y + ' </h6>' +
+                    '<p>' + dayObj.cats.join(',') + '</p>' +
+                    '<p>' + col.fileCount + '</p></td>';
+            } else {
                 html += '<td></td>';
             }
             i += 1;
         }
         html += '</tr>\n';
-    })    
+    })
     html += '</table></body>\n';
     return html;
 };
 
 // get 'cats' from file names
 let getCats = (files) => {
-    return files.map((fileName)=>{
+    return files.map((fileName) => {
         return fileName.split('/')[1].split(/\-|\_/)[0];
-    }).reduce((acc, el)=>{
-        if(!acc.some((a)=>{ return a === el})){
+    }).reduce((acc, el) => {
+        if (!acc.some((a) => {
+                return a === el
+            })) {
             acc.push(el)
         }
         return acc;
@@ -73,20 +84,20 @@ dObj.onlyFiles(process.argv[2] === undefined ? 1000 : process.argv[2])
     // filter files for \_posts
     return days.map((dayObj) => {
         dayObj.files = dayObj.files.filter((fileName) => {
-            return !!fileName.match(/^\_posts/)
-        });
+                return !!fileName.match(/^\_posts/)
+            });
         dayObj.cats = getCats(dayObj.files);
         return dayObj;
     });
 })
-.then((days)=>{
-
-console.log(days);
+.then((days) => {
 
     let rows = createRows(days);
+
+    console.log(rows);
 
     let html = createHTML(rows);
 
     // write file
-    return writeFile( path.join(dirs.this_script, 'pec.html'), html, 'utf8' );
+    return writeFile(path.join(dirs.this_script, 'pec.html'), html, 'utf8');
 });

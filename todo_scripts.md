@@ -9,8 +9,8 @@ This is a todo list for the scripts folder.
 * (done) display cats for each day
 * build files at root
 
-## () - /lib/diff-days - fix time gap bug
-* see about fixing bug where large blocks of days are not showing up even though work was done
+## ( done 11/03/2021 ) - /cli/report-pec - fix time gap bug
+* (done) see about fixing bug where large blocks of days are not showing up even though work was done
 
 ## ( done 11/02/2021 ) - /lib/diff-days - fix weird bug
 * (done) fix weird bug that seems to be the result of calling to many git diffs at once
