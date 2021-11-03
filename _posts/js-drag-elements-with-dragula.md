@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2021-11-03 12:04:41
-version: 1.11
+updated: 2021-11-03 12:15:49
+version: 1.12
 ---
 
 There is a [javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -37,11 +37,12 @@ I also found that I want to link to the dragula.css file as well, it seems to wo
     <head>
     <title> Dragula </title>
     <!-- Although it will work without it, you will want the css -->
-    <link rel="stylesheet" href="node_modules/dragula/dist/dragula.css">
+    <link rel="stylesheet" href="dragula.css">
+    <meta name="google" content="notranslate" />
     </head>
     <body>
         <!-- be sure dragula is loaded in the client before using it-->
-        <script src="node_modules/dragula/dist/dragula.min.js"></script>
+        <script src="dragula.min.js"></script>
         <!-- just need to containers with some elements in them like this: -->
         <div id="top">
             <div><span>item1</span></div>
