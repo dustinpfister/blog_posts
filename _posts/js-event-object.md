@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-04 14:28:47
-version: 1.52
+updated: 2021-11-04 14:30:25
+version: 1.53
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -438,6 +438,8 @@ window.addEventListener('keydown', function(e){
 ```
 
 ### 6.2 - The event object keyCode property and setting booleans for each code
+
+When it comes to working out something for multi key the first step might be to work out a system for storing the status of an array of keys.
 
 ```html
 <html>
