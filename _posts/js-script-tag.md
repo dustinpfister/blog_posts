@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2020-11-23 11:57:03
-version: 1.23
+updated: 2021-11-04 11:34:09
+version: 1.24
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript by placing javaScript code between and opening and closing script tag. In addition script tags can also be used to link to external javaScript files by making use of an src attribute of the script tag element to point to the external javaScript file. 
@@ -15,9 +15,13 @@ It is also possible to create javaScript script tags with javaScript also as a w
 
 <!-- more -->
 
-## 1 - script tags can be used to add in line javaScript code to a website
+## 1 - Script tags basics in client side javaScript
 
-So in this section I will be starting off with a simple example of using script tags to add in-line javaScript to a page. When it comes to doing this in a modern ECMA 2015+ spec javaScript world there is no need to bother with a type attribute or any kind of means to comment out the javaScript code. When it comes to older browsers, and older html specs before that of html 5 it might have been necessary when making a script tag. However these days a script tag just needs to have javaScript placed between proper opening and closing script tags.
+In this section I will be started out with just a few very simple hello world type examples of the script tag.
+
+### 1.1 - Inside script tag exmaple
+
+So in this example I will be starting off with a simple example of using script tags to add in-line javaScript to a page. When it comes to doing this in a modern ECMA 2015+ spec javaScript world there is no need to bother with a type attribute or any kind of means to comment out the javaScript code. When it comes to older browsers, and older html specs before that of html 5 it might have been necessary when making a script tag. However these days a script tag just needs to have javaScript placed between proper opening and closing script tags.
 
 So an in line script tag today might look something like this:
 
@@ -37,7 +41,7 @@ console.log(n+2); // 42
 
 I some times use in line javaScript for simple projects, but often the code will ultimately end up in an external javaScript file. When that is the case the src attribute must be used to load the javaScriot file, or a script tag must be created and injected into the document. So with that in mind lets look at some more examples of the script tag in action.
 
-## 2 - script tags and external javaScript files loaded by way of the src attribute
+### 1.2 - script tags and external javaScript files loaded by way of the src attribute
 
 It is also possible to load external scripts with script tags of course on top of just in-line javaScript. Doing so helps to keep things clean, and better structured, and in some cases doing so might be required as in-line scripts might not be allowed. So then loading an external javaScript file with a script tag can be done by making use of the src attribute of the script tag to point to the url of the external javaScript file. In this section I will be doing so with hard coded script tags that are written in the html itself, rather than doing something complex involving the create element method, or the function constructor.
 
