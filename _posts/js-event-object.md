@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-04 14:30:25
-version: 1.53
+updated: 2021-11-04 14:36:05
+version: 1.54
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -439,7 +439,7 @@ window.addEventListener('keydown', function(e){
 
 ### 6.2 - The event object keyCode property and setting booleans for each code
 
-When it comes to working out something for multi key the first step might be to work out a system for storing the status of an array of keys.
+When it comes to working out something for multi key the first step might be to work out a system for storing the status of an array of keys. So in this example I am starting out with a keys array, and to set what array index value to set to a true or false value I am using the charCodeAt method of the string prototype to key the char code from the key property of the event object. So then I can press and hold a number of keys and the corresponding index values will be true. The index values can then be used to preform some kind of multi key function in the event that a certain collection of index values in this key array is true or not.
 
 ```html
 <html>
