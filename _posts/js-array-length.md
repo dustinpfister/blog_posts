@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 10:50:26
-version: 1.70
+updated: 2021-11-04 10:52:51
+version: 1.71
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -21,7 +21,7 @@ So then for the most part, on the surface at least, the length property of an ar
 
 ## 1 - Array length basics in javaScript
 
-For the most part array length in javaScript is a fairly simple and straight forward concept, all [Arrays](/2018/12/10/js-array/) and [Array like objects](/2017/05/12/js-arrays-are-objects/) have a length property. This length property is updated each time one or more elements are added to the array, as well as when they are removed using an array prototype method like Array.pop, or Array.splice. However there is a difference between length, and what is often called count when taking about arrays in js. More on that later in this post, but for now lets cover the basics of array length in javaScript.
+For the most part array length in javaScript is a fairly simple and straight forward concept, all [Arrays](/2018/12/10/js-array/) and [Array like objects](/2017/05/12/js-arrays-are-objects/) have a length property. This length property is updated each time one or more elements are added to the array, as well as when they are removed using an array prototype method like [Array pop](/2020/05/30/js-array-pop/), or [Array splice](/2021/07/20/js-array-splice/). However there is a difference between length, and what is often called count when taking about arrays in js. More on that later in this post, but for now lets cover the basics of array length in javaScript.
 
 ### - The source code examples and additional notes for this post are on Github
 
