@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2021-11-04 11:34:50
-version: 1.25
+updated: 2021-11-04 11:39:05
+version: 1.26
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript by placing javaScript code between and opening and closing script tag. In addition script tags can also be used to link to external javaScript files by making use of an src attribute of the script tag element to point to the external javaScript file. 
@@ -17,9 +17,9 @@ It is also possible to create javaScript script tags with javaScript also as a w
 
 ## 1 - Script tags basics in client side javaScript
 
-In this section I will be started out with just a few very simple hello world type examples of the script tag.
+In this section I will be started out with just a few very simple hello world type examples of the script tag. There are two general ways to get stayed with script tags when it comes to hard coded HTML at least rather than creating them with javaScript code that I will be getting to in a later section in this post. The first general way of using a script tag would be to use it to embed javaScript code into an HTML document directly by just typing some JavaScript between the opening and closing script tags. The other general way of using a script rag would be to use it to load an external javaScritp file by setting the url to the file as the value of the src attribute of the script tag just like with images tags, or elements of you prefer.
 
-### 1.1 - Inside script tag exmaple
+### 1.1 - Inside script tag example
 
 So in this example I will be starting off with a simple example of using script tags to add in-line javaScript to a page. When it comes to doing this in a modern ECMA 2015+ spec javaScript world there is no need to bother with a type attribute or any kind of means to comment out the javaScript code. When it comes to older browsers, and older html specs before that of html 5 it might have been necessary when making a script tag. However these days a script tag just needs to have javaScript placed between proper opening and closing script tags.
 
