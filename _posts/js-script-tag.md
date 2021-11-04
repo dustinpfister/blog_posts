@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2021-11-04 11:43:02
-version: 1.27
+updated: 2021-11-04 11:46:53
+version: 1.28
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript by placing javaScript code between and opening and closing script tag. In addition script tags can also be used to link to external javaScript files by making use of an src attribute of the script tag element to point to the external javaScript file. 
@@ -19,7 +19,9 @@ It is also possible to create javaScript script tags with javaScript also as a w
 
 In this section I will be started out with just a few very simple hello world type examples of the script tag. There are two general ways to get stayed with script tags when it comes to hard coded HTML at least rather than creating them with javaScript code that I will be getting to in a later section in this post. The first general way of using a script tag would be to use it to embed javaScript code into an HTML document directly by just typing some JavaScript between the opening and closing script tags. The other general way of using a script rag would be to use it to load an external javaScritp file by setting the url to the file as the value of the src attribute of the script tag just like with images tags, or elements of you prefer.
 
-In a way this post is almost a kinf of getting started type post on client side javaScript. However I should also mention that there is more then one way to get these HTML files up and running. One of which would be to get started with client side javaScript by making use of the file protocol. That is to just have the HTML and javaScript source code examples as files in a local file system and just open them up in the browser by pressing ctrl \+ \0, or my one means or another fiew the html file stored on your location files system by seeing file:\\\\ rather than http:\\\\ in the address bar of the browser.
+In a way this post is almost a kind of [getting started type post](/2018/11/27/js-getting-started/) on client side javaScript. However I should also mention that there is more then one way to get these HTML files up and running. One of which would be to [get started with client side javaScript by making use of the file protocol](/2020/09/21/js-getting-started-file-protocol/). That is to just have the HTML and javaScript source code examples as files in a local file system and just open them up in the browser by pressing ctrl \+ \0, or my one means or another view the HTML file stored on your location files system by seeing file:\\\\ rather than http:\\\\ in the address bar of the browser.
+
+Although the file protocol will work fine for these examples, it is not generally a good idea to run scripts that way. One might not run into problems with these source code examples, but as you get into all kids of various other features it is best to fine a way to just start up some kind of web sever on your local computer and view the files that way by way of the http protocol.
 
 ### 1.1 - Inside script tag example
 
