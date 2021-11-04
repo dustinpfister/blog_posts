@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2021-11-04 11:34:09
-version: 1.24
+updated: 2021-11-04 11:34:50
+version: 1.25
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript by placing javaScript code between and opening and closing script tag. In addition script tags can also be used to link to external javaScript files by making use of an src attribute of the script tag element to point to the external javaScript file. 
@@ -68,13 +68,13 @@ I then have this javaScript code in the external file that just grabs the div ta
 document.getElementById('out').innerText = 'external';
 ```
 
-## 3 - Creating script tags with javaScript
+## 2 - Creating script tags with javaScript
 
 So then there is creating script tags with javaScipt and then appending them to the html document with an element method. One way that this can be done is with the document.createElement method which will return a script tag when the tag name of script is given as the first argument. Then once a reference to the script tag is obtained that script tag can then be appended to the html with something like the appendChild method just like any other html element. The reference can then be used to set an src attribute to the external javaScript file to load which will cause the browser to start to load the script.
 
 Script tags are loaded async by default, depending on the situation this may or may not be a problem. For example if the javaScript code of one script tag depends on another, then it might be best for them to be loaded in the proper sync order. However if each script is a stand alone utility library that does not have any dependencies at all, then it might be better for them to be loaded async. In any case in this section I will be going over some examples of creating and loading script tags with native javaScript with very little dependence on hard coded script tags in the html itself.
 
-### 3.1 - Creating and Loading scripts sync style the hard way
+### 2.1 - Creating and Loading scripts sync style the hard way
 
 So say I have an html document with a single hard coded ul aka unordered list tag element, and a single script tag that links to a loader.js file. This loader.js file can then be used to load additional scripts that do something with that ul tag such as inject a bunch of li or list item tags for it.
 
@@ -138,7 +138,7 @@ console.log('bar script running');
 
 So then it seems that this simple script loader will load scripts in order one at a time which is important if one script depends on something that a previous script does. There is the question of loading all scripts at once, and then executing them all in the proper order when that is a factor of concern
 
-### 3.2 - Loading Script Tags sync style the easy way
+### 2.2 - Loading Script Tags sync style the easy way
 
 So in the first example in this section I created and loaded script tags with javaScript using the create element method. By default when creating script tags this way with javaScript, the scripts will load async. That is that they will not always load in the order in which they are given in the array of scripts. However they still loaded in order each time because I would not create a new script tag and start loading it until the first script finishes loading.
 
@@ -172,10 +172,10 @@ libs.forEach(function (libPath, i) {
 
 In this example the Script tags load in sync order as well.
 
-### 3.3 - loading script tags async style when creating them with javaScript
+### 2.3 - loading script tags async style when creating them with javaScript
 
 In oder to load script tags async style I just need to use the create element method to create the script tag, append to the html document, and set the src attribute to the location of the script. By default script tags create this way will load asycn style.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 There is a great deal more to write about when it comes to the ins and outs of script tags in client side javaScript. There is also a lot more to write about when it comes to alternative means of pulling javaScript code from a server and running it on the client. For now though that is all. At least from now to the point that I get a little more done with editing on this post.
