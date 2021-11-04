@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 10:56:23
-version: 1.72
+updated: 2021-11-04 11:00:45
+version: 1.73
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -166,7 +166,27 @@ This is because of the nature of the Object.keys method, it will give an array o
 
 ## 2 - Setting the length property
 
-It is possible to set the length property of an array. When setting a length that is lower than the current length that will result in what would be expected which is the array will end up being truncated to that length that was set. Setting a higher length property will result in a situation in which any index values above the previous length will result in being undefined. This might result in unexpected behavior with some array methods like Array.forEach.
+It is possible to set the length property of an array by just making use of the assignment operator to given it a new length. When setting a length that is lower than the current length that will result in what would be expected which is the array will end up being truncated to that length that was set. In that event any and all elements at the index value of the length upwards will be lost. So then this can serve as a kind of way of just purging a whole bunch of elements from an index value upwards, but there are maybe better ways of doing so such as using the array splice method.
+
+Setting a higher length property will result in a situation in which any index values above the previous length will result in being undefined. This might result in unexpected behavior with some array methods like Array.forEach.
+
+### 2.1 - Basic set length of array example
+
+```js
+var a = [1, 2, 3];
+console.log(a);
+// [ 1, 2, 3 ]
+ 
+a.length = 1;
+console.log(a);
+// [ 1 ]
+ 
+a.length = 5;
+console.log(a);
+// [ 1, <4 empty items> ]
+```
+
+### 2.2 - Having a print method and setting length
 
 ```js
 var print = function (arr) {
