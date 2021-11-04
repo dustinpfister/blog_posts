@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 11:03:46
-version: 1.74
+updated: 2021-11-04 11:04:26
+version: 1.75
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -164,7 +164,7 @@ console.log(Object.keys(a).length); // 6
 
 This is because of the nature of the Object.keys method, it will give an array of all public key names of an object. In javaScript an Array is a kind of Object, so I can still do anything with it that I could with any other object such as adding additional public keys that are not numbered index values. So when trying to get the count of an array the Object.keys method might not always be the best option, more on array count later in this post.
 
-## 2 - Setting the length property
+## 2 - Setting the length property of an array, and Sparse array basics
 
 It is possible to set the length property of an array by just making use of the assignment operator to given it a new length. When setting a length that is lower than the current length that will result in what would be expected which is the array will end up being truncated to that length that was set. In that event any and all elements at the index value of the length upwards will be lost. So then this can serve as a kind of way of just purging a whole bunch of elements from an index value upwards, but there are maybe better ways of doing so such as using the array splice method.
 
