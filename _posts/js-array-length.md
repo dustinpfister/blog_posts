@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 08:55:30
-version: 1.67
+updated: 2021-11-04 10:09:46
+version: 1.68
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -231,7 +231,7 @@ console.log(b); // [ <10 empty items> ]
 
 Yet another good example of why it is that length differs from the actual element count of an array.
 
-## 5 - Negative index values
+## 4 - Negative index values
 
 It is possible to set negative index values for an array. When doing so this might result in unexpected length values as negative index values will not be counted. 
 ```js
@@ -255,11 +255,11 @@ console.log(Object.keys(b).length); // 4
 
 However as long as the index values are enumerable the Object.keys method can be used to get an array of enumerable keys for an object, including possible negative index values. Which would be one way to get the true index value if these negative index values are to be counted.
 
-## 6 - Array count, and ways of getting an actual element count
+## 5 - Array count, and ways of getting an actual element count
 
 Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others. As I have covered in the previous section the length property of an array in javaScript is often just the highest index value plus one, and in some cases it is not even that it is just a property of an object. However there are a number of ways to go about getting the actual count of elements in these situations.
 
-### 6.1 - Object.keys and Object.values
+### 5.1 - Object.keys and Object.values
 
 There are two static methods of the main Object Object in core javaScript that in most cases will work okay for getting element count, but there are some drawbacks to be aware of.
 
@@ -285,7 +285,7 @@ The Object.keys method can be used to get an array of enumerable key names of an
 
 One drawback to using these methods as a way to obtain element count of an array is that if some additional named properties are added to the array that will effect the count, to resolve this a method that involves just counting the positive numbered keys of the array. 
 
-### 6.2 - Just loop for Array count
+### 5.2 - Just loop for Array count
 
 So one way of getting actual element count that comes to mind is to just loop from zero to the length of the array of vice versa and preform some kind of condition for each for each potential element to determine if there is actually something there or not.
 
@@ -320,7 +320,7 @@ console.log(Object.keys(a).length); // 3
 
 This presents some issues of concern when it comes to arrays with a length property that might be set to a very high number for example. It is a silly waste of resources to loop over all those undeclared numbered key values, when I could find some way to just filter a list of declared key values that can be obtained via the Object.keys static method.
 
-### 6.3 - Get Array count with Array.filter
+### 5.3 - Get Array count with Array.filter
 
 So another way to get the actual count of an array would be to still use a method like Object.keys, but filter the results of that method. The [Array filter method](/2020/10/03/js-array-filter/) could be used as a way to create an array of Object keys that are numbered keys equal to or grater than that of zero. The length of that array could then be used as a way to determine the count or an array.
 
@@ -355,7 +355,7 @@ console.log(count(a)); // 2
 
 The expression could be tweaked to preform additional checks such as weather or not object keys that are declared but set to undefined should be counted or not.
 
-## 7 - Typed Arrays and length
+## 6 - Typed Arrays and length
 
 When working with typed arrays the length property refers to the number of bit sized units the array is. For example if it is a Unit16Array and it has 3 elements the length of it is 3, and the byte length of it is 6.
 
@@ -377,7 +377,7 @@ console.log(buff.byteLength); // 6
 
 The length of an array generally refers to the number of elements, or the highest index value plus one. It does not always refer to the the size of the array in terms of data.
 
-## 8 - The delete operator and Array length
+## 7 - The delete operator and Array length
 
 So in javaScript there is the [delete operator](/2019/02/20/js-javascript-delete/) which can be used to delete object properties. Once might thing that using it might effect array length, but it does not. It would seem that it is no different from just setting an array element to undefined. So then it does not behave as one might expect when it comes to using the delete keyword to remove elements from an array.
 
@@ -405,7 +405,7 @@ console.log(b.length); // 3
 
 This is of course a very untypical way of deleting elements from an array though. In fact I can not say I use the delete keyword very often, in fact at all in just about any project so far.
 
-### 8.1 - Deleting a source object property will effect length sometimes though
+### 7.1 - Deleting a source object property will effect length sometimes though
 
 Although using the delete keyword to delete an array element will not effect length, deleting a property of an object that will be used to create an array might effect the resulting length of that array.
 
@@ -432,7 +432,7 @@ delete obj[1];
 console.log(fromObj(obj).length); // 2
 ```
 
-## 9 - Conclusion
+## 8 - Conclusion
 
 So in javaScript array length is fairly easy to understand, but there are some things about it that can result in some confusion. There can be a difference between the length of an array and the actual element count for example. The length property is really only just a property of an object that reflects the highest element index of the array, and the array could be nothing but empty elements. There are also many little tricks about array length when it comes to setting the value of the length property of an array as a way to delete unwanted elements at the end of an array, and atypical ways of creating arrays fro plain old objects that juts have a length property.
 
