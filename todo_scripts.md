@@ -17,6 +17,7 @@ This is a todo list for the scripts folder.
     * push new word counts objects for that day, for just the posts that changed
     * repeat this process for each day up to the latest day
     * use git to set the state of the repo back to the latest commit
+* write the state of the postCollection as a json file
 
 ## ( done 11/03/2021 ) - cli/report-pec
 * (done) start a cli tool that will build Post Edit Count Reports
