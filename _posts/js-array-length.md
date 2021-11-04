@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 11:04:26
-version: 1.75
+updated: 2021-11-04 11:11:19
+version: 1.76
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -171,6 +171,8 @@ It is possible to set the length property of an array by just making use of the 
 Setting a higher length property will result in a situation in which any index values above the previous length will result in being empty elements. This might result in unexpected behavior with some array methods like Array forEach or the array map method as they will skip over such elements. So in this section I will be going over a few examples of setting the length of an array, and also touch base more on sparse arrays.
 
 ### 2.1 - Basic set length of array example
+
+For a basic example of setting the length of an array and what happens to an array when doing this, I have this example where I start off with a simple 1,2,3 number array. So the starting length of this array is a length of 3, and each element is defined and has a number value. When I set the length of this array to 1, the result is then all but the first element now remaining in the array. If I then set the length of the array back to a higher value then that of the current length of 1, lets say 5, then the result is a sparse array. The array is sparse because the length of the array is 5, but it is now only element index 0 that is defined, the remaining elements are not event undefined then are not defined, and as such they are just empty element locations.
 
 ```js
 var a = [1, 2, 3];
