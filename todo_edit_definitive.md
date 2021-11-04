@@ -54,9 +54,19 @@ If the post is new, or an older post that is not preforming so well, however the
 justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
 * (done 10/21/2021) get post to the min 3000+ words
 * (done 10/24/2021) get post to 4000+ words
-* get post to 4500+ words
+* (done 11/02/2021) get post to 4500+ words
 * get post to 5000+ words
 
+## js-event-object ( at 2,600+ all ready, good topic )
+    justification: 
+      Intrinsic Value: Good Topic, ties into a whole lot of other things
+      Search Console: Not doing much of anything as of 11/04/2021
+      Google Trends: "js event", "js e", "javascript event object", "js event object"
+          Very significant search interest for this one, and there is a whole lot of ground to cover.
+list:
+* get post to 3000+ words min for this kind of post
+* get post to 4500+ words min for this kind of post
+* get post to 4500+ words min for this kind of post
 
 ## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
 justification: Intrinsic Value, Search Console: "innerhtml alternative", 
