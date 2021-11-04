@@ -63,9 +63,6 @@ js-javascript-iframe
 ### (   ) - js-nth-root ( no internal links )
 * have 5+ internal links for the post
 
-### (   ) - js-drag-elements-with-dragula ( no internal links )
-* have 5+ internal links for the post
-
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -103,18 +100,20 @@ js-javascript-iframe
 * have 5+ internal links for the post
 * proof read full text
 
-### () - js-array-length ( 28k impressions / 3 months - 9/26/21 )
-* have 5+ internal links for the post
-* proof read full text
-* have section folders in test vjs
-* link to test vjs folder
-* test vjs readme file links to post
-* test vjs links to various other sites on the topic of array length
-
 ### () -  js-event-object ( relevant to Clucker.js dev )
 * (done) edit post to 2,400+ words
 * write about attach-to-parent example in js-get-parent-element and link to the post
 * (done) have 5+ internal links for the post
+
+### ( done 11/04/2021) - js-array-length ( 28k impressions / 3 months - 9/26/21 )
+* (done) have 5+ internal links for the post
+* (done) have section folders in test vjs
+* (done) link to test vjs folder
+* (done) test vjs readme file links to post
+
+### ( done 11/04/2021 ) - js-drag-elements-with-dragula ( no internal links )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
 
 ### ( done 11/02/2021 ) - js-javascript-arguments-object  ( old )
 * (done) have 5+ internal links for the post
