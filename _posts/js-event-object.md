@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-04 14:13:03
-version: 1.50
+updated: 2021-11-04 14:27:16
+version: 1.51
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -413,7 +413,9 @@ el.addEventListener('pointermove', function(e){
 
 ## 6 - js event objects when working with keyboard events
 
-When it comes to JavaScript event objects, and keyboard events there are a number of events to attch for, and also a number of properties of interest when it comes to the event objects to work with in the handers. For the most part typically I just want to know if a key is down or not, and if so what key is indeed down. So then there is the key down event, and the key up event. When it comes to knowing what key is pressed there are two options that are of interest in the event objects for these events which are the key, and keyCode properties.
+When it comes to JavaScript event objects, and keyboard events there are a number of events to attach for, and also a number of properties of interest when it comes to the event objects to work with in the handers. For the most part typically I just want to know if a key is down or not, and if so what key is indeed down. So then there is the [key down event](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event), and the [key up event](https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event). 
+
+When it comes to knowing what key is pressed there are two options that are of interest in the [event objects for these keyboard events](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) which are the key, and code properties. There are many other properties that you might see being used in various source code examples on the open web, but many of these examples might be a bot out of date. It is best to just stick to using the key property generally, and make use of the get char code at string prototype method if a char coded is need from the key property value. The main reason why one might want to use the code value is that it is not effected by case, where the key properties value will change depending if caps lock is on or the shift key is used.
 
 ### 6.1 - Basic key down event example and the key property of the event object
 
@@ -444,7 +446,6 @@ window.addEventListener('keydown', function(e){
         <div id="out">Press a key any key</div>
         <script>
 var keys = [];
- 
 var printKeyArray = function(keys){
     var text = '';
     keys.forEach(function(keyBool, i){
@@ -452,13 +453,12 @@ var printKeyArray = function(keys){
     });
     document.getElementById('out').innerText = text;
 };
- 
 window.addEventListener('keydown', function(e){
-    keys[e.keyCode] = true;
+    keys[e.key.charCodeAt(0)] = true;
     printKeyArray(keys);
 });
 window.addEventListener('keyup', function(e){
-    keys[e.keyCode] = false;
+    keys[e.key.charCodeAt(0)] = false;
     printKeyArray(keys);
 });
         </script>
