@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 10:09:46
-version: 1.68
+updated: 2021-11-04 10:35:12
+version: 1.69
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -257,7 +257,9 @@ However as long as the index values are enumerable the Object.keys method can be
 
 ## 5 - Array count, and ways of getting an actual element count
 
-Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others. As I have covered in the previous section the length property of an array in javaScript is often just the highest index value plus one, and in some cases it is not even that it is just a property of an object. However there are a number of ways to go about getting the actual count of elements in these situations.
+Say you are dealing with an object that also has some named object keys, and a single index value that is way ahead of the others which results in one or more empty element index positions. As I have covered in a previous section the length property of an array in javaScript is often just the highest index value plus one, however in some cases it is not even that it is just a property of an object actually. In other words it is possible to have an object with just a length property of say 5, but no numbered public keys, so in that case we are dealing with an array that has a length of 5, but a count of 0. This is true if we define the count of an array as the number of public numbered keys between and including, zero to one less the length of an array that are defined keys that contain a value that can even be the undefined value. The reason why is because a key can be define, but contain a value that is undefined actually.
+
+However there are a number of ways to go about getting the actual count of elements in an array, and the meaning of what a count is to begin with can change to mean a whole bunch of different things actually. So in this section I will be taking a stab at all the various kinds of way that one count define what a "count" if an array could be.
 
 ### 5.1 - Object.keys and Object.values
 
