@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-07-21 13:59:56
-version: 1.65
+updated: 2021-11-04 08:36:50
+version: 1.66
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -39,7 +39,7 @@ console.log(a.length); // 1
 console.log(a[0]); // 'foo'
 ```
 
-### 1.1 - Array length, count, and Array index
+### 1.2 - Array length, count, and Array index
 
 An array has a length property and in most situations the length property is also the number of actual elements in the array as well. However this is not always the case depending on how you go about counting elements. So an arrays count of elements might differ from the length of the array depending on the methodology used to count elements, or potential elements if you prefer. One way of putting it would be thinking of an empty liter sized bottle, it might be an empty bottle but it still has a capacity of one liter. The length of an array could be thought of as the liter bottle itself, and the count of an array can be thought of as whatever amount of volume of something is filling that array.
 
@@ -82,7 +82,7 @@ console.log(arr.length, count, index, el);
 In the above example I have an array that was created from an object that has numbered key value pairs, and a length property that has a value greater than the number of other keys in the object. Also the numbed keys of the object are going up by multiples of two, and there are four keys in the object aside from the length key. This hopefully helps to give a clear understanding of what the differences are between array length, count, and an index value.
 
 
-### 1.2 - Pushing in new elements increases length
+### 1.3 - Pushing in new elements increases length
 
 When using a method like Array.push to add new elements to an array, the length will be updated each time. In the following example I am just creating an empty array with the array literal syntax, pushing in a new element for each iteration, and also logging the current length each time.
 
@@ -100,7 +100,7 @@ while (i < count) {
 
 As expected the length of the array goes from one upwards to five as I am logging the length after pushing in new elements to it. Fairly simple of course, but in some situations things can get a little confusing when it comes to adding elements to an array in other ways, as well as when removing them.
 
-### 1.3 - Popping out old elements decreases length
+### 1.4 - Popping out old elements decreases length
 
 So also as expected popping out old elements from an array will result in the length decreasing. Here again I have a very simple example where I am just removing elements from an array with the Array.pop method one at a time on each iteration of a loop. As this happens the length decreases with each iteration of the loop as elements are removed from the end of the array with Array.pop.
 
@@ -116,7 +116,7 @@ while (i--) {
 
 There are of course many other ways to remove elements from an array that will result in a decrees of length, however there are also some ways to do so that will not. This is of course where things get a little confusing and why it is important to understand the difference between array length and array count as I have covered in the previous sub section of this post on length, count and index values of an array in javaScript.
 
-### 1.4 - Setting an array element to a high index value will set the length of the Array
+### 1.5 - Setting an array element to a high index value will set the length of the Array
 
 ANother way to end up setting array length is by using the bracket syntax to set a numbers index value higher than the current length. Take into account a basic example such as this for a moment.
 
@@ -128,7 +128,7 @@ console.log(a.length); // 11
 
 Here we have an array with a length of 11, but in a way there is only six elements in the array when it comes to a basic way of counting elements. This is what I am talking about when it comes to the difference between array length and array count. The length of the array is just the highest defined index value of he array plus one, while the count of an array is the actual count of defined elements in the array.
 
-### 1.5 - Array length and array count with Object.keys
+### 1.6 - Array length and array count with Object.keys
 
 So the length of an array can be found by simply taking a look at the current value of the length property of an array, but the count must be obtained by some other means such as using the Object.keys static method which can be used to get an array of public keys of any object including arrays.
 
@@ -141,7 +141,7 @@ console.log(Object.keys(a).length); // the count is 4
 
 The Object.keys method will work fine for a simple example such as this, but in some cases it will result in unexpected results when dealing with an array that has some additional public keys attached to it.
 
-### 1.6 - length, and count is not always what is expected when dealing with associative Arrays
+### 1.7 - length, and count is not always what is expected when dealing with associative Arrays
 
 So say I have an array that has some elements added to it that are attached to indexed key names as usual with an array, but then some that are attached to key names that are not numbered index key values but non numbed string values. This will result in what might be an undesired array count with Object.keys.
 
