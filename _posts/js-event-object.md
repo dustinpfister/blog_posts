@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-04 14:27:16
-version: 1.51
+updated: 2021-11-04 14:28:47
+version: 1.52
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -418,6 +418,8 @@ When it comes to JavaScript event objects, and keyboard events there are a numbe
 When it comes to knowing what key is pressed there are two options that are of interest in the [event objects for these keyboard events](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) which are the key, and code properties. There are many other properties that you might see being used in various source code examples on the open web, but many of these examples might be a bot out of date. It is best to just stick to using the key property generally, and make use of the get char code at string prototype method if a char coded is need from the key property value. The main reason why one might want to use the code value is that it is not effected by case, where the key properties value will change depending if caps lock is on or the shift key is used.
 
 ### 6.1 - Basic key down event example and the key property of the event object
+
+Here I have a simple getting started type example with keyboard event objects where I am attaching a key down event for the window object and just stetting the inner text of a div element to the value of the key property when a key is pressed.
 
 ```html
 <html>
