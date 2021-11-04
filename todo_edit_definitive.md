@@ -64,7 +64,7 @@ justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
       Google Trends: "js event", "js e", "javascript event object", "js event object"
           Very significant search interest for this one, and there is a whole lot of ground to cover.
 list:
-* get post to 3000+ words min for this kind of post
+* (done 11/04/2021) get post to 3000+ words min for this kind of post
 * get post to 4500+ words min for this kind of post
 * get post to 4500+ words min for this kind of post
 
