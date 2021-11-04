@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-03 11:57:05
-version: 1.48
+updated: 2021-11-04 14:09:14
+version: 1.49
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -411,6 +411,59 @@ el.addEventListener('pointermove', function(e){
 </html>
 ```
 
-## 6 - Conclusion
+## 6 - js event objects when working with keyboard events
+
+### 6.1 - Basic key down event example and the key property of the event object
+
+```html
+<html>
+    <head>
+        <title>js e object</title>
+    </head>
+    <body>
+        <div id="out">Press a key any key</div>
+        <script>
+window.addEventListener('keydown', function(e){
+    document.getElementById('out').innerText = 'key: ' + e.key;
+});
+        </script>
+    </body>
+</html>
+```
+
+### 6.2 - The event object keyCode property and setting booleans for each code
+
+```html
+<html>
+    <head>
+        <title>js e object</title>
+    </head>
+    <body>
+        <div id="out">Press a key any key</div>
+        <script>
+var keys = [];
+ 
+var printKeyArray = function(keys){
+    var text = '';
+    keys.forEach(function(keyBool, i){
+        text += i + ':' + keyBool + ', '
+    });
+    document.getElementById('out').innerText = text;
+};
+ 
+window.addEventListener('keydown', function(e){
+    keys[e.keyCode] = true;
+    printKeyArray(keys);
+});
+window.addEventListener('keyup', function(e){
+    keys[e.keyCode] = false;
+    printKeyArray(keys);
+});
+        </script>
+    </body>
+</html>
+```
+
+## 7 - Conclusion
 
 So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
