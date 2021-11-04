@@ -41,6 +41,14 @@ js-window-inner-width-height
 js-javascript-iframe
 -->
 
+### (   ) - js-javascript-delete ( old )
+* have 5+ internal links for the post
+* edit post to 1,200+ words
+
+### (   ) - js-script-tag ( old )
+* have 5+ internal links for the post
+* edit post to 1,300+ words
+
 ### (   ) - js-filereader  ( old )
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
