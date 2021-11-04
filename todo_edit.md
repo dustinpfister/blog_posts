@@ -104,9 +104,9 @@ js-javascript-iframe
 * test vjs links to various other sites on the topic of array length
 
 ### () -  js-event-object ( relevant to Clucker.js dev )
-* edit post to 2,400+ words
+* (done) edit post to 2,400+ words
 * write about attach-to-parent example in js-get-parent-element and link to the post
-* have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ### ( done 11/02/2021 ) - js-javascript-arguments-object  ( old )
 * (done) have 5+ internal links for the post
