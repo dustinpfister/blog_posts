@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2021-11-04 11:16:15
-version: 1.20
+updated: 2021-11-04 11:20:23
+version: 1.21
 ---
 
 There is a [javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -23,7 +23,7 @@ Although I often like to keep my basic sections very simple this is still not a 
 
 ### - The source code examples in this post are on Github
 
-I have the source code examples for this post up on my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-drag-elements-with-dragula) on Gihub along with the source code examples for my many other [posts on javaScript](/categories/js/).
+I have the source code examples for this post up on my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-drag-elements-with-dragula) on Gihub along with the source code examples for my many other [posts on javaScript](/categories/js/). I do get around to editing my content on javaScript now and then and this post is not exception if you check the dates above. I do have a whole lot of other posts that are in dire need of attention when it comes to expanding and editing though. If you are on Github though the test vjs repository would be where you would want to make a pull request for one of the source code examples here. There is also the comments section at the bottom of this post that can eb sued to bring something up.
 
 ### 1.1 - Basic usage example
 
