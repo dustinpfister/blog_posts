@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 348
-updated: 2021-11-04 08:36:50
-version: 1.66
+updated: 2021-11-04 08:55:30
+version: 1.67
 ---
 
 You would think that [Array length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length) in javaScript is a trivial matter, and in some respects it might be. However on closer inspection there does seem to be more to it than what might appear to be the case on first inspection. One way of thinking about it might be that Array length in javaScript refers to the highest numbered index value of an array plus one because array length is one rather than zero relative. That is when it comes to the number index values of arrays the numbers start at zero rather than one as with the array length property. However the value can also be though of more as just a potential for that actually, as all the elements could be empty elements as the length of an array might not always be the same as what is often called the count of an array.
@@ -197,7 +197,9 @@ length:  5
 
 So in javaScript Arrays are created with the Array constructor, or more often the Array literal syntax. The way that arrays or array like objects are structured is one or more numbered key value pares with a corresponding length property that is often the element count of this kind of object.
 
-In other words something like this:
+### 3.1 - The array from method
+
+The array from method is on way to go about creating an array from a plain object that is formated like an array in terms of the own properties of the object.
 
 ```js
 var a = Array.from({
@@ -212,7 +214,7 @@ console.log(a.length); // 3
 
 Understanding this can help eliminate confusion with some situations in which the length of an array is in fact really not the length of the array. In this section I will cover some more examples like this to help elaborate more with this.
 
-## 4 - Just a length property with empty elements
+### 3.2 - Just a length property with empty elements
 
 It is possible to have an array that has a set length, but all of the elements are undefined. This is the case if the array is created from an object that just has a length property. A similar situation can happen if the array is created with the Array constructor syntax and given an argument that will be the length of the array.
 
