@@ -45,10 +45,6 @@ js-javascript-iframe
 * have 5+ internal links for the post
 * edit post to 1,200+ words
 
-### (   ) - js-script-tag ( old )
-* have 5+ internal links for the post
-* edit post to 1,300+ words
-
 ### (   ) - js-filereader  ( old )
 * (done) have 5+ internal links for the post
 * (done) edit post to 1,000+ words
@@ -104,6 +100,10 @@ js-javascript-iframe
 * (done) edit post to 2,400+ words
 * write about attach-to-parent example in js-get-parent-element and link to the post
 * (done) have 5+ internal links for the post
+
+### ( done 11/04/2021 ) - js-script-tag ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,300+ words
 
 ### ( done 11/04/2021) - js-array-length ( 28k impressions / 3 months - 9/26/21 )
 * (done) have 5+ internal links for the post
