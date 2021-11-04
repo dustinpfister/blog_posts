@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2021-11-04 11:51:48
-version: 1.30
+updated: 2021-11-04 11:54:15
+version: 1.31
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript by placing javaScript code between and opening and closing script tag. In addition script tags can also be used to link to external javaScript files by making use of an src attribute of the script tag element to point to the external javaScript file. 
@@ -22,6 +22,10 @@ In this section I will be started out with just a few very simple hello world ty
 In a way this post is almost a kind of [getting started type post](/2018/11/27/js-getting-started/) on client side javaScript. However I should also mention that there is more then one way to get these HTML files up and running. One of which would be to [get started with client side javaScript by making use of the file protocol](/2020/09/21/js-getting-started-file-protocol/). That is to just have the HTML and javaScript source code examples as files in a local file system and just open them up in the browser by pressing ctrl \+ \0, or my one means or another view the HTML file stored on your location files system by seeing file:\\\\ rather than http:\\\\ in the address bar of the browser.
 
 Although the file protocol will work fine for these examples, it is not generally a good idea to run scripts that way. One might not run into problems with these source code examples, but as you get into all kids of various other features it is best to fine a way to just start up some kind of web sever on your local computer and view the files that way by way of the http protocol. There are a number of ways to do so, but when it comes to sticking with javaScript, and learning a little back end programing with javaScript it would be a good idea to [check out nodejs](/2017/04/05/nodejs-helloworld/) at some point if you have not done so before hand. There is taking a [vanilla javaScript style approve to creating a static web sever](/2017/12/04/nodejs-simple-static-server-file/), but it is also a good idea to learn a popular framework and use something like [express also to help save some time](/2018/05/24/express-static/).
+
+### - These source code examples can be found on Github
+
+On my Github I have [my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-script-tag) that holds the source code examples for this post, as well as the source code examples for my [many other posts on javaScript](/categories//js/).
 
 ### 1.1 - Inside script tag example
 
