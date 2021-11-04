@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 361
-updated: 2021-11-04 11:54:15
-version: 1.31
+updated: 2021-11-04 11:56:49
+version: 1.32
 ---
 
 In javaScript [script tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) come into play with web development when I want to do anything that involves the use of client side javaScript in a website. Script tags can be used to add in line javaScript by placing javaScript code between and opening and closing script tag. In addition script tags can also be used to link to external javaScript files by making use of an src attribute of the script tag element to point to the external javaScript file. 
@@ -25,7 +25,7 @@ Although the file protocol will work fine for these examples, it is not generall
 
 ### - These source code examples can be found on Github
 
-On my Github I have [my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-script-tag) that holds the source code examples for this post, as well as the source code examples for my [many other posts on javaScript](/categories//js/).
+On my Github I have [my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-script-tag) that holds the source code examples for this post, as well as the source code examples for my [many other posts on javaScript](/categories/js/).
 
 ### 1.1 - Inside script tag example
 
