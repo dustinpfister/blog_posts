@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 133
-updated: 2018-01-19 12:27:44
-version: 1.3
+updated: 2021-11-05 13:17:08
+version: 1.4
 ---
 
 JavaScript has a reputation of being a single threaded language, for the most part it is if I only take into consideration core javaScript by itself. However when taking into account the full breath of what there is to work with in client side javaScript, as well as a node.js environment, it would appear that javaScripts reputation of being single threaded language is wrong, or at best a half truth.
@@ -25,7 +25,7 @@ As I understand it, threads are part of what makes up a process that runs on an 
 
 ## Why do so many people say javaScript is single threaded, are they wrong?
 
-Maybe, maybe not, for me it looks like a bit of a half truth, and of course it depends on the environment. In any javaScript environment if I stick to core javaScript by itself, using just setInterval, and setTimeout only by themselves, then I what I am making is very much single threaded. However modern client side javaScript there is webworker, and in node.js there is the cluster module that can be used to pull of something that can be considered more in line with true threading.
+Maybe, maybe not, for me it looks like a bit of a half truth, and of course it depends on the environment. In any javaScript environment if I stick to core javaScript by itself, using just setInterval, and setTimeout only by themselves, then I what I am making is very much single threaded. However in modern client side javaScript there is now using the [WebWorker constructor](/2021/11/05/js-webworker/), and in node.js there is the cluster module that can be used to pull of something that can be considered more in line with true threading.
 
 In client side javaScrpt something that is written in core javaScript can be offloaded into a web worker, but anything that has to do with the DOM is still very much single threaded. 
 
