@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 936
-updated: 2021-11-05 09:29:04
-version: 1.16
+updated: 2021-11-05 09:31:48
+version: 1.17
 ---
 
 When it comes to [client side javaScript a WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) can be used to start a whole other Event loop in which to run some javaScript. In other words a web worker can be used to run background tasks that will not end up delaying the main execution thread of a page that is often used for rendering. So then a web worker can be used to take some work that would otherwise bog down the main thread of a page into its own independent thread, which will then free up the main thread allowing for smoother performance for what is begin done in the main thread. So then when it comes to using web workers the ideal situation might be to just use the main thread for DOM manipulation, canvas element drawing context calls and the like, and update the main model of a project by way of web workers.
@@ -16,7 +16,7 @@ When it comes to [client side javaScript a WebWorker](https://developer.mozilla.
 
 ## 1 - Web Worker basics
 
-So even when it comes to just starting out with a few basic examples of web workers, things are not so basic. There is a whole lot of ground that needs to be covered first even when it comes to Web Worker hello World style examples.
+So even when it comes to just starting out with a few basic examples of web workers, things are not so basic. There is a whole lot of ground that needs to be covered first even when it comes to Web Worker hello World style examples. Of course it goes without saying that you should be at least a few steps beyond the very basics of getting started with client side javaScript, there is also knowing a thing or two about Constructor functions, callback functions, setTimeout, Promises, and at least some basic DOM manipulation and canvas related stuff first.
 
 ### - Must Host your WebWorkr project by way of http, or https and NOT the file protocol
 
