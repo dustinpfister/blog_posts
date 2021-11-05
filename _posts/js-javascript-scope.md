@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2021-11-05 11:32:02
-version: 1.17
+updated: 2021-11-05 11:42:02
+version: 1.18
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined, and also where it can be accessed elsewhere in code. 
@@ -84,7 +84,11 @@ console.log( func2() );
 // 'foo is not defined'
 ```
 
-## 2 - block variable scope with let
+## 2 - Block variable scope with let and const
+
+In late specs of javaScript from 2015 forwards there is now the let and const keywords that can be used on top of var when it comes to declaring variables. These new options for declaring variables allow for block level variable scope. In this section I will just be quickly going over some examples of these options for declaring variables and dealing with javaScritp variable scope.
+
+### 2.1 - block variable scope with let
 
 With let block scope is possible rather than just function level scope. So the same situation is possible as with var, only now it is something that is in effect each time there is any kind of block of code. This can also be a function as well, but it can also be an if statement, a loop or just about any kind of block of code enclosed with curly brackets.
 
@@ -103,7 +107,7 @@ In the above example the value for n in the body of the if statement differs fro
 
 The other option for block level variable javaScript scope is the const keyword, but one nice thing about let is that the value can be rewritten many times just like with var. So in many respects let can be used as a drop in replacement for var, and there are not many extenuating circumstances to bother with var anymore outside of backward compatibility. However with const that can not always be used as a drop in replacement for var, speaking of which lets continue with getting into const as a way to create block scope variables.
 
-## 3 - Block variable scope with const
+### 2.2 - Block variable scope with const
 
 Another option for declaring variables that was introduced in es2015 javaScript was by using the const keyword as yet another option to var. Like let this also results in block level variable scope rather than the function level scope that is the result of using var. However unlike bolt var and let const is intended to be used for constants, and thus whatever is define with const can only be declared once. After than any attempt to change a vale set with const will result in an error.
 
