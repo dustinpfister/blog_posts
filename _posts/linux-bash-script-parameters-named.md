@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2021-11-05 13:05:02
-version: 1.16
+updated: 2021-11-05 13:07:05
+version: 1.17
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/linux-bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -38,7 +38,7 @@ fi
 
 ## 2 - getopts and a while loop
 
-The getopts can be used in a while loop with a case statement. That is that there can be this while loop where I am looping calling the getopts command each time. On each loop the variable that I set with the getopts command will be updated with the current option name, and the /$OPTARG variable will be updated with the current argument for the current option if it is that kin d of option.
+The getopts can be used in a while loop with a case statement. That is that there can be this while loop where I am looping calling the getopts command each time. On each loop the variable that I set with the getopts command will be updated with the current option name, and the \$OPTARG variable will be updated with the current argument for the current option if it is that kin d of option.
 
 ```bash
 #!/bin/bash
@@ -85,7 +85,7 @@ $ ./1-pos.sh foo bar
 
 ### 3.2 - Positional arguments in javaScript
 
-When it comes to nodejs and javaScript there is the argv property of the process object that will contain an array of posiitoina arguments.
+When it comes to nodejs and javaScript there is the argv property of the process object that will contain an array of positional arguments.
 
 ```js
 #!/bin/env node
@@ -99,6 +99,8 @@ $ ./2-pos.js foo bar
 ```
 
 ### 3.3 - Positional arguments in python
+
+When it comes to doing something with python there is the sys standard library that contains an array that is similar to that of the argv array in the process object in nodejs.
 
 ```python
 #!/usr/bin/python3
