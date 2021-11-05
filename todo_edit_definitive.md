@@ -42,8 +42,20 @@ If the post is all ready preforming well in terms or organic search results then
 
 If the post is new, or an older post that is not preforming so well, however there is one or more keywords that I have found in Google Trends that is of great interest, then that can count as justification. When making note of this as justification I should take note of what keywords that are of interest with the list item. A good rule of thumb is to compare the keyword of interest to the best preforming keyword in search console.
 
+<!--###### ########## ########## #######-->
+## js ( /yyyy/mm/dd/linux-* )
+<!--###### ########## ########## #######-->
 
-
+## linux-bash-script-parameters-named ( looking good in search console)
+    justification: 
+      Intrinsic Value: This is a good topic and not just with bash, there is also other languages
+      Search Console: doing okay in a relative way as of 11/5/2021
+      Google Trends: "bash arguments", "bash parameters", "bash named arguments"
+          Doing well in search console with "bash named arguments" keyword, and it would seem there 
+          there are many other keywords that show there is a great deal of search interest for this topic.
+          When it comes to the intrinsic value of just wring more about this there is also touching base on the
+          Topic of option parsing in general, nit just with bash.
+* get post to 3000+ words
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
