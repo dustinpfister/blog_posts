@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2021-11-05 13:03:38
-version: 1.15
+updated: 2021-11-05 13:05:02
+version: 1.16
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/linux-bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -84,6 +84,8 @@ $ ./1-pos.sh foo bar
 ```
 
 ### 3.2 - Positional arguments in javaScript
+
+When it comes to nodejs and javaScript there is the argv property of the process object that will contain an array of posiitoina arguments.
 
 ```js
 #!/bin/env node
