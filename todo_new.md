@@ -7,9 +7,9 @@
 ### () - new post #936 for 11/05/2021 - js-webworker
 * start draft folder
 
-### () - new post #935 for 10/29/2021 - js-document
-* start draft folder
-* be sure to have a section on the visability change event, and link to the post
+### ( done 10/29/2021 ) - new post #935 for 10/29/2021 - js-document
+* (done) start draft folder
+* (done) be sure to have a section on the visability change event, and link to the post
 
 ### ( done 10/23/2021 ) - new post #934 for 10/22/2021 - js-promise
 * (done) start a new javaScript post on promises in general
