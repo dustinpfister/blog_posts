@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2021-11-05 11:42:02
-version: 1.18
+updated: 2021-11-05 11:45:15
+version: 1.19
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined, and also where it can be accessed elsewhere in code. 
@@ -133,7 +133,7 @@ if (n > 32) {
 console.log(n); // 40
 ```
 
-## 4 - implicit global
+## 3 - implicit global
 
 It is possible to create an implicit global scope variable. This can often happen by accident actually by forgetting to use the var let or const keyword when declaring a variable. It is generally a good idea to always use one of the keyword options when declaring a variable, even if you do want it to be a global. Always declare the variable outside the body of a function at the top level, even if you do not want to give it a value yet when making globals.
 
@@ -151,11 +151,11 @@ try {
 }
 ```
 
-## 5 - Apply what you have learned and start making some examples
+## 4 - Apply what you have learned and start making some examples
 
 So do not just take my word for it, and do not stop by just reading this one post on javScript variable scope and thing that you are up to speed with anything. The best way to learn javaScript is by doing, just start coding some of your own projects. Whatever that might really be may be up to you the reader, but maybe in this section I can get you started by some examples of putting javaScript variable scope to use.
 
-### 5.1 - Start out with something simple that just moves a point object
+### 4.1 - Start out with something simple that just moves a point object
 
 In this example of javaScript scope in action I am moving a point object that is stored inside the local scope of another function. This is an exercise in which the scope chain is used as the method that moves the point is not given a reference to the point by way of an argument or my way of content with the this keyword. There is no local point object so javaScript goes down the scope chain to find the point object the is local to the pointer function to which all of this is enclosed. Also speaking of enclosed this is also an example of closure, although I will not be getting into detail with that here as that is a matter for a whole other post.
 
@@ -203,6 +203,6 @@ pt.log();
 // 0 0
 ```
 
-## 6 - Conclusion
+## 5 - Conclusion
 
 Understanding javaScript scope is one of several core aspects of javaScript that a new developer should get a solid understanding of right away. When writing ECMA 5 style javaScript one is dealing with function level scope only, but when dealing with modern ECMA 2015+ style javaScript there is now block level variable scope as well in javaScript also.
