@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 936
-updated: 2021-11-05 11:13:01
-version: 1.22
+updated: 2021-11-05 11:17:09
+version: 1.23
 ---
 
 When it comes to [client side javaScript a WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) can be used to start a whole other Event loop in which to run some javaScript. In other words a web worker can be used to run background tasks that will not end up delaying the main execution thread of a page that is often used for rendering. So then a web worker can be used to take some work that would otherwise bog down the main thread of a page into its own independent thread, which will then free up the main thread allowing for smoother performance for what is begin done in the main thread. So then when it comes to using web workers the ideal situation might be to just use the main thread for DOM manipulation, canvas element drawing context calls and the like, and update the main model of a project by way of web workers.
@@ -125,4 +125,7 @@ Web Workers are then a great tool when and where using them is called for with s
 
 Still The use of one or more Web Workers might very well be needed for certain projects in which I need to preform a lot of heavy lifting in the background. When it comes to client side javaScript the use of web workers is how to go about having more than one actual thread to work with rather than just simulating threading in a single event loop.
 
-There is a lot more to write about when it comes to having more than one process and then more than one actual thread o event loop to work with when it comes to javaScript. When it comes to Client side javaScript at least it is just the Web Worker constructor that comes to mind. However there is a whole lot to cover when it comes to doing the equivalent thing in a nodejs environment.
+There is a lot more to write about when it comes to having more than one process and then more than one actual thread o event loop to work with when it comes to javaScript. When it comes to Client side javaScript at least it is just the Web Worker constructor that comes to mind. However there is a whole lot to cover when it comes to doing the equivalent thing in a nodejs environment. When it comes to node there is the [cluster module](/2018/01/18/nodejs-cluster/) that is one way to spin up more than one process of a script, on top of that there is also the [exec](/2020/10/21/nodejs-child-process-exec/) and [spawn](/2019/08/02/nodejs-child-process-spawn/) methods of the [child process module](/2018/02/04/nodejs-child-process/) also.
+
+
+
