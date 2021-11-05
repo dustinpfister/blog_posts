@@ -5,13 +5,15 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 133
-updated: 2021-11-05 13:26:03
-version: 1.7
+updated: 2021-11-05 13:29:05
+version: 1.8
 ---
 
 JavaScript has a reputation of being a single threaded language, for the most part it is if I only take into consideration core javaScript by itself. However when taking into account the full breath of what there is to work with in client side javaScript, as well as a node.js environment, it would appear that javaScripts reputation of being single threaded language is wrong, or at best a half truth.
 
-In client side javaScript there is of course [webworker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) which to some extent can be used to achieve threading in client side javaScript. Yes there are some limitations as doing anything with the DOM can only be done in the main thread, not the webworker context. However this post is about [the cluster module](https://nodejs.org/api/cluster.html) in a node.js environment.
+In client side javaScript there is of course [webworker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) which to some extent can be used to achieve threading in client side javaScript. Yes there are some limitations as doing anything with the DOM can only be done in the main thread, not the webworker context. Still this web worker constructor can be used to spin up a whole other event loop as a separate process on the guest operating system, and messages can be passed to and from it from the main thread of a page. What happens in the web worker context will not end up holding up the main thread of the page then as it is running in a whole other event loop, with a whole other thread.
+
+However this post is about [the cluster module](https://nodejs.org/api/cluster.html) in a node.js environment.
 
 <!-- more -->
 
