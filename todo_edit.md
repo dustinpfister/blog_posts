@@ -50,9 +50,6 @@ js-javascript-iframe
 * (done) edit post to 1,000+ words
 * edit post to 1,800+ words
 
-### (   ) - js-javascript-scope ( no internal links )
-* have 5+ internal links for the post
-
 ### (   ) - js-call-object ( no internal links )
 * have 5+ internal links for the post
 
@@ -99,6 +96,9 @@ js-javascript-iframe
 ### () -  js-event-object ( relevant to Clucker.js dev )
 * (done) edit post to 2,400+ words
 * write about attach-to-parent example in js-get-parent-element and link to the post
+* (done) have 5+ internal links for the post
+
+### ( done 11/05/2021 ) - js-javascript-scope ( no internal links )
 * (done) have 5+ internal links for the post
 
 ### ( done 11/04/2021 ) - js-script-tag ( old )
