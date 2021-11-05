@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2020-12-10 12:31:20
-version: 1.11
+updated: 2021-11-05 12:54:52
+version: 1.12
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/linux-bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -62,7 +62,52 @@ echo " target folder: ${target}"
 echo " mode: ${mode}"
 ```
 
-## 3 - getopts wc script example
+## 3 - Simple positional arguments in bash, as well as other languages
+
+### 3.1 - Positional arguments in bash
+
+```bash
+#!/bin/bash
+ 
+echo $0
+echo $1
+echo $2
+```
+
+```
+$ chmod 777 1-pos.sh
+$ ./1-pos.sh foo bar
+```
+
+### 3.2 - Positional arguments in javaScript
+
+```js
+#!/bin/env node
+let argv = process.argv;
+console.log(argv[0], argv[1], argv[2] || '', argv[3] || '');
+```
+
+```
+$ chmod 777 2-pos.js
+$ ./2-pos.js foo bar
+```
+
+### 3.3 - Positional arguments in python
+
+```python
+#!/usr/bin/python3
+import sys
+print(sys.argv[0]);
+print(sys.argv[1]);
+print(sys.argv[2]);
+```
+
+```
+$ chmod 777 3-pos.py
+$ ./3-pos.py foo bar
+```
+
+## 4 - getopts wc script example
 
 Now that I have covered the basics of the getopts bash built in command I should make at least one example that shows that this way of creating named parameters for bash scripts works okay. For this example I put together a simple script that will spit out the total word count for a collection of text files, or just concatenate them all which is the default behavior. This script will of course make use of the getopts bash built in, however I will also be making use of a bunch of other bash script features such as functions, conditional statements, and piping.
 
@@ -109,7 +154,7 @@ So then this script seems to work as expected then when I just give it a source 
 
 The Linux wc command is a useful command for a wide range of reasons, as the name suggests it can be used to get a word count for a body of text. However it also has a number of other useful options that can be used to get a line count, or the size of the text in terms of bytes. However getting into the depth of the Linux wc command would be off topic.
 
-## 4 - Conclusion
+## 5 - Conclusion
 
 That is it for named parameters in bash shell scripts, when it comes to additional resources on bash the best option if of course the [manual page on bash](https://linux.die.net/man/1/bash). The manual is very long, and does not include a lot of examples, which warrants a need for posts like this. Still the man page will cover the topic of named parameters with the getopts built in bash command, and a whole lot more in great detail.
 
