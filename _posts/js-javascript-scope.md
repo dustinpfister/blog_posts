@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2021-11-05 11:45:15
-version: 1.19
+updated: 2021-11-05 11:47:30
+version: 1.20
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined, and also where it can be accessed elsewhere in code. 
@@ -16,9 +16,11 @@ In this post I will be going over some of the ins and outs with javaScript varia
 
 <!-- more -->
 
-## 1 - javaScript scope with var
+## 1 - javaScript scope basics with var
 
-The var keyword is what was traditionally the only keyword that was available for declaring a variable in javaScipt. When using the var keyword to declare variables what will result is function level variable scope. When this means is that once a variable is declared it will be available everywhere within the code given that the code is at the same function scope level. In this section I will be covering this in greater detail with some examples to help clarify this.
+The var keyword is what was traditionally the only keyword that was available for declaring a variable in javaScipt. When using the var keyword to declare variables what will result is function level variable scope. What this means is that once a variable is declared it will be available everywhere within the code given that the code is at the same function scope level. So a variable declared inside the body of a function with var will be there to work with locally in that function, as well as with any nested function within that function, but not outside of the top level function.
+
+In this section I will be covering this in greater detail with some examples to help clarify this.
 
 ### 1.1 - Having a variable with the same name at the top level, and inside a function
 
