@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: node.js
 id: 133
-updated: 2021-11-05 13:21:57
-version: 1.5
+updated: 2021-11-05 13:24:59
+version: 1.6
 ---
 
 JavaScript has a reputation of being a single threaded language, for the most part it is if I only take into consideration core javaScript by itself. However when taking into account the full breath of what there is to work with in client side javaScript, as well as a node.js environment, it would appear that javaScripts reputation of being single threaded language is wrong, or at best a half truth.
@@ -128,4 +128,5 @@ As you can see I am still using setInterval to call a function more than once, b
 
 ## 2- Conclusion
 
-In the future I might expand on this post, and others like it. There is a lot more to write about with clustering alone in node.js.
+In the future I might expand on this post, and others like it. There is a lot more to write about with clustering alone in node.js. However there is also a lot more to write about when it comes to this sort of thing in general and not just with nodejs. There only major built in module in nodejs to be aware of is the [child process module](/2018/02/04/nodejs-child-process/) that can be used to start a whole other process in general, not just with javaScript alone.
+
