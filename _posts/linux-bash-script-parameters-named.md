@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 758
-updated: 2021-11-05 13:01:14
-version: 1.14
+updated: 2021-11-05 13:03:38
+version: 1.15
 ---
 
 There are basic positional parameters in [bash scripts](/2020/11/27/linux-bash-scripts/) that might be the first way that one learns how to add parameters to bash scripts. However there should be a way to add [named parameters to a script](https://unix.stackexchange.com/questions/129391/passing-named-arguments-to-shell-scripts) also, and to do so in a way in which it does not take to much time to do so. Often I want to write a bash script that preforms some kind of task other then that of parsing options.
@@ -67,6 +67,8 @@ echo " mode: ${mode}"
 Although named arguments might just simply be what needs to happen with a major project of some kind often I can not say that I am working on such projects actually. Many of the scripts that I write regardless if they are written in bash, javaScript, or python are scripts that might only just take one or two arguments and that is all. When it comes to writing these kinds of scripts often I might not even bother with named arguments and in stead just look for one or two positional arguments. With that said in this section I will be going over some quick examples of simple, basic positional arguments not just with bash, but also with other languages such a sjavaScript and python.
 
 ### 3.1 - Positional arguments in bash
+
+When it comes to positional arguments in bash I just need to look at \$1 forward for each positional argument to see if there is a value there or not. The first given positional will be at $1, the second will be at $2, and so forth while \$0 will be the name of the script if I am calling the script directly by making it executable.
 
 ```bash
 #!/bin/bash
