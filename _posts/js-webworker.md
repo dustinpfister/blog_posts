@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 936
-updated: 2021-11-05 09:24:26
-version: 1.14
+updated: 2021-11-05 09:25:51
+version: 1.15
 ---
 
 When it comes to [client side javaScript a WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) can be used to start a whole other Event loop in which to run some javaScript. In other words a web worker can be used to run background tasks that will not end up delaying the main execution thread of a page that is often used for rendering. So then a web worker can be used to take some work that would otherwise bog down the main thread of a page into its own independent thread, which will then free up the main thread allowing for smoother performance for what is begin done in the main thread. So then when it comes to using web workers the ideal situation might be to just use the main thread for DOM manipulation, canvas element drawing context calls and the like, and update the main model of a project by way of web workers.
@@ -15,6 +15,8 @@ When it comes to [client side javaScript a WebWorker](https://developer.mozilla.
 
 
 ## 1 - Web Worker basics
+
+### - Must Host your WebWorkr project by way of http, or https and NOT the file protocol
 
 So even when it comes to just starting out with a few basic examples of web workers, things are not so basic. For one thing when I first started learning javaScript I was gust creating HTML files with embedded javaScript and opening up these files in a web browser, in other words I was [using the file protocol](/2020/09/21/js-getting-started-file-protocol/) rather than http or https. I still thing that this is a good, simple way of getting started mind you, however sooner or later a developer will start to run into problems developing this way, and getting into web workers is one such problem with this.
 
