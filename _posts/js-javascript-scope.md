@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 367
-updated: 2020-11-27 10:04:22
-version: 1.16
+updated: 2021-11-05 11:32:02
+version: 1.17
 ---
 
 The [variable scope of a variable in javaScipt](https://developer.mozilla.org/en-US/docs/Glossary/Scope) is the area in code where the variable is defined, and also where it can be accessed elsewhere in code. 
 
-If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. There is for example variables that are defined at the top level of code that are often called global variables. These kinds of variables can be accessed anywhere else within a body of code for a window object in client side javaScript, or within a module for nodejs. This concept of global variables compares to variables that are declared inside the body of a function with var, or inside blocks of code when it comes to let and const. With var there is function level scopr, and with the newer let and cost options there is block level scope. These kinds of variables are often called local variables. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. 
+If a variable is inside the scope of a section of code it is of use there, else it can not be accessed. There is for example variables that are defined at the top level of code that are often called global variables. These kinds of variables can be accessed anywhere else within a body of code for a window object in client side javaScript, or within a module for nodejs. This concept of global variables compares to variables that are declared inside the body of a function with var, or inside blocks of code when it comes to let and const. With var there is function level scope, and with the newer let and cost options there is block level scope. These kinds of variables are often called local variables. Traditionally javaScipt had function level scope only with the var keyword, but these days there is block level scope as well via let and const. 
 In this post I will be going over some of the ins and outs with javaScript variable scope both with the way it was, and the way it is now. There is a fair about to write about when it comes to this topic when it comes to things like the scope chain, and things can quickly branch off into other subjects such as closure. 
 
 <!-- more -->
@@ -149,7 +149,7 @@ try {
 
 ## 5 - Apply what you have learned and start making some examples
 
-So do not just take my word for it, and do not stop by just reading this one post on javScript varavle scope and thing that you are up to speed with anything. The best way to learn javaScript is by doing, just start coding some of your own projects. Whatever that might really be may be up to you the reader, but maybe in this section I cen get you started by some examples of putting javaScript variable scope to use.
+So do not just take my word for it, and do not stop by just reading this one post on javScript variable scope and thing that you are up to speed with anything. The best way to learn javaScript is by doing, just start coding some of your own projects. Whatever that might really be may be up to you the reader, but maybe in this section I can get you started by some examples of putting javaScript variable scope to use.
 
 ### 5.1 - Start out with something simple that just moves a point object
 
