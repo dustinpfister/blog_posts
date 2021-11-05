@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 936
-updated: 2021-11-05 09:42:40
-version: 1.20
+updated: 2021-11-05 09:44:48
+version: 1.21
 ---
 
 When it comes to [client side javaScript a WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) can be used to start a whole other Event loop in which to run some javaScript. In other words a web worker can be used to run background tasks that will not end up delaying the main execution thread of a page that is often used for rendering. So then a web worker can be used to take some work that would otherwise bog down the main thread of a page into its own independent thread, which will then free up the main thread allowing for smoother performance for what is begin done in the main thread. So then when it comes to using web workers the ideal situation might be to just use the main thread for DOM manipulation, canvas element drawing context calls and the like, and update the main model of a project by way of web workers.
@@ -32,7 +32,7 @@ On Github I have my [test vjs repository](https://github.com/dustinpfister/test_
 
 ### 1.1 - Web Worker Hello World project
 
-To start out even with a basic hello world example of web worker I am still going to need at least two files on top of also having a way to host what I am working with by way of http rather than the file protocol. This is because when I call the Web Worker constructor function I need to pass a url to a javaScript file that will be the web worker code to use for the web worker instance.
+To start out even with a basic hello world example of web worker I am still going to need at least two files on top of also having a way to host what I am working with by way of http rather than the file protocol. This is because when I call the Web Worker constructor function I need to pass a url to a javaScript file that will be the web worker code to use for the web worker instance. So I have a hello.js file that will be the javaScript code for the WbWorker that will just have a single onmessage event hander that will respond with just appending the string Hello to what it is given when calling the post message method of the web worker instance in the main html file.
 
 ```js
 onmessage = function(e) {
