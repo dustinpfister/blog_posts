@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-11-06 13:37:14
-version: 1.31
+updated: 2021-11-06 13:40:01
+version: 1.32
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -220,3 +220,6 @@ The file reader constructor is then a great native way to allow the user to sele
 Another thing to keep in mind is that some users like to disable local storage, and cookies in there browsers. Although there is feature testing for this and informing they users that they should enable this, another option would be to give users an array of options for loading and saving a state.
 
 Also the use of the fire reader api is just one part of making some kind of over all comprehensive solution for allowing users to save data. There is having some kind of solution that does not just involve using fire reader as a way to save and load state, but also using localStoarge, and also POST requests to some kind of back end system as a way to save data on a sever so a user can get to it from any ware.
+
+There is also just using fire reader as a way to just allow for a user to upload some kind of local file of course rather than thinking in terms of save states. For example if I need to make some kind of system that allows for a user to load a file that can then be edited and summited as a profile picture of some kind.
+
