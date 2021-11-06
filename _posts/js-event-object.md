@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-06 14:21:43
-version: 1.56
+updated: 2021-11-06 14:29:52
+version: 1.57
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -472,7 +472,11 @@ window.addEventListener('keyup', function(e){
 
 ## 7 - Event propagation, event object target, current target, and stop propagation method
 
+Yet another topic that is relative to event objects would be the topic of event propagation, also often known as event bubbling. This is where one has one or more child elements in a parent element and when an event happens in one of the child elements it will fire any event handers for that child, but also for the parent element of that child element, and so on. This is why there is a target, and current target property in an event object as this will come into play for any and all events that will propagate such as an on click event. The target property is a reference to where the event started, while the current target property is a reference to the current element in a propagation of even handlers firing for this event that happened in the target.
+
 ### 7.1 - Basic example of event propagation, target and current target properties of an event object
+
+First off a basic example of this event propagation with a client event, and also some code that will hep to show what the difference is between the target and current target properties of an event object.
 
 ```html
 <html>
@@ -559,7 +563,7 @@ parent.addEventListener('click', clickParent);
 
 ### 7.3 - Get parent element example
 
-So then this event propagation can be used as one of many ways to go about [getting a reference to a parent element](/2019/02/21/js-get-parent-element/).
+So then this event propagation can be used as one of many ways to go about [getting a reference to a parent element](/2019/02/21/js-get-parent-element/). Although there may be a whole lot of other ways of doing so that are far less complex such as just making use of the parentNode or parent element properties of a child element when having such a reference before hand is the case.
 
 ```html
 <html>
