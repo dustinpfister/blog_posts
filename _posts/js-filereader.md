@@ -5,11 +5,11 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-11-06 13:33:02
-version: 1.30
+updated: 2021-11-06 13:37:14
+version: 1.31
 ---
 
-Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
+Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
 
 So then there are other ways of getting or saving files remotely, and also ways of storing data locally such as with the [web storage API](/2019/08/20/js-web-storage/) which is often the first go to solution for this sort of thing. However with some projects I might want to [read a file on a users local file system](https://www.html5rocks.com/en/tutorials/file/dndfiles/) rather than data that I am parking by way of the web storage API. Of course I can not just do so for what should be obvious security reasons, however there is a way of doing so that involves allowing the user to select a file that they do not mind giving access to. That is allowing the user to navigate to a location on there local file system, and allow for a file to be saved to loaded there at a given file URI.
 
@@ -215,7 +215,8 @@ So far so good when I have this up and running it seems to work as I would want 
 
 ## 3 - Conclusion
 
-The file reader constructor is then a great native way to allow the user to select a file to open to use in a web application, as well to save such a file. What is great about this kind of solution is that it allows for users to save and load data in a way that they are familial with. 
+The file reader constructor is then a great native way to allow the user to select a file to open to use in a web application, as well to save such a file. What is great about this kind of solution is that it allows for users to save and load data in a way that they are familial with that parks data on there local file system.
 
 Another thing to keep in mind is that some users like to disable local storage, and cookies in there browsers. Although there is feature testing for this and informing they users that they should enable this, another option would be to give users an array of options for loading and saving a state.
 
+Also the use of the fire reader api is just one part of making some kind of over all comprehensive solution for allowing users to save data. There is having some kind of solution that does not just involve using fire reader as a way to save and load state, but also using localStoarge, and also POST requests to some kind of back end system as a way to save data on a sever so a user can get to it from any ware.
