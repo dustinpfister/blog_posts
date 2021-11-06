@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2021-11-06 10:10:32
-version: 1.18
+updated: 2021-11-06 10:16:17
+version: 1.19
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -43,7 +43,11 @@ So there we have it a basic nth root method that seems to work they way it shoul
 
 I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples rather than ones that might prove to be useful for some kind of real problem. There is however at least a [few practical examples of nth root however](https://www.quora.com/What-is-the-practical-usefulness-of-learning-the-Nth-root-of-a-number).
 
-### 2.1 -  Dealing with interest
+### 2.1 - Getting the base of a value that is the result of Math.pow
+
+When it comes to using the Math.pow method the first argument that is given is a base, and the second argument that is given is an exponent. The resulted result of calling this method is then a power that is the given base that is then raised to the given exponent. So then there is the question of getting into inverse functions for this function, that is having a function where if the exponent is known, but not the base, having a function where I can pass the power and the exponent to have the base returned. There is also the question of how to go about making another kind of function that will give me the exponent when all I know is the base.
+
+### 2.2 -  Dealing with interest
 
 One such example might have to do with compounding interest and that can often prove to be useful when it comes to figuring out something g that has to do with money, regardless of it is game money or real worked money. For example what if I want to know an interest rate that I need to see in order to double an investment of one hundred dollars over say seven years? I can pass 2 for the value of n, and 7 for the degree and get a value of around 1.104, or in another way 10.4%. I can then confirm this by using that value with the Math.pow method to see if it results in double the money, and when I do it indeed does given me just that.
 
