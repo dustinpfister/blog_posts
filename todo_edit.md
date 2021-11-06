@@ -49,9 +49,6 @@ js-javascript-iframe
 ### (   ) - js-call-object ( no internal links )
 * have 5+ internal links for the post
 
-### (   ) - js-nth-root ( no internal links )
-* have 5+ internal links for the post
-
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -93,6 +90,10 @@ js-javascript-iframe
 * (done) edit post to 2,400+ words
 * write about attach-to-parent example in js-get-parent-element and link to the post
 * (done) have 5+ internal links for the post
+
+### ( done 11/06/2021 ) - js-nth-root ( no internal links )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
 
 ### ( done 11/06/2021 ) - js-javascript-delete ( old )
 * (done) have 5+ internal links for the post
