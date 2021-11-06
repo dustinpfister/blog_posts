@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2021-11-06 08:25:08
-version: 1.22
+updated: 2021-11-06 08:27:38
+version: 1.23
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or undefined is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -23,7 +23,7 @@ Although I do keep the examples in these basics sections of my post simple, this
 
 ### - The source code examples in this post are on Github
 
-In my test vjs project on Github I have the source code examples of this post, as well as the source code examples for my [many other posts on vanilla javaScript topics](/categories/js/).
+In my [test vjs project on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-delete) I have the source code examples of this post, as well as the source code examples for my [many other posts on vanilla javaScript topics](/categories/js/).
 
 ### 1.1 - javaScript delete basic example
 
