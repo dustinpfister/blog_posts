@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2020-11-23 18:41:50
-version: 1.17
+updated: 2021-11-06 10:10:32
+version: 1.18
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -39,9 +39,13 @@ console.log(n * n * n * n); // 25.000000000000007
 
 So there we have it a basic nth root method that seems to work they way it should. However what is the big deal with nth root? Is there some kind of project where a Math method such as this would come into play? I Guess now it is a question of looking for and see about making artful and practical use case examples of nth root.
 
-## 2 - Practical example of nth root dealing with interest
+## 2 - Practical example of nth root
 
-I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples. There is however at least a [few practical examples of nth root however](https://www.quora.com/What-is-the-practical-usefulness-of-learning-the-Nth-root-of-a-number), one such example might have to do with compounding interest. For example what if I want to know an interest rate that I need to see in order to double an investment of one hundred dollars over say seven years? I can pass 2 for the value of n, and 7 for the degree and get a value of around 1.104, or in another way 10.4%. I can then confirm this by using that value with the Math.pow method to see if it results in double the money, and when I do it indeed does given me just that.
+I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples rather than ones that might prove to be useful for some kind of real problem. There is however at least a [few practical examples of nth root however](https://www.quora.com/What-is-the-practical-usefulness-of-learning-the-Nth-root-of-a-number).
+
+### 2.1 -  Dealing with interest
+
+One such example might have to do with compounding interest and that can often prove to be useful when it comes to figuring out something g that has to do with money, regardless of it is game money or real worked money. For example what if I want to know an interest rate that I need to see in order to double an investment of one hundred dollars over say seven years? I can pass 2 for the value of n, and 7 for the degree and get a value of around 1.104, or in another way 10.4%. I can then confirm this by using that value with the Math.pow method to see if it results in double the money, and when I do it indeed does given me just that.
 
 ```js
 var nthRoot = function (n, degree) {
