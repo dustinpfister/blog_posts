@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2021-11-06 11:32:12
-version: 1.22
+updated: 2021-11-06 11:39:23
+version: 1.23
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -43,7 +43,9 @@ I am sure that there are many use case examples of nth root, but I would not be 
 
 ### 2.1 - Getting the base of a value that is the result of Math.pow
 
-When it comes to using the Math.pow method the first argument that is given is a base, and the second argument that is given is an exponent. The resulted result of calling this method is then a power that is the given base that is then raised to the given exponent. So then there is the question of getting into [inverse functions](/2021/07/23/js-function-inverse/) for this function, that is having a function where if the exponent is known, but not the base, having a function where I can pass the power and the exponent to have the base returned. There is also the question of how to go about making another kind of function that will give me the exponent when all I know is the base.
+When it comes to using the Math.pow method the first argument that is given is a base, and the second argument that is given is an exponent. The resulted result of calling this method is then a power that is the given base that is then raised to the given exponent. So then there is the question of getting into [inverse functions](/2021/07/23/js-function-inverse/) for this function, that is having a function where if the exponent is known, but not the base, having a function where I can pass the power and the exponent to have the base returned. 
+
+There is also the question of how to go about making another kind of function that will give me the exponent when all I know is the base and the power. I have found that the [Math log](/2018/12/26/js-math-log/) method can be used to make this kind of method.
 
 ```js
 var nthRoot = function (n, degree) {
