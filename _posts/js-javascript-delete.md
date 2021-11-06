@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2021-11-06 08:29:12
-version: 1.24
+updated: 2021-11-06 08:35:49
+version: 1.25
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or [undefined](/2019/01/30/js-javascript-undefined/) is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -61,7 +61,7 @@ So then the delete operator serves a purpose because it can potentially be used 
 
 ### 1.3 - Can not delete variables
 
-The delete operator expects an object property to the right of it when used in an expression. It can not be used to delete variables, unless it is a property of an object, and that property can be deleted.
+The delete operator expects an object property to the right of it when used in an expression. It can not be used to delete variables, unless it is a property of an object, and that property can be deleted. For example if I create a variable with say the var keyword, I can not just use the name of that variable with the delete operator. However if that variable is also a property of some kind of object that of course it can be deleted that way.
 
 ```js
 // can not delete variables (in nodejs)
