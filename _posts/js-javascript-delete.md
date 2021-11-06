@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2021-11-06 08:35:49
-version: 1.25
+updated: 2021-11-06 08:38:47
+version: 1.26
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or [undefined](/2019/01/30/js-javascript-undefined/) is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -132,7 +132,7 @@ In this example I am using the JSON trick to clone an object, maybe not the best
 
 The delete operator will actually delete an object property which is very different from setting it to a value such as undefined. When reading object properties that are empty the resulting value us undefined, however this is actually a little misleading, the true value is not even that, it is empty, it is not even there are all. That is because an object property can be defined, but with a value that is undefined. I know that might should a little confusing, and yes it is, but maybe there is something that can be done to help with that confusion.
 
-In this section I will be going over some Objects that are indexed objects. These objects should help to give you a better understanding over what the difference is between having elements of an object that are undefined, and elements that are truly empty.
+In this section I will be going over some Objects that are indexed objects that is objects with numbered public keys and also a length property. Such objects are formated like that of arrays actuality in fact they can easily be covered into them by using something like the [array from method](/2020/01/27/js-array-from/). These objects should help to give you a better understanding over what the difference is between having elements of an object that are undefined, and elements that are truly empty.
 
 ### 2.1 - Object with undefined keys, and an empty object
 
