@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2021-11-06 10:16:17
-version: 1.19
+updated: 2021-11-06 10:17:25
+version: 1.20
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -46,6 +46,31 @@ I am sure that there are many use case examples of nth root, but I would not be 
 ### 2.1 - Getting the base of a value that is the result of Math.pow
 
 When it comes to using the Math.pow method the first argument that is given is a base, and the second argument that is given is an exponent. The resulted result of calling this method is then a power that is the given base that is then raised to the given exponent. So then there is the question of getting into inverse functions for this function, that is having a function where if the exponent is known, but not the base, having a function where I can pass the power and the exponent to have the base returned. There is also the question of how to go about making another kind of function that will give me the exponent when all I know is the base.
+
+```js
+var nthRoot = function (n, degree) {
+    return Math.pow(n, 1 / degree);
+};
+ 
+// get the base of a value if exp is known
+var getBase = function (n, exp) {
+    return nthRoot(n, exp);
+};
+// get exp of a value if the base is known
+var getExp = function (n, base) {
+    return Math.log(n) / Math.log(base);
+};
+ 
+// demos of getBase
+console.log(getBase(Math.pow(7, 4), 4)); // 7
+console.log(getBase(Math.pow(7, 5), 5)); // 7.000000000000001
+console.log(getBase(Math.pow(7, 6), 6)); // 6.999999999999999
+ 
+// demos of getExp
+console.log(getExp(Math.pow(7, 4), 7)); // 7
+console.log(getExp(Math.pow(7, 5), 7)); // 5.000000000000001
+console.log(getExp(Math.pow(7, 6), 7)); // 6.000000000000001
+```
 
 ### 2.2 -  Dealing with interest
 
