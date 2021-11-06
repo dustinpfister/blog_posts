@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-06 14:19:53
-version: 1.55
+updated: 2021-11-06 14:21:43
+version: 1.56
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -558,6 +558,8 @@ parent.addEventListener('click', clickParent);
 ```
 
 ### 7.3 - Get parent element example
+
+So then this event propagation can be used as one of many ways to go about [getting a reference to a parent element](/2019/02/21/js-get-parent-element/).
 
 ```html
 <html>
