@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2021-11-06 13:21:12
-version: 1.27
+updated: 2021-11-06 13:23:39
+version: 1.28
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -47,9 +47,9 @@ console.log(n * n * n * n); // 25.000000000000007
 
 So there we have it a basic nth root method that seems to work they way it should. However what is the big deal with nth root? Is there some kind of project where a Math method such as this would come into play? I Guess now it is a question of looking for and see about making artful and practical use case examples of nth root.
 
-## 2 - Practical example of nth root
+## 2 - Practical examples of nth root
 
-I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples rather than ones that might prove to be useful for some kind of real problem. There is however at least a [few practical examples of nth root however](https://www.quora.com/What-is-the-practical-usefulness-of-learning-the-Nth-root-of-a-number).
+I am sure that there are many use case examples of nth root, but I would not be surprised if the bulk of them are artful examples rather than ones that might prove to be useful for some kind of real problem. Artful examples can often prove to be piratical examples actually I suppose of what it is that I am workong on is some kind of artful thing when it comes to finding ways to use the nth root method for such projects. There is however at least a [few practical examples of nth root however](https://www.quora.com/What-is-the-practical-usefulness-of-learning-the-Nth-root-of-a-number).
 
 ### 2.1 - Getting the base of a value that is the result of Math.pow
 
