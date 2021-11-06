@@ -41,11 +41,6 @@ js-window-inner-width-height
 js-javascript-iframe
 -->
 
-### (   ) - js-filereader  ( old )
-* (done) have 5+ internal links for the post
-* (done) edit post to 1,000+ words
-* edit post to 1,800+ words
-
 ### (   ) - js-call-object ( no internal links )
 * have 5+ internal links for the post
 
@@ -90,6 +85,11 @@ js-javascript-iframe
 * (done) edit post to 2,400+ words
 * write about attach-to-parent example in js-get-parent-element and link to the post
 * (done) have 5+ internal links for the post
+
+### ( done 11/06/2021 ) - js-filereader  ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
+* (done) edit post to 1,800+ words
 
 ### ( done 11/06/2021 ) - js-nth-root ( no internal links )
 * (done) have 5+ internal links for the post
