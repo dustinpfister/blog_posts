@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2021-11-06 11:39:23
-version: 1.23
+updated: 2021-11-06 13:11:19
+version: 1.24
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -15,7 +15,12 @@ Well in this post I will be going over a quick example of how to go about workin
 
 <!-- more -->
 
-## 1 - nth root and math pow
+## 1- The Nth root basics in javaScript
+
+In the Math object in core javaScript there are a number of useful methods that have to do with various subjects in math such a [Trigonometry](https://en.wikipedia.org/wiki/Trigonometry) such as Math.atan2, Math.cos, and so forth. There is also a square root method to work with, but there is not Cubed root, or Nth root method, so in this section I will be going over a simple way to go about making this kind of method when it comes to starting to create a collection of additional Math methods that might be needed here and there in various projects.
+
+
+### 1.1 - nth root and math pow
 
 One solution is to use the [Math.pow](/2019/12/10/js-math-pow/) method to get the nth root of a given root number and degree. This works by just passing the root number as the base for Math.pow, and then diving 1 by the degree number to get the exponent argument for the Math pow to get a value that can be the return value for nth root.
 
