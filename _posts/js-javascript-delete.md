@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2021-11-06 08:48:20
-version: 1.30
+updated: 2021-11-06 08:52:50
+version: 1.31
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or [undefined](/2019/01/30/js-javascript-undefined/) is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -216,4 +216,4 @@ console.log(Object.keys(obj).length); // 3 public (enumerable) keys
 
 ## 3 - Conclusion
 
-Hopefully you learned a thing or two about the delete operator in javaScript today. It can come in handy in some situations but is not always the best tool for the job. For the most part when I am working on projects I can not say that I use the delete operator often, but it is nice to know that it is there in the event that I do need it for some reason.
+Hopefully you learned a thing or two about the delete operator in javaScript today. It can come in handy in some situations but is not always the best tool for the job. For the most part when I am working on projects I can not say that I use the delete operator often, as I like to created and use libraries and tools like that of [object pools](/2020/07/20/canvas-example-object-pool/) that are a way to just keep using the same collection of objects and prosperities over and over again rather than created and deleting things as needed. However it is nice to know that it is there in the event that I do need it for some reason.
