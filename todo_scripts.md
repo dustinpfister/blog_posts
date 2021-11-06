@@ -2,6 +2,8 @@
 
 This is a todo list for the scripts folder.
 
+## () - cli/report-pec bug fix
+* when the first commit of the day is made no files show up
 
 ## () - cli/report-wcdeltas
 * use /lib/diff-days to get an array of commit day objects
