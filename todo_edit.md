@@ -81,9 +81,9 @@ js-javascript-iframe
 * have 5+ internal links for the post
 * proof read full text
 
-### () -  js-event-object ( relevant to Clucker.js dev )
+### ( done 11/06/2021 ) -  js-event-object ( relevant to Clucker.js dev )
 * (done) edit post to 2,400+ words
-* write about attach-to-parent example in js-get-parent-element and link to the post
+* (done) write about attach-to-parent example in js-get-parent-element and link to the post
 * (done) have 5+ internal links for the post
 
 ### ( done 11/06/2021 ) - js-filereader  ( old )
