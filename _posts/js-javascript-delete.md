@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2021-11-06 08:38:47
-version: 1.26
+updated: 2021-11-06 08:41:09
+version: 1.27
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or [undefined](/2019/01/30/js-javascript-undefined/) is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -136,7 +136,7 @@ In this section I will be going over some Objects that are indexed objects that 
 
 ### 2.1 - Object with undefined keys, and an empty object
 
-Maybe the best way to understand the difference between empty and defiled but undefined is to take into account the following example involving two objects.
+Maybe a good way to understand the difference between truly empty, and defined but undefined is to take into account the following example involving two objects. One object has a bunch of numbered public keys, but each key has a value of undefined, the other object is just simply an empty object that has no public, or private keys defined at all.
 
 ```js
 // an object with three indexed keys each set to undefined
