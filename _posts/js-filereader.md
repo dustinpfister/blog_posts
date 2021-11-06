@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-10-13 12:27:56
-version: 1.29
+updated: 2021-11-06 13:33:02
+version: 1.30
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use XMLHttpRequest or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -22,6 +22,10 @@ Creating and loading files on the users local file system will involve the use o
 So for now in this section I will be making a very basic use case example of the FileReader constructor that will just load a json file, and display the values in a div element. The JSON file will just be some very basic object that just contains a few number primitives. In a read project this might be some kind of game state file that will be far more complex, or exist as some kind of binary format outside that of JSON. However for just a basic example this should work just file.
 
 In this section I also often add in some additional details when it comes to anything else you should know about when it comes to continuing to read the rest of this post. For example I assume that you have at least some background with html and javaScript, if not you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-strated/). With that said there are all kinds of little details that I am not going to be getting into detail here such as [what a constructor function is](/2019/02/27/js-javascript-constructor/), and that is the kind of function the File Reader constructor is.
+
+### - The source code examples in this post are on github
+
+The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-filereader), along with all my other vanilla javaScript examples that I write posts about. I still have a lot more planed out for this post when it comes to additional examples, as well as code examples that have to do with alternatives to using File Reader. As such the Github repository may have more up to date source code examples compared to what I have here thus far, this content like many other posts is still very much a work in progress.
 
 ### 1.1 - The json
 
@@ -76,10 +80,6 @@ el_files.addEventListener('change', function (e) {
 ```
 
 When I have this example opened up in my browser I am able to open the json file and have the values displayed in the browser window as expected. Although this might not be anything that interesting the basic idea is there. I am able to open a file store in the local file system and then use that file in a very basic example of the file reader constructor. In a real example this json file could contain all kinds of state information that would be some kind of save state, and users could easily hack the values to cheat in the game of they wanted to.
-
-### 1.3 - The source code examples in this post are on github
-
-The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-filereader), along with all my other vanilla javaScript examples that I write posts about. I still have a lot more planed out for this post when it comes to additional examples, as well as code examples that have to do with alternatives to using File Reader. As such the Github repository may have more up to date source code examples compared to what I have here thus far, this content like many other posts is still very much a work in progress.
 
 ## 2 - Starting a Copy and paste type system with text area elements
 
