@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 625
-updated: 2021-11-06 13:12:48
-version: 1.25
+updated: 2021-11-06 13:16:54
+version: 1.26
 ---
 
 Often I end up using [Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt) in projects whenever I need to get the square root of a number. However what if I want the [nth root](https://en.wikipedia.org/wiki/Nth_root) of a number? Such as the cubed root of a number, or any other degree beyond of that of just the number 2 that is what I am set with when using the Math sqrt method. I can not say that I end up having to use this kind of method that often, but still there does not seem to be a built in mMath object method for it.
@@ -18,6 +18,8 @@ Well in this post I will be going over a quick example of how to go about workin
 ## 1- The Nth root basics in javaScript
 
 In the Math object in core javaScript there are a number of useful methods that have to do with various subjects in math such a [Trigonometry](https://en.wikipedia.org/wiki/Trigonometry) such as [Math.atan2](/2019/03/19/js-math-atan2/), Math.cos, and so forth. There is also a square root method to work with, but there is not Cubed root, or Nth root method, so in this section I will be going over a simple way to go about making this kind of method when it comes to starting to create a collection of additional Math methods that might be needed here and there in various projects.
+
+Although I will be keeping the examples in this section fairly simple I assume that you have at least enough experience to know how to get to the point where you can start playing around with simple source cod examples. If not there is my [main getting started with javaScript type post](/2018/11/27/js-getting-started/), as well as my other post that is a great way to go about [getting started with the javaScript console](/2019/07/29/js-getting-started-javascript-console/) that involves using features of a web browser only.
 
 
 ### 1.1 - nth root and math pow
