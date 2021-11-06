@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 387
-updated: 2021-11-06 08:19:00
-version: 1.19
+updated: 2021-11-06 08:20:00
+version: 1.20
 ---
 
 The [JavaScript delete](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/delete) operator might not come up that often in code examples, but once in a while it might be needed as a way to remove object properties. The reason why I say that it does not come up often is because all of the time thus far setting the value of an object property to something like null or undefined is good enough. In addition I often just keep reusing the same resources in many of my projects so there is not really a need to delete an object property to begin with.
@@ -17,7 +17,7 @@ However that is not to say that there are not reasons to use the delete operator
 
 ## 1 - javaScript delete basics
 
-In this section I will be starting out with just a few basic examples of the javaScript delete keyword. The main thing about this is that the delete keyword will tottaly delete an object property which differs from setting the value of a property to a value of undefined. This might also present the main area of confusion also as the default value for an object property that does not exist is also undefined. So in other words it is possible for a key of an object to exist, but have a value of undefined, and it is also possible for a key of an object to just not exist at all but when it is accessed the value of the key is, well, undefined.
+In this section I will be starting out with just a few basic examples of the javaScript delete keyword. The main thing about this is that the delete keyword will totally delete an object property which differs from setting the value of a property to a value of undefined. This might also present the main area of confusion also as the default value for an object property that does not exist is also undefined. So in other words it is possible for a key of an object to exist, but have a value of undefined, and it is also possible for a key of an object to just not exist at all but when it is accessed the value of the key is, well, undefined.
 
 ### 1.1 - javaScript delete
 
