@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-04 14:36:05
-version: 1.54
+updated: 2021-11-06 14:19:53
+version: 1.55
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -470,6 +470,222 @@ window.addEventListener('keyup', function(e){
 </html>
 ```
 
-## 7 - Conclusion
+## 7 - Event propagation, event object target, current target, and stop propagation method
+
+### 7.1 - Basic example of event propagation, target and current target properties of an event object
+
+```html
+<html>
+    <head>
+        <title>Get parent element on event</title>
+        <style>
+div{position:relative;}
+.parent{width:200px;height:200px;background:gray;}
+.child{width:32px;height:32px;background:lime;}
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child" style="left:157px;top:0px;"></div>
+            <div class="child" style="left:25px;top:70px;"></div>
+            <div class="child" style="left:98px;top:12px;"></div>
+        </div>
+        <div class="out"></div>
+        <script>
+var parent = document.querySelector('.parent'),
+out = document.querySelector('.out');
+parent.addEventListener('click', function(e){
+    if(e.target.className === 'child'){
+        out.innerText = 'clicked child';
+    }
+    if(e.target === e.currentTarget){
+        out.innerText = 'clicked parent';
+    }
+});
+        </script>
+    </body>
+</html>
+```
+
+### 7.2 - Stop propagation
+
+```html
+<html>
+    <head>
+        <title>Get parent element on event</title>
+        <style>
+div{position:relative;}
+.parent{width:200px;height:200px;background:gray;}
+.child{width:32px;height:32px;background:lime;}
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="child" style="left:157px;top:0px;"></div>
+            <div class="child" data-mess="Hello I have something to say!" style="left:25px;top:70px;"></div>
+            <div class="child" style="left:98px;top:12px;"></div>
+        </div>
+        <div class="out"></div>
+        <script>
+var parent = document.querySelector('.parent'),
+out = document.querySelector('.out');
+// click hander for a child
+var clickChild = function(e){
+    if(e.target.dataset.mess){
+        out.innerText = e.target.dataset.mess;
+        e.stopPropagation();
+    }
+};
+// click hander for a parent
+var clickParent = function(e){
+    if(e.target.className === 'child'){
+        out.innerText = 'Nothing here!';
+    }
+    if(e.target === e.currentTarget){
+        out.innerText = 'clicked parent net';
+    }
+};
+// attaching for each child
+[].forEach.call(parent.children, function(child){
+    console.log(child);
+    child.addEventListener('click', clickChild);
+});
+// attaching just once for the parent
+parent.addEventListener('click', clickParent);
+        </script>
+    </body>
+</html>
+```
+
+### 7.3 - Get parent element example
+
+```html
+<html>
+    <head>
+        <title>Get parent element on event</title>
+        <style>
+#wrap_main{
+  width:640px;height:480px;background:black;
+}
+#wrap_header{
+  height:120px;background:green;
+}
+#wrap_logo{
+  width:120px;height:120px;background:blue;
+}
+#wrap_content{
+  width:360px;height:auto;background:red;
+  margin: 20px;padding:20px;
+}
+.block_div{
+  display:inline-block;width:64px;height:64px;background:cyan;
+  margin:10px;
+}
+canvas{
+  display:inline-block;width:64px;height:64px;background:black;
+  margin:10px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap_main">
+            <div id="wrap_header" class="custom_action">
+                <div id="wrap_logo"></div>
+            </div>
+            <div id="wrap_content">
+                <div class="block_div custom_action"></div>
+                <div class="block_div"></div>
+                <div class="block_div custom_action"></div>
+                <canvas width="64" height="64"></canvas>
+            </div>
+        </div>
+        <script>
+var forParentChildren = function(parent, opt){
+    opt = opt || {};
+    opt.forOnly = opt.forOnly || ['*']
+    opt.forChild = opt.forChild || function(){};
+    opt.forParent = opt.forParent || function(){};
+    // if parent is a string assume it is a query string to get one
+    if(typeof parent === 'string'){
+        parent = document.querySelector(parent);
+    }
+    // the listener
+    var listener = function(e){
+        var callForChild = false,
+        child = e.target,
+        i = opt.forOnly.length;
+        while(i--){
+            // if first char === '*' set true and break
+            if(opt.forOnly[i][0] === '*'){
+                callForChild = true;
+                break;
+            }
+            // if first char === '.' check className prop
+            if(opt.forOnly[i][0] === '.'){
+                var classNames = child.className.split(' '),
+                ci = classNames.length;
+                while(ci--){
+                    if('.' + classNames[ci] === opt.forOnly[i]){
+                        callForChild = true;
+                        break;
+                    }
+                }
+            }
+            // if first char === '#' check id prop
+            if(opt.forOnly[i][0] === '#'){
+                if(opt.forOnly[i] === '#' + child.id){
+                    callForChild = true;
+                    break;
+                }
+            }
+            // check node name
+            if(opt.forOnly[i].toUpperCase() === child.nodeName.toUpperCase()){
+                    callForChild = true;
+                    break;
+            }
+        }
+        // call forChild only if e.target is not e.currentTarget
+        if(child != e.currentTarget && callForChild){
+            opt.forChild.call(e, child, e.currentTarget, e, opt);
+        }
+        // always call forParent for what should be the parent element at e.currentTarget
+        opt.forParent.call(e, e.currentTarget, e.currentTarget.children, e, opt);
+    };
+    parent.addEventListener('click', listener);
+};
+// using the method
+forParentChildren('#wrap_main', {
+   forOnly: ['.custom_action', '#wrap_logo', 'canvas'],
+   forChild: function(child, parent, e, opt){
+        var colors = ['orange', 'white', 'lime'],
+        style = colors[Math.floor(Math.random() * colors.length)];
+       // change color if div
+       if(child.nodeName === 'DIV'){
+           child.style.background = style
+       }
+       if(child.nodeName === 'CANVAS'){
+           var box = child.getBoundingClientRect(),
+           x = e.clientX - box.left,
+           y = e.clientY - box.top,
+           ctx = child.getContext('2d');
+           //child.width = 64;
+           //child.height = 64;
+           ctx.beginPath();
+           ctx.fillStyle = style;
+           ctx.arc(x,y,5,0, Math.PI * 2);
+           ctx.closePath();
+           ctx.fill();
+       }
+   },
+   forParent: function(parent, children, e, opt){
+        //console.log(parent.id)
+   }
+});
+        </script>
+    </body>
+</html>
+```
+
+## 8 - Conclusion
 
 So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
