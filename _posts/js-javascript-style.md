@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2021-11-07 11:40:56
-version: 1.31
+updated: 2021-11-07 11:43:54
+version: 1.32
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -191,6 +191,8 @@ In this example I will be creating a main app loop function using the [request a
 
 ### 4.1 - A main.js javaScript file with a app loop
 
+Here I have the source code for the main javaScript file where I am using the style api to update the position of div elements.
+
 ```js
 // create children
 var createChildren = function (div) {
@@ -252,6 +254,8 @@ loop();
 ```
 
 ### 4.2 - The html file and css
+
+I just need a little HTML now in order to pull all of this together, which will also include a little base CSS for divs, as well as the two classes of divs.
 
 ```html
 <html>
