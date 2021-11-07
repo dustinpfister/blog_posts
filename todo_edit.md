@@ -37,7 +37,6 @@ js-javascript-object-freeze-seal-and-define-property
 js-javascript-form
 js-intl
 js-line-break
-js-window-inner-width-height
 js-javascript-iframe
 -->
 
@@ -80,6 +79,10 @@ js-javascript-iframe
 ### () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
 * have 5+ internal links for the post
 * proof read full text
+
+### ( done 11/07/2021 ) - js-window-inner-width-height
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
 
 ### ( done 11/06/2021 ) -  js-event-object ( relevant to Clucker.js dev )
 * (done) edit post to 2,400+ words
