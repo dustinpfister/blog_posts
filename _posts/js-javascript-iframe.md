@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2020-11-30 10:58:26
-version: 1.19
+updated: 2021-11-07 10:32:08
+version: 1.20
 ---
 
 Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. 
@@ -19,7 +19,9 @@ The subject of iframes can become a little complicated there is much to write ab
 
 ## 1 - javaScript iFrame basics
 
-To get started with iframes there are two general ways of doing so, one would be to add one to the actual hard coded html by editing an html file or template, and the other way would be to create and inject one into a document with something like the document create element method. In this section I will be covering how to go about doing just this involving a single html file. I assume that you have at least some background with javaScript, and html before hand.
+To get started with iframes there are two general ways of doing so, one would be to add one to the actual hard coded html by editing an html file or template, and the other way would be to create and inject one into a document with something like the document create element method. In this section I will be covering how to go about doing just this involving a single html file. 
+
+I assume that you have at least some background with javaScript, html, CSS, and basic computer skills before hand. If not you might want to take a few steps back and start out with some kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post if you are still very new to javaScript.
 
 ### 1.1 - Working with an iFrame that is hard coded into the html
 
