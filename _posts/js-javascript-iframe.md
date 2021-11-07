@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2021-11-07 10:36:25
-version: 1.21
+updated: 2021-11-07 10:37:55
+version: 1.22
 ---
 
 Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. 
@@ -22,6 +22,10 @@ The subject of iframes can become a little complicated there is much to write ab
 To get started with iframes there are two general ways of doing so, one would be to add one to the actual hard coded html by editing an html file or template, and the other way would be to create and inject one into a document with something like the document create element method. In this section I will be covering how to go about doing just this involving a single html file. 
 
 I assume that you have at least some background with javaScript, html, CSS, and basic computer skills before hand. If not you might want to take a few steps back and start out with some kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post if you are still very new to javaScript. Also it might be a good idea to learn how to go about hosting what it is that you are working on by way of the [http protocol](/2017/12/04/nodejs-simple-static-server-file/) rather than that of the file protocol if you are still developing that way. Do not get me wrong I still think that the file protocol is a good way of getting started, it is after all the way that I got started. It is just that there are features of client side javaScript that will not work as they should with certain things unless the html files are being viewed in a browser by way of of the http or https rather than fie protocol and there are some iframe features that will be an example of this.
+
+### - The source code examples here are on Github
+
+The source code examples in this post can be found on Github by way of my test vjs repository, the source code examples for my many oter posts on javaScript can also be found there.
 
 ### 1.1 - Working with an iFrame that is hard coded into the html
 
