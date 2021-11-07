@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2021-11-07 09:30:12
-version: 1.11
+updated: 2021-11-07 09:34:50
+version: 1.12
 ---
 
 The Call object in javaScript is used as a way to store local variables, this call object contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers a way to have a separate collection of variables that are only local to a functions call object. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion with the [call function prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
@@ -19,25 +19,21 @@ So in this post I will be writing about the call object, and function scope loca
 
 ## 1 - Call Object basics in javaScript
 
+In this section I will be going over a few basic examples of the javaScript call object, or activation object which might be a better way or referring to it. The reason why is because there seems to be some confusion when it comes to what the js call object is as when I search for it a lot comes up with the call method of the function prototype.
+
+### 1.1 - A basic example of the call object
+
 The call object or activation object if you prefer is created when a function is called. It is populated with the arguments object, as well as named arguments for the function, and any local variables that are defined with a keyword such as var, let, or const within the body of the function.
 
 ```js
 let func = function (a, b) {
- 
     let c = 5;
- 
     if (arguments.length >= 2) {
- 
         c += 5;
- 
     }
- 
     return a + b + c;
- 
 };
- 
 console.log(func(3, 2)); // 15
-
 ```
 
 This example shows just about everything there is to be aware of when it comes to the call object. In a nut shell the call or activation object refers to arguments, the arguments object, and any local variables defined in the body of the function. The values of the properties of the call object depend on the values that are passed at the time that the function was called, and any additional logic inside the body of the function as well as the current values of any additional global variables that are used as well.
