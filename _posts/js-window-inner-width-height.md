@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2021-11-07 07:41:59
-version: 1.17
+updated: 2021-11-07 07:59:53
+version: 1.18
 ---
 
 The [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object are a way to go about getting the current size of a window in a page. However not the total size of a screen at least not on desktop clients anyway. That is that on mobile devices the innerWidth property might work okay go get an idea of what the width of the screen of the device is, however on desktop systems it might not because the user might not have there browser window maximized or in full screen. Even if that is not the case it might not be the best option to know what you are dealing with, there is the subject of zooming, and also logical pixels.
@@ -25,7 +25,26 @@ In my [test vjs repository on Github](https://github.com/dustinpfister/test_vjs/
 
 ### 1.1 - Basic example of window.innerWidth and window.innerHeight
 
-The basic idea here is that the window.innerWidth, and window.innerHeight properties will generally give the inner width, and height of the browser window in pixels. So maybe a good basic example of this would be to attach a on resize event to the window object, and then display info about the current status of these properties each time the window resizes. If you are not yet familiar with [event listeners](/2019/01/16/js-event-listeners/) and the [event objects](/2020/07/23/js-event-object/) that there are to work with in such listener functions then it might be a good idea to read up more on those topics.
+The basic idea here is that the window.innerWidth, and window.innerHeight properties will generally give the inner width, and height of the browser window in pixels. Logical pixels rather than native ones actually, but maybe that is a matter for a more advanced section if I get to it.
+
+```html
+<html>
+    <head>
+        <title>window innerWidth and innerHeight</title>
+    </head>
+    <body>
+        <script>
+var p = document.createElement('p');
+p.innerText = window.innerWidth + ', ' + window.innerHeight;
+document.body.appendChild(p);
+        </script>
+    </body>
+</html>
+```
+
+### 1.2 - Get up to date info of a page on each resize event
+
+Maybe it is a good idea to have a basic example of window inner width and height that involves attaching an on resize event to the window object, and then display info about the current status of these properties each time the window resizes. If you are not yet familiar with [event listeners](/2019/01/16/js-event-listeners/) and the [event objects](/2020/07/23/js-event-object/) that there are to work with in such listener functions then it might be a good idea to read up more on those topics.
 
 So then I have a div element that I will be using to display the info of the window properties and I am assigning an id to it. I am then using the [document get element by id method](/2018/12/27/js-document-getelementbyid/) to get a reference to the div element. I then have an update function that will set the inner text of the div element to what the values of the inner width and height values are, to which I call after defining it to make sure that starting values are set for the div. After that I am attaching an on resize event listener to the window object by calling the add event listener method and passing resize as the event, and then the function that I want to call for each resize. Inside the body of the event hander I am calling the update function.
 
