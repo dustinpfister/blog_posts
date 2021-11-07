@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2021-11-07 07:23:20
-version: 1.14
+updated: 2021-11-07 07:32:31
+version: 1.15
 ---
 
 The [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object are a way to go about getting the current size of a window in a page. However not the total size of a screen at least not on desktop clients anyway. That is that on mobile devices the innerWidth property might work okay go get an idea of what the width of the screen of the device is, however on desktop systems it might not because the user might not have there browser window maximized or in full screen. Even if that is not the case it might not be the best option to know what you are dealing with, there is the subject of zooming, and also logical pixels.
@@ -19,9 +19,15 @@ Still these properties are useful for the sake of getting the inner width, and h
 
 For this section I will just be starting out with the very basics of using the inner width and height properties in client side javaScript. Although the examples in this section will be very simple this is still [not a getting started post on client side javaScript](/2018/11/27/js-getting-started/).
 
+### - These source code examples are on Github
+
+In my [test vjs repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-window-inner-width-height) the source code examples in this post can be found there. In addition to this the source code examples for my [many other posts on javaScript](/categories/js/) can be found there also.
+
 ### 1.1 - Basic example of window.innerWidth and window.innerHeight
 
 The basic idea here is that the window.innerWidth, and window.innerHeight properties will generally give the inner width, and height of the browser window in pixels. So maybe a good basic example of this would be to attach a on resize event to the window object, and then display info about the current status of these properties each time the window resizes.
+
+So then I have a div element that I will be using to display the info of the window properties and I am assigning an id to it. I am then using the document get element by id method to get a reference to the div element. After that I am attaching an on resize event listener to the window object by calling the add event listener method and passing resize as the event, and then the function that I want to call for each resize. Inside the body of the event hander I am calling the update function.
 
 ```html
 <html>
