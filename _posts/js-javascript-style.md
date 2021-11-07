@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2021-11-07 11:35:59
-version: 1.29
+updated: 2021-11-07 11:37:40
+version: 1.30
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -186,6 +186,8 @@ However when creating div elements I do need to still set the class name that I 
 There is a great deal more than can be done with an example such as this. If I get some time to expand this post more at some point in the future I think I will add a few more examples of this div grid thing when it comes to adding events and so forth.
 
 ## 4 - Moving divs example
+
+In this example I will be creating a main app loop function using the [request animation frame method](/2018/03/13/js-request-animation-frame/) to do so.
 
 ### 4.1 - A main.js javaScript file with a app loop
 
