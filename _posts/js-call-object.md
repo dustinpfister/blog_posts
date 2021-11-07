@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2021-11-07 09:44:02
-version: 1.16
+updated: 2021-11-07 10:06:14
+version: 1.17
 ---
 
 The Call object in javaScript is used as a way to store local variables, this call object contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers a way to have a separate collection of variables that are only local to a functions call object. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion with the [call function prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
@@ -22,6 +22,10 @@ So in this post I will be writing about the call object, and function scope loca
 In this section I will be going over a few basic examples of the javaScript call object, or activation object which might be a better way or referring to it. The reason why is because there seems to be some confusion when it comes to what the js call object is as when I search for it a lot comes up with the [call method of the function prototype](/2017/09/21/js-call-apply-and-bind/). The subject of the function call method is not to far off from the subject of the activation object, they both have to do with the inner value of things inside the body of a function. However the function call prototype method has more to do with setting the value of the this keyword inside a function, and not so much with any local variables defined inside the body of the function that are part of the function level variable scope of that function which is more what the activation or call object is all about.
 
 Although this section will contain very basic examples, it is not a [getting started with javaScript post](/2018/11/27/js-getting-started/) which is where you might want to start if you are still very new with javaScript. Also even if you have some expected with javaScript it might also be a good idea to learn a thing or two more about [functions in general with javaScript](/2019/12/26/js-function/).
+
+### - The source code examples in this post are on Github
+
+The source code examples in this post can be [found in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-call-object) on Github. I have got into the habit of making sure that all of the source code that I write and gather is in a for post folder in that repository so this should be, or at some point will be the case with all [my other posts on vanilla javaScript](/categories/js/) also.
 
 ### 1.1 - A basic example of the call object
 
