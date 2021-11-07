@@ -52,10 +52,6 @@ js-line-break
 * have 5+ internal links for the post
 * edit post to 1,400+ words
 
-### () - js-javascript-style ( old )
-* have 5+ internal links for the post
-* edit post to 1,700+ words
-
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -92,6 +88,10 @@ js-line-break
 ### () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
 * have 5+ internal links for the post
 * proof read full text
+
+### ( done 11/07/2021 ) - js-javascript-style ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,700+ words
 
 ### ( done 11/07/2021 ) - js-javascript-iframe
 * (done) have 5+ internal links for the post
