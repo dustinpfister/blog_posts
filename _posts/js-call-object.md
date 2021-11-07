@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2021-11-07 10:19:44
-version: 1.18
+updated: 2021-11-07 10:23:13
+version: 1.19
 ---
 
 The Call object in javaScript is used as a way to store local variables, this call object contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers a way to have a separate collection of variables that are only local to a functions call object. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion with the [call function prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
@@ -94,3 +94,5 @@ To make functions in line with functional programing, globals should be passed a
 ## 3 - Conclusion
 
 So in other words the call object is something that is also often called local variables. That is local variables that are local to the body of a function and are then at the front of the scope chain. A call object is created each time a function is called and it contains the current state of arguments that where passed when it was called along with any local variables that are defined within the body of the function, and the arguments object.
+
+There may be some more things to write about when it comes to the javaScript call object, and maybe it is possible to frame things in a different way that helps to given a better idea of what the situation is here when it comes to this specific topic. I do get around to editing my content now and then, and with that said there is making a pull request in the test vjs repository, or maybe better yet leaving a comment on this post when  it comes to bring something up that might need to be addressed.
