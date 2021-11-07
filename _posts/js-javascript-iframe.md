@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 375
-updated: 2021-11-07 10:40:14
-version: 1.23
+updated: 2021-11-07 10:45:07
+version: 1.24
 ---
 
 Sometimes it is called for to do something that involves the use of an [iFrame](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe) element, when it comes to developing a client side system with javaScript. An iframe is a way to have another html page inside an html page, when it comes to javaScript it is also a way to have another window object to work with. 
@@ -29,7 +29,7 @@ The source code examples in this post can be found on Github by way of my [test 
 
 ### 1.1 - Working with an iFrame that is hard coded into the html
 
-When working with an iframe that is hard coded into the html the process is to just gain a reference to it by using something like document.querySelector, document.getElementById, or any other means that will result in the creation of a reference to the hard coded iFrame element in the html of the page.
+When working with an iframe that is hard coded into the html the process is to just gain a reference to it by using something like [document.querySelector](/2020/06/23/js-document-queryselector/), [document.getElementById](/2018/12/27/js-document-getelementbyid/), or any other means that will result in the creation of a reference to the hard coded iFrame element in the html of the page.
 
 ```html
 <html>
