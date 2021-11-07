@@ -37,8 +37,28 @@ js-javascript-object-freeze-seal-and-define-property
 js-javascript-form
 js-intl
 js-line-break
-js-javascript-iframe
+
 -->
+
+### () - js-line-break ( old )
+* have 5+ internal links for the post
+* edit post to 1,000+ words
+
+### () - js-javascript-svg ( old )
+* have 5+ internal links for the post
+* edit post to 1,000+ words
+
+### () - js-touch-events ( old )
+* have 5+ internal links for the post
+* edit post to 1,400+ words
+
+### () - js-javascript-style ( old )
+* have 5+ internal links for the post
+* edit post to 1,700+ words
+
+### () - js-javascript-iframe
+* have 5+ internal links for the post
+* edit post to 1,400+ words
 
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
