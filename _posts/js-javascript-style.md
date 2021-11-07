@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2021-11-07 10:49:16
-version: 1.25
+updated: 2021-11-07 10:52:37
+version: 1.26
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -24,6 +24,10 @@ I assume that you have at least some knowledge of how to work with javaScript in
 The style API is a property of an HTML element reference that serves as a way to intact with the in-line CSS style of that element via JavaScript code. This is a more dynamic way of controlling CSS rather than the use of the hard coded HTML style attribute of the element, or an external CSS file loaded into the page via a link element. This differs from any additional style rules that may apply to the element via class names, ids and other selectors in the CSS of a project.
 
 In case you did not know style values set via the javaScript style API supersede all other style rules that may be in effect by way of hard coded CSS. This means that style API values will override CSS values that are defined by way of a style element, the in-line style attribute of an element, or an external CSS file. So in some cases where the style API is call for it can be used to overwrite anything that may be in effect via the hard coded CSS of a page.
+
+### - the source code exmaples here are on Github
+
+The [test vjs repository on my Guhub](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-style) account is where I am parking the source code examples that I have slapped together for this post. In this repository I also have all the various other source code examples for [my many other posts on client side javaScript](/categories/js/).
 
 ### 1.1 - Get in-line javaScript style
 
