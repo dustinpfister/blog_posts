@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2021-11-07 09:36:06
-version: 1.13
+updated: 2021-11-07 09:38:14
+version: 1.14
 ---
 
 The Call object in javaScript is used as a way to store local variables, this call object contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers a way to have a separate collection of variables that are only local to a functions call object. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion with the [call function prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
 
 What is gained by way of a js call object is of course on top of the block scope that also helps with reducing the changes of name space collisions, and pollution of global variable space. Block variable scope is however a feature of javaScript that was introduced in modern specs of javaScript, in the bast javaScript had function level only variable scope.
 
-So in this post I will be writing about the call object, and function scope local variables in javaScript. Also I will be at least touching base on some related topics such as the Function call prototype method, and the nature of the this keyword in core javaScript while I am at it.
+So in this post I will be writing about the call object, and function scope local variables in javaScript. Also I will be at least touching base on some related topics such as the Function call prototype method, and the nature of the [this keyword](/2017/04/14/js-this-keyword/) in core javaScript while I am at it.
 
 <!-- more -->
 
