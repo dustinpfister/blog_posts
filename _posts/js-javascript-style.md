@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2021-11-07 10:52:37
-version: 1.26
+updated: 2021-11-07 10:53:37
+version: 1.27
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -31,7 +31,7 @@ The [test vjs repository on my Guhub](https://github.com/dustinpfister/test_vjs/
 
 ### 1.1 - Get in-line javaScript style
 
-To get a style value that was set via the style attribute in the HTML element first I will need to get a reference to that element. One tired yet true way to do so is to use the document.getElementById method. There are many more modern alternatives to this method of course, however part of the appeal to working with the style API is that it will work in really old browsers, so it makes sense to stick to older methods of doing things as a way to make sure that things will still work. 
+To get a style value that was set via the style attribute in the HTML element first I will need to get a reference to that element. One tired yet true way to do so is to use the [document.getElementById](/2018/12/27/js-document-getelementbyid/) method. There are many more modern alternatives to this method of course, however part of the appeal to working with the style API is that it will work in really old browsers, so it makes sense to stick to older methods of doing things as a way to make sure that things will still work. 
 
 In any case once there is a reference to the element that I want to set the style for I can use the style API to both get and set CSS rules. For example I can use the color property of the style API to get the current text color of an element.
 
