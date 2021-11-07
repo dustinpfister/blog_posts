@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2021-11-07 10:59:54
-version: 1.28
+updated: 2021-11-07 11:35:59
+version: 1.29
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -185,7 +185,90 @@ However when creating div elements I do need to still set the class name that I 
 
 There is a great deal more than can be done with an example such as this. If I get some time to expand this post more at some point in the future I think I will add a few more examples of this div grid thing when it comes to adding events and so forth.
 
-## 4 - Conclusion
+## 4 - Moving divs example
+
+### 4.1 - A main.js javaScript file with a app loop
+
+```js
+// create children
+var createChildren = function (div) {
+    var i = 10;
+    while (i--) {
+        var child = document.createElement('div');
+        child.className = 'div_child';
+        child.id = 'child_' + i;
+        child.dataset.x = 100;
+        child.dataset.y = 100;
+        child.dataset.pps = 32 + Math.round(64 * Math.random());
+        child.dataset.rps = -Math.PI * 0.5 + Math.PI * 1 * Math.random();
+        child.dataset.heading = Math.PI * 2 * Math.random();
+        div.appendChild(child);
+    }
+};
+// update children using the STYLE API
+var updateChildren = function (div, secs) {
+    [].forEach.call(div.children, function (child) {
+        var x = parseFloat(child.dataset.x),
+        y = parseFloat(child.dataset.y),
+        heading = parseFloat(child.dataset.heading),
+        pps = parseInt(child.dataset.pps);
+        // move by heading and pps
+        x += Math.cos(heading) * pps * secs;
+        y = y += Math.sin(heading) * pps * secs;
+        // update heading
+        heading += parseFloat(child.dataset.rps) * secs;
+        heading %= Math.PI * 2;
+        child.dataset.heading = heading;
+        // wrap
+        x = x < 0 ? parseInt(div.scrollWidth) - 20 : x;
+        x = x > parseInt(div.scrollWidth) - 20 ? 0 : x;
+        y = y < 0 ? parseInt(div.scrollHeight) - 20 : y;
+        y = y > parseInt(div.scrollHeight) - 20 ? 0 : y;
+        // update dataset
+        child.dataset.x = x;
+        child.dataset.y = y;
+        // use style api to update CSS of div
+        child.style.left = x + 'px';
+        child.style.top = y + 'px';
+    });
+};
+// get ref to parent div
+var div_parent = document.querySelector('.div_parent');
+// create and append child divs to the parent div
+createChildren(div_parent);
+var lt = new Date();
+var loop = function () {
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    requestAnimationFrame(loop);
+    if (secs >= 1 / 30) {
+        updateChildren(div_parent, secs);
+        lt = now;
+    }
+};
+loop();
+```
+
+### 4.2 - The html file and css
+
+```html
+<html>
+    <head>
+        <title>javaScript style API example</title>
+        <style>
+div { position: relative;}
+.div_parent { width: 300px; height:300px;background:gray;}
+.div_child { position:absolute;width:20px;height:20px;background:lime;}
+        </style>
+    </head>
+    <body>
+        <div class="div_parent"></div>
+        <script src="main.js"></script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 The javaScript style API might be fun to play with when it comes to just making quick examples that make use of the style API to move elements around the page. However when it comes to doing anything flashy there are better options for doing so such as the canvas element and also there is SVG that might also prove to be a better solution for anything that is going to be a bit animated.
 
