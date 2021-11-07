@@ -40,9 +40,6 @@ js-line-break
 js-javascript-iframe
 -->
 
-### (   ) - js-call-object ( no internal links )
-* have 5+ internal links for the post
-
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -79,6 +76,9 @@ js-javascript-iframe
 ### () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
 * have 5+ internal links for the post
 * proof read full text
+
+### ( done 11/07/2021 ) - js-call-object ( no internal links )
+* (done) have 5+ internal links for the post
 
 ### ( done 11/07/2021 ) - js-window-inner-width-height
 * (done) have 5+ internal links for the post
