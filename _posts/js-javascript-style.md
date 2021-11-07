@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 377
-updated: 2021-11-07 11:37:40
-version: 1.30
+updated: 2021-11-07 11:40:56
+version: 1.31
 ---
 
 The [JavaScript style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) API is one way to go about changing CSS values with a little javaScript code rather than just plain old static [hard coded CSS](https://developer.mozilla.org/en-US/docs/Web/CSS). This is not to be confused with a javaScript [coding style](https://en.wikipedia.org/wiki/Programming_style), which is of course a whole other subject that might be though of as another kind of javaScript style. 
@@ -187,7 +187,7 @@ There is a great deal more than can be done with an example such as this. If I g
 
 ## 4 - Moving divs example
 
-In this example I will be creating a main app loop function using the [request animation frame method](/2018/03/13/js-request-animation-frame/) to do so.
+In this example I will be creating a main app loop function using the [request animation frame method](/2018/03/13/js-request-animation-frame/) to do so. In the main javaScript file that contains this main app loop I also have two helper methods that are used to cerate a collection of child divs for a given parent div, and one to update such a collection of elements for a parent div. It is in the update method that I am using the style api as a way to update the position of the dive elements.
 
 ### 4.1 - A main.js javaScript file with a app loop
 
