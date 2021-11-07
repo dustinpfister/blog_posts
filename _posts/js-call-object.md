@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 370
-updated: 2021-11-07 10:06:14
-version: 1.17
+updated: 2021-11-07 10:19:44
+version: 1.18
 ---
 
 The Call object in javaScript is used as a way to store local variables, this call object contrasts with the global object which is the top most name space where variables are stored. So the call object is a way to help keep the global name space from becoming polluted by giving javaScript developers a way to have a separate collection of variables that are only local to a functions call object. Another term for the call object in javaScript would be the [activation object](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#variable-object-in-function-context), this term might also be used as a way to eliminate confusion with the [call function prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
@@ -44,7 +44,22 @@ console.log(func(3, 2)); // 15
 
 This example shows just about everything there is to be aware of when it comes to the call object. In a nut shell the call or activation object refers to arguments, the arguments object, and any local variables defined in the body of the function. The values of the properties of the call object depend on the values that are passed at the time that the function was called, and any additional logic inside the body of the function as well as the current values of any additional global variables that are used as well.
 
-## 2 - values of the call object can be affected by globals of course
+### 1.2 - The function call prototype method
+
+The call method of the function prototype is one of a few function prototype methods that can be used to change what the value of the this keyword is in the body of a Class prototype method. This includes built in prototype methods like the [for each method](/2019/02/16/js-javascript-foreach/) of the array prototype.
+
+```js
+let func = function () {
+    let p = 0;
+    [].forEach.call(arguments, function (n) {
+        p += n;
+    });
+    return p;
+};
+console.log(func(5,2,3)); // 10 
+```
+
+## 2 - Values of the call object can be affected by globals
 
 For developers that are keen with the practices associated with functional programing it is frowned upon to do so as what I am covering in this section is not consistent with the nature of pure functions. However never the less it is possible to set the values of the local variables of the call object within the body of a function depending the the current value of global variables outside the body of that function.
 
