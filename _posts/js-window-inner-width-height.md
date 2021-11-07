@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 684
-updated: 2020-12-03 10:34:32
-version: 1.12
+updated: 2021-11-07 07:19:53
+version: 1.13
 ---
 
-The [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object are a way to go about getting the current size of a window, but not the total size of a screen. That is that on mobile devices the innerWidth property might work okay go get an idea of what the width of the screen of the device is, however on desktop systems it might not because the user might not have there browser window maximized or in full screen. Even if that is not the case it might not be the best option to know what you are dealing with, there is the subject of zooming, and also logical pixels.
+The [window.innerWidth](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth), and [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight) properties of the window object are a way to go about getting the current size of a window in a page. However not the total size of a screen at least not on desktop clients anyway. That is that on mobile devices the innerWidth property might work okay go get an idea of what the width of the screen of the device is, however on desktop systems it might not because the user might not have there browser window maximized or in full screen. Even if that is not the case it might not be the best option to know what you are dealing with, there is the subject of zooming, and also logical pixels.
 
 Still these properties are useful for the sake of getting the inner width, and height of a browser window in most cases. This information can then be used as a way to center and position elements using javaScript code, and the style API. However there might be better options for doing so when it comes to just using HTML and CSS, in other words looks for a more simple solution first before resorting to javaScript. 
 
