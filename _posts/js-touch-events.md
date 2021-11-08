@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:25:08
-version: 1.28
+updated: 2021-11-08 10:28:22
+version: 1.29
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -218,6 +218,8 @@ I should have at least one of not more basic, and maybe not so bash project exam
 So then in this section I will be going over source code that is my take on a [zoom pinch gesture](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events/Pinch_zoom_gestures). There are many ways of going about making some kind of [pinch detection system](https://stackoverflow.com/questions/11183174/simplest-way-to-detect-a-pinch) when it comes to working with multi touch, but I have found that I just need to work out my own thing for this so I have all the features that I would want when it comes to adjusting certain values.
 
 ### 3.1 - A utility module
+
+For this example I am going to want a distance formula, and also while I am at it I thing I will also barrow another method that I often have in a general untiles module. I have wrote a [javaScript example type post on this kind of module](/2021/08/06/js-javascript-example-utils/) when it comes to looming more into the various kinds of methods that one might have in a library such as this.
 
 ```js
 var utils = {};
