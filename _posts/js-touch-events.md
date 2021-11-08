@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:31:29
-version: 1.30
+updated: 2021-11-08 10:33:34
+version: 1.31
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -356,6 +356,8 @@ Now the the pinch module that is used to cerate and return a pinch object. This 
 ```
 
 ### 3.3 - Draw module
+
+I will then want to have a draw module that will be used to draw the current state of a state object that will be the object that will be effected by the pinch, as well as debug info for the pinch object.
 
 ```js
 var draw = {};
