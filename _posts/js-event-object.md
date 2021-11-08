@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-08 12:21:56
-version: 1.59
+updated: 2021-11-08 12:29:40
+version: 1.60
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -701,6 +701,13 @@ It might be best to check out my [post on using the mouse in javaScript](/2020/0
 So then when going this way with events and working with event objects I often will work out code that I want to work only with touch events, and then code that I want to work only with mouse events. So then in this section I should also touch base on touch events at least, but only for the sake of disabling touch events so that the code will not run for touch events as a touch screen will trigger mouse events actually.
 
 ### 8.1 - A basic mouse down event example
+
+Sense I all ready coved the click event, and also because that event is more of a pointer event, I think I will start off with the mouse down event. This as the same suggest is an event that will fire when a mouse button is pressed, but not yet released. 
+
+Even though this is a mouse event when working on a system that has both a mouse as well as a touch screen I have found that the mouse down event will fire for both mouse button clicks as well as when I use the touch screen. So the way to deal with this is to start out with a touch start event actually, and be sure to call the prevent default method in the body of the hander. The idea here is that I work out separate logic for touch events, otherwise why bother with these events right> I could just go with pointer events.
+
+
+After the touch start event I then attach for the mouse down event. Inside the body of the lander I can use the client x and y properties to get the window relative position where the mouse down event has happened. Also I can take a look at the button property of the event object that will give me a number value that corresponds with what button was clicked on the mouse.
 
 ```html
 <html>
