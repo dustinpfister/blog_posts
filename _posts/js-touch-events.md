@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:43:23
-version: 1.34
+updated: 2021-11-08 10:49:33
+version: 1.35
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -251,7 +251,9 @@ utils.distance = function (x1, y1, x2, y2) {
 
 ### 3.2 - The pinch module
 
-Now the the pinch module that is used to cerate and return a pinch object. This pinch object contains various values and settings for the state of the pinch. For example I want to have not just one value, but a few values for distance such as the starting distance between two touch points, as well as the current distance. I am then also goig to want to have a distance delta that is the current change in distance which will be used to find out of the pinch should be active or not, and if so what the current multi value should be that will be applied to some kind of state object outside of the pinch object.
+Now the the pinch module that is used to cerate and return a pinch object. This pinch object contains various values and settings for the state of the pinch. For example I want to have not just one value, but a few values for distance such as the starting distance between two touch points, as well as the current distance. I am then also going to want to have a distance delta that is the current change in distance which will be used to find out of the pinch should be active or not, and if so what the current multi value should be that will be applied to some kind of state object outside of the pinch object.
+
+The way that I go about using the module is by calling the create method which is the one any only public method of this module at this time. When calling the create method I pass a canvas element as the first argument that should be a canvas element to attach to, followed by an option object. In the option object I can set values such as what the rate should be for the multi value, as well as what the minimum distance should be in order for the pinch to become active. While I am at it I can also set some methods for what should happen when the pinch is active and what should happen when it is done.
 
 In the touch move event method I am checking of the current absolute value of the distance delta is greater than or equal to the min distance to set the pinch active. In the event that it is, I then set the active boolean value of the pinch object to true. In the event that the active boolean of the pinch object is true then I figure out what the multi value should be, and use the [Math.atan2 method](/2019/03/19/js-math-atan2/) to find out what the radian value should be for the pinch object and update that. After figuring out what the multi value and radian are I can now call the on pinch active method.
 
@@ -359,7 +361,7 @@ In the touch move event method I am checking of the current absolute value of th
 
 ### 3.3 - Draw module
 
-I will then want to have a draw module that will be used to draw the current state of a state object that will be the object that will be effected by the pinch, as well as debug info for the pinch object.
+I will then want to have a draw module that will be used to draw the current state of a state object that will be the object that will be effected by the pinch, as well as debug info for the pinch object. For this example I just want to use the pinch object to change the size and rotation of a box object so I have a draw state method, I then also have my draw debug pinch method as a way to display the state of a pinch object. Like many other modules like this I also have a draw background method that is used as a way to clean the canvas each time I draw to it.
 
 ```js
 var draw = {};
