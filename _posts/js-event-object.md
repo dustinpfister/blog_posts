@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-08 12:32:59
-version: 1.61
+updated: 2021-11-08 12:34:50
+version: 1.62
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -782,7 +782,9 @@ el.addEventListener('mousedown', function(e){
 </html>
 ```
 
-### 8.3 - 
+### 8.3 - The mouse up event
+
+So now that I know how t get mouse events to only work with the mouse and not touch events as well as how to disable the context menu there is now also doing something with the mouse up event.
 
 ```html
 <html>
