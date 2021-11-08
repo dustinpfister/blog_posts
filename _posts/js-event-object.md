@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-08 12:52:52
-version: 1.64
+updated: 2021-11-08 12:55:28
+version: 1.65
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -82,7 +82,7 @@ el.addEventListener('click', function(e){
 
 The click event works great, but in some cases I might want to attach for when a mouse button is pressed down, but not up yet. So when it comes to this there is the mouse down event that will fire just when the mouse button is pressed down. With that said there are also mouse up, and mouse move events that will fire when the mouse button is released and when the mouse is moved.
 
-In this example I have a state object that contains properties like a current pointer position, and I have a draw method that will redner the current values of this state object to a div element as the inner text content of the div.
+In this example I have a state object that contains properties like a current pointer position, and I have a draw method that will render the current values of this state object to a div element as the inner text content of the div.
 
 ```html
 <html>
