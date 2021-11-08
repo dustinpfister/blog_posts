@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 07:41:32
-version: 1.25
+updated: 2021-11-08 10:18:49
+version: 1.26
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -209,6 +209,243 @@ canvas.addEventListener('touchend', touchEnd);
 canvas.addEventListener('touchmove', touchMove);
  
 cls();
+```
+
+## 3 - Pinch to zoom and rotate example
+
+### 3.1 - A utility module
+
+```js
+var utils = {};
+ 
+// get pos object with values relative to the given event object,
+// and element that defaults to e.target by default
+utils.getElementRelative = function (e, elTarget, index) {
+    index = index === undefined ? 0 : index;
+    var el = elTarget || e.target,
+    bx = el.getBoundingClientRect(),
+    pos = {
+        x: (e.touches ? e.touches[index].clientX : e.clientX) - bx.left,
+        y: (e.touches ? e.touches[index].clientY : e.clientY) - bx.top,
+        bx: bx
+    };
+    // adjust for native canvas matrix size if a canvas element
+    if (el.nodeName === 'CANVAS') {
+        pos.x = Math.floor((pos.x / el.scrollWidth) * el.width);
+        pos.y = Math.floor((pos.y / el.scrollHeight) * el.height);
+    }
+    return pos;
+};
+ 
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+```
+
+### 3.2 - The pinch module
+
+```js
+(function (pinchMod) {
+    /********* **********
+    HELPERS
+     ********** *********/
+    // set pinch points of a pinch object with the given event object
+    var setPinchPoints = function (e, pinch) {
+        var pos = utils.getElementRelative(e, e.target, 0);
+        var p1 = pinch.points.p1 = {
+            x: pos.x,
+            y: pos.y
+        }
+        var pos = utils.getElementRelative(e, e.target, 1);
+        var p2 = pinch.points.p2 = {
+            x: pos.x,
+            y: pos.y
+        }
+        return pinch.points;
+    };
+    /********* **********
+    EVENTS
+     ********** *********/
+    var EVENTS = {};
+    // create for
+    EVENTS.createFor = function (eventType, pinch) {
+        return EVENTS[eventType];
+    };
+    // start
+    EVENTS.touchstart = function (e) {
+        pinch.active = false;
+        if (e.touches.length >= 2) {
+            e.preventDefault();
+            var points = setPinchPoints(e, pinch);
+            pinch.startDistance = utils.distance(points.p1.x, points.p1.y, points.p2.x, points.p2.y);
+        }
+    };
+    // move
+    EVENTS.touchmove = function (e) {
+        if (e.touches.length >= 2) {
+            var points = setPinchPoints(e, pinch);
+            pinch.distance = utils.distance(points.p1.x, points.p1.y, points.p2.x, points.p2.y);
+            pinch.distanceDelta = pinch.startDistance - pinch.distance;
+            if (Math.abs(pinch.distanceDelta) >= pinch.minActiveDist) {
+                pinch.active = true;
+            }
+            if (pinch.active) {
+                // figure multi value
+                var dd = pinch.distanceDelta + pinch.minActiveDist;
+                pinch.multi = dd / pinch.multiRate;
+                // get radian using Math.atan2
+                pinch.radian = Math.atan2(points.p1.y - points.p2.y, points.p1.x - points.p2.x);
+                // call on pinch active callback
+                pinch.onPinchActive.call(pinch, pinch, pinch.multi, pinch.radian);
+            }
+        }
+    };
+    // end event
+    EVENTS.touchend = function (e) {
+        if (pinch.active) {
+            pinch.onPinchEnd.call(pinch, pinch, pinch.multi, pinch.radian);
+        }
+        pinch.active = false;
+    };
+    /********* **********
+    PUBLIC METHODS
+     ********** *********/
+    pinchMod.create = function (canvas, opt) {
+        opt = opt || {};
+        // the pinch object
+        var pinch = {
+            active: false,
+            startDistance: 0,
+            distance: 0,
+            distanceDelta: 0,
+            minActiveDist: opt.minActiveDist === undefined ? 40 : opt.minActiveDist,
+            multiRate: opt.multiRate === undefined ? 16 : opt.multiRate,
+            multi: 0,
+            radian: 0,
+            points: {
+                p1: {
+                    x: 0,
+                    y: 0
+                },
+                p2: {
+                    x: 0,
+                    y: 0
+                },
+            },
+            onPinchActive: opt.onPinchActive || function (pinch, multi, radian) {},
+            onPinchEnd: opt.onPinchEnd || function (pinch, multi, radian) {}
+        };
+        // attach to the given canvas
+        canvas.addEventListener('touchstart', EVENTS.createFor('touchstart', pinch));
+        canvas.addEventListener('touchmove', EVENTS.createFor('touchmove', pinch));
+        canvas.addEventListener('touchend', EVENTS.createFor('touchend', pinch));
+        // return the pinch object
+        return pinch;
+    };
+}
+    (this['pinchMod'] = {}));
+```
+
+### 3.3 - Draw module
+
+```js
+var draw = {};
+// background
+draw.background = function (ctx, canvas) {
+    // fill black
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+// state
+draw.state = function (ctx, canvas, state) {
+    // fill black
+    ctx.fillStyle = 'cyan';
+    ctx.strokeStyle = 'white';
+    var obj = state.obj;
+    ctx.save();
+    ctx.translate(obj.cx, obj.cy);
+    ctx.rotate(obj.r);
+    ctx.beginPath();
+    ctx.rect(obj.size / 2 * -1, obj.size / 2 * -1, obj.size, obj.size);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+};
+// debug pinch
+draw.debugPinch = function (ctx, canvas, pinch) {
+    ctx.fillStyle = 'white';
+    ctx.font = '15px arial';
+    ctx.textBaseline = 'top';
+    ctx.fillText('multi: ' + pinch.multi.toFixed(2), 10, 10);
+    ctx.fillText('radian: ' + pinch.radian.toFixed(2), 10, 25);
+    // draw points
+    ctx.strokeStyle = 'white';
+    ctx.fillStyle = 'lime';
+    Object.keys(pinch.points).forEach(function (ptKey) {
+        var pt = pinch.points[ptKey];
+        ctx.beginPath()
+        ctx.arc(pt.x, pt.y, 32, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+    });
+};
+```
+
+### 3.4 - The main javaScript file
+
+```js
+// Get the canvas and 2d context
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// state
+var state = {
+    obj: {
+        cx: canvas.width / 2,
+        cy: canvas.height / 2,
+        size: 50,
+        r: 0
+    }
+};
+// create pinch object
+var pinch = pinchMod.create(canvas, {
+        minActiveDist: 20,
+        multiRate: 128
+    });
+// what to do when pinch is active
+pinch.onPinchActive = function (pinch, multi, radian) {
+    draw.background(ctx, canvas);
+    state.obj.size = 50 * (1 + (1 - multi));
+    state.obj.size = state.obj.size < 50 ? 50 : state.obj.size;
+    state.obj.r = radian;
+    draw.state(ctx, canvas, state);
+    draw.debugPinch(ctx, canvas, pinch);
+};
+// when pinch is done
+pinch.onPinchEnd = function (pinch, multi, radian) {
+    draw.background(ctx, canvas);
+    draw.state(ctx, canvas, state);
+};
+// draw background fro first time
+draw.background(ctx, canvas);
+draw.state(ctx, canvas, state);
+```
+
+### 3.5 - The index html file for this example of touch events
+
+```html
+<html>
+    <head>
+        <title>touch events example</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="640" height="480"></canvas>
+        <script src="utils.js"></script>
+        <script src="pinch.js"></script>
+        <script src="draw.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
 ```
 
 ## 4 - Conclusion
