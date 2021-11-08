@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-08 12:29:40
-version: 1.60
+updated: 2021-11-08 12:32:59
+version: 1.61
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -739,7 +739,9 @@ el.addEventListener('mousedown', function(e){
 </html>
 ```
 
-### 8.2 -
+### 8.2 - Right clicking an element and the content menu event
+
+One thing that will come up right away is what happens when I right click an element, when doing so there is the default browser context menu that comes up. If I wan to do something custom with a right click button of a mouse I will need to find a way to disable that. So for this sort of thing there is the context menu event, inside the body of a hander of this context menu event I can call the prevent default method off of the event object to get that context menu to stop.
 
 ```html
 <html>
