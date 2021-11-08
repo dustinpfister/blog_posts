@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:35:03
-version: 1.32
+updated: 2021-11-08 10:36:13
+version: 1.33
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -444,6 +444,8 @@ draw.state(ctx, canvas, state);
 ```
 
 ### 3.5 - The index html file for this example of touch events
+
+The last thing that I need is just a little html that will hold the canvas element, and have script tags to each of the files that I am using in this example.
 
 ```html
 <html>
