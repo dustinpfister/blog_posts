@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-08 12:55:28
-version: 1.65
+updated: 2021-11-08 13:01:25
+version: 1.66
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -834,4 +834,8 @@ el.addEventListener('contextmenu', function(e){
 
 ## 9 - Conclusion
 
-So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
+So I work with event objects all the time when working out front end code mainly when dealing with user input, but also a wide range of other kinds of events. So knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. 
+
+There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
+
+This is a post that is on my radar when it comes to additional future edits, and expansion. There is a whole lot more to write about when it comes to events objects in javaScript as there are w hole lot of different kinds of events beyond what is is that I have coved in this post thus far. I do have a whole lot of there content pieces also thought that need some attention also though, so it might be a while until I come bake to expanding this content.
