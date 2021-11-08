@@ -77,7 +77,7 @@ justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
           Very significant search interest for this one, and there is a whole lot of ground to cover.
 list:
 * (done 11/04/2021) get post to 3000+ words min for this kind of post
-* get post to 4000+ words min for this kind of post
+* (done 11/08/2021) get post to 4000+ words min for this kind of post
 * get post to 4500+ words min for this kind of post
 
 ## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
