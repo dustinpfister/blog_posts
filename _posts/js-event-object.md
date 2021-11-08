@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-06 14:31:58
-version: 1.58
+updated: 2021-11-08 12:21:56
+version: 1.59
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -694,6 +694,133 @@ forParentChildren('#wrap_main', {
 </html>
 ```
 
-## 8 - Conclusion
+## 8 - Event Objects in mouse events
+
+It might be best to check out my [post on using the mouse in javaScript](/2020/06/25/js-javascript-mouse/) to really get into the depth of what there is to known when it comes to working with a mouse in javaScript. Often when bother to work with a mouse the idea is to work out some specific code that will just apply to the mouse, and only the mouse, as when it comes to thinking in terms of pointers in general there are of course the pointer events that I covered in a section above. 
+
+So then when going this way with events and working with event objects I often will work out code that I want to work only with touch events, and then code that I want to work only with mouse events. So then in this section I should also touch base on touch events at least, but only for the sake of disabling touch events so that the code will not run for touch events as a touch screen will trigger mouse events actually.
+
+### 8.1 - A basic mouse down event example
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#wrap{
+  width:280px;height:200px;background-color:green;padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap" style=""></div>
+        <script>
+// get a ref to the element one way or another
+var el = document.getElementById('wrap');
+// prevent default for touch start as I want this to only
+// apply to the mouse
+el.addEventListener('touchstart', function(e){
+    e.preventDefault();
+});
+// mouse down
+el.addEventListener('mousedown', function(e){
+   e.preventDefault();
+   e.target.innerText = e.button + ',' + e.clientX + ',' + e.clientY;
+});
+        </script>
+    </body>
+</html>
+```
+
+### 8.2 -
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#wrap{
+  width:280px;height:200px;background-color:green;padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap" style=""></div>
+        <script>
+// get a ref to the element one way or another
+var el = document.getElementById('wrap');
+// context menu handler
+el.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    if (e.stopPropagation){
+        e.stopPropagation();
+    }
+    e.cancelBubble = true;
+    return false;
+});
+// prevent default for touch start as I want this to only
+// apply to the mouse
+el.addEventListener('touchstart', function(e){
+    e.preventDefault();
+});
+// on mouse down
+el.addEventListener('mousedown', function(e){
+   e.preventDefault();
+   e.target.innerText = e.button + ',' + e.clientX + ',' + e.clientY;
+});
+        </script>
+    </body>
+</html>
+```
+
+### 8.3 - 
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+#wrap{
+  width:280px;height:200px;background-color:green;padding:20px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="wrap" style=""></div>
+        <script>
+var state = {
+   dst : null,
+   secs: 0
+};
+var el = document.getElementById('wrap');
+// prevent default for touch start as I want this to only
+// apply to the mouse
+el.addEventListener('touchstart', function(e){
+    e.preventDefault();
+});
+// on mouse down
+el.addEventListener('mousedown', function(e){
+    state.dst = new Date();
+    e.target.innerText = 'down';
+});
+el.addEventListener('mouseup', function(e){
+   state.secs = (new Date() - state.dst) / 1000;
+   e.target.innerText = 'up, secs: ' + state.secs.toFixed(2);
+});
+// context menu handler
+el.addEventListener('contextmenu', function(e){
+    e.preventDefault();
+    if (e.stopPropagation){
+        e.stopPropagation();
+    }
+    e.cancelBubble = true;
+    return false;
+});
+        </script>
+    </body>
+</html>
+```
+
+## 9 - Conclusion
 
 So I work with event objects all the time when working out front end code. So yet knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
