@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:18:49
-version: 1.26
+updated: 2021-11-08 10:22:36
+version: 1.27
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -212,6 +212,8 @@ cls();
 ```
 
 ## 3 - Pinch to zoom and rotate example
+
+I should have at least one of not more basic, and maybe not so bash project examples that make use of touch events. With that said the first project that came to mind would be to make a module that helps to create a system for creating and adjusting a pinch object. That is an object that can be used to add what needs to happen when the user pinches the canvas. There are two general factors that come to mind when doing this one would be a multiplier factor that can be used to scale an object for example, and the other is a radian value that can be used to rotate while scaling, or do just one or the other depending on how the pinch object is used.
 
 ### 3.1 - A utility module
 
