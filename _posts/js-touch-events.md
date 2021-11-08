@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:49:33
-version: 1.35
+updated: 2021-11-08 10:53:32
+version: 1.36
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -408,7 +408,9 @@ draw.debugPinch = function (ctx, canvas, pinch) {
 
 ### 3.4 - The main javaScript file
 
-I then have a main javaScript example in which I am of course making use off all the above javaScript files including the utilities library, pinch module, and draw module.
+I then have a main javaScript example in which I am of course making use off all the above javaScript files including the utilities library, pinch module, and draw module. At the top of this module I am getting a reference to the canvas element and the 2d drawing context. AFter that I am crating my state object to which I will effect by the pinch object. Speaking of the ping object yes I cerate one here also passing a reference tot eh canvas element as the first argument followed by an options object that I use to adjusted some values for the pinch. 
+
+I then set up some callbacks that will fire for when the pinch becomes active and ends. One such callback is of course the on pinch active method and with this example I am drawing the background, and then updating the values of the state object with the values from the pinch object. I am then drawing the current state of the state object, and of course also drawing the debug info to get a better idea of what is going on with the state of the pinch.
 
 ```js
 // Get the canvas and 2d context
