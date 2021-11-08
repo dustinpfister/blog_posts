@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2020-12-02 14:22:32
-version: 1.20
+updated: 2021-11-08 07:14:46
+version: 1.21
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -19,7 +19,7 @@ Still if you have a large volume of traffic coming to a project that is from cli
 
 ## 1 - touch events basics, and touch start
 
-Touch events differ a little from mouse events, for example with touch events there is the possibility of multi touch, rather than just a single mouse cursor position. In addition it is also true that there is not an equivalent to a mouse hover event. 
+Touch events differ a little from [mouse events](/2020/06/25/js-javascript-mouse/), for example with touch events there is the possibility of multi touch, rather than just a single mouse cursor position. In addition it is also true that there is not an equivalent to a mouse hover event. 
 
 however there is also a great deal in common with them as well, both mouse events and touch events can be though of as pointers. I can just not take into account the location of any of the additional touch objects that might be present when it comes to touch events and only look at the first touch object. I can also just use mouse down and touch start events to preform the same actions. However I still need to make slight adjustments to the event handers in order to get them to work with both touch and mouse events.
 In this section I will be going over some of the very basics of touch events. In these examples I am just going to stick with just one event at a time when it comes to touch support.
