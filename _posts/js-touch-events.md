@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 378
-updated: 2021-11-08 10:36:13
-version: 1.33
+updated: 2021-11-08 10:43:23
+version: 1.34
 ---
 
 There are [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events) in client side javaScript than can be used to bring interactivity to a javaScript project via touch screens rather than just using mouse and keyboard events only. There are several events of interest when it comes to touch events namely [touch start](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event), [touch move](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchmove_event), and [touch end](https://developer.mozilla.org/en-US/docs/Web/API/Element/touchend_event).
@@ -252,6 +252,8 @@ utils.distance = function (x1, y1, x2, y2) {
 ### 3.2 - The pinch module
 
 Now the the pinch module that is used to cerate and return a pinch object. This pinch object contains various values and settings for the state of the pinch. For example I want to have not just one value, but a few values for distance such as the starting distance between two touch points, as well as the current distance. I am then also goig to want to have a distance delta that is the current change in distance which will be used to find out of the pinch should be active or not, and if so what the current multi value should be that will be applied to some kind of state object outside of the pinch object.
+
+In the touch move event method I am checking of the current absolute value of the distance delta is greater than or equal to the min distance to set the pinch active. In the event that it is, I then set the active boolean value of the pinch object to true. In the event that the active boolean of the pinch object is true then I figure out what the multi value should be, and use the [Math.atan2 method](/2019/03/19/js-math-atan2/) to find out what the radian value should be for the pinch object and update that. After figuring out what the multi value and radian are I can now call the on pinch active method.
 
 ```js
 (function (pinchMod) {
