@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 10:27:28
-version: 1.20
+updated: 2021-11-09 10:34:18
+version: 1.21
 ---
 
-When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/). In client side javaScript there is of course the break element, but that will not work so well in all situations.
+When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in [nodejs](/2017/04/05/nodejs-helloworld/) for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/). In client side javaScript there is of course the break element, but that will not work so well in all situations.
 
 If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. Escape notation is a way to add any character into a string including characters that might be interpreted as a return, or a way to end a string in javaScript source code.
 
@@ -21,7 +21,7 @@ In any case this will be a quick post on line breaks and javaScript strings in b
 
 ## 1 - Basics of Line breaks and escape notation in javaScript
 
-The first and for most way to go about injecting line breaks into strings would be to use [javaScript string escape notation](https://mathiasbynens.be/notes/javascript-escapes). There are other ways of doing so that might be a better choice when it comes to a nodejs environment, but even then you might still want to use escape notation over the os module that will hold line break string for the host operating system. 
+The first and for most way to go about injecting line breaks into strings would be to use [javaScript string escape notation](https://mathiasbynens.be/notes/javascript-escapes). There are other ways of doing so that might be a better choice when it comes to a nodejs environment, but even then you might still want to use escape notation over the [os module](/2019/11/19/nodejs-os/) that will hold line break string for the host operating system. 
 
 In some situations other options need to be used such as the [%0D%0A pattern with URLS](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript), and escape sequences for situations inducing injecting line breaks into some text that is being created for a textarea element or pre element. When working with html there is creating and injecting line break elements of course. However for this section I will be sticking to topics that apply to javaScript in general. I will be getting to node and client side specific examples later in this post.
 
@@ -120,6 +120,6 @@ console.log(Buffer.from(eol.win).toString('hex')); // 0d0a
 
 ## 4 - Conclusion
 
-having a way to find out if there is a line bake in a string is something that will come up from time to time when working out a script. In nodejs often the result of calling a command in a Linux environment will spit out results where each line is terminated with a line break, if I want to spit that output into an array I will need to know how to do that. In a Linux system the line break will typically be a single new line char, however in windows it might be a carriage return followed by a new line.
+Having a way to find out if there is a line bake in a string is something that will come up from time to time when working out a script. In nodejs often the result of calling a command in a Linux environment will spit out results where each line is terminated with a line break, if I want to spit that output into an array I will need to know how to do that. In a Linux system the line break will typically be a single new line char, however in windows it might be a carriage return followed by a new line.
 
 Knowing how to find out if there is a line break is important however knowing how to go about creating a line break in a string is also something that I need to do also. If I want to create a script that will do s replace all for some text from one kind of line break to another, it will require that I I not just know how to find line breaks, but also how to go about injecting one of the options that I would want to replace them. This if often a feature in most text editors, however if I where to write my own text editor a feature such as this is one thing that I would want to have in such an application.
