@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 13:34:39
-version: 1.56
+updated: 2021-11-09 13:37:59
+version: 1.57
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -125,6 +125,8 @@ In this section I will be covering alternatives to innerHTML, which for the most
  This is of course one reason why so many developers like to just use innerHTML as it is fairly easy to use to just create elements with a String. However inner html does have its draw backs, and often I do like to use the create element method over innerHTml actually as often I do want to get a reference to an element object to preform some various things that I can only do so with such an object. So for many reason sit is often best to just get used to using the cerate element method actually at least when it comes to native javaScript by itself anyway.
 
 ### 2.1 - Basic create element example
+
+For a basic example of the create element method here I have an example where I am creating a text area element. I do so by just calling the document.createElement method and pass the string textarea as the first and only argument for the method. The return value of the method is then my new text area element. Now I can start setting some attribute values for this element such as the cols and rows for the text area, as well as a starting value for the element.
 
 ```html
 <html>
