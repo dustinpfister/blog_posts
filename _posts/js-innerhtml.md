@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 13:12:46
-version: 1.54
+updated: 2021-11-09 13:30:56
+version: 1.55
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -25,7 +25,7 @@ I will be trying my best to keep the examples in this section as simple as possi
 
 ### - Source code examples are on Github
 
-The source code examples in this post are up on Github in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-innerhtml).
+The source code examples in this post are up on Github in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-innerhtml). This test vjs repository is also where I park the source code examples for my [many other posts on vanilla javaScript](/categories/js).
 
 ### 1.1 - innerHTML hello world example
 
