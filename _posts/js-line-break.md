@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 10:34:18
-version: 1.21
+updated: 2021-11-09 10:37:09
+version: 1.22
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in [nodejs](/2017/04/05/nodejs-helloworld/) for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/). In client side javaScript there is of course the break element, but that will not work so well in all situations.
@@ -82,7 +82,11 @@ So these kinds of solutions will work well in general, but in a  nodejs environm
 
 ## 2 - The os module EOL property in nodejs
 
-in node there is the End Of Line property of the os module. This property will hold a carriage return plus new line value for windows systems, and just a new line value for posix. In other words the value of the End Of line property will change depending on the underlaying operating system used.
+Now that I covered the basics of line breaks in general it might now be a good idea to start looking into some examples that have to do with just nodejs.
+
+### 2.1 - Escape notation and os module
+
+In node there is the End Of Line property of the os module. This property will hold a carriage return plus new line value for windows systems, and just a new line value for posix. In other words the value of the End Of line property will change depending on the underlaying operating system used.
 
 If you want consistent values regardless of the operating system you might want to stick to escape notation.
 
@@ -105,7 +109,7 @@ let str = 'line one' + os.EOL +
 process.stdout.write(str);
 ```
 
-## 3 - The decode URI Component method
+### 2.2 - The decode URI Component method
 
 Another options that comes to mind is the [decode url component](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent) method.
 
@@ -118,7 +122,7 @@ const eol = {
 console.log(Buffer.from(eol.win).toString('hex')); // 0d0a
 ```
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 Having a way to find out if there is a line bake in a string is something that will come up from time to time when working out a script. In nodejs often the result of calling a command in a Linux environment will spit out results where each line is terminated with a line break, if I want to spit that output into an array I will need to know how to do that. In a Linux system the line break will typically be a single new line char, however in windows it might be a carriage return followed by a new line.
 
