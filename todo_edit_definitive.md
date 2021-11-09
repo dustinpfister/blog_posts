@@ -66,11 +66,16 @@ If the post is new, or an older post that is not preforming so well, however the
       Intrinsic Value: Not much for me at least, this is a trivial topic
       Search Console: Best preforming post for js cat, "innerhtml alternative" keyword looking good
       Google Trends: "innerhtml", "inner html","js innerhtml"
-        This is a very dull subject for me, however it is the best preforming post in the js cat as of 11/09/2021
+        This is a very dull subject for me, however it is the best preforming post in the js cat as of 11/09/2021 ao
         I will need to expand and improve it for that reason. The post is pulling in some clicks from a few keywords
-        all ready, and it would seem that "innerhtml" keyword would be the while whale keyword for this topic. So then
-        There is all ready proof that this subject is in demand, and also I can see lots of room for Growth. As for the
-        Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far when it comes to "innerhtml alternative"
+        all ready, and it would seem that the "innerhtml" keyword would be the white whale keyword for this topic. So then
+        there is all ready proof that this subject is in demand, and also I can see lots of room for growth. 
+
+        As for the Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far when it comes to "innerhtml alternative". For example there is not just thinking in terms 
+        of DOM element when it comes to displaying data, or results in a web page. So maybe I can get away with writing about 
+        things beyond just that is the document.createElement method such as canvas elements and SVG. After all the whole 
+        reason of using inner html is often for the sake of generating something to display some info or data, and that can 
+        be done with things other than just with DOM Elements.
 * get to at least 2,400+ words for starters
 * get post to the min 3000+ words
 * get to 4000+ words
