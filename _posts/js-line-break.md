@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 10:25:36
-version: 1.19
+updated: 2021-11-09 10:27:28
+version: 1.20
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/). In client side javaScript there is of course the break element, but that will not work so well in all situations.
@@ -29,7 +29,7 @@ So for now in this section I will be focusing on just escape notation as a way t
 
 ### - The source code examples in this post are on Gihub
 
-On Github I have my test vjs repository where I have parked the source code examples that I am writing about in this post. I also have all the source code examples for my various other posts on javaScript topics.
+On Github I have my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-line-break) where I have parked the source code examples that I am writing about in this post. I also have all the source code examples for my various [other posts on javaScript topics](/categories/js/).
 
 ### 1.1 - Basics of escape sequences in javaScript
 
