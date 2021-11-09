@@ -40,10 +40,6 @@ js-line-break
 
 -->
 
-### (   ) - js-line-break ( old )
-* have 5+ internal links for the post
-* edit post to 1,000+ words
-
 ### (   ) - js-javascript-svg ( old )
 * have 5+ internal links for the post
 * edit post to 1,000+ words
@@ -84,6 +80,10 @@ js-line-break
 ### () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
 * have 5+ internal links for the post
 * proof read full text
+
+### ( done 11/09/2021 ) - js-line-break ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
 
 ### ( done 11/08/2021 ) - js-touch-events ( old )
 * (done) have 5+ internal links for the post
