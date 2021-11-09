@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 09:26:22
-version: 1.12
+updated: 2021-11-09 09:36:42
+version: 1.13
 ---
 
-When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen there is using the write method of the process stdout property.
+When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/).
 
 If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. escape notation is a way to add any character into a string including characters that might be interpreted as a return, or a way to end a string in javaScript source code.
 
