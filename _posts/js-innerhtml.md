@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 14:18:45
-version: 1.60
+updated: 2021-11-09 14:26:49
+version: 1.61
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
 
-The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML as well that are not a big deal when it comes to simple JavaScript examples, but might present problems when working on a more complex project. Many of the concerns stem from html strings that might be subject to user input that might not always be property sanitized, resulting in the possibility of html injection. That being said using innerHTML is not the only option when it comes to creating and [adding elements](/2019/02/26/js-add-element/) in javaScript, and it may be best to learn a thing ot two about what those alternatives are. In this post I will be focusing mainly on examples that showcase the use of innerHTML, and some other topics that branch off from the use of that client side javaScript feature as the way to go about expanding hard coded html with a little javaScript.
+The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML that are of concern. Maybe the security drawbacks are not a big deal when it comes to simple JavaScript examples, but might present problems when working on a more complex project. Many of the concerns stem from html strings that might be subject to user input that might not always be property sanitized, resulting in the possibility of html injection. 
+
+The good thing is that using innerHTML is not the only option when it comes to creating and [adding elements](/2019/02/26/js-add-element/) in javaScript, and it may be best to learn a thing or two about what those alternatives are when it comes to displaying data in a client side javaScript project of some kind. In this post I will be focusing mainly on examples that showcase the use of innerHTML to start off with, then some other topics that branch off from the use of that client side javaScript feature as the way to go about displaying data and results in a web page. There is also not just thinking in terms of using DOM elements as a way to display info as there are other options such as [SVG](/2019/02/11/js-javascript-svg/) as well as options that can be access threw the DOM such is the case with [canvas elements](/2017/05/17/canvas-getting-started/).
 
 <!-- more -->
 
