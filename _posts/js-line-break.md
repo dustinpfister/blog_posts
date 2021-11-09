@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 09:58:40
-version: 1.15
+updated: 2021-11-09 10:15:18
+version: 1.16
 ---
 
-When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/).
+When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/). In client side javaScript there is of course the break element, but that will not work so well in all situations.
 
 If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. Escape notation is a way to add any character into a string including characters that might be interpreted as a return, or a way to end a string in javaScript source code.
 
@@ -21,7 +21,13 @@ In any case this will be a quick post on line breaks and javaScript strings in b
 
 ## 1 - Basics of Line breaks and escape notation in javaScript
 
-The first and for most way to go about injecting line breaks into strings would be to use javaScript escape notation. There are other ways of doing so that might be a better choice when it comes to a nodejs environment, but even then you might still want to use escape notation over that in some situations. This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
+The first and for most way to go about injecting line breaks into strings would be to use [javaScript string escape notation](https://mathiasbynens.be/notes/javascript-escapes). There are other ways of doing so that might be a better choice when it comes to a nodejs environment, but even then you might still want to use escape notation over the os module that will hold line break string for the host operating system. 
+
+In some situations other options need to be used such as the %0D%0A pattern with URLS, and escape sequences for situations inducing injecting line breaks into some text that is being created for a textarea element or pre element. When working with html there is creating and injecting line break elements of course. However for this section I will be sticking to topics that apply to javaScript in general. I will be getting to node and client side specific examples later in this post.
+
+This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
+
+
 
 ### 1.1 - Basics of escape sequences in javaScript
 
