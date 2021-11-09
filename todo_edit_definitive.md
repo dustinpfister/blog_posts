@@ -62,20 +62,24 @@ If the post is new, or an older post that is not preforming so well, however the
 <!--###### ########## ########## #######-->
 
 ## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
+
     justification:
       Intrinsic Value: Not much for me at least, this is a trivial topic
       Search Console: Best preforming post for js cat, "innerhtml alternative" keyword looking good
       Google Trends: "innerhtml", "inner html","js innerhtml"
-        This is a very dull subject for me, however it is the best preforming post in the js cat as of 11/09/2021 ao
-        I will need to expand and improve it for that reason. The post is pulling in some clicks from a few keywords
-        all ready, and it would seem that the "innerhtml" keyword would be the white whale keyword for this topic. So then
-        there is all ready proof that this subject is in demand, and also I can see lots of room for growth. 
 
-        As for the Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far when it comes to "innerhtml alternative". For example there is not just thinking in terms 
+        This is a very dull subject for me, however it is the best preforming post in the js category as of 11/09/2021 so
+        I will need to expand and improve it for that reason. The post is pulling in some clicks from a few keywords
+        all ready, and it would seem that the "innerhtml" keyword would be the white whale keyword for this topic when it comes
+        to doing keyword research on this topic at Google trends. So then there is all ready proof that this is a subject that 
+        is in demand, and also I can see lots of room for growth. 
+
+        As for the Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far witch is "innerhtml alternative". For example there is not just thinking in terms 
         of DOM element when it comes to displaying data, or results in a web page. So maybe I can get away with writing about 
-        things beyond just that is the document.createElement method such as canvas elements and SVG. After all the whole 
+        things beyond just that of the document.createElement method such as canvas elements and SVG. After all the whole 
         reason of using inner html is often for the sake of generating something to display some info or data, and that can 
-        be done with things other than just with DOM Elements.
+        be done with things other than just with DOM Elements in client side javaScript.
+
 * get to at least 2,400+ words for starters
 * get post to the min 3000+ words
 * get to 4000+ words
@@ -87,8 +91,9 @@ If the post is new, or an older post that is not preforming so well, however the
       Google Trends: "javascript mouse", "js mouse"
         There is a whole lot to write about and not just when it comes to the mouse, but pointer objects in general.
         This is also a topic where there seems to be a whole lot of search interest, however it is not a situation in
-        Which I am trying to make a good situation even better, search console prefromance is very poor as of this
+        Which I am trying to make a good situation even better, search console performance is very poor as of this
         writing ( 11/09/2021 )
+
 * (done 10/21/2021) get post to the min 3000+ words
 * (done 10/24/2021) get post to 4000+ words
 * (done 11/02/2021) get post to 4500+ words
