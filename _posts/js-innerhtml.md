@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 12:52:36
-version: 1.49
+updated: 2021-11-09 12:55:41
+version: 1.50
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -116,7 +116,9 @@ Well yes a lot can be done with innerHTML but there are also some things that ar
 
 ## 2 - Now for the innerHTML alternatives
 
-In this section I will be covering alternatives to innerHTML, which for the most part is the create element method. However the create element method is never typically just used by itself, but in combination with a whole bunch of other html element methods and objects, the full breath of which will take time to get used to. This is of course one reason why so many developers like to just use innerHTML as it is fairly easy to use to just create elements, but it does have its draw backs, and as such innerHTML is not at all a replacement for the alternative way of creating elements with javaScript.
+In this section I will be covering alternatives to innerHTML, which for the most part is the create element method. However the create element method is never typically just used by itself, but in combination with a whole bunch of other html element methods and properties. This is because the return value of the create element object is an element object reference which is the same kind of object that there is to work with when getting a reference to a hard coded element by using a method like document.getElementById or document.querySelector.
+
+ This is of course one reason why so many developers like to just use innerHTML as it is fairly easy to use to just create elements, but it does have its draw backs, and as such innerHTML is not at all a replacement for the alternative way of creating elements with javaScript.
 
 ### 2.1 - Basic create element example
 
