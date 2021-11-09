@@ -61,9 +61,29 @@ If the post is new, or an older post that is not preforming so well, however the
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
+    justification:
+      Intrinsic Value: Not much for me at least, this is a trivial topic
+      Search Console: Best preforming post for js cat, "innerhtml alternative" keyword looking good
+      Google Trends: "innerhtml", "inner html","js innerhtml"
+        This is a very dull subject for me, however it is the best preforming post in the js cat as of 11/09/2021
+        I will need to expand and improve it for that reason. The post is pulling in some clicks from a few keywords
+        all ready, and it would seem that "innerhtml" keyword would be the while whale keyword for this topic. So then
+        There is all ready proof that this subject is in demand, and also I can see lots of room for Growth. As for the
+        Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far when it comes to "innerhtml alternative"
+* get to at least 2,500+ words for starters
+* get post to the min 3000+ words
+* get to 4000+ words
 
 ## js-javascript-mouse ( interesting topic, at 2000+ words all ready, good keywords ie: javaScript mouse )
-justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
+    justification:
+      Intrinsic Value: There are a lot of interesting little details to be aware of.
+      Search Console: None
+      Google Trends: "javascript mouse", "js mouse"
+        There is a whole lot to write about and not just when it comes to the mouse, but pointer objects in general.
+        This is also a topic where there seems to be a whole lot of search interest, however it is not a situation in
+        Which I am trying to make a good situation even better, search console prefromance is very poor as of this
+        writing ( 11/09/2021 )
 * (done 10/21/2021) get post to the min 3000+ words
 * (done 10/24/2021) get post to 4000+ words
 * (done 11/02/2021) get post to 4500+ words
@@ -72,7 +92,7 @@ justification: Intrinsic Value, Google Trends: "javascript mouse", "js mouse"
 ## js-event-object ( at 2,600+ all ready, good topic )
     justification: 
       Intrinsic Value: Good Topic, ties into a whole lot of other things
-      Search Console: Not doing much of anything as of 11/04/2021
+      Search Console: None
       Google Trends: "js event", "js e", "javascript event object", "js event object"
           Very significant search interest for this one, and there is a whole lot of ground to cover.
 list:
@@ -80,15 +100,16 @@ list:
 * (done 11/08/2021) get post to 4000+ words min for this kind of post
 * get post to 4500+ words min for this kind of post
 
-## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
-justification: Intrinsic Value, Search Console: "innerhtml alternative", 
-* get to at least 2,500+ words for starters
-* get post to the min 3000+ words
-* get to 4000+ words
-
 
 ## js-operator-precedence ( interesting topic )
-justification: Intrinsic Value, Search Console: "javascript order of operations", 
+    justification: 
+      Intrinsic Value: Good topic, lots of interesting expressions can be used as examples.
+      Search Console: Seeing a lot of impressions for  "javascript order of operations"
+      Google Trends: "javascript order of operations"
+         All ready showing up for on eof the best keywords that I have found thus far. The post still needs a lot of 
+         work though when it comes to examples for each operator. No problem when it comes to intrinsic value with this
+         one two because it is closely tied with writing expressions in javaScript. So there is a whole world of examples
+         that can be used when it comes to writing about order of operations.
 * get post to 3000+ words
 
 
