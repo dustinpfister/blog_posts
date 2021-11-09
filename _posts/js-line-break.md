@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 09:39:03
-version: 1.14
+updated: 2021-11-09 09:58:40
+version: 1.15
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/).
@@ -23,9 +23,22 @@ In any case this will be a quick post on line breaks and javaScript strings in b
 
 The first and for most way to go about injecting line breaks into strings would be to use javaScript escape notation. There are other ways of doing so that might be a better choice when it comes to a nodejs environment, but even then you might still want to use escape notation over that in some situations. This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
 
-When it comes to windows style line breaks you will want  to start off with a carriage return follow by a new line. For posix style js line breaks forget the carriage return ans just inject a new line.
+### 1.1 - Basics of escape sequences in javaScript
 
-So the carriage return and new line escape notation can be used
+```js
+// This will result in a SyntaxError
+//    let a = "This is a "String" ";
+ 
+// so in order to place quotes they much be escaped
+let b = "This is a \"String\"";
+console.log(b);
+```
+
+### 1.2 - Line break escape sequences ( \\r and \\n )
+
+When it comes to windows style line breaks you will want to start off with a carriage return follow by a new line. For posix style js line breaks forget the carriage return ans just inject a new line.
+
+So the carriage return and new line escape notation can be used to create an object that would contain bolt major patterns of interest like this:
 
 ```js
 var eol = {
@@ -39,13 +52,20 @@ str = 'So this is one line. ' + eol[os] + 'And this is a new one. ' + eol[os];
 console.log(str);
 ```
 
-Or the utf-16 code unit escape notation will work also.
+### 1.3 - Unicode code point escape sequence ( \\u )
+
+The utf-16 code unit escape notation will work also.
 
 ```js
 var eol = {
     win: '\u000d\u000a',
     posix: '\u000a'
-}
+},
+os = 'win',
+ 
+str = 'So this is one line. ' + eol[os] + 'And this is a new one. ' + eol[os];
+ 
+console.log(str);
 ```
 
 So these kinds of solutions will work well in general, but in a  nodejs environment there are some properties that are typically used. So lets look at just one more example at least when it comes to this sort of thing.
@@ -55,6 +75,7 @@ So these kinds of solutions will work well in general, but in a  nodejs environm
 in node there is the End Of Line property of the os module. This property will hold a carriage return plus new line value for windows systems, and just a new line value for posix. In other words the value of the End Of line property will change depending on the underlaying operating system used.
 
 If you want consistent values regardless of the operating system you might want to stick to escape notation.
+
 ```js
 const os = require('os');
  
