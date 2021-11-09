@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 13:04:51
-version: 1.52
+updated: 2021-11-09 13:09:47
+version: 1.53
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -20,6 +20,8 @@ The nice thing about innerHtml is that it is very easy to use, but there are som
 The innerHTML property of an element is one way to go about changing the inner html content of an element in client side javaScript. There are other ways that are considered more professional by many developers because of several factors that I will get to later in this post. However the nice thing about innerHTML is that it is fairly easy to use, as I can just use a string representation of the innerHTML that I want to inject. This string value can then be set to the value of the innerHTML property of the element that I want to inject html for and in most cases it will work just fine.
 
 In addition to this the innerHTML property can also be used as a quick way to go about removing html content from and element also by just simply setting the value of innerHTML to an empty string. So for starters lets just look at some simple examples of what innerHTML can do in this getting started type section of the inner html propery.
+
+I will be trying my best to keep the examples in this section as simple as possible, however this is still not a getting started with javaScript type post. So I trust that you have at least a little experience when it comes to making the first steps of learning client side javaScript. When I first started out learning client side javaScript I did so by way of the file protocol, and the examples in this post should largely work okay that way. However if you have not done so all ready you might want to look into how to get started with stetting up a simple http sever also as one will run into problems with some things sooner or later by using the file protocol with certain client side javaScript features such as canvas elements, and WebWorkers.
 
 ### 1.1 - innerHTML hello world example
 
