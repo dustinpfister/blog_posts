@@ -71,7 +71,7 @@ If the post is new, or an older post that is not preforming so well, however the
         all ready, and it would seem that "innerhtml" keyword would be the while whale keyword for this topic. So then
         There is all ready proof that this subject is in demand, and also I can see lots of room for Growth. As for the
         Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far when it comes to "innerhtml alternative"
-* get to at least 2,500+ words for starters
+* get to at least 2,400+ words for starters
 * get post to the min 3000+ words
 * get to 4000+ words
 
