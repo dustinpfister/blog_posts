@@ -80,7 +80,7 @@ If the post is new, or an older post that is not preforming so well, however the
         reason of using inner html is often for the sake of generating something to display some info or data, and that can 
         be done with things other than just with DOM Elements in client side javaScript.
 
-* get to at least 2,400+ words for starters
+* ( done 11/09/2021 ) get to at least 2,400+ words for starters
 * get post to the min 3000+ words
 * get to 4000+ words
 
