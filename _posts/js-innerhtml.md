@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 14:14:41
-version: 1.59
+updated: 2021-11-09 14:18:45
+version: 1.60
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -188,7 +188,7 @@ el.appendChild(p);
 
 ### 2.4 - The document write method
 
-One other alliterative to innerhtml might be the document write method, or at least maybe it will be in some very rare situations in which using it is truly justified. The only extending circumstances in which I would consider using it would be if for some reason I want to write some javaScritp code that will work in really old web browsers. However even with that I would often still prefer to use more modern alternatives because by very old browsers I mean going all the way back to the 1990s actually. It is not like innerHTML and the create element methods where introduced yesterday.
+One other alliterative to innerhtml might be the [document write method](https://developer.mozilla.org/en-US/docs/Web/API/Document/write), or at least maybe it will be in some very rare situations in which using it is truly justified. The only extending circumstances in which I would consider using it would be if for some reason I want to write some javaScritp code that will work in really old web browsers. However even with that I would often still prefer to use more modern alternatives because by very old browsers I mean going all the way back to the 1990s actually. It is not like innerHTML and the create element methods where introduced yesterday.
 
 ```html
 <html>
@@ -203,7 +203,7 @@ document.write('Hello World');
 </html>
 ```
 
-Still I guess that I have to write about this method here when it comes to outlining everything in the toolbox when it comes to alternatives to the inner html property. There are still a lot of old score code examples on the open web that might use this method so it is something to be aware of for sure.
+Another draw back of using this method, and this is a big one, is that it will also clear the document. Now maybe in some cases that is what I might want to happen, say I just want clear out everything on the page and write some kind of error message, however I still like for the to be an option rather than a requirement. Still I guess that I have to write about this method here when it comes to outlining everything in the toolbox when it comes to alternatives to the inner html property. There are still a lot of old source code examples on the open web that might use this method so it is something to be aware of for sure.
 
 ## 3 - Using eval to execute javaScript code in an element, and using innerHTML to get it
 
