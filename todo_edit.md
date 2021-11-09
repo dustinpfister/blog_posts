@@ -77,9 +77,8 @@ js-line-break
 * link to forpost folder from post
 * start s6 examples section
 
-### () - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
-* have 5+ internal links for the post
-* proof read full text
+### ( done 11/09/2021 ) - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
+* (done) have 5+ internal links for the post
 
 ### ( done 11/09/2021 ) - js-line-break ( old )
 * (done) have 5+ internal links for the post
