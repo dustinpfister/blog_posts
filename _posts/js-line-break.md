@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 09:36:42
-version: 1.13
+updated: 2021-11-09 09:39:03
+version: 1.14
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/).
 
-If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. escape notation is a way to add any character into a string including characters that might be interpreted as a return, or a way to end a string in javaScript source code.
+If you are not familiar with [escape notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and strings in javaScript now might be the time to take a look at them for this reason as well as many others. Escape notation is a way to add any character into a string including characters that might be interpreted as a return, or a way to end a string in javaScript source code.
 
-There is more then one text pattern for line breaks depending on the operating system you want the content to work with. However for the most part you can get away with just using one or the other, many well designed applications are familiar with the different patterns ans will detect what the situation is. In any case this will be a quick post on line breaks and javaScript strings in both a nodejs and client environment.
+There is more then one text pattern for line breaks depending on the operating system you want the content to work with. However for the most part you can get away with just using one or the other, many well designed applications are familiar with the different patterns and will detect what the situation is and parse accordingly. However it still makes sense to be al least somewhat aware of what these patterns are, and which might be the best choice for a given situation.
+
+In any case this will be a quick post on line breaks and javaScript strings in both a nodejs and client environment.
 
 <!-- more -->
 
