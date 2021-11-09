@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 13:40:59
-version: 1.58
+updated: 2021-11-09 14:14:41
+version: 1.59
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -186,6 +186,24 @@ p.appendChild(document.createTextNode('foo'));
 el.appendChild(p);
 ```
 
+### 2.4 - The document write method
+
+One other alliterative to innerhtml might be the document write method, or at least maybe it will be in some very rare situations in which using it is truly justified. The only extending circumstances in which I would consider using it would be if for some reason I want to write some javaScritp code that will work in really old web browsers. However even with that I would often still prefer to use more modern alternatives because by very old browsers I mean going all the way back to the 1990s actually. It is not like innerHTML and the create element methods where introduced yesterday.
+
+```html
+<html>
+    <head>
+        <title>innerHTML alternative</title>
+    </head>
+    <body>
+        <script>
+document.write('Hello World');
+        </script>
+    </body>
+</html>
+```
+
+Still I guess that I have to write about this method here when it comes to outlining everything in the toolbox when it comes to alternatives to the inner html property. There are still a lot of old score code examples on the open web that might use this method so it is something to be aware of for sure.
 
 ## 3 - Using eval to execute javaScript code in an element, and using innerHTML to get it
 
