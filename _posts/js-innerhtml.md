@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 13:37:59
-version: 1.57
+updated: 2021-11-09 13:40:59
+version: 1.58
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -150,6 +150,8 @@ el.appendChild(ta);
 ```
 
 ### 2.2 - The innerText property for setting the value of a text node
+
+When it comes to text area elements as well as a various input elements it is the value property that I want to set actually when it comes to a starting text value for the element. However when it comes to elements like header elements and paragraph elements I need to cerate and inject a text node for the element. One way to go about doing this for an element is to use the innerText property that works more or less just like that of inner html only it is just a text value that I am setting.
 
 ```html
 <html>
