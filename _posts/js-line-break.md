@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 628
-updated: 2021-11-09 10:17:40
-version: 1.17
+updated: 2021-11-09 10:22:18
+version: 1.18
 ---
 
 When working with string values it might be necessary to add some [js line breaks](https://stackoverflow.com/questions/4768118/how-to-break-line-in-javascript) to the string at the end of a string, or at any point where needed in the string for that matter. In some cases these kinds of characters are added to the end of a string automatically when using something like the console log method in nodejs for example. When using console log a line break character is added to the end of the standard output each time it is called. If you do not want that to happen then there is using the write method of the [stdout property of the process object](/2021/03/18/nodejs-process-stdout/). In client side javaScript there is of course the break element, but that will not work so well in all situations.
@@ -27,11 +27,13 @@ In some situations other options need to be used such as the [%0D%0A pattern wit
 
 This kind of notation involves using a backslash followed by one or more additional characters to help inject any kind of character into a string including line breaks.
 
-### - The source code exmaples in this post are on Gihub
+### - The source code examples in this post are on Gihub
 
 On Github I have my test vjs repository where I have parked the source code examples that I am writing about in this post. I also have all the source code examples for my various other posts on javaScript topics.
 
 ### 1.1 - Basics of escape sequences in javaScript
+
+The basic idea of sequences in javaScript is that there are certain characters that I can not just type when forming a javaScript string. One of which would be the double quite as that is used to indicate the beginning  and end of a string literal. If I try to just type the string without using escape sequence that will result in a SyntaxError when I try to run the code. So then one way to go about addressing this would be to use escape sequences by just typing a backslash and then the character that I want, such as a double quote.
 
 ```js
 // This will result in a SyntaxError
