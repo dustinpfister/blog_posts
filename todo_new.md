@@ -4,13 +4,13 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### (   ) - new post #937 for 11/08/2021 - linux-folders-home
+### (   ) - new post #937 for 11/12/2021 - linux-folders-home
 * start the draft folder
 
-### (   ) - new post #938 for 11/10/2021 - linux-folders-bin
+### (   ) - new post #938 for 11/15/2021 - linux-folders-bin
 * start the draft folder
 
-### (   ) - new post #939 for 11/12/2021 0 linux-folders-sbin
+### (   ) - new post #939 for 11/17/2021 0 linux-folders-sbin
 * start the draft folder
 
 <!--###### ########## ########## #######-->
