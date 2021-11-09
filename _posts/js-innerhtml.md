@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 12:33:27
-version: 1.48
+updated: 2021-11-09 12:52:36
+version: 1.49
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -118,7 +118,52 @@ Well yes a lot can be done with innerHTML but there are also some things that ar
 
 In this section I will be covering alternatives to innerHTML, which for the most part is the create element method. However the create element method is never typically just used by itself, but in combination with a whole bunch of other html element methods and objects, the full breath of which will take time to get used to. This is of course one reason why so many developers like to just use innerHTML as it is fairly easy to use to just create elements, but it does have its draw backs, and as such innerHTML is not at all a replacement for the alternative way of creating elements with javaScript.
 
-### 2.1 - document.createElement, document.createTextNode, and el.appendChild
+### 2.1 - Basic create element example
+
+```html
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out');
+// creating a text area element
+var ta = document.createElement('textarea');
+ta.cols = 60;
+ta.rows = 15;
+ta.value = "Hello World";
+// appending to html
+el.appendChild(ta);
+        </script>
+    </body>
+</html>
+```
+
+### 2.2 - The innerText property for setting the value of a text node
+
+```html
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <script>
+var el = document.getElementById('out');
+// creating a text area element
+var p = document.createElement('p');
+// using the innerText prop to set a value for a text node
+p.innerText = "Hello World";
+// appending to html
+el.appendChild(p);
+        </script>
+    </body>
+</html>
+```
+
+### 2.3 - document.createElement, document.createTextNode, and el.appendChild
 
 If you are not familiar with document.createElement, then you should play around with that one a little at some point sooner or later. The createElement method as the name suggests is what can be used in client side javaScript to create an element with javaScript. The method can be used with additional methods like document.createTextNode, and el.appendChild to do the same thing as innerHTML.
 
