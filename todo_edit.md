@@ -40,11 +40,11 @@ js-line-break
 
 -->
 
-### () - js-line-break ( old )
+### (   ) - js-line-break ( old )
 * have 5+ internal links for the post
 * edit post to 1,000+ words
 
-### () - js-javascript-svg ( old )
+### (   ) - js-javascript-svg ( old )
 * have 5+ internal links for the post
 * edit post to 1,000+ words
 
