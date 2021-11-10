@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-11-10 10:09:36
-version: 1.50
+updated: 2021-11-10 10:33:41
+version: 1.51
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Another thing might come up where I have a certain pattern in text that needs to be replaced with something else, and this pattern that I am looking for is not a fixed static text pattern. Regular expressions can be combined with various methods in the RegExp prototype as well as other build in prototypes, mainly the String prototype to get an array of character index values of various patterns that have to do with the nature of the language. Simply put to find Matches in a string, just for the sake of knowing if a pattern is in a string or not, or to preform some kind of replacement option, or creating some kind of result from one or more pattern matches.
@@ -138,7 +138,18 @@ console.log( text.replace(patt, 'match') );
 
 There are also [Quantifiers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers) that can be used to set a number of letters or expressions to match. For example I might be looking for a pattern that is composed of three dashes, but not 1, 2 or 4 dashes. I count just make a pattern that is three dashes, but a quantifier can also be used to do so with just one dash in the pattern. When it comes to a simple pattern such as this maybe it is not such a bing deal but if we are taking about some var more complex pattern then I do not want to have to repeat it a few times when writing the Regex. So then in this section I will be going over a few simple examples of Quantifiers with Regular expressions that might help to scratch the surface on this specific topic.
 
-### 4.1 - Matches at least n and at most m occurrences of a preceding item x{n,m}
+### 4.1 - Using an asterisk to match zero of more instances
+
+Using an asterisk after something to match will mean to match the given pattern zero or more times. Say I am looking for a pattern that is of two dashes, but I want to also setter for a single dash actually if that is all there is. If I just use a double dash pattern alone with a sing that only has one dash that will result in null, if I use the plus sign qualifier that also will result in null as that will match one or more instances of a double dash. However if I use a asterisk that will work with matching just a single dash.
+
+```js
+let str = 'This is - text with some - stuff going on';
+console.log( str.match(/--/) );  // null
+console.log( str.match(/--*/) ); // ['-', index: 8]
+console.log( str.match(/--+/) ); // null
+```
+
+### 4.2 - Matches at least n and at most m occurrences of a preceding item x{n,m}
 
 Often I might want to match something between and including a certain minimum and max count of occurrences. For this there is using a Quantifier that starts out with an opening curly bracket, followed by a min number, then comma, max number and finally a closing query bracket that is placed after what it is that I want to quantify.
 
