@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2021-11-10 11:14:37
-version: 1.17
+updated: 2021-11-10 11:17:56
+version: 1.18
 ---
 
-In javaScriptS SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. these nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML friendly way of making vector graphics. In addition it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes.
+In javaScript SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. These nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML like kind of way of making vector graphics that can be scaled up and down by just chaining some values in the root element. So it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes. Also just like with html elements there are ways of creating and injecting svg nodes as well as mutating the values of svg nodes using javaScript which is cool.
 
 When it comes to making graphics with javaScript there are a number of options these days, including the 2d canvas drawing API which is often the preferred raster graphics option. However svg is a [vector based graphics](https://en.wikipedia.org/wiki/Vector_graphics) solution rather than the [raster based graphics](https://en.wikipedia.org/wiki/Raster_graphics) used in canvas. So Scalable Vector Graphics is still a viable option for creating on the fly graphics with javaScript.
 
