@@ -57,11 +57,6 @@ So something like this for an item
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
-### (   ) - js-regex ( more internal links )
-* (done) new section on wrap text example
-* (done) have 5+ internal links for the post
-* edit post to 1,500+ words
-
 ### (  ) - js-javascript-constructor ( just a good topic )
 * Expand readme file to 300+ words
 * continue to expand s2 section on alternatives to constructors
@@ -86,6 +81,11 @@ So something like this for an item
 * readme file for for post folder and link to post
 * link to forpost folder from post
 * start s6 examples section
+
+### ( done 11/10/2021 ) - js-regex ( more internal links )
+* (done) new section on wrap text example
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,500+ words
 
 ### ( done 11/09/2021 ) - js-innerhtml ( 541 clicks / 3 months - Rank #1 - 9/30/21 )
 * (done) have 5+ internal links for the post
