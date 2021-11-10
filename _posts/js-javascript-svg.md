@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2020-12-05 12:20:03
-version: 1.16
+updated: 2021-11-10 11:14:37
+version: 1.17
 ---
 
 In javaScriptS SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. these nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML friendly way of making vector graphics. In addition it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes.
@@ -21,6 +21,10 @@ Truly getting into SVG might require reading not just one but several posts on t
 ## 1 - javaScript svg graphics basics
 
 In this section I will be just starting out with the basics of svg graphics. There is creating svg graphics inline in html itself, and then there is having an external svg file that can then be loaded into the html via and object tag. When it comes to creating and changing the state of SVG graphics with javaScript it is more or less as easy as DOM manipulation if one is familiar with that to begin with. There are only some slight differences when it comes to the process of creating Nodes that are used in the element try that will make up graphics created with javaScript and SVG.
+
+### - The source code examples are On Github
+
+In my [test vjs repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-svg) I have the source code examples that I am writing about in this post. This repository is also where I am holding all the source code examples for my [many other posts on vanilla javaScript related topics](/categories/js/).
 
 ### 1.1 - inline svg graphics
 
