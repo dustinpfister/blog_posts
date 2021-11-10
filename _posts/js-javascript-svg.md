@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2021-11-10 11:20:23
-version: 1.19
+updated: 2021-11-10 11:22:21
+version: 1.20
 ---
 
 In javaScript SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. These nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML like kind of way of making vector graphics that can be scaled up and down by just chaining some values in the root element. So it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes. Also just like with html elements there are ways of creating and injecting svg nodes as well as mutating the values of svg nodes using javaScript which is cool.
@@ -22,7 +22,7 @@ Truly getting into SVG might require reading not just one but several posts on t
 
 In this section I will be just starting out with the basics of svg graphics and client side javaScript. With that said there is creating svg graphics inline in html itself, and then there is having an external svg file that can then be loaded into the html via and object tag. Also just like with html, and canvas elements, yet another options would be to generate SVG by way of a little javaScript code also which would be yet even another option for working with SVG in a web page.
 
-When it comes to creating and changing the state of SVG graphics with javaScript it is more or less as easy as DOM manipulation if one is familiar with that to begin with. There are only some slight differences when it comes to the process of creating Nodes that are used in the element try that will make up graphics created with javaScript and SVG.
+When it comes to creating and changing the state of SVG graphics with javaScript it is more or less as easy as DOM manipulation if one is familiar with that to begin with. If not you might want to check out my post on getting started with javaScript by way of the file protocol, as well as maybe some other posts on document object methods, and DOM manipulation first. There are only some slight differences when it comes to the process of creating Nodes that are used in the element try that will make up graphics created with javaScript and SVG.
 
 ### - The source code examples are On Github
 
