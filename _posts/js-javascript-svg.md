@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2021-11-10 11:56:03
-version: 1.25
+updated: 2021-11-10 11:59:33
+version: 1.26
 ---
 
 In javaScript SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. These nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML like kind of way of making vector graphics that can be scaled up and down by just chaining some values in the root element. So it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes. Also just like with html elements there are ways of creating and injecting svg nodes as well as mutating the values of svg nodes using javaScript which is cool.
@@ -131,7 +131,7 @@ The whole thing about Scalable Vector Graphics is that they are, well scalable. 
 
 ### 2.1 - The viewBox attribute
 
-When it comes to getting started with scaling there is the viewBox attribute of the root svg node that should maybe be the first place to start. So for this example I am just starting out with that when it comes to using this veiwBox attribute along with the width and height properties of the root svg element.
+When it comes to getting started with scaling there is the viewBox attribute of the root svg node that should maybe be the first place to start. So for this example I am just starting out with that when it comes to using this veiwBox attribute along with the width and height properties of the root svg element. So then the width and height values of the root svg node are how to go about setting the total width and height of the svg node, and the viewBox attribute is then how to go about defining an area to zoom into by giving a set of four values for the x, y, width and height values that are a box area to zoom into.
 
 ```html
 <html>
