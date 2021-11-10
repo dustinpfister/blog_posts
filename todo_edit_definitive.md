@@ -134,3 +134,7 @@ list:
          The one draw back is that it is not a situation in which I am trying to improve something that is all ready a good thing.
 * get the post to 3000+ words
 
+## js-svg ( A whole lot to write about )
+    justification:
+      Intrinsic Value: There is a lot to write about, and a lot more to learn and research
+
