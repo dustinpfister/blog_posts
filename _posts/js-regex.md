@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-11-10 09:44:54
-version: 1.48
+updated: 2021-11-10 10:07:13
+version: 1.49
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Another thing might come up where I have a certain pattern in text that needs to be replaced with something else, and this pattern that I am looking for is not a fixed static text pattern. Regular expressions can be combined with various methods in the RegExp prototype as well as other build in prototypes, mainly the String prototype to get an array of character index values of various patterns that have to do with the nature of the language. Simply put to find Matches in a string, just for the sake of knowing if a pattern is in a string or not, or to preform some kind of replacement option, or creating some kind of result from one or more pattern matches.
@@ -21,7 +21,7 @@ In javaScript a regex, regexp, or regular expression is a way to achieve text pa
 
 In this section I will be going over the very basics of regular expression in javaScript including how to make one and how to use one. This will very much be a basic section for people that are still fairly new to javaScript. However I still assume that you have at least some background on using javaScript, as this is not any kind of [getting started type post on javaScript](/2018/11/27/js-getting-started/) in general. It might also be a good idea to look more into String prototype methods more first of you have not done so thus far. If you just want to find out if a fixed static text pattern is in a string or not, using regular expressions might prove to be a bit overkill as there are methods like the [String indexOf method](/2020/07/09/js-string-index-of/) that will work fine for that by using a sub string value rather than a regular expression.
 
-### - The source code examples here are on github
+### - The source code examples here are on Github
 
 If you want to you might want to check out my [test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-regex) where I store the source code examples I am writing about here in this post. This is also where I am parking all the source code examples on my other posts on vanilla javaScript, and I then to keep working on it a little often.
 
@@ -136,7 +136,7 @@ console.log( text.replace(patt, 'match') );
 
 ## 4 - Quantifiers
 
-There are also [Quantifiers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers) that can be used to set a number of letters or expressions to match.
+There are also [Quantifiers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers) that can be used to set a number of letters or expressions to match. For example I might be looking for a pattern that is composed of three dashes, but not 1, 2 or 4 dashes. I count just make a pattern that is three dashes, but a quantifier can also be used to do so with just one dash in the pattern. When it comes to a simple pattern such as this maybe it is not such a bing deal but if we are taking about some var more complex pattern then I do not want to have to repeat it a few times when writing the Regex. So then in this section I will be going over a few simple examples of Quantifiers with Regular expressions that might help to scratch the surface on this specific topic.
 
 ### 4.1 - Matches at least n and at most m occurrences of a preceding item x{n,m}
 
