@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2021-11-10 11:36:15
-version: 1.24
+updated: 2021-11-10 11:56:03
+version: 1.25
 ---
 
 In javaScript SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. These nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML like kind of way of making vector graphics that can be scaled up and down by just chaining some values in the root element. So it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes. Also just like with html elements there are ways of creating and injecting svg nodes as well as mutating the values of svg nodes using javaScript which is cool.
@@ -125,7 +125,32 @@ svg.appendChild(circle);
 document.body.appendChild(svg);
 ```
 
-## 2 - JavaScript SVG example 1 setting all properties of a circle in a loop
+## 2 - Scaling SVG 
+
+The whole thing about Scalable Vector Graphics is that they are, well scalable. So of course I should have a section in which the cous is how to go about getting started with this sort of thing, and also start a section in which I will write about any additional advanced topics surrounding the topic of scaling with SVG.
+
+### 2.1 - The viewBox attribute
+
+When it comes to getting started with scaling there is the viewBox attribute of the root svg node that should maybe be the first place to start. So for this example I am just starting out with that when it comes to using this veiwBox attribute along with the width and height properties of the root svg element.
+
+```html
+<html>
+    <head>
+        <title>svg scale</title>
+    </head>
+    <body style="background:black;">
+        <svg version="1.1"
+             width="400" height="400"
+             viewBox="0 0 200 200"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+            <circle cx="200" cy="200" r="200" fill="red" />
+        </svg>
+    </body>
+</html>
+```
+
+## 3 - JavaScript SVG example 1 setting all properties of a circle in a loop
 
 For this javaScript SVG example I worked out a quick simple little animation that moves a circle in an elliptical pattern, while also adjusting the radius of the circle. I Just get a reference to the circle element with any typical method that will work just like with any other DOM element. Once I have a reference I then just need to use the setAttributeNS method to change the values for cx cy and radius inside the body of the loop.
 
@@ -167,7 +192,7 @@ loop();
 </html>
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So Scalable Vector Graphics is yet another way to create graphics with javaScript code on top of using canvas elements. However there are still some other options when it comes to creating graphics or displaying some info. I often find myself using [canvas elements](/2017/05/17/canvas-getting-started/) over svg for the most part, but it makes sense to play around with svg at least a little once in a while just for the sake of trying something new. There is more to it when it comes to just getting into working with SVG just for that reason though as there are of course note worth differences between SVG and canvas.
 
