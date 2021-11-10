@@ -130,6 +130,7 @@ list:
          There is a whole lot more to write about so getting this post to a super high word count would not be hard in terms
          of finding relevant things to write about, not problem there at all. In Search console it is not doing so well, but the
          problem is not at all because there is a lack of search interest for this. This post is a good fit when it comes to the idea
-         of working on something where there is a whole lot of room for growth, and I wil not have to worry about getting board, but 
+         of working on something where there is a whole lot of room for growth, and I will not have to worry about getting board, but 
          The one draw back is that it is not a situation in which I am trying to improve something that is all ready a good thing.
+* get the post to 3000+ words
 
