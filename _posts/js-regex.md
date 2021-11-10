@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-11-10 09:07:04
-version: 1.47
+updated: 2021-11-10 09:44:54
+version: 1.48
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Another thing might come up where I have a certain pattern in text that needs to be replaced with something else, and this pattern that I am looking for is not a fixed static text pattern. Regular expressions can be combined with various methods in the RegExp prototype as well as other build in prototypes, mainly the String prototype to get an array of character index values of various patterns that have to do with the nature of the language. Simply put to find Matches in a string, just for the sake of knowing if a pattern is in a string or not, or to preform some kind of replacement option, or creating some kind of result from one or more pattern matches.
@@ -60,7 +60,7 @@ I will not be getting into these methods in detail here as I have wrote posts on
 
 ## 2 - Regular expression flags
 
-When it comes to creating a regular expression it is possible to set one or more [flags for the pattern](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags). These flags can be used as a way to indicate things like if all instances of a pattern should be match or not which would be the Global Search flag.
+When it comes to creating a regular expression it is possible to set one or more [flags for the pattern](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#advanced_searching_with_flags). These flags can be used as a way to indicate things like if all instances of a pattern should be match or not which would be the Global Search flag, or if the matching should not be case sensitive sense case sensitivity is the default for matching. Some of these flags have been an option for a log time, while others are more recent additions in late specs of javaScript. So when using them there is taking a moment to think in terms of how far back you want to go when it comes to supporting older platforms, and maybe fine other ways of doing what these flags do if you want to match things back farther. In any case flags are a major part of creating a regular expression instance so of course I will need to go over a few examples of flags here in this section.
 
 ### 2.1 - The Generate indices of matches flag - d 
 
