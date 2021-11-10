@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-11-10 08:38:42
-version: 1.45
+updated: 2021-11-10 08:44:30
+version: 1.46
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Another thing might come up where I have a certain pattern in text that needs to be replaced with something else, and this pattern that I am looking for is not a fixed static text pattern. Regular expressions can be combined with various methods in the RegExp prototype as well as other build in prototypes, mainly the String prototype to get an array of character index values of various patterns that have to do with the nature of the language. Simply put to find Matches in a string, just for the sake of knowing if a pattern is in a string or not, or to preform some kind of replacement option, or creating some kind of result from one or more pattern matches.
@@ -19,9 +19,7 @@ So in this post I will be covering some basic examples of regular expressions in
 
 In javaScript a regex, regexp, or regular expression is a way to achieve text pattern matching, and search and replace tasks with strings. There are ways of defining the patten to look for, by using the [Regexp constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) or a regular expression literal pattern, and then there are String prototype methods that make use of these patterns to find one or more matches for that pattern in a given string. The two string prototype methods of interest would be the String Match, and String replace methods. There are also though a number of regular expression prototype methods that might also be of use in certain situations also though such as the [RegExp.exec method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec).
 
-In this section I will be going over the very basics of regular expression in javaScript including how to make one and how to use one.
-
-I also assume that you have at least some background on using javaScript as this is not any kind of [getting started type post on javaScript](/2018/11/27/js-getting-started/) in general.
+In this section I will be going over the very basics of regular expression in javaScript including how to make one and how to use one. This will very much be a basic section for people that are still fairly new to javaScript. However I still assume that you have at least some background on using javaScript, as this is not any kind of [getting started type post on javaScript](/2018/11/27/js-getting-started/) in general. It might also be a good idea to look more into String prototype methods more first of you have not done so thus far. If you just want to find out if a fixed static text pattern is in a string or not, using regular expressions might prove to be a bit overkill as there are methods like the [String indexOf method](/2020/07/09/js-string-index-of/) that will work fine for that by using a sub string value rather than a regular expression.
 
 ### - The source code examples here are on github
 
