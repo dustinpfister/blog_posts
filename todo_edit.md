@@ -50,10 +50,6 @@ So something like this for an item
 * have 5+ internal links for the post
 * edit post to 1,700+ words
 
-### (   ) - js-javascript-svg ( old )
-* have 5+ internal links for the post
-* edit post to 1,000+ words
-
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -81,6 +77,10 @@ So something like this for an item
 * readme file for for post folder and link to post
 * link to forpost folder from post
 * start s6 examples section
+
+### ( done 11/10/2021 ) - js-javascript-svg ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
 
 ### ( done 11/10/2021 ) - js-regex ( more internal links )
 * (done) new section on wrap text example
