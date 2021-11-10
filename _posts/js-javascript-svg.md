@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 376
-updated: 2021-11-10 11:31:40
-version: 1.23
+updated: 2021-11-10 11:36:15
+version: 1.24
 ---
 
 In javaScript SVG or [Scalable Vector Graphics](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) graphics are an option for making vector graphics with javaScript, inline tags, or an external file format. The process of making SVG by way of hand coding it is to make use of a number of standard tags or nodes that have to do with defining what a graphic is. These nodes are not standard HTML elements, but they work in a very similar way to them, so it is an HTML like kind of way of making vector graphics that can be scaled up and down by just chaining some values in the root element. So it is easy to mutate such tags with javaScript code in a very similar fashion to that of mutating the Document Object Model of plain HTML nodes. Also just like with html elements there are ways of creating and injecting svg nodes as well as mutating the values of svg nodes using javaScript which is cool.
@@ -171,7 +171,7 @@ loop();
 
 So Scalable Vector Graphics is yet another way to create graphics with javaScript code on top of using canvas elements. However there are still some other options when it comes to creating graphics or displaying some info. I often find myself using [canvas elements](/2017/05/17/canvas-getting-started/) over svg for the most part, but it makes sense to play around with svg at least a little once in a while just for the sake of trying something new. There is more to it when it comes to just getting into working with SVG just for that reason though as there are of course note worth differences between SVG and canvas.
 
-There is the idea of using html as CSS as a way to try to create graphics. I can not say that doing so is a good idea really, but if you feel like getting into that just for the hell of it there is looking into the [style api](/2019/02/12/js-javascript-style/) which is how to go about paying around with css values of HTML elements using javaScript code.
+There is the idea of using html as CSS as a way to try to create graphics. I can not say that doing so is a good idea really, but if you feel like getting into that just for the hell of it there is looking into the [style api](/2019/02/12/js-javascript-style/) which is how to go about paying around with css values of HTML elements using javaScript code. There are a number of other options of which I am sure, but many of them might involve having java installed on the client system, it might be an obsolete technology oto work with like VML or flash, or something to that effect. So I generally like to work with stuff that is still used today, is built into the browser, and not just the browser but all browsers. with that said there is of course canvas, and SVG is the other major thing to be aware of besides just canvas.
 
 
 
