@@ -30,15 +30,25 @@ So something like this for an item
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
-<!--
-NO INTERNAL LINKS FOR THESE POSTS
-js-javascript-null
-js-javascript-object-freeze-seal-and-define-property
-js-javascript-form
-js-intl
-js-line-break
+### (   ) - js-javascript-null ( no internal links )
+* have 5+ internal links for the post
+* edit post to 1,000+ words
 
--->
+### (   ) - js-javascript-object-freeze-seal-and-define-property ( no internal links )
+* have 5+ internal links for the post
+* edit post to 1,000+ words
+
+### (   ) - js-javascript-form ( no internal links )
+* have 5+ internal links for the post
+* edit post to 1,000+ words
+
+### (   ) - js-intl ( no internal links )
+* have 5+ internal links for the post
+* edit post to 1,200+ words
+
+### (   ) - js-javascript-if ( old, links)
+* have 5+ internal links for the post
+* edit post to 1,700+ words
 
 ### (   ) - js-javascript-svg ( old )
 * have 5+ internal links for the post
@@ -50,7 +60,7 @@ js-line-break
 ### (   ) - js-regex ( more internal links )
 * (done) new section on wrap text example
 * (done) have 5+ internal links for the post
-* edit post to 1,800+ words
+* edit post to 1,500+ words
 
 ### (  ) - js-javascript-constructor ( just a good topic )
 * Expand readme file to 300+ words
