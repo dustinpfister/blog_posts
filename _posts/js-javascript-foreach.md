@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 15:58:49
-version: 1.99
+updated: 2021-11-11 16:06:20
+version: 1.100
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -285,14 +285,27 @@ So there is the Array forEach method, but there are other [array prototype metho
 
 ### 2.1 - Array.reduce method for reducing contents of an array into a product, sum, or other result.
 
-When it comes to doing anything that might involve a sum of any kind, it might be better to use [Array.reduce](/2021/07/13/js-array-reduce/) in place of Array.forEach. 
+When it comes to doing anything that might involve a sum of any kind, it might be better to use [Array.reduce](/2021/07/13/js-array-reduce/) in place of array for each. This reduce method works just like array for each in the sense that I call if off of an instance of an array, and pass a function as an argument. However this time the first argument is an accumulator value and then the n next element is the current value of the current element. The idea here then is that I add to the accumulator and then return the accumulator value that will then be there to worm with in the next call, and so forth creating and end result that will be returned at the end.
 
 
 ```js
-let arr = [1, 2, 3],
-sum = arr.reduce((s,r)=>{return s+r;});
-console.log(sum); // 6
-
+let a = [1, 2, 3].reduce((acc, n) => {
+    console.log(acc, n);
+    return acc + n;
+});
+console.log(a);
+// 1 2
+// 3 3
+// 6
+let b = [1, 2, 3].reduce((acc, n) => {
+    console.log(acc, n);
+    return acc + n;
+}, 0);
+console.log(b);
+// 0 1
+// 1 2
+// 3 3
+// 6
 ```
 
 This is one of many other Array prototype methods that work in a very similar way to that of Array.forEach, but will behave a little differently and create. For one thing the Array.reduce method does not start looping at index 0, but rather index 1. The reason why is that the first element at index 0 is the initial value of an accumulator argument that is the first argument that is given to the function that is passed to Array.reduce. So in this example the value of s starts out as 1 and the value of r is 2, then on the next call the value of s is 3 and the value of r is 3 making the final value that is reduced to 6;
