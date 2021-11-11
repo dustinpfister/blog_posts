@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 10:45:37
-version: 1.74
+updated: 2021-11-11 10:51:35
+version: 1.75
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -27,7 +27,7 @@ There is maybe not so much to write about when it comes to just simply the array
 
 I might not get into all of them in detail here in this section, as I want to keep the source code examples here in this section simple. However I have a number of more advanced section in this post and I will also be linking to any and all additional posts that are relevant here and there as needed.
 
-Event though I will be keeping the source code examples in this section fairly simple I assume that you have at least some experience when it comes to making ones [first steps when it comes to learning javaScript](/2018/11/27/js-getting-started/). If not I have wrote a few posts on the various ways of going about getting started with javaScript all ready, such as with the file protocol, or setting up a simple static file sever with nodejs and express, or also with just nodejs by itself. So I will not be getting into that here and trust that you have found a way that has been working okay for you thus far.
+Event though I will be keeping the source code examples in this section fairly simple I assume that you have at least some experience when it comes to making the [first steps at learning javaScript](/2018/11/27/js-getting-started/). If not I have wrote a few posts on the various ways of going about getting started with client side javaScript all ready, such as with the [file protocol](/2020/09/21/js-getting-started-file-protocol/), or the browser javaScript console which would be another great option. There is also getting started with full stack development by setting up a simple static file sever with [nodejs and express](/2018/05/24/express-static/), or also with just [nodejs by itself](/2017/12/04/nodejs-simple-static-server-file/). So I will not be getting into that here and trust that you have found a way that has been working okay for you thus far, and that you want to read up more on everything and anything that revolves around the array foreach method, not just that method itself, but also why to use it, and also why not to use it. That is indeed a bit of a rabbit hole it would seem, and thus that is the reason why this post is a bit lengthly.
 
 ### - No golden Hammer when looping over an array, or public object keys in general
 
