@@ -61,6 +61,15 @@ If the post is new, or an older post that is not preforming so well, however the
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+## js-javascript-foreach ( All is Good with this one! Must go the distance )
+      Intrinsic Value: There are a lot of interesting little details, branches off into all kinds of interesting topics.
+      Search Console: Doing well in a relative way for the js category "javascript foreach sum value", "javascript foreach"
+      Google Trends: "javascript foreach", "array foreach", "js foreach"
+
+* ( done 11/11/2021 ) 4500+ words
+* 5000+ words
+* 6000+ words
+
 ## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
 
     justification:
