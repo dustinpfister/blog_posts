@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 15:13:30
-version: 1.91
+updated: 2021-11-11 15:29:57
+version: 1.92
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -182,6 +182,53 @@ So then it is not so hard to make a user space solution for looping over the con
 Some options for looping over the contents of an object might be more readable, others might be or more flexible with a greater number of objects, but performance takes a hit. While loops might be fast, and can be even faster depending on how and where they are used when it comes to defining what the expressions are for figuring out of looping should continue or not. In addition the break and continue keywords can be used in the body of the loop in some ways that can help for a loop to run along even faster, but often might end up being a lengthly block of code that might prove to be a littler harder to follow as there is not much of anything being abstracted away.
 
 One of the nice things about for each is that it does help with readability of code I would say that the name alone is pretty clear as to what it does. However when it comes to performance it is not at all one of the best options. The main reason why for each is slow may have to do with function calls, the for each method will make an awful lot of them with a large array where a while loop will make node aside form any function calls that happen in the body of code that is being called for each iteration which would happen anyway.
+
+```js
+let createLargeArray = (count) => {
+    count = count || 10000;
+    let i = 0,
+    arr = [];
+    while (i < count) {
+        arr.push({
+            i: i,
+            x: Math.random(),
+            y: Math.random()
+        });
+        i += 1;
+    }
+    return arr;
+};
+ 
+let getSecs = function (st) {
+    return (new Date() - st) / 1000;
+};
+ 
+// create a large array
+let st = new Date();
+let arr = createLargeArray(2000000);
+console.log('It took ' + getSecs(st) + ' seconds to create an array of ' + arr.length + ' elements');
+ 
+// forEach
+st = new Date();
+arr.forEach((obj) => {
+    obj.s = obj.x + obj.y;
+});
+ 
+console.log('It took ' + getSecs(st) + ' seconds to loop over the array using Array.forEach');
+ 
+st = new Date();
+let i = arr.length, obj;
+while (i--) {
+    obj = arr[i];
+    obj.s = obj.x + obj.y;
+}
+ 
+console.log('It took ' + getSecs(st) + ' seconds to loop over the array using a while loop');
+ 
+//It took 1.468 seconds to create an array of 2000000 elements
+//It took 1.875 seconds to loop over the array using Array.forEach
+//It took 0.062 seconds to loop over the array using a while loop
+```
 
 ### - ECMA rev5 compliant methods and Array forEach backward support
 
