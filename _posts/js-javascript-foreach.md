@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 11:41:11
-version: 1.82
+updated: 2021-11-11 12:01:09
+version: 1.83
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -79,13 +79,55 @@ console.log(points);
 //   { x: 240, y: 165 } ]
 ```
 
-### - No golden Hammer when looping over an array, or public object keys in general
+### 1.3 - No golden Hammer when looping over an array, or public object keys in general
 
 I have read a lot of blog posts on this specific topic over the years, and one them that I have noticed with array for each is that there is often this kind of attitude where array for each should always be used over loops, or that using the array for each method is a very poor choice and it shows that you do not have much depth as a developer. I think it is a good idea to try to avoid having such an elitist attitude when it comes to this. When I am working out a little javaScript on occasion I find myself using the Array for each method. It is often a nice quick solution for just simply looping over the contents of an array, and some times that is just simply what I want to do and move on. However I do so with the understanding that there are some draw backs compared to other options such as while loops which I would say I tend to use more often. When it comes to using while loops there is a lot to be gained from doing so, then tend to be faster when it comes to spiting hairs with respect to performance nano picking topics, and I can also use the break and continue keywords on top of that to help further improve performance when it comes to doing something major. However even so I would not go so far as to say that while loops should always be used, and array for each should not be part of the Array prototype object.
 
 So then truth about the array for each method is that the Array forEach method in native javaScript is just one of many ways to loop over the contents of a collection in javaScript. There are some good reasons why to use it, and there are also some pretty good reasns why not to use it. Also there are often situations in which it will just simply fall short of what is needed when it comes to working with objects in general. The Array forEach is only generally useful for just looping over the contents of an Array, as it is an array prototype method after all. In some cases it is possible to get the method to work with certain objects that are formated like arrays by making use of the [function call method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call). However even it you can get it to work to loop over the contents of a collection it might not still always be the best solution when it comes to looping over a collection in general.
 
 Simply put the array for each method might not always be the best choice for the job when it comes to looping over the contents of an array, let alone any kind of collection when dealing with objects in general. There is no golden hammer when it comes to looping over an array. In some cases it will work just fine, bit often I might use one of the many other array prototype methods, a loop of one kind of another, or maybe I still will use the array for each method just not by itself because there are some additional things I need to do first to get the array that I want to begin with.
+
+The array for each method is great, but there sure are a whole lot of oter tools to work with in the array prototype object in core javaScript. There are also a whole lot of other options when it comes to looping by way of a wile loop, as well as various useful methods in other prototypes a well as static methods that can help with the process of creating an array ij the first place. I will be getting into this more in detail later o in this post, but for now maybe a little javaScript code that helpers get get an idea of what the deal is with this is in order.
+
+```js
+let a = [1, 'a', 2, 'b'];
+ 
+// array forEach Works for just looping over an array
+a.forEach((el, i, arr) => {
+    console.log(el, i, arr);
+});
+//1 0 [1, 'a', 2, 'b']
+//a 1 [1, 'a', 2, 'b']
+//2 2 [1, 'a', 2, 'b']
+//b 3 [1, 'a', 2, 'b']
+ 
+// Filter can be used to loop preform an action
+// for each element also, and return a new array that
+// just has elements that meet a given condition
+let b = a.filter((el) => {
+        return typeof el === 'number';
+    });
+console.log(b); // [1,2]
+ 
+// the reduce method can be used to create a value that
+// is a sum create from each element, or each element that meets
+// a condition.
+let c = a.reduce((acc, el) => {
+        if (typeof el === 'number') {
+            acc += el;
+        }
+        return acc;
+    }, 0);
+console.log(c); // 3
+ 
+// the array map can preform an action for each element, and return a
+// new array that is the result of some code that is run for each element.
+let d = a.map((el) => {
+        return typeof el === 'string' ? 0 : el;
+    });
+console.log(d); // [ 1, 0, 2, 0 ]
+```
+
 
 ### - User space options
 
