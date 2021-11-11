@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 10:13:59
-version: 1.68
+updated: 2021-11-11 10:16:03
+version: 1.69
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -30,6 +30,11 @@ The Array.forEach method in native javaScript is one of many ways to loop over t
 Also simply put it might not always be the best choice for the job when it comes to looping over the contents of an array, let alone any kind of collection when dealing with objects in general. There is no golden hammer when it comes to looping over an array, event when it comes to just simply looping over an array I often prefer to use a while loop, but even that might still not be the best option in all cases.
 
 In any case there are many options when it comes to looping over collections that involve the use of a library like lodash, as well as other native javaScript solutions such as while loops, for loop, and other array prototype method. Some might be more readable, but performance takes a hit, others might be more flexible, but again performance takes a hit. While loops might be fast, but can be even faster depending on how and where they are used when it comes to defining what the expressions are for figuring out of looping should continue or not, and if the break and continue keywords are used within them.
+
+### - The source code examples for this post are on Github
+
+I have the source code examples in this post up on my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-foreach).
+
 
 ### 1.2 - ECMA rev5 compliant methods and Array forEach backward support
 
