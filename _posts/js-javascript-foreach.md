@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 11:05:03
-version: 1.78
+updated: 2021-11-11 11:07:43
+version: 1.79
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -39,7 +39,7 @@ I have read a lot of blog posts on this specific topic over the years, and one t
 
 So then truth about the array for each method is that the Array forEach method in native javaScript is just one of many ways to loop over the contents of a collection in javaScript. There are some good reasons why to use it, and there are also some pretty good reasns why not to use it. Also there are often situations in which it will just simply fall short of what is needed when it comes to working with objects in general. The Array forEach is only generally useful for just looping over the contents of an Array, as it is an array prototype method after all. In some cases it is possible to get the method to work with certain objects that are formated like arrays by making use of the [function call method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call). However even it you can get it to work to loop over the contents of a collection it might not still always be the best solution when it comes to looping over a collection in general.
 
-Simply put The array for each method might not always be the best choice for the job when it comes to looping over the contents of an array, let alone any kind of collection when dealing with objects in general. There is no golden hammer when it comes to looping over an array. For example when it comes to just simply looping over an array, I often prefer to use a while loop, but even that might still not be the best option in all cases. As such I will often use methods like the Array map method, or the Array filter method to create the end result that I want.
+Simply put the array for each method might not always be the best choice for the job when it comes to looping over the contents of an array, let alone any kind of collection when dealing with objects in general. There is no golden hammer when it comes to looping over an array. In some cases it will work just fine, bit often I might use one of the many other array prototype methods, a loop of one kind of another, or maybe I still will use the array for each method just not by itself because there are some additional things I need to do first to get the array that I want to begin with.
 
 ### - User space options
 
