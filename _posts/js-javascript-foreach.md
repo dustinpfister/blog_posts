@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 15:56:16
-version: 1.98
+updated: 2021-11-11 15:58:49
+version: 1.99
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -281,7 +281,7 @@ In any case taking a moment to understand browser support for a native, or user 
 
 ## 2 - Other similar array prototype methods beyond that of just the javaScript forEach method
 
-So there is the Array forEach method, but there are other [array prototype methods](/2018/12/10/js-array/) like map, filter and reduce. The javaScript array forEach prototype method is very generic, some of these other options might be better choices when it comes to the nature of what it is that you need to do when looping over the full contents of an array. In this section I will be starting out with a basic array forEach example, but from there progress into these other array prototype methods of interest.
+So there is the Array forEach method, but there are other [array prototype methods](/2018/12/10/js-array/) like map, filter and reduce, just to name a few of them. The javaScript array forEach prototype method is very generic, some of these other options might be better choices when it comes to the nature of what it is that you need to do when looping over the full contents of an array. In this section I will be going over some of these array prototype methods, not all of them mind you, but the methods that have a similar functionally to that of the array for each method.
 
 ### 2.1 - Array.reduce method for reducing contents of an array into a product, sum, or other result.
 
@@ -295,7 +295,7 @@ console.log(sum); // 6
 
 ```
 
-This is one of many other Array prototype methods that work in a very similar way to that of Array.forEach, but behave a little differently. For one thing the Array.reduce method does not start looping at index 0, but rather index 1. the reason why is that the first element at index 0 is the initial value of an accumulator argument that is the first argument that is given to the function that is passed to Array.reduce. So in this example the value of s starts out as 1 and the value of r is 2, then on the next call the value of s is 3 and the value of r is 3 making the final value that is reduced to 6;
+This is one of many other Array prototype methods that work in a very similar way to that of Array.forEach, but will behave a little differently and create. For one thing the Array.reduce method does not start looping at index 0, but rather index 1. The reason why is that the first element at index 0 is the initial value of an accumulator argument that is the first argument that is given to the function that is passed to Array.reduce. So in this example the value of s starts out as 1 and the value of r is 2, then on the next call the value of s is 3 and the value of r is 3 making the final value that is reduced to 6;
 
 ### 2.2 - Array.map for creating a new array where each element is based off of values from another
 
