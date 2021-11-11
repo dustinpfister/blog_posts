@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 15:44:15
-version: 1.96
+updated: 2021-11-11 15:55:03
+version: 1.97
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -283,9 +283,9 @@ In any case taking a moment to understand browser support for a native, or user 
 
 So there is the Array forEach method, but there are other array prototype methods like map, filter and reduce. The javaScript array forEach prototype method is very generic, some of these other options might be better choices when it comes to the nature of what it is that you need to do when looping over the full contents of an array. In this section I will be starting out with a basic array forEach example, but from there progress into these other array prototype methods of interest.
 
-### 2.2 - Array.reduce method for reducing contents of an array into a product, sum, or other result.
+### 2.1 - Array.reduce method for reducing contents of an array into a product, sum, or other result.
 
-When it comes to doing anything that might involve a sum of any kind, it might be better to use Array.reduce in place of Array.forEach. 
+When it comes to doing anything that might involve a sum of any kind, it might be better to use [Array.reduce](/2021/07/13/js-array-reduce/) in place of Array.forEach. 
 
 
 ```js
@@ -297,7 +297,7 @@ console.log(sum); // 6
 
 This is one of many other Array prototype methods that work in a very similar way to that of Array.forEach, but behave a little differently. For one thing the Array.reduce method does not start looping at index 0, but rather index 1. the reason why is that the first element at index 0 is the initial value of an accumulator argument that is the first argument that is given to the function that is passed to Array.reduce. So in this example the value of s starts out as 1 and the value of r is 2, then on the next call the value of s is 3 and the value of r is 3 making the final value that is reduced to 6;
 
-### 2.3 - Array.map for creating a new array where each element is based off of values from another
+### 2.2 - Array.map for creating a new array where each element is based off of values from another
 
 Another way to loop over elements in an array is to use the [Array.map method](/2020/06/16/js-array-map/) which will also come up a lot in come examples. This method works more or less the same way as Array.forEach but with one significant difference. That difference is that whatever is returned in the method that is given as an argument this time will become that element in the array. Actually the new element will be in a new copy of the array that can then be reassigned to the array or not. So in a way the array map method is in line with functional programing in the sense that the array that that the prototype method is called off is not mutated in place.
 
@@ -311,7 +311,7 @@ console.log(sum); // 6
 console.log(arr); // [2,4,8]
 ```
 
-### 2.4 - Array filter for creating a new array that is only a few elements from another that meet a given condition.
+### 2.3 - Array filter for creating a new array that is only a few elements from another that meet a given condition.
 
 Yet another alternative array prototype method to the foreach method might be the [filter method](/2020/10/03/js-array-filter/). As the name would suggest this can be used to filter out elements from an array that are not wanted. Also like that of the array map method this will create and return a new array rather than mutating an array in place.
 
@@ -326,7 +326,7 @@ console.log(arr);
 // [ 7, 13, 20 ]
 ```
 
-### 2.5 - Array some for finding out if one or more elements in an array meet a condition
+### 2.4 - Array some for finding out if one or more elements in an array meet a condition
 
 There are also methods like array some, and array every that can be used to create and return a boolean value for an array depending on the condition returned in the method given. Say you want to test if just one element in an array meets a given condition for that there is the array some method. In addition there is the array every method that will return true if all elements in the array meet a given condition.
 
@@ -342,7 +342,7 @@ console.log(a.some(test)); // true
 console.log(b.some(test)); // false
 ```
 
-### 2.6 - The Array every method to find out if all elements in an array meet a given condition
+### 2.5 - The Array every method to find out if all elements in an array meet a given condition
 
 On top of the array some method there is also the [array every](/2021/07/12/js-array-every/) method that can also be used to create a boolen value from the array that it is called off of with a method that will be used for each element in the array. Unlike the array some method this will only result in a true boolen value of all of the elements in the array meet the given condition that will be called for each element in the array.
 
