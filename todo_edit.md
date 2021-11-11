@@ -71,12 +71,11 @@ So something like this for an item
 * readme file for for post folder and link to post
 * link to forpost folder from post
 
-### () - js-javascript-foreach ( 7k impressions / 3 months - Rank #5 - 9/30/21 )
-* proof read
-* todo list for for post folder
-* readme file for for post folder and link to post
-* link to forpost folder from post
-* start s6 examples section
+### ( done 11/11/2021 ) - js-javascript-foreach ( 7k impressions / 3 months - Rank #5 - 9/30/21 )
+* (done) proof read
+* (done) todo list for for post folder
+* (done) readme file for for post folder and link to post
+* (done) link to forpost folder from post
 
 ### ( done 11/10/2021 ) - js-javascript-svg ( old )
 * (done) have 5+ internal links for the post
