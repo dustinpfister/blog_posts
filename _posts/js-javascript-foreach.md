@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 15:01:18
-version: 1.87
+updated: 2021-11-11 15:03:04
+version: 1.88
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -142,7 +142,7 @@ while(i < len){
 
 ### 1.4 - User space options
 
-There is not just thinking in terms of native javaScript features, but also what there is to work with in various libraries also. When it comes to general utility libraries written in javaScript that can be used in bot a client side as well as nodejs environment one of the first projects that come to mind would be lodash. In lodash there is the [\_.forEach method](/2017/11/20/lodash_foreach/) that works more or less the same way as the native array prototype forEach method, but with a few note worthy differences. Maybe the biggest difference is that the lodash foreach method is one of many so called collection methods which in order words means that it will work not just with arrays, but with the public keys of objects in general. Another feature of the lodash forEach method is that is also can be broken out of just like with while loops by making use of the return keyword in the body of the method that is given to the lodash forEach method. If a true value is returned then that will stop the loop, which is another nice feature.
+There is not just thinking in terms of native javaScript features, but also what there is to work with in various libraries also. When it comes to general utility libraries written in javaScript that can be used in bot a client side as well as nodejs environment one of the first projects that come to mind would be lodash. In lodash there is the [\_.forEach method](/2017/11/20/lodash_foreach/) that works more or less the same way as the native array prototype forEach method, but with a few note worthy differences. Maybe the biggest difference is that the lodash foreach method is one of many so called collection methods which in order words means that it will work not just with arrays, but with the public keys of objects in general. Another feature of the lodash forEach method is that is also can be broken out of just like with while loops by making use of the [return keyword](/2019/03/01/js-javascript-return/) in the body of the method that is given to the lodash forEach method. If a true value is returned then that will stop the loop, which is another nice feature.
 
 There are also a whole bunch of other methods like the lodash for each method like the [lodash version of the map method](/2018/02/02/lodash_map/) which is also like array map only again it is a collection method. Still there is taking the time to learn how to accomplish these kinds of additional features using just native javaScript alone. In doing so I end up taking the time to make my own user space option for looping over the contents of an array, or object in general. When doing so I can of course do whatever I want when it comes to adding every feature I could every possible want, try my best to keep things as streamlined as possible, and of course everything that lays between those two general ideas.
 
@@ -175,7 +175,7 @@ forEach(a, (el, key, obj) => {
 // 1 2
 ```
 
-So then it is not so hard to make a user space solution for looping over the contents of an array, or Object in general just like that of the for each method of lodash. In the above example I am using the Object.keys method to get a collection of public key values for any given object regardless if it is an array, or just a plain old object. In the event that is is an array then the returned array will be all the numbered index values, in the event that it is a plan old object the retruned array will be any and all public key names, whatever they may be.
+So then it is not so hard to make a user space solution for looping over the contents of an array, or Object in general just like that of the for each method of lodash. In the above example I am using the Object.keys method to get a collection of public key values for any given object regardless if it is an array, or just a plain old object. In the event that is is an array then the returned array will be all the numbered index values, in the event that it is a plan old object the returned array will be any and all public key names, whatever they may be.
 
 ### - Readability and performance
 
