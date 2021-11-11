@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 11:07:43
-version: 1.79
+updated: 2021-11-11 11:11:52
+version: 1.80
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -32,6 +32,8 @@ Event though I will be keeping the source code examples in this section fairly s
 ### - The source code examples for this post are on Github
 
 I have the source code examples in this post up on my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-foreach). This is also where I am parking the source code examples for my [many other posts on vanilla javaScript topics](/categories/js/).
+
+This is one of a few posts that I do get around to editing a little now and then, and the test vjs repository would be where I have the latest revisions of what I am working on as well as notes for any and all future edits. The test vjs Github  repository would be a good place to make a pull request if you are on Github and have found a reason why doing so might be justified. There is also the comments section in this post that can be used to bring something up that might need to chance or can be added to the over all content of this post in some way.
 
 ### - No golden Hammer when looping over an array, or public object keys in general
 
