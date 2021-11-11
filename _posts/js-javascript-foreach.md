@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 15:04:17
-version: 1.89
+updated: 2021-11-11 15:07:39
+version: 1.90
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -179,7 +179,7 @@ So then it is not so hard to make a user space solution for looping over the con
 
 ### - Readability and performance
 
-Some might be more readable, but performance takes a hit, others might be more flexible, but again performance takes a hit. While loops might be fast, but can be even faster depending on how and where they are used when it comes to defining what the expressions are for figuring out of looping should continue or not, and if the break and continue keywords are used within them.
+Some options for looping over the contents of an object might be more readable, others might be or more flexible with a greater number of objects, but performance takes a hit. While loops might be fast, and can be even faster depending on how and where they are used when it comes to defining what the expressions are for figuring out of looping should continue or not. In addition the break and continue keywords can be used in the body of the loop in some ways that can help for a loop to run along even faster, but often might end up being a lengthly block of code that might prove to be a littler harder to follow as there is not much of anything being abstracted away.
 
 ### - ECMA rev5 compliant methods and Array forEach backward support
 
