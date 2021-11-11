@@ -65,7 +65,7 @@ If the post is new, or an older post that is not preforming so well, however the
       Intrinsic Value: There are a lot of interesting little details, branches off into all kinds of interesting topics.
       Search Console: Doing well in a relative way for the js category "javascript foreach sum value", "javascript foreach"
       Google Trends: "javascript foreach", "array foreach", "js foreach"
-
+        All is well with this post when it comes to having an interesting topic, showing potential in search console, and having some eyebrow raising keywords to target in Google trends. The post is all ready a lengthly content piece, so much of the work from this post forward will have to do with editing what I have together all ready. This is not to say that there is not still a whole lot of room for expansion also. This should maybe be the first post that I take to the front of the whole pack that I have written thus far when it comes to taking something into the range of five thousand plus words. As if this writing I have only one other post that long which is my main canvas-example post.
 * ( done 11/11/2021 ) 4500+ words
 * 5000+ words
 * 6000+ words
