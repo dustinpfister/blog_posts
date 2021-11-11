@@ -135,4 +135,5 @@ list:
       Intrinsic Value: There is a lot to write about, and a lot more to learn and research
       Search Console: None, doing very poorly thus far
       Google Trends: "javascript svg", "js svg", "svg viewbox"
+          This is very much an interesting topic, and a nice break from the usual content that I like to write on canvas so it might help when it comes to getting burnt out on that topic. The post can be expanding on a whole lot, so it would be easy to come up with over three thousand words of substance on this which is also great. Thus far the post is preforming very poorly in search console, but that is not at all because of lack of search interest on SVG. Improving the quality of the post might help then so this is a good post to have on this list
 * get the post to 3000+ words
