@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 11:11:52
-version: 1.80
+updated: 2021-11-11 11:40:16
+version: 1.81
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -53,7 +53,7 @@ There are also a whole bunch of other methods like the lodash for each method li
 
 Some might be more readable, but performance takes a hit, others might be more flexible, but again performance takes a hit. While loops might be fast, but can be even faster depending on how and where they are used when it comes to defining what the expressions are for figuring out of looping should continue or not, and if the break and continue keywords are used within them.
 
-### 1.2 - ECMA rev5 compliant methods and Array forEach backward support
+### - ECMA rev5 compliant methods and Array forEach backward support
 
 As time goes by it is becoming less, and less of an issue to worry about code breaking on clients when delivering modern javaScript exclusively when working out some kind of client system. Still depending on your websites analytics with browser versions, it might still be better to stick to a tired yet true way of doing things with client side javaScript.
 
@@ -62,7 +62,7 @@ Sticking to an older javaScript spec will help to assure that what it is that yo
 In any case taking a moment to understand browser support for a native, or user space option for looping over the contents of a collection is an essential part of making smart informed decisions with the use of javascript array foreach and in general. The array for each method is a good choice in this regard, however a while loop would of course be an even better option because support for that of course goes back even farther.
 
 
-### 1.2 - A Basic javaScripts forEach array prototype method example
+### 1.1 - A Basic javaScript forEach array prototype method example
 
 So a basic example of Array.forEach might just involve using it to loop over the contents of an array of numbers, and add up the numbers in the array to a variable that will serve as a sum of those numbers. So such an example might look something like this then.
 
@@ -81,7 +81,7 @@ Also In real projects what might need to happen for each element in an array mig
 
 So lets look as some more basic examples that make use of other array prototype methods that work in a similar way to that of the array for each prototype method. After this section we can start to look at loops, and custom user space options for specific tasks when it comes to making custom for each style methods.
 
-### 1.3 - Using the element values, index values, and array reference by way of the arguments
+### 1.2 - Using the element values, index values, and array reference by way of the arguments
 
 On top of the first argument of the function that is called for each element being a reference to the current element value, the second argument will be the index value of the current element also. In addition the third argument will be a reference to the array in which for each is being called off of. Many other similar Array prototype methods follow this pattern where the first argument is the current element of the array, and the second argument is the index value of that element.
 
