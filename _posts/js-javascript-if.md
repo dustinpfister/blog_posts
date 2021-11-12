@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 08:34:37
-version: 1.36
+updated: 2021-11-12 08:38:13
+version: 1.37
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -19,7 +19,7 @@ If statements are a fundamental component of javaScript code, or in any programi
 
 ## 1 - The basics of if statements in javaScript
 
-If you are reading this post I assume that you are still fairly new to javaScript, or maybe you are like me and have many years of experience but you are just looking for yet even more to learn about general programing topics. Whatever the case might be in this section I will be starting out with just some very basic javaScript if statement examples, as well as other simple examples of other control flow options in general in core javaScript. If you are a more experience developer then you might consider skipping over this section to get to the good stuff later on in this content.
+If you are reading this post I assume that you are still fairly new to javaScript, or maybe you are like me and have many years of experience but you are just looking for yet even more to learn about general programing topics. Whatever the case might be in this section I will be starting out with just some very basic javaScript if statement examples, as well as other simple examples of other control flow options in general in core javaScript. So these will be some fairly simple examples in this section, but if you have zero experience with javaScript you might still want to start out with a [getting started with javaScript](/2018/11/27/js-getting-started/) type post of some kind or another. If you are a more experience developer then you might consider skipping over this section to get to the good stuff later on in this content.
 
 ### - These source code examples are up on Github
 
