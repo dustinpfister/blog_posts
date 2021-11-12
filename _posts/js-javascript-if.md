@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 10:21:09
-version: 1.40
+updated: 2021-11-12 10:23:07
+version: 1.41
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -109,6 +109,8 @@ console.log( func() );   // bad
 ```
 
 ### 1.6 - Object keys, functions, and if statements
+
+I can not say that I use a switch often, in fact when I think about it I never use them. I am not necessary going to get on to some kind of anti switch war path about it mind you, it is just that there are other options that I seem to prefer when it comes to getting into more advanced control flow topics.
 
 ```js
 // and object with keys and values
