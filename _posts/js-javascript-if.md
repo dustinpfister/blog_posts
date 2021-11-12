@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 08:46:40
-version: 1.38
+updated: 2021-11-12 10:18:08
+version: 1.39
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -31,7 +31,6 @@ A basic if statement in javaScript would involve using the if keyword followed b
 
 ```js
 var str = 'foo';
- 
 // with brackets
 if (str === 'foo') {
     console.log('bar');
@@ -40,37 +39,23 @@ if (str === 'foo') {
 
 ```
 
-So the value or expression that evaluates to a value does not have to be a boolean value, as just about any kind of value in javaScript has a true or false equivalent depending on the type and value of what is being evaluated. For example an empty string will evaluate to false, and a string with one or more characters will evaluate to true. So all kinds of expressions and values can eb use as a way to control when a set of logic will execute or not in a javaScript if statement.
+So the value or expression that evaluates to a value does not have to be a boolean value, as just about any kind of value in javaScript has a true or false equivalent depending on the type and value of what is being evaluated. For example an empty string will evaluate to false, and a string with one or more characters will evaluate to true. So all kinds of expressions and values can be use as a way to control when a set of logic will execute or not in a javaScript if statement.
 
-### 1.2 - Some more basic examples of javaScript if statements
+### 1.2 - Not using brackets
 
-If statements can have brackets or not, and can also be used with an optional else block that will fire if the condition is only not true. I generally always do use brackets with if statements even if it does have only one line of code because I find that it helps to make things more clear to me, but it is just one of many things that one might come across when reading code on the open web.
+If statements can have brackets or not, I generally always do use brackets with if statements even if it does have only one line of code because I find that it helps to make things more clear to me. There are a number of other reasons why to avoid doing this that might prove to be more important than just person preference. However this is just one of many things that one might come across when reading code on the open web, and more often than not it might not present a note worthy problem.
 
 ```js
 var n = 42;
-
 // with brackets
 if (n === 42) {
     console.log('the answer');
 }
 // > 'the answer'
-
-// without
+// without brackets
 if (n >= 40)
     console.log('the answer');
 // > 'the answer'
-
-if (n === '42') {
-    console.log('the answer is a string');
-} else {
-    if (n === 42) {
-        console.log('the answer is a number.')
-    } else {
-        console.log('no answer');
-    }
-}
-// > 'the answer is a number'
-
 ```
 
 These are all examples of javaScript if statements there is also the Conditional operator that can be used in expressions. More on that a little later in this post.
