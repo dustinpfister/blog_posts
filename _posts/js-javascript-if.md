@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 10:28:58
-version: 1.43
+updated: 2021-11-12 10:31:29
+version: 1.44
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -79,6 +79,8 @@ if (n === '42') {
 
 ### 1.4 - The ternary operator
 
+There are if statements, but then there is also the question of an expressions friendly form if an if statement. When it comes to that there is the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
+
 ```js
 var n = 42;
 var a = n > 40 ? 'foo' : 'bar';
@@ -88,6 +90,8 @@ console.log(b); // 'bar'
 ```
 
 ### 1.5 - Using a switch
+
+Another control flow option aside from if statements and the ternary operator would be a switch statement.
 
 ```js
 var func = function (n) {
