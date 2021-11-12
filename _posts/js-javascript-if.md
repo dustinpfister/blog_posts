@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 11:07:48
-version: 1.49
+updated: 2021-11-12 11:11:01
+version: 1.50
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true [boolean value](/2018/11/28/js-booleans/), and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -139,6 +139,8 @@ console.log(func()); // bad
 ```
 
 ## 2 - Functions for the use of control flow
+
+Another major part of control flow beyond just that of an if statement would be the use of [one or more functions](/2019/12/26/js-function/). There is a whole lot of ground to cover when it comes to functions, so I am not going to be doing them justice in this section for sure that would be a major understatement. However staying on topic with the idea of control flow, it might be called for to have at least a few examples involving functions.
 
 ### 2.1 - Else is not needed when making a function that returns something
 
