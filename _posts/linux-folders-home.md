@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-12 12:01:21
-version: 1.2
+updated: 2021-11-12 12:05:11
+version: 1.3
 ---
 
 In a Linux system the home folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the equivalent typical location is for this kind of folder on other operating systems also.
@@ -38,6 +38,8 @@ $ ls ~ -a
 
 
 ## 2 - The .bashrc file
+
+One thing I think I should write about when it comes to the home folder is the .bashrc file that should be located at the root of a users home folder. This is a real impotent file so of course I am going to write a section on it. Simply put this is a bash file in which the code will run each time for a new shell instance for the user in which this file is placed. There are a number of things that can be done with this file such as customizing the the command prompt, as well as setting up command aliases so a lengthly command can instate just be a single word, or even letter.
 
 ### 2.1 - basic .bashrc file example
 
