@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 10:38:42
-version: 1.48
+updated: 2021-11-12 11:07:48
+version: 1.49
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true [boolean value](/2018/11/28/js-booleans/), and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -138,7 +138,9 @@ console.log(func(42)); // great
 console.log(func()); // bad
 ```
 
-## 2 - Else is not needed when making a function that returns something
+## 2 - Functions for the use of control flow
+
+### 2.1 - Else is not needed when making a function that returns something
 
 If a function that is being made that is using the return keyword to return a result when called then else does not need to be used. The reason why is that return will stop any further execution of any additional code, so it can be used as a way to break out of a function. This differs from blocks of code where I might only want some code to run if and only if a condition is not met. 
 
@@ -158,6 +160,30 @@ console.log(isNeg('foo')); // false
 console.log(isNeg('-1')); // false
 console.log(isNeg(42)); // false
 console.log(isNeg(-1)); // true
+```
+
+### 2.2 - Object keys revisited with and IIFE
+
+```js
+var func = (function () {
+    // object with keys
+    var obj = {
+        40: 'good',
+        42: 'great'
+    };
+    // returning a public function for the 'func'
+    // global variable
+    return function (n) {
+        if (n in obj) {
+            return obj[n];
+        }
+        return 'bad';
+    };
+}
+    ());
+console.log(func(40)); // good
+console.log(func(42)); // great
+console.log(func()); // bad
 ```
 
 ## 3 - Conditional operator
