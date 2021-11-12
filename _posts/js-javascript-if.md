@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 10:32:47
-version: 1.45
+updated: 2021-11-12 10:36:01
+version: 1.46
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -60,7 +60,9 @@ if (n >= 40)
 
 These are all examples of javaScript if statements there is also the Conditional operator that can be used in expressions. More on that a little later in this post.
 
-### 1.3 - else
+### 1.3 - Using else after a starting if statment
+
+The else keyword can be used right after an if statement block. This is a good place to park some code that I will want to run if, and only if the expression evaluates to false.
 
 ```js
 var n = 42;
