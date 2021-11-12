@@ -46,10 +46,6 @@ So something like this for an item
 * have 5+ internal links for the post
 * edit post to 1,200+ words
 
-### (   ) - js-javascript-if ( old, links)
-* have 5+ internal links for the post
-* edit post to 1,700+ words
-
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
@@ -70,6 +66,10 @@ So something like this for an item
 * have 5+ internal links for the post
 * readme file for for post folder and link to post
 * link to forpost folder from post
+
+### ( done 11/12/2021 ) - js-javascript-if ( old, links)
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,700+ words
 
 ### ( done 11/11/2021 ) - js-javascript-foreach ( 7k impressions / 3 months - Rank #5 - 9/30/21 )
 * (done) proof read
