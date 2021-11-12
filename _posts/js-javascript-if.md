@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 10:18:08
-version: 1.39
+updated: 2021-11-12 10:21:09
+version: 1.40
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -59,6 +59,76 @@ if (n >= 40)
 ```
 
 These are all examples of javaScript if statements there is also the Conditional operator that can be used in expressions. More on that a little later in this post.
+
+### 1.3 - else
+
+```js
+var n = 42;
+// if statement with else block
+if (n === '42') {
+    console.log('the answer is a string');
+} else {
+    if (n === 42) {
+        console.log('the answer is a number.')
+    } else {
+        console.log('no answer');
+    }
+}
+// > 'the answer is a number'
+```
+
+### 1.4 - The ternary operator
+
+```js
+var n = 42;
+var a = n > 40 ? 'foo' : 'bar';
+var b = n < 40 ? 'foo' : 'bar';
+console.log(a); // 'foo'
+console.log(b); // 'bar'
+```
+
+### 1.5 - Using a switch
+
+```js
+var func = function (n) {
+    switch (n) {
+        case 40:
+            return 'good';
+            break;
+        case 42:
+            return 'great';
+            break;
+        default:
+            return 'bad';
+            break;
+    }
+};
+console.log( func(40) ); // good
+console.log( func(42) ); // great
+console.log( func() );   // bad
+```
+
+### 1.6 - Object keys, functions, and if statements
+
+```js
+// and object with keys and values
+var obj = {
+    40: 'good',
+    42: 'great'
+};
+// a function that will use an if statement
+// and the in operator to find out of there
+// is a value to return, if not return 'bad'
+var func = function (n) {
+    if (n in obj) {
+        return obj[n];
+    }
+    return 'bad';
+};
+console.log(func(40)); // good
+console.log(func(42)); // great
+console.log(func()); // bad
+```
 
 ## 2 - Else is not needed when making a function that returns something
 
