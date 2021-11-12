@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 339
-updated: 2021-09-07 10:03:40
-version: 1.44
+updated: 2021-11-12 10:42:18
+version: 1.45
 ---
 
 In [javaScript](https://en.wikipedia.org/wiki/JavaScript) one of the most important primitive values to work with is a [js boolean value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) that will store a true of false value. To create a boolean there is the boolean literal, and the Boolean object that can be used as a [javaScript constructor](/2019/02/27/js-javascript-constructor/) function to create a boolean also. In addition booleans are often what is returned when using a method such as with the [lodash isArray method](/2017/09/27/lodash_isarray/), and can happen as a result of an evaluation of an expression also. 
@@ -23,7 +23,7 @@ However if you are someone that has at least a little experience thus far, and w
 
 ### 1.1 - Basic logging example
 
-For the most part if I want to set a boolean value I just set it using a boolean literal. When it comes to creating a boolean value by way of a literal then the true and false boolean literal keywords can be used do do just this. In this example I am setting the value of a logging variable to a boolean value of true that will be using in a logging function that will only log a given message of the logging variable is true.
+For the most part if I want to set a boolean value I just set it using a boolean literal. When it comes to creating a boolean value by way of a literal then the true and false boolean literal keywords can be used do do just this. In this example I am setting the value of a logging variable to a boolean value of true that will be using in a logging function that will only log a given message of the logging variable is true. This is done by making use of an [if statement](/2019/02/25/js-javascript-if/), which in this case might make better sense than some of the alternatives such as a ternary operator when it comes to control flow options.
 
 ```js
 // logging boolean
