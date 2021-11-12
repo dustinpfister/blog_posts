@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-03-30 12:48:05
-version: 1.32
+updated: 2021-11-12 08:21:19
+version: 1.33
 ---
 
-In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In javaScript there are JavaScript statements that start with an if statement, and can include else and elseif statements. In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
+In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certian value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
+
+ In addition there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these options there is also a conditional operator as well that can be used as a short hand for if else statements for example.
+
+
 If statements are a fundamental component of javaScript code, or in any programing language for that matter. So having a solid grasp on how to go about using them is key to writing just about any kind of project. There are additional tolls to work with in javaScript that are also worth mentioning when it comes to controlling the flow of a program other then that of if statements, such as switch statements, or doing something to compartmentalize code into groups using functions and objects. So lets look as some basic examples of if statements in javaScript, and many some additional related things while in the process of doing so.
 
 <!-- more -->
