@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 11:18:20
-version: 1.53
+updated: 2021-11-12 11:19:26
+version: 1.54
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true [boolean value](/2018/11/28/js-booleans/), and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -166,7 +166,7 @@ console.log(isNeg(-1)); // true
 
 ### 2.2 - Object keys revisited with and IIFE
 
-In the basic section of this post I introduced a simple example of using a function along with an object as an alternative way of doing more or less the same thing as with a switch statement. In this example I am now taking a second look at this sort of thing and doing just a bit more with it such as enclosing the object as well as the function inside the body of another self executing function called an [IIFE](/2020/02/04/js-iife). This results in a kind of module design where everything is wrapped up into one nice need little package that can be used by way of a single global variable, also if I enclose something like this along with everything else I am using into the body of another IIFE then I will not be defining any globals at all.
+In the basic section of this post I introduced a simple example of using a function along with an object as an alternative way of doing more or less the same thing as with a switch statement. In this example I am now taking a second look at this sort of thing and doing just a bit more with it such as enclosing the object as well as the function inside the body of another self executing function called an [IIFE](/2020/02/04/js-iife). This results in a kind of module design where everything is wrapped up into one nice need little package that can be used by way of a single [global variable](/2019/01/31/js-javascript-global/), also if I enclose something like this along with everything else I am using into the body of another IIFE then I will not be defining any globals at all.
 
 ```js
 var func = (function () {
