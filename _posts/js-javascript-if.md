@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 08:38:13
-version: 1.37
+updated: 2021-11-12 08:46:40
+version: 1.38
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -27,7 +27,7 @@ The source code examples that I am writing about in this section as well as the 
 
 ### 1.1 - First basic if statement example
 
-A basic if statement in javaScript would involve using the if keyword followed by a set of parenthesis in which an expression or value will evaluated to or contain a value that will be used as condition. If the condition is true then the code in the if statement will execute else it will not.
+A basic if statement in javaScript would involve using the if keyword followed by a set of parenthesis in which an expression or value will evaluated to a Boolean value that will be used as condition. If the condition is true then the code in the if statement will execute, else it will not.
 
 ```js
 var str = 'foo';
