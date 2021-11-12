@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 10:26:15
-version: 1.42
+updated: 2021-11-12 10:28:58
+version: 1.43
 ---
 
 In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true boolean value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
@@ -110,7 +110,7 @@ console.log( func() );   // bad
 
 ### 1.6 - Object keys, functions, and if statements
 
-I can not say that I use a switch often, in fact when I think about it I never use them. I am not necessary going to get on to some kind of anti switch war path about it mind you, it is just that there are other options that I seem to prefer when it comes to getting into more advanced control flow topics. A switch works by evaluating an expression as a value, and then comparing that value to one or more cases and if one is found that is a match that code will run, if not do code will run or a default case will run. That is all fine and good but why not have an object with key values, and us the in operator with an if statement in the body of a function? In the event that a value is a key of the object use the corresponding key value, and if nothing is there just have some kind of default value for an additional return statement at the bottom of the function.
+I can not say that I use a switch often, in fact when I think about it I never use them. I am not necessary going to get on to some kind of anti switch war path about it mind you, it is just that there are other options that I seem to prefer when it comes to getting into more advanced control flow topics. A switch works by evaluating an expression as a value, and then comparing that value to one or more cases and if one is found that is a match that code will run, if not do code will run or a default case will run. That is all fine and good but why not have an object with key values, and use the [in operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in) with an if statement in the body of a function where I can use the [return keyword](/2019/03/01/js-javascript-return/)? In the event that a value is a key of the object return the corresponding key value, and if nothing is there just have some kind of default value for an additional return statement at the bottom of the function.
 
 ```js
 // and object with keys and values
