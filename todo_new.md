@@ -4,8 +4,8 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### (   ) - new post #937 for 11/12/2021 - linux-folders-home
-* start the draft folder
+### ( done 11/12/2021 ) - new post #937 for 11/12/2021 - linux-folders-home
+* (done) start writing the post
 
 ### (   ) - new post #938 for 11/15/2021 - linux-folders-bin
 * start the draft folder
