@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-13 09:10:25
-version: 1.14
+updated: 2021-11-13 09:13:32
+version: 1.15
 ---
 
 In a Linux system the [Linux home](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/home.html) folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the [equivalent home folder location](https://en.wikipedia.org/wiki/Home_directory) is for this kind of folder on other operating systems also.
@@ -80,9 +80,11 @@ alias l='ls -CF'
 
 ## 3 - Using nodejs
 
-As much as I love Linux and bash I am always thinking more in terms of how to go about writing scripts that will work in operating systems in general beyond just that of Linux systems. So with that said there is writing scripts not in bash, but javaScript and making use of features in nodejs such as the home dir method of the built in os module as a way to get the hoe folder.
+As much as I love Linux and bash I am always thinking more in terms of how to go about writing scripts that will work in operating systems in general beyond just that of Linux systems. So with that said there is writing scripts not in bash, but javaScript and making use of features in [nodejs](/2017/04/05/nodejs-hello-world/) such as the home dir method of the built in os module as a way to get the hoe folder.
 
 ### 3.1 - The os module home dir method
+
+The home dir method of the os module can be used to get the hold folder for the current user in A Linux system. However what is great about this is that if I run this same script in Windows of MaxOS I will get the equivalent location in the Users folders in such systems.
 
 ```js
 #!/bin/node
