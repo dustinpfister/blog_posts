@@ -63,12 +63,6 @@ So something like this for an item
 * start section on recursive constructors
 * proof read
 
-### () - js-operator-precedence ( 3k impressions / 3 months - Rank #16 - 9/30/21 )
-* edit post to 2,400+ words
-* have 5+ internal links for the post
-* readme file for for post folder and link to post
-* link to forpost folder from post
-
 ### ( done 11/13/2021 ) - js-math-max-min ( 6k impressions / 3 months - Rank #6 - 9/30/21 )
 * (done) edit post to 1,800+ words
 * (done) have 5+ internal links for the post
@@ -177,6 +171,12 @@ So something like this for an item
 
 ### ( done 11/01/2021 ) - js-fetch (old)
 * (done) have 5+ internal links for the post
+
+### ( done 10/31/2021 ) - js-operator-precedence ( 3k impressions / 3 months - Rank #16 - 9/30/21 )
+* (done) edit post to 2,400+ words
+* (done) have 5+ internal links for the post
+* (done) readme file for for post folder and link to post
+* (done) link to forpost folder from post
 
 ### ( done 10/31/2021 ) - js-onchange (old)
 * (done) have 5+ internal links for the post
