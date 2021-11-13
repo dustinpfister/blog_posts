@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2021-11-13 14:08:34
-version: 1.27
+updated: 2021-11-13 14:09:44
+version: 1.28
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -47,7 +47,7 @@ console.log( Math.max.apply(null, nums) ); // 12
 
 ### 1.3 - Array reduce method example
 
-Of course there are a wide range of other ways to go about getting the min and max number in a series of numbers. I would say that the trick of using the apply function prototype method with the Math.min and Math.max methods is a nice quick way of doing so. However for this basic example I am going to start going over at least one if not more alternative ways of doing this sort of thing just for the heck of it. With that aid in this example I am also getting the min and max numbers in an array of numbers but I am using the Array reduce method as a means to do so.
+Of course there are a wide range of other ways to go about getting the min and max number in a series of numbers. I would say that the trick of using the apply function prototype method with the Math.min and Math.max methods is a nice quick way of doing so. However for this basic example I am going to start going over at least one if not more alternative ways of doing this sort of thing just for the heck of it. With that aid in this example I am also getting the min and max numbers in an array of numbers but I am using the [Array reduce](/2021/07/13/js-array-reduce/) method as a means to do so.
 
 ```js
 var arr = [1, 7, 3, -2];
