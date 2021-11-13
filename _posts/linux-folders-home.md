@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-13 09:06:52
-version: 1.13
+updated: 2021-11-13 09:10:25
+version: 1.14
 ---
 
 In a Linux system the [Linux home](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/home.html) folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the [equivalent home folder location](https://en.wikipedia.org/wiki/Home_directory) is for this kind of folder on other operating systems also.
@@ -68,6 +68,8 @@ fi
 I could just call the alias bash built in command directly in the .bashrc file, but often some starting scripts with various systems will do something like this that involves placing command alises in another hidden file that is septate from the bashrc file which is what this does.
 
 ### 2.2 - basic .bash\_aliases example
+
+So then the .bash\_aliases files is where I can write aliases for commands for example I can have a ll command that will be a short hand for ls -l. This can also prove to be very useful for very long commands that have many options that I call often. In such a case it is silly to type such lengthy commands, over an over again when I can just have that as an alias.
 
 ```
 # some more ls aliases
