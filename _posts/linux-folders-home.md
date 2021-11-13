@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-13 08:58:03
-version: 1.11
+updated: 2021-11-13 09:03:34
+version: 1.12
 ---
 
 In a Linux system the [Linux home](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/home.html) folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the [equivalent home folder location](https://en.wikipedia.org/wiki/Home_directory) is for this kind of folder on other operating systems also.
@@ -45,9 +45,11 @@ $ ls ~ -a
 
 ## 2 - The .bashrc file
 
-One thing I think I should write about when it comes to the home folder is the .bashrc file that should be located at the root of a users home folder. This is a real impotent file so of course I am going to write a section on it. Simply put this is a [bash file](/2020/11/27/linux-bash-script/) in which the code will run each time for a new shell instance for the user in which this file is placed. There are a number of things that can be done with this file such as customizing the the command prompt, as well as setting up command aliases so a lengthly command can instate just be a single word, or even letter.
+One thing I think I should write about when it comes to the home folder is the [.bashrc file](https://www.journaldev.com/41479/bashrc-file-in-linux) that should be located at the root of a users home folder. This is a real impotent file so of course I am going to write a section on it. Simply put this is a [bash file](/2020/11/27/linux-bash-script/) in which the code will run each time for a new shell instance for the user in which this file is placed. There are a number of things that can be done with this file such as customizing the the command prompt, as well as setting up command aliases so a lengthly command can instate just be a single word, or even letter.
 
 ### 2.1 - basic .bashrc file example
+
+A .bashrc file should all ready be there to begin with, if so, an you do not know much about these kinds of files, it might be best to just leave it alone. However it can not hut to just look at it if you are still new to this sort of thing. With that said when it comes to taking a moment to look over the .bashrc file in a home folder for a user you might see something that looks like this.
 
 ```
 # ~/.bashrc: executed by bash(1) for non-login shells.
