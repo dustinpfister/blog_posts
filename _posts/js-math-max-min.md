@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 595
-updated: 2021-11-13 14:12:20
-version: 1.29
+updated: 2021-11-13 14:21:11
+version: 1.30
 ---
 
 In core javaScript there is the [Math max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) and [Math min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min) methods that can be used to find the highest and lowest numbers in a set of numbers. The methods work by passing the set of numbers as arguments, but it is also possible to use an array by making use of the [apply function prototype method](/2017/09/21/js-call-aplly-and-bind/). The apply method can be called off of the Math.max or min method as it is a function prototype method, and then a null value can be given as the first argument, along with the array of numbers, more on that later.
@@ -23,6 +23,10 @@ var points=(function(){var api={};api.gen=function(count,width,height){count=cou
 ## 1 - Math min and Max basics
 
 In this section I will be going over a few basic examples of the Math.min, and Math max methods in the Math object of core javaScript. I will also be touching base on any and all other related topics in this basic section before getting into more advanced topics and any and all simple project examples.
+
+### - The source code examples here are on Github
+
+The source code examples that I am writing about in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-max-min) on Git hub along with the source code examples for all my [other posts on native javaScript](/categories/js/).
 
 ### 1.1 - Basic Math min example
 
