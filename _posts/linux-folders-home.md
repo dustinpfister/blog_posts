@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-12 12:10:05
-version: 1.5
+updated: 2021-11-13 08:40:09
+version: 1.6
 ---
 
 In a Linux system the home folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the equivalent typical location is for this kind of folder on other operating systems also.
@@ -18,6 +18,8 @@ In a Linux system the home folder is where all the personal files are stored for
 There are a few things to cover when it comes to the very basics of the home folder in Linux systems. For one thing there is just simply knowing how to get to it in a bash console for one thing. There is also at least a few more things to write about when it comes to someone who is new to bash and Linux such as the Home environment variable and how to use other commands and bash features to list the contents of the home folder.
 
 ### 1.1 - Using the cd command to change the working folder to the home folder
+
+There are a few ways of how to go about changing the current working directory to the home folder, one of which would be to type in an absolute path to it with the [Linux cd](/2021/02/10/linux-cd/) command in you know the user name of the current user. However another way to go about doing so is to use a ~ for the path to given to the cd command. This will always change the current working folder to the home folder of the current user.
 
 ```
 $ cd ~
