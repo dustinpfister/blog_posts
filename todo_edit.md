@@ -30,6 +30,14 @@ So something like this for an item
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+### (   ) - js-javascript-break ( old )
+* have 5+ internal links for the post
+* edit post to 1,400+ words
+
+### (   ) - js-value-of ( old )
+* have 5+ internal links for the post
+* edit post to 1,200+ words
+
 ### (   ) - js-javascript-null ( no internal links )
 * have 5+ internal links for the post
 * edit post to 1,000+ words
