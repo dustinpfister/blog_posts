@@ -2,7 +2,7 @@
 
 These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/). At the time of this writing the build process involves the use of the node.js powered static site generator called [hexo](https://github.com/hexojs/hexo), however pulling the markdown files into this repo was a first step away from depending on hexo. However I have not at this point made any real progress with making my own static website generator just yet, I have a lot of other pots boiling, and for the most part hexo is working okay.
 
-### The /scripts folder
+## The /scripts folder
 
 So then on top of just using this as a place to park my markdown files there are also a few scripts that I have made that I am using in the process of figuring out where I should be focusing my time and energy with this. There is the question of what content I should be focusing on next when it comes to editing, expanding, and improving the general quality the content that I have all ready produced thus far. Also of course there is what I should be writing about next in terms of new content moving forward.
 
