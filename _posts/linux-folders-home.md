@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-13 08:49:38
-version: 1.7
+updated: 2021-11-13 08:53:11
+version: 1.8
 ---
 
 In a Linux system the [Linux home](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/home.html) folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the [equivalent home folder location](https://en.wikipedia.org/wiki/Home_directory) is for this kind of folder on other operating systems also.
@@ -26,7 +26,9 @@ $ cd ~
 $ pwd
 ```
 
-### 1.2 - The $HOME environment variable
+### 1.2 - The \$HOME environment variable
+
+There is also a \$HOME [environment variable](/2020/10/29/linux-environment-variables/) that is a string value for the current home path. So then this can be used with a command like the [Linux echo](/2019/08/15/linux-echo/) command as a way to spit out the home path to the standard output.
 
 ```
 $ echo $HOME
