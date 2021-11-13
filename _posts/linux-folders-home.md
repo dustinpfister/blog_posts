@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 937
-updated: 2021-11-13 08:55:55
-version: 1.9
+updated: 2021-11-13 08:56:55
+version: 1.10
 ---
 
 In a Linux system the [Linux home](https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/home.html) folder is where all the personal files are stored for each user of a system. This is not just a place to store data files like documents, pictures, and so forth but also things like user configuration settings, and bash scripts that are to run when the user first logs in. There is also thinking not just in terms of this kind of folder in terms of a Linux system but also what the [equivalent home folder location](https://en.wikipedia.org/wiki/Home_directory) is for this kind of folder on other operating systems also.
@@ -36,7 +36,7 @@ $ echo $HOME
 
 ### 1.3 - Using the Linux ls command to list the contents of the home folder
 
-To list the contents od the home folder I can use the Linux ls command and just use a ~ for the path to give when calling ls, on top of that I might want to use the -a option to list everything that is located in the root level of the home folder, including hidden files and folders.
+To list the contents of the home folder I can use the [Linux ls](/2020/10/14/linux-ls/) command and just use a ~ for the path to give when calling ls, on top of that I might want to use the -a option to list everything that is located in the root level of the home folder, including hidden files and folders.
 
 ```
 $ ls ~ -a
