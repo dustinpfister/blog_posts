@@ -4,11 +4,13 @@ These are the markdown files that are used to build by website here at github pa
 
 ### The /scripts folder
 
-So then on top of just using this as a place to park my markdown files there are also a few scripts that I have made that I am using in the process of knowing what content I should be focusing on next when it comes to editing the content that I have all ready produced, as well as what to write next. These scripts do things like ranking each post in terms or word count, or ranking whole collections of content based on how long it has been sense the last time I edited each post. There are a number of other such tools that I use in conjunction with other tools such as Google analytics, and search console, and Google trends to gain some sense as what I should be doing when it comes to planing out how I should be focusing my efforts.
+So then on top of just using this as a place to park my markdown files there are also a few scripts that I have made that I am using in the process of figuring out where I should be focusing my time and energy with this. There is the question of what content I should be focusing on next when it comes to editing, expanding, and improving the general quality the content that I have all ready produced thus far. Also of course there is what I should be writing about next in terms of new content moving forward.
+
+These scripts do things like ranking each post in terms or word count, or ranking whole collections of content based on how long it has been sense the last time I edited each post. There are a number of other such tools that I use in conjunction with other tools such as Google analytics, search console, and Google trends to gain some sense as what I should be doing when it comes to planing out how I should be focusing my efforts.
 
 ## The /todo folder
 
-I have been working out a number of lists that serve as outlines when it comes to what I should be doing next. I still do not have a good system down when it comes to how I go about making choices as to what to write about next in terms of new content, as well as what I should be revisiting when it comes to editing older content. There are many competing ideas when it comes to this so I figure I need to have a whole folder to store what I have together thus far when it comes to having some kind of system for continuing with this.
+I have been working out a number of lists that serve as outlines when it comes to what I should be doing next. I still do not have a good system down when it comes to how I go about making choices as to what to write about next with revising old posts, and writing new posts. There are many competing ideas when it comes to this, so I figure I need to have a whole folder to store what I have together thus far when it comes to having some kind of system for continuing with this website.
 
 ## 1 - Setup and building the site with hexo
 
