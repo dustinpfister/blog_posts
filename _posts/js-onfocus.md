@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 356
-updated: 2021-11-14 15:31:05
-version: 1.35
+updated: 2021-11-14 15:32:19
+version: 1.36
 ---
 
 The javaScript [onfocus event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onfocus) is an event that will fire when the user sets what is often called the focus on an element. This focus typically will happen when a user clicks on an element for example, but there are other things that can happen that would trigger such an event. For example it can also happen by using the tab button to cycle threw elements that can be focused in desktop environments such as input elements.
@@ -22,7 +22,7 @@ In this post I will be covering some quick examples when it comes to working wit
 
 ## 1 - Basics of the on focus event
 
-In this section I will be starting out with just a few quick examples of the on focus event in client side javaScript. These are examples that I will be keeping fairly simple but this is still not a getting started type post with javaScript in general.
+In this section I will be starting out with just a few quick examples of the on focus event in client side javaScript. These are examples that I will be keeping fairly simple but this is still not a [getting started type post with javaScript in general](/2018/11/27/js-getting-started/).
 
 ### 1.1 - onfocus event hander for an element
 
