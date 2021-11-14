@@ -11,7 +11,7 @@ This is a todo list where editing is prioritized based just purely on how much t
 * update this list at least once a month.
 * when done with an item in a listing place a ( done MM/DD/YYYY ) at the beginning of the listing
 
-### lodash_sum ( #1 - 1,736 clicks - 10/02/2021 )
+### lodash_sum ( #1 - 1,702 clicks - 11/14/2021 )
 * ( done 10/02/2021 ) have 5+ internal links in the post
 * ( done 10/02/2021 ) README for test_lodash/forpost/lodash_sum
 * ( done 10/02/2021 ) link to post from README
@@ -21,55 +21,64 @@ This is a todo list where editing is prioritized based just purely on how much t
 * ( done 10/02/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
-### lodash_range ( #2 - 1,262 clicks - 10/02/2021 )
-* ( done 10/03/2021 ) have 5+ internal links in the post
-* ( done 10/03/2021 ) expand to 1,000+ words
-* ( done 10/03/2021 ) expand to 1,800+ words
-* expand to 2,400+ words
-
-### nodejs-glob ( #3 - 1,254 clicks - 10/02/2021 )
+### nodejs-glob ( #2 - 1,286 clicks - 11/14/2021 )
 * ( done 10/04/2021 ) have 5+ internal links in the post
 * ( done 10/04/2021 ) expand to 1,000+ words
 * ( done 10/04/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
-### lodash_countby ( #4- 1,236 clicks - 10/02/2021 )
+### lodash_range ( #3 - 1,260 clicks - 11/14/2021 )
+* ( done 10/03/2021 ) have 5+ internal links in the post
+* ( done 10/03/2021 ) expand to 1,000+ words
+* ( done 10/03/2021 ) expand to 1,800+ words
+* expand to 2,400+ words
+
+### lodash_countby ( #4- 1,180 clicks - 11/14/2021 )
 * ( done 10/05/2021 ) have 5+ internal links in the post
 * ( done 10/05/2021 ) expand to 1,000+ words
 * ( done 10/05/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
-### lodash_includes ( #5 - 1,137 clicks - 10/02/2021 )
+### linux-raspbian-lite-xserver-xorg ( #5 - 1,105 clicks - 11/14/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
+
+### lodash_includes ( #6 - 1,046 clicks - 11/14/2021 )
 * (done 10/08/2021 ) have 5+ internal links in the post
 * (done 10/08/2021 ) expand to 1,000+ words
 * expand to 1,800+ words
 * expand to 2,400+ words
 
+### lodash_concat ( #7 - 891 clicks - 11/14/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
+
+### lodash_size ( #8 - 817 clicks - 11/14/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
+
+### lodash_groupby ( #9 - 739 clicks - 11/14/2021 )
+* expand to 1,000+ words
+* expand to 1,800+ words
+* expand to 2,400+ words
+* have 5+ internal links in the post
+
+### lodash_partition ( #10 - 695 clicks - 11/14/2021 )
+
+
 ### lodash_remove ( #6 - 967 clicks - 10/02/2021 )
 * ( done 10/11/2021 ) expand to 1,800+ words
 * expand to 2,400+ words
 
-### lodash_concat ( #7 - 956 clicks - 10/02/2021 )
-* expand to 1,000+ words
-* expand to 1,800+ words
-* expand to 2,400+ words
-* have 5+ internal links in the post
 
-### lodash_groupby ( #8 - 867 clicks - 10/02/2021 )
-* expand to 1,000+ words
-* expand to 1,800+ words
-* expand to 2,400+ words
-* have 5+ internal links in the post
 
-### linux-raspbian-lite-xserver-xorg ( #9 - 858 clicks - 10/02/2021 )
-* expand to 1,000+ words
-* expand to 1,800+ words
-* expand to 2,400+ words
-* have 5+ internal links in the post
 
-### lodash_size ( #10 - 836 clicks - 10/02/2021 )
-* expand to 1,000+ words
-* expand to 1,800+ words
-* expand to 2,400+ words
-* have 5+ internal links in the post
+
+
 
