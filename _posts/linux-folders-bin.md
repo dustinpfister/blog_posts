@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 938
-updated: 2021-11-15 13:47:18
-version: 1.16
+updated: 2021-11-15 13:49:21
+version: 1.17
 ---
 
 I think that in order to learn more about how to use a Linux system one thing that should happen is to become more familiar with the various folders that branch off from root in a Linux system, such as the [\/bin folder](https://ostoday.org/linux/what-is-bin-in-linux.html) which is what I will be writing about in todays post. Do not get me wrong I think there is a whole lot more that needs to happen beyond just that, such as learning at least a thing or two about bash, and maybe [writing a bash script or two](/2020/11/27/linux-bash-script/). However the thing about that is the bash is one of many commands that are in, you guessed it, the bin folder. 
@@ -56,4 +56,9 @@ So then is the cut command yet another command that is in the bin folder? Once a
 
 ## 2 - Conclusion
 
-There is a whole lot more ground to cover when it comes to the various commands that can be found in the bin folder. However for the most part I think I have at least touched base on what the bin folder is all about for now, and that is all I really wanted to do when writing this post. I have all ready wrote a post on the [home folder in Linux systems](/2021/11/12/linux-folders-home/), and as tie goes by I am planing to write at least a few more posts on the various folders in Linux.
+There is a whole lot more ground to cover when it comes to the various commands that can be found in the bin folder. However for the most part I think I have at least touched base on what the bin folder is all about for now, and that is all I really wanted to do when writing this post. I have all ready wrote a post on the [home folder in Linux systems](/2021/11/12/linux-folders-home/), and as time goes by I am planing to write at least a few more posts on the various folders in Linux.
+
+However there is not just looking into the various folders, there is also taking the time to start to look into all the various commands in these various folders. There is also looking into what locations are in fact actually binaries and what locations are just symbolic links to binaries in other folders actually.
+
+
+
