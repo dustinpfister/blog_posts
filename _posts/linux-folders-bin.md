@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 938
-updated: 2021-11-15 13:30:47
-version: 1.11
+updated: 2021-11-15 13:33:56
+version: 1.12
 ---
 
 I think that in order to learn more about how to use a Linux system one thing that should happen is to become more familiar with the various folders that branch off from root in a Linux system, such as the [\/bin folder](https://ostoday.org/linux/what-is-bin-in-linux.html) which is what I will be writing about in todays post. Do not get me wrong I think there is a whole lot more that needs to happen beyond just that, such as learning at least a thing or two about bash, and maybe [writing a bash script or two](/2020/11/27/linux-bash-script/). However the thing about that is the bash is one of many commands that are in, you guessed it, the bin folder. 
@@ -30,6 +30,8 @@ bash is /bin/bash
 ```
 
 ### 1.2 - The \$PATH environment variable
+
+For this example I am using the echo bash built in command to print the value of the \$PATH environment variable. This is a collection of paths to which bash will look for binaries in, and of course the \/bin folder is one of the paths in this \$PATH environment variable.
 
 ```
 $ echo $PATH
