@@ -8,7 +8,7 @@ On top of just the markdown files I also have a number of scripts that I am usin
 
 ## The /scripts folder
 
-So then on top of just using this as a place to park my markdown files there are also a few scripts that I have made that I am using in the process of figuring out where I should be focusing my time and energy with this. There is the question of what content I should be focusing on next when it comes to editing, expanding, and improving the general quality the content that I have all ready produced thus far. Also of course there is what I should be writing about next in terms of new content moving forward.
+So then on top of just using this as a place to park my markdown files there are also a few scripts that I have made that I am using in the process of figuring out where I should be focusing my time and energy with this.
 
 These scripts do things like ranking each post in terms or word count, or ranking whole collections of content based on how long it has been sense the last time I edited each post. There are a number of other such tools that I use in conjunction with other tools such as Google analytics, search console, and Google trends to gain some sense as what I should be doing when it comes to planing out how I should be focusing my efforts.
 
