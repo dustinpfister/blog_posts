@@ -1,6 +1,8 @@
 # blog_posts
 
-These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/). At the time of this writing the build process involves the use of the node.js powered static site generator called [hexo](https://github.com/hexojs/hexo), however pulling the markdown files into this repo was a first step away from depending on hexo. However I have not at this point made any real progress with making my own static website generator just yet, I have a lot of other pots boiling, and for the most part hexo is working okay.
+These are the markdown files that are used to build by website here at github pages at [https://dustinpfister.github.io](https://dustinpfister.github.io/). At the time of this writing the build process involves the use of the node.js powered static site generator called [hexo](https://github.com/hexojs/hexo), however pulling the markdown files into this repo was a first step away from depending on hexo. I have not at this point made any real progress with making my own static website generator just yet, I have a lot of other pots boiling, and for the most part hexo is working okay.
+
+On top of just the markdown files I also have a number of scripts that I am using to run over the collection of content. In additional I also have notes as to what it is I should be doing when it comes to improving, and expanding the collection of content.
 
 ## The /scripts folder
 
