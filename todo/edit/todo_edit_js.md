@@ -11,10 +11,6 @@
 * have 5+ internal links for the post
 * edit post to 1,400+ words
 
-### (   ) - js-value-of ( old )
-* have 5+ internal links for the post
-* edit post to 1,200+ words
-
 ### (   ) - js-javascript-null ( no internal links )
 * have 5+ internal links for the post
 * edit post to 1,000+ words
@@ -33,6 +29,10 @@
 
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
+
+### ( done 11/15/2021 ) - js-value-of ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,200+ words
 
 ### ( done 11/15/2021 ) - js-javascript-constructor ( just a good topic )
 * (done) Expand readme file in test vjs
