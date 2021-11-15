@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 938
-updated: 2021-11-15 12:58:07
-version: 1.8
+updated: 2021-11-15 13:03:12
+version: 1.9
 ---
 
 I think that in order to learn more about how to use a Linux system one thing that should happen is to become more familiar with the various folders that branch off from root in a Linux system, such as the [\/bin folder](https://ostoday.org/linux/what-is-bin-in-linux.html) which is what I will be writing about in todays post. Do not get me wrong I think there is a whole lot more that needs to happen beyond just that, such as learning at least a thing or two about bash, and maybe [writing a bash script or two](/2020/11/27/linux-bash-script/). However the thing about that is the bash is one of many commands that are in, you guessed it, the bin folder. 
@@ -17,7 +17,7 @@ The bin folder is one of several typical folders that contain binaries, or progr
 
 ## 1 - Basics of the \/bin folder in Linux
 
-In this section I will just be going over a few key points about the \/bin folder in Linux.
+In this section I will just be going over a few key points about the \/bin folder in Linux. This will mostly be just about a few commands that are located in the bin folder that are helper for figuring out of a command is located there or not. By taking a moment to find out what commands are in the bin folder compared to other folders it should start to get clear as to what the bin folder is for compared to other locations. Speaking of other locations I think I should also take a moment to write about a few things when it comes to certain [environment variables](/2020/10/29/linux-environment-variables/), mainly the \$PATH variable.
 
 ### 1.1 - Using the type bash built in command to find out if a command is a \/bin folder command or not
 
