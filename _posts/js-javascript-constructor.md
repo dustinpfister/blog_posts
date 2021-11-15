@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-11-15 09:25:57
-version: 1.52
+updated: 2021-11-15 11:45:14
+version: 1.53
 ---
 
 In javaScript there are many [types of functions](/2019/12/26/js-function/) in the sense of how to make one in javaScript, such as arrow functions, function expressions, and declarations. Also there are many ways that functions can be used to create different kinds of functions that are independent of a specific language as JavaScript, some examples would be [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. So there is much to learn about functions in javaScript, not just with the language itself, but topics that surround functions in general.
@@ -94,7 +94,53 @@ A constructor or class is not always the best option when it comes to working ou
 
 Constructors can be thought of as a situation in which there is one or more instances of an object that can be though of as a state, and then there are a number of methods that can be used to mutate that state. An alternative to this is to have a collection of pure functions or at least pure like functions that accept this state as one of its arguments.
 
-### 2.1 - create method example
+### 2.1 - Using a constructor function, and using just a plain old function
+
+Constructors are great, and there are many good talking points as to why it is that they should be used over alternative ways of doing the same thing. many of the good talking points have to do with the prototype chain and that the use of it is a good way to reduce the user of memory by offsetting things that would otherwise be an redundant properties in the form of own property of each object in a collection of objects to a single prototype object. That is a good point, but there are also a lot of things about constructors than can often make them a little hard to follow compared to functions where everything there is to work with is an argument value, and that each set of argument values will always return the same end result.
+
+So for this example here I have a Unit Constructor, and a Ship object that contains two methods.
+
+```js
+// simple Unit constructor
+var Unit = function (opt) {
+    opt = opt || {};
+    this.w = opt.w || 0;
+    this.h = opt.h || 0;
+};
+// simple Unit prototype method
+Unit.prototype.getArea = function () {
+    return this.w * this.h;
+};
+
+// an object literal
+var Ship = {};
+// a create method that returns an object with
+// w, and h properties as public own property keys
+Ship.create = function (opt) {
+    opt = opt || {};
+    return {
+        w: opt.w || 0,
+        h: opt.h || 0
+    };
+};
+// a get area method that accepts a plain object
+// with w and h properties like that of what is returned
+// by the Ship.create method
+Ship.getArea = function (ship) {
+    return ship.w * ship.h;
+};
+// Demo
+var u = new Unit({w:32, h:32});
+console.log( u.getArea() );    // 1024
+console.log( Ship.getArea(u)); // 1024
+ 
+var s = Ship.create({w:32, h:32});
+console.log( Ship.getArea(s));  // 1024
+console.log( Unit.prototype.getArea.call(s)); // 1024
+ 
+```
+
+### 2.2 - create point method example
 
 First off there is starting out with a method that will create and return a plain old object by itself that contains a certain standard set of own object properties. For the sake of starting out with something fairly simple how about just a create method that will create and return an object with x and p properties, so in other words a simple create point object method.
 
@@ -111,7 +157,7 @@ console.log(point); // { x: 0, y: 0 }
 
 Simple enough, but now the next step would be to make one or more methods that will work with one of these objects.
 
-### 2.2 - distance method
+### 2.3 - distance method
 
 Now that I have a method that will create and return a standard point object, I would now like to have at least one method that will work with one of these point objects. One such method that comes to mind would be a distance method that will allow me to get the distance between two point objects, or a point object and some number primitives.
 
@@ -145,7 +191,7 @@ console.log( Points.distance(pt1, 0, 0) );
 
 The subject of a pure function is something that I should not get into detail here, but as far as constructors are concerned the process of doing to revolves around not using them. The alternative to not using a constructor is then just creating plain old javaScript objects with a plain old function that will return one that has the properties that the object should have. Then having a collection of functions that are stand along functions where the object that is created must be passed as an argument. A true pure function is a bit more than just that, but that would be one step in that kind of direction.
 
-### 2.3 - Create display object method, and updated distance method
+### 2.4 - Create display object method, and updated distance method
 
 When it comes to constructors there is the subject of inheritance. To do something like that without making use of object ordinated style constructor functions and the prototype chain I will just have to find some other way. I guess one way would be to just start making my methods a little more complex and just test for the existence of certain properties to adjust things as needed.
 
