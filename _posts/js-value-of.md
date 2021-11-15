@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2021-11-15 12:16:12
-version: 1.22
+updated: 2021-11-15 12:17:57
+version: 1.23
 ---
 
 The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object should be. This is a way to define a function for a single object, or a Class of Objects that will be called when the object is used in an expression where the object will be teated as a number in the expression.
@@ -45,7 +45,7 @@ var n = obj + 5;
 console.log(n); // 21
 ```
 
-So that is about it when it comes to the value of method when working with objects and expressions. What a value of method should return of course depends on the nature of the object, and the [constructor function](/2019/02/27/js-javascript-constructor/) if any that created it.
+So that is about it when it comes to the value of method when working with objects and expressions. What a value of method should return of course depends on the nature of the object, and the [constructor function](/2019/02/27/js-javascript-constructor/) if any that created it. When it comes to constructor functions there is of course the prototype object and in such situations it is possible for a value of method to be part of the prototype chain, but it can also be an own property of an object also.
 
 ## 2 - The value of method and the prototype chain.
 
