@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-11-15 09:25:01
-version: 1.51
+updated: 2021-11-15 09:25:57
+version: 1.52
 ---
 
 In javaScript there are many [types of functions](/2019/12/26/js-function/) in the sense of how to make one in javaScript, such as arrow functions, function expressions, and declarations. Also there are many ways that functions can be used to create different kinds of functions that are independent of a specific language as JavaScript, some examples would be [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. So there is much to learn about functions in javaScript, not just with the language itself, but topics that surround functions in general.
@@ -31,7 +31,7 @@ In this section I will be going over just a few basic examples of constructor fu
 
 ### - The source code examples here are on github
 
-The source code examples in this post can be found on by [Github account in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-constructor). Many more source code examples are in that repository that correspond to my various other posts on vanilla javaScript. If you find something wrong with the of the source code examples in this post that would be where to make a pull requests, there is also the comments section at the bottom of this post.
+The source code examples in this post can be found on by [Github account in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-constructor). Many more source code examples are in that repository that correspond to my [various other posts on vanilla javaScript](/categories/js/). If you find something wrong with the of the source code examples in this post that would be where to make a pull requests, there is also the comments section at the bottom of this post.
 
 ### 1.1 - Built in constructors
 
