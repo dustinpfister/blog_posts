@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 938
-updated: 2021-11-15 13:35:22
-version: 1.13
+updated: 2021-11-15 13:38:30
+version: 1.14
 ---
 
 I think that in order to learn more about how to use a Linux system one thing that should happen is to become more familiar with the various folders that branch off from root in a Linux system, such as the [\/bin folder](https://ostoday.org/linux/what-is-bin-in-linux.html) which is what I will be writing about in todays post. Do not get me wrong I think there is a whole lot more that needs to happen beyond just that, such as learning at least a thing or two about bash, and maybe [writing a bash script or two](/2020/11/27/linux-bash-script/). However the thing about that is the bash is one of many commands that are in, you guessed it, the bin folder. 
@@ -39,6 +39,8 @@ $ echo $PATH
 ```
 
 ### 1.3 - Path and the Linux cut command
+
+This example might prove to be a little off topic but maybe not actually if I frame it the right way. Here I am once again using the ehco command to print the contents of the \$PATH environment variable to the standard output. However now I am piping the string to the Linux cut command and using the -d option of cut to define the \: character as a delimiter, at which point I can just print a certain field in this string.
 
 ```
 $ echo $PATH | cut -d ':' -f 6
