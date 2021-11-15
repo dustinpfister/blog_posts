@@ -1,12 +1,12 @@
 ---
-title: js value of object method
+title: Setting the Number value of an object in javaScript with the js value of object method
 date: 2020-03-06 16:45:00
 tags: [js,corejs]
 layout: post
 categories: js
 id: 622
-updated: 2021-03-30 13:00:50
-version: 1.17
+updated: 2021-11-15 12:06:47
+version: 1.18
 ---
 
 The js [valueOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf) Object prototype method is a way to define what the number primitive value of an object should be. This is a way to define a function for a single object, or a Class of Objects that will be called when the object is used in an expression where the object will be teated as a number in the expression.
@@ -19,7 +19,9 @@ In this post the focus will be more so on the vlaueOf method, and how this can c
 
 <!-- more -->
 
-## 1 - js value of basic example
+## 1 - basic of the value of method in javaScript
+
+### 1.1 - js value of basic example
 
 So to get a basic idea of what the value of method is all about here is a very basic example of the value of method in action. I have just a simple object literal with two number values, and a value of method that returns another number value that makes use of those properties using the core javaScript built in Math.pow method that will return a number using those two numbers in the object. When doing so the this keyword can be used inside th body of the valueOf method to refer to the object, and its properties.
 
