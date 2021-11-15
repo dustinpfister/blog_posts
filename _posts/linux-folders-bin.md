@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 938
-updated: 2021-11-15 13:28:50
-version: 1.10
+updated: 2021-11-15 13:30:47
+version: 1.11
 ---
 
 I think that in order to learn more about how to use a Linux system one thing that should happen is to become more familiar with the various folders that branch off from root in a Linux system, such as the [\/bin folder](https://ostoday.org/linux/what-is-bin-in-linux.html) which is what I will be writing about in todays post. Do not get me wrong I think there is a whole lot more that needs to happen beyond just that, such as learning at least a thing or two about bash, and maybe [writing a bash script or two](/2020/11/27/linux-bash-script/). However the thing about that is the bash is one of many commands that are in, you guessed it, the bin folder. 
@@ -27,6 +27,20 @@ There are a number of commands that are built into bash actually, many of which 
 $ type -a bash
 bash is /usr/bin/bash
 bash is /bin/bash
+```
+
+### 1.2 - The \$PATH environment variable
+
+```
+$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+```
+
+### 1.3 - Path and the Linux cut command
+
+```
+$ echo $PATH | cut -d ':' -f 6
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
 
 ## 2 - Conclusion
