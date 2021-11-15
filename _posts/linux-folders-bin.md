@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 938
-updated: 2021-11-15 13:40:06
-version: 1.15
+updated: 2021-11-15 13:47:18
+version: 1.16
 ---
 
 I think that in order to learn more about how to use a Linux system one thing that should happen is to become more familiar with the various folders that branch off from root in a Linux system, such as the [\/bin folder](https://ostoday.org/linux/what-is-bin-in-linux.html) which is what I will be writing about in todays post. Do not get me wrong I think there is a whole lot more that needs to happen beyond just that, such as learning at least a thing or two about bash, and maybe [writing a bash script or two](/2020/11/27/linux-bash-script/). However the thing about that is the bash is one of many commands that are in, you guessed it, the bin folder. 
@@ -43,9 +43,16 @@ $ echo $PATH
 This example might prove to be a little off topic but maybe not actually if I frame it the right way. Here I am once again using the ehco command to print the contents of the \$PATH environment variable to the standard output. However now I am [piping the string](/2020/10/09/linux-pipe/) to the [Linux cut](/2020/11/19/linux-cut/) command and using the -d option of cut to define the \: character as a delimiter, at which point I can just print a certain field in this string.
 
 ```
-$ echo $PATH | cut -d ':' -f 6
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+#!/bin/bash
+echo $PATH | cut -d ':' -f 6
+#/bin
+type -a cut
+#cut is /usr/bin/cut
+#cut is /bin/cut
 ```
+
+So then is the cut command yet another command that is in the bin folder? Once again I use the type command with the -a option to find all the locations in which this binary is. It would seem that the cut command is another command that shows up in the \/bin folder but also the \/usr/bin/folder also. So it would seem that the cut command is another command that is considered fairly important then, or at least I am assuming that as it is located in similar locations to that of bash.
+
 
 ## 2 - Conclusion
 
