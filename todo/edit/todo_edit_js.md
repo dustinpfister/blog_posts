@@ -34,11 +34,9 @@
 ### (   ) - js-javascript-example-utils ( new methods )
 * write about new formatNumber method
 
-### (  ) - js-javascript-constructor ( just a good topic )
-* Expand readme file to 300+ words
-* continue to expand s2 section on alternatives to constructors
-* start section on recursive constructors
-* proof read
+### ( done 11/15/2021 ) - js-javascript-constructor ( just a good topic )
+* (done) Expand readme file in test vjs
+* (done) continue to expand s2 section on alternatives to constructors
 
 ### ( done 11/14/2021 ) - js-onfocus ( old )
 * (done) have 5+ internal links for the post
