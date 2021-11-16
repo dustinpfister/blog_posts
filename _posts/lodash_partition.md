@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 12:30:15
-version: 1.16
+updated: 2021-11-16 12:32:35
+version: 1.17
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
@@ -113,7 +113,7 @@ If partitioning an array into two parts is something that just happens once in t
 
 ### 3.2 - Creating a partition function that will work okay with arrays
 
-The next step with this might be to make a quick copy and past method that will work with arrays at least for starters.
+The next step with this might be to make a quick copy and past method that will work with arrays at least for starters. So then for this example I just took the top level code example that I world out and just make a function that I can call over an over again with more than one source array, and set of conditions.
 
 ```js
 // creating a function
@@ -136,6 +136,8 @@ let b = part(source, (el) => {
 console.log(b);
 //[ [ 8, 32, 64, 128 ], [ null, 'foo', NaN, 'bar', false, {} ] ]
 ```
+
+This was simple enough, however the lodash partition method is one of the many collection methods in lodash. What this means is that it is a method that will not just work with arrays, but it will work with objects in general.
 
 ## 4 - Conclusion
 
