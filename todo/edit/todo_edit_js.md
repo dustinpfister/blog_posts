@@ -23,9 +23,9 @@
 * have 5+ internal links for the post
 * edit post to 1,000+ words
 
-### (   ) - js-intl ( no internal links )
-* have 5+ internal links for the post
-* edit post to 1,200+ words
+### ( done 11/16/2021 ) - js-intl ( no internal links )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,200+ words
 
 ### ( done 11/16/2021 ) - js-javascript-example-utils ( new methods )
 * (done) write about new formatNumber method
