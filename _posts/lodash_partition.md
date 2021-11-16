@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 12:08:30
-version: 1.13
+updated: 2021-11-16 12:21:12
+version: 1.14
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
@@ -83,26 +83,29 @@ ace
 
 So as the name suggested \_.partition is useful for well partitioning an array into two arrays one of which meets the conditions given, and the other does not.
 
-## 3 - Lets split an array into two with native javaScript
+## 3 - Using vanilla javaScript in place of the lodash partition method
 
 Okay so getting back to my basic lodash partition example, it is not to hard to do the same with native javaScript of course. I was able to throw a little javaScript code together in a flash that does more or less the same thing. The basic idea of this is not all that hard to reproduce after all. I just need to create an array of two nested arrays, then have some function that will preform some kind of test for each element in a source array, or object in general that will return true or false for each element when the function is called and passed the value of an element. It is then just a question of pushing an element from the source array into the first element of the array of arrays for each true test, and the second array for each false test.
 
+### 3.1 - Lets split an array into two with native javaScript
+
+
 ```js
-let arr = [8, null, 32, 'foo', NaN, 'bar', false, {}, 64, 128];
-let i = arr.length,
-parts = [[], []],
-condition = (el) => {
-    return typeof el === 'number' && !_.isNaN(el);
+let source = [8, null, 32, 'foo', NaN, 'bar', false, {}, 64, 128], // source array
+i = source.length, // index
+parts = [[], []],  // the parts array
+condition = (el) => { // a condition
+    return typeof el === 'number' && !Number.isNaN(el);
 };
+// loop over elements of the source array, and call the condition function for each
+// the the return value of the condition is true, add to the first array, else the second
 while (i--) {
-    let el = arr[i],
+    let el = source[i],
     pi = condition(el) ? 0 : 1;
     parts[pi].unshift(el);
 }
-console.log(parts[0]);
-// [ 8, 32, 64, 128 ]
-console.log(parts[1]);
-// [ null, 'foo', NaN, 'bar', false, {} ]
+console.log(parts);
+//[ [ 8, 32, 64, 128 ], [ null, 'foo', NaN, 'bar', false, {} ] ]
 ```
 
 If partitioning an array into two parts is something that just happens once in the body of my code that is one thing, but if I start running into this sort of thing over and over again, I am going to want to abstract it away into a framework. I could start developing my own framework for these sorts of things, but why bother when there is all ready lodash?
