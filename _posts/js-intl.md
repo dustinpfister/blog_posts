@@ -5,13 +5,44 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-11-16 10:43:09
-version: 1.20
+updated: 2021-11-16 11:14:59
+version: 1.21
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
 
 <!-- more -->
+
+## 1 - The basics of 
+
+
+### 1.2 - Vanilla javaScript add commas method
+
+If for some reason I do not want to use the Internationalization constructors for formatting numbers when it comes to adding commas. Then I will have to look for some other native built in solutions for this sort of thing, or wring of find a method that will work okay for most if not all situations.
+
+```
+var addCommas = function(nStr) {
+    nStr += '';                           // convert to string
+    x = nStr.split('.');                  // split '1234.56' to ['1234', '56']
+    x1 = x[0];                            // '1234' from '1234.56'
+    x2 = x.length > 1 ? '.' + x[1] : '';  // '56' from '1234.56'
+    var rgx = /(\d+)(\d{3})/;             // regex pattern to test for
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+};
+ 
+// works well with some typical examples
+console.log( addCommas('1234.56') );       // 1,234.56
+console.log( addCommas('1234567890.12') ); // 1,234,567,890.12
+// seems to work well up to a point when it comes to large numbers
+// in the form of something like 5e20, but as expected there is a limit
+console.log( addCommas(5e20) ); // 500,000,000,000,000,000,000
+console.log( addCommas(5e21) ); // 5e+21
+console.log( addCommas(5.2e20) ); // 520,000,000,000,000,000,000
+console.log( addCommas(5.2e21) ); // 5.2e+21
+```
 
 
 ## 1 - The Intl.NumberFormat constructor
