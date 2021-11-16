@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-11-16 07:34:09
-version: 1.62
+updated: 2021-11-16 07:39:02
+version: 1.63
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
@@ -69,6 +69,8 @@ utils.mod = function (x, m) {
 ```
 
 ### 1.5 - Format a number
+
+This format number method uses the Format Number [internationalization constructor](/2021/03/30/js-intl) to format a number as a string. The returned string does not just have a dollar sign attached to it when it comes to displaying as USD, or any desired symbol depending on the set currency property, but it also places a comma after every three digits.
 
 ```js
 // format money method
