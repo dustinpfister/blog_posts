@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 11:46:42
-version: 1.9
+updated: 2021-11-16 11:56:58
+version: 1.10
 ---
 
-In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. 
+In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
 
 When it comes to the partition method in lodash, it is also not to hard to work out some simple solutions for doing more or less the same with plain old vanilla javaScript. So then lets look at some examples of splitting a collection into two parts with lodash, as well as a few native javaScript solutions for this that do not require lodash.
 
