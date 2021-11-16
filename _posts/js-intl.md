@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-11-16 11:36:56
-version: 1.29
+updated: 2021-11-16 11:38:07
+version: 1.30
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -15,7 +15,7 @@ When it comes to formating numbers in javaScript there is now a built in feature
 
 ## 1 - The Number formatting in javaScript, and Internationalization constructors
 
-Often I will be working out some kind of project that will involve the use of javaScrit numbers, but not just with preforming all kinds of various calculations with them. There is also displaying a value in an interface, of any kind of final display that an end user will see and to make sure that the number if formatted in a way that is fairly readable for the user. That is creating not just a number from a number, but a kind of string value from a number that is formatted in such a fashion that it will always look a certain way no mater what the value of the number.
+Often I will be working out some kind of project that will involve the use of [javaScript numbers](/2019/01/24/js-javascript-number/), but not just with preforming all kinds of various calculations with them. There is also displaying a value in an interface, of any kind of final display that an end user will see and to make sure that the number if formatted in a way that is fairly readable for the user. That is creating not just a number from a number, but a kind of string value from a number that is formatted in such a fashion that it will always look a certain way no mater what the value of the number.
 
 ### - The source code for these examples are on Github
 
