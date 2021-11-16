@@ -57,7 +57,8 @@
 * have 5+ internal links in the post
 
 ### lodash_partition ( #10 - 695 clicks - 11/14/2021 )
-
+* have 5+ internal links
+* expand to 1,000+ words
 
 <!--  OLd top 10 posts -->
 
