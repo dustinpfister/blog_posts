@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 12:00:21
-version: 1.12
+updated: 2021-11-16 12:08:30
+version: 1.13
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
@@ -85,7 +85,7 @@ So as the name suggested \_.partition is useful for well partitioning an array i
 
 ## 3 - Lets split an array into two with native javaScript
 
-Okay so getting back to my basic lodash partition example, it is not to hard to do the same with native javaScript of course. I was able to throw this together in a flash that does more or less the same thing.
+Okay so getting back to my basic lodash partition example, it is not to hard to do the same with native javaScript of course. I was able to throw a little javaScript code together in a flash that does more or less the same thing. The basic idea of this is not all that hard to reproduce after all. I just need to create an array of two nested arrays, then have some function that will preform some kind of test for each element in a source array, or object in general that will return true or false for each element when the function is called and passed the value of an element. It is then just a question of pushing an element from the source array into the first element of the array of arrays for each true test, and the second array for each false test.
 
 ```js
 let arr = [8, null, 32, 'foo', NaN, 'bar', false, {}, 64, 128];
@@ -110,3 +110,4 @@ If partitioning an array into two parts is something that just happens once in t
 ## 4 - Conclusion
 
 That will be it for now at least when it comes to the lodash partition method at least. If you would like to look into some further reading on lodash I have my [main post on lodash](/2019/02/15/lodash) that I have written on the topic. There are also a number of similar methods in lodash that come to mind that might also be of interest when it comes to these kinds of tasks such as the [Group by](/2018/08/02/lodash_groupby/) and [key by methods](/2018/10/24/lodash_keyby) in lodash.
+
