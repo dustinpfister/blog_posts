@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-11-16 11:24:14
-version: 1.24
+updated: 2021-11-16 11:25:22
+version: 1.25
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
@@ -16,6 +16,10 @@ When it comes to formating numbers in javaScript there is now a built in feature
 ## 1 - The Number formatting in javaScript, and Internationalization constructors
 
 Often I will be working out some kind of project that will involve the use of javaScrit numbers, but not just with preforming all kinds of various calculations with them. There is also displaying a value in an interface, of any kind of final display that an end user will see and to make sure that the number if formatted in a way that is fairly readable for the user. That is creating not just a number from a number, but a kind of string value from a number that is formatted in such a fashion that it will always look a certain way no mater what the value of the number.
+
+### - The source code for these examples are on Github
+
+The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-intl) which is also the place where I park my source code examples for all other [posts on javaScript in general](/categories/js/).
 
 ### 1.1 - Using the 
 
@@ -38,7 +42,7 @@ console.log(utils.format_decimal(5478.12345678)); // '5,478.1235'
 
 If for some reason I do not want to use the Internationalization constructors for formatting numbers when it comes to adding commas. Then I will have to look for some other native built in solutions for this sort of thing, or write of [find a method that will work okay for most if not all situations when it comes to number formating](https://stackoverflow.com/questions/5731193/how-to-format-numbers).
 
-What I have here is more or less pulled from [this post](http://www.mredkj.com/javascript/numberFormat.html) on this subject of formatting numbers in JavaScript. The post outlines just two methods on of which is used to round numbers to a certin number of places and there other is about adding commas.
+What I have here is more or less pulled from [this post](http://www.mredkj.com/javascript/numberFormat.html) on this subject of formatting numbers in JavaScript. The post outlines just two methods on of which is used to round numbers to a certain number of places and there other is about adding commas.
 
 ```
 var addCommas = function(nStr) {
@@ -65,15 +69,11 @@ console.log( addCommas(5.2e21) ); // 5.2e+21
 ```
 
 
-## 1 - The Intl.NumberFormat constructor
+## 2 - The Intl.NumberFormat constructor
 
 The Intl.NumberFormat constructor can be used to work with language sensitive number formatting. This is what I used to make a quick method for formating money when it comes to [having a such a method in one of my utility library projects](/2021/08/06/js-javascript-example-utils/). This includes money, as well as percent values, as well as a few other options when it comes to styles. Properties can be used to format money in terms of the USD, or any kind of other currency if the right options are set.
 
-### - The source code for these examples are on Github
-
-The source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-intl) which is also the place where I park my source code examples for all other [posts on javaScript in general](/categories/js/).
-
-### 1.1 - Format Money
+### 2.1 - Format Money
 
 To format money with the Number Format constructor of the Intl Object first off I just need to call the constructor with the new keyword just like any other constructor function in javaScript. However I will of course want to pass some arguments, the first of which should be the language tag, for me and the sites I often work n thus far this would always be en-US, for a full list of other options for the language tag hough I would check out a [BCP 47 language tag list](https://appmakers.dev/bcp-47-language-codes-list/).
 
@@ -98,7 +98,7 @@ console.log(utils.format_money(123456.78) ); // $123,457
 
 The returned result then is a formatter, that I can then call and pass a number value. The result that is then returned by the formatter will then be my formated string value that I want.
 
-### 1.2 Format a Percent value
+### 2.2 Format a Percent value
 
 Another useful feature of this NumberFormat constructor is to use to to format a percent value. This is done more or less the same way as with the currency style, but I just set a percent style rather than currency. I can then pass a number value to the returned formatter and when doing so the number given should be a fraction between and including zero and one. 
 When making a formating method off of this I might want to have just a few more options and features when it comes to producing the number value to give to the formatter. For example I might want to use it my passing a numerator and denominator value to get a percentage. Also it might be nice to have an option to turn on clamping of a percent value in some situations.
@@ -132,7 +132,7 @@ console.log(utils.format_percent(8, 4)); // 200%
 console.log(utils.format_percent(8, 4, true)); // 100%
 ```
 
-### 1.3 - Just format a decimal
+### 2.3 - Just format a decimal
 
 Sometimes I might just want to format a decimal number that refers to something other than money. For these kinds of situations there is a plain decimal style than can be used to format a number. This will give more or less the same effect as the currency style but without the currency symbol append to the output as one might expect. So then the Number Formatter constructor is great not just for money, percent values, and other untis, but any kind of number in general actually when using the decimal style.
 
@@ -151,7 +151,7 @@ utils.format_decimal = function (n,) {
 console.log(utils.format_decimal(5478.12345678)); // '5,478.1235'
 ```
 
-## 2 - Getting a page lang
+## 3 - Getting a page lang
 
 One way to get the language value of a page is to use the document element property of the document object in client side javaScript. This value can then be passed as the first argument for a formatter. In addition to this it can also be used as a way to set a value for other values such as the currency property of a Number Formatter constructor instance. I can check the lang of a page and if it is qual to en-US I can set the currency as US dollars \(USD\) as the currency, for all other languages I can set the currency to something else such as Euros \(EUR\).
 
@@ -183,7 +183,7 @@ document.getElementById('disp-money').innerText = formatter.format(1234.56);
 </html>
 ```
 
-## 3 - Conclusion
+## 4 - Conclusion
 
 So the Intl Object is useful for just getting this kind of task over with so I can then move on to what I really want to do in a project. This is still a relativity new feature in javaScript so if you care about your code breaking on old versions of Internet explorer mainly version 10 and older than another option will have to be explored when it comes to formatting numbers. However I am not seeing a lot of people using browser that old any more, so this might be my first go to solution for formatting numbers when it comes to working on various projects.
 
