@@ -7,10 +7,8 @@ This is a todo list for the scripts folder.
 
 ## () - cli/report-wcdeltas
 * (done) use /lib/diff-days to get an array of commit day objects
-
-* set the head of the repo to the hash of the oldest commit
-* get word count values for each post in each day object, defaulting to 0 if the file is not there at that point
-* set the head back to the latest commit
+* for each day object to a git diff dayObj.startHash ... dayObj.endHash to get the additional and subtractions for each file
+* parse out the numbers in terms of word count deltas for each file, in each day
 
 
 ## ( done 11/03/2021 ) - cli/report-pec
