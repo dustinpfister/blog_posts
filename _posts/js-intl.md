@@ -1,20 +1,38 @@
 ---
-title: internationalization constructors of the javaScript Intl object
+title: Internationalization constructors of the javaScript Intl object
 date: 2021-03-30 13:24:00
 tags: [js]
 layout: post
 categories: js
 id: 834
-updated: 2021-11-16 11:14:59
-version: 1.21
+updated: 2021-11-16 11:21:14
+version: 1.22
 ---
 
 When it comes to formating numbers in javaScript there is now a built in feature called the [Intl Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl), that is worth checking out before looking into user space options, or making ones own solution for number formating. I first became aware of this new built in feature when researching solutions for quick and simple money string formatting, and found a [stack overflow post on the topic of the NumnberFormat constructor of the Intl object](https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string) that had to do with using that constructor to format a money string. So I thought that it might be a good idea to write a post on this Intl object to gain a better sense of what this object is for when it comes to formating strings, and numbers for the purpose of display, rather than preforming operations.
 
 <!-- more -->
 
-## 1 - The basics of 
+## 1 - The Number formatting in javaScript, and Internationalization constructors
 
+Often I will be working out some kind of project that will involve the use of javaScrit numbers, but not just with preforming all kinds of various calculations with them. There is also displaying a value in an interface, of any kind of final display that an end user will see and to make sure that the number if formatted in a way that is fairly readable for the user. That is creating not just a number from a number, but a kind of string value from a number that is formatted in such a fashion that it will always look a certain way no mater what the value of the number.
+
+### 1.1 - Using the 
+
+```js
+var utils = {};
+// format a decimal
+utils.format_decimal = function (n,) {
+    
+    var formatter = new Intl.NumberFormat('en-US', {
+            style: 'decimal',
+             maximumFractionDigits: 4
+        });
+    return formatter.format(n);
+};
+ 
+console.log(utils.format_decimal(5478.12345678)); // '5,478.1235'
+```
 
 ### 1.2 - Vanilla javaScript add commas method
 
