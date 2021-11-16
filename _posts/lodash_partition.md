@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 12:47:24
-version: 1.18
+updated: 2021-11-16 12:50:09
+version: 1.19
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
@@ -140,6 +140,8 @@ console.log(b);
 This was simple enough, however the lodash partition method is one of the many collection methods in lodash. What this means is that it is a method that will not just work with arrays, but it will work with objects in general.
 
 ### 3.3 - Making a partition methods that will work with objects in general
+
+If I want to make a partition method that will work with objects in genera I will just need to make use of some native features that come in handy often for these kinds of situations. There are a number of ways of looking over public keys in general with objects and not just with arrays. One option would be to use the Object.keys static method to get an array of public keys and then Object values method can be used to get an array of corresponding values.
 
 ```js
 // creating a function
