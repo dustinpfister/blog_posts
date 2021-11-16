@@ -6,20 +6,12 @@ This is a todo list for the scripts folder.
 * when the first commit of the day is made no files show up
 
 ## () - cli/report-wcdeltas
-* use /lib/diff-days to get an array of commit day objects
-* creating the start state of a postCollection object by:
-    * use git to set the state of the repo to the oldest commit
-    * run over the contents of the posts folder with an fs.readdir
-    * in the postCollection object for each markdown files in the posts folder create a nested post object
-    * for each post file set a word count value in the from of and object that contains the date, and the word count
-    * use git to set the state of the repo back to the latest commit
-* for each day from the start day:
-    * use git diff to fine what files changed for that day
-    * use git to set the state of the repo to that day
-    * push new word counts objects for that day, for just the posts that changed
-    * repeat this process for each day up to the latest day
-    * use git to set the state of the repo back to the latest commit
-* write the state of the postCollection as a json file
+* (done) use /lib/diff-days to get an array of commit day objects
+
+* set the head of the repo to the hash of the oldest commit
+* get word count values for each post in each day object, defaulting to 0 if the file is not there at that point
+* set the head back to the latest commit
+
 
 ## ( done 11/03/2021 ) - cli/report-pec
 * (done) start a cli tool that will build Post Edit Count Reports
