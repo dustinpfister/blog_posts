@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 12:52:16
-version: 1.20
+updated: 2021-11-16 12:53:33
+version: 1.21
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
@@ -179,5 +179,5 @@ console.log(b);
 
 ## 4 - Conclusion
 
-That will be it for now at least when it comes to the lodash partition method at least. If you would like to look into some further reading on lodash I have my [main post on lodash](/2019/02/15/lodash) that I have written on the topic. There are also a number of similar methods in lodash that come to mind that might also be of interest when it comes to these kinds of tasks such as the [Group by](/2018/08/02/lodash_groupby/) and [key by methods](/2018/10/24/lodash_keyby) in lodash.
+That will be it for now at least when it comes to the lodash partition method at least. If you would like to look into some further reading on lodash I have my [main post on lodash](/2019/02/15/lodash) that I have written on the topic. There are also a number of similar methods in lodash that come to mind that might also be of interest when it comes to these kinds of tasks such as the [Group by](/2018/08/02/lodash_groupby/) and [key by methods](/2018/10/24/lodash_keyby) in lodash. I also have many other [posts on various lodash](/categories/lodash/) related topics that might be worth checking out if you liked this one.
 
