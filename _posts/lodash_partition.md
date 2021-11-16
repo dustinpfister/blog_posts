@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 97
-updated: 2021-11-16 12:32:35
-version: 1.17
+updated: 2021-11-16 12:47:24
+version: 1.18
 ---
 
 In [lodash](http://lodash.com/) there is a method that can be used to break a collection into two groups one of which meets a condition that is given in a function that is passed to it, and another that does not meet that condition. This is of course the [\_.partition](https://lodash.com/docs/4.17.4#partition) method. Te return value is an array of arrays where the first element is all the elements that meet a given condition and the second element is all elements that do not meet the given condition.
@@ -138,6 +138,42 @@ console.log(b);
 ```
 
 This was simple enough, however the lodash partition method is one of the many collection methods in lodash. What this means is that it is a method that will not just work with arrays, but it will work with objects in general.
+
+### 3.3 - Making a partition methods that will work with objects in general
+
+```js
+// creating a function
+let part = (source, condition) => {
+    let values = source instanceof Array ? source : Object.values(source),
+    keys = Object.keys(source),
+    i = 0,
+    len = values.length,
+    parts = [[], []];
+    condition = condition || function (el, key, source, i) {};
+    while (i < len) {
+        let el = values[i],
+        pi = condition(el, keys[i], source, i) ? 0 : 1;
+        parts[pi].push(el);
+        i += 1;
+    }
+    return parts;
+};
+// demo
+let source = {
+    foo: 42,
+    bar: 'baz',
+    taz: false
+};
+let b = part(source, (el, key, source, i) => {
+        console.log(el, key, source instanceof Array, i);
+        return typeof el === 'number' && !Number.isNaN(el);
+    });
+console.log(b);
+// 42 'foo' false 0
+// baz bar false 1
+// false 'taz' false 2
+//[ [ 42 ], [ 'baz', false ] ]
+```
 
 ## 4 - Conclusion
 
