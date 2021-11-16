@@ -20,8 +20,8 @@ api.getHashDateObjects = (n) => {
     n = n === undefined ? 20 : n;
     let range = String(n).length === 40 ? [n + '...HEAD'] : ['-n', n];
     return new Promise((resolve, reject) => {
-        //let gitLog = spawn('git', ['log'].concat(range).concat(['--format=%H/%cD;']));
-        let gitLog = spawn('git', ['log', '-n', n, '--format=%H/%cD;']);
+        let gitLog = spawn('git', ['log'].concat(range).concat(['--format=%H/%cD;']));
+        //let gitLog = spawn('git', ['log', '-n', n, '--format=%H/%cD;']);
         let str = '';
         gitLog.stdout.on('data', function (data) {
             str += data.toString();
@@ -99,7 +99,7 @@ api.getAllChangedFiles = (days) => {
     var i = 0,
     len = days.length;
     // fixed weird bug that seems to happen by making to many git diff calls at once
-    // by doing soenthing like this
+    // by doing something like this
     return new Promise((resolve, reject) => {
         var next = () => {
             var dayObj = days[i];
@@ -111,7 +111,6 @@ api.getAllChangedFiles = (days) => {
                     next();
                 }else{
                     resolve(days);
-
                 }
             })
         }
