@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2021-11-17 12:09:59
-version: 1.20
+updated: 2021-11-17 12:10:45
+version: 1.21
 ---
 
 So then when it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements, and forms on the client side for starers. This is simple enough, but in order to have a truly functioning form one will have to get into working out server code for some kind of back end system of a project or simple example. 
@@ -28,7 +28,7 @@ The source code examples in this post can be found in my [test vjs repository](h
 
 ### 1.1 - Basic example of a button type input element
 
-Here I have a basic example of an input element with the type attribute set to button. For this example I am just using the click event to step a value stored in the input tag by way of the dataset property of the element. So then there is creating an input element, assigning an id for it, making sure that the type of the input element is set to button, and the setting an initial value for a count property in the data attribute for the element. There is then also the value attribute of the element that is of importance when making a button, and many other input elements. For buttons the value attribute will be the display name for the button.
+Here I have a basic example of an input element with the type attribute set to button. For this example I am just using the click event to step a value stored in the input tag by way of the dataset property of the element. So then there is creating an input element, assigning an id for it, making sure that the type of the input element is set to button, and the setting an initial value for a count property in the data attribute for the element. There is then also the value attribute of the element that is of importance when making a button, and many other input elements. For buttons the value attribute will be the display name for the button. For this example I am using a draw function to set the value of the input element.
 
 ```html
 <html>
