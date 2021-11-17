@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 939
-updated: 2021-11-17 15:58:08
-version: 1.14
+updated: 2021-11-17 16:00:20
+version: 1.15
 ---
 
 As of late I have been looking into the various folders off of a root file system when it comes to typical Linux systems. One of these folders is the [Linux \/dev folder](https://tldp.org/LDP/sag/html/dev-fs.html) that contains [device files](https://en.wikipedia.org/wiki/Device_file). You see it would seem that in Linux file systems everything is treated as a file event hardware. What is nice about this is that it make the process of reading data from a device, as well as writing to it very easy. On top of device files that are ways of interacting with things like a USB mouse there are also a number of pseudo devices also. These pseudo devices are great ways to go about just getting some random data, filling something with zeros, or writing some error output from a command to a void rather than the standard error.
@@ -70,15 +70,17 @@ When it comes to working with the mouse, keyboard, and any other input devices t
 
 ### 3.1 - Reading from the mouse
 
-I covreed reading from the mouse before in the basic section, so here is that example once agian.
+I covered reading from the mouse before in the basic section, so here is that example once agian.
 
 ```
 $ xxd -p /dev/input/mouse0
 ```
 
-This might not work in all systems though, one reason why is that the name of the file might be a little different depending on if it is a USB or ps2 mouse for example. There is also having a situation in which one might have a USB and blue tooth mouse connect at the same type, or maybe a few more pointer devices in which to work with.
+This might not work in all systems though, one reason why is that the name of the file might be a little different depending on if it is a USB or ps2 mouse for example. There is also having a situation in which one might have a USB and blue tooth mouse connect at the same type, or maybe a few more pointer devices in which to work with. This is why in the input folder there is also a number of event device folders also.
 
-### 3.2 - the event x and the by-id folder
+### 3.2 - The event x and the by-id folder
+
+There should be a number of event files in the input folder also, these will likely be mapped to the keyboard and mouse as well as anything else that might be connect that is some kind of input device.
 
 ```
 $ ls -l /dev/input/by-id
