@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 939
-updated: 2021-11-17 15:20:24
-version: 1.5
+updated: 2021-11-17 15:24:40
+version: 1.6
 ---
 
 As of late I have been looking into the various folders off of a root file system when it comes to typical Linux systems. One of these folders is the [Linux \/dev folder](https://tldp.org/LDP/sag/html/dev-fs.html) that contains [device files](https://en.wikipedia.org/wiki/Device_file). You see it would seem that in Linux file systems everything is treated as a file event hardware. What is nice about this is that it make the process of reading data from a device, as well as writing to it very easy. On top of device files that are ways of interacting with things like a USB mouse there are also a number of pseudo devices also. These pseudo devices are great ways to go about just getting some random data, filling something with zeros, or writing some error output from a command to a void rather than the standard error.
@@ -20,24 +20,62 @@ In this section I will be starting out with just a few basic examples that have 
 
 ### 1.1 - Simple read random example with xxd
 
+```
+$ head -c 1 /dev/random | xxd -p
+```
+
 ### 1.2 - Reading the mouse
 
+```
+$ xxd -p /dev/input/mouse0
+```
 
 
 ## 2 - Pseudo devices
 
 ### 2.1 - \/dev\/null
 
+```
+$ cat notthere.txt
+cat: notthere.txt: No such file or directory
+$ cat notthere.txt 2> /dev/null
+```
+
 ### 2.2 - \/dev\/zero
+
+```
+$ head -c 5 /dev/zero | xxd -p
+0000000000
+```
 
 ### 2.3 - \/dev\/random
 
+```
+$ head -c 1 /dev/random | xxd -p
+```
 
 ## 3 - Reading \/dev\/input devices like the mouse and keyboard
 
 ### 3.1 - Reading from the mouse
 
+```
+$ xxd -p /dev/input/mouse0
+```
+
 ### 3.2 - the event x and the by-id folder
+
+```
+$ ls -l /dev/input/by-id
+total 0
+lrwxrwxrwx 1 root root 9 Nov 16 17:23 usb-413c_Dell_KB216_Wired_Keyboard-event-if01 -> ../event3
+lrwxrwxrwx 1 root root 9 Nov 16 17:23 usb-413c_Dell_KB216_Wired_Keyboard-event-kbd -> ../event2
+lrwxrwxrwx 1 root root 9 Nov 16 17:23 usb-Microsoft_Comfort_Mouse_6000-event-if00 -> ../event0
+rwxrwxrwx 1 root root 9 Nov 16 17:23 usb-Microsoft_Comfort_Mouse_6000-event-mouse -> ../event1
+lrwxrwxrwx 1 root root 9 Nov 16 17:23 usb-Microsoft_Comfort_Mouse_6000-mouse -> ../mouse0
+$ ls -l /dev/input/by-id | tr '[:upper:]' '[:lower:]' | grep 'keyboard'  | grep -o 'event[0-9]'
+event3
+event2
+```
 
 ## 4 - Conclusion
 
