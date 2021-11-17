@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2021-11-17 12:10:45
-version: 1.21
+updated: 2021-11-17 12:13:00
+version: 1.22
 ---
 
 So then when it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements, and forms on the client side for starers. This is simple enough, but in order to have a truly functioning form one will have to get into working out server code for some kind of back end system of a project or simple example. 
@@ -62,7 +62,7 @@ draw();
 
 ### 1.2 - Text type input element
 
-Another type of input element typically used for forms would be the text type input element.
+Another type of input element typically used for forms would be the text type input element. This is one way of creating a way to allow a user to input some text, but with input elements of type text it is more for the sake of inputing data for a field of data, and not so much a large body of text. In the event that I want to have an element that will be a a large body of text it is generally better to go with a text area element.
 
 ```html
 <html>
