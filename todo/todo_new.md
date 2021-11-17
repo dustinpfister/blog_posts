@@ -7,11 +7,12 @@
 ### ( done 11/12/2021 ) - new post #937 for 11/12/2021 - linux-folders-home
 * (done) start writing the post
 
-### ( deon 11/15/2021 ) - new post #938 for 11/15/2021 - linux-folders-bin
+### ( done 11/15/2021 ) - new post #938 for 11/15/2021 - linux-folders-bin
 * (done) start writing the post
 
-### (   ) - new post #939 for 11/17/2021 0 linux-folders-sbin
-* start the draft folder
+### ( done 11/17/2021 ) - new post #939 for 11/17/2021 0 linux-folders-dev
+* (done) start the draft folder
+* (done) start writing the post
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
