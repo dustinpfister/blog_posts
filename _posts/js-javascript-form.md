@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2021-11-17 12:15:18
-version: 1.23
+updated: 2021-11-17 12:18:21
+version: 1.24
 ---
 
-So then when it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements, and forms on the client side for starers. This is simple enough, but in order to have a truly functioning form one will have to get into working out server code for some kind of back end system of a project or simple example. 
+So then when it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements, and forms on the client side for starers. This is simple enough, but in order to have a truly functioning form one will have to get into working out server code for some kind of back end system. This back end system can start out with something that is very simple, but when it comes to making a real project things can get very time consuming especially if one is making everything from the ground up.
 
 Depending on what it is that you want or need to do with a [javaScript form](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation) and input elements a back end system may not be needed at all, however a typical use case of forms is to involve some kind of back end system. Still that might not always be the case, so in this post I will be going over some simple examples that just have to do with the basics of working with form elements and javaScript in a client side javaScript environment. In addition I might get around to one or two examples that make use of a nodejs back end system also though.
 
