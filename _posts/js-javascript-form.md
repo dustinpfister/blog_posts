@@ -1,12 +1,12 @@
 ---
-title: javaScript form basic examples and more
+title: Basic javaScript form examples including simple full stack code
 date: 2020-02-11 14:06:00
 tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2021-04-13 11:54:45
-version: 1.12
+updated: 2021-11-17 11:30:53
+version: 1.13
 ---
 
 So then when it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements, and forms on the client side for starers. This is simple enough, but in order to have a truly functioning form one will have to get into working out server code for some kind of back end system of a project or simple example. 
