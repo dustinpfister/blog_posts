@@ -2,6 +2,9 @@
 ## linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
+### () - linux-head
+* have a new example using /dev/random and xxd
+
 ### () - linux-raspberry-pi-os-swap-file ( need links )
 * get to 1000+ words
 * have 5+ internal links for the post
