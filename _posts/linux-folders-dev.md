@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 939
-updated: 2021-11-17 15:32:12
-version: 1.9
+updated: 2021-11-17 15:37:17
+version: 1.10
 ---
 
 As of late I have been looking into the various folders off of a root file system when it comes to typical Linux systems. One of these folders is the [Linux \/dev folder](https://tldp.org/LDP/sag/html/dev-fs.html) that contains [device files](https://en.wikipedia.org/wiki/Device_file). You see it would seem that in Linux file systems everything is treated as a file event hardware. What is nice about this is that it make the process of reading data from a device, as well as writing to it very easy. On top of device files that are ways of interacting with things like a USB mouse there are also a number of pseudo devices also. These pseudo devices are great ways to go about just getting some random data, filling something with zeros, or writing some error output from a command to a void rather than the standard error.
@@ -28,9 +28,15 @@ $ head -c 1 /dev/random | xxd -p
 
 ### 1.2 - Reading the mouse
 
+This example again makes use of the linux xxd command, this time I am using it to just start reading data from the mouse. For me the mouse is located at \/dev\/input\/mouse0 but it may be different if you have more than one mouse connected. There is a lot more to cover when it comes to this input folder in the dev folder when it comes to events and other kinds of inout deviced that can end up being conntent to a computer. So I will be getting into this sub folder of the dev folder more in a later section.
+
+For now there is just doing soehting like this:
+
 ```
 $ xxd -p /dev/input/mouse0
 ```
+
+And then move the mouse around, when done press control + c to break out of this.
 
 
 ## 2 - Pseudo devices
