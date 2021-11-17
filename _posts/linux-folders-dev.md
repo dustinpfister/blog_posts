@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 939
-updated: 2021-11-17 16:00:20
-version: 1.15
+updated: 2021-11-17 16:05:50
+version: 1.16
 ---
 
 As of late I have been looking into the various folders off of a root file system when it comes to typical Linux systems. One of these folders is the [Linux \/dev folder](https://tldp.org/LDP/sag/html/dev-fs.html) that contains [device files](https://en.wikipedia.org/wiki/Device_file). You see it would seem that in Linux file systems everything is treated as a file event hardware. What is nice about this is that it make the process of reading data from a device, as well as writing to it very easy. On top of device files that are ways of interacting with things like a USB mouse there are also a number of pseudo devices also. These pseudo devices are great ways to go about just getting some random data, filling something with zeros, or writing some error output from a command to a void rather than the standard error.
@@ -80,7 +80,7 @@ This might not work in all systems though, one reason why is that the name of th
 
 ### 3.2 - The event x and the by-id folder
 
-There should be a number of event files in the input folder also, these will likely be mapped to the keyboard and mouse as well as anything else that might be connect that is some kind of input device.
+There should be a number of event files in the input folder also, these will likely be mapped to the keyboard and mouse as well as anything else that might be connect that is some kind of input device. The hard part is just knowing what event is mapped to what. One way is to take a look in the by-id folder in the input folder of the dev folder. If one does an [ls command](/2020/10/14/linux-ls/) call with the -l option this will help show what is mapped to which event.
 
 ```
 $ ls -l /dev/input/by-id
@@ -94,6 +94,8 @@ $ ls -l /dev/input/by-id | tr '[:upper:]' '[:lower:]' | grep 'keyboard'  | grep 
 event3
 event2
 ```
+
+It is then possible to pipe the output from an ls command call, into some commands to filter the text such as the [tr command](https://linux.die.net/man/1/tr), as well as [grep](/2020/09/14/linux-grep/) to get a desired end result.
 
 ## 4 - Conclusion
 
