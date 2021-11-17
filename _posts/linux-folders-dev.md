@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 939
-updated: 2021-11-17 15:42:18
-version: 1.11
+updated: 2021-11-17 15:51:44
+version: 1.12
 ---
 
 As of late I have been looking into the various folders off of a root file system when it comes to typical Linux systems. One of these folders is the [Linux \/dev folder](https://tldp.org/LDP/sag/html/dev-fs.html) that contains [device files](https://en.wikipedia.org/wiki/Device_file). You see it would seem that in Linux file systems everything is treated as a file event hardware. What is nice about this is that it make the process of reading data from a device, as well as writing to it very easy. On top of device files that are ways of interacting with things like a USB mouse there are also a number of pseudo devices also. These pseudo devices are great ways to go about just getting some random data, filling something with zeros, or writing some error output from a command to a void rather than the standard error.
@@ -91,3 +91,4 @@ event2
 
 ## 4 - Conclusion
 
+There is a great deal more to write about when it comes to the various folders off of the root folder in a Linux system. I would say that taking the time to look into each of them is a good way to gain a deeper level of knowledge as to how to work with a Linux system, as well as how to look into things and learn a thing or two about how to use Linux. There is also the idea of just starting to look into all the various commands there are to work with, but even then it still makes sense to look into the various folders and paths to know what there is to work with because that will change from one system to another.
