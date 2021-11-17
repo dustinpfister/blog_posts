@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 939
-updated: 2021-11-17 16:05:50
-version: 1.16
+updated: 2021-11-17 16:09:50
+version: 1.17
 ---
 
 As of late I have been looking into the various folders off of a root file system when it comes to typical Linux systems. One of these folders is the [Linux \/dev folder](https://tldp.org/LDP/sag/html/dev-fs.html) that contains [device files](https://en.wikipedia.org/wiki/Device_file). You see it would seem that in Linux file systems everything is treated as a file event hardware. What is nice about this is that it make the process of reading data from a device, as well as writing to it very easy. On top of device files that are ways of interacting with things like a USB mouse there are also a number of pseudo devices also. These pseudo devices are great ways to go about just getting some random data, filling something with zeros, or writing some error output from a command to a void rather than the standard error.
@@ -45,6 +45,8 @@ Now all devices files in the dev folder are files that can be used to work with 
 
 ### 2.1 - \/dev\/null
 
+The null file will accept and discard anything that is written to it, so it is a nice choice if I want to redirect some standard error output to a dark void rather than the standard error of a console.
+
 ```
 $ cat notthere.txt
 cat: notthere.txt: No such file or directory
@@ -53,12 +55,16 @@ $ cat notthere.txt 2> /dev/null
 
 ### 2.2 - \/dev\/zero
 
+The dev zero file is just like dev null when it comes to writing to it, but when it comes to reading from it what is ascertained is null bytes rather than an end of file response.
+
 ```
 $ head -c 5 /dev/zero | xxd -p
 0000000000
 ```
 
 ### 2.3 - \/dev\/random
+
+There is the the random pseudo device that is just what one would expect which can come in handy in certain cases.
 
 ```
 $ head -c 1 /dev/random | xxd -p
