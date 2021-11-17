@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 610
-updated: 2021-11-17 11:40:05
-version: 1.14
+updated: 2021-11-17 11:42:09
+version: 1.15
 ---
 
 So then when it comes to [javaScript form examples](https://eloquentjavascript.net/2nd_edition/18_forms.html) there is just getting started with input elements, and forms on the client side for starers. This is simple enough, but in order to have a truly functioning form one will have to get into working out server code for some kind of back end system of a project or simple example. 
@@ -18,7 +18,7 @@ Depending on what it is that you want or need to do with a [javaScript form](htt
 
 ## 1 - Basic javaScript form examples
 
-To get started with javaScript forms it might be best to know a thing or two about input tags, which are used to make fields for a form. There is a great deal to cover just with them when it comes to the various types of input tags, as well as how to get the current value of an input tag when attaching events for them, and so forth. So then there may be a number of other posts that you might want to start off with if you are still very new to javaScript, such as how to get a reference to an element by way of a method like document.querySelector. It might also be a good idea to read up more on event listeners and the event objects that there are to work with inside such handers for various kinds of events.
+To get started with javaScript forms it might be best to know a thing or two about input tags, which are used to make fields for a form. There is a great deal to cover just with them when it comes to the various types of input tags, as well as how to get the current value of an input tag when attaching events for them, and so forth. So then there may be a number of other posts that you might want to start off with if you are still very new to javaScript, such as how to get a reference to an element by way of a method like [document.querySelector](/2020/06/23/js-document-queryselector/). It might also be a good idea to read up more on event listeners and the event objects that there are to work with inside such handers for various kinds of events.
 
 In this section I will just be going over the basics and more when it comes to input tags, which is a major part of getting started with javaScript forms. Later in this post I will be getting into some far more complex examples that involve the use of some back end code when it comes to making forms that interact with some kind of server.
 
