@@ -19,9 +19,9 @@
 * have 5+ internal links for the post
 * edit post to 1,000+ words
 
-### (   ) - js-javascript-form ( no internal links )
-* have 5+ internal links for the post
-* edit post to 1,000+ words
+### ( done 11/17/2021 ) - js-javascript-form ( no internal links )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,000+ words
 
 ### ( done 11/16/2021 ) - js-intl ( no internal links )
 * (done) have 5+ internal links for the post
