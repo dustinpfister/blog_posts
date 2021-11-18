@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 13:08:27
-version: 1.47
+updated: 2021-11-18 13:09:54
+version: 1.48
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -273,7 +273,7 @@ console.log(sum); // 10
 
 ### 5.2 - lodash flatten deep method for more then 2 dimensions
 
-If I am dealing with more than one level I can use the [flatten deep](https://lodash.com/docs/4.17.15#flattenDeep) method. There is then yet one more additional method to be aware of that is the [flatten depth method](https://lodash.com/docs/4.17.15#flattenDepth) that cane be used as a way to set how many levels should be fattened.
+If I am dealing with more than one level I can use the [flatten deep](https://lodash.com/docs/4.17.15#flattenDeep) method. There is then yet one more additional method to be aware of that is the [flatten depth method](https://lodash.com/docs/4.17.15#flattenDepth) that cane be used as a way to set how many levels should be fattened. These methods are then useful when I have many levels that I need to merge down into a single array that I can the use with the sum method.
 
 ```js
 let grid = [
