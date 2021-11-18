@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2021-11-18 12:35:21
-version: 1.19
+updated: 2021-11-18 12:37:41
+version: 1.20
 ---
 
 In the Core [javaScript Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) there is the [object freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) static method that can be used to freeze an object. Once an object is frozen none of the properties of the object can be changed. In addition to the Object freeze method there is also [the seal static method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) that is also of interest that is a little different from object freeze. The seal method does not freeze an object, however it does make it so no additional properties can be added to the object once it is sealed. 
@@ -94,7 +94,7 @@ console.log(obj.n); // 42
 console.log(obj.a);
 ```
 
-In addition to setting the writable flag of an object it can also be use to change if the object can show up in loops and other methods meant to be used to explore if an object has properties.
+This define property method then might prove to be a better option because I can also use it to set if a property can be writable or not, and also set some additional property for the object properties also while I am at it.
 
 ## 2 - Conclusion
 
