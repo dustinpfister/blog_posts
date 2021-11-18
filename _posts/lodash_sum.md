@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 14:46:27
-version: 1.51
+updated: 2021-11-18 14:49:24
+version: 1.52
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -40,7 +40,9 @@ while (i--) {sum += a[i];}
 console.log(sum); // 10
 ```
 
-### 1.2 - using the lodash sum method
+### 1.2 - Using the lodash sum method
+
+If lodash is there to work with in a project the lodash sum method can be used to quickly sum up the values of an array though. The use of it is also pretty simple I juts call the method and pass the array as the first and only argument and the return value is then the sum.
 
 ```js
 let a = [1, 2, 3, 4];
