@@ -6,6 +6,7 @@
 * ( done 10/02/2021 ) todo list for test_lodash/forpost/lodash_sum
 * ( done 10/02/2021 ) expand to 1,000+ words
 * ( done 10/02/2021 ) expand to 1,800+ words
+* ( done 11/18/2021 ) expand to 2,000+ words
 * expand to 2,400+ words
 
 ### nodejs-glob ( #2 - 1,286 clicks - 11/14/2021 )
