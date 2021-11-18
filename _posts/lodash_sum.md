@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 13:09:54
-version: 1.48
+updated: 2021-11-18 14:38:45
+version: 1.49
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -19,13 +19,58 @@ Making a native sum method might not be so hard, however if [lodash](https://lod
 
 This is a post on using lodash to help with tasks involving [summation](https://en.wikipedia.org/wiki/Summation), as well as plain javaScript examples of doing so as well. This is not a getting started post on lodash, or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background with these topics.
 
-### 1.1 - version numbers matter
+### - version numbers matter
 
 In this post I was using lodash 4.17.10
 
-### 1.2 - The source code examples here are on github
+### - The source code examples here are on Github
 
 I have the source code examples here in my [test lodash github respiratory](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_sum). I am working on more examples for this post so it is possible that the examples there might be a bit more up to date. In any case there are some additional notes, lists, and it is also a good place to make a pull request if you see something wrong with the code examples here. It is also where I hold my source code examples for all my other posts on lodash for what they are worth.
+
+### 1.1 - Basic while loop sum  example
+
+```js
+let a = [1, 2, 3, 4],
+i = a.length, sum = 0;
+while (i--) {sum += a[i];}
+console.log(sum); // 10
+```
+
+### 1.2 - 
+
+```js
+let a = [1, 2, 3, 4];
+let sum = _.sum(a);
+console.log(sum); // 10
+```
+
+### 1.3 - Looking out of things surrounding types
+
+```js
+let parseElement = (el) => {
+    let n = 0;
+    if (typeof el === 'string') {
+        n = parseInt(el);
+        n = 'NaN' === String(n) ? 0 : n;
+    }
+    if (typeof el === 'number' && 'NaN' != String(el)) {
+        n = el;
+    }
+    return n;
+};
+ 
+let a = [1, false, NaN, '2', 'ahh!', 3, {}, '4'];
+// using a while loop
+let i = a.length, sum = 0;
+while (i--) {
+    sum += parseElement(a[i]);
+}
+console.log(sum); // 10
+ 
+// using lodash
+sum = _(a).map(parseElement).sum();
+console.log(sum); // 10
+```
 
 ## 2 - Using lodash to add up a sum
 
