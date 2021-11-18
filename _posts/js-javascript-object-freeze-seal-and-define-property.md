@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2021-11-18 12:24:56
-version: 1.14
+updated: 2021-11-18 12:27:22
+version: 1.15
 ---
 
 In the Core [javaScript Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) there is the [object freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) static method that can be used to freeze an object. Once an object is frozen none of the properties of the object can be changed. In addition to the Object freeze method there is also [the seal static method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) that is also of interest that is a little different from object freeze. The seal method does not freeze an object, however it does make it so no additional properties can be added to the object once it is sealed. 
@@ -21,11 +21,11 @@ In this section I will be going over a few quick examples on the subject of free
 
 ### - The source code examples in this post are on github
 
-the source code example on this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-object-freeze-seal-and-define-property/s1-basics) on Github as with all my [other posts on javaScript](/categories/js/). This is where you would want to go when it comes to making a pull request on github with respect to one of the source code examples in this post. There is also the comments section at the bottom of this page that can eb used as a way to bring something up with the source code of the post in general.
+the source code example on this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-object-freeze-seal-and-define-property/s1-basics) on Github as with all my [other posts on javaScript](/categories/js/). This is where you would want to go when it comes to making a pull request on Github with respect to one of the source code examples in this post. There is also the comments section at the bottom of this page that can eb used as a way to bring something up with the source code of the post in general.
 
 ### 1.1 - JavaScript objects and the const keyword
 
-So the const keyword is used to define constant variable in javaScript. The constant values are indeed just that when it comes to primitive values, but if it is an object it just means that it can not be set to anything other than that object. The properties of an object that are defined with const can still be mutated.
+So the const keyword is used to define constant variable in javaScript along with other options such as var and [let](/2019/02/09/js-javascript-let/). The constant values are indeed just that when it comes to primitive values, but if it is an object it just means that it can not be set to anything other than that object. The properties of an object that are defined with const can still be mutated.
 
 ```js
 const n = 42;
