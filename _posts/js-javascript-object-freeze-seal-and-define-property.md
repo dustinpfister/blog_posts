@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2021-11-18 12:37:41
-version: 1.20
+updated: 2021-11-18 12:41:48
+version: 1.21
 ---
 
 In the Core [javaScript Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) there is the [object freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) static method that can be used to freeze an object. Once an object is frozen none of the properties of the object can be changed. In addition to the Object freeze method there is also [the seal static method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) that is also of interest that is a little different from object freeze. The seal method does not freeze an object, however it does make it so no additional properties can be added to the object once it is sealed. 
@@ -17,7 +17,7 @@ There is set another static method that is relevant to this topic and that is th
 
 ## 1 - The Basics of freezing Objects in javaScript
 
-In this section I will be going over a few quick examples on the subject of freezing objects in javaScript. Although I will be keeping these examples fairly simple I assume that you have at least some experience working with javaScript in one kind of environment or another. If not I have my main [getting started with javaScript](/2018/11/27/js-getting-started/) type post that might project to be a good starting location on this site.
+In this section I will be going over a few quick examples on the subject of freezing objects in javaScript. Although I will be keeping these examples fairly simple I assume that you have at least some experience working with javaScript in one kind of environment or another. If not I have my main [getting started with javaScript](/2018/11/27/js-getting-started/) type post that might project to be a good starting location on this site. I also have additional getting started with javaScriot posts on getting started by way of the [javaScript console](/2019/07/29/js-getting-started-javascript-console/) as well as by way of the [file protocol](/2020/09/21/js-getting-started-file-protocol/). There is also getting started with javaScript outside of the browser by [getting started with nodejs](/2017/04/05/nodejs-helloworld/) which would be worth looking into sooner or later of you are new to javaScript.
 
 ### - The source code examples in this post are on github
 
