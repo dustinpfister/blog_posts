@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 13:00:53
-version: 1.45
+updated: 2021-11-18 13:05:09
+version: 1.46
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -230,7 +230,7 @@ console.log(sum); // 57
 
 ### 4.3 - Object.keys
 
-There is also the Object.keys static method that is just like Object.values only it will return an array of keys rather than values.
+There is also the [Object.keys static method](/2018/12/15/js-object-keys/) that is just like Object.values only it will return an array of keys rather than values. This will just be the public keys of the object and is thus the same result as if I where to create this kind of array using something like a for in loop.
 
 ```js
 // and object with named keys rather than and array
