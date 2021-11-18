@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-18 15:25:01
-version: 1.101
+updated: 2021-11-18 15:53:09
+version: 1.102
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -528,9 +528,25 @@ console.log(sum); // 6
 
 ## 5 - Named key Collections
 
-Some times I am dealing with an object that is not an instance of an Array but it is a named collection of sorts. In these situations I need to loop over the contents of a collection of named keys and corresponding values rather than numbered ones.
+Some times I am dealing with an object that is not an instance of an Array but it is a named collection of sorts. In these situations I need to loop over the contents of a collection of named keys and corresponding values rather than numbered ones. What makes matters worse is that I can not do any kind of function call prototype method trickery with these kinds of collections sense the objects are not formated like arrays. Luckily there are a number of static methods and other various native javaScript features that come into play when trying to figure out how to do something for each public key of an object.
 
-### 5.1 - Object.values
+### 5.1 - A for in loop can be used
+
+```js
+let obj = {
+    foo: 1,
+    bar: 2,
+    foobar: 3
+},
+sum = 0;
+// using a for in loop
+for (key in obj) {
+    sum += obj[key];
+}
+console.log(sum); // 6
+```
+
+### 5.2 - Object.values
 
 The Object values method is one way to loop over the contents of an object in general. Assuming that all the key names that I want to loop over are public, and I do not care about anything that might be in the prototype chain.
 
@@ -547,7 +563,7 @@ Object.values(obj).forEach((n) => {
 console.log(sum); // 6
 ```
 
-### 5.2 - Object.keys
+### 5.3 - Object.keys
 
 So on top of the Object values method there is also the Object.keys static method also. This method works the same way as Object values only it returns an array of key names rather than the values of the keys. In any case this can be used to quickly create an array from a plain old object and then of course array prototype methods can be used with that resulting array, and not just array forEach.
 
@@ -564,6 +580,37 @@ let str = Object.keys(obj).map((key) => {
  
 console.log(str); // 'foo1-man2-chew3'
  
+```
+
+### 5.4 - The get own property names, and define property methods
+
+All of the examples that I have covered thus far in this section have to do with public own properties of an object, but not private ones. If you are not familiar with the [define property static method of the Object global](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) it might be a good idea to look into that more at some point. One of the key features of this define property method is that it can be used to define property of an object that have special values one of which is to make it so that the key is not public, or enumerable actually which might be a better term actually. Sense the object property can still be accessed if not is not set as being enumerable it is just that it will not show up in a for in loop, and the key name will not show up in an array created with the Object.keys method.
+
+There is however another method of interest that is like the Object keys method but will always give a full like of own properties of an object. This method is called the [Object get own property names method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames) which is a method that when called will give a full array of key names for objects that have these kinds of hidden properties.
+
+```js
+// creating an object with two 'public' key names
+let obj = {
+    foo: 1,
+    man: 2
+};
+// creating one 'private' key name by using the
+// Object.defineProperty method
+Object.defineProperty(obj, 'chew', {
+    enumerable: false,
+    value: 3
+});
+// sum the key names of a given object helper function
+// using array reduce
+let sumKeysOfObj = (obj, keyNames) => {
+    return keyNames.reduce((acc, key) => {
+        return acc + obj[key];
+    }, 0)
+};
+// Object.keys will just give public key names while
+// the get own property names method will give all of them
+console.log( sumKeysOfObj(obj, Object.keys(obj)) ); // 3
+console.log( sumKeysOfObj(obj, Object.getOwnPropertyNames(obj)) ); // 6
 ```
 
 ## 6 - Conclusion
