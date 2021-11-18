@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-11-11 16:06:20
-version: 1.100
+updated: 2021-11-18 15:25:01
+version: 1.101
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, filter out any elements that are not wanted in the array given a certain condition that is given in the body of a method. Like Array ma this method will also create and return a new array, and not mutate the array in place.
@@ -369,9 +369,13 @@ let b = arr.every((el) => {
 console.log(b); // true
 ```
 
-## 3 - While loops as a javaScript for each or for some solution.
+## 3 - While loops as a javaScript for each, or for some solution.
 
-Another way to loop over all the contents of an array in javaScript would be to use a while loop. While loops have many advantages compared to the array forEach method or any other such method like array map. For example different expressions can be used to step an index variable that is used to get an element in an array. So then I can just loop over every other element in an array rather than all of them if I want. In addition keywords such as break and continue can be used to skip things completely which can come in handy how and then. Another thing about loops is that I am not defining logic in a method so I can use the return keyword in the body of the logic in the while loop if it is in the body of a function. Yet another advantage is that while loops can often prove to be a little faster then array for each when it comes to benchmark testing.
+Another way to loop over all the contents of an array in javaScript would be to use a while loop. While loops have many advantages compared to the array forEach method or any other such method like array map. For example different expressions can be used to step an index variable that is used to get an element in an array. So then I can just loop over every other element in an array rather than all of them if I want. 
+
+In addition when using a while loop keywords such as break and continue can be used to skip things completely which can come in handy how and then. Another thing about loops is that I am not defining logic in a method so I can use the return keyword in the body of the logic in the while loop if it is in the body of a function to stop the loop. 
+
+Yet another advantage is that while loops can often prove to be a little faster then array for each when it comes to benchmark testing. The main reason why would have to do with function calls, the array for each method as well as all of the array prototype method will end up making a lot of them when working with a large array. This might not be a big deal when it comes to small arrays, but if I am working with arrays that are large enough I have found a significant difference in the amount of time it takes for the array for each method to loop over all elements which odes in fact take longer when compared to a while loop.
 
 ### 3.1 - The basic while loop example
 
@@ -429,7 +433,7 @@ console.log(b); // [3,4,5,6,7]
 
 There is of course also the array slice method that can also be used to get a new array that is a range of another array. However I would need to know both the starting and ending index values. With a while loop I can make coming across some kind of value a way to stop looping.
 
-### 3.4 - nested loops and the return keyword
+### 3.4 - Nested loops and the return keyword
 
 There is also of course using the [return keyword](/2019/03/01/js-javascript-return/) in the body of a function that will be used to return something, and the fact that when using the array forEach method I am working inside the body of a function. So when doing something that involves nesting loops, or even just using one loop I can not just use the return keyword in the body of a method that is passed to array for each.
 
