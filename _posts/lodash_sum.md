@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 12:55:58
-version: 1.43
+updated: 2021-11-18 12:57:13
+version: 1.44
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -17,7 +17,7 @@ Making a native sum method might not be so hard, however if [lodash](https://lod
 
 ## 1 - what to know before hand
 
-This is a post on using lodash to help with tasks involving [summation](https://en.wikipedia.org/wiki/Summation), as well as plain javaScript examples of doing so as well. This is not a getting started post on lodash, or javaScript in general so I assume that you have at least some background with these topics.
+This is a post on using lodash to help with tasks involving [summation](https://en.wikipedia.org/wiki/Summation), as well as plain javaScript examples of doing so as well. This is not a getting started post on lodash, or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background with these topics.
 
 ### 1.1 - version numbers matter
 
