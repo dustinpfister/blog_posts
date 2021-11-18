@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 14:57:56
-version: 1.54
+updated: 2021-11-18 15:12:02
+version: 1.55
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -56,6 +56,8 @@ However what if there are some additional steps that need to happen in order to 
 
 One thing to be aware of when adding up the numbers of an array is to make sure that you are in fact dealing with numbers. There are also some things to be aware of when it comes to numbers in javaScript including a weird kind of number known as [Not a Number \(NaN\)](/2017/09/23/js-nan/). So in this example I am using the [javaScript typeof](/2019/02/15/js-javascript-typeof/) operator along with some additional expressions and if statement to create a parse element method.
 
+There is then trying out both the while loop approach and the lodash sum method approach with this parse element method. When it comes to the while loop approach I can just call them method inside the body of the while loop and use the returned result of calling the parse element method as the number to add to the sum rather than just directly adding values of the source array many of which are not numbers. When it comes to using lodash I can call the main lodash function and pass the array are the argument to it, I can then call the [lodash map method](/2018/02/02/lodash_map/) and pass my parse element method to the lodash map method, after that I can then call the sum method all in a single line.
+
 ```js
 let parseElement = (el) => {
     let n = 0;
@@ -84,22 +86,19 @@ console.log(sum); // 10
 
 ## 2 - Using lodash to add up a sum
 
-So there are a number of methods in lodash that can be used to add up a sum, such as \_.sum which can be used to quickly add up the numbers of an array. In addition summation can also easily be done with methods like \_.reduce, and \_.forEach. However in this post I will be focusing on methods like \_.sum, and \_.sumBy.
+So there are a number of methods in lodash that can be used to add up a sum, such as \_.sum which can be used to quickly add up the numbers of an array which I touched base on in the basic section. In addition summation can also easily be done with a number of additional methods in lodash  like \_.reduce, and \_.forEach just to name a few options to chose from. Some of these methods might be methods that take an array as the first argument like that of the lodash sum method, but many of them are collection methods. What is cool about these methods is that they will work not just with arrays, but with objects in general. So then in this section I will be going over a few more options to take into account when it comes to using lodash, before moving on to other topics including vanilla javaScript solutions for creating sums.
 
 ### 2.1 - Using \_.sum to just add an array of numbers
 
-Using the \_.sum method is easy enough when it comes to an array of primitive numbers at least. In that case just pass the array of numbers to it and you sum of those numbers will be returned.
+Using the \_.sum method is easy enough when it comes to an array of primitive numbers at least. In that case just pass the array of numbers to it and you sum of those numbers will be returned as I did in the basic section. I also covered another examples in that section that makes use of a few more lodash features to handing other kinds of arrays that contains types other than that of numbers.
 
 ```js
-// array element length
-let a = [1, 2, 3, 4];
- 
-let sum = _.sum(a);
- 
+let a = [1, '2', 3, '4'];
+let sum = _(a).map((el)=>{return parseFloat(el)}).sum(a);
 console.log(sum); // 10
 ```
 
-Although I most real world examples I can not say that I often deal with an array that is formated like this, I must first produce this array, or I must loop over an array of objects adding up one or more values and ignoring others. Not to worry there are other methods that can be used together to deal with most of those situations as well such as \_.sumBy.
+So maybe some times I do just have an array of numbers to being with and when that is the case yes it is not so hard to just add them up with lodash or just plain javaScript alone. Although I most real world examples I can not say that I often deal with an array that is formated like that to begin with, I must first produce an array of numbers by which to sum. In some cases I might have an array of objects for example and I must loop over each object adding up one or more properties and ignoring others. Not to worry there are other methods that can be used together with the lodash sum method to deal with most of those situations, and the lodash map method is just one such method.
 
 ### 2.2 - Using \_.sumBy for an array of objects
 
