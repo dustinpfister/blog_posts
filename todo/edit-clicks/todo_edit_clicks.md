@@ -7,7 +7,9 @@
 * ( done 10/02/2021 ) expand to 1,000+ words
 * ( done 10/02/2021 ) expand to 1,800+ words
 * ( done 11/18/2021 ) expand to 2,000+ words
-* expand to 2,400+ words
+* ( done 11/18/2021 ) expand to 2,400+ words
+* expand to 2,700+ words
+* expand to 3,000+ words
 
 ### nodejs-glob ( #2 - 1,286 clicks - 11/14/2021 )
 * ( done 10/04/2021 ) have 5+ internal links in the post
