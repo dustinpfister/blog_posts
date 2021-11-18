@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2021-11-18 12:31:14
-version: 1.18
+updated: 2021-11-18 12:35:21
+version: 1.19
 ---
 
 In the Core [javaScript Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) there is the [object freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) static method that can be used to freeze an object. Once an object is frozen none of the properties of the object can be changed. In addition to the Object freeze method there is also [the seal static method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) that is also of interest that is a little different from object freeze. The seal method does not freeze an object, however it does make it so no additional properties can be added to the object once it is sealed. 
@@ -77,7 +77,7 @@ console.log(obj.a); // undefined
 
 ### 1.4 - The object define property method
 
-There is then the define property method of the object class. This method can be used to set a writable flag for a property when defining it. So then this method is yet another tool in the toolbox when it comes to defining the nature of an object.
+There is then the define property method of the main Object global. This method can be used to set a writable flag for a property when defining it. So then this method is yet another tool in the toolbox when it comes to defining the nature of an object, and can also be used to obtain a similar result. The define property is worth looking into more if you have not done so all ready and not just for the sake of making an object property writable or not. It can also be used to make private object properties that will not show up when looping over the public keys by using a for in loop or something like the [Object.keys](/2018/12/15/js-object-keys/) static method.
 
 ```js
 const obj = {};
