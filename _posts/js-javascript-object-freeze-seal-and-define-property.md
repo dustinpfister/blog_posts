@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 656
-updated: 2021-11-18 12:19:18
-version: 1.12
+updated: 2021-11-18 12:22:54
+version: 1.13
 ---
 
 In the Core [javaScript Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) there is the [object freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) static method that can be used to freeze an object. Once an object is frozen none of the properties of the object can be changed. In addition to the Object freeze method there is also [the seal static method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal) that is also of interest that is a little different from object freeze. The seal method does not freeze an object, however it does make it so no additional properties can be added to the object once it is sealed. 
@@ -18,6 +18,10 @@ There is set another static method that is relevant to this topic and that is th
 ## 1 - The Basics of freezing Objects in javaScript
 
 In this section I will be going over a few quick examples on the subject of freezing objects in javaScript. Although I will be keeping these examples fairly simple I assume that you have at least some experience working with javaScript in one kind of environment or another. If not I have my main [getting started with javaScript](/2018/11/27/js-getting-started/) type post that might project to be a good starting location on this site.
+
+### - The source code examples in this post are on github
+
+the source code example on this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-object-freeze-seal-and-define-property/s1-basics) on Github as with all my [other posts on javaScript](/categories/js/).
 
 ### 1.1 - JavaScript objects and the const keyword
 
