@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 332
-updated: 2021-11-18 14:49:24
-version: 1.52
+updated: 2021-11-18 14:52:02
+version: 1.53
 ---
 
 Creating a sum from an array, more often then not, is a fairly trivial matter with javaScript as it can quickly be done with a native array method like [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce). However in some cases it might be nice to have methods that make quick work of trivial tasks such as this by allowing me to just call a single method for this and move forward with a project that much faster. 
@@ -49,6 +49,8 @@ let a = [1, 2, 3, 4];
 let sum = _.sum(a);
 console.log(sum); // 10
 ```
+
+However what if there are some additional steps that need to happen in order to have an array of numbers to begin with? Also what if some of the elements are not numbers but string values of numbers? So then maybe just the lodash sum method alone is not all that big of a deal as to support a case to continue using lodash, but maybe things will be at least a little more convincing when looking into some more complex use case examples.
 
 ### 1.3 - Looking out of things surrounding types
 
