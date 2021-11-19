@@ -33,24 +33,25 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
        // read the fileName at the _posts folder
        fs.readFile(uri, 'utf8', (e, text_md) => {
            if(e){
+               res.status(500);
                res.end(e.message);
            }else{
-
                let headerObj = header.get(text_md)
                let yTest = headerObj.date.getFullYear() + '' === folderNames[0],
                mTest = (headerObj.date.getMonth() + 1) + '' === folderNames[1],
                dTest = headerObj.date.getDate() + '' === folderNames[2];
-
                if(yTest && mTest && dTest){
+                   res.status(200);
                    res.end(text_md);
                }else{
-
-                   res.end( yTest + ' ' + mTest + ' ' + dTest );
+                   res.status(404);
+                   res.end('404: dates in url do not match what is in the file: yyyy: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest );
                }
            }
        });
    }else{
-       res.end('Must give a file name');
+       res.status(404);
+       res.end('404: No file name given in path');
    }
 
 });
