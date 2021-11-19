@@ -1,12 +1,12 @@
 ---
 title: The Linux xxd command for dumping hex to the standard output rather than text
-date: 2021-11-17 14:18:00
+date: 2021-11-19 11:31:00
 tags: [linux]
 layout: post
 categories: linux
 id: 940
-updated: 2021-11-19 11:30:08
-version: 1.1
+updated: 2021-11-19 11:31:14
+version: 1.2
 ---
 
 When starring to get familiar with the various commands that there are to work with in a typical Linux environment one such command is the [Linux cat](/2020/11/11/linux-cat/) command. What is great about this command is that it can be used to quickly read a file and dump that text to the standard output. With that said the text from the file can also be [piped to other various useful commands](/2020/10/09/linux-pipe/) such as the [Linux grep](/2020/09/14/linux-grep/) command just to name one such option. In addition to being able to read a file, text can also be piped into the cat command rather an a file. For these reasons the Linux cat command is often used when working out all kinds of various things in bash directly in a terminal window, and also when writing bash scripts.
