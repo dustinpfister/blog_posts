@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-09-13 16:16:59
-version: 1.69
+updated: 2021-11-19 15:14:48
+version: 1.70
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language then real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples.
@@ -98,7 +98,7 @@ This is a javaScript example where I was experimenting with a simple grid in the
 
 This is a module that I made as a foundation for my orb module, which in turn might sever to be another modules that I will be using in at least one if not more canvas games. As the name suggests it has to do with ratios, and there is a great deal that comes up when working with them. For example say I have a set of numbers like 5,20,0,15 and I want a function that will return 1,4,0,3 when I pass the previous set of numbers to it. This module provides such a method that helps with this, and there are a whole bunch of other methods like that as well.
 
-### 1.21 - [Rotate and fire example](/2021/04/05/js-javascript-example/)
+### 1.21 - [Rotate and fire example](/2021/04/05/js-javascript-example-rotate-and-fire/)
 
 This is an example where I worked out some basic logic for a turret defense game when it comes to how the turrets will behave when it comes to rotation and fire control. For example I could make it so that when a player clicks an area of a canvas a turret is just set to an angle that points to that location and then it fires a shot for every click of the canvas. However another way to program this kind of game is to have a rotation rate, as well as a fire rate, and for the turret to only fire once it gets within a certain angular range of the target location that was clicked.
 
