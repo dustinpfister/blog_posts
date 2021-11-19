@@ -11,9 +11,9 @@
 * have 5+ internal links for the post
 * edit post to 1,400+ words
 
-### (   ) - js-javascript-null ( no internal links )
-* have 5+ internal links for the post
-* edit post to 1,000+ words
+### ( done 11/19/2021 ) - js-javascript-null ( no internal links )
+* (done) have 5+ internal links for the post
+* (done)edit post to 1,000+ words
 
 ### ( done 11/18/2021 ) - js-javascript-object-freeze-seal-and-define-property ( no internal links )
 * (done) have 5+ internal links for the post
