@@ -1,6 +1,7 @@
 let express = require('express'),
 path = require('path'),
 fs = require('fs'),
+marked = require('marked'),
 app = express(),
 header = require( path.join(__dirname, '../../lib/header/index.js') );
 
@@ -42,7 +43,8 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                dTest = headerObj.date.getDate() + '' === folderNames[2];
                if(yTest && mTest && dTest){
                    res.status(200);
-                   res.end(text_md);
+                   let text_md_clean = header.remove(text_md);
+                   res.end(marked(text_md_clean));
                }else{
                    res.status(404);
                    res.end('404: dates in url do not match what is in the file: yyyy: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest );
