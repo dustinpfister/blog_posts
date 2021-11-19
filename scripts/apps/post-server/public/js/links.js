@@ -1,4 +1,4 @@
-
+// get internal links helper
 var getInteralLinks = function(){
     // get links
     var links = document.querySelectorAll('a');
@@ -11,6 +11,11 @@ var getInteralLinks = function(){
     }, []);
 };
 
-var links = getInteralLinks();
-console.log(links.map((a)=>{ return a.href;}));
+var links_intern = getInteralLinks();
+
+links_intern.forEach(function(a){
+   a.style.background = 'gray';
+});
+
+//console.log(links.map((a)=>{ return a.href;}));
 
