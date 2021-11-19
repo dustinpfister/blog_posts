@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 940
-updated: 2021-11-19 12:04:12
-version: 1.5
+updated: 2021-11-19 12:07:24
+version: 1.6
 ---
 
 When starring to get familiar with the various commands that there are to work with in a typical Linux environment one such command is the [Linux cat](/2020/11/11/linux-cat/) command. What is great about this command is that it can be used to quickly read a file and dump that text to the standard output. With that said the text from the file can also be [piped to other various useful commands](/2020/10/09/linux-pipe/) such as the [Linux grep](/2020/09/14/linux-grep/) command just to name one such option. In addition to being able to read a file, text can also be piped into the cat command rather an a file. For these reasons the Linux cat command is often used when working out all kinds of various things in bash directly in a terminal window, and also when writing bash scripts.
@@ -19,7 +19,7 @@ So then in this post I will be taking a quick look at this Liunx xxd command, an
 
 ## 1 - Basics of the Linux xxd command
 
-In this section I will be going over a few quick examples of the Linux xxd command that can be done in the console real quick just for the sake of getting a feel for how this command works. There is always looking into the man page when it comes to learning about all the various options that there are to work with, but for now many of these basic examples just use the -p option.
+In this section I will be going over a few quick examples of the Linux xxd command that can be done in the console real quick just for the sake of getting a feel for how this command works. There is always looking into the man page when it comes to learning about all the various options that there are to work with, but for now many of these basic examples just use the -p option. The -p option is a shorthand for --postscript, which is a kind of continuous hex dump style which in order words can be called just plain hex style or format. The default output style is not like this, and in most use case examples of this command I would want this post script style for the output rather than the more descriptive default style.
 
 ### 1.1 - Linux xxd and echo commands with piping
 
