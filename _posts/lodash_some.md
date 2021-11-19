@@ -1,12 +1,12 @@
 ---
 title: lodash some
-date: 2019-03-32 17:11:00
+date: 2019-04-01 17:11:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2020-06-02 10:57:15
-version: 1.13
+updated: 2021-11-19 15:24:38
+version: 1.14
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
