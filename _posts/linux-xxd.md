@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 940
-updated: 2021-11-19 12:21:16
-version: 1.9
+updated: 2021-11-19 12:23:11
+version: 1.10
 ---
 
 When starring to get familiar with the various commands that there are to work with in a typical Linux environment one such command is the [Linux cat](/2020/11/11/linux-cat/) command. What is great about this command is that it can be used to quickly read a file and dump that text to the standard output. With that said the text from the file can also be [piped to other various useful commands](/2020/10/09/linux-pipe/) such as the [Linux grep](/2020/09/14/linux-grep/) command just to name one such option. In addition to being able to read a file, text can also be piped into the cat command rather an a file. For these reasons the Linux cat command is often used when working out all kinds of various things in bash directly in a terminal window, and also when writing bash scripts.
@@ -47,6 +47,8 @@ $ xxd -p ~/foo.txt
 
 ### 1.3 - Creating an out file
 
+the xxd command alone can be used to create an output file.
+
 ```
 $ echo "Hello World" > ~/foo.txt
 $ xxd -p ~/foo.txt ~/foo.hex.txt
@@ -55,7 +57,9 @@ Hello World
 48656c6c6f20576f726c640a
 ```
 
-### 1.4 Using Linux cat and xxd
+### 1.4 - Using Linux cat and xxd
+
+So then the xxd command is not just like the cat command, however the cat command is very much like the cat command and then I can pipe what cat spites out into xxd.
 
 ```
 $ echo "Hello World" > ~/foo.txt
@@ -67,4 +71,6 @@ $ cat ~/fbz.hex.txt
 ```
 
 ## 2 - Conclusion
+
+That will be it for now when it comes to the xxd command and various other bash and Linux features.
 
