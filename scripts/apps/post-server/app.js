@@ -49,7 +49,7 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                    let text_md_clean = header.remove(text_md),
                    html = '<h1>' + headerObj.title + '</h1>';
                    html += marked(text_md_clean);
-                   html += '<script src=\"/js/foo.js\"></script>';
+                   html += '<script src=\"/js/links.js\"></script>';
                    res.end(html);
                }else{
                    // else we have a 404 event though we have a file becuase the dates in the url
