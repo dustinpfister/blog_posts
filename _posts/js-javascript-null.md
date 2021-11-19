@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2021-11-19 10:43:12
-version: 1.22
+updated: 2021-11-19 10:45:39
+version: 1.23
 ---
 
 So [javaScript null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time that stands the absence of an object value. On the surface it might seem that null is more or less the same as the [undefined](/2019/01/30/js-javascript-undefined/) value, but this is not the case. There are some subtle differences between undefined and null, and as such null is not meant to be a replacement for undefined or vice versa. 
@@ -21,9 +21,9 @@ In this post I will be writing around some of the things to know about the javaS
 
 ## 1 - javaScript null and undefined
 
-The null value is one of several javaScripts primitive values such as numbers, and strings that represents the absence of any object value. There is some confusion surrounding null and a similar primitive value known as undefined in javaScript which migth lead one to question why it is necessity to have two kinds of values that seem more or less the same in many ways. They are similar but there are reasons why a null value is part of javaScript, in some cases using null as a default value might be a better option compared to something like the number zero, or leaving an object property as undeclared and undefined, or declared but set to undefined.
+The null value is one of several javaScripts primitive values such as numbers, and strings that represents the absence of any object value. There is some confusion surrounding null and a similar primitive value known as undefined in javaScript which might lead one to question why it is necessity to have two kinds of values that seem more or less the same in many ways. They are similar but there are reasons why a null value is part of javaScript, in some cases using null as a default value might be a better option compared to something like the number zero, or leaving an object property as undeclared and undefined, or declared but set to undefined.
 
-In this section then I will be starting out with a few simple examples of null in core javaScript. Although I will be keeping these examples fairly simple, I still assume that you have at least some experience with javaScript before hand. If not you do have no experience, or you are still fairly new to javaScript you might want to take a step back and start with a post that has to do with the basics of getting started with javaScript.
+In this section then I will be starting out with a few simple examples of null in core javaScript. Although I will be keeping these examples fairly simple, I still assume that you have at least some experience with javaScript before hand. If not you do have no experience, or you are still fairly new to javaScript you might want to take a step back and start with a post that has to do with the basics of [getting started with javaScript](/2018/11/27/js-getting-started/).
 
 ### 1.1 - null must be assigned.
 
