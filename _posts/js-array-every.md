@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 908
-updated: 2021-07-12 16:19:21
-version: 1.23
+updated: 2021-11-19 15:24:38
+version: 1.24
 ---
 
 The [Array every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) method of the [Array prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) in native javaScript is a way to test if all elements in an array will meet a given condition or not. In the event that just one element in the array does not meet the condition, then the end result will be false. This method is then similar to that of the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method that will return true if just one of the elements in the array will pass the test.
@@ -121,5 +121,5 @@ This week I think I will write a few new posts on native javaScript features tha
 
 There is also maybe taking a moment to edit and expand older posts too while I am at it such as [my post on the array for each method, as well as the general concept of the for each method and alternatives](/2019/02/16/js-javascript-foreach/). Many of these array prototype methods are just ways of doing things that are not so hard to do with just a while loop, but they are common tasks, and having these methods at the ready can help keep me from repeating code over and over again for these things when they come up.
 
-There are all kinds of other methods that could be made like the every and some methods when it comes to making my own methods, or using some kind of utility method. In lodash there is a [lodash every](/2019/08/01/lodash_every/) and [lodash some](/2019/03/32/lodash_some/) method, alone with many other useful array and object methods for example.
+There are all kinds of other methods that could be made like the every and some methods when it comes to making my own methods, or using some kind of utility method. In lodash there is a [lodash every](/2019/08/01/lodash_every/) and [lodash some](/2019/04/01/lodash_some/) method, alone with many other useful array and object methods for example.
 
