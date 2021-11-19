@@ -37,14 +37,18 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                res.status(500);
                res.end(e.message);
            }else{
+               // get header and preform a check with the dates in url compared to header
                let headerObj = header.get(text_md)
-               let yTest = headerObj.date.getFullYear() === parseInt(folderNames[0]),
+               yTest = headerObj.date.getFullYear() === parseInt(folderNames[0]),
                mTest = (headerObj.date.getMonth() + 1) === parseInt(folderNames[1]),
                dTest = headerObj.date.getDate() === parseInt(folderNames[2]);
+               // if all goes well send the file with a 200 status
                if(yTest && mTest && dTest){
                    res.status(200);
-                   let text_md_clean = header.remove(text_md);
-                   res.end(marked(text_md_clean));
+                   let text_md_clean = header.remove(text_md),
+                   html = '<h1>' + headerObj.title + '</h1>';
+                   html += marked(text_md_clean);
+                   res.end(html);
                }else{
                    res.status(404);
                    res.end('404: dates in url do not match what is in the file: yyyy: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest );
