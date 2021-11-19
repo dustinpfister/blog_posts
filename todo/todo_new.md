@@ -10,9 +10,13 @@
 ### ( done 11/15/2021 ) - new post #938 for 11/15/2021 - linux-folders-bin
 * (done) start writing the post
 
-### ( done 11/17/2021 ) - new post #939 for 11/17/2021 0 linux-folders-dev
+### ( done 11/17/2021 ) - new post #939 for 11/17/2021 - linux-folders-dev
 * (done) start the draft folder
 * (done) start writing the post
+
+### (                 ) - new post #940 for 11/19/2021 - linux-xxd
+* (done) - start the draft folder
+* () - start writing the post
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
