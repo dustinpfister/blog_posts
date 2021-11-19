@@ -1,7 +1,8 @@
 let express = require('express'),
 path = require('path'),
 fs = require('fs'),
-app = express();
+app = express(),
+header = require( path.join(__dirname, '../../lib/header/index.js') );
 
 
 app.set('port', process.argv[2] || process.env.PORT || 8070);
@@ -21,9 +22,9 @@ let trimEmpty = (arr) => {
         return acc;
     }, []);
 };
-// get for a path like /2021/10/11/foo-post/index.html
+// get for a path like /2018/12/10/js-array/index.html
 app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
-   // gat an array like ['2021', '10', '11', 'foo-post', 'index.html']
+   // gat an array like ['2018', '12', '10', 'js-array', 'index.html']
    let folderNames = trimEmpty(req.url.split('/'));
    let fileName = folderNames[3] || null;
    // if we have a file name
@@ -34,7 +35,18 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
            if(e){
                res.end(e.message);
            }else{
-               res.end( text_md );
+
+               let headerObj = header.get(text_md)
+               let yTest = headerObj.date.getFullYear() + '' === folderNames[0],
+               mTest = (headerObj.date.getMonth() + 1) + '' === folderNames[1],
+               dTest = headerObj.date.getDate() + '' === folderNames[2];
+
+               if(yTest && mTest && dTest){
+                   res.end(text_md);
+               }else{
+
+                   res.end( yTest + ' ' + mTest + ' ' + dTest );
+               }
            }
        });
    }else{
