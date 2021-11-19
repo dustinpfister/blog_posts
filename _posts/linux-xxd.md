@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 940
-updated: 2021-11-19 12:12:28
-version: 1.7
+updated: 2021-11-19 12:18:08
+version: 1.8
 ---
 
 When starring to get familiar with the various commands that there are to work with in a typical Linux environment one such command is the [Linux cat](/2020/11/11/linux-cat/) command. What is great about this command is that it can be used to quickly read a file and dump that text to the standard output. With that said the text from the file can also be [piped to other various useful commands](/2020/10/09/linux-pipe/) such as the [Linux grep](/2020/09/14/linux-grep/) command just to name one such option. In addition to being able to read a file, text can also be piped into the cat command rather an a file. For these reasons the Linux cat command is often used when working out all kinds of various things in bash directly in a terminal window, and also when writing bash scripts.
@@ -23,12 +23,17 @@ In this section I will be going over a few quick examples of the Linux xxd comma
 
 ### 1.1 - Linux xxd and echo commands with piping
 
-To start off this set of examples here is something that can be done in the command line right now that will not create a file or do anything weird. With that said there is using the Linux echo command to just quickly create some standard output by way of a string that is given by way of an argument. When calling the Linux echo command I can give the -n option which will make it so that the echo command will not append a new line character after generating some standard output in the form of a string. I am then piping this standard output created with echo into the standard input of the xxd command which I am using the the postscript option. The end result is then the hex form of the text that I have given to echo.
+To start off this set of examples here is something that can be done in the command line right now that will not create a file or do anything weird. With that said there is using the Linux echo command to just quickly create some standard output by way of a string that is given by way of an argument. When calling the [Linux echo](/2019/08/15/linux-echo/) command I can give the -n option which will make it so that the echo command will not append a new line character after generating some standard output in the form of a string. I am then piping this standard output created with echo into the standard input of the xxd command which I am using the the postscript option. The end result is then the hex form of the text that I have given to echo.
+
+For example if one takes a moment to look at an [ASCII table](https://www.asciitable.com/) they will find that the hex for the letter 'A' is '41'. So then is the letter 'A' is what I give for echo and then pipe that to xxd the result should be '41', and sure enough that is what happens.
 
 ```
 $ echo -n "A" | xxd -p
 41
 ```
+
+So then great the Linux xxd command can be used to generate hex from a text source that is piped into it from another command. However it is also possible to read and create files with xxd alone, as well as do something like with this example only pipe and redirect to create what I want. This example alone should be enough actually when it comes to working with everything there is to work with in Linux, but never the less I should take a moment to cover at least a few more examples.
+
 
 ### 1.2 - Linux redirection and xxd
 
