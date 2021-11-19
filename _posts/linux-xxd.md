@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 940
-updated: 2021-11-19 12:18:08
-version: 1.8
+updated: 2021-11-19 12:21:16
+version: 1.9
 ---
 
 When starring to get familiar with the various commands that there are to work with in a typical Linux environment one such command is the [Linux cat](/2020/11/11/linux-cat/) command. What is great about this command is that it can be used to quickly read a file and dump that text to the standard output. With that said the text from the file can also be [piped to other various useful commands](/2020/10/09/linux-pipe/) such as the [Linux grep](/2020/09/14/linux-grep/) command just to name one such option. In addition to being able to read a file, text can also be piped into the cat command rather an a file. For these reasons the Linux cat command is often used when working out all kinds of various things in bash directly in a terminal window, and also when writing bash scripts.
@@ -35,7 +35,9 @@ $ echo -n "A" | xxd -p
 So then great the Linux xxd command can be used to generate hex from a text source that is piped into it from another command. However it is also possible to read and create files with xxd alone, as well as do something like with this example only pipe and redirect to create what I want. This example alone should be enough actually when it comes to working with everything there is to work with in Linux, but never the less I should take a moment to cover at least a few more examples.
 
 
-### 1.2 - Linux redirection and xxd
+### 1.2 - Linux redirection and reading a file xxd
+
+So [redirection](/2020/10/02/linux-redirection/) is a bash feature can be used as a way to create a file from some standard output that is created from a command like echo, or xxd. Also I do not have to use the standard input as a way to push some data into xxd I can read a file directly with it.
 
 ```
 $ echo "Hello World" > ~/foo.txt
