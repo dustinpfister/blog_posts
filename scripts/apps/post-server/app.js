@@ -38,9 +38,9 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                res.end(e.message);
            }else{
                let headerObj = header.get(text_md)
-               let yTest = headerObj.date.getFullYear() + '' === folderNames[0],
-               mTest = (headerObj.date.getMonth() + 1) + '' === folderNames[1],
-               dTest = headerObj.date.getDate() + '' === folderNames[2];
+               let yTest = headerObj.date.getFullYear() === parseInt(folderNames[0]),
+               mTest = (headerObj.date.getMonth() + 1) === parseInt(folderNames[1]),
+               dTest = headerObj.date.getDate() === parseInt(folderNames[2]);
                if(yTest && mTest && dTest){
                    res.status(200);
                    let text_md_clean = header.remove(text_md);
