@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 399
-updated: 2021-11-19 10:32:05
-version: 1.18
+updated: 2021-11-19 10:34:29
+version: 1.19
 ---
 
 So [javaScript null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null) is one of many possible values that a variable can be at any given time that stands the absence of an object value. On the surface it might seem that null is more or less the same as the [undefined](/2019/01/30/js-javascript-undefined/) value, but this is not the case. There are some subtle differences between undefined and null, and as such null is not meant to be a replacement for undefined or vice versa. 
 
-A null value can be thought of as a lack of an identification value for what should be an object. This might be the main reason why the type of null is object when using the [javaScript typeof operator](/2019/02/15/js-javascript-typeof/) with a null value. 
+A null value can be thought of as a lack of an identification value for what should be an object. This might be the main reason why the type of null is object when using the [javaScript typeof operator](/2019/02/15/js-javascript-typeof/) with a null value. This is then also something that a developer needs to test for when trying to access something that might nit be there. For example there is not just testing for the type of a value to see if it is an object and then moving on, there is testing for an object and on top of that testing to make sure that a value is not null also.
 
 In addition it is true that null is a value that must be assigned, rather than a value such as that is the undefined value. The thing about undefined is that it is often the assumed default for variables that have been declared but not assigned anything, it is also a value that is obtained for object keys that have not been defined also. 
 
