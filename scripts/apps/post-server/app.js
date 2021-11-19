@@ -12,7 +12,7 @@ app.set('dir_posts', path.join(__dirname, '../../../_posts'));
 
 
 // hosting static assets for the client system
-//app.use('/js', express.static('public/js'));
+app.use('/js', express.static( path.join(__dirname, 'public/js') ));
 //app.use('/', express.static('public/html'));
 
 let trimEmpty = (arr) => {
@@ -34,6 +34,7 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
        // read the fileName at the _posts folder
        fs.readFile(uri, 'utf8', (e, text_md) => {
            if(e){
+               // if error set 500 status and send message
                res.status(500);
                res.end(e.message);
            }else{
@@ -48,18 +49,21 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                    let text_md_clean = header.remove(text_md),
                    html = '<h1>' + headerObj.title + '</h1>';
                    html += marked(text_md_clean);
+                   html += '<script src=\"/js/foo.js\"></script>';
                    res.end(html);
                }else{
+                   // else we have a 404 event though we have a file becuase the dates in the url
+                   // do not match the ones in the header
                    res.status(404);
                    res.end('404: dates in url do not match what is in the file: yyyy: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest );
                }
            }
        });
    }else{
+       // send a 404 if there is no file name folder in the url
        res.status(404);
        res.end('404: No file name given in path');
    }
-
 });
 
 app.listen(app.get('port'), () => {
