@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 940
-updated: 2021-11-19 11:33:40
-version: 1.3
+updated: 2021-11-19 12:02:08
+version: 1.4
 ---
 
 When starring to get familiar with the various commands that there are to work with in a typical Linux environment one such command is the [Linux cat](/2020/11/11/linux-cat/) command. What is great about this command is that it can be used to quickly read a file and dump that text to the standard output. With that said the text from the file can also be [piped to other various useful commands](/2020/10/09/linux-pipe/) such as the [Linux grep](/2020/09/14/linux-grep/) command just to name one such option. In addition to being able to read a file, text can also be piped into the cat command rather an a file. For these reasons the Linux cat command is often used when working out all kinds of various things in bash directly in a terminal window, and also when writing bash scripts.
@@ -16,4 +16,44 @@ So then at some point a thought might occur that is along the lines of "Say this
 So then in this post I will be taking a quick look at this Liunx xxd command, and also while I am at it I will be also demonstrating a few quick simple examples of other Linux and bash related features in the process of doing so.
 
 <!-- more -->
+
+## 1 - Basics of the Linux xxd command
+
+### 1.1 - Linux xxd and echo commands with piping
+
+```
+$ echo -n "A" | xxd -p
+41
+```
+
+### 1.2 - Linux redirection and xxd
+
+```
+$ echo "Hello World" > ~/foo.txt
+$ xxd -p ~/foo.txt
+48656c6c6f20576f726c640a
+```
+
+### 1.3 - Creating an out file
+
+```
+$ echo "Hello World" > ~/foo.txt
+$ xxd -p ~/foo.txt ~/foo.hex.txt
+$ cat ~/foo.txt ~/foo.hex.txt
+Hello World
+48656c6c6f20576f726c640a
+```
+
+### 1.4 Using Linux cat and xxd
+
+```
+$ echo "Hello World" > ~/foo.txt
+$ echo "Bar and foo" > ~/bar.txt
+$ echo "I want a zoo" > ~/zoo.txt
+$ cat ~/foo.txt ~/bar.txt ~/zoo.tzt | xxd -p > ~/fbz.hex.txt
+$ cat ~/fbz.hex.txt
+48656c6c6f20576f726c640a42617220616e6420666f6f0a
+```
+
+## 2 - Conclusion
 
