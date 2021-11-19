@@ -10,6 +10,15 @@ This is a todo list for the scripts folder.
 * for each day object to a git diff dayObj.startHash ... dayObj.endHash to get the additional and subtractions for each file
 * parse out the numbers in terms of word count deltas for each file, in each day
 
+## () - apps/post-link-checker/
+* new script that automates the process of checking for broken post links in text
+* script will check for post-sever running at a given port, or default port
+* in the event that there is no response the script will start post-server
+* once it is confirmed that post-sever is up the script will start checking files
+
+## () - apps/post-server
+* new app that will just serve a blog post file if is exists, esle it will give a 404 status as a response
+* can give a path like /yyyy/mm/dd/post-file-name/ or /yyyy/mm/dd/post-file-name/index.html for \_posts/post-file-name.md
 
 ## ( done 11/03/2021 ) - cli/report-pec
 * (done) start a cli tool that will build Post Edit Count Reports
