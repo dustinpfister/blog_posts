@@ -38,6 +38,10 @@ links_intern.forEach(function(a){
         a.style.background = 'red';
         console.log(xml.status);
     }
+    if(xml.status === 500){
+        a.style.background = 'red';
+        console.log(xml.status);
+    }
 });
 
 //console.log(links.map((a)=>{ return a.href;}));
