@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-11-16 07:39:02
-version: 1.63
+updated: 2021-11-19 15:20:07
+version: 1.64
 ---
 
-When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
+When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-example-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
 
 So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one of my [JavaScript example](/2021/04/02/js-javascript-example/) type posts. While in the process of writing about the various method I may link to additional posts on various game prototypes, and projects that are relevant to use usage of these methods.
 
@@ -372,7 +372,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 
 ### 1.14 - Having a basic EXP System
 
-Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system. It might be best to start to work out some kind of [full module for an experience point system](/2020/04/27/js-javascript-example-exp-system/), however the same could be used for many of the canvas methods that I have in this module also. This xp object contains two methods that I first worked out for my [beach canvas example](/2020/04/24/canvas-example-gam-beach/) game prototype, and further refined in my post on the [math pow method](/2019/12/10/js-math-pow/).
+Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system. It might be best to start to work out some kind of [full module for an experience point system](/2020/04/27/js-javascript-example-exp-system/), however the same could be used for many of the canvas methods that I have in this module also. This xp object contains two methods that I first worked out for my [beach canvas example](/2020/04/24/canvas-example-game-beach/) game prototype, and further refined in my post on the [math pow method](/2019/12/10/js-math-pow/).
 
 ```js
 // Basic experience point system methods
