@@ -38,9 +38,9 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
             } else {
                 // get header and preform a check with the dates in url compared to header
                 let headerObj = header.get(text_md),
-                yTest = headerObj.date.getFullYear() === parseInt(folderNames[0]),
-                mTest = (headerObj.date.getMonth() + 1) === parseInt(folderNames[1]),
-                dTest = headerObj.date.getDate() === parseInt(folderNames[2]);
+                yTest = headerObj.date.getUTCFullYear() === parseInt(folderNames[0]),
+                mTest = (headerObj.date.getUTCMonth() + 1) === parseInt(folderNames[1]),
+                dTest = headerObj.date.getUTCDate() === parseInt(folderNames[2]);
                 // if all goes well send the file with a 200 status
                 if (yTest && mTest && dTest) {
                     res.status(200);
@@ -53,7 +53,9 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                     // else we have a 404 event though we have a file becuase the dates in the url
                     // do not match the ones in the header
                     res.status(404);
-                    res.end('404: dates in url do not match what is in the file: yyyy: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest);
+                    res.end('404: dates in url do not match what is in the file: \n' + 
+					    'header date: ' + headerObj.date.toString() + '\n' +
+					    'tests: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest);
                 }
             }
         });
@@ -86,9 +88,9 @@ app.get(/tofile\/.+/, function (req, res) {
         } else {
             let headerObj = header.get(text_md),
             d = headerObj.date,
-            yStr = d.getFullYear(),
-            mStr = String(d.getMonth() + 1).padStart(2, '0'),
-            dStr = String(d.getDate()).padStart(2, '0'),
+            yStr = d.getUTCFullYear(),
+            mStr = String(d.getUTCMonth() + 1).padStart(2, '0'),
+            dStr = String(d.getUTCDate()).padStart(2, '0'),
             dateStr = yStr + '/' + mStr + '/' + dStr,
             url = '/' + dateStr + '/' + fileName.replace(/.md$/, '');
             res.redirect(url);
