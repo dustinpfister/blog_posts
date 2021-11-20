@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 346
-updated: 2021-09-06 15:50:18
-version: 1.46
+updated: 2021-11-20 08:51:22
+version: 1.47
 ---
 
 In [javaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) the [Array.slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) prototype method comes up a whole lot in many code examples. The method is one way to go about getting a new array that is a range of element from a source array. It works in a very similar fashion to that of [Array.splice](/2021/07/20/js-array-splice/) but with one very important difference, it returns a new Array rather than manipulating the existing one that it is used with. So then the array slice method is a great way to go about getting a sub section of elements from an array, without mutating the source array from which I call the method.
@@ -75,7 +75,7 @@ console.log(a1); // [1,7,3,4]
 console.log(a2); // [1,2,3,4]
 ```
 
-This works because I am working with an array of primitives, objects however are copied by reference. So in these situations using just array slice might not be enough. When I am in these situations somehow I will need to preform what is often called a deep clone of the array. By doing so I would then return something that is separate from the source array that can not end up being mangled elsewhere in a body of code. However getting into stuff like that is beyond the scope of this post, if you want to read more about this then you might want to check out my post on [copying arrays in javaScript](/2020/09/03/js-array-copy/), and maybe also my posts on [lodash clone](/2017/10/02/lodash_clone/), and [lodash deep clone](/2017/11/03/lodash_clonedeep/).
+This works because I am working with an array of primitives, objects however are copied by reference. So in these situations using just array slice might not be enough. When I am in these situations somehow I will need to preform what is often called a deep clone of the array. By doing so I would then return something that is separate from the source array that can not end up being mangled elsewhere in a body of code. However getting into stuff like that is beyond the scope of this post, if you want to read more about this then you might want to check out my post on [copying arrays in javaScript](/2020/09/03/js-array-copy/), and maybe also my posts on [lodash clone](/2017/10/02/lodash_clone/), and [lodash deep clone](/2017/11/13/lodash_clonedeep/).
 
 ```js
 var points = [
