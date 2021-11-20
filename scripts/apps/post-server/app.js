@@ -68,7 +68,10 @@ app.get('/', (req, res) => {
 
     fs.readdir(app.get('dir_posts'), (e, files) => {
         res.status(200);
-        res.end(files.join('<br>'));
+        let fileNames = files.map(function (fn) {
+                return fn.split('.md')[0];
+            });
+        res.end('<div>' + fileNames.join('<br>') + '</div>');
 
     })
 
