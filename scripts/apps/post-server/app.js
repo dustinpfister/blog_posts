@@ -37,8 +37,8 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                 res.end(e.message);
             } else {
                 // get header and preform a check with the dates in url compared to header
-                let headerObj = header.get(text_md)
-                    yTest = headerObj.date.getFullYear() === parseInt(folderNames[0]),
+                let headerObj = header.get(text_md),
+                yTest = headerObj.date.getFullYear() === parseInt(folderNames[0]),
                 mTest = (headerObj.date.getMonth() + 1) === parseInt(folderNames[1]),
                 dTest = headerObj.date.getDate() === parseInt(folderNames[2]);
                 // if all goes well send the file with a 200 status
@@ -65,15 +65,36 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
 });
 
 app.get('/', (req, res) => {
-
     fs.readdir(app.get('dir_posts'), (e, files) => {
         res.status(200);
         let fileNames = files.map(function (fn) {
-                return fn.split('.md')[0];
+                return '<a href=\"/tofile/' + fn + '\">' + fn.split('.md')[0] + '</a><br>';
             });
-        res.end('<div>' + fileNames.join('<br>') + '</div>');
-
+        res.end('<div>' + fileNames.join('\n') + '</div>');
     })
+});
+
+app.get(/tofile\/.+/, function (req, res) {
+
+    let folders = trimEmpty(req.url.split('/')),
+    fileName = folders[1],
+    uri = path.join(app.get('dir_posts'), fileName);
+    fs.readFile(uri, 'utf8', (e, text_md) => {
+        if (e) {
+            res.status(500);
+            res.end(e.message);
+        } else {
+            let headerObj = header.get(text_md),
+            d = headerObj.date,
+            yStr = d.getFullYear(),
+            mStr = String(d.getMonth() + 1).padStart(2, '0'),
+            dStr = String(d.getDate()).padStart(2, '0'),
+            dateStr = yStr + '/' + mStr + '/' + dStr,
+            url = '/' + dateStr + '/' + fileName.replace(/.md$/, '');
+            res.redirect(url);
+        }
+
+    });
 
 });
 
