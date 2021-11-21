@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 365
-updated: 2021-10-29 11:52:08
-version: 1.60
+updated: 2021-11-21 17:09:02
+version: 1.61
 ---
 
 The [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) property of the [document object](https://developer.mozilla.org/en-US/docs/Web/API/Document) in client side javaScript contains a [location object](https://developer.mozilla.org/en-US/docs/Web/API/Location). This location object contains the URL of the current page, along with other useful properties about the current location of a web page. So the property is useful for finding out where a script is being used, but it can also be used as a way to redirect to a new page by setting a value to the href property that is the new desired page url.
@@ -88,7 +88,7 @@ if (location.protocol == 'file:') {
 }
 ```
 
-When it comes to serving a public html folder over the http protocol there are a lot of options to do so. I have [wrote a post on a nodejs simple static sever script](/2017/12/04/nodejs-simple-static-server-file/) that would be one way to go about doing so with just nodejs itself. However when it comes to really getting into back end development with nodejs it might be best to look into frameworks as a way to save time such as with the [express static method in express](/2018/05/24/express-static/).
+When it comes to serving a public html folder over the http protocol there are a lot of options to do so. I have [wrote a post on a nodejs simple static sever script](/2017/12/04/nodejs-simple-static-sever-file/) that would be one way to go about doing so with just nodejs itself. However when it comes to really getting into back end development with nodejs it might be best to look into frameworks as a way to save time such as with the [express static method in express](/2018/05/24/express-static/).
 
 Much of the remaining values of a location object will depend on the protocol along with other factors. For example if I am looking at an html document via the file: protocol then the location object will not have a host name or port, because the url is just a path to a static resource located on my computer.
 
