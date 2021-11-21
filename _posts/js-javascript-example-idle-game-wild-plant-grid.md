@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 924
-updated: 2021-11-19 15:22:06
-version: 1.27
+updated: 2021-11-21 17:12:12
+version: 1.28
 ---
 
 This week I have been working on two projects that are additional game prototypes that might progress into some kind of final product. Today I will be writing on the current state of one of them that I am just calling wild plant grid idle for now. The general idea of the game was to just have a grid in which wild plants grow, and the player just harvests what is grown for points. These points can then be used to make improvements to the state of the grid.
@@ -17,7 +17,7 @@ So then this is yet another game prototype idea that I will add to the stack of 
 
 ## 1 - The utils module
 
-First off here is the utils module that I have for this javaScript example. In other words this is the general utility module that I have made for this game that will differ a little from one project to a next when I make this kind of project. I have another [javaScript example in which I go over a general from of this utils module](/2021/08/06/js-javascript-example-utils/) that has many of the usual suspect methods that will end up in this module.
+First off here is the utils module that I have for this javaScript example that will contain a number of methods that I will be using thought the over all project. In other words this is the general utility module that I have made for this game that will differ a little from one project to a next when I make this kind of project. I have another [javaScript example in which I go over a general from of this utils module](/2021/08/06/js-javascript-example-utils/) that has many of the usual suspect methods that will end up in this module.
 
 For this project I need a bounding box collection detection method to find out if a cell in the grid has been clicked or not. The rest of the methods that to do with quickly setting up a canvas element, and attaching event handers to it. For now that is more or less just about it, this module does also just serve as a general dumping ground for methods that I will be using across one or more modules, and I can not think of any other place to put the method. Often I might make some new additions when it comes to these kinds of methods, but not for this project it would seem.
 
