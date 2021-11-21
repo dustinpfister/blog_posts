@@ -5,8 +5,8 @@ tags: [js,node.js]
 layout: post
 categories: js
 id: 106
-updated: 2021-11-04 11:20:23
-version: 1.21
+updated: 2021-11-21 17:38:00
+version: 1.22
 ---
 
 There is a [javaScript project on github](https://github.com/bevacqua/dragula) called [Dragula](https://bevacqua.github.io/dragula/) that can be used to quickly move elements from one element container to another when it comes to front end javaScript. It is a quick and simple way to get this sort of thing working, and does not require any additional dependencies such as jQuery or lodash.
@@ -19,7 +19,7 @@ There are of course many other ways to go about doing this when it comes to work
 
 Dragual can be installed via npm or bower, or I guess one could just grab what is in the [dist folder of the project on github](https://github.com/bevacqua/dragula/tree/master/dist). In any case once I have it in a test folder I just need to link to in in an html file by way of a script tag with the src attribute pointing to the file, as this is very mush a front end kind of project. However this is also a project where I need to include some css with the javaScript also, the css can be found in the dist folder of the Github repository also alone with the javaScrit files. Once that is done I am ready to use it to work out some simple examples of Dragula for what it is worth.
 
-Although I often like to keep my basic sections very simple this is still not a getting started type posts with [javaScript in general](/2018/11/27/js-getting-started/). I assume that you have at least some background then when it comes to getting started with javaScript when it comes to [client side javaScript such as by way of the file protocol](/2020/09/21/js-getting-started-file-protocol/). However there are other ways of working on a client side javaScript project so it might be a good idea to look into how to [get started with nodejs](/2017/04/05/nodejs-helloworld/), and also how to use [nodejs to set up a simple static web sever](/2017/12/04/nodejs-simple-static-server-file/) so that one can work on a client side project by way of the http protocol in a web browser.
+Although I often like to keep my basic sections very simple this is still not a getting started type posts with [javaScript in general](/2018/11/27/js-getting-started/). I assume that you have at least some background then when it comes to getting started with javaScript when it comes to [client side javaScript such as by way of the file protocol](/2020/09/21/js-getting-started-file-protocol/). However there are other ways of working on a client side javaScript project so it might be a good idea to look into how to [get started with nodejs](/2017/04/05/nodejs-helloworld/), and also how to use [nodejs to set up a simple static web sever](/2017/12/04/nodejs-simple-static-sever-file/) so that one can work on a client side project by way of the http protocol in a web browser.
 
 ### - The source code examples in this post are on Github
 
