@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-09 14:26:49
-version: 1.61
+updated: 2021-11-21 17:50:11
+version: 1.62
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
@@ -23,7 +23,7 @@ The innerHTML property of an element is one way to go about changing the inner h
 
 In addition to this the innerHTML property can also be used as a quick way to go about removing html content from and element also by just simply setting the value of innerHTML to an empty string. So for starters lets just look at some simple examples of what innerHTML can do in this getting started type section of the inner html property.
 
-I will be trying my best to keep the examples in this section as simple as possible, however this is still not a [getting started with javaScript type post](/2018/11/27/js-getting-started/). So I trust that you have at least a little experience when it comes to making the first steps of learning client side javaScript. When I first started out learning client side javaScript I did so by [way of the file protocol](/2020/09/21/js-getting-started-file-protocol/), and the examples in this post should largely work okay that way. However if you have not done so all ready you might want to look into how to get started with stetting up a [simple http sever](/2017/12/04/nodejs-simple-static-server-file/) also as one will run into problems with some things sooner or later by using the file protocol with certain client side javaScript features such as canvas elements, and WebWorkers.
+I will be trying my best to keep the examples in this section as simple as possible, however this is still not a [getting started with javaScript type post](/2018/11/27/js-getting-started/). So I trust that you have at least a little experience when it comes to making the first steps of learning client side javaScript. When I first started out learning client side javaScript I did so by [way of the file protocol](/2020/09/21/js-getting-started-file-protocol/), and the examples in this post should largely work okay that way. However if you have not done so all ready you might want to look into how to get started with stetting up a [simple http sever](/2017/12/04/nodejs-simple-static-sever-file/) also as one will run into problems with some things sooner or later by using the file protocol with certain client side javaScript features such as canvas elements, and WebWorkers.
 
 ### - Source code examples are on Github
 
