@@ -5,8 +5,8 @@ tags: [js,JSON]
 layout: post
 categories: js
 id: 634
-updated: 2021-11-21 17:42:59
-version: 1.33
+updated: 2021-11-21 17:44:15
+version: 1.34
 ---
 
 Typically when dealing with files in javaScript I am actually dealing with a file that is stored on a server, I then use [XMLHttpRequest](/2018/03/28/js-xmlhttprequest/) or some other means as a way to retrieve all or part of that data by way of scripting the HTTP protocol. However it is not like http is the only way to retrieve and post some data over a network, and also in some cases there is going to be a need to read and save data on a clients local file system.
@@ -23,9 +23,9 @@ So for now in this section I will be making a very basic use case example of the
 
 In this section I also often add in some additional details when it comes to anything else you should know about when it comes to continuing to read the rest of this post. For example I assume that you have at least some background with html and javaScript, if not you might want to start out with some [getting started type posts on javaScript](/2018/11/27/js-getting-started/). With that said there are all kinds of little details that I am not going to be getting into detail here such as [what a constructor function is](/2019/02/27/js-javascript-constructor/), and that is the kind of function the File Reader constructor is.
 
-### - The source code examples in this post are on github
+### The source code examples in this post are on github
 
-The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-filereader), along with all my other vanilla javaScript examples that I write posts about. I still have a lot more planed out for this post when it comes to additional examples, as well as code examples that have to do with alternatives to using File Reader. As such the Github repository may have more up to date source code examples compared to what I have here thus far, this content like many other posts is still very much a work in progress.
+The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-filereader), along with all my other vanilla javaScript examples that I [write posts about](/categories/js/). I still have a lot more planed out for this post when it comes to additional examples, as well as code examples that have to do with alternatives to using File Reader. As such the Github repository may have more up to date source code examples compared to what I have here thus far, this content like many other posts is still very much a work in progress.
 
 ### 1.1 - The json
 
