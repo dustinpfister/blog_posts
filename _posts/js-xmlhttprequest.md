@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 166
-updated: 2021-09-05 16:00:30
-version: 1.35
+updated: 2021-11-21 18:24:25
+version: 1.36
 ---
 
 These days there are a ton of options for scripting http requests with javaScript when it comes to modern native options like [fetch](/2018/03/27/js-fetch/), as well as popular user space options like [axios](/2018/01/10/nodejs-axios/) that seems to be a popular solution for this sort of thing. Many developers go so far as to make there own http clients themselves when it comes to yet another option, but even then a native method of one sort or another will have to be used in order to do so. There is using a modern browser built in feature like fetch, but I would still go with the old fashion tired yet true [XMLHttprequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) for these tasks in many simple pet projects at least. 
@@ -77,7 +77,7 @@ To get JSON I just need to make the responseType prop JSON, after that the proce
 
 ### 1.3 - Get an image and append the image to html
 
-When [downloading images using XMLHttprequest](https://stackoverflow.com/questions/8778863/downloading-an-image-using-xmlhttprequest-in-a-userscript) it is possible that I might run into cross domain problems. If so addressing that might be outside the scope of this post, assuming that it is possible to begin with depending on the situation, but it is generally something that I run into when loading image by way of the file protocol, or from another domain. The general way to go about addressing this problem is to serve what I am working on up via the http protocol, rather than opening up an html file in the browser, a practice that I should generally be doing anyway with most projects. One way to do so would be to set up a [simple static server using just nodejs](/2017/12/04/nodejs-simple-static-server-file/) and a little javaScript. 
+When [downloading images using XMLHttprequest](https://stackoverflow.com/questions/8778863/downloading-an-image-using-xmlhttprequest-in-a-userscript) it is possible that I might run into cross domain problems. If so addressing that might be outside the scope of this post, assuming that it is possible to begin with depending on the situation, but it is generally something that I run into when loading image by way of the file protocol, or from another domain. The general way to go about addressing this problem is to serve what I am working on up via the http protocol, rather than opening up an html file in the browser, a practice that I should generally be doing anyway with most projects. One way to do so would be to set up a [simple static server using just nodejs](/2017/12/04/nodejs-simple-static-sever-file/) and a little javaScript. 
 
 ```html
 <html>
