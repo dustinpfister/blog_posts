@@ -5,8 +5,8 @@ tags: [js,canvas,animation]
 layout: post
 categories: js
 id: 163
-updated: 2021-10-28 11:38:41
-version: 1.47
+updated: 2021-11-21 18:19:59
+version: 1.48
 ---
 
 When making any kind of HTML canvas application there is often a need to have some kind of main update loop where the state of a model is updated, and then rendered using some code that can be thought of as a kind of view when drawing to the canvas elements context. Unless the project is completely event driven there will typically be a need to have a way to run the same method over and over again. There is more than one way to go about having a main app loop with a canvas project, but one such option that might be the best choice these days is the [requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) method. 
@@ -22,7 +22,7 @@ The request animation frame is one of several ways I know of to get a method to 
 
 Never the less in this section I will be going over some details when it comes to requestAnimationFrame by starting out with just a few basic examples of the method, and all the various other little things to be aware of when it comes to starting out with a canvas project application loop. I will be doing by best to try to keep the examples in this section fairly simple but I assume that you have at least some background when it comes to [getting started with javaScript](/2018/11/27/js-getting-started/).
 
-When I first got started with javaScript I was creating simple projects that would work by way of the [file protocol](/2020/09/21/js-request-animation-frame/). With that said these examples will work fine that way, however when continuing to work with canvas sooner or later you might run into problems creating and working with projects that way and thus will need to fine a way to [host files by way of the http protocol](/2017/12/04/nodejs-simple-static-server-file/) even if you just want to work on them, and view them locally.
+When I first got started with javaScript I was creating simple projects that would work by way of the [file protocol](/2020/09/21/js-getting-started-file-protocol/). With that said these examples will work fine that way, however when continuing to work with canvas sooner or later you might run into problems creating and working with projects that way and thus will need to fine a way to [host files by way of the http protocol](/2017/12/04/nodejs-simple-static-sever-file/) even if you just want to work on them, and view them locally.
 
 ### - These source code examples are on Github
 
