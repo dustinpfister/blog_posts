@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 638
-updated: 2021-11-21 17:24:39
-version: 1.19
+updated: 2021-11-21 17:29:26
+version: 1.20
 ---
 
 In [JavaScript Multidimensional arrays](https://0fps.net/2013/05/22/implementing-multidimensional-arrays-in-javascript/) can be implemented in a number of ways. Maybe the most common way is to just have arrays of arrays, however there are other ways of doing so that involve just having a single linear array and a formula to get or set the proper index value in the [javaScript array](/2018/12/10/js-array/). In addition there is also doing things like having an array of arrays, bit each element is an object and these objects then have an array as one of its properties.
@@ -20,6 +20,10 @@ Multidimensional arrays will come up often when it comes to any kind of project 
 The most common way of making a multidimensional array in javaScript might be to just have arrays of arrays, or in other words just nesting arrays as elements for arrays. That is having a single array, and then have each element in that array be an array. That alone would be a 2d array of arrays at which point making each element in each nested array an array would add yet another dimension, and so on. So then in this section I will be going over just some simple examples of making 2d arrays of arrays this way.
 
 I trust that you have at least some experience when it comes to working with javaScript in one kind of environment or another. If not you might want to check out my main [getting started with javaScript post](/2018/11/27/js-array-multidimensional), or my post on [getting started with javaScript by way of the javaScript console](/2019/07/29/js-getting-started-javascript-console/).
+
+### - These source code examples are on Github
+
+The source code examples in this post are on my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-multidimensional) along with the source code for all [my other posts on javaScript](/categories/js/).
 
 ### 1.1 - Using literal array bracket syntax to create a static array of arrays
 
