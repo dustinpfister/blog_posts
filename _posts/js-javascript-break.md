@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 10:17:47
-version: 1.35
+updated: 2021-11-22 10:18:57
+version: 1.36
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
@@ -48,6 +48,7 @@ With a simple example like this it does not make much of any difference really, 
 ### 1.2 - Basic switch example
 
 The break keyword is also something that will typical going to need to be used if one is to bother with switch statements. The basic idea with a switch statement is that a value is used with it when starting a switch block, and then in the body of the switch block at least two if not more case statements are used to define what to do for each possible value of the value given to the switch.
+For this example I am using a switch in the body of a function that I ten intend to use with the map array prototype method.
 
 ```js
 let parseElement = function (el) {
