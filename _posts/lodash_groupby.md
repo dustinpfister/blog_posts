@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2021-11-22 12:16:56
-version: 1.14
+updated: 2021-11-22 12:19:28
+version: 1.15
 ---
 
 In [lodash](https://lodash.com/) there is a useful collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. 
@@ -175,4 +175,4 @@ So then the lodash group by method works as expected when it comes to something 
 
 Although there are many methods in lodash that are not really needed, in light of what is available in javaScript by itself that is not the case with \_.groupBy. Also methods like [\_.round](/2018/08/03/lodash_round), and [\_.forEach](/2017/11/20/lodash_foreach/) do bring a little more to the table compare to what there is to work with natively, and can help save a little time when it comes to making vanilla js alternatives.
 
-For additional lodash related reading there is checking out my [main post on lodash](/2019/02/15/lodash/), as well as my posts on simular methods to that of the lodash group by method. Some simulate methods to lodash group by might be the [key by method](/2018/10/24/lodash_keyby), and maybe the [lodash partition](/2017/11/22/lodash_partition/) method also.
+For additional lodash related reading there is checking out my [main post on lodash](/2019/02/15/lodash/), as well as my posts on similar methods to that of the lodash group by method. Some simulate methods to lodash group by might be the [key by method](/2018/10/24/lodash_keyby), and maybe the [lodash partition](/2017/11/22/lodash_partition/) method also. However there is also taking the time to look into how hard it is to do the various things that cen be done with this method with just plain old javaScript by itself also. I have found that more often then not doing the same things as these methods with javaScriot alone is not so hard actually.
