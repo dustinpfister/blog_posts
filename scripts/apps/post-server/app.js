@@ -98,9 +98,34 @@ app.get(/tofile\/.+/, (req, res) => {
     });
 });
 
+let cats = [];
+try {
+    cats = require(path.join(__dirname, 'cats.json'));
+} catch (e) {
+    cats = ['blog'];
+}
+
+let inCats = (folderName) => {
+    let i = cats.length;
+    while (i--) {
+        if (cats[i] === folderName) {
+            return true;
+        }
+    }
+    return false;
+}
+
 app.get(/^\/categories\/.+/, (req, res) => {
-    res.status(200);
-    res.end('cat folder found');
+    let folders = trimEmpty(req.url.split('/'));
+
+    if (inCats(folders[1])) {
+        res.status(200);
+        res.end('cat folder found for ' + folders[1]);
+    } else {
+        res.status(404);
+        res.end('cat folder NOT FOUND for ' + folders[1] + ' \n known cats are :' + cats.join(' '));
+    }
+
 });
 
 //listen
