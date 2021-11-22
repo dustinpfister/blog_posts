@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 09:09:06
-version: 1.31
+updated: 2021-11-22 09:12:50
+version: 1.32
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
@@ -25,6 +25,9 @@ So then the break keyword can help avoid having to loop over the full contents o
 
 There are other options to the use of a break statement when it comes to this that are worth mentioning later, but for now in this section I will be sticking mainly with some basic hello world style javaScript break examples. I assume that you have at least some background with javaScript, if not you might want to start out with some kind of general [getting started with javaScript post](/2018/11/27/js-getting-started/).
 
+### The source code in this post in on Github
+
+On Github I have my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-break) in which I have the source code examples that I am writing about in this post, this is also where I store the source code examples for my [many other posts on javaScript](/categories/js/).
 
 ### 1.1 - Break out of a while loop before the end
 
