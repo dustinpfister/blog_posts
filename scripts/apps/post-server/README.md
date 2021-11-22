@@ -1,2 +1,3 @@
 ## post-sever
 
+This is a sever file that will serve the current content of the posts folder without having to preform a built first, but the content is served in paths that are contestant with a final build. The main use for this is to check the status of links, and as such this tool is used as part of my process of editing older content as it helps with finding broken internal links. It is also a useful tool to use when creating new content as It can be used to make sure that I am not creating broken links to begin with.
