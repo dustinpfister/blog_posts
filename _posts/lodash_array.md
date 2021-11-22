@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 12:06:04
-version: 1.32
+updated: 2021-11-22 12:07:31
+version: 1.33
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -114,7 +114,7 @@ console.log(n); // 1
 
 ### 2.2 - lodash map method can be used map values to an array
 
-The lodash map method is another method in lodash where the native counterpart Array.map only works with arrays. The lodash map method can map values to an array or any collection object with the value that is returned by the function that it is given.
+The [lodash map method](/2018/02/02/lodash_map/) is another method in lodash where the native counterpart Array.map only works with arrays. The lodash map method can map values to an array or any collection object with the value that is returned by the function that it is given.
 
 ```js
 var arr = [1,2,3,4,5];
