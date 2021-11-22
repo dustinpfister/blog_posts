@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 11:32:08
-version: 1.21
+updated: 2021-11-22 11:35:52
+version: 1.22
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -38,7 +38,7 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-So it goes without saying that this method works well when it comes to working with [multidimensional arrays in javaScript](/2020/03/31/js-array-multidimensional/).
+So it goes without saying that this method works well when it comes to working with [multidimensional arrays in javaScript](/2020/03/31/js-array-multidimensional/). That is that it is useful for creating an array of arrays from an array of a single dimension, this method then goes hand in hand with another kind of method that would do the inversion of this that would flatten such an array of arrays back inti a single array.
 
 ### 1.2 - The \_.compact lodash array method
 
