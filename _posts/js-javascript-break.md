@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 09:06:42
-version: 1.30
+updated: 2021-11-22 09:09:06
+version: 1.31
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
@@ -23,7 +23,7 @@ The break keyword would typically be used used in the body of a certain conditio
 
 So then the break keyword can help avoid having to loop over the full contents of an array for example when looping over the contents of an array that way. If the array is fairly large the break keyword can help reduce the amount of time it takes for the loop to complete which proves to be more efficient compared to other options such as [Array forEach](/2019/02/16/js-javascript-foreach/) that will always loop over the full contents of an array. Also the break keyword could be used to keep some code from running that I would not want to run if a condition is met that warrants a break statement. 
 
-There are other options to the use of a break statement when it comes to this that are worth mentioning later, but for now in this section I will be sticking mainly with some basic hello world style javaScript break examples.
+There are other options to the use of a break statement when it comes to this that are worth mentioning later, but for now in this section I will be sticking mainly with some basic hello world style javaScript break examples. I assume that you have at least some background with javaScript, if not you might want to start out with some kind of general [getting started with javaScript post](/2018/11/27/js-getting-started/).
 
 
 ### 1.1 - Break out of a while loop before the end
