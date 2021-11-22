@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 12:02:02
-version: 1.31
+updated: 2021-11-22 12:06:04
+version: 1.32
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -127,7 +127,7 @@ console.log(arr);
 
 ### 2.3 - Lodash filter
 
-So there is the lodash filter collection method that can be though of as a kind of lodash equivalent to Array.filter in native javaScript.
+So there is the [lodash filter](/2018/05/18/lodash_filter/) collection method that can be though of as a kind of lodash equivalent to Array.filter in native javaScript. An array or object of nay kind with public keys ca be given as the first argument, and then a function that will return true or false can be given as the second argument. For every key value in the object that is given the function will be called for that key value pair and the value for the key value pair as well as other relevant arguments will be available in the body of the function that can be used to work out an expression when it comes to making the return value.
 
 ```js
 // basic example
