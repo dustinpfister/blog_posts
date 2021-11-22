@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2021-11-22 12:24:07
-version: 1.16
+updated: 2021-11-22 12:27:58
+version: 1.17
 ---
 
-In [lodash](https://lodash.com/) there is a useful collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. Each group in the resulting collection contains one or more elements from the source collection where the [return value](/2019/03/01/js-javascript-return/) is the name of the grou for that source element.
+In [lodash](https://lodash.com/) there is a useful collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. Each group in the resulting collection contains one or more elements from the source collection where the [return value](/2019/03/01/js-javascript-return/) is the name of the group for that source element.
 
 In other words in can be used to group items in a collection into new collections. Say for example you have a bunch of enemy display objects in a collection and you want to group them into dead, weak, and well groups based on there current hit point values. Such a task can be done with the lodash group by method. So this post will show some examples of \_.groupBy in action.
 
