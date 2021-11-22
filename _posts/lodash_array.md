@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 11:35:52
-version: 1.22
+updated: 2021-11-22 11:39:45
+version: 1.23
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -18,7 +18,7 @@ So in this post I will be going over some of the lodash array methods that stand
 
 ## 1 - lodash array methods
 
-In lodash there are a number of methods that are consisted array methods, rather than object methods and collection methods. In javaScript an array is actually a kind of object, it is just a certain kind of object that is formated in a way in which it is a collection of numbered index and value key pairs, along with a length property that reflects the count of those key value pairs. In addition an array in javaScript has some built in prototype methods that are inherited such as Array.forEach. 
+In lodash there are a number of methods that are consisted array methods, rather than object methods and collection methods. In javaScript an array is [actually a kind of object](/2017/05/12/js-arrays-are-objects/). That is that an array of javaScript is just a certain kind of object that is formated in a way in which it is a collection of numbered index key and value pairs, along with an [array length](/2018/12/14/js-array-length/) property that reflects the max size of the array, but not the count of the array as arrays are sparse in javaScript. In addition an array in javaScript has some built in prototype methods that are inherited such as Array.forEach. 
 
 Many of the lodash array methods are now part of the native javaScript prototype, but that is not the case with all of them. In addition many of the lodash equivalents of the core javaScript array prototype methods are collection methods that are designed to work with arrays as well as most objects in general on top of that. So this makes the process of covering lodash array methods a little complicated, as there are just plain old lodash array methods, and then there are collection methods that work with objects in general.
 
