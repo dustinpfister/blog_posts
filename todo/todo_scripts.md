@@ -10,9 +10,13 @@ This is a todo list for the scripts folder.
 * for each day object to a git diff dayObj.startHash ... dayObj.endHash to get the additional and subtractions for each file
 * parse out the numbers in terms of word count deltas for each file, in each day
 
+## () - apps/post-server cat path
+* () - have a categories path
+* () - have a cats.json file that is used to set if there is indeed a cat sub path or not
+* () - categories path responds with a 200 status if the sub folder is in cats.json and 404 if it is not
 
-## ( ) - apps/post-server - main index
-* have a main index that is just a list of links to each post
+## ( done 11/21/2021 ) - apps/post-server - main index
+* (done) have a main index that is just a list of links to each post
 
 ## ( done 11/19/2021 ) - apps/post-server
 * (done) new app that will just serve a blog post file if is exists, esle it will give a 404 status as a response
