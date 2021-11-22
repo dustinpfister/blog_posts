@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 09:02:59
-version: 1.28
+updated: 2021-11-22 09:05:10
+version: 1.29
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
@@ -19,7 +19,7 @@ So then in this post I will be focusing on the break statement, and some basic u
 
 ## 1 - javaScript break basics
 
-The break keyword would typically be used used in the body of a certain conditional statement within the body of a loop as a way to get out of something that would otherwise be an infinite loop, or to just get out of a loop sooner compared to how long it would take for some other condition to happen that will result in an end to the loop. 
+The break keyword would typically be used used in the body of a certain conditional statement within the body of a loop as a way to get out of something that would otherwise be an infinite loop. Another use case in the body of a loop would be to just get out of a loop sooner compared to how long it would take for some other condition to happen that will result in an end to the loop. So then the use of break can often help to reduce the volume of work that would otherwise need to be done, increasing the efficiency of code.
 
 So then the break keyword can help avoid having to loop over the full contents of an array for example whe looping over the contents of an array that way. If the array is fairly large the break keyword can help reduce the amount of time it takes for the loop to complete which proves to be more efficient compared to other options such as Array.forEach that will always loop over the full contents of an array. Also the break keyword could be used to keep some code from running that I would not want to run if a condition is met that warrants a break statement. 
 
