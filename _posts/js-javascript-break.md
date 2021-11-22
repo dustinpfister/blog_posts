@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 10:21:52
-version: 1.37
+updated: 2021-11-22 10:25:46
+version: 1.38
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
@@ -48,7 +48,7 @@ With a simple example like this it does not make much of any difference really, 
 ### 1.2 - Basic switch example
 
 The break keyword is also something that will typical going to need to be used if one is to bother with switch statements. The basic idea with a switch statement is that a value is used with it when starting a switch block, and then in the body of the switch block at least two if not more case statements are used to define what to do for each possible value of the value given to the switch.
-For this example I am using a switch in the body of a function that I ten intend to use with the [map array prototype method](/2020/06/16/js-array-map/). For each element in an array the array map method will be called and when dong so the parse element method that I have made that contains a switch will be called which will return a new value for an element in the source array.
+For this example I am using a switch in the body of a function that I ten intend to use with the [map array prototype method](/2020/06/16/js-array-map/). For each element in a source array the array map method will be called and when dong so the parse element method that I have made that contains a switch will be called which will return a new value for an element in the source array. The end result of  calling array map with the parse element method will be a new array with new values based off of values in the source array. In this case I have an array with mixed string and number values, as well as number values that can end up being NaN which I would like to handle differently. When calling array map with the parse element method the final outcome will be an array of just numbers where zero will end up being the number value for certain situations.
 
 ```js
 let parseElement = function (el) {
