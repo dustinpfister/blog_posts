@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 12:00:10
-version: 1.30
+updated: 2021-11-22 12:02:02
+version: 1.31
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -74,7 +74,7 @@ Although this is a useful method there is a decent native solution for this sort
 
 ### 1.4 - The \_.zip method
 
-The [zip method](/2018/02/01/lodash_zip/) takes two or more arrays and zips theme together.
+The [zip method](/2018/02/01/lodash_zip/) takes two or more arrays and zips theme together into a single array. I can not say that I find myself using this one that often in actual projects, but it is an example of an array method that does not show up in the array prototype.
 
 ```js
 var x = [10,20,30],
