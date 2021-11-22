@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 09:12:50
-version: 1.32
+updated: 2021-11-22 09:43:14
+version: 1.33
 ---
 
 The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
@@ -44,6 +44,69 @@ console.log(i); // 1
 ```
 
 With a simple example like this it does not make much of any difference really, but then it comes to a far more complex block of code that involves a much larger array, and some resource intensive code that does not need to be applied for all elements in an array in can of course make a difference. Using while loops seems to be one of the fastest ways to go about looping in javaScript, but there is also just fining ways to go about reducing the volume of work to do to begin with.
+
+### 1.2 - Basic switch example
+
+```js
+let parseElement = function (el) {
+    let delta = 0;
+    switch (typeof el) {
+        case 'string':
+            delta = parseFloat(el);
+        break;
+        case 'number':
+            delta = el;
+        break;
+    }
+    delta = String(delta) === 'NaN' ? 0 : delta;
+    return delta;
+}
+ 
+let a = [5, NaN, 'b', 7, '5'];
+let b = a.map(parseElement);
+console.log(b);
+// [ 5, 0, 0, 7, 5 ]
+```
+
+### 1.3 - Using labels and nested loops
+
+```js
+let arr = [
+    3,
+    [2, 3, 0, 5, 7],
+    'foo',
+    ['bar', 8, 8],
+    [3, 22, false],
+    [8]
+];
+let sum = 0,
+el,
+ia = 0,
+ib;
+// using break with labels
+outer: while (ia < arr.length) {
+    el = arr[ia];
+    if (el instanceof Array) {
+        ib = 0;
+        inner: while (ib < el.length) {
+            // break outer loop if we find a false boolean
+            if (el[ib] === false) {
+                break outer;
+            }
+            // add up numbers, but break inner at first instance
+            // of something other than a number
+            if (typeof el[ib] === 'number') {
+                sum += el[ib];
+            } else {
+                break inner;
+            }
+            ib += 1;
+        }
+    }
+    ia += 1;
+}
+console.log(sum); // 42
+```
 
 ## 2 - switch statements and javaScript break
 
