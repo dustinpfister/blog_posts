@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 386
-updated: 2021-11-22 08:57:22
-version: 1.27
+updated: 2021-11-22 09:02:59
+version: 1.28
 ---
 
-The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of switch statements as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
+The [break statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break) in javaScript can be used to break out of a loop such as a [while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while) or [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) loop. It can also be used in combination with labels to break a specific loop from within two or more nested loops when one finds oneself in such situations. The break keyword also comes into play when making use of [switch statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) as a means of [flow control](/2019/02/25/js-javascript-if/) as it is used after each instance of case in such statements.
 
 There are other ways to break a loop as well, such as using the [return keyword](/2019/03/01/js-javascript-return/) within the body of a function for example. There is another keyword that is similar to that of break called the [continue keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/continue) that is worth mentioning also as that keyword can be used to skip a body of code and continue a loop without breaking out of it, but just skipping over any additional code that would run otherwise. 
 
-The break keyword also comes into play when doing something with a [switch statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch), as the use of the keyword should be used after each case block in the body of a switch. So then in this post I will be focusing on the break statement, and some basic use case examples as to why it might come in handy now and then. In the process of doing so I might also touch base on a whole bunch of other little javaScript features that have to do with switch statements, and loops.
+So then in this post I will be focusing on the break statement, and some basic use case examples as to why it might come in handy now and then. In the process of doing so I might also touch base on a whole bunch of other little javaScript features that have to do with switch statements, loops, and other closely related topics to that of the break keyword. There are other ways of getting a similar result that do not involve the use of break so I might get around to covering some examples that outline that topic as well while I am at it.
 
 <!-- more -->
 
