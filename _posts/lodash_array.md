@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2019-11-04 14:41:30
-version: 1.17
+updated: 2021-11-22 11:20:54
+version: 1.18
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
@@ -38,7 +38,7 @@ console.log(_.chunk(arr, 2));
 
 ### 1.2 - The \_.compact lodash array method
 
-The [lodash \_.compact](/2018/08/09) method can be used to quickly remove false values from an array. It is a quick convenience method for just using \_.filter to do the same thing.
+The [lodash \_.compact](/2018/08/09/lodash_compact/) method can be used to quickly remove false values from an array. It is a quick convenience method for just using \_.filter to do the same thing.
 
 ```js
 let arr = [null,1,'foo',NaN,false,'bar',undefined,undefined,42];
