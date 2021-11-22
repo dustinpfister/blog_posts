@@ -7,9 +7,9 @@
 * have 5+ internal links for the post
 * edit post to 1,200+ words
 
-### (   ) - js-javascript-break ( old )
-* have 5+ internal links for the post
-* edit post to 1,400+ words
+### ( done 11/22/2021 ) - js-javascript-break ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,400+ words
 
 ### ( done 11/19/2021 ) - js-javascript-null ( no internal links )
 * (done) have 5+ internal links for the post
