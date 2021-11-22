@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 11:20:54
-version: 1.18
+updated: 2021-11-22 11:25:16
+version: 1.19
 ---
 
-The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays. Many of these methods are baked into core javaScript itself these days, however many are not as well. So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
+The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
+
+So in this post I will be going over some of the lodash array methods that stand out for me. These methods are useful in some cases, and they are also as of this writing not part of the core javaScript array prototype.
 
 
 <!-- more -->
