@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 11:49:07
-version: 1.26
+updated: 2021-11-22 11:50:43
+version: 1.27
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -44,13 +44,15 @@ It would also seem like there is no native javaScript method to do this sort of 
 
 ### 1.2 - The \_.compact lodash array method
 
-The [lodash \_.compact](/2018/08/09/lodash_compact/) method can be used to quickly remove false values from an array. It is a quick convenience method for using [\_.filter](/2018/05/18/lodash_filter/) to do the same thing. However the filter method would of course give grater flexibility when it comes to defining what the logic is for removing an element from an array or not. Also the lodash filter method has a native javaScript counter part in the array prototype called [array filter](/2020/10/03/js-array-filter/), but one key difference is that lodash fildetr is a collection object so it will work with objects in general rather than just arrays.
+The [lodash \_.compact](/2018/08/09/lodash_compact/) method can be used to quickly remove false values from an array. It is a quick convenience method for using [\_.filter](/2018/05/18/lodash_filter/) to do the same thing. However the filter method would of course give grater flexibility when it comes to defining what the logic is for removing an element from an array or not. Also the lodash filter method has a native javaScript counter part in the array prototype called [array filter](/2020/10/03/js-array-filter/), but one key difference is that lodash filter is a collection object so it will work with objects in general rather than just arrays.
 
 ```js
 let arr = [null,1,'foo',NaN,false,'bar',undefined,undefined,42];
  
 console.log(_.compact(arr)); // [ 1, 'foo', 'bar', 42 ]
 ```
+
+The compact method as well as the lodash filter, and native array filter methods will all return a new array rather than mutating an array in place.
 
 ### 1.3 - The \_.flatten method
 
