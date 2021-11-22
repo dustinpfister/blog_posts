@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2021-11-16 11:59:18
-version: 1.11
+updated: 2021-11-22 12:10:02
+version: 1.12
 ---
 
-In [lodash](https://lodash.com/) there is a useful  collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. 
+In [lodash](https://lodash.com/) there is a useful collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. 
 
 In other words in can be used to group items in a collection into new collections. Say for example you have a bunch of enemy display objects in a collection and you want to group them into dead, weak, and well groups based on there current hit point values. Such a task can be done with the lodash group by method. So this post will show some examples of \_.groupBy in action.
 
@@ -17,7 +17,7 @@ In other words in can be used to group items in a collection into new collection
 
 ## 1 - Getting started
 
-This is a post on a single lodash collection method called \_.groupBy in the javaScript utility library known as lodash. It is not a beginners guide on lodash, or javaScript in general. I assume that you have at least some background in javaScipt, and are researching lodash wondering if it is something that you should bother with or not.
+This is a post on a single lodash collection method called \_.groupBy in the javaScript utility library known as lodash. It is not a beginners guide on lodash, or [javaScript in general](/2018/11/27/js-getting-started/). I assume that you have at least some background in javaScipt, and are researching lodash wondering if it is something that you should bother with or not.
 
 There are many developers that consider lodash a dead utility library because a lot of functionality in lodash is now native in core javaScript itself. Also methods like group by does bring something to the table that can not be done with a native javaScript method by itself, but is not to hard to write one. I do not take sides with this, there is using lodash and then there is just using javaScript by itself. However in any case this is something that I might want to do now and then in a project one way or another.
 
