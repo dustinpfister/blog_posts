@@ -77,7 +77,7 @@ app.get('/', (req, res) => {
 });
 
 // to file redirect path so that /tofile/js-array.md redirects to /2018/12/10/js-array/
-app.get(/tofile\/.+/, function (req, res) {
+app.get(/tofile\/.+/, (req, res) => {
     let folders = trimEmpty(req.url.split('/')),
     fileName = folders[1],
     uri = path.join(app.get('dir_posts'), fileName);
@@ -96,6 +96,11 @@ app.get(/tofile\/.+/, function (req, res) {
             res.redirect(url);
         }
     });
+});
+
+app.get(/^\/categories\/.+/, (req, res) => {
+    res.status(200);
+    res.end('cat folder found');
 });
 
 //listen
