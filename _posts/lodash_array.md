@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 381
-updated: 2021-11-22 11:53:31
-version: 1.28
+updated: 2021-11-22 11:55:33
+version: 1.29
 ---
 
 The [lodash](https://lodash.com/) array methods are methods that can be used to preform common tasks with arrays rather than objects in general when it comes to the many collection method that there are to work with. Many of these methods are baked into core javaScript itself these days, however many are not as well, or the lodash methods have a few more features that set it apart from the native counterpart. In some cases the lodash counter part of an array method is not an array method, but a collection method such is the case with the [lodash for each method](/2017/11/20/lodash_foreach) compared to the native [array for each method](/2019/02/16/js-javascript-foreach/).
@@ -56,7 +56,7 @@ The compact method as well as the lodash filter, and native array filter methods
 
 ### 1.3 - The \_.flatten method
 
-So when it comes to doing the opposite of \_.chunk and quickly turning an array of arrays back into a simple linear array there is the [\_.flatten](/2018/08/12/lodash_flatten/) method as well. There are a few other flatten methods in lodash also such as flatten deep and flatten depth both of which have to do with situations that involve many levels, all of which may or many not need to be flatten down also.
+So when it comes to doing the opposite of \_.chunk and quickly turning an array of arrays back into a simple linear array there is the [\_.flatten](/2018/08/12/lodash_flatten/) method as well. There are a few other flatten methods in lodash also such as flatten deep and flatten depth both of which have to do with situations that involve many levels, all of which may or many not need to be flatten down also. When it comes to native javaScript there is now an [array flat](/2021/07/15/js-array-flat/) method also.
 
 ```js
 let grid = [
