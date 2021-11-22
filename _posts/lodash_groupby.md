@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2021-11-22 12:10:02
-version: 1.12
+updated: 2021-11-22 12:12:27
+version: 1.13
 ---
 
 In [lodash](https://lodash.com/) there is a useful collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. 
@@ -173,4 +173,4 @@ So then the lodash group by method works as expected when it comes to something 
 
 ## 4 - Conclusion
 
-Although there are many methods in lodash that are not really needed, in light of what is available in javaScript by itself that is not the case with \_.groupBy. Also methods like \_.round, and \_.forEach do bring a little more to the table compare to what there is to work with natively, and can help save a little time when it comes to making vanilla js alternatives.
+Although there are many methods in lodash that are not really needed, in light of what is available in javaScript by itself that is not the case with \_.groupBy. Also methods like [\_.round](/2018/08/03/lodash_round), and [\_.forEach](/2017/11/20/lodash_foreach/) do bring a little more to the table compare to what there is to work with natively, and can help save a little time when it comes to making vanilla js alternatives.
