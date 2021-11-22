@@ -6,7 +6,6 @@ app = express(),
 header = require(path.join(__dirname, '../../lib/header/index.js'));
 
 app.set('port', process.argv[2] || process.env.PORT || 8070);
-
 app.set('dir_posts', path.join(__dirname, '../../../_posts'));
 
 // hosting static assets for the client system
@@ -53,9 +52,9 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                     // else we have a 404 event though we have a file becuase the dates in the url
                     // do not match the ones in the header
                     res.status(404);
-                    res.end('404: dates in url do not match what is in the file: \n' + 
-					    'header date: ' + headerObj.date.toString() + '\n' +
-					    'tests: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest);
+                    res.end('404: dates in url do not match what is in the file: \n' +
+                        'header date: ' + headerObj.date.toString() + '\n' +
+                        'tests: ' + yTest + ' mm: ' + mTest + ' dd: ' + dTest);
                 }
             }
         });
@@ -66,6 +65,7 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
     }
 });
 
+// main root ( / ) path that gives a full list of the posts
 app.get('/', (req, res) => {
     fs.readdir(app.get('dir_posts'), (e, files) => {
         res.status(200);
@@ -76,8 +76,8 @@ app.get('/', (req, res) => {
     })
 });
 
+// to file redirect path so that /tofile/js-array.md redirects to /2018/12/10/js-array/
 app.get(/tofile\/.+/, function (req, res) {
-
     let folders = trimEmpty(req.url.split('/')),
     fileName = folders[1],
     uri = path.join(app.get('dir_posts'), fileName);
@@ -95,11 +95,10 @@ app.get(/tofile\/.+/, function (req, res) {
             url = '/' + dateStr + '/' + fileName.replace(/.md$/, '');
             res.redirect(url);
         }
-
     });
-
 });
 
+//listen
 app.listen(app.get('port'), () => {
     console.log('editor is up on port: ' + app.get('port'));
 });
