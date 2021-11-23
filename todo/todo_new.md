@@ -4,19 +4,9 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### ( done 11/12/2021 ) - new post #937 for 11/12/2021 - linux-folders-home
-* (done) start writing the post
+### (  ) - new post #942 for 11/25/2021 - linux-xxd
 
-### ( done 11/15/2021 ) - new post #938 for 11/15/2021 - linux-folders-bin
-* (done) start writing the post
-
-### ( done 11/17/2021 ) - new post #939 for 11/17/2021 - linux-folders-dev
-* (done) start the draft folder
-* (done) start writing the post
-
-### (                 ) - new post #940 for 11/19/2021 - linux-xxd
-* (done) - start the draft folder
-* () - start writing the post
+### (  ) - new post #941 for 11/23/2021 - linux-xxd
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
@@ -43,6 +33,20 @@
 <!--###### ########## ########## #######-->
 ## Linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
+
+### ( done 11/19/2021 ) - new post #940 for 11/19/2021 - linux-xxd
+* (done) - start the draft folder
+* (done) - start writing the post
+
+### ( done 11/17/2021 ) - new post #939 for 11/17/2021 - linux-folders-dev
+* (done) start the draft folder
+* (done) start writing the post
+
+### ( done 11/15/2021 ) - new post #938 for 11/15/2021 - linux-folders-bin
+* (done) start writing the post
+
+### ( done 11/12/2021 ) - new post #937 for 11/12/2021 - linux-folders-home
+* (done) start writing the post
 
 ### ( done 10/15/2021 ) - new post #933 for 10/15/2021 - linux-bash-script-control-operators
 * (done) start the for post folder
