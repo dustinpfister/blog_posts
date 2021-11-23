@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 245
-updated: 2021-11-23 11:18:31
-version: 1.19
+updated: 2021-11-23 11:23:38
+version: 1.20
 ---
 
 In [lodash](https://lodash.com/) there is a useful collection method called [\_.groupBy](https://lodash.com/docs/4.17.10#groupBy) that can be used to created an object that has keys where each each key is a group that meets some kind of conditions defined in a function that is given to it. Each group in the resulting collection contains one or more elements from the source collection where the [return value](/2019/03/01/js-javascript-return/) is the name of the group for that source element.
@@ -21,13 +21,11 @@ This is a post on a single lodash collection method called \_.groupBy in the jav
 
 There are many developers that consider lodash a dead utility library because a lot of functionality in lodash is now native in core javaScript itself. I would say that the group by method in lodash does bring something to the table that can not be done with a native javaScript method by itself, but is not to hard to write one with native javaScript. I do not take sides with this, there is using lodash and then there is just using javaScript by itself. However in any case this is something that I might want to do now and then in a project one way or another.
 
-## 2 - Some basic examples of \_.groupBy
+### 1.1 - Group an array of numbers by a simple condition
 
 The \_.groupBy method is one of the many collection methods in lodash meaning that it can be used with any object in general, not just Arrays. So the first argument given to it can be an Array, an Array like object, or just any Object, and then the second argument is the method that will be used to group the elements in the collection. 
 
 Whatever is returned by the method thst is given as the second argument, is what will be used as a key for an array that will store the one or more elements that belong to that key name in the new object that will be returned by lodash group by. So the method that is passed should return a string, or a number if you ai to make an array or array like object.
-
-### 2.1 - Group an array of numbers by a simple condition
 
 To start off with a very basic example, say you have a simple array of numbers, and you just want to split them into two groups. Say one where the number is below a certain value, and as such belongs to a 'fail' group, and all other numbers then end up falling into a 'pass' group.
 
@@ -48,7 +46,7 @@ console.log(grouped);
 
 When this is called the method given to \_.groupBy is called for each element in the array, the value can the be subjected to conditions, or any body of code that is placed in the method that will ultimately be used to return a value that will be used as a key to group the current item.
 
-### 2.2 -  Group by powers of a base
+### 1.2 -  Group by powers of a base
 
 For a slightly more advanced example that still involves an array of numbers, why not group some numbers by the base of one or more numbers. That is have a method that will group an array of numbers by a given array of bases, where a number in the collection will be checked if it is the base of the first number in the array of bases, and so forth until a base is found, or end up defaulting to a 'none' key.
 
@@ -104,7 +102,7 @@ So now this is a pretty fun, and useful method that can be used in a lot of diff
 
 Also note that even methods like \_.forEach have little tricks that make them a little more robust compared to the native Array.forEach equivalent, as I can return true to break the forEach loop.
 
-## 3 - Grading classes example of \_.groupBy
+## 2 - Grading classes example of \_.groupBy
 
 For a more interesting example say you are a student that is taking some classes, you know a number grade for each grade, but you want to group all your classes by a letter value.
 
@@ -171,7 +169,7 @@ console.log(gradeClases(clases));
 
 So then the lodash group by method works as expected when it comes to something like this. However is it really all that hard to do something like this with native javaScript by itself?
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 Although there are many methods in lodash that are not really needed, in light of what is available in javaScript by itself that is not the case with \_.groupBy. Also methods like [\_.round](/2018/08/03/lodash_round), and [\_.forEach](/2017/11/20/lodash_foreach/) do bring a little more to the table compare to what there is to work with natively, and can help save a little time when it comes to making vanilla js alternatives.
 
