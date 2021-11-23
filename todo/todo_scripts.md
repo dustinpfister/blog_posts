@@ -14,10 +14,16 @@ This is a todo list for the scripts folder.
 * see about doing the same of outgoing links as I am all ready doing for internal links
 * color code outgoing links in a different way for unknown, 200, and 404/500
 
-## ( done 11/23/2021 ) - apps/post-sever - title text
+## () - apps/post-server - css
+* new public/style.css file
+* use new css file for posts
+* use new css file for main index
+* title text for index
+
+## ( done 11/23/2021 ) - apps/post-server - title text
 * (done) see about setting title text for posts
 
-## ( done 11/22/2021 ) - apps/post-sever - counts at top
+## ( done 11/22/2021 ) - apps/post-server - counts at top
 * (done) have a count of 200 and 404 for each internal link at the top of the post
 
 ## ( done 11/22/2021 ) - apps/post-server - cat path
