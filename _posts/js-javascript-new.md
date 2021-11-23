@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2021-11-23 08:46:49
-version: 1.23
+updated: 2021-11-23 08:49:25
+version: 1.24
 ---
 
 The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there. So knowing a thing or two about what the new operator does, and being aware of the many other subjects that branch off from it, is a must for any javaScript developer. It is also a good idea to know what also happens when one does not use the new operator when calling a function also, and that functions in javaScript can be designed in a way in which they will work well and as expected both with and without the use of the new operator when calling them.
@@ -21,6 +21,10 @@ In this post I will be touching base with some examples that make use of the new
 ## 1 - The basics of the javaScript new keyword
 
 In this section I will be covering some basic examples of the new keyword in javaScript. These include examples that involve using the new keyword with built in classes, as well as how to go about making a class by starting out with a constructor function. Although I will be keeping these examples fairly simple, I assume what you have at least some background with javaScript. If not you might want to take a step back and start out with a [getting started with javaScript](/2018/11/27/js-getting-started/) type post. Event if you have some experience there is a whole lot more to cover when it comes to [functions in general with JavaScript](/2019/12/26/js-function/) beyond just that of constructor functions and the new keyword.
+
+### Source is on Github
+
+The source code examples in this post can be found on [Github in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-new/s1-basics), which is where I also have the code for my many other [posts on javaScript](/categories/js/).
 
 ### 1.1 - javaScript new operator a basic example.
 
