@@ -3,6 +3,28 @@
 ## js: ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+<!-- UNDER 1,000 WORDS
+js-function-many-to-one
+js-function-one-to-one
+js-function-diminishing-returns
+js-function-domain
+js-function-monotonic
+js-array-to-string
+js-array-splice
+js-array-fill
+js-javascript-example-idle-game-simple-mine
+js-array-reduce
+js-javascript-example-angles-module
+js-long-division
+js-javascript-option
+-->
+
+### (   ) js-javascript-example-tax-brackets ( under 1,000)
+* edit post to 1,000+ words
+
+### (   ) - js-bigint ( old)
+* have 5+ internal links for the post
+
 ### (   ) - js-javascript-new ( old )
 * have 5+ internal links for the post
 * edit post to 1,200+ words
