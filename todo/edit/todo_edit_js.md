@@ -25,9 +25,9 @@ js-javascript-option
 ### (   ) - js-bigint ( old)
 * have 5+ internal links for the post
 
-### (   ) - js-javascript-new ( old )
-* have 5+ internal links for the post
-* edit post to 1,200+ words
+### ( done 11/23/2021 ) - js-javascript-new ( old )
+* (done) have 5+ internal links for the post
+* (done) edit post to 1,200+ words
 
 ### ( done 11/22/2021 ) - js-javascript-break ( old )
 * (done) have 5+ internal links for the post
