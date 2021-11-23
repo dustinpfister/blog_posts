@@ -4,9 +4,9 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### (  ) - new post #942 for 11/25/2021 - linux-*
+### (  ) - new post #942 for 11/25/2021 - linux-folders-boot
 
-### (  ) - new post #941 for 11/23/2021 - linux-*
+### (  ) - new post #941 for 11/23/2021 - linux-tree
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
