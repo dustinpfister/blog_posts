@@ -2,6 +2,9 @@
 ## linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
+### () - linux-tree
+* get to 1,000+ words
+
 ### () - linux-head
 * have a new example using /dev/random and xxd
 
