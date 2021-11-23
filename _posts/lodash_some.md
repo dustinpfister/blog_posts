@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2021-11-23 10:13:35
-version: 1.16
+updated: 2021-11-23 10:31:10
+version: 1.17
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. In the event that just one or more puplic keys of the collection is true then the return value for the lodash some method will in turn also be true. There is another collection method known as [\_.every](/2019/08/01/lodash_every/) that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition rather than just one. 
@@ -35,6 +35,55 @@ tester = function (el) {
  
 console.log(_.some(arr1, tester)); // true
 console.log(_.some(arr2, tester)); // false
+```
+
+### 1.2 - The lodash some method can be used with any object
+
+
+```js
+let testType = function (type) {
+    type = type || 'number';
+    return function (el) {
+        return typeof el === type;
+    };
+};
+// lodash some works fine with plain Objects
+let obj = {
+    foo: 42,
+    bar: 10
+};
+console.log( _.some(obj, testType('number')) ); // true
+console.log( _.some(obj, testType('string')) ); // false
+```
+
+### 1.3 - Lodash some compared to lodash every method
+
+```js
+// test an array of types
+let testType = function (types) {
+    types = types || ['number'];
+    return function (el) {
+        let i = types.length;
+        while (i--) {
+            let typeStr = types[i];
+            if (typeof el === typeStr) {
+                return true;
+            }
+        }
+        return false;
+    };
+};
+let obj = {
+    foo: 42,
+    bar: 10,
+    chew: 'foo'
+};
+// lodash some will return true of just one element meets
+// a given condition, while every will only return true of all elements
+// meet a given condition
+console.log(_.some(obj, testType(['number']))); // true
+console.log(_.every(obj, testType(['number']))); // false
+console.log(_.every(obj, testType(['number', 'string'])) ); // true
 ```
 
 ## 2 - lodash some vanilla JavaScript alternatives
