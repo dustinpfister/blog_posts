@@ -44,12 +44,14 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                 if (yTest && mTest && dTest) {
                     res.status(200);
                     let text_md_clean = header.remove(text_md),
-                    html = '<h1>' + headerObj.title + '</h1>';
+                    html = '<html><head><title>' + headerObj.title + ' - Post Sever </title></head><body>';
+                    html += '<h1>' + headerObj.title + '</h1>';
                     html += '<ul><li>internal 200: <span id=\"count_internal_200\">0</span></li>' +
-                        '<li>internal 404: <span id=\"count_internal_404\">0</span></li>' +
-                        '<li>internal unkown: <span id=\"count_internal_unkown\">0</span></li></ul>';
+                    '<li>internal 404: <span id=\"count_internal_404\">0</span></li>' +
+                    '<li>internal unkown: <span id=\"count_internal_unkown\">0</span></li></ul>';
                     html += marked(text_md_clean);
                     html += '<script src=\"/js/links.js\"></script>';
+                    html += '</body></html>';
                     res.end(html);
                 } else {
                     // else we have a 404 event though we have a file becuase the dates in the url
