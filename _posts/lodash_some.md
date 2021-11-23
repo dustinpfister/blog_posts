@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2021-11-23 10:42:16
-version: 1.21
+updated: 2021-11-23 10:43:27
+version: 1.22
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. In the event that just one or more puplic keys of the collection is true then the return value for the lodash some method will in turn also be true. There is another collection method known as [\_.every](/2019/08/01/lodash_every/) that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition rather than just one. 
@@ -23,7 +23,7 @@ I will be keeping the basic examples in this post, well some what basic, but I s
 
 ### 1.1 - Using lodash some with an array
 
-The lodash some method will work just fine with an array, for example say I have two arrays and I want to find out which one of the two has at least one if not more numbers in it. I can come up with a tester function that uses the type of operator to find the type of a current element in an array and then compare that to the string 'number'. I then just need to call the lodash some method passing the array that i want to test as the first argument, and then the tester function as the second argument.
+The lodash some method will work just fine with an array, for example say I have two arrays and I want to find out which one of the two has at least one if not more numbers in it. I can come up with a tester function that uses the [type of operator](/2019/02/15/js-javascript-typeof/) to find the type of a current element in an array and then compare that to the string 'number'. I then just need to call the lodash some method passing the array that i want to test as the first argument, and then the tester function as the second argument.
 
 ```js
 // some arrays
