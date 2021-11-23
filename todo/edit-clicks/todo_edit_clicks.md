@@ -55,9 +55,10 @@
 
 ### lodash_groupby ( #9 - 739 clicks - 11/14/2021 )
 * (done 11/23/2021) expand to 1,000+ words
+* expand to 1,400+ words
 * expand to 1,800+ words
 * expand to 2,400+ words
-* have 5+ internal links in the post
+* (done 11/23/2021) have 5+ internal links in the post
 
 ### lodash_partition ( #10 - 695 clicks - 11/14/2021 )
 * (done 11/16/2021) have 5+ internal links
