@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 373
-updated: 2021-03-31 09:40:51
-version: 1.21
+updated: 2021-11-23 08:43:22
+version: 1.22
 ---
 
-The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there. So knowing a thing or two about what the new operator does, and being aware of the many other subjects that branch off from it, is a must for any javaScript developer. It is also a good idea to know what also happens when one does not use the new operator when calling a function also, and that functions in javaScript can be designed in a way in which they will work well and as exspected both with and without the use of the new operator when calling them.
+The [javaScript new](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) operator is something that will come up in the occasional code example here and there. So knowing a thing or two about what the new operator does, and being aware of the many other subjects that branch off from it, is a must for any javaScript developer. It is also a good idea to know what also happens when one does not use the new operator when calling a function also, and that functions in javaScript can be designed in a way in which they will work well and as expected both with and without the use of the new operator when calling them.
 
 A constructor function is a way to create a function that will constructor a type of object that contains methods and properties that are not unique properties and methods of the object itself, but are contained in the prototype object of it. If you have logged any about of time at all playing around with javaScipt chances are you might have all ready used the new keyword with a built in constructor such as the Date constructor for example.
 
@@ -18,7 +18,11 @@ In this post I will be touching base with some examples that make use of the new
 
 <!-- more -->
 
-## 1 - javaScript new operator a basic example.
+## 1 - The basics of the javaScript new keyword
+
+In this section I will be covering some basic examples of the new keyword in javaScript. These include examples that involve using the new keyword with built in classes, as well as how to go about making a class by starting out with a constructor function. Although I will be keeping these examples fairly simple, I assume what you have at least some background with javaScript. If not you might want to take a step back and start out with a [getting started with javaScript](/2018/11/27/js-getting-started/) type post.
+
+### 1.1 - javaScript new operator a basic example.
 
 The new operator is used in conjunction with a constructor function to create an instance of that constructor function. There are many such constructor functions built into core of javaScript itself such as the Date constructor that can be used to create an instance of a javaScript Date Object. So chances are the javaScript new keyword is something that a javaScript developer will run into fairly often.
 
@@ -34,7 +38,7 @@ console.log( d.hasOwnProperty('time')) // false
 
 In this example the d variable is an instance of Date that was created using the new operator with the Date constructor function. Once I have my instance of Date I can use any of the prototype methods of the Date constructor such as Date.getDate. In addition to methods that are part of the Date constructor I can also make use of any additional prototype methods that may be in the prototype chain including the hasOneProperty methods that is part of the base Object prototype. 
 
-## 2 - Creating a Constructor for use with the new operator in javaScript
+### 1.2 - Creating a Constructor for use with the new operator in javaScript
 
 To create my own constructor function I just need to create a function and in the body of the constructor function or any prototype method I just use the [this keyword](/2017/04/14/js-this-keyword/) as a way to refer to any property that is to be an OwnProperty of an instance of this constructor when created using the new operator.
 
@@ -62,7 +66,7 @@ console.log(g.x,g.y); // 5 19
 
 If I where to to call this method without using the new operator the method would return the undefined value which is the default value that is return when a function is called in that manner without the use of the new keyword.
 
-## 3 - To use javaScript new, to not use javaScript new, and to use both.
+### 1.3 - To use javaScript new, to not use javaScript new, and to use both.
 
 It is possible to write functions that can be used with the javaScript new keyword, as well as without. By using the instance of operator to detect if the value of this inside the body of a constructor function is an instance of that constructor or not. In the event that it is not a custom object can be returned in place of a reference to the object that is the instance of that constructor.
 
@@ -88,7 +92,7 @@ console.log(Point(5, 5));
 // { x: 5, y: 5}
 ```
 
-## 4 - Arguments and calling is optional
+### 1.4 - Arguments and calling is optional
 
 When using the new keyword with no arguments passed to the constructor this will still result in a new instance of the constructor, but with undefined values for all the arguments. So it is often a good idea to work out some kind of solution to have default values for arguments that are not given. When it comes to using the built in Date constructor it is possible to not give any arguments at all, and when doing so the default end up being the current local system time.
 
