@@ -5,13 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2021-11-19 15:24:38
-version: 1.14
+updated: 2021-11-23 09:15:31
+version: 1.15
 ---
 
-The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. There is another collection method known as \_.every that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition. 
+The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. In the event that just one or more puplic keys of the collection is true then the return value for the lodash some method will in turn also be true. There is another collection method known as [\_.every](/2019/08/01/lodash_every/) that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition rather than just one. 
 
-In this post I will be going over some simple examples of both the lodash some and every methods. Also there are as some ways of doing the same thing so with just plain old vanilla js also that are worth covering. There are native javaScript equivalents for both the some and every methods although these are array prototype methods rather than collection methods. Still it is not to hard to just go with using those and count these lodash methods as just yet another example of a kind of methods that brings the relevancy of lodash into question.
+In this post I will be going over some simple examples of both the lodash some and every methods. Also there are as some ways of doing the same thing so with just plain old vanilla js also that are worth covering. There are native javaScript equivalents for both the [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) and [every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every) methods although these are [array prototype methods](/2018/12/10/js-array/) rather than collection methods. Still it is not to hard to just go with using those and count these lodash methods as just yet another example of a kind of methods that brings the relevancy of lodash into question.
 
 <!-- more -->
 
