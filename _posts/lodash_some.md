@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 408
-updated: 2021-11-23 10:59:41
-version: 1.28
+updated: 2021-11-23 11:06:06
+version: 1.29
 ---
 
 The [lodash \_.some](https://lodash.com/docs/4.17.11#some) collection method can be used to test to see if just one element of an array, or key value pair of an object in general meets a given condition. In the event that just one or more puplic keys of the collection is true then the return value for the lodash some method will in turn also be true. There is another collection method known as [\_.every](/2019/08/01/lodash_every/) that works in a similar way to that of the \_.some method but will only return true when all elements of a collection meet a given condition rather than just one. 
@@ -62,6 +62,8 @@ let obj = {
 console.log( _.some(obj, testType('number')) ); // true
 console.log( _.some(obj, testType('string')) ); // false
 ```
+
+In this example I have a test type helper function that will create and return a method that I can then use with the lodash some method, or many other methods like it. Both this test type method as well as the lodash some method are examples of what is called a higher order function. The lodash some method is a higher order function just because it takes a function as an argument, but this test type function is one because it returns a function. A higher order function takes a function as an argument, returns a function as a return value, or does both of these things.
 
 ### 1.3 - Lodash some compared to lodash every method
 
