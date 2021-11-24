@@ -5,13 +5,13 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2021-11-24 06:54:04
-version: 1.21
+updated: 2021-11-24 06:55:56
+version: 1.22
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), when I do so it is often on the topic of a specific method in lodash, and for today that method is the [lodash compact](https://lodash.com/docs/4.17.10#compact) method. My approach with writing content on lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, array like objects, or collections in terms of objects in general. So under that light I think it is a good idea to write some content on the topic of the compact method and any additional lodash methods and native javaScript features that will come up while in the process of doing so.
 
-The main idea about the \_.compact method is that it can be used to quickly remove false values away from an array. With that said the compact method is one of the array rather than collection methods in lodash, so then the compact method is not a replacement for other lodash methods like that of the [lodash remove](/2017/09/19/lodash_remove/), and [lodash filter](/2018/05/18/lodash_filter/) methods. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
+The main idea about the \_.compact method is that it can be used to quickly remove false values away from an array. With that said the compact method is one of the array rather than collection methods in lodash, so then the compact method is not a replacement for other lodash methods like that of the [lodash filter](/2018/05/18/lodash_filter/) method. Also there are other array method options in lodash such as the [lodash remove](/2017/09/19/lodash_remove/) method that allows for a little more flexibility when it comes to defining what should not be in the new array that is to be cerated. Covering the method by itself is not that involved, but it can branch off into some additional topics when it comes to doing the same with just plain old vanilla js.
 
 <!-- more -->
 
