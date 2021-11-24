@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2021-11-24 10:14:34
-version: 1.24
+updated: 2021-11-24 10:16:08
+version: 1.25
 ---
 
 There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use [setTimeout](/2018/12/06/js-settimeout/) or [setInterval](/2018/03/08/js-setinterval/), as well as [request animation frame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also when it comes to working with javaScript by itself. However this is a [lodash](https://lodash.com/) post as such I shale be writing about some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods using lodash. However I will also be exploring alternatives to the lodash throttle method as well using the vanilla javaScript solution that I have mentioned.
@@ -162,5 +162,5 @@ I can not say that I use the lodash throttle method myself often, in fact these 
 
 So then when it comes to additional examples of this sort of thing there is maybe looking into one or more [canvas examples](/2020/03/23/canvas-example/) which can prove to be a fun way of learning about the native method alternatives to the lodash throttle method. I have canvas example that is an [example of a basic state machine that uses request animation frame and canvas elements](/2020/01/28/canvas-example-state-machine/) when it comes to getting into making state machines.
 
-ANother topic that comes to mind that has to do with lodash throttle as well as the various native methods like setTiemout is how to go about doing true threading with javaScript. True threading in javaScript may or may not be possible depending on what it is that you call true threading. Maybe a better way of putting this then would be how to go about spinning up more than one event loop rather than doing everything in a single event loop. With that said in client side javaScript there is making use of one or more WebWrokers as a way to create an additional event loop to work inside of on the client side. In a nodejs environment there are built in modules like that of the child process module that can also be used as a means to work with more than one process or event loop if such a module is being use to run an additional instance of node.
+ANother topic that comes to mind that has to do with lodash throttle as well as the various native methods like setTiemout is how to go about doing true threading with javaScript. True threading in javaScript may or may not be possible depending on what it is that you call true threading. Maybe a better way of putting this then would be how to go about spinning up more than one event loop rather than doing everything in a single event loop. With that said in client side javaScript there is making use of one or more [WebWrokers](/2021/11/05/js-webworker/) as a way to create an additional event loop to work inside of on the client side. In a nodejs environment there are built in modules like that of the [child process module](/2018/02/04/nodejs-child-process/) that can also be used as a means to work with more than one process or event loop if such a module is being use to run an additional instance of node.
 
