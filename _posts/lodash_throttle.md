@@ -5,15 +5,19 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2021-11-24 10:01:38
-version: 1.20
+updated: 2021-11-24 10:04:40
+version: 1.21
 ---
 
 There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use [setTimeout](/2018/12/06/js-settimeout/) or [setInterval](/2018/03/08/js-setinterval/), as well as [request animation frame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also when it comes to working with javaScript by itself. However this is a [lodash](https://lodash.com/) post as such I shale be writing about some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods using lodash. However I will also be exploring alternatives to the lodash throttle method as well using the vanilla javaScript solution that I have mentioned.
 
 <!-- more -->
 
-## 1 -  A lodash _.throttle basic example
+### The source code examples in this post are on Githun
+
+In my [test lodash repository](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_throttle) I have the source code examples for this post. This is also where I am parking the source code examples for my [other posts on lodash](/categories/lodash/) as well.
+
+### 1.1 -  A lodash _.throttle basic example
 
 So here is a quick basic example of the lodash throttle method in action. I am using the lodash throttle method by passing a function as the first argument that is to be called each time a certain about of time has passed. After the function as the first argument is passed I then pass a number value that is the amount of time to let pass between times that the function is called as the second argument. What is then returned is a throttled method that will only file once that amount of time has passed.
 
