@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2021-11-24 09:54:54
-version: 1.17
+updated: 2021-11-24 09:56:29
+version: 1.18
 ---
 
 There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use [setTimeout](/2018/12/06/js-settimeout/) or [setInterval](/2018/03/08/js-setinterval/), as well as [request animation frame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also when it comes to working with javaScript by itself. However this is a [lodash](https://lodash.com/) post as such I shale be writing about some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods using lodash. However I will also be exploring alternatives to the lodash throttle method as well using the vanilla javaScript solution that I have mentioned.
@@ -150,4 +150,4 @@ Maybe this is not a practical use case example, but if I has a more clear idea o
 
 ## 3 - Conclusion
 
-I can not say that I use the lodahs throttle method myself often, in fact these days I am not using lodash that much in projects anymore. It is not because I am on some kind of lodash hate bandwagon, I do understand some of the reasons why some developers might still continue using lodash because it is more than just a safety net as many developers thing of it.
+I can not say that I use the lodahs throttle method myself often, in fact these days I am not using lodash that much in projects anymore. It is not because I am on some kind of lodash hate bandwagon, I do understand some of the reasons why some developers might still continue using lodash because it is more than just a safety net as many developers thing of it. It is just that more often than not I just go with one of the native javaScript solutions for this sort of thing such as the request animation frame method when it comes to making any kind of main application loop for a project such as a game, or game framework.
