@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2021-11-24 08:30:21
-version: 1.25
+updated: 2021-11-24 08:32:19
+version: 1.26
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), when I do so it is often on the topic of a specific method in lodash, and for today that method is the [lodash compact](https://lodash.com/docs/4.17.10#compact) method. My approach with writing content on lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, array like objects, or collections in terms of objects in general. So under that light I think it is a good idea to write some content on the topic of the compact method and any additional lodash methods and native javaScript features that will come up while in the process of doing so.
@@ -35,7 +35,7 @@ So then it is a very simple method to just go about moving false methods from an
 
 ### 1.2 - Using lodash remove in place of compact
 
-Another option in lodash for making an array more compact would be the lodash remove method. One draw back of this lodash remove method compared to the compact method is that the remove method will mutate an array in place. If this is a problem though such an issue can often easily be filed by using a method like lodash clone, or lodash clone deep.
+Another option in lodash for making an array more compact would be the lodash remove method. One draw back of this lodash remove method compared to the compact method is that the remove method will mutate an array in place. If this is a problem though such an issue can often easily be filed by using a method like [lodash clone](/2017/10/02/lodash_clone), or [lodash clone deep](/2017/11/13/lodash_clonedeep/) when it comes to situations involving nested objects that also need to be cloned.
 
 ```js
 let a = [null,1,'foo',NaN,false,'bar',0,undefined,undefined,42];
