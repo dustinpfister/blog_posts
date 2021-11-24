@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 531
-updated: 2021-11-24 06:06:25
-version: 1.18
+updated: 2021-11-24 06:09:55
+version: 1.19
 ---
 
 So the regular number type in javaScript has some limitations when it comes to working with very large numbers beyond that of the [max safe integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER). Beyond that when it comes to adding a low number such as one to a number at, and beyond max safe integer you might end up with the same number as the result of the expression. So then it goes without saying that after that range, certain operations can not be preformed without a loss of precision, thus the name Max Safe Integer.
@@ -21,7 +21,7 @@ So with that said in modern browsers, and node 10.4.x+ there is now the BigInt O
 
 As of this writing BigInts are still a fairly new addition to native core javaScript itself. If the nature of the project consists of front end code BigInts might not be the best option because of poor browser support, unless of course some additional code is added to help function as a fall back in the event that it is not there, also often known as a pollyFill.
 
-In addition if it is a nodejs project then it might still not be a good idea to use BigInts unless you are confident that the project will always be used in versions of node that are version 10.4.x or later. Even if you go with BigInt there are still some drawbacks that might not make a library solution outdated just yet. ANoher draw back with BigInt numbers is that they can not be used with native javaScript Math Object methods such as Math.pow for example.
+In addition if it is a nodejs project then it might still not be a good idea to use BigInts unless you are confident that the project will always be used in versions of node that are version 10.4.x or later. Even if you go with BigInt there are still some drawbacks that might not make a library solution outdated just yet. ANoher draw back with BigInt numbers is that they can not be used with native javaScript Math Object methods such as [Math.pow](/2019/12/10/js-math-pow/) for example at least not without converting to a regular [javaScript number](/2019/01/24/js-javascript-number/) and thus end up losing precision.
 
 Still in this section I will be going over some simple examples of BigInt to serve as a way to get started with this javaScript feature. Although I will be keeping these examples very simple this is still not a [getting started type post on javaScript](/2018/11/27/js-getting-started/) in general So I trust you have at least enough experience to make something of what is in this section.
 
