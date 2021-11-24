@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2021-11-24 06:49:59
-version: 1.20
+updated: 2021-11-24 06:54:04
+version: 1.21
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), when I do so it is often on the topic of a specific method in lodash, and for today that method is the [lodash compact](https://lodash.com/docs/4.17.10#compact) method. My approach with writing content on lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, array like objects, or collections in terms of objects in general. So under that light I think it is a good idea to write some content on the topic of the compact method and any additional lodash methods and native javaScript features that will come up while in the process of doing so.
@@ -90,4 +90,7 @@ arr = arr.filter(function (el) {
 console.log(arr); // [ 1, 'foo', 'bar', 42 ]
 ```
 
-##
+## 3 - Conclusion
+
+The lodash compact method will quickly create a new array that is a source array wit all the false elements removed. However there are a number of draw backs with this compared to other options like the remove method in lodash that is a bit more flexible compared to compact when it comes to defining some custom logic of what it is that should not be in a new array. There are other methods such as that of the lodash filter method that is an examples of a collection method in lodash that will work with arrays as well as objects in general.
+
