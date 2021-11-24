@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 941
-updated: 2021-11-24 11:23:16
-version: 1.7
+updated: 2021-11-24 11:26:52
+version: 1.8
 ---
 
 The [Linux tree command](https://linux.die.net/man/1/tree) is a way to go about listing the contents of a folder in a tree like format. So then the tree command is an alternative command to that of the [Linux ls command](/2020/10/14/linux-ls/) that is another way to go about listing folder contents. By default it would seem like the Linux tree command will list contents of folders recursively when it comes to nested folders and the contents of such folders, which is one reason why one of the first options that one should be familiar with when using the Linux tree command would be the -L option which can be used to set a depth for this recursive listing of contents. Another major thing that comes to mind is the subject of short and hard links that can be created with the [Linux ln](/2021/10/01/linux-ln/) command, and what happens when the tree command follows one that links to the folder itself. So then there are are few things to cover in this post when it comes to the Linux tree command as well as a number of things that will come up when using such a command.
@@ -67,5 +67,6 @@ foo
 
 ## 2 - Conclusion
 
-That will be it for now when it comes to the Linux tree command  for this post at least.
+That will be it for now when it comes to the Linux tree command for this post at least when it comes to having a way to check out what is going on with a folder. The other main command that comes to mind would of course be the ls command which is often the first and for most command to go about listing the contents of folders actually. I did not cover every little detai when it comes to the Linux tree command in this post, but when it comes to that there is also look into into the man page. When I often like to do with these posts is to not just cover the use of a single command, but also at least touch base on all kinds of other features of bash while I am at it to help get a better idea of how a command can be used in certain situations.
+
 
