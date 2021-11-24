@@ -16,14 +16,19 @@ js-javascript-example-idle-game-simple-mine
 js-array-reduce
 js-javascript-example-angles-module
 js-long-division
-js-javascript-option
 -->
 
-### (   ) js-javascript-example-tax-brackets ( under 1,000)
-* edit post to 1,000+ words
 
-### (   ) - js-bigint ( old)
+### (   ) - js-javascript-option ( under 1,000)
+* edit post to 1,000+ words
 * have 5+ internal links for the post
+
+### (   ) - js-javascript-example-tax-brackets ( under 1,000)
+* edit post to 1,000+ words
+* have 5+ internal links for the post
+
+### ( done 11/24/2021 ) - js-bigint ( old)
+* (done) have 5+ internal links for the post
 
 ### ( done 11/23/2021 ) - js-javascript-new ( old )
 * (done) have 5+ internal links for the post
