@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2021-11-24 08:32:19
-version: 1.26
+updated: 2021-11-24 08:35:20
+version: 1.27
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), when I do so it is often on the topic of a specific method in lodash, and for today that method is the [lodash compact](https://lodash.com/docs/4.17.10#compact) method. My approach with writing content on lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, array like objects, or collections in terms of objects in general. So under that light I think it is a good idea to write some content on the topic of the compact method and any additional lodash methods and native javaScript features that will come up while in the process of doing so.
@@ -18,6 +18,10 @@ The main idea about the \_.compact method is that it can be used to quickly remo
 ## 1 - Basics of lodash compact and what to know first
 
 This is a post centered around the \_.compact method in lodash, a popular javaScript utility library that is packed with useful methods that help with common tasks when working with objects, arrays, functions and so forth in a jaavScript project. It is not a getting started post on lodash, or [javaScript in general](/2018/11/27/js-getting-started/) as that is outside the scope of this post. The \_.compact method can be used to remove elements fro an array that evaluate as false, there are many other ways to do this with lodash, as well as javaScript by itself.
+
+### Source code is on github
+
+The source code examples in this post can be found in my [test lodash](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_compact) repository on Github. This test lodash repository is the current repository where I intend to have the source code examples for my many [other posts on lodash](/categories/lodash/) as I go threw and edit my content on lodash.
 
 ### 1.1 - Using lodash \_.compact
 
