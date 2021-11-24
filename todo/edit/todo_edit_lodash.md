@@ -2,13 +2,39 @@
 ## lodash ( /yyyy/mm/dd/lodash-* )
 <!--###### ########## ########## #######-->
 
+<!--
+BELOW 500 WORDS
+lodash_at
+lodash_flatmap
+lodash_debounce
+lodash_mixin
+lodash_values
+lodash_sorteduniq
+lodash_method
+-->
+
+### () - lodash_deburr ( below 500 words)
+* get to 500+ words
+* have 5+ internal links for the post
+
+### () - lodash_filter (links, old)
+* get to 1,000+ words
+* have 5+ internal links for the post
+
+### () - lodash_nth ( links, old )
+* get to 1,000+ words
+* have 5+ internal links for the post
+
+### () - lodash ( old )
+* get to 1,200+ words
+
 ### () - lodash_merge (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
 
-### () - lodash_throttle (links, old)
-* get to 1000+ words
-* have 5+ internal links for the post
+### ( done 11/24/2021 ) - lodash_throttle (links, old)
+* (done) get to 1000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 11/24/2021 ) - lodash_compact (links, old)
 * (done) get to 1000+ words
