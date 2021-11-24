@@ -3,6 +3,7 @@
 <!--###### ########## ########## #######-->
 
 ### () - linux-tree
+* (done) get to 500+ words
 * get to 1,000+ words
 
 ### () - linux-head
