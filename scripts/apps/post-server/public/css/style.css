@@ -2,6 +2,8 @@ body{
   line-height: 1;
   color: #000;
   background: #ddd;
+  font-size: 1.5em;
+  line-height: 1.2em;
 }
 a {
   color: #000;
