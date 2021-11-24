@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2021-11-24 10:16:08
-version: 1.25
+updated: 2021-11-24 11:05:38
+version: 1.26
 ---
 
 There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use [setTimeout](/2018/12/06/js-settimeout/) or [setInterval](/2018/03/08/js-setinterval/), as well as [request animation frame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also when it comes to working with javaScript by itself. However this is a [lodash](https://lodash.com/) post as such I shale be writing about some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods using lodash. However I will also be exploring alternatives to the lodash throttle method as well using the vanilla javaScript solution that I have mentioned.
@@ -45,6 +45,51 @@ loop();
 ```
 
 \_.throttle differers from setTimeout and setInterval as it returns a new function that will only fire once the amount of time has passed when it is being called, rather than setting a function to call after an amount of time has passed, or at a certain interval.
+
+### 1.2 - App loop example
+
+```js
+// state machine object
+var sm = {
+    currentState: 'init',
+    states: {},
+    lt: new Date(),
+    game: {}
+};
+// init state
+sm.states.init = {
+    update: function (sm, secs) {
+        console.log('starting app');
+        sm.game = {
+            money: 1000,
+            moneyPerSec: 32
+        };
+        sm.currentState = 'game';
+    }
+};
+// game state
+sm.states.game = {
+    update: function (sm, secs) {
+        sm.game.money += sm.game.moneyPerSec * secs;
+        console.log('game update, money: ' + sm.game.money.toFixed(2));
+    }
+};
+// update method created with lodash throttle
+var update = _.throttle(function () {
+        var state = sm.states[sm.currentState],
+        now = new Date(),
+        secs = (now - sm.lt) / 1000;
+        state.update.call(sm, sm, secs);
+        sm.lt = now;
+    }, 1000);
+// app loop calling the update method
+var loop = function () {
+    setTimeout(loop, 100);
+    update();
+};
+// start loop
+loop();
+```
 
 ## 2 - Vanilla js lodash throttle alternative examples
 
