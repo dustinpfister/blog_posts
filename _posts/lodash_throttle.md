@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2021-11-24 11:05:38
-version: 1.26
+updated: 2021-11-24 11:07:14
+version: 1.27
 ---
 
 There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use [setTimeout](/2018/12/06/js-settimeout/) or [setInterval](/2018/03/08/js-setinterval/), as well as [request animation frame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also when it comes to working with javaScript by itself. However this is a [lodash](https://lodash.com/) post as such I shale be writing about some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods using lodash. However I will also be exploring alternatives to the lodash throttle method as well using the vanilla javaScript solution that I have mentioned.
@@ -47,6 +47,8 @@ loop();
 \_.throttle differers from setTimeout and setInterval as it returns a new function that will only fire once the amount of time has passed when it is being called, rather than setting a function to call after an amount of time has passed, or at a certain interval.
 
 ### 1.2 - App loop example
+
+One of the main use case examples for this kind of function would be to create a function that will be called over an over again in a main app loop method and I want to make it so that the function will only fire at a certain rate no mater the rate at which the main app loop method is firing. 
 
 ```js
 // state machine object
