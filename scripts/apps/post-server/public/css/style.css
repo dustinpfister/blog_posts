@@ -1,0 +1,19 @@
+body{
+  line-height: 1;
+  color: #000;
+  background: #ddd;
+}
+a {
+  color: #000;
+  opacity: 0.6;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0,0,0,0.2);
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+
+}
+a:hover {
+  opacity: 1;
+}

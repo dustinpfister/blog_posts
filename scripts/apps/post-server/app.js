@@ -10,6 +10,7 @@ app.set('dir_posts', path.join(__dirname, '../../../_posts'));
 
 // hosting static assets for the client system
 app.use('/js', express.static(path.join(__dirname, 'public/js')));
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
 //app.use('/', express.static('public/html'));
 
 let trimEmpty = (arr) => {
@@ -44,7 +45,8 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                 if (yTest && mTest && dTest) {
                     res.status(200);
                     let text_md_clean = header.remove(text_md),
-                    html = '<html><head><title>' + headerObj.title + ' - Post Sever </title></head><body>';
+                    html = '<html><head><title>' + headerObj.title + ' - Post Sever </title>' +
+                        '<link rel=\"stylesheet\" href="/css/style.css"></head><body>';
                     html += '<h1>' + headerObj.title + '</h1>';
                     html += '<ul><li>internal 200: <span id=\"count_internal_200\">0</span></li>' +
                     '<li>internal 404: <span id=\"count_internal_404\">0</span></li>' +
@@ -74,10 +76,14 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
 app.get('/', (req, res) => {
     fs.readdir(app.get('dir_posts'), (e, files) => {
         res.status(200);
+        let html = '<html><head><title>Index - Post Sever </title>' +
+        '<link rel=\"stylesheet\" href="/css/style.css"></head><body>';
         let fileNames = files.map(function (fn) {
                 return '<a href=\"/tofile/' + fn + '\">' + fn.split('.md')[0] + '</a><br>';
             });
-        res.end('<div>' + fileNames.join('\n') + '</div>');
+        html += '<div>' + fileNames.join('\n') + '</div>';
+        html += '</body></html>';
+        res.end(html);
     })
 });
 
@@ -135,5 +141,5 @@ app.get(/^\/categories\/.+/, (req, res) => {
 
 //listen
 app.listen(app.get('port'), () => {
-    console.log('editor is up on port: ' + app.get('port'));
+    console.log('post server is up on port: ' + app.get('port'));
 });
