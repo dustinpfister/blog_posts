@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2021-11-24 07:11:40
-version: 1.23
+updated: 2021-11-24 08:27:37
+version: 1.24
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), when I do so it is often on the topic of a specific method in lodash, and for today that method is the [lodash compact](https://lodash.com/docs/4.17.10#compact) method. My approach with writing content on lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, array like objects, or collections in terms of objects in general. So under that light I think it is a good idea to write some content on the topic of the compact method and any additional lodash methods and native javaScript features that will come up while in the process of doing so.
@@ -32,6 +32,25 @@ console.log(_.compact(arr)); // [ 1, 'foo', 'bar', 42 ]
 ```
 
 So then it is a very simple method to just go about moving false methods from and array. However sometimes what should count as false, or just simply what should not be part of an array might differ from time to time depending on the situation. SO with that said lets take a look as some other ways of how to go abut compacting an array down with lodash and native javaScript.
+
+### 1.2 - Using lodash remove in place of compact
+
+```js
+let a = [null,1,'foo',NaN,false,'bar',0,undefined,undefined,42];
+// lodash remove can work just like lodash compact in that the return value
+// of return well be the elements that are removed. However lodash remove
+// will also mutate the source array in place
+let b = _.remove( a, (el) => { return !!el; } );
+console.log(b); // [ 1, 'foo', 'bar', 42 ]
+console.log(a); // [ null, NaN, false, 0, undefined, undefined ]
+// there are ways of addressing the mutation in place problem though such as using
+// the lodash clone method, also I have control of the condition that is used to remove
+// elements.
+a = [null,1,'foo',NaN,false,'bar',0,undefined,undefined,42];
+let c = _.remove( _.clone(a), (el) => { return typeof el === 'number' && !_.isNaN(el); } );
+console.log(c); // [ 1, 0, 42 ]
+console.log(a); // [ null, 1, 'foo', NaN, false, 'bar', 0, undefined, undefined, 42 ]
+```
 
 ## 2 - Native javaScript solutions for removing false values from an array to compact it
 
