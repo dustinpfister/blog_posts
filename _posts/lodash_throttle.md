@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2019-11-04 10:31:33
-version: 1.13
+updated: 2021-11-24 09:33:57
+version: 1.14
 ---
 
-There are times when I want to fire a method once an amount of time has passed. I can always just use setTimeout or setInterval, and make my own solution that is some kind of advanced process management solution. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
+There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use setTimeout or setInterval, as well as request animation frame when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also. However this is a [lodash](https://lodash.com/) post as such I shale be writing some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods.
 
 <!-- more -->
 
