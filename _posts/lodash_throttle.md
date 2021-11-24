@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 69
-updated: 2021-11-24 10:08:44
-version: 1.22
+updated: 2021-11-24 10:10:11
+version: 1.23
 ---
 
 There are times when I want to fire a method once an amount of time has passed, and also fire the method over and over again also. When it comes to native javaScript I can always just use [setTimeout](/2018/12/06/js-settimeout/) or [setInterval](/2018/03/08/js-setinterval/), as well as [request animation frame](/2018/03/13/js-request-animation-frame/) when it comes to client side javaScript. There is also using these methods to make my own kind of main event loop or state machine solution from the ground up also when it comes to working with javaScript by itself. However this is a [lodash](https://lodash.com/) post as such I shale be writing about some [\_.throttle](https://lodash.com/docs/4.17.4#throttle) examples, which is one way to make throttled methods using lodash. However I will also be exploring alternatives to the lodash throttle method as well using the vanilla javaScript solution that I have mentioned.
@@ -15,7 +15,7 @@ There are times when I want to fire a method once an amount of time has passed, 
 
 ## 1 - The Basics of lodash throttle and what else to know first
 
-This is a post on the lodash throttle method as well as vanilla javaScript alternatives to the lodash throttle method that I will be getting to in a later section. In this section I will be starting out with the lodash throttle method though. I assume that you know at least enough about javaScript in other to get started with lodash, or any javaScript project that involve using a user space solution such as lodash to extent what there is to work with when it comes to javaScript alone. If not you are going to want to take a step back and start out with some kind of getting started with lodash guide. If you are still fairly new to javaScript in general you might still want to stick to learning more about javaScript itself before getting into lodash or any kind of library for that matter.
+This is a post on the lodash throttle method as well as vanilla javaScript alternatives to the lodash throttle method that I will be getting to in a later section. In this section I will be starting out with the lodash throttle method though. I assume that you know at least enough about javaScript in other to get started with lodash, or any javaScript project that involve using a user space solution such as lodash to extent what there is to work with when it comes to javaScript alone. If not you are going to want to take a step back and start out with some kind of getting started with lodash guide. If you are still fairly new to javaScript in general you might still want to stick to learning more about [getting started with javaScript](/2018/11/27/js-getting-started/) itself before getting into lodash or any kind of library for that matter.
 
 ### The source code examples in this post are on Githun
 
