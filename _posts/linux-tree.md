@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 941
-updated: 2021-11-24 11:18:50
-version: 1.5
+updated: 2021-11-24 11:20:37
+version: 1.6
 ---
 
 The [Linux tree command](https://linux.die.net/man/1/tree) is a way to go about listing the contents of a folder in a tree like format. So then the tree command is an alternative command to that of the [Linux ls command](/2020/10/14/linux-ls/) that is another way to go about listing folder contents. By default it would seem like the Linux tree command will list contents of folders recursively when it comes to nested folders and the contents of such folders, which is one reason why one of the first options that one should be familiar with when using the Linux tree command would be the -L option which can be used to set a depth for this recursive listing of contents. Another major thing that comes to mind is the subject of short and hard links that can be created with the [Linux ln](/2021/10/01/linux-ln/) command, and what happens when the tree command follows one that links to the folder itself. So then there are are few things to cover in this post when it comes to the Linux tree command as well as a number of things that will come up when using such a command.
@@ -16,7 +16,7 @@ The [Linux tree command](https://linux.die.net/man/1/tree) is a way to go about 
 
 ## 1 - The basics of the Linux tree command
 
-In this section I will be starting out with just a few quick, basic examples of the Linux tree command.
+In this section I will be starting out with just a few quick, basic examples of the Linux tree command. While I am at it I will also be working with some additional commands as well as bash features on top of just that of the tree command. In most Linux systems the tree command should all ready be there to being with, bit in some cases it might need to be installed first.
 
 ### 1.1 - basic lodash tree example
 
