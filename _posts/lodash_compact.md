@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 254
-updated: 2021-11-24 06:47:48
-version: 1.18
+updated: 2021-11-24 06:48:47
+version: 1.19
 ---
 
 For today I will be writing another one of my quick little posts on [lodash](https://lodash.com/), when I do so it is often on the topic of a specific method in lodash, and for today that method is the [lodash compact](https://lodash.com/docs/4.17.10#compact) method. My approach with writing content on lodash is that when I write a post on a certain lodash method, I am not just writing about lodash, but a certain way to preform a certain task often involving arrays, array like objects, or collections in terms of objects in general. So under that light I think it is a good idea to write some content on the topic of the compact method and any additional lodash methods and native javaScript features that will come up while in the process of doing so.
@@ -59,7 +59,7 @@ So the basic idea of compacting an array can be done in a wide range of differen
 
 ### 2.2 - Using Array.splice
 
-The use of the Array splice method is another option when it comes to writing my own method that is like lodash compact with plain old native javaScript. The method also mutates the array in place, which in some cases might not be desired as it violates the rules of functional programing with respect to features of pure functions. One nice thing about the compact method is that it does not mutate a given source array in place like that of the array splice method.
+The use of the [Array splice method](/2021/07/20/js-array-splice/) is another option when it comes to writing my own method that is like lodash compact with plain old native javaScript. The method also mutates the array in place, which in some cases might not be desired as it violates the rules of functional programing with respect to features of pure functions. One nice thing about the compact method is that it does not mutate a given source array in place like that of the array splice method.
 
 ```js
 var compact = function (a) {
