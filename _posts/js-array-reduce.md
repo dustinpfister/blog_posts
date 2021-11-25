@@ -5,13 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 08:07:34
-version: 1.18
+updated: 2021-11-25 08:19:13
+version: 1.19
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
 
-I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
+I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. Still there are some talking points as to why the lodash reduce method is not just a user space method that does the same thjng as array reduce. For one thig the array reduce method is an array method while the lodash method is a so called collection method, which means that the method works with objects in general not just arrays. However when it comes to becoming very familiar with everything there is to work with in native javaScript alone it is not always so hard to do the same with array reduce the trick is just coming up with an array first, or figuring out how to get array reduce to work with something that is not an array.
+
+So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
 
 <!-- more -->
 
