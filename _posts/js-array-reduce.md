@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:20:06
-version: 1.36
+updated: 2021-11-25 12:22:52
+version: 1.37
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -21,6 +21,10 @@ So I think it is called for now to write at least one [post on the array reduce 
 ## 1 - The basics of array reduce in javaScript
 
 So to start off with in this section I will be going over some very simple examples of the array reduce method. Understanding the basic idea of the method is maybe not as simple as what is going on with some other array prototype methods. If you find yourself in a situation in which you are getting a little frustrated with array reduce, it might be called for to take a breath, step back for a moment, and just work out a few simple examples of the method to get a better sense of what the core functionally of the array reduce method is.
+
+### The source code examples in this post are on Github
+
+I have a test repository that contains all the source code for my [various posts on javaScript](/categories/js), and [this post is no exception when it comes to this](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-reduce).
 
 ### 1.1 - Simple sum example
 
