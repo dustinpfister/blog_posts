@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 09:08:40
-version: 1.21
+updated: 2021-11-25 09:37:53
+version: 1.22
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -157,6 +157,8 @@ One draw back of the reduce array prototype method is that it is an array protot
 
 ### 4.1 - using function call with Array like objects
 
+When it comes to array like object one option would be to use the call function prototype method.
+
 ```js
 // an 'array like' object that has
 // properties key names like that of a
@@ -176,6 +178,8 @@ console.log(sum); // 6
 ```
 
 ### 4.2 - Using the Array from method with Array like Objects
+
+Another option when it comes to dealing with array like objects would be to use the Array from method.
 
 ```js
 // an 'array like' object that has
@@ -197,6 +201,8 @@ console.log(sum); // 6
 
 ### 4.3 - The Object values static method
 
+The object values method is a static method of the Main Object global in core javaSscript that will return an array of values for each public key in a given object.
+
 ```js
 // An array with just public names keys
 // with no length property.
@@ -215,6 +221,8 @@ console.log(sum); // 6
 ```
 
 ### 4.4 - The Object keys static method
+
+The Object keys method is just like Object values only it will give an array of key names rather than values.
 
 ```js
 // An array with info I want to reduce
@@ -248,6 +256,8 @@ console.log(sum); // 6
 ```
 
 ### 4.5 - A string of numbers and the String split method
+
+When it comes to strings a useful method is he split string protoype method.
 
 ```js
 // a string of numbers
