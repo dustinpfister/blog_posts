@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 11:50:55
-version: 1.26
+updated: 2021-11-25 11:55:27
+version: 1.27
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -179,7 +179,7 @@ console.log(sum); // 6
 
 ### 4.2 - Using the Array from method with Array like Objects
 
-Another option when it comes to dealing with array like objects would be to use the Array from method. This array from method is just simply a way to convert an array like object into an actual array rather than doing some kind of trick with function prototype methods.
+Another option when it comes to dealing with array like objects would be to use the [Array from](/2020/01/27/js-array-from/) method. This array from method is just simply a way to convert an array like object into an actual array rather than doing some kind of trick with function prototype methods. So I could just call Array from and pass the array like object to array from, and then just call reduce after that to get a desired result with an array like object.
 
 ```js
 // an 'array like' object that has
@@ -198,6 +198,8 @@ let sum = Array.from(obj).reduce((acc, el) => {
 }, 0);
 console.log(sum); // 6
 ```
+
+So then the array from method, as well as the function prototype methods are great tools when it comes to getting a array prototype method like reduce to work with a regular object. However one major draw back is that they only work well with objects that just happen to be structured just like arrays when it comes to the so called own properties of objects. Often I might be dealing with some kind of collection in the format of named rather than numbered keys, and I may not have a length property for the objects also. SO then lets looks at some more options when it comes to getting the array reduce method to work with objects in general.
 
 ### 4.3 - The Object values static method
 
