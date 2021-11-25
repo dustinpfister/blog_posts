@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:28:05
-version: 1.38
+updated: 2021-11-25 12:43:48
+version: 1.39
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -79,11 +79,35 @@ console.log(n);
 
 Thus far all of these examples have involved creating a primitive value such as a number or a string from an array fo values. However that does not have to be the case of course. the starting value by default actually is a new array with the first array being the first element of the array to which reduce is being called off of actually. So maybe at least one or more basic examples are needed in this section before I move on to some more advanced topics involving array reduce.
 
+### 1.4 - Using array reduce to filter an array
+
+When I think of reduce I often think in terms of creating some kind of single value in the form of a number, or a string from an array of values. However the end result can also very much be a new array, with a reduced number of elements, or many even more elements if I really wanted to actually depending of course on the logic of the function that I give to reduce oddly enough.
+
+```js
+let objs = [{ a: 5, b:3},{},{ a: 2},{ a: 3, b: 0},{}];
+ 
+// reduce can be used to filer like this
+let a = objs.reduce((acc, el) => {
+    if (el.a != undefined && el.b != undefined) {
+        acc.push(el);
+    }
+    return acc;
+}, []);
+console.log(a); // [ { a: 5, b: 3 }, { a: 3, b: 0 } ]
+ 
+// however there is also the array filter method that
+// might prove to be a more appropriate choice
+let b = objs.filter((el)=>{
+    return el.a != undefined && el.b != undefined
+});
+console.log(b); // [ { a: 5, b: 3 }, { a: 3, b: 0 } ]
+```
+
 ## 2 - Setting the start value for the accumulator
 
 In this section I will be focus on the toping of setting a start value for the accumulator value or not. Be default if not starting value is given for the accumulator the first element in the array will be used for such a value,  as such the starting element index for the reducer will not be the first element, but the second one. As such this can case some problems if one does not know how to adjust for it. Typically type checking is used in the body of the reducer, or another way is to just set a starting value and then all the elements will be called with the reducer function.
 
-### 2.2 - Setting an accumulator start value and not
+### 2.1 - Setting an accumulator start value and not
 
 In this example I worked out two simple examples of the array reduce method that do the same thing in two slightly different ways. One way is to not give a starting value for the accumulator value, which can present a problem when it comes to reducing an array of objects but I want the final result to be a number or string. One way to address this would be to use the [javaScript type of](/2019/02/15/js-javascript-typeof/) operator to check the type of the accumulator and set it to the desired value in that case. However another way would be to use the second argument of the array reduce method to set a starting value for the accumulator value.
 
@@ -109,7 +133,7 @@ console.log(a); // 50
 console.log(b); // 50
 ```
 
-### 2.1 - index values
+### 2.2 - index values
 
 One again I am doing more or less the same thing as the first example here the only different is that I am logging the index value in the reducer functions. If I do not give a starting value then the starting index for the reducer function will be 1, because the element of index 0 is used as the starting value. As such it is typically a good index to give some kind of starting value for the array reduce method.
 
