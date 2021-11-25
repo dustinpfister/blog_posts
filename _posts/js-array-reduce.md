@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:08:40
-version: 1.32
+updated: 2021-11-25 12:11:29
+version: 1.33
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -205,7 +205,7 @@ So then the array from method, as well as the function prototype methods are gre
 
 ### 4.3 - The Object values static method
 
-The object values method is a static method of the Main Object global in core javaSscript that will return an array of values for each public key in a given object.
+The object values method is a static method of the Main Object global in core javaSscript that will return an array of values for each public key in a given object. So if I want to use reduce with the values of an object that has named keys rather than numbed ones, this would be one way to go about doing so. I can just call the Object values method and given the object to that method, the returned result is then an array of all the public values of that object, it is then this array that I would call reduce off of to get the final product.
 
 ```js
 // An array with just public names keys
