@@ -19,9 +19,6 @@ js-long-division
 -->
 
 
-### (   ) - js-array-reduce ( under 1,000 )
-* edit post to 1,000+ words
-
 ### (   ) - js-javascript-option ( under 1,000)
 * edit post to 1,000+ words
 * have 5+ internal links for the post
@@ -29,6 +26,9 @@ js-long-division
 ### (   ) - js-javascript-example-tax-brackets ( under 1,000)
 * edit post to 1,000+ words
 * have 5+ internal links for the post
+
+### ( done 11/25/2021 ) - js-array-reduce ( under 1,000 )
+* (done) edit post to 1,000+ words
 
 ### ( done 11/24/2021 ) - js-bigint ( old)
 * (done) have 5+ internal links for the post
