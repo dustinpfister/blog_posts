@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 10:53:37
-version: 1.23
+updated: 2021-11-25 11:45:12
+version: 1.24
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -257,7 +257,7 @@ console.log(sum); // 6
 
 ### 4.5 - A string of numbers and the String split method
 
-When it comes to strings a useful method is the split string prototype method that is one method that comes to mind right away when I thing of ways to create an array from a string.
+When it comes to strings a useful method is the [split string prototype method](/2021/07/14/js-string-split/) that is one method that comes to mind right away when I thing of ways to create an array from a string. This split method can just be called off of a string, and then a string values that is used to split the string into sub strings can be given as an argument. If an empty string is given to the string split that will result in each letter being its own element in the resulting array. This can then be used as a way to call reduce for each letter in the source sting then.
 
 ```js
 // a string of numbers
