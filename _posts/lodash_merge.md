@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 93
-updated: 2021-11-25 13:17:04
-version: 1.9
+updated: 2021-11-25 13:19:15
+version: 1.10
 ---
 
 These days I have been exploring all the options out there when it comes to merging down two or more objects into a single object. There are many ways to go about doing it that have different effects, there is the idea of just copying over key values, or just referencing them even. However it most cases I often want to merge them down like that of a bunch of sheets of acetate rather than that of paper. That is if a certain value is in one object, but not any other, it is the value that will end up in the final object. That is the effect that is achieved when using the lodash [\_.merge](https://lodash.com/docs/4.17.4#merge) method.
@@ -15,7 +15,7 @@ These days I have been exploring all the options out there when it comes to merg
 
 ## 1 - lodash merge basics
 
-In this section I will be starting out with some simple examples of the lodash merge method.
+In this section I will be starting out with some simple examples of the lodash merge method. Although I will be keeping these examples very simple I assume that you have at least sone experience with javaScript, and can also get to the point where you are including lodash in the javaScript environment that you are developing in. If not you might want ti take a step back and start out with a getting started type post on javaScript in general.
 
 ### Te source code examples in this post are on Github
 
