@@ -91,3 +91,12 @@ list:
       Google Trends: "javascript svg", "js svg", "svg viewbox"
           This is very much an interesting topic, and a nice break from the usual content that I like to write on canvas so it might help when it comes to getting burnt out on that topic. The post can be expanding on a whole lot, so it would be easy to come up with over three thousand words of substance on this which is also great. Thus far the post is preforming very poorly in search console, but that is not at all because of lack of search interest on SVG. Improving the quality of the post might help then so this is a good post to have on this list
 * get the post to 3000+ words
+
+## js-array-reduce ( Fun canvas example planed )
+    justification:
+      Intrinsic Value: I would like to make a fun canvas example for it
+      Search Console: 
+      Google Trends:
+        I edited this post on 11/25/2021 and went off the deep end with it a little as such the post is all ready close to 3000 words to begin with. The array reduce method is also an interesting topic so there is a lot more to write about with it when it comes to use case examples. With that said I thunk it will be fun to make a canvas examples involving just some simple objects moving around and using the array reduce method to reduce as well as increase an array that is a section of objects in an object pool.
+
+
