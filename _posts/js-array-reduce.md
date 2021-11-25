@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 08:02:42
-version: 1.17
+updated: 2021-11-25 08:07:34
+version: 1.18
 ---
 
-When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value.
+When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
 
 I have got around to writing a post on the [lodash reduce](/2018/07/25/lodash_reduce/) method when I was writing a little content on that library, but I find myself using lodash less and less these days. So I think it is called for now to write at least one [post on the array reduce method](https://dmitripavlutin.com/javascript-array-reduce/) in native core javaScript, and touch base on all kinds of little subjects that might come up as I work out a few basic examples and beyond.
 
