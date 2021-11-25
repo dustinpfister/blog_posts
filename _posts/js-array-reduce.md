@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:01:35
-version: 1.30
+updated: 2021-11-25 12:07:40
+version: 1.31
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -226,7 +226,7 @@ console.log(sum); // 6
 
 ### 4.4 - The Object keys static method
 
-The [Object keys method](/2018/12/15/js-object-keys/) is just like Object values only it will give an array of key names rather than values.
+The [Object keys method](/2018/12/15/js-object-keys/) is just like Object values only it will give an array of key names rather than values. So then say that I am in a situation in where I want to do some kind of thing with array reduce, but with an object that has data that I want to involve in the reduction encoded into the key names, as well as with the corresponding values. I can use the Object keys state method to get an array of these keys of the object, and I can then use the array map method to create a new array based off of this array that will then be an array of objects with the keys as well as the values. The reduce method can then be called oof of the resulting array that is the result of using the object keys static method as well as array map to producing the desired final result from data in the keys and values of a plain old object that looks nothing like an array.
 
 ```js
 // An array with info I want to reduce
