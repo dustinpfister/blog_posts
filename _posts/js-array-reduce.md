@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 08:19:13
-version: 1.19
+updated: 2021-11-25 09:04:39
+version: 1.20
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -151,11 +151,119 @@ let n = arr.reduce(reducer, 0);
 //24 10 3 [ 7, 8, 9, 10 ]
 ```
 
-## 4 - Some use case examples of array reduce
+## 4 - Using The Array reduce method with any object like the lodash reduce collection method
+
+### 4.1 - using function call with Array like objects
+
+```js
+// an 'array like' object that has
+// properties key names like that of a
+// javaScript Array
+let obj = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+// The Call Function prototype method can be used with these kinds of objects
+// to get the array reduce method to work with them
+let sum = Array.prototype.reduce.call(obj, (acc, el) => {
+    return acc + el;
+}, 0);
+console.log(sum); // 6
+```
+
+### 4.2 - Using the Array from method with Array like Objects
+
+```js
+// an 'array like' object that has
+// properties key names like that of a
+// javaScript Array
+let obj = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+// The Array.from method would be another option when it comes
+// to creating an array from this kind of 'array like' object
+let sum = Array.from(obj).reduce((acc, el) => {
+    return acc + el;
+}, 0);
+console.log(sum); // 6
+```
+
+### 4.3 - The Object values static method
+
+```js
+// An array with just public names keys
+// with no length property.
+let obj = {
+    'foo': 1,
+    'bar': 2,
+    'baz': 3
+};
+// the Object.values static method can be used to create an array
+// of values from an object like this. Then the reduce method can be used
+// off of the returned array.
+let sum = Object.values(obj).reduce((acc, el) => {
+    return acc + el;
+}, 0);
+console.log(sum); // 6
+```
+
+### 4.4 - The Object keys static method
+
+```js
+// An array with info I want to reduce
+// with encoded into the key names, but
+// I also need to work with the values
+let obj = {
+    'foo_1': true,
+    'bar_2': true,
+    'chw_7': false,
+    'baz_3': true
+};
+// The Object.keys method can be used to create an
+// array of key names from the object. I can then use
+// the array map method to create a new array based off
+// of this array of key names that is composed of objects.
+// each object in this array contains a key and value prop
+// I can then use the reduce method off of that array to
+// produce the final desired product
+let sum = Object.keys(obj).map((key) => {
+    return {
+        key: key,
+        value: obj[key]
+    };
+}).reduce((acc, el) => {
+    if (el.value) {
+        acc += parseInt(el.key.split('_')[1]);
+    }
+    return acc;
+}, 0);
+console.log(sum); // 6
+```
+
+### 4.5 - A string of numbers and the String split method
+
+```js
+// a string of numbers
+let str = '123';
+// The string split method can be used with an empty string
+// I will then want to use parseInt or some method of 
+// converting the string values to numbers
+let sum = str.split('').reduce((acc, el) => {
+    return acc + parseInt(el);
+}, 0);
+console.log(sum);
+```
+
+## 5 - Some use case examples of array reduce
 
 So now that I thing I did an okay job of getting the simple, basic, and boring stuff out of the way I can not start getting into a few use case examples of the array reduce method.
 
-### 4.1 - create a mean
+### 5.1 - create a mean
 
 One thing that comes to mind right away is to create a mean from an array of numbers.
 
@@ -169,7 +277,7 @@ let nums = [10, 5, 7, 10, 10, 8];
 console.log(getArthMean(nums).toFixed(2)); // '8.33'
 ```
 
-### 4.2 - Add up array of object props helper
+### 5.2 - Add up array of object props helper
 
 Often I might want to create a sum from a single property of a standard object to which I have an array of.
 
@@ -192,6 +300,6 @@ console.log(sumObjects(objs));          // 24
 console.log(sumObjects(objs, 'money')); // 5.6
 ```
 
-## 5 - Conclusion
+## 6 - Conclusion
 
 So then the array reduce method is great for many little situations in which I might want to create a single simple value from an array of values. However there is a great number of other array prototype methods that also come into play, such as the [array for each method](/2019/02/16/js-javascript-foreach/) that is just a more generic way of just looping over all the elements of an array.
