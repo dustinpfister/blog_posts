@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:15:04
-version: 1.34
+updated: 2021-11-25 12:18:11
+version: 1.35
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -279,9 +279,9 @@ console.log(sum);
 
 So now that I got all of the basics out of the way, as well as some not so basic aspects of the array reduce method on top of that it is now time to start looking into at least a few simple use case examples of the array reduce method. That is not just some silly use case examples for the purpose of showing how to use the method, but some examples that are a kind of software product, or at least something that might be used in such a product failing that I would say.
 
-### 5.1 - create a mean
+### 5.1 - create a mean of average if you prefer from an array of numbers
 
-One thing that comes to mind right away is to create a mean from an array of numbers.
+One thing that comes to mind right away is to create a mean from an array of numbers. There is more than one kind of mean actually when it comes to rally getting into math. However most people would thing of a mean as just simply the sum of all the numbers dived by the number of numbers. This kind of mean is often refereed to as an arithmetic mean.
 
 ```js
 let getArthMean = (nums) => {
