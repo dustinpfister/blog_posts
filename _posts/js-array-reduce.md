@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:45:50
-version: 1.40
+updated: 2021-11-25 12:47:31
+version: 1.41
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -83,7 +83,7 @@ Thus far all of these examples have involved creating a primitive value such as 
 
 When I think of reduce I often think in terms of creating some kind of single value in the form of a number, or a string from an array of values. However the end result can also very much be a new array, with a reduced number of elements, or many even more elements if I really wanted to actually depending of course on the logic of the function that I give to reduce oddly enough.
 
-Of course the array reduce method can be used to create a new array with a reduced set of elements. The way I would do so would be to start off with an empty array, and just always return that staring array that would be the acc value in the body of the function. I then will push an element into the new array of it matches some kind of condition based on values of the starring array.
+Of course the array reduce method can be used to create a new array with a reduced set of elements. The way I would do so would be to start off with an empty array, and just always return that staring array that would be the acc value in the body of the function. I then will push an element into the new array of it matches some kind of condition based on values of the source array. However whe it comes to tasks like this there are other tools in the tool belt that is the array prototype of core javaScript, oe such tool would be the [array filter](/2020/10/03/js-array-filter/) method.
 
 ```js
 let objs = [{ a: 5, b:3},{},{ a: 2},{ a: 3, b: 0},{}];
