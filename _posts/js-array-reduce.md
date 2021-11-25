@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:18:11
-version: 1.35
+updated: 2021-11-25 12:20:06
+version: 1.36
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -295,7 +295,7 @@ console.log(getArthMean(nums).toFixed(2)); // '8.33'
 
 ### 5.2 - Add up array of object props helper
 
-Often I might want to create a sum from a single property of a standard object to which I have an array of.
+Often I might want to create a sum from a single property of a standard object to which I have an array of. That is that I often am working with some kind of object pool, or collection of objects, and each object in this collection has one or more properties for something. Say I want to have a simple helper method that will just add up add the numbers for a given property such as money.
 
 ```js
 let sumObjects = (objs, prop) => {
