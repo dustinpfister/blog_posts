@@ -13,11 +13,14 @@ js-array-to-string
 js-array-splice
 js-array-fill
 js-javascript-example-idle-game-simple-mine
-js-array-reduce
+
 js-javascript-example-angles-module
 js-long-division
 -->
 
+
+### (   ) - js-array-reduce ( under 1,000 )
+* edit post to 1,000+ words
 
 ### (   ) - js-javascript-option ( under 1,000)
 * edit post to 1,000+ words
