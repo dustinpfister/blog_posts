@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 11:45:12
-version: 1.24
+updated: 2021-11-25 11:48:00
+version: 1.25
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -155,9 +155,9 @@ let n = arr.reduce(reducer, 0);
 
 One draw back of the reduce array prototype method is that it is an array prototype method so then it will only work with arrays, at least on its own anyway. Often I might be in a situation in which I will want to do some kind of array reduce like thing with an object in general or some other kind of value. In these situations I will need to just make use of various other core javaScrio features to produce an array first that I can all the method off of, or one way or another get the object to work with the array reduce method even though it is not an array.
 
-### 4.1 - using function call with Array like objects
+### 4.1 - Using function call with Array like objects
 
-When it comes to array like object one option would be to use the call function prototype method.
+When it comes to an array like object one option would be to use the call function prototype method. The call method of the function prototype is [one of several methods in the function prototype](/2017/09/21/js-call-apply-and-bind/) that can be used to set what the value of the this keyword should be inside the body of a prototype function.
 
 ```js
 // an 'array like' object that has
