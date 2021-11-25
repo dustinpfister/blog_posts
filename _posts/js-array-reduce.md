@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:22:52
-version: 1.37
+updated: 2021-11-25 12:28:05
+version: 1.38
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -59,7 +59,7 @@ console.log( strs.join('-') ); // 'foo-man-chew'
 
 ### 1.3 - An array of objects
 
-There is also working with an array of objects, and wanting to create some kind of reduced value from one or more properties.
+There is also working with an array of objects, and wanting to create some kind of reduced value from one or more properties. For this example I am creating a sum from values in each property of each object in an array.
 
 ```js
 let objs = [
@@ -76,6 +76,8 @@ let n = objs.reduce(reducer, 0);
  
 console.log(n);
 ```
+
+Thus far all of these examples have involved creating a primitive value such as a number or a string from an array fo values. However that does not have to be the case of course. the starting value by default actually is a new array with the first array being the first element of the array to which reduce is being called off of actually. So maybe at least one or more basic examples are needed in this section before I move on to some more advanced topics involving array reduce.
 
 ## 2 - Setting the start value for the accumulator
 
