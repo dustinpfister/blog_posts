@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 12:50:37
-version: 1.41
+updated: 2021-11-26 12:53:27
+version: 1.42
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -250,6 +250,8 @@ So then I could expand on this example a whole lot more when it comes to adding 
 Do not forget about all the prototype methods in a String that there are to play with such as the String split method. That kind of method can come in handy when it comes to creating a new Array filled with something from a string. Or at least this is the first method that comes to mind when it comes to this sort of thing at least. For example I can cerated a filled array by taking any string value and then calling the split method off of that string value and pass an empty string to the spit method, the result of which would then be an array where each element is a single character from that string.
 
 ### 4.1 - String split method with empty string
+
+So then when using the string split method and empty string can be given. For example I can have a string that is composed of a count of zeros, and then call the string split method off of that string passing an empty string to the split method while doing so. The returned array will then be an array of zeros in the from of strings for each zero. I then might just want to do a bit more when it comes to converting those strings to numbers, but you get the basic idea.
 
 ```js
 var arr = '00000000'.split('');
