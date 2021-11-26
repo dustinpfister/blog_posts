@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:33:58
-version: 1.28
+updated: 2021-11-26 11:35:38
+version: 1.29
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -131,6 +131,8 @@ console.log(a); // [ 1, 'a', 'a', 8, 2, 3, 1 ]
 ```
 
 ### 3.3 - New range array example using a while loop
+
+Here I have a range example that will return a new array that is filed with elements that follow a given starting value and then values that step away from that value by a given delta for each element index.
 
 ```js
 // range method
