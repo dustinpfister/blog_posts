@@ -5,15 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 09:19:45
-version: 1.14
+updated: 2021-11-26 09:20:52
+version: 1.15
 ---
 
-In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the array map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
+In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
 
 When it comes to filling an array with a fixed static value these days there is now a native [array fill method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) in the core [javaScript array](/2018/12/10/js-array/) prototype object. Unless you care a great deal about backward compatibility the native array fill method works just fine, else one may have to use a Polly fill method of some kind or another in order to get the method to work on a wider range of platforms. 
 
-When it comes to using lodash there is the [lodash fill](/2017/09/26/lodash_fill/) method that works more or less the same way as the native array fill method. When it comes to creating an array filled with a set of numbers that go up my a fixed delta value from a starting point upward there is also a lodash range method that can be used to create that kind of array real quick. However in this post I will be sticking to just using javaScript alone as a way to create custom solutions for these sort of things. With that said there is the idea of making a kind of custom user space fill library.
+When it comes to using lodash there is the [lodash fill](/2017/09/26/lodash_fill/) method that works more or less the same way as the native array fill method. When it comes to creating an array filled with a set of numbers that go up my a fixed delta value from a starting point upward there is also a [lodash range](/2018/10/02/lodash_range/) method that can be used to create that kind of array real quick. However in this post I will be sticking to just using javaScript alone as a way to create custom solutions for these sort of things. With that said there is the idea of making a kind of custom user space fill library.
 
 <!-- more -->
 
