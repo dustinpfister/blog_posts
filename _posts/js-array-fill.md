@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:06:58
-version: 1.20
+updated: 2021-11-26 11:08:15
+version: 1.21
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -41,7 +41,7 @@ So with that said lets look at some more examples of filling an array in javaScr
 
 ## 2 - Using Function.Apply, and Array.map
 
-If you are not familiar with the call, apply, and bind prototype methods of a Function in javaScript then you should take a moment to look into those methods when you get a chance.
+If you are not familiar with the [call, apply, and bind prototype methods](/2017/09/21/js-call-apply-and-bind/) of a Function in javaScript then you should take a moment to look into those methods when you get a chance.
 
 ```js
 // fill an array
