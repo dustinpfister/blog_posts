@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:22:58
-version: 1.24
+updated: 2021-11-26 11:25:58
+version: 1.25
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -85,7 +85,7 @@ console.log(arr.join('')); // 'abcabcabca'
 
 ## 3 - Using just a while loop and the Array literal syntax
 
-If you want to push backward compatibility as far back as you can possible go, then you might want to work out some kind of solution that just involves a while loop and just the plain old array bracket syntax. What is also great about this kind of apphice is that I avoid the problems associated with using the Array constructor with a method such as map that will skip over undefined key index values of an array.
+If you want to push backward compatibility as far back as you can possible go, then you might want to work out some kind of solution that just involves a while loop and just the plain old array bracket syntax. What is also great about this kind of approach is that I avoid the problems associated with using the Array constructor with a method such as map that will skip over undefined key index values of an array. I can just have a starting index value as well as an index value start at the starting index value and loop forward setting each index to a fixed static value, or any value that I want that follows a desired pattern to which I want to fill the array.
 
 ### 3.1 - Simple new filled array method example using a while loop
 
