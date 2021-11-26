@@ -5,11 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-07-19 16:20:20
-version: 1.11
+updated: 2021-11-26 09:10:40
+version: 1.12
 ---
 
-These days there is now a native [array fill method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) in the core [javaScript array](/2018/12/10/js-array/) prototype object. Unless you care a great deal about backward compatibility the native array fill method works just fine, else one may have to use a Polly fill method of some kind or another in order to get the method to work on a wider range of platforms. When it comes to using lodash there is the [lodash fill](/2017/09/26/lodash_fill/) method that works more or less the same way. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index, so lets look at some examples of filling an array with data in javascript and not just some simple examples of the native array fill method.
+In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element.
+
+These days there is now a native [array fill method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) in the core [javaScript array](/2018/12/10/js-array/) prototype object. Unless you care a great deal about backward compatibility the native array fill method works just fine, else one may have to use a Polly fill method of some kind or another in order to get the method to work on a wider range of platforms. 
+
+When it comes to using lodash there is the [lodash fill](/2017/09/26/lodash_fill/) method that works more or less the same way. Also sometimes filling an array with something might mean something other than just filling it with the same value for each index, so lets look at some examples of filling an array with data in javascript and not just some simple examples of the native array fill method.
 
 <!-- more -->
 
