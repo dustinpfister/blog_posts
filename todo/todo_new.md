@@ -4,7 +4,8 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### (  ) - new post #942 for 11/25/2021 - linux-folders-boot
+### (  ) - new post #942 for 11/26/2021 - linux-tar
+* start the post
 
 ### ( done 11/23/2021 ) - new post #941 for 11/23/2021 - linux-tree
 * (done) start the post

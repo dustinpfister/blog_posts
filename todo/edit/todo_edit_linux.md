@@ -2,6 +2,10 @@
 ## linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
 
+### () - linux-tar
+* get to 500+ words
+* get to 1,000+ words
+
 ### () - linux-tree
 * (done) get to 500+ words
 * get to 1,000+ words

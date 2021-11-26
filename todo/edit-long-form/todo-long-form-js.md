@@ -95,8 +95,16 @@ list:
 ## js-array-reduce ( Fun canvas example planed )
     justification:
       Intrinsic Value: I would like to make a fun canvas example for it
-      Search Console: 
-      Google Trends:
+      Search Console: "javascript array reduce"
+      Google Trends: "array reduce", "js array reduce"
         I edited this post on 11/25/2021 and went off the deep end with it a little as such the post is all ready close to 3000 words to begin with. The array reduce method is also an interesting topic so there is a lot more to write about with it when it comes to use case examples. With that said I thunk it will be fun to make a canvas examples involving just some simple objects moving around and using the array reduce method to reduce as well as increase an array that is a section of objects in an object pool.
+
+## js-array-fill( Cool library idea I would like to create and write about )
+    justification:
+      Intrinsic Value: I have a nice library idea for this post I would like to complete
+      Search Console: "javascript array fill" showing up once in a while
+      Google Trends: "array fill", "js fill", "js array fill"
+         The post on the array fill command as well as created a filled array to begin with is all ready pretty long to begin with. On top of that there is a great deal more I would like to write on this subject when it comes to what I have together thus far. As of 11/26/2021 the post is showing up for "javascript array fill" in search console, but with a very poor ranking, however this keyword is fairly valuable when compared to my best preforming keyword at this time. It would seem that the "array fill" keyword is showing a very high volume in Google trends, and I am sure there are many others.
+
 
 
