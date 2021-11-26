@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 12:15:05
-version: 1.34
+updated: 2021-11-26 12:18:15
+version: 1.35
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -182,7 +182,9 @@ console.log( filledRandom(8, 0, 10, (n)=>{ return parseFloat(n.toFixed(2));}) );
 
 There are a whole lot of other ideas that come to mind when it comes to this kind of method. For example I might not always want just an array that is filled with random numbers, but an array that is filed with random values from a given array of values. However maybe such things are called for in an additional section in this post later on that has to do with making some kind of user space library that revolves around filling an array. For now I might just want to have one last example in this section that might prove to be a good starting point for such a project though at least.
 
-### 3.5 - High order function example using a while loop and a whole lot more
+### 3.5 - Higher order function example using a while loop and a whole lot more
+
+To wrap this section up I have one last example using a while loop to create a solution for creating a filled array. This time it is a soluton that is a decent starting point for some kind of full blown library solution centered around this specific topic.
 
 ```js
 // fill module that returns a higher order function
