@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 12:53:27
-version: 1.42
+updated: 2021-11-26 12:56:56
+version: 1.43
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -260,12 +260,16 @@ console.log(arr); // [ '0', '0', '0', '0', '0', '0', '0', '0' ]
 
 ### 4.2 - String split method with comma
 
+Often I might have a string where there is some kind of separator between values that I want to have as elements in an array. Such as a space of comma, whatever the case may be I just need to make whatever that is the string value that I give to the split method.
+
 ```js
 var arr = '64,255,127,32'.split(',');
 console.log(arr); // [ '64', '255', '127', '32' ]
 ```
 
 ### 4.3 - Split, array map, parseInt, and the array join method
+
+I might just need to do a bit more when it comes to this such as converting strings to numbers. For this there is just running over the array returned by the split method with array map, and do whatever I need to do for each element such as us parse int to convert to a number. There is the the question of how to go about converting the array back to a string also, for this there is the array join method.
 
 ```js
 // If I want an array of numbers I can use array map
