@@ -11,13 +11,12 @@ js-function-domain
 js-function-monotonic
 js-array-to-string
 js-array-splice
-js-array-fill
+
 js-javascript-example-idle-game-simple-mine
 
 js-javascript-example-angles-module
 js-long-division
 -->
-
 
 ### (   ) - js-javascript-option ( under 1,000)
 * edit post to 1,000+ words
@@ -26,6 +25,10 @@ js-long-division
 ### (   ) - js-javascript-example-tax-brackets ( under 1,000)
 * edit post to 1,000+ words
 * have 5+ internal links for the post
+
+### ( done 11/26/2021 ) - js-array-fill ( under 1,000)
+* (done) edit post to 1,000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 11/25/2021 ) - js-array-reduce ( under 1,000 )
 * (done) edit post to 1,000+ words
