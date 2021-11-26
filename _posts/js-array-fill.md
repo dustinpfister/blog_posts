@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:38:43
-version: 1.31
+updated: 2021-11-26 11:42:28
+version: 1.32
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -156,7 +156,7 @@ console.log( range(10, 5, -1)); // [ 5, 4, 3, 2, 1, 0, -1, -2, -3, -4 ]
 
 ### 3.4 - Fill with random numbers while loop example
 
-There is then also having one or more methods that have to do with creating a new array filed with random values. When it comes to making this kind of method I would want to have a length argument, but then some additional arguments that have to do with setting a range for the random numbers as well as a way to customize what will be going on in terms of rounding for the numbers.
+There is then also having one or more methods that have to do with creating a new array filed with random values. When it comes to making this kind of method I would want to have a length argument, but then some additional arguments that have to do with setting a range for the random numbers as well as a way to customize what will be going on in terms of rounding for the numbers. I could make it so that the default rounding function would be the math round method, but in many situations I might want to do something else with this sort of thing such as using the toFixed number method combined with parseFloat for example.
 
 ```js
 // range method
@@ -179,6 +179,8 @@ console.log( filledRandom(8, -5, 5) ); // [ 4, 1, -3, 2, 4, -4, 2, 4 ]
 console.log( filledRandom(8, 0, 10, (n)=>{ return parseFloat(n.toFixed(2));}) );
 // [ 6.8, 5.55, 8.1, 1.94, 5.62, 3.32, 4.67, 0.11 ]
 ```
+
+There are a whole lot of other ideas that come to mind when it comes to this kind of method. For example I might not always want just an array that is filled with random numbers, but an array that is filed with random values from a given array of values. However maybe such things are called for in an additional section in this post later on that has to do with making some kind of user space library that revolves around filling an array.
 
 ## 4 - String Split
 
