@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:25:58
-version: 1.25
+updated: 2021-11-26 11:30:11
+version: 1.26
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -89,6 +89,8 @@ If you want to push backward compatibility as far back as you can possible go, t
 
 ### 3.1 - Simple new filled array method example using a while loop
 
+One way to start out with this is to maybe start with a simple function that will create and return a new array with a given length filled with a given value for each element. So then I just create a function in which I pass a length and value argument and use that length value as a way to find out if a current index value is below the length or not in order to know if looping should stop or not. Another option would be to start the index value off at the given length around and loop backwards which is what I decided to go with for this example. I can then just use the array bracket syntax and the assignment operator to set each value for the array to the desired static value to fill the array with.
+
 ```js
 var newFilled = function (len, val) {
     var i = len,
@@ -104,7 +106,6 @@ byt[0] = 1;
 console.log(byt.join('')); // '10000000'
 ```
 
-If this does not work in the target environment of interest then it is way to old, even for me.
 
 ### 3.2 - Fill just an index range of an array made before hand
 
