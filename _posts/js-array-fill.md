@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:30:11
-version: 1.26
+updated: 2021-11-26 11:31:02
+version: 1.27
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -108,6 +108,8 @@ console.log(byt.join('')); // '10000000'
 
 
 ### 3.2 - Fill just an index range of an array made before hand
+
+I can also use while loops as a way to create a function that will just fill a given index range with a given value.
 
 ```js
 // fill range method
