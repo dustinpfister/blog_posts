@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 09:20:52
-version: 1.15
+updated: 2021-11-26 10:51:06
+version: 1.16
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -81,6 +81,8 @@ console.log(arr.join('')); // 'abcabcabca'
 
 If you want to push backward compatibility as far back as you can possible go, the you might want to work out some kind of solution that just involves a while loop and just the plain old array bracket syntax.
 
+### 3.1 - Simple new filled array method example using a while loop
+
 ```js
 var newFilled = function (len, val) {
     var i = len,
@@ -98,6 +100,73 @@ console.log(byt.join('')); // '10000000'
 
 If this does not work in the target environment of interest then it is way to old, even for me.
 
+### 3.2 - Fill just an index range of an array made before hand
+
+```js
+// fill range method
+var fillRange = function (arr, val, si, ei) {
+    val = val === undefined ? 0 : val;
+    si = si === undefined ? 0 : si;
+    ei = ei === undefined ? arr.length : ei;
+    var i = si;
+    while (i < ei) {
+        arr[i] = val;
+        i += 1;
+    }
+    return arr;
+};
+// working okay
+var a = [1, 7, 8, 8, 2, 3, 1];
+fillRange(a, 'a', 1, 3);
+console.log(a); // [ 1, 'a', 'a', 8, 2, 3, 1 ]
+```
+
+### 3.3 - New range array example using a while loop
+
+```js
+// range method
+var range = function (len, nStart, nDelta) {
+    len = len || 0;
+    nStart = nStart || 0;
+    nDelta = nDelta === undefined ? 1 : nDelta;
+    var arr = [],
+    i = 0;
+    while (i < len) {
+        arr[i] = nStart + nDelta * i;
+        i += 1;
+    }
+    return arr;
+};
+// demos
+console.log( range(10) );       // [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+console.log( range(10, -5));    // [ -5, -4, -3, -2, -1, 0, 1, 2, 3, 4 ]
+console.log( range(10, 5, -1)); // [ 5, 4, 3, 2, 1, 0, -1, -2, -3, -4 ]
+```
+
+### 3.4 - Fill with random numbers while loop example
+
+```js
+// range method
+var filledRandom = function (len, min, max, roundFunc) {
+    len = len || 0;
+    min = min === undefined ? 0 : min;
+    max = max === undefined ? 1 : max;
+    roundFunc = roundFunc || Math.round;
+    var arr = [],
+    i = 0;
+    while (i < len) {
+        arr[i] = roundFunc(min + (max - min) * Math.random());
+        i += 1;
+    }
+    return arr;
+};
+// examples
+console.log( filledRandom(8) );        // [ 0, 0, 1, 0, 1, 0, 1, 0 ]
+console.log( filledRandom(8, -5, 5) ); // [ 4, 1, -3, 2, 4, -4, 2, 4 ]
+console.log( filledRandom(8, 0, 10, (n)=>{ return parseFloat(n.toFixed(2));}) );
+// [ 6.8, 5.55, 8.1, 1.94, 5.62, 3.32, 4.67, 0.11 ]
+```
+
 ## 4 - String Split
 
 Do not forget about all the prototype methods in a String that there are to play with such as String.split. That kind of method can come in handy when it comes to creating a new Array filled with something from a string.
@@ -111,7 +180,7 @@ arr[7] = 1;
 console.log(arr.join('')); // '00000101'
 ```
 
-## 5 - fill with an object
+## 5 - Fill with an object
 
 When it comes to filling an array with an object you might run into problems that have to do with references to the same object rather than creating an array of objects. You see if you just pass an object to a method like array fill then you will end up with an array filled up with references to that same single object. In most cases when doing something like that chances are you would want an array of objects with the same starting values, not a bunch of references to the same object.
 So to help with this one way or another it would be a good idea to find a way to go about cloning an object. In this example I am using the clone object trick that involves using the JSON parse method to parse a JSON string that was just created with the JSON strigify method. This might not be the best way to go about cloning an object in a situations, and getting into the details as to why and with cloning with objects in general is a matter for a whole other post. However for the sake of tha matter at hand here and now all I need is a way to create an independent new object from an object.
