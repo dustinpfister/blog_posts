@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 12:29:11
-version: 1.38
+updated: 2021-11-26 12:33:21
+version: 1.39
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -247,7 +247,7 @@ So then I could expand on this example a whole lot more when it comes to adding 
 
 ## 4 - String Split
 
-Do not forget about all the prototype methods in a String that there are to play with such as String.split. That kind of method can come in handy when it comes to creating a new Array filled with something from a string.
+Do not forget about all the prototype methods in a String that there are to play with such as the String split method. That kind of method can come in handy when it comes to creating a new Array filled with something from a string. Or at least this is the first method that comes to mind when it comes to this sort of thing at least.
 
 ```js
 var arr = '00000000'.split('');
