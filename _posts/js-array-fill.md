@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 12:18:15
-version: 1.35
+updated: 2021-11-26 12:22:07
+version: 1.36
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -184,7 +184,7 @@ There are a whole lot of other ideas that come to mind when it comes to this kin
 
 ### 3.5 - Higher order function example using a while loop and a whole lot more
 
-To wrap this section up I have one last example using a while loop to create a solution for creating a filled array. This time it is a soluton that is a decent starting point for some kind of full blown library solution centered around this specific topic.
+To wrap this section up I have one last example using a while loop to create a solution for creating a filled array. This time it is a solution that is a decent starting point for some kind of full blown library solution centered around this specific topic. WIth all of these examples thus far it would seem that there are a few common things that come up, and then a whole bunch of things that are a little different. What I mean is that there is alwys having a length argument for a function that will create and returned a filled array, but then there are a whole lot of other arguments that will change up a little from one method to the next. SO then there is the idea of making a function that will take two arguments that are a kind of core set of arguments one of which is a desired length of an array and the other is a filler function of a string value to get such a function in terms of one or more built in options for such a function.
 
 ```js
 // fill module that returns a higher order function
