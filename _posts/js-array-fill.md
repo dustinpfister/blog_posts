@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:15:52
-version: 1.22
+updated: 2021-11-26 11:17:55
+version: 1.23
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -35,9 +35,7 @@ var byt = new Array(8).fill(1);
 console.log(byt.join('')); // '11111111'
 ```
 
-If you do not care about supporting older browser that do not support this method, and you do nit need or what some kind of method that will create the array to begin with then this will work just fine. However maybe there are still some additional taking points when it comes to filling an array with something. If you are not familiar with many of the other array prototype methods like map, then that might actually be what you want when it comes to filling an array with something other than just the same value for all elements, or elements in a certain index range.
-
-So with that said lets look at some more examples of filling an array in javaScript.
+If you do not care about supporting older browser that do not support this method, and you do nit need or what some kind of method that will create the array to begin with then this will work just fine. However maybe there are still some additional taking points when it comes to filling an array with something. If you are not familiar with many of the other array prototype methods like map, then that might actually be what you want when it comes to filling an array with something other than just the same value for all elements, or elements in a certain index range. So with that said lets look at some more examples of filling an array in javaScript.
 
 ## 2 - Using Function.Apply, and Array.map
 
@@ -68,7 +66,7 @@ console.log(b.join('')); // '01111110'
 
 ### 2.1 - Fill with chars
 
-With this example I am filling an array with the same string pattern over and over again.
+With this example I am filling an array with the same string pattern over and over again once again using the Function apply prototype trick to do so. There are a number of other options in modern javaScript for doing this sort of thing such as sing the array from method for example. However what is nice about apply is that it has been around longer, and will still work jusy as well for this sort of thing.
 
 ```js
 var newFilledWithChars = function (count, str) {
