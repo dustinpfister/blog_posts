@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 11:02:34
-version: 1.19
+updated: 2021-11-26 11:06:58
+version: 1.20
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -20,6 +20,10 @@ When it comes to using lodash there is the [lodash fill](/2017/09/26/lodash_fill
 ## 1 - The basics of filling an array in javaScript
 
 In this section I will be starting out with some basic examples that have to do with filling an array with a static value, or creating a new array with starting values. These examples will be fairly simple, but I do still assume that you have at least enough experience with javaScript to know how to make use of these examples in an environment of one kind or another. If not you might want to take a step back and look into how to [get started with javaScript in general](/2018/11/27/js-getting-started/).
+
+### Source code examples are n Github
+
+If you do not have a Github account, and have not yet looked into source control, you might want to take a moment to look into that at some point. On Github I have my test vjs repository that contains every source code example for [every post that I have written on javaScript in general](/categories/js) thus far. This post is no exception and as such the examples in this section as well as the rest of the post can be found there in the [folder that corresponds to this post](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-fill).
 
 ### 1.1 - The Basic array fill native array prototype method
 
