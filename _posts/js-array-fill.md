@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-26 12:35:37
-version: 1.40
+updated: 2021-11-26 12:50:37
+version: 1.41
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -249,13 +249,32 @@ So then I could expand on this example a whole lot more when it comes to adding 
 
 Do not forget about all the prototype methods in a String that there are to play with such as the String split method. That kind of method can come in handy when it comes to creating a new Array filled with something from a string. Or at least this is the first method that comes to mind when it comes to this sort of thing at least. For example I can cerated a filled array by taking any string value and then calling the split method off of that string value and pass an empty string to the spit method, the result of which would then be an array where each element is a single character from that string.
 
+### 4.1 - String split method with empty string
+
 ```js
 var arr = '00000000'.split('');
- 
-arr[5] = 1;
-arr[7] = 1;
- 
-console.log(arr.join('')); // '00000101'
+console.log(arr); // [ '0', '0', '0', '0', '0', '0', '0', '0' ]
+```
+
+### 4.2 - String split method with comma
+
+```js
+var arr = '64,255,127,32'.split(',');
+console.log(arr); // [ '64', '255', '127', '32' ]
+```
+
+### 4.3 - Split, array map, parseInt, and the array join method
+
+```js
+// If I want an array of numbers I can use array map
+// after array split and then do what I need to convert
+// the sub strings to numbers such as using parseInt
+var arr = '0,1,2,3'.split(',').map(function (str) {
+    return Math.pow(2, parseInt(str));
+});
+console.log(arr); // [ 1, 2, 4, 8 ]
+// the array join method can be used to then create a sing again from this array
+console.log( arr.join('-') ); // '1-2-4-8'
 ```
 
 ## 5 - Fill with an object
