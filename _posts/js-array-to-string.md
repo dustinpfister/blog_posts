@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 09:58:56
-version: 1.12
+updated: 2021-11-27 10:01:58
+version: 1.13
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -16,6 +16,8 @@ I have wrote a [post on the subject of the to string method of an object in gene
 ## 1 - Basic examples of the array to string method
 
 In this section I will be starting out with just some basic examples of the array to string method, but will progress into the subject of what to be aware of when it comes to using the to string method in general. You see the to string method is not just simply an array prototype method, there is also a to string method in the mother of all prototypes in the main Object prototype. In other words the to string method is a kind of standard method that should always be there for any kind of object in javaScript. The to string method can be called directly, but it is also called in expressions when an object value needs to be converted to a string value primitive.
+
+I will be doing my best to keep these examples fairly simple, but I still assume that you have at least a little experience working with javaScript thus far. If not you are going to want to take a step back and start out with some kind of [getting started with javaScript type post](/2018/11/27/js-getting-started/) first as this might still prove to be a little to advanced for now.
 
 ### 1.1 - An Array of primitives
 
