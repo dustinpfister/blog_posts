@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 11:27:08
-version: 1.24
+updated: 2021-11-27 11:31:29
+version: 1.25
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -206,6 +206,8 @@ var a = [1, 2, 3, 4],
 str = JSON.stringify(a);
 console.log(str); // "[1,2,3,4]"
 ```
+
+That will be about it at least when it comes to creating a JSON string from an array at least anyway. There is also the subject of how to go about converting back to an object for example. There is also maybe some things to be aware of when it comes to certain things that have to do with objects created with custom constructors that will be elements of objects in the array, or nested objects in such objects.
 
 ### 3.2 - Basic JSON string to object example
 
