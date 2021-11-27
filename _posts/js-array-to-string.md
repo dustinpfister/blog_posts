@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 12:11:51
-version: 1.32
+updated: 2021-11-27 12:15:34
+version: 1.33
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -258,6 +258,8 @@ console.log(str); // $100(5,20);$45(2,5);$37(0,0);$0(18,75);
 ```
 
 ### 2.5 - For Each
+
+There is then just simply using the array for each method to loop over each element and then just concatenate what I want to a string value. Some might regard this as a crude way to go about doing this sort of thing, but in many simple coding examples and projects the end result will end up working out just fine. There may be some draw backs to using the for each method, but if something works fine for me in my own project then that is the case, and I can then move on. I think the best thing to keep in mind is that this is not the only tool in the toolbox then it comes to array prototype methods and, many of the other options are very useful when it comes to parsing threw a source array.
 
 ```js
 var a = [1, 2, 3, 4],
