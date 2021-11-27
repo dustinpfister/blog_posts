@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 10:34:07
-version: 1.18
+updated: 2021-11-27 10:35:01
+version: 1.19
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -156,7 +156,7 @@ console.log(s.valueOf());
 
 The to string method of an array might not always be the best option for creating a string from an array. Another major option for this sort of thing would be the [join method of the array prototype](/2020/03/09/js-array-join/). This method works by just calling the method off of an instance of an array, and by default it works just like the to string method of the array prototype. However there is one additional argument that can be given to the array join method that can be used to change what the separator character should be between elements when creating a string.
 
-However there is not just the join method of the array prototype but many other useful methods in the array prototype as well as other prototypes such a the String prototype that can be used to help with the process of creating string from arrays. So in this example I will be going over a few examples of the array join method, but I will also be going over a few of the other array prototype methods that I might call first before ending with the join method.
+However there is not just the join method of the array prototype but many other [useful methods in the array prototype](/2018/12/10/js-array/) as well as other prototypes such a the String prototype that can be used to help with the process of creating string from arrays. So in this example I will be going over a few examples of the array join method, but I will also be going over a few of the other array prototype methods that I might call first before ending with the join method.
 
 ### 2.1 - Basic array join method example
 
