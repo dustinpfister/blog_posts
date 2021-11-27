@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 10:03:54
-version: 1.14
+updated: 2021-11-27 10:06:30
+version: 1.15
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -21,7 +21,7 @@ I will be doing my best to keep these examples fairly simple, but I still assume
 
 ### Source code is on Github
 
-The [source code examples in this post can be found on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-to-string) along with the source code for my many [other posts on javaScript](/categories/js).
+The [source code examples in this post can be found on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-to-string) along with the source code for my many [other posts on javaScript](/categories/js). There is making a pull request on Github if there is something wrong with a given source code examples, there is also the comments seciton at the bottom of this post that can be used as a way to bring up a problem.
 
 ### 1.1 - An Array of primitives
 
