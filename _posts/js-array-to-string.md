@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 11:44:39
-version: 1.26
+updated: 2021-11-27 11:49:27
+version: 1.27
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -194,6 +194,8 @@ console.log(str); // '(42, 12) (0, 0) (12, 35)'
 ```
 
 ### 2.3 - The filter method
+
+I might want to do more then just create a new array of sub string values from an an array using map before converting to a string. For example I might want to filter out a while bunch of elements in an array that I will not want in the final string first. One way to go about doing this would be to use the array filter method first. this filter method like the map method will create and return a new array rather than mutating one in place like some other methods in the array prototype. However one major difference with filter compared to map is that the aim is not to just cerate a new array with the same length, but a lower length that is only the elements that I want from a source array. After I call filter off of a source array, I can then use the map, and join methods to create my final string value that I want.
 
 ```js
 var a = [
