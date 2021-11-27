@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 11:51:03
-version: 1.28
+updated: 2021-11-27 11:53:15
+version: 1.29
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -221,6 +221,8 @@ console.log(str); // 2,5;5,20;
 ```
 
 ### 2.4 - The sort method
+
+yet another thing that I might want to do with an array is to sort a collection of elements, in the array prototype there is the [array sort](/2019/12/02/js-array-sort/) method that can be done to sort array elements by some kind of property, or any kind of conditions defined in a sort method.
 
 ```js
 var a = [
