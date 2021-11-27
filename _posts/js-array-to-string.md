@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 12:27:46
-version: 1.39
+updated: 2021-11-27 12:28:23
+version: 1.40
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -285,7 +285,7 @@ var str = a.reduce(function (acc, n) {
 console.log(str); // 'nums=1-2-3-4-'
 ```
 
-This reduce method is sure worth looking into more, and it is called for to work ot some custom examples just for the sake of playing around with it more if you have not done so all ready. The value that the array is reduced to can be a number also, or any kind of object as well if one feels they need to do that.
+This reduce method is sure worth looking into more, and it is called for to work out some custom examples just for the sake of playing around with it more if you have not done so all ready. The value that the array is reduced to can be a number also, or any kind of object as well if one feels they need to do that.
 
 ## 3 - Using JSON to create a string from an array
 
