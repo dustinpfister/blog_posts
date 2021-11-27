@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 12:21:42
-version: 1.37
+updated: 2021-11-27 12:24:57
+version: 1.38
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -272,15 +272,17 @@ console.log(str); // '1234'
 
 ### 2.6 - The reduce method
 
-Maybe one of the best options to work with would be the [array reduce](/2021/07/13/js-array-reduce/) method actually when it comes to prototype methods that are useful for creating a string primitive from an array. This is a method that is often used to create a sum from an array, however it can also very much be used to create a string primitive also. For example If I have an array of numbers and I want to create a string from this array of numbers I can call the reduce method off of the array, and pass a method that will be used to preform the reduction as the first argument, followed by a starting value for the accumulator value that I will be using i  the reduction function, in this case it would be a string value.
+Maybe one of the best options to work with would be the [array reduce](/2021/07/13/js-array-reduce/) method actually when it comes to prototype methods that are useful for creating a string primitive from an array. This is a method that is often used to create a sum from an array, however it can also very much be used to create a string primitive also. For example If I have an array of numbers and I want to create a string from this array of numbers I can call the reduce method off of the array, and pass a method that will be used to preform the reduction as the first argument, followed by a starting value for the accumulator value that I will be using in the reduction function, in this case it would be a string value.
+
+In the body of the reduction function the first argument is the accumulator value that I started with the second argument of the reduce method. So then I just need to concatenate the current element value that I want that is the second argument in the reducer function and then return that. The return value will then be the value for the accumulation in the next call of the reducer function and so forth.
 
 ```js
-var a = [1, 2, 3, 4],
-str = '';
-a.forEach(function (n) {
-    str += n;
-});
-console.log(str); // '1234'
+var a = [1, 2, 3, 4];
+// reduce
+var str = a.reduce(function (acc, n) {
+    return acc + n + '-';
+}, 'nums=');
+console.log(str); // 'nums=1-2-3-4-'
 ```
 
 ## 3 - Using JSON to create a string from an array
