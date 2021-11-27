@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 11:31:29
-version: 1.25
+updated: 2021-11-27 11:44:39
+version: 1.26
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -193,7 +193,67 @@ var str = a.map(function(el){
 console.log(str); // '(42, 12) (0, 0) (12, 35)'
 ```
 
-## 3 - Uisng JSON to create a string from an array
+### 2.3 - The filter method
+
+```js
+var a = [
+    false,
+    null,
+    {x: 2, y: 5},
+    'foo',
+    42,
+    {},
+    {x:5, y: 20}
+];
+// using filter, map, and join
+var str = a.filter(function(el){
+    if(typeof el === 'object' && el != null){
+        return el.x != undefined && el.y != undefined;
+    }
+    return false;
+}).map(function(el){
+    return el.x + ',' + el.y + ';'
+}).join('');
+ 
+console.log(str); // 2,5;5,20;
+```
+
+### 2.4 - The sort method
+
+```js
+var a = [
+    {x: 18, y: 75, money: 0},
+    false,
+    null,
+    {x: 2, y: 5, money: 45},
+    {x: 0, y: 0, money: 37},
+    'foo',
+    42,
+    {},
+    {x:5, y: 20, money: 100}
+];
+// using filter, sort, map, and join
+var str = a.filter(function(el){
+    if(typeof el === 'object' && el != null){
+        return el.x != undefined && el.y != undefined;
+    }
+    return false;
+}).sort(function(a, b){
+    if(a.money > b.money){
+        return -1;
+    }
+    if(a.money < b.money){
+        return 1;
+    }
+    return 0;
+}).map(function(el){
+    return '$' + el.money + '(' + el.x + ',' + el.y + ');'
+}).join('');
+ 
+console.log(str); // $100(5,20);$45(2,5);$37(0,0);$0(18,75);
+```
+
+## 3 - Using JSON to create a string from an array
 
 Another way to go about converting an array, or any object to a string would be to use JSON to do so. There are two main methods that come to mind with JSON the parse method, and the stringify method. It is the stringify method that can be used to covert an array to a string, and do so in a way in which all the data of the nested objects will be in a string form. There are some draw backs though depending on what the intension is when it comes to converting an array to a string this way. The main thing about JSON is that it is an example of a data serialization language. What I mean by this is that is is a standard way to convert objects to a from that can then be transmitted over a network, or stored in a file, rather then exiting in a more workable from.
 
