@@ -15,10 +15,6 @@ js-javascript-example-angles-module
 js-long-division
 -->
 
-### (   ) - js-array-to-string ( under 1,000)
-* edit post to 1,000+ words
-* have 5+ internal links for the post
-
 ### (   ) - js-array-splice ( under 1,000)
 * edit post to 1,000+ words
 
@@ -29,6 +25,10 @@ js-long-division
 ### (   ) - js-javascript-example-tax-brackets ( under 1,000)
 * edit post to 1,000+ words
 * have 5+ internal links for the post
+
+### ( done 11/27/2021 ) - js-array-to-string ( under 1,000)
+* (done) edit post to 1,000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 11/26/2021 ) - js-array-fill ( under 1,000)
 * (done) edit post to 1,000+ words
