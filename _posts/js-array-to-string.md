@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 10:09:58
-version: 1.16
+updated: 2021-11-27 10:12:46
+version: 1.17
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -169,6 +169,8 @@ console.log(a.join(''));   // '1234'
 ```
 
 ### 2.2 - Joining a collection of objects into a string
+
+A problem similar to that of just using a built in to string method will also come up when it comes to creating a string from an array of objects. The thing about this though is that I almost never just use the array join method by itself, there are many other useful methods in the array prototype after all. For example I can use the array map method to create a new array of strings rather than objects where each substring is formated the way I want an object to be represent first. AFter that I can then call the array join method off of the new array that is returned by the array map method.
 
 ```js
 var a = [
