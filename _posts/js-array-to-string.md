@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 12:18:29
-version: 1.35
+updated: 2021-11-27 12:19:50
+version: 1.36
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -272,7 +272,7 @@ console.log(str); // '1234'
 
 ### 2.6 - The reduce method
 
-Maybe one of the best options to work with would be the [array reduce](/2021/07/13/js-array-reduce/) method actually when it comes to prototype methods that are useful for creating a string primitive from an array.
+Maybe one of the best options to work with would be the [array reduce](/2021/07/13/js-array-reduce/) method actually when it comes to prototype methods that are useful for creating a string primitive from an array. This is a method that is often used to create a sum from an array, however it can also very much be used to create a string primitive also.
 
 ```js
 var a = [1, 2, 3, 4],
