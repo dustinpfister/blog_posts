@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-11-27 11:19:18
-version: 1.23
+updated: 2021-11-27 11:27:08
+version: 1.24
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -199,7 +199,7 @@ Another way to go about converting an array, or any object to a string would be 
 
 ### 3.1 - Basic array to string example Uisng JSON
 
-To create a string from an array using JSON I just call the JSON.stringify method to do so, and pass the array that I want to convert to a string in JSON from.
+To create a string from an array using JSON I just call the JSON.stringify method to do so, and pass the array that I want to convert to a string in JSON from. The returned value will then be a string that is a JSON from of that array.
 
 ```js
 var a = [1, 2, 3, 4],
@@ -209,7 +209,7 @@ console.log(str); // "[1,2,3,4]"
 
 ### 3.2 - Basic JSON string to object example
 
-When it comes to converting a JSON string back to an object that I can then work with I will want to use the [JSON.parse method](/2020/02/28/js-json-parse/).
+When it comes to converting a JSON string back to an object that I can then work with I will want to use the [JSON.parse method](/2020/02/28/js-json-parse/). For this I just call the JSON parse method and pass the JSON string as the first and argument and if all goes well the return value of this method will then be the original array.
 
 ```js
 var a = [1, 2, 3, 4],
@@ -222,6 +222,8 @@ obj = obj.map(function (n) {
     });
 console.log(obj); // [ 2, 4, 8, 16 ]
 ```
+
+There is a whole lot more to this though when it comes to crating a string from an array this way. For example in some cases I might end up passing a malformed JSON string to the parse method that will result in an error. So then it would make sense to call this method in the body of a try catch statement. There are also some problems that will come up when it comes to using custom constrictors which is one reason why I might want to use a reviver function when calling this parse method.
 
 ## 4 - Conclusion
 
