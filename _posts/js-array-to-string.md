@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 916
-updated: 2021-07-22 10:55:29
-version: 1.10
+updated: 2021-11-27 09:56:51
+version: 1.11
 ---
 
 I have wrote a [post on the subject of the to string method of an object in general](/2020/07/14/js-to-string/) before, however in todays post I think I will take a moment to write about this subject when it comes to [arrays alone](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString). The to string method of an array will work okay when it comes to an array of primitives, however it will often fall short of expectations when it comes to an array of objects. When it comes to converting a complex array of objects into a string format it is often called for to create a custom helper function, or class prototype method to do so. It is also possible to create a custom to string method for an array, and when making a custom class that makes use of an array it is general a good idea to have a to string method as part of the prototype object.
@@ -146,6 +146,42 @@ console.log(s.valueOf());
 // 6
 ```
 
-## 2 - Conclusion
+## 2 - The array join method for creating a string from an array
+
+The to string method of an array might not always be the best option for creating a string from an array. Another major option for this sort of thing would be the [join method of the array prototype](/2020/03/09/js-array-join/).
+
+### 2.1 - Basic array join method example
+
+```js
+var a = [1, 2, 3, 4];
+// there is calling to string directory
+console.log(a.toString()); // '1,2,3,4'
+console.log(a.join());     // '1,2,3,4'
+console.log(a.join(' '));  // '1 2 3 4'
+console.log(a.join(''));   // '1234'
+```
+
+### 2.2 - Joining a collection of objects into a string
+
+```js
+var a = [
+    {x: 42, y: 12},
+    {x: 0, y: 0},
+    {x: 12, y: 35}
+];
+ 
+// using join alone will run into the same problem with toString
+console.log(a.toString()); // '[object Object],[object Object],[object Object]'
+console.log(a.join());     // '[object Object],[object Object],[object Object]'
+ 
+// But join is often used in conjunction with other array methods 
+// like map to help address this
+var str = a.map(function(el){
+    return '(' + el.x + ', ' + el.y + ') ';
+}).join('');
+console.log(str); // '(42, 12) (0, 0) (12, 35)'
+```
+
+## 3 - Conclusion
 
 The array to string method is the default way to go about creating a string value from an array. However it is not the end all solution for this sort of thing, there are a number of other options to be aware of. Also in some cases it is possible that a custom solution will need to be made for create a string value of an object, in the form of some kind of helper function, or a custom to string method that is used in place of array to string one way or another.
