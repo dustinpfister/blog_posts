@@ -1,12 +1,12 @@
 ---
-title: javaScript Arrays a general overview
+title: javaScript Arrays a general overview of what to be aware of
 date: 2018-12-10 12:13:00
 tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:13:07
-version: 1.104
+updated: 2021-11-28 13:14:41
+version: 1.105
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
