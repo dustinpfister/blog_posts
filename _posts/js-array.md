@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:28:59
-version: 1.106
+updated: 2021-11-28 13:46:45
+version: 1.107
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -387,6 +387,26 @@ var arr = [1, 2, 3, 4];
 arr.forEach(function (n, i) {
     console.log(i, n);
 });
+```
+
+### 6.3 - Using setTimeout as a way to loop
+
+If I want to loop over an array in a way in which a certain about of time passes between each index I can use [something like setTimout](/2018/12/06/js-settimeout/). In fact this is one of several options when it comes to making some kind of main application loop of some kind, but that might be a matter for a whole other post.
+
+```js
+var arr = [0, 0, 0, 0];
+ 
+var i = 0;
+var loop = function () {
+    setTimeout(loop, 1000);
+    arr[i] = Math.random() >= 0.5 ? arr[i] - 1 : arr[i] + 1;
+    arr[i] = arr[i] < -5 ? -5 : arr[i];
+    arr[i] = arr[i] > 5 ? 5 : arr[i];
+    console.log(arr);
+    i += 1;
+    i %= arr.length;
+};
+loop();
 ```
 
 ## 7 - Array Prototype methods
