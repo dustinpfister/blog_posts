@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 11:52:07
-version: 1.92
+updated: 2021-11-28 12:12:35
+version: 1.93
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -143,6 +143,22 @@ b = 'Strings can be split into arrays'.split(' ');
  
 console.log(a[1]); // 2
 console.log(b[3]); // 'split'
+```
+
+### 2.4 - The Object.keys and Object.values methods can be used to create arrays of key names or values from Objects
+
+Often I might want to create an array of key names or values of an object. So on top of using things like the array constructor and bracket syntax there is also using static Object methods as a way to go about creating an array that is populated with values that I want right away. Using a method like Object.keys saves me the trouble of creating an empty array and then using something like a for in loop as a way to loop over the keys of an object and push key names into such an array.
+
+```js
+// the Object.keys method can be used to create an
+// array of key names for a given object
+var a = Object.keys({foo:1,'bar': 2});
+console.log(a); // [ 'foo', 'bar' ]
+// The Object.values method does the same as Object.keys
+// only it will be an array of values rather than the key names
+var b = Object.values({foo:1,'bar': 2});
+console.log(b); // [ 1, 2 ]
+
 ```
 
 ## 3 - Pushing, shifting, and adding elements to an array
