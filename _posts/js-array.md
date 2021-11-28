@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 09:59:04
-version: 1.86
+updated: 2021-11-28 10:00:45
+version: 1.87
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -69,6 +69,8 @@ console.log(a.join('-')); // '2-4-8-16'
 ```
 
 ### 1.4 - Other methods that return arrays
+
+There are a whole lot of other methods in features in javaScript that will create and return an array, or they are some kind of feature that is closely tiled to arrays, and problems that will arise when dealing with arrays. For example there is not just thinking in terms of arrays but collections in general.
 
 ```js
 let obj = {
