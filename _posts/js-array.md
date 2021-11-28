@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:03:44
-version: 1.102
+updated: 2021-11-28 13:07:56
+version: 1.103
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -470,7 +470,9 @@ arr.sort().reverse();
 console.log(arr); //[ 9, 8, 6, 5, 4, 3, 2 ]
 ```
 
-### 7.5 - reduce
+### 7.5 - The reduce method
+
+The [reduce method](/2021/07/13/js-array-reduce/) is often used for tasks that involve condensing an array into a single primitive value such as a number or a string. However the method can also be used as an alternative to the array filter method, and even though the method is called reduce it can also be used to create a larger new array from a source array actually depending of course on the logic in the function that is passed to it.
 
 ```js
 let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -482,6 +484,8 @@ console.log(b); // 45
 ```
 
 ### 7.6 - for each
+
+The [for each method](/2019/02/16/js-javascript-foreach/) is a prototype type method that can be used as one of several options for just looping over the contents of an array.
 
 ```js
 let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
