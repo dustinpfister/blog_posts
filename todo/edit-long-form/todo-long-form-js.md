@@ -107,4 +107,13 @@ list:
          The post on the array fill command as well as created a filled array to begin with is all ready pretty long to begin with. On top of that there is a great deal more I would like to write on this subject when it comes to what I have together thus far. As of 11/26/2021 the post is showing up for "javascript array fill" in search console, but with a very poor ranking, however this keyword is fairly valuable when compared to my best preforming keyword at this time. It would seem that the "array fill" keyword is showing a very high volume in Google trends, and I am sure there are many others.
 
 
+## js-array ( A whole lot more to do with this one )
+    justification:
+      Intrinsic Value: For my own sake it is good to have a long central post on arrays
+      Search Console: none
+      Google Trends: "javaScript array", "js array"
+         This post is all ready very long, and I have a lot planed out to make it even longer. It would be nice for the sake of my own notes to have a nice long central post on arrays in javaScript, this post is that all ready, and it makes sense to make it even longer. The post is preforming very poorly in search console, but it was in poor shape actually although fairly long. I fixed it up a whole lot as of 11/28/2021, but there is a great deal more room for improvement with this post. It would be easy to make this one of more first posts that is over 10k words it i take it that far, and then have a wait and see when it comes to finding out if going that nuts helps or not. There is a crazy amount of search interest in this topic looking at just two major keywords with it, so it is not like there is not a demand for this kind of post.
+* (done 11/28/2021) get the post to 5000+ words
+* get the post to 6000+ words
+
 
