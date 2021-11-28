@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 11:42:35
-version: 1.90
+updated: 2021-11-28 11:44:45
+version: 1.91
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -69,6 +69,8 @@ let a = [1, 2, 3, 4].map((el) => {
 });
 console.log(a.join('-')); // '2-4-8-16'
 ```
+
+There is a great number of additional method to be aware of that I will be getting into in depth later on in this post. For now there is just being aware of the fact that there are a whole lot of tools in the array tool box of sorts, and methods like map, join, and for each are just a few of these tools.
 
 ### 1.4 - Other methods that return arrays
 
