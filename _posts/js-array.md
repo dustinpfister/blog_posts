@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 11:10:32
-version: 1.88
+updated: 2021-11-28 11:12:15
+version: 1.89
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -41,7 +41,7 @@ console.log(a instanceof Array); // true
 console.log(a.constructor.name); // 'Array'
 ```
 
-Once an instance of an array is created there are a number of things that can then be done with the array. Prototype methods such as the array jon method for example can be used to create a string value of the array, there is also accessing the length propety of the array. In order to confirm that the instance of an array is indeed an array that is using the instance of operator, or checking the name property of the constructor object of the array.
+Once an instance of an array is created there are a number of things that can then be done with the array. Prototype methods such as the array jon method for example can be used to create a string value of the array, there is also accessing the length property of the array. In order to confirm that the instance of an array is indeed an array that is using the instance of operator, or checking the name property of the constructor object of the array.
 
 ### 1.2 - While loop example
 
