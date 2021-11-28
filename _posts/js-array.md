@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 09:42:23
-version: 1.80
+updated: 2021-11-28 09:45:59
+version: 1.81
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -25,7 +25,9 @@ This is a post on javaScript arrays, as such it is important to have at least so
 
 ### The source code examples are on Github
 
-I have a a Github repository called test vjs which serves as the dumping ground for my source code examples for my various posts on javaScript. This post is no exception of this and as such the source code examples in this post can be found in the for post folder that corresponds with the file name of this post.
+I have a a Github repository called test vjs which serves as the dumping ground for my source code examples for my [various posts on javaScript](/categories/js/). This post is no exception of this and as such the source code examples in this post can be found in the [for post folder that corresponds with the file name of this post](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array).
+
+### 1.1 - 
 
 ## 2 - Creating arrays
 
