@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 09:56:51
-version: 1.85
+updated: 2021-11-28 09:59:04
+version: 1.86
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -57,7 +57,9 @@ while (i < len) {
 console.log(a.join('-')); // '2-4-8-16'
 ```
 
-### 1.3 - Array prototype methids
+### 1.3 - Array prototype methods
+
+There are a number of useful methods to work with in the prototype object of an instance of an array. One example of this would be the array map method that will return a new array with elements that are result of some code that is in a function that is called for each element in the source array.
 
 ```js
 let a = [1, 2, 3, 4].map((el) => {
