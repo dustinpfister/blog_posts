@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:14:41
-version: 1.105
+updated: 2021-11-28 13:28:59
+version: 1.106
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -498,11 +498,11 @@ console.log(b); // 45
 
 ## 8 - Multidimensional Arrays
 
-There are two general ways of making [Multidimensional Arrays in javaScript](/2020/03/31/js-array-multidimensional/) as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array with a single dimension. If you spend enough time playing around with various libraries as well as native javaScript features chances are it is only a matter of time until one becomes familiar with both general ways of making multidimensional arrays.
+There are two general ways of making [Multidimensional Arrays in javaScript](/2020/03/31/js-array-multidimensional/) as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array with a single dimension. If you spend enough time playing around with various libraries as well as native javaScript features chances are it is only a matter of time until one becomes familiar with both general ways of making multidimensional arrays. In this section then I will be going over a few quick examples of these kind of arrays in bother there nested format as well as the ways of doing so with just a single flat array, but using a formula to get and set elements.
 
 ### 8.1 - Arrays of Arrays
 
-One way to go about having a multidimensional array in javaScript is to have an Array of Arrays.
+One way to go about having a multidimensional array in javaScript is to have an Array of Arrays. This is simple enough as the way of doing so is to just create an array like always just think in terms of having arrays as elements of the array. All use case examples involve just two dimensions, but there is adding additional dimensions by just continuing to nest arrays rather than having some kind of primitive value or object for each end node of the matrix.
 
 ```js
  
@@ -514,6 +514,7 @@ var grid = [
  
 console.log( grid[1][1] ); // 5
 ```
+
 
 ### 8.2 - Plain old linear Array, but with style.
 
