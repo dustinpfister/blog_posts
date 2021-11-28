@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 11:44:45
-version: 1.91
+updated: 2021-11-28 11:52:07
+version: 1.92
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -72,9 +72,9 @@ console.log(a.join('-')); // '2-4-8-16'
 
 There is a great number of additional method to be aware of that I will be getting into in depth later on in this post. For now there is just being aware of the fact that there are a whole lot of tools in the array tool box of sorts, and methods like map, join, and for each are just a few of these tools.
 
-### 1.4 - Other methods that return arrays
+### 1.4 - Other methods that return arrays, and objects in general.
 
-There are a whole lot of other methods in features in javaScript that will create and return an array, or they are some kind of feature that is closely tiled to arrays, and problems that will arise when dealing with arrays. For example there is not just thinking in terms of arrays but collections in general.
+There are a whole lot of other methods and features in javaScript that will create and return an array, or they are some kind of feature that is closely tiled to arrays. There are also all kinds of problems that will arise when dealing with arrays, as well as with objects in general actually because a lot of what surrounds arrays and objects can prove to be a little complex. For example there is not just thinking in terms of arrays but collections in general. That is having to choose between using an array, or some other kind of collection object standard involving numbered key values and a length property compared to collections that involve named keys.
 
 ```js
 let obj = {
