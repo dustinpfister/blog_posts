@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 09:45:59
-version: 1.81
+updated: 2021-11-28 09:49:29
+version: 1.82
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -27,7 +27,61 @@ This is a post on javaScript arrays, as such it is important to have at least so
 
 I have a a Github repository called test vjs which serves as the dumping ground for my source code examples for my [various posts on javaScript](/categories/js/). This post is no exception of this and as such the source code examples in this post can be found in the [for post folder that corresponds with the file name of this post](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array).
 
-### 1.1 - 
+### 1.1 - Basic array example
+
+```js
+let a = [1, 2, 3, 4];
+console.log(a.join('')); // '1234'
+console.log(a.length); // 4
+console.log(a instanceof Array); // true
+console.log(a.constructor.name); // 'Array'
+```
+
+### 1.2 - While loop example
+
+```js
+let a = [1, 2, 3, 4],
+el,
+i = 0,
+len = a.length;
+while (i < len) {
+    a[i] = Math.pow(2, a[i]);
+    i += 1;
+}
+console.log(a.join('-')); // '2-4-8-16'
+```
+
+### 1.3 - Array prototype methids
+
+```js
+let a = [1, 2, 3, 4].map((el) => {
+    return Math.pow(2, el);
+});
+console.log(a.join('-')); // '2-4-8-16'
+```
+
+### 1.4 - Other methods that return arrays
+
+```js
+let obj = {
+    foo: 1,
+    bar: 2,
+    baz: 3
+};
+// can get an array of keys like this
+let a = Object.keys(obj);
+// array prototype methods can then be used with the array
+// of object key names
+let b = Object.keys(obj).reduce((acc, key) => {
+    return acc + obj[key];
+}, 0);
+let c = Object.keys(obj).reduce((acc, key) => {
+    return acc + key + '-';
+}, '');
+console.log(a);
+console.log(b);
+console.log(c);
+```
 
 ## 2 - Creating arrays
 
