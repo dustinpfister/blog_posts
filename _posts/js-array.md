@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:07:56
-version: 1.103
+updated: 2021-11-28 13:13:07
+version: 1.104
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -485,7 +485,7 @@ console.log(b); // 45
 
 ### 7.6 - for each
 
-The [for each method](/2019/02/16/js-javascript-foreach/) is a prototype type method that can be used as one of several options for just looping over the contents of an array.
+The [for each method](/2019/02/16/js-javascript-foreach/) is a prototype type method that can be used as one of several options for just looping over the contents of an array. As I have covered in the above section on looping I generally prefer to use while loops as a way to loop over an array in some kind if general custom way. There are a number of reasons why I often do go with some other prototype method in place of the for each method also, as there are many other prototype methods that are similar to that of for each, but prove to be a better choice for certain kinds of tasks. Still I find myself using for each on occasion when it comes to quick simple examples and solutions, it is just not by any means the only way to go about doing this sort of thing.
 
 ```js
 let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
