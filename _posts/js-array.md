@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 12:19:26
-version: 1.94
+updated: 2021-11-28 12:23:39
+version: 1.95
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -162,7 +162,7 @@ console.log(b); // [ 1, 2 ]
 
 ### 2.5 - The array from method for creating arrays from array like objects
 
-There is then the [array from static method](/2020/01/27/js-array-from/) of the Array global that is yet another way to go about creating an array. What is great about thuis method is that it is a nice way to go about quickly creating an array from an array like object.
+There is then the [array from static method](/2020/01/27/js-array-from/) of the Array global that is yet another way to go about creating an array. What is great about this method is that it is a nice way to go about quickly creating an array from an array like object. That is a plain old object ir any object that is formated like an array, but because of the way the object was created is not an instance of array. Feeding that kind of object to the array from method will return a new array that is an instance of array created with the properties of this array like object.
 
 
 ```js
@@ -174,6 +174,8 @@ var a = Array.from({
     });
 console.log(a); // [ 1, 2, 3 ]
 ```
+
+There is a great deal more to write about when it comes to array like objects, so there is another section later in this post in which I revised this subject in further detail. For now as far as this section is concerned this is just yet another way of how to go about creating an array.
 
 ## 3 - Pushing, shifting, and adding elements to an array
 
