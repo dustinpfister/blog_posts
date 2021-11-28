@@ -9,7 +9,6 @@ js-function-one-to-one
 js-function-diminishing-returns
 js-function-domain
 js-function-monotonic
-js-array-to-string
 js-javascript-example-idle-game-simple-mine
 js-javascript-example-angles-module
 js-long-division
