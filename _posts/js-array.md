@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 12:50:51
-version: 1.98
+updated: 2021-11-28 12:59:44
+version: 1.99
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -472,7 +472,7 @@ console.log(arr); //[ 9, 8, 6, 5, 4, 3, 2 ]
 
 ## 8 - Multidimensional Arrays
 
-There are two general ways of making Multidimensional Arrays in javaScript as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array.
+There are two general ways of making Multidimensional Arrays in javaScript as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array with a single dimension. If you spend enough time playing around with various libraries as well as native javaScript features chances are it is only a matter of time until one becomes familiar with both general ways of making multidimensional arrays.
 
 ### 8.1 - Arrays of Arrays
 
