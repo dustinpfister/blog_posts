@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 11:12:15
-version: 1.89
+updated: 2021-11-28 11:42:35
+version: 1.90
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -45,7 +45,7 @@ Once an instance of an array is created there are a number of things that can th
 
 ### 1.2 - While loop example
 
-There are a number of ways to loop over the contents of an array, some of which are array prototype methods, but others are part of the javaScript syntax itself. Prototype methods work fine, however there are also a lot of talking points as to why it might be a good idea to consider using a loop such as a while loop first and foremost.
+There are a number of ways to loop over the contents of an array, some of which are array prototype methods, but others are part of the javaScript syntax itself. Prototype methods work fine, however there are also a lot of talking points as to why it might be a good idea to consider using a loop such as a while loop first and foremost. For one thing while loops seem to preform a fair amount faster compared to the array for each method when working with large arrays. Other things come up that have to do with the sparse nature of javaScript arrays which result in certain array prototype methods skipping over certain elements. So for these reason and many more it is some times called for to just use a tired yet true loop of one kind or another as a means to loop over the contents of an array.
 
 ```js
 let a = [1, 2, 3, 4],
