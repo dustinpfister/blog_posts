@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 09:52:38
-version: 1.83
+updated: 2021-11-28 09:54:43
+version: 1.84
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -30,6 +30,8 @@ In this section I will be starting out with some very imple examples of arrays t
 I have a a Github repository called test vjs which serves as the dumping ground for my source code examples for my [various posts on javaScript](/categories/js/). This post is no exception of this and as such the source code examples in this post can be found in the [for post folder that corresponds with the file name of this post](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array).
 
 ### 1.1 - Basic array example
+
+For a basic example of an array there is starting out bu just creating one by using the Array constructor, or the array bracket syntax. I will be getting into detail about the various ways of going about creating an array in a later section in this post, but for now there is just starting out with a quick example that uses the bracket syntax.
 
 ```js
 let a = [1, 2, 3, 4];
