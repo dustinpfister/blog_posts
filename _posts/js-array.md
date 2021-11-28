@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:46:45
-version: 1.107
+updated: 2021-11-28 13:58:51
+version: 1.108
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -391,7 +391,7 @@ arr.forEach(function (n, i) {
 
 ### 6.3 - Using setTimeout as a way to loop
 
-If I want to loop over an array in a way in which a certain about of time passes between each index I can use [something like setTimout](/2018/12/06/js-settimeout/). In fact this is one of several options when it comes to making some kind of main application loop of some kind, but that might be a matter for a whole other post.
+If I want to loop over an array in a way in which a certain about of time passes between each index I can use [something like setTimout](/2018/12/06/js-settimeout/). In fact this is one of several options when it comes to making some kind of main application loop of some kind, but that might be a matter for a whole other post. With that being said when it comes to really looking into doing this kind of looping in client side javaScript there is the [request animation frame method](/2018/03/13/js-request-animation-frame/), and also getting into [web workers](/2021/11/05/js-webworker/) when it comes to spinning up more than one event loop to work with in a browser. In nodejs there is using a method like setTeimout sure, but it might be worth it to not do so alone and to loop into using the [child process](/2018/02/04/nodejs-child-process/) module to spin up more than one process on the host operating system.
 
 ```js
 var arr = [0, 0, 0, 0];
