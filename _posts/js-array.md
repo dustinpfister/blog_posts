@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:01:42
-version: 1.101
+updated: 2021-11-28 13:03:44
+version: 1.102
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -468,6 +468,28 @@ console.log(b) // [ 0, 1, 1, 3, 4, 4, 5, 6, 8 ]
 arr = [4, 9, 8, 2, 3, 6, 5];
 arr.sort().reverse();
 console.log(arr); //[ 9, 8, 6, 5, 4, 3, 2 ]
+```
+
+### 7.5 - reduce
+
+```js
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// reduce array of numbers into a sum
+let b = a.reduce((acc, n) => {
+    return acc + n;
+}, 0);
+console.log(b); // 45
+```
+
+### 7.6 - for each
+
+```js
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let b = 0;
+a.forEach((n) => {
+    b += n;
+});
+console.log(b); // 45
 ```
 
 ## 8 - Multidimensional Arrays
