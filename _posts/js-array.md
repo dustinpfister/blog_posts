@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 12:33:36
-version: 1.96
+updated: 2021-11-28 12:41:06
+version: 1.97
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -389,12 +389,13 @@ arr.forEach(function (n, i) {
 });
 ```
 
-## 7 - Filtering an Array
+## 7 - Array Prototype methods
+
+
+
+### 7.1 - Using Array.filter
 
 One of the most important tasks to preform with arrays is to filter them to create a new array that is a kind of sub collection of elements. One of the many Array prototype methods is [Array.filter](/2020/10/03/js-array-filter/) than can help with filtering tasks. The Array.filter method creates a new array rather than mutating the Array that it is call off of making Array.filter a functional programming friendly method.
-
-## 7.1 - Using Array.filter
-
 To use Array.filter all I need to do is just call the method, and pass a function that will be used to filter the Array that I call filter off of. The current element is passed as the first argument which I can use when defining the logic that will be used to filter. If a true boolean value is returned the current element will be included, else it will not.
 
 
@@ -408,7 +409,7 @@ console.log(arr); // [2,3,16,7,9,128]
 console.log(pow2); // [2,16,128]
 ```
 
-## 8 - Mapping an Array
+### 7.2 - Mapping an Array
 
 Another handy Array method to know about is of course Array.map. This method is useful when I want to apply some kind of logic to all elements in an array, and remap the contents in the process. This is another array method that excepts a function as its first argument like that of Array.forEach, or Array.filter. However this time the returned value is what will be set as the current index value.
 
@@ -426,11 +427,9 @@ console.log(a); // [2,4,8,16,32,64]
 
 In lodash there is the [\_.map](/2018/02/02/lodash_map/) method that works the same way as Array.map, but it is a collection method so it can be used with objects as well as a means of mapping both array elements, and objects keys in general.
 
-## 9  - finding something in an array
+### 7.3  - finding something in an array
 
 When it comes to working with an array there will come a time where I will want to [find something in the array](/2021/07/19/js-array-find). This can have more that one meaning, but will often mean finding a single element in the array. There is some over lap though when it comes to finding something in an array, filtering and array, and sorting an array though.
-
-### 9.1 - The array find method
 
 There is the array find method that can be used to find a single element in an array that meets a condition of some kind given with a function. This works by applying the callback for each element starting from index 0 forward to the end of the array. In the event that the function that is given to the find method returns true for a given element, that element value will then be the returned value from the call of array kind.
 
@@ -444,11 +443,9 @@ var b = a.find(function (n) {
 console.log(b); // 3
 ```
 
-## 10 - Sorting an array
+### 7.4 - Sorting an array
 
 The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place. there are also many useful user space methods that have been made fo this sort of thing, for examples when it comes to using lodash there is also the [lodash sort by method](/2018/07/06/lodash_sortby) that can be used in that framework if that is part of an application. In this section though I will be mainly just going over the user of the array sort method in native javaScript.
-
-## 10.1 - Basic array sort example
 
 Here is a basic example of using the sort array prototype method on an array or primitives. When it comes to using the array sort method this way I do not even have to give a sort function as the default functionally will work well when it comes to that. One thing to point out right away with this is that the array sort method will mutate the order if index values in place. So if I do not want that to happen I will need to make a copy of the array first. If I do not want the numbers to be in the order of smallest to largest I can use the array reverse method, or get into making a custom sort method.
 
@@ -473,11 +470,11 @@ arr.sort().reverse();
 console.log(arr); //[ 9, 8, 6, 5, 4, 3, 2 ]
 ```
 
-## 11 - Multidimensional Arrays
+## 8 - Multidimensional Arrays
 
 There are two general ways of making Multidimensional Arrays in javaScript as I see it. There are arrays of arrays, and then there is using a formula to make a sort of virtual multidimensional array that is really just a plain old linear array.
 
-### 11.1 - Arrays of Arrays
+### 8.1 - Arrays of Arrays
 
 One way to go about having a multidimensional array in javaScript is to have an Array of Arrays.
 
@@ -492,7 +489,7 @@ var grid = [
 console.log( grid[1][1] ); // 5
 ```
 
-### 11.2 - Plain old linear Array, but with style.
+### 8.2 - Plain old linear Array, but with style.
 
 So I do not have to have an array of arrays, but just a simple plain old linear array. So this can be thought of as a kind of virtual multidimensional array, because it is just a linear collection of elements. When doing this an expression can be used as a way to get the proper index.
 
@@ -542,11 +539,11 @@ var g = createGrid(4, 3);
 console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
 ```
 
-## 12 - Array length and count
+## 9 - Array length and count
 
 Another subject of arrays is what is often referred to as the [length of an array](/2018/12/14/js-array-length/) to which I will not be getting into in detail here as I have all ready went off the deep end when it comes to that topic. The length of an array is just a property of an array object that contains a number that is the current max element size of an array, but with that said yes the length can change. The length of an array is often confused with other values of an array, such as the number of actual public numbed keys, or elements that there are in the array. So it is worth looking into playing around with a few quick code examples to have a better understating of what the deal is with array length, and that this is not always reflective as to how many elements are in the array, depending on how you go about counting elements.
 
-## 12.1 - Basic array length example
+## 9.1 - Basic array length example
 
 First off there is just knowing what the length property is about when it comes to a typical basic situation at least. If I have an array that I create with the array bracket syntax then the length of that array is 1 as one might expect.
 
@@ -558,6 +555,6 @@ console.log(a.length); // 1
 console.log(a[0]); // 'foo'
 ```
 
-## 13 - Conclusion
+## 10 - Conclusion
 
 There is a great deal more to write about when it comes to javaScript Arrays. I did not even scratch the surface when it comes to every little thing to know about with Arrays in javaScript. For example there is more to write about when it comes to typed arrays, and how they differ from the regular typical arrays that are used in javaScript. in lodash there is a lengthly collection of methods that can be used to help with common programming tasks surrounding arrays, as well as with objects in general to discus as well. Hopefully this post did a decent job of covering some of the basics and then some though.
