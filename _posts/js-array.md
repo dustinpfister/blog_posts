@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:01:09
-version: 1.100
+updated: 2021-11-28 13:01:42
+version: 1.101
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -445,7 +445,7 @@ console.log(b); // 3
 
 ### 7.4 - Sorting an array
 
-The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place. there are also many useful user space methods that have been made fo this sort of thing, for examples when it comes to using lodash there is also the [lodash sort by method](/2018/07/06/lodash_sortby) that can be used in that framework if that is part of an application. In this section though I will be mainly just going over the user of the array sort method in native javaScript.
+The [array sort method](/2019/12/02/js-array-sort/) is the native javaScript way to go about sorting an array in place. there are also many useful user space methods that have been made for this sort of thing, for examples when it comes to using lodash there is also the [lodash sort by method](/2018/07/06/lodash_sortby) that can be used in that framework if that is part of an application. In this section though I will be mainly just going over the user of the array sort method in native javaScript.
 
 Here is a basic example of using the sort array prototype method on an array or primitives. When it comes to using the array sort method this way I do not even have to give a sort function as the default functionally will work well when it comes to that. One thing to point out right away with this is that the array sort method will mutate the order if index values in place. So if I do not want that to happen I will need to make a copy of the array first. If I do not want the numbers to be in the order of smallest to largest I can use the array reverse method, or get into making a custom sort method.
 
