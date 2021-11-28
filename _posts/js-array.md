@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 12:23:39
-version: 1.95
+updated: 2021-11-28 12:33:36
+version: 1.96
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -179,10 +179,11 @@ There is a great deal more to write about when it comes to array like objects, s
 
 ## 3 - Pushing, shifting, and adding elements to an array
 
-Once an Array is created it is important to know how to add elements to it. There are a number of ways to do so, with array prototype methods, as well as just directly writing index values. The most common way to go about adding elements to an array in javaScript may be the Array.push method, but there are a number of other ways to do so as well that a javaScript developer should be aware of.
+Once an Array is created it is important to know how to add elements to it. There are a number of ways to do so, with array prototype methods, as well as just directly writing index values. The most common way to go about adding elements to an array in javaScript may be the Array.push method as a way to just append one or more elements to the end of an array, but there are a number of other ways to do so as well that a javaScript developer should be aware of. In this section then I will be running over some of the various ways that I find myself adding elements to an array when working on a project.
+
 ### 3.1 - Just adding, or overwriting by index
 
-One of the most simple ways to go about adding elements to an Array is to just use the square bracket notation to set the element value of a desired index. To do this just use square brackets after the variable name with the desired index value passed via the brackets. This can be used as a way to both set, and query a certain index value of the array.
+One of the most simple ways to go about adding elements to an Array is to just use the square bracket notation to set the element value of a desired index. To do this just use square brackets after the variable name with the desired index value passed via the brackets. This can be used as a way to both set, and query a certain index value of the array. For example I can use a while loop to just step an index variable and then use that index variable with the bracket syntax to start setting element values of an array.
 
 ```js
 var arr = [],
@@ -196,6 +197,8 @@ while (i < len) {
  
 console.log(arr[3]); // 8
 ```
+
+There are a number of other ways to add or set element to an array rather than just using a while loop though. For example I can create a function that uses an expression to figure what an index value should be for a single element that I want to add or change
 
 ### 3.2 - Use Array.push to add an element to the end of an Array
 
