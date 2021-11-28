@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 12:12:35
-version: 1.93
+updated: 2021-11-28 12:19:26
+version: 1.94
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -158,7 +158,21 @@ console.log(a); // [ 'foo', 'bar' ]
 // only it will be an array of values rather than the key names
 var b = Object.values({foo:1,'bar': 2});
 console.log(b); // [ 1, 2 ]
+```
 
+### 2.5 - The array from method for creating arrays from array like objects
+
+There is then the [array from static method](/2020/01/27/js-array-from/) of the Array global that is yet another way to go about creating an array. What is great about thuis method is that it is a nice way to go about quickly creating an array from an array like object.
+
+
+```js
+var a = Array.from({
+        0: 1,
+        1: 2,
+        2: 3,
+        length: 3
+    });
+console.log(a); // [ 1, 2, 3 ]
 ```
 
 ## 3 - Pushing, shifting, and adding elements to an array
