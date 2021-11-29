@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 13:16:53
-version: 1.118
+updated: 2021-11-29 13:20:50
+version: 1.119
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -593,7 +593,7 @@ console.log( get(grid, 2, 1) ); // 5
 
 ### 8.3 - The array flat method
 
-The flat method that I covered in the section on prototypes will then come into play when it comes to working with multidimensional arrays. That is that if I have an array of arrays, but I want to flatten that into a form like that of the linear array from that I tend to prefer, then I am going to want a flatten method.
+The flat method that I covered in the section on prototypes will then come into play when it comes to working with multidimensional arrays. That is that if I have an array of arrays, but I want to flatten that into a form like that of the linear array from that I tend to prefer, then I am going to want a flatten method. The thing about the flat array prototype method is that it is still relatively new in the grand scheme of things, if this proves to not be a problem with the clients that you care about then maybe one can just use the flatten method and move on. If it is a problem then there is using some kind of user space solution in place of the array flat method, with that said when it comes to [lodash there are a few methods that have to do with flattening](/2018/08/12/lodash_flatten/) an array.
 
 ```js
 // Polly fill found here
