@@ -50,6 +50,7 @@ app.get(/\d{4}\/\d{2}\/\d{2}/, (req, res) => {
                     html += '<h1>' + headerObj.title + '</h1>';
                     html += '<ul><li>internal 200: <span id=\"count_internal_200\">0</span></li>' +
                     '<li>internal 404: <span id=\"count_internal_404\">0</span></li>' +
+                    '<li>internal 500: <span id=\"count_internal_500\">0</span></li>' +
                     '<li>internal unkown: <span id=\"count_internal_unkown\">0</span></li></ul>';
                     html += marked(text_md_clean);
                     html += '<script src=\"/js/links.js\"></script>';

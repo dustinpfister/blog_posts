@@ -40,6 +40,8 @@ links_intern.forEach(function (a) {
     var count_200 = parseInt(el_200.innerText);
     var el_404 = document.querySelector('#count_internal_404');
     var count_404 = parseInt(el_404.innerText);
+    var el_500 = document.querySelector('#count_internal_500');
+    var count_500 = parseInt(el_500.innerText);
     if (xml.status === 200) {
         a.style.background = 'lime';
         count_unkown -= 1;
@@ -54,11 +56,14 @@ links_intern.forEach(function (a) {
     }
     if (xml.status === 500) {
         a.style.background = 'red';
+        count_unkown -= 1;
+        count_500 += 1;
         console.log(xml.status);
     }
     el_unkown.innerText = count_unkown;
     el_200.innerText = count_200;
     el_404.innerText = count_404;
+    el_500.innerText = count_500;
 });
 
 //console.log(links.map((a)=>{ return a.href;}));
