@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 12:08:52
-version: 1.116
+updated: 2021-11-29 13:13:48
+version: 1.117
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -572,59 +572,190 @@ var grid = [
     [4, 5, 6],
     [7, 8, 9]
 ];
- 
 console.log( grid[1][1] ); // 5
 ```
 
 
 ### 8.2 - Plain old linear Array, but with style.
 
-So I do not have to have an array of arrays, but just a simple plain old linear array. So this can be thought of as a kind of virtual multidimensional array, because it is just a linear collection of elements. When doing this an expression can be used as a way to get the proper index.
+So I do not have to have an array of arrays, but just a simple plain old linear array. So this can be thought of as a kind of virtual multidimensional array, because it is just a linear collection of elements. When doing this an expression can be used as a way to get of set the proper index in the array.
 
 ```js
-var createGrid = function (w, h) {
- 
-    var grid = [],
-    i = 0;
- 
-    w = w || 8;
-    h = h || 6;
- 
-    // creating the grid
-    while (i < w * h) {
-        grid.push({
-            i: i,
-            x: i % w,
-            y: Math.floor(i / w)
-        });
-        i += 1;
+var get = function (grid, x, y) {
+    return y * grid.w + x;
+};
+var grid = {
+    w: 3,
+    cells: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+};
+console.log( get(grid, 2, 1) ); // 5
+```
+
+### 8.3 - The array flat method
+
+```js
+// Polly fill found here
+// https://www.npmjs.com/package/array-flat-polyfill
+if (!Array.prototype.flat) {
+    Object.defineProperty(Array.prototype, 'flat', {
+        configurable: true,
+        value: function flat() {
+            var depth = isNaN(arguments[0]) ? 1 : Number(arguments[0]);
+            return depth ? Array.prototype.reduce.call(this, function (acc, cur) {
+                if (Array.isArray(cur)) {
+                    acc.push.apply(acc, flat.call(cur, depth - 1));
+                } else {
+                    acc.push(cur);
+                }
+                return acc;
+            }, []) : Array.prototype.slice.call(this);
+        },
+        writable: true
+    });
+}
+// demo
+let a = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+let b = a.flat();
+console.log(b); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+### 8.4 - Having a chunk method
+
+```js
+// https://levelup.gitconnected.com/lodash-methods-that-can-be-easily-implemented-in-plain-javascript-bbe22509827e
+var chunk = function (arr, size) {
+    var chunkedArr = [];
+    arr = arr || [];
+    size = size === undefined ? 1 : size;
+    for (var i = 0; i < arr.length; i += size) {
+        chunkedArr.push(arr.slice(i, i + size));
     }
- 
-    // I can append a method to grid,
-    // because arrays are still objects
-    grid.get = function (ix, y) {
- 
-        if (arguments.length === 1) {
-            return grid[ix];
+    return chunkedArr;
+};
+// demo
+var a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log( chunk(a, 3) );
+// [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
+```
+
+### 8.5 - Starting point for a grid module
+
+```js
+// Grid Module
+var gridMod = (function () {
+    // public api
+    var api = {};
+    // Polly fill the flat method ( if needed as always )
+    // https://www.npmjs.com/package/array-flat-polyfill
+    if (!Array.prototype.flat) {
+        Object.defineProperty(Array.prototype, 'flat', {
+            configurable: true,
+            value: function flat() {
+                var depth = isNaN(arguments[0]) ? 1 : Number(arguments[0]);
+                return depth ? Array.prototype.reduce.call(this, function (acc, cur) {
+                    if (Array.isArray(cur)) {
+                        acc.push.apply(acc, flat.call(cur, depth - 1));
+                    } else {
+                        acc.push(cur);
+                    }
+                    return acc;
+                }, []) : Array.prototype.slice.call(this);
+            },
+            writable: true
+        });
+    }
+    // check method
+    var chunk = function (arr, size) {
+        var chunkedArr = [];
+        arr = arr || [];
+        size = size === undefined ? 1 : size;
+        for (var i = 0; i < arr.length; i += size) {
+            chunkedArr.push(arr.slice(i, i + size));
         }
- 
+        return chunkedArr;
+    };
+    // create a new grid method
+    api.create = function (w, h) {
+        // defaults for arguments
+        w = w === undefined ? 8 : w;
+        h = h === undefined ? 8 : h;
+        // start grid object
+        var grid = {
+            w: w,
+            h: h,
+            cells: []
+        },
+        i = 0;
+        // creating the grid
+        while (i < grid.w * grid.h) {
+            grid.cells.push({
+                i: i,
+                x: i % grid.w,
+                y: Math.floor(i / grid.w),
+                data: {}
+            });
+            i += 1;
+        }
+        return grid;
+    };
+    // create from arrays method
+    api.createFromArrays = function (arrays) {
+        var w = arrays[0].length,
+        h = arrays.length,
+        grid = api.create(w, h);
+        var sourceNodes = arrays.flat(1);
+        grid.cells = grid.cells.map(function (cell, i) {
+                cell.data = sourceNodes[i] || {};
+                return cell;
+            });
+        return grid;
+    };
+    // grid to arrays method
+    api.gridToArrays = function(grid){
+        return chunk(grid.cells, grid.w);
+    };
+    // get method
+    api.get = function (grid, ix, y) {
+        // if one argument is given
+        if (arguments.length === 2) {
+            ix = ix >= grid.cells.length ? grid.cells.length - 1 : ix;
+            ix = ix < 0 ? 0 : ix;
+            return grid.cells[ix];
+        }
         // using a formula to get the desired
         // element
-        if (arguments.length === 2) {
-            return grid[y * w + ix];
+        if (arguments.length === 3) {
+            ix = ix >= grid.w ? grid.w - 1 : ix;
+            ix = ix < 0 ? 0 : ix;
+            y = y >= grid.h ? grid.h - 1 : y;
+            y = y < 0 ? 0 : y;
+            return grid.cells[y * grid.w + ix];
         }
- 
-        return grid[grid.length-1];
- 
-    }
- 
-    return grid;
- 
-};
- 
-var g = createGrid(4, 3);
- 
-console.log(g.get(1,2)); {i: 9, x: 1, y: 2}
+        // returns the last cell by default
+        return grid[grid.cells.length - 1];
+    };
+    // return the public api
+    return api;
+}
+    ());
+// DEMOS
+// create new
+var grid = gridMod.create(3, 3);
+console.log(gridMod.get(grid, 1, 2)); // { i: 7, x: 1, y: 2, data: {} }
+// from array of arrays
+var arrays = [
+    [{money: 0}, {money: 0}, {money: 0}],
+    [{money: 0}, {money: 0}, {money: 0}],
+    [{money: 7}, {money: 0}, {money: 0}]
+];
+var grid = gridMod.createFromArrays(arrays);
+console.log(gridMod.get(grid, 0, 2)); // { i: 6, x: 0, y: 2, data: { money: 7 } }
+// grid to arrays method
+console.log(gridMod.gridToArrays(grid));
 ```
 
 ## 9 - Array length and count
