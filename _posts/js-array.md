@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 11:41:03
-version: 1.110
+updated: 2021-11-29 11:46:33
+version: 1.111
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -517,6 +517,8 @@ console.log(b); // 45
 ```
 
 ### 7.7 - The flat method for flattening out an array of arrays into just one array 
+
+The [array flat method](/2021/07/15/js-array-flat/) is the standard built in array prototype method for creating a single array of elements from an array of arrays of elements.
 
 ```js
 // demo
