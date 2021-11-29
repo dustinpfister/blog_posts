@@ -5,27 +5,35 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-02 12:59:00
-version: 1.84
+updated: 2021-11-29 09:11:58
+version: 1.85
 ---
 
-In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about an html element with a method the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
+In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
 
 There are three general event types of interest when working something out with mouse events that are [onmousedown](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousedown), [onmosemove](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove), and [onmouseup](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseup). There are other events of interest, but for the most part I only bother with those three events when working out any kind of user interface that will make use of a mouse if present.
 
-Mouse events alone are not the best way to go about making a truly universal input controller type module or component of an application. There are of course also touch events, and keyboard events that should be taken into consideration also when working on something to that effect. However mouse events would be best when it comes to attaching events that will allow for a great deal of control over what will happen for traditional desktop clients.
+Mouse events alone are not the best way to go about making a truly universal input controller type module or component of an application. There are of course also touch events, and keyboard events that should be taken into consideration also when working on something to that effect. 
+
+When it comes to working out an interface that will work with pointer devices in general it might be better to start out with pointer events actually. Pointer events are as the same suggests about pointers in general not just in terms of a mouse, but touch and pen devices also. There is then only bothering with mouse and touch events when it comes to making separate user interfaces for desktop and mobile devices.
+
+However mouse events work great when it comes to attaching events that will allow for a great deal of control over what will happen for traditional desktop clients. In any case in this post I will be covering a great deal about mouse events, but also pointer events in general while I am at it.
 
 <!-- more -->
 
 ## 1 - JavaScript mouse events basics
 
-So for a basic example of javaScript mouse events I quickly put together this example that will just display the current state of a the mouse position, and the state of the left mouse button.
+In this section I will be starting out with some simple examples of mouse events, and various other client side JavaScript features that will pop up while working with them.
 
-In this example I just have a simple state object as well as some helper methods for setting the position of the state object, as well as rendering the state of the values to an html element. I am then just attaching event handlers to the window object with the add event listener method by calling the add event listener method off of the window object. Each time I call the add event listener method I pass a string value for the desired event type I want to attach for, and then a function that will fire each time the event happens.
+The main element object and nice method to be aware of when it comes to attaching mouse events and events in general is the add event listener method. Each time I call the add event listener method I pass a string value for the desired event type I want to attach for, and then a function that will fire each time the event fires. Inside the body of this function I will have access to an event object that contains useful info about the event. For mouse events this event object contains information about where in the browser window the event happened, the mouse button that was clicked of any, and a reference to an element where it happened to name just a few features of interest with these event objects.
+
+I will be trying my best to keep these examples as simple as possible but I still assume that you have at least some background with client side JavaScript. If not you might want to start out with some kind of getting started guide with JavaScript in general and embedding JavaScript into a page using script tags.
 
 ### - The source code examples in this post are on github
 
-Like all my other posts on vanilla javaScript the source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-mouse) on Github. This post is still very much a work in progress as there is still a lot to cover when it comes to working with a mouse in client side javaScript beyond just that of the very basics at least. In the test vjs repository I have the latest source code examples, and other assets that may not always be included in the source code examples I embed into the content here. I also have my notes when it comes to future edits, and the Github repository would be a good place to make pull requests. There is also the comments section of this post that can eb sued to bring something up that is related to working with a mouse in client side javaScript.
+Like all my other posts on vanilla javaScript the source code examples in this post can be found in my [test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-mouse) on Github. This post is still very much a work in progress as there is still a lot to cover when it comes to working with a mouse in client side javaScript beyond just that of the very basics at least.
+
+In the test vjs repository I have the latest source code examples, and other assets that may not always be included in the source code examples I embed into the content here. I also have my notes when it comes to future edits, and the Github repository would be a good place to make pull requests. There is also the comments section of this post that can be used to bring up something that is related to working with a mouse in client side javaScript.
 
 ### 1.1 - The window on click event
 
@@ -51,13 +59,15 @@ window.onclick = function(e){
 </html>
 ```
 
-using the on click property of the window object, or any other node such as an element, can be though of as the old, tired yet true way of doing this sort of thing. If for some reason you want to get your code to work on what is now very old web browsers you would want to do something like this.
+Using the on click property of the window object, or any other node such as an element, can be thought of as the old, tired yet true way of doing this sort of thing. If for some reason you want to get your code to work on what are now very old web browsers you would want to do something like this. However for the most part I find myself just using the add event listener method as the method is well supported these days.
 
 ### 1.2 - Using addEventListener to attach an event to window
 
-A more modern way of attaching [event listeners](/2019/01/16/js-event-listeners/) to the window object, as well as nodes in general including elements would be to use the add event listener method. One major improvement with this is that it can be used as a way to attach more than one hander. Although it may not be one of the oldest ways of going about preforming event attachment, at this point it is only fairly old browsers that will result in code breaking changes.
+A more modern way of attaching [event listeners](/2019/01/16/js-event-listeners/) to the window object, as well as nodes in general including elements would be to use the add event listener method. One major improvement with this is that it can be used as a way to attach more than one hander. Although it may not be one of the oldest ways of going about performing event attachment, at this point it is only fairly old browsers that will result in code breaking changes.
 
-Once again I am just stepping a count variable in the body of one event hander, but in the other event hander I am using the [style API](/2019/02/12/js-javascript-style) as a way to change a CSS value for the div. For this example I am just using the style api to change the background color of a div, but it can also be used to change any css value such as the left and top properties when using an absolute positioned div. 
+Once again I am just stepping a count variable in the body of one event handler, but in this event handler I am using the [style API](/2019/02/12/js-javascript-style) as a way to change a CSS value for the div rather than just setting the value of a text node.
+
+For this example I am just using the style api to change the background color of a div, but it can also be used to change any css value such as the left and top properties when using an absolute positioned div. 
 
 ```html
 <html>
@@ -86,7 +96,11 @@ window.addEventListener('click', function(e){
 
 ### 1.3 - The mouse down, up, move events, and event objects
 
-On top of the click event there are also a number of other mouse events such as the mousedown event that will fire the very moment that a mouse button is clicked, and the mouseup button that will fire once a mouse button is released. This is also the mouse move method that wil fire each time the mouse pointer location changes. On top of the additional events beyond that of just the click event there is also the [event object](/2020/07/23/js-event-object/) that is passed to a hander that contains all kinds of useful information about the event. Such as the position relative to the window, and references to the elements or nodes in which the event happed.
+On top of the click event there are also a number of other mouse events such as the mousedown event that will fire the very moment that a mouse button is clicked, and the mouseup button that will fire once a mouse button is released. There is also the mouse move method that will fire each time the mouse pointer location changes. 
+
+On top of the additional events beyond that of just the click event there is also the [event object](/2020/07/23/js-event-object/) that is passed to a handler that contains a fair amount of data about the mouse event. For this example then I will be using the client x and client y properties to find the window relative position of the mouse cursor when these events happen.
+
+In this example I am adding a state object that will be used to store an x and y value as well as a down boolean value. I then aim to mutate this state object's values with mouse events, and update a view for this state object each time an event happens.
 
 ```html
 <html>
@@ -131,11 +145,13 @@ render(state);
 </html>
 ```
 
-When this example is up and running in the browser I end up with the current values of the state object being displayed. moving the mouse around will result in the position being updated, and clicking the mouse button will change the value of the down boolean value.
+When this example is up and running in the browser I end up with the current values of the state object being displayed. Moving the mouse around will result in the position being updated, and clicking the mouse button will change the value of the down boolean value.
 
 ### 1.4 - parent and child divs
 
-Now for an example where I am really starting to get into the whole parent and child element with with mouse events. For this example I have a single parent div, and I am creating and injecting a whole bunch of child elements into this parent element. This time around I am attaching just a single event hander to the parent element, and I am using the target and current target properties of the event object to find out if I am dealing with a child element or not. In the event that I am dealing with a child element that was clicked I am giving just the child a new random position, else if I am clicking the parent element then I set new random positions for all the children of the parent element.
+Now for an example where I am starting to get into the whole parent and child element thing with mouse events. For this example I have a single parent div, and I am creating and injecting a whole bunch of child elements into this parent element. This time around I am attaching just a single event handler to the parent element, and I am using the target and current target properties of the event object to find out if I am dealing with a child element or not. 
+
+In the event that I am dealing with a child element that was clicked I am giving just the child a new random position, else if I am clicking the parent element then I set new random positions for all the children of the parent element. So then this is just another example of what there is to work with when it comes to event objects in mouse events. I can get a window relative position, and I can get references to elements.
 
 ```html
 <html>
@@ -213,11 +229,11 @@ So one thing that might come up right away is that the position that is obtained
 
 One way to go about resolving the issue of the position not being relative to an element rather than the window the get [bounding client rect method](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) of the target element of the event object can be used to get the position of the element in the window. These values can then be used to get a position that is relative to the element rather than the whole window by subtracting values in the object that is returned from the clientX, and clientY values. 
 
-There may be additional ways of going about getting an element relative position, and also a whole bunch of other things that might come up when it comes to all kinds of related tasks that will branch off from this such as making methods that will work not just with mouse events but pointer events in general. So then in this section I will be getting into some basic examples, and then maybe some not so basic examples of making a system to get element relative positions from event objects of mouse and pointer event handers.
+There may be additional ways of going about getting an element relative position, and also a whole bunch of other things that might come up when it comes to all kinds of related tasks that will branch off from this such as making methods that will work not just with mouse events but pointer events in general. So then in this section I will be getting into some basic examples, and then maybe some not so basic examples of making a system to get element relative positions from event objects of mouse and pointer event handlers.
 
 ### 2.1 - Basic get element relative position example
 
-For this example I am attaching an event hander to a div element, and using the [inner html property](/2019/01/13/js-innerhtml/) as a way to create, and recreate a child div each time the parent div is clicked. For this example I am making sure to use the current target property rather than the target property to get a reference to the parent element. The reason why is because the target property might end up referring to the child element that I am creating for the inner html value of the parent element.
+For this example I am attaching an event handler to a div element, and using the [inner html property](/2019/01/13/js-innerhtml/) as a way to create, and recreate a child div each time the parent div is clicked. For this example I am making sure to use the current target property rather than the target property to get a reference to the parent element. The reason why is because the target property might end up referring to the child element that I am creating for the inner html value of the parent element.
 
 ```html
 <html>
@@ -258,7 +274,7 @@ document.querySelector('.parent').addEventListener('click', function(e){
 
 ### 2.2 - Method to get an element relative position for mouse and touch events
 
-Working out how to get an element rather than window relative mouse cursor position is one thing, but often I will want to get such a position for touch events also. So then there is often a need to have some kind of simple helper method that will return an object with adjusted x and y values from a given event object from a mouse or touch event. If the event object is a mouse event I can just use clientX, and clientY, but if the event object is a touch event that makes things a little more involved. One major reason why is the because when it comes to touch devices there is of course muti touch. So With a touch event I have not think more in terms of an array of objects where each object contains a clientX, and clientY value.
+Working out how to get an element rather than window relative mouse cursor position is one thing, but often I will want to get such a position for touch events also. So then there is often a need to have some kind of simple helper method that will return an object with adjusted x and y values from a given event object from a mouse or touch event. If the event object is a mouse event I can just use clientX, and clientY, but if the event object is a touch event that makes things a little more involved. One major reason why is because when it comes to touch devices there is of course multi touch. So With a touch event I have to think more in terms of an array of objects where each object contains a clientX, and clientY value.
 
 ```html
 <html>
@@ -311,7 +327,7 @@ parent.addEventListener('touchmove', pointerMove);
 
 ### 2.3 - Canvas element example with mouse and touch events
 
-One more example now this time I am getting the get element relative method to work well with canvas elements also. This will often require just one little adjustment that has to do with a weird issue when it comes to the scaled size of a canvas relative to the actual native size of the canvas. Aside from that the method seems to work well with canvas elements also when I made just one little revision to the source code of the get element relative method.
+One more example now, this time I am getting the get element relative method to work well with canvas elements also. This will often require just one little adjustment that has to do with a weird issue when it comes to the scaled size of a canvas relative to the actual native size of the canvas. Aside from that the method seems to work well with canvas elements also when I made just one little revision to the source code of the get element relative method.
 
 ```html
 <html>
@@ -400,7 +416,7 @@ The [on click event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEven
 
 ### 3.1 - A basic on click event example
 
-So start off with this section I am going to just have a very basic example of the on click event. For this one I just quickly put together a quick example that involves just using the click event with a div element and making it so that clicking the div element will toggle the background color by way of the style api.
+To start off with this section I am going to just have a very basic example of the on click event. For this one I just quickly put together a quick example that involves just using the click event with a div element and making it so that clicking the div element will toggle the background color by way of the style api.
 
 ```html
 <html>
@@ -471,11 +487,11 @@ render(state);
 </html>
 ```
 
-So then the pointerType property is a good way to go about finding out if I am dealing with a mouse or a touch event when making an event hander that will be used with the click event.
+So then the pointerType property is a good way to go about finding out if I am dealing with a mouse or a touch event when making an event handler that will be used with the click event.
 
 ### 3.3 - Prevent default and mousedown and touchstart events
 
-The pointerType event is useful when it comes to finding out if I am dealing with a mouse or touch event in a on click event. However some times I need to make some kind of system where I need to attach events for mouse down and touch start events, along with maybe additional events. The [default behavior with this kind of situation](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent) is that the touch start event will fire first, and then a mouse down event will fire. If for some reason I do not want this to happen the prevent default method would seem to work okay to suppress this.
+The pointerType event is useful when it comes to finding out if I am dealing with a mouse or touch event in a click event. However sometimes I need to make some kind of system where I need to attach events for mouse down and touch start events, along with maybe additional events. The [default behavior with this kind of situation](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent) is that the touch start event will fire first, and then a mouse down event will fire. If for some reason I do not want this to happen the prevent default method would seem to work okay to suppress this.
 
 ```html
 <html>
@@ -510,9 +526,9 @@ render(state);
 
 ### 3.4 - Input elements and the on click event
 
-So there is attaching a client event to the window object, but there is also attaching events to various other kinds of elements such as an input element. For this example I am attaching an event handler to an input element that is a button type input element. When it comes to input elements it is often the value property of the input element that is of interest. When it comes to button input elements the value property is the display value of the button. So in this example I am attaching and event hander to an input element that will update the display value of the button each time it is clicked with the value of a count variable.
+So there is attaching a client event to the window object, but there is also attaching events to various other kinds of elements such as an input element. For this example I am attaching an event handler to an input element that is a button type input element. When it comes to input elements it is often the value property of the input element that is of interest. When it comes to button input elements the value property is the display value of the button. So in this example I am attaching an event handler to an input element that will update the display value of the button each time it is clicked with the value of a count variable.
 
-In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means. One reason why is because I am making my event hander a stand alone function and then passing a reference to that function for more than one call of the add event listener method. Inside the body of an event hander the target property will be a reference to the element where the event has happened. There is also the current target property that is the current element to which the event element is firing, but that is something that I will be getting more into in a later example.
+In this example I am using the target property of the event object to get a reference to the button that was clicked rather than by some other means. One reason why is because I am making my event handler a stand alone function and then passing a reference to that function for more than one call of the add event listener method. Inside the body of an event handler the target property will be a reference to the element where the event has happened. There is also the current target property that is the current element to which the event element is firing, but that is something that I will be getting more into in a later example.
 
 In this example I am also using the [parseInt method](/2019/05/15/js-parseint) as a way to make sure what might be a string value of a number is converted to a number. I am also making use of html data attributes as a way to store a count value for each element.
 
@@ -578,9 +594,9 @@ setInterval(function(){
 
 ## 4 - Mouse buttons
 
-There are a few things to be aware of when it comes to mouse buttons when working with mouse events, and also taking into account accessibility with touch events still. For example there is often both at least a left and right click mouse button, but often there is also a center click as well as scroll wheel of a mouse. Also there may be a few more buttons on a mouse such as a back and forward button, and even more buttons in some cases.
+There are a few things to be aware of when it comes to mouse buttons when working with mouse events, and also taking into account accessibility with touch events still. For example there is often both a left and right click mouse button, but there is also a center click as well as a scroll wheel of a mouse typicality. Also there may be a few more buttons on a mouse such as a back and forward button, and even more buttons in some cases.
 
-However there is also the fact that a lot of people that visit a web application might be using the application from a touch screen. So the for example there should also be ways of simulating a right click, or at least giving a way to do the same action as a right click.
+However there is also the fact that a lot of people that visit a web application might be using the application from a touch screen. So for example there should also be ways of simulating a right click, or at least giving a way to do the same action as a right click.
 
 There is also the question of the context menu that will pop up on a right click and how to stop that from happening when it comes to working with mouse buttons. With that said in this section I will be going over a few quick examples of working with buttons in client side javaScript.
 
@@ -609,11 +625,11 @@ out.addEventListener('mousedown', function(e){
 </html>
 ```
 
-The return value of the button property should be a number with a value from 0 to 4 for up to five buttons on a mouse that where pressed. A value of 0 should mean the main button of the mouse, in other words the typical left click button. A value of 2 on the other had will be a right click actually as a value of 1 will refer to a center click, or scroll wheel click if you prefer. The values of 3 and 4 will refer to the back and forward buttons that are present on many mouses.
+The return value of the button property should be a number with a value from 0 to 4 for up to five buttons on a mouse that was pressed. A value of 0 should mean the main button of the mouse, in other words the typical left click button. A value of 2 on the other hand will be a right click actually as a value of 1 will refer to a center click, or scroll wheel click if you prefer. The values of 3 and 4 will refer to the back and forward buttons that are present on many mouses.
 
 ### 4.2 - Stop the context menu from showing up on a right click
 
-There is one think to be aware of when it comes to the subject of mouse events and right clicking and that is of course the context menu. By default when I right click a web page in a web browser I get a context menu that gives me some options such as viewing the source code of the web page, or saving an image in the page as a file on my local file system. That is all fine and good, but in some cases I might not want that to happen for a web application so there [should be a way to shop the context menu from showing up](https://stackoverflow.com/a/381848/2057445).
+There is one thing to be aware of when it comes to the subject of mouse events and right clicking and that is of course the context menu. By default when I right click a web page in a web browser I get a context menu that gives me some options such as viewing the source code of the web page, or saving an image in the page as a file on my local file system. That is all fine and good, but in some cases I might not want that to happen for a web application so there [should be a way to stop the context menu from showing up](https://stackoverflow.com/a/381848/2057445).
 
 The way that I have found to do this is to not just make use of the mouse down and touch start events, but also the [on context menu event](https://developer.mozilla.org/en-US/docs/Web/API/Element/contextmenu_event). The main thing to do in a handler for this on context event is to call the prevent default method, however there are some additional things that I might also want to do on top of that when it comes to how things work on various other browsers.
 
@@ -661,11 +677,11 @@ out.addEventListener('contextmenu', oncontext);
 
 ## 5 - Get elements by mouse position
 
-When it comes to getting one or more elements from a mouse position there are a range of ways of going about doing so. When it comes to events such as the click event there is just using the target property of th event object. However things might prove to be a little more involved when I just want to get the top most element from a given window relative position, or get not just one element but all elements that might overlap at a given point. So then in this section I thought I would go over a few examples that have to do with getting one or more element references from a given window relative position or point if you prefer.
+When it comes to getting one or more elements from a mouse position there are a range of ways of going about doing so. When it comes to events such as the click event there is just using the target property of the event object. However things might prove to be a little more involved when I just want to get the top most element from a given window relative position, or get not just one element but all elements that might overlap at a given point. So then in this section I thought I would go over a few examples that have to do with getting one or more element references from a given window relative position or point if you prefer.
 
 ### 5.1 - Just using the on click event and the target property of the event object
 
-As I have mentioned in previous examples the target property of an event object is the original element at which an event has happened. So then one way of going about getting an element by way of a window relative position would be to just attach a o client event to the window object and then just look at the target property of the event object.
+As I have mentioned in previous examples the target property of an event object is the original element at which an event has happened. So then one way of going about getting an element by way of a window relative position would be to just attach a click event to the window object and then just look at the target property of the event object.
 
 ```html
 <html>
@@ -761,11 +777,11 @@ setAt(100, 75);
 </html>
 ```
 
-One draw back of this solution as well as with the basic one that I started this section off with is that I can not get more than one element that my be at the same location all the way down to the body element. In that kind of situation I would need to make some kind of solution that involves filtering threw all the elements preforming bounding box collection for each maybe.
+One drawback of this solution as well as with the basic one that I started this section off with is that I can not get more than one element that may be at the same location all the way down to the body element. In that kind of situation I would need to make some kind of solution that involves filtering through all the elements performing bounding box collection for each maybe.
 
 ### 5.3 - Get all elements at a position
 
-There is also a document method that can be used to get all elements at a given window relative position. So just like that of the document get element from point method, there is also a document get elements from point method. One cool thing about this method is that it will return a plain old array when it comes to the collection of elements that are found overlapping at the given point. It is then just a matter of looping over the nodes and doing whatever is necessary to filter, or preform some checks to make sure that I am just preforming a desired action with the nodes that I actually want to work with at the given point in the browser window.
+There is also a document method that can be used to get all elements at a given window relative position. So just like that of the document get element from point method, there is also a document get elements from point method. One cool thing about this method is that it will return a plain old array when it comes to the collection of elements that are found overlapping at the given point. It is then just a matter of looping over the nodes and doing whatever is necessary to filter, or perform some checks to make sure that I am just performing a desired action with the nodes that I actually want to work with at the given point in the browser window.
 
 ```html
 <html>
@@ -827,7 +843,7 @@ On top of that of buttons a mouse often has a scroll wheel also, and with that s
 
 ### 6.1 - Basic mouse wheel example
 
-Like always I have to start out a section like this with a kind of hello world style example so then here it is. Do make use of this event I just need to use the add event listener method and attach for the wheel event. The inside the body of the event hander there is the deltaY value that can be used to apply as a delta value for a variable.
+Like always I have to start out a section like this with a kind of hello world style example so then here it is. To make use of this event I just need to use the add event listener method and attach for the wheel event. Inside the body of the event handler there is the deltaY value that can be used to apply as a delta value for a variable.
 
 ```html
 <html>
@@ -852,11 +868,11 @@ window.addEventListener('wheel', function(e){
 
 Another option when it comes to working with a mouse, as well as pointer devices in general actually would be to use [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) in place of mouse and or touch events only. these kinds of events are then another way to work with a mouse in client side javaScript, any might also prove to be a good starting point when it comes to the concern that arise when it comes to making web applications that will not just work with a mouse only, which is a big mistake these days to say the least.
 
-One down side of using these events is that I will not have access to the widest range of values and features to work with compared to the mouse events when it comes to things like what button was clicked and so forth. Also when it comes to touch events I do not see touch arrays in the event objects, so I can not do anything with multi touch. However most of the time when I make a project that will use the mouse and also work with touch devices I do not really do much if anything with these advanced features to work with actually so thee pointer events more often than not will work fine.
+One downside of using these events is that I will not have access to the widest range of values and features to work with compared to the mouse events when it comes to things like what button was clicked and so forth. Also when it comes to touch events I do not see touch arrays in the event objects, so I can not do anything with multi touch. However most of the time when I make a project that will use the mouse and also work with touch devices I do not really do much if anything with these advanced features to work with actually so these pointer events more often than not will work fine.
 
 ### 7.1 - Basic pointer event example using the pointer down event
 
-For this example I am starring this section off with an example where I am just attaching a pointer down event to the window object. This is an event that will fire whenever a pointer device will be in what is called active buttons state. This active buttons state is a state in which a mouse button on a mouse was pressed down, or when a touch screen is touched by one or more digits.
+For this example I am starting this section off with an example where I am just attaching a pointer down event to the window object. This is an event that will fire whenever a pointer device will be in what is called active buttons state. This active button state is a state in which a mouse button on a mouse is pressed down, or when a touch screen is touched by one or more digits.
 
 ```html
 <html>
@@ -939,11 +955,11 @@ out.addEventListener('pointermove', function(e){
 
 ## 8 - Simulation of mouse events
 
-I will often be in a situation in which I would want to simulate a client event by way of some javaScript code rather than my actually using my mouse. So then in this section I will be going over a few examples that have to do with simulating mouse events using javaScript. When it comes to element object references there is a [click method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click) that can be called that will work well enough in most cases when I just want to simulate a client event at an element, and I do not care about various details. However another way is by creating a custom event object and then passing that event object to the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of an element object reference which is a great way to go about simulating all kind of events in general beyond just that of mouse events.
+I will often be in a situation in which I would want to simulate a client event by way of some javaScript code rather than by actually using my mouse. So then in this section I will be going over a few examples that have to do with simulating mouse events using javaScript. When it comes to element object references there is a [click method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click) that can be called that will work well enough in most cases when I just want to simulate a client event at an element, and I do not care about various details. However another way is by creating a custom event object and then passing that event object to the [dispatch event method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) of an element object reference which is a great way to go about simulating all kind of events in general beyond just that of mouse events.
 
 ### 8.1 - basic example just using the client method
 
-For this example I just have an event hander attached to the window object that will step a count when clicked. I am then just calling the click method off of the body element by way of the reference attached to the document object.
+For this example I just have an event handler attached to the window object that will step a count when clicked. I am then just calling the click method off of the body element by way of the reference attached to the document object.
 
 ```html
 <html>
@@ -958,16 +974,16 @@ window.onclick = function(e){
     c += 1;
     document.getElementById('out').innerText = c;
 };
-// the click method of an element object can be used to preform a click
+// the click method of an element object can be used to perform a click
 document.body.click();
         </script>
     </body>
 </html>
 ```
 
-### 8.2 - Using the dispacth event method
+### 8.2 - Using the dispatch event method
 
-For this example I am using the dispatch event method rather than just the click method. In order to use the dispatch event method I must have an event object to pass as an argument n for the method. So then I first need to create an event object, an set the properties that I want for the object.
+For this example I am using the dispatch event method rather than just the click method. In order to use the dispatch event method I must have an event object to pass as an argument n for the method. So then I first need to create an event object, and set the properties that I want for the object.
 
 ```html
 <html>
