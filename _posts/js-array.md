@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 11:47:54
-version: 1.112
+updated: 2021-11-29 11:59:39
+version: 1.113
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -529,6 +529,28 @@ let a = [
 ];
 let b = a.flat();
 console.log(b); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+### 7.8 - test if every element in an array meets a condition
+
+```js
+let a = [1, 2, 3, 4],
+b = [1, 'a', 2, 'b'];
+let tester = (el) => typeof el === 'number';
+console.log(a.every(tester)) // true
+console.log(b.every(tester)) // false
+```
+
+### 7.9 - test if some elements meet a condition
+
+```js
+let a = [1, 2, 3, 4],
+b = [1, 'a', 2, 'b'],
+c = ['a', 'b', 'c', 'd'];
+let tester = (el) => typeof el === 'number';
+console.log(a.some(tester)) // true
+console.log(b.some(tester)) // true
+console.log(c.some(tester)) // false
 ```
 
 ## 8 - Multidimensional Arrays
