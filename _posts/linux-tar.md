@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 942
-updated: 2021-11-29 15:03:20
-version: 1.2
+updated: 2021-11-29 15:06:15
+version: 1.3
 ---
 
 The [Linux tar](https://linux.die.net/man/1/tar) command is create for creating archive files from the command line, and the tool can also be used to decompress them also. In this post I will be going over a few examples of the Linux tar command along with a number of other commands and bash features to confirm how this command is useful for compressing things down so they take up less space.
@@ -15,7 +15,9 @@ The [Linux tar](https://linux.die.net/man/1/tar) command is create for creating 
 
 ## 1 - Linux tar basics
 
-In this section I will be starting out with just a few quick examples of the Linux tar command. While I am at it I will also be using a number of other commands in these examples as a way to quickly create some dummy content to compress. For example there is using the [Linux head](/2021/03/10/linux-head) command to read a few charterers worth of data from the \/dev\/random sudo device which is one of many such options in the [dev folder of a Linux system](/2021/11/17/linux-folders-dev/). I then pipe that threw xxd to get random hex code to which I can then write to a text file by making use of redirection. In real examples the content that is to be compresses might be a text file, or a buch of files and folders in a root folder.
+In this section I will be starting out with just a few quick examples of the Linux tar command. While I am at it I will also be using a number of other commands in these examples as a way to quickly create some dummy content to compress. For example there is using the [Linux head](/2021/03/10/linux-head) command to read a few charterers worth of data from the \/dev\/random sudo device which is one of many such options in the [dev folder of a Linux system](/2021/11/17/linux-folders-dev/). I then pipe that threw the [Linux xxd](/2021/11/19/linux-xxd) to get random hex code to which I can then write to a text file by making use of redirection. Another option for creating some quick dummy content would be to use the yes command with the Linux head command again also.
+
+In real examples the content that is to be compresses might be a text file, or a bunch of files and folders in a root folder. However in any case in this section I will be going over just a few simple examples that have to do with creating a compressed file, and then extracting such a file.
 
 ### 1.1 - create a compressed file from random data
 
