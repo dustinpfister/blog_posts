@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 13:27:41
-version: 1.122
+updated: 2021-11-29 13:32:49
+version: 1.123
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -648,7 +648,7 @@ console.log( chunk(a, 3) );
 
 ### 8.5 - Starting point for a grid module
 
-Now that I have covered all these little methods and standards when it comes to creating and working with multidimensional arrays, I now know enough to make at least a starting point for some kind of grid module.
+Now that I have covered all these little methods and standards when it comes to creating and working with multidimensional arrays, I now know enough to make at least a starting point for some kind of grid module. This grid module can have a create method that will create and return a grid object in a standard that I like, but also have a number of public methods that can prove to be helpful when I need to create a grid from an array of arrays standard as well as to export to that standard. There are all kinds of various methods that I would want to make for this kind of module beyond that, but maybe for now I will just work out a decent get method for this module and leave the rest to a more advanced example in this section, or a [whole other post on the topic of making a javaScript grid module](/2021/08/20/js-javascript-grid-module/).
 
 ```js
 // Grid Module
