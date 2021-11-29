@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 942
-updated: 2021-11-29 15:19:55
-version: 1.9
+updated: 2021-11-29 15:21:33
+version: 1.10
 ---
 
 The [Linux tar](https://linux.die.net/man/1/tar) command is great for creating archive files from the command line, and the tool can also be used to decompress them also of course. There are a number of options when it comes to the various kinds of compressed files such as gun zip, and bz2. There is also maybe a thing or two to write about when it comes to all kinds of other various options of the tar command, as well as other commands that might be closely related to the use of the tar command also.
@@ -42,7 +42,7 @@ Once I have created my raw hex file as well as well as the tar file of that text
 
 Now for an example that involves creating a source file, creating a compressed file from the source file, and then deleting the source file. I should then be able to bring back the uncompressed source file by extracting it from the compressed file that was created from it using tar then.
 
-So then this time I am using the yes command to repeat a string over an over again and then piping that to the head command once again to redirect to a file just for the sake of creating some dummy content to compress.
+So then this time I am using the yes command to repeat a string over an over again and then piping that to the head command once again to redirect to a file just for the sake of creating some dummy content to compress. Once I have my dummy content I once again use the Linux tar command to create a gun zip file, but this time I am using the Linux rm command to delete the source file, at which point I just have the gun zip file of the source file I created with yes and head.
 
 ```
 $ yes "Hello World" | head -c 1024 > foo.txt
