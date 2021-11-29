@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 400
-updated: 2021-08-31 12:41:55
-version: 1.42
+updated: 2021-11-29 10:52:58
+version: 1.43
 ---
 
-When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. 
+When starting to develop a complex project with javaScript the importance of using [modules](https://en.wikipedia.org/wiki/Modular_programming) becomes of greater interest to help keep things neat, easy to follow, and to debug when it comes to working out problems with code. Modules are a great way to keep one of my projects broken down into smaller units of code that are easier to manage compared to one large monolithic block of code that all to often ends up getting messy. I have come to find that it is often a good idea to try to think more in terms of a whole bunch of smaller, simpler applications that work together, rather than just one big project also, and modules are a great way to start going in that direction.
 
 There are a lot of talking points when it comes to modules and javaScript, and often the subject can get a little confusing especially for beginners with javaScript and modules. For example modules can be made in a way in which the module will work by itself without the need for any additional code that the modules depends on. However often I make modules where there is at least one central utility module of sorts, and then a few additional modules that will work on top of the main utility method and will thus break without the use of that main module.
 
