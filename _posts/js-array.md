@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 13:25:16
-version: 1.121
+updated: 2021-11-29 13:27:41
+version: 1.122
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -647,6 +647,8 @@ console.log( chunk(a, 3) );
 ```
 
 ### 8.5 - Starting point for a grid module
+
+Now that I have covered all these little methods and standards when it comes to creating and working with multidimensional arrays, I now know enough to make at least a starting point for some kind of grid module.
 
 ```js
 // Grid Module
