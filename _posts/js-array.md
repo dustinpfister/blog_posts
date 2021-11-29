@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 12:01:22
-version: 1.114
+updated: 2021-11-29 12:05:59
+version: 1.115
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -533,7 +533,7 @@ console.log(b); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 ### 7.8 - test if every element in an array meets a condition
 
-The array every method is one of two methods that have to do with testing if all or some of the elements in an array meet a given condition or not. The every method is the method that will only return true of all elements in the array meet a given condition while the some method is what will return true of just one element in the array meets the given condition.
+The [array every method](/2021/07/12/js-array-every/) is one of two methods that have to do with testing if all or some of the elements in an array meet a given condition or not. The every method is the method that will only return true of all elements in the array meet a given condition while the some method is what will return true of just one element in the array meets the given condition. For example if I want to find out of all the elements in an array are numbers or not I can use the array every method and use the type of operator in the expression that will be used to create the return value of the function that I give to the array every method.
 
 ```js
 let a = [1, 2, 3, 4],
