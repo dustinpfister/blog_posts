@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 13:22:17
-version: 1.120
+updated: 2021-11-29 13:25:16
+version: 1.121
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -626,6 +626,8 @@ console.log(b); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
 ### 8.4 - Having a chunk method
+
+On top of having a method to flatten an array of arrays into a single array there is also having a method that is an inversion of this kind of method. In [lodash there is the chunk method](/2017/09/13/lodash-chunk/) that can be used to create an array of arrays from a single array, but there is also looking into just making or finding some kind of [vanilla javaScript solution for this kind of method](https://levelup.gitconnected.com/lodash-methods-that-can-be-easily-implemented-in-plain-javascript-bbe22509827e).
 
 ```js
 // https://levelup.gitconnected.com/lodash-methods-that-can-be-easily-implemented-in-plain-javascript-bbe22509827e
