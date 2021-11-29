@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-29 12:05:59
-version: 1.115
+updated: 2021-11-29 12:08:52
+version: 1.116
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -544,6 +544,8 @@ console.log(b.every(tester)) // false
 ```
 
 ### 7.9 - test if some elements meet a condition
+
+The array some method is then similar to that of the array every method, but it will return true if just one element in the array meets a given condition.
 
 ```js
 let a = [1, 2, 3, 4],
