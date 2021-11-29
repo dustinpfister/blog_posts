@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2021-11-28 13:58:51
-version: 1.108
+updated: 2021-11-29 11:24:50
+version: 1.109
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
@@ -409,9 +409,9 @@ var loop = function () {
 loop();
 ```
 
-## 7 - Array Prototype methods
+## 7 - Array Prototype methods In depth
 
-There is a great number of array prototype methods to work with in order to preform various tasks with arrays. I have all ready use a fair number of them in the various sections of this post so far. However if the aim is to create a comprehensive post on arrays in general in javaScript, then I will want to have a section in which I go over most, if nit all of these methods. So then in this section I will be going over some quick examples of the various array prototype methods that there are to work with that a javaScript developer should become familiar with sooner or later.
+There is a great number of array prototype methods to work with in order to preform various tasks with arrays. I have all ready used a fair number of them in the various sections of this post so far such as push, map, and for each just to name a hand full of them. However if the aim is to create a comprehensive post on arrays in general in javaScript, then I will want to have a section in which I go over most, if not all of these methods. So then in this section I will be going over some quick examples of the various array prototype methods that there are to work with that a javaScript developer should become familiar with sooner or later.
 
 ### 7.1 - Using Array.filter
 
