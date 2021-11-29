@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 412
-updated: 2021-10-14 16:10:23
-version: 1.41
+updated: 2021-11-29 11:14:09
+version: 1.42
 ---
 
 The [String Match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) prototype method in javaScript can be used in combination with a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to find one or more matches of a text pattern in a string. When making a regular expression instance a global flag can be used to get an array of matches for a given text pattern rather than just the first match from right to left.
@@ -22,6 +22,10 @@ So this js string match method is a great method that comes in handy, but it mig
 To know how to use the String.Match method to a fair amount of proficiency it is required to have at least some understanding of how to go about working with regular expressions. I will not be getting into regular expressions in depth in this post as I have [written a post on regex in general](/2019/03/20/js-regex/) before hand. This post will focus more so on using regular expressions to match rather than replace text, and primary using the string match prototype methods rather than alternative methods such as the [regular expression prototype method exec](/2020/07/08/js-regex-exec/).
 
 So in this section I will be going over just a few basic examples of the string match method. This should help to get started with string match to know what it can do, and also what it can not do at least by itself. You might all ready be familiar with the [String index of method](/2020/07/09/js-string-index-of/), and with that said the String match method can be used to do the same thing, but it is a little more advanced. So lets get started with some basic examples of the string match method.
+
+### The examples here can be found on github
+
+The source code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match). Every now and the I get around to editing this post, and with that said the latest notes, and source code examples can be found there.
 
 ### 1.1 - Just getting the first match using a string rather than a regular expression
 
@@ -80,10 +84,6 @@ console.log(m);
 ```
 
 In this example I used the i and g regular expression flags. The i flag is used to set the pattern as case insensitive, and the g flag makes it so that a global search is what is preformed rather than just getting the first instance of a pattern. I also used the digit [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes) as a way to define a regular expression that will not just match a fixed text pattern, but a pattern that will contain a part that is subject to variation in the from of a number, in this case a year after a starting fixed text pattern.
-
-### 1.5 - The examples here can be found on github
-
-The source code examples here can be found in my [test vjs Github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-string-match). Every now and the I get around to editing this post, and with that said the latest notes, and source code examples can be found there.
 
 ## 2 - String.match returns an Array or null
 
