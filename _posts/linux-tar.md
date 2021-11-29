@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 942
-updated: 2021-11-29 15:16:30
-version: 1.8
+updated: 2021-11-29 15:19:55
+version: 1.9
 ---
 
 The [Linux tar](https://linux.die.net/man/1/tar) command is great for creating archive files from the command line, and the tool can also be used to decompress them also of course. There are a number of options when it comes to the various kinds of compressed files such as gun zip, and bz2. There is also maybe a thing or two to write about when it comes to all kinds of other various options of the tar command, as well as other commands that might be closely related to the use of the tar command also.
@@ -23,7 +23,9 @@ In real examples the content that is to be compresses might be a text file, or a
 
 ### 1.1 - create a compressed file from random data
 
-For this example I am creating some random hex by using the Linux head command with the random sudo device and then [piping that threw](/2020/10/09/linux-pipe/) xxd. Once I have my file of random hex I can now use the Linux tar command to create a gun zip archive file of that data. When calling the tar command to create an archive I will want to use the -c option that will set tar into create rather than extract mode, after that I will also want to use the -z and -f options also. Next I will want to give a file name for the archive file, an then the source in this case the random hex text file I created.
+For this example I am creating some random hex by using the Linux head command with the random sudo device and then [piping that threw](/2020/10/09/linux-pipe/) xxd. I am then using another cool bash feature called [redirection](/2020/10/02/linux-redirection/) to create a file as an end result of all of this.
+
+ Once I have my file of random hex I can now use the Linux tar command to create a gun zip archive file of that data. When calling the tar command to create an archive I will want to use the -c option that will set tar into create rather than extract mode, after that I will also want to use the -z and -f options also. Next I will want to give a file name for the archive file, an then the source in this case the random hex text file I created.
 
 ```
 $ head -c 1024 /dev/random | xxd -p > rnd.txt
@@ -39,6 +41,8 @@ Once I have created my raw hex file as well as well as the tar file of that text
 ### 1.2 - Extract a compressed file
 
 Now for an example that involves creating a source file, creating a compressed file from the source file, and then deleting the source file. I should then be able to bring back the uncompressed source file by extracting it from the compressed file that was created from it using tar then.
+
+So then this time I am using the yes command to repeat a string over an over again and then piping that to the head command once again to redirect to a file just for the sake of creating some dummy content to compress.
 
 ```
 $ yes "Hello World" | head -c 1024 > foo.txt
