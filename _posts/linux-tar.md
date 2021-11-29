@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 942
-updated: 2021-11-29 15:10:03
-version: 1.5
+updated: 2021-11-29 15:12:36
+version: 1.6
 ---
 
 The [Linux tar](https://linux.die.net/man/1/tar) command is great for creating archive files from the command line, and the tool can also be used to decompress them also of course. There are a number of options when it comes to the various kinds of compressed files such as gun zip, and bz2. There is also maybe a thing or two to write about when it comes to all kinds of other various options of the tar command, as well as other commands that might be closely related to the use of the tar command also.
@@ -35,6 +35,22 @@ $ du -b rnd.tar.gz
 ```
 
 Once I have created my raw hex file as well as well as the tar file of that text file I can use the Linux du command to see how much space each file takes up. With that said the side of the archive is far less then that of the raw, uncompressed file.
+
+### 1.2 - Extract a compressed file
+
+```
+$ yes "Hello World" | head -c 1024 > foo.txt
+$ tar cvfz foo.tar.gz foo.txt
+$ du -b foo.txt
+1024    foo.txt
+$ du -b foo.tar.gz
+142     foo.tar.gz
+$ rm foo.txt
+$ tar xvf foo.tar.gz
+foo.txt
+$ cat foo.txt | head -c 12
+Hello World
+```
 
 ## 2 - Conclusion
 
