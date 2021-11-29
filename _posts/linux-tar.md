@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 942
-updated: 2021-11-29 15:08:23
-version: 1.4
+updated: 2021-11-29 15:10:03
+version: 1.5
 ---
 
 The [Linux tar](https://linux.die.net/man/1/tar) command is great for creating archive files from the command line, and the tool can also be used to decompress them also of course. There are a number of options when it comes to the various kinds of compressed files such as gun zip, and bz2. There is also maybe a thing or two to write about when it comes to all kinds of other various options of the tar command, as well as other commands that might be closely related to the use of the tar command also.
@@ -38,5 +38,5 @@ Once I have created my raw hex file as well as well as the tar file of that text
 
 ## 2 - Conclusion
 
-That will be it for now when it comes to the linux tar command an d compressing file with it.
+That will be it for now when it comes to the Linux tar command, and compressing as well as extracting files with it. I do get around to editing and expanding my content on Linux now and then, but for now I wanted to at least cover some of the basics when it comes to this command.
 
