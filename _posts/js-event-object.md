@@ -1,27 +1,29 @@
 ---
-title: Event Objects in vanilla javaScript
+title: Event Objects in javaScript a general overview
 date: 2020-07-23 12:11:00
 tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-11-08 13:01:25
-version: 1.66
+updated: 2021-11-29 09:11:55
+version: 1.67
 ---
 
-This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest many others such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
+This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
 
-I forget about things like prevent default now and then, so maybe writing a lengthly post about that and the event object in general will help me to remember better. There is also a great deal to cover when it comes to these events objects, such as the fact that the properties and methods will differ a little from kind of event to another. There are also some advanced topics that come up when it comes to working with these objects, such as creating them with javaScript code and using them to simulate an event by way of a script.
+I forget about things like the prevent default method now and then, so maybe writing a long post about that and the event object in general will help me to remember better. There is also a great deal to cover when it comes to these event objects, such as the fact that the properties and methods will differ a little from one kind of event to another. 
+
+There are also some advanced topics that come up when it comes to working with these objects, such as creating them with javaScript code and using them to simulate an event by way of a script rather than having to create them by some kind of manual action.
 
 <!-- more -->
 
 ## 1 - Some Basic event object examples in client side javaScript
 
-When I add [an event listener](/2019/01/16/js-event-listeners/) to an element with the addEventListner method, or one of the many element properties such as the on click property, I have to give a [callback method](/2019/03/25/js-javascript-callback/) that will fire each time that event happens. In this callback method the first argument will be a reference to an event object. This event objects has many useful properties and methods that can the be used in the body of this callback function. 
+When I add [an event listener](/2019/01/16/js-event-listeners/) to an element with the addEventListner method, or one of the many element properties such as the on click property, I have to give a [callback method](/2019/03/25/js-javascript-callback/) that will fire each time that event happens. In this callback method the first argument will be a reference to an event object. This event object has many useful properties and methods that can be used in the body of this callback function. 
 
 Two major aspects of this kind of object that I use all the time is the target property, and the prevent default method, just to name a few things to work with when it comes to the typical kinds of event objects that I work with in client side javaScript. So maybe a good starting point would make use of those two properties and methods when it comes to some quick basic examples for just getting  started with event objects. When it comes to mouse events there is also the client x and client y properties also that can be used to get a window relative position of the event. 
 
-So in this basic getting started type section I will be going over just a few simple getting started type examples of event attachment, and working with event objects in the event handlers that will be used. Although I will be keeping these examples very simple, this is still not a [getting started with javaScript](/2018/11/27/js-getting-started/) from an absolute beginner. Even in this basic section i assume that you have at least a little experience when it comes to the first steps of client side javaScript as well as [nodejs](/2017/04/05/nodejs-helloworld/).
+So in this basic getting started type section I will be going over just a few simple getting started type examples of event attachment, and working with event objects in the event handlers that will be used. Although I will be keeping these examples very simple, this is still not a [getting started with javaScript](/2018/11/27/js-getting-started/) from an absolute beginner. Even in this basic section I assume that you have at least a little experience when it comes to the first steps of client side javaScript as well as [nodejs](/2017/04/05/nodejs-helloworld/).
 
 ### - The source code examples in this post are on Gihub
 
@@ -57,7 +59,7 @@ el.onclick = function(e){
 
 ### 1.2 - Using the add event listener method
 
-Many javaScript examples on the open web use element properties like the on click property as a way to set a single event hander for an element. However it is often better to go with the add event listener method to attach events as that method will allow for attaching more than one handler to an element. To use it I just need to get a reference to a node that I want to attach to and then call the add event listener method off of that node or element. I then pass a string that is the kind of event that I want to attach for, and then pass the call back function as a second argument.
+Many javaScript examples on the open web use element properties like the on click property as a way to set a single event handler for an element. However it is often better to go with the add event listener method to attach events as that method will allow for attaching more than one handler to an element. To use it I just need to get a reference to a node that I want to attach to and then call the add event listener method off of that node or element. I then pass a string that is the kind of event that I want to attach for, and then pass the call back function as a second argument.
 
 ```html
 <html>
@@ -80,7 +82,7 @@ el.addEventListener('click', function(e){
 
 ### 1.3 - Mouse down event and target property
 
-The click event works great, but in some cases I might want to attach for when a mouse button is pressed down, but not up yet. So when it comes to this there is the mouse down event that will fire just when the mouse button is pressed down. With that said there are also mouse up, and mouse move events that will fire when the mouse button is released and when the mouse is moved.
+The click event works great, but in some cases I might want to attach it for when a mouse button is pressed down, but not up yet. So when it comes to this there is the mouse down event that will fire just when the mouse button is pressed down. With that said there are also mouse up, and mouse move events that will fire when the mouse button is released and when the mouse is moved.
 
 In this example I have a state object that contains properties like a current pointer position, and I have a draw method that will render the current values of this state object to a div element as the inner text content of the div.
 
@@ -137,15 +139,15 @@ draw(div, state);
 </html>
 ```
 
-When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This method will stop any kind of default browser behavior for the event such as text highlighting. This can come in handy when making some kind of game that involve user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
+When clicking and dragging the mouse over the text you will notice that you can not highlight the text, that is because I called the prevetDefault method of the event object. This method will stop any kind of default browser behavior for the event such as text highlighting. This can come in handy when making some kind of game that involves user input for example. when someone clicks and drags over a canvas element I do not want any default browser behavior to happen when they do so.
 
 There is a great deal more to write about when it comes to setting up some kind of system like this. For example there is the question of having touch and keyboard events be a way to also mutate the values of the state object for example. When it comes to doing so I need to know how to work with many various aspects of event objects. For example in touch events I can not just use the client x and client y properties like in mouse events because of the nature of multi touch.
 
 ## 2 - The target property in depth
 
-It might be called for to take a closer look at the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) to really get a better understanding of what the target property is all about. Say you have a whole bunch of nested elements in a container element. For example a grid of div elements position in a grid like pattern in a container element by way of absolute positioning and the style API. Say I want to have an event hander that will fire when an div element in the gird is clicked, I could attach event handers to each of the div elements, or I could just attach one event hander to the main container element because of something know as event bubbling.
+It might be called for to take a closer look at the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) to really get a better understanding of what the target property is all about. Say you have a whole bunch of nested elements in a container element. For example a grid of div elements positioned in a grid like pattern in a container element by way of absolute positioning and the style API. Say I want to have an event handler that will fire when an div element in the grid is clicked, I could attach event handlers to each of the div elements, or I could just attach one event handler to the main container element because of something known as event bubbling.
 
-Here I have a little example that is that gird of divs that I have mentioned with a single event hander attached to the container div. the event hander will change the background color of a div that is the element that is reference by the target property. So when I click one of the nested divs the event bubbles up o the container element, the event hander fires there, and the target property refers to the element where the event happen not the current element where the hander is attached. For that there is another property of interest called the currentTarget property that in the case would refer to the container element rather than one of the divs in the grid.
+Here I have a little example that is that grid of divs that I have mentioned with a single event handler attached to the container div. the event handler will change the background color of a div that is the element that is referenced by the target property. So when I click one of the nested divs the event bubbles up to the container element, the event handler fires there, and the target property refers to the element where the event happened, not the current element where the handler is attached. For that there is another property of interest called the currentTarget property that in that case would refer to the container element rather than one of the divs in the grid.
 
 ```html
 <html>
@@ -187,11 +189,11 @@ container.addEventListener('mousedown',divClick);
 
 ## 3 - Nested elements, the current target property, and the stop propagation method
 
-So there is the target property and then there is the [current target](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget) property of an event object. The target property will be the element where the event happened, and the current target property will be the element where the current event hander is firing. A good way to know the difference would be to play around with something that has to do with a nested collection of elements.
+So there is the target property and then there is the [current target](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget) property of an event object. The target property will be the element where the event happened, and the current target property will be the element where the current event handler is firing. A good way to know the difference would be to play around with something that has to do with a nested collection of elements.
 
-Say I have a collection of divs where each div is nested inside of each other and I have an mouse down event hander attached to each of them. If I click the inner most element the target and current target properties will refer to the same div, but then the events will bubble up to the top level. As the other handers fire the current target property will refer to the current div element, but the target property will still just refer to the div that was clicked. So it is a good idea to know about the differences between the two properties in an event object that have to do with element references, if not it is easy to understand how this can cause some confusion.
+Say I have a collection of divs where each div is nested inside of each other and I have a mouse down event handler attached to each of them. If I click the innermost element the target and current target properties will refer to the same div, but then the events will bubble up to the top level. As the other handlers fire the current target property will refer to the current div element, but the target property will still just refer to the div that was clicked. So it is a good idea to know about the differences between the two properties in an event object that have to do with element references, if not it is easy to understand how this can cause some confusion.
 
-So there is this thing going on that is called event bubbling, and you might be asking yourself is there a way to shop this from happening? the answer is yes and the method of interest with that in the vent object is the [stopPropagation method](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
+So there is this thing going on that is called event bubbling, and you might be asking yourself is there a way to stop this from happening? The answer is yes and the method of interest with that in the vent object is the [stopPropagation method](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
 
 ### 3.1 - The current target property of an event object
 
@@ -276,13 +278,13 @@ get('one').addEventListener('mousedown',divClick);
 
 ## 4 - Simulating events by creating an event object, and calling the dispatch event method
 
-So then there is getting a reference to an event object by attaching an event handler to an element, and then doing something that will result in that event being dispatched such as clicking on the element if it is a click, or mouse down event for example. However what if I want to simulate this with javaScript code? There are a [number of examples on the open web that will still work](https://stackoverflow.com/a/16509592), however many of them might make use of features that are being deprecated.
+So then there is getting a reference to an event object by attaching an event handler to an element, and then doing something that will result in that event being dispatched such as clicking on the element if it is a click, or mouse down event for example. However, what if I want to simulate this with javaScript code? There are a [number of examples on the open web that will still work](https://stackoverflow.com/a/16509592), however many of them might make use of features that are being deprecated.
 
-The way that I have found to do so as of this writing is to use the [Event Constructor](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event), and make any additional changes to the event object that need to happen. I then just need to get a reference to the element to which I want to emit and event, and call the dispatch event method of that element, passing the cerated event object as the first and only argument.
+The way that I have found to do so as of this writing is to use the [Event Constructor](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event), and make any additional changes to the event object that need to happen. I then just need to get a reference to the element to which I want to emit an event, and call the dispatch event method of that element, passing the created event object as the first and only argument.
 
 ### 4.1 - Basic mouse event simulation example
 
-Often I might want to have some kind of method where I call it, and pass an x, and y position as arguments. The result of doing so will then be a simulated click event are the given window relative position. So then in the body of such a method I could use the document element from point method to get a reference to any element that may have been click at that location. I then just need to create an event object with the Event Constructor and make any needed changes to that object. After that I just call the dispatch event off of the reference to the element and pass the event object.
+Often I might want to have some kind of method where I call it, and pass an x, and y position as arguments. The result of doing so will then be a simulated click event at the given window relative position. So then in the body of such a method I could use the document element from the point method to get a reference to any element that may have been clicked at that location. I then just need to create an event object with the Event Constructor and make any needed changes to that object. After that I just call the dispatch event off of the reference to the element and pass the event object.
 
 ```html
 <html>
@@ -316,11 +318,11 @@ simClick(35, 21);
 
 ## 5 - Pointer event objects
 
-In the basic section I started out with some mouse events, and it might be called for to look into these kinds of event objects for the various mouse events in detail. However in this advanced section on event objects I will be taking a look at event objects that have to do with [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) in client side javaScript. These pointer events are the kinds of events that would be a good starting point when it comes to preforming some logic that will need to happen for a pointer event that was caused by a mouse, or some other pointer device such as a touch screen. The reason why is because visitors to a web site might be using a desktop, or mobile device and as such might not have a mouse to touch screen. So using point events are one way to go about thinking in terms of pointers in general rather than specific features that are exclusive to just one kind of pointer device.
+In the basic section I started out with some mouse events, and it might be called for to look into these kinds of event objects for the various mouse events in detail. However, in this advanced section on event objects I will be taking a look at event objects that have to do with [pointer events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events) in client side javaScript. These pointer events are the kinds of events that would be a good starting point when it comes to performing some logic that will need to happen for a pointer event that was caused by a mouse, or some other pointer device such as a touch screen. The reason why is because visitors to a web site might be using a desktop, or mobile device and as such might not have a mouse to touch screen. So using point events is one way to go about thinking in terms of pointers in general rather than specific features that are exclusive to just one kind of pointer device.
 
-Do not get me wrong there are situations in which pointer events will fall short, for example if I want to do something with multi touch I can not do so with pointer events, and would need to look into touch events and how thous event objects are structured. If I want some code to run each time the user moves the scroll wheel of there mouse again this is an area where the pointer events and there event objects will fall short also.
+Do not get me wrong there are situations in which pointer events will fall short, for example if I want to do something with multi touch I can not do so with pointer events, and would need to look into touch events and how these event objects are structured. If I want some code to run each time the user moves the scroll wheel of their mouse again this is an area where the pointer events and their event objects will fall short also.
 
-Still pointer events are great when it comes to writing some code to run for certain pointer in general type events, so in this section I will be going over some examples. Of course I will be looking into what there is to work with when it comes to what there is in the event objects of these events. Also I will be touching base on some other related topics when it comes to some things that need to happen with CSS, and other issues that pop up when getting started with pointer events.
+Still pointer events are great when it comes to writing some code to run for certain pointers in general type events, so in this section I will be going over some examples. Of course I will be looking into what there is to work with when it comes to what there is in the event objects of these events. Also I will be touching base on some other related topics when it comes to some things that need to happen with CSS, and other issues that pop up when getting started with pointer events.
 
 ### 5.1 - Basic pointer down event example
 
@@ -343,11 +345,11 @@ el.addEventListener('pointerdown', function(e){
 </html>
 ```
 
-These clientX, and clientY properties are still very much window rather than element relative though. Also there is looking into some issues that might come up when it comes to using a touch device rather than a mouse and so forth. So lets look at a few more examples of these pointer events and the event objects of them
+These clientX, and clientY properties are still very much window rather than element relative though. Also there is looking into some issues that might come up when it comes to using a touch device rather than a mouse and so forth. So let's look at a few more examples of these pointer events and the event objects of them
 
 ### 5.2 - Get element relative position with e.target and get bounding client rect method
 
-AAfter event just a hello world there are all ready a few things that need to be address, one of which is the nature of the values that are stored in the clientX, and clientY properties. They are relative to the window, but not the element in which the event happened. So then in this example I am once again using the pointer down event to get a position where the pointer event happened. However this time I am using the target property of the event object to get an element reference to the element in which the event happened. I am then using the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to get a box object that contains margins from th other edged of the element to the edges of the window. I can then use these box vales to adjust the clientX, and clientY values to get an element rather than window relative position.
+AAfter event just a hello world there are already a few things that need to be addressed, one of which is the nature of the values that are stored in the clientX, and clientY properties. They are relative to the window, but not the element in which the event happened. So then in this example I am once again using the pointer down event to get a position where the pointer event happened. However this time I am using the target property of the event object to get an element reference to the element in which the event happened. I am then using the [get bounding client rect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) to get a box object that contains margins from the other edge of the element to the edges of the window. I can then use these box values to adjust the clientX, and clientY values to get an element rather than window relative position.
 
 ```html
 <html>
@@ -413,13 +415,13 @@ el.addEventListener('pointermove', function(e){
 
 ## 6 - js event objects when working with keyboard events
 
-When it comes to JavaScript event objects, and keyboard events there are a number of events to attach for, and also a number of properties of interest when it comes to the event objects to work with in the handers. For the most part typically I just want to know if a key is down or not, and if so what key is indeed down. So then there is the [key down event](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event), and the [key up event](https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event). 
+When it comes to JavaScript event objects, and keyboard events there are a number of events to attach for, and also a number of properties of interest when it comes to the event objects to work within the handlers. For the most part typically I just want to know if a key is down or not, and if so what key is indeed down. So then there is the [key down event](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event), and the [key up event](https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event). 
 
-When it comes to knowing what key is pressed there are two options that are of interest in the [event objects for these keyboard events](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) which are the key, and code properties. There are many other properties that you might see being used in various source code examples on the open web, but many of these examples might be a bot out of date. It is best to just stick to using the key property generally, and make use of the get char code at string prototype method if a char coded is need from the key property value. The main reason why one might want to use the code value is that it is not effected by case, where the key properties value will change depending if caps lock is on or the shift key is used.
+When it comes to knowing what key is pressed there are two options that are of interest in the [event objects for these keyboard events](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) which are the key, and code properties. There are many other properties that you might see being used in various source code examples on the open web, but many of these examples might be a bot out of date. It is best to just stick to using the key property generally, and make use of the get char code at string prototype method if a char code is needed from the key property value. The main reason why one might want to use the code value is that it is not affected by case, where the key properties value will change depending if caps lock is on or the shift key is used.
 
 ### 6.1 - Basic key down event example and the key property of the event object
 
-Here I have a simple getting started type example with keyboard event objects where I am attaching a key down event for the window object and just stetting the inner text of a div element to the value of the key property when a key is pressed.
+Here I have a simple getting started type example with keyboard event objects where I am attaching a key down event for the window object and just setting the inner text of a div element to the value of the key property when a key is pressed.
 
 ```html
 <html>
@@ -439,7 +441,7 @@ window.addEventListener('keydown', function(e){
 
 ### 6.2 - The event object keyCode property and setting booleans for each code
 
-When it comes to working out something for multi key the first step might be to work out a system for storing the status of an array of keys. So in this example I am starting out with a keys array, and to set what array index value to set to a true or false value I am using the charCodeAt method of the string prototype to key the char code from the key property of the event object. So then I can press and hold a number of keys and the corresponding index values will be true. The index values can then be used to preform some kind of multi key function in the event that a certain collection of index values in this key array is true or not.
+When it comes to working out something for multi keys the first step might be to work out a system for storing the status of an array of keys. So in this example I am starting out with a keys array, and to set what array index value to set to a true or false value I am using the charCodeAt method of the string prototype to key the char code from the key property of the event object. So then I can press and hold a number of keys and the corresponding index values will be true. The index values can then be used to perform some kind of multi key function in the event that a certain collection of index values in this key array is true or not.
 
 ```html
 <html>
@@ -472,11 +474,11 @@ window.addEventListener('keyup', function(e){
 
 ## 7 - Event propagation, event object target, current target, and stop propagation method
 
-Yet another topic that is relative to event objects would be the topic of event propagation, also often known as event bubbling. This is where one has one or more child elements in a parent element and when an event happens in one of the child elements it will fire any event handers for that child, but also for the parent element of that child element, and so on. This is why there is a target, and current target property in an event object as this will come into play for any and all events that will propagate such as an on click event. The target property is a reference to where the event started, while the current target property is a reference to the current element in a propagation of even handlers firing for this event that happened in the target.
+Yet another topic that is relative to event objects would be the topic of event propagation, also often known as event bubbling. This is where one has one or more child elements in a parent element and when an event happens in one of the child elements it will fire any event handlers for that child, but also for the parent element of that child element, and so on. This is why there is a target, and current target property in an event object as this will come into play for any and all events that will propagate such as an on click event. The target property is a reference to where the event started, while the current target property is a reference to the current element in a propagation of event handlers firing for this event that happened in the target.
 
 ### 7.1 - Basic example of event propagation, target and current target properties of an event object
 
-First off a basic example of this event propagation with a client event, and also some code that will hep to show what the difference is between the target and current target properties of an event object.
+First off, a basic example of this event propagation with a client event, and also some code that will help to show what the difference is between the target and current target properties of an event object.
 
 ```html
 <html>
@@ -565,7 +567,7 @@ parent.addEventListener('click', clickParent);
 
 ### 7.3 - Get parent element example
 
-So then this event propagation can be used as one of many ways to go about [getting a reference to a parent element](/2019/02/21/js-get-parent-element/). Although there may be a whole lot of other ways of doing so that are far less complex such as just making use of the parentNode or parent element properties of a child element when having such a reference before hand is the case.
+So then this event propagation can be used as one of many ways to go about [getting a reference to a parent element](/2019/02/21/js-get-parent-element/). Although there may be a whole lot of other ways of doing so that are far less complex such as just making use of the parentNode or parent element properties of a child element when having such a reference beforehand is the case.
 
 ```html
 <html>
@@ -702,9 +704,9 @@ So then when going this way with events and working with event objects I often w
 
 ### 8.1 - A basic mouse down event example
 
-Sense I all ready coved the click event, and also because that event is more of a pointer event, I think I will start off with the mouse down event. This as the same suggest is an event that will fire when a mouse button is pressed, but not yet released. 
+Since I already covered the click event, and also because that event is more of a pointer event, I think I will start off with the mouse down event. This as the same suggests is an event that will fire when a mouse button is pressed, but not yet released. 
 
-Even though this is a mouse event when working on a system that has both a mouse as well as a touch screen I have found that the mouse down event will fire for both mouse button clicks as well as when I use the touch screen. So the way to deal with this is to start out with a touch start event actually, and be sure to call the prevent default method in the body of the hander. The idea here is that I work out separate logic for touch events, otherwise why bother with these events right> I could just go with pointer events.
+Even though this is a mouse event when working on a system that has both a mouse as well as a touch screen I have found that the mouse down event will fire for both mouse button clicks as well as when I use the touch screen. So the way to deal with this is to start out with a touch start event actually, and be sure to call the prevent default method in the body of the handler. The idea here is that I work out separate logic for touch events, otherwise why bother with these events right> I could just go with pointer events.
 
 
 After the touch start event I then attach for the mouse down event. Inside the body of the lander I can use the client x and y properties to get the window relative position where the mouse down event has happened. Also I can take a look at the button property of the event object that will give me a number value that corresponds with what button was clicked on the mouse.
@@ -741,7 +743,7 @@ el.addEventListener('mousedown', function(e){
 
 ### 8.2 - Right clicking an element and the content menu event
 
-One thing that will come up right away is what happens when I right click an element, when doing so there is the default browser context menu that comes up. If I wan to do something custom with a right click button of a mouse I will need to find a way to disable that. So for this sort of thing there is the context menu event, inside the body of a hander of this context menu event I can call the prevent default method off of the event object to get that context menu to stop.
+One thing that will come up right away is what happens when I right click an element, when doing so there is the default browser context menu that comes up. If I want to do something custom with a right click button of a mouse I will need to find a way to disable that. So for this sort of thing there is the context menu event, inside the body of a handler of this context menu event I can call the prevent default method off of the event object to get that context menu to stop.
 
 ```html
 <html>
@@ -834,8 +836,8 @@ el.addEventListener('contextmenu', function(e){
 
 ## 9 - Conclusion
 
-So I work with event objects all the time when working out front end code mainly when dealing with user input, but also a wide range of other kinds of events. So knowing about the key properties and methods that there are to work with in an event object are key to understating how to create front end web applications. 
+So I work with event objects all the time when working out front end code mainly when dealing with user input, but also a wide range of other kinds of events. So knowing about the key properties and methods that there are to work with in an event object are key to understanding how to create front end web applications. 
 
 There is not just the core set of properties and methods like the target property, but also the many different properties that will change depending on the type of event. For example there is just the clientX property in mouse events, but with touch events there are arrays of objects and each object in that array has a clientX property because with touch events you can end up having to do something with multi touch.
 
-This is a post that is on my radar when it comes to additional future edits, and expansion. There is a whole lot more to write about when it comes to events objects in javaScript as there are w hole lot of different kinds of events beyond what is is that I have coved in this post thus far. I do have a whole lot of there content pieces also thought that need some attention also though, so it might be a while until I come bake to expanding this content.
+This is a post that is on my radar when it comes to additional future edits, and expansion. There is a whole lot more to write about when it comes to event objects in javaScript as there are a whole lot of different kinds of events beyond what it is that I have covered in this post thus far. I do have a whole lot of other content pieces that need some attention also though, so it might be a while until I come back to expanding this content.
