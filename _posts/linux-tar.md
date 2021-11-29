@@ -5,8 +5,8 @@ tags: [linux]
 layout: post
 categories: linux
 id: 942
-updated: 2021-11-29 15:22:37
-version: 1.11
+updated: 2021-11-29 15:26:41
+version: 1.12
 ---
 
 The [Linux tar](https://linux.die.net/man/1/tar) command is great for creating archive files from the command line, and the tool can also be used to decompress them also of course. There are a number of options when it comes to the various kinds of compressed files such as gun zip, and bz2. There is also maybe a thing or two to write about when it comes to all kinds of other various options of the tar command, as well as other commands that might be closely related to the use of the tar command also.
@@ -43,6 +43,8 @@ Once I have created my raw hex file as well as well as the tar file of that text
 Now for an example that involves creating a source file, creating a compressed file from the source file, and then deleting the source file. I should then be able to bring back the uncompressed source file by extracting it from the compressed file that was created from it using tar then.
 
 So then this time I am using the yes command to repeat a string over an over again and then piping that to the head command once again to redirect to a file just for the sake of creating some dummy content to compress. Once I have my dummy content I once again use the Linux tar command to create a gun zip file, but this time I am using the [Linux rm command](/2021/07/05/linux-rm/) to delete the source file, at which point I just have the gun zip file of the source file I created with yes and head.
+
+However that is not a big deal as the file is not anything impotent, just some dummy content that repertoires something that is important, and even if it was I can bring it back by using the Linux tar command once more to extract that source file from the gun zip file. So I call the Linux tar command with the -x option and then give the path to the gun zip file, the foo.txt file is then extracted. I am then just using the [Linux cat command](/2020/11/11/linux-cat/) to read the contents of the file out to the standard output.
 
 ```
 $ yes "Hello World" | head -c 1024 > foo.txt
