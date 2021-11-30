@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-11-30 10:47:31
-version: 1.54
+updated: 2021-11-30 10:49:52
+version: 1.55
 ---
 
-One kind of function that is close to some core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). A constructor function is a kind of function in javaScript where the new keyword is used when invoking it to make it so that the value of the this keyword inside the body of the constructor function will refer to a new instance of a class object that will be returned by the constructor. One major advantage of using these kinds of functions is making use of the prototype chain as a way to make certain methods and properties part of an object that will be a fall back object of sorts from the own properties of an instance of the constructor. So in this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions such as the this keyword and the prototype chain.
+One kind of function that is close to the core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). A constructor function is a kind of function in where the new keyword is used when invoking it to make it so that the value of the this keyword inside the body of the constructor function will refer to a new instance of a Class of an object that will be returned. One major advantage of using these kinds of functions is making use of the prototype chain as a way to make certain methods and properties part of an object that will be a fall back object of sorts from the own properties of an instance of the class object. So in this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions such as the this keyword, the prototype chain, and all kinds of various things that surround functions in general in a javaScript programing environment.
 
 In javaScript there are many [types of functions](/2019/12/26/js-function/) in the sense of how to make one in javaScript, such as arrow functions, function expressions, and declarations. Also there are many ways that functions can be used to create different kinds of functions that are independent of a specific language as JavaScript, or programing idiom such as object oriented programing. Some examples of what I mean by this would be [pure functions](/2020/06/18/js-function-pure/), [monotonic functions](/2021/07/26/js-function-monotonic/), and [inverse functions](/2021/07/23/js-function-inverse/) just to name a few. So there is much to learn about functions in javaScript, not just with the language itself, but topics that surround functions in general actually.
 
