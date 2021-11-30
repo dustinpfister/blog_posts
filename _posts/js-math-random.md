@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 11:33:06
-version: 1.63
+updated: 2021-11-30 11:37:54
+version: 1.64
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -23,11 +23,11 @@ In this section I will also be starting out with some fairly basic examples of t
 
 It should go without saying that for the most part this section is for total beginners of javaScript. I should focus heavily on that kind of crowd here as many who read this are in fact fairly new to javaScript still as this is one of the first things I would want to learn how to do when learning a new language. If you do have a fair about of experience with javaScript then chances are you will want to skip over this section to get to the good stuff near and at the bottom of the post.
 
-### 1.1 - The examples here can be found on my github
+### The examples here can be found on my github
 
 Like all my other posts on vanilla javaScript the source code examples here can be found in [my test vjs github repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-math-random). I do get around to editing this post now and then, and that is where I will keep my latest revisions of what I am writing about here. If you see something wrong with one of these examples that would also be where to make a pull request, and there is also the comments section of this post.
 
-### 1.2 - A Very basic math.random example in the javaScript console
+### 1.1 - A Very basic math.random example in the javaScript console
 
 So the basic deal is to just call the math random method, when doing so you will get a number between 0 and 1 as the return value of the native method. That is all there is to it if that is all that is needed, and in some cases that is all that is needed actually. With that said I think I should maybe start out with an examples that can be used in the javaScript console of a web browser such as Google chrome. I have wrote a [getting started with javaScript type post on this very subject](/2019/07/29/js-getting-started-javascript-console/), but the basic idea is to just press ctrl + shift + j in Google chrome and make sure that you have the console tab selected. A line of javaScrit code that is then just calling the Math random method can be called in the console.
 
@@ -54,7 +54,7 @@ In windows systems the same can be done in the command prompt.
 C:\> node -e "console.log(Math.random())" 
 ```
 
-### 1.3 - Client side javaScript example
+### 1.2 - Client side javaScript example
 
 So now that I got some basic examples that have to do with using the javaScript console out of the way there is going over a few examples that have to do with creating some kind of file and then option that up in a web browser, or run with nodejs. For this example I will be going over a quick client side javaScript environment example of using the Math.random method.
 
@@ -72,7 +72,7 @@ document.querySelector('#out').value = n;
 
 So then there is the topic of [setting up a basic web server](/2017/12/04/nodejs-simple-static-sever-file/) as a way to host this kind of index.html file up via the http protocol. That is the proper way to go about doing so actually, however when it comes to something like this it is still possible for it to work okay by just opening it up in a web browser by way of the file protocol.
 
-### 1.4 - nodejs example of Math.random
+### 1.3 - nodejs example of Math.random
 
 Now for a nodejs file example that can be called from the command line. For this example I am using the os module of nodejs to get the End of line string for the underlaying operating system. I am then using the write method of an instance of a stream of the stdout property of the process global to write to the standard output.
 
@@ -94,7 +94,7 @@ $ node basic-random
 
 The end result is then yet another way to go about using the Math random method in a project.
 
-### 1.5 - function die example
+### 1.4 - function die example
 
 Okay now I think I should write about making at least one or more functions that make use of the Math random method, starting out with a simple die function example. This function will just take one argument that is the number of sides that a die has, and return a random number between and including 1 and the total number of sides.
 
@@ -109,7 +109,7 @@ console.log( rollDie() );
 console.log( rollDie(20));
 ```
 
-### 1.6 - function roll dice example
+### 1.5 - function roll dice example
 
 How about another function example that builds on top of the die function example that I went over above? With that said how about a roll dice function that will take an array of numbers that defaults to \[6,6\] that is an array sides for a set of dice? Inside the body of this roll dice function the [array map method](/2020/06/16/js-array-map/) can be used to create an return a new array from the source array that is this array of sides. So the n each element in the new array that is returned is the result of rolling a dice with the sides value in the source array.
  
