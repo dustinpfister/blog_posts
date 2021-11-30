@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 11:51:58
-version: 1.66
+updated: 2021-11-30 11:54:28
+version: 1.67
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -135,7 +135,7 @@ console.log(rollDice([6, 6, 6, 6, 20]));
 
 ## 2 - Range and Math random
 
-So then there is just calling the main random method, and then there is plugging the value into some very simple expressions to get some kind of number from zero upwards. However there is then using math.random in various other expressions that have to do with getting a number that is within a range.
+So then there is just calling the main random method, and then there is plugging the value into some very simple expressions to get some kind of number from zero upwards. However there is then using math.random in various other expressions that have to do with getting a number that is within a range. There is starting out with just a basic example, but then there is maybe running into some problems that have to do with rounding rather than getting a float value. I will be getting into the subject of rounding in depth in a later section in this post, but the main focus in this section will be on the subject of dealing with a random range between and in some cases including a min and max value.
 
 ### 2.1 - Basic range example
 
