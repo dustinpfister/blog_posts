@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 11:43:54
-version: 1.65
+updated: 2021-11-30 11:51:58
+version: 1.66
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -135,9 +135,11 @@ console.log(rollDice([6, 6, 6, 6, 20]));
 
 ## 2 - Range and Math random
 
-Getting a range involves a simple expression where you start with the low end of the range and then add by a random number that  is the result of Math.random multiplied by the result of the high end of the range with the low end deducted.
+So then there is just calling the main random method, and then there is plugging the value into some very simple expressions to get some kind of number from zero upwards. However there is then using math.random in various other expressions that have to do with getting a number that is within a range.
 
-In other words something like this.
+### 2.1 - Basic range example
+
+Getting a range involves a simple expression where you start with the low end of the range and then add by a random number that is the result of Math.random multiplied by the result of the high end of the range with the low end deducted.
 
 ```js
 
@@ -151,6 +153,8 @@ var randomRange = function (low, high) {
 var n = randomRange(-5, 5);
 console.log(n); // between -5 and 5
 ```
+
+Although this is often the basic idea of how to do about doing this sort of then with random numbers there is a bot more to write about with this of course. For one thing there is running into problems with rounding.
 
 ## 3 - Rounding random numbers
 
