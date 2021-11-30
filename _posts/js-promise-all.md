@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 488
-updated: 2021-11-30 10:24:28
-version: 1.48
+updated: 2021-11-30 10:25:30
+version: 1.49
 ---
 
 When a whole bunch of tasks need to be accomplished before moving on with things, some or all of which might take a while, one way to do so is with the [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) method. This method will return a resolved promise object when everything that is given to it via an array as the first argument is resolved if a promise, or is something that is not a promise. In Other words the promise all method will only resolve when every element in a given array is a value, or a promise object that has been resolve, rather than rejected. The Promise all method will then only result in a rejected promise if one or more promise in the array reject. So then the array that is given to the promise all method can be a mixed collection of values, some of which can be promises, and things will not continue until all promises in the array are resolved or rejected.
@@ -23,11 +23,11 @@ In this section I will be starting out with the basics of the Promise.all method
 
 I trust that you have at least some background when it comes to the very [basics of javaScript](/2018/11/27/js-getting-started/) in the client side as well as in [nodejs](/2017/04/05/nodejs-helloworld/). If not you might want to take a step back and come back to promises later, many developers consider promises part of advanced javaScript along with things like [closures](/2019/02/22/js-javascript-closure/) and the nature of the [this keyword](/2017/04/14/js-this-keyword/). I will be trying to keep these examples fairly basic and easy to follow at least in the first section, but I am not going to cover every little detail that you should know before hand here.
 
-### 1.1 - The source code examples in this post are on github
+### The source code examples in this post are on github
 
 The [source code examples here can be found on github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-promise-all) in my test vjs repository. In this repository there is also all the source code examples for all my other [posts on vanilla javaScript](https://dustinpfister.github.io/categories/js/).
 
-### 1.2 - Simple Promise all hello world example
+### 1.1 - Simple Promise all hello world example
 
 To start out with this method in just about any javaScript environment that supports promises an array of any kind can be given as the first argument. Often when using this method the array will contain at least one ore more Promise Objects, but that does not have to be the case. In the event that it is an array of primitives that will result in a resolved promise for the call of Promise all so then the next then function call in the Promise chain will be what is called.
 
@@ -45,7 +45,7 @@ Promise.all(['Hello', 'world'])
 
 Will result in the text Hello World being logged to the console. However this is not in any way a typical use case example of the Promise all method, and I could just pass the array to a [Promise.resolve static method](/2019/09/18/js-promise-resolve-reject/) call to get the same result. I am just bothering with this to make a point which is that the array that I give to Promise.all can be an array of primitives, or it can also be an array of Promise objects that will resolve or reject in certain situations, or a combination of the two. More on this later in this post, but for now on many at least a few more basic examples are call for.
 
-### 1.3 - Simple Promise all example with a method that will return a promise
+### 1.2 - Simple Promise all example with a method that will return a promise
 
 Although The array that is given to the Promise all method can be an array of anything, often it should contain at least one if not more promise objects. When all the Promise objects in the array resolve, then the next then method in the promise chain will be called.
 
@@ -72,7 +72,7 @@ Promise.all([delayed(10), delayed(1500)])
 
 When calling this source code example I get an array of numbers where each number is the amount of time it took for each of the called of the delay method to finish.
 
-### 1.4 - Simple resolve and reject example of Promise all
+### 1.3 - Simple resolve and reject example of Promise all
 
 If Just one of the promise objects in the array reject, then so will the promise all call as a whole and then next catch statement will file in the promise chain for the Promise all call.
 
@@ -98,7 +98,7 @@ Promise.all([delayed(10), delayed(985)])
 });
 ```
 
-### 1.5 - Promise all nodejs example
+### 1.4 - Promise all nodejs example
 
 Here I have a simple example of Promise all in nodejs 8.x, in this version of nodejs the [util promisify method](/2019/06/22/nodejs-util-promisify/) was introduced that can be used to make methods that just make use of a callback, return a promise. I can then use this as a way to make file system methods return promises, which I can then use in an array. This array can then be passed as the first argument for promise all.
 
@@ -124,7 +124,7 @@ Promise.all([
 If you are using a later version of node, and you do not need to work about pushing backward compatibility back to node 8.x then the code example could be a litter different as some of the later versions of node have files system methods that will return promises anyway. However in any case this simple example of promise all should help give you a basic idea of what the deal is with the promise all method and why it can come in handy now and then.
 
 
-### 1.6 - Promise all client side example
+### 1.5 - Promise all client side example
 
 So if a browser does support Promise all it can also be used in the front end as well. New browser technologies such as fetch return promises, and it is also possible to create custom promises as well with the Promise constructor. However there is just one little concern when it comes to browser support, if you care about supporting any version of IE at all you will need to use something that will bring promise all support to those older platforms.
 
