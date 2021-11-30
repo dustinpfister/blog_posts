@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 12:12:26
-version: 1.68
+updated: 2021-11-30 12:14:31
+version: 1.69
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -158,7 +158,7 @@ Although this is often the basic idea of how to do about doing this sort of then
 
 ### 2.2 - A per range function example, and pulling Math.random out of the function
 
-It might be better to start out with a range function in which I am pulling the call of Math.random out and placing an argument that represents the kind of value that Math.random returns in its place.
+It might be better to start out with a range function in which I am pulling the call of Math.random out and placing an argument that represents the kind of value that Math.random returns in its place. This way I have a function in which I have three arguments one of which what I often call a per value which is short for percent, along with a low and high value. This way I can pass Math.random as the per value, or I can also give a number literal value also.
 
 ```js
 // per range method
