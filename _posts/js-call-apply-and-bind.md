@@ -5,8 +5,8 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-11-30 10:32:28
-version: 1.53
+updated: 2021-11-30 10:35:07
+version: 1.54
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript it would seem. with that said I did cover the [this keyword](/2017/04/14/js-this-keyword/) before in a post, but I did not get into call, apply, and bind methods at least not in detail anyway. In any case it strikes me as a good idea to have a post where I am just getting into the use of these function prototype methods, and how they relate to the use of the this keyword.
@@ -23,11 +23,11 @@ Maybe a good place to start is to know that in javaScript you often have a situa
 
 In this section I will then be going over some basic examples that have to do with functions that contain the this keyword in the body of a function to refer to what is often a class instance of some kind. There is making methods that will work with a built in class, and then there is also making a whole new class from the ground up by getting into writing constructor functions. This is celled for as it is what I see as a first step before getting into the various function prototype methods such as the function call method.
 
-### 1.1 - The source code examples here are on Github
+### The source code examples here are on Github
 
 The source code examples in this section, alone with the rest of this post, as well as all my other posts on vanilla javaScript can be found in [my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-call-apply-and-bind) on Github. This post like many other posts is still a work in progress that I come around to edit every now and then. So that is where I store the current state of the source code examples, as well as any additional notes that have to do with research and planing out future edits. So then that would be a good place to make a pull request if you are on Github, there is also the comments section in this Blog that can be used as a way to bring something up.
 
-### 1.2 - Only type array method that is a stand alone method that takes an array as an argument
+### 1.1 - Only type array method that is a stand alone method that takes an array as an argument
 
 Say I want to have a method that will return a new array from an array that will only contain elements that are of a given type. One way of doing that would be to quickly put together a method using the [array filter](/2020/10/03/js-array-filter/) method. However one question to ask when making a simple method such as this would be how to go about passing in the array value to call the filter method off of. With that there is just making it one of the arguments to pass when calling the method, so with that said maybe one would end up with something like this:
 
@@ -47,7 +47,7 @@ console.log(b);
 
 There is nothing wrong with writing methods like this, in fact many developers prefer this kind of approach for a range of reasons. However this is very much a post on the Function prototype methods, as such it might be a good idea to take a method such as this and do something inside the body of the function that involves the use of the this keyword as a way to get a reference to an array.
 
-### 1.3 - Only type method that uses the this keyword, but it is Monkey patching the prototype in question
+### 1.2 - Only type method that uses the this keyword, but it is Monkey patching the prototype in question
 
 Out on the wild Internet you might come across the occasional example that involves adding a method to the prototype object of a built in class. This is a practice that is often called monkey patching, and it is generally frowned upon unless there is decent justification for doing so, such as making sure that something that should be there is there.
 
@@ -70,7 +70,7 @@ console.log(b);
 
 Although this might work it is not always the best way of going about doing things. When new developers are first learning about javaScript they might end up gaining the false impression that this method is built into javaScript code when studying the source code elsewhere that uses this. However this is a situation in which the this keyword is being used to refer to some kind of state or class instance to which I am working with.
 
-### 1.4 - Only type array method using the this keyword and Function.call
+### 1.3 - Only type array method using the this keyword and Function.call
 
 So then I took my stand alone only type method and changed things up so it is now just the type string that I want that is given as an argument, and I am not using the this keyword as a way to refer to what should be an array. However I can not now just call this method just anywhere now, I must have a way to go about setting what the value of the this keyword is. This is where one of the Function prototype methods will come in handy as I can use the call method as a way to go about getting this method to work with an array.
 
@@ -89,7 +89,7 @@ console.log(b);
 // [1, 3, 5]
 ```
 
-### 1.5 - Directly calling a prototype method off of a built in class
+### 1.4 - Directly calling a prototype method off of a built in class
 
 When it comes to working with arrays there are a whole lot of built in prototype methods to work with. Thus far in this section I went over some examples that make use of the array map method. Another one of these methods would be the array join method that will return a new string from an array of elements where there is a separator string between each element that is given as an argument.
 
@@ -101,7 +101,7 @@ console.log(mess); // foo man chew is always in style
 
 No confusion there, but with the power of call I can invoke the Array.join method on a plain old object that is not an array. So next lets look at an example of that.
 
-### 1.6 - Getting a built in prototype method to work with an object that is not of that Class.
+### 1.5 - Getting a built in prototype method to work with an object that is not of that Class.
 
 The call function prototype method can be used as a way to liberate built in prototype methods from there prototype objects and call the method with any object. If the object that I am using with an array prototype method just happens to be formated in the same way as an array, then it should more often then not work fine.
 
