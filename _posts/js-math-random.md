@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 12:14:31
-version: 1.69
+updated: 2021-11-30 12:25:05
+version: 1.70
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -174,6 +174,30 @@ console.log(rangePer(Math.random(), 5, 15) );
 console.log( rangePer(0.0, 5, 15) ); // 5;
 console.log( rangePer(0.5, 5, 15) ); // 10;
 console.log( rangePer(1.0, 5, 15) ); // 15;
+```
+
+### 2.3 - Using the per method as a base for a random range method
+
+```js
+// per range method
+var rangePer = function (per, low, high) {
+    per = per === undefined ? 0 : per;
+    low = low === undefined ? 0 : low;
+    high = high === undefined ? 1 : high;
+    return low + (high - low) * per;
+};
+// rangeRandom method
+var rangeRandom = function (low, high, filter) {
+    filter = filter === undefined ? function (n) { return n; } : filter;
+    return filter( rangePer(Math.random(), low, high) );
+};
+// can get a random range like this
+console.log( rangeRandom(1, 6) );
+// can also do things like this
+var a = Array.from({length: 5}).map(function(el, i){
+    return rangePer( i / 5, 25, 50);
+});
+console.log(a); // [ 25, 30, 35, 40, 45 ]
 ```
 
 ## 3 - Rounding random numbers
