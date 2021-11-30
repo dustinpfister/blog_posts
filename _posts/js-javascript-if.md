@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 390
-updated: 2021-11-12 11:19:26
-version: 1.54
+updated: 2021-11-30 11:07:35
+version: 1.55
 ---
 
-In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually and if statement can be used to check if a certain value, or expression evaluates to a true [boolean value](/2018/11/28/js-booleans/), and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, and other clever ways of controlling the flow or execution of code.
+In this post I will be writing about [javaScript if](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements, and other related concerns when working with conditionals in general in a JavaScript programing environment. In many programing languages, in fact just about all of them actually an if statement can be used to check if a certain value, or expression evaluates to a true [boolean value](/2018/11/28/js-booleans/) value, and in the event that it is true, run some code that would otherwise not run. Thus an if statement is a kind of control flow statement along with other options that come to mind such as switch statements, loops, functions, and other clever ways of controlling the flow or execution of code.
 
 So then in addition to if statements there are also switch statements in javaScript that can also be used as a kind of control flow structure. In addition to these two options there is also yet event more options such as a conditional operator as well that can be used as a short hand for if else statements for example, which is also often very useful when it comes to write expressions. Yet even more tools in the tool box that can be seen as a form of control flow would be various kinds of loops such as while and for loops, and various kinds of structures such as a state machine and so forth.
 
