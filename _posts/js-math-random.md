@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 12:25:05
-version: 1.70
+updated: 2021-11-30 12:36:42
+version: 1.71
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -188,15 +188,34 @@ var rangePer = function (per, low, high) {
 };
 // rangeRandom method
 var rangeRandom = function (low, high, filter) {
-    filter = filter === undefined ? function (n) { return n; } : filter;
-    return filter( rangePer(Math.random(), low, high) );
+    filter = filter === undefined ? function (n) {return n;}: filter;
+    return filter(rangePer(Math.random(), low, high));
 };
-// can get a random range like this
-console.log( rangeRandom(1, 6) );
+// rangeRandom integer method
+var rangeRandomInt = function (low, high) {
+    return rangeRandom(low, high, function (n) {
+        return Math.floor(n);
+    });
+};
+// rangeRandom array method
+var rangeRandomElement = function (array, si, ei) {
+    array = array || [];
+    si = si === undefined ? 0 : si;
+    ei = ei === undefined ? array.length : ei;
+    var index = rangeRandomInt(si, ei);
+    return array[index];
+};
+// can get a raw random range like this
+console.log(rangeRandom(1, 6));
+// I can also use one of the functions that make use of a filter
+console.log(rangeRandomInt(1, 6));
+console.log(rangeRandomElement(['foo', 'bar', 'baz']));
 // can also do things like this
-var a = Array.from({length: 5}).map(function(el, i){
-    return rangePer( i / 5, 25, 50);
-});
+var a = Array.from({
+        length: 5
+    }).map(function (el, i) {
+        return rangePer(i / 5, 25, 50);
+    });
 console.log(a); // [ 25, 30, 35, 40, 45 ]
 ```
 
