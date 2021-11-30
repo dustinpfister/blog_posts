@@ -5,15 +5,15 @@ tags: [js,corejs]
 layout: post
 categories: js
 id: 40
-updated: 2021-11-30 10:31:22
-version: 1.52
+updated: 2021-11-30 10:32:28
+version: 1.53
 ---
 
 In my travels on the open web I see a lot of posts on the [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) keyword, and also the [JavaScript call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply), and [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods of the Function prototype. So writing a post on the this keyword is something that just needs to happen at one point or another when writing, and maintaining a blog on javaScript it would seem. with that said I did cover the [this keyword](/2017/04/14/js-this-keyword/) before in a post, but I did not get into call, apply, and bind methods at least not in detail anyway. In any case it strikes me as a good idea to have a post where I am just getting into the use of these function prototype methods, and how they relate to the use of the this keyword.
 
 The call method is simply a Function prototype method that can be called off of any function, and the value of what the this keyword should be inside the body of the function can be set by passing that value as the first argument when calling the call method. So this call method comes in handy often when working with native javaScript methods to help break methods free from their Class prototype object and get them to work with any object to which they might work with. One good example of this would be to get the array for each prototype method to work with an object that is an HTMLCollection object. An HTMLCollection object is not an instance of an array, but it is an example of an object where the own properties of the object are formated like that of an array, thus doing so will work.
 
-So in this post I will be going  over some examples of the use of call, as well as apply and the bind method that each do the same thing a little differently.
+So in this post I will be going  over some examples of the use of call, as well as apply and the bind method that each do the same thing a little differently. In the process if doing so I should also end up covering all kinds of other varioius subjects on javaScript that might prove to be useful.
 
 <!-- more -->
 
