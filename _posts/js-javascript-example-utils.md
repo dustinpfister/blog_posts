@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-11-19 15:20:07
-version: 1.64
+updated: 2021-11-30 11:13:15
+version: 1.65
 ---
 
-When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like module only with methods that I am actually going to use in the project. Many methods that I might park in this kind of module might ultimately end up in some other module that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-example-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use it one or more additional modules, or libraries throughout an over all application. 
+When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like library only with methods that I am actually going to use in the project, and not a whole much of bulk that I am not going to be using like with lodash. 
+
+Many methods that I might park in this kind of library might ultimately end up in some other library that has to do with something more specific such as [working with angles](/2021/04/16/js-javascript-example-angles-module/), or creating and working with canvas elements. However when first starting out I just need a place to put any and all methods that I might want to use in one or more additional modules, or libraries throughout an over all application. So I need to just park it in some kind of general utilities type library until I find a more appropriate home for it.
 
 So in todays post I will be going over a general utility module and the kind of methods that I might place in such a module that will serve as yet another one of my [JavaScript example](/2021/04/02/js-javascript-example/) type posts. While in the process of writing about the various method I may link to additional posts on various game prototypes, and projects that are relevant to use usage of these methods.
 
