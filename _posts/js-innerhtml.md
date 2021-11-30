@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-21 17:50:11
-version: 1.62
+updated: 2021-11-30 11:22:10
+version: 1.63
 ---
 
-With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of an element reference.
+With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
 
 The nice thing about innerHtml is that it is very easy to use, but there are some security concerns with the use of innerHTML that are of concern. Maybe the security drawbacks are not a big deal when it comes to simple JavaScript examples, but might present problems when working on a more complex project. Many of the concerns stem from html strings that might be subject to user input that might not always be property sanitized, resulting in the possibility of html injection. 
 
