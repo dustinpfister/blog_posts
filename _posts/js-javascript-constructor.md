@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 392
-updated: 2021-11-30 10:55:54
-version: 1.57
+updated: 2021-11-30 10:58:47
+version: 1.58
 ---
 
 One kind of function that is close to the core functionally of javaScript is the concept of a [constructor function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor). A constructor function is a kind of function in where the new keyword is used when invoking it to make it so that the value of the this keyword inside the body of the constructor function will refer to a new instance of a Class of an object that will be returned. One major advantage of using these kinds of functions is making use of the prototype chain as a way to make certain methods and properties part of an object that will be a fall back object of sorts from the own properties of an instance of the class object. So in this post I will be touching base on the subject of constructor functions, the use of the new keyword, and other related subjects that surround the use of constructor functions such as the this keyword, the prototype chain, and all kinds of various things that surround functions in general in a javaScript programing environment.
@@ -21,7 +21,7 @@ There is the traditional way of creating a javaScript constructor function, and 
 
 ## 1 - javaScript constructor
 
-A [constructor](https://en.wikipedia.org/wiki/Constructor_%28object-oriented_programming%29) is not something that is exclusive to javaScript, but is a major part of object oriented programming in general. The basic idea of a constructor is that it is a function that is called that creates not just an Object, but a certain kind of object. 
+A [constructor](https://en.wikipedia.org/wiki/Constructor_%28object-oriented_programming%29) is not something that is exclusive to javaScript, but is a major part of object oriented programming in general. The basic idea of a constructor is that it is a function that is called that creates not just an Object, but a certain kind of object. This kind of object is an instance of the constructor function that created it, and as such it may have some properties that are unique to the single class instance, and other properties and methods that are part of the class.
 
 In javaScript every time an object is created it is an instance of a constructor, and as such there are a number of prototype methods that can be used with that Object. For example an Array in javaScript is a kind of Object that is an instance of the Array constructor, and as such it has access to a number of prototype methods such as Array.slice.
 
@@ -29,7 +29,7 @@ In addition there is what is called the prototype chain, if a method that is cal
 
 In this section I will be going over just a few basic examples of constructor functions in javaScript. These examples will just focus on the very basics for starters such as working with a built in javaScript constrictor, and ways to create user defined constructor functions.
 
-### - The source code examples here are on github
+### The source code examples here are on github
 
 The source code examples in this post can be found on by [Github account in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-constructor). Many more source code examples are in that repository that correspond to my [various other posts on vanilla javaScript](/categories/js/). If you find something wrong with the of the source code examples in this post that would be where to make a pull requests, there is also the comments section at the bottom of this post.
 
