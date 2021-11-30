@@ -5,11 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 368
-updated: 2021-10-26 11:25:00
-version: 1.46
+updated: 2021-11-30 10:41:21
+version: 1.47
 ---
 
-In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not there, then the result is undefined. If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
+In [javaScript undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is a value that comes up often when working with various code examples, and projects. For one thing the undefined value is the default value for variables that are declared, but do not have any value assigned to them. In addition if I attempt to access an object property value that is not defined, then the result is undefined. However an object key and a variable can be both declared, and intensionally assigned the value undefined bu using the undefined keyword, or preforming any kind of action that will result in the value of undefined being set to the variable or object property.
+
+If I attempt to call an object property that I expect is a function, but turns out to be undefined, that can result in an Error that is the result of calling undefined. This can often be the case when choosing to go with [function expressions](/2019/01/27/js-function-expression/) rather than [declarations](/2019/04/11/js-function-declaration/) and neglect to do what is required to keep that from happening, or it could just be a simple typo.
 
 When working with functions a value of undefined is what is returned by a function by default unless something else is returned by using the [return keyword](/2019/03/01/js-javascript-return/). This might be a good thing in some cases as undefined will evaluate to false, so when it comes to functions that return a boolean value it might not always present a problem. Still it might be a good idea to have the function return false anyway just for the sake of making things explicit.
 
