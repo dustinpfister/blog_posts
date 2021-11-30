@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 12:36:42
-version: 1.71
+updated: 2021-11-30 12:42:45
+version: 1.72
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -177,6 +177,9 @@ console.log( rangePer(1.0, 5, 15) ); // 15;
 ```
 
 ### 2.3 - Using the per method as a base for a random range method
+
+Form the range per method I can then cerate all kinds of additional methods that involve the use of the Math.random method. There is having a method that will just call Math.random and pass that as the value for the range per function, but on top of that also providing a filter argument that can be just a function to which the return value of calling the range per method with Math.random value is pass threw that is a range random method. This range random method can then be called with a filter in which I am using the Math.floor method to round the value return by range per to create an integer value. I can then also create additional methods beyond this such as one that will take an array and return a random element from that array and so forth, and so on.
+
 
 ```js
 // per range method
