@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:18:31
-version: 1.14
+updated: 2021-12-01 12:33:30
+version: 1.15
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -19,12 +19,16 @@ This is one of the lesser known methods in lodash that I do not see myself using
 
 ## 1 - lodash _.method in range example
 
-The \_.method method is intended to be used with other lodash methods like \_.filter that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection. So then say I have an in range method that will return true if the x value of an object is in a given range, and false if it is not. I then have a reference to this in range method in a bunch of nested objects in a collection along with an x value that will work with the range method. I then want to create a new array that is just the objects in the collection that contain an x value that is in range. So then I could do something with the lodash \_.method like this.
+The \_.method method is intended to be used with other lodash methods like \_.filter that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection. 
+
+### 1.1 -
+
+So then say I have an in range method that will return true if the x value of an object is in a given range, and false if it is not. I then have a reference to this in range method in a bunch of nested objects in a collection along with an x value that will work with the range method. I then want to create a new array that is just the objects in the collection that contain an x value that is in range. So then I could do something with the lodash \_.method like this.
 
 ```js
 let inRange = function(){
     return this.x < 9 && this.x >=0 
-}
+};
 let points = [
     { pt: { x: -1, tester: inRange } },
     { pt: { x: 5, tester: inRange} },
@@ -34,6 +38,28 @@ let points = [
 let f = _.filter(points, _.method('pt.tester'));
 let r = _.map(f, function(el){ return el.pt.x})
 console.log(r); // [5, 3]
+```
+
+### 1.2 - Not using the method lodash method
+
+Often it is not going to end up being to much more complex to avoid having to use this method. Also if I am using it I can not help but think that the use of the method like this proves that I should be doing something different with the state of a collection.
+
+```js
+let inRange = function(){
+    return this.x < 9 && this.x >=0 
+};
+let points = [
+    { pt: { x: -1} },
+    { pt: { x: 5} },
+    { pt: { x: 3} },
+    { pt: { x: 25} },
+];
+let f = _(points).filter((el) => {
+    return inRange.call(el.pt);
+}).map((el) => {
+    return el.pt.x;
+}).value();
+console.log(f); // [5, 3]
 ```
 
 ## 2 - Conclusion
