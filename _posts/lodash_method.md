@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:37:49
-version: 1.17
+updated: 2021-12-01 12:41:29
+version: 1.18
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -42,7 +42,7 @@ console.log(r); // [5, 3]
 
 ### 1.2 - Not using the method lodash method
 
-Often it is not going to end up being to much more complex to avoid having to use this method. Also if I am using it I can not help but think that the use of the method like this proves that I should be doing something different with the state of a collection.
+Often it is not going to end up being to much more complex to avoid having to use this method. Also if I am using it I can not help but think that the use of the method like this proves that I should be doing something different with the state of a collection. For example in the in rage example that I started out with why would I have references to an in range method like that for each object? Why not just call the in range method directly in the body of a function that I give to the filter method with the call function prototype method and just pass a reference to the nested object?
 
 ```js
 let inRange = function(){
