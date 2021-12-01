@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:47:59
-version: 1.20
+updated: 2021-12-01 12:54:06
+version: 1.21
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -68,5 +68,5 @@ Maybe it would make more sense if each nested object in the collection had its o
 
 Thats it for now today, I could not think about more to write about with this one just yet, and could also not come up with any actual real use case examples as well fir the method named method in lodash. I can not say that I end up in situations in which I need to use this kind of method often, in fact thus far I would say never actually. Even if I do get into some kind of situation in which this method will prove to be useful I think I would still prefer to make use of some other options for doing what I need to do actually.
 
-I do get around to editing and expanding my content on lodash once in a while, it might be a long time until I get around to this post again though, of ever actually. I could expand the section on the lodash method method a bit more, however there are a whole lot of [other posts on lodash](/categories/lodash/) that I have written, many of which are on methods and topics in general that do come up a lot. Still if you can think of something to say about this subject by all means bring something up in the comments section.
+I do get around to editing and expanding my content on lodash once in a while, it might be a long time until I get around to this post again though, of ever actually. I could expand the section on the lodash method method a bit more, however there are a whole lot of [other posts on lodash](/categories/lodash/) that I have written, many of which are on methods and topics in general that do come up a lot. One example of this might be my post on the [for each collection method in lodash](/2017/11/20/lodash_foreach/) and how that compares to the [array for each method](/2019/02/16/js-javascript-foreach/) in native javaScript. Still if you can think of something to say about this subject by all means bring something up in the comments section.
 
