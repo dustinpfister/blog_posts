@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 09:25:17
-version: 1.86
+updated: 2021-12-01 10:43:47
+version: 1.87
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -856,6 +856,32 @@ out = document.getElementById('out');
 window.addEventListener('wheel', function(e){
     y += e.deltaY;
     out.innerText = y;
+});
+        </script>
+    </body>
+</html>
+```
+
+### 6.2 - 
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div><br><br></div>
+        <div id="out" style="width:600px;height:440px;outline:1px solid #000000;padding:20px;">0</div>
+        <div style="height:1000px;width:100px;background:gray;"></div>
+        <script>
+var y = 0,
+out = document.getElementById('out');
+// attaching to the out div
+out.addEventListener('wheel', function(e){
+    e.preventDefault();
+    y += e.deltaY;
+    out.innerText = y;
+    return;
 });
         </script>
     </body>
