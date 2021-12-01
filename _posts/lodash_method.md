@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:00:59
-version: 1.8
+updated: 2021-12-01 12:03:57
+version: 1.9
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
+
+There is also however maybe more that one intension of what the term "lodash method" means. Maybe you are looking into some content that has to do with the main lodash method of of lodash global than is used in the process of chaining for example.
 
 This is one of the lesser known methods in lodash that I do not see myself using often, and if you are scratching your head wondering if this is a feature that makes lodash worth the hassle or not this might be one of those kinds of lodash methods. It would seem that are are a lot of developers these days that think that lodash is an outdated utility library, some of them even go so far as to say that using lodash never even made sense to begin with. Maybe they are half write, but in any case in this post I am going to be looking into this lodash method, and also maybe look into some ways to do the same thing with vanilla javaScript t see if this is really a useful method, or yet even more unneeded bulk in lodash.
 
