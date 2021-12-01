@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 14:48:33
-version: 1.25
+updated: 2021-12-01 14:50:04
+version: 1.26
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -66,7 +66,7 @@ Maybe it would make more sense if each nested object in the collection had its o
 
 ## 2 - Using vanilla javaScript in place of method
 
-So now that I have went over a few examples of the \_.method in lodash in this section I will be going over a few examples that do the same thing as in lodash, only now I am just working with javaScript itself.
+So now that I have went over a few examples of the \_.method in lodash in this section I will be going over a few examples that do the same thing as in lodash, only now I am just working with javaScript itself. When working with just javaScript alone I o not have any native collection methods, but I do have array prototype methods, and various other native methods that can be used to do the same things anyway when one just knows how to work with them.
 
 ### 2.1 - In range example once again with native javaScript
 
