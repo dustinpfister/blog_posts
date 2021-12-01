@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:33:30
-version: 1.15
+updated: 2021-12-01 12:37:12
+version: 1.16
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -19,7 +19,7 @@ This is one of the lesser known methods in lodash that I do not see myself using
 
 ## 1 - lodash _.method in range example
 
-The \_.method method is intended to be used with other lodash methods like \_.filter that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection. 
+The \_.method method is intended to be used with other lodash methods like \_.filter that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection. In this section I will be going over a few simple examples of this lodash method, and in the process of doing so I will also be touching base on various other lodash features in general as well as another alternatives ways of doing things with lodash. This is not any kind of getting started type post wit lodash, let alone with [javaScript in general](/2018/11/27/js-getting-started/) so I trust that you have at least a little experience working with javaScript and various user space libraries such as but not limited to lodash.
 
 ### 1.1 -
 
