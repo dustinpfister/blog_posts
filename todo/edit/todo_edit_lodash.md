@@ -32,6 +32,11 @@ lodash_method
 * get to 1000+ words
 * have 5+ internal links for the post
 
+### () - lodash_method
+* (done) get to 500+ words
+* get to 1000+ words
+* have 5+ internal links for the post
+
 ### ( done 11/24/2021 ) - lodash_throttle (links, old)
 * (done) get to 1000+ words
 * (done) have 5+ internal links for the post
