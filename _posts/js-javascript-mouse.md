@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 15:42:57
-version: 1.96
+updated: 2021-12-01 15:46:12
+version: 1.97
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -1113,9 +1113,11 @@ simClickFor(document.body, 37, 8);
 
 Using pointer events might be great as a starting point for user interface design, however often I might want to make a user interface where there is logic that will work just for mouse events, and then completely separate logic for touch events. For example I might want to work out a whole lot of code that will work well with multi touch, and then other code that will make use of mouse features such as a right click button. So then in this section I will be exploring how to go about getting started with this kind of system when it comes to working with a mouse, as well as touch events in a client side web application.
 
+For more on the subject of touch events in detail you might want to check out my post on the subject of [touch events in client side javaScript](/2019/02/13/js-touch-events/).
+
 ### 9.1 - A starting point using touch start and mouse down events
 
-For this exmaple I am starting out with a system that uses touch start events to create an object pool by way of multi touch. That is that when I touch the screen I will get an object for each touch point on the surface of the canvas. In the event of a mouse down event I will create a new pool with just one object, but only for a mouse down event in which the left click button is pressed. Allowing me to use center and right click events to push as many objects as I want to the pool.
+For this example I am starting out with a system that uses touch start events to create an object pool by way of multi touch. That is that when I touch the screen I will get an object for each touch point on the surface of the canvas. In the event of a mouse down event I will create a new pool with just one object, but only for a mouse down event in which the left click button is pressed. Allowing me to use center and right click events to push as many objects as I want to the pool.
 
 ```html
 <html>
