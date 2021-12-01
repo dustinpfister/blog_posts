@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 10:43:47
-version: 1.87
+updated: 2021-12-01 10:48:20
+version: 1.88
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -862,7 +862,9 @@ window.addEventListener('wheel', function(e){
 </html>
 ```
 
-### 6.2 - 
+### 6.2 - Disabling scrolling in a mouse wheel event
+
+One will want to take care when trying to disable page scrolling when using mouse wheel events. Thinking from a user experience perspective for a moment I would not want to disabled page scrolling by way of a mouse wheel for the page as a whole, at least nit in mouse use case examples of the mouse wheel event. However I would often want to disable it when the user hovers there mouse over a canvas element, division, or any other kind of element.
 
 ```html
 <html>
