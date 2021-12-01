@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 11:26:26
-version: 1.91
+updated: 2021-12-01 11:30:42
+version: 1.92
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -895,6 +895,8 @@ out.addEventListener('wheel', function(e){
 ### 6.3 - Full screen trick using css
 
 So then there is the idea of having a way to switch between a full screen mode of sorts as well as a window mode. What makes things a little involved is that when I switch to full screen mode I can do something like set a container div to absolute, or fixed positing and adjust the width and hight of the container. However when doing so the page content will still case scroll bars to appear on the side of the browser window. If I just care about the mouse wheel and that is all then maybe this is not a problem, but when it comes to taking into account other ways of scrolling and so forth I should have a way to disable the page content when the container div is in this full screen mode of sorts.
+
+There may be a number of ways of gong about setting up the kind of system that I have in mind for having a mouse wheel event and various other events attached to a container div that is can then be changed by some kind of action made by the user. That is that having the mouse wheel event work the way that I want it to when the container is in window mode as well as full screen mode, and for the content of the page to not be displayed when the container is in full screen mode. However for this example at least I am going to just start out with something fairly simple that might prove to just be a decent starting point for this sort of thing, by just using a little CSS.
 
 ```html
 <html>
