@@ -4,11 +4,9 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### (  ) - new post #942 for 11/26/2021 - linux-tar
-* start the post
 
-### ( done 11/23/2021 ) - new post #941 for 11/23/2021 - linux-tree
-* (done) start the post
+
+### ( ) - new post #943 for 12/03/2021 - 
 
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
@@ -35,6 +33,12 @@
 <!--###### ########## ########## #######-->
 ## Linux ( /yyyy/mm/dd/linux-* )
 <!--###### ########## ########## #######-->
+
+### ( done 11/26/2021  ) - new post #942 for 11/26/2021 - linux-tar
+* (done) start the post
+
+### ( done 11/23/2021 ) - new post #941 for 11/23/2021 - linux-tree
+* (done) start the post
 
 ### ( done 11/19/2021 ) - new post #940 for 11/19/2021 - linux-xxd
 * (done) - start the draft folder
