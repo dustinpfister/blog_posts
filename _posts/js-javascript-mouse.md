@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 11:30:42
-version: 1.92
+updated: 2021-12-01 11:31:57
+version: 1.93
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -954,6 +954,8 @@ out.addEventListener('click', function(e){
     </body>
 </html>
 ```
+
+So then this is the basic idea that I more or less have in mind that seems to work okay thus far. Now there is just the question of how to go about making this into something that will work in any page.
 
 ## 7 - Pointer events to work with mouse and touch events
 
