@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 11:42:59
-version: 1.94
+updated: 2021-12-01 15:39:06
+version: 1.95
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -1109,7 +1109,107 @@ simClickFor(document.body, 37, 8);
 </html>
 ```
 
-## 9 - Conclusion
+## 9 - Using both mouse and touch events rather than pointer events
+
+Using pointer events might be great as a starting point for user interface design, however often I might want to make a user interface where there is logic that will work just for mouse events, and then completely separate logic for touch events. For example I might want to work out a whole lot of code that will work well with multi touch, and then other code that will make use of mouse features such as a right click button. So then in this section I will be exploring how to go about getting started with this kind of system when it comes to working with a mouse, as well as touch events in a client side web application.
+
+### 9.1 -
+
+```html
+<html>
+    <head>
+        <title>js mouse and touch events</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id="canvas-app"><div>
+        <script>
+// HELPERS
+var getElRel = function(el, clientX, clientY){
+    var bx = el.getBoundingClientRect();
+    return  {
+      x : clientX - bx.left,
+      y : clientY - bx.top
+    };
+}
+// DRAW
+var draw = {};
+draw.back = function(ctx, canvas, sm){
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0,0,canvas.width, canvas.height);
+}
+draw.pool = function(ctx, canvas, sm){
+    draw.back(ctx, canvas, sm);
+    sm.pool.forEach(function(obj){
+       ctx.beginPath();
+       ctx.arc(obj.x, obj.y, obj.r, 0, Math.PI * 2)
+       ctx.fillStyle = obj.fillStyle || 'lime';
+       ctx.fill();
+       ctx.stroke();
+    })
+};
+// CANVAS SETUP
+var container = document.getElementById('canvas-app'),
+canvas = document.createElement('canvas'),
+ctx = canvas.getContext('2d');
+canvas.width = 640;
+canvas.height = 480;
+container.appendChild(canvas);
+// STATE
+var sm = {
+  canvas: canvas,
+  ctx: ctx,
+  pool: []
+};
+// WHAT TO DO FOR A TOUCH START EVENT
+var touchStart = function(e){
+    // create pool of objects from touch array
+    sm.pool = [].map.call(e.touches, function(touch){
+        var obj = getElRel(e.target, touch.clientX, touch.clientY);
+        obj.r = 64;
+        return obj;
+    });
+    // draw pool
+    draw.pool(ctx, canvas, sm);
+    // e.preventDefault will suppress an additional mouse down event
+    // that will fire if not suppresses
+    e.preventDefault();
+};
+var mouseDown = function(e){
+    var obj = getElRel(e.target, e.clientX, e.clientY);
+    obj.r = 64;
+    obj.fillStyle = 'red';
+    // if left click start a new pool
+    if(e.button === 0){
+        obj.fillStyle = 'cyan';
+        sm.pool = [];
+    }
+    sm.pool.push(obj);
+    // draw pool
+    draw.pool(ctx, canvas, sm);
+};
+// on context event handler
+var oncontext = function(e){
+    e.preventDefault();
+    if (event.stopPropagation){
+        event.stopPropagation();
+    }
+    event.cancelBubble = true;
+    //render(e.button);
+    return false;
+};
+canvas.addEventListener('touchstart', touchStart);
+canvas.addEventListener('mousedown', mouseDown);
+canvas.addEventListener('contextmenu', oncontext);
+// draw for first time
+draw.back(ctx, canvas, sm);
+        </script>
+    </body>
+</html>
+```
+
+## 10 - Conclusion
 
 So hopefully this post has helped you gain some basic insight into how to get going with a mouse when making a user interface with javaScript. However there is much more to learn and be aware of when it comes to using mouse events, as well as other events such as touch events, and keyboard events. This post does not outline a fully comprehensive input controller module or project or sorts after all as the focus here is just on things that have to do with working with the mouse.
 
