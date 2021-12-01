@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 10:53:05
-version: 1.89
+updated: 2021-12-01 11:22:24
+version: 1.90
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -886,6 +886,65 @@ out.addEventListener('wheel', function(e){
     y += e.deltaY;
     out.innerText = y;
     return;
+});
+        </script>
+    </body>
+</html>
+```
+
+### 6.3 - 
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+        <style>
+.app{
+  display: block;outline:1px solid #000000;background:gray;
+}
+.app-full{
+  position:absolute;top:0px;left:0px;width:100%;height:100%;
+}
+.app-window{
+  position:relative;width:640px;height:480px;
+}
+.page-content{
+  height:1000px;width:100px;background:gray;
+}
+.page-content-active{
+  display:block;
+}
+.page-content-inactive{
+  display:none;
+}
+        </style>
+    </head>
+    <body>
+        <div><br><br></div>
+        <div id="out" class="app app-window" >0</div>
+        <div class="page-content page-content-active" style=""></div>
+        <script>
+var y = 0,
+full = false,
+div_content = document.querySelector('.page-content')
+out = document.getElementById('out');
+// attaching to the out div
+out.addEventListener('wheel', function(e){
+    e.preventDefault();
+    y += e.deltaY;
+    out.innerText = y;
+    return;
+});
+out.addEventListener('click', function(e){
+    full = !full;
+    var div = e.target;
+    if(full){
+        div.className = 'app app-full';
+        div_content.className = 'page-content page-content-inactive';
+    }else{
+        div.className = 'app app-window';
+        div_content.className = 'page-content page-content-active';
+    }
 });
         </script>
     </body>
