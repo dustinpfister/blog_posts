@@ -5,19 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-11-29 09:11:58
-version: 1.85
+updated: 2021-12-01 09:25:17
+version: 1.86
 ---
 
-In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get mouse cursor positions as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
+In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
 
-There are three general event types of interest when working something out with mouse events that are [onmousedown](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousedown), [onmosemove](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove), and [onmouseup](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseup). There are other events of interest, but for the most part I only bother with those three events when working out any kind of user interface that will make use of a mouse if present.
+There are three general event types of interest when working something out with mouse events that are [on mouse down](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousedown), [on mouse move](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmousemove), and [on mouse up](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onmouseup). There are other events of interest, such as [mouse out](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseout_event) and [mouse over](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event) events, but for the most part I only bother with those first three events when working out any kind of user interface that will make use of a mouse if present.
 
-Mouse events alone are not the best way to go about making a truly universal input controller type module or component of an application. There are of course also touch events, and keyboard events that should be taken into consideration also when working on something to that effect. 
+Mouse events are not always the best way to go about making a truly universal input controller type module, or any kind of component of an application that has to do with user input, at least not by them selfs anyway. There are of course also touch events, and keyboard events that should be taken into consideration also when working on something to that effect. So then when it comes to working out an interface that will work with pointer devices in general it might be better to start out with pointer events actually. Pointer events are as the same suggests about pointers in general not just in terms of a mouse, but touch and pen devices also. There is then only bothering with mouse and touch events when it comes to making separate user interfaces for desktop and mobile devices.
 
-When it comes to working out an interface that will work with pointer devices in general it might be better to start out with pointer events actually. Pointer events are as the same suggests about pointers in general not just in terms of a mouse, but touch and pen devices also. There is then only bothering with mouse and touch events when it comes to making separate user interfaces for desktop and mobile devices.
-
-However mouse events work great when it comes to attaching events that will allow for a great deal of control over what will happen for traditional desktop clients. In any case in this post I will be covering a great deal about mouse events, but also pointer events in general while I am at it.
+However mouse events work great when it comes to attaching events that will allow for a great deal of control over what will happen for traditional desktop clients. When doing so it is impotent to be aware of how browsers simulate mouse events for touch scripts, and how to prevent that default behavior. It should also go without saying that one should also use touch events, and or pointer events as a fall back for mouse events to make a user interface work with all clients that will visit a page. In any case in this post I will be covering a great deal about mouse events, but also pointer events in general while I am at it.
 
 <!-- more -->
 
