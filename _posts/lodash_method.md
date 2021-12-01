@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:10:40
-version: 1.11
+updated: 2021-12-01 12:13:27
+version: 1.12
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -38,4 +38,5 @@ console.log(r); // [5, 3]
 
 ## 2 - Conclusion
 
-Thats it for now today, I could not think about more to write about with this one, and could also not come up with any actual use case examples as well.
+Thats it for now today, I could not think about more to write about with this one just yet, and could also not come up with any actual real use case examples as well fir the method named method in lodash. I can not say that I edn up in situations in which I need to use this kind of method often, in fact thus far I would say never actually. Even if I do get into some kind of situation in which this method will prove to be useful I think I would still prefer to make use of some other options for doing what I need to do actually.
+
