@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 12:57:51
-version: 1.22
+updated: 2021-12-01 13:01:39
+version: 1.23
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -17,11 +17,11 @@ This is one of the lesser known methods in lodash that I do not see myself using
 
 <!-- more -->
 
-## 1 - lodash _.method in range example
+## 1 - The lodash \_.method basics
 
 The \_.method method is intended to be used with other lodash methods like \_.filter that accept a collection as the first argument and then a second argument that is a function that is to be called for each element in that collection. In this section I will be going over a few simple examples of this lodash method, and in the process of doing so I will also be touching base on various other lodash features in general as well as another alternatives ways of doing things with lodash. This is not any kind of getting started type post wit lodash, let alone with [javaScript in general](/2018/11/27/js-getting-started/) so I trust that you have at least a little experience working with javaScript and various user space libraries such as but not limited to lodash.
 
-### 1.1 -
+### 1.1 - Basic example of the method lodash method in range example
 
 So then say I have an in range method that will return true if the x value of an object is in a given range, and false if it is not. I then have a reference to this in range method in a bunch of nested objects in a collection along with an x value that will work with the range method. I then want to create a new array that is just the objects in the collection that contain an x value that is in range. So then I could do something with the lodash \_.method like this.
 
