@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 467
-updated: 2021-12-01 13:01:39
-version: 1.23
+updated: 2021-12-01 14:45:12
+version: 1.24
 ---
 
 The [lodash \_.method](https://lodash.com/docs/4.17.15#method) method can be used to call a method at a given path when used with another lodash method like [\_.map](/2018/02/02/lodash_map), or [\_.filter](/2018/05/18/lodash_filter/) just to name a few such options. In other words say you have this function as a property of an object that is one of many such objects in a collection of sorts, and you want to use this function with a method like map to create a custom form of the collection. If you are in this kind of situation then this is a situation in which you might consider using the lodash \_.method method.
@@ -64,7 +64,30 @@ console.log(f); // [5, 3]
 
 Maybe it would make more sense if each nested object in the collection had its own unique method, but even in that case why not just do something like this? Also why even use lodash to do something like this also? I do not want to be yet another developer that jumps on the lodash hate wagon really, there are a few methods in lodash that I think are very useful, but that is just it, a few.  If this method is one of those methods in lodash I can not say that I am seeing it.
 
-## 2 - Conclusion
+## 2 - Using vanilla javaScript in place of method
+
+### 2.1 - In range example once again with native javaScript
+
+```js
+let inRange = function(){
+    return this.x < 9 && this.x >=0 
+}
+let points = [
+    { pt: { x: -1, tester: inRange } },
+    { pt: { x: 5, tester: inRange} },
+    { pt: { x: 3, tester: inRange} },
+    { pt: { x: 25, tester: inRange} },
+];
+// using native javaScript array methods
+let f = points.filter((obj)=>{
+    return obj.pt.tester.call(obj.pt);
+}).map((el)=>{
+    return el.pt.x;
+});
+console.log(f); // [5, 3];
+```
+
+## 3 - Conclusion
 
 Thats it for now today, I could not think about more to write about with this one just yet, and could also not come up with any actual real use case examples as well fir the method named method in lodash. I can not say that I end up in situations in which I need to use this kind of method often, in fact thus far I would say never actually. Even if I do get into some kind of situation in which this method will prove to be useful I think I would still prefer to make use of some other options for doing what I need to do actually.
 
