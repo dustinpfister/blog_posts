@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 14:24:00
-version: 1.34
+updated: 2021-12-02 14:26:33
+version: 1.35
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -65,6 +65,8 @@ utils.getCanvasRelative = function (e) {
 ## 2 - The map module that will be used to create the grid.
 
 In order to get this example working I will need a grid in which to place the player object that will move on each grid location click. I could just have everything together in one module, but I am thinking ahead with this one and have decided to pull this part of the example into its own map module. For now I am going to be trying my best to keep this map module as simple as I can, and with that said it just has a few public methods that I may or may not expand on. There is of course a create method that I will be calling in my game module that I will be getting to in a later section in this post. When it comes to creating even a simple grid module there are all kinds of formats for the grid object that come to mind. Some developers might prefer some kind of format that involves an array of arrays, but as of late I prefer a solution that involves a single array and then using a formula to get or set the proper cell location.
+
+After the create public method I have two methods that can be used to get a cell location in the map. One is just the basic get method that can ge a cell by an index value, or an x and y cell location. The other method is what I will be using to get a cell location by way of a canvas relative pixel location.
 
 ```js
 var mapMod = (function () {
