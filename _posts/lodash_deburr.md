@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 541
-updated: 2021-12-02 10:26:51
-version: 1.9
+updated: 2021-12-02 10:49:54
+version: 1.10
 ---
 
 When it comes to Unicode blocks there are the first few blocks that have to do with Latin characters such as [Latin 1 Supplement](https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29), and [Latin A Extended Unicode](https://en.wikipedia.org/wiki/Latin_Extended-A). These kinds of characters come up now and then for cretin words that come from languages like Spanish, and many other such latin based languages outside that of English. If for some reason I might be interested in just simply converting these kinds of strings into a string that contains just the first few ASCCI range characters I can used the [lodash deburr method](https://lodash.com/docs/4.17.15#deburr) to make quick work of that kind of task. This method in lodash just simply takes away any additional accent over a letter and just converts into a plain English style letters form of the word.
@@ -15,7 +15,11 @@ When it comes to Unicode blocks there are the first few blocks that have to do w
 
 ## 1 - Latin 1 Supplement, Latin Extended A, and Unicode blocks in general
 
-The lodash deburr method has to do with converting certain characters in the [Unicode Blocks](https://en.wikipedia.org/wiki/Unicode_block) called Latin 1 Supplement and Latin A Extended Unicode into basic Latin characters that are found within plain old [ASCII](https://en.wikipedia.org/wiki/ASCII) or the [Basic Latin Unicode code block](https://en.wikipedia.org/wiki/Basic_Latin_%28Unicode_block%29).
+The lodash deburr method has to do with converting certain characters in the [Unicode Blocks](https://en.wikipedia.org/wiki/Unicode_block) called Latin 1 Supplement and Latin A Extended Unicode into basic Latin characters that are found within plain old [ASCII](https://en.wikipedia.org/wiki/ASCII) or the [Basic Latin Unicode code block](https://en.wikipedia.org/wiki/Basic_Latin_%28Unicode_block%29). In this section I will be starting out with just some basic examples of the deburr method in lodash, In a later section of this post I will then be getting into some vanilla javaScript source code examples of deburr.
+
+The examples in this section should prove to be fairly simple, but I still assume that you know enough about javaScript to get up and running with using lodash in a javaScript environment of one kind or another.
+
+
 ### 1.1 - A basic example of the lodash deburr method
 
 So a Basic example of the lodash deburr method might look like this then
