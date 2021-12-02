@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 13:51:57
-version: 1.28
+updated: 2021-12-02 13:56:33
+version: 1.29
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -25,6 +25,10 @@ It may seem as a very simple, trivial example, and for a veteran javaScript deve
 </script>
 
 ## 1 - Getting started and the utility module of this grid unti movement javaScript example
+
+This is a post on a simple client side javaScript example, so then it should go without saying that this is not a [getting started with javaScript](/2018/11/27/js-getting-started/) type post. I assume that you have at least some background with the basics of javaScript as well as other client side web development languages which include HTML and CSS. With that out of the way in this section I will be going over just the utilities module of the example leaving the other various files for later sections of this post.
+
+### 1.1 - The utility module
 
 So first off here is a utility module that has some stand alone static methods that I am going to be using in one or more additional modules moving forward with the rest of the code. This is just a standard practice of sorts when it comes to making any kind of [canvas example](/2020/03/23/canvas-example/), or complex javaScript project. A popular javaScript library that can be described as a general unity library would of course be [lodash](/2019/02/15/lodash/), however with these javaScript example posts I like to do everything from the ground up, making my own custom cut libraries. I have another [utilities library javaScript](/2021/08/06/js-javascript-example-utils/) example post in which it get into detail about making this kind of module that is packed with all kinds of usual suspect type methods that I will often park in a module such as this. However I often do make custom versions of this kind of library on a project by project, and example by example type basis.
 
