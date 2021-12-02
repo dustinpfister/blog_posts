@@ -2,6 +2,16 @@
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
 
+## js-javascript-example-grid-game-unit-movement
+      Intrinsic Value: This is a good topic that relates to work on my actual game framework project
+      Search Console: best preforming "js-javascript-example-\*" post as of 12/2/21
+      Google Trends: "javascript grid"
+        This is a great topic that has to do with work I would like to do on my framework project called Clucker. On top of that this post is the best preforming post in my javaScript example series of posts as of this writing so it makes sense to work on it more for that reason also. On top of that I lack javaScript example series posts that are in the 3,000+ word count range, and I would like for this whole collection to preform better.
+
+* () - 1,800+ words
+* () - 2,000+ words
+* () - 3,000+ words
+
 ## js-javascript-foreach ( All is Good with this one! Must go the distance )
       Intrinsic Value: There are a lot of interesting little details, branches off into all kinds of interesting topics.
       Search Console: Doing well in a relative way for the js category "javascript foreach sum value", "javascript foreach"
@@ -9,8 +19,8 @@
         All is well with this post when it comes to having an interesting topic, showing potential in search console, and having some eyebrow raising keywords to target in Google trends. The post is all ready a lengthly content piece, so much of the work from this post forward will have to do with editing what I have together all ready. This is not to say that there is not still a whole lot of room for expansion also. This should maybe be the first post that I take to the front of the whole pack that I have written thus far when it comes to taking something into the range of five thousand plus words. As if this writing I have only one other post that long which is my main canvas-example post.
 * ( done 11/11/2021 ) 4500+ words
 * ( done 11/11/2021 ) 5000+ words
-* ( done 11/18/2021 )5,600+ words
-* ( done 11/18/2021 )5,800+ words
+* ( done 11/18/2021 ) 5,600+ words
+* ( done 11/18/2021 ) 5,800+ words
 * 6,000+ words
 * 7,000+ words
 * 8,000+ words
