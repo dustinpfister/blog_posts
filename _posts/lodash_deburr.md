@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 541
-updated: 2021-12-02 11:18:19
-version: 1.19
+updated: 2021-12-02 11:23:55
+version: 1.20
 ---
 
 When it comes to Unicode blocks there are the first few blocks that have to do with Latin characters such as [Latin 1 Supplement](https://en.wikipedia.org/wiki/Latin-1_Supplement_%28Unicode_block%29), and [Latin A Extended Unicode](https://en.wikipedia.org/wiki/Latin_Extended-A). These kinds of characters come up now and then for cretin words that come from languages like Spanish, and many other such latin based languages outside that of English. If for some reason I might be interested in just simply converting these kinds of strings into a string that contains just the first few ASCCI range characters I can used the [lodash deburr method](https://lodash.com/docs/4.17.15#deburr) to make quick work of that kind of task. This method in lodash just simply takes away any additional accent over a letter and just converts into a plain English style letters form of the word.
@@ -41,7 +41,9 @@ So you do not want to add lodash to the stack of your project just to use this o
 
 So then I will need to use the string replace prototype method and pass a pattern that will match the Latin characters as the first argument, and then pass a function for the second argument that will map the wanted ASCII chars to the locations in the source string. The process will then be a little involve, and the solution that I have made for this involved diving deep into the lodash source code actually.
 
-### 2.1 -
+### 2.1 - Starting out with the regular expression
+
+The first thing to work out, or discover in my case, is to have a regular expression that will match the Latin charterers. When it comes to reading the lodash source code there is the [deburr.js file](https://github.com/lodash/lodash/blob/master/deburr.js) at the root of the lodash source. This file contains a regular expression that seems to be the pattern that is used for the deburr method. When it comes to working with this directly with a little javaScript code that pattern seems to work as expected when it comes to matching at least.
 
 ```js
 // pattern used to match Latin letters in lodash deburr source code
@@ -53,6 +55,7 @@ str = str.replace(reLatin, '*');
 console.log(str); // Jalape*o
 ```
 
+So that part was simple enough when it comes to just looking into the source code of lodash at least rather than coming up with my own pattern that will do the same thing in a different way, in which case even this part might not be so simple. In any case this as I see it is the easy part, just matching the letters with a regular expression. The hard part now is how to go about replacing these letters with the characters that I want in the ASCII range.
 
 ### 2.2 - 
 
