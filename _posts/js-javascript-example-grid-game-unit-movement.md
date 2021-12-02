@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 12:46:08
-version: 1.18
+updated: 2021-12-02 12:49:58
+version: 1.19
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
 
-I have made many projects in the past that involve the use of a [grid in one form or another such as my grid defense canvas example](/2019/11/27/canvas-example-grid-defense/), I also have another canvas example when it comes to [creating and drawing grids in general](/2019/11/07/canvas-example-grid/) with canvas. Shortly after I wrote this post for the first time I made another [example where the aim is to make a grid module](/2021/08/20/js-javascript-example-grid-module/) that can be used over and over again from one project to another rather than making a custom solution for a single project or examples such as the case with this example that I am writing about here.
+I have made many projects in the past that involve the use of a [grid in one form or another such as my grid defense canvas example](/2019/11/27/canvas-example-grid-defense/), I also have another canvas example when it comes to [creating and drawing grids in general](/2019/11/07/canvas-example-grid/) with canvas. Shortly after I wrote this post for the first time I made another [example where the aim is to make a grid module](/2021/08/20/js-javascript-example-grid-module/) that can be used over and over again from one project to another rather than making a custom solution for a single project or examples such as the case with this example that I am writing about here. The problem with that as I see it s far is that making a grid module is something that I never seem to get just right, so I need to keep making new ones. So maybe some times it is a good idea to just create a custom grid module on a project by project basis rather than trying to make some kind of magic grid module that will work well in every possible project.
 
 However in this one I have an idea that I have not done yet with grids, and would like to move forward with it. Also in this post I am touching base on a lot of other topics when it comes to starting a foundation to which I will build on top of when it comes to making a real project rather than just yet another simple javaScript code example a cycle that I would very much like to break. 
 
