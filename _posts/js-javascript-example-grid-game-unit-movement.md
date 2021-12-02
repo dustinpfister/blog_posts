@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 14:28:06
-version: 1.36
+updated: 2021-12-02 14:34:25
+version: 1.37
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -216,7 +216,7 @@ var gameMod = (function () {
 
 ## 4 - The draw module
 
-So now that I have all the modules that can be used to create a main game object state, I am going to want to have a way to create a view for this state object. So I will then need module that can be used to draw to a canvas element which will be this draw.js file.
+So now that I have all the modules that can be used to create a main game object state, I am going to want to have a way to create a view for this state object. So I will then need module that can be used to draw to a canvas element which will be this draw.js file. With this example this far I just have a few draw methods one of which is to just draw a simple static background, another is to draw the state of the map as a whole, and I have another that just draws some basic state info.
 
 ```js
 var draw = (function () {
