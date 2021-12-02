@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 13:56:33
-version: 1.29
+updated: 2021-12-02 13:59:56
+version: 1.30
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -27,6 +27,10 @@ It may seem as a very simple, trivial example, and for a veteran javaScript deve
 ## 1 - Getting started and the utility module of this grid unti movement javaScript example
 
 This is a post on a simple client side javaScript example, so then it should go without saying that this is not a [getting started with javaScript](/2018/11/27/js-getting-started/) type post. I assume that you have at least some background with the basics of javaScript as well as other client side web development languages which include HTML and CSS. With that out of the way in this section I will be going over just the utilities module of the example leaving the other various files for later sections of this post.
+
+### Full source code is also on Github
+
+If you are on Github and wondering if there is a location on Github where I am parking the source code that I am write about in this post there such a place will be found [here in my test vjs repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-grid-game-unit-movement). This is also where I pack the source code examples for my [many other posts on native javaScript](/categories/js/) features and examples.
 
 ### 1.1 - The utility module
 
