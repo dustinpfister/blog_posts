@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 12:53:01
-version: 1.20
+updated: 2021-12-02 12:56:23
+version: 1.21
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -26,7 +26,7 @@ It may seem as a very simple, trivial example, and for a veteran javaScript deve
 
 ## 1 - The utility module
 
-So first off here is a utility module that has stand alone static methods that I am going ot be using in one or more additional modules moving forward. 
+So first off here is a utility module that has some stand alone static methods that I am going to be using in one or more additional modules moving forward with the rest of the code. This is just a standard practice of sorts when it comes to making any kind of canvas example, or complex javaScript project. A popular javaScript library that can be described as a general unity library would of course be lodash, however with these javaScript example posts I like to do everything from the ground up, making my own custom cut libraries.
 
 In this javaScript example I am just having a simple gird where when a gird location is clicked a player object will move in the direction of that location by one cell at a time. So I have a method that can be used to get a direction from one position to another that will be used in my main game module.
 
