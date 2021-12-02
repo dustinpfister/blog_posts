@@ -13,10 +13,6 @@ lodash_sorteduniq
 lodash_method
 -->
 
-### () - lodash_deburr ( below 500 words)
-* get to 500+ words
-* have 5+ internal links for the post
-
 ### () - lodash_filter (links, old)
 * get to 1,000+ words
 * have 5+ internal links for the post
@@ -31,6 +27,10 @@ lodash_method
 ### () - lodash_merge (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
+
+### ( done 12/02/2021 ) - lodash_deburr ( below 500 words)
+* (done) get to 500+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/01/2021 ) - lodash_method
 * (done) get to 500+ words
