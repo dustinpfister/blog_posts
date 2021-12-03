@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2021-12-03 15:12:49
-version: 1.1
+updated: 2021-12-03 15:20:32
+version: 1.2
 ---
 
 It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system.
@@ -14,7 +14,12 @@ It has been a few months sense the last time I started a new post on [threejs](h
 <!-- more -->
 
 
-## 1 - The basics of this system
+## 1 - The basics of this threejs powerd menu system
+
+In this section I will be starting out with just the basics of what needs to happen first i n order to get this menu system up and running. The main thing is that I have at least one javaScript sm.js file that provides a means to create what I am calling a state machine object. This library just has one public method thus far that is used to create and return a main state machine object. This state machine object can then be used in a main app loop of a main javaScript file thus far. 
+As of this writing the state of this sm.js is not so great, so things will likely change a whole lot in any future reversions of this examples when I get around to editing this post next. However much of the core functionality that I had in mind is all ready working, so maybe only so much more will need to change.
+
+In any case this is kind of an advanced post on threejs so I assume  that you know at least a little when it comes to using threejs and javaScript in general. If not you might want to step back and start out with something aimed more for developers that are new to threejs such as the [getting started with threejs post](/2018/04/04/threejs-getting-started/) that I wrote a while back.
 
 ### 1.1 - The sm.js file that creates and returns a State Machine Object
 
