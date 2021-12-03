@@ -5,8 +5,8 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2021-12-03 15:31:18
-version: 1.4
+updated: 2021-12-03 15:33:31
+version: 1.5
 ---
 
 It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system. If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](/2021/05/18/threejs-raycaster/) at some point sooner or layer of you like playing around with threejs. The Raycasetr constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. So then the use of a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
@@ -28,6 +28,8 @@ When I was working on this threejs example last I was using [threejs r135](https
 Also the source code for this threejs example can be found in [my test threejs repository on Github](https://github.com/dustinpfister/test_threejs). I also have the source code for [my many other posts on threejs](/categories/three-js/) located in that repository as well.
 
 ### 1.1 - The sm.js file that creates and returns a State Machine Object
+
+So then here I have the state of the sm.js file thus far that will create and return a main sm object. The first and foremost method of concern then is the public createSmObject method which is what I would call from a main javaScript file in which I would want to use this file.
 
 ```js
 var smMod = (function(){
@@ -116,6 +118,8 @@ var smMod = (function(){
 ```
 
 ### 1.2 - Basic example of this so far
+
+Now for just a basic hello world style example of this sm module this far.
 
 ```js
 var sm = smMod.createSMObject();
