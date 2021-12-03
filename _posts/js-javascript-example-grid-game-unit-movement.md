@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-02 14:34:25
-version: 1.37
+updated: 2021-12-03 12:19:27
+version: 1.38
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -21,8 +21,9 @@ It may seem as a very simple, trivial example, and for a veteran javaScript deve
 <!-- more -->
 
 <div id="canvas-app"style="width:320px;height:240px;margin-left:auto;margin-right:auto;"></div>
-<script>var utils={};utils.angleToPoint=function(x1,y1,x2,y2,scale){scale=scale===undefined?Math.PI*2:scale;var aTan=Math.atan2(y1-y2,x1-x2);return(aTan+Math.PI)/(Math.PI*2)*scale};utils.getCanvasRelative=function(e){var canvas=e.target,bx=canvas.getBoundingClientRect();console.log(e.type,e.touches);return{x:(e.touches?e.touches[0].clientX:e.clientX)-bx.left,y:(e.touches?e.touches[0].clientY:e.clientY)-bx.top,bx:bx}};var mapMod=function(){var createCells=function(map){var cells=[];var len=map.w*map.h,i=0;while(i<len){cells.push({i:i,x:i%map.w,y:Math.floor(i/map.w),unit:false});i+=1}return cells};var api={};api.create=function(opt){opt=opt||{};var map={w:opt.w||9,h:opt.h||7,cellSize:32,margin:{x:opt.marginX==undefined?5:opt.marginX,y:opt.marginY==undefined?5:opt.marginY},cells:[]};map.cells=createCells(map);return map};api.get=function(map,x,y){if(x<0||y<0||x>=map.w||y>=map.h){return false}return map.cells[y*map.w+x]};api.getCellByPointer=function(map,x,y){var cx=Math.floor((x-map.margin.x)/map.cellSize),cy=Math.floor((y-map.margin.y)/map.cellSize);return api.get(map,cx,cy)};return api}();var gameMod=function(){var createBaseUnit=function(){return{HP:100,maxHP:100,weaponIndex:0,sheetIndex:1,currentCell:false,active:false}};var createPlayerUnit=function(){var player=createBaseUnit();player.active=true;player.sheetIndex=0;return player};var placeUnit=function(game,unit,x,y){var map=game.maps[game.mapIndex];var newCell=mapMod.get(map,x,y);if(newCell){if(unit.currentCell){map.cells[unit.currentCell.i].unit=false}unit.currentCell=newCell;map.cells[unit.currentCell.i].unit=unit}};var setupGame=function(game){game.mapIndex=0;var map=game.maps[game.mapIndex];placeUnit(game,game.player,0,0)};var api={};api.create=function(opt){opt=opt||{};var game={mode:"map",maps:[],mapIndex:0,targetCell:false,player:createPlayerUnit()};game.maps.push(mapMod.create({marginX:opt.marginX===undefined?32:opt.marginX,marginY:opt.marginY===undefined?32:opt.marginY,w:opt.w===undefined?4:opt.w,h:opt.h===undefined?4:opt.h}));setupGame(game);return game};api.update=function(game,secs){var cell,radian,target;if(target=game.targetCell){cell=game.player.currentCell;if(target!=cell){radian=utils.angleToPoint(cell.x,cell.y,target.x,target.y);var cx=Math.round(cell.x+Math.cos(radian)),cy=Math.round(cell.y+Math.sin(radian));placeUnit(game,game.player,cx,cy);game.targetCell=false}}};return api}();var draw=function(){var unitColors=["blue","red"];return{back:function(sm){var canvas=sm.canvas,ctx=sm.ctx;ctx.fillStyle="black";ctx.fillRect(0,0,canvas.width,canvas.height)},map:function(sm){var canvas=sm.canvas,ctx=sm.ctx,map=sm.game.maps[sm.game.mapIndex];var cs=map.cellSize,i=0,x,y,len=map.cells.length,cell;while(i<len){cell=map.cells[i];x=map.margin.x+cell.x*cs;y=map.margin.y+cell.y*cs;ctx.fillStyle="green";ctx.beginPath();ctx.rect(x,y,32,32);ctx.fill();ctx.stroke();if(cell.unit){ctx.fillStyle=unitColors[cell.unit.sheetIndex];ctx.beginPath();ctx.rect(x,y,32,32);ctx.fill();ctx.stroke()}i+=1}},info:function(sm){var ctx=sm.ctx,canvas=sm.canvas;ctx.fillStyle="white";ctx.font="10px courier";ctx.textBaseline="top";var pos=sm.input.pos;ctx.fillText("down: "+sm.input.pointerDown+" pos: "+pos.x+","+pos.y,5,5);var p=sm.game.player;ctx.fillText("player pos: "+p.currentCell.x+","+p.currentCell.y,5,15);ctx.fillText("v"+sm.ver,1,canvas.height-11)}}}();(function(){var canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),container=document.getElementById("canvas-app")||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;ctx.translate(.5,.5);canvas.onselectstart=function(){return false};var sm={ver:"0.1.0",game:gameMod.create({marginX:14,marginY:7,w:9,h:7}),canvas:canvas,ctx:ctx,input:{pointerDown:false,pos:{x:0,y:0}}};var pointerHanders={start:function(sm,e){if(e.type==="touchstart"){e.preventDefault()}sm.input.pos=utils.getCanvasRelative(e);var pos=sm.input.pos;sm.input.pointerDown=true;var cell=mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex],pos.x,pos.y);if(cell){sm.game.targetCell=cell}},move:function(sm,e){sm.input.pos=utils.getCanvasRelative(e)},end:function(sm,e){sm.input.pointerDown=false}};var createPointerHandler=function(sm,type){return function(e){pointerHanders[type](sm,e)}};canvas.addEventListener("touchstart",createPointerHandler(sm,"start"));canvas.addEventListener("touchmove",createPointerHandler(sm,"move"));canvas.addEventListener("touchend",createPointerHandler(sm,"end"));canvas.addEventListener("mousedown",createPointerHandler(sm,"start"));canvas.addEventListener("mousemove",createPointerHandler(sm,"move"));canvas.addEventListener("mouseup",createPointerHandler(sm,"end"));var loop=function(){requestAnimationFrame(loop);gameMod.update(sm.game);draw.back(sm);draw.map(sm);draw.info(sm)};loop()})();
+<script>var utils={};utils.distance=function(x1,y1,x2,y2){return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2))};utils.angleToPoint=function(x1,y1,x2,y2,scale){scale=scale===undefined?Math.PI*2:scale;var aTan=Math.atan2(y1-y2,x1-x2);return(aTan+Math.PI)/(Math.PI*2)*scale};utils.getCanvasRelative=function(e){var canvas=e.target,bx=canvas.getBoundingClientRect();return{x:(e.touches?e.touches[0].clientX:e.clientX)-bx.left,y:(e.touches?e.touches[0].clientY:e.clientY)-bx.top,bx:bx}};utils.deepCloneJSON=function(obj){return JSON.parse(JSON.stringify(obj))};var mapMod=function(){var createCells=function(map){var cells=[];var len=map.w*map.h,i=0;while(i<len){cells.push({i:i,x:i%map.w,y:Math.floor(i/map.w),walkable:true,closed:false,data:{},unit:null});i+=1}return cells};var api={};api.create=function(opt){opt=opt||{};var map={w:opt.w||9,h:opt.h||7,cellSize:32,margin:{x:opt.marginX==undefined?5:opt.marginX,y:opt.marginY==undefined?5:opt.marginY},cells:[]};map.cells=opt.cells||createCells(map);return map};api.get=function(map,x,y){if(x<0||y<0||x>=map.w||y>=map.h){return false}return map.cells[y*map.w+x]};api.getCellByPointer=function(map,x,y){var cx=Math.floor((x-map.margin.x)/map.cellSize),cy=Math.floor((y-map.margin.y)/map.cellSize);return api.get(map,cx,cy)};var sortOpen=function(opened){return opened.sort(function(nodeA,nodeB){if(nodeA.weight<nodeB.weight){return 1}if(nodeA.weight>nodeB.weight){return-1}return 0})};var setWeight=function(endNode,neighbor){return utils.distance(endNode.x,endNode.y,neighbor.x,neighbor.y)};var buildPath=function(node){var path=[];while(node.parent){path.push([node.x,node.y]);node=node.parent}return path};var forNeighbors=function(grid,node,endNode,opened){var neighbors=mapMod.getNeighbors(grid,node);var ni=0,nl=neighbors.length;while(ni<nl){var neighbor=neighbors[ni];if(neighbor.closed){ni+=1;continue}neighbor.weight=setWeight(endNode,neighbor);if(!neighbor.opened){neighbor.parent=node;opened.push(neighbor);neighbor.opened=true}ni+=1}};api.getPath=function(grid,sx,sy,ex,ey){var grid=utils.deepCloneJSON(grid),nodes=api.chunk(grid),path=[],opened=[],node;var startNode=nodes[sy][sx];endNode=nodes[ey][ex];opened.push(startNode);startNode.opened=true;startNode.weight=0;while(opened.length>0){node=opened.pop();node.closed=true;if(node===endNode){return buildPath(node)}forNeighbors(grid,node,endNode,opened);sortOpen(opened)}return[]};api.chunk=function(grid){var arr=[],row,i=0;while(i<grid.cells.length){row=grid.cells.slice(i,i+grid.w);arr.push(row);i+=grid.w}return arr};api.isInBounds=function(grid,x,y){return x>=0&&x<grid.w&&(y>=0&&y<grid.h)};api.isWalkable=function(grid,x,y){if(api.isInBounds(grid,x,y)){return api.get(grid,x,y).walkable}return false};api.getNeighbors=function(grid,node){var x=node.x,y=node.y,neighbors=[];if(api.isWalkable(grid,x,y-1)){neighbors.push(mapMod.get(grid,x,y-1))}if(api.isWalkable(grid,x,y+1)){neighbors.push(mapMod.get(grid,x,y+1))}if(api.isWalkable(grid,x-1,y)){neighbors.push(mapMod.get(grid,x-1,y))}if(api.isWalkable(grid,x+1,y)){neighbors.push(mapMod.get(grid,x+1,y))}return neighbors};return api}();var gameMod=function(){var createBaseUnit=function(){return{HP:100,maxHP:100,weaponIndex:0,sheetIndex:0,currentCellIndex:null,active:false}};var createPlayerUnit=function(){var player=createBaseUnit();player.active=true;player.sheetIndex=2;return player};var createWallUnit=function(){var wall=createBaseUnit();wall.active=true;wall.sheetIndex=1;return wall};var placeUnit=function(game,unit,x,y){var map=game.maps[game.mapIndex];var newCell=mapMod.get(map,x,y);if(newCell){if(unit.currentCellIndex!=null){var oldCell=map.cells[unit.currentCellIndex];oldCell.walkable=true;map.cells[unit.currentCellIndex].unit=null}newCell.walkable=false;unit.currentCellIndex=newCell.i;map.cells[unit.currentCellIndex].unit=unit}};var setupGame=function(game,mapStrings){game.mapIndex=0;game.maps=game.maps.map(function(map,mi){var mapStr=mapStrings[mi]||"";map.cells=map.cells.map(function(cell,ci){var cellIndex=parseInt(mapStr[ci]||"0"),x=ci%map.w,y=Math.floor(ci/map.w);if(cellIndex===1){var wall=createWallUnit();placeUnit(game,wall,x,y)}if(cellIndex===2){placeUnit(game,game.player,x,y)}return cell});return map})};var api={};api.create=function(opt){opt=opt||{};var game={mode:"map",maps:[],mapIndex:0,targetCell:false,player:createPlayerUnit()};game.maps.push(mapMod.create({marginX:opt.marginX===undefined?32:opt.marginX,marginY:opt.marginY===undefined?32:opt.marginY,w:opt.w===undefined?4:opt.w,h:opt.h===undefined?4:opt.h}));setupGame(game,opt.maps||["2"]);return game};api.update=function(game,secs){var cell,radian,target;if(target=game.targetCell){cell=game.maps[game.mapIndex].cells[game.player.currentCellIndex];if(target!=cell){radian=utils.angleToPoint(cell.x,cell.y,target.x,target.y);var cx=Math.round(cell.x+Math.cos(radian)),cy=Math.round(cell.y+Math.sin(radian));placeUnit(game,game.player,cx,cy);game.targetCell=false}}};api.getPlayerCell=function(game){var p=game.player,map=game.maps[game.mapIndex];return map.cells[p.currentCellIndex]};api.playerPointer=function(game,x,y){var cell=mapMod.getCellByPointer(game.maps[game.mapIndex],x,y),map=game.maps[game.mapIndex];if(cell){var pCell=api.getPlayerCell(game),path=mapMod.getPath(map,pCell.x,pCell.y,cell.x,cell.y),pos=path.pop();if(pos){var tCell=mapMod.get(map,pos[0],pos[1]);game.targetCell=tCell}}};return api}();var draw=function(){var unitColors=["green","gray","blue","red"];return{back:function(sm){var canvas=sm.canvas,ctx=sm.ctx;ctx.fillStyle="black";ctx.fillRect(0,0,canvas.width,canvas.height)},map:function(sm){var canvas=sm.canvas,ctx=sm.ctx,map=sm.game.maps[sm.game.mapIndex];var cs=map.cellSize,i=0,x,y,len=map.cells.length,cell;while(i<len){cell=map.cells[i];x=map.margin.x+cell.x*cs;y=map.margin.y+cell.y*cs;ctx.fillStyle="green";if(!cell.walkable){ctx.fillStyle="gray"}if(cell.unit){ctx.fillStyle=unitColors[cell.unit.sheetIndex]}ctx.beginPath();ctx.rect(x,y,32,32);ctx.fill();ctx.stroke();i+=1}},info:function(sm){var ctx=sm.ctx,pos=sm.input.pos,pCell=gameMod.getPlayerCell(sm.game),canvas=sm.canvas;ctx.fillStyle="white";ctx.font="10px courier";ctx.textBaseline="top";ctx.fillText("pos: "+pos.x+","+pos.y,5,5);ctx.fillText("player pos: "+pCell.x+","+pCell.y,5,15);ctx.fillText("v"+sm.ver,1,canvas.height-11)}}}();(function(){var canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),container=document.getElementById("canvas-app")||document.body;container.appendChild(canvas);canvas.width=320;canvas.height=240;ctx.translate(.5,.5);canvas.onselectstart=function(){return false};var sm={ver:"0.3.0",fps:12,lt:new Date,game:gameMod.create({marginX:14,marginY:7,w:9,h:7,maps:["000100000000111100000001000020101000000100100000100000000100000"]}),canvas:canvas,ctx:ctx,input:{pointerDown:false,pos:{x:0,y:0}}};var pointerHanders={start:function(sm,e){var pos=sm.input.pos=utils.getCanvasRelative(e);if(e.type==="touchstart"){e.preventDefault()}sm.input.pointerDown=true;gameMod.playerPointer(sm.game,pos.x,pos.y)},move:function(sm,e){sm.input.pos=utils.getCanvasRelative(e)},end:function(sm,e){sm.input.pointerDown=false}};var createPointerHandler=function(sm,type){return function(e){pointerHanders[type](sm,e)}};canvas.addEventListener("touchstart",createPointerHandler(sm,"start"));canvas.addEventListener("touchmove",createPointerHandler(sm,"move"));canvas.addEventListener("touchend",createPointerHandler(sm,"end"));canvas.addEventListener("mousedown",createPointerHandler(sm,"start"));canvas.addEventListener("mousemove",createPointerHandler(sm,"move"));canvas.addEventListener("mouseup",createPointerHandler(sm,"end"));var loop=function(){var now=new Date,secs=(now-sm.lt)/1e3;requestAnimationFrame(loop);if(secs>=1/sm.fps){gameMod.update(sm.game);draw.back(sm);draw.map(sm);draw.info(sm);sm.lt=now}};loop()})();
 </script>
+
 
 ## 1 - Getting started and the utility module of this grid unti movement javaScript example
 
@@ -43,6 +44,11 @@ Another method that I have here is useful for getting a canvas relative rather t
 ```js
 // UTILS
 var utils = {};
+// distance
+utils.distance = function (x1, y1, x2, y2) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+};
+
 // angle from one point to another
 utils.angleToPoint = function (x1, y1, x2, y2, scale) {
     scale = scale === undefined ? Math.PI * 2 : scale;
@@ -59,7 +65,10 @@ utils.getCanvasRelative = function (e) {
         bx: bx
     };
 };
-
+// deep clone using JSON
+utils.deepCloneJSON = function (obj) {
+    return JSON.parse(JSON.stringify(obj));
+};
 ```
 
 ## 2 - The map module that will be used to create the grid.
@@ -80,7 +89,10 @@ var mapMod = (function () {
                 i: i,
                 x: i % map.w,
                 y: Math.floor(i / map.w),
-                unit: false // reference to current unit here or false if empty
+                walkable: true,
+                closed: false,
+                data: {},
+                unit: null // reference to current unit here or null if empty
             });
             i += 1;
         }
@@ -101,7 +113,7 @@ var mapMod = (function () {
             },
             cells: []
         };
-        map.cells = createCells(map);
+        map.cells = opt.cells || createCells(map);
         return map;
     };
     // return a cell at the given position, or false for out of bounds values
@@ -118,6 +130,140 @@ var mapMod = (function () {
         cy = Math.floor((y - map.margin.y) / map.cellSize);
         return api.get(map, cx, cy)
     };
+/***
+PATHS
+***/
+    // sort a list of open nodes
+    var sortOpen = function (opened) {
+        return opened.sort(function (nodeA, nodeB) {
+            if (nodeA.weight < nodeB.weight) {
+                return 1;
+            }
+            if (nodeA.weight > nodeB.weight) {
+                return -1;
+            }
+            return 0;
+        });
+    };
+    // set weight for a node
+    var setWeight = function (endNode, neighbor) {
+        return utils.distance(endNode.x, endNode.y, neighbor.x, neighbor.y);
+    };
+    // build a path based an parent property
+    var buildPath = function (node) {
+        var path = [];
+        while (node.parent) {
+            path.push([node.x, node.y]);
+            node = node.parent;
+        }
+        //path.push([node.x, node.y]);
+        return path;
+    };
+    // for Each Neighbor for the given grid, node, and open list
+    var forNeighbors = function (grid, node, endNode, opened) {
+        //var neighbors = grid.getNeighbors(node);
+        var neighbors = mapMod.getNeighbors(grid, node);
+        var ni = 0,
+        nl = neighbors.length;
+        while (ni < nl) {
+            var neighbor = neighbors[ni];
+            // if the neighbor is closed continue looping
+            if (neighbor.closed) {
+                ni += 1;
+                continue;
+            }
+            // set weight for the neighbor
+            neighbor.weight = setWeight(endNode, neighbor);
+            // if the node is not opened
+            if (!neighbor.opened) {
+                neighbor.parent = node;
+                opened.push(neighbor);
+                neighbor.opened = true;
+            }
+            ni += 1;
+        }
+    };
+    api.getPath = function (grid, sx, sy, ex, ey) {
+        // copy the given grid
+        //var grid = Grid.fromMatrix(givenGrid.nodes),
+        var grid = utils.deepCloneJSON(grid),
+        //var grid = utils.deepClone(grid, {
+        //    forRecursive: function(){ return {} }
+        //}),
+        nodes = api.chunk(grid),
+        path = [],
+        opened = [],
+        node;
+        // set startNode and End Node to copy of grid
+        var startNode = nodes[sy][sx];
+        endNode = nodes[ey][ex];
+        // push start Node to open list
+        opened.push(startNode);
+        startNode.opened = true;
+        startNode.weight = 0;
+        // start walking
+        while (opened.length > 0) {
+            // pop out next Node from open list
+            node = opened.pop();
+            node.closed = true;
+            // if the node is the end node
+            if (node === endNode) {
+                return buildPath(node);
+            }
+            // loop current neighbors
+            forNeighbors(grid, node, endNode, opened);
+            // sort the list of nodes be weight value to end node
+            sortOpen(opened);
+        }
+        // return an empty array if we get here (can not get to end node)
+        return [];
+    };
+    // get a chunk form of a grid
+    api.chunk = function (grid) {
+        var arr = [],
+        row,
+        i = 0;
+        while (i < grid.cells.length) {
+            row = grid.cells.slice(i, i + grid.w);
+            arr.push(row);
+            i += grid.w;
+        }
+        return arr;
+    };
+    // return true if the given x and y position is in bounds
+    api.isInBounds = function (grid, x, y) {
+        return (x >= 0 && x < grid.w) && (y >= 0 && y < grid.h);
+    };
+    // is the given cell location walkable?
+    api.isWalkable = function (grid, x, y) {
+        if (api.isInBounds(grid, x, y)) {
+            return api.get(grid, x, y).walkable; //grid.nodes[y][x].walkable;
+        }
+        return false;
+    };
+    // get the four Neighbors of a node
+    api.getNeighbors = function (grid, node) {
+        var x = node.x,
+        y = node.y,
+        neighbors = [];
+        if (api.isWalkable(grid, x, y - 1)) {
+            //neighbors.push(this.nodes[y - 1][x]);
+            neighbors.push(mapMod.get(grid, x, y - 1));
+        }
+        if (api.isWalkable(grid, x, y + 1)) {
+            //neighbors.push(this.nodes[y + 1][x]);
+            neighbors.push(mapMod.get(grid, x, y + 1));
+        }
+        if (api.isWalkable(grid, x - 1, y)) {
+            //neighbors.push(this.nodes[y][x - 1]);
+            neighbors.push(mapMod.get(grid, x - 1, y));
+        }
+        if (api.isWalkable(grid, x + 1, y)) {
+            //neighbors.push(this.nodes[y][x + 1]);
+            neighbors.push(mapMod.get(grid, x + 1, y));
+        }
+        return neighbors;
+    };
     // return the public API
     return api;
 }
@@ -132,14 +278,17 @@ Here in the game module I have a create method that will be used to create a new
 
 ```js
 var gameMod = (function () {
+/********** **********
+     UNITS
+*********** *********/
     // create a base unit
     var createBaseUnit = function () {
         return {
             HP: 100,
             maxHP: 100,
             weaponIndex: 0,
-            sheetIndex: 1,
-            currentCell: false,
+            sheetIndex: 0,
+            currentCellIndex: null,
             active: false
         }
     };
@@ -147,30 +296,66 @@ var gameMod = (function () {
     var createPlayerUnit = function () {
         var player = createBaseUnit();
         player.active = true;
-        player.sheetIndex = 0; // player sheet
+        player.sheetIndex = 2; // player sheet
         return player;
+    };
+    // create a player unit
+    var createWallUnit = function () {
+        var wall = createBaseUnit();
+        wall.active = true;
+        wall.sheetIndex = 1;
+        return wall;
     };
     // place a unit at the given location
     var placeUnit = function (game, unit, x, y) {
         var map = game.maps[game.mapIndex];
         var newCell = mapMod.get(map, x, y);
         if (newCell) {
-            // clear old position if any
-            if (unit.currentCell) {
-                map.cells[unit.currentCell.i].unit = false;
+            // any old cellIndex that may need to have walkable
+            // set back to true?
+            if (unit.currentCellIndex != null) {
+                var oldCell = map.cells[unit.currentCellIndex];
+                oldCell.walkable = true;
+                // set unit ref back to null
+                map.cells[unit.currentCellIndex].unit = null;
             }
-            // update to new location
-            unit.currentCell = newCell; // unit ref to cell
-            map.cells[unit.currentCell.i].unit = unit; // map ref to unit
+            // set new cell to not walkable as a unit is now located here
+            newCell.walkable = false;
+            // set current cell index for the unit
+            unit.currentCellIndex = newCell.i;
+            // place a ref to the unit in the map cell
+            map.cells[unit.currentCellIndex].unit = unit; // map ref to unit
         }
     };
-    // start game helper
-    var setupGame = function (game) {
+/********** **********
+     SETUP GAME
+*********** *********/
+    // setUp game helper with game object, and given maps
+    var setupGame = function (game, mapStrings) {
         game.mapIndex = 0;
-        var map = game.maps[game.mapIndex];
-        placeUnit(game, game.player, 0, 0);
+        game.maps = game.maps.map(function(map, mi){
+            var mapStr = mapStrings[mi] || '';
+            map.cells = map.cells.map(function(cell, ci){
+                var cellIndex = parseInt(mapStr[ci] || '0'),
+                x = ci % map.w,
+                y = Math.floor(ci / map.w);
+                // wall block
+                if(cellIndex === 1){
+                    var wall = createWallUnit();
+                    placeUnit(game, wall, x, y);
+                }
+                // player
+                if(cellIndex === 2){
+                    placeUnit(game, game.player, x, y);
+                }
+                return cell;
+            });
+            return map;
+        });
     };
-    // PUBLIC API
+/********** **********
+     PUBLIC API
+*********** *********/
     var api = {};
     // create a new game state
     api.create = function (opt) {
@@ -188,7 +373,7 @@ var gameMod = (function () {
                 w:  opt.w === undefined ? 4 : opt.w,
                 h:  opt.h === undefined ? 4 : opt.h
             }));
-        setupGame(game);
+        setupGame(game, opt.maps || ['2']);
         return game;
     };
     // update a game object
@@ -198,13 +383,33 @@ var gameMod = (function () {
         target;
         // move player
         if (target = game.targetCell) {
-            cell = game.player.currentCell;
+            cell = game.maps[game.mapIndex].cells[game.player.currentCellIndex];
             if (target != cell) {
                 radian = utils.angleToPoint(cell.x, cell.y, target.x, target.y);
                 var cx = Math.round(cell.x + Math.cos(radian)),
                 cy = Math.round(cell.y + Math.sin(radian));
                 placeUnit(game, game.player, cx, cy);
                 game.targetCell = false;
+            }
+        }
+    };
+    // get player cell
+    api.getPlayerCell = function(game){
+        var p = game.player,
+        map = game.maps[game.mapIndex];
+        return map.cells[p.currentCellIndex];
+    };
+    // preform what needs to happen for a player pointer event for the given pixel positon
+    api.playerPointer = function(game, x, y){
+        var cell = mapMod.getCellByPointer(game.maps[game.mapIndex], x, y),
+        map = game.maps[game.mapIndex];
+        if (cell) {
+            var pCell = api.getPlayerCell(game),
+            path = mapMod.getPath(map, pCell.x, pCell.y, cell.x, cell.y),     
+            pos = path.pop();
+            if(pos){
+               var tCell = mapMod.get(map, pos[0], pos[1]);
+               game.targetCell = tCell;
             }
         }
     };
@@ -220,7 +425,7 @@ So now that I have all the modules that can be used to create a main game object
 
 ```js
 var draw = (function () {
-    var unitColors = ['blue', 'red'];
+    var unitColors = ['green', 'gray', 'blue', 'red'];
     return {
         // draw background
         back: function (sm) {
@@ -246,31 +451,34 @@ var draw = (function () {
                 y = map.margin.y + cell.y * cs;
                 // draw base cell
                 ctx.fillStyle = 'green';
+                if(!cell.walkable){
+                    ctx.fillStyle = 'gray';
+                }
+                // if we have a unit
+                if (cell.unit) {
+                    ctx.fillStyle = unitColors[cell.unit.sheetIndex];
+                }
                 ctx.beginPath();
                 ctx.rect(x, y, 32, 32);
                 ctx.fill();
                 ctx.stroke();
-                // if we have a unit
-                if (cell.unit) {
-                    ctx.fillStyle = unitColors[cell.unit.sheetIndex];
-                    ctx.beginPath();
-                    ctx.rect(x, y, 32, 32);
-                    ctx.fill();
-                    ctx.stroke();
-                }
                 i += 1;
             }
         },
         info: function (sm) {
             var ctx = sm.ctx,
+            pos = sm.input.pos,
+            pCell = gameMod.getPlayerCell(sm.game),
             canvas = sm.canvas;
+            // text style
             ctx.fillStyle = 'white';
             ctx.font = '10px courier';
             ctx.textBaseline = 'top';
-            var pos = sm.input.pos;
-            ctx.fillText('down: ' + sm.input.pointerDown + ' pos: ' + pos.x + ',' + pos.y, 5, 5);
-            var p = sm.game.player;
-            ctx.fillText('player pos: ' + p.currentCell.x + ',' + p.currentCell.y, 5, 15);
+            // draw current pointer position
+            ctx.fillText('pos: ' + pos.x + ',' + pos.y, 5, 5);
+            // player cell pos
+            ctx.fillText('player pos: ' + pCell.x + ',' + pCell.y, 5, 15);
+            // version number
             ctx.fillText('v' + sm.ver, 1, canvas.height - 11);
         }
     }
@@ -297,12 +505,17 @@ So now it is time to get to my main.js file for this javaScript example where I 
     canvas.onselectstart = function () { return false; }
  
     var sm = {
-        ver: '0.1.0',
+        ver: '0.3.0',
+        fps: 12,
+        lt: new Date(),
         game: gameMod.create({
             marginX : 14,
             marginY : 7,
             w: 9,
-            h: 7
+            h: 7,
+            maps: [
+                '000100000000111100000001000020101000000100100000100000000100000'
+            ]
         }),
         canvas: canvas,
         ctx: ctx,
@@ -317,16 +530,13 @@ So now it is time to get to my main.js file for this javaScript example where I 
  
     var pointerHanders = {
         start: function (sm, e) {
+            var pos = sm.input.pos = utils.getCanvasRelative(e);
             if(e.type === 'touchstart'){
                 e.preventDefault();
             }
-            sm.input.pos = utils.getCanvasRelative(e);
-            var pos = sm.input.pos;
             sm.input.pointerDown = true;
-            var cell = mapMod.getCellByPointer(sm.game.maps[sm.game.mapIndex], pos.x, pos.y);
-            if (cell) {
-                sm.game.targetCell = cell;
-            }
+            // call player pointer method in gameMod
+            gameMod.playerPointer(sm.game, pos.x, pos.y);
         },
         move: function (sm, e) {
             sm.input.pos = utils.getCanvasRelative(e);
@@ -341,18 +551,25 @@ So now it is time to get to my main.js file for this javaScript example where I 
             pointerHanders[type](sm, e);
         };
     };
+    // events
     canvas.addEventListener('touchstart', createPointerHandler(sm, 'start'));
     canvas.addEventListener('touchmove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('touchend', createPointerHandler(sm, 'end'));
     canvas.addEventListener('mousedown', createPointerHandler(sm, 'start'));
     canvas.addEventListener('mousemove', createPointerHandler(sm, 'move'));
     canvas.addEventListener('mouseup', createPointerHandler(sm, 'end'));
+    // loop with frame capping set by sm.fps value
     var loop = function () {
+        var now = new Date(),
+        secs = (now - sm.lt) / 1000;
         requestAnimationFrame(loop);
-        gameMod.update(sm.game);
-        draw.back(sm);
-        draw.map(sm);
-        draw.info(sm);
+        if(secs >= 1 / sm.fps){
+            gameMod.update(sm.game);
+            draw.back(sm);
+            draw.map(sm);
+            draw.info(sm);
+            sm.lt = now;
+        }
     };
     loop();
 }
