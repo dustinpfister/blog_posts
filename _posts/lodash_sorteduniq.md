@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 661
-updated: 2021-12-03 09:22:00
-version: 1.10
+updated: 2021-12-03 10:08:47
+version: 1.11
 ---
 
 The [lodash sorted uniq](https://lodash.com/docs/4.17.15#sortedUniq) method can be used to remove all redundant copies of an element from an array. This is one of many methods in lodash that seem a little redundant, or present some kind of functionality that can easily be done with just native javaScript by itself. In any case this will be a quick post on creating a new array with repeat elements removed using lodash sortedUniq method, along with other lodash solutions for this, and vanilla javaScript alternatives to this method.
@@ -42,11 +42,11 @@ b = sortedUniq(a);
 console.log(b); // [1,2,3,4];
 ```
 
-So this solution makes use of some fairly modern javaScript features as of this writing at least. So if this is a problem you might still want to use lodash fr that reason. However it is still important to remember that even when it comes to using lodash there is still the question of what version and how far back client support goes with that version.
+So this solution makes use of some fairly modern javaScript features as of this writing at least. So if this is a problem you might still want to use lodash for that reason. However it is still important to remember that even when it comes to using lodash there is still the question of what version and how far back client support goes with that version.
 
 ### 2.2 - Using array reduce and array some
 
-Another way to go about creating an array with matching elements removed would be to work out some kind if solution that uses the array deduce methods as well as the array some method.
+Another way to go about creating an array with matching elements removed would be to work out a solution that uses the [array reduce method](/2021/07/13/js-array-reduce/) as well as the [array some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) method. The reduce method is often used for creating a single number or string primitive, but it can also be used to created a reduced array also, in fact that is the default if no starting value is given for the accumulator value. The array some method is like the array every method only the array some will return true if only one element meets a given condition rather than all elements. So then the array some method can be used in the body of a function that is given to reduce to check if a current element is in the accumulator array or not, if so push it in, else do not.
 
 ```js
 let sortedUniq = (arr) => {
