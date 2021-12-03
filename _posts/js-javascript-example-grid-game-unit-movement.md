@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-03 12:49:17
-version: 1.44
+updated: 2021-12-03 12:53:37
+version: 1.45
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -284,7 +284,9 @@ In this javaScript example the main module will be the state machine object that
 
 Here in the game module I have a create method that will be used to create a new game state that will contain at least one instance of a map object for starters, and helper methods that can be used to create the player object. So the game module is the main state object for the state of the actual game in terms of the state of the map, and any display objects that might be in the map, or out of it actually. For now it is just the player object, as well as just simple wall units that I am concern with, and in time as I develop this project much of the code here will be pulled into another module that has to do with object pools, and units in general when and if I get to it.
 
-With path detection now added to the map module as revision 3 of the example the place unit method will not set the walkable property of a cell to true when a unit is located in the cell, as well as set the value back to false when moving the unit to a new cell location.
+So for now I have all of my unit methods and various related helper functions at the top of this game module helper. I then have a create base unit helper that is used to create a unit object with all properties that the unit of any kind should have. As of revision 3 the only real properties of interest with a unit would be the sheetIndex, and currentCellIndex properties.
+
+With path detection now added to the map module as revision 3 of the example the place unit method will not set the walkable property of a cell to true when a unit is located in the cell, as well as set the value back to false when moving the unit to a new cell location. Because of this and any additional factors of concern moving forward the place unit method should always be used when moving any unit from one location to another or placing a new unit into a map.
 
 ```js
 var gameMod = (function () {
