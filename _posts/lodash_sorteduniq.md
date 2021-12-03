@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 661
-updated: 2021-12-03 09:20:43
-version: 1.9
+updated: 2021-12-03 09:22:00
+version: 1.10
 ---
 
 The [lodash sorted uniq](https://lodash.com/docs/4.17.15#sortedUniq) method can be used to remove all redundant copies of an element from an array. This is one of many methods in lodash that seem a little redundant, or present some kind of functionality that can easily be done with just native javaScript by itself. In any case this will be a quick post on creating a new array with repeat elements removed using lodash sortedUniq method, along with other lodash solutions for this, and vanilla javaScript alternatives to this method.
@@ -46,7 +46,7 @@ So this solution makes use of some fairly modern javaScript features as of this 
 
 ### 2.2 - Using array reduce and array some
 
-Another way to go about creating a
+Another way to go about creating an array with matching elements removed would be to work out some kind if solution that uses the array deduce methods as well as the array some method.
 
 ```js
 let sortedUniq = (arr) => {
