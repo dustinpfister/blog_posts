@@ -5,11 +5,11 @@ tags: [three.js]
 layout: post
 categories: three.js
 id: 943
-updated: 2021-12-03 15:25:43
-version: 1.3
+updated: 2021-12-03 15:31:18
+version: 1.4
 ---
 
-It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system.
+It has been a few months sense the last time I started a new post on [threejs](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) so then with that said I think it might be called for to write a new [three example](/2021/02/19/threejs-examples/) type post. This time I was thinking about slapping together a quick project that makes use of Raycaster to create a simple yet effective menu system. If you are not familiar with the [raycaster constructor in threejs yet, it is something that you will want to look into](/2021/05/18/threejs-raycaster/) at some point sooner or layer of you like playing around with threejs. The Raycasetr constructor is what can be used to find out if a 2d pointer click of one kind or another has resulted in a mesh object being clicked or not. So then the use of a raycster instance will help a whole lot if the aim is to make some kind of menu system using threejs.
 
 <!-- more -->
 
