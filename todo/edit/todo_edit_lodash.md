@@ -28,6 +28,10 @@ lodash_method
 * get to 1000+ words
 * have 5+ internal links for the post
 
+### () - lodash\_uniqueid (links, old)
+* get to 1000+ words
+* have 5+ internal links for the post
+
 ### ( done 12/02/2021 ) - lodash_deburr ( below 500 words)
 * (done) get to 500+ words
 * (done) have 5+ internal links for the post
