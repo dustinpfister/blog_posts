@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 661
-updated: 2021-12-03 09:13:31
-version: 1.6
+updated: 2021-12-03 09:16:54
+version: 1.7
 ---
 
 The [lodash sorted uniq](https://lodash.com/docs/4.17.15#sortedUniq) method can be used to remove all redundant copies of an element from an array. This is one of many methods in lodash that seem a little redundant, or present some kind of functionality that can easily be done with just native javaScript by itself. In any case this will be a quick post on creating a new array with repeat elements removed using lodash sortedUniq method, along with other lodash solutions for this, and vanilla javaScript alternatives to this method.
@@ -26,7 +26,7 @@ console.log(b); // [1,2,3,4];
 
 ### 2.1 - A vanilla javaScript alternative
 
-I have [found this vanilla javaScript alternative to sorted uniq](https://youmightnotneed.com/lodash/#sortedUniq). This vanilla javaScript alternative to the lodash sorteduniq method involves using the spread operator in conjunction with the array bracket syntax, the Set constructor, and the sort array prototype method.
+I have [found this vanilla javaScript alternative to sorted uniq](https://youmightnotneed.com/lodash/#sortedUniq). This vanilla javaScript alternative to the lodash sorteduniq method involves using the spread operator in conjunction with the array bracket syntax, the Set constructor, and the [sort array](/2019/12/02/js-array-sort/) prototype method.
 
 ```js
 let sortedUniq = arr => {
@@ -42,6 +42,8 @@ So this solution makes use of some fairly modern javaScript features as of this 
 
 ### 2.2 - Using array reduce and array some
 
+Another way to go about creating a
+
 ```js
 let sortedUniq = (arr) => {
     let b = [];
@@ -53,7 +55,7 @@ let sortedUniq = (arr) => {
             acc.push(el);
         }
         return acc;
-    }, []);
+    }, []).sort();
 };
  
 let a = [1, 1, 2, 2, 3, 3, 4, 4, 4, 4],
