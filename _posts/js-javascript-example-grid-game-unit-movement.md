@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-03 12:40:43
-version: 1.42
+updated: 2021-12-03 12:43:40
+version: 1.43
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -83,7 +83,7 @@ There is of course a create method that I will be calling in my game module that
 
 After the create public method I have two methods that can be used to get a cell location in the map. One is just the basic get method that can get a cell by an index value, or an x and y cell location. The other method is what I will be using to get a cell location by way of a canvas relative pixel location.
 
-In addition with a basic core set of methods to create and work with a mao object, I have also added a number of methods that have to do with match detection. This code that I have for this is based off of what it is that I have worked out for my [post on path detection](/2019/08/27/js-path-find/).
+In addition with a basic core set of methods to create and work with a map object, I have also added a number of methods that have to do with match detection. This code that I have for this is based off of what it is that I have worked out for my [post on path detection](/2019/08/27/js-path-find/). So now not only can I create a map, and get references to cells by a index or pixel location, but I can also get paths from one cell position to another. With that said by default all cells have a walkable property that by default is set to true. When it comes to my game module that will make use of this map module that is where I will want to set the walkable value of cells true and false as needed.
 
 ```js
 var mapMod = (function () {
