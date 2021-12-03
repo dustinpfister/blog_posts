@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 694
-updated: 2021-12-03 12:43:40
-version: 1.43
+updated: 2021-12-03 12:49:17
+version: 1.44
 ---
 
 So this week I started working on a new canvas example prototype, and the very first minor release of the prototype thus far strikes me as something good to write about as a simple stand alone [javaScript example](/2021/04/02/js-javascript-example/) post. Thus far it is just a simple example of having a grid, and having a player unit move around in the grid when a player clicks on a given cell location. The basic idea that I have together thus far with it could be taken in a whole range of different directions when it comes to making it into something that is more of a game beyond that of what I have in mind for the canvas example prototype. So I thought I would copy and past the source code over to another location and maintain it as just a simple starting point for a grid type game that involves moving a unit around a simple grid.
@@ -280,9 +280,11 @@ PATHS
 
 ## 3 - The game module
 
-In this javaScript example the main module will be the state machine object that I will be getting to later in this post. However the game module is still a major component that will contain everything that has to do with the state of the game, rather than the application as a whole. This means the state of the map as well as the unit that will be located in the map as well.
+In this javaScript example the main module will be the state machine object that I will be getting to later in this post. However the game module is still a major component that will contain everything that has to do with the state of the game, rather than the application as a whole. This means the state of the map as well as the units that will be located in the map as well.
 
-Here in the game module I have a create method that will be used to create a new game state that will contain at least one instance of a map object for starters, and helper methods that can be used to create the player object. So the game module is the main state object for the state of the actual game in terms of the state of the map, and any display objects that might be in the map, or out of it actually. For now it is just the player object that I am concern with, and in time as I develop this project much of the code here will be pulled into another module that has to do with object pools, and units in general.
+Here in the game module I have a create method that will be used to create a new game state that will contain at least one instance of a map object for starters, and helper methods that can be used to create the player object. So the game module is the main state object for the state of the actual game in terms of the state of the map, and any display objects that might be in the map, or out of it actually. For now it is just the player object, as well as just simple wall units that I am concern with, and in time as I develop this project much of the code here will be pulled into another module that has to do with object pools, and units in general when and if I get to it.
+
+With path detection now added to the map module as revision 3 of the example the place unit method will not set the walkable property of a cell to true when a unit is located in the cell, as well as set the value back to false when moving the unit to a new cell location.
 
 ```js
 var gameMod = (function () {
