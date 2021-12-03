@@ -9,7 +9,6 @@ lodash_flatmap
 lodash_debounce
 lodash_mixin
 lodash_values
-lodash_sorteduniq
 lodash_method
 -->
 
@@ -31,6 +30,10 @@ lodash_method
 ### () - lodash\_uniqueid (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
+
+### ( done 12/03/2021 ) - lodash_sorteduniq (below 500, links)
+* (done) get to 500+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/02/2021 ) - lodash_deburr ( below 500 words)
 * (done) get to 500+ words
