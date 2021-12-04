@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2021-12-04 18:38:47
-version: 1.7
+updated: 2021-12-04 18:42:37
+version: 1.8
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in lodash where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one more additional feature that is just not there. However the lodash values object method might not be the best example of the kind of method in lodash that brings something more to the table, as the lodash values method does more or less the same thing as the Object values method. However when it comes to going way back the native Object.values method is still fairly new, and as such the use of the Object values native method will result in code breaking in certain older browsers. 
@@ -16,6 +16,8 @@ Still in nay case this will be a post on the lodash values method as well as the
 <!-- more -->
 
 ## 1 - The basics of the lodash values method and other lodash methods
+
+In this section I will be starting out with a few basic examples of the lodash values method as well as other lodash methods such as the keys method. In a later section in this post I will be getting into the various native methods that there are to work with also, as well as how to go about poly filling the method and go about using alternatives that will work on very old web browsers.
 
 ### 1.1 - the lodash values method
 
