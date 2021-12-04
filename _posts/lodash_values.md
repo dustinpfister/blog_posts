@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2021-12-04 18:42:37
-version: 1.8
+updated: 2021-12-04 18:52:55
+version: 1.9
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in lodash where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one more additional feature that is just not there. However the lodash values object method might not be the best example of the kind of method in lodash that brings something more to the table, as the lodash values method does more or less the same thing as the Object values method. However when it comes to going way back the native Object.values method is still fairly new, and as such the use of the Object values native method will result in code breaking in certain older browsers. 
@@ -33,7 +33,6 @@ let obj = {
 console.log(_.values(obj) ); // [ 'bar', 42 ]
 ```
 
-There is also the native Object.values method that was introduced in recent years, this method works in the same way as lodash values but it might not be there in some older environments. As such this is one such method that helps to support a case that lodash is not a dead library just yet depending on your sites bowser user agent stats.
 
 ### 1.2 - The lodash keys method
 
@@ -46,4 +45,27 @@ let obj = {
 // to get object key names
 console.log(_.keys(obj)); // ['foo', 'n']
 ```
+
+## 2 - Vanilla javaScript ways of getting arrays of object values
+
+### 2.1 - Object.values and Object.keys
+
+So then there is now the native Object.values method that was introduced in recent years, this method works in the same way as lodash values but it might not be there in some older environments. As such this is one such method that helps to support a case that lodash is not a dead library just yet depending on your sites bowser user agent stats.
+
+
+```js
+let obj = {
+    foo: 'bar',
+    n: 42
+};
+// there is also the native Object.values
+// that does the same thing as lodash values
+// there is also an Object.keys
+console.log( Object.values(obj) ); // [ 'bar', 42 ]
+console.log(Object.keys(obj)); // ['foo', 'n']
+```
+
+## 3 - Conclusion
+
+There are then a number of ways to go about getting an array of object values, not just with lodash, but also with native javaScript by itself. If you do not care about supporting old web browsers then just directly using Object.values, and other modern native javaScript methods is fine. However if you still do care at least a little you might want to use lodash. However even then there is also looking into what the browser support is for the version of lodash that is being used, often it will still only go back so far. So then in you really want to make sure you are writing code that will almost always work you might want to stick to using one of the other vanilla javaScript methods for dong this sort of thing such as a for in loop.
 
