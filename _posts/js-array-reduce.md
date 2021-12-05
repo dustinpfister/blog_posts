@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-12-04 20:34:24
-version: 1.44
+updated: 2021-12-04 20:45:27
+version: 1.45
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -307,11 +307,32 @@ let sum = str.split('').reduce((acc, el) => {
 console.log(sum);
 ```
 
-## 5 - Some use case examples of array reduce
+## 5 - Using array reduce for filtering
+
+### 5.1 - Array reduce and array filter
+
+```js
+let a = [1, 'a', 2, 'b', 3];
+// so yes reduce can be used for filtering
+let c = a.reduce((acc, el) => {
+        if (typeof el === 'number') {
+            acc.push(el)
+        }
+        return acc;
+    }, []);
+console.log(c);  // [1, 2, 3]
+// but why not just use filter
+let b = a.filter((el) => {
+        return typeof el === 'number';
+    });
+console.log(b); // [1, 2, 3]
+```
+
+## 6 - Some use case examples of array reduce
 
 So now that I got all of the basics out of the way, as well as some not so basic aspects of the array reduce method on top of that it is now time to start looking into at least a few simple use case examples of the array reduce method. That is not just some silly use case examples for the purpose of showing how to use the method, but some examples that are a kind of software product, or at least something that might be used in such a product failing that I would say.
 
-### 5.1 - create a mean of average if you prefer from an array of numbers
+### 6.1 - create a mean of average if you prefer from an array of numbers
 
 One thing that comes to mind right away is to create a mean from an array of numbers. There is more than one kind of mean actually when it comes to rally getting into math. However most people would thing of a mean as just simply the sum of all the numbers dived by the number of numbers. This kind of mean is often refereed to as an arithmetic mean.
 
@@ -325,7 +346,7 @@ let nums = [10, 5, 7, 10, 10, 8];
 console.log(getArthMean(nums).toFixed(2)); // '8.33'
 ```
 
-### 5.2 - Add up array of object props helper
+### 6.2 - Add up array of object props helper
 
 Often I might want to create a sum from a single property of a standard object to which I have an array of. That is that I often am working with some kind of object pool, or collection of objects, and each object in this collection has one or more properties for something. Say I want to have a simple helper method that will just add up add the numbers for a given property such as money.
 
@@ -348,6 +369,6 @@ console.log(sumObjects(objs));          // 24
 console.log(sumObjects(objs, 'money')); // 5.6
 ```
 
-## 6 - Conclusion
+## 7 - Conclusion
 
 So then the array reduce method is great for many little situations in which I might want to create a single simple value from an array of values. However there is a great number of other array prototype methods that also come into play, such as the [array for each method](/2019/02/16/js-javascript-foreach/) that is just a more generic way of just looping over all the elements of an array for example. There is also the subject of sorting array elements that cokes up often and with that there is the built in [array sort prototype](/2019/12/02/js-array-sort/) method that would be the first and for most way to do so when it comes to core javaScript at least.
