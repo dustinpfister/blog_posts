@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2021-12-04 19:47:18
-version: 1.12
+updated: 2021-12-04 19:49:34
+version: 1.13
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in [lodash](/2019/02/15/lodash/) where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one more additional feature that is just not there. However the lodash values object method might not be the best example of the kind of method in lodash that brings something more to the table, as the lodash values method does more or less the same thing as the Object values method. However when it comes to going way back the native Object.values method is still fairly new, and as such the use of the Object values native method will result in code breaking in certain older browsers. 
@@ -54,7 +54,7 @@ Lodash methods work fine for various tasks, but there is also just working with 
 
 ### 2.1 - Object.values and Object.keys
 
-So then there is now the native Object.values method that was introduced in recent years, this method works in the same way as lodash values but it might not be there in some older environments. As such this is one such method that helps to support a case that lodash is not a dead library just yet depending on your sites bowser user agent stats.
+So then there is now the native Object.values method that was introduced in recent years, this method works in the same way as lodash values but it might not be there in some older environments. As such this is one such method that helps to support a case that lodash is not a dead library just yet depending on your sites bowser user agent stats. In addtion to the native Object values method there is also an [Object.keys](/2018/12/15/js-object-keys/) method that works just like lodash keys.
 
 
 ```js
