@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2021-12-04 18:52:55
-version: 1.9
+updated: 2021-12-04 19:41:45
+version: 1.10
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in lodash where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one more additional feature that is just not there. However the lodash values object method might not be the best example of the kind of method in lodash that brings something more to the table, as the lodash values method does more or less the same thing as the Object values method. However when it comes to going way back the native Object.values method is still fairly new, and as such the use of the Object values native method will result in code breaking in certain older browsers. 
@@ -47,6 +47,8 @@ console.log(_.keys(obj)); // ['foo', 'n']
 ```
 
 ## 2 - Vanilla javaScript ways of getting arrays of object values
+
+Lodash methods work fine for various tasks, but there is also just working with native javaScript by itself. In this section I will be going over the various ways of getting the values of an object with just javaScript by itself.
 
 ### 2.1 - Object.values and Object.keys
 
