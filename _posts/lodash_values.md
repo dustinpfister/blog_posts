@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2021-12-04 19:49:34
-version: 1.13
+updated: 2021-12-04 20:14:21
+version: 1.14
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in [lodash](/2019/02/15/lodash/) where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one more additional feature that is just not there. However the lodash values object method might not be the best example of the kind of method in lodash that brings something more to the table, as the lodash values method does more or less the same thing as the Object values method. However when it comes to going way back the native Object.values method is still fairly new, and as such the use of the Object values native method will result in code breaking in certain older browsers. 
@@ -67,6 +67,51 @@ let obj = {
 // there is also an Object.keys
 console.log( Object.values(obj) ); // [ 'bar', 42 ]
 console.log(Object.keys(obj)); // ['foo', 'n']
+```
+
+### 2.2 - For in loop
+
+```
+var ObjectValues = function (obj) {
+    var values = [];
+    for (var k in obj) {
+        values.push(obj[k]);
+    }
+    return values;
+};
+ 
+var point = {
+    x: 15,
+    y: 25
+};
+ 
+console.log( ObjectValues(point) ); // [ 15, 25 ]
+```
+
+### 2.3 - Object.getOwnPropertyNames, and Object.defineProperty
+
+```js
+var point = {
+    x: 15,
+    y: 25
+};
+// I can define an object property that is
+// not enumerable with the Object.defineProperty method
+Object.defineProperty(point, 'color', {
+    value: '#ff0000',
+    writable: false,
+    enumerable: false
+});
+// as such it will not show up with methods like Object.values
+console.log(Object.values(point)); // [15, 25]
+// So I need to use a solution that will involve the use of
+// getOwnProperyNames and also possibly get own property descriptor
+var ObjectKeysAll = () => {
+    return Object.getOwnPropertyNames(point).map((key) => {
+        return Object.getOwnPropertyDescriptor(point, key).value;
+    });
+};
+console.log( ObjectKeysAll(point) ); //[ 15, 25, '#ff0000' ]
 ```
 
 ## 3 - Conclusion
