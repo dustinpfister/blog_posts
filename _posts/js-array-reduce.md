@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-11-25 12:50:42
-version: 1.42
+updated: 2021-12-04 20:32:22
+version: 1.43
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -59,7 +59,7 @@ console.log( strs.join('-') ); // 'foo-man-chew'
 
 ### 1.3 - An array of objects
 
-There is also working with an array of objects, and wanting to create some kind of reduced value from one or more properties. For this example I am creating a sum from values in each property of each object in an array.
+There is also working with an array of objects, and wanting to create some kind of reduced value from one or more properties. For this example I am creating a sum from a certain value in each of the objects in an array.
 
 ```js
 let objs = [
