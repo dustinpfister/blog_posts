@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 444
-updated: 2021-12-04 20:16:35
-version: 1.15
+updated: 2021-12-04 20:19:51
+version: 1.16
 ---
 
 The [lodash values](https://lodash.com/docs/4.17.11#values) method is one of many methods in [lodash](/2019/02/15/lodash/) where there is a native counterpart. However sometimes browser support for a native method only goes back so far, also sometimes a native method does not always work as expected, or it could use one more additional feature that is just not there. However the lodash values object method might not be the best example of the kind of method in lodash that brings something more to the table, as the lodash values method does more or less the same thing as the Object values method. However when it comes to going way back the native Object.values method is still fairly new, and as such the use of the Object values native method will result in code breaking in certain older browsers. 
@@ -91,6 +91,8 @@ console.log( ObjectValues(point) ); // [ 15, 25 ]
 ```
 
 ### 2.3 - Object.getOwnPropertyNames, and Object.defineProperty
+
+The Object.defineProperty method can be used to define properties of an object that can not be enumerable. What this means is that they will not show up with Methods like the Object.values method. Also they will not show up in other typical ways of getting an array of object keys such as in a for in loop. So then in order to get these kinds of values I will need to work out some kind of situation involving the use of the get own property names method which will give me all the object keys including ones that are not enumerable.
 
 ```js
 var point = {
