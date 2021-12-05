@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-12-04 20:51:58
-version: 1.46
+updated: 2021-12-04 20:54:01
+version: 1.47
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often. As the name suggests the main thing about he array reduce method is to reduce an array of elements down into a smaller array, or event a single primitive value. The way it works is by having a value in  the body of the function that is given to array reduce that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -309,9 +309,11 @@ console.log(sum);
 
 ## 5 - Using array reduce for filtering
 
-Array reduce can be used to set an starting value for an accumulator, and that accumulator value can be an array. It is then possible to push just the elements that I just want from a source array into this accumulator array. So then it is possibe to use the array reduce method to filter a source array of elements that I do not want
+Array reduce can be used to set an starting value for an accumulator, and that accumulator value can be an array. It is then possible to push just the elements that I just want from a source array into this accumulator array. So then it is possible to use the array reduce method to filter a source array of elements that I do not want
 
 ### 5.1 - Array reduce and array filter
+
+So then in this example I am using the array reduce method and the array filter method to do the same thing.
 
 ```js
 let a = [1, 'a', 2, 'b', 3];
