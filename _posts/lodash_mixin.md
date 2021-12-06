@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 14:02:37
-version: 1.9
+updated: 2021-12-06 14:07:44
+version: 1.10
 ---
 
 The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
@@ -78,6 +78,8 @@ console.log(_.round(obj.dist(0, 0))); // 100
 ```
 
 ## 3 - Vanilla javaScript and doing similar things to that of the lodash mixin method
+
+With all of my posts on lodash I typically like to have a section in which I do some similar things to the lodash method of interest in the post with just javaScript by itself. When it comes to doing what the lodash mixin method does with just core javaScript by itself there are a number of javaScript features that are of interest. For one thing there is the Object.keys static method that will give me an array of public key names in an object. I can then loop over this array of public key names and use them to also the the values for each key and value of source object. I can then use the type of operator to check if a given key and value pair in a source object is a function or not, and if it is I can then assign this function to a target object. When doing so there is assigning the function as an own property of the object, assigning it to the prototype object of the object, or doing both.
 
 ### 3.1 - just adding functions to an object
 
