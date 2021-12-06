@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 14:16:01
-version: 1.13
+updated: 2021-12-06 14:18:18
+version: 1.14
 ---
 
 The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
@@ -83,7 +83,7 @@ With all of my posts on lodash I typically like to have a section in which I do 
 
 ### 3.1 - Just adding functions to an object
 
-For this example I made a vanilla javaScript mix in method that will just add given source functions to a target function by making them the own properties of the target object.
+For this example I made a vanilla javaScript mix in method that will just add given source functions to a target function by making them the own properties of the target object. What this means is that I am creating references to the functions as properties of the actually target object itself rather than adding them to the prototype object.
 
 ```js
 // mix in method
