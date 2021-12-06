@@ -7,10 +7,13 @@ BELOW 500 WORDS
 lodash_at
 lodash_flatmap
 lodash_debounce
-lodash_mixin
 lodash_values
 lodash_method
 -->
+
+### () - lodash_mixin (below 500)
+* get to 500+ words
+* have 5+ internal links for the post
 
 ### () - lodash_filter (links, old)
 * get to 1,000+ words
