@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 14:28:10
-version: 1.18
+updated: 2021-12-06 14:31:38
+version: 1.19
 ---
 
 The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
@@ -18,6 +18,8 @@ When it comes to using lodash there is the idea of extending lodash with custom 
 ## The lodash mixin methods and What to know first
 
 This is a post on the lodash \_.mixin method and what it can be used for when working on a javaScript project of one kind or another if lodash is part of the set of javaScript libraries to work with in the project. The \_.mixin method is one of many options in lodash that can be used to combine objects with each other. For some applications it might be better to use [\_.merge](/2017/11/17/lodash_merge/), or [\_.assign](/2018/09/21/lodash_assign/) which are other typical methods that would be used for these kinds of tasks.
+
+I assume that you have at least some experience at this post when it comes to javaScript and the various stills that are needed in order to work with a user space library in javaScritp such as lodash. If not you might want to start out with some kind of [getting starred type post with javaScript](/2018/11/27/js-getting-started/) in general.
 
 ## 1 - Using \_.mixin to extend lodash
 
