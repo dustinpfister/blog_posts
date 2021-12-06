@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 14:22:29
-version: 1.17
+updated: 2021-12-06 14:28:10
+version: 1.18
 ---
 
 The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
@@ -21,7 +21,7 @@ This is a post on the lodash \_.mixin method and what it can be used for when wo
 
 ## 1 - Using \_.mixin to extend lodash
 
-One of the features of \_.mixin is that it can be used to extend lodash if just a source object is given. This may more may not be a good idea depend on how you look at it. By adding my own custom methods to lodash I am turning lodash into something other than lodash. So it might not be the best move when it comes to readability of code. Many developers may see the underscore and assume that the custom method might be part of the official lodash utility library when it is not. For this reason when I make my own utility libraries I attach everything g to a global variable named something other than underscore Never the less the mixen method can be used to extend lodash.
+One of the features of \_.mixin is that it can be used to extend lodash if just a source object is given. This may more may not be a good idea depend on how you look at it. By adding my own custom methods to lodash I am turning lodash into something other than lodash. So it might not be the best move when it comes to readability of code. Many developers may see the underscore and assume that the custom method might be part of the official lodash utility library when it is not. For this reason when I make my own utility libraries I attach everything g to a global variable named something other than underscore Never the less the mixin method can be used to extend lodash.
 ```js
 _.mixin({
  
@@ -81,6 +81,8 @@ console.log(_.round(obj.dist(0, 0))); // 100
 
 With all of my posts on lodash I typically like to have a section in which I do some similar things to the lodash method of interest in the post with just javaScript by itself. When it comes to doing what the lodash mixin method does with just core javaScript by itself there are a number of javaScript features that are of interest. For one thing there is the [Object keys](/2018/12/15/js-object-keys/) static method that will give me an array of public key names in an object. I can then loop over this array of public key names and use them to also the the values for each key and value of source object. I can then use the [type of operator](/2019/02/15/js-javascript-typeof/) to check if a given key and value pair in a source object is a [function](/2019/12/26/js-function/) or not, and if it is I can then assign this function to a target object. When doing so there is assigning the function as an own property of the object, assigning it to the prototype object of the object, or doing both.
 
+Speaking of the prototype object if you do not know what a constructor function is now would be a good time to [read up more on what a constructor function is](/2019/02/27/js-javascript-constructor/). The use of constructors in comes up a whole lot when it comes to javaScript, and Object Oriented Programing in general, so it pays to know a thing or two about what is going on with them.
+
 ### 3.1 - Just adding functions to an object
 
 For this example I made a vanilla javaScript mix in method that will just add given source functions to a target function by making them the own properties of the target object. What this means is that I am creating references to the functions as properties of the actually target object itself rather than adding them to the prototype object.
@@ -117,7 +119,7 @@ console.log(pt.dist(10, 5).toFixed(2)); // 11/18
 
 ### 3.2 - Appending the prototype object of a function
 
-In this example I made another vanilla javaScriot mix in method that will append to the prototype object of a given target object, but only if that object is a function. Else of the target object is not a function it will just make the source methods own properties of the target object which is the same as before.
+In this example I made another vanilla javaScriot mix in method that will append to the prototype object of a given target object, but only if that object is a function. Else if the target object is not a function it will just make the source methods own properties of the target object which is the same as before.
 
 ```js
 // mix in method
