@@ -11,9 +11,6 @@ lodash_values
 lodash_method
 -->
 
-### () - lodash_mixin (below 500)
-* get to 500+ words
-* have 5+ internal links for the post
 
 ### () - lodash_filter (links, old)
 * get to 1,000+ words
@@ -33,6 +30,10 @@ lodash_method
 ### () - lodash\_uniqueid (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
+
+### ( done 12/06/2021 ) - lodash_mixin (below 500)
+* (done) get to 500+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/03/2021 ) - lodash_sorteduniq (below 500, links)
 * (done) get to 500+ words
