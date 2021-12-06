@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 13:56:42
-version: 1.8
+updated: 2021-12-06 14:02:37
+version: 1.9
 ---
 
-The process of combining objects in lodash can be a little tricky, there are the own properties of an object, it's prototype object, as well as even hidden properties in some cases. Also there is the idea of extending lodash with custom methods that are not a part of lodash as well. The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.4#mixin) can be used to extend lodash, or another object with a source object of methods. It is one of many methods in lodash that can be used to combine objects, in some cases it might be useful so lets take a look at \_.mixin.
+The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
+
+When it comes to using lodash there is the idea of extending lodash with custom methods that are not a part of lodash out of the box. The [lodash](https://lodash.com/) [\_.mixin method](https://lodash.com/docs/4.17.15#mixin) can be used to extend lodash when one wants to do this sort of thing, however it can also be used with another object also. So the lodash mixin method can be called with just one argument, and in that case the first argument should be an object of methods that are to be added to lodash. When used to two or more arguments the first argument becomes a target object other than lodash to extent with methods. It is one of many methods in lodash that can be used to combine objects, in some cases it might be useful so lets take a look at \_.mixin.
 
 <!-- more -->
 
