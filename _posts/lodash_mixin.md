@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 14:31:38
-version: 1.19
+updated: 2021-12-06 14:33:36
+version: 1.20
 ---
 
 The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
@@ -165,5 +165,5 @@ console.log(pt.dist(10, 5).toFixed(2)); // 10.00
 
 ## 4 - Conclusion
 
-That is it for now when it comes to the lodash mixin method, at least until I come around to editing and expanding this post a little next time, which might be a while. In the mean time if you enjoyed reading this post and thing that you have gained something of value from reading it you might want to check out my [main post on lodash](/2019/02/15/lodash/), as well as maybe one of my [many other posts on lodash](/categories/lodash/) that also touch base on many native javaScript features also.
+That is it for now when it comes to the lodash mixin method, at least until I come around to editing and expanding this post a little next time, which might be a while. In the mean time if you enjoyed reading this post and thing that you have gained something of value from reading it you might want to check out my [main post on lodash](/2019/02/15/lodash/), as well as maybe one of my [many other posts on lodash](/categories/lodash/) that also touch base on many native javaScript features also. Speaking of native javaScript there is also checking out one of [my posts on just plain old javaScript by itself](/categories/js/).
 
