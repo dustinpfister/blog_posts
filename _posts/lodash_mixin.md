@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 336
-updated: 2021-12-06 14:18:18
-version: 1.14
+updated: 2021-12-06 14:20:19
+version: 1.15
 ---
 
 The process of combining objects in lodash, or in javaSript in general actually can prove be a little tricky. There are the own properties of an object, it's prototype object including any inherited objects, as well as even hidden properties in some cases that can be added by way of the [Object.definePropery method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty). 
@@ -115,7 +115,9 @@ mixin(pt, utils);
 console.log(pt.dist(10, 5).toFixed(2)); // 11/18
 ```
 
-### 3.2 - appending the prototype object of a function
+### 3.2 - Appending the prototype object of a function
+
+In this example I made another vanilla javaScriot mix in method that will append to the prototype object of a given target object, but only if that object is a function. Else of the target object is not a function it will just make the source methods own properties of the target object which is the same as before.
 
 ```js
 // mix in method
