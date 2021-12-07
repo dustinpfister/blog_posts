@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 10:24:07
-version: 1.12
+updated: 2021-12-07 11:09:08
+version: 1.13
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](/2018/12/06/js-settimeout/). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -22,33 +22,138 @@ This is a post centered around a single method in the [javaScript utility librar
 For this basic debounce method example I just called it and pass the function that I want debounced, and a time in milliseconds as a second argument. Once that is done a debounced function will then be returned, once called the function will be invoked once the given about of time passes.
 
 ```js
-var bounced = _.debounce(function(){
- 
+let bounced = _.debounce(() => {
     console.log('debounced');
- 
-}, 30000);
- 
-bounced(); // logs 'debounced' after 30 seconds
+}, 1000 * 5);
+console.log('Calling bounced');
+bounced(); // logs 'debounced' after 5 seconds
 ```
 
-### 1.2 - flushing
+### 1.2 - Making a loop
+
+```js
+// turn value to step in the loop function
+let turn = 0;
+// loop function created with debounce
+let loop = _.debounce(() => {
+    console.log('turn = ' + turn);
+    turn += 1;
+    // calling loop within loop
+    loop();
+}, 1000 * 3);
+// calling loop for first time
+loop();
+```
+
+### 1.3 - flushing
 
 A \_.debounce method comes with a flush method that can be used to call the method at once right alway. This flush method can be called off from and object that is returned when calling lodash denounce.
 
 ```js
-var check = _.debounce(function(){
-
+let check = _.debounce(() => {
     console.log('checking something...');
-
     check();
-
-},60000);
-
+}, 1000 * 3);
 check();
 check.flush(); // check now
 ```
 
-## 3 - Conclusion
+## 2 - Vanilla JavaScript alternatives to lodash debounce
+
+### 2.1 -
+
+```js
+var func = function(){
+   console.log('foo');
+};
+// call func after 3 seconds
+setTimeout(func,3000);
+```
+
+### 2.2 -
+
+```js
+var x = 0;
+var loop = function () {
+    setTimeout(loop, 30);
+    console.log('x=' + x);
+    x += 10;
+    x %= 320;
+};
+loop();
+```
+
+### 2.3 -
+
+```js
+setInterval(function(){
+    console.log('tick');
+},1000);
+```
+
+## 3 - Nodejs and delaying a function
+
+### 3.1 - The argv array in the process global
+
+```js
+#!/bin/env node
+// parse arguments if any
+var count = parseInt(process.argv[2] === undefined ? 3 : process.argv[2]);
+var ms = parseInt(process.argv[3] === undefined ? 1000 : process.argv[3]);
+// loop
+var loop = function(){
+    if(count > 1){
+        setTimeout(loop, ms);
+    }
+    count -= 1;
+    console.log('count=' + count);
+};
+// start loop
+loop();
+```
+
+## 4 - Client side javaScript and delaying a function
+
+### 4.1 - Request Animation Frame
+
+```html
+<html>
+    <head>
+        <title>request animation frame</title>
+    </head>
+    <body>
+        <canvas id="the_canvas" width="640" height="480"></canvas>
+        <script>
+var canvas = document.getElementById('the_canvas'),
+ctx = canvas.getContext('2d'),
+x = 0,
+lt = new Date(),
+fps = 24;
+
+var loop = function(){
+    var now = new Date(),
+    secs = (now - lt) / 1000;
+    // using requestAnimationFrame in place of setTimeout or lodash debounce
+    requestAnimationFrame(loop);
+    if(secs > 1 / fps){
+        // update x
+        x += 256 * secs;
+        x %= canvas.width + 128;
+        // draw to the canvas
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(Math.round(x - 128), 240 - 64, 128, 128);
+        lt = now;
+    }
+};
+loop();
+        </script>
+    </body>
+</html>
+```
+
+## 5 - Conclusion
 
 The \_.debounce method in lodash can be useful when making some methods that need to do something every once in a while, but also need to be check right away in some situations. So then the debounce method is very similar to that of native methods like setTimeout only with a few key differences such as the fact that the return value is a function rather than an id that can be used with clearTimeout, and that the delay will start when the returned function is called rater than right away.
 
