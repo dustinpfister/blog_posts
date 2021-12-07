@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 11:30:47
-version: 1.22
+updated: 2021-12-07 11:33:09
+version: 1.23
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -132,7 +132,7 @@ Time not for at least one example of delaying a function when it comes to client
 
 ### 4.1 - Request Animation Frame
 
-In this example I am then using the request animation frame to create a simple canvas element animation loop. Of you have not looked into canvas elements yet you will likely want to at some point sooner or later as canvas elements are a major options when it comes to drawing graphics with javaScript code in a client side javaScript environment.
+In this example I am then using the request animation frame to create a simple canvas element animation loop. Of you have not looked into canvas elements yet you will likely want to at some point sooner or later as canvas elements are a major options when it comes to drawing graphics with javaScript code in a client side javaScript environment. I have wrote a [getting started post with canvas elements](/2017/05/17/canvas-getting-started/), and have also made a long collection of [canvas examples](/2020/03/23/canvas-example/) that might also be wort checkout out of you want to look into this subject at a deeper level.
 
 ```html
 <html>
