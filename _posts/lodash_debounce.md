@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 11:24:55
-version: 1.19
+updated: 2021-12-07 11:27:28
+version: 1.20
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -127,6 +127,8 @@ loop();
 ```
 
 ## 4 - Client side javaScript and delaying a function
+
+Time not for at least one example of delaying a function when it comes to client side javaScript. When it comes to doing so in a client side environment often I will not want to use a method like lodash debounce, but rather something like the [request animation frame method](/2018/03/13/js-request-animation-frame/).
 
 ### 4.1 - Request Animation Frame
 
