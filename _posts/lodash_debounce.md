@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 10:08:25
-version: 1.7
+updated: 2021-12-07 10:12:15
+version: 1.8
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](/2018/12/06/js-settimeout/). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -15,7 +15,7 @@ The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](h
 
 ## 1 - The Lodash debounce method and what to know first
 
-This is a post centered around a single method in lodash known as debounce, as well as any and all related topics that pop up while I go over a few examples of this method. I assume then that you know enough about getting stared with javaScript to make use of such a method in a nodejs or client side javaScript enviorment. If not you might want to take a step back and read up more on the basics of working with javaScript only, and how to even get started with a user space library such as lodash.
+This is a post centered around a single method in the [javaScript utility library known as lodash](/2019/02/15/lodash/) known as debounce, as well as any and all related topics that pop up while I go over a few examples of this method. I assume then that you know enough about [getting stared with javaScript](/2018/11/27/js-getting-started/) to make use of such a method in a [nodejs](/2017/04/05/nodejs-helloworld/) or [client side javaScript environment](/2020/09/21/js-getting-started-file-protocol/). If not you might want to take a step back and read up more on the basics of working with javaScript only, and how to even get started with a user space library such as lodash.
 
 ### 1.3 - Basic example of \_.debounce
 
