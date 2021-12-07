@@ -4,7 +4,15 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
+### ( ) - new post #944 for 12/09/2021 - js-javascript-example-turn-based-rpg
+* start the proto folder for this new javaScript example post
+* start writing the post
+* be sure to update the main javaScript example post to link to the post
 
+
+<!--###### ########## ########## #######-->
+## threejs ( /yyyy/mm/dd/js-* )
+<!--###### ########## ########## #######-->
 
 ### ( done 12/03/2021 ) - new post #943 for 12/03/2021 - threejs-examples-menus
 * (done) start the for post folder in test threejs repo
@@ -26,8 +34,8 @@
 * (done) start a new javaScript post on promises in general
 * (done) be sure to link to all js as well as nodejs posts on promises and touch base on the topics
 
-### ( done 09/03/2021 ) - new post #927 for 09/03/2021 - js-javascript-game-framework
-* (done) start a new post on my js-javascript-game-framework proto
+### ( done 09/03/2021 ) - new post #927 for 09/03/2021 - js-javascript-example-game-framework
+* (done) start a new post on my js-javascript-example-game-framework proto
 
 
 
