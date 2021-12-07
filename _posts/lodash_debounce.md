@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 10:17:19
-version: 1.10
+updated: 2021-12-07 10:20:41
+version: 1.11
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](/2018/12/06/js-settimeout/). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -51,3 +51,6 @@ check.flush(); // check now
 ## 3 - Conclusion
 
 The \_.debounce method in lodash can be useful when making some methods that need to do something every once in a while, but also need to be check right away in some situations. So then the debouce method is very similar to that of native methods like setTimeout only with a few key differences such as the fact that the return value is a function rather than an id that can be used with clearTimeout, and that the delay will start when the returned function is called rater than right away.
+
+If you are interested in some more advanced reading on this subject one major thing to keep in mind here is that methods like the lodash debounce method as well as setTimeout, setInterval, and requestAnimationFrame, are all solutions for this that still work within a single event loop when used by themselves in a single script. To spin up a whole other event loop to work within you will want to look into using WebWorkers when it comes to client side javaScript, and modules such as the child-process module when it comes to a javaScript nodejs run time environment.
+
