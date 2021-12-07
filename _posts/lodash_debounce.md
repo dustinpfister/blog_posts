@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 11:15:38
-version: 1.15
+updated: 2021-12-07 11:18:34
+version: 1.16
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -62,9 +62,11 @@ check.flush(); // check now
 
 ## 2 - Vanilla JavaScript alternatives to lodash debounce
 
-In my lodash posts I have made a habit of at least bring up what the alternatives are of any when it comes to native javaScript methods in core javaScript. With that said in this section I will be going over a few quick examples of two main methods of interest that will work in both client side javaScript as well as in nodejs. These two methods are [setTimeout method](/2018/12/06/js-settimeout/), and [setInterval](/2018/03/08/js-setinterval/)
+In my lodash posts I have made a habit of at least bring up what the alternatives are of any when it comes to native javaScript methods in core javaScript. With that said in this section I will be going over a few quick examples of two main methods of interest that will work in both client side javaScript as well as in nodejs. These two methods are [setTimeout method](/2018/12/06/js-settimeout/), and [setInterval](/2018/03/08/js-setinterval/).
 
-### 2.1 -
+### 2.1 - Basic setTimeout example
+
+So then for a basic setTimeout method example I just call the setTimeout method and pass the function that I want called after a time out value in milliseconds. That is it then as the return value is not a function but a number that is used as an id for this that can be used to cancel the calling of the function later on with a method known as [clearTimeout](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout).
 
 ```js
 var func = function(){
@@ -74,7 +76,7 @@ var func = function(){
 setTimeout(func,3000);
 ```
 
-### 2.2 -
+### 2.2 - Basic app loop example
 
 ```js
 var x = 0;
@@ -87,7 +89,7 @@ var loop = function () {
 loop();
 ```
 
-### 2.3 -
+### 2.3 - The setInterval method
 
 ```js
 setInterval(function(){
