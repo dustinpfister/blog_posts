@@ -2,15 +2,18 @@
 ## lodash ( /yyyy/mm/dd/lodash-* )
 <!--###### ########## ########## #######-->
 
-<!--
-BELOW 500 WORDS
-lodash_at
-lodash_flatmap
-lodash_debounce
-lodash_values
-lodash_method
--->
 
+### () - lodash_at (below 500)
+* get to 500+ words
+* have 5+ internal links for the post
+
+### () - lodash_flatmap (below 500)
+* get to 500+ words
+* have 5+ internal links for the post
+
+### () - lodash_debounce (below 500)
+* get to 500+ words
+* have 5+ internal links for the post
 
 ### () - lodash_filter (links, old)
 * get to 1,000+ words
@@ -32,6 +35,10 @@ lodash_method
 * have 5+ internal links for the post
 
 ### ( done 12/06/2021 ) - lodash_mixin (below 500)
+* (done) get to 500+ words
+* (done) have 5+ internal links for the post
+
+### ( done/12/04/2021 ) - lodash_values (below 500)
 * (done) get to 500+ words
 * (done) have 5+ internal links for the post
 
