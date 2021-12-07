@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 104
-updated: 2021-12-07 11:12:44
-version: 1.14
+updated: 2021-12-07 11:15:38
+version: 1.15
 ---
 
 The [\_.debounce](https://lodash.com/docs/4.17.15#debounce) method in [lodash](https://lodash.com/) is great for delaying the invocation of a method for a certain amount of time. In addition it can be canceled, or flushed at once when called which is another feature about it that might be absent in many alternatives to lodash denounce that might come to mind such as the [setTimeout method](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout). Still it is nice to stick to native methods and certin simple copy and past solutions in order to avoid having to depend on a library such as lodash. So in this post I will be going over a few quick examples of the lodash debounce method as well as looking into this subject in detail when it comes to javaScript in general.
@@ -30,6 +30,8 @@ bounced(); // logs 'debounced' after 5 seconds
 ```
 
 ### 1.2 - Making a loop
+
+Often I might want to make some kind of loop function with a method such as the lodash debounce method. One way to do would be to call the function that is returned by lodash debound within the function that is passed to loash debounce. This is also a similar way of doing this sort of thing with certain native counter ark methods with the exception of a method like the setInterval method. I will be getting into that in greater detail later in this post when I touch base more so on the vanilla javaScript alternatives to that of the lodadh debounce method.
 
 ```js
 // turn value to step in the loop function
