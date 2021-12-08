@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 555
-updated: 2021-12-08 15:41:26
-version: 1.16
+updated: 2021-12-08 15:43:11
+version: 1.17
 ---
 
 The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array. When using the lodash at method the order of the index values for the elements in the resulting array correspond with the order of the paths given in the array that is passed when calling the lodash at method. So in other words this can resolve issues where the order of key names in a plain old javaScript object are not always in a desired order.
@@ -68,7 +68,9 @@ Often it is not so hard to do the various things that lodash methods do with jus
 
 In this section I will be going over a few quick examples that do the same things that I have outline with the lodash examples, only this time around I am just working with javaScrit by itself.
 
-### 2.1 -
+### 2.1 - Just using the bracket and dot syntax
+
+One way to do the same thing would be to just create a new array with the bract syntax, and then use the dot syntax to access each property in the source object. When doing so I can access each property in the source object in the desired order.
 
 ```js
 let color = {
