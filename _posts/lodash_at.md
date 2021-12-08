@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 555
-updated: 2021-12-08 15:14:08
-version: 1.9
+updated: 2021-12-08 15:16:06
+version: 1.10
 ---
 
 The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array. When using the lodash at method the odrer of the index values for the elements in the resulting array correspond with the order of the paths given in the array that is passed when calling the lodash at method. So in other words this can resolve issues where the order of key names in a plain old javaScript object are not always in a desired order.
@@ -15,7 +15,7 @@ The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create
 
 ## 1 - The basics of lodash at, and what to know first
 
-This is a post on the lodash at method in the javaScript utility library known as lodash.
+This is a post on the lodash at method in the javaScript utility library known as lodash. With that said I trust that you have at least enough experience with javaScript and the specific environment that you are coding in to know how to make use of an external javaScript library and so forth. If not even this basic section of the post might still prove to be a bit to advanced for you at the moment.
 
 ### 1.1 - lodash at method basic example
 
