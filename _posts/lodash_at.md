@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 555
-updated: 2021-12-08 15:43:11
-version: 1.17
+updated: 2021-12-08 15:44:14
+version: 1.18
 ---
 
 The [lodash at](https://lodash.com/docs/4.17.15#at) method can be used to create an array of values from an object with a given array of paths to values from the object that are to be included in the array. When using the lodash at method the order of the index values for the elements in the resulting array correspond with the order of the paths given in the array that is passed when calling the lodash at method. So in other words this can resolve issues where the order of key names in a plain old javaScript object are not always in a desired order.
@@ -84,7 +84,9 @@ console.log(cArr);
 // [ 128, 64, 0, 255 ]
 ```
 
-### 2.2 - 
+### 2.2 - Nested objects example
+
+The same trick can be done when it comes to nested objects also.
 
 ```js
 const getColorArray = (colors, index) => {
@@ -103,7 +105,7 @@ console.log(cArr);
 // [ 32, 0, 32, 255 ]
 ```
 
-## 3 - Concustion
+## 3 - Conclusion
 
 So then the lodash at method is a way to go about creating an array of values from a source object and an array of paths to the various values in the source object. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash/), my post on [lodash array methods](/2019/02/14/lodash_array/) in general, or one of my [many other posts on lodash](/categories/lodash/).
 
