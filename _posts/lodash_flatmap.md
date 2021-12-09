@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2021-12-09 08:46:12
-version: 1.21
+updated: 2021-12-09 08:47:42
+version: 1.22
 ---
 
 So there is the native javaScript [array map method](/2020/06/16/js-array-map/), and then there is the [lodash map](/2018/02/02/lodash_map/) collection method. The map method is often used in conjunction with many other methods to produce an array or collection object in general in a certain end format. For example I might map over an array of source objects to create primitive values that I would then pass threw another method such as the [lodash reduce method](/2018/07/25/lodash_reduce/) to reduce the array of primitives into a single value. 
@@ -66,19 +66,63 @@ This is a post on lodash, but many developers these days prefer to just go with 
 Maybe one of the best options to go with these days will still involve chaining a few native method that include array map, along with array reduce and array concat.
 
 ```js
-// the native map method can be used to create
-// an array of arrays for starters
-let arr = [0, 255].map(fromRed), flat;
-console.log(arr);
+let fromRed = (r) => {
+    let g = 128 + Math.floor(r / 255) * 64,
+    b = 255 - r;
+    return [r, g, b];
+};
+// Using array map to create an array of arrays
+let a = [0, 255].map(fromRed);
+console.log(a);
 // [ [ 0, 128, 255 ], [ 255, 192, 0 ] ]
- 
-// reduce and concat is one option
-flat = arr.reduce((acc, val) => acc.concat(val));
+// now using reduce and concat methods to flatten
+let flat = a.reduce((acc, val) => acc.concat(val));
 console.log(flat);
 // [ 0, 128, 255, 255, 192, 0 ]
 ```
 
 This solution might still break on older browsers, but often so will lodash code as well in some cases it it is a late version of lodash.
+
+### 2.2 - Native array flat method
+
+```js
+// polly fill for old browsers and versions of node that do
+// not have Array.prototype.flat built in
+Array.prototype.flat = function (depth) {
+    var arr = this;
+    depth = depth === undefined ? 1 : depth;
+    var flattenLevel = function (arr, level) {
+        var reducer = function (acc, val) {
+            if (typeof val === 'object') {
+                if (val.constructor.name === 'Array') {
+                    var nextLevel = level + 1;
+                    if (nextLevel <= depth) {
+                        return acc.concat(flattenLevel(val, nextLevel));
+                    }
+                    return acc.concat([val]);
+                }
+            }
+            return acc.concat(val);
+        };
+        return arr.reduce(reducer, []);
+    };
+    return flattenLevel(arr, 0);
+};
+ 
+let fromRed = (r) => {
+    let g = 128 + Math.floor(r / 255) * 64,
+    b = 255 - r;
+    return [r, g, b];
+};
+// Using array map to create an array of arrays
+let a = [0, 255].map(fromRed);
+console.log(a);
+// [ [ 0, 128, 255 ], [ 255, 192, 0 ] ]
+// now using reduce and concat methods to flatten
+let flat = a.flat();
+console.log(flat);
+// [ 0, 128, 255, 255, 192, 0 ]
+```
 
 ## 3 - Conclusion
 
