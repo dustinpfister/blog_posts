@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2021-12-09 08:41:26
-version: 1.20
+updated: 2021-12-09 08:46:12
+version: 1.21
 ---
 
 So there is the native javaScript [array map method](/2020/06/16/js-array-map/), and then there is the [lodash map](/2018/02/02/lodash_map/) collection method. The map method is often used in conjunction with many other methods to produce an array or collection object in general in a certain end format. For example I might map over an array of source objects to create primitive values that I would then pass threw another method such as the [lodash reduce method](/2018/07/25/lodash_reduce/) to reduce the array of primitives into a single value. 
@@ -41,7 +41,7 @@ console.log(flat);
 
 ### 1.2 - Chaining lodash map and flatten
 
-To some extent the lodash flatten method is redundant as the same result can be achieved with the lodash map and lodash flatten methods by way of chaining. There are two ways of going about doing chaining with lodash, one of which is to call the [lodash chain](/2018/11/11/lodash_chain/) method and the other is to call the main lodash method.
+To some extent the lodash flatten method is redundant as the same result can be achieved with the lodash map and lodash flatten methods by way of chaining. There are two ways of going about doing chaining with lodash, one of which is to call the [lodash chain](/2018/11/11/lodash_chain/) method and the other is to call the main lodash method. When calling one or the other I start out by passing the value that I want to chain with, what is returned is then an object to which I can call all kinds of lodash methods such as the lodash map and flatten methods. In order to get a final value when doing this I then need to call a lodash method that will return a primitive value, or call the value method of the object wrapper.
 
 ```js
 let fromRed = (r) => {
