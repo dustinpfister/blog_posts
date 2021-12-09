@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2020-06-07 19:01:40
-version: 1.10
+updated: 2021-12-09 07:20:48
+version: 1.11
 ---
 
-So there is the native javaScript array map method, and then there is the lodash map collection method. The map method is often used in conjunction with many other methods to produce an array or collection object in general in a certain end format. For example I might map over an array of source objects to create primitive values that I would then pass threw another method such as reduce to reduce the array of primitives into a single value. 
+So there is the native javaScript [array map method](/2020/06/16/js-array-map/), and then there is the [lodash map](/2018/02/02/lodash_map/) collection method. The map method is often used in conjunction with many other methods to produce an array or collection object in general in a certain end format. For example I might map over an array of source objects to create primitive values that I would then pass threw another method such as reduce to reduce the array of primitives into a single value. 
 
 However there are many methods that I might use other than reduce including methods like the flatten method. With lodash there are a few methods that are a single method that combines the functionality of two methods such as the [lodash flatmap](https://lodash.com/docs/4.17.15#flatMap) method which I will be going over in this post.
 
@@ -19,7 +19,7 @@ So the lodash flatmap method in lodash is one of many methods that I do not use 
 
 ## 1 - lodash flatmap basic example
 
-The lodash flat map method works more or less the same way as the [lodash map](/2018/02/02/lodash_map/) method in the sense that the first argument is a collection and the second argument is an iteratee method for each element in the collection. The difference is that an array of results for each element is what is expected to be returned by the iteratee and that array is to be flattened into an array of just one dimension.
+The lodash flat map method works more or less the same way as the lodash map method in the sense that the first argument is a collection and the second argument is an iteratee method for each element in the collection. The difference is that an array of results for each element is what is expected to be returned by the iteratee and that array is to be flattened into an array of just one dimension.
 
 ```js
 let fromRed = (r) => {
