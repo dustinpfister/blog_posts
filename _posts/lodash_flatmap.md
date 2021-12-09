@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 540
-updated: 2021-12-09 07:36:44
-version: 1.15
+updated: 2021-12-09 07:40:04
+version: 1.16
 ---
 
 So there is the native javaScript [array map method](/2020/06/16/js-array-map/), and then there is the [lodash map](/2018/02/02/lodash_map/) collection method. The map method is often used in conjunction with many other methods to produce an array or collection object in general in a certain end format. For example I might map over an array of source objects to create primitive values that I would then pass threw another method such as the [lodash reduce method](/2018/07/25/lodash_reduce/) to reduce the array of primitives into a single value. 
@@ -78,4 +78,5 @@ This solution might still break on older browsers, but often so will lodash code
 
 ## 4 - Conclusion
 
-I can not say that I use the lodash flat map method that often, in fact I would say I do not use it at all, even when I am using lodash in a project. Also with that said I am not using lodash at all in most projects these days which is why I have been going in the direction of making sure that I mentioning at least a few vanilla javaScript solutions in these posts on lodash also.
+I can not say that I use the lodash flat map method that often, in fact I would say I do not use it at all, even when I am using lodash in a project. Also with that said I am not using lodash at all in most projects these days which is why I have been going in the direction of making sure that I mentioning at least a few vanilla javaScript solutions in these posts on lodash also.Things have progressed to the point where it is only a hand full of methods now that are really of interest in lodash, and maybe to some extent some of the array flattening methods are among that small collection. There is a native array flat method now, but in a way it is still a relative new addition so it makes sense to use a method like lodash flatten or at least some kind of polly fill method.
+
