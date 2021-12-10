@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 10:30:05
-version: 1.1
+updated: 2021-12-10 10:54:27
+version: 1.2
 ---
 
-This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but now as a whole other project folder.
+This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
 
 
 <!-- more -->
