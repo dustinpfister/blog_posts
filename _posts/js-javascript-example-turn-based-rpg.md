@@ -5,12 +5,15 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 10:54:27
-version: 1.2
+updated: 2021-12-10 11:06:27
+version: 1.3
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
 
+I have a lot of ideas of what I would like the final product to be when I get to that point. This time around I may in fact make a final product with this one because I still seem to still be stuck in that awful start something but never finish something loop, and I want to break out of it. So I will be getting into making art assets, and external json files that hold things like scene data and so forth, but at the time of this writing that just happens to be what I am working on now.
+
+So when it comes to writing a blog post about what I have together at this point the focus will be on the various features that I have added at the time that I stopped working on my improved form of the previous example, and started working on this example. With that said one improvement thus far has to do with breaking things down a little when it comes to units, pulling logic out of the main game state module and into a units module. Another talking point has to do with starting a custom state machine, and a few files that are state objects for said state machine. The main feature thus far though is my game state menu system that is inspired by the circle menu system in from the super Nintendo game called Secret of Mana. As of this writing it is not a clone of that just yet, and I will want to make chances that will work well when it comes to having a web based game version of it, but thus far I would say that is the best feature thus far with this one.
 
 <!-- more -->
 
