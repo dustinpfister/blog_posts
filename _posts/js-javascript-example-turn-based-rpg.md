@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 11:54:27
-version: 1.15
+updated: 2021-12-10 11:57:32
+version: 1.16
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
@@ -1113,7 +1113,9 @@ var unitMod = (function () {
     ());
 ```
 
-### 2.3 - map.js
+### 2.3 - The map.js lib
+
+This is the map.js lib from my other javaScript example that has to do with grid unit movement, that also includes path detection code based on what I worked out for my post on that subject also. I have not changed much with this lib sense then and at this point I think that any future work might just involve fixing any unseen bugs, and various other improvements rather than adding new feature to this.
 
 ```js
 var mapMod = (function () {
