@@ -4,10 +4,7 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### ( ) - new post #944 for 12/09/2021 - js-javascript-example-turn-based-rpg
-* start the proto folder for this new javaScript example post
-* start writing the post
-* be sure to update the main javaScript example post to link to the post
+### () - new post #945 for 12/17/2021 -
 
 
 <!--###### ########## ########## #######-->
@@ -21,6 +18,11 @@
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
+
+### ( done 12/10/2021 ) - new post #944 for 12/10/2021 - js-javascript-example-turn-based-rpg
+* (done) start the proto folder for this new javaScript example post
+* (done) start writing the post
+* (done) be sure to update the main javaScript example post to link to the post
 
 ### ( done 11/05/2021 ) - new post #936 for 11/05/2021 - js-webworker
 * (done) have at least a basic section
