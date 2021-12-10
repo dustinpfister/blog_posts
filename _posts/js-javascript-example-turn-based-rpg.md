@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 11:41:12
-version: 1.10
+updated: 2021-12-10 11:45:28
+version: 1.11
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
@@ -923,6 +923,8 @@ var drawCell = function(sm, cell){
 ```
 
 ## 2 - Core libraries of this example
+
+I have took a moment to think in terms of what it is that I can pull out of my main game module and into a library that is its own independent thing. With that said thus far I have a general utilities library, as well as libraries that have to do with units, the game world map, and an object pool system that I am currently using with my menu system thus far. As I continue working on this example I am sure that this is a collection that will just continue to grow for the sake of keeping things fine grain and modular.
 
 ### 2.1 - utils.js
 
