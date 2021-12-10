@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 12:03:04
-version: 1.18
+updated: 2021-12-10 12:06:42
+version: 1.19
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
@@ -1782,4 +1782,8 @@ loop();
 ```
 
 ## 4 - Conclusion
+
+So far I have to say that I like this example, and I would like to keep working on it at least a little while longer. In fact I might even make this the main thing that I am working out outside of this blog for a while. I do not want this to end up being the kind of project that I end up spending years of my life working on touch at least not in the form of what I have in mind of this specific javaScript project example at least. There is the idea of taking what I have worked out with this example thus far and once again starting a whole other project in which I continue to expand on this, but even when it comes to that I want to try my best to not go nuts with features. The project is all ready getting a little involve and less is often more when it comes to making a game.
+
+
 
