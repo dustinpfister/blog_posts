@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 12:06:42
-version: 1.19
+updated: 2021-12-10 12:12:12
+version: 1.20
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
@@ -1527,7 +1527,7 @@ var poolMod = (function () {
 
 ## 3 - The state machine, and main.js
 
-For this example I made a new kind of state machine from the ground up rather than making use of what I have all ready made for this sort of thing. Still I am reproducing certain standards that I think such a system should have.
+For this example I made a new kind of state machine from the ground up rather than making use of what I have all ready made for this sort of thing. Still I am reproducing certain standards that I think such a system should have. I do this because I think that making a state machine from the ground up is just one of those things that I have have not got down to a science just yet. So I end up making a new one for each stand alone example thus far. That is not to say that I have not made an effort to make my own versions of a end all state machine library or framework rather. I have a javaScript example where the focus is to work out some things that I should have in such a project, and I also have a canvas example in which I touch base on this topic. I also to have a game framework project that I have been working on a little jow and then, so this is a wheel that I keep reinventing,and will likely continue doing until I have something that will worm well for me.
 
 ### 3.1 - The root sm.js file
 
