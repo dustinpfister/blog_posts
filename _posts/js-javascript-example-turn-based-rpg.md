@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 11:29:04
-version: 1.6
+updated: 2021-12-10 11:31:10
+version: 1.7
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
@@ -21,7 +21,7 @@ So when it comes to writing a blog post about what I have together at this point
 
 This is a javaScript example that aims to be a kind of turn based RPG game, the source code of which is still not in a finished state. However there is a whole lot to write about it when it comes to what I have worked out thus far, and there is only so much more to do when it comes to further refining what I have in place. The example is as of revision 5 starting to feel like a finished game, but I still have at lase a little more work to do with it to ay the least when it comes to new features.
 
-So there are two main points to take into account with this, one of which is that this is not at all any kind of getting started with javaScript type post. So if you are new to javaScript this post may prove to be a little to advanced. The other main point that I think I should cover in this section is that I am still very much working on this example and intend to continue doing so for at least a little while longer so the source code examples in this post do not reflect the current state of the example.
+So there are two main points to take into account with this, one of which is that this is not at all any kind of [getting started with javaScript type post](/2018/11/27/js-getting-started/). So if you are new to javaScript this post may prove to be a little to advanced. The other main point that I think I should cover in this section is that I am still very much working on this example and intend to continue doing so for at least a little while longer so the source code examples in this post do not reflect the current state of the example.
 
 ### The up to date source code, and any additional assets ca be found at my test vjs repository
 
