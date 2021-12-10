@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 944
-updated: 2021-12-10 11:32:55
-version: 1.8
+updated: 2021-12-10 11:37:26
+version: 1.9
 ---
 
 This week the plain is to expand my collection of simple [JavaScript project examples](/2021/04/02/js-javascript-example/), this time a simple turned based rpg based on the source code of another [javaScript project example that has to do with grid unit movement](/2020/08/11/js-javascript-example-grid-game-unit-movement/). When it comes to the source code of the grid unit movement example I mad a whole lot of improvements to the source code of that example, and I thought that I should take the time to continue to expand on that source code but as a whole other project folder. This example is then that project as it currently stands, and as of this writing I still have a lot of work to do with this when it comes to turning this source code into yet another project that might end up being some kind of final product.
@@ -31,7 +31,9 @@ The up to date source code, along with any additional assets that I am not writi
 
 In this section I will be writing about that main game module that is used to create and mutate a main game state object, as well as the library that I use to draw various parts of this state to a canvas element.
 
-### 1.1 - game.js
+### 1.1 -  The game.js module to creating and mutating the main game state object
+
+This is the source code for a main game state module for the turn based game as currently stands. As with my many other javaScript and canvas example projects there is a public method that is used to create a main game object, and a method that is called in a loop to update that game object. On top of that I also have public methods for just setting things up for a game object rather than creating a whole new one, and also some methods that have to do with pointer events.
 
 ```js
 var gameMod = (function () {
