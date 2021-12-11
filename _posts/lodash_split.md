@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2021-12-11 09:20:19
-version: 1.14
+updated: 2021-12-11 09:23:34
+version: 1.15
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern in the form of a string or a regular expression. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](/2021/07/14/js-string-split/) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
@@ -58,7 +58,7 @@ The one difference is that you will want to end the chain by calling value so th
 
 ## 3 - Using regex
 
-A regular expression can be used as the separator, rather than a static string. This is useful if I want some kind of pattern to be used as a way to break the string down rather than a static fixed string value.
+A regular expression can be used as the separator, rather than a static string. This is useful if I want some kind of pattern to be used as a way to break the string down rather than a static fixed string value. I will not be getting into depth with regular expressions here in this section of course as I have all ready wrote a post in which I am dong that in which I keep editing and expanding. However I think at least one if not more examples are called for when it comes to this subject.
 
 ```js
 let names = 'foo_81628bar_42foobar_7771234';
