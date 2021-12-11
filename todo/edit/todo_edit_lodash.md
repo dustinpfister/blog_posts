@@ -2,6 +2,13 @@
 ## lodash ( /yyyy/mm/dd/lodash-* )
 <!--###### ########## ########## #######-->
 
+### () - lodash_split (links_old)
+* get to 1,000+ words
+* have 5+ internal links for the post
+
+### () - lodash_sample (links, old)
+* get to 1,000+ words
+* have 5+ internal links for the post
 
 ### () - lodash_filter (links, old)
 * get to 1,000+ words
