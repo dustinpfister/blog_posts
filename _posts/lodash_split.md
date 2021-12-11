@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2020-01-10 09:27:39
-version: 1.13
+updated: 2021-12-11 09:20:19
+version: 1.14
 ---
 
-So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
+So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern in the form of a string or a regular expression. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](/2021/07/14/js-string-split/) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
 
 This is not a method in lodash that does a good job of supporting a case to use the full lodash library these days as the native array split method is well supported, and the lodash split method does not really bring anything more to the table compared to other lodash methods where that is the case at least.
 
