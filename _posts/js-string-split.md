@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 910
-updated: 2021-07-14 16:06:22
-version: 1.29
+updated: 2021-12-11 09:20:18
+version: 1.30
 ---
 
 There are still many basic features of javaScript that I have not got around to writing a post on still such as the [String Split prototype method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split). The string split method is simple enough in the sense that I can just call the method off of an instance of a string and pass a string that is a separator char that will be used to split the string into an array of sub strings. However there is maybe a bit more to write about when it comes to using the string split method in conjunction with many other native javaScript features. For example there is the question of how to go about converting an array of substrings back to a string, when it comes to that there is the array join method. Also there is what to do with an array of substrings once it has been split into an array, so I should make a few examples that involve the other array methods such as array map.
@@ -162,4 +162,7 @@ console.log(foo(3, 2, 1, 1)); // 10
 
 ## 5 - Conclusion
 
-So then the string split method is one of many useful prototype methods that can be called off of an [instance of a string](/2019/01/25/js-javascript-string/) in javaScript. The string split method by itself is not all that hard to work with, but things can get a little involved when it comes to using the string split method with every else there is to work with in order to preform some kind of task. With that said there are all kinds of examples that might involve spiting a string into an array, doing something with that array with the array prototype methods, and then join it back into a string. I may have cover a few of these such examples here, but I might get around to expanding this post with a few more such examples if and when I get around to doing so.
+So then the string split method is one of many useful prototype methods that can be called off of an [instance of a string](/2019/01/25/js-javascript-string/) in javaScript. A while back I also wrote a post on the [lodash split method](/2018/12/03/lodash_split/) that would seem to work more or less the same way as the string split method. There are some methods in lodash that add additional functionality beyond what there is to work with when it comes to javaScript alone, but I would not say that the split method in lodash is the best method to support a case for that.
+
+
+The string split method by itself is not all that hard to work with, but things can get a little involved when it comes to using the string split method with every else there is to work with in order to preform some kind of task. With that said there are all kinds of examples that might involve spiting a string into an array, doing something with that array with the array prototype methods, and then join it back into a string. I may have cover a few of these such examples here, but I might get around to expanding this post with a few more such examples if and when I get around to doing so.
