@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2021-12-11 09:35:24
-version: 1.18
+updated: 2021-12-11 09:36:48
+version: 1.19
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern in the form of a string or a regular expression. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](/2021/07/14/js-string-split/) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
@@ -73,5 +73,5 @@ console.log(_.initial(items));
 
 That is all for now when it comes to lodash split, as well as some related topics such as the native string split method. If you are using lodash just for this method alone doing so is very silly, as such a task can be done with javaScript by itself just fine. The lodash split method is there more or less for the sake of consistency, because it is often desired to use the method in a chain alone with other lodash methods where there may not be a native counter part such as with [lodash chunk](/2017/09/13/lodash-chunk/).
 
-If you enjoyed this post there is checking out my [main post on lodash](/2019/02/15/lodash/), as well as maybe one of my many other [posts on various other lodash methods and lodash related topics](/categories/lodash). However it would seem that a lot of developers are loosing interest in lodash, or think that it is no longer needed. So then there is also the idea of looking more into what there is to work with when it comes to javaScript by itself also. With that said I have a lot of posts in which I am writing about native javaScript features, that include posts on simple javaScript projects in which I am just making a simple projects with vanilla javaScript alone.
+If you enjoyed this post there is checking out my [main post on lodash](/2019/02/15/lodash/), as well as maybe one of my many other [posts on various other lodash methods and lodash related topics](/categories/lodash). However it would seem that a lot of developers are loosing interest in lodash, or think that it is no longer needed. So then there is also the idea of looking more into what there is to work with when it comes to javaScript by itself also. With that said I have a lot of posts in which I am [writing about native javaScript features](/categories/js), that include posts on simple [javaScript projects examples](/2021/04/02/js-javascript-example/) in which I am just making a simple projects with vanilla javaScript alone.
 
