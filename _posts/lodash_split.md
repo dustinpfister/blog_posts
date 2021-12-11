@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2021-12-11 09:26:07
-version: 1.16
+updated: 2021-12-11 09:28:47
+version: 1.17
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern in the form of a string or a regular expression. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](/2021/07/14/js-string-split/) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
@@ -35,7 +35,7 @@ Although the lodash spit method works just fine for this sort of thing it is not
 
 ## 2 - Chaining with \_.split
 
-To chain with split the \_.chain method can be used as one way to do so in lodash. Just call the chain method and pass the string as the first argument to the chain method. Lodash methods such as lodash split, as well as many other lodash methods such as join and chunk can also be used just like that of native javaScript.
+To chain with split the [lodash \_.chain method](/2018/11/11/lodash_chain/) can be used as one way to do so in lodash. Just call the chain method and pass the string as the first argument to the chain method. Lodash methods such as lodash split, as well as many other lodash methods such as join and chunk can also be used just like that of native javaScript.
 
 ```js
 let css = 'color:red;font-size:12pt;font-family:arial;';
@@ -71,4 +71,5 @@ console.log(_.initial(items));
 
 ## 4 - Conclusion
 
-That is all for now when it comes to lodash split, as well as some related topics such as the native string split method. If you are using lodash just for this method alone doing so is very silly, as such a task can be done with javaScript by itself just fine. The lodash split method is there more or less for the sake of consistency, because it is often desired to use the method in a chain alone with other lodash methods where there may not be a native counter part such as with lodash chunk.
+That is all for now when it comes to lodash split, as well as some related topics such as the native string split method. If you are using lodash just for this method alone doing so is very silly, as such a task can be done with javaScript by itself just fine. The lodash split method is there more or less for the sake of consistency, because it is often desired to use the method in a chain alone with other lodash methods where there may not be a native counter part such as with [lodash chunk](/2017/09/13/lodash-chunk/).
+
