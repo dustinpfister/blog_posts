@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 343
-updated: 2021-12-11 09:36:48
-version: 1.19
+updated: 2021-12-12 09:02:23
+version: 1.20
 ---
 
 So now and then when making a project with javaScript, there might be a need to split a string into an array of strings by a given separator pattern in the form of a string or a regular expression. In [lodash](https://lodash.com/) there is the [\_.split](https://lodash.com/docs/4.17.11#split) method, and there is also a [native javaScript split method](/2021/07/14/js-string-split/) as well in the String prototype object that can be used to do break a string down into an array of sub strings. 
@@ -35,6 +35,8 @@ Although the lodash spit method works just fine for this sort of thing it is not
 
 ## 2 - Chaining with \_.split
 
+### 2.1 - The lodash chain method
+
 To chain with split the [lodash \_.chain method](/2018/11/11/lodash_chain/) can be used as one way to do so in lodash. Just call the chain method and pass the string as the first argument to the chain method. Lodash methods such as lodash split, as well as many other lodash methods such as join and chunk can also be used just like that of native javaScript.
 
 ```js
@@ -55,6 +57,31 @@ console.log(arr);
 ```
 
 The one difference is that you will want to end the chain by calling value so that a value is returned.
+
+### 2 2 - The lodash flow method
+
+ANother option for chaining is the [lodash flow method](/2018/11/19/lodash_flow/) that works by passing an array of functions that are to be preformed in order, the return value of flow is then a function that will use this array of functions.
+
+```js
+let css = 'color:red;font-size:12pt;font-family:arial;';
+ 
+let toArr = _.flow([
+    (css) => {
+        return _.split(css, ';')
+    },
+    (arr) => {
+        return _.compact(arr);
+    },
+    (arr) => {
+        return _.map(arr, (str) =>{
+            return _.split(str, ':');
+        })
+    }
+]);
+ 
+console.log(toArr(css));
+// [['color', 'red'], ['font-size', '12pt'], ['font-family', 'arial']]
+```
 
 ## 3 - Using regex
 
