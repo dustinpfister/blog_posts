@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 11:18:27
-version: 1.36
+updated: 2021-12-14 11:22:42
+version: 1.37
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -75,6 +75,8 @@ Object.values(c).forEach((n) => {
 Addressing this is not so hard for someone that has many years of experience working with javaScript, but for newer developers running into these kinds of problems can prove to be a major time consuming pitfall. If I need to have some kind of collection for something do I make it an array, or an object with named keys? If I make it an array I can use all these array prototype methods, but then I can not just quickly ref an item by a named key name also. Even if a developer has years of experience it is kind of nice to have a set of methods that will just work with collections in any form by just calling the method.
 
 ### 1.2 - lodash forEach will work with collections in general
+
+Now that I have covered the deal with array prototype methods in native javaScript with respect to what needs to happen to get them to work with collections in general, not lets take a look at a lodash collection method. In lodash there are a number of array methods that expect an array, and only an array as the given argument. However there are also a number of so called collection methods, and when it comes to lodash counter part to array for each the lodash for each method is not an array method, but a collection method.
 
 ```js
 // same collections as before
