@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 08:41:12
-version: 1.22
+updated: 2021-12-14 08:48:48
+version: 1.23
 ---
 
-When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over one hundred modular utility functions to help work with arrays, functions, and objects in general along with various other utility functions. 
+When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a librray such as this.
 
 Many of the methods in lodash are in line with the concepts of [functional programming](https://en.wikipedia.org/wiki/Functional_programming) such as conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). 
 
