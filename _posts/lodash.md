@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 08:58:07
-version: 1.24
+updated: 2021-12-14 09:00:50
+version: 1.25
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -15,7 +15,7 @@ Many of the methods in lodash are in line with the concepts of [functional progr
 
 It is true that many of the functions in lodash are from [underscore the older library from which lodash was forked](https://en.wikipedia.org/wiki/Underscore.js#History). At first it was stated that lodash would work as a drop in replacement for underscore, but with late versions of lodash that is no longer the case as there are many differences when it comes to the public APIS of these two projects.
 
-One major talking point as to why developers should not bother with lodash any more is that much of the functionality in lodash is now part of core  native javaScript itself. However many of the functions in lodash work a little differently when  compared to a native counterpart, and there is still some people out there using older browsers that do not support all of these native methods. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library, and there is still a desire to abstract and wrap away many native methods.
+One major talking point as to why developers should not bother with lodash any more is that much of the functionality in lodash is now part of core  native javaScript itself. However there is still some people out there using older browsers that do not support all of these native methods, and I also like to get my code to work on a wide range of versions numbers when it comes to making nodejs scripts. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library, and there is still a desire to abstract and wrap away many native methods.
 
 <!-- more -->
 
