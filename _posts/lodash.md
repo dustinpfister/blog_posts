@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 11:22:42
-version: 1.37
+updated: 2021-12-14 11:25:51
+version: 1.38
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -91,6 +91,8 @@ _.forEach(a, method);
 _.forEach(b, method);
 _.forEach(c, method);
 ```
+
+So then this is one major talking point about lodash beyond just that of the safety net idea that many developers thing that lodash is all about. The fact of the matter is that the safety net aspect is just one aspect of lodash, there are many others beyond just that. Do not get me wrong there are a lot of good reasons to decide not to use lodash, but it is a good idea to be aware of what the full picture is with lodash in the sense that it is a bot more than just simply a safety net.
 
 ## 2 - lodash relevancy in light of ecmascript 2015+
 
