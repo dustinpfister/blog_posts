@@ -5,11 +5,16 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2019-11-04 14:01:52
-version: 1.21
+updated: 2021-12-14 08:41:12
+version: 1.22
 ---
 
-[Lodash](https://en.wikipedia.org/wiki/Lodash) is a JavaScript library that provides over some hundred modular utility functions to help work with arrays, functions, and objects in general. Many of the methods are in line with the concepts of [functional programming](https://en.wikipedia.org/wiki/Functional_programming) such as conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). It is true that many of the functions in lodash, and underscore the older library from which it was forked, are now part of core javaScript itself. However many of the functions in lodash to work a little differently, and there is still some people out there using older browsers that do not support all of these native methods. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library, and there is still a desire to abstract and wrap away many native methods.
+When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over one hundred modular utility functions to help work with arrays, functions, and objects in general along with various other utility functions. 
+
+Many of the methods in lodash are in line with the concepts of [functional programming](https://en.wikipedia.org/wiki/Functional_programming) such as conforming to rules that are constant with the concept of a [pure function](https://en.wikipedia.org/wiki/Pure_function). 
+
+It is true that many of the functions in lodash are from underscore, the older library from which lodash was forked.
+One major talking point as to why developers should not bother with lodash any more is that much of the functionality in lodash is now part of core  native javaScript itself. However many of the functions in lodash work a little differently when  compared to a native counterpart, and there is still some people out there using older browsers that do not support all of these native methods. In addition many of the utility methods are still not part of core javaScript at all, so it is not necessarily a dead library, and there is still a desire to abstract and wrap away many native methods.
 
 <!-- more -->
 
