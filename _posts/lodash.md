@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 11:34:46
-version: 1.40
+updated: 2021-12-14 11:37:21
+version: 1.41
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -98,7 +98,7 @@ So then this is one major talking point about lodash beyond just that of the saf
 
 Even before ecmascript 2015 there where many methods within lodash, and underscore that had a native counterpart method. There seem to be many developers that focus on methods in lodash like \_.concat or \_.isArray that in late versions of lodash just reference native methods and declare that lodash is no longer needed. For one thing the array concat method was added to native javaScript a very ling time ago, even when lodash was started concat was a tired yet true method. The array concat method is referenced not just because it is a tired yet true method, but also just for the sake of allowing for its use when using a method like the [lodash chain](/2018/11/11/lodash_chain) method. When it comes to methods like \_.isArray however this does bring up a good point about the safely net aspect of using lodash though which is that it is not always a question of just using lodash, but also what version of lodash depending on how far back one wants to go when it comes to supporting old browsers and or versions of node.
 
-In this section I will be addressing many of the talking points that bring into question of the relevancy of lodash in light of modern javaScript.
+In this section I will be addressing many of the talking points that bring into question of the relevancy of lodash in light of modern javaScript. Some of the criticisms might very well be justified, however others might not be looking into all the various details of what to be aware of when it comes to making important decisions about using or not using lodash.
 
 ### 2.1 - Many lodash methods do not have a native counterpart.
 
