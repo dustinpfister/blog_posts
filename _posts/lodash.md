@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 11:37:21
-version: 1.41
+updated: 2021-12-14 11:39:41
+version: 1.42
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -102,7 +102,7 @@ In this section I will be addressing many of the talking points that bring into 
 
 ### 2.1 - Many lodash methods do not have a native counterpart.
 
-First off there are many methods in lodash in which there is no native counterpart and as such having them there at the ready help save me the economy of time that I would spend writing my own solution. 
+First off there are many methods in lodash in which there is no native counterpart, and as such having them there at the ready helps save me the economy of time that I would spend writing my own solution. There are a lot of methods that come to mind when it comes to this, maybe the best one that I can think of off the bat would be the [lodash chunk method](/2017/09/13/lodash-chunk/).
 
 ### 2.2 - Some lodash counterparts to native methods bring a bit more to the table
 
