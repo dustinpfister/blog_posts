@@ -2,9 +2,6 @@
 ## lodash ( /yyyy/mm/dd/lodash-* )
 <!--###### ########## ########## #######-->
 
-### () - lodash (old)
-* get to 1,200+ words
-
 ### () - lodash_split (links_old)
 * get to 1,000+ words
 * (done) have 5+ internal links for the post
@@ -31,6 +28,9 @@
 ### () - lodash\_uniqueid (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
+
+### ( done 12/14/2021 ) - lodash (old)
+* (done) get to 1,200+ words
 
 ### ( done 12/09/2021 ) - lodash_flatmap (below 500)
 * (done) get to 500+ words
