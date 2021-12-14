@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 11:42:38
-version: 1.43
+updated: 2021-12-14 11:45:49
+version: 1.44
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -131,5 +131,7 @@ The thing here is that regardless if I am dealing with an array that has numbere
 Another category of lodash methods are [lodash object](/2019/02/13/lodash_object/) methods. These are methods that are intended to be used with any kind of object in javaScript, many of them have to do with cloning objects, as well as merging them together.
 
 ## 4 - Conclusion
+
+So there is a lot about lodash, and various topics that apply to javaScript in general actually when it comes to not using lodash. Even if I choose to not use lodash I often find myself creating and maintaining a general utility library that is an awful lot like lodash.
 
 This post like many others on my site here is a work in progress, as time progresses I will likely update this post several times. If you can think of anything that I should add please let me know in the comments. In any case thank you for reading.
