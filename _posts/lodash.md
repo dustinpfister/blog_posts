@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 11:01:29
-version: 1.32
+updated: 2021-12-14 11:02:54
+version: 1.33
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -31,7 +31,7 @@ So in this post I will be just writing about lodash in general, and many of thes
 
 When learning a thing or two about native javaScript by itself it is only a matter of time until one breaks some ground with the built in [Array class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array). When doing so one will end up becoming familiar with a number of [array prototype methods](/2018/12/10/js-array/) to work with. One popular example of this kind of array method that comes up a lot in discussions in various forums is the [array for each method](/2019/02/16/js-javascript-foreach/). This for each method as the name implies will simply call a given function for each element in the array to which the for each methods is called off of. ALthough a method such as this will work fine with arrays, there are a number of other collections to work with in javaScript code such as various types of array like objects, and collections with named rather than index key names.
 
-It is possible to get these various array prototype methods to work with these other kinds of collections, but doing so requires a little extra leg work involving various other native javaScript features. For example to get array for each to work with an array like object I can use the Function call prototype method, or the array from static method. When it comes to collections that are composed of objects that have named rather than index public key names there is making use of the Object.keys and or Object.values methods, or a for in loop that would be an even older tired yet true means of doing so.
+It is possible to get these various array prototype methods to work with these other kinds of collections, but doing so requires a little extra leg work involving various other native javaScript features. For example to get array for each to work with an array like object I can use the [Function call prototype method](/2017/09/21/js-call-apply-and-bind/), or the array from static method. When it comes to collections that are composed of objects that have named rather than index public key names there is making use of the Object.keys and or Object.values methods, or a for in loop that would be an even older tired yet true means of doing so.
 
 ```js
 // a 'collection' that is an 'array'
