@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 382
-updated: 2021-12-14 10:33:31
-version: 1.29
+updated: 2021-12-14 10:54:43
+version: 1.30
 ---
 
 When it comes to javaScript utility libraries [Lodash](https://en.wikipedia.org/wiki/Lodash) is such a library that provides over three hundred modular utility functions to help work with arrays, functions, and objects in general. On top of having just array methods and plain object methods there are a number of collection methods that will work with arrays and objects in general. There are also many methods that will work well with primitive values as well such as Strings and Numbers. There are also a lot of other useful various utility methods that one would expect to find in a library such as this.
@@ -19,13 +19,56 @@ One major talking point as to why developers should not bother with lodash any m
 
 <!-- more -->
 
-## 1 - lodash is
+## 1 - lodash basics and what to know first
 
 There is much to write about when it comes to [lodash](https://lodash.com/) beyond just writing about the methods themselves. Lodash branches off into many other topics of interested with javaScript development such as [functional programing](https://en.wikipedia.org/wiki/Functional_programming) compared to [imperative programing](https://en.wikipedia.org/wiki/Imperative_programming). There is also [a lot of blog posts that I see on the web that seem to focus on the fact that many of the methods in lodash are now part of javaScript itself](https://codeburst.io/why-you-shouldnt-use-lodash-anymore-and-use-pure-javascript-instead-c397df51a66), and that lodash is no longer needed as part of a stack when making any kind of new project. 
 
 Still there are the redeeming qualities of lodash that still remain to this day, and as such it still is very much in use, even with new projects. For example the lodash forEach method will work with objects in general rather than just arrays, and if the method that is passed to it returns false it will stop the loop. The idea that lodash helps to function as a safety net of sorts still remains true to this day to some extent, and it is still nice to abstract things away into a single framework or sorts. In addition even if you choose to not use lodash in new projects it is still a project that is worth studying because of the way that it is designed.
 
 So in this post I will be just writing about lodash in general, and many of these topics that come to mind, this post will also serve as a sort of main index for all other lodash content on this site.
+
+### 1.1 - The deal with array prototype methods and collections in general
+
+When learning a thing or two about native javaScript by itself it is only a matter of time until one breaks some ground with the built in [Array class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array). When doing so one will end up becoming familiar with a number of array prototype methods to work with. One popular example of this kind of array method that comes up a lot in discussions in various forums is the [array for each method](/2019/02/16/js-javascript-foreach/).
+
+```js
+// a 'collection' that is an 'array'
+let a = [1, 2, 3];
+// a 'collection' that is an 'array like object'
+let b = {
+    0: 1,
+    1: 2,
+    2: 3,
+    length: 3
+};
+// a 'collection' that is an 'object with named public keys'
+let c = {
+    'zero': 1,
+    'one': 2,
+    'two': 3
+};
+// array for each will work fine with an array of course
+a.forEach((n) => {
+    console.log(n);
+});
+// for each will not just work with an array like object though
+// as such I need to use something like the function call method
+
+[].forEach.call(b, (n) => {
+    console.log(n);
+});
+// or the array from static method
+Array.from(b).forEach((n) => {
+    console.log(n);
+});
+// Array for each will not just work with objects that have a named
+// rather than numbered set of public keys, and no length property so
+// something like the Object.values method needs to be used, or some kind
+// of alternative to get it to work
+Object.values(c).forEach((n) => {
+    console.log(n);
+});
+```
 
 ## 2 - lodash relevancy in light of ecmascript 2015+
 
