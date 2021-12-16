@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-12-16 11:06:21
-version: 1.110
+updated: 2021-12-16 11:11:09
+version: 1.111
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -618,6 +618,8 @@ console.log( sumKeysOfObj(obj, Object.getOwnPropertyNames(obj)) ); // 6
 ```
 
 ## 5 - Custom vjs user space for Each methods
+
+I have covered the basics of the for each array prototype method, and touched based on some various other array prototype methods. I have also mentioned a bit on while loops, and the various other javaScript features and prototype methods of various built in classes to work with array like objects, and named collections on top of just arrays. So then at this point one should be able to start thinking in terms of making custom for each methods that will work well with collections in general. Now there are many utility libraries out in the wild that all ready contain methods like this. However in this section I will be sticking to simple copy and past vanilla javaScript style methods when it comes to making for each methods that will work with objects in general.
 
 ### 5.1 - Object keys method working with objects in general
 
