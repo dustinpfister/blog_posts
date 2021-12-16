@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:04:16
-version: 1.12
+updated: 2021-12-16 12:29:36
+version: 1.13
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -57,6 +57,38 @@ Another method in lodash that works this way with negative index values would be
  console.log( _.indexOf(arr, 'man', -3) ); // 3
  // will not wrap though
  console.log( _.indexOf(arr, 'man', 7) );  // -1
+```
+
+### 1.4 - The lodash clamp method
+
+There is a lodash clamp method that can be used to clamp a number to a given range. This clamp method can then be used set bounds for index values that might go below zero or above the length of an array minus one.
+
+### 1.5 - Adding a lodash wrap number method
+
+It would seem that there is a clamp number method in lodash, but no wrap number method. This would mean that if I want such a method in lodash I will need to add one using the lodash mixin method to do so.
+
+```js
+// adding a _.wrapNumber method to lodash
+_.mixin({'wrapNumber': function(n, b){
+    n = n === undefined ? 0 : n;
+    b = b === undefined ? 1 : b;
+    return (n % b + b) % b;
+}});
+// updated nth2 method that WILL WRAP
+_.mixin({'nth2': function(arr, i){
+    return arr[_.wrapNumber(i, arr.length)];
+}});
+
+// can use the wrap number method directly
+console.log(_.wrapNumber(-1, 10)); // 9
+console.log(_.wrapNumber(10, 10)); // 0
+
+ // the nth2 method will wrap with negative numbers, 
+ // and index values at and above array length
+ var arr = ['fear','the','foo','man','chew'];
+ console.log(arr[-3]); // undefined
+ console.log( _.nth2(arr, -3) ); // 'foo'
+ console.log( _.nth2(arr, 6) ); // 'the'
 ```
 
 ## 2 - Running into trouble with making my own method, because javaScripts modulo operator
