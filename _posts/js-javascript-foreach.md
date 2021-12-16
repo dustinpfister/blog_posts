@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-12-16 09:47:15
-version: 1.109
+updated: 2021-12-16 11:06:21
+version: 1.110
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -617,7 +617,96 @@ console.log( sumKeysOfObj(obj, Object.keys(obj)) ); // 3
 console.log( sumKeysOfObj(obj, Object.getOwnPropertyNames(obj)) ); // 6
 ```
 
-## 6 - Conclusion
+## 5 - Custom vjs user space for Each methods
+
+### 5.1 - Object keys method working with objects in general
+
+```js
+let forEach = function (obj, func) {
+    let keys = Object.keys(obj), len = keys.length, i = 0;
+    while (i < len) {
+        if (func.call(obj, obj[keys[i]], keys[i], obj)) {
+            break;
+        }
+        i += 1;
+    }
+};
+ 
+// works with solid arrays
+let a = [1,2,3,4];
+forEach(a, (n) => {
+    console.log(n);
+});
+// 1 2 3 4
+ 
+// works just like array for each when it comes to sparse arrays
+let obj = {0: 1, 2: 2, 5: 3, 15: 4};
+Object.defineProperty(obj, 'length', {value: 16});
+let b = Array.prototype.map.call(obj, function(n){ return n; });
+forEach(b, (n) => {
+    console.log(n);
+});
+// 1 2 3 4
+ 
+// I can also directly pass an array like object
+forEach(obj, (n) => {
+    console.log(n);
+});
+// 1 2 3 4
+ 
+// Works with named collections also
+let obj2 = {foo: 1, bar: 2, baz: 3, taz: 4};
+forEach(obj2, (n) => {
+    console.log(n);
+});
+// 1 2 3 4
+```
+
+### 5.2 - A For each method with a sparse array mode
+
+```js
+let forEach = function (obj, func, opt) {
+    // options object with sparse mode set to false by default
+    opt = opt || {};
+    opt.sparse = opt.sparse || false;
+    var i = 0, keys = Object.keys(obj), len = keys.length;
+    if(opt.sparse){
+       // in sparse mode only use keys.length if there is no length prop in the object
+       // else use the length value in the object
+       len = obj.length === undefined ? keys.length: obj.length;
+    }
+    // loop
+    while (i < len) {
+        var key = keys[i],
+        value = obj[keys[i]];
+        if(opt.sparse){
+            key = i;
+            value = obj[i];
+        }
+        if (func.call(obj, value, key, obj)) {
+            break;
+        }
+        i += 1;
+    }
+};
+ 
+// creating a sparse array
+let obj = {0: 1, 3: 2, 4: 3};
+Object.defineProperty(obj, 'length', {value: 5});
+let b = Array.prototype.map.call(obj, function(n){ return n; });
+// by default it will skip over undefined keys just like with Array.forEach
+forEach(b, (n) => {
+    console.log(n);
+});
+// 1 2 3
+ 
+forEach(b, (n) => {
+    console.log(n || 0);
+}, {sparse: true});
+// 1 0 0 2 3
+```
+
+## 7 - Conclusion
 
 The javaScript foreach method might work okay for quickly looping over an array, and it some cases it still works okay. Still I often find myself using other array methods, while loops, Promise.all, and many other similar tools. There is also trying to think for a moment if I even need a loop at all when it comes to using an expression rather than a loop when doing so will work.
 
