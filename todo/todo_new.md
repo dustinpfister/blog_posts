@@ -4,7 +4,9 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### () - new post #945 for 12/17/2021 -
+### () - new post #945 for 12/17/2021 - lodash_clamp
+* start for post folder
+* be sure to add the \_.wrapNumber methid that I made for my post on \_.nth
 
 
 <!--###### ########## ########## #######-->

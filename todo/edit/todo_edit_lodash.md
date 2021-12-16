@@ -15,11 +15,8 @@
 * have 5+ internal links for the post
 
 ### () - lodash_nth ( links, old )
-* get to 1,000+ words
+* get to 700+ words
 * have 5+ internal links for the post
-
-### () - lodash ( old )
-* get to 1,200+ words
 
 ### () - lodash_merge (links, old)
 * get to 1000+ words
