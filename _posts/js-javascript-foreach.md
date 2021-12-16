@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-12-16 08:37:32
-version: 1.105
+updated: 2021-12-16 08:42:11
+version: 1.106
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -548,7 +548,7 @@ console.log(sum); // 6
 
 ### 5.2 - Object.values
 
-The Object values method is one way to loop over the contents of an object in general. Assuming that all the key names that I want to loop over are public, and I do not care about anything that might be in the prototype chain.
+The Object values method is one way to loop over the contents of an object in general in terms of key values. Assuming that all the key names that I want to loop over are public, I do not need the key name values, and I do not care about anything that might be in the prototype chain. The method works by creating and returning a new array where each element in the array is a value of one of the public keys of the object that was given to the Object.values method. So then because it is an array that is returned I can then use any array prototype method that I want after that, including the array for each method.
 
 ```js
 let obj = {
