@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:33:25
-version: 1.14
+updated: 2021-12-16 12:36:27
+version: 1.15
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -61,7 +61,7 @@ Another method in lodash that works this way with negative index values would be
 
 ### 1.4 - The lodash clamp method
 
-There is a lodash clamp method that can be used to clamp a number to a given range. This clamp method can then be used set bounds for index values that might go below zero or above the length of an array minus one.
+There is a lodash clamp method that can be used to clamp a number to a given range. This clamp method can then be used set bounds for index values that might go below zero or above the length of an array minus one. This might work in some situations in which this is what I want to happen when index values that are out or range are given, but it is not a situation in which I get th behavior of the lodash nth method in both directions.
 
 ### 1.5 - Adding a lodash wrap number method
 
