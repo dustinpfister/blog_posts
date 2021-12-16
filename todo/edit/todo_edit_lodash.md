@@ -2,6 +2,9 @@
 ## lodash ( /yyyy/mm/dd/lodash-* )
 <!--###### ########## ########## #######-->
 
+### () - lodash_mixin ( add example )
+* add \_.wrapNumber example from lodash_nth
+
 ### () - lodash_split (links_old)
 * get to 1,000+ words
 * (done) have 5+ internal links for the post
