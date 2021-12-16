@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-12-16 11:19:11
-version: 1.114
+updated: 2021-12-16 11:20:33
+version: 1.115
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -670,7 +670,7 @@ forEach(obj2, (n) => {
 
 ### 5.2 - A For each method with a sparse array mode
 
-
+One additional feature that I might want to add to a general for each collection method is a mode that will cause the method to work in a kind of sparse array mode.
 
 ```js
 let forEach = function (obj, func, opt) {
