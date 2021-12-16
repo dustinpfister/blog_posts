@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-12-16 08:45:11
-version: 1.107
+updated: 2021-12-16 08:52:14
+version: 1.108
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -532,7 +532,9 @@ Some times I am dealing with an object that is not an instance of an Array but i
 
 ### 5.1 - A for in loop can be used
 
-The tired yet true way of looping over the contents of an object in general would be to use a [for in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in).
+The tired yet true way of looping over the contents of an object in general would be to use a [for in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in). If I need to write javaScript code that will work on very old browsers this is what I would typically want to use to do so as it will work on versions of Firefox as old as version 1, Google Chrome 1, and IE6 when it comes to Internet Explorer. So when it comes to worrying about code breaking on that occasional client that is using a real out of date browser this will still work.
+
+That is nit to say that there are draw backs to using a for in loop, there are of course. For one thing it is a little slow compared to other options that there are to work with in more modern environments. Maybe the main point of concern is that a for in loop will only loop over public keys.
 
 ```js
 let obj = {
