@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2021-12-16 11:14:58
-version: 1.112
+updated: 2021-12-16 11:17:32
+version: 1.113
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -623,7 +623,7 @@ I have covered the basics of the for each array prototype method, and touched ba
 
 ### 5.1 - Object keys method working with objects in general
 
-In the basic section I covered a methods that will work well with objects in general it made use of the Object.keys method as a way to get all public key names for an object, and used that returned array as a way to set the len value when it comes to looping over the contents of the object.
+In the basic section I covered a methods that will work well with objects in general it made use of the Object.keys method as a way to get all public key names for an object, and used that returned array as a way to set the len value when it comes to looping over the contents of the object. Although I have not took the time to make use that this method really truly is spec compliant to array for each when it comes to arrays at least it seems to behaves more or less the same way as array for each when it comes to the nature of skipping over empty elements when I give a sparse array.
 
 ```js
 let forEach = function (obj, func) {
