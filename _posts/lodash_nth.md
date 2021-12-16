@@ -5,11 +5,11 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 11:37:03
-version: 1.6
+updated: 2021-12-16 11:38:35
+version: 1.7
 ---
 
-When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element and that last element in the array will end up having a value one less that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of. There is a question of how to handle index values that fall outside the index range of the array though, that is when a negative index value is given. If I want to there are plenty of waysto handle that sort of thing with just plain old vanilla javaScript, but if I am using  [lodash](https://lodash.com/) in a project there is the [\_.nth](https://lodash.com/docs/4.17.4#nth) method.
+When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when learning javaScript for the first time. There is a question of how to handle index values that fall outside the index range of the array though, that is when a negative index value is given. If I want to there are plenty of waysto handle that sort of thing with just plain old vanilla javaScript, but if I am using  [lodash](https://lodash.com/) in a project there is the [\_.nth](https://lodash.com/docs/4.17.4#nth) method.
 
 <!-- more -->
 
