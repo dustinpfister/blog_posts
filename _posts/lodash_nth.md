@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:36:27
-version: 1.15
+updated: 2021-12-16 12:38:52
+version: 1.16
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -18,7 +18,6 @@ There is a question of how to handle index values that fall outside the index ra
 ## 1 - The Situation
 
 When getting an element from an array by using the bracket syntax and giving an index value if I give an index that is below zero, or above or equal to the length of the array it will result in undefined. That is unless for some reason I set some negative index value for the array which I could, but that is another matter. With respect of the theme of this post when I get array elements this way I will not just get the corresponding element from the end of the array, and effect that might be desired in some situations.
-
 That is if I think about an array being this thing like that of a circle, rather than an finite line. If I do think about it that way than I am going to be disappointed without some kind of helper method maybe. So to get to the point say I have a sime array of string elements, that is five elements in total.
 
 ### 1.1 - The basic situation
@@ -32,7 +31,7 @@ That is if I think about an array being this thing like that of a circle, rather
  console.log(arr[5]); // undefined
 ```
 
-If I get index zero with the bracket notation I get the first element, if I get index four with the bracket notation, no problem. However if I get index negative three I will not end up getting index element two, and if I get index five that will not swing around and get me the first element.
+If I get index zero with the bracket notation I get the first element, if I get index four with the bracket notation, no problem. However if I get index negative three I will not end up getting index element two, and if I get index five that will not swing around and get me the first element. The lodash nth method will give me the element that I want with negative numbers, but it will not swing back around when it comes to values that are at the array length and higher.
 
 ### 1.2 - Using the \_.nth lodash method
 
