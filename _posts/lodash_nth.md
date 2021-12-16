@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2019-11-06 18:09:13
-version: 1.5
+updated: 2021-12-16 11:37:03
+version: 1.6
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element and that last element in the array will end up having a value one less that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of. There is a question of how to handle index values that fall outside the index range of the array though, that is when a negative index value is given. If I want to there are plenty of waysto handle that sort of thing with just plain old vanilla javaScript, but if I am using  [lodash](https://lodash.com/) in a project there is the [\_.nth](https://lodash.com/docs/4.17.4#nth) method.
@@ -43,7 +43,7 @@ The lodash \_.nth method can be used to supply this kind of functionality in lin
 
 Any number value that is given outside the range of the array will just be converted to whatever the corresponding index would work out to.
 
-## 3 - Running into trouble with making my own method, because javaScripts modulo operator
+## 2 - Running into trouble with making my own method, because javaScripts modulo operator
 
 I [wrote a post](/2017/09/02/js-whats-wrong-with-modulo/) on the nature of the modulo operator, and why it does not work the way that you might expect it to. So if you attempt to correct the given index value like this:
 
@@ -65,7 +65,7 @@ You are going to have a bad time. That would be a pretty sleek one liner if it w
 
 As such you would need to do something else.
 
-## 4 - Working vanilla js alternative to \_.nth
+## 3 - Working vanilla js alternative to \_.nth
 
 Making a vanilla js alternative to \_.nth just involves working out how to [make a modulo operation](/2017/09/02/js-whats-wrong-with-modulo/) that works a different way in which a positive, valid, in range value is always given.
 
@@ -81,6 +81,6 @@ Making a vanilla js alternative to \_.nth just involves working out how to [make
  };
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 These lodash methods are helpful, many even though many of them can be written quickly, it still saves time. I know that lodash is now one of those projects like jQuery where much of this is no longer needed, but even when a method like that comes along lodash still helps with backward compatibility with those older browsers people still use.
