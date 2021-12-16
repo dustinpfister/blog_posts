@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:38:52
-version: 1.16
+updated: 2021-12-16 12:39:44
+version: 1.17
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -21,6 +21,8 @@ When getting an element from an array by using the bracket syntax and giving an 
 That is if I think about an array being this thing like that of a circle, rather than an finite line. If I do think about it that way than I am going to be disappointed without some kind of helper method maybe. So to get to the point say I have a sime array of string elements, that is five elements in total.
 
 ### 1.1 - The basic situation
+
+For a basic idea of what the situation is to begin with take into account a simple array of strings such as this.
 
 ```js
  var arr = ['fear','the','foo','man','chew'];
