@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:00:23
-version: 1.10
+updated: 2021-12-16 12:02:29
+version: 1.11
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -48,6 +48,8 @@ The lodash \_.nth method can be used to supply this kind of functionality in lin
 Any number value that is given outside the range of the array will just be converted to whatever the corresponding index would work out to.
 
 ### 1.3 - The index of method
+
+Another method in lodash that works this way with negative index values would be the [lodash index of method](/2019/06/26/lodash_indexof/).
 
 ```js
  var arr = ['fear','man','foo','man','chew'];
