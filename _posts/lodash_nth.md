@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:29:36
-version: 1.13
+updated: 2021-12-16 12:33:25
+version: 1.14
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -65,7 +65,7 @@ There is a lodash clamp method that can be used to clamp a number to a given ran
 
 ### 1.5 - Adding a lodash wrap number method
 
-It would seem that there is a clamp number method in lodash, but no wrap number method. This would mean that if I want such a method in lodash I will need to add one using the lodash mixin method to do so.
+It would seem that there is a clamp number method in lodash, but no wrap number method. This would mean that if I want such a method in lodash I will need to add one using the [lodash mixin method](/2018/01/31/lodash_mixin/) to do so. If I add a wrap number method I can then use the same method to create an updated version of the lodash nth method that will wrap rather than just give me an undefined value when I give an index number of an array that is at the length of the array or higher.
 
 ```js
 // adding a _.wrapNumber method to lodash
