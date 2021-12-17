@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 945
-updated: 2021-12-17 14:59:33
-version: 1.13
+updated: 2021-12-17 15:02:14
+version: 1.14
 ---
 
 In [lodash there is a clamp number method](https://lodash.com/docs/4.17.15#clamp) that can be use to return a number value that is based off of a given number that is to be clamped between a lower and upper bound. However it would seem that there is not a wrap number method which is also to be found in libraries and frameworks that provide such a method. If I want a wrap number method in lodash then I will need to add one to lodash by way of a mixin using the [lodash mixin](/2018/01/31/lodash_mixin/) method.
@@ -54,6 +54,8 @@ console.log( get(arr, 3, 0) );  // 3
 console.log( _.clamp(-1, 0, 5) ); // 0
 console.log( _.clamp(7, 0, 5) );  // 5
 ```
+
+So then the clamp method is like setting some boundaries for a given value to make it so that the return value will always be in that range. However it is like setting up walls, rather than having no walls at all just looping back around when a value goes out of bounds. So then on tip of having a clamp number method there should also be a wrap number methods.
 
 ### 1.3 - adding a wrapNumber method
 
