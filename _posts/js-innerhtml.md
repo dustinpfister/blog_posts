@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-12-17 10:40:43
-version: 1.67
+updated: 2021-12-17 10:44:11
+version: 1.68
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -215,7 +215,7 @@ However I will not be getting into the security related topics of inerHTML at le
 
 ### 3.1 - Getting script tags to run added by innerHTML
 
-When it comes to adding script tags by way of innerHTML more often than one then will not run. I would say that adding script tags by way of innerHTML is something that should not be done if doing so can be avoided to begin with actually. However if for one reason or another I really do need to get them to run then there are [some ways to do about doing so](https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml).
+When it comes to adding script tags by way of innerHTML more often than one then will not run. I would say that adding script tags by way of innerHTML is something that should not be done if doing so can be avoided to begin with actually. However if for one reason or another I really do need to get them to run then there are [some ways to do about doing so](https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml). Most of the ways of doing so involve doing what it is that should be done in the first place when it comes to the proper way of adding script tags by way of javaScript code which is using the create element method. The next step beyond that is just setting the text value of a new script tag to the inner html of the source script tag, and the replacing the node.
 
 ```js
 <html>
