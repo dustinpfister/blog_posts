@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 945
-updated: 2021-12-17 14:33:21
-version: 1.3
+updated: 2021-12-17 14:37:08
+version: 1.4
 ---
 
 In [lodash there is a clamp number method](https://lodash.com/docs/4.17.15#clamp) that can be use to return a number value that is based off of a given number that is to be clamped between a lower and upper bound. However it would seem that there is not a wrap number method which is also to be found in libraries and frameworks that provide such a method. If I want a wrap number method in lodash then I will need to add one to lodash by way of a mixin using the [lodash mixin](/2018/01/31/lodash_mixin/) method.
@@ -16,7 +16,9 @@ I have found that these two methods that is clamp number and wrap number are two
 <!-- more -->
 
 
-## 1 - Basics
+## 1 - The Basics of clapping and wrapping numbers in lodash
+
+In this section I will be starting out with just a few basic examples of clamping and wrapping numbers in lodash. When it comes to clamping a number there is the lodash clamp method, but wrapping a number is something that seems that it must be added to lodash. In any case I will be going over some quick simple examples of both of these kinds of methods in lodash as well as other various lodash features and methods.
 
 ### 1.1 - The lodash get method
 
