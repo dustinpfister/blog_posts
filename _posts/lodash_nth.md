@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 60
-updated: 2021-12-16 12:44:59
-version: 1.18
+updated: 2021-12-17 13:46:22
+version: 1.19
 ---
 
 When grabbing an element from an Array I need to give a zero relative index value where zero will be the first element, and that the last element in the array will end up having a value of one less from that of the total length of the array. This is a trivial matter for even a new javaScript developer as it is one of the first things I remember becoming aware of when [learning javaScript for the first time](/2018/11/27/js-getting-started/). 
@@ -71,21 +71,22 @@ There is a lodash clamp method that can be used to clamp a number to a given ran
 
 It would seem that there is a clamp number method in lodash, but no wrap number method. This would mean that if I want such a method in lodash I will need to add one using the [lodash mixin method](/2018/01/31/lodash_mixin/) to do so. If I add a wrap number method I can then use the same method to create an updated version of the lodash nth method that will wrap rather than just give me an undefined value when I give an index number of an array that is at the length of the array or higher.
 
+The wrap method that I came up with for this example and many other examples is based off of the [wrap method that is found in the phaser game framework](/2018/07/22/phaser-math-wrap-and-clamp/). I just took what was in the source code and made it the source code of this wrap method that I am adding to lodash by way of the lodash mixin method. The method seems to work well when it comes to wrapping rather than clamping numbers.
+
 ```js
 // adding a _.wrapNumber method to lodash
-_.mixin({'wrapNumber': function(n, b){
-    n = n === undefined ? 0 : n;
-    b = b === undefined ? 1 : b;
-    return (n % b + b) % b;
+_.mixin({'wrapNumber': function(n, min, max){
+    var r = max - min;
+    return (min + ((((n - min) % r) + r) % r));
 }});
 // updated nth2 method that WILL WRAP
 _.mixin({'nth2': function(arr, i){
-    return arr[_.wrapNumber(i, arr.length)];
+    return arr[_.wrapNumber(i, 0, arr.length)];
 }});
 
 // can use the wrap number method directly
-console.log(_.wrapNumber(-1, 10)); // 9
-console.log(_.wrapNumber(10, 10)); // 0
+console.log(_.wrapNumber(-1, 0, 10)); // 9
+console.log(_.wrapNumber(10, 0, 10)); // 0
 
  // the nth2 method will wrap with negative numbers, 
  // and index values at and above array length
