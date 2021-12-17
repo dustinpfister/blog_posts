@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-12-17 10:31:08
-version: 1.65
+updated: 2021-12-17 10:33:58
+version: 1.66
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -225,14 +225,14 @@ When it comes to adding script tags by way of innerHTML more often than one then
         <script>
 // https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
 var makeScriptsExecutable = function(el) {
-  el.querySelectorAll("script").forEach(script => {
-    var clone = document.createElement("script")
-    for (var attr of script.attributes) {
-      clone.setAttribute(attr.name, attr.value)
+  el.querySelectorAll("script").forEach(function(script){
+    var clone = document.createElement("script");
+    for (var attr in script.attributes) {
+      clone.setAttribute(attr.name, attr.value);
     }
-    clone.text = script.innerHTML
-    script.parentNode?.replaceChild(clone, script)
-  })
+    clone.text = script.innerHTML;
+    script.parentNode?.replaceChild(clone, script);
+  });
 };
 // seems to work on chrome 96
 var div = document.getElementById('injected_scripts');
