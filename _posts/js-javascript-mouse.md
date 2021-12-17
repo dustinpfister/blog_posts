@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-17 10:52:28
-version: 1.98
+updated: 2021-12-17 10:58:25
+version: 1.99
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -623,7 +623,7 @@ out.addEventListener('mousedown', function(e){
 </html>
 ```
 
-The return value of the button property should be a number with a value from 0 to 4 for up to five buttons on a mouse that was pressed. A value of 0 should mean the main button of the mouse, in other words the typical left click button. A value of 2 on the other hand will be a right click actually as a value of 1 will refer to a center click, or scroll wheel click if you prefer. The values of 3 and 4 will refer to the back and forward buttons that are present on many mouses.
+The value of the button property should be a number with a value from 0 to 4 for up to five buttons on a mouse that was pressed. A value of 0 should mean the left click button of the mouse, while a value of 2 on the other hand will be a right click actually. So then a value of 1 will refer to a center click, or scroll wheel click if you prefer. The values of 3 and 4 will refer to the back and forward buttons that are present on many mouses these days. That is about it as far as I know, it might be possible to find a way to work with even more buttons that might be on some kinds of mice that people might use, however there is mainly thinning just in terms of what there is to work with for most people using desktop systems. When it comes to using the track pad of a laptop often there is only a right and left click and that is all.
 
 ### 4.2 - Stop the context menu from showing up on a right click
 
