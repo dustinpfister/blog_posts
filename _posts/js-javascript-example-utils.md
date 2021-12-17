@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-11-30 11:13:15
-version: 1.65
+updated: 2021-12-17 14:15:34
+version: 1.66
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like library only with methods that I am actually going to use in the project, and not a whole much of bulk that I am not going to be using like with lodash. 
@@ -70,7 +70,33 @@ utils.mod = function (x, m) {
 };
 ```
 
-### 1.5 - Format a number
+### 1.5 - clamp a number
+
+```js
+// clamp a number
+utils.clampNumber = function(n, min, max, zeroRel){
+    zeroRel = zeroRel === undefined ? true : zeroRel;
+    if(n < min){return min;}
+    if(n < max){return max;}
+    // special case for n === max if in zeroRel mode
+    if(n === max && zeroRel){
+        return max - 1;
+    }
+    return n;
+};
+```
+
+### 1.6 - wrap a number
+
+```js
+// wrap a number
+utils.wrapNumber = function(n, min, max){
+    var r = max - min;
+    return (min + ((((n - min) % r) + r) % r));
+};
+```
+
+### 1.7 - Format a number
 
 This format number method uses the Format Number [internationalization constructor](/2021/03/30/js-intl) to format a number as a string. The returned string does not just have a dollar sign attached to it when it comes to displaying as USD, or any desired symbol depending on the set currency property, but it also places a comma after every three digits.
 
@@ -88,7 +114,7 @@ utils.formatNumber = function(number){
 };
 ```
 
-### 1.6 - Http methods
+### 1.8 - Http methods
 
 A useful tool to have ready is a decent http client as scripting http requests is something that just happens a great deal when working things out with client side javaScript. There is working with the fetch api or the  [xml http request method directly](/2018/03/28/js-xmlhttprequest/), but when doing that I have found that there are some things that I should pull into some kind of abstraction so I do not have to repeat the code each time.
 
@@ -147,7 +173,7 @@ utils.httpPNG = function(opt){
 };
 ```
 
-### 1.7 - Logging methods
+### 1.9 - Logging methods
 
 There is just using the console log method as a way to see what is going on with some code at a given point. However using that method alone is a bit lacking, I often would like to have a log method that will just log once in a loop. Also another helpful method would be a method that will log just once for a given expression. Also I think it is a good idea to at least wrap the console log in a custom log method, that way I can just comment out just one line to stop logging, or redefine what logging is in just one place.
 
@@ -187,7 +213,7 @@ utils.logOnce = (function () {
     ());
 ```
 
-### 1.8 - A deep clone method
+### 1.10 - A deep clone method
 
 When it comes to working with objects I will often want a way to go about deep cloning objects. This can often prove to be a not so easy task when it comes to making a vanilla javaScript solution. Also often user space library methods might not always work great when working with custom made constructor functions. There are many deep clone methods on the open web, but often I do not see every little detail covered when making this sort of metho9d, such as checking for recursive references, and how to go about dealing with them.
 
@@ -255,7 +281,7 @@ utils.deepClone = (function () {
     ());
 ```
 
-### 1.9 - traverse an object
+### 1.11 - traverse an object
 
 On top of deep cloning another useful object method to have is something that can be used to traverse over the full depth of an object. This kind of method is often referred to as a traverse method as it will go over every nested key value pair of an object calling a function for each set.
 
@@ -276,7 +302,7 @@ utils.traverse = function (obj, forKey, level) {
 };
 ```
 
-### 1.10 - Create a create canvas element method
+### 1.12- Create a create canvas element method
 
 I often like to make canvas projects so it is a good idea to have a method that will create and return a new canvas element with all the options set up just the way that I like it. There are many little details when it comes to canvas elements such as making it so that a context menu will not show up when the canvas is right clicked, adjusting the translation of the matrix and so forth.
 
@@ -304,7 +330,7 @@ utils.createCanvas = function(opt){
 
 Using a method such as this is no replacement for a full blown canvas module of some kind though of course. There are many other little details surrounding canvas elements such as the topic of layering, and not always appending a canvas to a container that come to mind. Still this is a step in the right direction compared to starting over from the ground up each time I start a new project.
 
-### 1.11 - Get a canvas relative position method
+### 1.13 - Get a canvas relative position method
 
 Another method that I might have in a general utilities module would be a method that I can use to adjust pointer positions so that they are relative to a canvas element rather than that of the browser window. This is a kind of method that I find myself refining a little now and then, so I have [wrote a post in which I get into this topic of getting a canvas relative pointer position in greater detail](/2020/03/04/canvas-get-point-relative-to-canvas/).
 
@@ -325,7 +351,7 @@ utils.getCanvasRelative = function (e) {
 };
 ```
 
-### 1.12 - Create a canvas pointer handler
+### 1.14 - Create a canvas pointer handler
 
 This is a method that will create and return a single handler that will work with a range of events given a single event object.
 
@@ -352,7 +378,7 @@ utils.canvasPointerEventHandler = function (state, events) {
 };
 ```
 
-### 1.13 - Attach pointer handlers for a canvas element
+### 1.15 - Attach pointer handlers for a canvas element
 
 I then have a method that I can call from the source code of a project just once, and given it a canvas element, state object, and an object of events for pointer methods. It will then use the create pointer hander method once to create a uniform handler with methods given in the events object that will act on the given state object. It will then attach the handler for all relevant pointer events for the given canvas element.
 
@@ -372,7 +398,7 @@ utils.canvasPointerEvents = function (canvas, state, events) {
 };
 ```
 
-### 1.14 - Having a basic EXP System
+### 1.16 - Having a basic EXP System
 
 Many of my projects are basic game prototypes, and one thing I need to have in many of them is some kind of experience point system. It might be best to start to work out some kind of [full module for an experience point system](/2020/04/27/js-javascript-example-exp-system/), however the same could be used for many of the canvas methods that I have in this module also. This xp object contains two methods that I first worked out for my [beach canvas example](/2020/04/24/canvas-example-game-beach/) game prototype, and further refined in my post on the [math pow method](/2019/12/10/js-math-pow/).
 
@@ -420,7 +446,7 @@ utils.XP = (function () {
     ());
 ```
 
-### 1.15 - Create state machine objects
+### 1.17 - Create state machine objects
 
 In my canvas example on what I am just calling an Orb Module I am working out a lot of logic that has to do with these objects called orbs that are composed of a certain number of elements. I will not be getting into detail about he module here of course if you want to read more on it check out the post I wrote on it. However in the project folder of the orbs module I am starting to make a full game prototype that makes use of the module called orb match. As such when it comes to the utils library I am using in that game prototype I have started a bunch of methods that can be used to create and extend a basic state machine.
 
@@ -517,7 +543,7 @@ utils.smCreateMain = function(opt){
 };
 ```
 
-### 1.16 - Push a new state object to a state machine object
+### 1.18 - Push a new state object to a state machine object
 
 I then have a utils method that I can use as a standard way to go about pushing state objects to a state machine object create with one of the create methods. For now this method is just used as a way to fill in blanks, but there may be a need to set up a few other things if I put more time into this.
 
@@ -539,7 +565,7 @@ utils.smPushState = function(sm, opt){
 };
 ```
 
-### 1.17 - Set the current state
+### 1.19 - Set the current state
 
 I have a method that I can use to set the current state object to use in the states object of a sm object. By using this method rather than just setting the current state string value, and end and start hook methods will be called.
 
