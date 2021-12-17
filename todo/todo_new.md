@@ -4,10 +4,10 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### () - new post #945 for 12/17/2021 - lodash_clamp
-* start for post folder
-* be sure to add the \_.wrapNumber methid that I made for my post on \_.nth
-
+### ( done 12/17/2021 ) - new post #945 for 12/17/2021 - lodash_clamp
+* (done) start for post folder
+* (done) be sure to add the \_.wrapNumber method that I made for my post on \_.nth
+* (done) start writing the post
 
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
