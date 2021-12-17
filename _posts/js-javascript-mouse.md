@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-01 15:46:12
-version: 1.97
+updated: 2021-12-17 10:52:28
+version: 1.98
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -600,7 +600,7 @@ There is also the question of the context menu that will pop up on a right click
 
 ### 4.1 - Basic mouse buttons example
 
-The [buttons property of the mouse event](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button) object that is passed via events such as the mouse down event will give a number value that can be used as a way to know the button that was clicked on a mouse. 
+The [buttons property of the mouse event](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button) object that is passed via events such as the mouse down event will give a number value that can be used as a way to know the button that was clicked on a mouse. There are a few things to be aware of when it comes to getting a right click to work the way a client side javaScript developer would typically like to get it to work but for now I am going to assume that you just care about knowing if it is a left or center click.
 
 ```html
 <html>
