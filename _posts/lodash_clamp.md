@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 945
-updated: 2021-12-17 14:28:05
-version: 1.2
+updated: 2021-12-17 14:33:21
+version: 1.3
 ---
 
-In [lodash there is a clamp number method](https://lodash.com/docs/4.17.15#clamp) that can be use to return a number vlaue that is based off of a given number that is to be clamped between a lower and upper bound. However it would seem that there is not a wrap number method which is also to be found in libraries and frameworks that provide such a method. If I want a wrap number method in lodash then I will need to add one to lodash by way of a mixin using the [lodash mixin](/2018/01/31/lodash_mixin/) method.
+In [lodash there is a clamp number method](https://lodash.com/docs/4.17.15#clamp) that can be use to return a number value that is based off of a given number that is to be clamped between a lower and upper bound. However it would seem that there is not a wrap number method which is also to be found in libraries and frameworks that provide such a method. If I want a wrap number method in lodash then I will need to add one to lodash by way of a mixin using the [lodash mixin](/2018/01/31/lodash_mixin/) method.
+
+I have found that these two methods that is clamp number and wrap number are two major methods that should be part of just about any general utilities library. So in this post I will be writing about the clamp method in lodash, but also how to go about adding the wrap number method that should be there along with it. There are also maybe a few things more to wrote about beyond just that such as the topic of other libraries and frameworks that given these kinds of methods, and also the subject of making vanilla javaScript alternatives to these kinds of methods that in some situations seems necessary. 
 
 <!-- more -->
 
