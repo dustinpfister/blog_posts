@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 239
-updated: 2021-12-17 13:53:16
-version: 1.4
+updated: 2021-12-17 13:57:05
+version: 1.5
 ---
 
 When making a [phaser](http://phaser.io) game, with many projects there might be a need to wrap, or clamp a sprite or other display object to a set of boundaries. There are also all kinds of other situations in which such a method would prove to be useful when it comes to things like parsing index values for array elements that might go out or range or something to that effect. 
@@ -17,7 +17,7 @@ In lodash there is a [lodash clamp](/2021/12/17/lodash_clamp/) method but oddly 
 
 ## 1 - What to know
 
-This is a post on the html5 game framework phaser CE, in this post I am using [phaser ce 2.11.0](https://github.com/photonstorm/phaser-ce/tree/v2.11.0) when making the code examples. This is not a getting started post on phaser of javaScript in general.
+This is a post on the html5 game framework phaser CE, in this post I am using [phaser ce 2.11.0](https://github.com/photonstorm/phaser-ce/tree/v2.11.0) when making the code examples. This is not a [getting started post on phaser](/2017/10/04/phaser-getting-started/) or on getting started with [javaScript in general](/2018/11/27/js-getting-started/). So I assume hat you have at least some experience when it comes to the very basics of client side javaScript and how to make use of an external framework such as phaser.
 
 ## 2 - A quick examples of Phaser.Math.wrap
 
