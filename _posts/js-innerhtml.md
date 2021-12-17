@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-12-17 10:33:58
-version: 1.66
+updated: 2021-12-17 10:40:43
+version: 1.67
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -208,6 +208,10 @@ document.write('Hello World');
 Another draw back of using this method, and this is a big one, is that it will also clear the document. Now maybe in some cases that is what I might want to happen, say I just want clear out everything on the page and write some kind of error message, however I still like for the to be an option rather than a requirement. Still I guess that I have to write about this method here when it comes to outlining everything in the toolbox when it comes to alternatives to the inner html property. There are still a lot of old source code examples on the open web that might use this method so it is something to be aware of for sure.
 
 ## 3 - Getting script tags added by innerHTML to run and other options for this sort of thing
+
+One major topic that might come up with innerHTML is how to go about getting script tags to run that are injected by way of innerHTML. Often they will not work, and there is a good reason as to what that is when it comes to the topic of html injection attacks. However that is a more advanced topic for another section in this post, or maybe even a whole other post completely. If I really need to get script tags that are added by way of innerHTML to run there are ways of doing so that involve adding additional javaScript code to a page that will do so. I am not sure if there is a way to get them to run just by that of innerHTML alone, and if so that might actually be a kind of security vulnerability actually.
+
+However I will not be getting into the security related topics of inerHTML at least not here in this section. Doing so in a way that will truly do it justice would be a little involved and would have to include some sever side code with intentional pore sanitation. I will however be going over some ways of getting script tags added by way of innerhTML to run though, and also some related topics when it comes to running a javaScript string for starters. However I will not be getting into why doing so might be a pad idea or not.
 
 ### 3.1 - Getting script tags to run added by innerHTML
 
