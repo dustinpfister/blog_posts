@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-12-17 14:15:34
-version: 1.66
+updated: 2021-12-17 14:20:01
+version: 1.67
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like library only with methods that I am actually going to use in the project, and not a whole much of bulk that I am not going to be using like with lodash. 
@@ -72,6 +72,8 @@ utils.mod = function (x, m) {
 
 ### 1.5 - clamp a number
 
+In [lodash there is a clamp number method](/2021/12/17/lodash_clamp) that will just simply clamp a number to a given range.
+
 ```js
 // clamp a number
 utils.clampNumber = function(n, min, max, zeroRel){
@@ -87,6 +89,8 @@ utils.clampNumber = function(n, min, max, zeroRel){
 ```
 
 ### 1.6 - wrap a number
+
+If I am going to have a clamp number then I am also going to want to have a wrap number method also. I have based this wrap method off of the source code of the [wrap method in phaser](/2018/07/22/phaser-math-wrap-and-clamp/) that seems to work well in most situations.
 
 ```js
 // wrap a number
