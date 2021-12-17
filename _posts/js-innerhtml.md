@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-12-17 08:33:33
-version: 1.64
+updated: 2021-12-17 10:31:08
+version: 1.65
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -207,7 +207,43 @@ document.write('Hello World');
 
 Another draw back of using this method, and this is a big one, is that it will also clear the document. Now maybe in some cases that is what I might want to happen, say I just want clear out everything on the page and write some kind of error message, however I still like for the to be an option rather than a requirement. Still I guess that I have to write about this method here when it comes to outlining everything in the toolbox when it comes to alternatives to the inner html property. There are still a lot of old source code examples on the open web that might use this method so it is something to be aware of for sure.
 
-## 3 - Using eval to execute javaScript code in an element, and using innerHTML to get it
+## 3 - Getting script tags added by innerHTML to run and other options for this sort of thing
+
+### 3.1 - Getting script tags to run added by innerHTML
+
+When it comes to adding script tags by way of innerHTML more often than one then will not run. I would say that adding script tags by way of innerHTML is something that should not be done if doing so can be avoided to begin with actually. However if for one reason or another I really do need to get them to run then there are [some ways to do about doing so](https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml).
+
+```js
+<html>
+    <head>
+        <title>innerHTML example</title>
+    </head>
+    <body>
+        <h1>Script Tag Injection by way of innerHTML</h1>
+        <div id="injected_scripts">
+        </div>
+        <script>
+// https://stackoverflow.com/questions/1197575/can-scripts-be-inserted-with-innerhtml
+var makeScriptsExecutable = function(el) {
+  el.querySelectorAll("script").forEach(script => {
+    var clone = document.createElement("script")
+    for (var attr of script.attributes) {
+      clone.setAttribute(attr.name, attr.value)
+    }
+    clone.text = script.innerHTML
+    script.parentNode?.replaceChild(clone, script)
+  })
+};
+// seems to work on chrome 96
+var div = document.getElementById('injected_scripts');
+div.innerHTML += '\<script\>alert(\'yes\')\<\/script\>';
+makeScriptsExecutable(div);
+        </script>
+    </body>
+</html>
+```
+
+### 3.2 - Using eval to execute javaScript code in an element, and using innerHTML to get it
 
 So it is generally not a good idea to place script tags into a project with innerHTML, if you want to create script tags with javaScript that should be done with the createElement, and appendChild methods. However there are ways of getting javaScript code to run that is in an element. One way to do so would be with eval which is one of several ways of going about running a javaScript string.
 
