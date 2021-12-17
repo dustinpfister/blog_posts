@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-11-30 11:22:10
-version: 1.63
+updated: 2021-12-17 08:33:33
+version: 1.64
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -209,7 +209,7 @@ Another draw back of using this method, and this is a big one, is that it will a
 
 ## 3 - Using eval to execute javaScript code in an element, and using innerHTML to get it
 
-So it is generally not a good idea to place script tags into a project with innerHTML, if you want to create script tags with javaScript that should be done with the createElement, and appendChild methods. However there are ways of getting javaScript code to run that is in an element one way to do so would be with eval.
+So it is generally not a good idea to place script tags into a project with innerHTML, if you want to create script tags with javaScript that should be done with the createElement, and appendChild methods. However there are ways of getting javaScript code to run that is in an element. One way to do so would be with eval which is one of several ways of going about running a javaScript string.
 
 ```html
 <html>
@@ -227,7 +227,7 @@ eval(out.innerHTML);
 </html>
 ```
 
-I cant say eval is something that I use often, and a lot of developers frown on its use. Chances are if you are using eval there is a better way to do whatever it is that you are trying to accomplish.
+I cant say eval is something that I use often, and a lot of developers frown on its use. Chances are if you are using eval there is a better way to do whatever it is that you are trying to accomplish. However it is still there for a reason along with similar options like the Function constructor. As long as one takes care with what the drawbacks are it can be used to do what needs to get done for those rare situations in which it just simply must be used as there is no other option.
 
 ## 4 - Using innerText, textContent, and innerHTML
 
