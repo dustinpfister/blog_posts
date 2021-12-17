@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-17 10:58:25
-version: 1.99
+updated: 2021-12-17 11:00:53
+version: 1.100
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -672,6 +672,8 @@ out.addEventListener('contextmenu', oncontext);
     </body>
 </html>
 ```
+
+There might be even more to write about when it comes to additional logic that will define what to do for a application when the user right clicks a location on a canvas, or use one of the other buttons that there may be there to work with. However that of course will depend on the application that is being used.
 
 ## 5 - Get elements by mouse position
 
