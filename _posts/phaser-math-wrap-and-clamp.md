@@ -5,11 +5,13 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 239
-updated: 2018-07-22 14:34:20
-version: 1.2
+updated: 2021-12-17 13:49:01
+version: 1.3
 ---
 
-When making a [phaser](http://phaser.io) game, with many projects there might be a need to wrap, or clamp a sprite or other display object to a set of boundaries. Because this is a typically scenario with most games, phaser includes some methods it the [Phaser Math object](https://phaser.io/docs/2.6.2/Phaser.Math.html) to help with this, mainly [wrap](https://phaser.io/docs/2.6.2/Phaser.Math.html#wrap), and [clamp](https://phaser.io/docs/2.6.2/Phaser.Math.html#clamp).
+When making a [phaser](http://phaser.io) game, with many projects there might be a need to wrap, or clamp a sprite or other display object to a set of boundaries. There are also all kinds of other situations in which such a method would prove to be useful when it comes to things like parsing index values for array elements that might go out or range or something to that effect. 
+
+Because wrapping and clamping values is a typical scenario with most games, phaser includes some methods it the [Phaser Math object](https://phaser.io/docs/2.6.2/Phaser.Math.html) to help with this, mainly [wrap](https://phaser.io/docs/2.6.2/Phaser.Math.html#wrap), and [clamp](https://phaser.io/docs/2.6.2/Phaser.Math.html#clamp). So then in this post I will be going over a few quick examples that make use of these methods in a phaser CE project.
 
 <!-- more -->
 
