@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 923
-updated: 2021-12-17 14:20:01
-version: 1.67
+updated: 2021-12-17 14:22:40
+version: 1.68
 ---
 
 When I start a new project I often want to have a generic dumping ground for usual suspect type methods, in other words a kind of lodash like library only with methods that I am actually going to use in the project, and not a whole much of bulk that I am not going to be using like with lodash. 
@@ -72,7 +72,7 @@ utils.mod = function (x, m) {
 
 ### 1.5 - clamp a number
 
-In [lodash there is a clamp number method](/2021/12/17/lodash_clamp) that will just simply clamp a number to a given range.
+In [lodash there is a clamp number method](/2021/12/17/lodash_clamp) that will just simply clamp a number to a given range. This is a kind of method that I find myself using often so I have one in this utilities lib that I have made for this post. However what is strange about lodash is that they have a clamp number method but not a wrap number method, if I want one in lodash I need to add one as a mixin.
 
 ```js
 // clamp a number
@@ -90,7 +90,7 @@ utils.clampNumber = function(n, min, max, zeroRel){
 
 ### 1.6 - wrap a number
 
-If I am going to have a clamp number then I am also going to want to have a wrap number method also. I have based this wrap method off of the source code of the [wrap method in phaser](/2018/07/22/phaser-math-wrap-and-clamp/) that seems to work well in most situations.
+If I am going to have a clamp number method then I am also going to want to have a wrap number method. I have based this wrap method off of the source code of the [wrap method in phaser](/2018/07/22/phaser-math-wrap-and-clamp/) that seems to work well in most situations.
 
 ```js
 // wrap a number
