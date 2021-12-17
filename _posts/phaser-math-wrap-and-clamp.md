@@ -5,8 +5,8 @@ tags: [js,phaser,games]
 layout: post
 categories: phaser
 id: 239
-updated: 2021-12-17 14:01:45
-version: 1.6
+updated: 2021-12-17 14:03:54
+version: 1.7
 ---
 
 When making a [phaser](http://phaser.io) game, with many projects there might be a need to wrap, or clamp a sprite or other display object to a set of boundaries. There are also all kinds of other situations in which such a method would prove to be useful when it comes to things like parsing index values for array elements that might go out or range or something to that effect. 
@@ -49,5 +49,5 @@ This is useful if you are making some kind of game where a character is in a roo
 
 So wrap, and clamp in short are great phaser built in methods for quickly setting some rules when it comes to boundaries in a game. There are many such methods in Phaser, so it you run into any kind of problem like this make sure to check Phaser itself first if you are not aware of everything that Phaser has to offer. It is silly to waste time making your own methods, or looking into additional dependencies when what it is that you need is all ready there at your fingertips. 
 
-If you enjoyed this read then I have wrote a lot of other [posts on Phaser CE](/categories/phaser) that might also be work checking out. However even tho using a framework wil help save a lot of time there is also a lot to be said about vanilla javaScript development from the ground up also. With that said there is also reading some of my [canvas example type posts](/2020/03/23/canvas-example/), as well as my [javaScript example](/2021/04/02/js-javascript-example/) series of posts that have to do with making projects from the ground up.
+If you enjoyed this read then I have wrote a lot of other [posts on Phaser CE](/categories/phaser) that might also be work checking out. However even tho using a framework wil help save a lot of time there is also a lot to be said about vanilla javaScript development from the ground up also. With that said there is also reading some of my [canvas example type posts](/2020/03/23/canvas-example/), as well as my [javaScript example](/2021/04/02/js-javascript-example/) series of posts that have to do with making projects from the ground up. When it comes to my javaScript series of posts I have a [general unities library javaScript example](/2021/08/06/js-javascript-example-utils/) that I have put together than includes wrap and clamp methods.
 
