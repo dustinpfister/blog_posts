@@ -68,7 +68,10 @@
 * (done 11/02/2021) get post to 4,500+ words
 * (done 12/01/2021) get post to 5,000+ words
 * (done 12/01/2021) get post to 5,500+ words
-* get post to 6,000+ words
+* (done 12/01/2021) get post to 5,750+ words
+* (done 12/17/2021) get post to 6,000+ words
+* get post to 6,250+ words
+* get post to 6,500+ words
 
 ## js-event-object ( at 2,600+ all ready, good topic )
     justification: 
