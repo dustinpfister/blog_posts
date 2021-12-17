@@ -47,8 +47,11 @@
         be done with things other than just with DOM Elements in client side javaScript.
 
 * ( done 11/09/2021 ) get to at least 2,400+ words for starters
-* get post to the min 3000+ words
-* get to 4000+ words
+* ( done 12/17/2021 ) get post to the min 3,000+ words
+* get post to 3,250+ words
+* get post to 3,500+ words
+* get post to 3,750+ words
+* get post to 4,000+ words
 
 ## js-javascript-mouse ( interesting topic, at 2000+ words all ready, good keywords ie: javaScript mouse )
     justification:
