@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-18 16:00:12
-version: 1.9
+updated: 2021-12-19 10:23:53
+version: 1.10
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -19,20 +19,48 @@ Sense the time that I first wrote this post I also got around to writing a [post
 
 To use the \_.filter methods the first argument that you give it is a collection, such as an array of numbers. The second argument you give is an iteratee method, that can be your own method, or one of the lodash iteratee methods such as \_.matches. Also some of those methods are built in, more on that later.
 
+### 1.1 -
+
 So for a basic example one might have a simple little demo in which I have an array of numbers that are negative and positive, and I use \_.filter to create a new array that is only the positive numbers in that array.
 
-Something like this:
+
 ```js
-// basic example
-console.log(
- 
-    _.filter([4,-1,7,7,-3,-5,1], function(val){
- 
-        return val > 0;
- 
-    })
- 
-); // [4, 7, 7, 1]
+// basic example using an array of numbers
+let a = [4, -1, 7, 7, -3, -5, 1];
+let b = _.filter(a, function(val){
+    return val > 0;
+});
+console.log( b ); // [4, 7, 7, 1]
+```
+
+### 1.2 - Array like objects and lodash filter
+
+```js
+// basic example using an array of numbers
+let a = {
+    0: 2, 1: -7, 2: 0, 3: 40,
+    length: 4
+};
+let b = _.filter(a, function(val){
+    return val > 0;
+});
+console.log( b ); // [2, 40]
+```
+
+### 1.3 - Objects with named keys and lodash filter
+
+```js
+var obj = {
+    foo: 'bar',
+    bool: false,
+    n: 42,
+    c: 7
+};
+// using lodash filter with a plain object with named keys
+var numbers = _.filter(obj, function (val, key, obj) {
+    return typeof val === 'number';
+});
+console.log(numbers); // [42,7];
 ```
 
 ## 2 - Array.filter vs \_.filter
