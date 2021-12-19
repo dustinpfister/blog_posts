@@ -13,10 +13,6 @@
 * get to 1,000+ words
 * have 5+ internal links for the post
 
-### () - lodash_filter (links, old)
-* get to 1,000+ words
-* have 5+ internal links for the post
-
 ### () - lodash_merge (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
@@ -24,6 +20,10 @@
 ### () - lodash\_uniqueid (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
+
+### ( done 12/19/2021 ) - lodash_filter (links, old)
+* (done) get to 1,000+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/16/2021 ) - lodash_nth ( links, old )
 * (done) get to 700+ words
