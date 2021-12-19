@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 11:03:12
-version: 1.24
+updated: 2021-12-19 11:08:00
+version: 1.25
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -94,7 +94,7 @@ console.log( b ); // [4, 7, 7, 1]
 
 ### 2.2 - Array filter with an array like object using the call function prototype method
 
-When it comes to getting the array filter method to work with an array like object the [function prototype methods](/2017/09/21/js-call-apply-and-bind/) are one way to go about doing so.
+When it comes to getting the array filter method to work with an array like object the [function prototype methods](/2017/09/21/js-call-apply-and-bind/) are one way to go about doing so. These function prototype methods can be used to redefine what the value of the [this keyword](/2017/04/14/js-this-keyword/) is inside the body of a class prototype method, including built in prototype methods such as the array filter method of the array prototype.
 
 ```js
 // The function call method can be used to get array filter
