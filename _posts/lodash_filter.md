@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 10:30:23
-version: 1.12
+updated: 2021-12-19 10:33:38
+version: 1.13
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -15,9 +15,9 @@ Sense the time that I first wrote this post I also got around to writing a [post
 
 <!-- more -->
 
-## 1 - Basic example of \_.filter in lodash
+## 1 - Basic examples of \_.filter in lodash
 
-To use the \_.filter methods the first argument that you give it is a collection, such as an array of numbers. The second argument you give is an iteratee method, that can be your own method, or one of the lodash iteratee methods such as \_.matches. Also some of those methods are built in, more on that later.
+To use the \_.filter methods the first argument that you give it is a collection, such as an array of numbers. The second argument you give is an iteratee method, that can be your own method, or one of the lodash iteratee methods such as \_.matches. Also some of those methods are built in. In this section I will be starting out with a few basic examples of the lodash filter method, and leave other topics such as vanilla javaScript alternatives to lodash filter for a later section in this post.
 
 ### 1.1 -
 
