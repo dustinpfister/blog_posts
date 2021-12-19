@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 11:11:26
-version: 1.27
+updated: 2021-12-19 11:14:10
+version: 1.28
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -139,4 +139,7 @@ console.log(c); // [42, 7]
 
 ## 4 - Conclusion
 
-It has been a few months sense the last time I wrote a post on [lodash](https://lodash.com/), as I have been trying to find other great things in the javaScript word to write about such as [phaser](/categories/phaser/), and [three.js](/categories/three-js/). However lodash is very popular, and content on it is very much in demand, so maybe I should get back into it for a while, make some new posts, and improve some old ones.
+It has been a few months sense the last time I wrote a post on [lodash](https://lodash.com/), as I have been trying to find other great things in the javaScript word to write about such as [phaser](/categories/phaser/), and [three.js](/categories/three-js/) which are other great frameworks and libraries to work with when it comes to various javaScript projects. 
+
+However lodash is still very popular, and content on it is very much in demand, so maybe I should get back into it for a while, make some new posts, and improve some old ones while in the process of doing so. There is a great deal more to write bout when it comes to the various lodash methods, and also of course how they compare to when there is to work with when it comes to doing the same things from the ground up using javaScript alone.
+
