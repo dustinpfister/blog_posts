@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 10:39:16
-version: 1.15
+updated: 2021-12-19 10:41:32
+version: 1.16
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -23,7 +23,7 @@ In this section I will be starting out with a few basic examples of the lodash f
 
 ### 1.1 - basic example of lodash filter with an array of numbers
 
-So for a basic example one might have a simple little demo in which I have an array of numbers that are negative and positive. For this example then I use \_.filter to create a new array that is only the positive numbers in that array that are greater than that of zero. So then I just need to call the lodash filter method, pass the array of numbers are the first argument and then the function that I want to call for each element in this array. Inside the body of the function that I give to lodash filter I will want to return a Boolen value that is typically the result of some kind of expression, in this case the result of an expression that will be true of a current value is greater than zero.
+So for a basic example one might have a simple little demo in which I have an array of numbers that are negative and positive. For this example then I use \_.filter to create a new array that is only the positive numbers in that array that are greater than that of zero. So then I just need to call the lodash filter method, pass the array of numbers are the first argument and then the function that I want to call for each element in this array. Inside the body of the function that I give to lodash filter I will [want to return](/2019/03/01/js-javascript-return/) a [Boolean value](/2018/11/28/js-booleans/) that is typically the result of some kind of expression, in this case the result of an expression that will be true of a current value is greater than zero.
 
 
 ```js
