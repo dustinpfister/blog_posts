@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 10:41:32
-version: 1.16
+updated: 2021-12-19 10:43:50
+version: 1.17
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -36,6 +36,8 @@ console.log( b ); // [4, 7, 7, 1]
 ```
 
 ### 1.2 - Array like objects and lodash filter
+
+Another kind of collection object that I will run into often is an array like object. What I mean by this is that I am dealing with an object that is formated like that of an array in the sense that it is a collection of key value pairs where each key is a numbed rather than named key, and there is a length property of the object that defines the max size of this collection in terms of elements.
 
 ```js
 // basic example using an array of numbers
