@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-12-19 11:34:03
-version: 1.68
+updated: 2021-12-19 11:55:31
+version: 1.69
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -195,7 +195,7 @@ Say I have a collection of divs where each div is nested inside of each other an
 
 So there is this thing going on that is called event bubbling, and you might be asking yourself is there a way to stop this from happening? The answer is yes and the method of interest with that in the vent object is the [stopPropagation method](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation).
 
-### 3.1 - The current target property of an event object
+### 3.1 - Using the current target property of an event object for a hander that will be attched to each child
 
 The current target property of an event object is the current target for the current call of an event handler, rather than the target element where the event has started. So if I want to use the current target property in this example then I will want to attach an event handler for each element, and I will want to call the stop propagation method for each handler.
 
@@ -237,7 +237,49 @@ get('three').addEventListener('mousedown',divClick);
 </html>
 ```
 
-### 3.2 - The target property of an event object
+### 3.2 - Using the target property with a hander that will be attached to each child element
+
+If I am attaching an event hander to each child element then I can also use the target property of an event object which should refer to the same element as with the current target property. However the target element and current target element will only be the same element if I am stopping propagation. If I do not stop propagation the there is a different when the event bubbles up from a child element to the parent element. So then in this example I am doing the ame thing as with my current target example, but now I am using the target property. This has the same effect but only because I am stopping propagation.
+
+```html
+<html>
+    <head>
+        <title>Event Object</title>
+        <style>
+div{position:relative;background-color:black;outline:1px solid #ffffff;cursor:hand}
+#one{width:280px;height:200px;}
+#two{width:120px;height:100px;}
+#three{width:60px;height:50px;}
+        </style>
+    </head>
+    <body>
+        <div id="one">
+            <div id="two">
+                <div id="three">
+                </div>
+            </div>
+        </div>
+        <script>
+// div click handler
+var divClick = function(e){
+  var div = e.target, // selecting a div by e.target
+  c = div.style.backgroundColor;
+  e.stopPropagation(); // I will want to stop propagation for this
+  div.style.backgroundColor = c === 'grey' ? 'black': 'grey';
+};
+var get = function(id){
+    return document.getElementById(id);
+};
+// because I am using current target I will want to attach for all divs
+get('one').addEventListener('mousedown',divClick);
+get('two').addEventListener('mousedown',divClick);
+get('three').addEventListener('mousedown',divClick);
+        </script>
+    </body>
+</html>
+```
+
+### 3.3 - The target property of an event object
 
 The target property of an event object is a reference to the element to which an event has started. So when it comes to using this property I will only need to attach a single handler to the root element. I may not need to call the stop propagation method when it comes to attaching a single event hander to a root element this way. The reason why is because the stop propagation method is really mainly something that i would only want to call if I am attaching handers to each of the child elements.
 
