@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 11:08:00
-version: 1.25
+updated: 2021-12-19 11:09:20
+version: 1.26
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -81,7 +81,7 @@ In any case in this section I will be going over a number of core javaScript sco
 
 ### 2.1 - Array filter with an array
 
-Here I have a basic example of suing the array filter method with just a plain od javaScript array.
+Here I have a basic example of suing the array filter method with just a plain old javaScript array. When it comes to the simple array of numbers example that I started by basic section off for example the same can be done by just calling the filter method off of the instance of an array, and then pass the same function as before.
 
 ```js
 let a = [4, -1, 7, 7, -3, -5, 1];
