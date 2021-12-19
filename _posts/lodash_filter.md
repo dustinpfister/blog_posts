@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 10:47:39
-version: 1.19
+updated: 2021-12-19 10:49:38
+version: 1.20
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -68,6 +68,8 @@ var numbers = _.filter(obj, function (val, key, obj) {
 });
 console.log(numbers); // [42,7];
 ```
+
+So then this is what the deal is with collection methods in lodash, they will not just work with arrays, but any kind of collection object. However it is not always so hard to get array prototype methods to work with objects in general when one knows about various tools to work with in core javaScript.
 
 ## 2 - Vanilla javaScript alternatives to lodash filter
 
