@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 11:09:20
-version: 1.26
+updated: 2021-12-19 11:11:26
+version: 1.27
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -113,7 +113,7 @@ console.log(numbers); // [7]
 
 ### 2.3 - Using array filter with an object composed of named keys
 
-When it comes to working with a collection that is composed with named keys there are static methods like [Object.keys and Object.values](/2018/12/15/js-object-keys/) that can be used to create an array of public key names or values of any object.
+When it comes to working with a collection that is composed with named keys there are static methods like [Object.keys and Object.values](/2018/12/15/js-object-keys/) that can be used to create an array of public key names or values of any object. The object keys method will return an array of key names, and the object values method will return an array of values from a given source object. The filter method can then be called off of one of these arrays that are the return values of the Object values, or Object keys methods as it is an instance of an array.
 
 ```js
 var a = {
