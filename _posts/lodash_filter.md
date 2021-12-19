@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 10:49:38
-version: 1.20
+updated: 2021-12-19 10:53:54
+version: 1.21
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -73,7 +73,9 @@ So then this is what the deal is with collection methods in lodash, they will no
 
 ## 2 - Vanilla javaScript alternatives to lodash filter
 
-The vanilla js Array.filter method can be used in a similar fashion, without the need for lodash. When it comes to something simple, that can work just fine. Also the browser support for Array.filter is pretty good these days, it's only real old versions of IE that come to mind that present a concern if there is actually a far amount of visitors that still use those platforms. Also if in a node.js environment there is no need for lodash at all if this just happens to be the only method that you are using. 
+The vanilla js Array.filter method can be used in a similar fashion, without the need for lodash, at least it can when dealing with just arrays. When it comes to getting the array filter method to work with collection objects in general, doing so is to that hard if you are familial with the various tools in the toolbox that is native core javaScript. 
+
+The browser support for Array filter is pretty good these days, it's only real old versions of IE that come to mind that present a concern if there is actually a fair amount of visitors that still use those platforms. Also if in a node.js environment there is no need for lodash at all if this just happens to be the only method that you are using as the same can be done with just a little vanilla javaScript code. Also even when it comes to supporting old clients it is often not just something that is done by just using lodash and being done with it. Even then it comes to the safely net aspect of lodash browser support only goes back so far.
 
 Yet again maybe not, like many of these methods in lodash there are a few things to them that set them apart. So maybe one can rationalize the use of \_.filter these days even when we often have the native alternative to play with in javaScript itself.
 
