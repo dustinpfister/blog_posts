@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 686
-updated: 2021-12-19 11:55:31
-version: 1.69
+updated: 2021-12-19 11:58:15
+version: 1.70
 ---
 
 This post will be on the ins and outs of [event objects](https://developer.mozilla.org/en-US/docs/Web/API/Event) in client side javaScript. There are several properties and methods that are of key interest such as the [target property](https://developer.mozilla.org/en-US/docs/Web/API/Event/target) that is a reference to the element where the event happened. There are also a number of methods that are of interest also such as the [prevent default](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method that will stop default browser behavior for certain types of events like mouse and touch events. 
@@ -281,7 +281,7 @@ get('three').addEventListener('mousedown',divClick);
 
 ### 3.3 - The target property of an event object
 
-The target property of an event object is a reference to the element to which an event has started. So when it comes to using this property I will only need to attach a single handler to the root element. I may not need to call the stop propagation method when it comes to attaching a single event hander to a root element this way. The reason why is because the stop propagation method is really mainly something that i would only want to call if I am attaching handers to each of the child elements.
+The target property of an event object is a reference to the element to which an event has started. So when it comes to using this property I will only need to attach a single handler to the root element. I may not need to call the stop propagation method when it comes to attaching a single event hander to a root element this way. The reason why is because the stop propagation method is really mainly something that i would only want to call if I am attaching handers to each of the child elements. In this example I am not attaching to each child element, but rater I am just attaching to the root element and that element only. In this situation the target property of the event object will refer to the div that was clicked and the current target property will always refer to the root element to which the event hander is attached.
 
 ```html
 <html>
