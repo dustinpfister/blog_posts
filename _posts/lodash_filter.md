@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 190
-updated: 2021-12-19 10:57:20
-version: 1.22
+updated: 2021-12-19 11:00:18
+version: 1.23
 ---
 
 Looking over what [I have wrote on lodash](/categories/lodash) so far I am surprised that I forgot to write one on the lodash [filter method](https://lodash.com/docs/4.17.10#filter). The filter method both in lodash and in native javaScript comes in handy often as a way to create a new array from and array with many of the elements that I do not want for one reason of another removed. There are many other methods that are like filter in lodash such as [compact](/2018/08/09/lodash_compact/), but these are often just convenience methods for what can be done with filter. So then the lodash filter method gives a great deal of flexibility when it comes to filtering out unwanted elements from an array.
@@ -81,6 +81,7 @@ In any case in this section I will be going over a number of core javaScript sco
 
 ### 2.1 - Array filter with an array
 
+Here I have a basic example of suing the array filter method with just a plain od javaScript array.
 
 ```js
 let a = [4, -1, 7, 7, -3, -5, 1];
@@ -92,6 +93,8 @@ console.log( b ); // [4, 7, 7, 1]
 ```
 
 ### 2.2 - Array filter with an array like object using the call function prototype method
+
+When it comes to getting the array filter method to work with an array like object the function prototype methods are one way to go about doing so.
 
 ```js
 // The function call method can be used to get array filter
@@ -109,6 +112,8 @@ console.log(numbers); // [7]
 ```
 
 ### 2.3 - Using array filter with an object composed of named keys
+
+When it comes to working with a collection that is composed with named keys there are static methods like Object.keys and Object.values that can be used to create an array of public key names or values of any object.
 
 ```js
 var a = {
