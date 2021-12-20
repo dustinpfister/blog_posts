@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2021-12-20 10:56:44
-version: 1.19
+updated: 2021-12-20 11:07:08
+version: 1.20
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge a lodash method such as the lodash find index method,  as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -55,6 +55,28 @@ let users = [
 ];
 // find bill using the _.matches shorthand
 console.log( getIndexByName(users, 'Bill') ); // 2
+```
+
+### 1.3 - Getting by points range example of lodash find index
+
+So then there is getting an index value by way of a fixed status string value, however often I might want to get an index of an element that meets some other kind of condition. In a previous example I was getting an index of an object in a users array by name, bot there where also points values in these objects. So say now I want another method that will given be the first index of an object in an array that meets a given point value range.
+
+```js
+// get index by points range
+const getIndexByPointsRange = (users, pointsMin, pointsMax) => {
+    return _.findIndex(users, (obj) => {
+        return obj.points >= pointsMin && obj.points <= pointsMax;
+    });
+};
+// demo
+let users = [
+    { name: 'Jerry', points: 300},
+    { name: 'John', points: 1200},
+    { name: 'Bill', points: 935}
+];
+console.log( getIndexByPointsRange(users, 900, 1000) );      // 2
+console.log( getIndexByPointsRange(users, 900, Infinity) );  // 1
+console.log( getIndexByPointsRange(users, 2000, Infinity) ); // -1
 ```
 
 ## 2 - Vanilla javaScript alternatives to the lodash find index method
