@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2021-12-20 10:42:19
-version: 1.16
+updated: 2021-12-20 10:47:50
+version: 1.17
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge a lodash method such as the lodash find index method,  as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -95,4 +95,5 @@ This works fine, and in addition the methods that you give to \_.findIndex shoul
 
 Not everything should be in core javaScript by itself from the ground up as doing so can often prove to be very time consuming. It's nice that we now have a lot of methods like \_.findIndex in the core of javaScript itself now, but there is still the question of older browsers, and also if you do take the time to dive deep into lodash, you might come to find that many of the methods do add a certain something more, or work in a slightly different way.
 
-Happy Coding
+If you enjoyed reading this post you might want to check out my [main post on lodash](/2019/02/15/lodash/), or one of my [many other posts on lodash](/categories/lodash/). Although there are a lot of nice things to say about using lodash, there is also the other side of the coin when it comes to this utility library. With that said there is also reading up more on just using vanilla javaScript by itself. When it comes to this I have wrote a number of posts on various array prototype methods of course, including the [array find method](/2021/07/19/js-array-find), and even the [array find index method](/2021/07/21/js-array-find-index/) over the years.
+
