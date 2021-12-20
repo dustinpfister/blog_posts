@@ -39,11 +39,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash-find-index ( old )
-* 750+ words
-* have 5+ internal links for the post
-
-
+### ( done 12/20/2021 ) - lodash-find-index ( old )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/19/2021 ) - lodash_filter (links, old)
 * (done) get to 1,000+ words
