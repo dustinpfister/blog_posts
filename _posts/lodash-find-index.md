@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2021-12-20 10:06:29
-version: 1.11
+updated: 2021-12-20 10:10:04
+version: 1.12
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge a lodash method such as the lodash find index method,  as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -21,7 +21,7 @@ So even when it comes to older browsers such as MSIE9, [Array.indexOf](https://d
 
 ### 1.1 - Basic lodash find index method example
 
-As such typical use case scenarios of \_.findIndex involve arrays of Objects.
+A typical use case scenario of  the \_.findIndex method might involve an arrays of Objects. Say I have a users array, and each object in this users array has a name and points value. Say I would like to just find the index of the object in this array where the name property matches a given fixed static value. The lodash find index method can be used for this sort of thing by calling the find index method and passing the users array as the first argument. After that I can just pass an object that contains a name prop key with the given value that I want in this case a static value for the name that I want. The returned value is then the index value of the object in the array that mates the given query.
 
 ```js
 var users = [
