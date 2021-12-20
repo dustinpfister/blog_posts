@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-12-20 15:19:56
-version: 1.41
+updated: 2021-12-20 15:38:04
+version: 1.42
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -27,7 +27,18 @@ In this section I will be starting out with just a few basic examples of the lod
 
 The source code examples in this post can be found in my [test lodash github repository](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_countby).
 
-### 1.1 - lodash count by example that involves giving a function as the second argument
+### 1.1 - Identity example of lodash count by
+
+Say I have an array of primitive values such as numbers, and I want to have an object that is a count of each primitive value in this array of numbers.
+
+```js
+let arr = [1, 2, 2, 1, 2];
+let obj = _.countBy(arr, _.identity);
+console.log(obj);
+// { '1': 2, '2': 3 }
+```
+
+### 1.2 - lodash count by example that involves giving a function as the second argument
 
 For a basic example of \_.countBy I just made an array of objects, that contain some data for a collection of people. each object has a username and score property that contains a number value between 0 and 100. What I want to do is create an object that contains two keys pass and fail where pass is a count of objects of people who have a score above 65, and fail is the remaining count of objects. So for this I can use the lodash countBy method to make an object of pass, and fail properties that is a count of how many objects meet the condition that I defined in the method that I gave it, along with the array of objects.
 
@@ -53,7 +64,7 @@ console.log(obj);
 
 So it seems that this can be a useful method to be aware of to quickly find out a count of how many elements in an array meet a given set of conditions, and how many do not. I am not aware of anything in corejs that does this, so this may be one of the methods in lodash to which there is not a direct native equivalent. However I will be getting into that more in the vanilla javaScript section later in this post.
 
-### 1.2 - The property shorthand
+### 1.3 - The property shorthand
 
 One feature of the count by method is that a [lodash property method](/2018/01/31/lodash_property/) short hand can be used. The property method of lodash is one method in lodash that will return a function that can be passed to a function like that of the lodash count by method.
 
