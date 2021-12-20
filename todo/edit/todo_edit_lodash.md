@@ -21,6 +21,30 @@
 * get to 1000+ words
 * have 5+ internal links for the post
 
+<!-- OLD POSTS -->
+
+### () - lodash_sortby ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_sample ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_forin ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_concat ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash-find-index ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+
+
 ### ( done 12/19/2021 ) - lodash_filter (links, old)
 * (done) get to 1,000+ words
 * (done) have 5+ internal links for the post
