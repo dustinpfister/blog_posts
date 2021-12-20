@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2021-12-20 14:34:41
-version: 1.27
+updated: 2021-12-20 14:40:40
+version: 1.28
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge a lodash method such as the lodash find index method,  as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -83,7 +83,7 @@ console.log( getIndexByPointsRange(users, 2000, Infinity) ); // -1
 
 So then there is getting a single index value in an array from left to right that meets a given condition. There is just one problem with this though and that is the idea that the first element index in an array that meets a given condition might not always be the best element of the collection. I might get one index value from left to right, but if I where to selected from right to left I might get a whole other collection. With that said there is then the idea of creating a new sorted array from a source array, and then fid the first element in this sorted array. That element can then in turn be used to find the index value in the original unsorted source array.
 
-In this example I am making use of the [lodash chain](/2018/11/11/lodash_chain/) method to create a sorted array of object from the user source array bu chaining the [lodash sort by](/2018/07/06/lodash_sortby) method with the [lodash reverse](/2018/10/17/lodash_reverse/) method.
+In this example I am making use of the [lodash chain](/2018/11/11/lodash_chain/) method to create a sorted array of object from the user source array bu chaining the [lodash sort by](/2018/07/06/lodash_sortby) method with the [lodash reverse](/2018/10/17/lodash_reverse/) method. I am then passing this sorted array to the get index by points range method which will given be a result based on a soured array, but now the problem is that this index value will not be the index value of the same element in the source array. So then there is using the index value relative to the sorted array to get the element and then use the fine index method once again, but this time with the source array passing the object form the sorted array to get the final index value that I want.
 
 ```js
 // get index by name
@@ -118,6 +118,8 @@ console.log(si) // 0
 // But I can use the find index method again with the sorted object to get that index
 console.log( _.findIndex(users, sortedUsers[si]) ); // 3
 ```
+
+Although this seems to work it does stroke me as a little more complex than it needs to be. However it is still one way to address a problem when it comes to just using the find index method by itself. This is still an example that involves getting a single index value from an array, but it is just a way of doing something more than just getting the first element in the array that meets the given condition. Other solutions might involve not getting a single index value, but an array of index values, and sorting that array of index values by some kind of condition.
 
 ### 1.5 - lodash chain, reduce, sort by, reverse, map, and getting a sorted array of index values
 
