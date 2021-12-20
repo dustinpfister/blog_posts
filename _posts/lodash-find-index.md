@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2021-12-20 10:37:33
-version: 1.14
+updated: 2021-12-20 10:40:58
+version: 1.15
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge a lodash method such as the lodash find index method,  as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -19,7 +19,7 @@ In this post then I will be going over a few quick examples of the lodash find i
 
 So even when it comes to older browsers such as MSIE9, [Array.indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf) works fine when dealing with an array of primitives. However it falls short when it comes to working with an array of objects, or any kind of situation in which I need to define some custom logic for what it is that I am looking for in an array that might be something other than that of a static pattern or value of some kind. There is still working just with native javaScript, just using a pollyfill when needed to make sure that a native method that should be there is indeed there. However in this section I will not be getting into vanilla javaScript solutions for this sort of thing just yet, but rather what there is to work with in lodash, if lodash is there to work with in a project.
 
-In this section, and in this post in general I am focusing on finding an index value, rather than getting a reference to an object. With that said there are a lot of other methods in lodash that might also prove to be useful when it comes to other related tasks to that of getting an index value. For example there is also the [plain lodash find method](/2017/09/14/lodash-find/) that will work just like find index only it will return a value rather than a index value.
+In this section, and in this post in general I am focusing on finding an index value, rather than getting a reference to an object. With that said there are a lot of other methods in lodash that might also prove to be useful when it comes to other related tasks to that of getting an index value. For example there is also the [plain lodash find method](/2017/09/14/lodash-find/) that will work just like find index only it will return a value rather than a index value. In some cases I might in fact want an index value rather than an object reference, but I might want more than one index value that meets a given condition, for this there are methods like [lodash reduce](/2018/07/25/lodash_reduce/) and [lodash filter](/2018/05/18/lodash_filter/) combined with other such methods to just name a few options.
 
 ### 1.1 - lodash find index and a array of strings
 
