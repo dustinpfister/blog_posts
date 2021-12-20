@@ -20,7 +20,7 @@
       Search Console: "lodash count by", "lodash count"
       Google Trends: "js count", "lodash count"
         This is a post that is all ready doing well in terms of traffic, so I should review what I have wrote often in any case. It might also make sense to expand the post a little more also now and then.
-* get post to 2,000+ words
+* (done 12/20/2021 ) get post to 2,000+ words
 * get post to 2,250+ words
 * get post to 2,500+ words
 * get post to 2,750+ words
