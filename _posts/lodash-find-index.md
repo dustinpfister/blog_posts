@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 149
-updated: 2021-12-20 14:32:55
-version: 1.26
+updated: 2021-12-20 14:34:41
+version: 1.27
 ---
 
 The [\_.findIndex](https://lodash.com/docs/4.17.5#findIndex) array method in [lodash](https://lodash.com/) can be used to find the first index of an element in an Array that meets a specific condition. In modern browsers there is now [Array.prototype.findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex) that works in very much the same manor as \_.findIndex. So that would make the lodash find index method yet another one of those lodash methods that you might only bother with for the sake of backward compatibility with older browsers, or just for the sake of consistency if you are using lodash in a project. Yet again maybe not, it seems that the lodash alternatives often do have a little more going on with them, in addition there are additional helper methods that can be used with \_.findIndex that come in handy. So maybe I should not be to quick to judge a lodash method such as the lodash find index method,  as many of these methods are not just referencing native methods, [although some of them are](/2019/11/01/lodash_wrapper_methods/).
@@ -83,7 +83,7 @@ console.log( getIndexByPointsRange(users, 2000, Infinity) ); // -1
 
 So then there is getting a single index value in an array from left to right that meets a given condition. There is just one problem with this though and that is the idea that the first element index in an array that meets a given condition might not always be the best element of the collection. I might get one index value from left to right, but if I where to selected from right to left I might get a whole other collection. With that said there is then the idea of creating a new sorted array from a source array, and then fid the first element in this sorted array. That element can then in turn be used to find the index value in the original unsorted source array.
 
-In this example I am making use of the [lodash chain](/2018/11/11/lodash_chain/) method to create a sorted array of object from the user source array bu chaining the lodash sort method with the lodash reverse method.
+In this example I am making use of the [lodash chain](/2018/11/11/lodash_chain/) method to create a sorted array of object from the user source array bu chaining the [lodash sort by](/2018/07/06/lodash_sortby) method with the [lodash reverse](/2018/10/17/lodash_reverse/) method.
 
 ```js
 // get index by name
