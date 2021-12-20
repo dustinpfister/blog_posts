@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-12-20 15:16:51
-version: 1.40
+updated: 2021-12-20 15:19:56
+version: 1.41
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -23,13 +23,13 @@ When I do so sometimes it looks like native methods are just being wrapped by lo
 
 In this section I will be starting out with just a few basic examples of the lodash count by method. I will be trying to keep the examples in this section fairly simple, but this is still not a getting started type post with lodash or [javaScript in general](/2018/11/27/js-getting-started/). So I assume that you have at least some background with javaScript, and how to work with code examples in a client side javaScript or nodejs environment.
 
-### The souce code examples in this post are on github
+### The source code examples in this post are on github
 
 The source code examples in this post can be found in my [test lodash github repository](https://github.com/dustinpfister/test_lodash/tree/master/forpost/lodash_countby).
 
 ### 1.1 - lodash count by example that involves giving a function as the second argument
 
-For a basic demo of \_.countBy I just made an array of objects, that contain some data for a collection of people. each object has a username and score property that contains a number value between 0 and 100. What I want to do is create an object that contains two keys pass and fail where pass is a count of objects of people who have a score above 65, and fail is the remaining count of objects. So for this I can use the lodash countBy method to make an object of pass, and fail properties that is a count of how many objects meet the condition that I defined in the method that I gave it, along with the array of objects.
+For a basic example of \_.countBy I just made an array of objects, that contain some data for a collection of people. each object has a username and score property that contains a number value between 0 and 100. What I want to do is create an object that contains two keys pass and fail where pass is a count of objects of people who have a score above 65, and fail is the remaining count of objects. So for this I can use the lodash countBy method to make an object of pass, and fail properties that is a count of how many objects meet the condition that I defined in the method that I gave it, along with the array of objects.
 
 ```js
 let arr = [{
