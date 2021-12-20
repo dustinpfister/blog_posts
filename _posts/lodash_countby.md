@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 201
-updated: 2021-12-20 15:40:42
-version: 1.43
+updated: 2021-12-20 15:47:50
+version: 1.44
 ---
 
 Every now and then I like to play around with one of the methods in [lodash](https://lodash.com/) such as the [\_.countBy](https://lodash.com/docs/4.17.10#countBy) collection method that I will be writing about in this post. The lodash countby method can be used to create an object where each key is the result that is return by a method that is called for each element in a collection. Each value is the count for that key value that is returned when calling the method used with count by for each collection element.
@@ -29,12 +29,19 @@ The source code examples in this post can be found in my [test lodash github rep
 
 ### 1.1 - Identity example of lodash count by
 
-Say I have an array of primitive values such as numbers, and I want to have an object that is a count of each primitive value in this array of numbers. One way of going about doing this would be to use the [lodash identity method](https://lodash.com/docs/4.17.15#identity) with the lodash count by method. That is to just call the count by method, pass the array of numbers as the first argument, and then the lodash identity method as the second argument of the count by method.
+Say I have an array of primitive values such as numbers, and I want to have an object that is a count of each primitive value in this array of numbers. One way of going about doing this would be to use the [lodash identity method](https://lodash.com/docs/4.17.15#identity) with the lodash count by method. This can be done by calling the lodash count by methid, passin gthe array of numbers as the first argument, and then passing the identity method as the second argument, or better yet just passing the array only as the first argument sense the identity method just happens to be the default methods that is used with the count by method.
+
 
 ```js
 let arr = [1, 2, 2, 1, 2];
-let obj = _.countBy(arr, _.identity);
-console.log(obj);
+// this also just happens to be the default
+let a = _.countBy(arr);
+console.log(a);
+// { '1': 2, '2': 3 }
+ 
+// using the identity method
+let b = _.countBy(arr, _.identity);
+console.log(b);
 // { '1': 2, '2': 3 }
 ```
 
