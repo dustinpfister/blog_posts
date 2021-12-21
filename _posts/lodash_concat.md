@@ -1,25 +1,25 @@
 ---
-title: The lodash _.concat method
+title: The lodash concat method and native javaScript options for adding two or more arrays together
 date: 2018-08-02 18:01:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:12:46
-version: 1.9
+updated: 2021-12-21 10:17:13
+version: 1.10
 ---
 
-In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat). Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays.
+In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
 
-If you are wondering what the difference is between the lodash and native options when it comes to an array concatenation method in javaScript, the answer is there is none beyond that os just making an abstraction. The lodash concat method is one of several methods in lodash that I have come to call [lodash wrapper methods](/2019/11/01/lodash_wrapper_methods). These are methods where a native javaScript method is just simply being wrapped, and in this case more os less just for the sake of consistency when it comes to using lodash.
+If you are wondering what the difference is between the lodash and native options when it comes to an array concatenation method in javaScript, the answer is there is none beyond that os just making an abstraction. The lodash concat method is one of several methods in lodash that I have come to call [lodash wrapper methods](/2019/11/01/lodash_wrapper_methods/). These are methods where a native javaScript method is just simply being wrapped, and in this case more os less just for the sake of consistency when it comes to using lodash.
 
 Still it is there just for the hell of it, and looking into the lodash source code, it looks like the lodash developers are not just directly referencing the native method, as is the case with some of these methods.
 
 <!-- more -->
 
-Although this is a lodash post on \_.concat, this is also a kind of post of concatenating arrays in general. Also although there might not be much of a point using \_.concat by itself in light of the vanilla js Array.concat, diving deep into the source code \_.concat uses some internal methods that are shared with related methods like \_.flattenDeep.
+Although this is a lodash post on \_.concat, this is also a kind of post of concatenating arrays in general. Also although there might not be much of a point using \_.concat by itself in light of the vanilla js [Array.concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), diving deep into the source code \_.concat uses some internal methods that are shared with related methods like \_.flattenDeep.
 
-## 1 - what to know
+## 1 - What to know
 
 This is a post on the lodash method \_.concat that can be used to combine, or concatenate two or more arrays into one array. There is also the Array.concat method in javaScript itself that works the same way. I assume that you have some basic working knowledge of javaScript in general, and how to get started with using lodash in a project.
 
