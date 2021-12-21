@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:52:44
-version: 1.19
+updated: 2021-12-21 11:07:26
+version: 1.20
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -69,6 +69,23 @@ _.each(objs, function(pt){
  
 // this is what
 console.log(points); // [ { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 } ]
+```
+
+### 1.3 - Chaining methods in lodash with flatten, and concat methods
+
+```js
+// array a as an array of arrays
+let a = [
+  [1,2,3],
+  [4,5,6]
+];
+// array b as a array of numbers
+let b = [7,8,9];
+// using lodash chain with flatten, concat, and value to
+// get a single array of numbers
+let c = _.chain(a).flatten().concat(b).value();
+console.log(c);
+// [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 ```
 
 ## 2 - Vanilla javaScript altertaives to lodash concat
