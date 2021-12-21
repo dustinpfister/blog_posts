@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-12-21 16:35:50
-version: 1.80
+updated: 2021-12-21 16:40:39
+version: 1.81
 ---
 
 When writing javaScript expressions knowing the order in which operations are performed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are performed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to performing operations.
@@ -153,7 +153,7 @@ The arithmetic operations of multiplication, division and remainder have a Prece
 
 ### 3.8 - Addition and subtraction ( Precedence 14 )
 
-Addition and subtraction have a Precedence of 14 so these operations will be preformed after Multiplication, Division, and Remainder
+Addition and subtraction have a Precedence of 14 so these operations will be preformed after Multiplication, Division, and Remainder.
 
 ### 3.9 - Bitwise Shift operators ( Precedence 13 )
 
@@ -261,7 +261,7 @@ console.log(d); // 1
 
 ## 4 - javaScript order of operations examples
 
-So now that we know the basics when it comes to order of operations in javaScript lets take a look at some actual code examples when it comes to some lengthly expressions with more than one operator.
+So now that we know the basics when it comes to order of operations in javaScript lets take a look at some actual code examples when it comes to some lengthly expressions with more than one operator. Looking at a few examples here and there when it comes to this sort of thing is a good starting point. However in order to really get this sort of thing solid the best way to go about learning might be to learn by doing. Learning everything there is to know about order of operations and javaScript expressions will take time, but it is also something that one will just start to get the hand of while working on an actual project or two of one kind or another.
 
 ### 4.1 - Estimating income example
 
