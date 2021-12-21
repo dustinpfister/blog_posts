@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:42:33
-version: 1.18
+updated: 2021-12-21 10:52:44
+version: 1.19
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -98,3 +98,5 @@ console.log(Array.prototype.concat.call( ['a','b'],['c','d'] )); [ 'a', 'b', 'c'
 ## 3 - Conclusion
 
 That will be it for now when it comes to using lodash to combine two or more arrays into a single array. The lodash concat method is not one or the best methods to write about when it comes to the subject of still using lodash over just javaScript by itself these days. There are a lot of methods in lodash that are now baked into native javaScript by itself, and to make matters worse with this the array concat method is not exactly a recent addition with vanilla javaScript like many other methods. Event when lodash was first started the native Array concat methods was a tired yet true method in the built in javaScript class. however there is a lot more to say about lodash than just that of the safety net aspect of the utility library.
+
+If you are looking for additional reading on lodash there is checking out my [main blog post on the lodash](/2019/02/15/lodash) library in general, or one of my [many other posts on lodash](/categories/lodash/). However there is not just using a user space library for every project but coming up with some kind of custom cut project specific library for a given project that is like lodash but consists just of methods that I am actually going to use in a project. With that said maybe a good direction for additional reading is some content on just working with vanilla javaScript by itself such as with by [javaScript example post of a general untiles library](/2021/08/06/js-javascript-example-utils/), or one of my many [other vanilla javaScript related posts](/categories/js/).
