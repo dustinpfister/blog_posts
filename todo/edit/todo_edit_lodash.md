@@ -35,9 +35,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash_concat ( old )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 12/21/2021 ) - lodash_concat ( old )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/20/2021 ) - lodash-find-index ( old )
 * (done) 750+ words
