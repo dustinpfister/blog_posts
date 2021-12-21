@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 11:11:08
-version: 1.22
+updated: 2021-12-21 11:13:32
+version: 1.23
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -73,7 +73,7 @@ console.log(points); // [ { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 } ]
 
 ### 1.3 - Chaining methods in lodash with flatten, and concat methods
 
-The concat method is rarely just used on its own, often the case is that I will need to do several things one of which would be concatenation of two or more arrays. When it comes to using lodash there are a few ways to go about chaining two or more lodash methods together, one of these options would be the [lodash chain method](/2018/11/11/lodash_chain).
+The concat method is rarely just used on its own, often the case is that I will need to do several things one of which would be concatenation of two or more arrays. When it comes to using lodash there are a few ways to go about chaining two or more lodash methods together, one of these options would be the [lodash chain method](/2018/11/11/lodash_chain). With that said in this example I am using the lodash chain method with the [flatten method](/2018/08/12/lodash_flatten/) and concat to create a single array of just umbers from an array of arrays of numbers and just an array of numbers.
 
 ```js
 // array a as an array of arrays
