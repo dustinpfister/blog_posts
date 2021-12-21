@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-11-29 10:48:01
-version: 1.78
+updated: 2021-12-21 16:31:22
+version: 1.79
 ---
 
 When writing javaScript expressions knowing the order in which operations are performed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are performed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to performing operations.
@@ -109,8 +109,23 @@ console.log(3 + (7 - 3) * 5); // 23
 
 ### 3.3 - New operator without arguments ( Precedence  19 )
 
-It is possible to use the new operator without arguments when this is the case it results in the new operator having a precedence value of 18.
+The new operator is used with a constructor function as a way to create a new instance of that constructor function. There are many built in constructor functions such as the Date and Array constructor, but it is also possible to create a user define constructor function also. The Precedence of the new keyword is just below that of a function call, but still fairly high so that if I am creating a new instance of an object in an expression more often then not that will be preformed first in many expressions in which I would do such a thing.
 
+```js
+// the new keyword is used to create custom objects
+var MyObj = function(n){
+    this.n = n;
+};
+MyObj.prototype.valueOf = function(){
+    return this.n;
+}
+ 
+let a = new MyObj(5 + 10) * 2
+console.log(a); // 30
+ 
+let b = new MyObj(5) * (10 + 2);
+console.log(b); // 60
+```
 
 ### 3.4 - Postfix Increment and postfix decrement ( Precedence 18 )
 
