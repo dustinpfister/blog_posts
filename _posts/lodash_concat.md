@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 11:26:38
-version: 1.26
+updated: 2021-12-21 11:30:56
+version: 1.27
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -116,7 +116,7 @@ console.log(Array.prototype.concat.call( ['a','b'],['c','d'] )); [ 'a', 'b', 'c'
 
 ### 2.2 - Using the Array.join and String.split methods
 
-There are a lot of other tools in the vanilla javaScript tool bot to work with on top of the array concat method. In this example I am using the array join method to create a string form of an array of numbers for two arrays, and then using the addition operator to create a final string form of two arrays. With the string prototype, and grouping operator I can then use the String split method to convert that back to an array, but then I have an array of substrings of numbers. So then the array map method can be used in conjunction with parseInt to convert this array of strings of numbers back to numbers.
+There are a lot of other tools in the vanilla javaScript tool bot to work with on top of the array concat method. In this example I am using the [array join method](/2020/03/09/js-array-join/) to create a string form of an array of numbers for two arrays, and then using the addition operator to create a final string form of two arrays. With the [string split prototype method](/2021/07/14/js-string-split/), and grouping operator I can then split that string back to an array, but then I have an array of substrings of numbers. So then the [array map](/2020/06/16/js-array-map/) method can be used in conjunction with [parseInt](/2019/05/15/js-parseint/) to convert this array of strings of numbers back to numbers.
 
 ```js
 // two arrays
