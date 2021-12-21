@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 11:37:39
-version: 1.30
+updated: 2021-12-21 11:52:53
+version: 1.31
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings. There is of course more than one intention when it comes to the subject of adding two arrays together though, in some cases i might not want to concatenate elements from two arrays, into a single array, but create some kind of single primitive value that is a sum from two or more arrays. So then while I am at it maybe I should touch base on various other methods in lodash as well as native javaScript that have to do with creating a product from one or more arrays also.
@@ -88,6 +88,26 @@ let b = [7,8,9];
 let c = _.chain(a).flatten().concat(b).value();
 console.log(c);
 // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+### 1.4 - The lodash sum method
+
+There is more than one idea when it comes to the subject of adding two or more arrays together. One idea is what I have covered so far that is adding two arrays together in the sense that I want the final result to be a single array of elements. There is then the other idea which is to create a single primitive value from two ore more arrays as well as maybe other stand alone values such as single number values. There are a lot of methods in lodash as well as with native javaScript that come to mind when it comes to this sort of thing, and one of those options would be the [lodash sum method](/2018/11/15/lodash_sum/).
+
+```js
+// array a
+let a = [
+  [0,[1,0]],
+  [[0,1],1]
+];
+// array b
+let b = [1,[ 0,1 ]];
+// number c
+let c = 1;
+// using concat flatten deep, and lodash sum methods
+let d = _.chain(a).concat(b, c).flattenDeep().sum().value();
+console.log(d);
+// 6
 ```
 
 ## 2 - Vanilla javaScript altertaives to lodash concat
