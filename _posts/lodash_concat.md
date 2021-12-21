@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:27:02
-version: 1.13
+updated: 2021-12-21 10:31:10
+version: 1.14
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -27,7 +27,7 @@ In this section basic examples of array concatenation will be covered using loda
 
 ### 1.1 - Basic example using \_.concat
 
-For a basic example of the lodash concat method I think it would be a good idea to just start out with a few arrays that are just simple arrays of primatives such as numbers. So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into an array.
+For a basic example of the lodash concat method I think it would be a good idea to just start out with a few arrays that are just simple arrays of primatives such as numbers. So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into a new array that will be returned from lodash concat using the given source arrays and elements.
 
 ```js
 let start = [1, 2, 3],
@@ -39,7 +39,7 @@ let full = _.concat(start, mid, end);
 console.log(full); // [1,2,3,4,5,6,7,8,9]
 ```
 
-This can be any mixture of arrays or values. primitives like always will be copy's, however objects, will of course be references so be careful about that. However for the most part that is all there is to it, and this is often preferable to a more complex alternative that involves creating a new array, and looping.
+This can be any mixture of arrays and or values as well passing everything that I want tin order as arguments to the lodash concat method. Primitives like always will be copied by value rather than reference, however objects, will of course be references unless action is taken to prevent that so be careful about that when dealing with objects. However for the most part that is all there is to it, and this is often preferable to a more complex alternative that involves creating a new array, and looping. So then I might just want to expand this section with a few more examples of this lodash concat method, but now it is more about using the concat method with other methods, and various other situations that will come up when dealing with arrays and objects in general actually. There is after all only so much to write about when it comes to the concat method alone in lodash.
 
 
 ### 1.2 - Be aware of references
