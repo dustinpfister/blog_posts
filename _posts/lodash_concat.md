@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:24:23
-version: 1.12
+updated: 2021-12-21 10:27:02
+version: 1.13
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -23,9 +23,11 @@ Although this is a lodash post on \_.concat, this is also a kind of post of conc
 
 This is a post on the lodash method \_.concat that can be used to combine, or concatenate two or more arrays into one array. There is also the Array.concat method in javaScript itself that works the same way. I assume that you have some basic working knowledge of javaScript in general, and how to get started with using lodash in a project. If not you might want to take a step back and look into a getting started with lodash type post, and maybe also do the same with [javaScript in general](/2018/11/27/js-getting-started/) also if you are still fairly new to this sort of thing.
 
+In this section basic examples of array concatenation will be covered using lodash with the concat method as well as various other lodash methods. In a later section in this post I will be covering how to go about doing various things that can be done with the lodash concat method using just native javaScript alone. 
+
 ### 1.1 - Basic example using \_.concat
 
-For a basic example of concat what is more basic then just some arrays of primitives right? In this section basic example of array concatenation will be covered using lodash \_.concat, and Array.concat. So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into an array.
+For a basic example of the lodash concat method I think it would be a good idea to just start out with a few arrays that are just simple arrays of primatives such as numbers. So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into an array.
 
 ```js
 let start = [1, 2, 3],
