@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:37:17
-version: 1.17
+updated: 2021-12-21 10:42:33
+version: 1.18
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -73,7 +73,7 @@ console.log(points); // [ { x: 0, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 0 } ]
 
 ## 2 - Vanilla javaScript altertaives to lodash concat
 
-Now that I covered a few examples that have to do with combining two or more arrays using lodash, in this section I will be going I will be going over a few examples that have to do with using just javaScript by istelf to combine arrays into a single array.
+Now that I covered a few examples that have to do with combining two or more arrays using lodash, in this section I will be going I will be going over a few examples that have to do with using just javaScript by itself to combine arrays into a single array.
 
 ### 2.1 - Basic example using Array.concat
 
@@ -97,4 +97,4 @@ console.log(Array.prototype.concat.call( ['a','b'],['c','d'] )); [ 'a', 'b', 'c'
 
 ## 3 - Conclusion
 
-That will be it for now when it comes to using lodash to combine two or more arrays into a single array.
+That will be it for now when it comes to using lodash to combine two or more arrays into a single array. The lodash concat method is not one or the best methods to write about when it comes to the subject of still using lodash over just javaScript by itself these days. There are a lot of methods in lodash that are now baked into native javaScript by itself, and to make matters worse with this the array concat method is not exactly a recent addition with vanilla javaScript like many other methods. Event when lodash was first started the native Array concat methods was a tired yet true method in the built in javaScript class. however there is a lot more to say about lodash than just that of the safety net aspect of the utility library.
