@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-12-21 16:40:39
-version: 1.81
+updated: 2021-12-21 16:41:49
+version: 1.82
 ---
 
 When writing javaScript expressions knowing the order in which operations are performed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are performed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to performing operations.
@@ -363,7 +363,7 @@ console.log( getDataCap(80192,new Date(2019,7,13)) ); // 46563.096774193546
 
 ### 4.4 - Finding out a monthly payment for a mortgage
 
-Here is yet another real world example that is a function that helps figure the monthly payment of a [fixed rate mortgage](https://en.wikipedia.org/wiki/Fixed-rate_mortgage)
+Here is yet another real world example that is a function that helps figure the monthly payment of a [fixed rate mortgage](https://en.wikipedia.org/wiki/Fixed-rate_mortgage).
 
 ```js
 var payment = (apr, years, prin) => {
