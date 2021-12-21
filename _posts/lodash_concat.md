@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 10:31:10
-version: 1.14
+updated: 2021-12-21 10:34:17
+version: 1.15
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -27,7 +27,7 @@ In this section basic examples of array concatenation will be covered using loda
 
 ### 1.1 - Basic example using \_.concat
 
-For a basic example of the lodash concat method I think it would be a good idea to just start out with a few arrays that are just simple arrays of primatives such as numbers. So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into a new array that will be returned from lodash concat using the given source arrays and elements.
+For a basic example of the lodash concat method I think it would be a good idea to just start out with a few arrays that are just simple arrays of primitives such as numbers. So the \_.concat method works by just calling the method, and then giving the arrays, and elements to combine into a new array that will be returned from lodash concat using the given source arrays and elements.
 
 ```js
 let start = [1, 2, 3],
@@ -44,7 +44,7 @@ This can be any mixture of arrays and or values as well passing everything that 
 
 ### 1.2 - Be aware of references
 
-So when concatenating arrays it is important to rememberer that objects are copied by reference in javaScript. If this is a problem you will want to use something like [\_.cloneDeep](/2017/11/13/lodash_clonedeep/) to see that the objects are full new separate objects by themselves, and are not just being referenced.
+So when concatenating arrays it is important to rememberer that objects are copied by reference in javaScript. If this is a problem you will want to use something like [\_.cloneDeep](/2017/11/13/lodash_clonedeep/) to see that the objects are full new separate objects by themselves, and are not just being referenced. At last that might end up being the desired outcome in some situations anyway. In certain use case examples I might want the root element objects themselves, or a given nested object with in one or more of them to remain references to the same objects in memory actually. Such is often the case when dealing with html element nodes in client side javaScript for example. However maybe getting into this more is called for in a more advanced section on matters such as this.
 
 ```js
 let _ = require('lodash');
