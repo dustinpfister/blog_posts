@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 371
-updated: 2021-12-21 16:31:22
-version: 1.79
+updated: 2021-12-21 16:35:50
+version: 1.80
 ---
 
 When writing javaScript expressions knowing the order in which operations are performed is important to make sure that desired results will always be achieved, this is often called [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence), or just simply order of operations. Each type of operator has a kind of precedence or level of importance compared to others, as such operators of higher precedence are performed before operators of lower precedence. In addition to this operator precedence there is also associativity of operators as well, that is the direction from left to right or the inverse of that when it comes to performing operations.
@@ -149,7 +149,7 @@ console.log(b); // 64
 
 ### 3.7 - Multiplication, Division, and Remainder ( Precedence 15 )
 
-The arithmetic operations of multiplication, division and remainder have a Precedence 15 which is one level above that of addition and subtraction.
+The arithmetic operations of multiplication, division and remainder have a Precedence 15 which is one level above that of addition and subtraction. This is then one of the most commonly used set of expressions so it is a good idea to get this one solid at least when it comes to various expressions that involve addition, and subtraction with multiplication, and division.
 
 ### 3.8 - Addition and subtraction ( Precedence 14 )
 
