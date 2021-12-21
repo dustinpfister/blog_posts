@@ -95,7 +95,7 @@ list:
          work though when it comes to examples for each operator. No problem when it comes to intrinsic value with this
          one two because it is closely tied with writing expressions in javaScript. So there is a whole world of examples
          that can be used when it comes to writing about order of operations.
-* get post to 2,750+ words
+* ( done 12/21/2021 ) get post to 2,750+ words
 * get post to 3,000+ words
 * get post to 3,250+ words
 * get post to 3,500+ words
