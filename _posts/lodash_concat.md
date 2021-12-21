@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 244
-updated: 2021-12-21 11:24:00
-version: 1.25
+updated: 2021-12-21 11:26:38
+version: 1.26
 ---
 
 In this [lodash](https://lodash.com/) post I will be writing about the lodash [\_.concat](https://lodash.com/docs/4.17.10#concat) method, and of course the corresponding vanilla js method [Array.concat](/2020/07/13/js-array-concat/) built into the [Array prototype](/2018/12/10/js-array/) in core javaScript itself. Regardless of which one you use the result is the same, adding two or more arrays into a single array in other words concatenation of arrays rather then Strings.
@@ -123,9 +123,9 @@ There are a lot of other tools in the vanilla javaScript tool bot to work with o
 let a = [1,2,3];
 let b = [4,5,6];
 // using Array.join, and String.split
-let c = ( a.join(',') + ',' + b.join(',') ).split(',');
+let c = ( a.join(',') + ',' + b.join(',') ).split(',').map( (str) => { return parseInt(str); } );
 console.log(c);
-// [ '1', '2', '3', '4', '5', '6' ]
+// [ 1, 2, 3, 4, 5, 6 ]
 ```
 
 ## 3 - Conclusion
