@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-22 09:15:51
-version: 1.23
+updated: 2021-12-22 09:25:02
+version: 1.24
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the [lodash for each collection method](/2017/11/20/lodash_foreach/) that will loop over all of the own properties of an object collection in general, and in native javaScript there is the [array for each method](/2019/02/16/js-javascript-foreach/) that will loop over all the numbered, public own properties of an array. There is also not a native for in loop in javaScript itself also as well that can be used in modern javaScript specs. So then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -54,24 +54,36 @@ In this section I will be exploring ways to go about looping over both own and i
 Just a plain old for in loop seems to work just fine to loop over own properties of an object as well as what is in the prototype object as well.
 
 ```js
+// Simple Constructor and Prototype
+let A = function () {
+    this.b = 42
+};
+A.prototype.c = 7;
+// using the for in loop
 let a = new A();
- 
 for (let prop in a) {
   console.log(prop + ' : ' +a[prop]);
 }
 ```
 
-### 2.2 - Creating an array of key names with Object.keys
+### 2.2 - Using Object.keys, Array concat, and Array for each
 
 Another way would be to create an array of key names, and loop over that with Array.forEach, while loop ect. Using Object.keys will give me all the enumerable properties of an object, but not it's prototype, unless I give the prototype object itself. So I could use Object.keys twice, and build an array of keys that way.
 
 ```js
-let keys = Object.keys(a).concat(Object.keys(a.constructor.prototype));
- 
+// Simple Constructor and Prototype
+let A = function () {this.b = 42;};
+A.prototype.c = 7;
+// Object.keys, array concat, and array foreach
+let a = new A(),
+keys = Object.keys(a).concat(Object.keys(a.constructor.prototype)),
+str = '';
 keys.forEach(function (key) {
-    var val = a[key];
-    console.log(key + ' : ' + val);
+    str += key + ':' +a[key] + ';';
 });
+console.log(str);
+// b:42;c:7;
+
 ```
 
 ## 3 - Conclusion
