@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-22 09:39:47
-version: 1.30
+updated: 2021-12-22 09:58:13
+version: 1.31
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the [lodash for each collection method](/2017/11/20/lodash_foreach/) that will loop over all of the own properties of an object collection in general, and in native javaScript there is the [array for each method](/2019/02/16/js-javascript-foreach/) that will loop over all the numbered, public own properties of an array. There is also not a native for in loop in javaScript itself also as well that can be used in modern javaScript specs. So then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -86,6 +86,48 @@ keys.forEach(function (key) {
 console.log(str);
 // b:42;c:7;
 
+```
+
+### 2.3 - Making a custom for in method
+
+There is the idea of making my own for in method using the for in loop, or some other means to have a function that will call a given function for each own property as well as prototype property of a given object. When doing so I of course have the freedom to do whatever I want when it comes to the full scope of javaScript when making such a function.
+
+```js
+const forIn = (obj, func, state) => {
+    func = func || function(el, key, obj){};
+    state = state || obj;
+    let exit = 0;
+    for (let key in obj) {
+        // I can do what I want when it comes to setting what the value
+        // of the this keyword should be, and I can also do what I want
+        // with return values inside the func
+        try{
+            if(func.call(state, obj[key], key, obj)){
+                break;
+            }
+        }catch(e){
+            exit = 1;
+            break;
+        }
+    }
+    // I can do what I want with the return value of this forIn loop
+    return exit
+};
+ 
+// Simple Constructor and Prototype
+let A = function () {
+    this.b = 42
+};
+A.prototype.c = 7;
+ 
+// using the for in method
+let a = new A();
+var e = forIn(a, function(el, key, obj){
+    console.log(el);
+});
+// 42 7
+console.log(e);
+// 0
 ```
 
 ## 3 - Conclusion
