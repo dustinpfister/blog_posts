@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-22 08:59:58
-version: 1.20
+updated: 2021-12-22 09:02:06
+version: 1.21
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the [lodash for each collection method](/2017/11/20/lodash_foreach/) that will loop over all of the own properties of an object collection in general, and in native javaScript there is the [array for each method](/2019/02/16/js-javascript-foreach/) that will loop over all the numbered, public own properties of an array. There is also not a native for in loop in javaScript itself also as well that can be used in modern javaScript specs. So then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -15,7 +15,7 @@ The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://
 
 ## 1 - Lodash for in method, and what to know before hand
 
-This is a post on the \_.forIn method in lodash, and other related topics. The _.forIn method can be used to loop over both the own properties of an object as well as anything that may be in the prototype chain. Also in these lodash posts of mine I also look into plain old vanilla js alternatives to lodash methods as well, and blend them together into one post. In order to gain something of value from this post I assume that you have at least some background with javaScript in general.
+This is a post on the \_.forIn method in lodash, and other related topics. The \_.forIn method can be used to loop over both the own properties of an object as well as anything that may be in the prototype chain. Also in these lodash posts of mine I also look into plain old vanilla js alternatives to lodash methods as well, and blend them together into one post. In order to gain something of value from this post I assume that you have at least some background with javaScript in general. However in this section I will be starting out with what there is to work with using lodash as at least one if not more libraries to use in a project.
 
 ### 1.1 - Basic example of \_.forIn
 
