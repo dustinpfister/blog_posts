@@ -23,6 +23,18 @@
 
 <!-- OLD POSTS -->
 
+### () - lodash_flow ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_forown ( old )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_uniqueid ( old )
+* 750+ words
+* have 5+ internal links for the post
+
 ### () - lodash_sortby ( old )
 * 750+ words
 * have 5+ internal links for the post
