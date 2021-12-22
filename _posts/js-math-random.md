@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 13:58:03
-version: 1.80
+updated: 2021-12-22 13:59:15
+version: 1.81
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -477,7 +477,7 @@ var itemClass = (function(){
 
 ### 7.2 - The index html file
 
-I now have an index html file that makes use of my item class module just for the sake of making sure it is working okay so far.
+I now have an index html file that makes use of my item class module just for the sake of making sure it is working okay so far. In this index html file I have a canvas element that I will be using to get a visual sense if this item class module is working the way that I would want it to or not.
 
 ```html
 <html>
