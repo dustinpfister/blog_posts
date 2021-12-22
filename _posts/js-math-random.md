@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 13:26:07
-version: 1.77
+updated: 2021-12-22 13:28:16
+version: 1.78
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -428,6 +428,8 @@ In this section then I will be going over an example that I put together fairly 
 
 ### 7.1 - The item class javaScript Module
 
+The main file of interest for this example then would be the item class module.
+
 ```html
 var itemClass = (function(){
     // default pool of objects for each item class
@@ -472,6 +474,8 @@ var itemClass = (function(){
 ```
 
 ### 7.2 - The index html file
+
+I now have an index html file that makes use of my item class module just for the sake of making sure it is working okay so far.
 
 ```html
 <html>
