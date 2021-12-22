@@ -142,6 +142,13 @@ list:
 * get the post to 6,500+ words
 * get the post to 7,000+ words
 
+## js-math-random
+    justification:
+      Intrinsic Value:
+      Search Console: 
+      Google Trends:
+* get the post to 3,000+ words
+
 ## js-javascript-example-utils
 
 
