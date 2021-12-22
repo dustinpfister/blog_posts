@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 12:57:23
-version: 1.75
+updated: 2021-12-22 13:00:34
+version: 1.76
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -423,6 +423,8 @@ When I run this script the result is random numbers being lodged out to the cons
 ## 7 - Random item probability example
 
 In certain game projects I may have items, for example in a RPG style game I might have various kinds of item drops. In such a game I might have more than one class of object, and the probability of these items dropping might change a little. For example I might have a junk class of item that is dropped almost all the time, and then on the other extreme I might have an epic class of items that is almost never dropped. Or at least maybe that is how things would start off as there would be ways to change the probabilities for each of these kinds of classes. For example maybe there is a \0.5\% chance of an Epic item dropping to start off with, but threw various items, upgrades, and other factors maybe that percentage can increase to as much as say \10\%.
+
+In this section then I will be going over an example that I put together fairly quickly for the sake of this post that is a kind of system that is used to create an object that is a kind of items classes object. Now this might not be the kind of system that is a full blown item system of sorts that I would actually use in a game, but it might still be a starting point for a component of such a system that has to go with creating a state object that is used to figure out what the chances are of a given class of item being dropped by and enemy each time an enemy is killed.
 
 ```html
 <html>
