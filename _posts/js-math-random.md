@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 13:33:55
-version: 1.79
+updated: 2021-12-22 13:58:03
+version: 1.80
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -428,7 +428,9 @@ In this section then I will be going over an example that I put together fairly 
 
 ### 7.1 - The item class javaScript Module
 
-The main file of interest for this example then would be the item class module. This module will need to have at least two pubic methods for starters, one of which is used to create a state object that holds the current probabilities for each item class, and the other is used to return a random item class object. In this create method a pool of objects will be crated, one object for each item class in the game. Each of these objects should contain at least a points value along with other info such as a description, or id key that will be used with the over all greater item system to create the actually item elsewhere in a project that make use of this.
+The main file of interest for this example then would be the item class module. This module will need to have at least two pubic methods for starters, one of which is used to create a state object that holds the current probabilities for each item class, and the other is used to return a random item class object. 
+
+In the create method a pool of objects will be crated for a returned state object that will be used for other methods in this module, one object for each item class in the game. Each of these objects should contain at least a points value along with other info such as a description, or id key that will be used with the over all greater item system to create the actually item elsewhere in a project that make use of this. The array reduce method can then be used as a way to sum these points values, and then a value of 0 to 1 can be figured for each object. It is then this value from 0 to 1 that can be used to find out if a certain class of item will be dropped or not.
 
 ```html
 var itemClass = (function(){
