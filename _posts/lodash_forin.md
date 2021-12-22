@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-22 09:29:19
-version: 1.26
+updated: 2021-12-22 09:32:37
+version: 1.27
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the [lodash for each collection method](/2017/11/20/lodash_foreach/) that will loop over all of the own properties of an object collection in general, and in native javaScript there is the [array for each method](/2019/02/16/js-javascript-foreach/) that will loop over all the numbered, public own properties of an array. There is also not a native for in loop in javaScript itself also as well that can be used in modern javaScript specs. So then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -51,7 +51,7 @@ In this section I will be exploring ways to go about looping over both own and i
 
 ### 2.1 - A for in loop
 
-Just a plain old for in loop seems to work just fine to loop over own properties of an object as well as what is in the prototype object as well.
+Just a [plain old for in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) seems to work just fine to loop over own properties of an object as well as what is in the prototype object as well. There is the fact that a for in loop is a kind of loop rather than a function that will take a function as an argument, but this is a problem that is very easily solved by just making my own kind of function that is like the lodash for in loop.
 
 ```js
 // Simple Constructor and Prototype
