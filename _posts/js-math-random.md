@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-11-30 12:42:45
-version: 1.72
+updated: 2021-12-22 12:46:00
+version: 1.73
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -420,7 +420,76 @@ while (i < 15) {
 
 When I run this script the result is random numbers being lodged out to the console between and including 1 to 10, but no number ever repeats. That is until of course I call the start method of the hat object that is returned with the create hat method.
 
-## 7 - Conclusion
+## 7 - Random item probability example
+
+```html
+<html>
+    <head>
+        <title>Math random</title>
+    </head>
+    <body>
+        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script>
+// create ITEM Classes object
+var createClasses = function(opt){
+    opt = opt || {};
+    opt.pool = opt.pool || [];
+    // get total points
+    opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
+    // set 0-1 numbs for each itemClasses object
+    opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
+    return opt;
+};
+// GET a random ITEM classes object
+var getRandomItemClass = function(classes){
+    var i = 0,
+    len = classes.pool.length
+    roll = Math.random(),
+    n = 1
+    while(i < len){
+        var item = classes.pool[i];
+        n -= item.per;
+        if(roll > n){
+            return item;
+        }
+        i += 1;
+    }
+    return item;
+};
+// DEMO
+var canvas = document.getElementById('the-canvas'),
+ctx = canvas.getContext('2d');
+// creating a item classes obect
+var items = createClasses({pool: [
+   { desc: 'Junk', points: 1000 },
+   { desc: 'Common', points: 250 },
+   { desc: 'Fair', points: 160 },
+   { desc: 'Rare', points: 80 },
+   { desc: 'Epic', points: 15}
+]});
+// create bars array
+var bars = [0,0,0,0,0],
+bLen = bars.length;
+var i = 0, len = 1000, bi;
+while(i < len){
+    var item = getRandomItemClass(items);
+    bi = getRandomItemClass(items).i;
+    bars[bi] = bars[bi] += 1;
+    i += 1;
+}
+// draw bars
+var max = Math.max.apply(null, bars);
+ctx.fillStyle = 'lime';
+bars.forEach(function(ct, i){
+   var p = ct / max;
+   ctx.fillRect(0, 21 * i, 320 * p, 20 )
+});
+        </script>
+    </body>
+</html>
+```
+
+## 8 - Conclusion
 
 So that is it for now when it comes to random numbers and javaScript using the build in Math random method. In the event that I get some more time, or that I find something more to write about when it comes to the Math.random method, and other things surrounding random numbers in general I will expand this post a bit more as I have a few times all ready.
 
