@@ -1,15 +1,15 @@
 ---
-title: The lodash _.forIn method
+title: The lodash forIn method
 date: 2018-09-30 14:40:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-22 08:54:58
-version: 1.19
+updated: 2021-12-22 08:59:58
+version: 1.20
 ---
 
-The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the lodash for each collection object that will loop over all of the own properties of an object collection in general, and in native javaScript there is the array for each method that will loop over all the numbered, public own properties of an array. There is also not a native for own loop in javaScript itself also as well that can be used in modern javaScript specs. so then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
+The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the [lodash for each collection method](/2017/11/20/lodash_foreach/) that will loop over all of the own properties of an object collection in general, and in native javaScript there is the [array for each method](/2019/02/16/js-javascript-foreach/) that will loop over all the numbered, public own properties of an array. There is also not a native for in loop in javaScript itself also as well that can be used in modern javaScript specs. So then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
 
 <!-- more -->
 
