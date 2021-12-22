@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 13:00:34
-version: 1.76
+updated: 2021-12-22 13:26:07
+version: 1.77
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -426,6 +426,53 @@ In certain game projects I may have items, for example in a RPG style game I mig
 
 In this section then I will be going over an example that I put together fairly quickly for the sake of this post that is a kind of system that is used to create an object that is a kind of items classes object. Now this might not be the kind of system that is a full blown item system of sorts that I would actually use in a game, but it might still be a starting point for a component of such a system that has to go with creating a state object that is used to figure out what the chances are of a given class of item being dropped by and enemy each time an enemy is killed.
 
+### 7.1 - The item class javaScript Module
+
+```html
+var itemClass = (function(){
+    // default pool of objects for each item class
+    var DEFAULT_POOL = [
+        { desc: 'Junk', points: 1000 },
+        { desc: 'Common', points: 250 },
+        { desc: 'Fair', points: 160 },
+        { desc: 'Rare', points: 80 },
+        { desc: 'Epic', points: 15}
+    ]
+    // public api
+    var api = {};
+    // create ITEM Classes object
+    api.create = function(opt){
+        opt = opt || {};
+        opt.pool = opt.pool || DEFAULT_POOL;
+        // get total points
+        opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
+        // set 0-1 numbs for each itemClasses object
+        opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
+        return opt;
+    };
+    // GET a random ITEM classes object
+    api.getRandomItemClass = function(classes){
+        var i = 0,
+        len = classes.pool.length
+        roll = Math.random(),
+        n = 1
+        while(i < len){
+            var item = classes.pool[i];
+            n -= item.per;
+            if(roll > n){
+                return item;
+            }
+            i += 1;
+        }
+        return item;
+    };
+    // return the public api
+    return api;
+}());
+```
+
+### 7.2 - The index html file
+
 ```html
 <html>
     <head>
@@ -433,51 +480,20 @@ In this section then I will be going over an example that I put together fairly 
     </head>
     <body>
         <canvas id="the-canvas" width="320" height="240"></canvas>
+        <script src="item-class.js"></script>
         <script>
-// create ITEM Classes object
-var createClasses = function(opt){
-    opt = opt || {};
-    opt.pool = opt.pool || [];
-    // get total points
-    opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
-    // set 0-1 numbs for each itemClasses object
-    opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
-    return opt;
-};
-// GET a random ITEM classes object
-var getRandomItemClass = function(classes){
-    var i = 0,
-    len = classes.pool.length
-    roll = Math.random(),
-    n = 1
-    while(i < len){
-        var item = classes.pool[i];
-        n -= item.per;
-        if(roll > n){
-            return item;
-        }
-        i += 1;
-    }
-    return item;
-};
 // DEMO
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
-// creating a item classes obect
-var items = createClasses({pool: [
-   { desc: 'Junk', points: 1000 },
-   { desc: 'Common', points: 250 },
-   { desc: 'Fair', points: 160 },
-   { desc: 'Rare', points: 80 },
-   { desc: 'Epic', points: 15}
-]});
+// creating a item classes object
+var items = itemClass.create();
 // create bars array
 var bars = [0,0,0,0,0],
 bLen = bars.length;
 var i = 0, len = 1000, bi;
 while(i < len){
-    var item = getRandomItemClass(items);
-    bi = getRandomItemClass(items).i;
+    var item = itemClass.getRandomItemClass(items);
+    bi = item.i;
     bars[bi] = bars[bi] += 1;
     i += 1;
 }
