@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-22 09:25:02
-version: 1.24
+updated: 2021-12-22 09:27:30
+version: 1.25
 ---
 
 The [\_.forIn](https://lodash.com/docs/4.17.4#forIn) method in [lodash](https://lodash.com/) is a helpful tool, for looping over both own, and inherited properties in an Object in a javaScript environment. There are a number of other ways to go about looping over the various properties of objects though with both lodash, as well as with just plain old javaScript by itself though. In lodash there is the [lodash for each collection method](/2017/11/20/lodash_foreach/) that will loop over all of the own properties of an object collection in general, and in native javaScript there is the [array for each method](/2019/02/16/js-javascript-foreach/) that will loop over all the numbered, public own properties of an array. There is also not a native for in loop in javaScript itself also as well that can be used in modern javaScript specs. So then with that said, in this post I will be covering a basic use case example of \_.forIn, and how it compares to other lodash, and vanilla js methods of looping over object properties in javaScript.
@@ -68,7 +68,7 @@ for (let prop in a) {
 
 ### 2.2 - Using Object.keys, Array concat, and Array for each
 
-Another way would be to create an array of key names, and loop over that with Array.forEach, while loop ect. Using Object.keys will give me all the enumerable properties of an object, but not it's prototype, unless I give the prototype object itself. So I could use Object.keys twice, and build an array of keys that way.
+Another way would be to create an array of key names, and loop over that array of key names by one means of doing so or another. Using Object.keys will give me all the enumerable properties of an object, but not it's prototype, unless I give the prototype object itself to the object keys method. So I could use Object.keys twice, and then use an array method like array concat to create a single array of keys that way. Then it is just a matter of looping over these key names and then use the keys to get references to the values inside the body of the loop.
 
 ```js
 // Simple Constructor and Prototype
