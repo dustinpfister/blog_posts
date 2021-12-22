@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 649
-updated: 2021-12-22 13:59:15
-version: 1.81
+updated: 2021-12-22 15:13:43
+version: 1.82
 ---
 
 Starting out with the [Math.random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) method in javaScript is simple enough, I just call it and I get a random number between 0 and 1, and can potential include 0 but not 1 from what I have read. From there it is all about what you do with that value when it comes to doing something with such a random value. For example if I want random numbers between 0 and 6 then I just need to multiply the returned value from the math random method by 6.
@@ -434,25 +434,48 @@ In the create method a pool of objects will be crated for a returned state objec
 
 ```html
 var itemClass = (function(){
+    var DEFAULT_COLORS = ['#efefef', 'lime', 'blue', 'orange', 'purple'];
     // default pool of objects for each item class
     var DEFAULT_POOL = [
-        { desc: 'Junk', points: 1000 },
-        { desc: 'Common', points: 250 },
-        { desc: 'Fair', points: 160 },
-        { desc: 'Rare', points: 80 },
-        { desc: 'Epic', points: 15}
-    ]
+        { desc: 'Junk', range: [1000, 250] },
+        { desc: 'Common', range: [300, 800] },
+        { desc: 'Fair', range: [150, 500] },
+        { desc: 'Rare', range: [50, 250] },
+        { desc: 'Epic', range: [10, 100]}
+    ];
+    DEFAULT_POOL = DEFAULT_POOL.map(function(obj, i){ obj.color = DEFAULT_COLORS[i] || 'white'; return obj;  })
     // public api
     var api = {};
+    // parse pool helper
+    var parsePool = function(classes){
+        return classes.pool.map(function(obj, i){
+            obj.range = obj.range || [1, 1];
+            var min = obj.range[0],
+            max = obj.range[1], level;
+            obj.levelPer = obj.levelPer === undefined ? 0 : obj.levelPer;
+            level = classes.levelPer * classes.levelPerRatio + (1 - classes.levelPerRatio) * obj.levelPer;
+            obj.points = min + (max - min) * level;
+            obj.desc = obj.desc || '';
+            obj.color = obj.color || DEFAULT_COLORS[i] || 'white';
+            return obj;
+        });
+    };
     // create ITEM Classes object
     api.create = function(opt){
         opt = opt || {};
-        opt.pool = opt.pool || DEFAULT_POOL;
+        var classes = {
+            levelPer: opt.levelPer || 0,
+            levelPerRatio: opt.levelPerRatio === undefined ? 1 : opt.levelPerRatio
+        };
+        // use given pool array or default starting pool
+        classes.pool = opt.pool || DEFAULT_POOL;
+        // parse given pool collection
+        classes.pool = parsePool(classes);
         // get total points
-        opt.totalPoints = opt.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
+        classes.totalPoints = classes.pool.reduce( function(acc, obj){ return acc + obj.points;}, 0);
         // set 0-1 numbs for each itemClasses object
-        opt.pool = opt.pool.map( function(obj, i){ obj.per = obj.points / opt.totalPoints; obj.i = i; return obj; } );
-        return opt;
+        classes.pool = classes.pool.map( function(obj, i){ obj.per = obj.points / classes.totalPoints; obj.i = i; return obj; } );
+        return classes;
     };
     // GET a random ITEM classes object
     api.getRandomItemClass = function(classes){
@@ -485,30 +508,59 @@ I now have an index html file that makes use of my item class module just for th
         <title>Math random</title>
     </head>
     <body>
-        <canvas id="the-canvas" width="320" height="240"></canvas>
+        <canvas id="the-canvas" width="640" height="480"></canvas>
         <script src="item-class.js"></script>
         <script>
 // DEMO
 var canvas = document.getElementById('the-canvas'),
 ctx = canvas.getContext('2d');
 // creating a item classes object
-var items = itemClass.create();
+var items = itemClass.create({
+   levelPer: 1,             // the current global level for item drops
+   levelPerRatio: 0.25,     // the ratio 0-1 that is the amount that the global levelPer effects points for each item class
+   pool: [                  // pool defining values for each class
+     {desc: 'Junk', range: [1000, 300], levelPer: 0.25},
+     {desc: 'Common', range: [100, 800], levelPer: 0.5},
+     {desc: 'Epic', range: [10, 100], levelPer: 1}
+   ]
+});
 // create bars array
-var bars = [0,0,0,0,0],
+var bars = items.pool.map(function(item){
+    return {
+       i: item.i,
+       color: item.color,
+       desc: item.desc,
+       count: 0
+    };
+}),
 bLen = bars.length;
 var i = 0, len = 1000, bi;
 while(i < len){
     var item = itemClass.getRandomItemClass(items);
     bi = item.i;
-    bars[bi] = bars[bi] += 1;
+    var bar = bars[bi];
+     bar.count += 1;
     i += 1;
 }
 // draw bars
-var max = Math.max.apply(null, bars);
-ctx.fillStyle = 'lime';
-bars.forEach(function(ct, i){
-   var p = ct / max;
-   ctx.fillRect(0, 21 * i, 320 * p, 20 )
+var max = Math.max.apply(null, bars.map(function(bar){ return bar.count;}));
+ctx.fillStyle = '#afafaf';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+ctx.font = '20px arial';
+ctx.lineWidth = 3;
+var barHeight = canvas.height / bLen - 5;
+bars.forEach(function(bar, i){
+   var p = bar.count / max,
+   y = canvas.height / bLen * i;
+   ctx.fillStyle = bar.color || 'lime';
+   ctx.strokeStyle = '#4a4a4a';
+   ctx.beginPath();
+   ctx.rect(0, y, canvas.width * p, barHeight );
+   ctx.fill();
+   ctx.stroke();
+   ctx.fillStyle = 'black';
+   ctx.textBaseline = 'middle';
+   ctx.fillText(bar.i + ') ' +bar.desc, 10, y + barHeight / 2);
 });
         </script>
     </body>
