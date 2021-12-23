@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 13:47:06
-version: 1.15
+updated: 2021-12-23 14:00:54
+version: 1.16
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -61,58 +61,39 @@ If using lodash there is \_.chunk, and _.zip that are very useful when dealing w
 
 ```js
 let grid = {
- 
     // the col width, and grid cells stored as a linear array
     w : 3,
     cells : [
         {gold: 1,wood:0},{gold: 0,wood:7},{gold: 2,wood:9},
         {gold: 0,wood:0},{gold: 0,wood:7},{gold: 0,wood:7},
         {gold: 0,wood:0},{gold: 10,wood:0},{gold: 0,wood:6}],
- 
     // chunk the linear array into an array of arrays
     // where each array is a row
     chunkToRows: function () {
- 
         // so _.chunk makes quick work of this
         return _.chunk(this.cells, this.w)
- 
     },
- 
     // chunk the linear array into an array of arrays
     // where each array is a col (rotated right)
     chunkToCols : function(){
- 
         // _.zip is useful for doing this
         return _.zip.apply(0, this.chunkToRows());
- 
     },
- 
     // get a Random row, col or cell
     rnd: function(what){
- 
        what = what || 'cell';
- 
        // get a random row
        if(what === 'row'){
- 
             return _.sample(this.chunkToRows());
- 
         }
- 
        // get a random col
        if(what === 'col'){
- 
            return _.sample(this.chunkToCols());
- 
        }
- 
         // default to getting a random single cell
         return _.sample(this.cells);
- 
     }
- 
 };
- 
 console.log(grid.rnd()); // random object
 console.log(grid.rnd('row')); // random row
 console.log(grid.rnd('col')); // random col
@@ -126,101 +107,71 @@ So for me it's not so hard to make a vanilla js alternative to this, but it was 
 
 ```js
 let grid = {
- 
     // the col width, and grid cells stored as a linear array
     w: 3,
     cells : [
         {gold: 1,wood:0},{gold: 0,wood:7},{gold: 2,wood:9},
         {gold: 0,wood:0},{gold: 0,wood:7},{gold: 0,wood:7},
         {gold: 0,wood:0},{gold: 10,wood:0},{gold: 0,wood:6}],
- 
     // chunk the linear array into an array of arrays
     // where each array is a row
     chunkToRows: function () {
- 
         let matrix = [],
         i = 0;
         while (i < this.cells.length) {
- 
             let x = i % this.w,
             y = Math.floor(i / this.w);
- 
             if (!matrix[y]) {
- 
                 matrix[y] = [];
- 
             }
- 
             let row = matrix[y];
- 
             row.push(this.cells[y * this.w + x]);
- 
             i += 1;
- 
         }
- 
         return matrix;
- 
     },
- 
     // chunk the linear array into an array of arrays
     // where each array is a col (rotated right)
     chunkToCols: function () {
- 
         let copy = [],
         original = this.chunkToRows(),
         i = 0;
         while (i < this.cells.length) {
- 
             let x = i % this.w,
             y = Math.floor(i / this.w);
- 
             // create row if it doesn't exist yet
             if (copy[y] === undefined) {
                 copy[y] = [];
- 
             }
- 
             // swap
             copy[y][x] = original[x][y];
- 
             i += 1;
         }
         return copy;
- 
     },
- 
     // get a Random row, col or cell
     rnd: function (what) {
- 
         what = what || 'cell';
- 
         // get a random row
         if (what === 'row') {
- 
             let rows = this.chunkToRows();
             return rows[  Math.floor( Math.random() * rows.length ) ];
- 
         }
- 
         // get a random col
         if (what === 'col') {
- 
             let cols = this.chunkToCols();
             return cols[  Math.floor( Math.random() * cols.length ) ];
- 
         }
- 
         // default to getting a random single cell
         return this.cells[  Math.floor( Math.random() * this.cells.length ) ];
- 
     }
- 
 };
- 
+// demo
 console.log(grid.rnd());
 console.log(grid.rnd('row'));
 console.log(grid.rnd('col'));
+
+
 ```
 
 There are many ways to go about crunching this down a little more I am sure, but you get the idea. I know that it is nice to have a situation in which I am not depending on additional external resources, and as such am juts working directly within javaScripot itself. However these days, as I work on more complex projects, I often do just end up making lodash part of the stack, and if it is there I might as well make use of it.
