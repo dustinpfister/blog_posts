@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 14:19:16
-version: 1.22
+updated: 2021-12-23 14:23:55
+version: 1.23
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -194,4 +194,6 @@ There are many ways to go about crunching this down a little more I am sure, but
 ## 4 - Conclusion
 
 The lodash same method is then one way to go about getting a random element from a collection, that is a random value from an array or any object in general. However it is really not all that hard to write a simple line or two of javaScript in order to do this sort of thing also, and when doing so that of course gives me more flexibility when it comes to how to go about getting a simple element from a collection.
+
+If you enjoyed this post and are in the mood for some more lodash relevant reading there is my [main post on lodash](/2019/02/15/lodash/), as well as my [many other posts that I have written on the lodash](/categories/lodash) utility library. Speaking of utility libraries there is the idea of making a custom utility library from the ground up rather than using something like lodash with that said there is my post on my [vanilla javaScript utilities library](/2021/08/06/js-javascript-example-utils/).
 
