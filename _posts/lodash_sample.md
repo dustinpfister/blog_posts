@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 14:07:19
-version: 1.18
+updated: 2021-12-23 14:12:42
+version: 1.19
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -31,6 +31,20 @@ console.log( _.sample(nums) ); // (random element from nums)
 ```
 
 However when working on a project I might now always be dealing with a collection that is an instance of an array, but some other kind of collection. For example it might be a node list or some other kind of object standard that is like an array but not. Of I might even be dealing with a collection that is not an array at all, but an object with named rather than numbered public keys. The good news though is that this lodash sample method is a collection method that will als work with those kinds of objects, so lets look at a few more examples of this method with other kinds of collections.
+
+### 1.2 - Basic example of lodash sample with a named keys collection object
+
+The nice thing about the lodash sample method is that it is just one example of the many collection methods in lodash, which means it will not just work with arrays, but objects in general.
+
+```js
+let obj = {
+    foo: 40,
+    bar: 2,
+    baz: 7
+};
+let n = _.sample(obj);
+console.log(n);
+```
 
 ## 2 - Valina javaScript solutions for what lodash sample does
 
