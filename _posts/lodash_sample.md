@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 13:35:03
-version: 1.10
+updated: 2021-12-23 13:37:01
+version: 1.11
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -222,4 +222,6 @@ console.log(grid.rnd('col'));
 There are many ways to go about crunching this down a little more I am sure, but you get the idea. I know that it is nice to have a situation in which I am not depending on additional external resources, and as such am juts working directly within javaScripot itself. However these days, as I work on more complex projects, I often do just end up making lodash part of the stack, and if it is there I might as well make use of it.
 
 ## 4 - Conclusion
+
+The lodash same method is then one way to go about getting a random element from a collection, that is a random value from an array or any object in general. However it is really not all that hard to write a simple line or two of javaScript in order to do this sort of thing also, and when doing so that of course gives me more flexibility when it comes to how to go about getting a simple element from a collection.
 
