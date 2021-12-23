@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2019-11-07 13:22:46
-version: 1.6
+updated: 2021-12-23 13:27:24
+version: 1.7
 ---
 
-Time for another post on [lodash](https://lodash.com/) because it is still widely used these days, and it is still useful even in light of new features added to native javaScript in late specs of the language. Regardless of what people say, methods like [\_.sample](https://lodash.com/docs/4.17.4#sample) help to make coding in javaScript faster, and more concise. However it is still not to hard to clone many such methods with plain vanilla javaScript. In this post I will be writing about \_.sample, as well as native javaScript solutions for the same task. These examples might help to show why many still like to use lodash to help get things done faster, and focus more on what really matters when working on a project.
+In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
+
+However it is still not to hard to clone many such methods with plain vanilla javaScript. In this post I will be writing about \_.sample, as well as native javaScript solutions for the same task. These examples might help to show why many still like to use lodash to help get things done faster, and focus more on what really matters when working on a project.
 
 <!-- more -->
 
