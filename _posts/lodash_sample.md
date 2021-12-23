@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 14:23:55
-version: 1.23
+updated: 2021-12-23 14:31:13
+version: 1.24
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -50,7 +50,7 @@ console.log(n);
 
 It is not so hard to do what the lodash sample method does with just plain javaScript my itself. So with that said in this section I will be going over some quick examples of doing what the lodash sample methods does using just plain javaScript by itself. The basic idea of what sample is as far as arrays in concerned will just involve the Math random method alone with the [length property of an array](/2018/12/14/js-array-length/), and some quick rounding using a method like the [Math floor method](/2020/06/15/js-math-round/). There is a bit more to be aware of when it comes to doing the same with objects in general, but it will just involve a few more native javaScript tools to work with.
 
-### 2.1 - A vanilla js solution.
+### 2.1 - A vanilla js solution with an array
 
 It's not like doing this in plain old javaScript is that hard, and if you are just using lodash for this method and nothing else, it is kind of overkill, unless you just use just this one method or some kind of equivalent.
 
@@ -65,6 +65,20 @@ console.log(samp); // (random element from nums)
 
 The think about this is that if I am going to bother with lodash, rather than going pure vanilla as some might say, I would of course use more than just one method, so maybe a more advanced example that makes use of a few lodash methods is in order to really see how lodash does in fact help.
 
+### 2.2 - A vanilla ja solution with an object with named keys
+
+Doing the same with an object in general can be done the same way, assuming that you have a way to create an array of values to begin with from the object. In most situations the Object.values static method will work just fine whe  it comes to quickly creating an array of values from an object in general.
+
+```js
+let obj = {
+    foo: 40,
+    bar: 2,
+    baz: 7
+};
+var values = Object.values(obj);
+var n =  values[ Math.floor( values.length * Math.random() ) ];
+console.log(n);
+```
 
 ## 3 - The grid object example
 
