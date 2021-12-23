@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 14:13:58
-version: 1.20
+updated: 2021-12-23 14:17:16
+version: 1.21
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -48,7 +48,7 @@ console.log(n);
 
 ## 2 - Valina javaScript solutions for what lodash sample does
 
-It is not so hard to do what the lodash sample method does with just plain javaScript my itself. So with that said in this section I will be going over some quick examples of doing what the lodash sample methods does using just plain javaScript by itself.
+It is not so hard to do what the lodash sample method does with just plain javaScript my itself. So with that said in this section I will be going over some quick examples of doing what the lodash sample methods does using just plain javaScript by itself. The basic idea of what sample is as far as arrays in concerned will just involve the Mtah.random method alone with the length property of an array, and some quick rounding using a method like Math.floor. There is a bit more to be aware of when it comes to doing the same with objects in general, but it will just involve a few more native javaScript tools to work with.
 
 ### 2.1 - A vanilla js solution.
 
