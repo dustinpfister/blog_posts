@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 405
-updated: 2021-12-23 14:40:21
-version: 1.53
+updated: 2021-12-23 14:44:30
+version: 1.54
 ---
 
 When working on a javaScript project there might be a need now and then to do some text pattern matching operations with [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions). For example in the event that I am making some kind of parser I would need to find patterns for beginning and ending tags, or other elements of the language that I am parsing. Another thing might come up where I have a certain pattern in text that needs to be replaced with something else, and this pattern that I am looking for is not a fixed static text pattern. Regular expressions can be combined with various methods in the RegExp prototype as well as other build in prototypes, mainly the String prototype to get an array of character index values of various patterns that have to do with the nature of the language. Simply put to find Matches in a string, just for the sake of knowing if a pattern is in a string or not, or to preform some kind of replacement option, or creating some kind of result from one or more pattern matches.
@@ -164,7 +164,7 @@ console.log( str.match(patt) );
 
 Learn by example, and lean by doing, that might be the best way to go about getting regular expressions in javaScript solid once and for all. In other words it is best to just start creating and maintaining some projects that make use of regular expressions. Just reading about them alone is just not enough speaking from my experience at least. Although it would be best to come up with your own ideas for projects that make use of regular expressions, in this section I might touch base on at least a few starting points that come to mind.
 
-Also in this section I might just park a bunch of examples that are common solutions for common problems that can be solved with regular expressions. Such as a pattern that can eb used to match the content between to instances of a kind of pattern for example.
+Also in this section I might just park a bunch of examples that are common solutions for common problems that can be solved with regular expressions. Such as a pattern that can be used to match the content between to instances of a kind of pattern for example.
 
 ### 5.1 - Matching html tags, and negated character sets
 
@@ -206,5 +206,8 @@ console.log(wrapText('this is some test text', 10).split('\n'));
 
 ## 6 -Conclusion
 
-Of course this post does not do regular expressions justice, as there is way more to write about when it comes to using them in various types of projects that call for them. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep paying around with them in order to get a sound grasp on regex. There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex.
+Of course this post does not do regular expressions true justice, as there is way more to write about when it comes to using them in various types of projects that call for the use of regular expression powered pattern matching. I will update this post from time to time of course as I keep running into more note worthy things to write about when it comes to them, but it might be best to just keep playing around with them in order to get a sound grasp on regex. 
+
+There are also other tools at your disposal when it comes to these kinds of tasks, and sometimes it is necessary to make use of those as well rather than depending completely on regex. That is that in some cases using a regular expressions might prove to be a little over kill for certain things. For example if I want to split a string that has patterns of interest between some kind of delimiter that is a static string value then I can just use the string split method and be done with it.
+
 
