@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 14:00:54
-version: 1.16
+updated: 2021-12-23 14:03:42
+version: 1.17
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -19,7 +19,7 @@ Although methods like the lodash sample method can prove to be useful in some si
 
 This is a post on the lodash method \_.sample, and a few related methods, as well as some corresponding plain old javaScript examples as well. It is not a getting started post on lodash, or javaScript in general, so I assume  that you have at least a little experience with the very basics of what is needed before hand. If not you might want to start out with something else that has more to do with [getting started with javaScript](/2018/11/27/js-getting-started/) itself rather than using a user space library such as lodash first.
 
-Also even if you have a fair amount of experience with javaScript thus far it might be best to read up more on various advanced topics surrounding the use of Math.random in native javaScript actually rather than bothering with the lodash sample method. Unless you are using lodash in a project, and the method will work fine for what you need it for in which case maybe you wold want to just use the sample method and move on with things. So then with that said in this sectionI will be starting out with the lodash sample method and other related lodash features before moving on to additional sections that have to do with vanilla javaScript and simple project examples.
+Also even if you have a fair amount of experience with javaScript thus far it might be best to read up more on various advanced topics surrounding the use of [Math.random](/2020/04/21/js-math-random/) in native javaScript actually rather than bothering with the lodash sample method. Unless you are using lodash in a project, and the method will work fine for what you need it for in which case maybe you wold want to just use the sample method and move on with things. So then with that said in this sectionI will be starting out with the lodash sample method and other related lodash features before moving on to additional sections that have to do with vanilla javaScript and simple project examples.
 
 ### 1.1 - Basic array example of \_.sample
 
