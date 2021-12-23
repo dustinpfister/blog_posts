@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 13:32:33
-version: 1.9
+updated: 2021-12-23 13:35:03
+version: 1.10
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
@@ -19,7 +19,7 @@ Although methods like the lodash sample method can prove to be useful in some si
 
 This is a post on the lodash method \_.sample, and a few related methods, as well as some corresponding plain old javaScript examples as well. It is not a getting started post on lodash, or javaScript in general.
 
-## 2 - Basic example of \_.sample
+### 1.1 - Basic example of \_.sample
 
 So Sample is pretty straight forward, just give it an array, and it will return a random element from that array, a common task that comes up a lot when developing.
 
@@ -29,7 +29,9 @@ let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
 console.log( _.sample(nums) ); // (random element from nums)
 ```
 
-### 2.1 - Compare to a vanilla js solution.
+## 2 - Valina javaScript solutions for what lodash sample does
+
+### 2.1 - A vanilla js solution.
 
 It's not like doing this in plain old javaScript is that hard, and if you are just using lodash for this method and nothing else, it is kind of overkill, unless you just use just this one method or some kind of equivalent.
 
@@ -43,6 +45,7 @@ console.log(samp); // (random element from nums)
 ```
 
 The think about this is that if I am going to bother with lodash, rather than going pure vanilla as some might say, I would of course use more than just one method, so maybe a more advanced example that makes use of a few lodash methods is in order to really see how lodash does in fact help.
+
 
 ## 3 - The grid object example
 
@@ -217,3 +220,6 @@ console.log(grid.rnd('col'));
 ```
 
 There are many ways to go about crunching this down a little more I am sure, but you get the idea. I know that it is nice to have a situation in which I am not depending on additional external resources, and as such am juts working directly within javaScripot itself. However these days, as I work on more complex projects, I often do just end up making lodash part of the stack, and if it is there I might as well make use of it.
+
+## 4 - Conclusion
+
