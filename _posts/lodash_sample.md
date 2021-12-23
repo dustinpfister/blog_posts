@@ -5,13 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 13:27:24
-version: 1.7
+updated: 2021-12-23 13:31:29
+version: 1.8
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
 
-However it is still not to hard to clone many such methods with plain vanilla javaScript. In this post I will be writing about \_.sample, as well as native javaScript solutions for the same task. These examples might help to show why many still like to use lodash to help get things done faster, and focus more on what really matters when working on a project.
+Although methods like the lodash sample method can prove to be useful in some situations, it is still not to hard to clone many such methods with plain vanilla javaScript. Also often I might need to do something similar to what the lodash same method does such as getting a random range of elements, or a few single selections from a collection with or without replacement. So in this post I will be writing about \_.sample in lodash, as well as native javaScript solutions for the same task that the lodash sample method does and then some. These examples might help to show why many still like to use lodash to help get things done faster, and focus more on what really matters when working on a project. However they might also show the limitations of lodash, and why it might in fact be best to write, and select solutions from the ground up as they are needed by making some kind of custom made utilty library in place of lodash.
 
 <!-- more -->
 
