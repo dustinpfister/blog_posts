@@ -1,12 +1,12 @@
 ---
-title: The lodash _.sample method for simpler sampling
+title: The lodash sample method, and vanilla javaScript solutions for getting random elements from a collection.
 date: 2018-07-13 12:34:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 234
-updated: 2021-12-23 13:31:29
-version: 1.8
+updated: 2021-12-23 13:32:33
+version: 1.9
 ---
 
 In [lodash](https://lodash.com/) the [\_.sample](https://lodash.com/docs/4.17.4#sample) method will return a random element from a given collection object. That is it will give a random value from a random public key from an array, or one of the own properties of a given object in general.
