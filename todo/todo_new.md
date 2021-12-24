@@ -4,6 +4,10 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
+### ( done 12/24/2021 ) - new post #946 for 12/24/2021 - js-javascript-example-item-probability
+* (done) start new forpost folder for the example I worked out for math random
+* (done) start the post
+
 ### ( done 12/17/2021 ) - new post #945 for 12/17/2021 - lodash_clamp
 * (done) start for post folder
 * (done) be sure to add the \_.wrapNumber method that I made for my post on \_.nth
