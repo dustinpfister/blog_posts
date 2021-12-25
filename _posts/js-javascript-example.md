@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-12-25 08:46:42
-version: 1.73
+updated: 2021-12-25 08:50:48
+version: 1.74
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -67,6 +67,8 @@ This is a starting point for a simple idle game idea that is just another basic 
 This is another idle game prototype that I might work on more at one point or another. The idea was to just have a grid of cells in which plants grow.
 
 ### 1.13 - [Item probability](/2021/12/24/js-javascript-example-item-probability/)
+
+When making a rpg type game of one kind or another such as my turn based RPG that is one of the many javaScript examples in this list, there is a need to have some kind of system that will be used to set the probability of certain classes of items. That is that there are many games that have a kind of class system for items where such as common, rare, epic, ect so with that said this javaScript example aims to be a system that is used to manage what the occurrence of such classes of items is when it comes to drops when enemies are killed, or the changes of such items spawning in certain locations.
 
 ### 1.14 - [A log once method](/2021/03/29/js-javascript-example-log-once/)
 
