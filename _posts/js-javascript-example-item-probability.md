@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-25 09:09:44
-version: 1.5
+updated: 2021-12-25 09:11:51
+version: 1.6
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. When it comes to such game projects they often contain item systems, and when it comes to such item systems one aspect of such systems is to have a class of item. That is that certain items are of low quality and as such they belong to a class often called common or something to that effect, and then there are items that are of the highest quality in the game and as such they belong to a class such as Epic. So then there is creating a system that can be used to set what the probability of a certain class of item occurring.
@@ -17,6 +17,8 @@ This item class module will then not be a whole item system then, let alone a fu
 
 
 ## 1 - The Item class module
+
+Here is the source code of the item class module as it currently stands.
 
 ```js
 var itemClass = (function(){
@@ -84,7 +86,9 @@ var itemClass = (function(){
 }());
 ```
 
-## 2 - Demo
+## 2 - Demo of the item class system
+
+To make sure that this item class system is working the way that I would want it to I will want to work out at least one if not more demos of the module.
 
 ```html
 <html>
