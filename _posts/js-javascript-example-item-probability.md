@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-25 09:11:51
-version: 1.6
+updated: 2021-12-25 09:14:05
+version: 1.7
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. When it comes to such game projects they often contain item systems, and when it comes to such item systems one aspect of such systems is to have a class of item. That is that certain items are of low quality and as such they belong to a class often called common or something to that effect, and then there are items that are of the highest quality in the game and as such they belong to a class such as Epic. So then there is creating a system that can be used to set what the probability of a certain class of item occurring.
@@ -154,3 +154,7 @@ bars.forEach(function(bar, i){
     </body>
 </html>
 ```
+
+## 3 - Conclusion
+
+This javaScript example worked out pretty well for me thus far, and I can not say that there is much more that I would what to add to it for what it is. When it comes to making additional changes and expanding on this example I think that will need to happen in terms of additional modules that make use of this item class module.
