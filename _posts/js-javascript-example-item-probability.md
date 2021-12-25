@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-25 08:42:12
-version: 1.1
+updated: 2021-12-25 08:52:35
+version: 1.2
 ---
 
-This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another.
+This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples.
 
 <!-- more -->
 
