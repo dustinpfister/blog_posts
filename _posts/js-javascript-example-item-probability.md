@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 12:04:16
-version: 1.22
+updated: 2021-12-27 13:11:10
+version: 1.23
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -170,7 +170,90 @@ bars.forEach(function(bar, i){
 
 With this example up and running so far it would seem that this item probability module is working as expected. It might however be called for to work out at least maybe one or two additional demos at some point though as a way to just test out some more things that would be need to work on top of this. However much of that will end up having to do with the nature of the game that would use this, so maybe what really needs to happen is to make one or more simple game projects actually on top of this rather than just a simple demo.
 
-## 3 - Conclusion
+## 3 - Simple mine game example
+
+```html
+<html>
+    <head>
+        <title>Item Probability</title>
+    </head>
+    <body>
+        <div id="out"></div>
+        <input id="mine_manual" type="button" value="mine">
+        <script src="../s1-item-class/item-class.js"></script>
+        <script>
+// ore items
+var ORES = {
+    oreJunk: [['copper', 0.75], ['iron', 1]],
+    oreCommon: [['zink', 0.25], ['lead', 1]]
+};
+// create and return an itemClass object for the given map
+// using itemClass.create
+var getItemClassObj = function(mine){
+    // creating a item classes object
+    return itemClass.create({
+       levelPer: (mine.level - 1) / (mine.maxLevel -1),
+       levelPerRatio: 0.5,
+       pool: mine.oreClasses
+    });
+};
+// create a mine object
+var createMine = function(){
+    var mine = {
+        level: 1,
+        maxLevel: 10,
+        oreCounts: {},
+        oreClasses: [
+            {desc: 'oreJunk', range: [1000, 1000], levelPer: 1},
+            {desc: 'oreCommon', range: [250, 600], levelPer: 0}
+        ],
+        itemClassObj: null
+    };
+    Object.keys(ORES).forEach(function(oreClassKey){
+       ORES[oreClassKey].forEach(function(oreArr){
+           mine.oreCounts[oreArr[0]] = 0;
+       });
+    });
+    mine.itemClassObj = getItemClassObj(mine);
+    return mine;
+};
+// draw the state of a mine object
+var draw = function(mine){
+    var text = 'level: ' + mine.level + '/' + mine.maxLevel + ', ores: [ '
+    text += Object.keys(mine.oreCounts).map(function(oreKey){
+        return oreKey + ': ' + mine.oreCounts[oreKey] + ', '
+    }).join('') + ' ]';
+    document.getElementById('out').innerText = text;
+};
+// single stroke of a mine
+var singleStrike = function(mine){
+    var classObj = itemClass.getRandomItemClass(mine.itemClassObj),
+    oreList = ORES[classObj.desc];
+    var i = 0,
+    len = oreList.length,
+    roll = Math.random();
+    while(i < len){
+       var oreArr = oreList[i];
+       if(roll < oreArr[1]){
+           mine.oreCounts[oreArr[0]] += 1;
+           break;
+       }
+       i += 1;
+    }
+    draw(mine);
+};
+// create mine, draw for first time, and event attachment
+var mine = createMine();
+draw(mine);
+document.getElementById('mine_manual').addEventListener('click', function(e){
+   singleStrike(mine);
+});
+        </script>
+    </body>
+</html>
+```
+
+## 4 - Conclusion
 
 This javaScript example worked out pretty well for me thus far, and I can not say that there is much more that I would what to add to it for what it is. When it comes to making additional changes and expanding on this example I think that will need to happen in terms of additional modules that make use of this item class module. With that said when it comes to relevant additional reading with this module you might want to check out my [post on my turn based RPG javaScript example](/2021/12/10/js-javascript-example-turn-based-rpg/) as that is a full game project that I aim to make use of this module in when it comes to a later revision number of the example.
 
