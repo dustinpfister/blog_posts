@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 11:36:07
-version: 1.17
+updated: 2021-12-27 11:39:51
+version: 1.18
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -160,6 +160,8 @@ bars.forEach(function(bar, i){
     </body>
 </html>
 ```
+
+With this example up and running so far it would seem that this item probability module is working as expected. It might however be called for to work out at least maybe one or two additional demos at some point though as a way to just test out some more things that would be need to work on top of this. However much of that will end up having to do with the nature of the game that would use this, so maybe what really needs to happen is to make one or more simple game projects actually on top of this rather than just a simple demo.
 
 ## 3 - Conclusion
 
