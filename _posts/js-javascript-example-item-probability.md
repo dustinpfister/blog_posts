@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 11:59:47
-version: 1.21
+updated: 2021-12-27 12:04:16
+version: 1.22
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -20,6 +20,10 @@ This item class module will then not be a whole item system then, let alone a fu
 ## What to know first
 
 This is a javaScript project example that involves a single javaScript module and a few simple demo projects that make use of that module. This is then not any kind of getting started type post on javaScript in general and I assume that you have at least some background with client side javaScript. If not you might want to check out my main getting started with javaScript post first if you are still very new to javaScript. Also in some of the demos I am making use of canvas elements as a way to render graphics with jaavScript code. Again this is something that you should know a thing or two about before hand as getting into all the various little details about canvas elements is outside the scope of this post.
+
+### The source code examples in this post are on Guthub
+
+The source code example for this post can be fount in my [test vjs repository on Github](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-item-probability). This test vjs repository is where I also have all the source code examples for my [many other blog posts](/categories/js/) on various native javaScript examples, and features in which I am just working with the javaScript language itself.
 
 ## 1 - The Item class module
 
