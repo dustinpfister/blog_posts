@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-27 14:30:47
-version: 1.16
+updated: 2021-12-27 14:31:59
+version: 1.17
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method ofr a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -113,3 +113,8 @@ console.log(topPosts.pop().wordCount); // 1800
 console.log(topPosts.pop().wordCount); // 1600
 console.log(topPosts.pop().wordCount); // 800
 ```
+
+## 3 - Conclusion
+
+That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content.
+
