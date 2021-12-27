@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 09:20:06
-version: 1.14
+updated: 2021-12-27 11:26:13
+version: 1.15
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -90,7 +90,9 @@ var itemClass = (function(){
 
 ## 2 - Demo of the item class system
 
-To make sure that this item class system is working the way that I would want it to I will want to work out at least one if not more demos of the module. For this demo I have made just a very simple canvas project that creates a collection of bars that gives a graphical idea of how often certain item classes will happen when i set the range values for each in various different kinds of ways.
+To make sure that this item class system is working the way that I would want it to I will want to work out at least one if not more demos of the module. For this demo I have made just a very simple canvas project that creates a collection of bars that gives a graphical idea of how often certain item classes will happen over a given amount of item drops when I set the range values for each class in various different kinds of ways.
+
+For example this example I just came up with some fixed static values for the various options that I give to the create method of the item probability module. For example I am setting the levelPer value to 1 with a number literal, but in an actual use case example of this in a game this levelPer value will be set by a players charterer level, or an upgrade option of some kind.
 
 ```html
 <html>
