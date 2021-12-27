@@ -5,11 +5,11 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-27 14:31:59
-version: 1.17
+updated: 2021-12-27 14:34:32
+version: 1.18
 ---
 
-So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method ofr a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
+So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
 
 The \_.sortBy method is another option compared to the \_.find method also, the \_.find method can be used to find just one item in a collection, while the \_.sortBy method can be used to sort the whole collection, I can then take just the first element, or the top three. So lets take a look at some examples of sorting with lodash, and native javaScript as well.
 
@@ -116,5 +116,5 @@ console.log(topPosts.pop().wordCount); // 800
 
 ## 3 - Conclusion
 
-That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content.
+That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash) in general, or maybe one of my [many other lodash posts](/categories/lodash/).
 
