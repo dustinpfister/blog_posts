@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 09:14:40
-version: 1.12
+updated: 2021-12-27 09:17:46
+version: 1.13
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -20,7 +20,7 @@ This item class module will then not be a whole item system then, let alone a fu
 
 ## 1 - The Item class module
 
-Here is the source code of the item class module as it currently stands as a [javaScript module](/2019/03/12/js-javascript-module/) that follows an [IIFE pattern](/2020/02/04/js-iife/). There just needs to be two public methods for what I had in mind for this module one of which is used to create a main object that will be used for the other public methods of this module, and the other is a method that is used to get a random item class object from a pool of such objects.
+Here is the source code of the item class module as it currently stands as a [javaScript module](/2019/03/12/js-javascript-module/) that follows an [IIFE pattern](/2020/02/04/js-iife/). There just needs to be two public methods for what I had in mind for this module one of which is used to create a main object that will be used for the other public methods of this module, and the other is a method that is used to get a random item class object from a pool of such objects. When it comes to using this module in an over all larger project I might want to add a few more, but the general idea is to just have a collection of objects for each class of object, and each item class object will have a description property that is the name of that item class, as well as a range property that is used to store point values that in turn can be used to set the probability of that class of item happening.
 
 ```js
 var itemClass = (function(){
