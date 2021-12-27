@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 11:39:51
-version: 1.18
+updated: 2021-12-27 11:42:32
+version: 1.19
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -165,4 +165,4 @@ With this example up and running so far it would seem that this item probability
 
 ## 3 - Conclusion
 
-This javaScript example worked out pretty well for me thus far, and I can not say that there is much more that I would what to add to it for what it is. When it comes to making additional changes and expanding on this example I think that will need to happen in terms of additional modules that make use of this item class module.
+This javaScript example worked out pretty well for me thus far, and I can not say that there is much more that I would what to add to it for what it is. When it comes to making additional changes and expanding on this example I think that will need to happen in terms of additional modules that make use of this item class module. With that said when it comes to relevant additional reading with this module you might want to check out my post on my turn based RPG javaScript example as that is a full game project that I aim to make use of this module in when it comes to a later revision number of the example.
