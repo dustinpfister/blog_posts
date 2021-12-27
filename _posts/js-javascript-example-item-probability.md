@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 946
-updated: 2021-12-27 13:12:11
-version: 1.24
+updated: 2021-12-27 13:14:54
+version: 1.25
 ---
 
 This [javaScript example](/2021/04/02/js-javascript-example/) post will be on a module that has to do with setting what the probability should be for various classes of items for a game of one kind or another, mostly RPG style games such as my [turn based RPG game prototype](/2021/12/10/js-javascript-example-turn-based-rpg/) that is another one of my javaScript examples. The source code of this example started out as a little source code project for my post on the [Math.random method](/2020/04/21/js-math-random/) in native javaScript as there are a lot of little details about the use of the method beyond just the method itself and a few simple expressions using the Math.random method.
@@ -172,7 +172,7 @@ With this example up and running so far it would seem that this item probability
 
 ## 3 - Simple mine game example
 
-So then for this demo of the module I worked out a very simple game where I just click a mine button and numbers for various types of ores will go up.
+So then for this demo of the module I worked out a very simple game where I just click a mine button and numbers for various types of ores will go up. This is the the first step forward to some kind of actual use case example of this module by making some additional components outside of the module. Some of the code that to do with additional logic that will compose an over all item system.
 
 ```html
 <html>
