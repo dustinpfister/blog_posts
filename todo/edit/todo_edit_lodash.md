@@ -2,8 +2,7 @@
 ## lodash ( /yyyy/mm/dd/lodash-* )
 <!--###### ########## ########## #######-->
 
-### () - lodash_mixin ( add example )
-* add \_.wrapNumber example from lodash_nth
+<!-- LINKS -->
 
 ### () - lodash_split (links_old)
 * get to 1,000+ words
@@ -20,6 +19,16 @@
 ### () - lodash\_uniqueid (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
+
+<!-- WANT TO EXPAND -->
+
+### () - lodash_keys ( old )
+* update with keyby example in lodash sortby post
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_mixin ( add example )
+* add \_.wrapNumber example from lodash_nth
 
 <!-- OLD POSTS -->
 
