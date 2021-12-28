@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 12:26:27
-version: 1.35
+updated: 2021-12-28 12:29:44
+version: 1.36
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -81,7 +81,7 @@ console.log(a);
 
 ### 1.4 - Re keying an object with sort by and other lodash methods
 
-So then because the sort by method and other lodash methods like the map method are collection methods this helpers with the process of doing things with collections in general such as creating an object over again, but with the named keys sorted in a new away.
+So then because the sort by method and other lodash methods like the map method are collection methods this helpers with the process of doing things with collections in general such as creating an object over again, but with the named keys sorted in a new away. That is that when using a method like the lodash keys method to get an array of key names of an object the order of the key names is consistent with the order in which they are defined when creating the object. If I want to create the same object again, but with the keys sorted in a new order by way of the value rather than the name of the keys this will require a little leg work.
 
 ```js
 let obj = {
