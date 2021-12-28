@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 09:16:20
-version: 1.19
+updated: 2021-12-28 10:51:54
+version: 1.20
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -33,15 +33,28 @@ This is all fine and good for a very basic example of the lodash sort by method,
 
 ### 1.2 - Sort an array of numbers by an expression
 
-I can give a method as a second argument that can be used to define an expression for sorting.
+I can give a method as a second argument that can be used to define an expression for sorting rather than using the default sort behaviors that might not always work the way I want it to.
 
 ```js
+// using sortBy method by giving a function with
+// custom sort logic
 let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
-let lessThanTen = _.sortBy(nums, function (n) {
-  return n < 10;
+let a = _.sortBy(nums, function (n) {
+    if (n > 0) {
+        return Math.abs(n) * -1;
+    }
+    return Math.abs(n);
 });
-console.log(lessThanTen);
-// [ 42, 52, 27, 158, 5, -5, 7, 6, 3, -1 ]
+console.log(a);
+// [ 158, 52, 42, 27, 7, 6, 5, 3, -1, -5 ]
+ 
+// compare to just using _.sortBy with the 
+// source array itself, also the sortBy method
+// will not mutate the source array in place
+console.log(_.sortBy(nums));
+// [ -5, -1, 3, 5, 6, 7, 27, 42, 52, 158 ]
+console.log(nums);
+// [ 5, 42, -5, 7, 6, 3, 52, 27, 158, -1 ]
 ```
 
 That is all fine and good, but in many projects I am working with an array of objects. So lets look at some more basic examples.
