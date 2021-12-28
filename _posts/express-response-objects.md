@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 427
-updated: 2019-04-27 19:57:40
-version: 1.13
+updated: 2021-12-28 09:27:24
+version: 1.14
 ---
 
 An [express response](https://expressjs.com/en/api.html#res) object is one of four possible arguments that is passed to an [express middleware](/2018/06/25/express-middleware/) function. Expressjs has to do with the use of middleware that does something with incoming http requests. So [request objects](/2018/05/26/express-request-objects) have to do with the incoming http request from a client system, and response objects have to do with the response to that system. The other two arguments in an middleware method have to do with error handling, and passing along control to another middleware method. However in this post I will be focusing on just response objects today.
@@ -36,7 +36,7 @@ If I where to pass an object rather than a string the res.send methods will send
 
 ### 2.2 - Express res.render response method
 
-The render express response object method is what can be used in conjunction with template files and a view engine to render html server side, or [express view](/2019/04/25). In this basic example I am [using ejs](/2018/05/25/express-rendering-with-ejs) as a template system, but there are many other options with this as well such as [pug](/2019/04/16/express-pug/).
+The render express response object method is what can be used in conjunction with template files and a view engine to render html server side. This will require having an [express view](/2019/04/25/express-view/) folder at some location in the project folder, or somewhere in the file system of a deployment that will contain template files. In this basic example I am [using ejs](/2018/05/25/express-rendering-with-ejs) as a template system, but there are many other options with this as well such as [pug](/2019/04/16/express-pug/).
 
 ```js
 let express = require('express'),
