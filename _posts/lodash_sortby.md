@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:43:52
-version: 1.29
+updated: 2021-12-28 11:49:33
+version: 1.30
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -132,7 +132,7 @@ There are a few draw backs to the use of the array sort method one of which is t
 
 ### 3.1 - Simple array of numbers example of array sort
 
-For this example I am sorting an array of numbers with the array sort method by itself without any custom logic given in the form of a function as an argument for the array sort method. 
+For this example I am sorting an array of numbers with the array sort method by itself without any custom logic given in the form of a function as an argument for the array sort method. The result of doing so might not always be what one would expect, or yet again maybe it will be depending on what you think the default sorting behavior should be for a method such as this. Simply put the default sorting of primitives will be that of alphabetical rather than numerical value. This might be desired if we are talking about an array of sub strings, but maybe not so much when it comes to an array of numbers.
 
 ```js
 let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
@@ -145,6 +145,8 @@ console.log(a);
 console.log(nums);
 // [ -1, -5, 158, 27, 3, 42, 5, 52, 6, 7 ]
 ```
+
+This might not be a deal breaker when it comes to using the array sort method though as this can easily be resolved by just passing a custom sort function. Which is a practice that should generally always be done when using a method like this away is it is not always such a great idea to leave things to whatever the default is anyway.
 
 ### 3.2 - Using a function example
 
