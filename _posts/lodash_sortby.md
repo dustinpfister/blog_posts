@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 10:56:51
-version: 1.21
+updated: 2021-12-28 11:14:45
+version: 1.22
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -123,7 +123,48 @@ console.log(topPosts.pop().wordCount); // 1600
 console.log(topPosts.pop().wordCount); // 800
 ```
 
-## 3 - Conclusion
+## 3 - The vanilla javaScript array sort by method
+
+### 3.1 - Simple array of numbers example
+
+```js
+let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
+let a = nums.sort();
+// by default the sort method will not sort values by number
+// value
+console.log(a);
+// [ -1, -5, 158, 27, 3, 42, 5, 52, 6, 7 ]
+// this will mutate in place
+console.log(nums);
+// [ -1, -5, 158, 27, 3, 42, 5, 52, 6, 7 ]
+```
+
+### 3.2 - Using a function example
+
+```js
+// using array sort with a function
+let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
+ 
+let a = nums.sort(function (a, b) {
+    if (a > b) {
+        return -1;
+    }
+    if (a < b) {
+        return 1;
+    }
+    return 0;
+});
+console.log(a);
+// [ 158, 52, 42, 27, 7, 6, 5, 3, -1, -5 ]
+ 
+// compared to sort by itself
+console.log(nums.sort());
+// [ -1, -5, 158, 27, 3, 42, 5, 52, 6, 7 ]
+console.log(nums);
+// [ -1, -5, 158, 27, 3, 42, 5, 52, 6, 7 ]
+```
+
+## 4 - Conclusion
 
 That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash) in general, or maybe one of my [many other lodash posts](/categories/lodash/).
 
