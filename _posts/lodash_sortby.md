@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:39:32
-version: 1.28
+updated: 2021-12-28 11:43:52
+version: 1.29
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -173,7 +173,7 @@ console.log(nums);
 
 ## 4 - Conclusion
 
-That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash) in general, or maybe one of my [many other lodash posts](/categories/lodash/). However these days as of the last time I edited this post at least I have been sinking a whole lot of time improving the quality of my various posts on vanilla javaScript related topics so with that said there is checking out my [main postson vanilla javaScript project examples](/2021/04/02/js-javascript-example/).
+That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash) in general, or maybe one of my [many other lodash posts](/categories/lodash/). However these days as of the last time I edited this post at least I have been sinking a whole lot of time improving the quality of my various posts on vanilla javaScript related topics so with that said there is checking out my [main post on vanilla javaScript project examples](/2021/04/02/js-javascript-example/).
 
-
+I do get around to editing my lodash content now and then, and this post is of course no exception. Lat time I cam around to editing this post a little I have found that there was a lot that needed to change as some of the examples did not do a good job of showing how the lodash sort by method works when it comes to creating a custom sort function to use with it. I also found that I needed to create and expand a section on using vanilla javaScript also which is something that I regard as just a standard when writing, or editing one of these posts on lodash now. I have some things planed out all ready for future edits of this post, but if there is anything that needs to be added, or revised be sure to bring it up in the comments section if you feel inclined to do so.
 
