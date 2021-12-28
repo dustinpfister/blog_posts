@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:30:27
-version: 1.26
+updated: 2021-12-28 11:35:22
+version: 1.27
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -17,7 +17,9 @@ The \_.sortBy method is another option compared to the \_.find method also, the 
 
 ## 1 - lodash sort by method and what to know first
 
-This is one of my many posts on lodash methods, this one is on the \_.sortBy method that works like the sort array prototype method in native javaScript, but works a little differently. Here I will be writing about that method a bit, as well as the corresponding Array.sort when it comes to just working with javaScript by itself. This is not a getting started post on lodash, or javaScript in general.
+This is one of my many posts on lodash methods, this one is on the \_.sortBy method that works like the sort array prototype method in native javaScript, but works a little differently. Here in this section I will be starting out with the lodash sort by method, and I will be getting to vanilla javaScript alternatives to this method later in the content of this post. 
+
+This is not a getting started post on lodash, or javaScript in general so I assume that you have at least some background with javaScript in general and how to go about using an external javaScript library such as lodash. If not then much of the content in this post might prove to still be a bit to advanced for you at this time. So then it might be a good idea to take a step back and start out with some kind of [getting started with javaScript](/2018/11/27/js-getting-started/) type post first.
 
 ### 1.1 - Basic example of lodash \_.sortBy
 
