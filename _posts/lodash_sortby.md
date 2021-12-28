@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 10:51:54
-version: 1.20
+updated: 2021-12-28 10:56:51
+version: 1.21
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -33,7 +33,7 @@ This is all fine and good for a very basic example of the lodash sort by method,
 
 ### 1.2 - Sort an array of numbers by an expression
 
-I can give a method as a second argument that can be used to define an expression for sorting rather than using the default sort behaviors that might not always work the way I want it to.
+I can give a method as a second argument that can be used to define an expression for sorting rather than using the default sort behaviors that might not always work the way I want it to. Inside the body of the function that I give to sort by the first argument will be a given array element value, or the value of a named object key in the event of a named collection object of some kind. When it comes to the return value in which situations the return value should be a number and the lower the number is the closer to an index value of zero the value will be in the resulting array returned by the lodash sortBy method.
 
 ```js
 // using sortBy method by giving a function with
