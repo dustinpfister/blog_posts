@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:35:22
-version: 1.27
+updated: 2021-12-28 11:39:32
+version: 1.28
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -173,5 +173,7 @@ console.log(nums);
 
 ## 4 - Conclusion
 
-That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash) in general, or maybe one of my [many other lodash posts](/categories/lodash/).
+That will be it for now when it comes to the lodash sort by method as well as various other lodash features that I have covered in this content. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash) in general, or maybe one of my [many other lodash posts](/categories/lodash/). However these days as of the last time I edited this post at least I have been sinking a whole lot of time improving the quality of my various posts on vanilla javaScript related topics so with that said there is checking out my [main postson vanilla javaScript project examples](/2021/04/02/js-javascript-example/).
+
+
 
