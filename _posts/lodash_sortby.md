@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:54:59
-version: 1.32
+updated: 2021-12-28 12:21:07
+version: 1.33
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -61,7 +61,44 @@ console.log(nums);
 
 That is all fine and good, but in many projects I am working with an array of objects. So lets look at some more basic examples.
 
-### 1.3 - Arrays of Objects and lodash sortby
+### 1.3 - An object with named keys rather tha an array
+
+```js
+// lodash sort by will work with objects
+// in general as it is a collection object
+let obj = {
+    foo: 42,
+    bar: 0,
+    baz: -7,
+    zoo: 5
+};
+let a = _.sortBy(obj);
+console.log(a);
+// [ -7, 0, 5, 42 ]
+```
+
+### 1.4 - Re keying an object with sort by and other lodash methods
+
+```js
+let obj = {
+    foo: 42,
+    bar: 0,
+    baz: -7,
+    zoo: 5
+};
+ 
+// re key by value
+let a = _.chain( obj ).map( (n, key) => { return [n,key]; } ).sortBy((arr) => { return arr[0]; }).value();
+let newObj = {};
+let b = _.forEach(a, (arr) => { newObj[arr[1]] = arr[0]; });
+ 
+console.log( _.keys(obj) );
+// [ 'foo', 'bar', 'baz', 'zoo' ]
+console.log( _.keys(newObj) );
+//[ 'baz', 'bar', 'zoo', 'foo' ]
+```
+
+### 1.5 - Arrays of Objects and lodash sortby
 
 When it comes to an array of objects a property name can be given as a second argument to a number value that will be used t sort the collection. If that does not cut it a function can be given to create and return a numbered value that will be used to sort the collection.
 
