@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-27 14:34:32
-version: 1.18
+updated: 2021-12-28 09:16:20
+version: 1.19
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -24,12 +24,8 @@ This is one of my many posts on lodash methods, this one is on the \_.sortBy met
 For a basic example of \_.sortBy why not start off with just using it to sort an array of numbers. It does not get more basic than that does it. To sort an array of numbers by numerical value, I just have to give the array of numbers to \_.sortBy. No need to give and method as the second argument.
 
 ```js
-let _ = require('lodash');
- 
 let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
- 
 console.log(_.sortBy(nums));
- 
 //[ -5, -1, 3, 5, 6, 7, 27, 42, 52, 158 ]
 ```
 
@@ -40,10 +36,10 @@ This is all fine and good for a very basic example of the lodash sort by method,
 I can give a method as a second argument that can be used to define an expression for sorting.
 
 ```js
+let nums = [5, 42, -5, 7, 6, 3, 52, 27, 158, -1];
 let lessThanTen = _.sortBy(nums, function (n) {
   return n < 10;
 });
- 
 console.log(lessThanTen);
 // [ 42, 52, 27, 158, 5, -5, 7, 6, 3, -1 ]
 ```
