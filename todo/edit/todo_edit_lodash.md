@@ -35,9 +35,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash_sortby ( old )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 12/28/2021 ) - lodash_sortby ( old )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/23/2021 ) - lodash_sample ( old )
 * (done) 750+ words
