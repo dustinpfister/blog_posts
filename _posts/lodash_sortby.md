@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 12:21:07
-version: 1.33
+updated: 2021-12-28 12:24:01
+version: 1.34
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -62,6 +62,8 @@ console.log(nums);
 That is all fine and good, but in many projects I am working with an array of objects. So lets look at some more basic examples.
 
 ### 1.3 - An object with named keys rather tha an array
+
+One of the great things about the lodash sort by method is that this sort by method is one of the many examples of a collection method in lodash. What I mean by that is that the lodash sort by method will not just work with arrays, but with objects in general including objects that are not even array like objects. So then I can pass any kind of object that I would want to sort to the sort by method including objects with named rather than numbed public key names.
 
 ```js
 // lodash sort by will work with objects
