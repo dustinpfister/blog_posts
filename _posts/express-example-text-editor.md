@@ -5,8 +5,8 @@ tags: [express,node.js]
 layout: post
 categories: express
 id: 431
-updated: 2019-05-07 22:08:13
-version: 1.21
+updated: 2021-12-28 09:20:58
+version: 1.22
 ---
 
 I want to write a few posts on [express examples](/2019/04/30/express-example/) that are actual full working application examples, rather than just simple hello world type examples. There is of course the typical todo app that is often the case, but I want to make a few more that go beyond that into other examples as well. As of late I have been transitioning from using windows to linux, and so far have been having a hard time finding a text editor that stacks up to notepad++ which I have grown accustomed to in windows. So why not make my own text editor on top of node.js, and express that I can take with me to any operating system that I can get node.js installed on? Sounds like a good idea to me compared to being dependent on a windows exclusive app, so I put together a quick basic [expressjs](https://expressjs.com/) powered text editor example.
@@ -19,7 +19,7 @@ For the sake of this post I am thinking more in terms of an express example that
 
 ### 1.1 - Setup
 
-For this project I am just using express when it comes to node.js dependencies, and I am just using a vanilla js client system. In the root of the project folder I have a folder for [express middleware](/2018/06/15/express-middleware/), and a public folder for all assets the compose the client system. 
+For this project I am just using express when it comes to node.js dependencies, and I am just using a vanilla js client system. In the root of the project folder I have a folder for [express middleware](/2018/06/25/express-middleware/), and a public folder for all assets the compose the client system. 
 
 ```
 $ mkdir express-example-text-editor
