@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:21:27
-version: 1.24
+updated: 2021-12-28 11:28:04
+version: 1.25
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -125,7 +125,8 @@ console.log(topPosts.pop().wordCount); // 800
 
 ## 3 - The vanilla javaScript array sort by method
 
-I am seeing a lot of content on the open web that has to do with all the various reasons as to why it is that one should not use lodash. Some of them are good points, others make me thing that not everything is seeing the full value of what lodash about. In any case I have made a habit of making sure that I have at least one section in my posts on lodash that has to do with the topic of not using lodash. With that said when it comes to not using lodash, and therefore the lodash sort by method one will be forced to use other options that there are to work with when just using javaScript by itself. So then the first native javaScript feature that comes to mind when it comes to sorting would be the [array sort method](/2019/12/02/js-array-sort/) of the [array prototype object](/2018/12/10/ja-array/).
+I am seeing a lot of content on the open web that has to do with all the various reasons as to why it is that one should not use lodash. Some of them are good points, others make me thing that not everything is seeing the full value of what lodash about. In any case I have made a habit of making sure that I have at least one section in my posts on lodash that has to do with the topic of not using lodash. With that said when it comes to not using lodash, and therefore the lodash sort by method one will be forced to use other options that there are to work with when just using javaScript by itself. So then the first native javaScript feature that comes to mind when it comes to sorting would be the [array sort method](/2019/12/02/js-array-sort/) of the [array prototype object](/2018/12/10/js-array/).
+There are a few draw backs to the use of the array sort method one of which is that it will mutate an array in place rather that returning a new array. So the right off the bat there is that problem that makes things a little more complicated if I do not want to mutate in place meaning that I will need to preform a shallow clone of a source array first. Another thing about the array sort method is the default sort that will happen with an array of number primitives rather than sub strings, by default the sorting is preformed as alphabetical rather than that of number values. Most of the sorting that I have to do is with number values, so then I always need to give a custom sort function when using it. Yet another draw back is that the array sort method is simply that, and array method and not a collection method. So then when it comes to sorting named collections that is something that I can not do, at least not with the array sort method by itself anyway.
 
 ### 3.1 - Simple array of numbers example
 
