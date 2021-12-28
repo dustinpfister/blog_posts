@@ -5,8 +5,8 @@ tags: [js,express,node.js]
 layout: post
 categories: express
 id: 193
-updated: 2019-09-08 16:07:07
-version: 1.11
+updated: 2021-12-28 09:30:41
+version: 1.12
 ---
 
 In this post I will be writing about serving static files in a node.js environment using [express.js](https://expressjs.com/). The process is pretty straight forward using an express.js built in middleware for doing so ([express.static](https://expressjs.com/en/4x/api.html#express.static)). The express static middleware can be used in conjunction with or as a replacement for a [view engine](/2019/04/25/express-view). There are some additional options of interest as well thought so lets take a look.
@@ -21,7 +21,7 @@ I try to make it a habit to always mention what version of a framework, library,
 
 ## 1.1 - Getting started with a static file server with just nodejs alone
 
-This is a post on express, but if you want to work out a pure node static javaScript only solution using just the nodejs build in modules like http and path then I have [wrote a post on using the node http module to set up a static server](/2017/12/04/nodejs-simple-static-server-file/). The process of doing so is a lot more involve I find, and it opens up all kinds of cans of worms. There is a lot to say about express and why it is a great choice for a server side frame work though, setting up a static server with express is a breeze and then there is getting into middleware design that will take much longer with just native javaScript.
+This is a post on express, but if you want to work out a pure node static javaScript only solution using just the nodejs build in modules like http and path then I have [wrote a post on using the node http module to set up a static server](/2017/12/04/nodejs-simple-static-sever-file/). The process of doing so is a lot more involve I find, and it opens up all kinds of cans of worms. There is a lot to say about express and why it is a great choice for a server side frame work though, setting up a static server with express is a breeze and then there is getting into middleware design that will take much longer with just native javaScript.
 
 ## 2 - A Basic express static server example
 
