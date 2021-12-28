@@ -5,8 +5,8 @@ tags: [js,mongodb]
 layout: post
 categories: lodash
 id: 223
-updated: 2021-12-28 11:49:33
-version: 1.30
+updated: 2021-12-28 11:51:11
+version: 1.31
 ---
 
 So I have come to find that I like the [lodash](https://lodash.com/) [\_.sortBy](https://lodash.com/docs/4.17.10#sortBy) method more so than the native [Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method for a few various reasons. I do still use it of course when it comes to working with a project where lodash is not part of the stack, it is just that the method works in a way that I find more natural when it comes to the return value and arguments used for the function that is passed to the sort by method. I will be elaborating what I mean by that in this post. 
@@ -146,7 +146,7 @@ console.log(nums);
 // [ -1, -5, 158, 27, 3, 42, 5, 52, 6, 7 ]
 ```
 
-This might not be a deal breaker when it comes to using the array sort method though as this can easily be resolved by just passing a custom sort function. Which is a practice that should generally always be done when using a method like this away is it is not always such a great idea to leave things to whatever the default is anyway.
+This might not be a deal breaker when it comes to using the array sort method though as this can easily be resolved by just passing a custom sort function. Which is a practice that should generally always be done when using a method like this away is it is not always such a great idea to leave things to whatever the default is anyway. The mutation in place concern can also be addresses by just making use of one of many little tricks for creating a shallow clone of an array in this case also, so lets look at a few more examples of the array sort method that might help to address some of these concerns.
 
 ### 3.2 - Using a function example
 
