@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2020-01-09 21:11:56
-version: 1.11
+updated: 2021-12-29 09:09:58
+version: 1.12
 ---
 
-Writing more content on [lodash](https://lodash.com/) this month for now, and have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. The method addresses something that comes up a lot now and then when developing projects, so it deserves a post. Also in these lodash posts I often take a moment to brush up on how hard it is to go about making a vanilla js solution, or if there are native methods that can be used, and as such this post will be no exception. So lets take a look at \_.uniqueId, and some other solutions for generating unique ids.
+I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
+
+Also in these lodash posts I often take a moment to brush up on how hard it is to go about making a vanilla js solution, or if there are native methods that can be used, and as such this post will be no exception. making this kind of method is not all that hard when it comes to making a kind of custom utility library from the ground up. Also such methods might prove as a great simple starting point for learning a thing or two about [closures in javaScript](/2019/02/22/js-javascript-closure/). So lets take a look at \_.uniqueId, and some other solutions for generating unique ids.
 
 <!-- more -->
 
