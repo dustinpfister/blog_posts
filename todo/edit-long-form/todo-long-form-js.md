@@ -123,9 +123,11 @@ list:
       Google Trends: "array reduce", "js array reduce"
         I edited this post on 11/25/2021 and went off the deep end with it a little as such the post is all ready close to 3000 words to begin with. The array reduce method is also an interesting topic so there is a lot more to write about with it when it comes to use case examples. With that said I thunk it will be fun to make a canvas examples involving just some simple objects moving around and using the array reduce method to reduce as well as increase an array that is a section of objects in an object pool.
 * ( done 11/25/2021 ) get the post to 2,750+ words
-* get the post to 3,000+ words
-* get the post to 3,250+ words
-
+* ( done 12/29/2021 ) get the post to 3,000+ words
+* ( done 12/29/2021 ) get the post to 3,250+ words
+* get the post to 3,500+ words
+* get the post to 3,750+ words
+* get the post to 4,000+ words
 
 ## js-array-fill( Cool library idea I would like to create and write about )
     justification:
