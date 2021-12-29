@@ -33,18 +33,9 @@
       Intrinsic Value: Not much for me at least, this is a trivial topic
       Search Console: Best preforming post for js cat, "innerhtml alternative" keyword looking good
       Google Trends: "innerhtml", "inner html","js innerhtml"
+        This is a very dull subject for me, however it is the best preforming post in the js category as of 11/09/2021 so I will need to expand and improve it for that reason. The post is pulling in some clicks from a few keywords all ready, and it would seem that the "innerhtml" keyword would be the white whale keyword for this topic when it comes to doing keyword research on this topic at Google trends. So then there is all ready proof that this is a subject that is in demand, and also I can see lots of room for growth. 
 
-        This is a very dull subject for me, however it is the best preforming post in the js category as of 11/09/2021 so
-        I will need to expand and improve it for that reason. The post is pulling in some clicks from a few keywords
-        all ready, and it would seem that the "innerhtml" keyword would be the white whale keyword for this topic when it comes
-        to doing keyword research on this topic at Google trends. So then there is all ready proof that this is a subject that 
-        is in demand, and also I can see lots of room for growth. 
-
-        As for the Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far witch is "innerhtml alternative". For example there is not just thinking in terms 
-        of DOM element when it comes to displaying data, or results in a web page. So maybe I can get away with writing about 
-        things beyond just that of the document.createElement method such as canvas elements and SVG. After all the whole 
-        reason of using inner html is often for the sake of generating something to display some info or data, and that can 
-        be done with things other than just with DOM Elements in client side javaScript.
+        As for the Intrinsic value problem though the best angle might be to expand a lot more with the topic of what the best preforming keyword is thus far witch is "innerhtml alternative". For example there is not just thinking in terms of DOM element when it comes to displaying data, or results in a web page. So maybe I can get away with writing about things beyond just that of the document.createElement method such as canvas elements and SVG. After all the whole reason of using inner html is often for the sake of generating something to display some info or data, and that can be done with things other than just with DOM Elements in client side javaScript.
 
 * ( done 11/09/2021 ) get to at least 2,400+ words for starters
 * ( done 12/17/2021 ) get post to the min 3,000+ words
@@ -111,13 +102,19 @@ list:
 * get the post to 2,750+ words
 * get the post to 3,000+ words
 
-## js-svg ( A whole lot to write about )
+## js-javascript-svg ( A whole lot to write about )
     justification:
       Intrinsic Value: There is a lot to write about, and a lot more to learn and research
       Search Console: None, doing very poorly thus far
       Google Trends: "javascript svg", "js svg", "svg viewbox"
           This is very much an interesting topic, and a nice break from the usual content that I like to write on canvas so it might help when it comes to getting burnt out on that topic. The post can be expanding on a whole lot, so it would be easy to come up with over three thousand words of substance on this which is also great. Thus far the post is preforming very poorly in search console, but that is not at all because of lack of search interest on SVG. Improving the quality of the post might help then so this is a good post to have on this list
-* get the post to 3000+ words
+* get the post to 1,500+ words
+* get the post to 1,750+ words
+* get the post to 2,000+ words
+* get the post to 2,250+ words
+* get the post to 2,500+ words
+* get the post to 2,750+ words
+* get the post to 3,000+ words
 
 ## js-array-reduce ( Fun canvas example planed )
     justification:
