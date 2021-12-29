@@ -1,12 +1,12 @@
 ---
 title: The unique id method in lodash, and alternatives
 date: 2018-10-03 18:14:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 10:37:52
-version: 1.20
+updated: 2021-12-29 10:39:40
+version: 1.21
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -106,4 +106,4 @@ A method such as this results in a value where there is still a non zero change 
 
 This is not really one of the most compelling methods that I can think of that warrant the use of the full lodash library. The functionally of this method can be quickly implemented with vanilla javaScript, and often it is something that should be custom tailored anyway when it comes to the various use case examples in which a method such as this is called for. Just stepping a number can make a value unique in a relative way, but it is not the same thing as more complex method that might involve additional data that helps to make a far more unique value. For example there is not just encoding a count variable value, but also additional info that has to do with certain user specific things such as a user name for example.
 
-If you enjoyed this post and would like to read up more on some other related topics to this post there is checking gout my main post on lodash in general. I have wrote many other posts on lodash many of which are on other specific methods such as the unique id method, and various other topics surrounding lodash.
+If you enjoyed this post and would like to read up more on some other related topics to this post there is checking gout my [main post on lodash in general](/2019/02/15/lodash/). I have wrote [many other posts on lodash](/categories/lodash/) many of which are on other specific methods such as the unique id method, and various other topics surrounding lodash.
