@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 09:18:00
-version: 1.14
+updated: 2021-12-29 09:22:40
+version: 1.15
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -21,7 +21,7 @@ This is a post on the \_.uniqueId method in lodash which is a popular javaScript
 
 ### 1.1 - An \_.uniqueId example
 
-Using the \_.uniqueId method is fairly straight forward to use, I just need to call it, passing an optional prefix as the first argument, and a unique id will be returned.
+Using the \_.uniqueId method is fairly straight forward to use, I just need to call it, passing an optional prefix as the first argument, and a unique id will be returned by the method. That is all there is to it when it comes to just using this specific method by itself.
 
 ```js
 let _ = require('lodash');
