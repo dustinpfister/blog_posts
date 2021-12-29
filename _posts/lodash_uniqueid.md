@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 09:46:19
-version: 1.17
+updated: 2021-12-29 09:48:28
+version: 1.18
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -43,7 +43,7 @@ The value might be unique in a relative way, but it is not at all the best solut
 
 ## 2 - Vanilla js alternative to \_.uniqueId
 
-Making my own solution for this is not to hard, all is needed is the power of closure when it comes to making a method with a count variable contained within it.
+Making my own solution for this is not to hard, all is needed is the power of closure when it comes to making a method with a count variable contained within it. There may be a number of other ways to go about making this kind of method without using a closure also, but this is just a topic that a javaScript developer should become aware of sooner or later, and making this kind of method is a good use case example of closures.
 
 ### 2.1 - Basic example using an IIFE
 
