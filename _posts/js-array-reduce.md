@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-12-29 13:02:01
-version: 1.52
+updated: 2021-12-29 13:04:02
+version: 1.53
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often with various tasks that have to do with arrays, and collections in general, in a javaScript programing environment. As the name suggests the main thing about the array reduce method is to reduce an array of elements down into a smaller array, or even a single primitive value such as a number or string. The way it works is by having a value in the body of the function that is given to array reduce method that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements to which this reduce method is call off of. There is then an additional argument in the body of a the function that is a current value of a current element along with this accumulator value, and other relevant values. It is then just a matter of working out what the additional logic should be in this reduce method when it comes to furnishing whatever the end result should be for the reduction. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -26,7 +26,7 @@ In this section I have made the assumption that you have at least a little backg
 
 ### The source code examples in this post are on Github
 
-I have a test repository that contains all the source code for my [various posts on javaScript](/categories/js), and [this post is no exception when it comes to this](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-reduce).
+I have a test vjs repository that contains all the source code for my [various posts on javaScript](/categories/js), and [this post is no exception when it comes to this](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-array-reduce). This is where I park all the sour4ce code examples that I am writing about in this post as a whole, as well as additional notes, outlines, and so forth.
 
 ### 1.1 - Simple sum example
 
