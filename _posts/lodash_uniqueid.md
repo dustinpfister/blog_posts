@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 11:23:00
-version: 1.27
+updated: 2021-12-29 11:24:47
+version: 1.28
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -45,7 +45,7 @@ The value might be unique in a relative way, but it is not at all the best solut
 
 ### 1.2 - Making a mixin using unique id and the lodash mixin method
 
-Although using a method like unique id in lodash might be an okay starting point, often I will want to make my own kind of method for this sort of thing. A useful method for expanding lodash would be to use a method like that of the lodash mixin method as this is the standard way of going about doing thus sort of thing with lodash.
+Although using a method like unique id in lodash might be an okay starting point, often I will want to make my own kind of method for this sort of thing. A useful method for expanding lodash would be to use a method like that of the lodash mixin method as this is the standard way of going about doing thus sort of thing with lodash. When doing so there is not just creating a new id, but creating an id that is a kind of hash code of come kind, and also having a way to go about extracting info about that id with another method that will do so.
 
 ```js
 _.mixin({
