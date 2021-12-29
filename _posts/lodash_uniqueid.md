@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 10:39:40
-version: 1.21
+updated: 2021-12-29 10:42:28
+version: 1.22
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -17,7 +17,9 @@ Also in these lodash posts I often take a moment to brush up on how hard it is t
 
 ## 1 - What to know
 
-This is a post on the \_.uniqueId method in lodash which is a popular javaScript general utility library. This lodash unique id method can be used to create a unique id for something each time it is called. This method will work for the purpose of assigning a unique id for most use cases, but not with complex projects that require a unique id always even if the project restarts, or something that will be unique not just for an application but for a user of a full stack project of some kind. In any case this will be a brief post on this topic of using this method when lodash is a library to work with in a project. Later in this post I will be getting into how to go about making this kind of method from the ground up using vanilla javaScript, and other advanced topics
+This is a post on the \_.uniqueId method in lodash which is a popular javaScript general utility library. This lodash unique id method can be used to create a unique id for something each time it is called in the form of a number that will keep stepping up each time the method is called with an option prefix attracted to the begging of it. This method will work for the purpose of assigning a unique id for most use cases, but not with complex projects that require a unique id always even if the project restarts, or something that will be unique not just for an application but for a user of a full stack project of some kind. 
+
+Later in this post I will be getting into how to go about making this kind of method from the ground up using vanilla javaScript, and other advanced topics. However for this section I will be sticking to just the lodash method, and nay other lodash and native javaScript features that will pop up with it while I am at it, rather than juts working with javaScript by itself.
 
 ### 1.1 - An \_.uniqueId example
 
