@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 09:43:33
-version: 1.16
+updated: 2021-12-29 09:46:19
+version: 1.17
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -47,7 +47,7 @@ Making my own solution for this is not to hard, all is needed is the power of cl
 
 ### 2.1 - Basic example using an IIFE
 
-I just write a self executing function expression and then inside the body of that function expression I have a local num variable, I then return a function that when called will step the num variable, and use that as part of the string that is returned that will be unique each time.
+I just write a [Immediately Invoked Function Expression](/2020/02/04/js-iife), or IIFE for short often, and then inside the body of that function expression I have a local num variable. I then return a function from within the body of this IIFE, that when called will step the num variable. The current value of this internal closed over num variable with then be used as part of the string that is returned that will be unique each time.
 
 ```js
 let uniqueId = (function () {
