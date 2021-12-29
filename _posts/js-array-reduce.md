@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-12-29 13:04:02
-version: 1.53
+updated: 2021-12-29 13:21:39
+version: 1.54
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often with various tasks that have to do with arrays, and collections in general, in a javaScript programing environment. As the name suggests the main thing about the array reduce method is to reduce an array of elements down into a smaller array, or even a single primitive value such as a number or string. The way it works is by having a value in the body of the function that is given to array reduce method that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements to which this reduce method is call off of. There is then an additional argument in the body of a the function that is a current value of a current element along with this accumulator value, and other relevant values. It is then just a matter of working out what the additional logic should be in this reduce method when it comes to furnishing whatever the end result should be for the reduction. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -373,6 +373,25 @@ let objs = [
  
 console.log(sumObjects(objs));          // 24
 console.log(sumObjects(objs, 'money')); // 5.6
+```
+
+### 6.3 - Basic check sum example
+
+The general idea of a check sum is to have a way to create a primitive value for the given state of something. For example there is having a binary file that is the original file from an author that has not been edited, or tampered with in any way and creating a sum value for that binary. There is then creating a sum for another binary file that may or may not have been tampered with and comparing that sum with the sum of the known original binary as a way to find out if it has been tampered with or not.
+
+```js
+let getCheckSum = function (string, maxValue) {
+    maxValue = maxValue == undefined ? Math.pow(10, 7) : maxValue;
+    return string.split('').reduce(function (acc, str) {
+        return acc += str.charCodeAt(0);
+    }, 0) % maxValue;
+};
+// demo
+let a = 'This is a string that has a given value',
+b = 'So does this other string';
+// getting values in a 0-1999 range
+console.log( getCheckSum(a, 2000) ); // 1568
+console.log( getCheckSum(b, 2000) ); // 398
 ```
 
 ## 7 - Conclusion
