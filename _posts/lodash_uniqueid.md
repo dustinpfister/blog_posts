@@ -1,12 +1,12 @@
 ---
-title: Using _.uniqueId in lodash, and alternatives
+title: The unique id method in lodash, and alternatives
 date: 2018-10-03 18:14:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 09:09:58
-version: 1.12
+updated: 2021-12-29 09:13:24
+version: 1.13
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
