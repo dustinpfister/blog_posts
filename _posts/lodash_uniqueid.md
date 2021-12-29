@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 10:45:16
-version: 1.23
+updated: 2021-12-29 11:16:41
+version: 1.24
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -21,7 +21,7 @@ This is a post on the \_.uniqueId method in lodash which is a popular javaScript
 
 Later in this post I will be getting into how to go about making this kind of method from the ground up using vanilla javaScript, and other advanced topics. However for this section I will be sticking to just the lodash method, and nay other lodash and native javaScript features that will pop up with it while I am at it, rather than juts working with javaScript by itself.
 
-### 1.1 - An \_.uniqueId example
+### 1.1 - A baisc \_.uniqueId example
 
 Using the \_.uniqueId method is fairly straight forward to use, I just need to call it, passing an optional prefix as the first argument, and a unique id will be returned by the method. That is all there is to it when it comes to just using this specific method by itself.
 
@@ -42,6 +42,53 @@ console.log(ids[9]); // id_11
 ```
 
 The value might be unique in a relative way, but it is not at all the best solution for many other use case examples. The method is just a lazy way to get a value that is unique each time it is called, and one way to do that is to have it so it just returns a count each time.
+
+### 1.2 - Making a mixin using unique id and the lodash mixin methid
+
+```js
+_.mixin({
+    // create a myUID
+    getUID: () => {
+        let count = parseInt(_.uniqueId()),
+        n = count * 16,
+        b = Math.floor(Math.pow(1.57, 42)),
+        c = b + n,
+        hex = c.toString(16),
+        prefix = 'uh';
+        return prefix + '_' + hex;
+    },
+    // break down
+    breakUID: (str) => {
+        let parts = str.split('_'),
+        b =  Math.floor(Math.pow(1.57, 42)),
+        hex = parts[1],
+        c = parseInt(hex, 16);
+        return {
+            count: (c-b) / 16,
+            n: c - b,
+            b: b,
+            c: c,
+            hex: hex,
+            prefix: parts[0]
+        };
+    }
+});
+// demos
+console.log(_.getUID()); // uh_a122257
+console.log(_.getUID()); // uh_a122267
+console.log(_.getUID()); // uh_a122277
+console.log( _.breakUID('uh_a122277') );
+/*
+{
+    count: 3,
+    n: 48,
+    b: 168960583,
+    c: 168960631,
+    hex: 'a122277',
+    prefix: 'uh'
+}
+*/
+```
 
 ## 2 - Vanilla js alternative to \_.uniqueId
 
