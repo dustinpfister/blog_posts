@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 909
-updated: 2021-12-29 12:52:00
-version: 1.50
+updated: 2021-12-29 12:58:20
+version: 1.51
 ---
 
 When it comes to the various [javaScript array](/2018/12/10/js-array/) prototype methods the [Array reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) method is one such method that will come in handy often with various tasks that have to do with arrays, and collections in general, in a javaScript programing environment. As the name suggests the main thing about the array reduce method is to reduce an array of elements down into a smaller array, or even a single primitive value such as a number or string. The way it works is by having a value in the body of the function that is given to array reduce method that is an accumulator variable which can have a starting value that is an array, number, string or any value that one would add to using data from the array elements to which this reduce method is call off of. There is then an additional argument in the body of a the function that is a current value of a current element along with this accumulator value, and other relevant values. It is then just a matter of working out what the additional logic should be in this reduce method when it comes to furnishing whatever the end result should be for the reduction. So then it is a good choice if I need to come up with some kind of sum of a whole bunch of values in an array of objects or something to that effect.
@@ -20,7 +20,9 @@ So I think it is called for now to write at least one [post on the array reduce 
 
 ## 1 - The basics of array reduce in javaScript
 
-So to start off with in this section I will be going over some very simple examples of the array reduce method. Understanding the basic idea of the method is maybe not as simple as what is going on with some other array prototype methods. If you find yourself in a situation in which you are getting a little frustrated with array reduce, it might be called for to take a breath, step back for a moment, and just work out a few simple examples of the method to get a better sense of what the core functionally of the array reduce method is.
+To start off with in this section I will be going over some very simple examples of the array reduce method just for the sake of getting the very basics out of the way. Understanding the basic idea of the method is maybe not as simple as what is going on with some other array prototype methods such as the array for each method. If you find yourself in a situation in which you are getting a little frustrated with array reduce, it might be called for to take a breath, step back for a moment, and just work out a few simple examples of the method to get a better sense of what the core functionally of the array reduce method is.
+
+In this section I have made the assumption that you have at least a little background with javaScript, and how to work out some simple code examples in one kind of environment or another. If this is not the case you might want to look into some kind of [getting started with javaScript type post](/2018/11/27/js-getting-started/) first.
 
 ### The source code examples in this post are on Github
 
