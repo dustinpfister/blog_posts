@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 296
-updated: 2021-12-29 11:24:47
-version: 1.28
+updated: 2021-12-29 11:30:46
+version: 1.29
 ---
 
 I am writing more content on [lodash](https://lodash.com/) this month for now, and while I was at it I have noticed that I did not get around to [\_.uniqueId](https://lodash.com/docs/4.17.15#uniqueId) yet. As the name of the method suggests the method will return a unique value each time the method is called, so then it can be used as a way to set some kind of unique id values for an object of one kind or another. The method addresses something that comes up once in while now and then when developing projects, so it deserves a post on the subject.
@@ -91,6 +91,8 @@ console.log( _.breakUID('uh_a122277') );
 }
 */
 ```
+
+So then this example opens up a whole new world of possibles when it comes to make some more professional kind of method for creating unique id values for something. There is a lot more that comes to mind when it comes to this sort of thing, such as having better control over setting what the starting count value should be, and also passing info about the object to which this id is being generated for also. That in turn raises the subject of what a checksum is, and using such values as part of the hex value, but that of course also complicated the process of extracting values from the hex value also, unless this is added as a separate part with a delimiter of some kind, in which case not so much.
 
 ## 2 - Vanilla js alternative to \_.uniqueId
 
