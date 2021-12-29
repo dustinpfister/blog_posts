@@ -5,15 +5,13 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-29 15:29:08
-version: 1.15
+updated: 2021-12-29 15:30:41
+version: 1.16
 ---
 
-Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. Sometimes it would be nice to have a method that will only loop over key value pares that are actually part of the object rather than values that are inherited from the prototype of the objects class. 
+Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. Sometimes it would be nice to have a method that will only loop over key value pares that are actually part of the object rather than values that are inherited from the prototype of the objects class. One option to do so is the [\_.forOwn](https://lodash.com/docs/4.17.4#forOwn) method in [lodash](https://lodash.com/) that can be used as a way to loop over all the own properties of an object. There is also of course the [\_.forIn](/2018/09/30/lodash_forin/) method as well that will loop over the own properties of an object as well as what is in the prototype object of the object on top of that.
 
-One option to do so is the [\_.forOwn](https://lodash.com/docs/4.17.4#forOwn) method in [lodash](https://lodash.com/) that can be used as a way to loop over all the own properties of an object. There is also of course the [\_.forIn](/2018/09/30/lodash_forin/) method as well that will loop over the own properties of an object as well as what is in the prototype object also.
-
-However doins so is not so hard with plain old javaScript by itself also, so these methods are not the most compelling reasons to bother with lodash. With that being said I will be looking at some vanilla javaScript solutions for looping over the own properties of an object in addition to using lodash to do so.
+However doing so is not so hard with plain old javaScript by itself also, so these methods are not the most compelling reasons to bother with lodash. With that being said I will be looking at some vanilla javaScript solutions for looping over the own properties of an object in addition to using lodash to do so.
 
 <!-- more -->
 
