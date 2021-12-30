@@ -16,10 +16,6 @@
 * get to 1000+ words
 * have 5+ internal links for the post
 
-### () - lodash\_uniqueid (links, old)
-* get to 1000+ words
-* have 5+ internal links for the post
-
 <!-- WANT TO EXPAND -->
 
 ### () - lodash_keys ( old )
