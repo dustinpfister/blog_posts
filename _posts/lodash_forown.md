@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 11:10:02
-version: 1.23
+updated: 2021-12-30 11:11:29
+version: 1.24
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
@@ -25,7 +25,7 @@ In this section I will be starting out with some examples that have to do with u
 
 ### 1.1 - A Basic example of \_.forOwn
 
-For a basic example of \_.forOwn I put together a quick example that involves a custom made constructor method, and a prototype for that method. The \_.forOwn method will loop over just the own properties of the object, and will not loop over anything in the prototype object. The lodash \_.forIn method on the other hand will loop over both the own properties as well as the inherited properties.
+For a basic example of \_.forOwn I put together a quick example that involves a custom made constructor method, and a prototype for that method. The \_.forOwn method will loop over just the own properties of the object, and will not loop over anything in the prototype object of the constructor that was used to create the object. 
 
 ```js
 let Unit = function (obj) {
@@ -43,9 +43,10 @@ _.forOwn(u, function (val, key, obj) {
 // y: 5
 ```
 
-So that is the difference between the \_.forOwn, and \_.forIn methods in lodash. If you are just using plain javaScript though no problem there is the for in loop, and the has own property object prototype method that can be used.
 
-### 1.2 - 
+### 1.2 - lodash for in
+
+The lodash \_.forIn method on the other hand will loop over both the own properties as well as the inherited properties.
 
 ```js
 let Unit = function (obj) {
@@ -63,6 +64,9 @@ _.forIn(u, function (val, key, obj) {
 // y: 5
 // size: 64
 ```
+
+So that is the difference between the \_.forOwn, and \_.forIn methods in lodash. If you are just using plain javaScript though no problem there is the for in loop, and the has own property object prototype method that can be used.
+
 
 ## 2 - Vanilla javaScript solutions for getting own properties of an object
 
