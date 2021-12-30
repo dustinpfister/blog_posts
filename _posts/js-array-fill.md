@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-12-30 12:09:54
-version: 1.47
+updated: 2021-12-30 12:12:44
+version: 1.48
 ---
 
-In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
+In some cases I might want to just simply fill all element index values in an array with a set static value, or created a new array with a given count of element that are all set to a given starting value. For example I might want to start off an array of numbers to a starting value of zero number value for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process, such as a random process, or filled from some kind of data source.
 
 When it comes to filling an array with a fixed static value these days there is now a native [array fill method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill) in the core [javaScript array](/2018/12/10/js-array/) prototype object. This array fill method is then just yet another useful [array prototype method](/2018/12/10/js-array/) long with other such methods such as [array map](/2020/06/16/js-array-map/), [reduce](/2021/07/13/js-array-reduce/), and [for each](/2019/02/16/js-javascript-foreach/) methods. Unless you care a great deal about backward compatibility the native array fill method works just fine, else one may have to use a Polly fill method of some kind or another in order to get the method to work on a wider range of platforms. 
 
