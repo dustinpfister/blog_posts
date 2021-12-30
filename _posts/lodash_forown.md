@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 11:14:16
-version: 1.25
+updated: 2021-12-30 11:16:13
+version: 1.26
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
@@ -71,6 +71,8 @@ So that is the difference between the \_.forOwn, and \_.forIn methods in lodash.
 ## 2 - Vanilla javaScript solutions for getting own properties of an object
 
 There are a whole lot of useful methods in lodash, but there is also a whole lot to work with when it comes to just plain old javaScript by itself. Maybe there is a degree of concern when it comes to not wanted code to break on older platforms, but that is also a concern with using lodash also as later versions of lodash will break also on old enough web browsers anyway.
+
+Sense I got the lodash examples out of the way when it comes to looping over the own properties of an object, in this section I will be going over some examples that have to do with doing the same things with javaScript by itself. There are features like the for in loop, but there are also other useful methods and features to be aware of when it comes to these kinds for tasks also.
 
 ### 2.1 - Using a for in loop
 
