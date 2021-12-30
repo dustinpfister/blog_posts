@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 11:26:49
-version: 1.30
+updated: 2021-12-30 11:28:56
+version: 1.31
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
@@ -121,7 +121,9 @@ Object.getOwnPropertyNames(u).forEach(function (key) {
 // y: 5
 ```
 
-### 2.3 - 
+### 2.3 - Creating a method
+
+I went over at least two options that have to do with looping over the own properties of an object with native javaScript features. So then one of these options, as well as any and all other could be used to create a for own method from the ground up.
 
 ```js
 // making a vanilla js forOwn method
