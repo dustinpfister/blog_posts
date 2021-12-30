@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-11-27 08:06:30
-version: 1.44
+updated: 2021-12-30 12:07:05
+version: 1.45
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -313,8 +313,21 @@ console.log(arr);
 // [ { x: 4, y: 7 }, { x: 0, y: 7 }, { x: 4, y: 7 } ]
 ```
 
+## 6 - The array from method
+
+```js
+var fill = function (count, val) {
+    return Array.from({
+        length: count
+    }).map(function () {
+        return val;
+    });
+};
+console.log( fill(10, 0) );
+// [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+```
 
 
-## 6 - Conclusion
+## 7 - Conclusion
 
 The native array fill prototype method can be used to quickly fill an array with a single value for each element. However there are other options that might be a better for this sort of task depending on the situation. Or maybe the array fill method is just want needs to be used for starters so that it ca then be used with another method like Array.map. However when it just simple comes to just filling an array with a certain static value then the array fill method does the trick just fine.
