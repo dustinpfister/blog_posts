@@ -1,15 +1,17 @@
 ---
-title: The lodash _.forown method
+title: The lodash forown method
 date: 2017-09-24 10:37:00
 tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 10:59:37
-version: 1.18
+updated: 2021-12-30 11:03:11
+version: 1.19
 ---
 
-Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. Sometimes it would be nice to have a method that will only loop over key value pares that are actually part of the object rather than values that are inherited from the prototype of the objects class. One option to do so is the [\_.forOwn](https://lodash.com/docs/4.17.4#forOwn) method in [lodash](https://lodash.com/) that can be used as a way to loop over all the own properties of an object. There is also of course the [\_.forIn](/2018/09/30/lodash_forin/) method as well that will loop over the own properties of an object as well as what is in the prototype object of the object on top of that.
+Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
+
+Sometimes it would be nice to have a method that will only loop over key value pares that are actually part of the object rather than values that are inherited from the prototype of the objects class. One option to do so is the [\_.forOwn](https://lodash.com/docs/4.17.4#forOwn) method in [lodash](https://lodash.com/) that can be used as a way to loop over all the own properties of an object. There is also of course the [\_.forIn](/2018/09/30/lodash_forin/) method as well that will loop over the own properties of an object as well as what is in the prototype object of the object on top of that.
 
 However doing so is not so hard with plain old javaScript by itself also, so these methods are not the most compelling reasons to bother with lodash. With that being said I will be looking at some vanilla javaScript solutions for looping over the own properties of an object in addition to using lodash to do so.
 
