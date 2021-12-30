@@ -102,20 +102,6 @@ list:
 * get the post to 2,750+ words
 * get the post to 3,000+ words
 
-## js-javascript-svg ( A whole lot to write about )
-    justification:
-      Intrinsic Value: There is a lot to write about, and a lot more to learn and research
-      Search Console: None, doing very poorly thus far
-      Google Trends: "javascript svg", "js svg", "svg viewbox"
-          This is very much an interesting topic, and a nice break from the usual content that I like to write on canvas so it might help when it comes to getting burnt out on that topic. The post can be expanding on a whole lot, so it would be easy to come up with over three thousand words of substance on this which is also great. Thus far the post is preforming very poorly in search console, but that is not at all because of lack of search interest on SVG. Improving the quality of the post might help then so this is a good post to have on this list
-* get the post to 1,500+ words
-* get the post to 1,750+ words
-* get the post to 2,000+ words
-* get the post to 2,250+ words
-* get the post to 2,500+ words
-* get the post to 2,750+ words
-* get the post to 3,000+ words
-
 ## js-array-reduce ( Fun canvas example planed )
     justification:
       Intrinsic Value: I would like to make a fun canvas example for it
@@ -134,8 +120,9 @@ list:
       Intrinsic Value: I have a nice library idea for this post I would like to complete
       Search Console: "javascript array fill" showing up once in a while
       Google Trends: "array fill", "js fill", "js array fill"
-         The post on the array fill command as well as created a filled array to begin with is all ready pretty long to begin with. On top of that there is a great deal more I would like to write on this subject when it comes to what I have together thus far. As of 11/26/2021 the post is showing up for "javascript array fill" in search console, but with a very poor ranking, however this keyword is fairly valuable when compared to my best preforming keyword at this time. It would seem that the "array fill" keyword is showing a very high volume in Google trends, and I am sure there are many others.
-
+         The post on the array fill command as well as creating a filled array in general is all ready pretty long to begin with. On top of that there is a great deal more I would like to write on this subject when it comes to what I have together thus far. As of 11/26/2021 the post is showing up for "javascript array fill" in search console, but with a very poor ranking. However this keyword is fairly valuable when compared to my best preforming keyword at this time when looking into things at Google trends. It would seem that the "array fill" keyword is showing a very high volume in Google trends, and I am sure there are many others. So there is a great deal of demand for a content piece such as this, I just need to make it the kind of post that is worthy of the rank for starters.
+* get the post to 2,750+ words
+* get the post to 3,000+ words
 
 ## js-array ( A whole lot more to do with this one )
     justification:
@@ -154,6 +141,20 @@ list:
       Search Console: 
       Google Trends:
 * ( done 12/22/2021 ) get the post to 3,000+ words
+
+## js-javascript-svg ( A whole lot to write about )
+    justification:
+      Intrinsic Value: There is a lot to write about, and a lot more to learn and research
+      Search Console: None, doing very poorly thus far
+      Google Trends: "javascript svg", "js svg", "svg viewbox"
+          This is very much an interesting topic, and a nice break from the usual content that I like to write on canvas so it might help when it comes to getting burnt out on that topic. The post can be expanding on a whole lot, so it would be easy to come up with over three thousand words of substance on this which is also great. Thus far the post is preforming very poorly in search console, but that is not at all because of lack of search interest on SVG. Improving the quality of the post might help then so this is a good post to have on this list
+* get the post to 1,500+ words
+* get the post to 1,750+ words
+* get the post to 2,000+ words
+* get the post to 2,250+ words
+* get the post to 2,500+ words
+* get the post to 2,750+ words
+* get the post to 3,000+ words
 
 ## js-javascript-example-utils
 
