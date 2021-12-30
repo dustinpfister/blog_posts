@@ -4,29 +4,30 @@ This is a todo list that I have started to help track progress with a few select
 
 ## What "definitive" means in terms of word count
 
-Of course this will really change from one post to another when it comes to the subject matter. With certain things there really is only so much to write about actually. However when it comes to setting some kind of standard for this thing I have to have a figure so then here it is:
+Of course this will really change from one post to another when it comes to the subject matter. With certain things there really is only so much to write about actually. However when it comes to setting some kind of standard for word count I have to have a figure in mind.
 
 * 3,000+ words (min)
 * as much as 10,000 (max)
 
 ## what "definitive" means beyond just word count
 
-Of course there are some more things that come to mind other than just simply writing a lot about something, that alone can prove to be cheep if it is just a whole lot of padding. What that said there are a lot more things that should be done to help make these posts not just really long, but also of substance of course. So lets keep some things in mind while doing this such as:
+Of course there are some more things that come to mind other than just simply writing a lot about something, that alone can prove to be cheep if it is just a whole lot of padding, or fluff as it is often called. With that said there are a lot more things that should be done to help make these posts not just really long, but also of substance of course as that is what really matters in light of the human element. So lets keep some things in mind while doing this such as:
+## - Proof read, quality
 
-### - Proof read, quality
+I should take the time for these posts at least to just take a breath, sit down, and just read over what I have written when it comes to these long form posts. If something does not make sense rewrite it so that it does make sense. Try to catch instances of the wrong word and so forth. I am of the mindset that the message is more important that the language itself, but I should still make various language related improvements.
 
 * Proof Read for simple spelling, and language mistakes.
 * Proof Read for the sake of sensing if content is maybe to dry, and find ways of making it more fun
-* Branch off into related topics if needed
+* Branch off into related topics if needed linking to any additional relevant content of my own or elsewhere
 
-### - Source code examples
+## - Source code examples
 
 * Create simple use case examples that might even be full applications actually if needed.
 * have source source examples in a Github repository and link to that repository in the post
 * have a README file in the repository and link to the post from there
 * posts should have a basics section, then one or more advanced sections, followed by one or more examples sections
 
-### - justification of why I should go all out with a post
+## - justification of why I should go all out with a post
 
 It will take a great investment of time to create a post that will be at least some three thousand words or more. There is not just the amount of time it will take to write the content, but also preforming research, as well as writing and hacking over source code examples. So then for each item in this todo list I should list at least one or more of the following as a way to outline what the justification is for putting in the time to write and edit posts to this extreme.
 
