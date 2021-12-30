@@ -28,13 +28,30 @@
 
 <!-- OLD POSTS -->
 
+
+### () - lodash_pull ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_partial ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_words ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### () - lodash_frompairs ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
 ### () - lodash_flow ( old )
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash_forown ( old )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 12/30/2021 ) - lodash_forown ( old )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 12/29/2021 ) - lodash_uniqueid ( old )
 * (done) 750+ words
