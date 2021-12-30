@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2021-12-30 12:08:25
-version: 1.46
+updated: 2021-12-30 12:09:54
+version: 1.47
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value. For example I might want to start off an array of numbers to a starting value of zero for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process such as a random process.
@@ -315,7 +315,7 @@ console.log(arr);
 
 ## 6 - The array from method
 
-Yet another tool in the native tool box of sorts that has to do with creating a filed array would be to use the array from method with a methids such as array map.
+Yet another tool in the native tool box of sorts that has to do with creating a filed array would be to use the [array from](/2020/01/27/js-array-from/) method with a method such as array map.
 
 ```js
 var fill = function (count, val) {
