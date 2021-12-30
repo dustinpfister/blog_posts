@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 11:04:37
-version: 1.20
+updated: 2021-12-30 11:07:18
+version: 1.21
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
@@ -19,7 +19,7 @@ However doing so is not so hard with plain old javaScript by itself also, so the
 
 ## 1 - Lodash for own basic examples, and what to know first
 
-This is a post on the \_.forOwn method in lodash, and related topics in javaScript. It is not a getting started post on lodash, or javaScript in general. I also will not be getting into prototype based inheritance in this post as well, as that is a matter for another post.
+This is a post on the \_.forOwn method in lodash, and related topics to the use of such a method in the popular utility library. It is not a getting started post on lodash, or javaScript in general for that matter, so if you are still fairly new to javaScript you might want to look into a [getting started with javaScriot type post](/2018/11/27/js-getting-started/) first. I also will not be getting into prototype based inheritance in this post as well, as that is a matter for another post.
 
 ### 1.1 - A Basic example of \_.forOwn
 
