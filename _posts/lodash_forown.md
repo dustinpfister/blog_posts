@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 11:16:13
-version: 1.26
+updated: 2021-12-30 11:19:43
+version: 1.27
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
@@ -76,7 +76,7 @@ Sense I got the lodash examples out of the way when it comes to looping over the
 
 ### 2.1 - Using a for in loop
 
-So \_.forOwn is one of those methods in lodash where I am scratching my head wondering why I should bother with lodash, because doing things like this is not that difficult in vanilla js. The [hasOwnProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty) Object prototype method can be used as a way to find out if the property of an object is the own property of that object rather than an inherited property for example.
+So \_.forOwn is one of those methods in lodash where I am scratching my head wondering why I should bother with lodash, because doing things like this is not that difficult in vanilla js. The [hasOwnProperty](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty) Object prototype method can be used as a way to find out if the property of an object is the own property of that object rather than an inherited property for example. There is also the native for in loop that will loop over all the properties of an object just like that of the lodash for in method, but I can just use this has own property method in the body of the for in loop to check if it is an own property or not.
 
 ```js
 let Unit = function (obj) {
@@ -98,7 +98,7 @@ for(key in u){
 }
 ```
 
-The for in loop will loop over the own properties of an object as well inherited properties, so the hasOwnProperty method has to be used as a way to filter those out, and just have the own properties of the object.
+So the for in loop will loop over the own properties of an object as well inherited properties, and the hasOwnProperty method has to be used as a way to filter those out, and just have the own properties of the object. The end result is something that is more or less the same as what happens when using the lodash for own method. However maybe I should over at least a few more examples of this sort of thing in order to explore this at least a little farther as there are additional options that come to mind.
 
 ### 2.2 - 
 
