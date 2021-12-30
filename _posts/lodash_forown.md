@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 43
-updated: 2021-12-30 11:28:56
-version: 1.31
+updated: 2021-12-30 11:31:28
+version: 1.32
 ---
 
 Looping over all keys in an object is something that comes up a whole lot when working on a javScript project. There are a wide range of ways of doing so with arrays, such as the array for each method, or using a while loop. However there is also all kinds of ways of doing so with objects in general also, not just arrays, but array like objects, and various kinds of objects that are collections in the form of named rather than index keys. So then there are ways of creating an array of key names for objects in general, and then looping over the resulting array as a way to do so with such objects.
@@ -148,4 +148,6 @@ forOwn(u, function(val, key){  console.log(key + ' : ' + val); })
 
 ## 3 - Conclusion
 
-One nice things about the \_.forOwn method is that it may be a bit more concise compared to writing out a for in loop. That is something of value because I find that making code more concise may help to improve readability, other then that I cant say it is to big of a deal to do this the vanilla js way. If you enjoyed this post be sure to check out my other [posts on lodash](/categories/lodash/), and if you have any questions or concerns feel free to drop a line in the comments.
+One nice thing about the \_.forOwn method is that it may be a bit more concise compared to writing out a for in loop, or one of the many other ways of doing so with native javaScript by itself. That is something of value because I find that making code more concise may help to improve readability, other then that I cant say it is to big of a deal to do this the vanilla js way really. Also there are many reasons why on might be interested in making some kind of custom tailored utility library rather than just using lodash.
+
+If you enjoyed this post be sure to check out my other [posts on lodash](/categories/lodash/), and if you have any questions or concerns feel free to drop a line in the comments.
