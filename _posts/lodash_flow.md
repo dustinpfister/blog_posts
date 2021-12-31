@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2021-12-31 08:36:44
-version: 1.15
+updated: 2021-12-31 08:38:43
+version: 1.16
 ---
 
 In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth.
@@ -23,7 +23,7 @@ This is a post on the lodash method \_.flow, it is not a post for developers tha
 
 ### 1.1 - The flow method
 
-The flow method will return a function that will call an array of functions that are given to the flow method. For this example I am using the flow method to create a method that will chunk an array into an array of arrays, and then I will be using the lodash map method to create objects for each element in each array of the arrays of arrays. Finally I will the be using the lodash flatten method to flatten this array of arrays back into a simple linear array.
+The flow method will return a function that will call an array of functions that are given to the flow method. For this example I am using the flow method to create a method that will chunk an array into an array of arrays, and then I will be using the [lodash map method](/2018/02/02/lodash_map/) to create objects for each element in each array of the arrays of arrays. Finally I will the be using the [lodash flatten](/2018/08/12/lodash_flatten/) method to flatten this array of arrays back into a simple linear array.
 
 ```js
 let func1 = _.flow([
