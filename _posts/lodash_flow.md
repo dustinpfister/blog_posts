@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2021-12-31 07:20:30
-version: 1.11
+updated: 2021-12-31 07:23:30
+version: 1.12
 ---
 
 In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth.
@@ -57,3 +57,7 @@ let dist = _.flow([
  
 console.log(dist(10, 15, 90, 22)); // 80
 ```
+
+## 2 - Conclusion
+
+So then the lodash flow is one of several options when it comes to making use of two or more methods on lodash. There are a whole lor of other tools in the toolbox also that are relevant to the use of a function such as flow such as the lodash mixin method that can eb used as a way to add my own methods to lodash that in turn can be used with methods like flow, but also methods like chain and the main lodash method. What is nice about flow though is that it is a little more friendly when it comes to adding my own functions without extending lodash with the mixin method.
