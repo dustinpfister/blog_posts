@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2021-12-31 07:56:30
-version: 1.13
+updated: 2021-12-31 08:33:31
+version: 1.14
 ---
 
 In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth.
@@ -17,16 +17,132 @@ There are many ways to go about chaining methods together with just plain old ja
 
 <!-- more -->
 
-## 1 - lodash flow and what to know first
+## 1 - lodash flow, other lodash methods, and what to know first
 
 This is a post on the lodash method \_.flow, it is not a post for developers that are new to lodash, let alone javaScript in general. If you are new to lodash and javaScript in general this is not a good starting point. You should also be somewhat familiar with writing functions, and how many of theme can be used together. There is more than one way to do what can be accomplished with the lodash flow method, I am not suggesting that it is an inherently better or worse option for using many method together to create one final value or product.
 
+### 1.1 - The flow method
+
+```js
+let func1 = _.flow([
+    // chunk into an array of arrays
+    (arr) => {
+        return _.chunk(arr, 3)
+    },
+    // create objects and store element value as
+    // a prop n prop of the new object
+    (grid) => {
+        return _.map(grid, (row, y) => {
+            return row.map((n, x, col) => {
+                return {
+                    x: x,
+                    y: y,
+                    i: y * 3 + x,
+                    n: n
+                };
+            })
+        })
+    },
+    // flatten back
+    _.flatten
+]);
+// demo
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(func1(a));
+/*
+[ 
+  { x: 0, y: 0, i: 0, n: 1 },
+  { x: 1, y: 0, i: 1, n: 2 },
+  { x: 2, y: 0, i: 2, n: 3 },
+  { x: 0, y: 1, i: 3, n: 4 },
+  { x: 1, y: 1, i: 4, n: 5 },
+  { x: 2, y: 1, i: 5, n: 6 },
+  { x: 0, y: 2, i: 6, n: 7 },
+  { x: 1, y: 2, i: 7, n: 8 },
+  { x: 2, y: 2, i: 8, n: 9 }
+]
+*/
+```
+
+### 1.2 - The top level function of lodash
+
+```js
+let func1 = (a) => {
+    return _(a)
+    .chunk(3)
+    .map((row, y) => {
+        return row.map((n, x, col)=>{
+            return {
+                x: x,
+                y: y,
+                i: y * 3 + x,
+                n: n
+            };
+        })
+    })
+    .flatten()
+    .value();
+};
+// demo
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(func1(a));
+/*
+[ 
+  { x: 0, y: 0, i: 0, n: 1 },
+  { x: 1, y: 0, i: 1, n: 2 },
+  { x: 2, y: 0, i: 2, n: 3 },
+  { x: 0, y: 1, i: 3, n: 4 },
+  { x: 1, y: 1, i: 4, n: 5 },
+  { x: 2, y: 1, i: 5, n: 6 },
+  { x: 0, y: 2, i: 6, n: 7 },
+  { x: 1, y: 2, i: 7, n: 8 },
+  { x: 2, y: 2, i: 8, n: 9 }
+]
+*/
+```
+
+### 1.3 - The lodash chain method
+
+```js
+let func1 = (a) => {
+    return _.chain(a)
+    .chunk(3)
+    .map((row, y) => {
+        return row.map((n, x, col)=>{
+            return {
+                x: x,
+                y: y,
+                i: y * 3 + x,
+                n: n
+            };
+        })
+    })
+    .flatten()
+    .value();
+};
+// demo
+let a = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+console.log(func1(a));
+/*
+[ 
+  { x: 0, y: 0, i: 0, n: 1 },
+  { x: 1, y: 0, i: 1, n: 2 },
+  { x: 2, y: 0, i: 2, n: 3 },
+  { x: 0, y: 1, i: 3, n: 4 },
+  { x: 1, y: 1, i: 4, n: 5 },
+  { x: 2, y: 1, i: 5, n: 6 },
+  { x: 0, y: 2, i: 6, n: 7 },
+  { x: 1, y: 2, i: 7, n: 8 },
+  { x: 2, y: 2, i: 8, n: 9 }
+]
+*/
+```
 
 ## 2 - A lodash flow distance example
 
-### 2.1 - The vanilla js distance formula
-
 The distance formula came to mind when thinking of a quick example of using flow. This might not be the best example of using \_.flow, as the formal is simple enough where it could just be expressed in a single line. Never the less if you do not have much experience with \_.flow this simple example should help give you the basic idea of why \_.flow can be useful.
+
+### 2.1 - The vanilla js distance formula
 
 So if I where to start working on something in javaScript that required the use of a distance formula I might add something like this in my project.
 
