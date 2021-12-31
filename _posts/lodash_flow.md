@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2021-12-31 08:38:43
-version: 1.16
+updated: 2021-12-31 08:43:08
+version: 1.17
 ---
 
 In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth.
@@ -68,6 +68,8 @@ console.log(func1(a));
 
 ### 1.2 - The top level function of lodash
 
+The lodash flow method works fine, but often the top level function of lodash can also be used to preform tasks such as this with many lodash methods.
+
 ```js
 let func1 = (a) => {
     return _(a)
@@ -104,6 +106,8 @@ console.log(func1(a));
 ```
 
 ### 1.3 - The lodash chain method
+
+Yet another option is the chain method that is also a way to create a flow of sorts with many lodash methods.
 
 ```js
 let func1 = (a) => {
