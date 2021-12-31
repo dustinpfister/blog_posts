@@ -5,13 +5,15 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 328
-updated: 2021-12-31 09:04:34
-version: 1.20
+updated: 2021-12-31 09:10:05
+version: 1.21
 ---
 
-So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes an argument value for another, and so on until some kind of desired end result is obtained. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
+So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes an argument value for another, and so on until some kind of desired end result is obtained. 
 
-However in [lodash](https://lodash.com/) there is the [\_.chain](https://lodash.com/docs/4.17.15#chain) method that can be used to create what are called explicit method chain sequences. In addition there is also as the main function of lodash, that when called can be used to create implicit method chain sequences that work in a similar fashion to what you may all ready be familiar with when it comes to chaining vanilla js native methods. There is yet even another option that can be deployed as a way to create a chain of sorts that is the [lodash flow method](/2018/11/19/lodash_flow/) that works by passing an array of functions to use.
+In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
+
+In [lodash](https://lodash.com/) there is the [\_.chain](https://lodash.com/docs/4.17.15#chain) method that can be used to create what are called explicit method chain sequences. In addition there is also the main function of lodash, that when called can be used to create implicit method chain sequences that work in a similar fashion to what you may all ready be familiar with when it comes to chaining vanilla js native methods. There is yet even another option that can be deployed as a way to create a chain of sorts that is the [lodash flow method](/2018/11/19/lodash_flow/) that works by passing an array of functions to use. It may be [best actually to use a function such as flow](https://medium.com/bootstart/why-using-chain-is-a-mistake-9bc1f80d51ba) over that of the lodash chain method for various reasons that one will get into when making custom lodash builds.
 
 Although this is a lodash post I will be covering chaining with, and without lodash in this post in an effort to cover chaining in general.
 
