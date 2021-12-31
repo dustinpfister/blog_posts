@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2021-12-31 13:37:10
-version: 1.9
+updated: 2021-12-31 13:38:49
+version: 1.10
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of digital art project type thing that has to do with an object pool that will reduce in terms of the active count of objects. I am thing that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go in some new directions with things also while I am in the process of doing so. Often people think in terms of what they can do that is new, or different each time a new year comes around, and there are a whole lot of things that I would like to do that are new with javaScript, as well as this website for sure.
@@ -349,6 +349,8 @@ var gameMod = (function () {
 ```
 
 ## 4 - The draw module
+
+To display what is going on I am going to need to have to work out a few methods that will have to do with drawing the state of things to a canvas element.
 
 ```js
 var draw = {};
