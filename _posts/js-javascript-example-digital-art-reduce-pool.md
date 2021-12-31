@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2021-12-31 13:27:21
-version: 1.5
+updated: 2021-12-31 13:28:34
+version: 1.6
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of digital art project type thing that has to do with an object pool that will reduce in terms of the active count of objects. I am thing that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go i some new directions with things also while I am in the process of doing so.
@@ -16,7 +16,7 @@ For the last day of the year I wanted to do something fun, so I made yet another
 
 ## 1 - The utilities library for this javaScript example
 
-First off I have the utilities library for this javaScript example, just like with many of my other javaScript examples I often have a library such as this as part of the project. In other words this is a custom cut collection of methods that I will be using in one or more additional javaScript files in the rest of the source code, as such I have methods that have to do with various things that will pop up when working on all kinds of various javaScript files. For this javaScript example project I have a mathematical modulo method as well as my wrap number method as well as distance and bounding box methods on top of that.
+First off I have the [utilities library](/2021/08/06/js-javascript-example-utils/) for this javaScript example, just like with many of my other javaScript examples I often have a library such as this as part of the project. In other words this is a custom cut collection of methods that I will be using in one or more additional javaScript files in the rest of the source code, as such I have methods that have to do with various things that will pop up when working on all kinds of various javaScript files. For this javaScript example project I have a mathematical modulo method as well as my wrap number method as well as distance and bounding box methods on top of that.
 
 ```js
 var utils = {};
