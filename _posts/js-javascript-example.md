@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2021-12-31 13:47:48
-version: 1.75
+updated: 2021-12-31 13:48:53
+version: 1.76
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -35,6 +35,8 @@ This is a simple game prototype idea that came to mind that I put together in a 
 I make a lot of projects that make use of canvas elements, in fact I have [another post like this one that is a post linking to all of the various canvas project prototype examples](/2020/03/23/canvas-example/) that I have made thus far. Well at least most of them anyway. Anyway one thing that I have got tired of when it comes to making a whole bunch of vanilla javaScript canvas projects was wasting time making what is essentially the same code over and over again when it comes to some basic features that I would like to have when working with canvas elements. SO in this example I worked out a basic canvas module that contains many features that I would want to have in such a module such as layering, and drawing an array of points to the canvas.
 
 ### 1.5 - [Digital Art object pool reduce](/2021/12/31/js-javascript-example-digital-art-reduce-pool)
+
+This is the first of what might be a few digital art javaScript example projects, this one is about an object pool that will reduce into a single active display object.
 
 ### 1.6 - [A Draw points canvas method](/2021/04/01/js-javascript-example-draw-points/)
 
