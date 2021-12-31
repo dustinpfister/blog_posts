@@ -4,14 +4,13 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### ( done 12/24/2021 ) - new post #946 for 12/24/2021 - js-javascript-example-item-probability
-* (done) start new forpost folder for the example I worked out for math random
-* (done) start the post
+### () - new post #949 for 01/07/2022 - lodash-tap
 
-### ( done 12/17/2021 ) - new post #945 for 12/17/2021 - lodash_clamp
-* (done) start for post folder
-* (done) be sure to add the \_.wrapNumber method that I made for my post on \_.nth
-* (done) start writing the post
+### () - new post #948 for 01/03/2022 - blog-post-plan-for-2022
+
+### () - new post #947 for 12/21/2021 - js-javascript-example-digital-art-reduce-pool
+
+
 
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
@@ -24,6 +23,10 @@
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
+
+### ( done 12/24/2021 ) - new post #946 for 12/24/2021 - js-javascript-example-item-probability
+* (done) start new forpost folder for the example I worked out for math random
+* (done) start the post
 
 ### ( done 12/10/2021 ) - new post #944 for 12/10/2021 - js-javascript-example-turn-based-rpg
 * (done) start the proto folder for this new javaScript example post
@@ -46,7 +49,14 @@
 * (done) start a new post on my js-javascript-example-game-framework proto
 
 
+<!--###### ########## ########## #######-->
+## Lodash ( /yyyy/mm/dd/lodash* )
+<!--###### ########## ########## #######-->
 
+### ( done 12/17/2021 ) - new post #945 for 12/17/2021 - lodash_clamp
+* (done) start for post folder
+* (done) be sure to add the \_.wrapNumber method that I made for my post on \_.nth
+* (done) start writing the post
 
 <!--###### ########## ########## #######-->
 ## Linux ( /yyyy/mm/dd/linux-* )
