@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2021-12-31 13:19:58
-version: 1.2
+updated: 2021-12-31 13:22:52
+version: 1.3
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of digital art project type thing that has to do with an object pool that will reduce in terms of the active count of objects. I am thing that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go i some new directions with things also while I am in the process of doing so.
@@ -63,6 +63,8 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 ```
 
 ## 2 - The object pool module
+
+This is the object pool librray that I will be using for this example, which I have started out with by copying what I was using from another javaScript example which would be my turn based rpg game that I was working on. In that javaScript example I was using this module for a circle menu that is being used to navigate threw various menus. Here in this example I am going to be using it to create and update the object pool that will be these various objects that will move around and when they overlay combine into a single object with greater mass.
 
 ```js
 var poolMod = (function () {
