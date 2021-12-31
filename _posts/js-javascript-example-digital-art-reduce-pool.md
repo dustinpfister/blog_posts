@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2021-12-31 13:32:53
-version: 1.8
+updated: 2021-12-31 13:37:10
+version: 1.9
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of digital art project type thing that has to do with an object pool that will reduce in terms of the active count of objects. I am thing that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go in some new directions with things also while I am in the process of doing so. Often people think in terms of what they can do that is new, or different each time a new year comes around, and there are a whole lot of things that I would like to do that are new with javaScript, as well as this website for sure.
 
-The general idea of this example came to me when I was editing my [post on the javaScript array reduce method](/2021/07/13/js-array-reduce/) which is of course one of the many methods in the [array prototype](/2018/12/10/js-array/) of native javaScript.
+The general idea of this example came to me when I was editing my [post on the javaScript array reduce method](/2021/07/13/js-array-reduce/) which is of course one of the many methods in the [array prototype](/2018/12/10/js-array/) of native javaScript. What I had in mind was just a collection of display objects that move around on the canvas, and when one or more of them overlap with one all the display objects that overlap will combine into one display object. So then eventual all the display objects will end up, well reducing into a single display object.
 
 <!-- more -->
 
