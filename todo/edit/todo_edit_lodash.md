@@ -45,9 +45,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash_flow ( old )
-* 750+ words
-* have 5+ internal links for the post
+### ( doe 12/31/2021 ) - lodash_flow ( old )
+* (done) 750+ words
+* (doe) have 5+ internal links for the post
 
 ### ( done 12/30/2021 ) - lodash_forown ( old )
 * (done) 750+ words
