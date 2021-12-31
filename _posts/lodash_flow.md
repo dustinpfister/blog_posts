@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2020-01-10 15:22:54
-version: 1.8
+updated: 2021-12-31 07:03:49
+version: 1.9
 ---
 
-These days I have been doing more reading on [lodash](https://lodash.com/) and have found that I have not yet wrote a post on [\_.flow](https://lodash.com/docs/4.17.4#flow) which can be used as a way to make a new function that is actually a bunch of functions that work together. It is similar to chaining, but the end result is a function rather than a value.
+In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth. It is similar to chaining, but the end result is a function rather than a value.
 
 There are many ways to go about chaining methods together with just plain old javaScript by itself as well though, so I will be writing about vanilla js examples as well in this post. However the main theme of this post is centered around the use of the lodash flow method when it comes to using lodash as part of the stack of an project.
 
