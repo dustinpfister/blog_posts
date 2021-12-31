@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 328
-updated: 2021-12-31 09:10:05
-version: 1.21
+updated: 2021-12-31 09:18:23
+version: 1.22
 ---
 
 So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes an argument value for another, and so on until some kind of desired end result is obtained. 
@@ -19,7 +19,7 @@ Although this is a lodash post I will be covering chaining with, and without lod
 
 <!-- more -->
 
-## 1 - lodash chian basics, and what to know  first
+## 1 - lodash chain basics, and what to know  first
 
 Chaining methods is useful for taking a whole bunch of different steps and combine them into a single line of code that returns a single final result. In lodash there is both explicit, and implicit chaining of functions rather than just what you might be ware of when it comes to native javaScript by itself. With that said in addition there is also the nature of how native javaScript methods chain as well which is similar to implicit chaining, but does not behave the same way as implicit chaining in lodash actually. In any case I will be covering how chaining works in general as I often do that with my posts on lodash.
 
@@ -87,3 +87,6 @@ console.log(arr);
 ## 3 - Conclusion
 
 So chaining with lodash, is a little more complicated compared with what most of us might be used to with native javaScript where we are always just dealing with something that would be like unwrapped objects only in lodash speak. That is that calling a native javaScript prototype method will return some kind of value that in turn is of a given constructor function to which there are then prototype methods that can be called off of that value and so forth.
+
+
+
