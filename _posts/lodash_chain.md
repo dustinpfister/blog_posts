@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 328
-updated: 2020-10-01 13:06:06
-version: 1.16
+updated: 2021-12-31 07:11:28
+version: 1.17
 ---
 
 So when working out a javaScript project it may often be a good idea to [chain functions together](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash) so that what is returned by one method becomes what another method acts on. In native javaScript this is not so hard, when calling one prototype method of one instance of something, what is returned can also have any of its prototype methods called and so forth. 
@@ -85,4 +85,4 @@ console.log(arr);
 
 ## 5 - Conclusion
 
-So chaining with lodash, is a little more complicated compared with what most of us might be used to with native javaScript where we are always just dealing with unwrapped objects only.
+So chaining with lodash, is a little more complicated compared with what most of us might be used to with native javaScript where we are always just dealing with something that would be like unwrapped objects only in lodash speak. That is that calling a native javaScript prototype method will return some kind of value that in turn is of a given constructor function to which there are then prototype methods that can be called off of that value and so forth
