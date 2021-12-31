@@ -5,13 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 333
-updated: 2021-12-31 07:03:49
-version: 1.9
+updated: 2021-12-31 07:09:16
+version: 1.10
 ---
 
-In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth. It is similar to chaining, but the end result is a function rather than a value.
+In [lodash](https://lodash.com/) there are a few options when  it comes to making use of more than one lodash method in a chain or sorts one of which is the [\_.flow](https://lodash.com/docs/4.17.4#flow) method. The lodash flow method works by calling the method and passing an array of functions that will be called on after another in order from the lowest index to the highest. For each call of each function the return value of the last function will be used for the argument value for the next and so forth.
 
-There are many ways to go about chaining methods together with just plain old javaScript by itself as well though, so I will be writing about vanilla js examples as well in this post. However the main theme of this post is centered around the use of the lodash flow method when it comes to using lodash as part of the stack of an project.
+There are other options to be aware of that can be deployed to use two or more lodash methods in order though such as calling the main lodash top level function, or using the [lodash chain method](/2018/11/11/lodash_chain/).
+
+There are many ways to go about chaining methods together with just plain old javaScript by itself as well though, so I will be writing about vanilla js examples as well in this post. 
 
 <!-- more -->
 
