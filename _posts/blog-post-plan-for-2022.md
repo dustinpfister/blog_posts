@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 14:41:01
-version: 1.22
+updated: 2022-01-03 14:43:37
+version: 1.23
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -24,9 +24,12 @@ So then I made the decision to just write between one and two new posts per week
 
 ### 1.1 - The usual frequency will then just be one or two new posts per week
 
-I will then just be thinking in write just one new post each week, at least if nothing happens that might change that anyway. This is what has been happening as of late anyway, and the main reason why is because the bulk of the writing that I have been doing is expanding older posts that I have written. Looking back a lot of them are in very poor shape, in terms of the language, and I have found often with respect to the source code examples as well.
+I will then just be thinking in write just one new post, maybe two each week, at least if nothing happens that might change that anyway. This is what has been happening as of late anyway, and the main reason why is because the bulk of the writing that I have been doing is expanding older posts that I have written. Looking back a lot of them are in very poor shape, in terms of the language, and I have found often with respect to the source code examples as well.
 
 ### 1.2 - Frequency might increase with any new categories
+
+If I start writing about a whole new category then of course the rate at which I will write new posts will increase back to the usual frequency, maybe even more so depending how much time I have to work with and what else is going on.
+
 
 ## 2 - Editing older content
 
