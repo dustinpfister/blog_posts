@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 09:29:28
-version: 1.11
+updated: 2022-01-03 09:34:13
+version: 1.12
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by creating such an array of arrays from an object. 
@@ -17,7 +17,7 @@ Although that might sound like a mouthful if you take a moment to look at some q
 
 ## 1 - Basic examples of the from pairs method, and other lodash methods
 
-First off in this section I will be starting out with some quick simple examples that make use of the from pairs method. While I am at it I will also be going over some quick examples of various other lodash methods and features.
+First off in this section I will be starting out with some quick simple examples that make use of the from pairs method. While I am at it I will also be going over some quick examples of various other lodash methods and features. So then I assume that you have at least a little background when it comes to working with native javaScript and how to make use of an external javaScript library such as lodash. If not you might want to take a step back and check out my [main post on lodash](/2019/02/15/lodash/), or one of my [getting started type posts](/2018/11/27/js-getting-started/) on javaScript in general.
 
 ### 1.1 - lodash \_.fromPairs method basic example
 
