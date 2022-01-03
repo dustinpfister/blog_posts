@@ -41,13 +41,13 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash_frompairs ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/03/2021 ) - lodash_frompairs ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( doe 12/31/2021 ) - lodash_flow ( old )
 * (done) 750+ words
-* (doe) have 5+ internal links for the post
+* (done) have 5+ internal links for the post
 
 ### ( done 12/30/2021 ) - lodash_forown ( old )
 * (done) 750+ words
