@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 09:27:41
-version: 1.10
+updated: 2022-01-03 09:29:28
+version: 1.11
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by creating such an array of arrays from an object. 
@@ -81,6 +81,6 @@ I went with using var, a function expression, and a while loop to maximize javaS
 
 The lodash from pairs method is not the most compelling reason to use lodash of course. It is another one of the many methods that I either never use, or if I do need can be replicated very easily with just native javaScript by itself. There are still redeeming qualities with lodash though of course, however I would not say this method is the best talking point for defending the use of the full lodash library in new projects. What can be done with many of these methods can also often be done with a little quick javaScript by itself, also often there are native methods for much of the functionality as well.
 
-There are still some methods that do take at least a little time to write though as there may not be a native counterpart method at all. Also there may be a native method, but it still may be relatively new, so often I might have to make use of a poly fill method to make sure it is there.
+There are still some methods that do take at least a little time to write though as there may not be a native counterpart method at all. Also there may be a native method, but it still may be relatively new, so often I might have to make use of a ploy fill method to make sure it is there. It is also possible to create customs builds of lodash which is often the root that a developer might utility want to go with a general utilities library. However getting into that may be a matter for a whole other post.
 
 
