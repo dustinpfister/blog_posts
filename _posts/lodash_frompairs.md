@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 12:01:22
-version: 1.15
+updated: 2022-01-03 12:03:35
+version: 1.16
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by creating such an array of arrays from an object. 
@@ -80,6 +80,8 @@ console.log(fromPairs(arr));
 I went with using var, a function expression, and a while loop to maximize javaScript engine support. However of course a similar method could easily be made in a flash with all kinds of more modern javaScript features. So lets look at a few more examples of making this kind of function using just vanilla javaScript alone.
 
 ### 2.2 - Using array map
+
+While loops are great but there are also of course a number of useful [array prototype methods](/2018/12/10/js-array/) that can also prove to be usful for these kinds of tasks.
 
 ```js
 let fromPairs = function (arr) {
