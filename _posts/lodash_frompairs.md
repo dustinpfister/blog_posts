@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 11:58:30
-version: 1.14
+updated: 2022-01-03 12:01:22
+version: 1.15
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by creating such an array of arrays from an object. 
@@ -78,6 +78,40 @@ console.log(fromPairs(arr));
 ```
 
 I went with using var, a function expression, and a while loop to maximize javaScript engine support. However of course a similar method could easily be made in a flash with all kinds of more modern javaScript features. So lets look at a few more examples of making this kind of function using just vanilla javaScript alone.
+
+### 2.2 - Using array map
+
+```js
+let fromPairs = function (arr) {
+    let obj = {};
+    let keys = arr.map((a) => { return a[0]; });
+    let values = arr.map((a) => { return a[1]; });
+    keys.forEach((key, i)=>{
+        obj[key] = values[i];
+    });
+    return obj;
+};
+// demo
+let arr = [['x', 1], ['y', 2], ['z', 3]];
+console.log(fromPairs(arr));
+// { x: 1, y: 2, z: 3 }
+```
+
+### 2.3 - Just using array fro each
+
+```js
+let fromPairs = function (arr) {
+    let obj = {};
+    arr.forEach((pairs, i)=>{
+        obj[pairs[0]] = pairs[1];
+    });
+    return obj;
+};
+// demo
+let arr = [['x', 1], ['y', 2], ['z', 3]];
+console.log(fromPairs(arr));
+// { x: 1, y: 2, z: 3 }
+```
 
 ## 3 - Conclusion
 
