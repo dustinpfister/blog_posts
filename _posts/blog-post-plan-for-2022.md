@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 12:39:52
-version: 1.5
+updated: 2022-01-03 12:45:25
+version: 1.6
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -30,5 +30,5 @@ One thing that I started last year is a folder in my main [Github Repository in 
 
 ## 4 - Conclusion
 
-
+Although I am just writing one post on the topic of bloging about bloging per year, I am also thinking that this is maybe something that I should be doing a little more frequently that just that of once a year. The main reason why I say that is because I do not think that change, or revaluation of what one is doing with one self is something that should only happen once per year. Every day that I get up in the morning I am thinking about what it is that I could do differently.
 
