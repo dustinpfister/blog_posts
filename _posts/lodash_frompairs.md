@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 12:03:35
-version: 1.16
+updated: 2022-01-03 12:08:46
+version: 1.17
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by creating such an array of arrays from an object. 
@@ -81,7 +81,7 @@ I went with using var, a function expression, and a while loop to maximize javaS
 
 ### 2.2 - Using array map
 
-While loops are great but there are also of course a number of useful [array prototype methods](/2018/12/10/js-array/) that can also prove to be usful for these kinds of tasks.
+While loops are great but there are also of course a number of useful [array prototype methods](/2018/12/10/js-array/) that can also prove to be useful for these kinds of tasks. In this example I am using the [array map](/2020/06/16/js-array-map/) method to create an array of keys, and a array of values, and then I am using the [array for each method](/2019/02/16/js-javascript-foreach/) to set the values for a new object with these arrays.
 
 ```js
 let fromPairs = function (arr) {
@@ -99,7 +99,11 @@ console.log(fromPairs(arr));
 // { x: 1, y: 2, z: 3 }
 ```
 
-### 2.3 - Just using array fro each
+In some cases I might want to cerate an array of key names, and values first like this, however for the most part this kind of solution might still prove to be a little more complex that it needs to be actually.
+
+### 2.3 - Just using array for each
+
+So then yet another option would be to just use the array for each method to create an object from an array of arrays of key value pairs.
 
 ```js
 let fromPairs = function (arr) {
