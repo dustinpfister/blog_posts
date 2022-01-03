@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 13:55:49
-version: 1.12
+updated: 2022-01-03 13:59:00
+version: 1.13
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -38,7 +38,7 @@ Often when I go to read one of these kind of content pieces myself I will not al
 
 Another general idea that I am exploring when it comes to outlining what to focus on next in terms of editing older content is by just looking into what content pieces are preforming the best in terms of traffic currently in terms of say clicks to the page from organic search over the last three months. At any given moment I have my top ten posts over all topics, there is also breaking things down on a per category level as with this sort of thing but thus far I am just starting out with my best preforming posts in general. So then I just take a look at what is going on in search console, and create a todo list of sorts based on the number of clicks that a post is getting and then just running now a list like that one by one to make sure that the quality of the content is decent. 
 
-
+Just focusing on these kinds of posts alone is maybe not such a good idea, but neater is neglect, which is what I have been guilty of. So that is something that I think I would like to try to change this year, but getting together a better system fir making sure that I am dong at least a little touch up work with these posts, if not much more than that.
 
 ## 3 - Working out more with todo lists
 
