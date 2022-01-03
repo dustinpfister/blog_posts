@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 14:52:07
-version: 1.25
+updated: 2022-01-03 14:52:33
+version: 1.26
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -30,7 +30,7 @@ I will then just be thinking in write just one new post, maybe two each week, at
 
 If I start writing about a whole new category then of course the rate at which I will write new posts will increase back to the usual frequency, maybe even more so depending how much time I have to work with and what else is going on. If I am writing about a whole new category of content I typically want to get to that first twenty or so posts right away, and doing so often costs me a little in terms of quality a little to do so. There is always getting back to the various posts later at some point when it comes to editing, and also if it is something very new to me I may only have so much to write about it anyway until I log more time with it.
 
-### 1.3 - at least a few new posts on lodash
+### 1.3 - At least a few new posts on lodash
 
 I will be writing at least a [few new posts on lodash](/2019/02/15/lodash/), even though it is a framework that I think is slowly dieing out in terms of popularity. The main reason why is because this is just a category of content that is doing well for me in terms of traffic, so for that reason alone I have to. However there is additional motivation beyond that when it comes to many of the finer points revolving around lodash such as the topic of functional programing, using what is often called a [pony fill](https://github.com/sindresorhus/ponyfill) over that of [monkey patching](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill), and so forth.
 
