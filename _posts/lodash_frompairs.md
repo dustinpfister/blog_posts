@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 09:34:13
-version: 1.12
+updated: 2022-01-03 10:32:50
+version: 1.13
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by creating such an array of arrays from an object. 
@@ -83,4 +83,4 @@ The lodash from pairs method is not the most compelling reason to use lodash of 
 
 There are still some methods that do take at least a little time to write though as there may not be a native counterpart method at all. Also there may be a native method, but it still may be relatively new, so often I might have to make use of a ploy fill method to make sure it is there. It is also possible to create customs builds of lodash which is often the root that a developer might utility want to go with a general utilities library. However getting into that may be a matter for a whole other post.
 
-
+If you would like to read up more on lodash I have a number of [other posts lodash](/categories/lodash) that might be worth checking out. However these days I seem to be focusing more so on using native javaSccript and developing things from the ground up with that said there is my collection of posts on [javaScript project examples](/2021/04/02/js-javascript-example/) that I am making with just native javaScript alone including one that is a [vanilla javaScript utility library of sorts](/2021/08/06/js-javascript-example-utils/). I am not sure if I can recommend the polar opposite extreme of doing everything from the ground up compared to the alternative, but it does have its good points when it comes to learning how to be a better programmer when it does come to working on a real project rather than just borrowing code for just about almost everything.
