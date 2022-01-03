@@ -6,7 +6,7 @@
 
 ### () - new post #949 for 01/07/2022 - lodash-tap
 
-### () - new post #948 for 01/03/2022 - blog-post-plan-for-2022
+### ( done 01/03/2022 ) - new post #948 for 01/03/2022 - blog-post-plan-for-2022
 
 ### ( done 12/31/2021 ) - new post #947 for 12/31/2021 - js-javascript-example-digital-art-reduce-pool
 
