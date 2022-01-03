@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 12:32:58
-version: 1.3
+updated: 2022-01-03 12:35:17
+version: 1.4
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -24,7 +24,9 @@ Last year I was not aiming to change the frequency at which I was writing new po
 
 Although I might end up writing less in terms of new content this year, over all I might end up writing more this coming year. Not in the form of new posts, but in the form of greatly expanding content that I have all ready wrote before hand. The reason why I say that is because I have all ready wrote a whole lot of blog posts on interesting topics, but the current state of many of them might be only a few hundred words, but they could easily be expanded to thousands because there is just so much ground to cover with them actually.
 
-## 3 - Working out more todo lists
+## 3 - Working out more with todo lists
+
+One thing that I started last year is a folder in my main [Github Repository in which I store the markdown file source code for these blog posts that is a collection of todo lists](https://github.com/dustinpfister/blog_posts/tree/master/todo).
 
 ## 4 - Conclusion
 
