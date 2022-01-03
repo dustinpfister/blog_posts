@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 603
-updated: 2022-01-03 09:20:04
-version: 1.7
+updated: 2022-01-03 09:21:50
+version: 1.8
 ---
 
 In [lodash there is the from pairs array method](https://lodash.com/docs/4.17.15#fromPairs) that can create a new object where each key is the value of the first element of a nested array in an array of arrays, and the value is the second element of an array nested in an array. It is the inversion of the lodash to pairs method that does the opposite of this by createing such an array of arrays from an object. 
@@ -15,7 +15,7 @@ Although that might sound like a mouthful if you take a moment to look at some q
 
 <!-- more -->
 
-## 1 - lodash \_.fromPairs method basic example
+### 1.1 - lodash \_.fromPairs method basic example
 
 So lets say you have an array, and each element in that array is another array. In addition each nested array has a first element that you want to be a key value, and a second element that you want to be a value of that key value in a new object. The lodash from pairs method can be used to do just that.
 
@@ -30,7 +30,7 @@ console.log( _.fromPairs(arr) );
 
 Thats it, that is what the lodash from pairs method does. However there is also having a method that does the opposite of this that will create such an array of array from an object. Also it is not so hard to just do this with plain old javaScript in a number of ways, so lets look at some more related coded examples with and without the use of lodash.
 
-## 2 - lodash \_.toPairs to do the opposite
+### 1.2 - lodash \_.toPairs to do the opposite
 
 The lodash \_.toPairs method is the inverse of the lodash \.FromPairs method. If I pass an object to it, I am given an array of arrays where the keys and values are the first and second elements of each nested array for each key value pair in the given object.
 
@@ -47,7 +47,7 @@ console.log(arr2);
 // [['x', 1],['y', 2], ['z', 3]]
 ```
 
-## 3 - vanilla javaScript alternative with a while loop
+## 2 - vanilla javaScript alternative with a while loop
 
 It is not so hard to just work out a little javaScript to make a method that does the same thing. Also it is silly to have a very extensive framework of methods like this that you might not be using. If for some reason you do need to use a method like this, and it is all you really need then a copy and past solution like this should work just fine in most situations.
 
@@ -73,6 +73,6 @@ console.log(fromPairs(arr));
 
 I went with using var, a function expression, and a while loop to maximize javaScript engine support. However of course a similar method could easily be made in a flash with all kinds of more modern javaScript features.
 
-## 4 - Conclusion
+## 3 - Conclusion
 
 The lodash from pairs method is not the most compelling reason to use lodash of course. It is another one of the many methods that I either never use, or if I do need can be replicated very easily with just native javaScript by itself. There are still redeeming qualities with lodash though of course, however I would not say this method is the best talking point for defending the use of the full lodash library in new projects.
