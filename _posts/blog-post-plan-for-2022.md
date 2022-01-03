@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 14:30:22
-version: 1.17
+updated: 2022-01-03 14:32:16
+version: 1.18
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -50,7 +50,7 @@ As of this writing I have worked out a number of standards for todo list, the on
 
 So then the idea here is to just have a kind of time centered list that will act as a list of lists sort of speak. This way I can plan out what I will be doing on a day to day basis rather than not having much of a system and just making random choices as to what list I should be focusing on at any given moment.
 
-Another great thing about this is that it will help me to figure out what is too much, or too little when it comes to the amount of work that I should be doing on a day to day basis.
+Another great thing about this is that it will help me to figure out what is too much, or too little when it comes to the amount of work that I should be doing on a day to day basis. If I am biting off more than what I can chew I can just move certain times forward to the next day, or the day after that and so forth. If it seems like I am fining what I have planed out for a day to soon, then there is planing out more to do later, and getting a jump start on it.
 
 ## 4 - Conclusion
 
