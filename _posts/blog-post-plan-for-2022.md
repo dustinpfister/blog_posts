@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 13:47:58
-version: 1.11
+updated: 2022-01-03 13:55:49
+version: 1.12
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -33,6 +33,12 @@ For me last year I stated a collection of todo lists that have to do with what I
 However one great thing about this kind of content is that there is the potential to write a post that can make just about every visitor happy with a given topic. One problem that I run into when writing a new post on javaScript is having to chose to write a post that is friendly to new javaScript developers, or write a post that is more in tune with where I am as a developer with well over ten years of experience thus far. With long from posts I can push the source code examples and corresponding written content that has to do with the very basics of something to the top of the post. When it comes to content in the form of additional, more advanced source code examples and topics that are more up to speed with where I am now, rater than where I was ten or more years ago, that kind of content can be later in the content piece.
 
 Often when I go to read one of these kind of content pieces myself I will not always read the full post, but scan the headlines of each section, looking for something that is most relevant for what it is that I am looking for.
+
+### 2.2 - Prioritizing by current traffic
+
+Another general idea that I am exploring when it comes to outlining what to focus on next in terms of editing older content is by just looking into what content pieces are preforming the best in terms of traffic currently in terms of say clicks to the page from organic search over the last three months. At any given moment I have my top ten posts over all topics, there is also breaking things down on a per category level as with this sort of thing but thus far I am just starting out with my best preforming posts in general. So then I just take a look at what is going on in search console, and create a todo list of sorts based on the number of clicks that a post is getting and then just running now a list like that one by one to make sure that the quality of the content is decent. 
+
+
 
 ## 3 - Working out more with todo lists
 
