@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 14:07:06
-version: 1.15
+updated: 2022-01-03 14:23:06
+version: 1.16
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -47,6 +47,8 @@ One thing that I started last year is a folder in my main [blog posts Github Rep
 ### 3.1 - Time centered todo lists
 
 As of this writing I have worked out a number of standards for todo list, the ones that I have been using thus far have to do with general editing, long form content, and what to write about when it comes to new posts. However what really matters the most about these is that I am using them, which means that I can use them to get myself to follow threw with things. So then one idea for a new kind of list would be one that has to do with what I will be doing on a day by day basis, or a kind of time centered list.
+
+So then the idea here is to just have a kind of time centered list that will act as a list of lists sort of speak. This way I can plan out what I will be doing on a day to day basis rather than not having much of a system and just making random choices as to what list I should be focusing on at any given moment.
 
 ## 4 - Conclusion
 
