@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 13:05:35
-version: 1.9
+updated: 2022-01-03 13:10:29
+version: 1.10
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -30,7 +30,7 @@ This kind of post might have many kinds of terms and words attached to them such
 
 For me last year I stated a collection of todo lists that have to do with what I am planing out in terms of long form content in the form of lists for each category. Also in the main folder where I store these lists I took the time to write out a [readme file in which I am outlining what a long form content piece is for me](https://github.com/dustinpfister/blog_posts/tree/master/todo/edit-long-form). As of this writing I am thinking that a long form content piece should be at least around three thousand words, but that will of course change a little from one topic to another.
 
-
+However one great thing about this kind of content is that there is the potential to write a post that can make just about every visitor happy with a given topic. One problem that I run into when writing a new post on javaScript is having to chose to write a post that is friendly to new javaScript developers, or write a post that is more in tune with where I am as a developer with well over ten years of experience thus far. With long from posts I can push the source code examples and corresponding written content to the top of the post, while also include additional source code examples and topics that are more up to speed with where I am not, rater than where I was ten or more years ago.
 
 ## 3 - Working out more with todo lists
 
