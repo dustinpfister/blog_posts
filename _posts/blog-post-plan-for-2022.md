@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-03 12:46:48
-version: 1.7
+updated: 2022-01-03 13:04:14
+version: 1.8
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or various tech related topic. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog.
@@ -23,6 +23,14 @@ Last year I was not aiming to change the frequency at which I was writing new po
 ## 2 - Editing older content
 
 Although I might end up writing less in terms of new content this year, over all I might end up writing more this coming year. Not in the form of new posts, but in the form of greatly expanding content that I have all ready wrote before hand. The reason why I say that is because I have all ready wrote a whole lot of blog posts on interesting topics, but the current state of many of them might be only a few hundred words, but they could easily be expanded to thousands because there is just so much ground to cover with them actually.
+
+### 2 - I all ready have some long form content posts, and this year I intend to expand more posts into long form posts
+
+This kind of post might have many kinds of terms and words attached to them such as [long form content piece](https://www.wordstream.com/blog/ws/2014/05/05/longform-content), or they [may use the word definitive in the title of the post](https://beabetterblogger.com/how-to-write-a-blog-post/). There are many different terms, and also standards as to what long form content is, and when it really comes down to it every bloger may very will have there own independent set of standards as to what constitutes a long form content post or not.
+
+For me last year I stated a collection of todo lists that have to do with what I am planing out in terms of long form content in the form of lists for each category. Also in the main folder where I store these lists I took the time to write out a [readme file in which I am outlining what a long form content piece is for me](https://github.com/dustinpfister/blog_posts/tree/master/todo/edit-long-form). As of this writing I am thinking that a long form content pice should be at least around three thousand words, but that will of course change a little from one topic to another.
+
+
 
 ## 3 - Working out more with todo lists
 
