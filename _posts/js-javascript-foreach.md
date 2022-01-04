@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2022-01-04 13:50:17
-version: 1.120
+updated: 2022-01-04 13:53:10
+version: 1.121
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -326,7 +326,7 @@ console.log(arr); // [2,4,8]
 
 ### 2.3 - Array filter for creating a new array that is only a few elements from another that meet a given condition.
 
-Yet another alternative array prototype method to the foreach method might be the [filter method](/2020/10/03/js-array-filter/). As the name would suggest this can be used to filter out elements from an array that are not wanted. Also like that of the array map method this will create and return a new array rather than mutating an array in place.
+Yet another alternative array prototype method to the for each method might be the [filter method](/2020/10/03/js-array-filter/). As the name would suggest this can be used to filter out elements from an array that are not wanted. Also like that of the array map method this will create and return a new array rather than mutating an array in place. To use this method I just need to call the array filter method off of the array that I want to use it with and pass a function that will be used to preform the filter. Inside the body of this function I just need to create and return a boolean value. If the boolean value is true then the current element will be in the new array, else it will not.
 
 ```js
 let arr = [7, 'foo', 13, 'bar', false, -15, null, NaN, 120, 20];
