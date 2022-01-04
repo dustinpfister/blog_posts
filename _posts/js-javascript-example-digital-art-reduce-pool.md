@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 12:58:08
-version: 1.16
+updated: 2022-01-04 13:00:55
+version: 1.17
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my [canvas examples](/2020/03/23/canvas-example/) collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
 
-I am thinking that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go in some new directions with programing in general while I am in the process of doing so. Often people think in terms of what they can do that is new, or different each time a new year comes around, and there are a whole lot of things that I would like to do that are new with javaScript, as well as this website for sure.
+I am thinking that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go in some new directions with programing in general while I am in the process of doing so. Often people think in terms of what they can do that is new, or different each time a new year comes around, and there are a whole lot of things that I would like to do that are new with javaScript, as well as with this website for sure. With that said there is treating this javaScript example differently this time around by setting some intentions, and making sure to follow threw with them. For example there is not just getting a crude idea up and working and moving on, but refining and improving the over all structure of the idea in terms of the quality of the source code which is one thing I would like to do with this javaScript example.
 
 The general idea of this example came to me when I was editing my [post on the javaScript array reduce method](/2021/07/13/js-array-reduce/) which is of course one of the many methods in the [array prototype](/2018/12/10/js-array/) of native javaScript. What I had in mind was just a collection of display objects that move around on the canvas, and when one or more of them overlap with one all the display objects that overlap will combine into one display object. So then eventual all the display objects will end up, well reducing into a single display object.
 
