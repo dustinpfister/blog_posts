@@ -12,8 +12,11 @@
 * ( done 11/18/2021 ) 5,600+ words
 * ( done 11/18/2021 ) 5,800+ words
 * ( done 12/16/2021 ) 6,000+ words
+* 6,750+ words
 * 7,000+ words
-* 8,000+ words
+* 7,250+ words
+* 7,500+ words
+
 
 ## js-javascript-example-grid-game-unit-movement
       Intrinsic Value: This is a good topic that relates to work on my actual game framework project
