@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 13:19:39
-version: 1.23
+updated: 2022-01-04 13:21:56
+version: 1.24
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my [canvas examples](/2020/03/23/canvas-example/) collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
@@ -616,7 +616,7 @@ var gameMod = (function () {
 
 ## 4 - The draw module
 
-To display what is going on I am going to need to have to work out a few methods that will have to do with drawing the state of things to a canvas element.
+To display what is going on I am going to need to have to work out a few methods that will have to do with drawing the state of things to a canvas element. With just about any module like this I often have a method that will be used to just draw a background for the example, typically this is just a solid color background. After that I have a method that will draw the current status of the object pool of course, as well as some additional methods that will draw some basic debug into to the canvas element.
 
 ```js
 var draw = {};
