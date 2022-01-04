@@ -37,11 +37,11 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### () - lodash_words ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/04/2022 ) - lodash_words ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
-### ( done 01/03/2021 ) - lodash_frompairs ( old, links )
+### ( done 01/03/2022 ) - lodash_frompairs ( old, links )
 * (done) 750+ words
 * (done) have 5+ internal links for the post
 
