@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 535
-updated: 2022-01-04 13:35:46
-version: 1.11
+updated: 2022-01-04 13:38:53
+version: 1.12
 ---
 
 In lodash there is the words method that can be used to quickly preform [lexical analysis tokenization](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) of a string. In other words the [lodash words](https://lodash.com/docs/4.17.15#words) method is used to split a string into an array of substrings where each substring is a single word from the given source string. 
@@ -76,5 +76,5 @@ console.log(words('JavaScript is fun!', /\w+[!?.]|\w+/g, true));
 
 The lodash words method is then one user space option for spiting a string of words into an array of sub strings where each sub string is a single word in the given source string. This method might work okay when it comes to English sentiences, but even then I might still want to use some other option in certain situations.
 
-If you enjoyed this post you might want to check out my [main post on lodash in general](/2019/02/15/lodash/), or one of my many other [posts on the topic of lodash](/categories/lodash/).
+If you enjoyed this post you might want to check out my [main post on lodash in general](/2019/02/15/lodash/), or one of my many other [posts on the topic of lodash](/categories/lodash/). However there is also a whole lot to be aware of when it comes to what there is to work with in terms of libraries outside that of lodash, such as this one [library called natural.js](/2017/12/11/nodejs-natural-language-facility/)
 
