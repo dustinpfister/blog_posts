@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 13:11:48
-version: 1.20
+updated: 2022-01-04 13:14:51
+version: 1.21
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my [canvas examples](/2020/03/23/canvas-example/) collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
@@ -27,7 +27,9 @@ As of this writing I have just finished revision 4 of this javaScript example as
 
 ## 1 - The utilities library for this javaScript example
 
-First off I have the [utilities library](/2021/08/06/js-javascript-example-utils/) for this javaScript example, just like with many of my other javaScript examples I often have a library such as this as part of the project. In other words this is a custom cut collection of methods that I will be using in one or more additional javaScript files in the rest of the source code, as such I have methods that have to do with various things that will pop up when working on all kinds of various javaScript files. For this javaScript example project I have a mathematical modulo method as well as my wrap number method as well as distance and bounding box methods on top of that.
+First off I have the [utilities library](/2021/08/06/js-javascript-example-utils/) for this javaScript example, just like with many of my other javaScript examples I often have a library such as this as part of the project. In other words this is a custom cut collection of methods that I will be using in one or more additional javaScript files in the rest of the source code, as such I have methods that have to do with various things that will pop up when working on all kinds of various javaScript files. 
+
+For this javaScript example project I have a [mathematical modulo](/2017/09/02/js-whats-wrong-with-modulo/) method as well as my wrap number method that I am using in the game module as of revision 4 of this example. I also have a distance and bounding box methods that are the usual suspect type methods with many projects such as this, they are also used in the object pool module that I am using that I borrowed from another project so I need them for that reason also.
 
 ```js
 var utils = {};
