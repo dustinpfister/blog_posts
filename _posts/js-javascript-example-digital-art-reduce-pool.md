@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 13:08:37
-version: 1.19
+updated: 2022-01-04 13:11:48
+version: 1.20
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my [canvas examples](/2020/03/23/canvas-example/) collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
@@ -17,7 +17,9 @@ The general idea of this example came to me when I was editing my [post on the j
 
 <!-- more -->
 
-## This object pool reduction digital art javaScript exampke and what to know before hand
+## This object pool reduction digital art javaScript example and what to know before hand
+
+This is a post on a full client side javaScript project example that is just a simple digital art project involving object pools and canvas elements. This is then not in any way a blog post that is intended for people that are new to javaScript in general so if you are still new to javaScript you might want to start out with a [getting started post with native javaScript](/2018/11/27/js-getting-started/).
 
 ### The current source code is up on Github
 
