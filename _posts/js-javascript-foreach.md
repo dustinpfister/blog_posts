@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 384
-updated: 2022-01-04 13:46:06
-version: 1.119
+updated: 2022-01-04 13:50:17
+version: 1.120
 ---
 
 In javaScript there is the [Array.prototype.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method that is often used as a quick way to go about looping over the contents of an array. However there are other Array prototype methods that work in a similar way, but might be a better choice depending on what you want to do with an Arrays contents. Some such methods are the [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method that can be used to create a new array where each element is the result of some kind of action preformed for each element in the source array that it is called off of. Another array prototype method that comes to mind that I find myself using often would be the [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method that will, as the same suggests, return a new array from a source array by filtering out any elements that are not wanted in the source array given a certain condition that is given in the body of a method.
@@ -338,6 +338,8 @@ arr = arr.filter((el) => {
 console.log(arr);
 // [ 7, 13, 20 ]
 ```
+
+Often the method might prove to be a more concise alternative to using the array reduce method, but that method can also of course me used in filtering related tasks. The reduce method is typically used to create a single privative value form an array of values, but of course I can set the initial accumulator value to that of an array, and then just push into that new array what I want in the body of the method that I use with reduce. Still this filter method is nice in the sense that it is all about just returning a true or false value for each element in an array as a way to create a new array with values filtered out that I do not want.
 
 ### 2.4 - Array some for finding out if one or more elements in an array meet a condition
 
