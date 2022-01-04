@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 13:21:56
-version: 1.24
+updated: 2022-01-04 13:25:10
+version: 1.25
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my [canvas examples](/2020/03/23/canvas-example/) collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
@@ -708,6 +708,6 @@ loop();
 
 ## 6 - Conclusion
 
-So far this javaScript example is looking good as of revision zero at least when I have wrote this. When it comes to plans for additional edits of this post in the future I all ready have some things drafted out in the repository folder for this example.
+So far this javaScript example is looking good as of revision four at least when I last updated the content of this post to reflect that specific revision. When it comes to plans for additional edits of this post in the future I all ready have some things drafted out in the repository folder for this example. At this point there is not just adding features, as there is not much more that I think that I would want to add to it at this point, the example is more or less done with respect to what it is that I had in mind for this example. So then many of the future edits that I will be getting to when I get to them will have to do with improving the over all structure of the example, rather than adding more to the example in terms of features.
 
 
