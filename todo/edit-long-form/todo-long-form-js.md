@@ -12,7 +12,7 @@
 * ( done 11/18/2021 ) 5,600+ words
 * ( done 11/18/2021 ) 5,800+ words
 * ( done 12/16/2021 ) 6,000+ words
-* 6,750+ words
+* ( done 01/04/2022 ) 6,750+ words
 * 7,000+ words
 * 7,250+ words
 * 7,500+ words
