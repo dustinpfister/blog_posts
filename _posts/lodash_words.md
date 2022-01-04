@@ -5,11 +5,14 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 535
-updated: 2020-02-03 05:45:00
-version: 1.7
+updated: 2022-01-04 13:28:59
+version: 1.8
 ---
 
-In lodash there is the words method that can be used to quickly preform [lexical analysis tokenization](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) of a string. In other words the [lodash words](https://lodash.com/docs/4.17.15#words) method is used to split a string into an array of words. In some cases this could be easily done with the split method, but it is not always so cut and dry. There are text samples that might contain certain characters that are to be cut out or included in the process for example. So that being said there is a need for some kind of Tokenizer method that is better suited for the task of creating an array of words from a text sample. 
+In lodash there is the words method that can be used to quickly preform [lexical analysis tokenization](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization) of a string. In other words the [lodash words](https://lodash.com/docs/4.17.15#words) method is used to split a string into an array of substrings where each substring is a single word from the given source string. 
+
+In some cases this could be easily done with the split method, but it is not always so cut and dry. There are text samples that might contain certain characters that are to be cut out or included in the process for example. So that being said there is a need for some kind of Tokenizer method that is better suited for the task of creating an array of words from a text sample. 
+
 The lodash words is one such method that seems to work okay, but there are other methods of doing this with plain old native javaScript by itself also. In addition if you really want to get into lexical analysis there are of course additional javaScript dependencies outside of lodash that are of interest when it comes to this. So with that said lets take a look at the lodash words method as well as some additional alternatives when it comes to getting an array of words from a string with javaScript.
 
 <!-- more -->
