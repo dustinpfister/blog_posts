@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 12:50:33
-version: 1.14
+updated: 2022-01-04 12:56:06
+version: 1.15
 ---
 
-For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. 
+For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my canvas examples collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
 
 I am thinking that this might just be the first of at least a few javaScript examples where the goal is to just do something artful with canvas elements, and also try to go in some new directions with programing in general while I am in the process of doing so. Often people think in terms of what they can do that is new, or different each time a new year comes around, and there are a whole lot of things that I would like to do that are new with javaScript, as well as this website for sure.
 
