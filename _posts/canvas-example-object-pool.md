@@ -5,8 +5,8 @@ tags: [canvas]
 categories: canvas
 layout: post
 id: 683
-updated: 2020-09-20 16:35:40
-version: 1.24
+updated: 2022-01-04 14:00:49
+version: 1.25
 ---
 
 This will be just a quick [canvas examples](/2020/03/23/canvas-example/) post on a [object pool](https://en.wikipedia.org/wiki/Object_pool_pattern) module and a little additional code that will make use of such a module. An object pool is what I have come to call a collection of display objects that are a fixed set of such objects rather than something where they are being added and removed on the fly. So in other words an object pool is a fixed collection of objects that are to be used over and over again, rather than a collection of objects that created and destroyed as needed.
@@ -352,3 +352,5 @@ loop();
 This post was yet another exercise of creating something that I find myself creating over and over again each time I make another canvas example. Just about any game or animation type thing will involve creating at least one if not more pools of display objects that are used for rendering enemy object sprites, power ups, or anything else to that effect.
 
 I wanted to go in a different direction with this example, but I did not quite get around to it. I might get around to putting a little more time into this one when I get some more time though. I would like to make it so that there is more than one pool and they interact with each other.
+
+If you would like to find some additional reading on this site that has to do with object pools I have a number of other canvas examples, as well as javaScript examples in general that may or may not use canvas elements. One javaScript example series of posts example that I have made thus far is a [digital art project example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that makes use of an object pool that is very much based on what I worked out here.
