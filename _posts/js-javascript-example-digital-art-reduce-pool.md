@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 947
-updated: 2022-01-04 13:14:51
-version: 1.21
+updated: 2022-01-04 13:18:20
+version: 1.22
 ---
 
 For the last day of the year I wanted to do something fun, so I made yet another quick [javaScript example](/2021/04/02/js-javascript-example/) type post, this time it is a kind of [digital art](https://en.wikipedia.org/wiki/Digital_art) project that has to do with an object pool that will reduce in terms of the active count of objects. When it comes to my [canvas examples](/2020/03/23/canvas-example/) collection of posts I have put together a [canvas example that makes use of an object pool module](/2020/07/20/canvas-example-object-pool/) for that example that I will then be using in this javaScript example.
@@ -77,7 +77,9 @@ utils.boundingBox = function (x1, y1, w1, h1, x2, y2, w2, h2) {
 
 ## 2 - The object pool module
 
-This is the object pool library that I will be using for this example, which I have started out with by copying what I was using from another javaScript example which would be my [turn based rpg game](/2021/12/10/js-javascript-example-turn-based-rpg/) that I was working on. In that javaScript example I was using this module for a circle menu that is being used to navigate threw various menus. Here in this example I am going to be using it to create and update the object pool that will be these various objects that will move around and when they overlay combine into a single object with greater mass.
+This is the object pool library that I will be using for this example, which I have started out with by copying what I was using from another javaScript example which would be my [turn based rpg game](/2021/12/10/js-javascript-example-turn-based-rpg/) that I was working on. In that javaScript example I was using this module for a circle menu that is being used to navigate threw various menus. In turn I also borrowed that copy of the object pool from another example, and so forth, as this seems to be a module that I keep reusing from one project to another. It would seem that much of this source code is very similar to my canvas example posts on object pools so it would seem that project is when this project started. Sense then I have found a few bugs with it that I have worked out, and I am also seeing some additional features that I wold like to add in additional future revisions of this javaScript example.
+
+Here in this example I am going to be using it to create and update the object pool that will be these various objects that will move around and when they overlay combine into a single object with greater mass.
 
 ```js
 var poolMod = (function () {
