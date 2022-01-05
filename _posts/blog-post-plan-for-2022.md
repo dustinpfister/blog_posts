@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 10:37:26
-version: 1.34
+updated: 2022-01-05 10:43:59
+version: 1.35
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -32,9 +32,15 @@ Less is very much more when it comes to this, as I can not easily start to think
 
 ### 1.2 - Frequency might increase with any new categories
 
-If I start writing about a whole new category then of course the rate at which I will write new posts will increase back to the usual frequency, maybe even more so depending how much time I have to work with and what else is going on. If I am writing about a whole new category of content I typically want to get to that first twenty or so posts right away, and doing so often costs me a little in terms of quality a little to do so. There is always getting back to the various posts later at some point when it comes to editing, and also if it is something very new to me I may only have so much to write about it anyway until I log more time with it.
+If I start writing about a whole new category then of course the rate at which I will write new posts will increase back to the usual frequency, maybe even more so depending how much time I have to work with and what else is going on. If I am writing about a whole new category of content I typically want to get to that first twenty or so posts right away, and doing so often costs me a little in terms of quality to do so. 
 
-### 1.3 - At least a few new posts on lodash
+There is always getting back to the various posts later at some point when it comes to editing, and also if it is something very new to me I may only have so much to write about it anyway until I log more time with it. 
+
+### 1.3 - Possible New categories
+
+I was toying with the idea of starting a new collection of content on using gcc to compile simple programs written in C, in fact I have wrote a post on [using the gcc command when it comes to my catalog of content on Linux](/2020/11/17/linux-gcc/). However learning a whole new language is not something that will happen over night, and also there is a whole lot to learn when it comes to a language like C compared to the hight level languages that I am used to such as javaScript, python, and bash.
+
+### 1.4 - At least a few new posts on lodash
 
 I will be writing at least a [few new posts on lodash](/2019/02/15/lodash/), even though it is a framework that I think is slowly dieing out in terms of popularity. The main reason why is because this is just a category of content that is doing well for me in terms of traffic, so for that reason alone I have to. However there is additional motivation beyond that when it comes to many of the finer points revolving around lodash such as the topic of functional programing, using what is often called a [pony fill](https://github.com/sindresorhus/ponyfill) over that of [monkey patching](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill), and so forth.
 
