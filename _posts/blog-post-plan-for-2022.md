@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 10:19:49
-version: 1.28
+updated: 2022-01-05 10:23:30
+version: 1.29
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -18,7 +18,9 @@ When I [look back at some of my older posts](/categories/blog/) for the various 
 
 ## 1 - The plan for new content is to continue to focus more so on quality rather than quantity
 
-Last year I was not aiming to change the frequency at which I was writing new posts, but that is what has happened. I was writing about one post every other day, but I have found that doing so just reduces quality of content to a point at which I am writing content that is just not adding much in terms of value. I still think that it is best to think in terms of quantity rather than quality when first starting out, but once one gains a sense of what works well, and what does not, it is time to shift gears with this.
+Last year I was not aiming to change the frequency at which I was writing new posts, but that is what has happened as I have made the choice latter in the year to slow down in terms of the number of new posts I write. I was writing about one post every other day, but I have found that doing so just reduces quality of content to a point at which I am writing posts that are just not adding much in terms of value. So I am not thinking more in terms of just writing one, or two new posts a week, unless there is some reason as to why it is that I would want to write a little more often, such as starting a new collection of content on a whole new topic, or figuring that it is a good idea to aggressively expand on an existing category.
+
+I still think that it is best to think in terms of quantity rather than quality when first starting out, but once one gains a sense of what works well, and what does not, it is time to shift gears with this.
 
 So then I made the decision to just write between one and two new posts per week. This allows for me to start writing new posts that are a little longer to begin with, rather than getting them to that point at some point in the near or distant future when it comes to editing. This is then more in tune with the idea of writing higher quality posts, but at a lower frequency rather than the other way around.
 
