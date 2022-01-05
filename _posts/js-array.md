@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2022-01-05 13:37:11
-version: 1.131
+updated: 2022-01-05 13:40:49
+version: 1.132
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the size of the array. When it comes to the size, or length of the array these arrays are sparse in nature which means it is possible for one or more of the key names to not be defined. In other words it is possible to have one or more elements that are empty, which is one root cause for problems when one is not aware of this and how to prevent these problems from happening in the first place.
@@ -105,9 +105,7 @@ So then in this section I will just be going over some ways to go about creating
 
 ### 2.1 - The array constructor
 
-One way to create an array is to use the Array constructor with the [new keyword](/2019/02/08/js-javascript-new/) to create a new empty array of a set length. This is used more or less the same way as any other [constructor function](/2019/02/27/js-javascript-constructor/) where you type the new operator followed by calling the constructor function to create an instance of that constructor which in this case would be an array. I will not be getting into constructor functions in detail here as that is a matter of another post.
-
-I do not recommend the use of the Array constructor, and generally prefer using the literal syntax in place of this. However it does show up in many code examples on the open web so it is something that a javaScript developer should be aware of at least.
+One way to create an array is to use the Array constructor with the [new keyword](/2019/02/08/js-javascript-new/) to create a new empty array of a set length. This is used more or less the same way as any other [constructor function](/2019/02/27/js-javascript-constructor/) where you type the new operator followed by calling the constructor function to create an instance of that constructor which in this case would be an Array. There are many other built in constructors in native javaScript such as Date, String, and Object just to name a few. There is also how to go about creating user defined constructor functions, and so forth, but I do not care to get to far off topic with that in the post at least.
 
 ```js
 // use the new keyword an call the constructor
@@ -122,6 +120,8 @@ let b = new Array(10);
 console.log(b.length); // 10
 console.log(b); // [ <10 empty items> ]
 ```
+
+I do not recommend the use of the Array constructor, and generally prefer using the literal syntax in place of this. There are also just so many other great options for creating an array, or ending up with one from all kinds of various sources. However the array constructor does show up in many code examples on the open web so it is something that a javaScript developer should be aware of at least.
 
 ### 2.2 - The array literal syntax
 
