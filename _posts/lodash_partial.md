@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2022-01-05 13:00:32
-version: 1.15
+updated: 2022-01-05 13:03:33
+version: 1.16
 ---
 
 The lodash [\_.partial](https://lodash.com/docs/4.17.11#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create a simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. Simply put it is a way to create an abstraction, or an alternative interface for a complex method that accepts many arguments.
@@ -19,7 +19,7 @@ If you are still confused maybe it would be best to just look at some code examp
 
 ## 1 - Basics of lodash partial method, and what to know before hand
 
-This is a post on using the \_.partial method in lodash to create a method with another method that has some arguments fixed and the others that are left as the arguments of the new method that is made with \_.partial. If you are not using lodash that is fine because it is not to hard to accomplish the same effect with plain old javaScript also.
+This is a post on using the \_.partial method in lodash to create a method with another method that has some arguments fixed and the others that are left as the arguments of the new method that is made with \_.partial. If you are not using lodash that is fine because it is not to hard to accomplish the same effect with plain old javaScript also. However that is something that I will be getting to in a later section in this post. First off in this section I will be going over some quick examples of using the partial method in lodash. So I assume that you have enough experience with javaScript in order to know enough as to how to go about adding lodash to a project by way of the appropriate way to do so in a client side, or nodejs environment. If not getting into the very basics of this is outside th scope of this post.
 
 ### 1.1 - \_.partial basic example
 
