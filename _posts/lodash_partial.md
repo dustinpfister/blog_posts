@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 342
-updated: 2022-01-05 13:10:55
-version: 1.19
+updated: 2022-01-05 13:16:16
+version: 1.20
 ---
 
 The lodash [\_.partial](https://lodash.com/docs/4.17.11#partial) method in [lodash](http://lodash.com/) can be used to create a new function from another function and some starting arguments. In other words it can be used to create a simplified function that only accepts a few arguments that will be used with some set static values when using another method that accepts more arguments. Simply put it is a way to create an abstraction, or an alternative interface for a complex method that accepts many arguments.
@@ -110,5 +110,5 @@ console.log(bar(2)); // 42
 
 So the lodash partial method might not be the most compelling method in lodash to warrant the need to continue using lodash in new projects. I can not say I use this method in any of my projects, but I think I can understand why it might make sense to do something like this when it comes to working with a method that accepts a ton of arguments to help improve readability of code maybe. Even when I am in a situation in which I have lodash to work with, I often might create an abstraction by just doing so the vanilla javaScript way of doing so and moving on without making use of this lodash specific way of doing so.
 
-If you enjoyed reading this post then you might want to check out my [main post on lodash](/2019/02/15/lodash/), or one of my many [other posts on lodash](/categories/lodash/) that have to do with specific methods, or various lodash related topics.
+If you enjoyed reading this post then you might want to check out my [main post on lodash](/2019/02/15/lodash/), or one of my many [other posts on lodash](/categories/lodash/) that have to do with specific methods, or various lodash related topics. However these days I can not say that I am using lodash that much when working on an actual project of one kind or another. Do not get me wrong though using lodash, and libraries in general do help to save a whole lot of time, it is just that many of my projects that I work on these days are [vanilla javaScript projects](/2021/04/02/js-javascript-example/) that I create from the ground up, including projects that are a kind of [custom cut utility library](/2021/08/06/js-javascript-example-utils/) of sorts.
 
