@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 11:06:43
-version: 1.42
+updated: 2022-01-05 11:09:30
+version: 1.43
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -52,7 +52,7 @@ Often in many of these posts I do not just write about lodash, but also any and 
 
 Although I might end up writing less in terms of new content this year, over all I might end up writing more this coming year in terms of total word count per day. Not in the form of new posts mind you, but in the form of greatly expanding content that I have all ready wrote before hand. The reason why I say that is because I have all ready wrote a whole lot of blog posts on interesting topics, but the current state of many of them might be only a thousand or even just a few hundred words.So then a lot of these older posts could easily be expanded to thousands of words because there is just so much ground to cover with them actually.
 
-A good example of what I mean by this might be the current state of my post on the [array for each prototype method](/2019/02/16/js-javascript-foreach/), and all kinds of various things that branch off from that method. If you have been checking out various on line forums on the subject of javaScript as long as I have you should be aware by now that the array for each method is just one of these topics in javaScript that just about every javaScript developer that writes a blog with write a post on sooner or later.
+A good example of what I mean by this might be the current state of my post on the [array for each prototype method](/2019/02/16/js-javascript-foreach/), and all kinds of various things that branch off from that method. If you have been checking out various on line forums on the subject of javaScript as long as I have you should be aware by now that the array for each method is just one of these topics in javaScript that just about every javaScript developer that writes a blog with write a post on sooner or later. Often when doing so such a post on the topic might only be a few hundred words, to maybe just about a thousand words, and as such it ends up being just yet another post on that topic that does not really do it justice.
 
 ### 2.1 - I all ready have some long form content posts, and this year I intend to expand more posts into long form posts
 
