@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2022-01-05 13:40:49
-version: 1.132
+updated: 2022-01-05 13:44:20
+version: 1.133
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the size of the array. When it comes to the size, or length of the array these arrays are sparse in nature which means it is possible for one or more of the key names to not be defined. In other words it is possible to have one or more elements that are empty, which is one root cause for problems when one is not aware of this and how to prevent these problems from happening in the first place.
@@ -125,13 +125,16 @@ I do not recommend the use of the Array constructor, and generally prefer using 
 
 ### 2.2 - The array literal syntax
 
-Anther way to create an array is to use the array literal syntax. This involves the use of square brackets, and placing starting elements in between commas. In addition an empty array with a zero starting length can be created by just not giving any starting elements and just having and opening and closing set of square brackets. Square brackets are also used as a way of getting a single element in an array also by using them off the end of an array and having an index value between the opening and closing square brackets.
+Anther way to create an array is to use the array literal syntax which is my usual go to way to making one to begin with. This involves the use of square brackets, and placing starting elements in between commas that lay between the opening and closing square brackets. In addition an empty array with a zero starting length can be created by just not giving any starting elements, or in other words just having and opening and closing set of square brackets. 
 
 ```js
 var arr = [1,2,3,4];
  
 console.log(arr[1]); // 2
 ```
+
+Square brackets are also used as a way of getting a single element in an array also by using them off the end of an array and having an index value between the opening and closing square brackets. So then this square bracket syntax can be used to not just create and array, but also be used to reference a given index value as well while we are at it. On top of this square brackets can be used to get at any key of any object or collection in general, so this can also be used to get a named key of a plain old object also.
+
 
 ### 2.3 - Creating an array by calling a method that will return one like String.split
 
