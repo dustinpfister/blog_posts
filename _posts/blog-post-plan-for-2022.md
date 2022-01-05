@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 10:35:33
-version: 1.33
+updated: 2022-01-05 10:37:26
+version: 1.34
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -28,7 +28,7 @@ In this section then I will be outlining what the current idea is when it comes 
 
 I will then just be thinking in terms of writing just one new post, maybe two each week, at least if nothing happens that might change that rate. This is what has been happening as of late anyway, and the main reason why is because the bulk of the writing that I have been doing is expanding older posts that I have written, rather than new posts. Looking back a lot of my older posts are in very poor shape, not just in terms of the language, but also I have found often with respect to the source code examples as well. However more on that later in this post in which I will be getting into ending more so, rather than write new content.
 
-Less is very much more when it comes to this, as I can not easily start to think in terms of observing a basement of 1,800 words  to as much as 3,000 or more for each new post. Also it should be more than enough time to see about making whatever the word count os for the post a collection of words that have real value, rather than just padding to help meet such a metric.
+Less is very much more when it comes to this, as I can not easily start to think in terms of observing a basement of 1,800 words  to as much as 3,000 or more for each new post. Also it should be more than enough time to see about making whatever the word count is for the post a collection of words that have real value, rather than just padding to help meet such a metric. This also gives me more time to preform research on what I am writing about, as well as work out my own source code examples which is by far the most time consuming part of the process of what I am doing here.
 
 ### 1.2 - Frequency might increase with any new categories
 
