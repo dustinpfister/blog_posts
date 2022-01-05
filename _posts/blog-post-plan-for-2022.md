@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 10:46:23
-version: 1.36
+updated: 2022-01-05 10:50:19
+version: 1.37
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -39,6 +39,8 @@ There is always getting back to the various posts later at some point when it co
 ### 1.3 - Possible New categories
 
 I was toying with the idea of starting a new collection of content on using gcc to compile simple programs written in C, in fact I have wrote a post on [using the gcc command when it comes to my catalog of content on Linux](/2020/11/17/linux-gcc/). However learning a whole new language is not something that will happen over night, and also there is a whole lot to learn when it comes to a language like C compared to the hight level languages that I am used to such as javaScript, python, and bash. If I do start that though this year maybe I can quickly get together some ten to twenty posts on this topic though as long as I stick to very simple programs examples that do not go that far beyond that of hello world, which would imply that they should not be too time consuming to accomplish.
+
+There is learning a whole new language, and going in  a whole new direction with something, sure. However maybe a better idea is to further improve with respect to an existing skill set. For me that would be sticking with how to go about improving with javaScript both in the browser, as well as outside of it in a general run time such as nodejs, or some kind of alternative with that now [such as Deno](https://en.wikipedia.org/wiki/Deno_%28software%29).
 
 ### 1.4 - At least a few new posts on lodash
 
