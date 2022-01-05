@@ -135,6 +135,7 @@ list:
          This post is all ready very long, and I have a lot planed out to make it even longer. It would be nice for the sake of my own notes to have a nice long central post on arrays in javaScript, this post is that all ready, and it makes sense to make it even longer. The post is preforming very poorly in search console, but it was in poor shape actually although fairly long. I fixed it up a whole lot as of 11/28/2021, but there is a great deal more room for improvement with this post. It would be easy to make this one of more first posts that is over 10k words it i take it that far, and then have a wait and see when it comes to finding out if going that nuts helps or not. There is a crazy amount of search interest in this topic looking at just two major keywords with it, so it is not like there is not a demand for this kind of post.
 * ( done 11/28/2021 ) get the post to 5,000+ words
 * ( done 11/29/2021 ) get the post to 6,000+ words
+* get the post to 6,250+ words
 * get the post to 6,500+ words
 * get the post to 7,000+ words
 
