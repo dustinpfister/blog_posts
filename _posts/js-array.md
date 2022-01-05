@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2022-01-05 13:29:55
-version: 1.128
+updated: 2022-01-05 13:32:40
+version: 1.129
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the size of the array. When it comes to the size, or length of the array these arrays are sparse in nature which means it is possible for one or more of the key names to not be defined. In other words it is possible to have one or more elements that are empty, which is one root cause for problems when one is not aware of this and how to prevent these problems from happening in the first place.
@@ -23,7 +23,7 @@ There are many [posts on the Internet that have to do with getting started with 
 
 This is a post on javaScript arrays, as such it is important to have at least some starting background with javaScript as this is not a getting started post on javaScript in general. If you are completely new to javaScript it might be a good idea to start with my [getting started with javaScript post](/2018/11/27/js-getting-started/), or some other alternative. However if you have at least some background with javaScript, but want to learn more about arrays in general, then this might prove to be a good read.
 
-In this section I will be starting out with some very imple examples of arrays that should work okay in most javaScript environments. In later sections in this post I will be getting into the various topics that I am touching base on here in further detail.
+In this section I will be starting out with some very simple examples of arrays that should work okay in most javaScript environments. In later sections in this post I will be getting into the various topics that I am touching base on here in further detail.
 
 ### The source code examples are on Github
 
@@ -99,7 +99,7 @@ console.log(c);
 
 ## 2 - Creating arrays
 
-So in order to get into the ins and outs of arrays first you need to know hoe to go about creating them, or ending up with one in the first place. There is both an array constructor method, and an array literal syntax in javaScript that can be used to create a regular javaScript array from scratch. There are also many methods that might return an array as well from something else when it comes to things like the Array.from static method, and the String.split prototype method for example.
+So in order to get into the ins and outs of arrays first you need to know hoe to go about creating them, or ending up with one in the first place. There is both an array constructor method, and an array literal syntax in javaScript that can be used to create a regular javaScript array from scratch. There are also many methods that might return an array as well from something else when it comes to things like the Array.from static method, and the String.split prototype method that will create an array of sub strings from a single source string.
 
 So then in this section I will just be going over some ways to go about creating an array in the first place, which seems like good starting point for a post such as this.
 
