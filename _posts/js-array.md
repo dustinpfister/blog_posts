@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2022-01-05 13:44:20
-version: 1.133
+updated: 2022-01-05 13:47:49
+version: 1.134
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the size of the array. When it comes to the size, or length of the array these arrays are sparse in nature which means it is possible for one or more of the key names to not be defined. In other words it is possible to have one or more elements that are empty, which is one root cause for problems when one is not aware of this and how to prevent these problems from happening in the first place.
@@ -138,7 +138,7 @@ Square brackets are also used as a way of getting a single element in an array a
 
 ### 2.3 - Creating an array by calling a method that will return one like String.split
 
-Another way of creating an array, or end up with one rather, would be to call a method that would return one as a product. In some cases I would like to not create and array from scratch by rather create one from some kind of data source such as a string. In the string prototype object there is the string split method that can be used to split a string into a bunch of substrings where each substring is and element in a resulting array.
+Another way of creating an array, or end up with one rather, would be to call a method that would return one as a product. In some cases I would like to not create and array from scratch by rather create one from some kind of data source such as a string. In the string prototype object there is the string split method that can be used to split a string into a bunch of substrings where each substring is an element in a resulting array that is returned. By default the delimiter use by this method is a comma, but any static value can be used in various kind of situations, for example a space can be used if I wan to split text by words, and an empty string can be given if I want to split a string into an array of letters.
 
 ```js
 var a = '1.2.3.4.5'.split('.'),
