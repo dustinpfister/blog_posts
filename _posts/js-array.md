@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2022-01-05 13:32:40
-version: 1.129
+updated: 2022-01-05 13:35:00
+version: 1.130
 ---
 
 In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the size of the array. When it comes to the size, or length of the array these arrays are sparse in nature which means it is possible for one or more of the key names to not be defined. In other words it is possible to have one or more elements that are empty, which is one root cause for problems when one is not aware of this and how to prevent these problems from happening in the first place.
@@ -101,7 +101,7 @@ console.log(c);
 
 So in order to get into the ins and outs of arrays first you need to know hoe to go about creating them, or ending up with one in the first place. There is both an array constructor method, and an array literal syntax in javaScript that can be used to create a regular javaScript array from scratch. There are also many methods that might return an array as well from something else when it comes to things like the Array.from static method, and the String.split prototype method that will create an array of sub strings from a single source string.
 
-So then in this section I will just be going over some ways to go about creating an array in the first place, which seems like good starting point for a post such as this.
+So then in this section I will just be going over some ways to go about creating an array in the first place,which seems like a good additional section to progress forward with after I cover some very basic examples. That is that I have of course touched base on the topic of creating arrays in that section as I had to, but now in this section I can get into depth about all kinds of various ways to end uo with an array in native javaScript.
 
 ### 2.1 - The array constructor
 
