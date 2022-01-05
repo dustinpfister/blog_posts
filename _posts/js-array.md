@@ -5,11 +5,11 @@ tags: [js]
 layout: post
 categories: js
 id: 347
-updated: 2022-01-05 13:20:40
-version: 1.125
+updated: 2022-01-05 13:22:57
+version: 1.126
 ---
 
-In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the element size of the array. These arrays are sparse nature in which it is possible for one or more of the key names to not be defined, which is one root cause for problems when one is not aware of thins and how to prevent these problems from happening in the first place.
+In [javaScript Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are a special kind of object in which elements exist in an ordered collection where each element has a certain numbered index value for the key name, along with an [array length](/2018/12/14/js-array-length/) property that is the size of the array. When it comes to the size, or length of the array these arrays are sparse in nature which means it is possible for one or more of the key names to not be defined. In other words it is possible to have one or more elements that are empty, which is one root cause for problems when one is not aware of this and how to prevent these problems from happening in the first place.
 
 There are many methods that can be used with arrays that are in the array prototype. These methods help with editing, filtering, and mapping arrays. Many of these methods have been part of the javaScript spec for a long time and are thus very safe to use when it comes to concerns of engine support. Others are a little newer so there should be a degree of concern at least maybe depending on the situation with browser support.
 
