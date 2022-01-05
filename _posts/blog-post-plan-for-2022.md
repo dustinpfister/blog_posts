@@ -5,8 +5,8 @@ tags: [blog]
 layout: post
 categories: blog
 id: 948
-updated: 2022-01-05 10:55:15
-version: 1.39
+updated: 2022-01-05 10:59:19
+version: 1.40
 ---
 
 I have got into the habit of always starting off a new year with a single post for a collection of posts that have to do with the topic of writing a blog rather than javaScript, or a given framework, or the various tech related topics that I typically write about on this website. Not that I think that this is the sort of thing that should happen only once a year, in fact I am always thinking in terms of what it is that I can and should do differently, and not just with this blog, but where I should be placing my time and energy in general.
@@ -44,7 +44,9 @@ There is learning a whole new language, and going in  a whole new direction with
 
 ### 1.4 - At least a few new posts on lodash
 
-I will be writing at least a [few new posts on lodash](/2019/02/15/lodash/), even though it is a framework that I think is slowly dieing out in terms of popularity. The main reason why is because this is just a category of content that is doing well for me in terms of traffic, so for that reason alone I have to. However there is additional motivation beyond that when it comes to many of the finer points revolving around lodash such as the topic of functional programing, using what is often called a [pony fill](https://github.com/sindresorhus/ponyfill) over that of [monkey patching](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill), and so forth.
+I will be writing at least a [few new posts on lodash](/2019/02/15/lodash/), even though it is a framework that I think is slowly dieing out in terms of popularity. The main reason why is because this is just a category of content that is doing well for me in terms of traffic, so for that reason alone I have to. However there is additional motivation beyond that when it comes to many of the finer points revolving around lodash such as the topic of functional programing, using what is often called a [pony fill](https://github.com/sindresorhus/ponyfill) over that of [monkey patching](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill), and so forth. 
+
+Often in many of these posts I do not just write about lodash, but also any and all corresponding methods of interests when it comes to just working with javaScript by itself. So then there is a lot of potential for linking to various posts on native javaScript itself, many of which I have done a heavy amount of editing and expansion on last year when it comes to writing long form posts that are three thousand words long or even longer.
 
 ## 2 - Editing older content
 
