@@ -29,9 +29,9 @@
 <!-- OLD POSTS -->
 
 
-### () - lodash_pull ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/06/2022 ) - lodash_pull ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/05/2022 ) - lodash_partial ( old, links )
 * (done) 750+ words
