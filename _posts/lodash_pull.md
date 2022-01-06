@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:36:37
-version: 1.22
+updated: 2022-01-06 14:38:00
+version: 1.23
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. There are a number of other lodash methods such as [filter](/2018/05/18/lodash_filter/) and [reduce](/2018/07/25/lodash_reduce/) that can also be used to preform similar tasks without mutating an array in place and will allow a little more flexibility in how equality is detected when it comes to using an operator or method other then that of the Same Value Zero compliant lodash eq method.
@@ -30,7 +30,9 @@ console.log( arr);
 // [ 5, 7, 8, 7 ]
 ```
 
-### 1.2 -
+### 1.2 - The lodash pull methid will mutate an array in place
+
+One draw back for many with the lodash pull method might be that the method will mutate an array in place.
 
 ```js
 let source = [-1,5,7,-1,-1, 8, 7];
