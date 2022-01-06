@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:42:24
-version: 1.25
+updated: 2022-01-06 14:44:33
+version: 1.26
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. There are a number of other lodash methods such as [filter](/2018/05/18/lodash_filter/) and [reduce](/2018/07/25/lodash_reduce/) that can also be used to preform similar tasks without mutating an array in place and will allow a little more flexibility in how equality is detected when it comes to using an operator or method other then that of the Same Value Zero compliant lodash eq method.
@@ -86,7 +86,7 @@ console.log( b );
 
 ### 2.2 - The lodash eq method
 
-The lodash eq method is how to go about doing a Same Value Zero comparison with two values that will return a boolean value rather than preform some kind of action such as using this as a way to remove all elements in place that will test true for this.
+The lodash eq method is how to go about doing a Same Value Zero comparison with two values that will return a boolean value rather than preform some kind of action such as using this as a way to remove all elements in place that will test true for this. In native javaScriot there is also the Object is method that will use a slightly different standard that is also like that of lodash eq, but it will treat comparisons between negative and positive zero differently.
 
 ```js
 console.log(  _.eq(NaN, NaN) ); // true ( 7.2.10 SameValueZero )
