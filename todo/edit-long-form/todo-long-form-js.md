@@ -21,7 +21,7 @@
       Intrinsic Value: 
       Search Console: 
       Google Trends:
-* 2,750+ words
+* ( done 01/06/2022 ) 2,750+ words
 * 3,000+ words
 * 3,250+ words
 
