@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2022-01-06 15:27:19
-version: 1.47
+updated: 2022-01-06 15:30:14
+version: 1.48
 ---
 
 I have written [many posts on javaScript](/categories/js/) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
@@ -34,6 +34,8 @@ In this post I am using Google chrome 96.x, which is important when using exampl
 ### 1.2 - Get node installed if you want to use javaScript for general programing outside of a web browser.
 
 If you want to get started with server side javaScript you will want to get node installed to do so. In this post I will not be getting to nodejs in great detail, but it is also a great way to start working out a little javaScript code and getting it to run outside of a web browser. With that said I have wrote a post on [ getting started with nodejs with a hello world application](/2017/04/05/nodejs-helloworld/), but I think I should at least touch base on a few simple examples in this post also. 
+
+Version numbers matter very much with nodejs, generally I would say it is best to just go with the latest LTS release of nodejs. There are also [ways of having more than one version of node installed](/2021/09/24/linux-raspberry-pi-os-nodejs-setup/) which would be great for testing out if a nodejs script will still work in older versions of node or not.
 
 It is nice to start out with client side javaScript first though as it is something that can be done right now with just a web browser, rather than installing software beyond that which is often there to work with the begin with. However I would not put off getting into nodejs as it can be used to do server side programing with javaScript, and can also be used to write command line tools, and get things done with all kinds of general programing tasks outside of the browser.
 
