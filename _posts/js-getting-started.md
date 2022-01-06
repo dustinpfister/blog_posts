@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2022-01-06 15:22:17
-version: 1.44
+updated: 2022-01-06 15:24:00
+version: 1.45
 ---
 
 I have written [many posts on javaScript](/categories/js/) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
@@ -29,7 +29,7 @@ However in this post I will also be going over a few source code examples that m
 
 ### 1.1 - Be sure to be using an up to date web browser if getting started with client side javaScript
 
-In this post I am using Google chrome 96.x, which is important when using examples that are to be copied and pasted into the javaScript console. Also using an up to date browser is important when it comes to testing out just about anything that has to do with client side javaScrit anyway. 
+In this post I am using Google chrome 96.x, which is important when using examples that are to be copied and pasted into the javaScript console. Also using an up to date browser is important when it comes to testing out just about anything that has to do with client side javaScrit anyway. If by chance you end up working with some javaScript code that makes use of a very later browser feature that code might break if you are trying to get it to work in an old web browser vender and version that is no longer supported.
 
 ### 1.2 - Get node installed if you want to use javaScript for general programing outside of a web browser.
 
