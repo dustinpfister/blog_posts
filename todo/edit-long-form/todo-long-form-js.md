@@ -17,6 +17,13 @@
 * 7,250+ words
 * 7,500+ words
 
+## js-getting-started ( Linking to it a lot)
+      Intrinsic Value: 
+      Search Console: 
+      Google Trends:
+* 2,750+ words
+* 3,000+ words
+* 3,250+ words
 
 ## js-javascript-example-grid-game-unit-movement
       Intrinsic Value: This is a good topic that relates to work on my actual game framework project
