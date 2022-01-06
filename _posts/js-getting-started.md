@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2022-01-06 14:54:47
-version: 1.37
+updated: 2022-01-06 14:56:03
+version: 1.38
 ---
 
 I have written [many posts on javaScript](/categories/js/) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
 
-In this post I will offer some suggestions for getting started with [javaScript](https://en.wikipedia.org/wiki/JavaScript) that you can do right now from your desktop computer. One of these ways of getting started with javaScript will work out great even without installing any additional software assuming you have at least a web browser, and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to a web site like js fiddle that I was using for a while as a way to draft out an idea.
+In this post I will offer some suggestions for getting started with [javaScript](https://en.wikipedia.org/wiki/JavaScript) that you can do right now from your desktop computer. One of these ways of getting started with javaScript will work out great even without installing any additional software assuming you have at least a web browser, and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to a web site like [js fiddle](https://en.wikipedia.org/wiki/JSFiddle) that I was using for a while as a way to draft out an idea.
 
 However when it comes to really getting into javaScript development at some point sooner of later you might want to have some kind of JavaScript run time environment installed such as nodejs, as well as various other tools like a decent text editor and some kind of source control program such as git. That is that it is something that you will want to learn sooner or later when it comes to doing anything and everything that can be done with javaScript outside of that of a web browser. That is because javaScript is mainly associated with client side web development but even when it comes to that a major part of client side web development has to do with communicating with some kind of back end system.
 
