@@ -5,15 +5,17 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2022-01-06 15:00:13
-version: 1.40
+updated: 2022-01-06 15:07:49
+version: 1.41
 ---
 
 I have written [many posts on javaScript](/categories/js/) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
 
 In this post I will offer some suggestions for getting started with [javaScript](https://en.wikipedia.org/wiki/JavaScript) that you can do right now from your desktop computer. One of these ways of getting started with javaScript will work out great even without installing any additional software assuming you have at least a web browser, and a text editor installed. In fact in some cases you just need a browser to get started when it comes to starting out in the javaScript console, or going to a web site like [js fiddle](https://en.wikipedia.org/wiki/JSFiddle) that I was using for a while as a way to draft out an idea. Both the javaScript console and websites like js fiddle are great starting points when it comes to working out some simple expressions, and very basic programs sooner or later you might want to explore one of the many other options that is another way of getting started with javaScript though.
 
-So then when it comes to really getting into javaScript development at some point sooner of later you might want to have some kind of JavaScript run time environment installed such as [nodejs](/2017/04/05/nodejs-helloworld/), as well as various other tools like a decent text editor and some kind of source control program such as [git](https://en.wikipedia.org/wiki/Git). That is that it is something that you will want to learn sooner or later when it comes to doing anything and everything that can be done with javaScript outside of that of a web browser. That is because javaScript is mainly associated with client side web development but even when it comes to that a major part of client side web development has to do with communicating with some kind of back end system.
+So then when it comes to really getting into javaScript development at some point sooner of later you might want to have some kind of JavaScript run time environment installed such as [nodejs](/2017/04/05/nodejs-helloworld/). Even if it is your intention to do just client side javaScrit development it is still often required to do at least a little back end programing now and then. For example when I was first starting out with javaScript I was hand coding html files and then opening them up in the web browser by way of the file protocol. This will work fine for most situations, but there are certain client side javaScript features that will case Errors when the project is opened up in the browser as a local file. So one way to solve that is to always host what I am working on by way of the http protocol rather than the file protocol and to do that I am going to need at least a little back end code to set up a basic web sever.
+
+There is all kinds of additional software that one might want to have on there computer at one point or another also such as some kind of source control program such as [git](https://en.wikipedia.org/wiki/Git). There are all kinds of additional programs that come to mind such and an image editor of one kind or another and so forth. However one great thing about getting started with javaScrit is that just about all of this is optional when it comes to making those first steps. When starting from zero experience, if you have a computer with a web browser, you can get started, and worry about all this other stuff I have mentioned later.
 
 <!-- more -->
 
