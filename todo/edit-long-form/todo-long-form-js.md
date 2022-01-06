@@ -22,7 +22,7 @@
       Search Console: 
       Google Trends:
 * ( done 01/06/2022 ) 2,750+ words
-* 3,000+ words
+* ( done 01/06/2022 ) 3,000+ words
 * 3,250+ words
 
 ## js-javascript-example-grid-game-unit-movement
