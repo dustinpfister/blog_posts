@@ -5,13 +5,15 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 576
-updated: 2020-08-01 16:36:06
-version: 1.10
+updated: 2022-01-06 14:02:20
+version: 1.11
 ---
 
 So there is the [lodash eq](https://lodash.com/docs/4.17.15#eq) method that is one way of finding out the [same value zero result](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero) of two values. However what is same value zero, and is it all that hard to get the same result in native javaScript itself these days? 
 
-Well in ECMA2015 spec javaScript the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) static method was introduced that does indeed do the same thing as the lodash eq method. So if this is the only thing that you care about in a project, maybe a simple polyfill will do just fine and you can ditch lodash to the curb. Otherwise the lodash \_.eq method can do more or less the same thing if you are still keeping lodash as part of your projects stack becuase of client support concerns, or other method of interest that are not native in any javaScript spec. 
+Well in ECMA2015 spec javaScript the [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) static method was introduced that does indeed do the same thing as the lodash eq method, only not the exact same way, as the Object is method goes by a slightly different standard that handles zero and negative zero a little differently. So then there is the Same Value standard, used by the Object is method, that will return false if positive and negative zero are compared. Then on top of the Same value standard there is also the Same Value Zero standard that will return true which is what the lodahs eq method uses.
+
+So if this is the only thing that you care about in a project, maybe a simple polyfill will do just fine and you can ditch lodash to the curb. Otherwise the lodash \_.eq method can do more or less the same thing if you are still keeping lodash as part of your projects stack becuase of client support concerns, or other method of interest that are not native in any javaScript spec. 
 
 Regardless of what you attitude is with lodash these days I will make this post also about Same Value Zero in general so that this is not just a post on lodash eq alone.
 
