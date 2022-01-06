@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:16:48
-version: 1.16
+updated: 2022-01-06 14:19:27
+version: 1.17
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. 
@@ -119,9 +119,6 @@ console.log(_.join(arr1, ':'));
 // '1:2:3'
 ```
 
-
-
-
 ## 3 - A vanilla js pull to do lodash pull style pulling complete with an Object.is pony fill
 
 Many might think that all lodash pull does is remove elements from an array with the same value as one or more given values. Yes on the surface that might seem like a very simple thing to do with plain old vanilla javaScriopt by itself. However there is more to it then just pulling values that are equal to a value. In javaScript there is the equality operator, and then there is also the identity operator. In additional to this there is also the isNaN method and the fact that it does not always given an intended result.
@@ -174,3 +171,7 @@ console.log(pull([NaN, 5, NaN], NaN).join(':'));
 Here I just copied over an Object is method and turned it into a pony fill called eq that will work the same way as the lodash eq method. Now that I have that I can use it on my vanilla js pull method. I am using the array filter method but could easily use array splice or slice to make it even more robust.
 
 There are many other ways a vanilla js pull method could be written. If you do not care about supporting older browsers at all you could just use the Object is method, and make a far more concise solution at the cost of code breaking on older platforms.
+
+## 4 - Conclusion
+
+So then the lodash pull method will remove elements by a given value using the same value zero standard for doing so, and will do so by mutating the array in place. The lodash without methid will do more or less the same thing as the lodash pull method but it will return a new array rather than mutating an array in place.
