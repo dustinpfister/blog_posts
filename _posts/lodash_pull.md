@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:24:38
-version: 1.19
+updated: 2022-01-06 14:26:51
+version: 1.20
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. There are a number of other lodash methods such as [filter](/2018/05/18/lodash_filter/) and [reduce](/2018/07/25/lodash_reduce/) that can also be used to preform similar tasks without mutating an array in place and will allow a little more flexibility in how equality is detected when it comes to using an operator or method other then that of the Same Value Zero compliant lodash eq method.
@@ -174,4 +174,4 @@ There are many other ways a vanilla js pull method could be written. If you do n
 
 ## 4 - Conclusion
 
-So then the lodash pull method will remove elements by a given value using the same value zero standard for doing so, and will do so by mutating the array in place. The lodash without method will do more or less the same thing as the lodash pull method but it will return a new array rather than mutating an array in place.
+So then the lodash pull method will remove elements by a given value using the same value zero standard for doing so, and will do so by mutating the array in place. The lodash without method will do more or less the same thing as the lodash pull method but it will return a new array rather than mutating an array in place. There are then a number of other lodash method that can be used to preform the same task in a slightly more complex way, but may offer greater flexibility when it comes to making choices as to how elements should be removed from the resulting new array, or how an array should be mutated in place.
