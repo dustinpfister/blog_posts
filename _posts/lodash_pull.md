@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:15:08
-version: 1.15
+updated: 2022-01-06 14:16:48
+version: 1.16
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. 
@@ -28,6 +28,35 @@ let arr = [-1,5,7,-1,-1, 8, 7];
 arr = _.pull(arr,-1);
 console.log( arr);
 // [ 5, 7, 8, 7 ]
+```
+
+### 1.2 -
+
+```js
+let source = [-1,5,7,-1,-1, 8, 7];
+b = _.pull(source,-1);
+// pull will mutate the source array in place
+console.log( source );
+// [ 5, 7, 8, 7 ]
+console.log( b );
+// [ 5, 7, 8, 7 ]
+```
+
+### 1.3 - Objects
+
+```js
+let source = [{i:0}, {i:1}, {i:2}];
+ 
+// this will not work as the new value given is a whole
+// new object in memory
+let a = _.pull(source, {i:1});
+console.log(a);
+// [ { i: 0 }, { i: 1 }, { i: 2 } ]
+ 
+// this will work because it is a reference to the same object
+let b = _.pull(source, source[1]);
+console.log(b);
+// [ { i: 0 }, { i: 2 } ]
 ```
 
 
