@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2020-03-03 13:25:31
-version: 1.12
+updated: 2022-01-06 13:18:59
+version: 1.13
 ---
 
-The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero methods as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods. It is not to hard to do the same thing that the lodash pull method does with vanilla javaScript, but not as easily as you might think. In any case I will be going over the lodash pull methods alone with lodash remove lodash eq and vanilla javaScript methods that do the same thing.
+The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which wiuld have the same end result. 
+
+It is not to hard to do the same thing that the lodash pull method does with vanilla javaScript, that is as long as you are aware of the native methods that are used to do the same kind of task. In any case I will be going over the lodash pull methods alone with lodash remove lodash eq and vanilla javaScript methods that do the same thing. In addition to this as with my many other posts on lodash I will be taking a quick look at some vanilla javaScript examples that will also preform similar actions to that of the lodash pull method.
 
 <!-- more -->
 
