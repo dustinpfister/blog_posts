@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:19:27
-version: 1.17
+updated: 2022-01-06 14:23:00
+version: 1.18
 ---
 
-The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. 
+The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. There are a number of other lodash methods such as filter and reduce that can also be used to preform similar tasks without mutating an array in place and will allow a little more flexibility in how equality is detected when it comes to using an operator or method other then that of the Same Value Zero compliant lodash eq method.
 
 It is not to hard to do the same thing that the lodash pull method does with vanilla javaScript, that is as long as you are aware of the native methods that are used to do the same kind of task. In any case I will be going over the lodash pull methods alone with lodash remove lodash eq and vanilla javaScript methods that do the same thing. In addition to this as with my many other posts on lodash I will be taking a quick look at some vanilla javaScript examples that will also preform similar actions to that of the lodash pull method.
 
@@ -174,4 +174,4 @@ There are many other ways a vanilla js pull method could be written. If you do n
 
 ## 4 - Conclusion
 
-So then the lodash pull method will remove elements by a given value using the same value zero standard for doing so, and will do so by mutating the array in place. The lodash without methid will do more or less the same thing as the lodash pull method but it will return a new array rather than mutating an array in place.
+So then the lodash pull method will remove elements by a given value using the same value zero standard for doing so, and will do so by mutating the array in place. The lodash without method will do more or less the same thing as the lodash pull method but it will return a new array rather than mutating an array in place.
