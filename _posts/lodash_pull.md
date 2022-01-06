@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 620
-updated: 2022-01-06 14:38:00
-version: 1.23
+updated: 2022-01-06 14:40:18
+version: 1.24
 ---
 
 The [lodash pull](https://lodash.com/docs/4.17.15#pull) method can be used to remove one or more values from an array using the same value zero method as a way to make comparisons. This method is a kind of convenience method in place of using [lodash remove](/2017/09/19/lodash_remove/) with the [lodash eq](/2019/12/04/lodash_eq/) methods for example which would have the same end result. There are a number of other lodash methods such as [filter](/2018/05/18/lodash_filter/) and [reduce](/2018/07/25/lodash_reduce/) that can also be used to preform similar tasks without mutating an array in place and will allow a little more flexibility in how equality is detected when it comes to using an operator or method other then that of the Same Value Zero compliant lodash eq method.
@@ -45,6 +45,8 @@ console.log( b );
 ```
 
 ### 1.3 - Objects
+
+When it comes to an array of object the lodash pull method will only remove objects that are references to the same object given in memory. So then this is yet another reason why one might want to use some other method like that of filter, or reduce as a way to remove by some kind of given condition where a comparison is made with a primitive value of an object property rather than the object itself.
 
 ```js
 let source = [{i:0}, {i:1}, {i:2}];
