@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 338
-updated: 2022-01-06 15:07:49
-version: 1.41
+updated: 2022-01-06 15:12:37
+version: 1.42
 ---
 
 I have written [many posts on javaScript](/categories/js/) related topics, but so far oddly enough I have not written a [getting started post on javaScript](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) until now of course. 
@@ -19,9 +19,13 @@ There is all kinds of additional software that one might want to have on there c
 
 <!-- more -->
 
-## 1 - What to know
+## 1 - What to know before getting started with javaScripts
 
-I will not be covering everything there is to know of course, learning javaScript as with any programing language takes a whole lot of time and patience, as well as dedication. There is just way to much to cover when it comes to the idea of trying to wrap up everything into a single blog post. Still to get started with javaScript all that is needed is a computer with a fairly up to date web browser because in this post I will be writing about very simple examples that can be entered into [javaScript console of chrome](https://developers.google.com/web/tools/chrome-devtools/console/). However in this post I will also be going over a few source code examples that make use of nodejs also when it comes to doing things with javaScript outside of a web browser. There are many ways of getting started with javaScript, and I am thinking that I will try to cover all the various options when it comes to getting started with javaScript.
+Learning javaScript as with any programing language takes a whole lot of time and patience, as well as dedication as there is a whole lot of ground to cover and one is just not going to become aware of all of it in just one day. There is just way to much to write about when it comes to the idea of trying to wrap up everything into a single blog post. 
+
+Still to get started with javaScript all that is needed is a computer with a fairly up to date web browser because in this post I will be writing about very simple examples that can be entered into the [javaScript console of chrome](https://developers.google.com/web/tools/chrome-devtools/console/). I figure that this is a good way to get started with javaScript as it just requires opening up a browser window, and then just entering javaScript code into the javaScript console. What is great about this is that you do not even need to go to a web site, and it can still be done off line when the Internet goes down.
+
+However in this section I will also be going over a few source code examples that make use of nodejs also when it comes to doing things with javaScript outside of a web browser. There are many ways of getting started with javaScript, and I am thinking that I will try to cover all the various options when it comes to getting started with javaScript.
 
 ### 1.1 - Be sure to be using an up to date web browser if getting started with client side javaScript
 
