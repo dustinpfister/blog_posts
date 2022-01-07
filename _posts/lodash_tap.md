@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 949
-updated: 2022-01-07 12:52:00
-version: 1.7
+updated: 2022-01-07 12:55:09
+version: 1.8
 ---
 
 When working with a [chain of methods](/2018/11/11/lodash_chain/) in [lodash](https://en.wikipedia.org/wiki/Lodash) there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods. The main method of interest with this would be the [lodash tap method](https://lodash.com/docs/4.17.15#tap) that can be called off of a chain at any moment to just do something that involves mutating the collection in place. This tap method works by using a value as the first argument and calling an interceptor function as the second argument, the return value of the tap method is then also the given value as well. 
@@ -87,4 +87,5 @@ console.log(b);
 
 ## 3 - Conclusion
 
-The tap method is then one way to go about, well tapping off of a lodash chain to do something with the collection at a given point in a chain. There are a few drawbacks from this as it would seem that one is restricted to having to use methods that will mutate the collection in place as the return value of the interceptor function given to the lodash tap method would seem to have no effect on the chain.
+The tap method is then one way to go about, well tapping off of a lodash chain to do something with the collection at a given point in a chain. There are a few drawbacks from this as it would seem that one is restricted to having to use methods that will mutate the collection in place as the return value of the interceptor function given to the lodash tap method would seem to have no effect on the chain. So then for this reason and many others one might want to look for another method to use in a chain such as the [lodash thru method](https://lodash.com/docs/4.17.15#thru), or maybe even just not use a chain to begin with actually. Another idea about this would be to just break things down into a whole bunch of fine grain steps actually where I call a helper function to create and return one result, and save that result to a variable, then use that said variable as an argument for another and so on.
+
