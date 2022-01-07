@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2022-01-07 15:26:31
-version: 1.8
+updated: 2022-01-07 15:30:57
+version: 1.9
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays. In other words elements that are intersections for onw or more of the arrays will not be included in the resulting array. So then the lodash xor method is yet another method in lodash that can be used to create a new array from a collection of other arrays. There is then more than one way to go about doing what the xor method does with other lodash methods, as well as with plain old vanilla javaScript as well.
@@ -28,15 +28,19 @@ console.log(xor);
 // [0,2]
 ```
 
-I can not say that i get into situations in which I need to use a method like this thus far, but if I need to this is a kind of method where i might just use the lodash xor method and move on in a project. There are many methods in lodash where it is a bot of a grey area as to the question if I should even bother with lodash as there is a native method that can be used. It is also true that there are many methods in lodash where it is really not all that hard to do what the method does with plain od vanilla javaScript. However I am not so sure that this is one of thous methods in lodash,
+I can not say that i get into situations in which I need to use a method like this thus far, but if I need to this is a kind of method where i might just use the lodash xor method and move on in a project. There are many methods in lodash where it is a bot of a gray area as to the question if I should even bother with lodash as there is a native method that can be used. It is also true that there are many methods in lodash where it is really not all that hard to do what the method does with plain od vanilla javaScript. However I am not so sure that this is one of thous methods in lodash,
 
 ### 1.2 - Three or more arrays
+
+It is then possible to pass as many arrays that I want as arguments to the xor function. In the first basic example I was just starting out with two, but in this one I am now dealing with three. The result is the same though the values that are returned in the resulting arrays will be cuase that show up in just one, bit not two or more of the additional arrays.
 
 ```js
 let xor = _.xor([3,1], [1,2], [2,2,0]);
 console.log(xor);
 // [3, 0]
 ```
+
+There is the question of how to go about feeding an array of arrays to this xor method, or any other method that works like this. Also if there is an xor method that will give my an array of values that are values that only show up once in one array then there should be a method that will return values that show up in all of the arrays. So lets look at a few more examples that will help with that and much more while we are at it here.
 
 ### 1.3 - Sort
 
