@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 949
-updated: 2022-01-07 12:27:52
-version: 1.1
+updated: 2022-01-07 12:38:43
+version: 1.2
 ---
 
-When working with a chain of lodash methods there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods.
+When working with a [chain of methods](/2018/11/11/lodash_chain/) in [lodash](https://en.wikipedia.org/wiki/Lodash) there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods. The main method of interest with this would be the [lodash tap method](https://lodash.com/docs/4.17.15#tap) that can be called off of a chain at any moment to just do something that involves mutating the collection in place. This tap method works by using a value as the first argument and calling an interceptor function as the second argument, the return value of the tap method is then also the given value as well. 
+
+There are some other lodash methods that are worth mentioning such as the [lodah flow method](/2018/11/19/lodash_flow/) that might be a better alternative to using the lodash chain method to begin with.
 
 <!-- more -->
 
