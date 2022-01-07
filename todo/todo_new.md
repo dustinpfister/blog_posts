@@ -4,13 +4,7 @@
 ## CURRENT LINE UP
 <!--###### ########## ########## #######-->
 
-### () - new post #949 for 01/07/2022 - lodash-tap
-
-### ( done 01/03/2022 ) - new post #948 for 01/03/2022 - blog-post-plan-for-2022
-
-### ( done 12/31/2021 ) - new post #947 for 12/31/2021 - js-javascript-example-digital-art-reduce-pool
-
-
+### () - new post #950
 
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
@@ -23,6 +17,8 @@
 <!--###### ########## ########## #######-->
 ## js ( /yyyy/mm/dd/js-* )
 <!--###### ########## ########## #######-->
+
+### ( done 12/31/2021 ) - new post #947 for 12/31/2021 - js-javascript-example-digital-art-reduce-pool
 
 ### ( done 12/24/2021 ) - new post #946 for 12/24/2021 - js-javascript-example-item-probability
 * (done) start new forpost folder for the example I worked out for math random
@@ -52,6 +48,8 @@
 <!--###### ########## ########## #######-->
 ## Lodash ( /yyyy/mm/dd/lodash* )
 <!--###### ########## ########## #######-->
+
+### ( done 01/07/2022 ) - new post #949 for 01/07/2022 - lodash-tap
 
 ### ( done 12/17/2021 ) - new post #945 for 12/17/2021 - lodash_clamp
 * (done) start for post folder
@@ -112,4 +110,12 @@
 * (done) start a new nodejs-simple-http-request-get-post-system repo folder
 * (done) base nodejs-simple-http-request-get-post-system based off of
 
+
+
+
+<!--###### ########## ########## #######-->
+## blog ( /yyyy/mm/dd/blog-* )
+<!--###### ########## ########## #######-->
+
+### ( done 01/03/2022 ) - new post #948 for 01/03/2022 - blog-post-plan-for-2022
 
