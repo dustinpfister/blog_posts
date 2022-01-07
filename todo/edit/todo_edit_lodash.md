@@ -28,6 +28,41 @@
 
 <!-- OLD POSTS -->
 
+### (  ) - lodash_foreach ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_isarray ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_first ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_template ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_replace ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_difference ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash-defaults ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_invokemap ( old, links )
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_xor ( old, links )
+* 750+ words
+* have 5+ internal links for the post
 
 ### ( done 01/06/2022 ) - lodash_pull ( old, links )
 * (done) 750+ words
