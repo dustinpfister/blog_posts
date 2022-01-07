@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 949
-updated: 2022-01-07 12:46:55
-version: 1.5
+updated: 2022-01-07 12:49:04
+version: 1.6
 ---
 
 When working with a [chain of methods](/2018/11/11/lodash_chain/) in [lodash](https://en.wikipedia.org/wiki/Lodash) there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods. The main method of interest with this would be the [lodash tap method](https://lodash.com/docs/4.17.15#tap) that can be called off of a chain at any moment to just do something that involves mutating the collection in place. This tap method works by using a value as the first argument and calling an interceptor function as the second argument, the return value of the tap method is then also the given value as well. 
@@ -60,6 +60,8 @@ console.log(b);
 ```
 
 ### 2.2 - IIFE
+
+There is working out something that involves using an IIFE as a way to group everything together as a single expression I guess. This kind of approve might work, but I have to say that more often than not it might just be making the situation more complex than it needs to be.
 
 ```js
 let a = [1, 2, 3, 4, 5]
