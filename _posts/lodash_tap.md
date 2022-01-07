@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 949
-updated: 2022-01-07 12:42:06
-version: 1.3
+updated: 2022-01-07 12:43:36
+version: 1.4
 ---
 
 When working with a [chain of methods](/2018/11/11/lodash_chain/) in [lodash](https://en.wikipedia.org/wiki/Lodash) there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods. The main method of interest with this would be the [lodash tap method](https://lodash.com/docs/4.17.15#tap) that can be called off of a chain at any moment to just do something that involves mutating the collection in place. This tap method works by using a value as the first argument and calling an interceptor function as the second argument, the return value of the tap method is then also the given value as well. 
@@ -39,6 +39,8 @@ console.log(b);
 ```
 
 ## 2 - Vanilla javaScript and tapping
+
+Now that I got some lodash examples out of the way with the tap method, as well as various other methods related to the use of the lodash tap method, I now like to get into at least a few examples that involve just working with vanilla javaScript by itself.
 
 ### 2.1 - Basic
 
