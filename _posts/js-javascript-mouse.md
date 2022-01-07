@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2022-01-07 16:15:13
-version: 1.103
+updated: 2022-01-07 16:18:26
+version: 1.104
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -1114,6 +1114,8 @@ simClickFor(document.body, 37, 8);
 ### 8.3 - Simulating a mouse move event
 
 If I can simulate a click event, and also set a position as to where the click happened then I should be able to do the same for other mouse events such as a mouse move event also. With that said in this example I am looking into simulating a mouse move event, to do so I just need to change a few tings with the same code that I worked out for simulating a click. The event name that I need to give to the Mose Event constructor is just mousemove rather than click, I then need to set up at least one event hander for a mouse move event rather than just for the click event, and that is about it.
+
+With this example I also took a moment to use the style api to change the position of a fixed position div that is also updated in the body of the event hander that I am attaching for a mouse move event. I also added a loop that makes used of the setTimeout method to call my simulate mouse helper over and over again in a loop function. The result is then a circular motion being simulated with the mouse move event.
 
 ```html
 <html>
