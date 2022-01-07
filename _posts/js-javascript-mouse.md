@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 671
-updated: 2021-12-17 11:00:53
-version: 1.100
+updated: 2022-01-07 16:09:45
+version: 1.101
 ---
 
 In client side [javaScript mouse](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) events are a way to get a mouse cursor position as well as the state of one or more mouse buttons. The javaScript mouse events are a collection of several types of events that can be attached to the window object, or just about any html element with the [add event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method.
@@ -1105,6 +1105,54 @@ window.onclick = function(e){
 };
 // simulating a click with position
 simClickFor(document.body, 37, 8);
+ 
+        </script>
+    </body>
+</html>
+```
+
+### 8.3 - Simulating a mouse move event
+
+```html
+<html>
+    <head>
+        <title>javaScript mouse basic example</title>
+    </head>
+    <body>
+        <div id="div_pos" style="position:fixed;width:32px;height:32px;background:rgba(0,255,0,0.5);"></div>
+        <div id="out">0<div>
+        <script>
+var simMouseFor = function(el, x, y){
+    el = el || document.body;
+    var event = new MouseEvent('mousemove', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+        clientX: x === undefined ? 0 : x,
+        clientY: y === undefined ? 0 : y
+    });
+    el.dispatchEvent(event);
+};
+// hander on window
+window.addEventListener('mousemove', function(e){
+    document.getElementById('out').innerText = e.clientX + ',' + e.clientY;
+    var div = document.getElementById('div_pos');
+    div.style.left = e.clientX + 'px';
+    div.style.top = e.clientY + 'px';
+});
+// simulating a mouse move with position
+var i = 0,
+iMax = 100;
+var loop = function(){
+    setTimeout(loop, 100);
+    var a = Math.PI * 2 * (i / iMax),
+    x = 50 + Math.cos(a) * 50,
+    y = 50 + Math.sin(a) * 50;
+    simMouseFor(document.body, x, y);
+    i += 1;
+    i %= iMax;
+};
+loop();
  
         </script>
     </body>
