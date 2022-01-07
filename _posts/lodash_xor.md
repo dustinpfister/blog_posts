@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2022-01-07 15:36:01
-version: 1.11
+updated: 2022-01-07 15:37:43
+version: 1.12
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays. In other words elements that are intersections for onw or more of the arrays will not be included in the resulting array. So then the lodash xor method is yet another method in lodash that can be used to create a new array from a collection of other arrays. There is then more than one way to go about doing what the xor method does with other lodash methods, as well as with plain old vanilla javaScript as well.
@@ -70,7 +70,9 @@ console.log(b);
 // [3, 0]
 ```
 
-### 1.5 - the lodash intersection method
+### 1.5 - The lodash intersection method
+
+The [lodash intersection](/2019/12/03/lodash_intersection) method is then the method that I would want to use in order to get an array of values that show up in each of the given arrays of values.
 
 ```js
 let a = [ [3, 1], [1, 2], [2, 2, 0, 1] ];
