@@ -64,14 +64,14 @@
         Which I am trying to make a good situation even better, search console performance is very poor as of this
         writing ( 11/09/2021 )
 
-* (done 10/21/2021) get post to the min 3,000+ words
-* (done 10/24/2021) get post to 4,000+ words
-* (done 11/02/2021) get post to 4,500+ words
-* (done 12/01/2021) get post to 5,000+ words
-* (done 12/01/2021) get post to 5,500+ words
-* (done 12/01/2021) get post to 5,750+ words
-* (done 12/17/2021) get post to 6,000+ words
-* get post to 6,250+ words
+* ( done 10/21/2021 ) get post to the min 3,000+ words
+* ( done 10/24/2021 ) get post to 4,000+ words
+* ( done 11/02/2021 ) get post to 4,500+ words
+* ( done 12/01/2021 ) get post to 5,000+ words
+* ( done 12/01/2021 ) get post to 5,500+ words
+* ( done 12/01/2021 ) get post to 5,750+ words
+* ( done 12/17/2021 ) get post to 6,000+ words
+* ( done 01/07/2022 ) get post to 6,250+ words
 * get post to 6,500+ words
 
 ## js-event-object ( at 2,600+ all ready, good topic )
