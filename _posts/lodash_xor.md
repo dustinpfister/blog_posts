@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2022-01-07 15:34:13
-version: 1.10
+updated: 2022-01-07 15:36:01
+version: 1.11
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays. In other words elements that are intersections for onw or more of the arrays will not be included in the resulting array. So then the lodash xor method is yet another method in lodash that can be used to create a new array from a collection of other arrays. There is then more than one way to go about doing what the xor method does with other lodash methods, as well as with plain old vanilla javaScript as well.
@@ -59,6 +59,8 @@ console.log(b);
 ```
 
 ### 1.4 - The apply Function prototype method
+
+If I want to use an array of arrays, then one way to go about doing so with the lodash xor method would be to use the [apply method of the function prototype](/2017/09/21/js-call-apply-and-bind/).
 
 ```js
 let a = [ [3, 1], [1, 2], [2, 2, 0] ];
