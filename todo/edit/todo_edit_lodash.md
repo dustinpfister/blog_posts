@@ -60,9 +60,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_xor ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/07/2022 ) - lodash_xor ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/06/2022 ) - lodash_pull ( old, links )
 * (done) 750+ words
