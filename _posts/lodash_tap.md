@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 949
-updated: 2022-01-07 12:43:36
-version: 1.4
+updated: 2022-01-07 12:46:55
+version: 1.5
 ---
 
 When working with a [chain of methods](/2018/11/11/lodash_chain/) in [lodash](https://en.wikipedia.org/wiki/Lodash) there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods. The main method of interest with this would be the [lodash tap method](https://lodash.com/docs/4.17.15#tap) that can be called off of a chain at any moment to just do something that involves mutating the collection in place. This tap method works by using a value as the first argument and calling an interceptor function as the second argument, the return value of the tap method is then also the given value as well. 
@@ -42,7 +42,9 @@ console.log(b);
 
 Now that I got some lodash examples out of the way with the tap method, as well as various other methods related to the use of the lodash tap method, I now like to get into at least a few examples that involve just working with vanilla javaScript by itself.
 
-### 2.1 - Basic
+### 2.1 - Basic example of chaining and just mutating after the chain is done
+
+Maybe one way to go about doing what I wan to do with chaining is to just stop at one point with the chain, then do whatever I want with the result. After that continue with a new chain or not depending on the situation. I know that thins might no sit well with a certain line of reasoning that makes one think that they should be able to just continue with the chain as long as they want, but this way of handing things might not be such a bad idea some times actually.
 
 ```js
 let a = [1, 2, 3, 4, 5]
