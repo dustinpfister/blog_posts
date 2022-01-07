@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2022-01-07 15:37:43
-version: 1.12
+updated: 2022-01-07 15:39:39
+version: 1.13
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays. In other words elements that are intersections for onw or more of the arrays will not be included in the resulting array. So then the lodash xor method is yet another method in lodash that can be used to create a new array from a collection of other arrays. There is then more than one way to go about doing what the xor method does with other lodash methods, as well as with plain old vanilla javaScript as well.
@@ -259,3 +259,7 @@ console.log(a);
 This is still not all of the code that might be used in some cases as I did not copy over all the internal methods that are used in the various other internal methods that the lodash baseXor method uses. I did not take the time to make my own stand alone vanilla javaScript xor method for this post, but the basic idea that I started with is there in the baseXor method that I started out with in my attempt with two nested while loops. 
 
 I might get around to updating this post with a stand alone vanilla javaScript method that is just the core of what is going on here, but for now this is one where I might just use lodash and move on when and if i am in a situation in  which I need an xor method like this.
+
+## 3 - Conclusion
+
+That is it for now when in comes to the lodash xor method, as well as many other related lodash and native javaScript features in this post at least. If you enjoyed reading this post there is checking out my main post on lodash, or looking into what I have wrote with respect to the many other lodash posts I have written over the years.
