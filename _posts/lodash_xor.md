@@ -5,15 +5,17 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 639
-updated: 2022-01-07 15:40:54
-version: 1.14
+updated: 2022-01-07 15:45:27
+version: 1.15
 ---
 
 In [lodash there is the \_.xor](https://lodash.com/docs/4.17.15#xor) method that can create a new array that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference) of the given arrays. In other words it will be an array of elements that show up in the arrays that are unique to each array, but not elements that are shared across all the arrays. In other words elements that are intersections for onw or more of the arrays will not be included in the resulting array. So then the lodash xor method is yet another method in lodash that can be used to create a new array from a collection of other arrays. There is then more than one way to go about doing what the xor method does with other lodash methods, as well as with plain old vanilla javaScript as well.
 
 <!-- more -->
 
-## 1 - Basic lodash xor example
+## 1 - The basics of lodash xor another other lodash methods and javaScript features
+
+In this section I will be starting out with a few quick examples of the xor method as well as other lodash methods and native javaScript features. I assume that you have at least a little experience with native javaScript by itself, and how to get started with an external javaScipt library such as lodash. If not you might want to take a step back and look into one or more posts on the basics of [javaScript arrays](/2018/12/10/js-array/), as well as the various ways of [getting started with javaScript in general](/2018/11/27/js-getting-started/).
 
 ### 1.1 - Basic xor example
 
