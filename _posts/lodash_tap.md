@@ -5,19 +5,23 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 949
-updated: 2022-01-07 12:38:43
-version: 1.2
+updated: 2022-01-07 12:42:06
+version: 1.3
 ---
 
 When working with a [chain of methods](/2018/11/11/lodash_chain/) in [lodash](https://en.wikipedia.org/wiki/Lodash) there might end up being one or more instances in which I will want to just tap off of the chain at some point, mutate a collection, and then continue on with the chain of methods. The main method of interest with this would be the [lodash tap method](https://lodash.com/docs/4.17.15#tap) that can be called off of a chain at any moment to just do something that involves mutating the collection in place. This tap method works by using a value as the first argument and calling an interceptor function as the second argument, the return value of the tap method is then also the given value as well. 
 
-There are some other lodash methods that are worth mentioning such as the [lodah flow method](/2018/11/19/lodash_flow/) that might be a better alternative to using the lodash chain method to begin with.
+There are some other lodash methods that are worth mentioning such as the [lodah flow method](/2018/11/19/lodash_flow/) that might be a better alternative to using the lodash chain method to begin with. Also there is maybe a few things to write about when it comes to doing similar things with javaScript by itself also.
 
 <!-- more -->
 
 ## 1 - The lodash tap method
 
-### 1.1 - Basic example of lodash tap
+In this section I will be starting out with some basic examples of the lodash tap method.
+
+### 1.1 - Using lodash tap with lodash chain 
+
+So then one of the typical use case examples of the lodahs tap method might involve using in with the lodash chain method, and any and all additional methods that might end up being used in such a chain.
 
 ```js
 let a = [1,2,3,4,5]
