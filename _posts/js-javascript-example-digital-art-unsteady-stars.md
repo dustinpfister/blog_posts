@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 950
-updated: 2022-01-10 14:43:22
-version: 1.3
+updated: 2022-01-10 14:46:43
+version: 1.4
 ---
 
 Over the last few days I was working on yet another one of my [javaScript examples](/2021/04/02/js-javascript-example/) this time it is yet another Digital Art Projects based off of [revision 5 of my first Object Pool Reduction digital art example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that I started late last year.
@@ -36,15 +36,21 @@ The object pool module was copied over from the other digital art example that I
 
 ## 4 - The game module
 
+I then have the main game state module for this example, which is what I make that is typically used to create and update a main game state object.
+
 ```js
 ```
 
 ## 5 - The draw module
 
+I then have a draw module that contains all the methods that I will be using to draw the current state of the game object to a canvas element.
+
 ```js
 ```
 
 ## 6 - The main javaScript file
+
+Now that I have everything that I need to create a state object, update that state object, and draw it to a canvas element I will just need a little more javaScript to make use of all of this in the form of a main javaScript file.
 
 ```js
 ```
