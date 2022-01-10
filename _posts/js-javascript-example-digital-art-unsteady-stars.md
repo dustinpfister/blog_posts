@@ -5,13 +5,13 @@ tags: [js]
 layout: post
 categories: js
 id: 950
-updated: 2022-01-10 15:35:11
-version: 1.11
+updated: 2022-01-10 15:38:42
+version: 1.12
 ---
 
 Over the last few days I was working on yet another one of my [javaScript examples](/2021/04/02/js-javascript-example/) this time it is yet another Digital Art Projects based off of [revision 5 of my first Object Pool Reduction digital art example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that I started late last year. This time around I wanted to make a quick project that was just a bunch of display objects moving around the canvas, each of which also contains a collection of points that form a star. However this is not just any star, but a kind of unsteady star that has more than one collection of points attached to it. One collection of points is a bunch of home points that are the pure position locations for each point in the star, then other collections of points have to do with old, target, and current positions. So then the points move from the home positions to random positions that are a certain random radius and angle from each home position. So then simply put they end up being collections of points that look like stars but the points will move around to these random locations within a range of each home point.
 
-The main goal of this project was not just to create yet another digital art project, but also to continue to practice and refine the basic process that I started with in my first digital art javaScript example project. That is to come up with what the Core idea of a project is first, finish that, then move on to a few additional features. Also when it comes to additional features set a limit as to how many of them there will be, and try to focus on what I really want or need to add to the project. Then onces the few features are done, sop adding features and focus on code readability and fixing bugs. This kind of process combined with sticking to simple, artful projects will then result in me actually finishing a project, and then I will be free to move on to the next idea.
+The main goal of this project was not just to create yet another digital art project, but also to continue to practice and refine the basic process that I started with in my first digital art javaScript example project. That is to come up with what the Core idea of a project is first, finish that, then move on to a few additional features. Also when it comes to additional features set a limit as to how many of them there will be, and try to focus on what I really want or need to add to the project. Then onces the few features are done, sop adding features and focus on code readability and fixing bugs. This kind of process combined with sticking to simple, artful projects will then result in me actually finishing a project, and then I will be free to move on to the next idea. With that said I would say that the main goal of this project was a success, now it is just doing the same of the next project, and the project after that. Keeping the ides simple and in the scope of something that I can complete in a few days, or at most a month if it is something that is a little involves.
 
 <!-- more -->
 
