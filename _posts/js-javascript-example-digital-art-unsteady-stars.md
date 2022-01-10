@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 950
-updated: 2022-01-10 15:26:50
-version: 1.9
+updated: 2022-01-10 15:28:06
+version: 1.10
 ---
 
 Over the last few days I was working on yet another one of my [javaScript examples](/2021/04/02/js-javascript-example/) this time it is yet another Digital Art Projects based off of [revision 5 of my first Object Pool Reduction digital art example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that I started late last year. This time around I wanted to make a quick project that was just a bunch of display objects moving around the canvas, each of which also contains a collection of points that form a star. However this is not just any star, but a kind of unsteady star that has more than one collection of points attached to it. One collection of points is a bunch of home points that are the pure position locations for each point in the star, then other collections of points have to do with old, target, and current positions. So then the points move from the home positions to random positions that are a certain random radius and angle from each home position. So then simply put they end up being collections of points that look like stars but the points will move around to these random locations within a range of each home point.
@@ -19,7 +19,7 @@ This is one of my many posts on a full javaScript example that might be a fairly
 
 ### The source code for this javaScript example as well as other notes and assets can be found on Github
 
-The full up to date source code for this example can also be found on my [test vjs Github Repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-unsteady-stars). This might also be the best way to pull down and use not just this javaScipt example, but all my other javaScript examples that I have made over the years.
+The full up to date source code for this example can also be found on my [test vjs Github Repository](https://github.com/dustinpfister/test_vjs/tree/master/for_post/js-javascript-example-digital-art-unsteady-stars). This might also be the best way to pull down and use not just this javaScipt example, but all my other javaScript examples that I have made over the years for each [post I have wrote on javaScript in general](/categories/js/).
 
 ## 1 - The utilities library
 
