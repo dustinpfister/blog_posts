@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:47:07
-version: 1.17
+updated: 2022-01-11 13:52:43
+version: 1.18
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
@@ -80,7 +80,7 @@ The lodash defaults method will work great in many various situations in which I
 
 ### 3.1 - A vanilla js constructor example using ternary, and identity operators
 
-The first and foremost way that I might go about starting out with this sort of thing would be to use a ternary operator in combination with the identity operator to test if an object property is undefined or not.
+The first and foremost way that I might go about starting out with this sort of thing would be to use a [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) in combination with the [identity operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality) to test if an object property is undefined or not. If you are not familiar with the ternary operator yet it is an operator form of an [if else statement](/2019/02/25/js-javascript-if/) that will work well in expressions. The identity operator is then another name for the type sensitive strict equality operator in javaScript which is one of [several tools in the native javaScript toolbox when it comes to checking equality](/2019/02/06/js-javascript-equals/) of two values.
 
 ```js
 let Box = function (opt) {
