@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:25:56
-version: 1.11
+updated: 2022-01-11 13:30:41
+version: 1.12
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, bit in any case there might be a need to set some default values for these options for the method, function, constructor or what have you. 
@@ -21,7 +21,7 @@ This is a post on the \_.defaults method in lodash that can be used to set defau
 
 ### 1.1 - Basic lodash defaults example
 
-A hello world of sorts with lodash defaults can be something as single as passing a source object that should be a point as the first argument to the lodash defaults, followed by another object that is the default values for a position object.
+A hello world of sorts with lodash defaults can be something as simple as passing a source object that should be a point as the first argument to the lodash defaults, followed by another object that is the default values for a position object. The source object can then have a x value, y value, or neater actually as long as defaults are defined in the object the defines what the defaults should be for x and y.
 
 ```js
 let a = {x: 5};
@@ -31,6 +31,8 @@ _.defaults(a, {
 });
 console.log(a); // { x: 5, y: 0 }
 ```
+
+So then I can pass any object as the first argument of defaults and default x and y values will be set for that object if they are not there to begin with.
 
 ## 2 - Using \_.defaults when making a constructor
 
