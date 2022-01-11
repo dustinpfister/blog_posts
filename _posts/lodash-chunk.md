@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2022-01-11 12:03:18
-version: 1.18
+updated: 2022-01-11 12:05:37
+version: 1.19
 ---
 
 So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays, or in other words a [multidimensional array](/2020/03/31/js-array-multidimensional/) as it may often be called.
@@ -41,9 +41,11 @@ So it breaks a single dimensional array into a multidimensional array in the for
 
 ## 2 - Vanilla javaScript and chunking an array
 
-using lodash is something that seems to be falling out of style slowly over time it would seem. There are developers that understand that lodash is a bit more than just a safety net of sorts, when it comes to the nature of functional programing over that of the alternative. There is also maybe some nice things to say about having methods that are so called collection methods that will work with collection objects in general, not just arrays. However I do also get why a lot of people often prefer to work outside of the library also. So with that said in this section I will be looking inot source code examples that have to do with doing what the lodash chunk methods does, with out lodash. In other words just working with native javaScript by itself without a library.
+using lodash is something that seems to be falling out of style slowly over time it would seem. There are developers that understand that lodash is a bit more than just a safety net of sorts, when it comes to the nature of functional programing over that of the alternative. There is also maybe some nice things to say about having methods that are so called collection methods that will work with collection objects in general, not just arrays. However I do also get why a lot of people often prefer to work outside of the library also. So with that said in this section I will be looking into source code examples that have to do with doing what the lodash chunk methods does, with out lodash. In other words just working with native javaScript by itself without a library.
 
 ### 2.1 - A vanilla javaScriopt chunk method
+
+This is a vanilla javaScript chunk method that I came up with that I have been using in some of my vanilla javaScript only projects.
 
 ```js
 
