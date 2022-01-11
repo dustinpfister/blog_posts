@@ -1,12 +1,12 @@
 ---
 title: Setting default values with lodash
 date: 2018-09-01 17:19:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:52:43
-version: 1.18
+updated: 2022-01-11 13:54:02
+version: 1.19
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
@@ -106,5 +106,5 @@ This might work fine if I just have a few properties like in this example, but i
 
 ## 4 - Conclusion
 
-The lodash \_.defaults method one of the many methods in lodash that makes it a great utility library. This is something that comes up a lot when making projects. One way of other I just work through it, but if lodash is part of the stack it is nice to know that I have this available as an option. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general.
+The lodash \_.defaults method one of the many methods in lodash that makes it a great utility library. This is something that comes up a lot when making projects. One way of other I just work through it, but if lodash is part of the stack it is nice to know that I have this available as an option. If you enjoyed this post you might want to check out my [main post on lodash](/2019/02/15/lodash/) in general, or one of my many other [various posts on lodash](/categories/lodash/).
 
