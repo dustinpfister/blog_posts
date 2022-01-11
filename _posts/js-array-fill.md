@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2022-01-11 14:29:10
-version: 1.53
+updated: 2022-01-11 14:37:00
+version: 1.54
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value, or created a new array with a given count of element that are all set to a given starting value. For example I might want to start off an array of numbers to a starting value of zero number value for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process, such as a random process, or filled from some kind of data source.
@@ -335,7 +335,7 @@ So then there is the question that if the array fill method is what is being use
 
 ### 7.1 - If you are going to monkey patch, be sure to do so with something that is Spec Compliant
 
-Here I am monkey patching in the array fill method using a polyfill that I found on the Mozilla page.
+Here I am monkey patching in the array fill method using a polyfill that I found on the Mozilla page. Like any good poly fill it will only monkey path itself in if a native array fill method is not all ready there to begin with by doing a quick feature test first. In the event that it is not there then it will define the array fill method using the source code worked out for this sort if thing.
 
 ```js
 
@@ -378,6 +378,8 @@ if (!Array.prototype.fill) {
 var byt = new Array(8).fill(1);
 console.log(byt.join('')); // '11111111'
 ```
+
+Of course there are some that think that a developer should never monkey patch, even for native methods that should be there. I would say that if it is a late spec method that should be there then monkey patching is fine, but I also think I understand the reasons why other developers are coming from this way of thinking that described that we should be pony filling rather than poly filling. For one thing if I am going to monkey patch an array fill method, then I should stick to a solution such as this one for the array fill method. However if I am going to start making my own custom utilities method for a project, then I could go with something like this for a fill method, or I can do whatever else I would want to do when it comes to making such a fill method.
 
 ## 8 - Conclusion
 
