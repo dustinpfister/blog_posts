@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2022-01-11 11:56:12
-version: 1.16
+updated: 2022-01-11 11:58:46
+version: 1.17
 ---
 
 So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays, or in other words a [multidimensional array](/2020/03/31/js-array-multidimensional/) as it may often be called.
@@ -37,7 +37,7 @@ console.log(_.chunk(arr, 2));
 // [ [ 'one', 'two' ], [ 'three', 'four' ], [ 'five', 'six' ] ]
 ```
 
-It breaks a single dimensional array into a multidimensional array and that is more or less the basic idea of the chunk method.
+So it breaks a single dimensional array into a multidimensional array in the form of an array of arrays, and that is more or less the basic idea of the chunk method. There is a whole lot more to say about multidimensional arrays of course, including the fact that the process of chunking an array of arrays might not be needed if you can get away with using a formula to get and set what you want in a single array, but that might be a matter for another post.
 
 ## 2 - Vanilla javaScript and chunking an array
 
