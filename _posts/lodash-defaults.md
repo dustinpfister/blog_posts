@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:40:19
-version: 1.14
+updated: 2022-01-11 13:42:23
+version: 1.15
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
@@ -75,6 +75,8 @@ console.log(bx2.y); // 0
 This approach works fine as long as all properties given in the options object can be set to the instance of the Constructor, else I might want this options object to be a separate argument, or have other properties that are just used once during construction handled in another object.
 
 ## 3 - Vanilla javaScript and setting defaults
+
+The lodash defaults method will work great in many various situations in which I want to make sure that default values for an object are set for any and all values that are not given.
 
 ### 3.1 - A vanilla js constructor example using ternary operators
 
