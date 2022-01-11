@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:57:49
-version: 1.20
+updated: 2022-01-11 14:07:52
+version: 1.21
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
@@ -35,6 +35,22 @@ console.log(a); // { x: 5, y: 0 }
 ```
 
 So then I can pass any object as the first argument of defaults and default x and y values will be set for that object if they are not there to begin with. That is just about it more or less when it comes to this method, it is a way to set default values for any and all values that are not set for a source object. There is maybe just one thing to point out with this though and that is the fact that the defaults method will mutate an object in place, so then this makes the defaults method one of the methods in lodash that are not functional programing friendly then.
+
+### 1.2 - The lodash assign method
+
+The [lodash assign method](/2018/09/21/lodash_assign/) then might prove to be another note worthy option for this sort of thing then. This can also be used to assign properties to a new object in a way in which a given set of values will be used over defaults, else the defaults will be used. Just call the lodash assign method, pass a new object as the first argument, followed by the defaults object, followed by the source object. The returned value will then be a new object with defaults filed in for anything and everything to which there is no given value in the source object, thus it will not mutate in place if used this way.
+
+```js
+let a = { x: 5 };
+// the assign method will also work well for this
+// and it will not mutate in place
+let b = _.assign({}, {
+    x: 0,
+    y: 0
+}, a);
+console.log(a); // { x: 5 }
+console.log(b); // { x: 5, y: 0 }
+```
 
 ## 2 - Using \_.defaults when making a constructor
 
