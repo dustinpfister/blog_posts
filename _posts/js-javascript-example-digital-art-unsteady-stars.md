@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 950
-updated: 2022-01-11 10:55:22
-version: 1.19
+updated: 2022-01-11 10:58:11
+version: 1.20
 ---
 
 Over the last few days I was working on yet another one of my [javaScript examples](/2021/04/02/js-javascript-example/) this time it is yet another Digital Art Projects based off of [revision 5 of my first Object Pool Reduction digital art example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that I started late last year. This time around I wanted to make a quick project that was just a bunch of display objects moving around the canvas, each of which also contains a collection of points that form a star. However this is not just any star, but a kind of unsteady star that has more than one collection of points attached to it. One collection of points is a bunch of home points that are the pure position locations for each point in the star, then other collections of points have to do with old, target, and current positions. So then the points move from the home positions to random positions that are a certain random radius and angle from each home position. So then simply put they end up being collections of points that look like stars but the points will move around to these random locations within a range of each home point.
@@ -485,7 +485,7 @@ var poolMod = (function () {
 
 ## 4 - The game module
 
-I then have the main game state module for this example, which is what I make that is typically used to create and update a main game state object.
+I then have the main game state module for this example, which is what I make that is typically used to create and update a main game state object. For this digital art example there are only two public methods of interest with this one where are the main create method that will create and return a new game state for the example, and then of course an update method for the game state object that is returned by the create method. These two public create and update methods will then be used later on in the main javaScript file that I will be getting to later in this post which is where I tie all of this together.
 
 ```js
 var gameMod = (function () {
