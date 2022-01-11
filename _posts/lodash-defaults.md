@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:30:41
-version: 1.12
+updated: 2022-01-11 13:35:32
+version: 1.13
 ---
 
-So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, bit in any case there might be a need to set some default values for these options for the method, function, constructor or what have you. 
+So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
 
 There are native ways of parsing options for methods however in [lodash](https://lodash.com/) there is a quick convenience method that can be used to handle this process which is called the [\_.defaults](https://lodash.com/docs/4.17.10#defaults) object method. In this post I will be showing some quick use case examples of the \_.defaults method, as well as some vanilla js alternatives when it comes to option parsing and javaScipt methods.
 
