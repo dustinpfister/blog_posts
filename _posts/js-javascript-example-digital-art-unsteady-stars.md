@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 950
-updated: 2022-01-11 10:42:18
-version: 1.16
+updated: 2022-01-11 10:43:47
+version: 1.17
 ---
 
 Over the last few days I was working on yet another one of my [javaScript examples](/2021/04/02/js-javascript-example/) this time it is yet another Digital Art Projects based off of [revision 5 of my first Object Pool Reduction digital art example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that I started late last year. This time around I wanted to make a quick project that was just a bunch of display objects moving around the canvas, each of which also contains a collection of points that form a star. However this is not just any star, but a kind of unsteady star that has more than one collection of points attached to it. One collection of points is a bunch of home points that are the pure position locations for each point in the star, then other collections of points have to do with old, target, and current positions. So then the points move from the home positions to random positions that are a certain random radius and angle from each home position. So then simply put they end up being collections of points that look like stars but the points will move around to these random locations within a range of each home point.
@@ -29,7 +29,7 @@ The [utilities library](/2021/08/06/js-javascript-example-utils/) for this examp
 
 The create canvas method is something that I made for my collection of canvas example posts, for that collection of posts like this collection I was not using any kind of framework and writing all the code from the ground up sort of speak. However I did reuse code from example to example, just as I do with this example, and one thing I wanted to work out is a standard way to create a canvas element, and set up some values for such an element. So then this create canvas method is such a method, and will return an object with a reference to the canvas element, as well as the 2d drawing content of the canvas element.
 
-Another usual suspect method for this utilies library is the mathematical modulo method that is just another way to go about doing what the modulo operator does in native javaScript but it works better with negative numbers.
+Another usual suspect method for this utilizes library is the [mathematical modulo](/2017/09/02/js-whats-wrong-with-modulo/) method that is just another way to go about doing what the modulo operator does in native javaScript but it works better with negative numbers.
 
 ```js
 var utils = {};
