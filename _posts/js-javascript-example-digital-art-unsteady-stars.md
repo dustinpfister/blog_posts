@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 950
-updated: 2022-01-11 11:03:09
-version: 1.21
+updated: 2022-01-11 11:06:12
+version: 1.22
 ---
 
 Over the last few days I was working on yet another one of my [javaScript examples](/2021/04/02/js-javascript-example/) this time it is yet another Digital Art Projects based off of [revision 5 of my first Object Pool Reduction digital art example](/2021/12/31/js-javascript-example-digital-art-reduce-pool/) that I started late last year. This time around I wanted to make a quick project that was just a bunch of display objects moving around the canvas, each of which also contains a collection of points that form a star. However this is not just any star, but a kind of unsteady star that has more than one collection of points attached to it. One collection of points is a bunch of home points that are the pure position locations for each point in the star, then other collections of points have to do with old, target, and current positions. So then the points move from the home positions to random positions that are a certain random radius and angle from each home position. So then simply put they end up being collections of points that look like stars but the points will move around to these random locations within a range of each home point.
@@ -487,7 +487,7 @@ var poolMod = (function () {
 
 I then have the main game state module for this example, which is what I make that is typically used to create and update a main game state object. For this digital art example there are only two public methods of interest with this one where are the main create method that will create and return a new game state for the example, and then of course an update method for the game state object that is returned by the create method. These two public create and update methods will then be used later on in the main javaScript file that I will be getting to later in this post which is where I tie all of this together.
 
-In this game module I make use of the object pool covered in an above section to create a single object pool of units. When doing so I give an options object, and this options object contains methods that will fire when a unit spawns, as well as when it updates over time. How I go about using this object pool will change from one example to the next, but for this digital art example I am just spawning all the units at once, and from there it is just a matter of changing what the current 'mode' is for a unit.
+In this game module I make use of the object pool covered in an above section to create a single object pool of units. When doing so I give an options object, and this options object contains methods that will fire when a unit spawns, as well as when it updates over time. How I go about using this object pool will change from one example to the next, but for this digital art example I am just spawning all the units at once, and from there it is just a matter of changing what the current 'mode' is for a unit. That is that for this javaScript example I have a value in the data object of each display object in the object pool that is a key for a current method to use in a collection of so called unit modes. Each unit mode has an update method as well as an init mety9d that will be called to set things up with the data object of the display object when a mode change happens.
 
 ```js
 var gameMod = (function () {
