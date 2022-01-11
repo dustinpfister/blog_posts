@@ -25,18 +25,6 @@
 * ( done 01/06/2022 ) 3,000+ words
 * 3,250+ words
 
-## js-javascript-example-grid-game-unit-movement
-      Intrinsic Value: This is a good topic that relates to work on my actual game framework project
-      Search Console: best preforming "js-javascript-example-\*" post as of 12/2/21
-      Google Trends: "javascript grid"
-        This is a great topic that has to do with work I would like to do on my framework project called Clucker. On top of that this post is the best preforming post in my javaScript example series of posts as of this writing so it makes sense to work on it more for that reason also. On top of that I lack javaScript example series posts that are in the 3,000+ word count range, and I would like for this whole collection to preform better.
-
-* ( done 12/02/2021 ) - 1,800+ words
-* ( done 12/03/2021 ) - 2,400+ words
-* () - 3,000+ words
-* () - 3,500+ words
-* () - 4,000+ words
-
 ## js-innerHTML ( Search Console Best Performance for js cat - clicks - 10/25/21 )
 
     justification:
@@ -152,6 +140,8 @@ list:
       Search Console: 
       Google Trends:
 * ( done 12/22/2021 ) get the post to 3,000+ words
+* ( done 12/22/2021 ) 3,250+
+* 3,500+
 
 ## js-javascript-svg ( A whole lot to write about )
     justification:
@@ -166,6 +156,19 @@ list:
 * get the post to 2,500+ words
 * get the post to 2,750+ words
 * get the post to 3,000+ words
+
+## js-javascript-example-grid-game-unit-movement
+      Intrinsic Value: This is a good topic that relates to work on my actual game framework project
+      Search Console: best preforming "js-javascript-example-\*" post as of 12/2/21
+      Google Trends: "javascript grid"
+        This is a great topic that has to do with work I would like to do on my framework project called Clucker. On top of that this post is the best preforming post in my javaScript example series of posts as of this writing so it makes sense to work on it more for that reason also. On top of that I lack javaScript example series posts that are in the 3,000+ word count range, and I would like for this whole collection to preform better.
+
+* ( done 12/02/2021 ) - 1,800+ words
+* ( done 12/03/2021 ) - 2,400+ words
+* () - 3,000+ words
+* () - 3,500+ words
+* () - 4,000+ words
+
 
 ## js-javascript-example-utils
 
