@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:45:08
-version: 1.16
+updated: 2022-01-11 13:47:07
+version: 1.17
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
@@ -78,15 +78,13 @@ This approach works fine as long as all properties given in the options object c
 
 The lodash defaults method will work great in many various situations in which I want to make sure that default values for an object are set for any and all values that are not given. However there is of course the question of how to go about doing what the lodash defaults method does outside of lodash, as many of us are starting to use this library less and less these days. I still think that the lodash defaults is a nice little tool in the lodash toolbox that works as expected when it comes to having such a method, but this is also something that is not so hard to replicated with just plain old javaScript by itself.
 
-### 3.1 - A vanilla js constructor example using ternary operators
+### 3.1 - A vanilla js constructor example using ternary, and identity operators
 
-The same constructor could be made without lodash using ternary operators.
+The first and foremost way that I might go about starting out with this sort of thing would be to use a ternary operator in combination with the identity operator to test if an object property is undefined or not.
 
 ```js
 let Box = function (opt) {
- 
     opt = opt || {};
- 
     this.width = opt.width === undefined ? 32 : opt.width;
     this.height = opt.height === undefined ? 32 : opt.height;
     this.x = opt.x === undefined ? 0 : opt.x;
