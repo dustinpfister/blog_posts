@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:54:02
-version: 1.19
+updated: 2022-01-11 13:57:49
+version: 1.20
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
@@ -34,7 +34,7 @@ _.defaults(a, {
 console.log(a); // { x: 5, y: 0 }
 ```
 
-So then I can pass any object as the first argument of defaults and default x and y values will be set for that object if they are not there to begin with.
+So then I can pass any object as the first argument of defaults and default x and y values will be set for that object if they are not there to begin with. That is just about it more or less when it comes to this method, it is a way to set default values for any and all values that are not set for a source object. There is maybe just one thing to point out with this though and that is the fact that the defaults method will mutate an object in place, so then this makes the defaults method one of the methods in lodash that are not functional programing friendly then.
 
 ## 2 - Using \_.defaults when making a constructor
 
