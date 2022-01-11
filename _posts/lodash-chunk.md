@@ -5,13 +5,15 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 36
-updated: 2022-01-11 11:48:39
-version: 1.14
+updated: 2022-01-11 11:54:44
+version: 1.15
 ---
 
-So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays, or in other words a multidimensional array as it may often be called.
+So I think I will write a few posts on [lodash](https://lodash.com/), and as such why not start with the [\_.chunk](https://lodash.com/docs/4.17.4#chunk) array method. The lodash chunk method is a method in lodash that can break a linear array into an array of arrays, or in other words a [multidimensional array](/2020/03/31/js-array-multidimensional/) as it may often be called.
 
-So how often do I get into a situation in which I need to break down a linear array into an array of arrays? Maybe not to often but often enough that it would be nice to have a method that is part of a toolkit of sorts that makes quick work of it. In this case the lodash chunk method in is just that. There is also the question of flattening an array of arrays into a single array, for that there is the [lodash flatten](/2018/08/12/lodash_flatten/) method.
+So how often do I get into a situation in which I need to break down a linear array into an array of arrays? Maybe not to often but often enough that it would be nice to have a method that is part of a toolkit of sorts that makes quick work of it. In this case the lodash chunk method in is just that and will work well at least with most typical use case examples inn which I would want such a method. 
+
+There is also the question of flattening an array of arrays into a single array, for that there is the [lodash flatten](/2018/08/12/lodash_flatten/) method. However in native javaScript there is also now a [native flat method in the array prototype](/2021/07/15/js-array-flat/) itself to work with for that kind of task. With that said there is a thing or two to write about when it comes to chunking an array with just native javaScript by itself also. So in this post I will be going over some examples that make use of the lodash chunk method of course, but I will also be looking into some native javaScript examples that do the same thing when it comes to just getting things done with javaScript by itself.
 
 <!-- more -->
 
