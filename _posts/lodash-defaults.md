@@ -5,19 +5,21 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 275
-updated: 2022-01-11 13:35:32
-version: 1.13
+updated: 2022-01-11 13:40:19
+version: 1.14
 ---
 
 So when it comes to making helper methods, or constructor objects that are a little complex with javaScript there will be a need to pass many properties to these kinds of functions. Some of the properties might be mandatory, other might be optional, but in any case there might be a [need to set some default values for these options or class properties of an object](https://stackoverflow.com/questions/6600868/set-default-value-of-javascript-object-attributes) in question.
 
-There are native ways of parsing options for methods however in [lodash](https://lodash.com/) there is a quick convenience method that can be used to handle this process which is called the [\_.defaults](https://lodash.com/docs/4.17.10#defaults) object method. In this post I will be showing some quick use case examples of the \_.defaults method, as well as some vanilla js alternatives when it comes to option parsing and javaScipt methods.
+There are native ways of parsing options for methods, or objects in general, however in [lodash](https://lodash.com/) there is a quick convenience method that can be used to handle this process which is called the [\_.defaults](https://lodash.com/docs/4.17.10#defaults) object method. In this post I will be showing some quick use case examples of the \_.defaults method, as well as some vanilla js alternatives when it comes to option parsing and javaScipt methods.
 
 <!-- more -->
 
 ## 1 - The basics of lodash defaults, and what to know before hand.
 
-This is a post on the \_.defaults method in lodash that can be used to set default values to an object if there is no properties there. This method is then a solution for dealing with options objects when making constructors, of helper methods that accept an object as an argument that contain many properties, and I want a way to fill in the blanks with many of those properties when using the constructor, helper or method in general. This is not a getting started post on lodash, or javaScript in general, and I assume that you have at least some background on these subjects.
+This is a post on the \_.defaults method in lodash that can be used to set default values to an object if there is no property there for a given property is a defaults object. This method is then a solution for dealing with options objects when making constructors, of helper methods that accept an object as an argument that contain many properties, as well as with just objects in general actuality. That is that I want a way to fill in the blanks with many object properties when making a constructor function, a helper method that takes an options object, or just about any kind of object in general actually that should have default fall back values if none are given. 
+
+This is not a getting started post on lodash, or [javaScript in general](/2018/11/27/js-getting-started/), and I assume that you have at least some background on these subjects.
 
 ### 1.1 - Basic lodash defaults example
 
