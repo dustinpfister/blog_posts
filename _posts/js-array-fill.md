@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 650
-updated: 2022-01-11 14:27:36
-version: 1.52
+updated: 2022-01-11 14:29:10
+version: 1.53
 ---
 
 In some cases I might want to just simply fill all element index values in an array with a set static value, or created a new array with a given count of element that are all set to a given starting value. For example I might want to start off an array of numbers to a starting value of zero number value for each element. However the idea of filling an array with values might have more than one meaning other than just that. For example I might want to start off an array with a range of numbers starting with 1 going up from there to the length of the array, and then use this kind of array with another method such as the a map method to create a final array with desired values. So then there is filling an array with static values, and then there is filling an array with values that are the result of some kind of pattern, or process, such as a random process, or filled from some kind of data source.
@@ -334,6 +334,8 @@ console.log( fill(10, 0) );
 So then there is the question that if the array fill method is what is being used to fill an array, should a poly fill be used? As of this writing I would say that it might still be a good idea to do so, however as aways it will deepened on how far back you want to go with browser, and or nodejs version support. If you are going to monkey patch then it is a good idea to make sure that yo do so with something that is spec compliant and therefor will work the same way as what would otherwise be the actually native method.
 
 ### 7.1 - If you are going to monkey patch, be sure to do so with something that is Spec Compliant
+
+Here I am monkey patching in the array fill method using a polyfill that I found on the Mozilla page.
 
 ```js
 
