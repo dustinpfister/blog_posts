@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2022-01-12 12:46:42
-version: 1.11
+updated: 2022-01-12 12:52:28
+version: 1.12
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method, and the [lodash set](/2018/12/04/lodash_set/) method that might be worth looking into when it comes to the basics of paths in lodash.
@@ -43,7 +43,9 @@ console.log(r);
 
 ### 1.3 - Using lodash map in place of invoke map
 
-There is also the [lodash map](/2018/02/02/lodash_map/) collection method also that will work in a very similar way to that of invoke map, but will give a grater amount of control when it comes to what to do for each element in a given collection. However there are still ways to go about having the same amount of control actually when it comes to using invoke map it is just that things need to be done a little differently. For example say that I want to use Math.round to create a new array of numbers from an array of numbers where each number is a fraction. In order to use invoke map I can not just pass Math.round as the second argument for invoke map, I will instead what to pass a function of my own. Also when passing a function of my own I will want to use a function expression, and not an arrow function because of the way that function expressions handle the value of the this keyword. I can then use the this keyword in the body of the function expression that I give to refer to the current element in the array, which in this case is a number, so I can then pass that as an argument for Math.round. The return value of Math.round will then need to be the return value of this function expression that I give to lodash invoke map.
+There is also the [lodash map](/2018/02/02/lodash_map/) collection method also that will work in a very similar way to that of invoke map, but will give a grater amount of control when it comes to what to do for each element in a given collection. However there are still ways to go about having the same amount of control actually when it comes to using invoke map it is just that things need to be done a little differently. 
+
+For example say that I want to use Math.round to create a new array of numbers from an array of numbers where each number is a fraction. In order to use invoke map I can not just pass [Math.round](/2020/06/15/js-math-round/) as the second argument for invoke map, I will instead want to pass a function of my own. Also when passing a function of my own I will want to use a [function expression](/2019/01/27/js-function-expression/), and not an [arrow function](/2019/02/17/js-arrow-functions/) because of the way that function expressions handle the value of the [this keyword](/2017/04/14/js-this-keyword/). I can then use the this keyword in the body of the function expression that I give to refer to the current element in the array, which in this case is a number, so I can then pass that as an argument for Math.round. The [return value](/2019/03/01/js-javascript-return/) of Math.round will then need to be the return value of this function expression that I give to lodash invoke map.
 
 So then that is a little involved, but I can still do this sort of thing with invoke map. However it might often be a little easier to just use the lodash map method in this case. With lodash map I can just pass the Math.round method as the second argument and be done with it.
 
