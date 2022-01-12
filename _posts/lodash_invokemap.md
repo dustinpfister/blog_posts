@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2022-01-12 11:29:14
-version: 1.6
+updated: 2022-01-12 11:33:35
+version: 1.7
 ---
 
-So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method.
+So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method, and the [lodash set](/2018/12/04/lodash_set/) method that might be worth looking into when it comes to the basics of paths in lodash.
 
 However in modern javaScript there are also plenty of tools to grab at to begin with that a javaScript developer should be ware of that can also be used for this kind of task. So lets take an look at some code examples of calling a method for all elements in a collection.
 
