@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2022-01-12 12:58:03
-version: 1.14
+updated: 2022-01-12 12:59:06
+version: 1.15
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method, and the [lodash set](/2018/12/04/lodash_set/) method that might be worth looking into when it comes to the basics of paths in lodash.
@@ -32,7 +32,9 @@ console.log(a);
 // [ [ '1', '2', '3' ], [ '4', '5', '6' ], [ '7', '8', '9' ] ]
 ```
 
-### 1.2 - Basic invoke map example
+### 1.2 - Array of arrays invoke map example
+
+For this example I am using the array sort method for each nested array in an array of arrays.
 
 ```js
 let arr = [ [7, 56, 3, 3, 0, 12], [6, 5, 4], [5, 5, 5, 1] ];
