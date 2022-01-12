@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2022-01-12 11:48:34
-version: 1.9
+updated: 2022-01-12 12:39:36
+version: 1.10
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method, and the [lodash set](/2018/12/04/lodash_set/) method that might be worth looking into when it comes to the basics of paths in lodash.
@@ -15,33 +15,53 @@ However in modern javaScript there are also plenty of tools to grab at to begin 
 
 <!-- more -->
 
-## 1 - Using lodash invoke map with an array to call an array prototype method
+## 1 - The basics of using lodash invoke map with arrays
 
 So the lodash invoke map method is used by calling the method and then passing the collection as the first argument. The second argument is then a path to a method in the given collection object, or a function to use in place for such a method that is to be called for all elements in the collection. Any additional arguments are then arguments that are to be passed to the method that is to be called.
 
-### 1.1 - Basic invoke map example
+### 1.1 - String Split example
+
+```
+let nums = [123,456,789];
+let a = _.invokeMap(nums, ''.split, '');
+console.log(a);
+// [ [ '1', '2', '3' ], [ '4', '5', '6' ], [ '7', '8', '9' ] ]
+```
+
+### 1.2 - Basic invoke map example
 
 ```js
-let arr = [
-    [7, 56, 3, 3, 0, 12],
-    [6, 5, 4],
-    [5, 5, 5, 1]
-];
- 
-let sorter = function (a, b) {
-    if (a < b) {
-        return -1;
-    }
-    if (a > b) {
-        return 1;
-    }
+let arr = [ [7, 56, 3, 3, 0, 12], [6, 5, 4], [5, 5, 5, 1] ];
+let r = _.invokeMap(arr, 'sort', function (a, b) {
+    if (a < b) { return -1; }
+    if (a > b) { return 1; }
     return 0;
-};
- 
-let r = _.invokeMap(arr, 'sort', sorter);
- 
+});
 console.log(r);
 // [ [ 0, 3, 3, 7, 12, 56 ], [ 4, 5, 6 ], [ 1, 5, 5, 5 ] ]
+```
+
+### 1.3 - Using lodash map in place of invoke map
+
+There is also the lodash map collection method also that will work in a very similar way to that of invoke map, but will give a grater amount of control when it comes to what to do for each element in a given collection.
+
+```js
+// invoke map can just be used with an array of numbers
+let nums = [0.5,1.75, 2.9, 4.05];
+let a = _.invokeMap(nums, function(a){
+    return Math.round(this)
+});
+console.log(a);
+// [ 1, 2, 3, 4 ]
+// although in some cases it might be better to just one map
+let b = _.map(nums, Math.round);
+console.log(b);
+// [ 1, 2, 3, 4 ]
+let c = _.map(nums, function(n){
+    return ''.split.call(n, '.');
+});
+console.log(c);
+// [ [ '0', '5' ], [ '1', '75' ], [ '2', '9' ], [ '4', '05' ] ]
 ```
 
 ## 2 - lodash invoke map is a collection method so it works out of the box with objects in general too
