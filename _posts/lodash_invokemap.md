@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2022-01-12 12:55:29
-version: 1.13
+updated: 2022-01-12 12:58:03
+version: 1.14
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method, and the [lodash set](/2018/12/04/lodash_set/) method that might be worth looking into when it comes to the basics of paths in lodash.
@@ -22,6 +22,8 @@ So the lodash invoke map method is used by calling the method and then passing t
 In this section I will be going over a few quick examples of the invoke map method in lodash as well as various other lodash methods. Also in the process I will be touching base on various aspects of native javaScript itself when it comes to the differences between invoke map and the regular lodash map method for example.
 
 ### 1.1 - String Split example
+
+When calling invoke map the first argument should be the collection that I want to use invoke map with, such as an array fo numbers for example. The second argument is then a path to the function to call for each element, or the function itself to use. Then after that it is a question of what values to use for the arguments when calling the given function that is what the additional arguments are for at that point.
 
 ```
 let nums = [123,456,789];
