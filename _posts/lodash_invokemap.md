@@ -5,13 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 654
-updated: 2022-01-12 11:33:35
-version: 1.7
+updated: 2022-01-12 11:38:04
+version: 1.8
 ---
 
 So you have a collection in javaScript, and by collection I mean an array or an object in general that is a collection of key value pairs. With that said the situation is that you want to invoke a method in the collections prototype, or any method in general, for all elements in this collection. Well in lodash there is the [invokeMap method](https://lodash.com/docs/4.17.15#invokeMap) that can be used to invoke a method at a certain path, for all elements in a collection. When I say path I mean a string representation of nested property names for an object in a collection, a standard that is used with methods like the [lodash get](/2018/09/24/lodash_get/) method, and the [lodash set](/2018/12/04/lodash_set/) method that might be worth looking into when it comes to the basics of paths in lodash.
 
-However in modern javaScript there are also plenty of tools to grab at to begin with that a javaScript developer should be ware of that can also be used for this kind of task. So lets take an look at some code examples of calling a method for all elements in a collection.
+However in modern javaScript there are also plenty of tools to grab at to begin with that a javaScript developer should be aware of that can also be used for this kind of task. So lets take an look at some code examples of calling a method for all elements in a collection by using lodash, and also just plain javaScript on its own.
 
 <!-- more -->
 
@@ -97,4 +97,4 @@ console.log(r);
 
 I am not the kind of developer that things that lodash is just filled with methods like invokeMap. There are many talking points as to why it is that lodash is more than just a collection of methods that I may or may not use in a project. Even if you do not use lodash it is still a good idea to look at the lodash source code as there is a lot to be learned as to how it is designed. Also there is much more to write about when it comes to why it might be a good idea to use some kind of user space module that is a collection of independent methods in its own global variable rather than monkey patching methods that should be there into native objects.
 
-Still when it comes to invokeMap alone I can not say this is the most compelling method to support a case to use lodash.
+Still when it comes to invokeMap alone I can not say this is the most compelling method to support a case to use lodash. There are some good talking points as to why one should use lodash, or some kind of custom lodash like library though. With that said if you liked this post and would like to read more on lodash there is my [main blog post on lodash](/2019/02/15/lodash/) that I started, and edit every now and then, and also a whole bunch of other [posts that I have wrote on lodash](/categories/lodash/) over the years.
