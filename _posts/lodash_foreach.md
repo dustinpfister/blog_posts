@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 15:18:30
-version: 1.18
+updated: 2022-01-13 15:22:06
+version: 1.19
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -63,7 +63,7 @@ The lodash for each method is a nice little convenience method for looping over 
 
 ### 2.1 - Basic native array for each method example
 
-So then of course there is the native array for each method.
+So then of course there is the native array for each method. This native array method will work fine in most typically use case examples where I just want to simply loop over an array, but do not need to do anything like filtering, or reducing an array into a single primitive value as there are other array prototype methods that are a better choice.
 
 ```js
 // native Array.forEach
@@ -77,6 +77,8 @@ So then of course there is the native array for each method.
  // 1 : b : a,b,c
  // 2 : c : a,b,c
 ```
+
+So then with the native array for each method using return will have no effect, and also it is an array method so it will not work with just any object. Well that is that it will not just work with any object by itself at least, also there are other ways of looping in which I can use return, or break keywords. So maybe at least a few more examples are called for here.
 
 ### 2.2 - Object keys
 
