@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 15:12:34
-version: 1.16
+updated: 2022-01-13 15:14:00
+version: 1.17
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -79,6 +79,8 @@ So then of course there is the native array for each method.
 ```
 
 ### 2.2 - Object keys
+
+To get array for each to work with any object there is making use of the static Object method known as [Object keys](/2018/12/15/js-object-keys/).
 
 ```js
 let a = {
