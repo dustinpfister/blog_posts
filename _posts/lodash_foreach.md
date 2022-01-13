@@ -1,12 +1,12 @@
 ---
 title: For Each in lodash and the native Array forEach
 date: 2017-11-20 10:45:00
-tags: [js,lodash]
+tags: [lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 14:59:06
-version: 1.14
+updated: 2022-01-13 15:02:00
+version: 1.15
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -59,7 +59,7 @@ _.forEach(a, function(el,index,arr){
 
 ## 2 - Vanilla JavaScript alternatives to lodash for each
 
-The lodash for each method is a nice little convenience method for looping over collections in general. However the same can be done with just plain javaScript features also without that much trouble as long as you just know what there is to work with. The array for each method will work okay with arrays, and with other features there are ways of making use of it with objects in general it can just not be done with array for each alone. There are also many other array prototype methods to be aware of, and also of course various control structures like that of while loops.
+The lodash for each method is a nice little convenience method for looping over collections in general. However the same can be done with just plain javaScript features also without that much trouble as long as you just know what there is to work with. The array for each method will work okay with arrays, and with other features there are ways of making use of it with objects in general it can just not be done with array for each alone. There are also many other [array prototype methods](/2018/12/10/js-array/) to be aware of, and also of course various control structures like that of while loops.
 
 ### 2.1 - Basic native array for each method example
 
@@ -84,4 +84,4 @@ Just like with Array.forEach it some times makes sense to just use a loop of som
 
 ## 3 - Conclusion
 
-Hopefully this post answered a certain question many javaScript developers may have these days, which is the question of the relevance of lodash today. I would say yes, but I can also understand the alternative mindset with this as well. If you enjoyed this post you might want to check out my main post on [lodash in general](/2019/02/15/lodash/), in any case thank you for reading.
+Hopefully this post answered a certain question many javaScript developers may have these days, which is the question of the relevance of lodash today. I would say yes, but I can also understand the alternative mindset with this as well. If you enjoyed this post you might want to check out my main post on [lodash in general](/2019/02/15/lodash/), I have also wrote [many other posts on lodash](/categories/lodash/) over the years, and I get around to editing them every now and then. In any case thank you for reading.
