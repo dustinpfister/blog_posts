@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 14:54:11
-version: 1.11
+updated: 2022-01-13 14:55:22
+version: 1.12
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -59,9 +59,6 @@ _.forEach(a, function(el,index,arr){
 
 ## 2 - Vanilla JavaScript alternatives to lodash for each
 
-
-Just like with Array.forEach it some times makes sense to just use a loop of some kind. This allows for full control with respect to use of defining conditions with break, and continue, as well as complex conditions for starting, continuing, stepping, and additional escape conditions. There is also the matter that in some cases a loop is faster, but most of the time it does not make much of a difference, and I often view it as a nano pick issue.
-
 ### 2.1 - Basic native array for each method example
 
 ```js
@@ -76,6 +73,10 @@ Just like with Array.forEach it some times makes sense to just use a loop of som
  // 1 : b : a,b,c
  // 2 : c : a,b,c
 ```
+
+### 2.2 - While loop
+
+Just like with Array.forEach it some times makes sense to just use a loop of some kind. This allows for full control with respect to use of defining conditions with break, and continue, as well as complex conditions for starting, continuing, stepping, and additional escape conditions. There is also the matter that in some cases a loop is faster, but most of the time it does not make much of a difference, and I often view it as a nano pick issue.
 
 ## 3 - Conclusion
 
