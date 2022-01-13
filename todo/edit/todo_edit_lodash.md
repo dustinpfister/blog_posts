@@ -28,10 +28,6 @@
 
 <!-- OLD POSTS -->
 
-### (  ) - lodash_foreach ( old, links )
-* 750+ words
-* have 5+ internal links for the post
-
 ### (  ) - lodash_isarray ( old, links )
 * 750+ words
 * have 5+ internal links for the post
@@ -51,6 +47,10 @@
 ### (  ) - lodash_difference ( old, links )
 * 750+ words
 * have 5+ internal links for the post
+
+### ( done 01/13/2022 ) - lodash_foreach ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/12/2022 ) - lodash_invokemap ( old, links )
 * (done) 750+ words
