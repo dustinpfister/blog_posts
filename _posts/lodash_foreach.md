@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 14:45:27
-version: 1.8
+updated: 2022-01-13 14:47:31
+version: 1.9
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -17,9 +17,9 @@ When it comes to the lodash forEach method and the native javaScript array proto
 
 <!-- more -->
 
-## 1 - lodash forEach
+## 1 - The basics of lodash forEach
 
-The lodash \_.forEach method is one of the many methods in lodash that is a collection method meaning it will work well with just about any object that is a collection of key value pairs in general, not just keys that are numbered and an instance of the javaScript array constructor.
+To start out with in this section I will be going over some quick examples of suing the lodash for each method. In later sections of this post I will then be looking into other native methods when it comes to doing what the lodash for each method does when working with just javaScript by itself.
 
 ### 1.1 - basic example of lodash for each method
 
