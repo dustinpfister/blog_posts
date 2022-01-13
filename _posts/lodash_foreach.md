@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 14:47:31
-version: 1.9
+updated: 2022-01-13 14:51:14
+version: 1.10
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -23,10 +23,9 @@ To start out with in this section I will be going over some quick examples of su
 
 ### 1.1 - basic example of lodash for each method
 
-The main difference that comes to mind is that I can define a condition that causes the looping of the array to stop.
+For a basic example of the lodash for each method in this example I am just passing an array of strings and then a function that will just log all the arguments for each element. The first argument in the function that I give to for each is the current value of a current element, then there is the index value and sense this is an array that I passed each value of index is a numbered index value. The third argument for the function given ti the lodash for each method is then a reference to the source object that I gave when calling for each, in this case the array of strings.
 
 ```js
-let _ = require('lodash');
  // lodash _.forEach
  _.forEach(['a','b','c'], function(el,index,arr){
     console.log(index + ' : ' +el + ' : ' + arr);
