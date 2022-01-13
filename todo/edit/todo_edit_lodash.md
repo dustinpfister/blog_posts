@@ -52,9 +52,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_invokemap ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/12/2022 ) - lodash_invokemap ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/11/2022 ) - lodash-defaults ( old, links )
 * (done) 750+ words
