@@ -1,12 +1,12 @@
 ---
-title: _.forEach in lodash vs javaScripts native Array.forEach
+title: For Each in lodash and the native Array forEach
 date: 2017-11-20 10:45:00
 tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 14:38:45
-version: 1.6
+updated: 2022-01-13 14:40:02
+version: 1.7
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently then its native js counterpart, this appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method.
