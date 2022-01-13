@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 95
-updated: 2022-01-13 14:51:14
-version: 1.10
+updated: 2022-01-13 14:54:11
+version: 1.11
 ---
 
 I have been writing about [lodash](https://lodash.com/) a lot these days, I feel that it is something that is still worth covering at least at the time that I first wrote this post anyway. It is true that many of the methods are now native in the late javaScript specs, but there are of course methods that are not. In addition it is true that many of the methods in lodash work a little differently compared to any native javaScript counterpart. This appears to be the case with [\_.forEach](https://lodash.com/docs/4.17.4#forEach) and the native [Array.prototype.ForEach](/2019/02/16/js-javascript-foreach/) method. As they will both do the same thing, but with some significant note worth differences.
@@ -37,9 +37,11 @@ For a basic example of the lodash for each method in this example I am just pass
  // 1 : b : a,b,c
 ```
 
-One of the main reasons why I choose to use a loop of some kind over Array.forEach is to have the ability to use the break, and continue keywords to cause looping to come to and end. However with the foreach method in lodash, I can return false in the body of the function I pass to it to break at least.
+One of the main reasons why I choose to use a while loop over the native Array forEach method is to have the ability to use the break, and continue keywords to cause looping to come to and end. However with the for each method in lodash, I can return false in the body of the function I pass to it to break also. However that is not the only thing about lodash for each that is a little more than what array for each is, but it self at least.
 
 ### 1.2 - Lodash for each is a collection method
+
+As I have mentioned the lodash for each method is a collection method, what this means is that it will work with objects in general, nit just arrays.
 
 ```js
 let a = {
