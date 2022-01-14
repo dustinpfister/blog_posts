@@ -5,13 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2022-01-14 07:41:43
-version: 1.20
+updated: 2022-01-14 07:43:37
+version: 1.21
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) that can be used to find out what values in an array are not included on one or more additional arrays. So then as the name implies, it is a way to go about extracting the difference from an array, using one or more additional arrays as a way to known what to extract.
 
 The comparisons are made in compliance with the Same Value Zero standard that is used in methods like that of the [lodash eq](/2019/12/04/lodash_eq/) method. This method of preforming comparisons works in a very similar way to that if the strict equals operator, and the native Object.is method but with subtle differences when it comes to handing NaN and rare cases with negative zero.
+
+There are more than one method in lodash that can be used to preform this kind of task, as well as various similar tasks. There is also what there is to work with when in comes to native javaScript by itself as well.
 
 <!-- more -->
 
