@@ -5,11 +5,11 @@
 <!--###### ########## ########## #######-->
 
 
-### () - new post #953 for x/x/2022 - 
+### () - new post #953 for 01/21/2022 - lodash_thru
 
-### () - new post #952 for x/x/2022 - 
+### () - new post #952 for 01/17/2022 - js-javascript-example-digital-art-invaders
 
-### () - new post #951 for x/x/2022 - 
+### () - new post #951 for 01/14/2022 - lodash_collection
 
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
