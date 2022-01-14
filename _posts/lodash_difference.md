@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2022-01-14 08:10:16
-version: 1.27
+updated: 2022-01-14 08:14:05
+version: 1.28
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) that can be used to find out what values in an array are not included on one or more additional arrays. So then as the name implies, it is a way to go about extracting the difference from an array, using one or more additional arrays as a way to known what to extract.
@@ -103,4 +103,4 @@ console.log(result); // [2, 6, 9]
 
 So the lodash difference method is another one of those kinds of methods that make me thing that lodash is not really necessary. Do not get me wrong the library does have its redeeming qualities when it comes to the idea of having a stand alone method for doing things rather than poly filling native methods. There are many taking points about why using lodash, or something like lodash in a project is a good idea. I just can nit say that the lodash difference method is one of the most compelling methods in the collection of methods. There is really just a hand full here and there that I actually find myself using, and even then I could just use a custom tailored utility library that is in tune with the project itself.
 
-If you enjoyed reading this post and would like to read up more on lodash there is my [main post on lodash](/2019/02/15/lodash), as well as the [many other posts on lodash](/categories/lodash/) that I have wrote over the years.
+If you enjoyed reading this post and would like to read up more on lodash there is my [main post on lodash](/2019/02/15/lodash), as well as the [many other posts on lodash](/categories/lodash/) that I have wrote over the years. However it would seem that interest in lodash is dieing done these days, and more and more developers are starting to drop lodash in favor of some other library, or taking the time to make custom cut utility libraries. With that said maybe it would be a good idea to check out my collection of simple vanilla javaScript project examples, mainly my example on a general utilities library.
