@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 951
-updated: 2022-01-14 11:55:12
-version: 1.13
+updated: 2022-01-14 12:00:37
+version: 1.14
 ---
 
 This month I have been focusing on [lodash](https://lodash.com/), mostly in terms of editing my older content on the subject, but also writing a few new posts where and when I think doing so is needed. With that said I have not wrote a post centered around the [subject of collections](https://en.wikipedia.org/wiki/Collection_%28abstract_data_type%29), and so called collection methods and how they compare to say [arrays methods in lodash](/2019/02/14/lodash_array/).  So in todays post the focal point will be collections, the various methods in lodash that work with collections, and also how to work with collections in general outside of lodash when it comes to working with javaScript by itself.
@@ -110,4 +110,9 @@ Object.keys(a).forEach((key) => {
 ```
 
 ## 4 - Conclusion
+
+So then in javaScript, and many other languages a collection is just some kind of group of values. This group of values might differ in various ways fro one language to another, but it should always be as the same suggests a kind of collection of values. There are all kinds of collections in core javaScript such as Arrays, TypedArrays, Sets, and plain old Objects. Also in client side javaScript there are classed like HTMLCollection and NodeList just to name a few examples of this sort of thing when it comes to that environment.
+
+However there is a common bond between them all in javaScript, and that common bond is that you are just working with some kind of object. Also there is a common bond, or at least there should be, when it comes to what a collection is across many languages.
+
 
