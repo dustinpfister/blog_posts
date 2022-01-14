@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2022-01-14 08:04:21
-version: 1.24
+updated: 2022-01-14 08:05:44
+version: 1.25
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) that can be used to find out what values in an array are not included on one or more additional arrays. So then as the name implies, it is a way to go about extracting the difference from an array, using one or more additional arrays as a way to known what to extract.
@@ -81,7 +81,7 @@ console.log(result_diff); // [2,6,9]
 
 ## 3 - Vanilla javaScript and getting a difference
 
-When it comes to kicking lodash to the curb it is not to hard to accomplish these kinds of tasks with just plain native javaScript. So in this section I will be looking at some alternatives to the lodash difference method that involve just working with native javaScript by itself.
+When it comes to kicking lodash to the curb it is not to hard to accomplish these kinds of tasks with just plain native javaScript. So in this section I will be looking at some alternatives to the lodash difference method that involve just working with native javaScript by itself. These examples will then make use of core javaScript features mainly various methods in the array prototype, as well as another other static and prototype methods as well as the javaScritp syntax itself.
 
 ### 3.1 - Array filter, Array some, and Object is
 
