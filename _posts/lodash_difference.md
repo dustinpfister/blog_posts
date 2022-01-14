@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2022-01-14 07:17:51
-version: 1.15
+updated: 2022-01-14 07:20:12
+version: 1.16
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) examples. In lodash the difference method can be used to create an array of values that are not present in the other given arrays. So in other words it is a way to go about finding unique values that are in two or more given arrays.
@@ -56,7 +56,7 @@ There is more than one way to get something like this done. In some cases a loda
 
 ### 3.1 - lodash or native filter
 
-However if you are not all ready up to speed with the lodash filter method as well as the native Array.filter equivalent, then maybe it would be a good idea to look into
+If you are not all ready up to speed with the lodash filter method as well as the native Array filter equivalent, then maybe it would be a good idea to look into these methods.
 
 ```js
 let data = [2, 4, 6, 8, 9],
