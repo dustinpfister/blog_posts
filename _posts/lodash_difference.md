@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2022-01-14 07:29:09
-version: 1.17
+updated: 2022-01-14 07:32:41
+version: 1.18
 ---
 
-In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) that can be used to find out what values in an array are not included on one or more additional arrays.
+In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) that can be used to find out what values in an array are not included on one or more additional arrays. The comparisons are made in compliance with the Same Value Zero standard that is used in methods like that of the [lodash eq](/2019/12/04/lodash_eq/) method.
 
 <!-- more -->
 
