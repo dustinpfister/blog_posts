@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 951
-updated: 2022-01-14 10:56:42
-version: 1.5
+updated: 2022-01-14 11:19:23
+version: 1.6
 ---
 
 This month I have been focusing on [lodash](https://lodash.com/), mostly in terms of editing my older content on the subject, but also writing a few new posts where and when I think doing so is needed. With that said I have not wrote a post centered around the [subject of collections](https://en.wikipedia.org/wiki/Collection_%28abstract_data_type%29), and so called collection methods and how they compare to say [arrays methods in lodash](/2019/02/14/lodash_array/).  So in todays post the focal point will be collections, the various methods in lodash that work with collections, and also how to work with collections in general outside of lodash when it comes to working with javaScript by itself.
@@ -16,6 +16,10 @@ When it comes to [arrays in javaScript](/2018/12/10/js-array/) and array can be 
 <!-- more -->
 
 ## 1 - The basics of collections
+
+In this section I am going to start out with the very basics of what a collection is in javaScript in general, and also why it is that collection methods in lodash are helpful. The aim here then is to cover what a collection is to begin with when it comes to the various kinds of objects that a javaScript developer will run into in client side javaScript as well as general run time environments such as nodejs.
+
+At this point I assume that you have at least some basic working knowledge of javaScript in general, and how to make use of an external user space library such as lodash. If not getting started with the very basics of javaScript and lodash is outside the scope of this post, so you will need to take a step back and read up more on certain things you should know before hand.
 
 ### 1.1 - Three Objects example
 
