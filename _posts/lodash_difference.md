@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 407
-updated: 2022-01-14 07:43:37
-version: 1.21
+updated: 2022-01-14 07:45:45
+version: 1.22
 ---
 
 In this post I will be writing about some [lodash difference method](https://lodash.com/docs/4.17.11#difference) that can be used to find out what values in an array are not included on one or more additional arrays. So then as the name implies, it is a way to go about extracting the difference from an array, using one or more additional arrays as a way to known what to extract.
@@ -35,7 +35,7 @@ So it goes without saying that the order of the arrays is important. Also it is 
 
 ## 2 - Other lodash methods
 
-There is more than one way to get something like this done. In some cases a lodash method such as difference can help make quick work of this kind of task. It is often a nice concise way of doing so at times sure. However there are many other lodash methods that can be used as well. Also when it comes to kicking lodash to the curb it is not to hard to accomplish these kinds of tasks with just plain native javaScript as well. So in this section I will be looking at some alternatives to the lodash difference method.
+In some cases a lodash method such as difference can help make quick work of this kind of task. It is often a nice concise way of doing so at times sure. However there are many other lodash methods that can be used as well.
 
 ### 2.1 - lodash difference with
 
@@ -79,6 +79,10 @@ let result_diff = _.difference(data,kill);
 console.log(result_diff); // [2,6,9]
 ```
 
-## 3 - Conclusion
+## 3 - Vanilla javaScript and getting a difference
+
+When it comes to kicking lodash to the curb it is not to hard to accomplish these kinds of tasks with just plain native javaScript. So in this section I will be looking at some alternatives to the lodash difference method that involve just working with native javaScript by itself.
+
+## 4 - Conclusion
 
 So the lodash difference method is another one of those kinds of methods that make me thing that lodash is not really necessary. Do not get me wrong the library does have its redeeming qualities when it comes to the idea of having a stand alone method for doing things rather than poly filling native methods. There are many taking points about why using lodash, or something like lodash in a project is a good idea. I just can nit say that the lodash difference method is one of the most compelling methods in the collection of methods. There is really just a hand full here and there that I actually find myself using, and even then I could just use a custom tailored utility library that is in tune with the project itself.
