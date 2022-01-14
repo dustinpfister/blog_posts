@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 951
-updated: 2022-01-14 11:19:23
-version: 1.6
+updated: 2022-01-14 11:21:34
+version: 1.7
 ---
 
 This month I have been focusing on [lodash](https://lodash.com/), mostly in terms of editing my older content on the subject, but also writing a few new posts where and when I think doing so is needed. With that said I have not wrote a post centered around the [subject of collections](https://en.wikipedia.org/wiki/Collection_%28abstract_data_type%29), and so called collection methods and how they compare to say [arrays methods in lodash](/2019/02/14/lodash_array/).  So in todays post the focal point will be collections, the various methods in lodash that work with collections, and also how to work with collections in general outside of lodash when it comes to working with javaScript by itself.
@@ -64,7 +64,40 @@ _.forEach(c, func);
 
 ## 2 - Lodash collection methods
 
+### 2.1 - The lodash for each method
+
+```js
+let a = {
+    0: 1,
+    1: 2,
+    2: 3
+};
+_.forEach(a, (n, key)=>{
+    console.log( Math.pow(2, n) );
+});
+// 2
+// 4
+// 8
+```
+
 ## 3 - Vanilla javaScript and Collections
+
+### 3.1 - The array for each method and Object.keys
+
+```js
+let a = {
+    0: 1,
+    1: 2,
+    2: 3
+};
+Object.keys(a).forEach((key) => {
+    var n = a[key];
+    console.log( Math.pow(2, n) );
+});
+// 2
+// 4
+// 8
+```
 
 ## 4 - Conclusion
 
