@@ -9,7 +9,7 @@
 
 ### () - new post #952 for 01/17/2022 - js-javascript-example-digital-art-invaders
 
-### () - new post #951 for 01/14/2022 - lodash_collection
+### (done 01/14/2022 ) - new post #951 for 01/14/2022 - lodash_collection
 
 <!--###### ########## ########## #######-->
 ## threejs ( /yyyy/mm/dd/js-* )
