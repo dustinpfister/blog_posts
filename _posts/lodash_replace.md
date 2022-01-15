@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2022-01-15 11:31:11
-version: 1.14
+updated: 2022-01-15 11:35:14
+version: 1.15
 ---
 
 The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value of another text pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
@@ -17,7 +17,9 @@ In any case both methods are fairly useful for search and replace operations wit
 
 ## 1 - lodash replace and what to know first
 
-This is a post on the replace method in the javaScript utility library known as lodash. I assume that you know at least the very basics of how to get started with a user space library such as lodash in a client side or nodejs javaScript environment. If not getting into the very basics of lodash, and javaScript are outside the scope of this post.
+This is a post on the replace method in the javaScript utility library known as lodash. I assume that you know at least the very basics of how to get started with a user space library such as lodash in a client side or nodejs javaScript environment. If not getting into the very basics of lodash, and javaScript are outside the scope of this post. If you are still very new to javaScript in general you might want to take a step back and start out with some kind of [getting started with javaScript type post](/2018/11/27/js-getting-started/).
+
+One or more of the examples in this section will also involve the use of regular expressions. Regular expressions come in handy when it comes to replacing not just all instances of a pattern, but also more complex patterns that are not static fixed collections of characters. I will not be getting into detail with regular expressions here, as I have [wrote a post on regex](/2019/03/20/js-regex/) where I do just that. So it would also be a good idea to read up more on regular expressions before looking into the lodash replace method, or any kind of other means to go about preforming search and replace tasks with text.
 
 ### 1.1 - basic example of lodash replace
 
@@ -44,7 +46,6 @@ let strS = _.replace(strP,/p>/g,'span>');
 console.log(strS); '<span>this is an element</span>'
 ```
 
-Regular expressions come in handy when it comes to replacing not just all instances of a pattern, but also more complex patterns that are not static fixed collections of characters, and more. I will not be getting into detail with regular expressions here, as I have [wrote a post on regex](/2019/03/20/js-regex/) where I do just that.
 
 ## 2 - Vanilla javaScript and String.replace
 
