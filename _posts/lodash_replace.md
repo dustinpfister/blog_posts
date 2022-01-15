@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2022-01-15 11:36:50
-version: 1.16
+updated: 2022-01-15 11:39:56
+version: 1.17
 ---
 
-The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value of another text pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
+The [lodash the replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value, or the result of a function call when it comes to generating some kind of replacement for each match. Although that pattern to look for can just be a simple string value, it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
 
 In any case both methods are fairly useful for search and replace operations with text in javaScript. There is not just being knowledgeable with the features of the methods, but also regular expressions, and advanced options when using a method for each instance of a pattern. So in this post I will be writing bout some quick examples on this subject of search and replace of text that comes up a lot when working out a javaScript project.
 
