@@ -40,9 +40,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_replace ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/15/2022 ) - lodash_replace ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/14/2022 ) - lodash_difference ( old, links )
 * (done) 750+ words
