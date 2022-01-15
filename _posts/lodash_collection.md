@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 951
-updated: 2022-01-15 10:52:20
-version: 1.16
+updated: 2022-01-15 11:21:09
+version: 1.17
 ---
 
 This month I have been focusing on [lodash](https://lodash.com/), mostly in terms of editing my older content on the subject, but also writing a few new posts where and when I think doing so is needed. With that said I have not wrote a post centered around the [subject of collections](https://en.wikipedia.org/wiki/Collection_%28abstract_data_type%29), and so called collection methods and how they compare to say [arrays methods in lodash](/2019/02/14/lodash_array/).  So in todays post the focal point will be collections, the various methods in lodash that work with collections, and also how to work with collections in general outside of lodash when it comes to working with javaScript by itself.
@@ -88,6 +88,8 @@ _.forEach(a, (n, key)=>{
 
 ### 2.2 - Count by
 
+The count by collection method will return a new object with a count for each value for a given property.
+
 ```js
 let a = [
     { type: 'goblin' },
@@ -102,6 +104,8 @@ console.log(b);
 ```
 
 ### 2.3 - Filter
+
+The filter collection method will return a new array with elements that just meet a given condition.
 
 ```js
 let a = [
@@ -128,6 +132,8 @@ console.log(c);
 ```
 
 ### 2.4 - find
+
+The lodash find method can be used to find a single item in a collection.
 
 ```js
 let a = [
