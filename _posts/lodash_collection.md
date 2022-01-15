@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 951
-updated: 2022-01-15 10:35:53
-version: 1.15
+updated: 2022-01-15 10:52:20
+version: 1.16
 ---
 
 This month I have been focusing on [lodash](https://lodash.com/), mostly in terms of editing my older content on the subject, but also writing a few new posts where and when I think doing so is needed. With that said I have not wrote a post centered around the [subject of collections](https://en.wikipedia.org/wiki/Collection_%28abstract_data_type%29), and so called collection methods and how they compare to say [arrays methods in lodash](/2019/02/14/lodash_array/).  So in todays post the focal point will be collections, the various methods in lodash that work with collections, and also how to work with collections in general outside of lodash when it comes to working with javaScript by itself.
@@ -84,6 +84,62 @@ _.forEach(a, (n, key)=>{
 // 2
 // 4
 // 8
+```
+
+### 2.2 - Count by
+
+```js
+let a = [
+    { type: 'goblin' },
+    { type: 'goblin' },
+    { type: 'slime' },
+    { type: 'goblin' },
+    { type: 'bat' },
+];
+let b = _.countBy(a, 'type');
+console.log(b);
+//{ goblin: 3, slime: 1, bat: 1 }
+```
+
+### 2.3 - Filter
+
+```js
+let a = [
+    { type: 'goblin', hp: 2 },
+    { type: 'goblin', hp: 0 },
+    { type: 'slime', hp: 0 },
+    { type: 'goblin', hp: 10 },
+    { type: 'bat', hp: 3 },
+];
+let b = _.filter(a, (unit)=>{
+    return unit.type === 'goblin';
+});
+let c = _.filter(a, (unit)=>{
+    return unit.hp <= 0;
+});
+console.log(b);
+//[
+//    { type: 'goblin', hp: 2},
+//    { type: 'goblin', hp: 0},
+//    { type: 'goblin', hp: 10}
+//]
+console.log(c);
+// [ { type: 'goblin', hp: 0 }, { type: 'slime', hp: 0 } ]
+```
+
+### 2.4 - find
+
+```js
+let a = [
+    { id: 3, type: 'goblin', hp: 2 },
+    { id: 5, type: 'goblin', hp: 0 },
+    { id: 1, type: 'slime', hp: 0 },
+    { id: 4, type: 'goblin', hp: 10 },
+    { id: 2, type: 'bat', hp: 3 },
+];
+let b = _.find(a, {id: 4});
+console.log(b);
+// { id: 4, type: 'goblin', hp: 10 }
 ```
 
 ## 3 - Vanilla javaScript and Collections
