@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2022-01-15 12:04:18
-version: 1.22
+updated: 2022-01-15 12:05:57
+version: 1.23
 ---
 
 The [lodash the replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value, or the result of a function call when it comes to generating some kind of replacement for each match. Although that pattern to look for can just be a simple string value, it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
@@ -69,7 +69,7 @@ Some methods in lodash do work a littler differently, for example the [\_.map](/
 
 ### 2.1 - Basic sample of String.replace
 
-So the above basic example can also be done with the native String.replace like this.
+So the above basic example in the getting start with lodash replace can also be done with the native String replace prototype method. I can just call replace off of the string value, and then the string I want to match, then the replacement when it comes to that kind of example.
 
 ```js
 let str = 'Hello Mr Early Cuyler'.replace('Early Cuyler','Dan Halen');
