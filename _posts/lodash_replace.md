@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2022-01-15 11:35:14
-version: 1.15
+updated: 2022-01-15 11:36:50
+version: 1.16
 ---
 
 The [lodash \_.replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value of another text pattern. However it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
@@ -49,11 +49,11 @@ console.log(strS); '<span>this is an element</span>'
 
 ## 2 - Vanilla javaScript and String.replace
 
-Lodash replace is one of many methods in lodash that are somewhat redundant when it comes to what is available in plain old native javaScript by itself. The lodash \_.replace method is a String method, and in the native javaScript String prototype there is the String.replace method that works in more or less the same way as the lodash method.
+Lodash replace is one of many methods in lodash that are somewhat redundant when it comes to what is available in plain old native javaScript by itself. The lodash \_.replace method is a String method, and in the [native javaScript String prototype there is the String.replace method](/2019/04/08/js-string-replace/) that works in more or less the same way as the lodash method.
 
 Some methods in lodash do work a littler differently, for example the [\_.map](/2018/02/02/lodash_map/) method is a collection method that will work well on most objects in general while the Array.map method is just an Array prototype method. However when it comes to \_.replace there does not seem to be much of anything that really sets it apart. 
 
-### 2.1 - Basic sxample of String.replace
+### 2.1 - Basic sample of String.replace
 
 So the above basic example can also be done with the native String.replace like this.
 
@@ -72,3 +72,6 @@ strS = strP.replace(/p>/g,'span>');
  
 console.log(strS); // '<span>this is an element</span>';
 ```
+
+## 3 - Conclusion
+
