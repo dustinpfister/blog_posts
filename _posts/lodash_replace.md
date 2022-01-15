@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 409
-updated: 2022-01-15 11:48:10
-version: 1.20
+updated: 2022-01-15 12:02:39
+version: 1.21
 ---
 
 The [lodash the replace](https://lodash.com/docs/4.17.11#replace) method can be used to quickly replace instances of a text pattern in a string with a static text value, or the result of a function call when it comes to generating some kind of replacement for each match. Although that pattern to look for can just be a simple string value, it might be best to just know how to use regular expressions to do the same with the [String.replace](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) method in native javaScript by itself. 
@@ -46,6 +46,20 @@ let strS = _.replace(strP,/p>/g,'span>');
 console.log(strS); '<span>this is an element</span>'
 ```
 
+### 1.3 - Using a function to generate a replacement
+
+One more note worthy feature of the lodash replace method is that the replacement does not need to be a fixed static string value, it can be a function that is used to generate a value for a match. Also in the body of the function that is given as a way to create a replacement, the match will be provided to the function as the first argument.
+
+```js
+let source = 'This {98} string has some {123} patterns with numbers {56} ';
+let b = _.replace(source, /\{\d+\}/g, (a)=>{
+    return _.chain(a).split('').map((el)=>{
+        return el === '{' || el === '}' ? '' : Math.pow(2, parseInt(el)) + '-';
+    }).join('').value();
+});
+console.log(b);
+// 'This 512-256- string has some 2-4-8- patterns with numbers 32-64-'
+```
 
 ## 2 - Vanilla javaScript and String.replace
 
