@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 11:56:36
-version: 1.15
+updated: 2022-01-16 11:59:29
+version: 1.16
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -16,6 +16,10 @@ When working with a collection in one form or another I would want to loop over 
 In this post I hope to give a general overview of lodash object methods, and also of objects in general when it comes to just working with native javaScript alone while I am at it. This might just be what is called for in order to have a solid understanding as to what the difference is between collections and object methods in general.
 
 <!-- more -->
+
+## 1 - The basics of object methods, collections, and arrays
+
+I could just start going over what the methods are as outline in the lodash documentation site, but then I think I might end up not touching base on some basic things that should be covered before hand. The main thing that comes to mind is what the difference is between a collection method, and an object method in lodash.
 
 ## 2 - lodash object methods
 
