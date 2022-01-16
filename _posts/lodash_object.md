@@ -5,11 +5,13 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 11:44:48
-version: 1.11
+updated: 2022-01-16 11:50:27
+version: 1.12
 ---
 
-In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/).
+In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
+
+When working with a collection in one form or another I would want to loop over the own properties of a collection object only. So then maybe a good way of knowing the difference between collection methods would be to take into account the nature of the lodash forEach collection method, and compare that to the lodash forIn object method. The forEach method will just loop over the public own properties of an object, while the forIn method will loop over all the own properties, and also the prototype object of the object as well.
 
 In this post I hope to give a general overview of lodash object methods, and also of objects in general in using lodash and native javaScript by itself.
 
