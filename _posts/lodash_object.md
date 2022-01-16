@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 12:45:23
-version: 1.19
+updated: 2022-01-16 12:47:31
+version: 1.20
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -67,6 +67,8 @@ console.log(foo);
 ```
 
 ### 1.3 - The lodash for each and for in methods
+
+So now that I got some basic things out of the way when it comes to private and public keys, as well as how to go about having own properties and inherited properties I think I can now compare two lodash methods, one of which is a collection method and the other is an object method.
 
 ```js
 let Foo = function(){
