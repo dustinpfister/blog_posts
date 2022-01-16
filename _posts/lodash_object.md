@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 12:51:03
-version: 1.21
+updated: 2022-01-16 12:54:03
+version: 1.22
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -154,4 +154,4 @@ In lodash there are a number of methods that are considered collection methods. 
 
 ## 5 - Conclusion
 
-So then lodash has a wide range of useful object methods that can be used to work with any kind of object, not just a specific class of object such as an array, or methods that will just work well with an object that is still a kind of collection.
+So then lodash has a wide range of useful object methods that can be used to work with any kind of object, not just a specific class of object such as an array, or methods that will just work well with an object that is still a kind of collection. There is still a great deal more that I could and should write about when it comes to this topic, but I only have so much time to do so when it comes to writing new posts, as well as editing older posts. In the mean time if you enjoyed this post thus far there is checking out another one of [my lodash posts](/categories/lodash/) maybe of which are on the topic of a given objects or collection method in lodash.
