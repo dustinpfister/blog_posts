@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 12:47:31
-version: 1.20
+updated: 2022-01-16 12:51:03
+version: 1.21
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -68,7 +68,7 @@ console.log(foo);
 
 ### 1.3 - The lodash for each and for in methods
 
-So now that I got some basic things out of the way when it comes to private and public keys, as well as how to go about having own properties and inherited properties I think I can now compare two lodash methods, one of which is a collection method and the other is an object method.
+So now that I got some basic things out of the way when it comes to private and public keys, as well as how to go about having own properties and inherited properties I think I can now compare two lodash methods, one of which is a collection method and the other is an object method. The two methods I will be looking at in this example are the forEach and forIn methods. The forEach method will just loop over the public own properties of an object, which is the kind of behaviors that I would want when it comes to working with a collection. With any kind of collection each public own property should be some kind of element, item, or whatever one will call it, and these are generally the only values I want to work with when it comes to such objects. The for in object method however will not just loop over the public own properties, but will also loop over the public keys of the prototype as well. This is not what I would typically want to happen when working with a collection, but in some cases I might want to do this when it comes to working with objects in general.
 
 ```js
 let Foo = function(){
