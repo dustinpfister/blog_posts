@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 11:54:02
-version: 1.14
+updated: 2022-01-16 11:56:36
+version: 1.15
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -17,7 +17,7 @@ In this post I hope to give a general overview of lodash object methods, and als
 
 <!-- more -->
 
-## 1 - lodash object methods
+## 2 - lodash object methods
 
 In lodash there are a number of methods that are considered object methods. These kinds of methods are intended to be used with just about any kind of object in javaScript, not just a certain kind of object that was created with a specific constructor function likes Arrays. There are a few methods that bring about functionality that still as of this writing is not part of core javaScript at all, however many others are now part of the javaScript spec. 
 
@@ -36,7 +36,7 @@ console.log(obj2.a.b);
 
 However there is also the native Object.assign methods as well now that works more or less the same way.
 
-### 1.1 - Lodash merge and lodash assign
+### 2.1 - Lodash merge and lodash assign
 
 The lodash assign and merge methods are two good examples of lodash object methods. They both do more or less the same thing but with just some note worthy differences. The merge lodash object methods will recursively merge down own and inherited object properties while the lodash assign will just assign properties. Also the merge method will skip source object properties that will evaluate to undefined, while assign will not skip them and just assign everything in the source objects.
 
@@ -61,10 +61,15 @@ console.log(a);
 // { n: undefined, d: { e: 12 } }
 ```
 
-## 2 - lodash array object methods
+## 3 - lodash array object methods
 
 In lodash there are a number of methods that are intended to be used with arrays. Arrays are a kind of object in javaScript but they are a special kind of object that is formated in a way in which each key is a numbered index, and there is a length property that reflects the number of elements in the array. In addition Arrays are created using the Array constructor or array literal syntax and as such they inherit a bunch of prototype methods, some of which a similar if not identical to many lodash array methods.
 
-## 3 - lodash collection object methods
+## 4 - lodash collection object methods
 
 In lodash there are a number of methods that are considered collection methods. These methods will work with javaScript objects that are created with the Array constructor. However they will also work just fine with objects that are not created with the array constructor as well, even if they are not array like. Collection methods can be though of as lodash object methods as well, but they are intended to be used with objects that have a collection like nature.
+
+
+## 5 - Conclusion
+
+So then lodash has a wide range of useful object methods that can be used to work with any kind of object, not just a specific class of object such as an array, or methods that will just work well with an object that is still a kind of collection.
