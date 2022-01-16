@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 12:42:19
-version: 1.18
+updated: 2022-01-16 12:45:23
+version: 1.19
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -22,6 +22,8 @@ In this post I hope to give a general overview of lodash object methods, and als
 I could just start going over what the methods are as outline in the lodash documentation site, but then I think I might end up not touching base on some basic things that should be covered before hand. The main thing that comes to mind is what the difference is between a collection method, and an object method in lodash. To have a better understanding of this I am going to need to at least briefly touch base one some examples that have to do with the nature of objects themselves, not just within lodash, but within javaScript in general. In this section I will be using lodash methods where and when doing so is needed mainly the for each and for in methods in lodash that I think are good examples that show what the difference is between a collection method, and a object method.
 
 ### 1.1 - The Object define property method
+
+The [object define property method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) is a method in core javaScript that can be used to set private keys for an object.
 
 ```js
 // An array with three public keys and a private length property
@@ -43,6 +45,8 @@ console.log(Object.keys(c));
 ```
 
 ### 1.2 - A Constructor function
+
+I think another important features of javaScript that I should touch base on here is the concept of a [constructor function](/2019/02/27/js-javascript-constructor/).
 
 ```js
 // a constructor function
