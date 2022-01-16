@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 379
-updated: 2022-01-16 11:59:29
-version: 1.16
+updated: 2022-01-16 12:37:22
+version: 1.17
 ---
 
 In lodash methods there are a number of [Object methods](https://lodash.com/docs/4.17.11#assign) on top of [array methods](/2019/02/14/lodash_array/), and [collection methods](/2022/01/14/lodash_collection/). When it comes to array method these kinds of method will just work with an array that is given as the source object, while collection methods will work with any kind of collection not just arrays. Although it might be true that collection methods are also a kind of object method there are still methods that are designed to work with an object that is a collection of items. 
@@ -20,6 +20,78 @@ In this post I hope to give a general overview of lodash object methods, and als
 ## 1 - The basics of object methods, collections, and arrays
 
 I could just start going over what the methods are as outline in the lodash documentation site, but then I think I might end up not touching base on some basic things that should be covered before hand. The main thing that comes to mind is what the difference is between a collection method, and an object method in lodash.
+
+### 1.1 - The Object define property method
+
+```js
+// An array with three public keys and a private length property
+let a = [1, 2, 3];
+console.log( Object.keys(a) );
+// [ '0', '1', '2' ]
+ 
+// A collection formated like an array, but all own properties are public
+let b = { 0: 1, 1: 2, 2: 3, length: 3 };
+console.log( Object.keys(b) );
+// [ '0', '1', '2', 'length' ]
+ 
+// A collection formated like an array, and also the length property is made private
+// by making use of the Object.defineProperty method
+let c = { 0: 1, 1: 2, 2: 3};
+Object.defineProperty(c, 'length', {value: 3});
+console.log(Object.keys(c));
+// [ '0', '1', '2' ]
+```
+
+### 1.2 - A Constructor function
+
+```js
+// a constructor function
+let Foo = function(){
+    let foo = this;
+    _.forEach(arguments, (n, i) =>{
+        foo[i] = n;
+    });
+    Object.defineProperty(foo, 'length', {value: _.keys(foo).length } );
+};
+Foo.prototype.bar = function(){
+    return _.sum(_.values(this));
+};
+// an instance of this constructor
+let foo = new Foo(1,2,3);
+console.log(foo);
+// Foo { '0': 1, '1': 2, '2': 3 }
+```
+
+### 1.3 - The lodash for each and for in methods
+
+```js
+let Foo = function(){
+    let foo = this;
+    _.forEach(arguments, (n, i) =>{
+        foo[i] = n;
+    });
+    Object.defineProperty(foo, 'length', {value: _.keys(foo).length } );
+};
+Foo.prototype.bar = function(){
+    return _.sum(_.values(this));
+};
+ 
+let func = (v, k) => {
+    console.log(k);
+};
+ 
+let foo = new Foo(1,2,3);
+ 
+// for each is a 'collection' method as such
+// if will loop over all public own properties
+_.forEach(foo, func);
+// 0 1 2
+ 
+// the forIn Object method will loop over all pubic own properties
+// as well as all public properties in the prototype object of the Class
+_.forIn(foo, func);
+// 0 1 2 'bar'
+```
 
 ## 2 - lodash object methods
 
