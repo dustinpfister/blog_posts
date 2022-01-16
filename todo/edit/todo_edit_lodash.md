@@ -4,19 +4,27 @@
 
 <!-- LINKS -->
 
+### () - lodash_tap (links, word count)
+* get to 750+ words
+* 5+ internal links
+
 ### () - lodash_split (links_old)
 * get to 1,000+ words
 * (done) have 5+ internal links for the post
-
-### () - lodash_sample (links, old)
-* get to 1,000+ words
-* have 5+ internal links for the post
 
 ### () - lodash_merge (links, old)
 * get to 1000+ words
 * have 5+ internal links for the post
 
+### ( done 12/23/2021 ) - lodash_sample (links, old)
+* (done) get to 1,000+ words
+* (done) have 5+ internal links for the post
+
+
 <!-- WANT TO EXPAND -->
+
+### () - lodash_eq (links, word count)
+* get to 1000+ words
 
 ### () - lodash_keys ( old )
 * update with keyby example in lodash sortby post
@@ -27,6 +35,18 @@
 * add \_.wrapNumber example from lodash_nth
 
 <!-- OLD POSTS -->
+
+### (  ) - lodash_round (old, links)
+* 1,000+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_assign (old, links)
+* 1,500+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_object (old, links)
+* 750+ words
+* have 5+ internal links for the post
 
 ### (  ) - lodash_isarray ( old, links )
 * 750+ words
