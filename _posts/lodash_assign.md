@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2022-01-17 11:35:08
-version: 1.20
+updated: 2022-01-17 11:51:52
+version: 1.21
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object, and all around assign seems to work well for most situations, but there is a lot to be aware of when merging objects. 
@@ -25,7 +25,39 @@ So in todays post I will be covering some use case scenarios of \_.assign, and a
 
 This is a post on the [lodash](https://lodash.com/) object method [\_.assign](https://lodash.com/docs/4.17.10#assign), as well as the native javaScript [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method as well. This is not a getting started post on lodash, or javaScrtipt and I expect that you have at least some background with these topics.
 
-### 1.1 - Basic example of assign
+### 1.1 - Mutate in place
+
+```js
+let a = {x: 5};
+// if I have an object before hand, and I pass that object
+// as the first argument that object will be mutated in place
+_.assign(a, {y: 7}, {w: 32, h: 32});
+console.log(a);
+// { x: 5, y: 7, w: 32, h: 32 }
+```
+
+### 1.2 - new object example
+
+```js
+let a = {x: 5};
+// One way to not mutate an object in place is to make the
+// first object a new object
+let b = _.assign({}, a, {y: 7}, {w: 32, h: 32});
+console.log(a);
+// { x: 5 }
+console.log(b);
+// { x: 5, y: 7, w: 32, h: 32 }
+```
+
+### 1.3 - Order of objects matters
+
+```js
+let a = _.assign({w: 0, h: 0}, {w: 32}, {w: 64, h: 64});
+console.log(a);
+// { w: 64, h: 64 }
+```
+
+### 1.4 - Basic example of assign
 
 For another example of the assign method I will start out with a bunch of objects that contain properties, and methods that I will like to combine together into a single method. In this example I will not be doing anything advanced involving nested objects or the prototype chain, and I will be giving both lodash, and native Object.assign examples.
 
