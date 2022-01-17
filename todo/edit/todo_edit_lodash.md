@@ -40,10 +40,6 @@
 * 1,000+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_assign (old, links)
-* 1,500+ words
-* have 5+ internal links for the post
-
 ### (  ) - lodash_isarray ( old, links )
 * 750+ words
 * have 5+ internal links for the post
@@ -55,6 +51,10 @@
 ### (  ) - lodash_template ( old, links )
 * 750+ words
 * have 5+ internal links for the post
+
+### ( done 01/17/2022  ) - lodash_assign (old, links)
+* (done) 1,500+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/16/2022 ) - lodash_object (old, links)
 * (done) 750+ words
