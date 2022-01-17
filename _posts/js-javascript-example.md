@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-17 08:01:47
-version: 1.80
+updated: 2022-01-17 08:03:06
+version: 1.81
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -37,7 +37,7 @@ I make a lot of projects that make use of canvas elements, in fact I have [anoth
 
 ### 1.5 - [Digital Art invaders](/2022/01/17/js-javascript-example-digital-art-invaders/)
 
-This is the third digital art project that I have made while experiment with a whole new thought process that has to do with plaining out that the core of an idea is and finish that idea in just a few days. The general idea here is to have a bunch of fixed units that will spawn at the center of the canvas, and a bunch of other invading units that spawn from outside of the canvas and move to the center to attack these fixed units.
+This is the third digital art project that I have made while experiment with a whole new thought process that has to do with plaining out that the core of an idea is and finish that idea in just a few days. The general idea here is to have a bunch of fixed units that will spawn at the center of the canvas, and a bunch of other invading units that spawn from outside of the canvas and move to the center to attack these fixed units. Speaking of units some additional things that I worked out in this example is a new object pool library, as well as a system on top of that that is used to create and manage units.
 
 ### 1.6 - [Digital Art object pool reduce](/2021/12/31/js-javascript-example-digital-art-reduce-pool)
 
