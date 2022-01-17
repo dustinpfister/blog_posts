@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2022-01-17 11:26:54
-version: 1.17
+updated: 2022-01-17 11:29:57
+version: 1.18
 ---
 
-Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object. On the surface merging objects down together into one might seem to be a simple task, but often it is not so simple as there are many things to be aware of when doing so.
+Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object, and all around assign seems to work well for most situations, but there is a lot to be aware of when merging objects. On the surface merging objects down together into one might seem to be a simple task, but often it is not so simple as one can run into all kinds of problems and concerns that have to do with things like copying be reference rather than value, and how to handle recursive references that might be present.
 
 The process of combining object together is a little involved because there is a lot to know about objects when it comes to combining them into one. For example objects are copied by reference rather than value, which can result in unexpected behavior if you are new to javaScript and are not aware of that nature surrounding objects.  A new developer might assume that when they are assigning objects together they are creating a new object, and all the nested properties with values that are primitives, and additional objects, are new copies of the source objects. This might be the case when copying primitives, but it is not at all the case with objects. So the desired result of having a copy of nested source objects is not the case with the assign method.In lodash there are other options in lodash like merge, and also deep clone that can be used to get that effect if desired.
 
