@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2022-01-17 12:04:01
-version: 1.23
+updated: 2022-01-17 12:10:00
+version: 1.24
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object, and all around assign seems to work well for most situations, but there is a lot to be aware of when merging objects. 
@@ -43,6 +43,8 @@ console.log(a);
 
 ### 1.2 - new object example
 
+One way to avoid mutating an object in place would be to just simply pass a new object as the first argument.
+
 ```js
 let a = {x: 5};
 // One way to not mutate an object in place is to make the
@@ -55,6 +57,8 @@ console.log(b);
 ```
 
 ### 1.3 - Order of objects matters
+
+The order in which objects are passed to the lodash assign method is of great importance. Objects that are passed as later arguments will override any objects passed as an argument with a lower argument index when more than one object has the same key name.
 
 ```js
 let a = _.assign({w: 0, h: 0}, {w: 32}, {w: 64, h: 64});
