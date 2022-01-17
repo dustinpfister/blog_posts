@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2022-01-17 11:34:20
-version: 1.19
+updated: 2022-01-17 11:35:08
+version: 1.20
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object, and all around assign seems to work well for most situations, but there is a lot to be aware of when merging objects. 
@@ -27,7 +27,7 @@ This is a post on the [lodash](https://lodash.com/) object method [\_.assign](ht
 
 ### 1.1 - Basic example of assign
 
-So for a basic example of the assign method I will start out with a bunch of objects that contain properties, and methods that I will like to combine together into a single method. In this example I will not be doing anything advanced involving nested objects or the prototype chain, and I will be giving both lodash, and native Object.assign examples.
+For another example of the assign method I will start out with a bunch of objects that contain properties, and methods that I will like to combine together into a single method. In this example I will not be doing anything advanced involving nested objects or the prototype chain, and I will be giving both lodash, and native Object.assign examples.
 
 So say I have an object that contains an x, and y position, as well as another object that contains deltas for x and y. In addition I also have an object of methods that I would like to use with these values. I could use Function.call, but before I do that I would still need to combine the position and delta values into a single object. There are a few options for doing so and \_.assign is one of them.
 
