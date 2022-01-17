@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-17 07:53:50
-version: 1.79
+updated: 2022-01-17 08:01:47
+version: 1.80
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -37,6 +37,8 @@ I make a lot of projects that make use of canvas elements, in fact I have [anoth
 
 ### 1.5 - [Digital Art invaders](/2022/01/17/js-javascript-example-digital-art-invaders/)
 
+This is the third digital art project that I have made while experiment with a whole new thought process that has to do with plaining out that the core of an idea is and finish that idea in just a few days. The general idea here is to have a bunch of fixed units that will spawn at the center of the canvas, and a bunch of other invading units that spawn from outside of the canvas and move to the center to attack these fixed units.
+
 ### 1.6 - [Digital Art object pool reduce](/2021/12/31/js-javascript-example-digital-art-reduce-pool)
 
 This is the first of what might be a few digital art javaScript example projects, this one is about an object pool that will reduce into a single active display object.
@@ -44,7 +46,7 @@ This is the first of what might be a few digital art javaScript example projects
 
 ### 1.7 - [Digital Art Unsteady Stars](/2022/01/10/js-javascript-example-digital-art-unsteady-stars)
 
-Continuing with the digital art series of javaScript examples, this project involves some of the features that I started out with in the first digital art project but I also explored an idea that I had when it comes to working with an array of points. When it comes to my canvas example collection of posts I made one canvas example post that has to do with create stars using a standard that has to do with a collection of points, I also have another canvas example that has to do with a draw points method that is used to draw the stars used in that module. With that said in this example I expanded on the source code of the stars module that I made for that old canvas example post my adding a new function that creates and returns a so called unsteady star object.
+Continuing with the digital art series of javaScript examples, this project involves some of the features that I started out with in the first digital art project but I also explored an idea that I had when it comes to working with an array of points. When it comes to my canvas example collection of posts I made one canvas example post that has to do with create stars using a standard that has to do with a collection of points, I also have another canvas example that has to do with a draw points method that is used to draw the stars used in that module. With that said in this example I expanded on the source code of the stars module that I made for that old canvas example post my adding a new function that creates and returns a so called unsteady star object. The unsteady star object is not juts a collection of points, but also additional properties that have to do with how to go about mutating that collection of points.
 
 ### 1.8 - [A Draw points canvas method](/2021/04/01/js-javascript-example-draw-points/)
 
