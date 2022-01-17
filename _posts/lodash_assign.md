@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2022-01-17 11:51:52
-version: 1.21
+updated: 2022-01-17 11:59:49
+version: 1.22
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object, and all around assign seems to work well for most situations, but there is a lot to be aware of when merging objects. 
@@ -23,7 +23,8 @@ So in todays post I will be covering some use case scenarios of \_.assign, and a
 
 ## 1 - The basics of lodash assign, and what to know first
 
-This is a post on the [lodash](https://lodash.com/) object method [\_.assign](https://lodash.com/docs/4.17.10#assign), as well as the native javaScript [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method as well. This is not a getting started post on lodash, or javaScrtipt and I expect that you have at least some background with these topics.
+This is a post on the [lodash object method](/2019/02/13/lodash_object/) known as the [lodash assign](https://lodash.com/docs/4.17.10#assign) method. In late specs there is also the native javaScript [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) method build into native javaScript itself that seems to work more or less the same way. However in this section of this post I will be sticking to using lodash, and will be getting to any and all relevant native javaScript features later in this post.
+This is not a [getting started post on lodash](/2019/02/15/lodash/), or [javaScrtipt in general](/2018/11/27/js-getting-started/) and I expect that you have at least some background with these topics.
 
 ### 1.1 - Mutate in place
 
