@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-17 07:48:20
-version: 1.78
+updated: 2022-01-17 07:53:50
+version: 1.79
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -44,7 +44,7 @@ This is the first of what might be a few digital art javaScript example projects
 
 ### 1.7 - [Digital Art Unsteady Stars](/2022/01/10/js-javascript-example-digital-art-unsteady-stars)
 
-Continue with the digital art series of javaScript examples this example was a continuation of some of the new ideas that I started out with in the first digital art example.
+Continuing with the digital art series of javaScript examples, this project involves some of the features that I started out with in the first digital art project but I also explored an idea that I had when it comes to working with an array of points. When it comes to my canvas example collection of posts I made one canvas example post that has to do with create stars using a standard that has to do with a collection of points, I also have another canvas example that has to do with a draw points method that is used to draw the stars used in that module. With that said in this example I expanded on the source code of the stars module that I made for that old canvas example post my adding a new function that creates and returns a so called unsteady star object.
 
 ### 1.8 - [A Draw points canvas method](/2021/04/01/js-javascript-example-draw-points/)
 
