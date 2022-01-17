@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 285
-updated: 2022-01-17 11:59:49
-version: 1.22
+updated: 2022-01-17 12:04:01
+version: 1.23
 ---
 
 Looking over my content so far I am surprised that I have not yet wrote a post on [\_.assign](https://lodash.com/docs/4.17.10#assign) in [lodash](https://lodash.com/), as well as the native alternative [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) methods. The \_.assign method is one of many ways to go about combining a bunch of objects into a single object, and all around assign seems to work well for most situations, but there is a lot to be aware of when merging objects. 
@@ -27,6 +27,10 @@ This is a post on the [lodash object method](/2019/02/13/lodash_object/) known a
 This is not a [getting started post on lodash](/2019/02/15/lodash/), or [javaScrtipt in general](/2018/11/27/js-getting-started/) and I expect that you have at least some background with these topics.
 
 ### 1.1 - Mutate in place
+
+If I have an object before hand, and pass that as the first argument when calling lodash assign, and then any additional objects that I want to assign down on top of that object, the result will be that the object will be mutated in place. In other words if I create an object with say the object literal syntax, and then assign that object to a variable, and pass that variable to the lodash assign method as the first argument, I do not have to bother assigning the return value of lodash assign to another variable as the same object assigned to the variable will be mutated in place.
+
+If you are still confused by what I am saying then just take a moment to study this source code example.
 
 ```js
 let a = {x: 5};
