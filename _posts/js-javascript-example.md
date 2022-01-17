@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 837
-updated: 2022-01-17 08:03:06
-version: 1.81
+updated: 2022-01-17 08:07:34
+version: 1.82
 ---
 
 Some may say that a good way to [learn javaScript](/2018/11/27/js-getting-started/), or any programing language is to study the language itself, as well as various libraries that are written in the language. However learning javaScript is a lot like learning English, where learning the language itself is just a way to gain a kind of literacy. Becoming literate of a language is great, but that alone by itself is not going to help me creating something useful, entertaining, or at least interesting. In order to really move forward with a language the real way to learn would be to apply a working knowledge of a language to make some kind of project. When it comes to English that would be doing a little writing, however when it comes to javaScript that would me making some actual projects, and functioning code examples. Simply put there is learning by reading a blog post such as this one that you are reading right now, and if course that is great, but it is no replacement for learning by doing.
@@ -41,7 +41,7 @@ This is the third digital art project that I have made while experiment with a w
 
 ### 1.6 - [Digital Art object pool reduce](/2021/12/31/js-javascript-example-digital-art-reduce-pool)
 
-This is the first of what might be a few digital art javaScript example projects, this one is about an object pool that will reduce into a single active display object.
+This is the first of what might be a few digital art javaScript example projects, this one is about an object pool that will reduce into a single active display object. The general idea came to me while I was editing my post on the array reduce method in core javaScript. Anyway the real goal with this example is not to just create another example, but also start a whole new process of how to go about creating and maintaining these examples. That is to focus on what a Minimal Viable Product is, or some other terms that means the same thing such as a Core Idea. In additional to focusing on just the basic core idea of what a project is there is also keeping revisions fine grain, and spacing things out so the core idea will be done in just a few days, or even just a few hours. If all goes well this will not just be another example, but the start of a new process that I will continue to do as I work on more examples, and fix up older ones.
 
 
 ### 1.7 - [Digital Art Unsteady Stars](/2022/01/10/js-javascript-example-digital-art-unsteady-stars)
