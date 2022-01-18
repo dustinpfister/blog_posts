@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2022-01-18 12:40:54
-version: 1.70
+updated: 2022-01-18 13:35:30
+version: 1.71
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -236,6 +236,8 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2)
 ```
 
 The first step is to get a reference to a hard coded canvas element, or create and append one with the create element method that I covered earlier in this section of this post. In any case once a reference to a canvas element is obtained there is then just getting a reference to a drawing context such as the 2d drawing context. In this 2d drawing context there is then the fill text method that can be used to draw some text in the canvas element.
+
+There is a great deal more to write about when it comes to canvas elements and how these can be used as an alternative option to html only as a way to display data to a user. However getting into every little detail on them is of course outside the scope of this post. I all ready mentioned my getting started post on canvas elements, and on top of that I have an every growing collection of canvas projects examples also that might be worth checking out as an tool for learning more about everything that branches off from using canvas elements.
 
 ## 3 - Getting script tags added by innerHTML to run and other options for this sort of thing
 
