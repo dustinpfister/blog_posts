@@ -59,9 +59,9 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_template ( old, links )
-* 750+ words
-* have 5+ internal links for the post
+### ( done 01/18/2022 ) - lodash_template ( old, links )
+* (done) 750+ words
+* (done) have 5+ internal links for the post
 
 ### ( done 01/17/2022  ) - lodash_assign (old, links)
 * (done) 1,500+ words
