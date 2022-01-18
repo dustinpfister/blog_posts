@@ -5,11 +5,11 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 08:48:13
-version: 1.12
+updated: 2022-01-18 08:53:51
+version: 1.13
 ---
 
-The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way. 
+The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
 
 Another application that come to mind is making a project that can be described as a static site generator. One of the aspects of a static site generator is that plain text, or markdown source files need to be converted into HTML and injected into an HTML page.
 
@@ -87,6 +87,6 @@ html = comp({
 console.log(html);
 ```
 
-## 5 - Conclusion
+## 4 - Conclusion
 
 So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use [marked.js](/2017/11/19/nodejs-marked/), and in most projects that require a template system I tend to prefer the use of EJS.
