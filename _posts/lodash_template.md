@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 09:01:38
-version: 1.14
+updated: 2022-01-18 11:13:11
+version: 1.15
 ---
 
 The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
@@ -87,6 +87,55 @@ html = comp({
 console.log(html);
 ```
 
-## 4 - Conclusion
+## 4 - Vanilla javaScript altertaives to the lodash template method
+
+### 4.1 - back ticks
+
+```js
+// simple template function using back ticks
+var template = (mess) => {
+    return `<p>${mess}</p>`;
+};
+ 
+var html = template('Hello World');
+console.log(html); // <p>Hello World</p>
+```
+
+### 4.2 - Template elements in client side javaScript
+
+```html
+<html>
+  <head>
+    <title>Template Element Hello World</title>
+    <style>
+.wrap_mess{ color: red;}
+    </style>
+  </head>
+  <body>
+    <h1>Template Element Hello World</h1>
+    <template id="messTemplate">
+        <p class="wrap_mess">
+        </p>
+    </template>
+    <script>
+// feature test
+var hasTemplates = function(){
+    return 'content' in document.createElement('template');
+};
+// if we have templates
+if (hasTemplates()) {
+    var template = document.querySelector('#messTemplate');
+    var clone = template.content.cloneNode(true);
+    clone.querySelector('.wrap_mess').innerText = 'Hello World';
+    document.body.appendChild(clone);
+}else{
+    document.write('This web app requires support for Template Elements. Please use a more up to date web browser.');
+}
+    </script>
+  </body>
+</html>
+```
+
+## 5 - Conclusion
 
 So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use [marked.js](/2017/11/19/nodejs-marked/), and in most projects that require a template system I tend to prefer the use of EJS. Also I like vuejs a lot, and of course when it comes to using that framework on the front end there is [working with templates with vuejs](/2019/05/07/vuejs-template/).
