@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2022-01-18 12:35:43
-version: 1.69
+updated: 2022-01-18 12:40:54
+version: 1.70
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -209,7 +209,9 @@ Another draw back of using this method, and this is a big one, is that it will a
 
 ### 2.5 - Using a canvas element to display data
 
-There is not just using HTML as a way to display data, but also using some additional drawing context within an element, or some other standard to render something. If you really need to create HTML then maybe you have to stick to a ceryin set of options like the create element option, or template elements. However if the end result here is to just display some kind of info to a user then yet another option would be to use canvas elements.
+There is not just using HTML as a way to display data, but also using some additional drawing context within an element, or some other standard to render something. If you really need to create HTML then maybe you have to stick to a certain set of options like the create element option, or template elements. However if the end result here is to just display some kind of info to a user then yet another option would be to use canvas elements.
+
+It might be best to start out with some kind of [getting started with canvas](/2017/05/17/canvas-getting-started/) type post first, but a basic canvas element hello world example might look something like this.
 
 ```html
 <html>
@@ -232,6 +234,8 @@ ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2)
     </body>
 </html>
 ```
+
+The first step is to get a reference to a hard coded canvas element, or create and append one with the create element method that I covered earlier in this section of this post. In any case once a reference to a canvas element is obtained there is then just getting a reference to a drawing context such as the 2d drawing context. In this 2d drawing context there is then the fill text method that can be used to draw some text in the canvas element.
 
 ## 3 - Getting script tags added by innerHTML to run and other options for this sort of thing
 
