@@ -5,8 +5,8 @@ tags: [js]
 layout: post
 categories: js
 id: 359
-updated: 2021-12-17 10:44:11
-version: 1.68
+updated: 2022-01-18 12:35:43
+version: 1.69
 ---
 
 With client side javaScript projects the [innerHtml](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of an element reference can be used as a way to create and append additional HTML with just a string representation of the desired markup. This might often prove to be a more convenient way of adding HTML code to a page compared to creating nested nodes created with a method like [document.createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and then adding them to hard coded html by getting a element object reference and calling the [append child](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method of the said element object reference.
@@ -206,6 +206,32 @@ document.write('Hello World');
 ```
 
 Another draw back of using this method, and this is a big one, is that it will also clear the document. Now maybe in some cases that is what I might want to happen, say I just want clear out everything on the page and write some kind of error message, however I still like for the to be an option rather than a requirement. Still I guess that I have to write about this method here when it comes to outlining everything in the toolbox when it comes to alternatives to the inner html property. There are still a lot of old source code examples on the open web that might use this method so it is something to be aware of for sure.
+
+### 2.5 - Using a canvas element to display data
+
+There is not just using HTML as a way to display data, but also using some additional drawing context within an element, or some other standard to render something. If you really need to create HTML then maybe you have to stick to a ceryin set of options like the create element option, or template elements. However if the end result here is to just display some kind of info to a user then yet another option would be to use canvas elements.
+
+```html
+<html>
+    <head>
+        <title>innerHTML alternative</title>
+    </head>
+    <body>
+        <canvas id="out_canvas" width="640" height="480"></canvas>
+        <script>
+var canvas = document.querySelector('#out_canvas'),
+ctx = canvas.getContext('2d');
+ctx.fillStyle = 'black';
+ctx.fillRect(-1, -1, canvas.width + 2, canvas.height + 2);
+ctx.fillStyle = 'white';
+ctx.textBaseline = 'middle';
+ctx.textAlign = 'center';
+ctx.font = '40pt courier';
+ctx.fillText('Hello World', canvas.width / 2, canvas.height / 2)
+        </script>
+    </body>
+</html>
+```
 
 ## 3 - Getting script tags added by innerHTML to run and other options for this sort of thing
 
