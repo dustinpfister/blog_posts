@@ -36,6 +36,17 @@
 
 <!-- OLD POSTS -->
 
+### (  ) - lodash_join (old)
+* 750+ words
+
+### (  ) - lodash_keyby (old links)
+* 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_map (old links)
+* 1,000+ words
+* have 5+ internal links for the post
+
 ### (  ) - lodash_round (old, links)
 * 1,000+ words
 * have 5+ internal links for the post
