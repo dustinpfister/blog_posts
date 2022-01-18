@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 11:22:44
-version: 1.17
+updated: 2022-01-18 11:25:20
+version: 1.18
 ---
 
 The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
@@ -144,4 +144,6 @@ if (hasTemplates()) {
 
 ## 5 - Conclusion
 
-So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use [marked.js](/2017/11/19/nodejs-marked/), and in most projects that require a template system I tend to prefer the use of EJS. Also I like vuejs a lot, and of course when it comes to using that framework on the front end there is [working with templates with vuejs](/2019/05/07/vuejs-template/).
+So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use [marked.js](/2017/11/19/nodejs-marked/), and when it comes to parsing a JSON string into a workable object I would use the JSON.parse method, and the JSON.stringify method to do the inversion of this, that is turning an object into a JSON string.
+
+Also I like vuejs a lot, and of course when it comes to using that framework on the front end there is [working with templates with vuejs](/2019/05/07/vuejs-template/).
