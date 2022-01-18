@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 11:29:11
-version: 1.19
+updated: 2022-01-18 11:33:12
+version: 1.20
 ---
 
 The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
@@ -145,5 +145,7 @@ if (hasTemplates()) {
 ## 5 - Conclusion
 
 So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use [marked.js](/2017/11/19/nodejs-marked/), and when it comes to parsing a JSON string into a workable object I would use the [JSON.parse method](/2020/02/28/js-json-parse/), and the JSON.stringify method to do the inversion of this, that is turning an object into a JSON string.
+
+When it comes to [using nodejs](/2017/04/05/nodejs-helloworld/) and working out a sever side script of some kind I have to say that chances are I would not end up using the lodash template method to do so. If I am making a quick script from the ground up in a nodejs environment there are the native Template Literals that work well in just about all versions of node that I care about at this time. Also when it comes to working in a framework more often than not that framework would be express, and with that I would use a [render engine like EJS with express as a template system](/2019/04/25/express-view/).
 
 When it comes to client side development I have come to like VUJS a whole lot, and of course when it comes to using that framework on the front end there is [working with templates with vuejs](/2019/05/07/vuejs-template/). Yet another options when it comes to working in vuejs would be to use [render functions](/2019/05/12/vuejs-render/) that prove to be more flexible allowing for a great deal of control when creating a view for a data object in vuejs.
