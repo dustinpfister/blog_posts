@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 11:13:11
-version: 1.15
+updated: 2022-01-18 11:17:06
+version: 1.16
 ---
 
 The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
@@ -88,6 +88,8 @@ console.log(html);
 ```
 
 ## 4 - Vanilla javaScript altertaives to the lodash template method
+
+Although it is true that there are a lot of lodash methods that still bring some functionality to javaScript that is not built into the core f javaScript itself, when it comes to modern javaScript specs there is not that much that remains at this point. There are a few options built into late specs of javaScript that can also be used to do things that are very similar to that of what the lodash template function does. With that said in this section I will be going over a few features that are now built into core javaScript as well as various javaScript environments such as client side javaScript that can also possible be used as options for creating and using templates in a project.
 
 ### 4.1 - back ticks
 
