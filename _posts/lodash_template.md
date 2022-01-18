@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2020-06-02 09:43:23
-version: 1.11
+updated: 2022-01-18 08:48:13
+version: 1.12
 ---
 
 The [lodash \_.template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way. 
@@ -53,9 +53,9 @@ console.log(str_esc);
 // '<div>&lt;script&gt;console.log(&#39;boo&#39;);&lt;/script&gt;</div>'
 ```
 
-## 3 - Using javaScript
+## 3 - Using javaScript in a lodash template
 
-It is also possible to use a little javaScript code in the temple as well when needed. This can be used to help loop over arrays, as well as create results that are the result of some kind of expression as well.
+It is also possible to use a little javaScript code in the template as well when needed. This can be used to help loop over arrays, as well as create results that are the result of some kind of expression as well.
 
 ### 3.1 - javaScript that returns something \_.every example
 
@@ -75,7 +75,7 @@ So then what will be render as the result of a delimiter like that of the escape
 
 ### 3.2 - Looping and evaluate delimiters
 
-So when I do not use an equal sign or dath when making an opening pointy bracket that can be called an evaluation delimiter when can be used to embed javaScript into the template, and combine doing so with an escape or interpolate delimiter.
+So when I do not use an equal sign or dash when making an opening pointy bracket that can be called an evaluation delimiter when can be used to embed javaScript into the template, and combine doing so with an escape or interpolate delimiter.
 
 ```js
 comp = _.template('<% _.forEach(cans,function(can){ %><span><%- can %><\/span><br><%});%>'),
@@ -89,4 +89,4 @@ console.log(html);
 
 ## 5 - Conclusion
 
-So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use marked.js, and in most projects that require a template system I tend to prefer the use of EJS.
+So the lodash template method is useful for creating and using templates. However it is not a replacement for other options when it comes to doing this sort of thing. In most applications I might use some dependency outside that of the lodash template method to preform these kinds of tasks. For example when it comes to parsing markdown into HTML I would use [marked.js](/2017/11/19/nodejs-marked/), and in most projects that require a template system I tend to prefer the use of EJS.
