@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 11:37:39
-version: 1.21
+updated: 2022-01-18 11:42:25
+version: 1.22
 ---
 
 The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
@@ -94,6 +94,8 @@ Although it is true that there are a lot of lodash methods that still bring some
 ### 4.1 - Back Ticks, AKA Template Literals, AKA Template Strings
 
 One of many options to take into account would be [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) which might also often be referred to as Template strings, or just simply backticks. Although these might often be called a kind of string, they are not, and can not be used in with any kind of function that might call of a string. Also when creating a template function with a Template Literal a string value might not always be what is returned, that of course depends on how one goes about creating the final return value of the function just like any other kind of function.
+
+For a simple hello world style example of Template Literals there is just creating an arrow function, or any kind of function for that matter and have a single argument for that function that will be a message. There is then using the return keyword in the body of the function to return a template literal starting with an opening back tick \` then before a closing back tick create what the template should be. When doing so I can define what is called a placeholders by using the dollar sign character and then place a value that I want in that are of the template between a set of opening and closing curly brackets.
 
 ```js
 // simple template function using back ticks
