@@ -37,7 +37,7 @@
 
 * ( done 11/09/2021 ) get to at least 2,400+ words for starters
 * ( done 12/17/2021 ) get post to the min 3,000+ words
-* get post to 3,250+ words
+* ( done 01/18/2022 ) get post to 3,250+ words
 * get post to 3,500+ words
 * get post to 3,750+ words
 * get post to 4,000+ words
