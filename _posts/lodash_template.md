@@ -5,15 +5,15 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 411
-updated: 2022-01-18 11:44:38
-version: 1.23
+updated: 2022-01-18 11:49:10
+version: 1.24
 ---
 
 The [lodash template](https://lodash.com/docs/4.17.11#template) method is one way to go about creating and using templates to turn javaScript code into formatted html, and other formates as well for that matter. When making any kind of web based project with javaScript there will often be a need to take some data that is retrieve from a server for example and then present that data to the user in some way such as a canvas, or html view. The lodash template method is then one of a wide range of options for this sort of thing, and even if the lodash template method is not used a lot of other ways of doing this sort of thing work in a similar way. 
 
-Another application that come to mind is making a project that can be described as a static site generator. One of the aspects of a static site generator is that plain text, or markdown source files need to be converted into HTML and injected into an HTML page.
+There is a wide range of various projects and ideas for applications that come to mind where some kind of template system might be called for. One example of an application that came to mind for might right away is making a project that can be described as a static site generator. One of the aspects of a static site generator is that plain text, or markdown source files need to be converted into HTML and injected into an HTML page. However there are also all kinds of other application where a developer would want to go with at least some kine of template system.
 
-This is where methods like the \_.template method in lodash can be useful, so lets take a look at some lodash template method examples.
+This is where methods like the \_.template method in lodash can be useful, However there are a whole lot of other options to be aware of when it comes to this sort of thing. There are other libraries and also frameworks such as VUEJS that might prove to be a better options for templates. These days there are also a whole lot of native options for templates built into javaScript itself, so lets take a look at some lodash template method examples, but also touch base on some other options for this sort of thing.
 
 <!-- more -->
 
