@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2022-01-19 11:20:09
-version: 1.12
+updated: 2022-01-19 11:25:53
+version: 1.13
 ---
 
 So it is time for yet another [lodash](https://lodash.com/) post, this time on the lodash [\_.get](https://lodash.com/docs/4.17.10#get) that allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. There is also the [lodash set method, but that is a matter for another post](/2018/12/04/lodash_set/). This method of getting at properties of objects might prove to be a little more helpful compared to just getting properties the way one would in native javaScript in some cases, but still I can nit say this is one of the most compelling methods to support the use of lodash these days. In any case I will be writing about the lodash get method as well as other ways of getting at properties of object in general in this post.
@@ -19,9 +19,11 @@ With the lodash get method I can also pass an optional default value to the meth
 
 ## 1 - What to know about \_.get, lodash and javaScript
 
-This is a post on the \_,get method in lodash which is one of the many object methods in lodash that help with many common tasks when developing a project with lodash. These days there is much chatter on the relevance of lodash with much of the functionality of lodash now baked into core javaScript itself, so I often cover vanilla js alternatives to the method in question as well when it comes to writing these posts. In any case this is not a getting started post on lodash, or javaScript in general so I assume that you have at least some background on these topics and are now interested in exploring all of the methods in detail, along with vanilla js alternatives.
+This is a post on the \_.get method in lodash which is one of the many object methods in lodash that help with many common tasks when developing a project with lodash. These days there is much chatter on the relevance of lodash with much of the functionality of lodash now baked into core javaScript itself, so I often cover vanilla js alternatives to the method in question as well when it comes to writing these posts. However in this first section I will be sticking to what there is to work with in lodash, and the main focus will be just the lodash get method alone within lodash.
 
-### 1.1 - 
+In any case this is not a getting started post on lodash, or [javaScript in general](/2018/11/27/js-getting-started/) so I assume that you have at least some background on these topics and are now interested in exploring all of the methods in detail, along with vanilla js alternatives.
+
+### 1.1 - Basic example of the lodash get method
 
 ```js
 let a = { b: { c: 8, d: 7,  e: [ 1, 2, 3 ] }, f: [ 4, 5, 6 ] };
