@@ -59,11 +59,11 @@
 * 750+ words
 * have 5+ internal links for the post
 
-### (  ) - lodash_get (old, links)
-* 1,000+ words
-* have 5+ internal links for the post
+### ( done 01/19/2022 ) - lodash_get (old, links)
+* (done) 1,000+ words
+* (done) have 5+ internal links for the post
 
-### ( done -1/19/2022 ) - lodash_first ( old, links )
+### ( done 01/19/2022 ) - lodash_first ( old, links )
 * (done) 750+ words
 * (done) have 5+ internal links for the post
 
