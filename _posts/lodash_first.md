@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 09:23:48
-version: 1.13
+updated: 2022-01-19 09:30:31
+version: 1.14
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
@@ -35,6 +35,8 @@ However doing so is not so hard to understand when it comes to plain old javaScr
 
 ### 1.2 - Lodash first will not mutate in place, and the lodash pull at method
 
+The lodash first method will not mutate an array in place, more often that not this is a desired effect. However if for some reason I do want to not just get the first element, but also remove that first element while doing so, then I will need to use some other method. One way to address this potential draw back of the lodash first method would be to use the lodash pullAt method that will create and return a new array with removed element form a source array by way of a given index value. SO I can call pullAt give the source array, and then the index 0 for the first element. The returned result from pullAt will then be an array so once again I can then use the bracket syntax to get the value of that first element.
+
 ```js
 let arr = ['foo','bar', 'baz'];
 // the lodash first method will not mutate in place
@@ -42,7 +44,7 @@ console.log( _.first(arr) ); // 'foo'
 console.log( arr ); // ['foo','bar', 'baz'];
  
 // other methods like pullAt will mutate in place
-console.log(_.pullAt(arr, 0));
+console.log(_.pullAt(arr, 0)[0]); // 'foo'
 console.log( arr ); // ['foo','bar', 'baz'];
 ```
 
