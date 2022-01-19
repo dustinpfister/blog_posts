@@ -36,6 +36,10 @@
 
 <!-- OLD POSTS -->
 
+### (  ) - lodash_last (old)
+* 1,000+ words
+* have 5+ internal links for the post
+
 ### (  ) - lodash_join (old)
 * 750+ words
 
@@ -53,6 +57,10 @@
 
 ### (  ) - lodash_isarray ( old, links )
 * 750+ words
+* have 5+ internal links for the post
+
+### (  ) - lodash_get (old, links)
+* 1,000+ words
 * have 5+ internal links for the post
 
 ### ( done -1/19/2022 ) - lodash_first ( old, links )
