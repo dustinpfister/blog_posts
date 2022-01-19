@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 09:35:59
-version: 1.17
+updated: 2022-01-19 09:37:37
+version: 1.18
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
@@ -91,4 +91,5 @@ console.log(firstFew); // ['a','b','c']
 
 So the lodash first method is not one of the most compelling methods to help build a case as to you developers should continue bothering with lodash. Do not get me wrong I do not care to hop on the kick lodash to the curb band wagon just yet necessary. It is just that I have to admit that if I just want to get the first element of an array, it is not such a big deal to just use the bracket syntax with the index value of zero.
 
-The redeeming qualities of lodash have a lot to do with the idea of what functional programing is, and the benefits that are gained by having stand alone methods rather than native ones which it comes to things like monkey patching native methods compared to just using a complete stand alone method. However all of this is a matter for another post.
+The redeeming qualities of lodash have a lot to do with the idea of what functional programing is, and the benefits that are gained by having stand alone methods rather than native ones which it comes to things like monkey patching native methods compared to just using a complete stand alone method. However all of this is a matter for another post, and with that said of you enjoyed this and would like to read more on lodash I have a lot more [posts on lodash beyond this one](/categories/lodash).
+
