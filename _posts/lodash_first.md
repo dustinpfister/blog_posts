@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 09:37:37
-version: 1.18
+updated: 2022-01-19 09:41:08
+version: 1.19
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
@@ -77,6 +77,8 @@ But again doing so with just plain old vanilla javaScript is not all that hard.
 So there is not much or a reason to bother with many of these lodash methods once a developer becomes used to what there is to work with when it comes to native methods. Maybe there are some talking points when it comes to using abstractions even for methods like this, but I would say it is largely a nit pick issue. The real concern is if what i am developing to begin with is something that is work my time after all.
 
 ## 3 - Using just native javaScript by itself
+
+The lodash first or head method might be a nice little convenience method for just quickly getting the first element in an array without mutating in place. However this is a task that is really not all that hard to just do with native javaScript by itself. In fact many of the related tasks that I have wrote about in this post can also be done with just plain old javaScript by itself also. In this section I will then be going over some of the examples of doing what the lodash first method does without lodash, working just with native javaScript alone.
 
 ### 3.1 - sort and slice
 
