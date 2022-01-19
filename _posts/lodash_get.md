@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2022-01-19 11:30:06
-version: 1.14
+updated: 2022-01-19 11:33:21
+version: 1.15
 ---
 
 So it is time for yet another [lodash](https://lodash.com/) post, this time on the lodash [\_.get](https://lodash.com/docs/4.17.10#get) that allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. There is also the [lodash set method, but that is a matter for another post](/2018/12/04/lodash_set/). This method of getting at properties of objects might prove to be a little more helpful compared to just getting properties the way one would in native javaScript in some cases, but still I can nit say this is one of the most compelling methods to support the use of lodash these days. In any case I will be writing about the lodash get method as well as other ways of getting at properties of object in general in this post.
@@ -34,6 +34,7 @@ console.log( _.get(a, 'f.2') );   // 6
 console.log( _.get(a, 'b.e.0') ); // 1
 console.log( _.get(a, 'g', 0) );  // 0
 ```
+
 ### 1.2 - An example of \_.get involving and enemy object
 
 So because these posts tent to be a little boring, why not living things up a little by making a basic example of \_.get game related? Say you have an Enemy Object for a game that you are making and you want to grab an nested object that that contains information about how and instance of an Enemy will heal over time if it is damaged. The lodash \_.get method could be used to snag it my path, and also return a default value if for some reason it is not there. Although it is also not to hard to just do so with plain javaScript as well, plus it might preform better, but bare with me its just a simple example here.
@@ -76,6 +77,8 @@ console.log(_.get(enemy, 'health.healRate.overTime', {
 ```
 
 ## 2 - Vanilla js and Grabbing at object values
+
+Now that I have covered the lodash get method I think it is now a good idea to look into the various ways to go about getting at something using just javaScript by itself. There is taking a moment to make a simple get method of my own that does the same thing as the lodash get method more or less, but then there is also not even bothering with that if doing so is not called for really. There is often more than one way to address a problem after all so lets look at some plain simple vanilla javaScript solutions for getting something in an object using just javaScript by itself.
 
 ### 2.1 - bracket syntax
 
@@ -120,4 +123,4 @@ Although it might not take to long to make my own solution for a lot of these me
 
 ## 3 - Conclusion
 
-Quickly looking over some chatter on stack overflow, and comments at the issues section at the lodash github repo it seems like one of the biggest issues to look out for is that the default value will only return if the value turns out to be undefined. If you expect the default value to return if the path returns a value like null, or false that is one reason why you might want to make your own solution for \_.get. It would not be to hard to add a forth argument to the vanilla js alternative that could be an array of values to return the default for.
+Quickly looking over some chatter on stack overflow, and comments at the issues section at the lodash github repository it seems like one of the biggest issues to look out for is that the default value will only return if the value turns out to be undefined. If you expect the default value to return if the path returns a value like null, or false that is one reason why you might want to make your own solution for \_.get. It would not be to hard to add a forth argument to the vanilla js alternative that could be an array of values to return the default for.
