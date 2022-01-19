@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 08:54:28
-version: 1.10
+updated: 2022-01-19 08:57:20
+version: 1.11
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
+
+So maybe there are still a few things to write about when it comes to a method like the lodash first method, after all there is not just getting the first element of an array when getting the first element of an array. For example there is getting the first element of an array, and also mutating the array in place while doing so. There is trying to get the first element of an array, but getting a default value in the event that the first element of an array is undefined. There is also sorting an array before getting the first element, and when doing so mutating in place and not mutating in place.
 
 So then in this post I will be going over a few quick examples of the lodash first method, and also a few additional topics that come to mind when preforming this kind of task. With that said I will be looking into some additional lodash methods that can be used to get the first element, as well as other typical elements of interest. Also there is taking a look at some additional examples that have to do with getting the first element of an array, and other related tasks using just native javaScript by itself.
 
