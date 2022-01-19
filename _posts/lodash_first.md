@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 09:33:29
-version: 1.16
+updated: 2022-01-19 09:35:59
+version: 1.17
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
@@ -62,7 +62,7 @@ console.log( _.get(arr, '0', 0) ); // 0
 
 ## 2 - Getting first few elements of an array using other lodash methods
 
-The lodash find method only takes one argument and only returns the element that is the first element of the array that it is given. If you want an array of elements from zero forward, and you want that array sorted, then there is the \_.slice, and \_.sortBy methods that can be used.
+The lodash first method only takes one argument and only returns the element that is the first element of the array that it is given. If you want an array of elements from zero forward, and you want that array sorted, then there is the [slice](/2020/12/01/lodash_slice/), and [sortBy](/2018/07/06/lodash_sortby/) methods that can be used.
 
 ```js
 let arr = ['c', 'f','e', 'a', 'd', 'b'];
