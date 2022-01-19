@@ -5,11 +5,13 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 08:44:25
-version: 1.8
+updated: 2022-01-19 08:51:10
+version: 1.9
 ---
 
-The [lodash \_.first](https://lodash.com/docs/4.17.11#head) aka \_.head method is just a simple convenience method for getting the first element of an array. So then this is one of those methods in lodash that make me question the worth of lodash a little. The reason being that it is not such a big deal to gust simply get the first element of an array with javaScript by itself. Well anyway I thought I would write a short post on lodash first and some related topics, but it goes without say that this is not something that should end up eating up a great deal of my attention.
+The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
+
+Well anyway I thought I would write a short post on lodash first and some related topics, but it goes without say that this is not something that should end up eating up a great deal of my attention.
 
 <!-- more -->
 
