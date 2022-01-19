@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 286
-updated: 2022-01-19 11:25:53
-version: 1.13
+updated: 2022-01-19 11:30:06
+version: 1.14
 ---
 
 So it is time for yet another [lodash](https://lodash.com/) post, this time on the lodash [\_.get](https://lodash.com/docs/4.17.10#get) that allows me to get a value from an object by passing the object, and then a path in string format to the value that I want. There is also the [lodash set method, but that is a matter for another post](/2018/12/04/lodash_set/). This method of getting at properties of objects might prove to be a little more helpful compared to just getting properties the way one would in native javaScript in some cases, but still I can nit say this is one of the most compelling methods to support the use of lodash these days. In any case I will be writing about the lodash get method as well as other ways of getting at properties of object in general in this post.
@@ -25,6 +25,8 @@ In any case this is not a getting started post on lodash, or [javaScript in gene
 
 ### 1.1 - Basic example of the lodash get method
 
+First thing is first lets get the hello world style example of this get method out of the way. With that said there is starting out with some kind of object that has many additional objects nested in it. When it comes to this kind of example the lodash get method can be used to get any object or primitive value within this kind of object of objects. First I pass the source object I want to get something in as the first argument, then a string that is a path to the value that I want, then an optional default value that will be what is returned in the event that that value is not there.
+
 ```js
 let a = { b: { c: 8, d: 7,  e: [ 1, 2, 3 ] }, f: [ 4, 5, 6 ] };
 console.log( _.get(a, 'b.c') );   // 8
@@ -32,7 +34,7 @@ console.log( _.get(a, 'f.2') );   // 6
 console.log( _.get(a, 'b.e.0') ); // 1
 console.log( _.get(a, 'g', 0) );  // 0
 ```
-### 1.2 - A basic example of \_.get 
+### 1.2 - An example of \_.get involving and enemy object
 
 So because these posts tent to be a little boring, why not living things up a little by making a basic example of \_.get game related? Say you have an Enemy Object for a game that you are making and you want to grab an nested object that that contains information about how and instance of an Enemy will heal over time if it is damaged. The lodash \_.get method could be used to snag it my path, and also return a default value if for some reason it is not there. Although it is also not to hard to just do so with plain javaScript as well, plus it might preform better, but bare with me its just a simple example here.
 
