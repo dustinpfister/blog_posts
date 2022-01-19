@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 09:32:02
-version: 1.15
+updated: 2022-01-19 09:33:29
+version: 1.16
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
@@ -50,7 +50,7 @@ console.log( arr ); // ['foo','bar', 'baz'];
 
 ### 1.3 - Can not set a default value when using lodash first, but this can be done with lodash get
 
-Another draw back of the lodash first method is that it will only take one argument, so then there is no additional arguments or options with this method, such as setting a default value in the event that the first element is undefined.
+Another draw back of the lodash first method is that it will only take one argument, so then there is no additional arguments or options with this method, such as setting a default value in the event that the first element is undefined. Other methods in lodash will allow for this kind of feature such as the [lodash get collection method](/2018/09/24/lodash_get/).
 
 ```js
 let arr = [];
