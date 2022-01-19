@@ -5,8 +5,8 @@ tags: [js,lodash]
 layout: post
 categories: lodash
 id: 481
-updated: 2022-01-19 08:57:20
-version: 1.11
+updated: 2022-01-19 09:20:37
+version: 1.12
 ---
 
 The [lodash first](https://lodash.com/docs/4.17.11#head) method which is also the lodash head method actually, is just a simple convenience method for getting the first element of an array that is passed to the method as the first argument. So then this is one of those methods in lodash that might make some question the worth of lodash a little when compared to just working with native javaScript by itself. After all getting the first element of an array with just native javaScript is just a matter of just grabbing at index 0 of the array with the bracket syntax. There is also the question of how to get the last element of an array, with this there is the [lodash last method](/2019/07/01/lodash_last/) that does that, and again this is something that is not all that hard and often be done by just simply subtracting 1 from the length of an array to do so.
@@ -17,21 +17,43 @@ So then in this post I will be going over a few quick examples of the lodash fir
 
 <!-- more -->
 
-## 1 - lodash first example
+## 1 - The basics of lodash first, and other things to be aware of
+
+
+### 1.1 - Basic lodash frist example
 
 So the lodash first method is an array method that can be used to just simple get the first element of an array at index zero. Just pass the array as the first argument when calling lodash first and the first element is returned.
 
 ```js
 let arr = ['foo','bar', 'baz'];
- 
 // so yep it gets the first element of an array
 console.log(_.first(arr) ); // 'foo'
- 
-// but do does this
-console.log( arr[0] ); // 'foo'
 ```
 
 However doing so is not so hard to understand when it comes to plain old javaScript itself, just get the zero index element by using the bracket syntax right? The only thing I can thing of that comes to mind in defense of this is that it does make it a little more clean when it comes to new javaScript developers, but using the word first. Aside from that, the lodash first method is not a method in lodash that helps support a string case to continue using it on top of native javaScript by itself.
+
+### 1.2 - Lodash first will not mutate in place, and the lodash pull at method
+
+```js
+let arr = ['foo','bar', 'baz'];
+// the lodash first method will not mutate in place
+console.log( _.first(arr) ); // 'foo'
+console.log( arr ); // ['foo','bar', 'baz'];
+ 
+// other methods like pullAt will mutate in place
+console.log(_.pullAt(arr, 0));
+console.log( arr ); // ['foo','bar', 'baz'];
+```
+
+### 1.3 - Can not set a default value when using lodash first, but this can be done with lodash get
+
+```js
+let arr = [];
+// no way to set a default if undefined or empty
+console.log( _.first(arr) ); // undefined
+// with lodash get a default can be set
+console.log( _.get(arr, '0', 0) ); // 0
+```
 
 ## 2 - Getting first few elements of an array using other lodash methods
 
