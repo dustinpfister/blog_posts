@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 46
-updated: 2022-01-20 15:56:31
-version: 1.15
+updated: 2022-01-20 15:58:45
+version: 1.16
 ---
 
 Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest IE for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter actually. The reason why is because in late versions lodash just references Array.isArray, where is older versions do provide a user space javaScript solution for this.
@@ -73,4 +73,4 @@ console.log( _.isArrayLike(a) ); // true
 
 ## 2 - Conclusion
 
-So then the lodash \_.isArray method might have had a purpose in the past, and maybe still does if you care a great deal about browser support. Otherwise this is just yet another method in lodash that is starting to show its age. There are of course a lot of other [array methods in lodash](/2019/02/14/lodash_array/) that are also worth checking out real quick, many of them do preform useful tasks with arrays where there is no native array prototype counter part yet.
+So then the lodash \_.isArray method might have had a purpose in the past, and maybe still does if you care a great deal about browser support. Otherwise this is just yet another method in lodash that is starting to show its age. There are of course a lot of other [array methods in lodash](/2019/02/14/lodash_array/) that are also worth checking out real quick, many of them do preform useful tasks with arrays where there is no native array prototype counter part yet. If you think that you got something of value out of reading this and would like to read more on lodash I have a lot of [other posts on lodash](/categories/lodash/), including a kind of [main post on the topic of lodash](/2019/02/15/lodash/) that I get around to editing more often than the others.
