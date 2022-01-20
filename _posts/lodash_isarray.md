@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 46
-updated: 2022-01-20 15:58:45
-version: 1.16
+updated: 2022-01-20 16:01:35
+version: 1.17
 ---
 
 Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest IE for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter actually. The reason why is because in late versions lodash just references Array.isArray, where is older versions do provide a user space javaScript solution for this.
@@ -55,7 +55,7 @@ console.log( _.isArray(a) ); // true
 
 ### 1.2 - The lodash is array like method
 
-There is the  also the [lodash is array like method](/2020/08/01/lodash_isarraylike) that will not just return true of arrays, but also any object that is formated like an array in terms of the own properties of the object. For example I can just create an object with the object literal syntax and then just start adding public keys that are numbers rather than names. I will then want to add a length property to this object that is the value that will be used to set the max number of elements for the array, or array like object rather. 
+There is the  also the [lodash is array like method](/2020/08/01/lodash_isarraylike) that will not just return true of arrays, but also any object that is formated like an array in terms of the own properties of the object. For example I can just create an object with the object literal syntax and then just start adding public keys that are numbers rather than names. I will then want to add a length property to this object that is the value that will be used to set the max number of elements for the array, or array like object rather. For this I can use the [Object define property method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty) to make it so the length property will not be enumerable, and I can use the [object keys method](/2018/12/15/js-object-keys/) to get a count of the number of public keys when setting the value for this length property.
 
 When I pass a reference to this kind of array like object to the lodash is array method the result is false, but when I pass it to the lodash is array like method as one would expect the result is true.
 
