@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 46
-updated: 2022-01-20 15:32:54
-version: 1.10
+updated: 2022-01-20 15:46:12
+version: 1.11
 ---
 
 Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest IE for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter actually. The reason why is because in late versions lodash just references Array.isArray, where is older versions do provide a user space javaScript solution for this.
@@ -42,6 +42,28 @@ var isArray = nativeIsArray || function(value) {
 ```
 
 So yes if a native is array method exists just use that, else use what I am writing here that should work.
+
+### 1.1 - Basic example of lodash is array
+
+```js
+let a = [1, 2, 3];
+ 
+console.log( _.isArray(a) ); // true
+```
+
+### 1.2 - The lodash is array like method
+
+```js
+let a = {
+    0: 1,
+    1: 2,
+    2: 3
+};
+Object.defineProperty(a, 'length', {value: Object.keys(a).length});
+ 
+console.log( _.isArray(a) ); // false
+console.log( _.isArrayLike(a) ); // true
+```
 
 ## 2 - Conclusion
 
