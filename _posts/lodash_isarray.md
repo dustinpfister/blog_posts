@@ -5,8 +5,8 @@ tags: [js,lodash,node.js]
 layout: post
 categories: lodash
 id: 46
-updated: 2022-01-20 15:29:18
-version: 1.9
+updated: 2022-01-20 15:32:54
+version: 1.10
 ---
 
 Detecting if an Object is an Array is a trivial matter, or at least it is if you do not care a whole lot about backward compatibility. If you do want to march backward compatibility back to say IE 8 (latest IE for win xp), or even further to IE 6 (latest for win 9.x) then you can not depend on Array.isArray, or [_.isArray](https://lodash.com/docs/4.17.4#isArray) in [loash](https://lodash.com/) ether for that matter actually. The reason why is because in late versions lodash just references Array.isArray, where is older versions do provide a user space javaScript solution for this.
@@ -29,11 +29,11 @@ So yes it's one of those methods in lodash now, where there is more or less no p
 
 ### So whats the point of _.isArray in lodash?
 
-Today there is no point, however in the past there was a point, so now it is there just for the sake of keeping old code written with lodash from breaking. If you are writing new code the whole point of _.isArray is lost in late versions of lodash, unless you patch it, making your own lodash hack job, and thus make it the way it was in older versions of lodash.
+Today there is no point, however in the past there was a point, so now it is there just for the sake of keeping old code written with lodash from breaking. If you are writing new code the whole point of \_.isArray is lost in late versions of lodash, unless you patch it, making your own lodash hack job, and thus make it the way it was in older versions of lodash.
 
 ### _.isArray in lodash 3.10.1
 
-In lodash 3.10.1 (4.17.4 is the latest as of the writing) _.isArray existed in a manner that you would expect if greater backward compatibility is desired. It was a polyfill that looked like this:
+In lodash 3.10.1 (4.17.4 is the latest as of the writing) \_.isArray existed in a manner that you would expect if greater backward compatibility is desired. It was a polyfill that looked like this:
 
 ```js
 var isArray = nativeIsArray || function(value) {
