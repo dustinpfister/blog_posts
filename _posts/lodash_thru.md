@@ -5,11 +5,11 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 953
-updated: 2022-01-21 15:03:02
-version: 1.2
+updated: 2022-01-21 15:05:54
+version: 1.3
 ---
 
-This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other usful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on eailry this month as I take a moment to expand on lodash, and edit some older posts on the topic to while I am at ot this month.
+This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other useful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on earlier this month as I take a moment to expand on lodash, and edit some older posts on the topic too while I am at it. There is also the question of how to even go about starting a chain in lodash to begin with, when it comes to that there is the main lodash function, as well as the [lodash chain method](/2018/11/11/lodash_chain/).
 
 <!-- more -->
 
