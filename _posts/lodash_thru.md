@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 953
-updated: 2022-01-21 15:38:10
-version: 1.11
+updated: 2022-01-21 15:50:13
+version: 1.12
 ---
 
 This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other useful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on earlier this month as I take a moment to expand on lodash, and edit some older posts on the topic too while I am at it. There is also the question of how to even go about starting a chain in lodash to begin with, when it comes to that there is the main lodash function, as well as the [lodash chain method](/2018/11/11/lodash_chain/).
@@ -59,7 +59,53 @@ console.log(a);
 // { arr: [ 'a', 'b', 'c' ] }
 ```
 
-## 2 - Conclusion
+## 2 - Other lodash methods
+
+### 2.1 - The lodash tap method
+
+```js
+let a = _.chain('01234')
+.tap((x)=>{
+    console.log(x); // '01234'
+})
+.split('')
+.tap((x)=>{
+    console.log(x); // [ '0', '1', '2', '3', '4' ]
+})
+.map((n)=>{
+    return Math.pow(2, n);
+})
+.value();
+ 
+console.log(a); // [ 1, 2, 4, 8, 16 ]
+```
+
+### 2.2 - The lodash mixin method
+
+```js
+_.mixin({
+    myMethod: function (str) {
+        return _.chain('01234')
+        .split('')
+        .map((n) => {
+            return Math.pow(2, n);
+        })
+        .value();
+    }
+})
+// I can not call this custom method
+let a = _.myMethod('012345');
+console.log(a); // [ 1, 2, 4, 8, 16 ]
+// it can also be used in chains
+let b = _.chain([0, 1, 2, 3, 4, 5])
+.join('')
+.myMethod()
+.value();
+console.log(b);
+// [ 1, 2, 4, 8, 16 ]
+```
+
+## 3 - Conclusion
 
 That is it for now at least when it comes to the lodash thru method until I come around to do a little more editing on this post at some point in the future. That might be a while though as I can not say writing new lodash content is a high priority for me at this time, but I do still get around to doing so never the less.
 
