@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 953
-updated: 2022-01-21 15:53:54
-version: 1.13
+updated: 2022-01-21 15:58:04
+version: 1.14
 ---
 
 This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other useful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on earlier this month as I take a moment to expand on lodash, and edit some older posts on the topic too while I am at it. There is also the question of how to even go about starting a chain in lodash to begin with, when it comes to that there is the main lodash function, as well as the [lodash chain method](/2018/11/11/lodash_chain/).
@@ -60,6 +60,8 @@ console.log(a);
 ```
 
 ## 2 - Other lodash methods
+
+There are a number of other lodash methods that come to mind when it comes to the subject of chaining in lodash. The thru method is great for not just tapping into a chain but also to have a great deal of control when it comes to redefining what the value of the chain should be at a given point. If for some reason I just want to simply tab into a chain at some point to just log out what the result is at a given point, or mutate an object in place rather than returning something they there are other methods to make use of such as tap.
 
 ### 2.1 - The lodash tap method
 
