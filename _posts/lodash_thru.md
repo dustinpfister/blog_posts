@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 953
-updated: 2022-01-21 15:23:42
-version: 1.6
+updated: 2022-01-21 15:29:17
+version: 1.7
 ---
 
 This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other useful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on earlier this month as I take a moment to expand on lodash, and edit some older posts on the topic too while I am at it. There is also the question of how to even go about starting a chain in lodash to begin with, when it comes to that there is the main lodash function, as well as the [lodash chain method](/2018/11/11/lodash_chain/).
@@ -55,3 +55,6 @@ console.log(a);
 ## 2 - Conclusion
 
 That is it for now at least when it comes to the lodash thru method until I come around to do a little more editing on this post at some point in the future. That might be a while though as I can not say writing new lodash content is a high priority for me at this time, but I do still get around to doing so never the less.
+
+If you still enjoyed reading this post I do have many other [posts on lodash](/categories/lodash/) that I have wrote over the years. However more often that one when I am working on a project I typically find myself just working with native javaScript by itself actually. Part of my process of editing is to take a moment to think in terms of how to go about doing the same thing a lodash method does in vanilla javaScript. So with that begin said maybe a better choice for additional reading would be to check out one of my many simple [javaScript project examples](/2021/04/02/js-javascript-example/), or one of my [canvas example series posts](/2020/03/23/canvas-example/).
+
