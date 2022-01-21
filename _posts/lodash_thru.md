@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 953
-updated: 2022-01-21 15:58:04
-version: 1.14
+updated: 2022-01-21 16:00:35
+version: 1.15
 ---
 
 This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other useful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on earlier this month as I take a moment to expand on lodash, and edit some older posts on the topic too while I am at it. There is also the question of how to even go about starting a chain in lodash to begin with, when it comes to that there is the main lodash function, as well as the [lodash chain method](/2018/11/11/lodash_chain/).
@@ -65,6 +65,8 @@ There are a number of other lodash methods that come to mind when it comes to th
 
 ### 2.1 - The lodash tap method
 
+The tap method in lodash is what I would want to use to just tap into a chain and do something like just logging what the value is at a given point.
+
 ```js
 let a = _.chain('01234')
 .tap((x)=>{
@@ -81,6 +83,8 @@ let a = _.chain('01234')
  
 console.log(a); // [ 1, 2, 4, 8, 16 ]
 ```
+
+The tap method can also be used to mutate the value also, but only by preforming some kind of action that is mutation in place of an object value. This is because the return keyword is not used at all when lodash tap is used in place of lodash thru.
 
 ### 2.2 - The lodash mixin method
 
