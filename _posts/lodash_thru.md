@@ -5,8 +5,8 @@ tags: [lodash]
 layout: post
 categories: lodash
 id: 953
-updated: 2022-01-21 15:50:13
-version: 1.12
+updated: 2022-01-21 15:53:54
+version: 1.13
 ---
 
 This will be a post on the [lodash thru method](https://lodash.com/docs/4.17.15#thru) that is one of several useful methods when working with a chain in lodash. The other useful method to take into account would be the [lodash tap method](/2022/01/07/lodash_tap/) that I wrote a post on earlier this month as I take a moment to expand on lodash, and edit some older posts on the topic too while I am at it. There is also the question of how to even go about starting a chain in lodash to begin with, when it comes to that there is the main lodash function, as well as the [lodash chain method](/2018/11/11/lodash_chain/).
@@ -81,6 +81,8 @@ console.log(a); // [ 1, 2, 4, 8, 16 ]
 ```
 
 ### 2.2 - The lodash mixin method
+
+Would you say that lodash is missing something? In other words do you find yourself is a situation in which there is one or more methods that come to mind that should be a part of lodash yet it is not? Well then when it comes to customizing lodash with a few methods that might prove to be this kind of method they can be added in for a project by way of the [lodash mixin method](/2018/01/31/lodash_mixin/).
 
 ```js
 _.mixin({
